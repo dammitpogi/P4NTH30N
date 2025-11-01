@@ -1,0 +1,18348 @@
+window.parent.Page = "Hallfire";
+window.__require = function e(t, o, i) {
+    function n(a, s) {
+        if (!o[a]) {
+            if (!t[a]) {
+                var c = a.split("/");
+                if (c = c[c.length - 1],
+                !t[c]) {
+                    var l = "function" == typeof __require && __require;
+                    if (!s && l)
+                        return l(c, !0);
+                    if (r)
+                        return r(c, !0);
+                    throw new Error("Cannot find module '" + a + "'")
+                }
+                a = c
+            }
+            var h = o[a] = {
+                exports: {}
+            };
+            t[a][0].call(h.exports, function(e) {
+                return n(t[a][1][e] || e)
+            }, h, h.exports, e, t, o, i)
+        }
+        return o[a].exports
+    }
+    for (var r = "function" == typeof __require && __require, a = 0; a < i.length; a++)
+        n(i[a]);
+    return n
+}({
+    AdvertUI: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "d5f10qs+OBKMZd2W7hkz7s7", "AdvertUI"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var i = e("../../base/common/SpecialFunc")
+          , n = e("../config/Config")
+          , r = e("../../base/SoundMgr")
+          , a = e("../../base/common/view/PageView")
+          , s = e("../../base/res/DyncMgr")
+          , c = e("../../base/res/LanguageMgr")
+          , l = e("../../base/LogicMgr")
+          , h = e("../../base/common/Func")
+          , d = function() {
+            function e(e) {
+                this._guanggao = [],
+                this._firstShow = !0,
+                this._root = e,
+                this._mountNode = e.getChildByName("mount"),
+                this._toggleRoot = e.getChildByName("toggleRoot"),
+                this._pgviewContentPrefab = e.getChildByName("pgviewContent"),
+                this._pgviewContentPrefab.active = !1,
+                this._pgviewPrefab = e.getChildByName("pgview"),
+                this._pgviewPrefab.active = !1,
+                this._firePrefab = this._root.getChildByName("fire"),
+                this._firePrefab.active = !1,
+                this._bgChildren = e.getChildByName("bg").children
+            }
+            return e.prototype.init = function() {
+                for (var e, t = this, o = h.default.randomInt(0, this._bgChildren.length - 1), i = 0; i < this._bgChildren.length; i++)
+                    this._bgChildren[i].active = i == o;
+                if (l.default.guangGaoChange || this._firstShow) {
+                    this._firstShow = !1,
+                    this._loopPgView && (this._loopPgView.destroy(),
+                    this._toggleRoot.removeAllChildren());
+                    var n = []
+                      , r = function(e) {
+                        var o = cc.instantiate(s._pgviewContentPrefab);
+                        n.push(o),
+                        o.on(l.ConstDefine.click, function() {
+                            t.pgClick(e)
+                        })
+                    }
+                      , s = this;
+                    for (i = 0; i < l.default.login.guangGao.length; i++)
+                        r(i);
+                    var c = cc.instantiate(this._pgviewPrefab);
+                    c.active = !0,
+                    c.parent = this._mountNode;
+                    var d = {
+                        root: c,
+                        contents: n,
+                        toggleRoot: this._toggleRoot,
+                        audoPlayTime: 5
+                    };
+                    if (this._loopPgView = new a.LoopTogglePageView(d),
+                    this._guanggao.length = 0,
+                    (e = this._guanggao).push.apply(e, l.default.login.guangGao),
+                    this._guanggao.length > 1) {
+                        var f = this._guanggao[0]
+                          , u = this._guanggao[this._guanggao.length - 1];
+                        this._guanggao.unshift(u),
+                        this._guanggao.push(f)
+                    }
+                    this.changeLang()
+                }
+            }
+            ,
+            e.prototype.setActive = function(e) {
+                this._root.active = e
+            }
+            ,
+            e.prototype.pgClick = function(e) {
+                r.default.playEffect(l.ConstDefine.click),
+                s.default.getResInfo("bigAdvertUI", e)
+            }
+            ,
+            e.prototype.changeLang = function() {
+                for (var e = n.Config.configPath + "lang/" + c.default.currLang + "/advert/", t = e + "tag/", o = 0; o < this._guanggao.length; o++) {
+                    var r = this._loopPgView.contents[o]
+                      , a = this._guanggao[o]
+                      , s = r.getComponent(cc.Sprite);
+                    if (i.default.setRemoteSpt(e, l.ConstDefine.ad, a, s),
+                    n.Config.ggShowFire[a]) {
+                        var h = cc.instantiate(this._firePrefab);
+                        h.active = !0,
+                        h.setParent(r)
+                    }
+                    var d = l.default.kpKeyCfg[a];
+                    if (d && void 0 !== d.t) {
+                        var f = r.getChildByName("tag").getComponent(cc.Sprite);
+                        i.default.setRemoteSpt(t, l.ConstDefine.tag, d.t, f)
+                    }
+                }
+            }
+            ,
+            e
+        }();
+        o.default = d,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/SoundMgr": "SoundMgr",
+        "../../base/common/Func": "Func",
+        "../../base/common/SpecialFunc": "SpecialFunc",
+        "../../base/common/view/PageView": "PageView",
+        "../../base/res/DyncMgr": "DyncMgr",
+        "../../base/res/LanguageMgr": "LanguageMgr",
+        "../config/Config": "Config"
+    }],
+    BigAdvertUI: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "23bf9jq1hJI2Lw1HidDp8d/", "BigAdvertUI");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var r = e("../../base/common/view/PageView")
+          , a = e("../../base/common/SpecialFunc")
+          , s = e("../config/Config")
+          , c = e("../../base/net/GameNet")
+          , l = e("../../base/SoundMgr")
+          , h = e("../../base/common/view/Tip")
+          , d = e("../../base/LogicMgr")
+          , f = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                var t = this;
+                e.prototype.initParams.call(this),
+                this._popupMethod.root.getChildByName("close").on(d.ConstDefine.click, this.close, this),
+                this._offsetXNode = this._popupMethod.root.getChildByName("offsetX"),
+                this._mountNode = this._offsetXNode.getChildByName("mount");
+                var o = this._offsetXNode.getChildByName("title");
+                this._titleChildren = o.children;
+                for (var i = 0, n = this._titleChildren; i < n.length; i++) {
+                    var r = n[i];
+                    r.opacity = 0,
+                    r.active = !0
+                }
+                this._playNow = this._offsetXNode.getChildByName("playNow"),
+                this._playNow.active = !1,
+                this._playNow.on(d.ConstDefine.click, this.playNowClick.bind(this)),
+                this._pgviewContentPrefab = this._offsetXNode.getChildByName("prefab"),
+                this._pgviewContentPrefab.active = !1,
+                this._pgviewPrefab = this._offsetXNode.getChildByName("pageView"),
+                this._pgviewPrefab.active = !1,
+                this.showInfo(0),
+                this.nodeInfo.root.getChildByName("wheel").on(cc.Node.EventType.MOUSE_WHEEL, function(e) {
+                    a.default.onMouseWheel(e.getScrollY(), t._togglePageView)
+                })
+            }
+            ,
+            t.prototype.resetParams = function(t) {
+                if (e.prototype.resetParams.call(this),
+                ++t,
+                d.default.guangGaoChange || !this._togglePageView) {
+                    this._togglePageView && this._togglePageView.destroy();
+                    var o = cc.instantiate(this._pgviewPrefab);
+                    o.parent = this._mountNode,
+                    o.active = !0;
+                    for (var i = o.getComponent(cc.PageView), n = 0; n < d.default.login.guangGao.length; n++) {
+                        var c = d.default.login.guangGao[n]
+                          , l = cc.instantiate(this._pgviewContentPrefab);
+                        l.active = !0,
+                        i.addPage(l),
+                        a.default.setRemoteSpt(s.Config.configPath + "bigAdvertUI/", d.ConstDefine.bad, c, l.getComponent(cc.Sprite))
+                    }
+                    var h = {
+                        root: o,
+                        finishCall: function(e) {
+                            e.toggleRoll(t, !1);
+                            var o = e.pgView.content.children
+                              , i = o[0]
+                              , n = o[o.length - 1];
+                            a.default.setRemoteSpt(s.Config.configPath + "bigAdvertUI/", d.ConstDefine.bad, d.default.login.guangGao[d.default.login.guangGao.length - 1], i.getComponent(cc.Sprite)),
+                            a.default.setRemoteSpt(s.Config.configPath + "bigAdvertUI/", d.ConstDefine.bad, d.default.login.guangGao[0], n.getComponent(cc.Sprite))
+                        },
+                        pgChangeCall: this.showInfo.bind(this)
+                    };
+                    this._togglePageView = new r.LoopTogglePageView(h)
+                } else
+                    this._nodeInfo.root.active = !0,
+                    this._togglePageView.toggleRoll(t, !1)
+            }
+            ,
+            t.prototype.onMouseWheel = function(e) {
+                this._togglePageView.isScrolling() || (e.getScrollY() > 0 ? this._togglePageView.lastPg() : this._togglePageView.nextPg())
+            }
+            ,
+            t.prototype.showInfo = function(e) {
+                if (this._lastIndex !== e) {
+                    this._lastShowTitle && (this._lastShowTitle.opacity = 0),
+                    this._lastIndex = e;
+                    var t = d.default.getKpGuangGaoCfg(this._lastIndex);
+                    void 0 !== t ? void 0 !== t.t ? (this._lastShowTitle = this._titleChildren[t.t],
+                    this._lastShowTitle.opacity = 255,
+                    a.default.tagCanEnterGame(t.t) ? this._playNow.active = !0 : this._playNow.active = !1) : (this._lastShowTitle = null,
+                    this._playNow.active = !0) : (this._lastShowTitle = null,
+                    this._playNow.active = !1)
+                }
+            }
+            ,
+            t.prototype.playNowClick = function() {
+                l.default.playEffect(d.ConstDefine.click),
+                c.default.startGame(d.default.getKpGuangGaoCfg(this._lastIndex))
+            }
+            ,
+            t
+        }(h.PopupBase);
+        o.default = f,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/SoundMgr": "SoundMgr",
+        "../../base/common/SpecialFunc": "SpecialFunc",
+        "../../base/common/view/PageView": "PageView",
+        "../../base/common/view/Tip": "Tip",
+        "../../base/net/GameNet": "GameNet",
+        "../config/Config": "Config"
+    }],
+    BounderyMask: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "5e850/5m3lE7ZH4Al7zUm9W", "BounderyMask");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.BounderyMask = void 0;
+        var r = e("../../base/common/MessageMgr")
+          , a = e("../../base/res/DyncLoadedBase")
+          , s = e("../config/Config")
+          , c = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                var e = this;
+                if (this._upNode = this.nodeInfo.root.getChildByName("up"),
+                this._downNode = this.nodeInfo.root.getChildByName("down"),
+                this._leftNode = this.nodeInfo.root.getChildByName("left"),
+                this._rightNode = this.nodeInfo.root.getChildByName("right"),
+                this.resize(),
+                1 == s.Config.orientation) {
+                    r.MessageMgr.on(r.MessageName.Resize, this.resize, this),
+                    this._leftNode.on(cc.Node.EventType.MOUSE_WHEEL, this.leftRightWheel, this),
+                    this._rightNode.on(cc.Node.EventType.MOUSE_WHEEL, this.leftRightWheel, this),
+                    r.MessageMgr.on(r.MessageName.LoginFail, function() {
+                        e.setColor(cc.Color.BLACK)
+                    });
+                    var t = cc.color(17, 57, 20);
+                    r.MessageMgr.on(r.MessageName.LoginSucceeded, function() {
+                        e.setColor(t)
+                    }),
+                    this.setColor(cc.Color.BLACK)
+                }
+            }
+            ,
+            t.prototype.setColor = function(e) {
+                cc.Camera.main.backgroundColor = e,
+                this._upNode.color = e,
+                this._downNode.color = e,
+                this._leftNode.color = e,
+                this._rightNode.color = e
+            }
+            ,
+            t.prototype.leftRightWheel = function(e) {
+                r.MessageMgr.emit(r.MessageName.LRMouseWheel, e)
+            }
+            ,
+            t.prototype.resize = function() {
+                this.nodeInfo.root.setContentSize(s.Config.gameSize[0], s.Config.gameSize[1]);
+                var e = s.Config.gameSize[1] + 300
+                  , t = s.Config.gameSize[1] / 2;
+                this._upNode.setContentSize(s.Config.gameSize[0], e),
+                this._upNode.setPosition(0, t),
+                this._downNode.setContentSize(s.Config.gameSize[0], e),
+                this._downNode.setPosition(0, -t);
+                var o = s.Config.gameSize[0] / 2;
+                this._leftNode.setContentSize(s.Config.gameSize[0], e),
+                this._leftNode.setPosition(-o, 0),
+                this._rightNode.setContentSize(s.Config.gameSize[0], e),
+                this._rightNode.setPosition(o, 0)
+            }
+            ,
+            t
+        }(a.default);
+        o.BounderyMask = c,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/common/MessageMgr": "MessageMgr",
+        "../../base/res/DyncLoadedBase": "DyncLoadedBase",
+        "../config/Config": "Config"
+    }],
+    BsLangText: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "76977VuqqBCOIcp99THAu4H", "BsLangText"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.default = {
+            ch: ["", "\u62b1\u6b49\u5730\u901a\u77e5\u60a8\uff0c\u7cfb\u7edf\u7981\u6b62\u4e86\u60a8\u6240\u5728\u7684 IP \u5730\u5740\u7684\u767b\u5f55\u529f\u80fd\uff0c\u8bf7\u8054\u7cfb\u5ba2\u6237\u670d\u52a1\u4e2d\u5fc3\u4e86\u89e3\u8be6\u7ec6\u60c5\u51b5\uff01", "\u62b1\u6b49\u5730\u901a\u77e5\u60a8\uff0c\u7cfb\u7edf\u7981\u6b62\u4e86\u60a8\u7684\u673a\u5668\u7684\u767b\u5f55\u529f\u80fd\uff0c\u8bf7\u8054\u7cfb\u5ba2\u6237\u670d\u52a1\u4e2d\u5fc3\u4e86\u89e3\u8be6\u7ec6\u60c5\u51b5\uff01", "\u60a8\u7684\u5e10\u53f7\u4e0d\u5b58\u5728\u6216\u8005\u5bc6\u7801\u8f93\u5165\u6709\u8bef\uff0c\u8bf7\u67e5\u8bc1\u540e\u518d\u6b21\u5c1d\u8bd5\u767b\u5f55\uff01", "\u60a8\u7684\u5e10\u53f7\u6682\u65f6\u5904\u4e8e\u51bb\u7ed3\u72b6\u6001\uff0c\u8bf7\u8054\u7cfb\u5ba2\u6237\u670d\u52a1\u4e2d\u5fc3\u4e86\u89e3\u8be6\u7ec6\u60c5\u51b5\uff01", "\u60a8\u7684\u5e10\u53f7\u4f7f\u7528\u4e86\u5b89\u5168\u5173\u95ed\u529f\u80fd\uff0c\u5fc5\u987b\u91cd\u65b0\u5f00\u901a\u540e\u624d\u80fd\u7ee7\u7eed\u4f7f\u7528\uff01", "\u60a8\u7684\u5e10\u53f7\u4f7f\u7528\u56fa\u5b9a\u673a\u5668\u767b\u5f55\u529f\u80fd\uff0c\u60a8\u73b0\u6240\u4f7f\u7528\u7684\u673a\u5668\u4e0d\u662f\u6240\u6307\u5b9a\u7684\u673a\u5668\uff01", "\u60a8\u7684\u5e10\u53f7\u4e0d\u5b58\u5728\u6216\u8005\u5bc6\u7801\u8f93\u5165\u6709\u8bef\uff0c\u8bf7\u67e5\u8bc1\u540e\u518d\u6b21\u5c1d\u8bd5\u767b\u5f55\uff01", "\u7528\u6237\u4fe1\u606f\u4e0d\u5b58\u5728\uff0c\u673a\u5668\u7ed1\u5b9a\u5931\u8d25\uff01", "\u673a\u5668\u7ed1\u5b9a\u5931\u8d25\uff0c\u672a\u77e5\u9519\u8bef!", "\u60a8\u7684\u5e10\u53f7\u5df2\u7ecf\u7ed1\u5b9a\u4e86\u5176\u4ed6\u673a\u5668\u4e86\uff0c\u5fc5\u987b\u89e3\u9664\u540e\u624d\u80fd\u8fdb\u884c\u672c\u673a\u7ed1\u5b9a\u64cd\u4f5c\uff01", "\u673a\u5668\u7ed1\u5b9a\u5931\u8d25\uff0c\u672a\u77e5\u9519\u8bef!", "\u5e10\u53f7\u7ed1\u5b9a\u64cd\u4f5c\u6267\u884c\u9519\u8bef\uff0c\u8bf7\u8054\u7cfb\u5ba2\u6237\u670d\u52a1\u4e2d\u5fc3\uff01", "\u60a8\u7684\u5e10\u53f7\u4e0e\u6b64\u673a\u5668\u7ed1\u5b9a\u6210\u529f\u4e86\uff0c\u82e5\u9700\u8981\u89e3\u9664\u7ed1\u5b9a\u9700\u5728\u672c\u673a\u5668\u8fdb\u884c\uff01 ", "\u7528\u6237\u4fe1\u606f\u4e0d\u5b58\u5728\uff0c\u673a\u5668\u7ed1\u5b9a\u5931\u8d25\uff01", "\u60a8\u7684\u5e10\u53f7\u4e0e\u5176\u4ed6\u673a\u5668\u8fdb\u884c\u4e86\u7ed1\u5b9a\uff0c\u673a\u5668\u89e3\u9664\u7ed1\u5b9a\u5931\u8d25\uff01", "\u672a\u77e5\u9519\u8bef\uff0c\u673a\u5668\u89e3\u9664\u7ed1\u5b9a\u5931\u8d25\uff01", "\u5e10\u53f7\u89e3\u9664\u7ed1\u5b9a\u64cd\u4f5c\u6267\u884c\u9519\u8bef\uff0c\u8bf7\u8054\u7cfb\u5ba2\u6237\u670d\u52a1\u4e2d\u5fc3\uff01", "\u60a8\u7684\u5e10\u53f7\u4e0e\u673a\u5668\u89e3\u9664\u7ed1\u5b9a\u6210\u529f\u4e86\uff01 ", "\u62b1\u6b49\u5730\u901a\u77e5\u60a8\uff0c\u7cfb\u7edf\u7981\u6b62\u4e86\u60a8\u6240\u5728\u7684 IP \u5730\u5740\u7684\u6e38\u620f\u767b\u5f55\u6743\u9650\uff0c\u8bf7\u8054\u7cfb\u5ba2\u6237\u670d\u52a1\u4e2d\u5fc3\u4e86\u89e3\u8be6\u7ec6\u60c5\u51b5\uff01", "\u60a8\u7684\u5e10\u53f7\u4e0d\u5b58\u5728\u6216\u8005\u5bc6\u7801\u8f93\u5165\u6709\u8bef\uff0c\u8bf7\u67e5\u8bc1\u540e\u518d\u6b21\u5c1d\u8bd5\u767b\u5f55\uff01", "\u60a8\u7684\u5e10\u53f7\u6682\u65f6\u5904\u4e8e\u51bb\u7ed3\u72b6\u6001\uff0c\u8bf7\u8054\u7cfb\u5ba2\u6237\u670d\u52a1\u4e2d\u5fc3\u4e86\u89e3\u8be6\u7ec6\u60c5\u51b5\uff01", "\u60a8\u7684\u5e10\u53f7\u4f7f\u7528\u4e86\u5b89\u5168\u5173\u95ed\u529f\u80fd\uff0c\u5fc5\u987b\u91cd\u65b0\u5f00\u901a\u540e\u624d\u80fd\u7ee7\u7eed\u4f7f\u7528\uff01", "\u60a8\u7684\u5e10\u53f7\u4f7f\u7528\u56fa\u5b9a\u673a\u5668\u767b\u5f55\u529f\u80fd\uff0c\u60a8\u73b0\u6240\u4f7f\u7528\u7684\u673a\u5668\u4e0d\u662f\u6240\u6307\u5b9a\u7684\u673a\u5668\uff01", "\u62b1\u6b49,\u7531\u4e8e\u60a8\u7684\u5e10\u53f7\u5728\u5176\u5b83\u5730\u65b9\u767b\u5f55,\u8bf7\u91cd\u65b0\u767b\u5f55\u5e73\u53f0\u540e\u518d\u6b21\u5c1d\u8bd5\uff01", "\u62b1\u6b49\u5730\u901a\u77e5\u4f60\uff0c\u60a8\u7684\u6e38\u620f\u5e01\u6570\u636e\u51fa\u73b0\u4e86\u5f02\u5e38\u60c5\u51b5\uff0c\u8bf7\u8054\u7cfb\u5ba2\u6237\u670d\u52a1\u4e2d\u5fc3\u4e86\u89e3\u8be6\u7ec6\u60c5\u51b5\uff01", "\u62b1\u6b49,\u60a8\u6b63\u5728\u6e38\u620f\u623f\u95f4\u4e2d\uff0c\u4e0d\u80fd\u540c\u65f6\u518d\u8fdb\u5165\u6b64\u6e38\u620f\u623f\u95f4\uff01", "\u62b1\u6b49\uff0c\u7cfb\u7edf\u68c0\u6d4b\u5230\u60a8\u7684\u8d26\u53f7\u6b63\u5904\u4e8e\u6e38\u620f\u5f53\u4e2d\uff0c\u7981\u6b62\u8fdb\u5165\u6e38\u620f\u623f\u95f4\uff01", "\u5e10\u53f7\u5bc6\u7801\u4fee\u6539\u6210\u529f\uff0c\u8bf7\u7262\u8bb0\u60a8\u7684\u65b0\u5e10\u53f7\u5bc6\u7801", "\u6b64\u8d26\u53f7\u5f02\u5730\u5c1d\u8bd5\u767b\u5165\uff0c\u8bf7\u66f4\u6539\u5bc6\u7801.", "\u6b64\u8d26\u53f7\u5df2\u5728\u5f02\u5730\u767b\u5f55\uff0c\u8bf7\u8054\u7cfb\u5ba2\u670d.", "\u64cd\u4f5c\u6210\u529f", "\u64cd\u4f5c\u5931\u8d25", "\u65b0\u5bc6\u7801\u8ddf\u65e7\u5bc6\u7801\u4e0d\u80fd\u4e00\u6837.", "\u62b1\u6b49\uff0c\u5f53\u524d\u6e38\u620f\u201c\u623f\u95f4\u5df2\u6ee1\u5ea7\u201d\u6682\u65f6\u65e0\u6cd5\u5165\u5ea7\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5\uff01", "\u62b1\u6b49\uff0c\u5f53\u524d\u6e38\u620f\u201c\u623f\u95f4\u5df2\u6ee1\u5ea7\u201d\u6682\u65f6\u65e0\u6cd5\u5165\u5ea7\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5\uff01", "\u62b1\u6b49\uff0c\u5df2\u6709\u73a9\u5bb6\u5360\u7528\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5\uff01", "\u6e38\u620f\u684c\u8fdb\u5165\u5bc6\u7801\u4e0d\u6b63\u786e\uff0c\u7981\u6b62\u8fdb\u5165\u3002"],
+            en: ["", "We are sorry to inform you that your IP address has been banned from login by the system. \nPlease contact customer service center for more info.", "We are sorry to inform you that your device has been banned from login by the system. \nPlease contact customer service center for more info.", "Your account does not exist or password is incorrect. Please check and login again.", "Your account has been suspended. Please contact customer service center for more info.", "Your account has been disabled for security reason. \nIt will be available only after been reactivated. ", "Your account has been bound with a device. Please login with the bound device.", "Your account does not exist or password is incorrect. Please check and login again.", "Binding device failure due to invalid user info.", "Binding device failure due to unexpected error.", "Your account has been bound with another device. \nYou have to unbind it first and then bind with this device.", "Binding device failure due to unexpected error.", "Account binding device operation error. Please contact customer service center.", "Your account has been bound with this device successfully. \nYou have to use this device to unbind it if needed.", "Binding device failure due to invalid user info.", "Your account has been bound with another device. Unbinding device failure.", "Unbinding device failure due to unexpected error.", "Account unbinding device operation error. Please contact customer service center.", "Your account has been unbound with this device successfully.", "We are sorry to inform you that your IP address has been banned from game login by the system. \nPlease contact customer service center for more info.", "Your account does not exist or password is incorrect. Please check and login again.", "Your account has been suspended. Please contact customer service center for more info.", "Your account has been disabled for security reason. It will be available only after been reactivated.", "Your account has been bound with a device. Please login with the bound device.", "Sorry. Your account logs in at other IP address now. Please try again later.", "We are sorry to inform you that some exception was found in your game bank data. \nPlease contact customer service center for more info.", "Sorry. You are now playing the game and cannot join it at same time.", "Sorry. You are not allowed to join the game as the system detected \nthat your account is now playing game.", "Modify password successfully, please remember this new password.", "This account try to logon in another place, please change password.", "This account has logon in other place, please contact customer service.", "Operation success", "Operation fail", "New password should be different from old one.", "Sorry, You are not allowed to be seated as all the tables of the game have been occupied. \nPlease try again later!", "Sorry, You are not allowed to be seated as all the tables of the game have been occupied. \nPlease try again later!", "Sorry, the seat has been occupied by other player. Please try again later!", "You are not allowed to enter the game table as you input wrong password."],
+            po: ["", "Desculpe por informar que o sistema pro\xedbe as permiss\xf5es de login do jogo do seu endere\xe7o IP, entre em contato com o Centro de Atendimento ao Cliente para saber mais!", "Lamentamos inform\xe1-lo de que seu dispositivo foi banido de login pelo sistema. Entre em contato com o Centro de Atendimento ao Cliente para mais informa\xe7\xf5es.", "Sua conta n\xe3o existe ou a senha est\xe1 incorreta. Por favor, verifique e fa\xe7a o login novamente.", "Sua conta foi suspensa. Entre em contato com o Centro de Atendimento ao Cliente para mais informa\xe7\xf5es.", "Sua conta usa uma fun\xe7\xe3o de desligamento segura, deve continuar a us\xe1-lo depois de reabrir isso!", "Sua conta usa um recurso de login de m\xe1quina fixa, a m\xe1quina que usa n\xe3o \xe9 a m\xe1quina especificada", "Sua conta n\xe3o existe ou a senha est\xe1 incorreta. Por favor, verifique e fa\xe7a o login novamente.", "Informa\xe7\xf5es do usu\xe1rio n\xe3o existe, a liga\xe7\xe3o da m\xe1quina falhou!", "Liga\xe7\xe3o da m\xe1quina falhou, erros desconhecidos!", "Sua conta foi vinculada a outras m\xe1quinas, deve ser liberado para executar opera\xe7\xf5es de liga\xe7\xe3o local!", "Liga\xe7\xe3o da m\xe1quina falhou, erros desconhecidos!", "A opera\xe7\xe3o de liga\xe7\xe3o de conta est\xe1 incorreta, entre em contato com o Centro de Atendimento ao Cliente!", "Sua conta \xe9 vinculativa com sucesso a esta m\xe1quina, se precisar liberar a liga\xe7\xe3o, precisa fazer esta m\xe1quina!", "Informa\xe7\xf5es do usu\xe1rio n\xe3o existe, a liga\xe7\xe3o da m\xe1quina falhou!", "Sua conta \xe9 obrigada a outras m\xe1quinas, e a m\xe1quina n\xe3o consegue falhar!", "Erro desconhecido, a m\xe1quina \xe9 lan\xe7ada!", "A opera\xe7\xe3o de liga\xe7\xe3o de libera\xe7\xe3o da conta est\xe1 incorreta, entre em contato com o Centro de Atendimento ao Cliente!", "Akaun dan mesin anda melepaskan pengikatan dengan berjaya!", "Lamentamos informar que seu endere\xe7o IP foi banido de login pelo sistema. Entre em contato com o Centro de Atendimento ao Cliente para mais informa\xe7\xf5es.", "Sua conta n\xe3o existe ou a senha est\xe1 incorreta. Por favor, verifique e fa\xe7a o login novamente.", "Sua conta foi suspensa. Entre em contato com o Centro de Atendimento ao Cliente para mais informa\xe7\xf5es.", "Sua conta usa uma fun\xe7\xe3o de desligamento segura, deve continuar a us\xe1-lo depois de reabrir isso!", "Sua conta usa um recurso de login de m\xe1quina fixa, a m\xe1quina que usa n\xe3o \xe9 a m\xe1quina especificada", "Desculpe, porque sua conta est\xe1 logada novamente, por favor, tente novamente depois de fazer login na plataforma!", "Desculpe por informar que seus dados de moedas de jogo t\xeam uma situa\xe7\xe3o anormal, entre em contato com o Centro de Atendimento ao Cliente para saber mais!", "Desculpe, est\xe1 na sala de jogos, n\xe3o pode entrar nesta sala de jogos ao mesmo tempo!", "Desculpe, o sistema detecta que sua conta est\xe1 no jogo, proibindo entrar na sala de jogos!", "A senha da conta \xe9 modificada, mantenha sua nova senha de conta", "Akaun ini cuba log masuk di tempat lain, sila ubah kata laluan.", "Akaun ini telah dilog masuk di tempat lain, sila hubungi khidmat pelanggan.", "Operasi berjaya", "Operasi gagal", "Kata laluan baru tidak boleh sama dengan kata laluan lama", "Desculpe, voc\xea n\xe3o tem permiss\xe3o para estar sentado, pois todas as mesas do jogo foram ocupadas. \nPor favor tente novamente mais tarde!", "Desculpe, voc\xea n\xe3o tem permiss\xe3o para estar sentado, pois todas as mesas do jogo foram ocupadas. \nPor favor tente novamente mais tarde!", "Desculpe, o lugar foi ocupado por outro jogador. Por favor tente novamente mais tarde!", "Voc\xea n\xe3o tem permiss\xe3o para entrar na mesa de jogo quando voc\xea digita senha errada."],
+            sp: ["", "Lo sentimos informarle que la funci\xf3n de inicio de sesi\xf3n de su direcci\xf3n IP est\xe1 prohibida, favor de ponerse en contacto con el centro de servicio al cliente para m\xe1s detalles", "Lo sentimos informarle que la funci\xf3n de inicio de sesi\xf3n de su dispositivo est\xe1 prohibida, \xa1favor de ponerse en contacto con el centro de servicio al cliente para m\xe1s detalles!", "Su cuenta no existe o la contrase\xf1a se ingres\xf3 incorrectamente, \xa1favor de verifique e intente iniciar sesi\xf3n de nuevo!", "Su cuenta est\xe1 congelada temporalmente, \xa1favor de ponerse en contacto con el centro de servicio al cliente para m\xe1s detalles!", "Su cuenta se ha cerrado de forma segura. \xa1Debe volver a abrirla para seguir us\xe1ndola!", "Su cuenta utiliza la funci\xf3n de inicio de sesi\xf3n con el dispositivo fijo. \xa1El dispositivo que est\xe1 usando no es  el conectado!", "Tu cuenta no existe o tu contrase\xf1a es incorrecta. Por favor revise tu ingreso nuevamente.", "La informaci\xf3n del usuario no existe,  \xa1fall\xf3 el enlace del dispositivo!", "Error de enlace del dispositivo, error desconocido!", "Su cuenta se ha conectado al otro dispositivo. \xa1Debe deshacerla antes de conectar este dispositivo!", "Error de conectar el dispositivo, \xa1error desconocido!", "La operaci\xf3n del enlace de la cuenta se realiza incorrectamente, \xa1p\xf3ngase en contacto con el centro de servicio al cliente!", "Su cuenta se ha conectado correctamente a este dispositivo. Si necesita librarlo, \xa1debe hacerlo en este dispositivo!", "La informaci\xf3n del usuario no existe, \xa1fall\xf3 el enlace del dispositivo!", "Su cuenta est\xe1 conectada a otros dispositivos, \xa1fall\xf3 el desenlace del dispositivo!", "Error desconocido, \xa1fall\xf3 el enlace del dispositivo!", "La operaci\xf3n del desenlace de la cuenta se realiza incorrectamente, \xa1p\xf3ngase en contacto con el centro de servicio al cliente!", "\xa1Su cuenta se ha librado de su dispositivo!", "Lo sentimos informarle que el sistema se ha prohibido el permiso de inicio de sesi\xf3n del juego de su direcci\xf3n IP, \xa1favor de ponerse en contacto con el centro de servicio al cliente para m\xe1s detalles!", "Su cuenta no existe o la contrase\xf1a se ingres\xf3 incorrectamente, \xa1favor de verifique e intente iniciar sesi\xf3n de nuevo!", "Su cuenta est\xe1 congelada temporalmente, \xa1favor de ponerse en contacto con el centro de servicio al cliente para m\xe1s detalles!", "Su cuenta se ha cerrado de forma segura. \xa1Debe volver a abrirla para seguir us\xe1ndola!", "Su cuenta utiliza la funci\xf3n de inicio de sesi\xf3n con el dispositivo fijo. \xa1El dispositivo que est\xe1 usando no es  el conectado!", "Lo sentimos, debido a que su cuenta ha iniciado sesi\xf3n en otro lugar, \xa1vuelva a iniciar sesi\xf3n en la plataforma e int\xe9ntelo de nuevo!", "Lo sentimos informarle que hay anomal\xedas en los datos de moneda del juego, \xa1favor de ponerse en contacto con el centro de servicio al cliente para m\xe1s detalles!", "Lo sentimos, est\xe1 en otra sala de juegos. \xa1No puedes entrar a esta sala al mismo tiempo!", "Lo sentimos, el sistema ha detectado que su cuenta est\xe1 actualmente en el juego. \xa1Est\xe1 prohibido ingresar a la sala de juegos!", "La contrase\xf1a de la cuenta se ha modificado correctamente, recuerde la contrase\xf1a nueva de su cuenta", "Esta cuenta intenta iniciar sesi\xf3n desde otro lugar, favor de cambiar la contrase\xf1a.", "Esta cuenta se ha iniciado sesi\xf3n en otro lugar, comun\xedquese con el servicio al cliente.", "Operaci\xf3n exitosa", "Operaci\xf3n fallida", "La nueva contrase\xf1a no puede ser la misma que la contrase\xf1a anterior.", "\u62b1\u6b49\uff0c\u5f53\u524d\u6e38\u620f\u201c\u623f\u95f4\u5df2\u6ee1\u5ea7\u201d\u6682\u65f6\u65e0\u6cd5\u5165\u5ea7\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5\uff01", "\u62b1\u6b49\uff0c\u5f53\u524d\u6e38\u620f\u201c\u623f\u95f4\u5df2\u6ee1\u5ea7\u201d\u6682\u65f6\u65e0\u6cd5\u5165\u5ea7\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5\uff01", "\u62b1\u6b49\uff0c\u5df2\u6709\u73a9\u5bb6\u5360\u7528\uff0c\u8bf7\u7a0d\u540e\u518d\u8bd5\uff01", "\u6e38\u620f\u684c\u8fdb\u5165\u5bc6\u7801\u4e0d\u6b63\u786e\uff0c\u7981\u6b62\u8fdb\u5165\u3002"],
+            vi: ["", "R\u1ea5t ti\u1ebfc ph\u1ea3i th\xf4ng b\xe1o cho b\u1ea1n, h\u1ec7 th\u1ed1ng \u0111\xe3 ch\u1eb7n ch\u1ee9c n\u0103ng \u0111\u0103ng nh\u1eadp t\u1eeb \u0111\u1ecba ch\u1ec9 IP c\u1ee7a b\u1ea1n, \nvui l\xf2ng li\xean h\u1ec7 trung t\xe2m d\u1ecbch v\u1ee5 kh\xe1ch h\xe0ng \u0111\u1ec3 bi\u1ebft chi ti\u1ebft", "R\u1ea5t ti\u1ebfc ph\u1ea3i th\xf4ng b\xe1o cho b\u1ea1n, h\u1ec7 th\u1ed1ng \u0111\xe3 ch\u1eb7n ch\u1ee9c n\u0103ng \u0111\u0103ng nh\u1eadp t\u1eeb thi\u1ebft b\u1ecb c\u1ee7a b\u1ea1n, \nvui l\xf2ng li\xean h\u1ec7 trung t\xe2m d\u1ecbch v\u1ee5 kh\xe1ch h\xe0ng \u0111\u1ec3 bi\u1ebft chi ti\u1ebft!", "T\xe0i kho\u1ea3n c\u1ee7a b\u1ea1n kh\xf4ng t\u1ed3n t\u1ea1i ho\u1eb7c nh\u1eadp sai m\u1eadt kh\u1ea9u, vui l\xf2ng ki\u1ec3m tra v\xe0 th\u1eed \u0111\u0103ng nh\u1eadp l\u1ea1i!", "T\xe0i kho\u1ea3n c\u1ee7a b\u1ea1n \u0111ang b\u1ecb t\u1ea1m kh\xf3a, vui l\xf2ng li\xean h\u1ec7 trung t\xe2m d\u1ecbch v\u1ee5 kh\xe1ch h\xe0ng \u0111\u1ec3 bi\u1ebft chi ti\u1ebft!", "T\xe0i kho\u1ea3n c\u1ee7a b\u1ea1n \u0111\xe3 b\u1ecb kh\xf3a v\xec l\xfd do an to\xe0n, ph\u1ea3i m\u1edf l\u1ea1i m\u1edbi c\xf3 th\u1ec3 ti\u1ebfp t\u1ee5c s\u1eed d\u1ee5ng!", "T\xe0i kho\u1ea3n c\u1ee7a b\u1ea1n \u0111\xe3 li\xean k\u1ebft v\u1edbi thi\u1ebft b\u1ecb c\u1ed1 \u0111\u1ecbnh, vui l\xf2ng \u0111\u0103ng nh\u1eadp b\u1eb1ng thi\u1ebft b\u1ecb \u0111\xe3 li\xean k\u1ebft", "T\xe0i kho\u1ea3n c\u1ee7a b\u1ea1n kh\xf4ng t\u1ed3n t\u1ea1i ho\u1eb7c nh\u1eadp sai m\u1eadt kh\u1ea9u, vui l\xf2ng ki\u1ec3m tra v\xe0 th\u1eed \u0111\u0103ng nh\u1eadp l\u1ea1i!", "Th\xf4ng tin ng\u01b0\u1eddi d\xf9ng kh\xf4ng t\u1ed3n t\u1ea1i, li\xean k\u1ebft thi\u1ebft b\u1ecb kh\xf4ng th\xe0nh c\xf4ng!", "Li\xean k\u1ebft thi\u1ebft b\u1ecb kh\xf4ng th\xe0nh c\xf4ng, l\u1ed7i ch\u01b0a x\xe1c \u0111\u1ecbnh!", "T\xe0i kho\u1ea3n c\u1ee7a b\u1ea1n \u0111\xe3 li\xean k\u1ebft v\u1edbi thi\u1ebft b\u1ecb kh\xe1c, ph\u1ea3i g\u1ee1 li\xean k\u1ebft m\u1edbi c\xf3 th\u1ec3 th\u1ef1c hi\u1ec7n li\xean k\u1ebft v\u1edbi thi\u1ebft b\u1ecb n\xe0y!", "Li\xean k\u1ebft thi\u1ebft b\u1ecb kh\xf4ng th\xe0nh c\xf4ng, l\u1ed7i ch\u01b0a x\xe1c \u0111\u1ecbnh!", "C\xf3 l\u1ed7i khi th\u1ef1c hi\u1ec7n li\xean k\u1ebft t\xe0i kho\u1ea3n, vui l\xf2ng li\xean h\u1ec7 trung t\xe2m d\u1ecbch v\u1ee5 kh\xe1ch h\xe0ng! ", "T\xe0i kho\u1ea3n c\u1ee7a b\u1ea1n \u0111\xe3 li\xean k\u1ebft th\xe0nh c\xf4ng v\u1edbi thi\u1ebft b\u1ecb n\xe0y, n\u1ebfu mu\u1ed1n g\u1ee1 li\xean k\u1ebft ph\u1ea3i th\u1ef1c hi\u1ec7n tr\xean thi\u1ebft b\u1ecb n\xe0y!", "Th\xf4ng tin ng\u01b0\u1eddi d\xf9ng kh\xf4ng t\u1ed3n t\u1ea1i, li\xean k\u1ebft thi\u1ebft b\u1ecb kh\xf4ng th\xe0nh c\xf4ng!", "T\xe0i kho\u1ea3n c\u1ee7a b\u1ea1n \u0111\xe3 li\xean k\u1ebft v\u1edbi thi\u1ebft b\u1ecb kh\xe1c, g\u1ee1 li\xean k\u1ebft thi\u1ebft b\u1ecb kh\xf4ng th\xe0nh c\xf4ng!", "L\u1ed7i ch\u01b0a x\xe1c \u0111\u1ecbnh, g\u1ee1 li\xean k\u1ebft kh\xf4ng th\xe0nh c\xf4ng!", "C\xf3 l\u1ed7i khi g\u1ee1 li\xean k\u1ebft t\xe0i kho\u1ea3n, vui l\xf2ng li\xean h\u1ec7 trung t\xe2m d\u1ecbch v\u1ee5 kh\xe1ch h\xe0ng!", "T\xe0i kho\u1ea3n c\u1ee7a b\u1ea1n \u0111\xe3 g\u1ee1 li\xean k\u1ebft thi\u1ebft b\u1ecb th\xe0nh c\xf4ng!", "R\u1ea5t ti\u1ebfc ph\u1ea3i th\xf4ng b\xe1o cho b\u1ea1n, h\u1ec7 th\u1ed1ng \u0111\xe3 ch\u1eb7n quy\u1ec1n h\u1ea1n \u0111\u0103ng nh\u1eadp tr\xf2 ch\u01a1i t\u1eeb \u0111\u1ecba ch\u1ec9 IP c\u1ee7a b\u1ea1n, \n vui l\xf2ng li\xean h\u1ec7 trung t\xe2m d\u1ecbch v\u1ee5 kh\xe1ch h\xe0ng \u0111\u1ec3 bi\u1ebft chi ti\u1ebft!", "T\xe0i kho\u1ea3n c\u1ee7a b\u1ea1n kh\xf4ng t\u1ed3n t\u1ea1i ho\u1eb7c nh\u1eadp sai m\u1eadt kh\u1ea9u, vui l\xf2ng ki\u1ec3m tra v\xe0 th\u1eed \u0111\u0103ng nh\u1eadp l\u1ea1i!", "T\xe0i kho\u1ea3n c\u1ee7a b\u1ea1n \u0111ang b\u1ecb t\u1ea1m kh\xf3a, vui l\xf2ng li\xean h\u1ec7 trung t\xe2m d\u1ecbch v\u1ee5 kh\xe1ch h\xe0ng \u0111\u1ec3 bi\u1ebft chi ti\u1ebft!", "T\xe0i kho\u1ea3n c\u1ee7a b\u1ea1n \u0111\xe3 b\u1ecb kh\xf3a v\xec l\xfd do an to\xe0n, ph\u1ea3i m\u1edf l\u1ea1i m\u1edbi c\xf3 th\u1ec3 ti\u1ebfp t\u1ee5c s\u1eed d\u1ee5ng!", "T\xe0i kho\u1ea3n c\u1ee7a b\u1ea1n \u0111\xe3 li\xean k\u1ebft v\u1edbi thi\u1ebft b\u1ecb c\u1ed1 \u0111\u1ecbnh, vui l\xf2ng \u0111\u0103ng nh\u1eadp b\u1eb1ng thi\u1ebft b\u1ecb \u0111\xe3 li\xean k\u1ebft", "Xin l\u1ed7i, do t\xe0i kho\u1ea3n c\u1ee7a b\u1ea1n \u0111\xe3 \u0111\u0103ng nh\u1eadp \u1edf n\u01a1i kh\xe1c, vui l\xf2ng th\u1eed \u0111\u0103ng nh\u1eadp l\u1ea1i!", "R\u1ea5t ti\u1ebfc ph\u1ea3i th\xf4ng b\xe1o cho b\u1ea1n, s\u1ed1 li\u1ec7u ti\u1ec1n trong tr\xf2 ch\u01a1i c\u1ee7a b\u1ea1n c\xf3 b\u1ea5t th\u01b0\u1eddng, \n vui l\xf2ng li\xean h\u1ec7 trung t\xe2m d\u1ecbch v\u1ee5 kh\xe1ch h\xe0ng \u0111\u1ec3 bi\u1ebft chi ti\u1ebft!", "Xin l\u1ed7i, b\u1ea1n \u0111\xe3 \u1edf trong ph\xf2ng game, kh\xf4ng th\u1ec3 tham gia l\u1ea1i v\xe0o ph\xf2ng game n\u1eefa!", "Xin l\u1ed7i, b\u1ea1n kh\xf4ng \u0111\u01b0\u1ee3c v\xe0o ph\xf2ng game v\xec h\u1ec7 th\u1ed1ng ki\u1ec3m tra th\u1ea5y t\xe0i kho\u1ea3n c\u1ee7a b\u1ea1n \u0111ang \u1edf trong tr\xf2 ch\u01a1i!", "Thay \u0111\u1ed5i m\u1eadt kh\u1ea9u t\xe0i kho\u1ea3n th\xe0nh c\xf4ng, h\xe3y ghi nh\u1edb m\u1eadt kh\u1ea9u m\u1edbi c\u1ee7a b\u1ea1n.", "T\xe0i kho\u1ea3n n\xe0y \u0111ang th\u1eed \u0111\u0103ng nh\u1eadp \u1edf n\u01a1i kh\xe1c, h\xe3y \u0111\u1ed5i m\u1eadt kh\u1ea9u.", "T\xe0i kho\u1ea3n n\xe0y \u0111\xe3 \u0111\u0103ng nh\u1eadp \u1edf n\u01a1i kh\xe1c, h\xe3y li\xean h\u1ec7 ch\u0103m s\xf3c kh\xe1ch h\xe0ng.", "Thao t\xe1c th\xe0nh c\xf4ng", "Thao t\xe1c th\u1ea5t b\u1ea1i", "M\u1eadt kh\u1ea9u m\u1edbi kh\xf4ng \u0111\u01b0\u1ee3c gi\u1ed1ng m\u1eadt kh\u1ea9u c\u0169", "R\u1ea5t ti\u1ebfc, hi\u1ec7n t\u1ea1i 'Ph\xf2ng \u0111\xe3 \u0111\u1ea7y', t\u1ea1m th\u1eddi kh\xf4ng th\u1ec3 v\xe0o ch\u1ed7, vui l\xf2ng th\u1eed l\u1ea1i sau!", "R\u1ea5t ti\u1ebfc, hi\u1ec7n t\u1ea1i 'Ph\xf2ng \u0111\xe3 \u0111\u1ea7y', t\u1ea1m th\u1eddi kh\xf4ng th\u1ec3 v\xe0o ch\u1ed7, vui l\xf2ng th\u1eed l\u1ea1i sau!", "R\u1ea5t ti\u1ebfc, \u0111\xe3 c\xf3 ng\u01b0\u1eddi ch\u01a1i chi\u1ebfm d\u1ee5ng, vui l\xf2ng th\u1eed l\u1ea1i sau!", "M\u1eadt m\xe3 v\xe0o b\xe0n kh\xf4ng ch\xednh x\xe1c, c\u1ea5m v\xe0o!"]
+        },
+        cc._RF.pop()
+    }
+    , {}],
+    BufferPool: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "e7b0346HrZBLaGZMODdtM5E", "BufferPool"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.BufferPool = void 0;
+        var i = function() {
+            function e(e) {
+                this.buffer = new Array,
+                this.using = new Array,
+                this._createFunc = e
+            }
+            return e.prototype.allocate = function() {
+                for (var e = [], t = 0; t < arguments.length; t++)
+                    e[t] = arguments[t];
+                var o = this.buffer.length > 0 ? this.buffer.pop() : this._createFunc.apply(this, e);
+                return this.using.push(o),
+                o
+            }
+            ,
+            e.prototype.fastRecycleByIndex = function(e) {
+                this.buffer.push(this.using[e]),
+                cc.js.array.fastRemoveAt(this.using, e)
+            }
+            ,
+            e.prototype.recycleByIndex = function(e) {
+                this.buffer.push(this.using[e]),
+                this.using.splice(e, 1)
+            }
+            ,
+            e.prototype.recycle = function(e) {
+                var t = this.using.findIndex(function(t) {
+                    return e === t
+                });
+                this.fastRecycleByIndex(t)
+            }
+            ,
+            e.prototype.clear = function() {
+                var e;
+                (e = this.buffer).push.apply(e, this.using),
+                this.using.length = 0
+            }
+            ,
+            e
+        }();
+        o.BufferPool = i,
+        cc._RF.pop()
+    }
+    , {}],
+    CardUIVertical: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "d269e3gc4FPi6H8rG2geDmJ", "CardUIVertical"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var i = e("../../base/common/Func")
+          , n = e("../../base/common/SpecialFunc")
+          , r = e("../config/Config")
+          , a = e("../../base/net/GameNet")
+          , s = e("../../base/res/DyncMgr")
+          , c = e("../../base/res/LanguageMgr")
+          , l = e("../../base/SoundMgr")
+          , h = e("../../base/common/MessageMgr")
+          , d = e("../../base/LogicMgr")
+          , f = function() {
+            function e(e) {
+                this._root = e,
+                this._tagChildren = e.getChildByName("tag").children;
+                for (var t = 0; t < this._tagChildren.length; t++)
+                    this._tagChildren[t].active = !1;
+                this._nameDebugNode = e.getChildByName("name"),
+                this._nameDebugNode.active = !0,
+                this._nameDebugLabel = this._nameDebugNode.getComponent(cc.Label),
+                this._nameDebugLabel.string = "",
+                this._logoNode = e.getChildByName("logo"),
+                this._logoSpt = this._logoNode.getComponent(cc.Sprite),
+                this._loadingNode = this._logoNode.getChildByName("loading"),
+                this._loadingNode.active = !0,
+                this._hoverShowNode = e.getChildByName("hoverShow"),
+                this._hoverShowNode.active = !1,
+                this._showPlayNode = this._hoverShowNode.getChildByName("showPlay"),
+                this._showPlayNode.getChildByName("play").on(d.ConstDefine.click, this.click, this),
+                this._showNode = this._showPlayNode.getChildByName("name"),
+                this._showLabel = this._showNode.getComponent(cc.Label),
+                this._favNode = this._hoverShowNode.getChildByName("fav"),
+                this._favBgNode = this._favNode.getChildByName(d.ConstDefine.Background),
+                this._toggle = this._favNode.getComponent(cc.Toggle),
+                this._favNode.on("toggle", this.toggleClick.bind(this));
+                var o = e.getChildByName("hover");
+                i.default.isRotateDev() ? (o.destroy(),
+                this._logoNode.addComponent(cc.Button).target = this._logoNode,
+                this._logoNode.on(d.ConstDefine.click, this.showHoverNodeForTouch, this)) : (o.on(cc.Node.EventType.MOUSE_ENTER, this.showHoverNode, this),
+                o.on(cc.Node.EventType.MOUSE_LEAVE, this.hideHoverNode, this))
+            }
+            return Object.defineProperty(e.prototype, "cfg", {
+                get: function() {
+                    return this._cfg
+                },
+                enumerable: !1,
+                configurable: !0
+            }),
+            e.prototype.showHoverNodeForTouch = function() {
+                this.showHoverNode(),
+                h.MessageMgr.on(h.MessageName.TouchStart, this.hideHoverNodeForTouch, this)
+            }
+            ,
+            e.prototype.hideHoverNodeForTouch = function(e) {
+                this._root._hitTest(e.getLocation()) || (this.hideHoverNode(),
+                h.MessageMgr.off(h.MessageName.TouchStart, this.hideHoverNodeForTouch, this))
+            }
+            ,
+            e.prototype.showHoverNode = function() {
+                this._hoverShowNode.active = !0
+            }
+            ,
+            e.prototype.hideHoverNode = function() {
+                this._hoverShowNode.active = !1
+            }
+            ,
+            e.prototype.click = function() {
+                if (0 !== this._root.opacity)
+                    if (d.default.needReset)
+                        s.default.getResInfo(d.ConstDefine.msgTip, c.default.procLangText("changePwdTip"), 5);
+                    else {
+                        if (!d.default.login.testAcccount) {
+                            if (!n.default.tagCanEnterGame(this._cfg.t))
+                                return void s.default.getResInfo(d.ConstDefine.msgTip, c.default.procLangText("commingTip"));
+                            if (-1 !== d.default.msgNotify.maintenance.indexOf(this._cfg.gid) || -1 !== d.default.msgNotify.maintenance.indexOf(-1))
+                                return void s.default.getResInfo(d.ConstDefine.msgTip, c.default.procLangText("maintenanceTip"))
+                        }
+                        a.default.startGame(this._cfg)
+                    }
+            }
+            ,
+            e.prototype.toggleClick = function() {
+                0 !== this._root.opacity && (l.default.playEffect("favorite"),
+                this._toggle.isChecked ? (e.FavCards.push(this.cfg),
+                d.default.favArr.push(this.cfg.gid),
+                this._favBgNode.active = !1) : (cc.js.array.remove(e.FavCards, this._cfg),
+                cc.js.array.remove(d.default.favArr, this._cfg.gid),
+                this._favBgNode.active = !0),
+                this._cfg.fav = !this._favBgNode.active,
+                h.MessageMgr.emit(h.MessageName.UpdateFavCards, this),
+                localStorage.setItem(d.default.login.userID + "_favArrStr", JSON.stringify(d.default.favArr)))
+            }
+            ,
+            e.prototype.reset = function(e, t) {
+                this._root.setPosition(this._root.position.x, t),
+                this.setCfg(e)
+            }
+            ,
+            e.prototype.setXOffset = function(e) {
+                this._xOffset = e,
+                this._root.setPosition(e * this._root.width, 0)
+            }
+            ,
+            e.prototype.setCfg = function(e) {
+                if (this.setActive(!0),
+                this._cfg != e) {
+                    e.card = this,
+                    this._cfg = e;
+                    for (var t = 0; t < this._tagChildren.length; t++)
+                        this._tagChildren[t].active = e.t == t;
+                    if (this._showLabel.string = e.title[c.default.currLang],
+                    d.default.login.testAcccount) {
+                        this._nameDebugNode.opacity = 255;
+                        var o = this.cfg.address ? "" : "\nNo Table";
+                        this._nameDebugLabel.string = this.cfg.gameName + o
+                    } else
+                        this._nameDebugNode.opacity = 0;
+                    e.fav ? (this._toggle.check(),
+                    this._favBgNode.active = !1) : (this._toggle.uncheck(),
+                    this._favBgNode.active = !0),
+                    e.loadLogo ? (this._loadingNode.active = !1,
+                    e.logoSpt ? this._logoSpt.spriteFrame = e.logoSpt : this._logoSpt.spriteFrame = null) : (this._loadingNode.active = !0,
+                    this._logoSpt.spriteFrame = null,
+                    e.loadLogo || (e.loadLogo = !0,
+                    n.default.loadRemoteSpt(r.Config.configPath + "pc_kapai/", d.ConstDefine.kp, e.gid, function(t, o) {
+                        t || (e.logoSpt = new cc.SpriteFrame(o),
+                        e.card.setLogoSpt())
+                    }))),
+                    this._loadingNode.active = !1
+                }
+            }
+            ,
+            e.prototype.setFavActive = function(e) {
+                this._favNode.active = e
+            }
+            ,
+            e.prototype.setParent = function(e) {
+                this._root.setParent(e)
+            }
+            ,
+            e.prototype.setActive = function(e) {
+                this._root.opacity = e ? 255 : 0
+            }
+            ,
+            e.prototype.setLogoSpt = function() {
+                this._logoSpt.spriteFrame = this._cfg.logoSpt,
+                this._loadingNode.active = !1
+            }
+            ,
+            e.prototype.getPosY = function() {
+                return this._root.y
+            }
+            ,
+            e.prototype.getXOffset = function() {
+                return this._xOffset
+            }
+            ,
+            e.prototype.hideAndSetPos = function(e) {
+                this._root.setPosition(this._root.position.x, e),
+                this.setActive(!1)
+            }
+            ,
+            e
+        }();
+        o.default = f,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/SoundMgr": "SoundMgr",
+        "../../base/common/Func": "Func",
+        "../../base/common/MessageMgr": "MessageMgr",
+        "../../base/common/SpecialFunc": "SpecialFunc",
+        "../../base/net/GameNet": "GameNet",
+        "../../base/res/DyncMgr": "DyncMgr",
+        "../../base/res/LanguageMgr": "LanguageMgr",
+        "../config/Config": "Config"
+    }],
+    CardUI: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "4b3c8VGGd5K9I7dtrryIM78", "CardUI"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var i = e("../../base/common/Func")
+          , n = e("../../base/common/SpecialFunc")
+          , r = e("../../base/net/GameNet")
+          , a = e("../../base/res/DyncMgr")
+          , s = e("../../base/res/LanguageMgr")
+          , c = e("../../base/SoundMgr")
+          , l = e("../../base/common/Interface")
+          , h = e("../../base/common/MessageMgr")
+          , d = e("../../base/LogicMgr")
+          , f = function() {
+            function e(e) {
+                this.x = 0,
+                this._touchKeyDown = !1,
+                this._keypressTimeout = 0,
+                this._favTimeout = 0,
+                this._loadIcon = !1;
+                var t = e.getChildByName("root");
+                this._root = t,
+                this._favNode = t.getChildByName("fav"),
+                this._favAnim = this._favNode.getComponent(cc.Animation),
+                this._favNode.active = !1,
+                this._favBgNode = this._favNode.getChildByName(d.ConstDefine.Background),
+                this._toggle = this._favNode.getComponent(cc.Toggle),
+                this._favNode.on("toggle", this.toggleClick.bind(this)),
+                this._looseAnim = t.getChildByName("loose").getComponent(cc.Animation),
+                this._looseAnim.play(this._looseAnim.defaultClip.name, i.default.randomNum(0, this._looseAnim.defaultClip.duration)),
+                this._tagChildren = t.getChildByName("tag").children;
+                for (var o = 0; o < this._tagChildren.length; o++)
+                    this._tagChildren[o].active = !1;
+                this._nameNode = t.getChildByName("name"),
+                this._nameNode.active = !0,
+                this._nameLabel = this._nameNode.getComponent(cc.Label),
+                this._nameLabel.string = "";
+                var n = t.getChildByName("logo");
+                this._loadingNode = n.getChildByName("loading"),
+                this._loadingNode.active = !0,
+                n.on(cc.Node.EventType.TOUCH_START, this.logoTouchStart, this),
+                n.on(cc.Node.EventType.TOUCH_END, this.logoTouchEnd, this),
+                n.on(cc.Node.EventType.TOUCH_CANCEL, this.logoTouchEnd, this),
+                this._logoBgNode = n.getChildByName(d.ConstDefine.Background),
+                this._logoSpt = this._logoBgNode.getComponent(cc.Sprite);
+                var r = t.getChildByName("icon");
+                this._iconSpt = r.getComponent(cc.Sprite)
+            }
+            return Object.defineProperty(e.prototype, "cfg", {
+                get: function() {
+                    return this._cfg
+                },
+                enumerable: !1,
+                configurable: !0
+            }),
+            e.prototype.logoTouchStart = function(e) {
+                var t = this;
+                this._startTime = performance.now(),
+                this._startTouchPos = e.getLocation(),
+                this._touchKeyDown = !0,
+                this._showFav || (this._keypressTimeout = setTimeout(function() {
+                    t.showFavInTime(8e3)
+                }, 1e3))
+            }
+            ,
+            e.prototype.showFavInTime = function(e) {
+                var t = this;
+                this._favNode.active = !0,
+                this._favAnim.play(),
+                this._favTimeout = setTimeout(function() {
+                    t._favNode.active = !1
+                }, e)
+            }
+            ,
+            e.prototype.logoTouchEnd = function(e) {
+                this._touchKeyDown && (clearTimeout(this._keypressTimeout),
+                this._touchKeyDown = !1),
+                performance.now() - this._startTime < 500 && e.getLocation().subSelf(this._startTouchPos).len() < 5 && this.click()
+            }
+            ,
+            e.prototype.click = function() {
+                if (!d.default.login.guestLogin || this._cfg.testServerGid)
+                    if (d.default.needReset)
+                        a.default.getResInfo(d.ConstDefine.msgTip, s.default.procLangText("changePwdTip"), 5);
+                    else {
+                        if (!d.default.login.testAcccount) {
+                            if (!n.default.tagCanEnterGame(this._cfg.t))
+                                return void a.default.getResInfo(d.ConstDefine.msgTip, s.default.procLangText("commingTip"));
+                            if (-1 !== d.default.msgNotify.maintenance.indexOf(this._cfg.gid) || -1 !== d.default.msgNotify.maintenance.indexOf(-1))
+                                return void a.default.getResInfo(d.ConstDefine.msgTip, s.default.procLangText("maintenanceTip"))
+                        }
+                        r.default.startGame(this._cfg)
+                    }
+                else
+                    a.default.getResInfo("guestGameTip", s.default.procLangText("guestGameTip"), 5)
+            }
+            ,
+            e.prototype.toggleClick = function() {
+                c.default.playEffect("favorite"),
+                this._toggle.isChecked ? (e.FavCards.push(this.cfg),
+                d.default.favArr.push(this.cfg.gid),
+                this._favBgNode.active = !1) : (cc.js.array.remove(e.FavCards, this._cfg),
+                cc.js.array.remove(d.default.favArr, this._cfg.gid),
+                this._favBgNode.active = !0),
+                this._cfg.fav = !this._favBgNode.active,
+                h.MessageMgr.emit(h.MessageName.UpdateFavCards, this),
+                localStorage.setItem(d.default.login.userID + "_favArrStr", JSON.stringify(d.default.favArr))
+            }
+            ,
+            e.prototype.init = function(e, t) {
+                e.big = t,
+                this.reset(e)
+            }
+            ,
+            e.prototype.setShowFav = function(e) {
+                this._showFav = e,
+                this._favNode.active = e,
+                e && this._favAnim.play()
+            }
+            ,
+            e.prototype.reset = function(e) {
+                if (this._loadingNode.active = !0,
+                this._favNode.active = !1,
+                clearTimeout(this._favTimeout),
+                e.card = this,
+                this._cfg = e,
+                d.default.login.guestLogin)
+                    for (var t = 0; t < this._tagChildren.length; ++t)
+                        this._tagChildren[t].active = t == l.GameTag.hot;
+                else
+                    for (t = 0; t < this._tagChildren.length; ++t)
+                        this._tagChildren[t].active = e.t == t;
+                if (d.default.login.testAcccount) {
+                    this._nameNode.opacity = 255;
+                    var o = this.cfg.address ? "" : "\nNo Table";
+                    this._nameLabel.string = this.cfg.gameName + o
+                } else
+                    this._nameNode.opacity = 0;
+                this._favBgNode.active = !1,
+                e.fav ? (this._toggle.check(),
+                this._favBgNode.active = !1) : (this._toggle.uncheck(),
+                this._favBgNode.active = !0),
+                this._iconSpt.spriteFrame = null,
+                this._logoSpt.spriteFrame = null
+            }
+            ,
+            e.prototype.setParent = function(e) {
+                this._root.setParent(e)
+            }
+            ,
+            e.prototype.setActive = function(e) {
+                this._root.active = e
+            }
+            ,
+            e.prototype.setLogoSpt = function() {
+                this.cfg.big ? this._logoSpt.spriteFrame = this._cfg.bigLogoSpt : this._logoSpt.spriteFrame = this._cfg.logoSpt,
+                this._loadingNode.active = !1
+            }
+            ,
+            e.prototype.setIconSpt = function() {
+                this._iconSpt.spriteFrame = this._cfg.iconSpt
+            }
+            ,
+            e.prototype.setPos = function(e, t) {
+                this._root.setPosition(e, t),
+                this.x = e
+            }
+            ,
+            e
+        }();
+        o.default = f,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/SoundMgr": "SoundMgr",
+        "../../base/common/Func": "Func",
+        "../../base/common/Interface": "Interface",
+        "../../base/common/MessageMgr": "MessageMgr",
+        "../../base/common/SpecialFunc": "SpecialFunc",
+        "../../base/net/GameNet": "GameNet",
+        "../../base/res/DyncMgr": "DyncMgr",
+        "../../base/res/LanguageMgr": "LanguageMgr"
+    }],
+    CashbackUI: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "34d3cpy01FNuoAo+GdgAdWb", "CashbackUI");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var r = e("../config/Config")
+          , a = e("../../base/SoundMgr")
+          , s = e("../../base/common/view/Tip")
+          , c = e("../../base/LogicMgr")
+          , l = e("../../base/common/view/UIPicText")
+          , h = e("../../base/common/MessageMgr")
+          , d = e("../../base/common/view/CountdownTime")
+          , f = e("../../base/net/NetMgr")
+          , u = e("../../base/net/EEvent")
+          , p = e("../../base/LevelMgr")
+          , g = e("../../base/res/DyncMgr")
+          , _ = cc.Vec3.ZERO
+          , m = function(e) {
+            function t() {
+                var t = null !== e && e.apply(this, arguments) || this;
+                return t._effectInfo = {
+                    id: 0,
+                    name: ""
+                },
+                t
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                e.prototype.initParams.call(this);
+                var t = this._popupMethod.root.getChildByName("gold_pig");
+                this._goldPigBtn = t.getComponent(cc.Button),
+                this._goldPigSpine = t.getComponent(sp.Skeleton),
+                t.on(c.ConstDefine.click, this.goldPigClick, this),
+                this._popupMethod.root.getChildByName("close").on(c.ConstDefine.click, this.close, this),
+                this._creditUIPic = new l.default(c.ConstDefine.credit,cc.find("frame/credit", this._popupMethod.root)),
+                this._collectNode = this._popupMethod.root.getChildByName("collect"),
+                this._collectNode.on(c.ConstDefine.click, this.collectClick, this),
+                this._collectBtn = this._collectNode.getComponent(cc.Button),
+                this._waitTimeNode = this._popupMethod.root.getChildByName("waitTime"),
+                this._countdownTime = new d.default(this._waitTimeNode.getChildByName("time").getComponent(cc.Label),c.default.reqUserInfo),
+                this._jinbiNode = this._popupMethod.root.getChildByName("jinbi"),
+                p.default.Instance.setLevel(this._jinbiNode, r.AdaptLevel.creditUI);
+                var o = this._popupMethod.root.getChildByName("eff_dianji");
+                this._effClickPar = o.getComponentsInChildren(cc.ParticleSystem3D),
+                this._popupMethod.root.getChildByName("btn_rules").on(c.ConstDefine.click, this.showInstructions, this),
+                this._instructionsNode = this._popupMethod.root.getChildByName("instructions"),
+                this.hideInstructions(),
+                this._instructionsNode.getChildByName("close").on(c.ConstDefine.click, this.hideInstructions, this)
+            }
+            ,
+            t.prototype.resetParams = function() {
+                e.prototype.resetParams.call(this),
+                a.default.playEffect("pigBg", this._effectInfo),
+                a.default.pauseBGM(),
+                c.default.reqUserInfo(),
+                this._jinbiNode.setPosition(-5, -178),
+                this.setJinbinodeScale(0),
+                h.MessageMgr.emit(h.MessageName.ShowCreditBox, !1),
+                h.MessageMgr.on(h.MessageName.NetMsg, this.onLogonNet, this),
+                h.MessageMgr.on(h.MessageName.UserInfo, this.onUserInfo, this)
+            }
+            ,
+            t.prototype.showInstructions = function() {
+                a.default.playEffect(c.ConstDefine.click),
+                this._instructionsNode.active = !0
+            }
+            ,
+            t.prototype.hideInstructions = function() {
+                a.default.playEffect(c.ConstDefine.click),
+                this._instructionsNode.active = !1
+            }
+            ,
+            t.prototype.setJinbinodeScale = function(e) {
+                for (var t = 0, o = this._jinbiNode.children; t < o.length; t++)
+                    o[t].setScale(e)
+            }
+            ,
+            t.prototype.netOpen = function() {
+                var e = {
+                    userid: c.default.login.userID,
+                    dynamicpass: c.default.login.dynamicPass
+                };
+                f.NetMgr.send(u.Cmd.MDM_MB_LOGON, u.Cmd.SUB_GET_CASH_BACK, e)
+            }
+            ,
+            t.prototype.collectClick = function() {
+                c.default.fuliData.blotterycashback ? c.default.fuliData.cashbackscore <= 0 ? g.default.getResInfo(c.ConstDefine.msgTip, "no score to get") : (a.default.playEffect("pigCollect"),
+                this._collectBtn.interactable = !1,
+                f.NetMgr.createWebSocket(),
+                h.MessageMgr.once(h.MessageName.NetOpen, this.netOpen, this)) : g.default.getResInfo(c.ConstDefine.msgTip, "Welcome to collect again tomorrow, continue the game points can accumulate oh.")
+            }
+            ,
+            t.prototype.goldPigClick = function() {
+                a.default.playEffect("pigClick"),
+                this._goldPigSpine.setAnimation(0, "click", !1),
+                this._goldPigSpine.addAnimation(0, "idle", !0);
+                for (var e = 0, t = this._effClickPar; e < t.length; e++) {
+                    var o = t[e];
+                    o.stop(),
+                    o.play()
+                }
+            }
+            ,
+            t.prototype.close = function() {
+                a.default.stopEffect(this._effectInfo.id, this._effectInfo.name),
+                a.default.resumeBGM(),
+                this.setJinbinodeScale(0),
+                this._countdownTime.end(),
+                h.MessageMgr.emit(h.MessageName.ShowCreditBox, !0),
+                h.MessageMgr.off(h.MessageName.NetMsg, this.onLogonNet, this),
+                h.MessageMgr.off(h.MessageName.UserInfo, this.onUserInfo, this),
+                e.prototype.close.call(this)
+            }
+            ,
+            t.prototype.onUserInfo = function() {
+                c.default.fuliData.blotterycashback ? (this._waitTimeNode.active = !1,
+                this._collectNode.color = cc.Color.WHITE,
+                this._creditUIPic.setValue(c.default.fuliData.cashbackscore)) : (this._creditUIPic.setValue(c.default.fuliData.cashbackscore, c.default.login.creditPrefix),
+                this._collectNode.color = cc.Color.GRAY,
+                this._waitTimeNode.active = !0,
+                this._countdownTime.start(c.default.fuliData.refreshtimecashback))
+            }
+            ,
+            t.prototype.onLogonNet = function(e) {
+                if (e.mainID === u.Cmd.MDM_MB_LOGON && e.subID === u.Cmd.SUB_GET_CASH_BACK_RESULT)
+                    if (this._collectBtn.interactable = !0,
+                    console.log("\u91d1\u732a\u7f51\u7edc\u6d88\u606f\u8fd4\u56de", e),
+                    0 === e.data.result) {
+                        h.MessageMgr.emit(h.MessageName.ShowCreditBox, !0),
+                        a.default.playEffect("prize_8"),
+                        this.setJinbinodeScale(3);
+                        for (var t = 0, o = this._jinbiNode.children; t < o.length; t++) {
+                            var i = o[t];
+                            cc.tween(i).to(1, {
+                                scale: 1.5
+                            }).start()
+                        }
+                        var n = c.default.login.openWinScore ? c.default.doubleCreditPos : c.default.singleCreditPos;
+                        this._jinbiNode.parent.convertToNodeSpaceAR(n, _),
+                        cc.tween(this._jinbiNode).to(1.5, {
+                            position: _
+                        }).delay(1.6).call(this.showEnd.bind(this)).start(),
+                        c.default.login.score = e.data.score
+                    } else
+                        g.default.getResInfo(c.ConstDefine.msgTip, "session timeout, please log in again!")
+            }
+            ,
+            t.prototype.showEnd = function() {
+                h.MessageMgr.emit(h.MessageName.UpdateCredit),
+                this.close()
+            }
+            ,
+            t
+        }(s.PopupBase);
+        o.default = m,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LevelMgr": "LevelMgr",
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/SoundMgr": "SoundMgr",
+        "../../base/common/MessageMgr": "MessageMgr",
+        "../../base/common/view/CountdownTime": "CountdownTime",
+        "../../base/common/view/Tip": "Tip",
+        "../../base/common/view/UIPicText": "UIPicText",
+        "../../base/net/EEvent": "EEvent",
+        "../../base/net/NetMgr": "NetMgr",
+        "../../base/res/DyncMgr": "DyncMgr",
+        "../config/Config": "Config"
+    }],
+    Config: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "a5de3fnj6JL75w3b+3z86bZ", "Config"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.UpdateFuncDesc = o.AdaptLevel = o.Config = void 0,
+        o.Config = {
+            debug: !0,
+            autoLogin: !1,
+            autoEnterGame: void 0,
+            gameCback: void 0,
+            testAcFormat: void 0,
+            orientation: 0,
+            cardMinZoom: .6,
+            minHeight: 1100,
+            screenSize: [[1334, 750], [1334, 2186]],
+            pcUseSoftKey: !1,
+            iframe: !1,
+            basePath: "",
+            urlParam: "",
+            configPath: "",
+            platName: "firekirin",
+            platLinkName: void 0,
+            version: "2.0.1",
+            bsIp: "",
+            wsPort: 8600,
+            wsUrl: "",
+            bsPort: 8580,
+            gameUrl: void 0,
+            demoServerIp: "",
+            wsDemoUrl: "",
+            demoServerGids: [],
+            demoDayTime: 120,
+            prize1: [0, 3, 13, 50, 200, 0, 7, 20, 100, 400, 0, 5, 15, 75, 300, 0, 10, 25, 150, 500],
+            jpPrefix: "",
+            jpRollVal: [[15e4, 17e4, 26e4, 28e4], [5e4, 6e4, 9e4, 1e5], [1e4, 1e4, 5e4, 5e4], [2e3, 2e3, 1e4, 1e4]],
+            gameProtocol: "ws://",
+            wsProtocol: "wl",
+            defaultLang: "en",
+            usingLang: ["en"],
+            decimalPlaces: 2,
+            decimal: 100,
+            accPwdMinLength: 6,
+            accPwdMaxLength: 32,
+            beginPage: "loginUI",
+            outScreenPos: void 0,
+            center: void 0,
+            gameSize: void 0,
+            dyncBundleUrl: [{
+                url: "dync"
+            }],
+            dyncLoadDirIndex: {
+                headIcon: 0,
+                beautyLogo: 0,
+                loginUI: 0,
+                jackPot: 0,
+                hallUI: 0,
+                advert: 0
+            },
+            soundCfg: {
+                load: {
+                    click: {
+                        norecycle: !0
+                    }
+                }
+            },
+            ggShowFire: {},
+            bigKaShow: void 0,
+            guangGao: [],
+            bigGG: [],
+            kapian: [],
+            kpSortGid: [],
+            testGames: [],
+            Interval: !0,
+            backStageUrl: "",
+            jpBroadcast: {
+                showTime: 5,
+                updateTime: 5,
+                hisMaxCount: 20
+            },
+            welfarePrize: {
+                lottery_period: !0,
+                cashBack_period: 1,
+                fuDai_period: 1
+            }
+        },
+        function(e) {
+            e[e.hallUI = 0] = "hallUI",
+            e[e.loginUI = 1] = "loginUI",
+            e[e.creditUI = 2] = "creditUI",
+            e[e.jpUI = 3] = "jpUI",
+            e[e.msgTip = 4] = "msgTip",
+            e[e.msgTip2 = 5] = "msgTip2",
+            e[e.demoTip = 6] = "demoTip",
+            e[e.clickTip = 7] = "clickTip",
+            e[e.keyboardUI = 8] = "keyboardUI",
+            e[e.loadTip = 9] = "loadTip",
+            e[e.bounderyMask = 10] = "bounderyMask",
+            e[e.top = 11] = "top",
+            e[e.debug = 12] = "debug",
+            e[e.num = 13] = "num"
+        }(o.AdaptLevel || (o.AdaptLevel = {})),
+        o.UpdateFuncDesc = ["HallUpdate"],
+        cc._RF.pop()
+    }
+    , {}],
+    CountdownTime: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "b9d2fbTAR9E6YcWqlBtOmVF", "CountdownTime"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var i = e("../Func")
+          , n = function() {
+            function e(e, t) {
+                this._hours = 0,
+                this._minutes = 0,
+                this._seconds = 0,
+                this._leftTime = 0,
+                this._label = e,
+                this._callfunc = t
+            }
+            return e.prototype.start = function(e) {
+                "" == e && (e = "23:59:59"),
+                this._leftTime = i.default.timeStr2Second(e);
+                var t = this._leftTime;
+                this._hours = Math.floor(t / 3600),
+                t %= 3600,
+                this._minutes = Math.floor(t / 60),
+                this._seconds = t % 60,
+                this._interval = setInterval(this.updateSecond.bind(this), 1e3)
+            }
+            ,
+            e.prototype.end = function() {
+                clearInterval(this._interval)
+            }
+            ,
+            e.prototype.updateSecond = function() {
+                if (--this._leftTime <= 0)
+                    clearInterval(this._interval),
+                    this._callfunc();
+                else {
+                    --this._seconds < 0 && (this._seconds = 59,
+                    --this._minutes < 0 && (this._minutes = 59,
+                    --this._hours < 0 && (this._hours = 11)));
+                    var e = cc.js.formatStr("%s:%s:%s", i.default.fillZero(this._hours), i.default.fillZero(this._minutes), i.default.fillZero(this._seconds));
+                    this._label.string = e
+                }
+            }
+            ,
+            e
+        }();
+        o.default = n,
+        cc._RF.pop()
+    }
+    , {
+        "../Func": "Func"
+    }],
+    CustomScrollView: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "abb4cMq1jZPUZwG6hDCr2qt", "CustomScrollView"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.CustomScrollView = void 0;
+        var i = function() {
+            function e() {}
+            return e.addScrollBarExtra = function(e) {
+                var t = e.getComponent(cc.ScrollView)
+                  , o = e;
+                o._bubblingListeners = o._capturingListeners,
+                o._capturingListeners = void 0;
+                var i = t.verticalScrollBar
+                  , n = !1
+                  , r = i.handle.node
+                  , a = r.parent.getContentSize();
+                function s(e) {
+                    var t = e.getContentSize()
+                      , o = 0
+                      , i = 0;
+                    return a.height > t.height && (o = a.height / 2 - t.height,
+                    i = -a.height / 2),
+                    {
+                        minY: i,
+                        maxY: o
+                    }
+                }
+                r.on(cc.Node.EventType.TOUCH_START, function(e) {
+                    n = !0,
+                    e.stopPropagation()
+                }),
+                r.on(cc.Node.EventType.TOUCH_MOVE, function(e) {
+                    if (n) {
+                        var o = e.target
+                          , i = s(o)
+                          , r = i.minY
+                          , a = i.maxY;
+                        o.y += e.getDeltaY(),
+                        o.y > a ? o.y = a : o.y < r && (o.y = r),
+                        e.stopPropagation();
+                        var c = (o.y - r) / (a - r)
+                          , l = t.getMaxScrollOffset();
+                        l.y *= 1 - c,
+                        l.y += t._topBoundary,
+                        t.setContentPosition(l)
+                    }
+                }),
+                r.on(cc.Node.EventType.TOUCH_END, function(e) {
+                    n = !1,
+                    e.stopPropagation()
+                }),
+                r.on(cc.Node.EventType.TOUCH_CANCEL, function(e) {
+                    n = !1,
+                    e.stopPropagation()
+                })
+            }
+            ,
+            e
+        }();
+        o.CustomScrollView = i,
+        cc._RF.pop()
+    }
+    , {}],
+    DayPrize: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "01d47mbKuVB76J2bjYnZMTV", "DayPrize"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var i = e("../../base/LogicMgr")
+          , n = e("../../base/SoundMgr")
+          , r = e("../../base/common/Func")
+          , a = e("../../base/common/Interface")
+          , s = e("../../base/res/DyncMgr")
+          , c = e("../config/Config")
+          , l = function() {
+            function e(e) {
+                this._timeArr = [0, 0, 0],
+                this._root = e;
+                var t = e.getChildByName("dayBtn");
+                this._dayPrizeBtn = t.getComponent(cc.Button),
+                t.on(i.ConstDefine.click, this.dayPrizeClick, this);
+                var o = e.getChildByName("weekBtn");
+                this._weekNodeChild = o.children,
+                this._weekPrizeBtn = o.getComponent(cc.Button),
+                o.on(i.ConstDefine.click, this.weekPrizeClick, this),
+                this._timeNode = e.getChildByName("time"),
+                this._timeLabel = this._timeNode.getChildByName(i.ConstDefine.text).getComponent(cc.Label),
+                this._timeLabel.string = "",
+                this._dayPrizeBtn.interactable = !1,
+                this._timeNode.active = !0,
+                c.Config.welfarePrize.lottery_period ? e.active = !0 : e.active = !1
+            }
+            return e.prototype.showGuestLogin = function() {
+                this._weekPrizeBtn.node.active = !0,
+                this._dayPrizeBtn.node.active = !1,
+                this.showWeekPrize()
+            }
+            ,
+            e.prototype.dayPrizeClick = function() {
+                i.default.login.guestLogin || (n.default.playEffect("prize_2"),
+                s.default.getResInfo(i.ConstDefine.rollPrize))
+            }
+            ,
+            e.prototype.weekPrizeClick = function() {
+                i.default.login.guestLogin || (n.default.playEffect("prize_2"),
+                s.default.getResInfo("rollWeekPrize"))
+            }
+            ,
+            e.prototype.showWeekPrize = function() {
+                this._dayPrizeBtn.interactable = !0,
+                this._weekPrizeBtn.interactable = !0;
+                for (var e = 0; e < this._weekNodeChild.length; e++)
+                    this._weekNodeChild[e].color = cc.Color.WHITE,
+                    this._weekNodeChild[e].opacity = 255;
+                this._timeNode.active = !1
+            }
+            ,
+            e.prototype.response = function() {
+                if (1 == i.default.fuliData.bstarttiming ? (this._weekPrizeBtn.node.active = !0,
+                this._dayPrizeBtn.node.active = !1) : (this._weekPrizeBtn.node.active = !1,
+                this._dayPrizeBtn.node.active = !0),
+                1 === i.default.fuliData.blottery || 1 == i.default.fuliData.blotteryhappyweek)
+                    this.showWeekPrize();
+                else {
+                    this._dayPrizeBtn.interactable = !1,
+                    this._weekPrizeBtn.interactable = !1;
+                    for (var e = 0; e < this._weekNodeChild.length; e++)
+                        this._weekNodeChild[e].color = cc.Color.GRAY,
+                        this._weekNodeChild[e].opacity = 200;
+                    this._timeNode.active = !0;
+                    var t = r.default.timeStr2Second(i.default.fuliData.refreshtime)
+                      , o = r.default.timeStr2Second(i.default.fuliData.refreshtimehappyweek);
+                    t < o ? (this._leftTime = t,
+                    o -= t) : (this._leftTime = o,
+                    t -= o);
+                    var n = this._leftTime
+                      , a = Math.floor(n / 3600);
+                    n %= 3600;
+                    var s = Math.floor(n / 60)
+                      , c = n % 60;
+                    this._timeLabel.string = String(a).padStart(2, "0") + ":" + String(s).padStart(2, "0") + ":" + String(c).padStart(2, "0"),
+                    this._timeArr[0] = a,
+                    this._timeArr[1] = s,
+                    this._timeArr[2] = c,
+                    clearInterval(this._interval),
+                    this._interval = setInterval(this.updateTime.bind(this), 1e3)
+                }
+            }
+            ,
+            e.prototype.updateTime = function() {
+                if (--this._leftTime <= 0)
+                    clearInterval(this._interval),
+                    i.default.reqUserInfo();
+                else {
+                    --this._timeArr[a.DayArrTip.second] < 0 && (this._timeArr[a.DayArrTip.second] = 59,
+                    --this._timeArr[a.DayArrTip.minute] < 0 && (this._timeArr[a.DayArrTip.minute] = 59,
+                    --this._timeArr[a.DayArrTip.hour] < 0 && (this._timeArr[a.DayArrTip.hour] = 11)));
+                    var e = cc.js.formatStr("%s:%s:%s", r.default.fillZero(this._timeArr[a.DayArrTip.hour]), r.default.fillZero(this._timeArr[a.DayArrTip.minute]), r.default.fillZero(this._timeArr[a.DayArrTip.second]));
+                    this._timeLabel.string = e
+                }
+            }
+            ,
+            e
+        }();
+        o.default = l,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/SoundMgr": "SoundMgr",
+        "../../base/common/Func": "Func",
+        "../../base/common/Interface": "Interface",
+        "../../base/res/DyncMgr": "DyncMgr",
+        "../config/Config": "Config"
+    }],
+    DebugMgr: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "e8f99efeudFLboa8n1x31iq", "DebugMgr");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var r = e("../common/MessageMgr")
+          , a = e("../../my/config/Config")
+          , s = e("../res/DyncLoadedBase")
+          , c = e("../res/DyncMgr")
+          , l = e("../net/EEvent")
+          , h = e("../common/Func")
+          , d = e("../LogicMgr")
+          , f = function(e) {
+            function t() {
+                var t = null !== e && e.apply(this, arguments) || this;
+                return t._touchPos = cc.Vec2.ZERO,
+                t
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                this._rootNode = this.nodeInfo.root.getChildByName("root"),
+                this._rootNode.getChildByName(d.ConstDefine.close).on("click", this.closeClick, this),
+                this._rootNode.getChildByName("openDailyBonus").on(d.ConstDefine.click, function() {
+                    c.default.getResInfo(d.ConstDefine.rollPrize)
+                }),
+                this._rootNode.getChildByName("testDailyBonus").on(d.ConstDefine.click, function() {
+                    var e = a.Config.prize1[h.default.randomInt(0, a.Config.prize1.length - 1)];
+                    r.MessageMgr.emit(r.MessageName.NetMsg, {
+                        mainID: l.Cmd.MDM_MB_LOGON,
+                        subID: l.Cmd.SUB_MB_LOGON_CHOUJIANG_RESULT,
+                        data: {
+                            result: 0,
+                            lotteryscore: e,
+                            score: d.default.login.score + e
+                        }
+                    })
+                }),
+                this._rootNode.getChildByName("openWeekDailyBonus").on(d.ConstDefine.click, function() {
+                    c.default.getResInfo("rollWeekPrize")
+                }),
+                this._rootNode.getChildByName("testWeekDailyBonus").on(d.ConstDefine.click, function() {
+                    var e = a.Config.prize1[h.default.randomInt(0, a.Config.prize1.length - 1)];
+                    r.MessageMgr.emit(r.MessageName.NetMsg, {
+                        mainID: l.Cmd.MDM_MB_LOGON,
+                        subID: l.Cmd.SUB_GET_HAPPY_WEEK_RESULT,
+                        data: {
+                            result: 0,
+                            lotteryscore: e,
+                            score: d.default.login.score + e
+                        }
+                    })
+                }),
+                this._rootNode.getChildByName("testFudai").on(d.ConstDefine.click, function() {
+                    c.default.getResInfo("fudaiUI")
+                }),
+                r.MessageMgr.on(r.MessageName.TouchStart, this.touchStart, this),
+                r.MessageMgr.on(r.MessageName.TouchEnd, this.touchEnd, this),
+                this.closeClick()
+            }
+            ,
+            t.prototype.closeClick = function() {
+                cc.debug.setDisplayStats(!1),
+                this._rootNode.active = !1,
+                window.vConsole && window.vConsole.$dom.style && (window.vConsole.$dom.style.display = "none")
+            }
+            ,
+            t.prototype.touchStart = function(e) {
+                d.default.login.testAcccount && this._touchPos.set(e.getLocation())
+            }
+            ,
+            t.prototype.touchEnd = function(e) {
+                d.default.login.testAcccount && this._touchPos.x < 20 && e.getLocation().x - this._touchPos.x > 30 && (this._rootNode.active = !0,
+                cc.debug.setDisplayStats(!0),
+                window.vConsole && (window.vConsole.$dom.style.display = "inline"))
+            }
+            ,
+            t
+        }(s.default);
+        o.default = f,
+        cc._RF.pop()
+    }
+    , {
+        "../../my/config/Config": "Config",
+        "../LogicMgr": "LogicMgr",
+        "../common/Func": "Func",
+        "../common/MessageMgr": "MessageMgr",
+        "../net/EEvent": "EEvent",
+        "../res/DyncLoadedBase": "DyncLoadedBase",
+        "../res/DyncMgr": "DyncMgr"
+    }],
+    DyncAnimPlay: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "6f4e6UBD7lDRYnvztavSTsI", "DyncAnimPlay");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.WebAnim = void 0;
+        var r = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                e.prototype.initParams.call(this),
+                this._anims = this._nodeInfo.root.getComponentsInChildren(cc.Animation);
+                for (var t = 0, o = 0, i = this._anims; o < i.length; o++) {
+                    var n = i[o].defaultClip.duration;
+                    n > t && (t = n)
+                }
+                this._playTime = 1e3 * (t + .2)
+            }
+            ,
+            t.prototype.resetParams = function(t, o, i) {
+                var n = this;
+                e.prototype.resetParams.call(this);
+                for (var r = 0, a = this._anims; r < a.length; r++)
+                    a[r].play();
+                this._nodeInfo.root.setPosition(t),
+                null != o && (this._nodeInfo.root.scale = o),
+                null != i && (this._nodeInfo.root.angle = i),
+                setTimeout(function() {
+                    n.hide()
+                }, this._playTime)
+            }
+            ,
+            t
+        }(e("./DyncLoadedBase").default);
+        o.default = r;
+        var a = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.resetParams = function(t) {
+                e.prototype.resetParams.call(this, t)
+            }
+            ,
+            t
+        }(r);
+        o.WebAnim = a,
+        cc._RF.pop()
+    }
+    , {
+        "./DyncLoadedBase": "DyncLoadedBase"
+    }],
+    DyncInfo: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "8bf76NT3plNgoZbeWjHUKW2", "DyncInfo");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        ), r = this && this.__spreadArrays || function() {
+            for (var e = 0, t = 0, o = arguments.length; t < o; t++)
+                e += arguments[t].length;
+            var i = Array(e)
+              , n = 0;
+            for (t = 0; t < o; t++)
+                for (var r = arguments[t], a = 0, s = r.length; a < s; a++,
+                n++)
+                    i[n] = r[a];
+            return i
+        }
+        ;
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.MulNodeInfo = o.SingleNodeInfo = o.DyncResInfo = o.DyncInstanceInfo = o.DyncNodeInfo = void 0;
+        var a = e("../common/BufferPool")
+          , s = e("../common/view/NodeHandle")
+          , c = e("../LevelMgr")
+          , l = e("../LogicMgr")
+          , h = e("./DyncMgr")
+          , d = e("./LanguageMgr")
+          , f = function() {
+            function e(e) {
+                this.cfg = e,
+                this._nodeHanle = s.createNodeHandle(e.handle)
+            }
+            return e.prototype.init = function(e) {
+                for (var t = [], o = 1; o < arguments.length; o++)
+                    t[o - 1] = arguments[o];
+                e.active = !0,
+                this.root = e,
+                this.setParentNode()
+            }
+            ,
+            e.prototype.reset = function() {
+                for (var e = [], t = 0; t < arguments.length; t++)
+                    e[t] = arguments[t];
+                this._nodeHanle.reset(this.root)
+            }
+            ,
+            e.prototype.clear = function() {
+                this._nodeHanle.clear(this.root)
+            }
+            ,
+            e.prototype.destory = function() {
+                cc.isValid(this.root) && (this.root.destroy(),
+                this.root = null)
+            }
+            ,
+            e.prototype.setParentNode = function() {
+                void 0 !== this.cfg.layer && c.default.Instance.setLevel(this.root, this.cfg.layer)
+            }
+            ,
+            e
+        }();
+        o.DyncNodeInfo = f;
+        var u = function(e) {
+            function t(t, o) {
+                var i = e.call(this, t, o) || this;
+                return i.dyncLoadedBase = new t.class(o,i),
+                i
+            }
+            return n(t, e),
+            t.prototype.init = function(t) {
+                for (var o, i = [], n = 1; n < arguments.length; n++)
+                    i[n - 1] = arguments[n];
+                e.prototype.init.call(this, t),
+                this.dyncLoadedBase.initParams(),
+                (o = this.dyncLoadedBase).resetParams.apply(o, i)
+            }
+            ,
+            t.prototype.reset = function() {
+                for (var t, o = [], i = 0; i < arguments.length; i++)
+                    o[i] = arguments[i];
+                (this._nodeHanle.isReset(this.root) || this.dyncLoadedBase.isReset()) && (t = this.dyncLoadedBase).resetParams.apply(t, o),
+                e.prototype.reset.call(this)
+            }
+            ,
+            t.prototype.clear = function() {
+                e.prototype.clear.call(this),
+                this.dyncLoadedBase.clear()
+            }
+            ,
+            t.prototype.destory = function() {
+                e.prototype.destory.call(this),
+                this.dyncLoadedBase.destroy()
+            }
+            ,
+            t
+        }(f);
+        function p(e, t) {
+            return void 0 === e && (e = {}),
+            e.class ? new u(e,t) : new f(e,t)
+        }
+        o.DyncInstanceInfo = u;
+        var g = function() {
+            function e() {}
+            return e.prototype.load = function(e) {
+                for (var t = [], o = 1; o < arguments.length; o++)
+                    t[o - 1] = arguments[o];
+                return new Promise(function(o) {
+                    h.default.bundles[e.cfg.loadIndex].load(e.cfg.path, e.cfg.loadType, function(i, n) {
+                        e.cfg.loadingTip && h.default.hide(l.ConstDefine.loadingTip),
+                        i ? (console.warn("\u52a0\u8f7d\u8d44\u6e90\u5931\u8d25", e.name),
+                        o(null)) : (e.asset !== n ? (e.asset = n,
+                        n.addRef(),
+                        e.loadCall.apply(e, r([!0], t))) : e.loadCall.apply(e, r([!1], t)),
+                        o(e))
+                    })
+                }
+                )
+            }
+            ,
+            e
+        }()
+          , _ = function(e) {
+            function t(t) {
+                var o = e.call(this, t) || this;
+                return o._cfg = t,
+                o._basePath = t.path,
+                o
+            }
+            return n(t, e),
+            t.prototype.changePath = function(e) {
+                this._lastLangName = e,
+                this._cfg.path = "lang/" + this._lastLangName + "/" + this._basePath
+            }
+            ,
+            t.prototype.load = function(t) {
+                for (var o = this, i = [], n = 1; n < arguments.length; n++)
+                    i[n - 1] = arguments[n];
+                return new Promise(function(n) {
+                    o._lastLangName !== d.default.currLang && (o.changePath(d.default.currLang),
+                    t.destroy()),
+                    e.prototype.load.apply(o, r([t], i)).then(function(a) {
+                        null === a ? (o.changePath(d.default.defaultLang),
+                        n(e.prototype.load.apply(o, r([t], i)))) : n(a)
+                    })
+                }
+                )
+            }
+            ,
+            t
+        }(g)
+          , m = function() {
+            function e(e, t) {
+                this.name = t,
+                this.cfg = e,
+                this.asset = null,
+                e.loadMode ? this.loadMode = new _(e) : this.loadMode = new g(e),
+                void 0 === this.cfg.loadType && (this.cfg.loadType = cc.Prefab),
+                void 0 === this.cfg.loadIndex && (this.cfg.loadIndex = 0)
+            }
+            return e.prototype.load = function() {
+                for (var e = this, t = [], o = 0; o < arguments.length; o++)
+                    t[o] = arguments[o];
+                return new Promise(function(o) {
+                    var i;
+                    e.asset ? o(e) : (e.cfg.loadingTip && h.default.getResInfo(l.ConstDefine.loadingTip),
+                    o((i = e.loadMode).load.apply(i, r([e], t))))
+                }
+                )
+            }
+            ,
+            e.prototype.loadCall = function(e) {
+                for (var t = [], o = 1; o < arguments.length; o++)
+                    t[o - 1] = arguments[o];
+                e && !this.canShow && h.default.hide(this.name)
+            }
+            ,
+            e.prototype.clear = function() {}
+            ,
+            e.prototype.destroy = function() {
+                this.asset && (this.asset.decRef(),
+                this.asset = null)
+            }
+            ,
+            e
+        }();
+        o.DyncResInfo = m;
+        var y = function(e) {
+            function t(t, o) {
+                var i = e.call(this, t, o) || this;
+                return i.nodeInfo = p(t.nodeCfg, o),
+                i
+            }
+            return n(t, e),
+            t.prototype.load = function() {
+                for (var t = this, o = [], i = 0; i < arguments.length; i++)
+                    o[i] = arguments[i];
+                return new Promise(function(i) {
+                    var n;
+                    t.asset ? ((n = t.nodeInfo).reset.apply(n, o),
+                    i(t)) : i(e.prototype.load.apply(t, o))
+                }
+                )
+            }
+            ,
+            t.prototype.loadCall = function(t) {
+                for (var o, i, n = [], a = 1; a < arguments.length; a++)
+                    n[a - 1] = arguments[a];
+                t ? (o = this.nodeInfo).init.apply(o, r([cc.instantiate(this.asset)], n)) : (i = this.nodeInfo).reset.apply(i, n),
+                e.prototype.loadCall.call(this, t)
+            }
+            ,
+            t.prototype.clear = function() {
+                this.nodeInfo.clear()
+            }
+            ,
+            t.prototype.destroy = function() {
+                this.nodeInfo.destory(),
+                e.prototype.destroy.call(this)
+            }
+            ,
+            t
+        }(m);
+        o.SingleNodeInfo = y;
+        var v = function(e) {
+            function t() {
+                var t = null !== e && e.apply(this, arguments) || this;
+                return t._invailNodeInfo = [],
+                t._nodePoolMgr = new a.BufferPool(p),
+                t
+            }
+            return n(t, e),
+            t.prototype.load = function() {
+                for (var t = this, o = [], i = 0; i < arguments.length; i++)
+                    o[i] = arguments[i];
+                return new Promise(function(i) {
+                    if (t.asset) {
+                        var n = t._nodePoolMgr.allocate(t.cfg.nodeCfg, t.name);
+                        n.root ? n.reset.apply(n, o) : n.init.apply(n, r([cc.instantiate(t.asset)], o)),
+                        i(t)
+                    } else
+                        i(e.prototype.load.apply(t, o))
+                }
+                )
+            }
+            ,
+            t.prototype.loadCall = function(e) {
+                for (var t = [], o = 1; o < arguments.length; o++)
+                    t[o - 1] = arguments[o];
+                var i = null;
+                (i = this._invailNodeInfo.length > 0 ? this._invailNodeInfo.pop() : p(this.cfg.nodeCfg, this.name)).init.apply(i, r([cc.instantiate(this.asset)], t)),
+                this._nodePoolMgr.using.push(i)
+            }
+            ,
+            t.prototype.clear = function(e) {
+                this._nodePoolMgr.recycle(e),
+                e.clear()
+            }
+            ,
+            t.prototype.destroy = function(t) {
+                t.destory();
+                var o = this._nodePoolMgr.using
+                  , i = o.findIndex(function(e) {
+                    return e === t
+                });
+                -1 === i && (i = this._nodePoolMgr.buffer.findIndex(function(e) {
+                    return e === t
+                })),
+                this._invailNodeInfo.push(o[i]),
+                cc.js.array.fastRemoveAt(o, i),
+                o.length <= 0 && this._nodePoolMgr.buffer.length <= 0 && e.prototype.destroy.call(this)
+            }
+            ,
+            t.prototype.getCurNodeInfo = function() {
+                var e = this._nodePoolMgr.using;
+                return e[e.length - 1]
+            }
+            ,
+            t
+        }(m);
+        o.MulNodeInfo = v,
+        cc._RF.pop()
+    }
+    , {
+        "../LevelMgr": "LevelMgr",
+        "../LogicMgr": "LogicMgr",
+        "../common/BufferPool": "BufferPool",
+        "../common/view/NodeHandle": "NodeHandle",
+        "./DyncMgr": "DyncMgr",
+        "./LanguageMgr": "LanguageMgr"
+    }],
+    DyncLoadedBase: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "3b3c6DwlLZIGr07l9dvroHP", "DyncLoadedBase");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.DyncLangNode = o.DyncLangSprite = o.DyncSetParent = o.DyncSetSprite = o.DyncScaleSmall = void 0;
+        var r = e("../LogicMgr")
+          , a = e("../ScreenMgr")
+          , s = e("../SoundMgr")
+          , c = e("./DyncMgr")
+          , l = function() {
+            function e(e, t) {
+                this._name = e,
+                this._nodeInfo = t
+            }
+            return Object.defineProperty(e.prototype, "nodeInfo", {
+                get: function() {
+                    return this._nodeInfo
+                },
+                enumerable: !1,
+                configurable: !0
+            }),
+            e.prototype.initParams = function() {}
+            ,
+            e.prototype.isReset = function() {
+                return !1
+            }
+            ,
+            e.prototype.resetParams = function() {
+                for (var e = [], t = 0; t < arguments.length; t++)
+                    e[t] = arguments[t]
+            }
+            ,
+            e.prototype.clear = function() {}
+            ,
+            e.prototype.destroy = function() {}
+            ,
+            e.prototype.hide = function() {
+                c.default.hide(this._name, this._nodeInfo)
+            }
+            ,
+            e.prototype.close = function() {
+                s.default.playEffect(r.ConstDefine.click),
+                this.hide()
+            }
+            ,
+            e
+        }();
+        o.default = l;
+        var h = function(e) {
+            function t() {
+                var t = null !== e && e.apply(this, arguments) || this;
+                return t._scaleMode = a.ScreenMode.fitScreen,
+                t
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                e.prototype.initParams.call(this),
+                this._angleRoot = this._nodeInfo.root.children[0]
+            }
+            ,
+            t.prototype.resetParams = function() {
+                for (var e = [], t = 0; t < arguments.length; t++)
+                    e[t] = arguments[t];
+                this.setScaleMode(a.default.Instance.curScale, a.default.Instance.screenMode)
+            }
+            ,
+            t.prototype.setScaleMode = function(e, t) {
+                this._scaleMode != t && (this._nodeInfo.root.scaleX *= 1 / e.x,
+                this._nodeInfo.root.scaleY *= 1 / e.y,
+                this._scaleMode = t)
+            }
+            ,
+            t
+        }(l);
+        o.DyncScaleSmall = h;
+        var d = function(e) {
+            function t() {
+                var t = null !== e && e.apply(this, arguments) || this;
+                return t._spts = new Map,
+                t
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                for (var e = 0, t = this._nodeInfo.root.children; e < t.length; e++) {
+                    var o = t[e];
+                    this._spts.set(o.name, o.getComponent(cc.Sprite).spriteFrame)
+                }
+                this._nodeInfo.root.active = !1
+            }
+            ,
+            t.prototype.resetParams = function(e, t) {
+                e.getComponent(cc.Sprite).spriteFrame = this._spts.get(t || e.name)
+            }
+            ,
+            t.prototype.isReset = function() {
+                return !0
+            }
+            ,
+            t
+        }(l);
+        o.DyncSetSprite = d;
+        var f = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.resetParams = function(e) {
+                this._nodeInfo.root.setParent(e),
+                this._nodeInfo.root.setPosition(r.ConstDefine.vec3ZERO)
+            }
+            ,
+            t
+        }(l);
+        o.DyncSetParent = f;
+        var u = function() {
+            function e(e) {
+                e && this.init(e)
+            }
+            return e.prototype.init = function(e, t) {
+                this._root = e,
+                this._root.active = !1,
+                this._spt = e.getComponent(cc.Sprite),
+                this._resName = t || this._root.name
+            }
+            ,
+            e.prototype.start = function() {
+                var e = this;
+                this._root.active = !0,
+                c.default.getResInfo(this._resName).then(function(t) {
+                    !t && cc.error("\u83b7\u53d6\u8d44\u6e90\u5931\u8d25", e._resName),
+                    e._spt.spriteFrame = t.asset
+                })
+            }
+            ,
+            e.prototype.end = function() {
+                this._root && this._root.active && (this._root.active = !1,
+                this._spt.spriteFrame = null,
+                c.default.hide(this._resName))
+            }
+            ,
+            e.prototype.isShow = function() {
+                return this._root.active
+            }
+            ,
+            e.prototype.playAnim = function() {
+                this._root.getComponent(cc.Animation).play()
+            }
+            ,
+            e.prototype.setName = function(e) {
+                this._resName = e
+            }
+            ,
+            e
+        }();
+        o.DyncLangSprite = u;
+        var p = function() {
+            function e(e) {
+                this._initPos = e || r.ConstDefine.vec2ZERO
+            }
+            return Object.defineProperty(e.prototype, "root", {
+                get: function() {
+                    return this._root
+                },
+                enumerable: !1,
+                configurable: !0
+            }),
+            e.prototype.start = function(e, t, o) {
+                var i = this;
+                c.default.getResInfo(e).then(function(e) {
+                    e && (i._res = e.asset,
+                    i._root = cc.instantiate(e.asset),
+                    i._root.setParent(t),
+                    i._root.setPosition(i._initPos),
+                    o && o(i.root))
+                })
+            }
+            ,
+            e.prototype.end = function() {
+                this._root && (this._root.destroy(),
+                this._root = null,
+                c.default.hide(this._res.name))
+            }
+            ,
+            e
+        }();
+        o.DyncLangNode = p,
+        cc._RF.pop()
+    }
+    , {
+        "../LogicMgr": "LogicMgr",
+        "../ScreenMgr": "ScreenMgr",
+        "../SoundMgr": "SoundMgr",
+        "./DyncMgr": "DyncMgr"
+    }],
+    DyncMgr: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "bca0adhH1BHXo2Y/BC5zVsN", "DyncMgr"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var i = e("../../my/config/MutabResCfg")
+          , n = e("../common/BufferPool")
+          , r = e("../common/Func")
+          , a = e("../common/MessageMgr")
+          , s = e("../../my/config/Config")
+          , c = e("../SoundMgr")
+          , l = e("./DyncInfo")
+          , h = e("./ResCfg")
+          , d = function() {
+            function e() {
+                this.timeoutHandle = -1
+            }
+            return e.prototype.init = function(e, t, o) {
+                this.resInfo = t,
+                this.arg1 = o,
+                this.reset(e)
+            }
+            ,
+            e.prototype.reset = function(e) {
+                var t = this;
+                this.clear(),
+                this.timeoutHandle = setTimeout(function() {
+                    t.resInfo.destroy(t.arg1),
+                    e(t)
+                }, 3e4)
+            }
+            ,
+            e.prototype.clear = function() {
+                clearInterval(this.timeoutHandle)
+            }
+            ,
+            e
+        }()
+          , f = function() {
+            function e() {}
+            return Object.defineProperty(e, "bundles", {
+                get: function() {
+                    return this._bundles
+                },
+                enumerable: !1,
+                configurable: !0
+            }),
+            Object.defineProperty(e, "resInfoMap", {
+                get: function() {
+                    return this._resInfoMap
+                },
+                enumerable: !1,
+                configurable: !0
+            }),
+            e.init = function() {
+                var t = this
+                  , o = 0
+                  , n = function(n) {
+                    var c = s.Config.dyncBundleUrl[n];
+                    cc.assetManager.loadBundle(c.url, {
+                        version: c.version
+                    }, function(d, f) {
+                        if (d)
+                            console.error("\u83b7\u53d6\u52a8\u6001\u8d44\u6e90bundle\u51fa\u9519", c.url);
+                        else if (t._bundles[n] = f,
+                        ++o >= s.Config.dyncBundleUrl.length) {
+                            for (var u in r.default.mergeJSON(s.Config.dyncResCfg, i.DyncResCfg),
+                            i.DyncResCfg) {
+                                var p = i.DyncResCfg[u];
+                                if (void 0 === p.orientation || p.orientation === s.Config.orientation) {
+                                    var g = null;
+                                    switch (p.type) {
+                                    case h.DyncInfoType.singleNode:
+                                        g = new l.SingleNodeInfo(p,u);
+                                        break;
+                                    case h.DyncInfoType.mulNode:
+                                        g = new l.MulNodeInfo(p,u);
+                                        break;
+                                    default:
+                                        g = new l.DyncResInfo(p,u)
+                                    }
+                                    t._resInfoMap.set(u, g)
+                                }
+                            }
+                            t.preloadRes(),
+                            a.MessageMgr.emit(a.MessageName.LoadDyncResFinish),
+                            r.default.isRotateDev() || 0 != s.Config.orientation || e.getResInfo("pcFullScreenUI")
+                        }
+                    })
+                };
+                for (var c in s.Config.dyncBundleUrl)
+                    n(c)
+            }
+            ,
+            e.preloadRes = function() {
+                var e = this;
+                this._resInfoMap.forEach(function(t) {
+                    t.cfg.preLoad && (e._bundles[t.cfg.loadIndex].load(t.cfg.path),
+                    t.cfg.preLoad = null)
+                })
+            }
+            ,
+            e.getResByClick = function(e) {
+                for (var t = this, o = [], i = 1; i < arguments.length; i++)
+                    o[i - 1] = arguments[i];
+                return new Promise(function(i) {
+                    c.default.playEffect("anniu"),
+                    i(t.getResInfo(e, o))
+                }
+                )
+            }
+            ,
+            e.getResInfo = function(e) {
+                for (var t = this, o = [], i = 1; i < arguments.length; i++)
+                    o[i - 1] = arguments[i];
+                return new Promise(function(i) {
+                    var n = t._resInfoMap.get(e);
+                    !n && cc.error("\u6ca1\u6709\u8fd9\u6837\u7684\u8d44\u6e90\u540d", e),
+                    n.canShow = !0;
+                    var r = t._waitForPoolMgr.using
+                      , a = r.findIndex(function(e) {
+                        return e.resInfo === n
+                    });
+                    a >= 0 && (r[a].clear(),
+                    t._waitForPoolMgr.fastRecycleByIndex(a)),
+                    i(n.load.apply(n, o))
+                }
+                )
+            }
+            ,
+            e.hide = function(e, t) {
+                var o = this._resInfoMap.get(e);
+                if (console.assert(null !== o, "\u9690\u85cf\u8d44\u6e90\u540d\u5b57\u65e0\u6548", e),
+                null !== o.asset) {
+                    switch (o.cfg.resMode) {
+                    case h.DyncResMode.Once:
+                        o.destroy(t);
+                        break;
+                    case h.DyncResMode.Controlled:
+                        break;
+                    case h.DyncResMode.Destroy:
+                        o.destroy(t),
+                        this._resInfoMap.delete(e);
+                        break;
+                    case h.DyncResMode.Wait:
+                        o.clear(t);
+                        var i = this._waitForPoolMgr.using
+                          , n = i.findIndex(function(e) {
+                            return e.resInfo === o && e.arg1 === t
+                        })
+                          , r = this._waitForPoolMgr.recycle.bind(this._waitForPoolMgr);
+                        n >= 0 ? i[n].reset(r) : this._waitForPoolMgr.allocate().init(r, o, t);
+                        break;
+                    default:
+                        o.clear(t)
+                    }
+                    o.canShow = !1
+                } else
+                    o.canShow && setTimeout(this.hide.bind(this), 2e3, e)
+            }
+            ,
+            e.isLoad = function(e) {
+                return this._resInfoMap.get(e).canShow
+            }
+            ,
+            e._bundles = [],
+            e._resInfoMap = new Map,
+            e._waitForPoolMgr = new n.BufferPool(function() {
+                return new d
+            }
+            ),
+            e
+        }();
+        o.default = f,
+        cc._RF.pop()
+    }
+    , {
+        "../../my/config/Config": "Config",
+        "../../my/config/MutabResCfg": "MutabResCfg",
+        "../SoundMgr": "SoundMgr",
+        "../common/BufferPool": "BufferPool",
+        "../common/Func": "Func",
+        "../common/MessageMgr": "MessageMgr",
+        "./DyncInfo": "DyncInfo",
+        "./ResCfg": "ResCfg"
+    }],
+    EEvent: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "c1642sE+YpBNYrM3N0vO5pS", "EEvent"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.Cmd = o.EEvent = void 0,
+        o.EEvent = {
+            NetMsg: 1,
+            Login: 5,
+            SwitchProgress: 16,
+            P2G: 23,
+            G2P: 24,
+            Exception: 25,
+            Game3rdNet: 27,
+            HandShaked: 30,
+            NetWorkSate: 31,
+            login: 32,
+            login2: 33,
+            AskSync: 34,
+            Sync: 35,
+            Shot: 36,
+            ShotFish: 37,
+            KillFish: 38,
+            FinishShot: 39,
+            RoomBroadCast: 42,
+            ToSelf: 43,
+            PlayerOnLine: 44,
+            LeaveTable: 45,
+            FrameDrive: 46,
+            AdjustCredit: 47,
+            DebugSuanfa: 48,
+            DebugMode: 49,
+            KickAll: 50,
+            ClearCreditBuff: 51,
+            OnShot: 52,
+            MakeSureSync: 53,
+            UpdateShotTypeState: 54,
+            HeartBeat: 55,
+            BroadCastTip: 80,
+            RqRechargeRes: 82,
+            RqGameTimeTag: 83,
+            StartGame: 101,
+            EndGame: 102
+        },
+        o.Cmd = {
+            MDM_MB_LOGON: 100,
+            SUB_MB_LOGON_WEBSOCKET: 6,
+            SUB_MB_LOGON_USERINFO: 12,
+            SUB_MB_LOGON_USERINFO_REP: 132,
+            SUB_MB_LOGON_RESULT: 116,
+            SUB_MB_LOGON_GUEST: 13,
+            SUB_MB_LOGON_GUEST_REP: 133,
+            SUB_MB_LOGON_GUEST_INFO: 14,
+            SUB_MB_LOGON_CHANGEPASSWORD: 7,
+            SUB_MB_CHANGEPASSWORD_RESULT: 117,
+            SUB_MB_LOGON_GETRANKITEM: 8,
+            SUB_MB_GETITEMRANK_RESULT: 118,
+            SUB_MB_LOGON_GETJPRECORD: 9,
+            SUB_MB_GETJPRECORD_RESULT: 119,
+            SUB_MB_LOGON_GETJPSCORE: 10,
+            SUB_MB_GETJPSCORE_RESULT: 120,
+            SUB_MB_LOGON_GETGAMESERVER: 11,
+            SUB_MB_GETGAMESERVER_RESULT: 122,
+            SUB_MB_LOGON_CHOUJIANG: 16,
+            SUB_MB_LOGON_CHOUJIANG_RESULT: 131,
+            SUB_MB_MOD_NICKNAME: 17,
+            SUB_MB_MOD_NICKNAME_RESULT: 134,
+            MDM_GR_GAME: 1,
+            SUB_GR_GAME_WEBSOCKET: 4,
+            SUB_GR_GAME_RESULT: 104,
+            SUB_GR_GAME_PING: 5,
+            SUB_GR_GAME_PINGRESULT: 105,
+            SUB_GR_GAME_GETJPSCORE: 6,
+            SUB_GR_GAME_GETJPSCORE_RESULT: 106,
+            SUB_GR_GAME_GETJPRECORD: 7,
+            SUB_GR_GAME_GETJPRECORD_RESULT: 107,
+            SUB_GR_GAME_JPRECHARGE_RESULT: 108,
+            SUB_GR_GAME_MSG_RESULT: 110,
+            SUB_GR_GAME_RECHARGE: 8,
+            SUB_GR_GAME_RECHARGE_RESULT: 109,
+            SUB_MB_LOGON_USERINFO2: 26,
+            SUB_MB_LOGON_USERINFO_REP2: 142,
+            SUB_GET_HAPPY_WEEK: 27,
+            SUB_GET_HAPPY_WEEK_RESULT: 143,
+            SUB_GET_CASH_BACK: 28,
+            SUB_GET_CASH_BACK_RESULT: 144,
+            SUB_GET_FUDAI: 29,
+            SUB_GET_FUDAI_RESULT: 145,
+            MDM_GR_MAINGAME: 200,
+            MDM_GR_SUBGAME: 100
+        },
+        cc._RF.pop()
+    }
+    , {}],
+    EditboxDisplay: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "44a3eVl3FJMap+0srHAP39h", "EditboxDisplay");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var r = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.onLoad = function() {}
+            ,
+            t
+        }(cc.Component);
+        o.default = r,
+        cc._RF.pop()
+    }
+    , {}],
+    EffectBase: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "351eeA3+B1MhLBbeQvogia5", "EffectBase");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.LightFlashes = o.EffectMeetCondition = void 0;
+        var r = e("../ScreenMgr")
+          , a = function() {
+            function e(e) {
+                this._state = 0,
+                this._timer = 0,
+                this.cfg = e,
+                this._scaleMode = r.ScreenMode.fitScreen
+            }
+            return e.prototype.init = function() {
+                for (var e = [], t = 0; t < arguments.length; t++)
+                    e[t] = arguments[t];
+                this._state = 1,
+                this.setScaleMode(r.default.Instance.curScale, r.default.Instance.screenMode)
+            }
+            ,
+            e.prototype.update = function() {}
+            ,
+            e.prototype.setState = function(e, t) {
+                void 0 === t && (t = 0),
+                this._state = e,
+                this._timer = t
+            }
+            ,
+            e.prototype.setScaleMode = function(e, t) {
+                this.cfg.node && this._scaleMode != t && this._root && (this._root.scaleX *= 1 / e.x,
+                this._root.scaleY *= 1 / e.y,
+                this._scaleMode = t)
+            }
+            ,
+            e.prototype.onPlayerLine = function() {}
+            ,
+            e.prototype.isEnd = function() {
+                return !this._state
+            }
+            ,
+            e.prototype.onEnd = function() {
+                this._state = 0
+            }
+            ,
+            e.prototype.forceStop = function() {
+                this.onEnd()
+            }
+            ,
+            e
+        }();
+        o.default = a;
+        var s = function(e) {
+            function t(t) {
+                return e.call(this, t) || this
+            }
+            return n(t, e),
+            t.prototype.init = function(t, o, i) {
+                e.prototype.init.call(this),
+                this._timer = 0,
+                this._interval = t,
+                this._judgeCallFunc = o,
+                this._executeCallFunc = i
+            }
+            ,
+            t.prototype.update = function(e) {
+                for (this._timer += e; this._timer > this._interval; ) {
+                    if (this._judgeCallFunc())
+                        return this._executeCallFunc(),
+                        void this.onEnd();
+                    this._timer -= this._interval
+                }
+            }
+            ,
+            t
+        }(a);
+        o.EffectMeetCondition = s;
+        var c = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.init = function(e) {
+                this._timer = 0,
+                this._normalNode = e.children[0],
+                this._normalNode.active = !0,
+                this._normalNode.opacity = 255,
+                this._opacityNode = e.children[1],
+                this._opacityNode.active = !0,
+                this._opacityNode.opacity = 0
+            }
+            ,
+            t.prototype.update = function(e) {
+                this._timer += e,
+                this._timer
+            }
+            ,
+            t
+        }(a);
+        o.LightFlashes = c,
+        cc._RF.pop()
+    }
+    , {
+        "../ScreenMgr": "ScreenMgr"
+    }],
+    EffectCfg: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "a4963U6GyRJ/bkdam3Ko6vq", "EffectCfg"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.EffectCfg = void 0;
+        var i = e("../../my/config/MutabEffectCfg")
+          , n = e("../common/Func")
+          , r = e("../common/MessageMgr")
+          , a = e("../../my/config/Config")
+          , s = e("./EffectBase")
+          , c = e("./EffectShake");
+        o.EffectCfg = {
+            varCfg: {
+                type: {
+                    EffectShake: {
+                        bufferNum: 5,
+                        class: c.default
+                    },
+                    EffectMeetCondition: {
+                        bufferNum: 5,
+                        class: s.EffectMeetCondition
+                    }
+                }
+            }
+        },
+        r.MessageMgr.once(r.MessageName.LoadDyncResFinish, function() {
+            n.default.coverCfgFunc(o.EffectCfg.varCfg, i.MutabEffectCfg, a.Config.effectCfg)
+        }),
+        cc._RF.pop()
+    }
+    , {
+        "../../my/config/Config": "Config",
+        "../../my/config/MutabEffectCfg": "MutabEffectCfg",
+        "../common/Func": "Func",
+        "../common/MessageMgr": "MessageMgr",
+        "./EffectBase": "EffectBase",
+        "./EffectShake": "EffectShake"
+    }],
+    EffectMgr: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "39fad/CWOxAUYI2P+yicO18", "EffectMgr");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        ), r = this && this.__decorate || function(e, t, o, i) {
+            var n, r = arguments.length, a = r < 3 ? t : null === i ? i = Object.getOwnPropertyDescriptor(t, o) : i;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate)
+                a = Reflect.decorate(e, t, o, i);
+            else
+                for (var s = e.length - 1; s >= 0; s--)
+                    (n = e[s]) && (a = (r < 3 ? n(a) : r > 3 ? n(t, o, a) : n(t, o)) || a);
+            return r > 3 && a && Object.defineProperty(t, o, a),
+            a
+        }
+        ;
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.EffectMgr = void 0;
+        var a = e("../common/MessageMgr")
+          , s = e("./EffectCfg")
+          , c = cc._decorator.ccclass
+          , l = function(e) {
+            function t() {
+                var t = null !== e && e.apply(this, arguments) || this;
+                return t._materials = Object.create(null),
+                t._updateFunc = new Map,
+                t._effectUsing = [],
+                t._effectBuffer = Object.create(null),
+                t._nextFrameFunc = [],
+                t._exeFrame = [],
+                t
+            }
+            var o;
+            return n(t, e),
+            o = t,
+            t.prototype.onLoad = function() {
+                var e = this;
+                o.Instance = this,
+                a.MessageMgr.on(a.MessageName.SetScaleMode, this.setEffectScale, this),
+                a.MessageMgr.once(a.MessageName.LoadCfgFinish, function() {
+                    var t = s.EffectCfg.varCfg.type;
+                    for (var i in t) {
+                        var n = t[i];
+                        n.name = i,
+                        void 0 === n.bufferNum && (n.bufferNum = 0);
+                        for (var r = [], a = 0; a < n.bufferNum; a++)
+                            r.push(e.create(n));
+                        e._effectBuffer[n.name] = r
+                    }
+                    o.EffectType = t,
+                    s.EffectCfg.varCfg.type = null
+                })
+            }
+            ,
+            t.prototype.init = function() {
+                for (var e = this._effectUsing.length - 1; e >= 0; e--) {
+                    var t = this._effectUsing[e];
+                    t.forceStop(),
+                    this._effectBuffer[t.cfg.name].push(t),
+                    cc.js.array.fastRemoveAt(this._effectUsing, e)
+                }
+            }
+            ,
+            t.prototype.getMaterial = function(e) {
+                return this._materials[e]
+            }
+            ,
+            t.prototype.update = function(e) {
+                this._updateFunc.forEach(function(t) {
+                    t(e)
+                });
+                for (var t = this._effectUsing.length - 1; t >= 0; t--) {
+                    var o = this._effectUsing[t];
+                    o.update(e),
+                    o.isEnd() && (this._effectBuffer[o.cfg.name].push(o),
+                    cc.js.array.fastRemoveAt(this._effectUsing, t))
+                }
+                if (this._exeFrame.length > 0) {
+                    var i = cc.director.getTotalFrames();
+                    for (t = this._exeFrame.length - 1; t >= 0; --t)
+                        this._exeFrame[t] === i && (this._nextFrameFunc[t](),
+                        cc.js.array.fastRemoveAt(this._exeFrame, t),
+                        cc.js.array.fastRemoveAt(this._nextFrameFunc, t))
+                }
+            }
+            ,
+            t.prototype.addUpdateFunc = function(e, t) {
+                this._updateFunc.set(e, t)
+            }
+            ,
+            t.prototype.removeUpdateFunc = function(e) {
+                this._updateFunc.delete(e)
+            }
+            ,
+            t.prototype.nextFrameFunc = function(e) {
+                this._exeFrame.push(cc.director.getTotalFrames() + 2),
+                this._nextFrameFunc.push(e)
+            }
+            ,
+            t.prototype.trigger = function(e) {
+                for (var t = [], o = 1; o < arguments.length; o++)
+                    t[o - 1] = arguments[o];
+                var i = this.getEffect(e);
+                return i.init.apply(i, t),
+                this._effectUsing[this._effectUsing.length] = i,
+                i
+            }
+            ,
+            t.prototype.removeEffect = function(e) {
+                var t = this._effectUsing.indexOf(e);
+                t >= 0 && (this._effectBuffer[e.cfg.name].push(e),
+                cc.js.array.fastRemoveAt(this._effectUsing, t))
+            }
+            ,
+            t.prototype.getEffect = function(e) {
+                if (null == e)
+                    return null;
+                var t = this._effectBuffer[e.name];
+                return t.length > 0 ? t.pop() : this.create(e)
+            }
+            ,
+            t.prototype.create = function(e) {
+                return new e.class(e)
+            }
+            ,
+            t.prototype.setEffectScale = function(e, t) {
+                for (var o in this._effectBuffer)
+                    for (var i = 0, n = this._effectBuffer[o]; i < n.length; i++)
+                        n[i].setScaleMode(e, t);
+                for (var r = 0, a = this._effectUsing; r < a.length; r++)
+                    a[r].setScaleMode(e, t)
+            }
+            ,
+            t.Instance = null,
+            t.EffectType = null,
+            o = r([c], t)
+        }(cc.Component);
+        o.EffectMgr = l,
+        cc._RF.pop()
+    }
+    , {
+        "../common/MessageMgr": "MessageMgr",
+        "./EffectCfg": "EffectCfg"
+    }],
+    EffectShake: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "5f7feNq0e5L7Y8BKn0rlVAg", "EffectShake");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var r = e("../common/Func")
+          , a = function(e) {
+            function t(t) {
+                var o = e.call(this, t) || this;
+                return o._range = [],
+                o._interval = [],
+                o._shakeTime = [],
+                o._initPos = cc.Vec2.ZERO,
+                o
+            }
+            return n(t, e),
+            t.getShakingIndex = function(e) {
+                return t.Shaking.findIndex(function(t) {
+                    return t.root === e
+                })
+            }
+            ,
+            t.getShakingData = function(e) {
+                return t.Shaking.find(function(t) {
+                    return t.root === e
+                })
+            }
+            ,
+            t.removeShakingData = function(e) {
+                cc.js.array.fastRemoveAt(t.Shaking, t.getShakingIndex(e))
+            }
+            ,
+            t.prototype.init = function(o, i, n, r, a) {
+                void 0 === r && (r = 5),
+                void 0 === a && (a = .05);
+                var s = t.getShakingData(i);
+                if (s) {
+                    var c = s.data;
+                    c._shakeTime.push(n),
+                    c._shakeTime.sort(function(e, t) {
+                        return e - t
+                    });
+                    var l = c._shakeTime.indexOf(n);
+                    c._range.splice(l, 0, r),
+                    c._interval.splice(l, 0, a),
+                    this.onEnd()
+                } else
+                    t.Shaking.push({
+                        data: this,
+                        root: i
+                    }),
+                    e.prototype.init.call(this),
+                    this._root = i,
+                    this._initPos.set(o),
+                    this._timer = 0,
+                    this._shakeTime = [],
+                    this._range = [],
+                    this._interval = [],
+                    this._shakeTime.push(n),
+                    this._range.push(r),
+                    this._interval.push(a)
+            }
+            ,
+            t.prototype.update = function(e) {
+                if (0 != this._shakeTime.length) {
+                    for (var o = 0; o < this._shakeTime.length; o++)
+                        this._shakeTime[o] -= e,
+                        this._shakeTime[o] <= 0 && (this._shakeTime.splice(o, 1),
+                        this._range.splice(o, 1),
+                        this._interval.splice(o, 1),
+                        o--);
+                    if (0 == this._shakeTime.length)
+                        return this._root.setPosition(this._initPos),
+                        t.removeShakingData(this._root),
+                        void this.onEnd();
+                    var i = Math.min.apply(Math, this._interval)
+                      , n = Math.max.apply(Math, this._range);
+                    this._timer += e,
+                    this._timer > i && (this._timer -= i,
+                    this._root.x = this._initPos.x + r.default.randomNum(-n, n),
+                    this._root.y = this._initPos.y + r.default.randomNum(-n, n))
+                }
+            }
+            ,
+            t.prototype.forceStop = function() {
+                r.default.clearArray(t.Shaking)
+            }
+            ,
+            t.Shaking = [],
+            t
+        }(e("./EffectBase").default);
+        o.default = a,
+        cc._RF.pop()
+    }
+    , {
+        "../common/Func": "Func",
+        "./EffectBase": "EffectBase"
+    }],
+    Effect_Circular_Bead: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "685e9UtOaFJfJXvjoR5hMca", "Effect_Circular_Bead");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        ), r = this && this.__decorate || function(e, t, o, i) {
+            var n, r = arguments.length, a = r < 3 ? t : null === i ? i = Object.getOwnPropertyDescriptor(t, o) : i;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate)
+                a = Reflect.decorate(e, t, o, i);
+            else
+                for (var s = e.length - 1; s >= 0; s--)
+                    (n = e[s]) && (a = (r < 3 ? n(a) : r > 3 ? n(t, o, a) : n(t, o)) || a);
+            return r > 3 && a && Object.defineProperty(t, o, a),
+            a
+        }
+        ;
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var a = cc._decorator
+          , s = a.ccclass
+          , c = a.property
+          , l = function(e) {
+            function t() {
+                var t = null !== e && e.apply(this, arguments) || this;
+                return t._wRadius = .4,
+                t._hRadius = .4,
+                t
+            }
+            return n(t, e),
+            Object.defineProperty(t.prototype, "wRadius", {
+                get: function() {
+                    return this._wRadius
+                },
+                set: function(e) {
+                    this._wRadius = e,
+                    this.refreshMaterial()
+                },
+                enumerable: !1,
+                configurable: !0
+            }),
+            Object.defineProperty(t.prototype, "hRadius", {
+                get: function() {
+                    return this._hRadius
+                },
+                set: function(e) {
+                    this._hRadius = e,
+                    this.refreshMaterial()
+                },
+                enumerable: !1,
+                configurable: !0
+            }),
+            t.prototype.start = function() {
+                this.refreshMaterial()
+            }
+            ,
+            t.prototype.refreshMaterial = function() {
+                var e = this.getComponent(cc.Sprite)
+                  , t = e.getMaterial(0);
+                t && "circular_bead" == t.effectAsset.name && (null != this.wRadius && t.setProperty("w_radius", this.wRadius),
+                null != this.hRadius && t.setProperty("h_radius", this.hRadius),
+                e.setMaterial(0, t))
+            }
+            ,
+            r([c], t.prototype, "_wRadius", void 0),
+            r([c], t.prototype, "wRadius", null),
+            r([c], t.prototype, "_hRadius", void 0),
+            r([c], t.prototype, "hRadius", null),
+            r([s], t)
+        }(cc.Component);
+        o.default = l,
+        cc._RF.pop()
+    }
+    , {}],
+    Effect_Dibble: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "62aa2GvWBxNWLXVZJfmretd", "Effect_Dibble");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        ), r = this && this.__decorate || function(e, t, o, i) {
+            var n, r = arguments.length, a = r < 3 ? t : null === i ? i = Object.getOwnPropertyDescriptor(t, o) : i;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate)
+                a = Reflect.decorate(e, t, o, i);
+            else
+                for (var s = e.length - 1; s >= 0; s--)
+                    (n = e[s]) && (a = (r < 3 ? n(a) : r > 3 ? n(t, o, a) : n(t, o)) || a);
+            return r > 3 && a && Object.defineProperty(t, o, a),
+            a
+        }
+        ;
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var a = cc._decorator
+          , s = a.ccclass
+          , c = a.property
+          , l = function(e) {
+            function t() {
+                var t = null !== e && e.apply(this, arguments) || this;
+                return t._hole0 = null,
+                t._hole1 = null,
+                t._round0 = -1,
+                t._round1 = -1,
+                t._direction = -1,
+                t
+            }
+            return n(t, e),
+            Object.defineProperty(t.prototype, "hole0", {
+                get: function() {
+                    return this._hole0
+                },
+                set: function(e) {
+                    this._hole0 = e,
+                    this.refreshMaterial()
+                },
+                enumerable: !1,
+                configurable: !0
+            }),
+            Object.defineProperty(t.prototype, "hole1", {
+                get: function() {
+                    return this._hole1
+                },
+                set: function(e) {
+                    this._hole1 = e,
+                    this.refreshMaterial()
+                },
+                enumerable: !1,
+                configurable: !0
+            }),
+            Object.defineProperty(t.prototype, "round0", {
+                get: function() {
+                    return this._round0
+                },
+                set: function(e) {
+                    this._round0 = e,
+                    this.refreshMaterial()
+                },
+                enumerable: !1,
+                configurable: !0
+            }),
+            Object.defineProperty(t.prototype, "round1", {
+                get: function() {
+                    return this._round1
+                },
+                set: function(e) {
+                    this._round1 = e,
+                    this.refreshMaterial()
+                },
+                enumerable: !1,
+                configurable: !0
+            }),
+            Object.defineProperty(t.prototype, "direction", {
+                get: function() {
+                    return this._direction
+                },
+                set: function(e) {
+                    this._direction = e,
+                    this.refreshMaterial()
+                },
+                enumerable: !1,
+                configurable: !0
+            }),
+            t.prototype.start = function() {
+                this.refreshMaterial()
+            }
+            ,
+            t.prototype.refreshMaterial = function() {
+                var e = this.getComponent(cc.Sprite)
+                  , t = (e = this.node.getComponent(cc.Sprite)).getMaterial(0);
+                t && "Effect_Dibble" == t.effectAsset.name && (t.setProperty("u_tex_size", [this.node.width, this.node.height]),
+                null != this.hole0 && t.setProperty("u_hole0_lrbt", [this.hole0.x, this.hole0.y, this.hole0.z, this.hole0.w]),
+                null != this.hole1 && t.setProperty("u_hole1_lrbt", [this.hole1.x, this.hole1.y, this.hole1.z, this.hole1.w]),
+                null != this.direction && t.setProperty("u_direction", this.direction),
+                null != this.round0 && t.setProperty("u_round0", this.round0),
+                null != this.round1 && t.setProperty("u_round1", this.round1),
+                e.setMaterial(0, t))
+            }
+            ,
+            r([c(cc.Vec4)], t.prototype, "_hole0", void 0),
+            r([c(cc.Vec4)], t.prototype, "hole0", null),
+            r([c(cc.Vec4)], t.prototype, "_hole1", void 0),
+            r([c(cc.Vec4)], t.prototype, "hole1", null),
+            r([c], t.prototype, "_round0", void 0),
+            r([c], t.prototype, "round0", null),
+            r([c], t.prototype, "_round1", void 0),
+            r([c], t.prototype, "round1", null),
+            r([c], t.prototype, "_direction", void 0),
+            r([c], t.prototype, "direction", null),
+            r([s], t)
+        }(cc.Component);
+        o.default = l,
+        cc._RF.pop()
+    }
+    , {}],
+    FudaiUI: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "156bfL53ApI943ptSyqWNC5", "FudaiUI");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var r = e("../config/Config")
+          , a = e("../../base/SoundMgr")
+          , s = e("../../base/common/view/Tip")
+          , c = e("../../base/LogicMgr")
+          , l = e("../../base/common/view/UIPicText")
+          , h = e("../../base/common/MessageMgr")
+          , d = e("../../base/net/NetMgr")
+          , f = e("../../base/net/EEvent")
+          , u = e("../../base/LevelMgr")
+          , p = e("../../base/res/DyncMgr")
+          , g = e("../../base/common/Func")
+          , _ = cc.Vec3.ZERO
+          , m = ["idle", "idle2", "jump"]
+          , y = cc.v2(-33, -67)
+          , v = -1
+          , C = function() {
+            function e(e, t, o) {
+                this._index = e,
+                this._root = t,
+                this._root.parent = o,
+                t.getChildByName("btn").on(c.ConstDefine.click, this.onClick, this),
+                this._animNode = t.getChildByName("anim"),
+                this._spine = this._animNode.getComponent(sp.Skeleton),
+                this._credit = new l.default("fudai",t.getChildByName("credit"))
+            }
+            return e.prototype.reset = function() {
+                this._spine.setAnimation(0, "idle", !1),
+                this._animNode.color = cc.Color.WHITE,
+                this._credit.setStr("")
+            }
+            ,
+            e.prototype.onClick = function() {
+                v >= 0 || (v = this._index,
+                d.NetMgr.createWebSocket(),
+                h.MessageMgr.once(h.MessageName.NetOpen, this.netOpen, this))
+            }
+            ,
+            e.prototype.netOpen = function() {
+                var e = {
+                    userid: c.default.login.userID,
+                    dynamicpass: c.default.login.dynamicPass
+                };
+                d.NetMgr.send(f.Cmd.MDM_MB_LOGON, f.Cmd.SUB_GET_FUDAI, e)
+            }
+            ,
+            e.prototype.playAnim = function() {
+                var e = g.default.randomInt(0, m.length - 1);
+                this._spine.setAnimation(0, m[e], !1)
+            }
+            ,
+            e.prototype.showPrize = function(e) {
+                var t = this;
+                e > 0 ? (a.default.playEffect("fudai_4"),
+                this._spine.setAnimation(0, "click_fu", !1),
+                setTimeout(function() {
+                    t._credit.setValue(e),
+                    t._credit.setColor(t._animNode.color)
+                }, 500)) : (a.default.playEffect("fudai_3"),
+                this._spine.setAnimation(0, "click_kong", !1))
+            }
+            ,
+            e.prototype.animGray = function() {
+                this._animNode.color = cc.Color.GRAY
+            }
+            ,
+            e
+        }()
+          , b = function(e) {
+            function t() {
+                var t = null !== e && e.apply(this, arguments) || this;
+                return t._fudaiArr = [],
+                t._fudaiTimeout = [],
+                t._intervalHandle = 0,
+                t._credit = 0,
+                t._effectInfo = {
+                    id: 0,
+                    name: ""
+                },
+                t
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                e.prototype.initParams.call(this),
+                this._closeNode = this._popupMethod.root.getChildByName("close"),
+                this._closeNode.on(c.ConstDefine.click, this.close, this);
+                var t = this._popupMethod.root.getChildByName("select")
+                  , o = t.getChildByName("prefab");
+                this._fudaiArr[0] = new C(0,o,t);
+                for (var i = 1; i < 9; i++)
+                    this._fudaiArr[i] = new C(i,cc.instantiate(o),t);
+                this._winTipNode = this._popupMethod.root.getChildByName("winTip"),
+                this._winTipNode.active = !1;
+                var n = this._winTipNode.getChildByName("bg").getComponent(sp.Skeleton).attachUtil.generateAttachedNodes("frame")
+                  , a = this._winTipNode.getChildByName("credit");
+                a.parent = n[0],
+                this._creditUIPic = new l.default("jp",a),
+                this._winTipNode.getChildByName("confirm").on(c.ConstDefine.click, this.onConfirm, this),
+                this._jinbiNode = this._winTipNode.getChildByName("jinbi"),
+                this._particles = this._jinbiNode.getComponentsInChildren(cc.ParticleSystem3D),
+                this._jinbiNode.active = !1,
+                u.default.Instance.setLevel(this._jinbiNode, r.AdaptLevel.creditUI);
+                var s = this._popupMethod.root.getChildByName("test");
+                for (c.default.login.testAcccount ? s.on(c.ConstDefine.click, this.onTest, this) : s.destroy(),
+                i = 0; i < 9; i++)
+                    this._fudaiTimeout[i] = 0
+            }
+            ,
+            t.prototype.resetParams = function() {
+                e.prototype.resetParams.call(this);
+                for (var t = 0; t < 9; t++)
+                    this._fudaiArr[t].reset();
+                v = -1,
+                this._jinbiNode.setPosition(y),
+                this._closeNode.active = !0,
+                this._intervalHandle = setInterval(this.playAnim.bind(this), 2e3),
+                h.MessageMgr.on(h.MessageName.NetMsg, this.onLogonNet, this),
+                h.MessageMgr.emit(h.MessageName.ShowCreditBox, !1),
+                a.default.pauseBGM(),
+                a.default.playEffect("fudai_0", this._effectInfo)
+            }
+            ,
+            t.prototype.onTest = function() {
+                for (var e = 0; e < 9; e++)
+                    clearTimeout(this._fudaiTimeout[e]),
+                    this._fudaiArr[e].reset();
+                this._jinbiNode.setPosition(y),
+                v = g.default.randomInt(0, 8);
+                var t = r.Config.prize1[g.default.randomInt(0, r.Config.prize1.length - 1)];
+                h.MessageMgr.emit(h.MessageName.NetMsg, {
+                    mainID: f.Cmd.MDM_MB_LOGON,
+                    subID: f.Cmd.SUB_GET_FUDAI_RESULT,
+                    data: {
+                        result: 0,
+                        lotteryscore: t,
+                        score: c.default.login.score + t
+                    }
+                })
+            }
+            ,
+            t.prototype.playAnim = function() {
+                var e = g.default.randomInt(0, 8);
+                this._fudaiArr[e].playAnim()
+            }
+            ,
+            t.prototype.onConfirm = function() {
+                a.default.playEffect("prize_8"),
+                h.MessageMgr.emit(h.MessageName.ShowCreditBox, !0),
+                this._jinbiNode.active = !0;
+                for (var e = 0, t = this._particles; e < t.length; e++) {
+                    var o = t[e];
+                    o.clear(),
+                    o.play()
+                }
+                this.setJinbinodeScale(3);
+                for (var i = 0, n = this._jinbiNode.children; i < n.length; i++) {
+                    var r = n[i];
+                    cc.tween(r).to(1, {
+                        scale: 1.5
+                    }).start()
+                }
+                var s = c.default.login.openWinScore ? c.default.doubleCreditPos : c.default.singleCreditPos;
+                this._jinbiNode.parent.convertToNodeSpaceAR(s, _),
+                cc.tween(this._jinbiNode).to(1.5, {
+                    position: _
+                }).delay(1.6).call(this.showResult.bind(this)).start()
+            }
+            ,
+            t.prototype.setJinbinodeScale = function(e) {
+                for (var t = 0, o = this._jinbiNode.children; t < o.length; t++)
+                    o[t].setScale(e)
+            }
+            ,
+            t.prototype.close = function() {
+                e.prototype.close.call(this),
+                a.default.playEffect(c.ConstDefine.click),
+                a.default.stopEffect(this._effectInfo.id, this._effectInfo.name),
+                a.default.resumeBGM();
+                for (var t = 0; t < 9; t++)
+                    clearTimeout(this._fudaiTimeout[t]);
+                clearInterval(this._intervalHandle),
+                h.MessageMgr.off(h.MessageName.NetMsg, this.onLogonNet, this),
+                h.MessageMgr.emit(h.MessageName.ShowCreditBox, !0)
+            }
+            ,
+            t.prototype.onLogonNet = function(e) {
+                var t = this;
+                if (e.mainID === f.Cmd.MDM_MB_LOGON && e.subID === f.Cmd.SUB_GET_FUDAI_RESULT)
+                    if (console.log("\u798f\u888b\u7f51\u7edc\u6d88\u606f\u8fd4\u56de", e),
+                    clearInterval(this._intervalHandle),
+                    this._closeNode.active = !1,
+                    0 === e.data.result) {
+                        this._credit = e.data.lotteryscore,
+                        this._fudaiArr[v].showPrize(e.data.lotteryscore);
+                        for (var o = 0; o < 9; o++)
+                            o !== v && this._fudaiArr[o].animGray();
+                        e.data.lotteryscore > 0 ? (a.default.playEffect("fudai_2"),
+                        setTimeout(function() {
+                            t._creditUIPic.setValue(t._credit, c.default.login.creditPrefix),
+                            t._winTipNode.active = !0,
+                            t._winTipNode.setScale(0),
+                            cc.tween(t._winTipNode).to(.3, {
+                                scale: 1
+                            }).start(),
+                            t._jinbiNode.active = !1
+                        }, 3e3)) : (a.default.playEffect("fudai_1"),
+                        setTimeout(function() {
+                            t.showResult()
+                        }, 2e3)),
+                        c.default.login.score = e.data.score
+                    } else
+                        p.default.getResInfo(c.ConstDefine.msgTip, "session timeout, please log in again!")
+            }
+            ,
+            t.prototype.showResult = function() {
+                var e = this;
+                this._closeNode.active = !0,
+                this._winTipNode.active = !1,
+                this._jinbiNode.active = !1;
+                var t = g.default.randomInt(0, r.Config.prize1.length - 1)
+                  , o = [0, 0, 0];
+                for (this._credit > 0 && (o.push(0),
+                h.MessageMgr.emit(h.MessageName.UpdateCredit)),
+                c.default.reqUserInfo(); o.length < 8; ) {
+                    var i = r.Config.prize1[t];
+                    i > 0 && i !== this._credit && o.push(i),
+                    ++t >= r.Config.prize1.length && (t = 0)
+                }
+                for (var n = 0, a = function(t) {
+                    t !== v && (s._fudaiTimeout[t] = setTimeout(function() {
+                        var i = g.default.randomInt(0, o.length - 1);
+                        e._fudaiArr[t].showPrize(o[i]),
+                        cc.js.array.fastRemoveAt(o, i)
+                    }, n),
+                    n += 1e3)
+                }, s = this, l = 0; l < 9; l++)
+                    a(l)
+            }
+            ,
+            t
+        }(s.PopupBase);
+        o.default = b,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LevelMgr": "LevelMgr",
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/SoundMgr": "SoundMgr",
+        "../../base/common/Func": "Func",
+        "../../base/common/MessageMgr": "MessageMgr",
+        "../../base/common/view/Tip": "Tip",
+        "../../base/common/view/UIPicText": "UIPicText",
+        "../../base/net/EEvent": "EEvent",
+        "../../base/net/NetMgr": "NetMgr",
+        "../../base/res/DyncMgr": "DyncMgr",
+        "../config/Config": "Config"
+    }],
+    Func: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "4dae8NJeWNNLoh/bNs5Qqvn", "Func"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var i = e("../third/crypto-js/crypto-js")
+          , n = cc.Vec2.ZERO
+          , r = cc.Vec3.ZERO
+          , a = []
+          , s = [0, 0]
+          , c = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f", "g"]
+          , l = function() {
+            function e() {}
+            return e.randomNum = function(e, t) {
+                return Math.random() * (t - e + 1) + e
+            }
+            ,
+            e.randomInt = function(e, t) {
+                return Math.floor(this.randomNum(e, t))
+            }
+            ,
+            e.clearArray = function(e) {
+                e.splice(0, e.length)
+            }
+            ,
+            e.addClearArr = function(e, t) {
+                e.push.apply(e, t),
+                this.clearArray(t)
+            }
+            ,
+            e.isJSON = function(e) {
+                return "object" == typeof e && e.constructor == Object
+            }
+            ,
+            e.isArray = function(e) {
+                return "[object Array]" == Object.prototype.toString.call(e)
+            }
+            ,
+            e.mergeJSON = function(e, t) {
+                if (void 0 !== e)
+                    for (var o in e)
+                        void 0 !== t[o] && this.isJSON(e[o]) ? this.mergeJSON(e[o], t[o]) : t[o] = e[o]
+            }
+            ,
+            e.coverCfgFunc = function(e, t, o) {
+                void 0 !== t && this.mergeJSON(t, e),
+                void 0 !== o && this.mergeJSON(o, e)
+            }
+            ,
+            e.mergeJSONOnce = function(e, t) {
+                t.once && (this.mergeJSON(e, t),
+                t.once = void 0)
+            }
+            ,
+            e.getMergeData = function(e, t) {
+                var o = this.deepMerge(t);
+                return e && this.mergeJSON(e, o),
+                o
+            }
+            ,
+            e.arrayStr2ObjectVal = function(e) {
+                for (var t = Object.create(null), o = 0; o < e.length; o++)
+                    t[e[o]] = o;
+                return t
+            }
+            ,
+            e.arrayStr2ObjectStr = function(e) {
+                for (var t = Object.create(null), o = 0; o < e.length; o++)
+                    t[e[o]] = e[o];
+                return t
+            }
+            ,
+            e.stringToBytes = function(e) {
+                var t, o;
+                this.clearArray(a),
+                t = e.length;
+                for (var i = 0; i < t; i++)
+                    (o = e.charCodeAt(i)) >= 65536 && o <= 1114111 ? (a[a.length] = o >> 18 & 7 | 240,
+                    a[a.length] = o >> 12 & 63 | 128,
+                    a[a.length] = o >> 6 & 63 | 128,
+                    a[a.length] = 63 & o | 128) : o >= 2048 && o <= 65535 ? (a[a.length] = o >> 12 & 15 | 224,
+                    a[a.length] = o >> 6 & 63 | 128,
+                    a[a.length] = 63 & o | 128) : o >= 128 && o <= 2047 ? (a[a.length] = o >> 6 & 31 | 192,
+                    a[a.length] = 63 & o | 128) : a[a.length] = 255 & o;
+                return a
+            }
+            ,
+            e.stringToHex = function(e) {
+                for (var t = "", o = 0; o < e.length; o++)
+                    "" == t ? t = e.charCodeAt(o).toString(16) : t += e.charCodeAt(o).toString(16);
+                return t + "0a"
+            }
+            ,
+            e.timeStr2Second = function(e) {
+                if ("" == e)
+                    return 0;
+                var t = e.match(/\d+/g);
+                return 3600 * Number(t[0]) + 60 * Number(t[1]) + Number(t[2])
+            }
+            ,
+            e.second2TimeStr = function(e) {
+                var t = Math.floor(e / 3600);
+                e %= 3600;
+                var o = Math.floor(e / 60)
+                  , i = e % 60;
+                return String(t).padStart(2, "0") + ":" + String(o).padStart(2, "0") + ":" + String(i).padStart(2, "0")
+            }
+            ,
+            e.hexToString = function(e) {
+                for (var t = e.split(""), o = "", i = 0; i < t.length / 2; i++) {
+                    var n = "0x" + t[2 * i] + t[2 * i + 1];
+                    o += String.fromCharCode(parseInt(n))
+                }
+                return o
+            }
+            ,
+            e.fillZero = function(e) {
+                return e < 10 ? "0" + e : e.toString()
+            }
+            ,
+            e.bytesToString = function(e, t) {
+                var o, i, n, r;
+                null == t && (t = e.length),
+                this.clearArray(a);
+                for (var s = 0; s < t; s++)
+                    if ((r = (n = e[s].toString(2)).match(/^1+?(?=0)/)) && 8 == n.length) {
+                        o = r[0].length,
+                        i = e[s].toString(2).slice(7 - o);
+                        for (var c = 1; c < o; c++)
+                            i += e[c + s].toString(2).slice(2);
+                        a[a.length] = parseInt(i, 2),
+                        s += o - 1
+                    } else
+                        a[a.length] = e[s];
+                return String.fromCharCode.apply(String, a)
+            }
+            ,
+            e.utf16ToString = function(e, t) {
+                this.clearArray(a),
+                null == t && (t = e.length);
+                for (var o, i, n, r = -1; r < t; )
+                    if (o = e[++r],
+                    (i = (e[++r] << 8) + o) < 55296 || i >= 57344) {
+                        if (0 === i)
+                            break;
+                        a.push(i)
+                    } else
+                        i >= 55296 && i < 56320 && r + 2 < t && (o = e[++r],
+                        (n = (e[++r] << 8) + o) >= 56320 && n < 57344 && (i &= 16368,
+                        i += 1023 & n,
+                        a.push(i)));
+                return String.fromCharCode.apply(String, a)
+            }
+            ,
+            e.bytesToString2 = function(e) {
+                this.clearArray(a);
+                for (var t = 0, o = e.length; t < o && 0 != e[t]; t++)
+                    a[a.length] = e[t];
+                return String.fromCharCode.apply(String, a)
+            }
+            ,
+            e.int16ToBytes = function(e) {
+                return this.clearArray(a),
+                a[a.length] = e >>> 8 & 255,
+                a[a.length] = 255 & e,
+                a
+            }
+            ,
+            e.int32ToBytes = function(e) {
+                return this.clearArray(a),
+                a[a.length] = 255 & e,
+                a[a.length] = e >>> 8 & 255,
+                a[a.length] = e >>> 16 & 255,
+                a[a.length] = e >>> 24 & 255,
+                a
+            }
+            ,
+            e.bytesToInt16 = function(e, t) {
+                return ((255 & e) << 8) + (255 & t)
+            }
+            ,
+            e.bytesArrToInt32 = function(e, t) {
+                return void 0 === t && (t = 0),
+                this.bytesToInt32(e[t + 3], e[t + 2], e[t + 1], e[t])
+            }
+            ,
+            e.bytesToInt32 = function(e, t, o, i) {
+                return ((255 & e) << 24) + ((255 & t) << 16) + ((255 & o) << 8) + (255 & i)
+            }
+            ,
+            e.vec2ToArr = function(e) {
+                return s[0] = e.x,
+                s[1] = e.y,
+                s
+            }
+            ,
+            e.arrToVec2 = function(e, t) {
+                var o = t || n;
+                return cc.Vec2.set(o, e[0], e[1]),
+                o
+            }
+            ,
+            e.numToVec2 = function(e, t) {
+                return cc.Vec2.set(n, e, t)
+            }
+            ,
+            e.encryMd5 = function(e) {
+                return i.MD5(e).toString()
+            }
+            ,
+            e.getSignature = function(e, t, o) {
+                var i = t + o + e + "RYSyncLoginKey";
+                return (i = this.encryMd5(i)).toUpperCase()
+            }
+            ,
+            e.decryptAES = function(e) {
+                try {
+                    var t = i.enc.Utf8.parse("pbc_efgfi1@l0nwp")
+                      , o = i.enc.Utf8.parse("pbc_efgfi1@l0nwp");
+                    return i.AES.decrypt({
+                        ciphertext: i.enc.Base64.parse(e)
+                    }, t, {
+                        iv: o,
+                        mode: i.mode.CBC,
+                        padding: i.pad.Pkcs7
+                    }).toString(i.enc.Utf8)
+                } catch (n) {
+                    return "false"
+                }
+            }
+            ,
+            e.customEncry = function(t) {
+                var o = e.stringToHex(t);
+                t = "";
+                for (var i = 0; i < o.length; ++i) {
+                    var n = c.indexOf(o[i]);
+                    t += c[n + 1]
+                }
+                return t
+            }
+            ,
+            e.customDecrypt = function(t) {
+                for (var o = "", i = 0; i < t.length; ++i) {
+                    var n = c.indexOf(t[i]);
+                    o += c[n - 1]
+                }
+                return e.hexToString(o)
+            }
+            ,
+            e.vec2ToVec3 = function(e) {
+                return r.x = e.x,
+                r.y = e.y,
+                r
+            }
+            ,
+            e.vec3ToVec2 = function(e) {
+                return n.x = e.x,
+                n.y = e.y,
+                n
+            }
+            ,
+            e.isMasterSide = function(e, t) {
+                return Math.floor(t / 2) == Math.floor(e / 2)
+            }
+            ,
+            e.setState = function(e, t, o) {
+                e.tim = o || 0,
+                e.state = t
+            }
+            ,
+            e.bytesCopy = function(e, t, o, i, n) {
+                for (var r = 0; r < n; ++r)
+                    o[i + r] = e[t + r]
+            }
+            ,
+            e.replaceNodeFunc = function(e, t) {
+                var o = e.parent
+                  , i = e.getSiblingIndex();
+                e.destroy(),
+                t.parent = o,
+                t.setSiblingIndex(i)
+            }
+            ,
+            e.createPosRoot = function(e) {
+                var t = new cc.Node;
+                return t.parent = e.parent,
+                e.parent = t,
+                t
+            }
+            ,
+            e.instanceMount = function(e, t) {
+                var o = cc.instantiate(e);
+                return o.setParent(t),
+                o
+            }
+            ,
+            e.Logic2Device = function(e) {
+                return n.x = e.x / 1600,
+                n.y = e.y / 900,
+                n
+            }
+            ,
+            e.GetDeviceZoom = function() {
+                return (625e-6 + 1 / 900) / 2
+            }
+            ,
+            e.num2Str = function(e, t) {
+                for (var o = e.toString(); o.length < t; )
+                    o = "0" + o;
+                return o
+            }
+            ,
+            e.change2Time = function(e) {
+                var t = e.match(/\d+\/\d+ \d+:\d+/);
+                return t ? t[0] : e
+            }
+            ,
+            e.isPlainObject = function(e) {
+                return "[object Object]" === toString.call(e)
+            }
+            ,
+            e.removeAllComponents = function(e, t) {
+                for (var o = 0, i = e.getComponentsInChildren(t); o < i.length; o++)
+                    i[o].destroy()
+            }
+            ,
+            e.nodeZoomIn = function(e, t) {
+                e.setScale(0),
+                cc.tween(e).to(t, {
+                    scale: 1
+                }).start()
+            }
+            ,
+            e.deepMerge = function(e) {
+                if (null === e || "object" != typeof e)
+                    return e;
+                var t = e instanceof Array ? [] : {};
+                for (var o in e)
+                    t[o] = this.deepMerge(e[o]);
+                return t
+            }
+            ,
+            e.outPutJson = function(e, t, o) {
+                var i, n = this;
+                if (void 0 === t && (t = ""),
+                void 0 === o && (o = 0),
+                "object" == typeof e) {
+                    for (var r = "\n", a = "\n", s = 0; s < o; s++)
+                        a += "\t",
+                        r += "\t";
+                    r += "\t",
+                    o++,
+                    i = a,
+                    i += "" == t ? t : '"' + t + '": ';
+                    var c = e instanceof Array
+                      , l = c ? "]" : "}";
+                    i += c ? "[" : "{",
+                    c ? e.forEach(function(t, a) {
+                        var s = !0;
+                        switch (typeof t) {
+                        case "object":
+                            i += n.outPutJson(t, "", o);
+                            break;
+                        case "string":
+                            i += r + '"' + t + '"';
+                            break;
+                        case "boolean":
+                        case "number":
+                            i += r + t;
+                            break;
+                        default:
+                            s = !1
+                        }
+                        s && a < e.length - 1 && (i += ",")
+                    }) : Object.keys(e).forEach(function(t, a, s) {
+                        var c = !0
+                          , l = e[t];
+                        switch (typeof l) {
+                        case "object":
+                            i += n.outPutJson(l, t, o);
+                            break;
+                        case "string":
+                            i += r + '"' + t + '": "' + l + '"';
+                            break;
+                        case "boolean":
+                        case "number":
+                            i += r + '"' + t + '": ' + l;
+                            break;
+                        default:
+                            c = !1
+                        }
+                        c && a < s.length - 1 && (i += ",")
+                    }),
+                    i += a + l
+                }
+                return i
+            }
+            ,
+            e.editboxDisplay = function() {}
+            ,
+            e.removeLoading = function() {
+                var e = document.getElementById("splash");
+                e && e.remove()
+            }
+            ,
+            e.getStorage = function(e) {
+                return cc.sys.isBrowser ? sessionStorage.getItem(e) : cc.sys.localStorage.getItem(e)
+            }
+            ,
+            e.setStorage = function(e, t) {
+                return cc.sys.isBrowser ? sessionStorage.setItem(e, t) : cc.sys.localStorage.setItem(e, t)
+            }
+            ,
+            e.removeStorage = function(e) {
+                return cc.sys.isBrowser ? sessionStorage.removeItem(e) : cc.sys.localStorage.removeItem(e)
+            }
+            ,
+            e.isRotateDev = function() {
+                return void 0 !== window.orientation
+            }
+            ,
+            e.findRandomIndex = function(t, o) {
+                for (var i = t.length, n = e.randomInt(0, i - 1), r = i; r > 0; ) {
+                    if (t[n] === o)
+                        return n;
+                    ++n >= i && (n = 0),
+                    --r
+                }
+                return -1
+            }
+            ,
+            e
+        }();
+        o.default = l,
+        cc._RF.pop()
+    }
+    , {
+        "../third/crypto-js/crypto-js": "crypto-js"
+    }],
+    GTAssembler2D: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "d5ac5vxwuxO2JMm+8dosIur", "GTAssembler2D");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var r = function(e) {
+            function t() {
+                var t = null !== e && e.apply(this, arguments) || this;
+                return t.verticesCount = 4,
+                t.indicesCount = 6,
+                t.floatsPerVert = 5,
+                t.uvOffset = 2,
+                t.colorOffset = 4,
+                t._renderData = null,
+                t._local = null,
+                t
+            }
+            return n(t, e),
+            t.prototype.init = function(t) {
+                e.prototype.init.call(this, t),
+                this._renderData = new cc.RenderData,
+                this._renderData.init(this),
+                this.initLocal(),
+                this.initData()
+            }
+            ,
+            Object.defineProperty(t.prototype, "verticesFloats", {
+                get: function() {
+                    return this.verticesCount * this.floatsPerVert
+                },
+                enumerable: !1,
+                configurable: !0
+            }),
+            t.prototype.initData = function() {
+                this._renderData.createQuadData(0, this.verticesFloats, this.indicesCount)
+            }
+            ,
+            t.prototype.initLocal = function() {
+                this._local = [],
+                this._local.length = 4
+            }
+            ,
+            t.prototype.updateColor = function(e, t) {
+                var o = this._renderData.uintVDatas[0];
+                if (o) {
+                    t = null != t ? t : e.node.color._val;
+                    for (var i = this.floatsPerVert, n = this.colorOffset, r = o.length; n < r; n += i)
+                        o[n] = t
+                }
+            }
+            ,
+            t.prototype.getBuffer = function() {
+                return cc.renderer._handle._meshBuffer
+            }
+            ,
+            t.prototype.updateWorldVerts = function(e) {
+                this.updateWorldVertsWebGL(e)
+            }
+            ,
+            t.prototype.updateWorldVertsWebGL = function(e) {
+                var t = this._local
+                  , o = this._renderData.vDatas[0]
+                  , i = e.node._worldMatrix.m
+                  , n = i[0]
+                  , r = i[1]
+                  , a = i[4]
+                  , s = i[5]
+                  , c = i[12]
+                  , l = i[13]
+                  , h = t[0]
+                  , d = t[2]
+                  , f = t[1]
+                  , u = t[3]
+                  , p = 1 === n && 0 === r && 0 === a && 1 === s
+                  , g = 0
+                  , _ = this.floatsPerVert;
+                if (p)
+                    o[g] = h + c,
+                    o[g + 1] = f + l,
+                    o[g += _] = d + c,
+                    o[g + 1] = f + l,
+                    o[g += _] = h + c,
+                    o[g + 1] = u + l,
+                    o[g += _] = d + c,
+                    o[g + 1] = u + l;
+                else {
+                    var m = n * h
+                      , y = n * d
+                      , v = r * h
+                      , C = r * d
+                      , b = a * f
+                      , M = a * u
+                      , S = s * f
+                      , N = s * u;
+                    o[g] = m + b + c,
+                    o[g + 1] = v + S + l,
+                    o[g += _] = y + b + c,
+                    o[g + 1] = C + S + l,
+                    o[g += _] = m + M + c,
+                    o[g + 1] = v + N + l,
+                    o[g += _] = y + M + c,
+                    o[g + 1] = C + N + l
+                }
+            }
+            ,
+            t.prototype.updateWorldVertsNative = function() {
+                var e = this._local
+                  , t = this._renderData.vDatas[0]
+                  , o = this.floatsPerVert
+                  , i = e[0]
+                  , n = e[2]
+                  , r = e[1]
+                  , a = e[3]
+                  , s = 0;
+                t[s] = i,
+                t[s + 1] = r,
+                t[s += o] = n,
+                t[s + 1] = r,
+                t[s += o] = i,
+                t[s + 1] = a,
+                t[s += o] = n,
+                t[s + 1] = a
+            }
+            ,
+            t.prototype.fillBuffers = function(e, t) {
+                t.worldMatDirty && this.updateWorldVerts(e);
+                var o = this._renderData
+                  , i = o.vDatas[0]
+                  , n = o.iDatas[0]
+                  , r = this.getBuffer()
+                  , a = r.request(this.verticesCount, this.indicesCount)
+                  , s = a.byteOffset >> 2
+                  , c = r._vData;
+                i.length + s > c.length ? c.set(i.subarray(0, c.length - s), s) : c.set(i, s);
+                for (var l = r._iData, h = a.indiceOffset, d = a.vertexOffset, f = 0, u = n.length; f < u; f++)
+                    l[h++] = d + n[f]
+            }
+            ,
+            t.prototype.packToDynamicAtlas = function(e, t) {
+                if (!t._original && cc.dynamicAtlasManager && t._texture.packable) {
+                    var o = cc.dynamicAtlasManager.insertSpriteFrame(t);
+                    o && t._setDynamicAtlasFrame(o)
+                }
+                var i = e._materials[0];
+                i && i.getProperty("texture") !== t._texture && (e._vertsDirty = !0,
+                e._updateMaterial())
+            }
+            ,
+            t.prototype.updateUVs = function() {
+                for (var e = [0, 0, 1, 0, 0, 1, 1, 1], t = this.uvOffset, o = this.floatsPerVert, i = this._renderData.vDatas[0], n = 0; n < 4; n++) {
+                    var r = 2 * n
+                      , a = o * n + t;
+                    i[a] = e[r],
+                    i[a + 1] = e[r + 1]
+                }
+            }
+            ,
+            t.prototype.updateVerts = function(e) {
+                var t, o, i, n, r = e.node, a = r.width, s = r.height, c = r.anchorX * a, l = r.anchorY * s;
+                t = -c,
+                o = -l,
+                i = a - c,
+                n = s - l;
+                var h = this._local;
+                h[0] = t,
+                h[1] = o,
+                h[2] = i,
+                h[3] = n,
+                this.updateWorldVerts(e)
+            }
+            ,
+            t.prototype.updateRenderData = function(e) {
+                e._vertsDirty && (this.updateUVs(e),
+                this.updateVerts(e),
+                e._vertsDirty = !1)
+            }
+            ,
+            t
+        }(cc.Assembler);
+        o.default = r,
+        cc._RF.pop()
+    }
+    , {}],
+    GTAutoFitSpriteAssembler2D: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "4a100gRv/xGu76m/86HBMsD", "GTAutoFitSpriteAssembler2D");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var r = function(e) {
+            function t() {
+                var t = null !== e && e.apply(this, arguments) || this;
+                return t._uv = [],
+                t
+            }
+            return n(t, e),
+            t.prototype.updateUVs = function(t) {
+                var o = t._spriteFrame.getRect()
+                  , i = t.node;
+                if (o.width && o.height && i.width && i.height) {
+                    Object.assign(this._uv, t._spriteFrame.uv);
+                    var n = this._uv
+                      , r = o.width / i.width
+                      , a = o.height / i.height
+                      , s = t._spriteFrame.isRotated()
+                      , c = n[0]
+                      , l = n[2]
+                      , h = n[1]
+                      , d = n[5];
+                    if (s && (c = n[1],
+                    l = n[3],
+                    h = n[0],
+                    d = n[4]),
+                    r > a) {
+                        var f = .5 * (c + l)
+                          , u = .5 * (l - c) * (a / r);
+                        c = n[0 + (p = s ? 1 : 0)] = n[4 + p] = f - u,
+                        l = n[2 + p] = n[6 + p] = f + u
+                    } else {
+                        var p;
+                        f = .5 * (h + d),
+                        u = .5 * (h - d) * (r / a),
+                        h = n[1 + (p = s ? -1 : 0)] = n[3 + p] = f + u,
+                        d = n[5 + p] = n[7 + p] = f - u
+                    }
+                    for (var g = this.uvOffset, _ = this.floatsPerVert, m = this._renderData.vDatas[0], y = 0; y < 4; y++) {
+                        var v = 2 * y
+                          , C = _ * y + g;
+                        m[C] = n[v],
+                        m[C + 1] = n[v + 1]
+                    }
+                } else
+                    e.prototype.updateUVs.call(this, t)
+            }
+            ,
+            t
+        }(e("./GTSimpleSpriteAssembler2D").default);
+        o.default = r,
+        cc._RF.pop()
+    }
+    , {
+        "./GTSimpleSpriteAssembler2D": "GTSimpleSpriteAssembler2D"
+    }],
+    GTSimpleSpriteAssembler2D: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "fac4elnpuhDWbUebRsZrKIu", "GTSimpleSpriteAssembler2D");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var r = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.updateRenderData = function(t) {
+                this.packToDynamicAtlas(t, t._spriteFrame),
+                e.prototype.updateRenderData.call(this, t)
+            }
+            ,
+            t.prototype.updateUVs = function(e) {
+                for (var t = e._spriteFrame.uv, o = this.uvOffset, i = this.floatsPerVert, n = this._renderData.vDatas[0], r = 0; r < 4; r++) {
+                    var a = 2 * r
+                      , s = i * r + o;
+                    n[s] = t[a],
+                    n[s + 1] = t[a + 1]
+                }
+            }
+            ,
+            t.prototype.updateVerts = function(e) {
+                var t, o, i, n, r = e.node, a = r.width, s = r.height, c = r.anchorX * a, l = r.anchorY * s;
+                if (e.trim)
+                    t = -c,
+                    o = -l,
+                    i = a - c,
+                    n = s - l;
+                else {
+                    var h = e.spriteFrame
+                      , d = h._originalSize.width
+                      , f = h._originalSize.height
+                      , u = h._rect.width
+                      , p = h._rect.height
+                      , g = h._offset
+                      , _ = a / d
+                      , m = s / f
+                      , y = g.x + (d - u) / 2
+                      , v = g.x - (d - u) / 2;
+                    t = y * _ - c,
+                    o = (g.y + (f - p) / 2) * m - l,
+                    i = a + v * _ - c,
+                    n = s + (g.y - (f - p) / 2) * m - l
+                }
+                var C = this._local;
+                C[0] = t,
+                C[1] = o,
+                C[2] = i,
+                C[3] = n,
+                this.updateWorldVerts(e)
+            }
+            ,
+            t
+        }(e("./GTAssembler2D").default);
+        o.default = r,
+        cc._RF.pop()
+    }
+    , {
+        "./GTAssembler2D": "GTAssembler2D"
+    }],
+    GameNet: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "22ec1L7J8BPELSWenmSLLak", "GameNet"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var i = e("../common/Func")
+          , n = e("../../my/config/Config")
+          , r = e("../res/DyncMgr")
+          , a = e("../res/LanguageMgr")
+          , s = e("../SoundMgr")
+          , c = e("./EEvent")
+          , l = e("../LogicMgr")
+          , h = function() {
+            function e() {}
+            return e.startGame = function(e) {
+                var t = this;
+                l.default.browsePage ? r.default.getResInfo(l.ConstDefine.loginUI) : l.default.login.succeed ? e.address ? (r.default.getResInfo(l.ConstDefine.loadingTip),
+                null == this._socket || this._socket.readyState === WebSocket.CLOSED && navigator.onLine || this._socket.close(),
+                this._realPort = e.bsPort,
+                l.default.login.guestLogin ? this._realAddress = n.Config.gameProtocol + n.Config.demoServerIp : (this._realAddress = n.Config.gameProtocol + e.address,
+                void 0 !== n.Config.gameUrl && void 0 !== e.port && (this._realAddress = n.Config.gameUrl,
+                this._realPort = e.port)),
+                this._socket = new WebSocket(this._realAddress + ":" + this._realPort,n.Config.wsProtocol),
+                this._socket.onopen = function() {
+                    var e = {
+                        mainID: c.Cmd.MDM_GR_GAME,
+                        subID: c.Cmd.SUB_GR_GAME_PING,
+                        userid: l.default.login.userID,
+                        password: l.default.login.dynamicPass
+                    };
+                    t._socket.send(JSON.stringify(e))
+                }
+                ,
+                this._socket.onclose = this.onClose.bind(this),
+                this._socket.onmessage = this.onMessage.bind(this),
+                this._socket.onerror = this.onError.bind(this),
+                this._curGameCfg = e,
+                this._timeOutHandle = setTimeout(function() {
+                    r.default.hide(l.ConstDefine.loadingTip),
+                    navigator.onLine ? r.default.getResInfo(l.ConstDefine.msgTip, a.default.procLangText("enterGameError")) : r.default.getResInfo(l.ConstDefine.msgTip, a.default.procLangText("badNetStatus")),
+                    t._socket.close()
+                }, 5e3)) : r.default.getResInfo(l.ConstDefine.msgTip, a.default.procLangText("enterGameError"), 5) : r.default.getResInfo(l.ConstDefine.msgTip, a.default.procLangText("badNetStatus"))
+            }
+            ,
+            e.onMessage = function(e) {
+                var t = JSON.parse(e.data)
+                  , o = t.data;
+                if (t.mainID == c.Cmd.MDM_GR_GAME && t.subID == c.Cmd.SUB_GR_GAME_PINGRESULT) {
+                    if (0 == o.result) {
+                        var h = {
+                            platName: n.Config.platLinkName || n.Config.platName,
+                            cback: n.Config.gameCback || window.document.location.href,
+                            id: l.default.login.gameID,
+                            pwd: l.default.login.pwd,
+                            token: l.default.login.dynamicPass,
+                            ip: this._realAddress,
+                            port: this._realPort,
+                            lang: a.default.currLang,
+                            testAcc: l.default.login.testAcccount,
+                            guest: l.default.login.guestLogin,
+                            musicVol: s.default.getBGMVol().toFixed(2),
+                            effectVol: s.default.getEffectVol().toFixed(2),
+                            backUrl: n.Config.backStageUrl,
+                            openBC: n.Config.Interval
+                        }
+                          , d = i.default.customEncry(JSON.stringify(h))
+                          , f = this._curGameCfg.url + "?params=" + d;
+                        f.length > 2083 && console.error("\u8fde\u63a5\u957f\u5ea6\u8d85\u8fc7\u4e862083\u5b57\u7b26"),
+                        l.default.login.guestLogin ? i.default.setStorage("enterGameTime", (new Date).getTime().toString()) : i.default.setStorage("justEnterGame", this._curGameCfg.gid.toString()),
+                        location.href = f
+                    } else
+                        r.default.hide(l.ConstDefine.loadingTip),
+                        r.default.getResInfo(l.ConstDefine.msgTip, a.default.procBsText(o.msg)),
+                        this._socket.close();
+                    clearTimeout(this._timeOutHandle)
+                }
+            }
+            ,
+            e.onError = function(e) {
+                cc.error("gameNetError", e)
+            }
+            ,
+            e.onClose = function() {}
+            ,
+            e._socket = null,
+            e
+        }();
+        o.default = h,
+        cc._RF.pop()
+    }
+    , {
+        "../../my/config/Config": "Config",
+        "../LogicMgr": "LogicMgr",
+        "../SoundMgr": "SoundMgr",
+        "../common/Func": "Func",
+        "../res/DyncMgr": "DyncMgr",
+        "../res/LanguageMgr": "LanguageMgr",
+        "./EEvent": "EEvent"
+    }],
+    GameProto: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "d01d2fLlENAO439SiI+Y+DM", "GameProto"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.Proto = void 0,
+        function(e) {
+            e[e.json = 0] = "json",
+            e[e.string = 1] = "string"
+        }(o.Proto || (o.Proto = {})),
+        cc._RF.pop()
+    }
+    , {}],
+    HallUIVertical: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "1b90fNOD71GdYjevRh7+vZL", "HallUIVertical");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var r, a = e("../../base/res/DyncLoadedBase"), s = e("../../base/common/MessageMgr"), c = e("../../base/LogicMgr"), l = e("../../base/res/DyncMgr"), h = e("../../base/common/Func"), d = e("../../base/SoundMgr"), f = e("../../base/res/LanguageMgr"), u = e("../../base/common/SpecialFunc"), p = e("../config/Config"), g = e("../../base/common/view/PageView"), _ = e("../../base/net/GameNet"), m = e("../../base/net/EEvent"), y = e("../../base/net/NetMgr"), v = e("./CardUIVertical"), C = e("../../base/effect/EffectMgr"), b = e("./DayPrize"), M = e("../../base/common/view/ScrollBarExtent"), S = e("./PcFullScreenUI2"), N = e("../../base/component/ScrollViewHack"), w = e("../../base/LevelMgr"), B = e("../../base/ScreenMgr");
+        (function(e) {
+            e[e.all = 0] = "all",
+            e[e.fav = 1] = "fav",
+            e[e.fishing = 2] = "fishing",
+            e[e.slot = 3] = "slot",
+            e[e.other = 4] = "other",
+            e[e.num = 5] = "num"
+        }
+        )(r || (r = {}));
+        var P = function() {
+            function e(e) {
+                this._firstShow = !0,
+                this.root = e,
+                this._playGame = e.getChildByName("playGame"),
+                this._toggleRoot = e.getChildByName("toggleRoot"),
+                this._mountNode = e.getChildByName("mount"),
+                this._playGame.on(c.ConstDefine.click, this.playGameClick, this),
+                this._pgviewContentPrefab = e.getChildByName("prefab"),
+                this._pgviewContentPrefab.active = !1,
+                this._pgviewPrefab = e.getChildByName("pgview"),
+                this._pgviewPrefab.active = !1
+            }
+            return e.prototype.init = function() {
+                if (c.default.guangGaoChange || this._firstShow)
+                    if (this._firstShow = !1,
+                    this._loopPgView && (this._loopPgView.destroy(),
+                    this._toggleRoot.removeAllChildren()),
+                    0 != c.default.login.guangGao.length) {
+                        var e = cc.instantiate(this._pgviewPrefab);
+                        e.active = !0,
+                        e.parent = this._mountNode;
+                        var t = e.getComponent(cc.PageView);
+                        t._onMouseWheel && e.off(cc.Node.EventType.MOUSE_WHEEL, t._onMouseWheel, t, !0);
+                        for (var o = 0; o < c.default.login.guangGao.length; o++) {
+                            var i = c.default.login.guangGao[o]
+                              , n = cc.instantiate(this._pgviewContentPrefab);
+                            n.active = !0,
+                            t.addPage(n),
+                            u.default.setRemoteSpt(p.Config.configPath + "pc_bigAdvertUI/", c.ConstDefine.bad, i, n.getComponent(cc.Sprite))
+                        }
+                        var r = {
+                            root: e,
+                            finishCall: function(e) {
+                                var t = e.pgView.content.children
+                                  , o = t[0]
+                                  , i = t[t.length - 1];
+                                u.default.setRemoteSpt(p.Config.configPath + "pc_bigAdvertUI/", c.ConstDefine.bad, c.default.login.guangGao[c.default.login.guangGao.length - 1], o.getComponent(cc.Sprite)),
+                                u.default.setRemoteSpt(p.Config.configPath + "pc_bigAdvertUI/", c.ConstDefine.bad, c.default.login.guangGao[0], i.getComponent(cc.Sprite))
+                            },
+                            toggleRoot: this._toggleRoot,
+                            pgChangeCall: this.showInfo.bind(this),
+                            audoPlayTime: 6
+                        };
+                        this._loopPgView = new g.LoopTogglePageView(r)
+                    } else
+                        this._playGame.active = !1
+            }
+            ,
+            e.prototype.playGameClick = function() {
+                d.default.playEffect(c.ConstDefine.click),
+                _.default.startGame(c.default.getKpGuangGaoCfg(this.lastIndex))
+            }
+            ,
+            e.prototype.showInfo = function(e) {
+                if (this.lastIndex !== e) {
+                    this.lastIndex = e;
+                    var t = c.default.getKpGuangGaoCfg(this.lastIndex);
+                    void 0 !== t ? void 0 !== t.t ? u.default.tagCanEnterGame(t.t) ? this._playGame.active = !0 : this._playGame.active = !1 : this._playGame.active = !0 : this._playGame.active = !1
+                }
+            }
+            ,
+            e
+        }()
+          , T = function(e) {
+            function t(t, o) {
+                var i = e.call(this, t, o) || this;
+                return i._curCredit = [],
+                i._maxCredit = [],
+                i._jackpotLabelArr = [],
+                i._sortToggle = [],
+                i._cards = [],
+                i._usingCards = [],
+                i._cardCfg = [],
+                i._fllowMoveNodes = [],
+                i._lastPos = 0,
+                i._cardOptHeight = 0,
+                i._cardShowPosY = 0,
+                i._finishLoad = !1,
+                i._lastShowCategory = r.all,
+                s.MessageMgr.on(s.MessageName.InitBrosePage, i.loginSucceed, i),
+                s.MessageMgr.on(s.MessageName.UserInfo, i.updateUserInfo, i),
+                s.MessageMgr.on(s.MessageName.UpdateFavCards, i.updateFavCards, i),
+                s.MessageMgr.on(s.MessageName.LoginSucceeded, function() {
+                    c.default.browsePage = !1,
+                    c.default.login.succeed = !0,
+                    i._finishLoad && i.loginSucceed()
+                }),
+                i
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                var e = this;
+                h.default.removeLoading(),
+                this._backTopNode = this.nodeInfo.root.getChildByName("backTop"),
+                this._backTopInitZoom = this._backTopNode.scaleX,
+                this._backTopShow = cc.tween(this._backTopNode).to(.3, {
+                    opacity: 255
+                }),
+                this._backTopHide = cc.tween(this._backTopNode).to(.3, {
+                    opacity: 0
+                }).call(function() {
+                    e._backTopNode.active = !1
+                }),
+                w.default.Instance.setLevel(this._backTopNode, p.AdaptLevel.top),
+                this._backTopNode.active = !1,
+                this._backTopNode.on(c.ConstDefine.click, this.backTopClick, this),
+                this._scrollViewNode = this.nodeInfo.root.getChildByName("scrollView"),
+                h.default.isRotateDev() && (this._scrollViewNode.getComponent(N.default).mul = -20),
+                this._scrollViewNode.on("scrolling", this.resetScrolling, this),
+                this._scrollview = this._scrollViewNode.getComponent(cc.ScrollView);
+                var t = this.nodeInfo.root.getChildByName("scrollBar");
+                w.default.Instance.setLevel(t, p.AdaptLevel.top),
+                this._scrollBarExtend = new M.default(t,150,this.scrollChange.bind(this)),
+                this._scrollContentNode = this._scrollViewNode.getChildByName("content"),
+                this._topNode = this._scrollContentNode.getChildByName("top"),
+                this._topInitPosY = this._topNode.y;
+                var o = this._topNode.getChildByName("account");
+                this._accountLabel = o.getComponent(cc.Label);
+                var i = this._topNode.getChildByName("credit");
+                this._creditLabel = i.getComponent(cc.Label),
+                c.default.singleCreditPos.set(this._topNode.convertToWorldSpaceAR(i.position)),
+                c.default.doubleCreditPos.set(c.default.singleCreditPos),
+                this._topNode.getChildByName("quit").on(c.ConstDefine.click, this.quit, this),
+                this._bottomNode = this._scrollContentNode.getChildByName("bottom");
+                var n = this._bottomNode.getChildByName("download");
+                this._qrCodeNode = n.getChildByName("qrCode"),
+                this._qrCodeNode.active = !1,
+                n.on(c.ConstDefine.click, this.showQRCodeNode, this),
+                this._advertNode = this._scrollContentNode.getChildByName("advert"),
+                this._advertCarousel = new P(this._advertNode),
+                this._fllowMoveNodes.push(this._scrollContentNode.getChildByName("jackpot2"));
+                for (var a = this._advertNode.getChildByName("jackpot").getChildByName("jp"), f = function(t) {
+                    var o = a.children[t];
+                    o.getChildByName("btn").on(c.ConstDefine.click, function() {
+                        e.recordClick(t + 1)
+                    }),
+                    g._jackpotLabelArr[t] = o.getChildByName("text").getComponent(cc.Label)
+                }, g = this, _ = 0; _ < a.childrenCount; _++)
+                    f(_);
+                this.initRollJpVal(),
+                C.EffectMgr.Instance.trigger(C.EffectMgr.EffectType.EffectMeetCondition, .05, this.rollJpCredit.bind(this), c.ConstDefine.emptyFunc),
+                this.updateJackpotVal(),
+                this._cardOptNode = this._scrollContentNode.getChildByName("cardOpt"),
+                this._cardOptInitPosY = this._cardOptNode.y,
+                this._changePwdNode = this._cardOptNode.getChildByName("changePwd"),
+                this._changePwdNode.on(c.ConstDefine.click, this.changePwd, this),
+                this._soundOffNode = this._cardOptNode.getChildByName("soundOff"),
+                this._soundOffNode.on(c.ConstDefine.click, this.soundOff, this),
+                this._soundOnNode = this._cardOptNode.getChildByName("soundOn"),
+                this._soundOnNode.on(c.ConstDefine.click, this.soundOn, this),
+                d.default.getOffEffect() && d.default.getOffMusice() ? (this._soundOnNode.active = !0,
+                this._soundOffNode.active = !1) : (this._soundOnNode.active = !1,
+                this._soundOffNode.active = !0);
+                var B = this._cardOptNode.getChildByName("fullScreen");
+                h.default.isRotateDev() ? B.destroy() : new S.default(B);
+                var T = this._cardOptNode.getChildByName("search")
+                  , k = T.getChildByName("editBox");
+                k.on("text-changed", this.searchChanged, this),
+                this._searchEditBox = k.getComponent(cc.EditBox),
+                u.default.editInput(k, T);
+                var I = T.getChildByName("keyboard");
+                c.default.useSoftKeyboard ? I.active = !1 : I.on(c.ConstDefine.click, function() {
+                    e._searchEditBox._impl._elem.autocomplete = "off",
+                    l.default.getResInfo("keyboardUI", k, T)
+                }),
+                this._searchGidNode = this._cardOptNode.getChildByName("searchGid"),
+                this._searchGidNode.active = !1;
+                var D = this._searchGidNode.getChildByName("editBox");
+                u.default.editInput(D, this._searchGidNode),
+                D.on("text-changed", this.searchGidChanged, this),
+                this._dayPrize = new b.default(this._cardOptNode.getChildByName("dayPrize")),
+                this._sortNode = this.nodeInfo.root.getChildByName("sort");
+                var R = function(t) {
+                    var o = L._sortNode.children[t];
+                    L._sortToggle[t] = o.getComponent(cc.Toggle),
+                    o.on(c.ConstDefine.click, function() {
+                        e.sortClick(t, !1)
+                    })
+                }
+                  , L = this;
+                for (_ = 0; _ < this._sortNode.children.length; _++)
+                    R(_);
+                var E = this._scrollContentNode.getChildByName("card");
+                for (this._fllowMoveNodes.push(E),
+                this._noFavTipNode = E.getChildByName("noFavTip"),
+                this._noFavTipLabel = this._noFavTipNode.getComponent(cc.Label),
+                this._cardRootNode = E.getChildByName("root"),
+                this._cardPrefab = this._cardRootNode.getChildByName("prefab"),
+                this._cardPrefab.active = !1,
+                this._cardInitPosY = E.position.y + this._cardPrefab.height / 2,
+                this._cardBland = this._cardOptNode.position.y - E.position.y - (90 + this._cardPrefab.height) / 2,
+                this._oneCardHeight = this._cardPrefab.height - this._cardInitPosY + 82,
+                this.resize(),
+                s.MessageMgr.on(s.MessageName.Resize, this.resize, this),
+                _ = r.all; _ < r.num; ++_)
+                    this._cardCfg[_] = [];
+                v.default.FavCards = this._cardCfg[r.fav],
+                s.MessageMgr.on(s.MessageName.NetMsg, this.onLogonNet, this),
+                s.MessageMgr.on(s.MessageName.LRMouseWheel, this.leftRightWheel, this),
+                s.MessageMgr.on(s.MessageName.LoginFail, function() {
+                    e._backTopNode.stopAllActions(),
+                    e._backTopNode.active = !1,
+                    e._scrollBarExtend.setActive(!1)
+                }),
+                this._finishLoad = !0,
+                c.default.login.succeed ? this.loginSucceed() : c.default.browsePage && (l.default.getResInfo(c.ConstDefine.loadingTip),
+                y.NetMgr.createWebSocket(),
+                s.MessageMgr.once(s.MessageName.NetOpen, function() {
+                    y.NetMgr.send(m.Cmd.MDM_MB_LOGON, m.Cmd.SUB_MB_LOGON_GETGAMESERVER, {
+                        userid: 0
+                    })
+                }))
+            }
+            ,
+            t.prototype.soundOn = function() {
+                this._soundOffNode.active = !0,
+                this._soundOnNode.active = !1,
+                d.default.offEffect(!1),
+                d.default.offMusic(!1)
+            }
+            ,
+            t.prototype.leftRightWheel = function(e) {
+                this._scrollContentNode.setPosition(this._scrollContentNode.x, this._scrollContentNode.y - e.getScrollY()),
+                this.resetScrolling()
+            }
+            ,
+            t.prototype.soundOff = function() {
+                this._soundOffNode.active = !1,
+                this._soundOnNode.active = !0,
+                d.default.offEffect(!0),
+                d.default.offMusic(!0)
+            }
+            ,
+            t.prototype.jumpPos = function(e) {
+                e < cc.winSize.height / 2 ? e = cc.winSize.height / 2 : this.isDown(e) && (e = this._scrollContentNode.height - cc.winSize.height / 2),
+                this._scrollContentNode.setPosition(this._scrollContentNode.x, e),
+                this.updatePosInfo();
+                var t = this._cardPrefab.height * this._cardRootNode.scaleY
+                  , o = e - cc.winSize.height / 2 + this._cardInitPosY
+                  , i = 0;
+                o > 0 && (i = Math.floor(o / t));
+                for (var n = 0; n < this._usingCards.length; n++) {
+                    var r = this._usingCards[n]
+                      , a = Math.floor(n / this._vertNum)
+                      , s = (a + i) * this._vertNum + r.getXOffset()
+                      , c = -(a + i) * this._cardPrefab.height;
+                    s >= this._showCardCfg.length ? r.hideAndSetPos(c) : s < 0 ? r.hideAndSetPos(c) : r.reset(this._showCardCfg[s], c)
+                }
+            }
+            ,
+            t.prototype.recordClick = function(e) {
+                d.default.playEffect(c.ConstDefine.click),
+                l.default.getResInfo("jpRankUI", e)
+            }
+            ,
+            t.prototype.isDown = function(e) {
+                return e >= this._scrollContentNode.height - cc.winSize.height / 2
+            }
+            ,
+            t.prototype.scrollChange = function(e) {
+                this._scrollview.stopAutoScroll(),
+                this.jumpPos(this._lastPos - e)
+            }
+            ,
+            t.prototype.updatePosInfo = function() {
+                var e = this._scrollContentNode.y - cc.winSize.height / 2;
+                e > 0 ? this._topNode.setPosition(this._topNode.x, this._topInitPosY - e) : this._topNode.setPosition(this._topNode.x, this._topInitPosY),
+                (e = this._scrollContentNode.y - this._cardShowPosY) > 0 ? (0 == this._backTopNode.opacity && (this._backTopNode.active = !0,
+                this._backTopNode.stopAllActions(),
+                this._backTopShow.start()),
+                this._cardOptNode.setPosition(this._cardOptNode.x, this._cardOptActualPosY - e)) : (255 == this._backTopNode.opacity && (this._backTopNode.stopAllActions(),
+                this._backTopHide.start()),
+                this._cardOptNode.setPosition(this._cardOptNode.x, this._cardOptActualPosY)),
+                this._lastPos = this._scrollContentNode.y,
+                this._scrollBarExtend.setBarPos(this._lastPos - cc.winSize.height / 2),
+                h.default.setStorage("lastPos", Math.floor(this._lastPos).toString())
+            }
+            ,
+            t.prototype.resetScrolling = function() {
+                this.jumpPos(this._scrollContentNode.y)
+            }
+            ,
+            t.prototype.setScrollContentHeight = function(e) {
+                this._scrollContentNode.height = e,
+                this._bottomNode.setPosition(this._bottomNode.x, 100 - this._scrollContentNode.height)
+            }
+            ,
+            t.prototype.resetUsingCards = function() {
+                this._usingCards.length = 0;
+                for (var e = 0; e < this._landNum; e++)
+                    for (var t = 0; t < this._vertNum; t++) {
+                        var o = this._cards[e * this._vertNum + t];
+                        o.setXOffset(t),
+                        this._usingCards.push(o)
+                    }
+                for (e = this._landNum * this._vertNum; e < this._cards.length; e++)
+                    this._cards[e].setActive(!1)
+            }
+            ,
+            t.prototype.fixCardShowCfg = function(e) {
+                var t = this._showCardCfg.length
+                  , o = Math.ceil(t / this._vertNum)
+                  , i = this._cardOptHeight + 90 + this._cardBland + 200 + o * this._cardPrefab.height * this._cardRootNode.scaleY;
+                i < this._minHeight && (i = this._minHeight),
+                this.setScrollContentHeight(i),
+                this._scrollBarExtend.resetBar(this._scrollContentNode.height),
+                this.resetUsingCards();
+                var n = cc.winSize.height / 2;
+                if (n = this._scrollContentNode.y <= this._cardShowPosY ? this._scrollContentNode.y : this._cardShowPosY,
+                e) {
+                    var r = h.default.getStorage("lastPos");
+                    r && (n = parseInt(r))
+                }
+                this._scrollview.stopAutoScroll(),
+                this.jumpPos(n)
+            }
+            ,
+            t.prototype.searchGidChanged = function(e) {
+                if ("" == e.string)
+                    this._showCardCfg = this._curCardCfg;
+                else {
+                    this._showCardCfg = [];
+                    for (var t = 0, o = this._curCardCfg; t < o.length; t++) {
+                        var i = o[t]
+                          , n = Number(e.string);
+                        i.gid == n && this._showCardCfg.push(i)
+                    }
+                }
+                this.fixCardShowCfg(!1)
+            }
+            ,
+            t.prototype.searchChanged = function(e, t) {
+                if ("" == e.string)
+                    this._showCardCfg = this._curCardCfg;
+                else {
+                    this._showCardCfg = [];
+                    for (var o = 0, i = this._curCardCfg; o < i.length; o++) {
+                        var n = i[o]
+                          , r = n.title[f.default.currLang].toLowerCase()
+                          , a = e.string.toLowerCase();
+                        -1 == r.indexOf(a) && -1 == a.indexOf(r) || this._showCardCfg.push(n)
+                    }
+                }
+                this.fixCardShowCfg(t)
+            }
+            ,
+            t.prototype.loginSucceed = function() {
+                this._advertCarousel.init();
+                for (var e = r.all; e < r.num; ++e)
+                    this._cardCfg[e].length = 0;
+                if (c.default.login.guestLogin) {
+                    for (e = 0; e < this._sortToggle.length; e++)
+                        this._sortToggle[e].enabled = !1;
+                    this._dayPrize.showGuestLogin();
+                    for (var t = 0, o = p.Config.demoServerGids; t < o.length; t++) {
+                        var i = o[t];
+                        this._cardCfg[r.all].push(c.default.kpKeyCfg[i])
+                    }
+                    var n = r.all;
+                    this._sortToggle[n].check(),
+                    this._lastShowCategory = void 0,
+                    this.sortClick(n, !0)
+                } else {
+                    for (e = 0; e < this._sortToggle.length; e++)
+                        this._sortToggle[e].enabled = !0;
+                    this._dayPrize.response(),
+                    v.default.FavCards = this._cardCfg[r.fav];
+                    for (var a = 0, s = c.default.kpSortGid; a < s.length; a++)
+                        i = s[a],
+                        (u = c.default.kpKeyCfg[i]).fav = !1,
+                        c.default.cardShow(u) && (this._cardCfg[r.all].push(u),
+                        this._cardCfg[r[u.fenlei]].push(u));
+                    var l = localStorage.getItem(c.default.login.userID + "_favArrStr");
+                    if (l) {
+                        c.default.favArr = JSON.parse(l);
+                        for (var d = 0, f = c.default.favArr; d < f.length; d++) {
+                            i = f[d];
+                            var u = c.default.kpKeyCfg[i];
+                            c.default.cardShow(u) && (u.fav = !0,
+                            v.default.FavCards.push(u))
+                        }
+                    }
+                    if (n = r.all,
+                    c.default.login.succeed) {
+                        c.default.sendJpReq();
+                        var g = h.default.getStorage("showCategory");
+                        g && (n = parseInt(g)),
+                        this._accountLabel.string = "Welcome,ID:" + c.default.login.gameID.toString(),
+                        this.updateCredit(),
+                        this._searchGidNode.active = c.default.login.testAcccount
+                    }
+                    this._sortToggle[n].check(),
+                    this._lastShowCategory = void 0,
+                    this.sortClick(n, !0)
+                }
+            }
+            ,
+            t.prototype.backTopClick = function() {
+                B.default.Instance.triggerClick = !1,
+                d.default.playEffect("top"),
+                this._scrollview.stopAutoScroll(),
+                this.jumpPos(cc.winSize.height / 2)
+            }
+            ,
+            t.prototype.sortClick = function(e, t) {
+                this._searchEditBox.string = "",
+                this._lastShowCategory == e ? this.searchChanged(this._searchEditBox, t) : (this._curCardCfg = this._cardCfg[e],
+                this.searchChanged(this._searchEditBox, t),
+                this._lastShowCategory = e,
+                h.default.setStorage("showCategory", this._lastShowCategory.toString())),
+                this.updateFavTip()
+            }
+            ,
+            t.prototype.updateFavTip = function() {
+                0 == this._curCardCfg.length && this._lastShowCategory == r.fav ? (this._noFavTipNode.active = !0,
+                this._noFavTipLabel.string = f.default.procLangText("noFavTip")) : this._noFavTipNode.active = !1
+            }
+            ,
+            t.prototype.updateUserInfo = function() {
+                this._finishLoad && (this.updateCredit(),
+                this._dayPrize.response())
+            }
+            ,
+            t.prototype.updateFavCards = function() {
+                this._lastShowCategory === r.fav && (this.searchChanged(this._searchEditBox, !1),
+                this.updateFavTip())
+            }
+            ,
+            t.prototype.showQRCodeNode = function() {
+                this._qrCodeNode.active = !0,
+                s.MessageMgr.on(s.MessageName.TouchStart, this.hideQRCodeNode, this)
+            }
+            ,
+            t.prototype.hideQRCodeNode = function() {
+                this._qrCodeNode.active = !1,
+                s.MessageMgr.off(s.MessageName.TouchStart, this.hideQRCodeNode, this)
+            }
+            ,
+            t.prototype.updateCredit = function() {
+                var e = "Credit:";
+                c.default.login.openWinScore ? e += u.default.converSepValue(c.default.login.score + c.default.login.winScore) : e += u.default.converSepValue(c.default.login.score),
+                this._creditLabel.string = e
+            }
+            ,
+            t.prototype.initRollJpVal = function() {
+                for (var e = 0; e < p.Config.jpRollVal.length; e++) {
+                    var t = p.Config.jpRollVal[e];
+                    this._curCredit[e] = h.default.randomInt(t[0], t[1]),
+                    this._maxCredit[e] = h.default.randomInt(t[2], t[3]),
+                    this._jackpotLabelArr[e].string = p.Config.jpPrefix + u.default.convertDecimalNum(this._curCredit[e])
+                }
+            }
+            ,
+            t.prototype.rollJpCredit = function() {
+                if (c.default.browsePage)
+                    for (var e = 0; e < this._jackpotLabelArr.length; ++e)
+                        ++this._curCredit[e],
+                        this._curCredit[e] > this._maxCredit[e] ? this.initRollJpVal() : this._jackpotLabelArr[e].string = p.Config.jpPrefix + u.default.convertDecimalNum(this._curCredit[e])
+            }
+            ,
+            t.prototype.updateJackpotVal = function() {
+                for (var e = 0; e < c.default.jp.length; e++)
+                    this._jackpotLabelArr[e].string = c.default.login.creditPrefix + u.default.converSepValue(c.default.jp[e])
+            }
+            ,
+            t.prototype.resize = function() {
+                this.adjustCards();
+                var e = cc.view.getScaleX();
+                this._backTopNode.setScale(this._backTopInitZoom / e, this._backTopInitZoom / e),
+                this._backTopNode.setPosition(cc.winSize.width / 2 - 80, 60 - cc.winSize.height / 2),
+                this._scrollViewNode.height = cc.winSize.height;
+                var t = 0;
+                cc.winSize.height < this._oneCardHeight && (t = this._oneCardHeight - cc.winSize.height) > 300 && (t = 300);
+                var o = this._advertNode.y;
+                this._advertNode.setPosition(this._advertNode.x, t - 60 - 150);
+                for (var i = this._advertNode.y - o, n = 0; n < this._fllowMoveNodes.length; ++n)
+                    this._fllowMoveNodes[n].y += i;
+                this._cardOptActualPosY = this._cardOptInitPosY + t,
+                this._cardOptHeight = 460 - t,
+                cc.winSize.height < p.Config.minHeight ? this._minHeight = p.Config.minHeight : this._minHeight = cc.winSize.height,
+                this._scrollContentNode.height < cc.winSize.height && this.setScrollContentHeight(cc.winSize.height),
+                this._cardShowPosY = cc.winSize.height / 2 + this._cardOptHeight - 60,
+                this._sortNode.setPosition(this._sortNode.x, -cc.winSize.height / 2),
+                this._backTopNode.setPosition(this._backTopNode.position.x, 0),
+                this._scrollBarExtend.reszie(this._scrollContentNode.height, this._lastPos - cc.winSize.height / 2),
+                this._showCardCfg && this.backTopClick()
+            }
+            ,
+            t.prototype.adjustCards = function() {
+                this._landNum = Math.ceil(p.Config.gameSize[1] / this._cardPrefab.height) + 1;
+                var e = 5 * this._landNum;
+                if (e > this._cards.length)
+                    for (var t = this._cards.length; t < e; t++) {
+                        var o = cc.instantiate(this._cardPrefab);
+                        o.active = !0,
+                        o.parent = this._cardRootNode;
+                        var i = new v.default(o);
+                        this._cards.push(i)
+                    }
+                this._vertNum = 5;
+                var n = cc.view.getScaleX();
+                if (n < p.Config.cardMinZoom) {
+                    var r = !1
+                      , a = n;
+                    for (t = 4; t >= 1; t--)
+                        if ((a = cc.game.canvas.width / this._cardPrefab.width / t) >= p.Config.cardMinZoom) {
+                            r = !0,
+                            this._vertNum = t;
+                            break
+                        }
+                    r || (this._vertNum = 1);
+                    var s = a / n
+                      , c = (s - 1) / 2;
+                    this._cardRootNode.setPosition(this._cardPrefab.width * c, -this._cardPrefab.height * c),
+                    this._cardRootNode.setScale(s);
+                    var l = cc.game.canvas.width / this._sortNode.width / n;
+                    s > l ? this._sortNode.setScale(l) : this._sortNode.setScale(s)
+                } else
+                    this._cardRootNode.setPosition(0, 0),
+                    this._cardRootNode.setScale(1),
+                    this._sortNode.setScale(1);
+                this._showCardCfg && this.fixCardShowCfg(!1)
+            }
+            ,
+            t.prototype.onLogonNet = function(e) {
+                if (e.mainID === m.Cmd.MDM_MB_LOGON)
+                    switch (e.subID) {
+                    case m.Cmd.SUB_MB_GETJPSCORE_RESULT:
+                        var t = e.data;
+                        c.default.jp[0] = t.grand,
+                        c.default.jp[1] = t.major,
+                        c.default.jp[2] = t.minor,
+                        c.default.jp[3] = t.mini,
+                        this.updateJackpotVal(),
+                        y.NetMgr.close()
+                    }
+            }
+            ,
+            t.prototype.changePwd = function() {
+                c.default.login.guestLogin || (d.default.playEffect(c.ConstDefine.click),
+                l.default.getResInfo("modPwdBox"))
+            }
+            ,
+            t.prototype.quit = function() {
+                d.default.playEffect(c.ConstDefine.click),
+                c.default.login.guestLogin ? (c.default.exitLogin(),
+                l.default.getResInfo(c.ConstDefine.loginUI)) : l.default.getResInfo("exitPromptBox", f.default.procLangText("exitLogin"))
+            }
+            ,
+            t
+        }(a.default);
+        o.default = T,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LevelMgr": "LevelMgr",
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/ScreenMgr": "ScreenMgr",
+        "../../base/SoundMgr": "SoundMgr",
+        "../../base/common/Func": "Func",
+        "../../base/common/MessageMgr": "MessageMgr",
+        "../../base/common/SpecialFunc": "SpecialFunc",
+        "../../base/common/view/PageView": "PageView",
+        "../../base/common/view/ScrollBarExtent": "ScrollBarExtent",
+        "../../base/component/ScrollViewHack": "ScrollViewHack",
+        "../../base/effect/EffectMgr": "EffectMgr",
+        "../../base/net/EEvent": "EEvent",
+        "../../base/net/GameNet": "GameNet",
+        "../../base/net/NetMgr": "NetMgr",
+        "../../base/res/DyncLoadedBase": "DyncLoadedBase",
+        "../../base/res/DyncMgr": "DyncMgr",
+        "../../base/res/LanguageMgr": "LanguageMgr",
+        "../config/Config": "Config",
+        "./CardUIVertical": "CardUIVertical",
+        "./DayPrize": "DayPrize",
+        "./PcFullScreenUI2": "PcFullScreenUI2"
+    }],
+    HallUI: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "17dab4dFUVC7IUN+hXrmtBY", "HallUI");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var r, a, s, c, l, h = e("../../base/common/Func"), d = e("../../base/common/MessageMgr"), f = e("../../base/common/SpecialFunc"), u = e("../../base/common/view/UIPicText"), p = e("../config/Config"), g = e("../../base/effect/EffectMgr"), _ = e("../../base/net/EEvent"), m = e("../../base/net/NetMgr"), y = e("../../base/res/LanguageMgr"), v = e("../../base/SoundMgr"), C = e("./CardUI"), b = e("../../base/common/view/PageView"), M = e("../../base/res/DyncLoadedBase"), S = e("../../base/res/DyncMgr"), N = e("../../base/LogicMgr"), w = e("../../base/common/BufferPool"), B = e("../../base/common/view/JpBroadcast"), P = e("../../base/LevelMgr"), T = e("./AdvertUI"), k = e("../../base/component/ScrollViewOpt"), I = e("../../base/common/view/CountdownTime"), D = e("./DayPrize");
+        (function(e) {
+            e[e.grand = 0] = "grand",
+            e[e.major = 1] = "major",
+            e[e.minor = 2] = "minor",
+            e[e.mini = 3] = "mini",
+            e[e.num = 4] = "num"
+        }
+        )(r || (r = {})),
+        function(e) {
+            e[e.small = 0] = "small",
+            e[e.big = 1] = "big",
+            e[e.num = 2] = "num"
+        }(a || (a = {})),
+        function(e) {
+            e[e.big = 0] = "big",
+            e[e.small = 1] = "small",
+            e[e.num = 2] = "num"
+        }(s || (s = {})),
+        function(e) {
+            e[e.total = 0] = "total",
+            e[e.all = 1] = "all",
+            e[e.fav = 2] = "fav",
+            e[e.fishing = 3] = "fishing",
+            e[e.slot = 4] = "slot",
+            e[e.other = 5] = "other",
+            e[e.links = 6] = "links",
+            e[e.num = 7] = "num"
+        }(c || (c = {})),
+        function(e) {
+            e[e.three = 0] = "three",
+            e[e.four = 1] = "four",
+            e[e.num = 2] = "num"
+        }(l || (l = {}));
+        var R = cc.v3(0, 320)
+          , L = cc.v3(0, 258)
+          , E = function() {
+            function e() {
+                this._takeTime = 0,
+                this._eff = null,
+                this._msg = [],
+                this._broadTextPos = cc.Vec3.ZERO
+            }
+            return e.prototype.init = function(e) {
+                this._root = e,
+                this._root.active = !0;
+                var t = e.getChildByName("mask");
+                this._broadLength = t.getContentSize().width,
+                this._textNode = t.getChildByName("text"),
+                this._text = this._textNode.getComponent(cc.Label),
+                this.clear()
+            }
+            ,
+            e.prototype.clear = function() {
+                this._root.opacity = 0,
+                this._takeTime = 0,
+                this._msg.length = 0,
+                this._text.string = "",
+                this._root.setPosition(R),
+                this._textNode.stopAllActions(),
+                this._show && (this._show = !1,
+                g.EffectMgr.Instance.removeEffect(this._eff))
+            }
+            ,
+            e.prototype.addMsg = function(e) {
+                this._msg.push(e),
+                this._show || (this._show = !0,
+                this._root.opacity = 255,
+                cc.tween(this._root).to(.35, {
+                    position: L
+                }).start(),
+                this._eff = g.EffectMgr.Instance.trigger(g.EffectMgr.EffectType.EffectMeetCondition, 1, this.updateMsg.bind(this), this.end.bind(this)))
+            }
+            ,
+            e.prototype.updateMsg = function() {
+                if (this._takeTime < 0) {
+                    this._text.string = this._msg.shift(),
+                    this._text._forceUpdateRenderData();
+                    var e = this._text.node.getContentSize().width + this._broadLength;
+                    this._broadTextPos.x = e / 2,
+                    this._textNode.setPosition(this._broadTextPos),
+                    this._takeTime = e / 50,
+                    this._textNode.stopAllActions(),
+                    this._broadTextPos.x -= e,
+                    cc.tween(this._textNode).to(this._takeTime, {
+                        position: this._broadTextPos
+                    }).start()
+                } else
+                    this._takeTime -= 1;
+                return 0 === this._msg.length
+            }
+            ,
+            e.prototype.end = function() {
+                var e = this;
+                cc.tween(this._root).to(.35, {
+                    position: R,
+                    opacity: 0
+                }).call(function() {
+                    e._show = !1
+                }).start()
+            }
+            ,
+            e
+        }();
+        function x(e, t) {
+            var o = cc.instantiate(e)
+              , i = new C.default(o);
+            return i.setParent(t),
+            i
+        }
+        var O = function(e) {
+            function t(t, o) {
+                var i = e.call(this, t, o) || this;
+                i._bgSpriteFrame = [],
+                i._lastShowCategory = c.all,
+                i._lastViewOffsetX = 1e5,
+                i._lastViewOffsetX2 = 1e5,
+                i._leftToggle = [],
+                i._jackpotUIPic = [],
+                i._cardSort = [],
+                i._cardUIPrefab = [],
+                i._cards = [],
+                i._jpLangSpts = [],
+                i._timeArr = [0, 0, 0],
+                i._cardSortOrder = [],
+                i._cardSortSmallDic = [],
+                i._finishLoad = !1,
+                i._userRefresh = !1,
+                i._broadcast = new E;
+                for (var n = 0; n < a.num; n++)
+                    i._cardSort[n] = new w.BufferPool(x);
+                for (n = 0; n < c.num; n++)
+                    i._cardSortOrder[n] = [];
+                return C.default.FavCards = i._cardSortOrder[c.fav],
+                d.MessageMgr.on(d.MessageName.UserInfo, i.updateUserInfo, i),
+                d.MessageMgr.on(d.MessageName.UpdateCredit, i.updateCredit, i),
+                d.MessageMgr.on(d.MessageName.ChangeHeadIcon, i.changeHeadIcon, i),
+                d.MessageMgr.on(d.MessageName.UpdateFavCards, i.updateFavCards, i),
+                d.MessageMgr.on(d.MessageName.LoginSucceeded, function(e) {
+                    N.default.browsePage = !1,
+                    N.default.login.succeed = !0;
+                    var t = localStorage.getItem("headIndex_" + N.default.login.userID);
+                    t && (N.default.login.headIndex = Number(t)),
+                    h.default.getStorage("showNotice") || (S.default.getResInfo("noticeTip"),
+                    h.default.setStorage("showNotice", "0")),
+                    i._userRefresh = e,
+                    i._finishLoad && i.loginSucceed()
+                }),
+                i
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                var e = this;
+                h.default.removeLoading();
+                var t = this.nodeInfo.root.getChildByName("bg");
+                this._bgSprite = t.getComponent(cc.Sprite),
+                this._bgSpriteFrame = [];
+                for (var o = 0; o < t.children.length; o++) {
+                    var i = t.children[o];
+                    this._bgSpriteFrame[o] = i.getComponent(cc.Sprite).spriteFrame,
+                    i.destroy()
+                }
+                var n = this.nodeInfo.root.getChildByName("top");
+                this._broadcast.init(this.nodeInfo.root.getChildByName("broadcast"));
+                var s = this.nodeInfo.root.getChildByName("JpBroadcast");
+                p.Config.Interval ? new B.default(s) : s.destroy();
+                var c = n.getChildByName("headIcon");
+                c.on(N.ConstDefine.click, this.headIconClick, this),
+                this._headIconSpt = c.getChildByName(N.ConstDefine.Background).getComponent(cc.Sprite),
+                this._nick = cc.find("nick/label", n).getComponent(cc.Label),
+                this._account = cc.find("id/account", n).getComponent(cc.Label),
+                this._creditBoxNode = n.getChildByName("creditBox"),
+                this.showCreditBox(!1),
+                n.getChildByName("notice").on(N.ConstDefine.click, this.noticeClick, this),
+                this._creditUIPic = new u.default(N.ConstDefine.credit,this._creditBoxNode.getChildByName(N.ConstDefine.credit));
+                var l = this._creditBoxNode.getChildByName("icon_coin");
+                N.default.singleCreditPos.set(this._creditBoxNode.convertToWorldSpaceAR(l.position)),
+                N.default.doubleCreditPos.set(N.default.singleCreditPos),
+                P.default.Instance.setLevel(this._creditBoxNode, p.AdaptLevel.creditUI),
+                this._creditBoxNode.setPosition(-190, 334),
+                this._forefrontNode = this.nodeInfo.root.getChildByName("last_page"),
+                this._forefrontNode.active = !0,
+                this._forefrontNode.on(N.ConstDefine.click, this.lastPageClick, this),
+                this._finallyNode = this.nodeInfo.root.getChildByName("next_page"),
+                this._finallyNode.active = !0,
+                this._finallyNode.on(N.ConstDefine.click, this.nextPageClick, this);
+                var g = this.nodeInfo.root.getChildByName("crashBack");
+                p.Config.welfarePrize.cashBack_period ? (g.active = !0,
+                1 == p.Config.welfarePrize.cashBack_period && (g.getChildByName("anim").on(N.ConstDefine.click, this.crashBackClick, this),
+                g.getChildByName("label").destroy())) : g.active = !1;
+                var _ = this.nodeInfo.root.getChildByName("fuDai");
+                this._fudaiDisableNode = _.getChildByName("disable"),
+                this._fudaiCountdown = new I.default(cc.find("time/text", this._fudaiDisableNode).getComponent(cc.Label),N.default.reqUserInfo),
+                this._fudaiEnableNode = _.getChildByName("enable"),
+                p.Config.welfarePrize.fuDai_period ? (_.active = !0,
+                1 == p.Config.welfarePrize.fuDai_period ? (_.getChildByName("label").destroy(),
+                this._fudaiEnableNode.getChildByName("btn").on(N.ConstDefine.click, this.fudaiClick, this)) : this._fudaiDisableNode.active = !1) : _.active = !1;
+                var m = cc.find("jackpot/dikuang", this.nodeInfo.root);
+                m.getChildByName(N.ConstDefine.click).on(N.ConstDefine.click, function() {
+                    v.default.playEffect(N.ConstDefine.click),
+                    S.default.getResInfo("jpRankUI", 0)
+                });
+                var y = cc.find("view/content", m).children;
+                for (o = 0; o < N.default.jp.length; o++) {
+                    var M = y[o];
+                    this._jackpotUIPic[o] = new u.default(N.ConstDefine.credit,M.getChildByName(N.ConstDefine.credit)),
+                    this._jackpotUIPic[o].setSepValue(N.default.jp[o], N.default.login.creditPrefix),
+                    this._jpLangSpts[r[M.name]] = M.children[0].getComponent(cc.Sprite)
+                }
+                var w = {
+                    root: m,
+                    audoPlayTime: 5
+                };
+                this._loopPgView = new b.LoopTogglePageView(w),
+                n.getChildByName("setting").on(N.ConstDefine.click, function() {
+                    v.default.playEffect(N.ConstDefine.click),
+                    S.default.getResInfo("settingBox")
+                }),
+                this._midNode = this.nodeInfo.root.getChildByName("mid");
+                var R = this._midNode.getChildByName("left")
+                  , L = function(t) {
+                    var o = R.children[t];
+                    E._leftToggle[t] = o.getComponent(cc.Toggle),
+                    o.on(N.ConstDefine.click, function() {
+                        e.leftClick(t + 1, 0)
+                    })
+                }
+                  , E = this;
+                for (o = 0; o < R.childrenCount; o++)
+                    L(o);
+                var x = this._midNode.getChildByName("right");
+                this._scrollView = x.getComponent(k.default),
+                this._scrollView.node.on("scrolling", this.pgChange, this),
+                this._viewContent = x.getChildByName("content"),
+                this._cardUIPrefab[a.small] = x.getChildByName("card"),
+                this._cardUIPrefab[a.small].active = !1,
+                this._cardUIPrefab[a.big] = x.getChildByName("cardBig"),
+                this._cardUIPrefab[a.big].active = !1,
+                this._adverUI = new T.default(this._viewContent.getChildByName("ad")),
+                this._addToFavNode = this._viewContent.getChildByName("addToFav"),
+                this._addToFavNode.active = !1,
+                this._dayPrize = new D.default(this.nodeInfo.root.getChildByName("dayPrize")),
+                this._searchGidNode = this.nodeInfo.root.getChildByName("searchGid"),
+                this._searchGidNode.active = !1,
+                f.default.editInput(this._searchGidNode, this._searchGidNode),
+                this._searchGidNode.on("text-changed", this.searchGidChanged, this),
+                this._searchCard = new C.default(cc.instantiate(this._cardUIPrefab[a.big])),
+                this._searchCard.setActive(!1),
+                this._searchCard.setParent(this.nodeInfo.root),
+                this.nodeInfo.root.on(cc.Node.EventType.MOUSE_WHEEL, function(t) {
+                    var o = e._scrollView.getScrollOffset().x;
+                    o = t.getScrollY() < 0 ? -o + p.Config.gameSize[0] : -o - p.Config.gameSize[0],
+                    e._scrollView.scrollToOffset(cc.v2(o, 0), .2)
+                }),
+                d.MessageMgr.on(d.MessageName.NetMsg, this.onLogonNet, this),
+                d.MessageMgr.on(d.MessageName.ChangeLang, this.changeLang, this),
+                d.MessageMgr.on(d.MessageName.ShowCreditBox, this.showCreditBox, this),
+                d.MessageMgr.on(d.MessageName.NetClose, this.netClose, this),
+                d.MessageMgr.on(d.MessageName.NicknameChange, function() {
+                    e._nick.string = N.default.login.nickname
+                }),
+                this.changeLang(),
+                this._finishLoad = !0,
+                N.default.login.succeed && this.loginSucceed()
+            }
+            ,
+            t.prototype.changeHeadIcon = function() {
+                f.default.setDyncSpt(p.Config.dyncLoadDirIndex.headIcon, "headIcon/" + N.default.login.headIndex, this._headIconSpt)
+            }
+            ,
+            t.prototype.showCreditBox = function(e) {
+                this._creditBoxNode.active = e
+            }
+            ,
+            t.prototype.lastPageClick = function() {
+                this._scrollView.stopAutoScroll();
+                var e = this._scrollView.getScrollOffset();
+                e.x = -p.Config.gameSize[0] - e.x,
+                e.y = 0,
+                this._scrollView.scrollToOffset(e, .3)
+            }
+            ,
+            t.prototype.nextPageClick = function() {
+                this._scrollView.stopAutoScroll();
+                var e = this._scrollView.getScrollOffset();
+                e.x = p.Config.gameSize[0] - e.x,
+                e.y = 0,
+                this._scrollView.scrollToOffset(e, .3)
+            }
+            ,
+            t.prototype.updateCredit = function() {
+                N.default.login.openWinScore ? this._creditUIPic.setSepValue(N.default.login.score + N.default.login.winScore) : this._creditUIPic.setSepValue(N.default.login.score),
+                window.parent.Balance = N.default.login.score
+            }
+            ,
+            t.prototype.updateUserInfo = function() {
+                this._finishLoad && (this.updateCredit(),
+                this._dayPrize.response(),
+                this.fudaiResponse())
+            }
+            ,
+            t.prototype.fudaiResponse = function() {
+                N.default.fuliData.blotteryfudai ? (this._fudaiEnableNode.active = !0,
+                this._fudaiDisableNode.active = !1) : (this._fudaiEnableNode.active = !1,
+                this._fudaiDisableNode.active = !0,
+                this._fudaiCountdown.end(),
+                this._fudaiCountdown.start(N.default.fuliData.refreshtimefudai))
+            }
+            ,
+            t.prototype.searchGidChanged = function(e) {
+                var t = N.default.kpKeyCfg[Number(e.string)];
+                t ? (this._searchCard.setActive(!0),
+                this._searchCard.reset(t),
+                this.loadCfgTex(t),
+                this._midNode.active = !1) : (this._searchCard.setActive(!1),
+                this._midNode.active = !0)
+            }
+            ,
+            t.prototype.changeLang = function() {
+                f.default.setLangSptArr(p.Config.dyncLoadDirIndex.jackPot, this._jpLangSpts)
+            }
+            ,
+            t.prototype.netClose = function() {}
+            ,
+            t.prototype.loginSucceed = function() {
+                this.showCreditBox(!0);
+                for (var e = c.total + 1; e < c.num; e++)
+                    (w = this._cardSortOrder[e]).length = 0,
+                    this._cardSortSmallDic[e] = {};
+                this._adverUI.init();
+                var t = 0
+                  , o = h.default.getStorage("pgIndex");
+                if (o && (t = parseInt(o)),
+                N.default.login.guestLogin) {
+                    for (this._dayPrize.showGuestLogin(),
+                    this._fudaiDisableNode.active = !1,
+                    this._fudaiEnableNode.active = !0,
+                    e = 0; e < this._leftToggle.length; e++)
+                        this._leftToggle[e].enabled = !1;
+                    var i = this._cardSortOrder[c.all];
+                    for (e = 0; e < p.Config.demoServerGids.length; e++) {
+                        var n = N.default.kpKeyCfg[p.Config.demoServerGids[e]];
+                        i.push(n)
+                    }
+                    var r = c.all;
+                    if (this._leftToggle[r - 1].check(),
+                    N.default.sendJpReq(),
+                    this._nick.string = N.default.login.nickname,
+                    this._account.string = "ID:" + N.default.login.gameID.toString(),
+                    this.updateCredit(),
+                    this._broadcast.clear(),
+                    N.default.login.noticMsg)
+                        for (e = 0; e < 3; e++)
+                            for (var a = 0, s = N.default.login.noticMsg; a < s.length; a++) {
+                                var l = s[a];
+                                this._broadcast.addMsg(l.msg)
+                            }
+                    this.changeHeadIcon(),
+                    this._lastShowCategory = void 0,
+                    this.leftClick(r, t)
+                } else {
+                    for (e = 0; e < this._leftToggle.length; e++)
+                        this._leftToggle[e].enabled = !0;
+                    this._dayPrize.response(),
+                    this.fudaiResponse();
+                    var d = [];
+                    for (e = c.total + 1; e < c.num; ++e)
+                        d[e] = [];
+                    for (var f = 0, u = N.default.kpSortGid; f < u.length; f++) {
+                        var g = u[f]
+                          , _ = N.default.kpKeyCfg[g];
+                        if (N.default.cardShow(_)) {
+                            _.fav = !1,
+                            d[c.all].push(g);
+                            for (var m = 0, v = _.fenlei.split(","); m < v.length; m++) {
+                                var b = v[m];
+                                b = b.trim();
+                                var M = d[c[b]];
+                                null != M && M.push(g)
+                            }
+                        }
+                    }
+                    for (e = c.total + 1; e < c.num; e++) {
+                        var w = this._cardSortOrder[e]
+                          , B = this._cardSortSmallDic[e];
+                        if (w.length = 0,
+                        e == c.all || e == c.slot) {
+                            for (var P = d[e], T = 0, k = p.Config.bigKaShow[c[e]]; T < k.length; T++)
+                                g = k[T],
+                                (n = N.default.kpKeyCfg[g]).big = !0;
+                            for (var I = [], D = 0, R = P; D < R.length; D++)
+                                g = R[D],
+                                (n = N.default.kpKeyCfg[g]) && I.push(n);
+                            for (var L = 0, E = 0; E < I.length; ) {
+                                if ((n = I[E]).big) {
+                                    if (L % 2 == 1) {
+                                        var x = E + 1;
+                                        if (x < I.length) {
+                                            for (; x < I.length; ) {
+                                                var O = I[x];
+                                                if (!O.big) {
+                                                    ++L,
+                                                    B[O.gid] = !0,
+                                                    w.push(O);
+                                                    break
+                                                }
+                                                ++x
+                                            }
+                                            for (; E < x; )
+                                                w.push(I[E]),
+                                                ++E
+                                        } else
+                                            w.push(n);
+                                        ++E;
+                                        continue
+                                    }
+                                } else
+                                    B[n.gid] = !0,
+                                    ++L;
+                                w.push(n),
+                                ++E
+                            }
+                        } else
+                            for (var F = 0, A = d[e]; F < A.length; F++)
+                                g = A[F],
+                                n = N.default.kpKeyCfg[g],
+                                w.push(n)
+                    }
+                    C.default.FavCards.length = 0;
+                    var U = localStorage.getItem(N.default.login.userID + "_favArrStr");
+                    if (U) {
+                        N.default.favArr = JSON.parse(U);
+                        for (var j = 0, G = N.default.favArr; j < G.length; j++)
+                            g = G[j],
+                            _ = N.default.kpKeyCfg[g],
+                            N.default.cardShow(_) && (_.fav = !0,
+                            C.default.FavCards.push(_))
+                    }
+                    if (r = c.all,
+                    this._searchGidNode.active = !1,
+                    N.default.login.succeed) {
+                        N.default.login.testAcccount && (this._searchGidNode.active = !0),
+                        N.default.needReset && S.default.getResInfo(N.ConstDefine.msgTip, y.default.procLangText("changePwdTip"), 5),
+                        N.default.sendJpReq();
+                        var H = h.default.getStorage("showCategory");
+                        if (H && (r = parseInt(H)),
+                        this._nick.string = N.default.login.nickname,
+                        this._account.string = "ID:" + N.default.login.gameID.toString(),
+                        this.updateCredit(),
+                        this._broadcast.clear(),
+                        N.default.login.noticMsg)
+                            for (e = 0; e < 3; e++)
+                                for (var z = 0, V = N.default.login.noticMsg; z < V.length; z++)
+                                    l = V[z],
+                                    this._broadcast.addMsg(l.msg);
+                        this.changeHeadIcon()
+                    }
+                    this._leftToggle[r - 1] || (r = c.all),
+                    this._leftToggle[r - 1].check(),
+                    this._lastShowCategory = void 0,
+                    this.leftClick(r, t);
+                    var W = h.default.getStorage("justEnterGame");
+                    if (W) {
+                        h.default.removeStorage("justEnterGame");
+                        for (var J = Number(W), q = 0, K = this._cards; q < K.length; q++) {
+                            var X = K[q];
+                            if (X.cfg.gid == J) {
+                                X.showFavInTime(1e4);
+                                break
+                            }
+                        }
+                    }
+                }
+            }
+            ,
+            t.prototype.loadCfgTex = function(e) {
+                e.big ? void 0 !== e.bigLogoSpt ? e.card.setLogoSpt() : f.default.loadRemoteSpt(p.Config.configPath + "kapai_big/", N.ConstDefine.kp, e.gid, function(t, o) {
+                    e.bigLogoSpt = null,
+                    t || (e.bigLogoSpt = new cc.SpriteFrame(o),
+                    e.card.setLogoSpt())
+                }) : void 0 !== e.logoSpt ? e.card.setLogoSpt() : f.default.loadRemoteSpt(p.Config.configPath + "kapai/", N.ConstDefine.kp, e.gid, function(t, o) {
+                    e.logoSpt = null,
+                    t || (e.logoSpt = new cc.SpriteFrame(o),
+                    e.card.setLogoSpt())
+                }),
+                e.loadIcon ? e.iconSpt && e.card.setIconSpt() : f.default.loadRemoteSpt(p.Config.configPath + "lang/" + y.default.currLang + "/kapai/", N.ConstDefine.kpl, e.gid, function(t, o) {
+                    e.loadIcon = !0,
+                    t || (e.iconSpt = new cc.SpriteFrame(o),
+                    e.card.setIconSpt())
+                })
+            }
+            ,
+            t.prototype.pgChange = function() {
+                var e = this._scrollView.getScrollOffset();
+                if (Math.abs(e.x - this._lastViewOffsetX2) > 3 && (h.default.setStorage("pgIndex", Math.floor(e.x).toString()),
+                this._lastViewOffsetX2 = e.x),
+                !(Math.abs(e.x - this._lastViewOffsetX) < 100)) {
+                    var t = e.x;
+                    if (this._lastViewOffsetX = e.x,
+                    null != this._lastShowCategory)
+                        for (var o = p.Config.center[0] - t, i = 0, n = this._cards; i < n.length; i++) {
+                            var r = n[i];
+                            Math.abs(r.x - o) < 800 ? (r.setActive(!0),
+                            this.loadCfgTex(r.cfg)) : r.setActive(!1)
+                        }
+                }
+            }
+            ,
+            t.prototype.showCard = function(e, t, o) {
+                void 0 === o && (o = !0),
+                this._bgSprite.spriteFrame = this._bgSpriteFrame[e - 1];
+                for (var i = 0, n = this._cards; i < n.length; i++)
+                    n[i].setActive(!1);
+                for (var r = 0; r < a.num; r++) {
+                    for (var s = this._cardSort[r], l = 0; l < s.using.length; l++)
+                        s.using[l].setActive(!1);
+                    this._cardSort[r].clear()
+                }
+                var d = 0;
+                this._cards.length = 0;
+                var f = this._cardSortOrder[e]
+                  , u = this._cardSortSmallDic[e];
+                if (e == c.all ? (this._adverUI.setActive(!0),
+                d += 420) : (d += 120,
+                this._adverUI.setActive(!1)),
+                f.length > 0) {
+                    u[f[0].gid] ? d += 135 : d += 140;
+                    var p = 0;
+                    for (r = 0; r < f.length; r++) {
+                        var g = f[r];
+                        if (u[g.gid]) {
+                            var _ = this._cardSort[a.small].allocate(this._cardUIPrefab[a.small], this._viewContent);
+                            ++p % 2 == 1 ? _.setPos(d, 119) : (_.setPos(d, -109),
+                            d += 270),
+                            _.init(g, !1),
+                            this._cards.push(_)
+                        } else
+                            p % 2 == 1 && (d += 270),
+                            (_ = this._cardSort[a.big].allocate(this._cardUIPrefab[a.big], this._viewContent)).setPos(d, 5),
+                            _.init(g, !0),
+                            _.setShowFav(e == c.fav),
+                            d += 280,
+                            this._cards.push(_)
+                    }
+                    p % 2 == 1 && (d += 270)
+                }
+                e == c.fav ? (f.length > 0 && (d -= 140),
+                d += 386.5,
+                this._addToFavNode.active = !0,
+                this._addToFavNode.setPosition(d, 0),
+                d += 386.5) : this._addToFavNode.active = !1,
+                this._viewContent.setContentSize(d, 500),
+                this._lastViewOffsetX = 1e5,
+                this._lastShowCategory = e,
+                h.default.setStorage("showCategory", this._lastShowCategory.toString()),
+                e == c.fav && 0 == C.default.FavCards.length || o && (this._scrollView.enabled = !1,
+                this._scrollView.scrollToLeft(0),
+                this._scrollView.scrollToOffset(new cc.Vec2(-t,0)),
+                this._scrollView.enabled = !0)
+            }
+            ,
+            t.prototype.noticeClick = function() {
+                v.default.playEffect(N.ConstDefine.click),
+                S.default.getResInfo("noticeTip")
+            }
+            ,
+            t.prototype.fudaiClick = function() {
+                N.default.login.guestLogin || (v.default.playEffect(N.ConstDefine.click),
+                S.default.getResInfo("fudaiUI"))
+            }
+            ,
+            t.prototype.crashBackClick = function() {
+                N.default.login.guestLogin || (v.default.playEffect(N.ConstDefine.click),
+                S.default.getResInfo("cashbackUI"))
+            }
+            ,
+            t.prototype.leftClick = function(e, t) {
+                this._scrollView.stopAutoScroll(),
+                this._lastShowCategory === e ? this._scrollView.scrollToLeft(0) : this.showCard(e, t),
+                this.pgChange()
+            }
+            ,
+            t.prototype.updateFavCards = function() {
+                this._lastShowCategory === c.fav && (this.showCard(c.fav, 0, !1),
+                this.pgChange())
+            }
+            ,
+            t.prototype.headIconClick = function() {
+                N.default.login.guestLogin || (v.default.playEffect(N.ConstDefine.click),
+                S.default.getResInfo("headUI"))
+            }
+            ,
+            t.prototype.onLogonNet = function(e) {
+                if (e.mainID === _.Cmd.MDM_MB_LOGON)
+                    switch (e.subID) {
+                    case _.Cmd.SUB_MB_GETJPSCORE_RESULT:
+                        var t = e.data;
+                        N.default.jp[0] = t.grand,
+                        N.default.jp[1] = t.major,
+                        N.default.jp[2] = t.minor,
+                        N.default.jp[3] = t.mini;
+                        window.parent.Grand = t.grand; // Global
+                        window.parent.Major = t.major;
+                        window.parent.Minor = t.minor;
+                        window.parent.Mini = t.mini;
+                        for (var o = 0; o < N.default.jp.length; o++)
+                            this._jackpotUIPic[o].setSepValue(N.default.jp[o], N.default.login.creditPrefix);
+                        S.default.isLoad("jpRankUI") || m.NetMgr.close(),
+                        this._userRefresh && (N.default.reqUserInfo(),
+                        this._userRefresh = !1);
+                        break;
+                    case _.Cmd.SUB_MB_MOD_NICKNAME_RESULT:
+                        0 === e.data.result ? (d.MessageMgr.emit(d.MessageName.NicknameChange),
+                        S.default.getResInfo(N.ConstDefine.msgTip, "Nickname modified successfully", 3)) : (N.default.login.nickname = this._nick.string,
+                        S.default.getResInfo(N.ConstDefine.msgTip, "Nickname modification failed", 3)),
+                        m.NetMgr.close()
+                    }
+            }
+            ,
+            t
+        }(M.default);
+        o.default = O,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LevelMgr": "LevelMgr",
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/SoundMgr": "SoundMgr",
+        "../../base/common/BufferPool": "BufferPool",
+        "../../base/common/Func": "Func",
+        "../../base/common/MessageMgr": "MessageMgr",
+        "../../base/common/SpecialFunc": "SpecialFunc",
+        "../../base/common/view/CountdownTime": "CountdownTime",
+        "../../base/common/view/JpBroadcast": "JpBroadcast",
+        "../../base/common/view/PageView": "PageView",
+        "../../base/common/view/UIPicText": "UIPicText",
+        "../../base/component/ScrollViewOpt": "ScrollViewOpt",
+        "../../base/effect/EffectMgr": "EffectMgr",
+        "../../base/net/EEvent": "EEvent",
+        "../../base/net/NetMgr": "NetMgr",
+        "../../base/res/DyncLoadedBase": "DyncLoadedBase",
+        "../../base/res/DyncMgr": "DyncMgr",
+        "../../base/res/LanguageMgr": "LanguageMgr",
+        "../config/Config": "Config",
+        "./AdvertUI": "AdvertUI",
+        "./CardUI": "CardUI",
+        "./DayPrize": "DayPrize"
+    }],
+    HeadUI: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "37fe5mjPmFNPoggQD6/V/70", "HeadUI");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.HeadUI = void 0;
+        var r = e("../../base/common/MessageMgr")
+          , a = e("../config/Config")
+          , s = e("../../base/SoundMgr")
+          , c = e("../../base/common/view/PageView")
+          , l = e("../../base/common/view/Tip")
+          , h = e("../../base/res/DyncMgr")
+          , d = e("../../base/LogicMgr")
+          , f = e("../../base/net/NetMgr")
+          , u = e("../../base/net/EEvent")
+          , p = e("../../base/common/SpecialFunc")
+          , g = function(e) {
+            function t(t, o) {
+                return e.call(this, t, o) || this
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                var t = this;
+                e.prototype.initParams.call(this),
+                localStorage.getItem("head"),
+                this._popupMethod.root.getChildByName(d.ConstDefine.close).on(d.ConstDefine.click, this.close, this);
+                var o = this._popupMethod.root.getChildByName("offsetX");
+                this._nickLabel = cc.find("nick/label", o).getComponent(cc.Label),
+                this._idLabel = cc.find("id/label", o).getComponent(cc.Label);
+                var i = o.getChildByName("nickEdit");
+                p.default.editInput(i, this._popupMethod.root),
+                this._nickEdit = i.getComponent(cc.EditBox),
+                d.default.useSoftKeyboard || (this._nickEdit._impl._elem.autocomplete = "off"),
+                this._headSelectNode = o.getChildByName("headSelect"),
+                this._headSelectNode.active = !1,
+                cc.find("confirm", o).on(d.ConstDefine.click, this.confirmClick, this);
+                var n = o.getChildByName("pgView");
+                h.default.bundles[a.Config.dyncLoadDirIndex.headIcon].loadDir("headIcon", cc.SpriteFrame, function(e, o) {
+                    if (e)
+                        console.error("\u52a0\u8f7d\u5934\u50cf\u8d44\u6e90\u51fa\u9519", e);
+                    else {
+                        var i = o.length;
+                        o.sort(function(e, t) {
+                            return e.name.length !== t.name.length ? e.name.length - t.name.length : e.name.localeCompare(t.name)
+                        });
+                        var r = cc.find("view/content", n)
+                          , a = n.getComponent(cc.PageView)
+                          , l = r.getChildByName("page");
+                        l.active = !0,
+                        t._perPgNum = l.childrenCount;
+                        for (var h = Math.ceil(i / t._perPgNum), f = 1; f < h; f++) {
+                            var u = cc.instantiate(l);
+                            a.addPage(u)
+                        }
+                        var p = h * t._perPgNum - i
+                          , g = r.children[h - 1];
+                        for (f = t._perPgNum - p; f < t._perPgNum; f++)
+                            g.children[f].destroy();
+                        var _ = function(e) {
+                            for (var i = r.children[e].children, n = function(n) {
+                                var r = i[n]
+                                  , a = e * t._perPgNum + n;
+                                r.getChildByName(d.ConstDefine.Background).getComponent(cc.Sprite).spriteFrame = o[a],
+                                r.on(d.ConstDefine.click, function() {
+                                    s.default.playEffect(d.ConstDefine.click),
+                                    t.headClick(a, i[n])
+                                })
+                            }, a = 0; a < i.length; a++)
+                                n(a)
+                        };
+                        for (f = 0; f < h; f++)
+                            _(f);
+                        t._headSelectNode.active = !0;
+                        var m = {
+                            root: n,
+                            finishCall: t.resetHeadPage.bind(t),
+                            btnType: c.BtnControlType.leftRightSeq
+                        };
+                        t._pgView = new c.TogglePageView(m)
+                    }
+                }),
+                h.default.getResInfo(d.ConstDefine.loadingTip)
+            }
+            ,
+            t.prototype.resetParams = function() {
+                for (var e = [], t = 0; t < arguments.length; t++)
+                    e[t] = arguments[t];
+                this._nickLabel.string = d.default.login.nickname,
+                this._idLabel.string = d.default.login.gameID.toString(),
+                this._nickEdit.string = ""
+            }
+            ,
+            t.prototype.close = function() {
+                e.prototype.close.call(this),
+                this.resetHeadPage()
+            }
+            ,
+            t.prototype.resetHeadPage = function() {
+                h.default.hide(d.ConstDefine.loadingTip);
+                var e = Math.floor(d.default.login.headIndex / this._perPgNum)
+                  , t = d.default.login.headIndex % this._perPgNum;
+                this._pgView.toggleRoll(e, !1),
+                this.headClick(d.default.login.headIndex, this._pgView.contents[e].children[t])
+            }
+            ,
+            t.prototype.confirmClick = function() {
+                var e = this;
+                s.default.playEffect(d.ConstDefine.click),
+                this._curHeadIndex !== d.default.login.headIndex && (d.default.login.headIndex = this._curHeadIndex,
+                r.MessageMgr.emit(r.MessageName.ChangeHeadIcon),
+                localStorage.setItem("headIndex_" + d.default.login.userID, this._curHeadIndex.toString()));
+                var t = this._nickEdit.string.length;
+                if (t > 0 && this._nickEdit.string != d.default.login.nickname) {
+                    if (t < 5 || t > 20)
+                        return void h.default.getResInfo(d.ConstDefine.msgTip, "Nickname must be between 5 to 20 characters", 3);
+                    if (!/^[a-zA-Z0-9]+$/.test(this._nickEdit.string))
+                        return void h.default.getResInfo(d.ConstDefine.msgTip, "Nicknames cannot contain spaces or special characters", 3);
+                    f.NetMgr.createWebSocket(),
+                    r.MessageMgr.once(r.MessageName.NetOpen, function() {
+                        d.default.login.nickname = e._nickEdit.string,
+                        f.NetMgr.send(u.Cmd.MDM_MB_LOGON, u.Cmd.SUB_MB_MOD_NICKNAME, {
+                            userid: d.default.login.userID,
+                            dynamicpass: d.default.login.dynamicPass,
+                            nickname: e._nickEdit.string
+                        })
+                    })
+                }
+                this.close()
+            }
+            ,
+            t.prototype.headClick = function(e, t) {
+                e !== this._curHeadIndex && (this._curHeadIndex = e,
+                this._headSelectNode.setParent(t),
+                this._headSelectNode.setPosition(d.ConstDefine.vec3ZERO))
+            }
+            ,
+            t
+        }(l.PopupBase);
+        o.HeadUI = g,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/SoundMgr": "SoundMgr",
+        "../../base/common/MessageMgr": "MessageMgr",
+        "../../base/common/SpecialFunc": "SpecialFunc",
+        "../../base/common/view/PageView": "PageView",
+        "../../base/common/view/Tip": "Tip",
+        "../../base/net/EEvent": "EEvent",
+        "../../base/net/NetMgr": "NetMgr",
+        "../../base/res/DyncMgr": "DyncMgr",
+        "../config/Config": "Config"
+    }],
+    Interface: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "298e4HVs/9B4LkMTltVFsjK", "Interface"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.DayArrTip = o.GameTag = void 0,
+        function(e) {
+            e[e.hot = 0] = "hot",
+            e[e.new = 1] = "new",
+            e[e.comingSoon = 2] = "comingSoon",
+            e[e.newFeature = 3] = "newFeature",
+            e[e.soon = 4] = "soon",
+            e[e.hotStart = 5] = "hotStart",
+            e[e.num = 6] = "num"
+        }(o.GameTag || (o.GameTag = {})),
+        function(e) {
+            e[e.hour = 0] = "hour",
+            e[e.minute = 1] = "minute",
+            e[e.second = 2] = "second",
+            e[e.num = 3] = "num"
+        }(o.DayArrTip || (o.DayArrTip = {})),
+        cc._RF.pop()
+    }
+    , {}],
+    JpBroadcast: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "d55d5zC89dIwak4F+s1Q0pH", "JpBroadcast"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var i = e("../../../my/config/Config")
+          , n = e("../../effect/EffectMgr")
+          , r = e("../../net/NetMgr")
+          , a = e("../SpecialFunc")
+          , s = e("./UIPicText")
+          , c = function() {
+            function e(e) {
+                this._root = e;
+                var t = this._root.getChildByName("Content");
+                this._nickName = t.getChildByName("Name").getComponent(cc.Label),
+                this._credit = new s.default("credit",t.getChildByName("Credit")),
+                this._dataUrl = i.Config.backStageUrl + "/ws/mobileinterface.ashx?action=getglobalmessage";
+                var o = i.Config.jpBroadcast;
+                this._showTime = o.showTime,
+                this._updateTime = o.updateTime,
+                this._hisMaxCount = o.hisMaxCount,
+                this._historyData = [],
+                this._historyNode = [],
+                this._historyPar = this._root.getChildByName("ScrollView"),
+                this._historyPar.getChildByName("mask").on("click", this.closeHistory, this),
+                this._resourceNode = this._root.getChildByName("Resource").children,
+                this._resourceNode[0].parent.active = !1,
+                this._contentPar = cc.find("view/content", this._historyPar),
+                this._openHistoryBtn = this._root.getChildByName("OpenHistory"),
+                this._closeHistoryBtn = this._root.getChildByName("CloseHistory"),
+                this._openHistoryBtn.on("click", this.showHistory, this),
+                this._closeHistoryBtn.on("click", this.closeHistory, this);
+                for (var r = 0; r < this._hisMaxCount; ++r)
+                    this.addHistoryNode(r);
+                this._timer = 0,
+                this._historyPar.active = !1,
+                this._closeHistoryBtn.active = !1,
+                this._openHistoryBtn.active = !0,
+                this._root.active = !1,
+                this._isCloseJpBroadcast = !1,
+                this._closeTimer = 0,
+                this._curName = "",
+                this._curScore = -1,
+                this._rootFadein = cc.tween(this._root).to(.5, {
+                    opacity: 255
+                }),
+                n.EffectMgr.Instance.addUpdateFunc("JpBroadcast", this.update.bind(this))
+            }
+            return e.prototype.update = function(e) {
+                this._timer += e,
+                this._timer >= this._updateTime && (this._timer -= this._updateTime,
+                r.NetMgr.sendHttpGet(this._dataUrl, this.setBoradCast.bind(this), r.HttpGetProto.json)),
+                this._isCloseJpBroadcast && (this._closeTimer += e,
+                this._closeTimer >= this._showTime && (this._closeTimer = 0,
+                this._isCloseJpBroadcast = !1,
+                this._root.active = !1,
+                this._closeHistoryBtn.active = !1,
+                this._openHistoryBtn.active = !0,
+                this._historyPar.active = !1))
+            }
+            ,
+            e.prototype.setBoradCast = function(e) {
+                null != e.needShow && e.needShow > 0 && (this._curName != e.NickName || this._curScore != e.credit) && (this.addHistory(this._curName, this._curScore),
+                this.updataHistory(),
+                this._nickName.string = '"' + e.NickName + '"',
+                this._curName = e.NickName,
+                this._curScore = e.credit,
+                this._credit.setSepValue(e.credit),
+                this._root.active || (this._root.active = !0,
+                this._root.opacity = 0,
+                this._rootFadein.start(),
+                this._isCloseJpBroadcast = !0))
+            }
+            ,
+            e.prototype.addHistory = function(e, t) {
+                if (!(e.length < 1)) {
+                    var o = {
+                        name: e,
+                        score: t
+                    };
+                    if (this._historyData.length >= this._hisMaxCount) {
+                        for (var i = 1; i < this._hisMaxCount; ++i)
+                            this._historyData[i - 1] = this._historyData[i];
+                        this._historyData[this._hisMaxCount - 1] = o
+                    } else
+                        this._historyData.push(o)
+                }
+            }
+            ,
+            e.prototype.showHistory = function() {
+                this._historyPar.active = !0,
+                this._closeHistoryBtn.active = !0,
+                this._openHistoryBtn.active = !1,
+                this._isCloseJpBroadcast = !1
+            }
+            ,
+            e.prototype.updataHistory = function() {
+                for (var e = this._historyData.length, t = 0; t < this._historyData.length; ++t)
+                    this._historyNode[t].root.active = !1;
+                for (t = 0; t < this._historyData.length; ++t)
+                    this._historyNode[t].root.active = !0,
+                    this._historyNode[t].name.string = '"' + this._historyData[e - 1 - t].name + '"',
+                    this._historyNode[t].score.string = a.default.converSepValue(this._historyData[e - 1 - t].score)
+            }
+            ,
+            e.prototype.closeHistory = function() {
+                this._closeHistoryBtn.active = !1,
+                this._openHistoryBtn.active = !0,
+                this._historyPar.active = !1,
+                this._closeTimer = 0,
+                this._isCloseJpBroadcast = !0
+            }
+            ,
+            e.prototype.addHistoryNode = function(e) {
+                var t = {
+                    root: null,
+                    name: null,
+                    score: null
+                };
+                t.root = cc.instantiate(this._resourceNode[e % 2]),
+                t.root.parent = this._contentPar,
+                t.name = t.root.getChildByName("Name").getComponent(cc.Label),
+                t.score = t.root.getChildByName("Credit").getComponent(cc.Label),
+                t.root.active = !1,
+                this._historyNode.push(t)
+            }
+            ,
+            e
+        }();
+        o.default = c,
+        cc._RF.pop()
+    }
+    , {
+        "../../../my/config/Config": "Config",
+        "../../effect/EffectMgr": "EffectMgr",
+        "../../net/NetMgr": "NetMgr",
+        "../SpecialFunc": "SpecialFunc",
+        "./UIPicText": "UIPicText"
+    }],
+    JpRankUI: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "1c06c7E4MdGI6UJrrPN+o2w", "JpRankUI");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var r, a = e("../../base/common/Func"), s = e("../../base/common/MessageMgr"), c = e("../../base/common/SpecialFunc"), l = e("../../base/common/view/Tip"), h = e("../../base/common/view/UIPicText"), d = e("../../base/net/EEvent"), f = e("../../base/net/NetMgr"), u = e("../../base/res/LanguageMgr"), p = e("../../base/SoundMgr"), g = e("./CustomScrollView"), _ = e("../../base/LogicMgr");
+        (function(e) {
+            e[e.num = 0] = "num"
+        }
+        )(r || (r = {}));
+        var m = ["grand", "major", "minor", "mini"]
+          , y = function() {
+            function e(e, t) {
+                this._lastShowFrame = 0,
+                this._root = e,
+                this._frameChildren = e.getChildByName("frame").children;
+                for (var o = 0, i = this._frameChildren; o < i.length; o++) {
+                    var n = i[o];
+                    n.opacity = 0,
+                    n.active = !0
+                }
+                this._frameChildren[this._lastShowFrame].opacity = 255,
+                this._orderUItext = new h.default("order",e.getChildByName("order")),
+                this._orderUItext.setStr(t + 1);
+                var r = e.getChildByName("user");
+                this._idLabel = r.getChildByName("id").getComponent(cc.Label),
+                this._nickLabel = r.getChildByName("nick").getComponent(cc.Label),
+                this._timeLabel = e.getChildByName("time").getComponent(cc.Label),
+                this._creditUItext = new h.default(_.ConstDefine.credit,e.getChildByName(_.ConstDefine.credit))
+            }
+            return e.prototype.init = function(e) {
+                var t = e.gameid.toString();
+                this._idLabel.string = t.slice(0, 2) + "***" + t[5],
+                this._nickLabel.string = e.nickname,
+                this._timeLabel.string = e.date,
+                this._creditUItext.setSepValue(e.score, _.default.login.creditPrefix),
+                this._lastShowFrame !== e.jptype && (this._frameChildren[this._lastShowFrame].opacity = 0,
+                this._lastShowFrame = e.jptype,
+                this._frameChildren[this._lastShowFrame].opacity = 255),
+                this.setActive(!0)
+            }
+            ,
+            e.prototype.setActive = function(e) {
+                this._root.active = e
+            }
+            ,
+            e
+        }()
+          , v = function(e) {
+            function t(t, o) {
+                var i = e.call(this, t, o) || this;
+                return i._awardCredit = [],
+                i._rankItems = [],
+                i
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                var t = this;
+                e.prototype.initParams.call(this);
+                for (var o = this._popupMethod.root.getChildByName("offsetX"), i = o.getChildByName("left").children, n = function(e) {
+                    var o = i[e]
+                      , n = o.children[0].getComponent(sp.Skeleton).attachUtil.generateAttachedNodes("main")
+                      , a = o.getChildByName("val");
+                    a.parent = n[0],
+                    r._awardCredit[e] = new h.default("credit",a),
+                    o.on("click", function() {
+                        p.default.playEffect(_.ConstDefine.click),
+                        t.awardClick(e + 1)
+                    })
+                }, r = this, a = 0; a < i.length; a++)
+                    n(a);
+                var s = o.getChildByName("right");
+                s.getChildByName("close").on(_.ConstDefine.click, this.close, this);
+                var c = s.getChildByName("showInfoFrame");
+                this._infoTip = c.getChildByName("info").getComponent(cc.Label),
+                this._infoTip.string = "",
+                this._noRecordNode = c.getChildByName("noRecordLst"),
+                this._noRecordNode.opacity = 0,
+                this._nodataNode = s.getChildByName("noData"),
+                this._nodataNode.opacity = 0;
+                var l = s.getChildByName("rank");
+                g.CustomScrollView.addScrollBarExtra(l),
+                this._contentNode = cc.find("view/content", l),
+                this._itemPrefab = this._contentNode.getChildByName("prefab"),
+                this._rankItems.length = 0,
+                this._rankItems.push(new y(this._itemPrefab,this._rankItems.length)),
+                this._rankItems[0].setActive(!1)
+            }
+            ,
+            t.prototype.resetParams = function(t) {
+                e.prototype.resetParams.call(this),
+                this._laserIndexClick = -1,
+                p.default.playEffect("jpEnter"),
+                s.MessageMgr.on(s.MessageName.NetMsg, this.onLogonNet, this),
+                this.nodeInfo.root.active = !0,
+                this.awardClick(t);
+                for (var o = 0; o < _.default.jp.length; o++)
+                    this._awardCredit[o].setSepValue(_.default.jp[o], _.default.login.creditPrefix)
+            }
+            ,
+            t.prototype.close = function() {
+                p.default.playEffect("jpClose"),
+                this.hide(),
+                f.NetMgr.close(),
+                s.MessageMgr.off(s.MessageName.NetMsg, this.onLogonNet, this)
+            }
+            ,
+            t.prototype.awardClick = function(e) {
+                this._laserIndexClick !== e && (this._laserIndexClick = e,
+                _.default.login.succeed && (s.MessageMgr.once(s.MessageName.NetOpen, function() {
+                    var t = {
+                        type: e - 1,
+                        bossid: _.default.login.bossID
+                    };
+                    f.NetMgr.send(d.Cmd.MDM_MB_LOGON, d.Cmd.SUB_MB_LOGON_GETJPRECORD, t)
+                }),
+                f.NetMgr.createWebSocket()))
+            }
+            ,
+            t.prototype.onLogonNet = function(e) {
+                if (e.mainID === d.Cmd.MDM_MB_LOGON && e.subID === d.Cmd.SUB_MB_GETJPRECORD_RESULT) {
+                    var t = e.data;
+                    if (this._infoTip.string = "",
+                    0 === t.result)
+                        if (null != t.item) {
+                            for (var o = this._rankItems.length; o < t.item.length; o++) {
+                                var i = cc.instantiate(this._itemPrefab);
+                                i.setParent(this._contentNode),
+                                this._rankItems.push(new y(i,o))
+                            }
+                            for (var n = t.item.length; n < this._rankItems.length; n++)
+                                this._rankItems[n].setActive(!1);
+                            this._nodataNode.opacity = 0,
+                            this._noRecordNode.opacity = 255;
+                            for (var r = 0; r < t.item.length; r++)
+                                if ((g = t.item[r]).date = a.default.change2Time(g.date),
+                                this._rankItems[r].init(g),
+                                255 === this._noRecordNode.opacity && _.default.login.gameID === g.gameid) {
+                                    this._noRecordNode.opacity = 0;
+                                    var s = u.default.procLangText(m[g.jptype]);
+                                    this._infoTip.string = cc.js.formatStr("I get %s prize with %s at %s", s, _.default.login.creditPrefix + c.default.convertDecimalNum(g.score), g.date)
+                                }
+                        } else {
+                            this._nodataNode.opacity = 255,
+                            this._noRecordNode.opacity = 255;
+                            for (var l = 0; l < this._rankItems.length; l++)
+                                this._rankItems[l].setActive(!1)
+                        }
+                    else {
+                        cc.warn(t.msg),
+                        this._nodataNode.opacity = 0;
+                        for (var h = 0, p = this._rankItems; h < p.length; h++) {
+                            var g;
+                            (g = p[h]).setActive(!1)
+                        }
+                    }
+                    f.NetMgr.close()
+                }
+            }
+            ,
+            t
+        }(l.PopupBase);
+        o.default = v,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/SoundMgr": "SoundMgr",
+        "../../base/common/Func": "Func",
+        "../../base/common/MessageMgr": "MessageMgr",
+        "../../base/common/SpecialFunc": "SpecialFunc",
+        "../../base/common/view/Tip": "Tip",
+        "../../base/common/view/UIPicText": "UIPicText",
+        "../../base/net/EEvent": "EEvent",
+        "../../base/net/NetMgr": "NetMgr",
+        "../../base/res/LanguageMgr": "LanguageMgr",
+        "./CustomScrollView": "CustomScrollView"
+    }],
+    JpUI: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "8ac3fWa2bdGsqd/HuJd5ISP", "JpUI");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.JpPrize = void 0;
+        var r = e("../../base/common/MessageMgr")
+          , a = e("../../base/common/view/UIPicText")
+          , s = e("../../base/net/EEvent")
+          , c = e("../../base/res/DyncLoadedBase")
+          , l = e("../../base/res/DyncMgr")
+          , h = e("../../base/SoundMgr")
+          , d = e("../../base/LogicMgr")
+          , f = e("../../base/net/NetMgr")
+          , u = function() {
+            function e(e, t) {
+                this._credit = new a.default("jp",t.getChildByName(d.ConstDefine.credit)),
+                this._titleSpt = t.getChildByName("1_2").children[0].getComponent(cc.Sprite),
+                this._commaNode = t.getChildByName(","),
+                this.setStr(d.default.jp[e].toString())
+            }
+            return e.prototype.setCredit = function(e) {
+                this._credit.setSepValue(e, d.default.login.creditPrefix)
+            }
+            ,
+            e.prototype.setStr = function(e) {
+                this._commaNode.active = e.length > 5,
+                this._credit.setStr(e, d.default.login.creditPrefix)
+            }
+            ,
+            e.prototype.changeLang = function() {}
+            ,
+            e
+        }()
+          , p = function(e) {
+            function t() {
+                var t = null !== e && e.apply(this, arguments) || this;
+                return t._awardBrand = [],
+                t
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                var e = this
+                  , t = this.nodeInfo.root.getChildByName("menubar");
+                t.getChildByName("back").on(d.ConstDefine.click, this.close, this),
+                t.getChildByName("record").on(d.ConstDefine.click, function() {
+                    e.recordClick(0)
+                }, this);
+                for (var o = this.nodeInfo.root.getChildByName("award").children, i = function(t) {
+                    var i = o[t];
+                    i.on(d.ConstDefine.click, function() {
+                        e.recordClick(t + 1)
+                    }, n),
+                    n._awardBrand[t] = new u(t,i)
+                }, n = this, a = 0; a < o.length; a++)
+                    i(a);
+                r.MessageMgr.on(r.MessageName.NetClose, this.netClose, this)
+            }
+            ,
+            t.prototype.resetParams = function() {
+                h.default.playEffect("jpEnter"),
+                this.changeLang(),
+                r.MessageMgr.once(r.MessageName.NetOpen, this.netOpen, this),
+                f.NetMgr.createWebSocket(),
+                r.MessageMgr.on(r.MessageName.NetMsg, this.onLogonNet, this)
+            }
+            ,
+            t.prototype.netOpen = function() {
+                var e = {
+                    bossid: d.default.login.bossID,
+                    dynamicpass: d.default.login.dynamicPass
+                };
+                f.NetMgr.send(s.Cmd.MDM_MB_LOGON, s.Cmd.SUB_MB_LOGON_GETJPSCORE, e)
+            }
+            ,
+            t.prototype.close = function() {
+                h.default.playEffect("jpClose"),
+                this.hide(),
+                f.NetMgr.close(),
+                r.MessageMgr.off(r.MessageName.NetMsg, this.onLogonNet, this)
+            }
+            ,
+            t.prototype.recordClick = function(e) {
+                h.default.playEffect(d.ConstDefine.click),
+                l.default.getResInfo("jpRankUI", e)
+            }
+            ,
+            t.prototype.changeLang = function() {
+                for (var e = 0, t = this._awardBrand; e < t.length; e++)
+                    t[e].changeLang()
+            }
+            ,
+            t.prototype.netClose = function() {}
+            ,
+            t.prototype.onLogonNet = function(e) {
+                if (e.mainID === s.Cmd.MDM_MB_LOGON && e.subID === s.Cmd.SUB_MB_GETJPSCORE_RESULT) {
+                    f.NetMgr.close();
+                    var t = e.data;
+                    this._awardBrand[0].setStr(t.grand.toString()),
+                    this._awardBrand[1].setStr(t.major.toString()),
+                    this._awardBrand[2].setStr(t.minor.toString()),
+                    this._awardBrand[3].setStr(t.mini.toString())
+                }
+            }
+            ,
+            t
+        }(c.default);
+        o.default = p;
+        var g = function(e) {
+            function t() {
+                var t = null !== e && e.apply(this, arguments) || this;
+                return t._awardBrand = [],
+                t
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                this.nodeInfo.root.getChildByName("collect").on(d.ConstDefine.click, this.collectClick, this);
+                for (var e = this.nodeInfo.root.getChildByName("award").children, t = 0; t < e.length; t++)
+                    this._awardBrand[t] = new u(t,e[t])
+            }
+            ,
+            t.prototype.resetParams = function() {
+                for (var e = [], t = 0; t < arguments.length; t++)
+                    e[t] = arguments[t];
+                this.changeLang()
+            }
+            ,
+            t.prototype.hide = function() {}
+            ,
+            t.prototype.collectClick = function() {}
+            ,
+            t.prototype.changeLang = function() {
+                this._awardBrand[this._showBrandIndex].changeLang()
+            }
+            ,
+            t
+        }(c.default);
+        o.JpPrize = g,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/SoundMgr": "SoundMgr",
+        "../../base/common/MessageMgr": "MessageMgr",
+        "../../base/common/view/UIPicText": "UIPicText",
+        "../../base/net/EEvent": "EEvent",
+        "../../base/net/NetMgr": "NetMgr",
+        "../../base/res/DyncLoadedBase": "DyncLoadedBase",
+        "../../base/res/DyncMgr": "DyncMgr"
+    }],
+    KeyboardUI: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "9242enqXgRJ8JNODukHXJB2", "KeyboardUI");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var r = e("../../base/common/Func")
+          , a = e("../../base/common/SpecialFunc")
+          , s = e("../../base/LogicMgr")
+          , c = e("../../base/res/DyncLoadedBase")
+          , l = e("../../base/res/DyncMgr")
+          , h = e("../../base/ScreenMgr")
+          , d = e("../../base/SoundMgr")
+          , f = cc.Vec3.ZERO
+          , u = function(e) {
+            function t() {
+                var t = null !== e && e.apply(this, arguments) || this;
+                return t._patternMap = new Map,
+                t._moveNodePos = cc.Vec3.ZERO,
+                t
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                var e = this;
+                this.nodeInfo.root.getChildByName("mask").on(s.ConstDefine.click, this.close, this),
+                this._rootNode = this.nodeInfo.root.getChildByName("root"),
+                this._rootInidPos = this._rootNode.position,
+                this._patternNodes = this._rootNode.children,
+                this._topmask = this.nodeInfo.root.getChildByName("topmask");
+                for (var t = 0; t < this._patternNodes.length; t++) {
+                    var o = this._patternNodes[t];
+                    o.active = !1;
+                    for (var i = o.children, n = function(t) {
+                        var o = i[t];
+                        o.on(s.ConstDefine.click, function() {
+                            e.keyClick(o.name)
+                        })
+                    }, c = 0; c < i.length; c++)
+                        n(c);
+                    this._patternMap.set(o.name, t)
+                }
+                this._pattern = this._patternMap.get("lower"),
+                this._patternNodes[this._pattern].active = !0,
+                this._btnCopy = this._rootNode.getChildByName("btnCopy"),
+                this._btnPaste = this._rootNode.getChildByName("btnPaste"),
+                this._btnCopy.on(s.ConstDefine.click, function() {
+                    a.default.copyToClipboard(e._curEdit.string, function(e) {
+                        l.default.getResInfo(s.ConstDefine.msgTip, e ? "copy successfully" : "copy fail", 3)
+                    })
+                }),
+                this._btnPaste.on(s.ConstDefine.click, function() {
+                    e._topmask.active || (e._topmask.active = !0,
+                    setTimeout(function() {
+                        a.default.pasteFormCliboard(e._curEdit, function() {
+                            e._topmask.active = !1,
+                            r.default.isRotateDev() && a.default.reqFullScreen(),
+                            setTimeout(function() {
+                                r.default.isRotateDev() && a.default.reqFullScreen()
+                            }, 1e3)
+                        })
+                    }, 200))
+                })
+            }
+            ,
+            t.prototype.resetParams = function(e, t) {
+                this._pattern !== this._patternMap.get("lower") && this.switchPattern(this._patternMap.get("lower")),
+                this._curEdit = e.getComponent(cc.EditBox),
+                this._moveNodePos.set(t.position),
+                this._curMoveNode = t,
+                f.set(e.position),
+                f.y -= e.height * e.anchorY + 10;
+                var o = e.parent.convertToWorldSpaceAR(f);
+                if (f.set(this._rootInidPos),
+                f.y += this._patternNodes[0].height * this._patternNodes[0].anchorY * this._rootNode.scaleY,
+                this._rootNode.parent.convertToWorldSpaceAR(f, f),
+                o.y < f.y) {
+                    this._rootNode.setPosition(this._rootInidPos);
+                    var i = (n = f.y - o.y) / 300;
+                    i > .5 && (i = .5),
+                    cc.tween(t).by(i, {
+                        y: n
+                    }).start()
+                } else {
+                    var n = o.y - f.y;
+                    this._rootNode.setPosition(this._rootInidPos.x, this._rootInidPos.y + n)
+                }
+                var r = 0 == this._curEdit.inputFlag;
+                this._btnCopy.active = !r,
+                this._btnPaste.active = !0,
+                this._topmask.active = !1
+            }
+            ,
+            t.prototype.close = function() {
+                d.default.playEffect("keyClick"),
+                this._curMoveNode.setPosition(this._moveNodePos),
+                this.hide(),
+                r.default.isRotateDev() && a.default.reqFullScreen()
+            }
+            ,
+            t.prototype.switchPattern = function(e) {
+                this._patternNodes[this._pattern].active = !1,
+                this._pattern = e,
+                this._patternNodes[this._pattern].active = !0
+            }
+            ,
+            t.prototype.keyClick = function(e) {
+                h.default.Instance.triggerClick = !1,
+                d.default.playEffect("keyClick");
+                var t = this._curEdit.string;
+                switch (e) {
+                case "slash":
+                    this._curEdit.string += "/";
+                    break;
+                case "space":
+                    this._curEdit.string += " ";
+                    break;
+                case "del":
+                    this._curEdit.string = this._curEdit.string.substring(0, this._curEdit.string.length - 1);
+                    break;
+                case "stowed":
+                case "enter":
+                    this.close();
+                    break;
+                case "upper":
+                case "special":
+                case "special2":
+                case "lower":
+                    this.switchPattern(this._patternMap.get(e));
+                    break;
+                default:
+                    this._curEdit.string += e
+                }
+                this._curEdit.string != t && this._curEdit.node.emit("text-changed", this._curEdit)
+            }
+            ,
+            t
+        }(c.default);
+        o.default = u,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/ScreenMgr": "ScreenMgr",
+        "../../base/SoundMgr": "SoundMgr",
+        "../../base/common/Func": "Func",
+        "../../base/common/SpecialFunc": "SpecialFunc",
+        "../../base/res/DyncLoadedBase": "DyncLoadedBase",
+        "../../base/res/DyncMgr": "DyncMgr"
+    }],
+    LabelShader1: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "7bfabfniA1MQawb4i/9/pab", "LabelShader1");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        ), r = this && this.__decorate || function(e, t, o, i) {
+            var n, r = arguments.length, a = r < 3 ? t : null === i ? i = Object.getOwnPropertyDescriptor(t, o) : i;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate)
+                a = Reflect.decorate(e, t, o, i);
+            else
+                for (var s = e.length - 1; s >= 0; s--)
+                    (n = e[s]) && (a = (r < 3 ? n(a) : r > 3 ? n(t, o, a) : n(t, o)) || a);
+            return r > 3 && a && Object.defineProperty(t, o, a),
+            a
+        }
+        ;
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var a = cc._decorator
+          , s = a.ccclass
+          , c = a.property
+          , l = a.menu
+          , h = a.requireComponent
+          , d = a.disallowMultiple
+          , f = a.executeInEditMode
+          , u = cc.Enum({
+            None: 0,
+            OneColor: 1,
+            TwoColor: 2,
+            TriColor: 3
+        })
+          , p = cc.Enum({
+            None: 0,
+            Lowp: 1,
+            Mediump: 2,
+            Highp: 3
+        })
+          , g = function(e) {
+            function t() {
+                var t = null !== e && e.apply(this, arguments) || this;
+                return t.shadowUse = !1,
+                t.shadowOffset = cc.v2(1, 1),
+                t.shadowColor = cc.color(0, 0, 0, 150),
+                t.outlineUse = !1,
+                t.outlineWidth = 1,
+                t.outlineColor = cc.color(0, 0, 0, 255),
+                t.olShadowUse = !1,
+                t.olShadowOffset = cc.v2(1, 1),
+                t.olShadowColor = cc.color(0, 0, 0, 150),
+                t.flowLightUse = !1,
+                t.flSpeed = 1,
+                t.flRot = 0,
+                t.flWidth = 15,
+                t.flColor = cc.color(255, 255, 255, 255),
+                t.gradient = u.None,
+                t.color1 = cc.color(255, 0, 0, 255),
+                t.color2 = cc.color(0, 255, 0, 255),
+                t.color3 = cc.color(0, 0, 255, 255),
+                t.glow = p.None,
+                t.glowWidth = 10,
+                t.glowDepth = 2,
+                t.glowColor = cc.color(255, 255, 255, 255),
+                t._mtl = null,
+                t._time = 0,
+                t
+            }
+            return n(t, e),
+            t.prototype.onLoad = function() {
+                this.initMat()
+            }
+            ,
+            t.prototype.initMat = function() {
+                this._mtl = this.node.getComponent(cc.Label).getMaterial(0),
+                this._mtl.define("USE_TEXTURE", !0, 0),
+                this.node.getComponent(cc.Label).setMaterial(0, this._mtl),
+                this.use()
+            }
+            ,
+            t.prototype.use = function() {
+                if (this._mtl) {
+                    switch (this._mtl.setProperty("i_resolution", [this.node.width, this.node.height]),
+                    this._mtl.setProperty("i_shadow", this.shadowUse ? 1 : 0),
+                    this._mtl.setProperty("i_shadowOffset", [-this.shadowOffset.x / this.node.width, -this.shadowOffset.y / this.node.height]),
+                    this._mtl.setProperty("i_shadowColor", [this.shadowColor.r / 255, this.shadowColor.g / 255, this.shadowColor.b / 255, this.shadowColor.a / 255]),
+                    this._mtl.setProperty("i_outline", this.outlineUse ? 1 : 0),
+                    this._mtl.setProperty("i_outlineWidth", [this.outlineWidth / this.node.width, this.outlineWidth / this.node.height]),
+                    this._mtl.setProperty("i_outlineColor", [this.outlineColor.r / 255, this.outlineColor.g / 255, this.outlineColor.b / 255, this.outlineColor.a / 255]),
+                    this._mtl.setProperty("i_olShadow", this.olShadowUse ? 1 : 0),
+                    this._mtl.setProperty("i_olShadowOffset", [-this.olShadowOffset.x / this.node.width, -this.olShadowOffset.y / this.node.height]),
+                    this._mtl.setProperty("i_olShadowColor", [this.olShadowColor.r / 255, this.olShadowColor.g / 255, this.olShadowColor.b / 255, this.olShadowColor.a / 255]),
+                    this._mtl.setProperty("i_gradient", this.gradient - 1),
+                    this.gradient) {
+                    case u.None:
+                        this._mtl.setProperty("i_color1", [this.node.color.r / 255, this.node.color.g / 255, this.node.color.b / 255, this.node.color.a / 255]);
+                        break;
+                    case u.OneColor:
+                    case u.TwoColor:
+                    case u.TriColor:
+                        this._mtl.setProperty("i_color1", [this.node.color.r / 255, this.node.color.g / 255, this.node.color.b / 255, this.node.color.a / 255]),
+                        this._mtl.setProperty("i_color1", [this.color1.r / 255, this.color1.g / 255, this.color1.b / 255, this.color1.a / 255]),
+                        this._mtl.setProperty("i_color2", [this.color2.r / 255, this.color2.g / 255, this.color2.b / 255, this.color2.a / 255]),
+                        this._mtl.setProperty("i_color3", [this.color3.r / 255, this.color3.g / 255, this.color3.b / 255, this.color3.a / 255])
+                    }
+                    this._mtl.setProperty("i_flowLight", this.flowLightUse ? 1 : 0),
+                    this._mtl.setProperty("i_flTime", this.flSpeed * this._time * 60 / this.node.width),
+                    this._mtl.setProperty("i_flRot", 180 * Math.atan(Math.tan(Math.PI * this.flRot / 180) * this.node.height / this.node.width) / Math.PI),
+                    this._mtl.setProperty("i_flWidth", this.flWidth / this.node.width),
+                    this._mtl.setProperty("i_flColor", [this.flColor.r / 255, this.flColor.g / 255, this.flColor.b / 255, this.flColor.a / 255]),
+                    this._mtl.setProperty("i_glow", this.glow),
+                    this._mtl.setProperty("i_glowWidth", [this.glowWidth / this.node.width, this.glowWidth / this.node.height]),
+                    this._mtl.setProperty("i_glowDepth", this.glowDepth),
+                    this._mtl.setProperty("i_glowColor", [this.glowColor.r / 255, this.glowColor.g / 255, this.glowColor.b / 255, this.glowColor.a / 255])
+                }
+            }
+            ,
+            t.prototype.update = function(e) {
+                this._time += e,
+                this.use()
+            }
+            ,
+            r([c({
+                tooltip: "\u662f\u5426\u4f7f\u7528\u9634\u5f71"
+            })], t.prototype, "shadowUse", void 0),
+            r([c({
+                tooltip: "\u9634\u5f71\u504f\u79fb\uff08\u50cf\u7d20\uff09",
+                visible: function() {
+                    return this.shadowUse
+                }
+            })], t.prototype, "shadowOffset", void 0),
+            r([c({
+                tooltip: "\u9634\u5f71\u989c\u8272",
+                visible: function() {
+                    return this.shadowUse
+                }
+            })], t.prototype, "shadowColor", void 0),
+            r([c({
+                tooltip: "\u662f\u5426\u4f7f\u7528\u63cf\u8fb9"
+            })], t.prototype, "outlineUse", void 0),
+            r([c({
+                tooltip: "\u63cf\u8fb9\u5bbd\u5ea6\uff08\u50cf\u7d20\uff09",
+                min: 1,
+                visible: function() {
+                    return this.outlineUse
+                }
+            })], t.prototype, "outlineWidth", void 0),
+            r([c({
+                tooltip: "\u63cf\u8fb9\u989c\u8272",
+                visible: function() {
+                    return this.outlineUse
+                }
+            })], t.prototype, "outlineColor", void 0),
+            r([c({
+                tooltip: "\u662f\u5426\u4f7f\u7528\u63cf\u8fb9\u9634\u5f71",
+                visible: function() {
+                    return this.outlineUse
+                }
+            })], t.prototype, "olShadowUse", void 0),
+            r([c({
+                tooltip: "\u63cf\u8fb9\u9634\u5f71\u504f\u79fb\uff08\u50cf\u7d20\uff09",
+                visible: function() {
+                    return this.outlineUse && this.olShadowUse
+                }
+            })], t.prototype, "olShadowOffset", void 0),
+            r([c({
+                tooltip: "\u63cf\u8fb9\u9634\u5f71\u989c\u8272",
+                visible: function() {
+                    return this.outlineUse && this.olShadowUse
+                }
+            })], t.prototype, "olShadowColor", void 0),
+            r([c({
+                tooltip: "\u662f\u5426\u4f7f\u7528\u626b\u5149\u52a8\u6548"
+            })], t.prototype, "flowLightUse", void 0),
+            r([c({
+                tooltip: "\u626b\u5149\u52a8\u6548\u901f\u5ea6\uff08\u50cf\u7d20\uff09",
+                visible: function() {
+                    return this.flowLightUse
+                }
+            })], t.prototype, "flSpeed", void 0),
+            r([c({
+                tooltip: "\u626b\u5149\u52a8\u6548\u65cb\u8f6c\u89d2\u5ea6",
+                visible: function() {
+                    return this.flowLightUse
+                }
+            })], t.prototype, "flRot", void 0),
+            r([c({
+                tooltip: "\u626b\u5149\u52a8\u6548\u5bbd\u5ea6\uff08\u50cf\u7d20\uff09",
+                min: 1,
+                visible: function() {
+                    return this.flowLightUse
+                }
+            })], t.prototype, "flWidth", void 0),
+            r([c({
+                tooltip: "\u626b\u5149\u6548\u679c\u989c\u8272",
+                visible: function() {
+                    return this.flowLightUse
+                }
+            })], t.prototype, "flColor", void 0),
+            r([c({
+                tooltip: "\u6587\u5b57\u989c\u8272\nNone 0\uff1a\u5355\u8272\uff0c\u4f7f\u7528\u8282\u70b9color\nOneColor 1\uff1a\u5355\u8272\uff0c\u4f7f\u7528color1\nTwoColor 2\uff1a\u6e10\u53d8\u8272-\u53cc\u8272\nTriColor 3\uff1a\u6e10\u53d8\u8272-\u4e09\u8272",
+                type: cc.Enum(u)
+            })], t.prototype, "gradient", void 0),
+            r([c({
+                visible: function() {
+                    return this.gradient > u.None
+                }
+            })], t.prototype, "color1", void 0),
+            r([c({
+                visible: function() {
+                    return this.gradient > u.OneColor
+                }
+            })], t.prototype, "color2", void 0),
+            r([c({
+                visible: function() {
+                    return this.gradient > u.TwoColor
+                }
+            })], t.prototype, "color3", void 0),
+            r([c({
+                tooltip: "\u5916\u53d1\u5149\uff0c\u5916\u53d1\u5149\u8f83\u8017\u6027\u80fd\nNone 0\uff1a\u4e0d\u4f7f\u7528\nLowp 1\uff1a\u4f4e\u7cbe\u5ea6\uff08\u5efa\u8bae\uff09\nMediump 2: \u4e2d\u7b49\u7cbe\u5ea6\nHighp 3\uff1a\u9ad8\u7cbe\u5ea6",
+                type: cc.Enum(p)
+            })], t.prototype, "glow", void 0),
+            r([c({
+                tooltip: "\u5916\u53d1\u5149\u5bbd\u5ea6\uff08\u50cf\u7d20\uff09",
+                min: 1,
+                visible: function() {
+                    return this.glow > p.None
+                }
+            })], t.prototype, "glowWidth", void 0),
+            r([c({
+                tooltip: "\u5916\u53d1\u5149\u989c\u8272\u6df1\u5ea6",
+                min: 1,
+                max: 32,
+                visible: function() {
+                    return this.glow > p.None
+                }
+            })], t.prototype, "glowDepth", void 0),
+            r([c({
+                tooltip: "\u5916\u53d1\u5149\u989c\u8272",
+                visible: function() {
+                    return this.glow > p.None
+                }
+            })], t.prototype, "glowColor", void 0),
+            r([s, l("UI/LabelShader1"), h(cc.Label), d(), f()], t)
+        }(cc.Component);
+        o.default = g,
+        cc._RF.pop()
+    }
+    , {}],
+    LangChange: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "3edb16vzwdAzrmVJr0pYmP6", "LangChange");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        ), r = this && this.__decorate || function(e, t, o, i) {
+            var n, r = arguments.length, a = r < 3 ? t : null === i ? i = Object.getOwnPropertyDescriptor(t, o) : i;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate)
+                a = Reflect.decorate(e, t, o, i);
+            else
+                for (var s = e.length - 1; s >= 0; s--)
+                    (n = e[s]) && (a = (r < 3 ? n(a) : r > 3 ? n(t, o, a) : n(t, o)) || a);
+            return r > 3 && a && Object.defineProperty(t, o, a),
+            a
+        }
+        ;
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var a = e("../common/MessageMgr")
+          , s = e("../common/view/NodeHandle")
+          , c = e("../res/LanguageMgr")
+          , l = cc._decorator
+          , h = l.ccclass
+          , d = l.property;
+        (function(e) {
+            function t() {
+                var t = null !== e && e.apply(this, arguments) || this;
+                return t.type = s.NodeHandleType.opacity,
+                t
+            }
+            n(t, e),
+            t.prototype.onLoad = function() {
+                this._handleNode = s.createNodeHandle(this.type)
+            }
+            ,
+            t.prototype.onEnable = function() {
+                this.changeLang(),
+                a.MessageMgr.on(a.MessageName.ChangeLang, this.changeLang, this)
+            }
+            ,
+            t.prototype.onDisable = function() {
+                a.MessageMgr.off(a.MessageName.ChangeLang, this.changeLang, this)
+            }
+            ,
+            t.prototype.changeLang = function() {
+                for (var e = 0, t = this.node.children; e < t.length; e++) {
+                    var o = t[e];
+                    o.name == c.default.currLang ? this._handleNode.reset(o) : this._handleNode.clear(o)
+                }
+            }
+            ,
+            r([d()], t.prototype, "type", void 0),
+            t = r([h], t)
+        }
+        )(cc.Component),
+        cc._RF.pop()
+    }
+    , {
+        "../common/MessageMgr": "MessageMgr",
+        "../common/view/NodeHandle": "NodeHandle",
+        "../res/LanguageMgr": "LanguageMgr"
+    }],
+    LanguageMgr: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "54dd1hEGE1Bl7Ls3Nzlh/aI", "LanguageMgr");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.LabelReplace = o.ResReplace = void 0;
+        var r = e("../common/Func")
+          , a = e("../../my/config/Config")
+          , s = e("../common/MessageMgr")
+          , c = e("./TextDesc")
+          , l = e("./BsLangText")
+          , h = function() {
+            function e(e, t) {
+                this.type = e,
+                this.name = t
+            }
+            return e.prototype.init = function() {}
+            ,
+            e
+        }();
+        o.ResReplace = h;
+        var d = function(e) {
+            function t(t, o, i) {
+                var n = e.call(this, t, o) || this;
+                return n.label = i.getComponent(cc.Label),
+                n
+            }
+            return n(t, e),
+            t.prototype.init = function() {
+                this.label.string = f.procLangText(this.name)
+            }
+            ,
+            t
+        }(h);
+        o.LabelReplace = d;
+        var f = function() {
+            function e() {}
+            return e.confirmLang = function() {
+                this.defaultLang = a.Config.defaultLang;
+                var e = r.default.arrayStr2ObjectVal(a.Config.usingLang);
+                this.currLang = this.lastLang = this.getLang(),
+                this.curLangIndex = e[this.currLang]
+            }
+            ,
+            e.getLang = function() {
+                var e = localStorage.getItem("hLang");
+                return null != e && a.Config.usingLang.find(function(t) {
+                    return t == e
+                }) || (e = this.defaultLang,
+                localStorage.setItem("hLang", e)),
+                e
+            }
+            ,
+            e.showLang = function() {
+                s.MessageMgr.emit(s.MessageName.ChangeLang)
+            }
+            ,
+            e.setLang = function(e) {
+                null != e && e !== this.curLangIndex && (this.curLangIndex = e,
+                this.lastLang = this.currLang,
+                this.currLang = a.Config.usingLang[e],
+                localStorage.setItem("hLang", this.currLang),
+                this.showLang())
+            }
+            ,
+            e.getLangNode = function(e) {
+                if (e) {
+                    for (var t = 0; t < e.childrenCount; t++) {
+                        if ((o = e.children[t]).name == this.currLang)
+                            return o.active = !0,
+                            o;
+                        o.active = !1
+                    }
+                    for (t = 0; t < e.childrenCount; t++) {
+                        var o;
+                        if ((o = e.children[t]).name == this.defaultLang)
+                            return o.active = !0,
+                            o;
+                        o.active = !1
+                    }
+                    return console.assert(!1, "\u672a\u627e\u5230\u8bed\u8a00\u7684\u76f8\u5173\u8282\u70b9"),
+                    null
+                }
+            }
+            ,
+            e.procPrizeText = function(e, t) {
+                return cc.js.formatStr(c.LangText[this.currLang].awardsTip, e, c.LangText[this.currLang][t])
+            }
+            ,
+            e.procLangText = function(e) {
+                return c.LangText[this.currLang][e] || c.LangText[this.defaultLang][e]
+            }
+            ,
+            e.procLangLabel = function(t) {
+                t.getComponent(cc.Label).string = e.procLangText(t.name)
+            }
+            ,
+            e.procLangLabelArr = function(e) {
+                for (var t = 0, o = e; t < o.length; t++) {
+                    var i = o[t];
+                    this.procLangLabel(i)
+                }
+            }
+            ,
+            e.procLangNode = function(t) {
+                for (var o = 0, i = t.children; o < i.length; o++) {
+                    var n = i[o];
+                    n.name == e.currLang ? n.opacity = 255 : n.opacity = 0
+                }
+            }
+            ,
+            e.procLangNodeArr = function(e) {
+                for (var t = 0, o = e; t < o.length; t++) {
+                    var i = o[t];
+                    this.procLangNode(i)
+                }
+            }
+            ,
+            e.procBsText = function(e) {
+                return l.default[this.currLang][e] || e
+            }
+            ,
+            e
+        }();
+        o.default = f,
+        cc._RF.pop()
+    }
+    , {
+        "../../my/config/Config": "Config",
+        "../common/Func": "Func",
+        "../common/MessageMgr": "MessageMgr",
+        "./BsLangText": "BsLangText",
+        "./TextDesc": "TextDesc"
+    }],
+    LayeredBatchingAssembler: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "0de69PXBo5OTIzbUbdsFOq/", "LayeredBatchingAssembler");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var r = e("./GTSimpleSpriteAssembler2D")
+          , a = cc.RenderFlow.FLAG_RENDER | cc.RenderFlow.FLAG_POST_RENDER
+          , s = cc.RenderFlow.FLAG_OPACITY | cc.RenderFlow.FLAG_WORLD_TRANSFORM
+          , c = !0
+          , l = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.fillBuffers = function(t, o) {
+                if (e.prototype.fillBuffers.call(this, t, o),
+                c) {
+                    var i = [];
+                    this._layers = [i];
+                    var n = (o.worldMatDirty ? cc.RenderFlow.FLAG_WORLD_TRANSFORM : 0) | (o.parentOpacityDirty ? cc.RenderFlow.FLAG_OPACITY_COLOR : 0);
+                    t.node.__gtDirtyFlag = n;
+                    var r = [];
+                    r.push(t.node);
+                    for (var l, h = 1, d = 0; d < r.length; ) {
+                        var f = r[d++];
+                        n = f.__gtDirtyFlag;
+                        for (var u = 0, p = f.children; u < p.length; u++) {
+                            var g = p[u];
+                            g._activeInHierarchy && 0 !== g._opacity && ((l = g._renderFlag & a) > 0 && (g.__gtRenderFlag = l,
+                            g._renderFlag &= ~l,
+                            i.push(g)),
+                            g.__gtDirtyFlag = n | g._renderFlag & s,
+                            r.push(g))
+                        }
+                        d == h && (h = r.length,
+                        i = [],
+                        this._layers.push(i))
+                    }
+                }
+            }
+            ,
+            t.prototype.postFillBuffers = function(e, t) {
+                var o = t.worldMatDirty;
+                if (c && this._layers) {
+                    var i, n;
+                    c = !1;
+                    for (var r = 0, a = this._layers; r < a.length; r++) {
+                        var s = a[r];
+                        if (0 != s.length)
+                            for (var l = 0, h = s; l < h.length; l++) {
+                                var d = h[l];
+                                i = d.__gtRenderFlag,
+                                n = d.__gtDirtyFlag,
+                                t.worldMatDirty = n > 0 ? 1 : 0,
+                                d._renderFlag |= i,
+                                cc.RenderFlow.flows[i]._func(d)
+                            }
+                    }
+                    this._layers = null,
+                    c = !0,
+                    t.worldMatDirty = o
+                }
+            }
+            ,
+            t
+        }(r.default);
+        o.default = l,
+        cc._RF.pop()
+    }
+    , {
+        "./GTSimpleSpriteAssembler2D": "GTSimpleSpriteAssembler2D"
+    }],
+    LayeredBatchingRootRenderer: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "35269MyoYZCI4E2QRvGwBRK", "LayeredBatchingRootRenderer");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        ), r = this && this.__decorate || function(e, t, o, i) {
+            var n, r = arguments.length, a = r < 3 ? t : null === i ? i = Object.getOwnPropertyDescriptor(t, o) : i;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate)
+                a = Reflect.decorate(e, t, o, i);
+            else
+                for (var s = e.length - 1; s >= 0; s--)
+                    (n = e[s]) && (a = (r < 3 ? n(a) : r > 3 ? n(t, o, a) : n(t, o)) || a);
+            return r > 3 && a && Object.defineProperty(t, o, a),
+            a
+        }
+        ;
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var a = e("./LayeredBatchingAssembler")
+          , s = cc._decorator
+          , c = s.ccclass
+          , l = (s.property,
+        function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.onEnable = function() {
+                e.prototype.onEnable.call(this),
+                this.node._renderFlag |= cc.RenderFlow.FLAG_POST_RENDER
+            }
+            ,
+            t.prototype._resetAssembler = function() {
+                this.setVertsDirty(),
+                (this._assembler = new a.default).init(this)
+            }
+            ,
+            r([c], t)
+        }(cc.Sprite));
+        o.default = l,
+        cc._RF.pop()
+    }
+    , {
+        "./LayeredBatchingAssembler": "LayeredBatchingAssembler"
+    }],
+    LevelMgr: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "c079euVqZJOIoZSvuFBFIJd", "LevelMgr");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        ), r = this && this.__decorate || function(e, t, o, i) {
+            var n, r = arguments.length, a = r < 3 ? t : null === i ? i = Object.getOwnPropertyDescriptor(t, o) : i;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate)
+                a = Reflect.decorate(e, t, o, i);
+            else
+                for (var s = e.length - 1; s >= 0; s--)
+                    (n = e[s]) && (a = (r < 3 ? n(a) : r > 3 ? n(t, o, a) : n(t, o)) || a);
+            return r > 3 && a && Object.defineProperty(t, o, a),
+            a
+        }
+        ;
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var a = e("../my/config/Config")
+          , s = e("./LogicMgr")
+          , c = cc._decorator
+          , l = c.ccclass
+          , h = (c.property,
+        function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            var o;
+            return n(t, e),
+            o = t,
+            t.prototype.onLoad = function() {
+                o.Instance = this;
+                for (var e = 0; e < a.AdaptLevel.num; e++)
+                    this.addNode(e, a.AdaptLevel[e], this.node)
+            }
+            ,
+            t.prototype.setLevel = function(e, t) {
+                e.setParent(this.node.children[t])
+            }
+            ,
+            t.prototype.addNode = function(e, t, o) {
+                var i = new cc.Node(t);
+                o.addChild(i),
+                i.setSiblingIndex(e),
+                i.setPosition(s.ConstDefine.vec3ZERO)
+            }
+            ,
+            t.Instance = new o,
+            o = r([l], t)
+        }(cc.Component));
+        o.default = h,
+        cc._RF.pop()
+    }
+    , {
+        "../my/config/Config": "Config",
+        "./LogicMgr": "LogicMgr"
+    }],
+    LogicMgr: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "6d9d7SGokVJKofeuF8/zlOP", "LogicMgr"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.ActualName = o.ConstDefine = void 0,
+        o.ConstDefine = {
+            vec2ZERO: cc.Vec2.ZERO,
+            vec3ZERO: cc.Vec3.ZERO,
+            emptyFunc: function() {},
+            trueFunc: function() {
+                return !0
+            },
+            loadingTip: "loadingTip",
+            click: "click",
+            close: "close",
+            id: "id",
+            rollPrize: "rollPrize",
+            msgTip: "msgTip",
+            credit: "credit",
+            hallUI: "hallUI",
+            demoTip: "demoTip",
+            loginUI: "loginUI",
+            msgPromptBox: "msgPromptBox",
+            textMgr: "textMgr",
+            Background: "Background",
+            account: "account",
+            password: "password",
+            savePwd: "pwd",
+            musicName: "hMN",
+            toggle: "toggle",
+            text: "text",
+            remember: "remember",
+            singleToggle: "singleToggle",
+            none: "none",
+            logonData: "logonData",
+            tag: "tag",
+            ad: "ad",
+            bad: "bad",
+            kp: "kp",
+            kpl: "kpl",
+            fuli: "fuli",
+            jpReq: "jpReq"
+        },
+        o.ActualName = {
+            hallUI: "hallUI",
+            demoTip: "demoTip"
+        };
+        var i = function() {
+            function e() {}
+            return e.relogin = function() {
+                e.login.succeed = !1,
+                s.NetMgr.createWebSocket()
+            }
+            ,
+            e.reqUserInfo = function() {
+                s.NetMgr.createWebSocket(),
+                a.MessageMgr.once(a.MessageName.NetOpen, function() {
+                    s.NetMgr.send(d.Cmd.MDM_MB_LOGON, d.Cmd.SUB_MB_LOGON_USERINFO2, {
+                        userid: e.login.userID,
+                        password: e.login.pwd
+                    })
+                })
+            }
+            ,
+            e.exitLogin = function() {
+                r.default.removeStorage(o.ConstDefine.logonData),
+                r.default.removeStorage("enterGameTime"),
+                a.MessageMgr.emit(a.MessageName.LoginFail),
+                e.login.succeed = !1,
+                s.NetMgr.close(),
+                e.autoLogining = !1,
+                l.default.hide(o.ConstDefine.loadingTip),
+                l.default.getResInfo(o.ConstDefine.loginUI)
+            }
+            ,
+            e.loginFailTip = function(t, i, n) {
+                e.exitLogin(),
+                l.default.getResInfo(o.ConstDefine.msgTip, c.default.procBsText(t), i, n)
+            }
+            ,
+            e.updateUserInfo = function(t) {
+                e.login.dynamicPass = t.dynamicpass,
+                e.login.score = t.score,
+                e.login.winScore = t.winscore
+            }
+            ,
+            e.saveLoginData = function() {
+                n.Config.autoLogin && !n.Config.gameCback && r.default.setStorage(o.ConstDefine.logonData, r.default.customEncry(JSON.stringify(e.login)))
+            }
+            ,
+            e.assignLoginData = function(t) {
+                e.login = t,
+                e.login.testAcccount && e.loadDebugPanel(),
+                e.procCardItem()
+            }
+            ,
+            e.procCardItem = function() {
+                var t, o, i = [], r = [];
+                if (r.push.apply(r, e.allGid),
+                e.kpSortGid.length = 0,
+                e.login.guestLogin)
+                    for (var a = 0, s = n.Config.demoServerGids; a < s.length; a++) {
+                        var c = s[a]
+                          , l = e.kpKeyCfg[c];
+                        l && (l.testServerGid = !0,
+                        cc.js.array.remove(r, c) && e.kpSortGid.push(c))
+                    }
+                if (n.Config.kpSortGid)
+                    for (var h = 0, d = n.Config.kpSortGid; h < d.length; h++)
+                        c = d[h],
+                        cc.js.array.remove(r, c) && e.kpSortGid.push(c);
+                for (var f = 0; f < e.login.cardsItem.length; f++) {
+                    var u = e.login.cardsItem[f]
+                      , p = e.kpKeyCfg[u.gid];
+                    p && (p.bsPort = u.port,
+                    p.tablecount = u.tablecount,
+                    p.address = u.address,
+                    p.mixed = !0,
+                    cc.js.array.remove(r, u.gid) && (p.testGame ? i.push(u.gid) : e.kpSortGid.push(u.gid)))
+                }
+                (t = e.kpSortGid).push.apply(t, i),
+                (o = e.kpSortGid).push.apply(o, r)
+            }
+            ,
+            e.onLogonNet = function(t) {
+                var i = t.data;
+                if (t.mainID === d.Cmd.MDM_MB_LOGON)
+                    switch (t.subID) {
+                    case d.Cmd.SUB_MB_LOGON_GUEST_REP:
+                        0 == i.result ? (e.guestGuid = i.guid,
+                        localStorage.setItem("guest", i.guid),
+                        e.guestLoginReq()) : (s.NetMgr.close(),
+                        l.default.hide(o.ConstDefine.loadingTip),
+                        e.quitGuestLogin(),
+                        l.default.getResInfo(o.ConstDefine.msgTip, i.msg));
+                        break;
+                    case d.Cmd.SUB_MB_LOGON_RESULT:
+                        if (clearTimeout(e.loginTimeOut),
+                        0 == i.result) {
+                            e.login.userID = i.userid,
+                            e.login.gameID = i.gameid,
+                            e.login.nickname = i.nickname,
+                            e.login.bossID = i.bossid,
+                            e.login.noticMsg = i.noticmsg,
+                            e.login.openWinScore = i.openwinscore,
+                            e.login.openJp = i.openjp,
+                            e.login.mainContent = i.maincontent,
+                            e.updateUserInfo(i);
+                            var r = {
+                                userid: i.userid
+                            };
+                            s.NetMgr.send(d.Cmd.MDM_MB_LOGON, d.Cmd.SUB_MB_LOGON_GETGAMESERVER, r),
+                            !e.login.testAcccount && i.needreset ? e.needReset = !0 : e.needReset = !1,
+                            i.opendollar && (e.login.creditPrefix = "$")
+                        } else
+                            e.loginFailTip(i.msg, 3, !0);
+                        break;
+                    case d.Cmd.SUB_MB_LOGON_USERINFO_REP2:
+                        if (0 == i.result) {
+                            for (var c in e.updateUserInfo(i),
+                            e.fuliData)
+                                e.fuliData[c] = i[c];
+                            e.login.succeed ? (a.MessageMgr.emit(a.MessageName.UserInfo),
+                            s.NetMgr.close()) : a.MessageMgr.emit(a.MessageName.LoginSucceeded),
+                            console.log("\u83b7\u53d6\u5230\u7528\u6237\u4fe1\u606f", t.data)
+                        } else
+                            console.log("\u83b7\u53d6\u7528\u6237\u4fe1\u606f\u5931\u8d25", t.data.result, t.data.msg);
+                        break;
+                    case d.Cmd.SUB_MB_GETGAMESERVER_RESULT:
+                        if (0 == i.result) {
+                            clearTimeout(e.loginTimeOut),
+                            null === i.item && (i.item = {}),
+                            e.login.cardsItem = i.item,
+                            e.procCardItem(),
+                            l.default.hide(o.ConstDefine.loadingTip);
+                            var u = [];
+                            if (e.login.testAcccount)
+                                u.push.apply(u, n.Config.guangGao);
+                            else
+                                for (var p = 0, g = n.Config.guangGao; p < g.length; p++) {
+                                    var _ = g[p]
+                                      , m = e.kpKeyCfg[_];
+                                    m ? (m.t === f.GameTag.comingSoon || m.address) && (e.login.guestLogin ? m.testServerGid && u.push(_) : u.push(_)) : u.push(_)
+                                }
+                            if (e.guangGaoChange = !1,
+                            u.length !== e.login.guangGao.length)
+                                e.login.guangGao = u,
+                                e.guangGaoChange = !0;
+                            else
+                                for (var y = 0; y < u.length; y++)
+                                    if (u[y] !== e.login.guangGao[y]) {
+                                        e.login.guangGao = u,
+                                        e.guangGaoChange = !0;
+                                        break
+                                    }
+                            if ("" === e.login.account && !e.login.guestLogin)
+                                return void a.MessageMgr.emit(a.MessageName.InitBrosePage);
+                            a.MessageMgr.emit(a.MessageName.LoginSucceeded, !0),
+                            n.Config.autoEnterGame && h.default.startGame(e.kpKeyCfg[n.Config.autoEnterGame]),
+                            e.saveLoginData()
+                        } else
+                            e.loginFailTip(i.msg, 3, !0)
+                    }
+            }
+            ,
+            e.loadDebugPanel = function() {
+                e.login.testAcccount = !0,
+                l.default.isLoad("debugPanel") || l.default.getResInfo("debugPanel"),
+                "undefined" == typeof VConsole || window.vConsole || (window.vConsole = new VConsole)
+            }
+            ,
+            e.connect = function(t, i) {
+                e.login.testAcccount = !1,
+                n.Config.debug && n.Config.testAcFormat && t.match(n.Config.testAcFormat) && e.loadDebugPanel(),
+                e.login.account = t,
+                e.login.pwd = i,
+                l.default.getResInfo(o.ConstDefine.loadingTip),
+                s.NetMgr.createWebSocket(),
+                a.MessageMgr.once(a.MessageName.NetOpen, function() {
+                    if (!e.login.succeed && "" !== e.login.account) {
+                        var t = {
+                            account: e.login.account,
+                            password: e.login.pwd,
+                            version: n.Config.version
+                        };
+                        s.NetMgr.send(d.Cmd.MDM_MB_LOGON, d.Cmd.SUB_MB_LOGON_WEBSOCKET, t)
+                    }
+                }),
+                e.autoLogining || (clearTimeout(e.loginTimeOut),
+                e.loginTimeOut = setTimeout(function() {
+                    e.loginFailTip(c.default.procLangText("badNetStatus"), 5, !0)
+                }, 15e3))
+            }
+            ,
+            e.setActualName = function() {
+                for (var t in o.ActualName)
+                    o.ActualName[t] = t + e.uiSuffix[n.Config.orientation]
+            }
+            ,
+            e.getActualUI = function(e) {
+                return o.ActualName[e]
+            }
+            ,
+            e.getKpGuangGaoCfg = function(t) {
+                var o = e.login.guangGao[t]
+                  , i = e.kpKeyCfg[o];
+                return void 0 === i && (i = e.bigGG[o]),
+                i
+            }
+            ,
+            e.procLoginData = function(t, i) {
+                l.default.getResInfo(e.getActualUI(o.ConstDefine.hallUI)),
+                e.autoLogining = !0,
+                e.browsePage = !1,
+                e.login.succeed = !1,
+                e.connect(t, i)
+            }
+            ,
+            e.onTextLoad = function() {
+                a.MessageMgr.on(a.MessageName.NetMsg, e.onLogonNet, e),
+                e.guestGuid = localStorage.getItem("guest");
+                var t = localStorage.getItem("guestPlayDay");
+                if (t) {
+                    var i = (new Date).getDate();
+                    Number(t) != i && (localStorage.setItem("guestPlayDay", i.toString()),
+                    localStorage.removeItem("guestPlayTime"))
+                } else
+                    localStorage.setItem("guestPlayDay", (new Date).getDate().toString());
+                var s = localStorage.getItem("guestPlayTime");
+                s && (e.guestPlayTime = Number(s));
+                var c = r.default.getStorage("enterGameTime");
+                if (c) {
+                    var h = (new Date).getTime() - Number(c);
+                    e.guestPlayTime += h,
+                    r.default.removeStorage("enterGameTime"),
+                    localStorage.setItem("guestPlayTime", e.guestPlayTime.toString())
+                }
+                "loginUI" == n.Config.beginPage && (e.browsePage = !1);
+                var d, f = null;
+                if (n.Config.autoLogin) {
+                    var u = r.default.getStorage(o.ConstDefine.logonData);
+                    if (u) {
+                        var p = r.default.customDecrypt(u);
+                        return f = JSON.parse(p),
+                        e.assignLoginData(f),
+                        l.default.getResInfo(e.getActualUI(o.ConstDefine.hallUI)),
+                        e.login.succeed = !1,
+                        void (e.login.guestLogin ? e.guestClick() : e.reqUserInfo())
+                    }
+                }
+                if ("" !== n.Config.urlParam) {
+                    var g = n.Config.urlParam;
+                    if ((d = r.default.decryptAES(g).split("|")) && d[0] && "" != d[0] && d[1] && "" != d[1])
+                        return e.procLoginData(d[0], d[1]),
+                        d[2] && "" != d[2] && (n.Config.autoEnterGame = parseInt(d[2])),
+                        void (d[3] && "" != d[3] && (n.Config.gameCback = d[3]))
+                }
+                l.default.getResInfo(n.Config.beginPage)
+            }
+            ,
+            e.sendJpReq = function() {
+                var t = {
+                    bossid: e.login.bossID
+                };
+                s.NetMgr.send(d.Cmd.MDM_MB_LOGON, d.Cmd.SUB_MB_LOGON_GETJPSCORE, t)
+            }
+            ,
+            e.cardShow = function(t) {
+                return !!t && (e.login.testAcccount || t.t === f.GameTag.comingSoon || !t.testGame && t.mixed || e.browsePage || e.login.guestLogin)
+            }
+            ,
+            e.guestClick = function() {
+                e.login.testAcccount = !1,
+                e.login.guestLogin = !0,
+                s.NetMgr.createWebSocket(),
+                e.guestGuid ? a.MessageMgr.once(a.MessageName.NetOpen, e.guestLoginReq, e) : (l.default.getResInfo(o.ConstDefine.loadingTip),
+                a.MessageMgr.once(a.MessageName.NetOpen, function() {
+                    s.NetMgr.send(d.Cmd.MDM_MB_LOGON, d.Cmd.SUB_MB_LOGON_GUEST, {})
+                }))
+            }
+            ,
+            e.guestLoginReq = function() {
+                s.NetMgr.send(d.Cmd.MDM_MB_LOGON, d.Cmd.SUB_MB_LOGON_GUEST_INFO, {
+                    guid: e.guestGuid
+                }),
+                l.default.hide("loginUI"),
+                r.default.setStorage("guest", "1"),
+                l.default.getResInfo(e.getActualUI(o.ConstDefine.demoTip))
+            }
+            ,
+            e.quitGuestLogin = function() {
+                e.login.guestLogin = !1,
+                r.default.removeStorage("guest")
+            }
+            ,
+            e.v2Tmp = cc.Vec3.ZERO,
+            e.v3Tmp = cc.Vec3.ZERO,
+            e.browsePage = !0,
+            e.autoLogining = !1,
+            e.needReset = !1,
+            e.bigGG = {},
+            e.kpKeyCfg = {},
+            e.kpSortGid = [],
+            e.favArr = [],
+            e.useSoftKeyboard = !0,
+            e.allGid = [],
+            e.msgNotify = {
+                maintenance: []
+            },
+            e.jp = [0, 0, 0, 0],
+            e.jpTotalCredit = 0,
+            e.uiSuffix = ["", "Vertical"],
+            e.singleCreditPos = cc.Vec3.ZERO,
+            e.doubleCreditPos = cc.Vec3.ZERO,
+            e.guestGuid = void 0,
+            e.guestPlayTime = 0,
+            e.closeNetArr = [],
+            e.fuliData = {
+                blottery: 0,
+                refreshtime: "23:59:59",
+                blotterycashback: 1,
+                blotteryfudai: 1,
+                blotteryhappyweek: 0,
+                bstarttiming: 1,
+                cashbackscore: 1,
+                msg: "",
+                refreshtimecashback: "23:59:59",
+                refreshtimefudai: "",
+                refreshtimehappyweek: "23:59:59"
+            },
+            e.guangGaoChange = !0,
+            e.login = {
+                guestLogin: !1,
+                testAcccount: !1,
+                creditPrefix: "",
+                cardsItem: [],
+                guangGao: [],
+                succeed: !1,
+                account: "",
+                userID: 0,
+                gameID: 0,
+                score: 0,
+                bossID: 0,
+                dynamicPass: "",
+                openJp: 0,
+                nickname: "",
+                winScore: 0,
+                openWinScore: !1,
+                noticMsg: void 0,
+                mainContent: void 0,
+                headIndex: 0,
+                pwd: ""
+            },
+            e
+        }();
+        o.default = i;
+        var n = e("../my/config/Config")
+          , r = e("./common/Func")
+          , a = e("./common/MessageMgr")
+          , s = e("./net/NetMgr")
+          , c = e("./res/LanguageMgr")
+          , l = e("./res/DyncMgr")
+          , h = e("./net/GameNet")
+          , d = e("./net/EEvent")
+          , f = e("./common/Interface");
+        cc._RF.pop()
+    }
+    , {
+        "../my/config/Config": "Config",
+        "./common/Func": "Func",
+        "./common/Interface": "Interface",
+        "./common/MessageMgr": "MessageMgr",
+        "./net/EEvent": "EEvent",
+        "./net/GameNet": "GameNet",
+        "./net/NetMgr": "NetMgr",
+        "./res/DyncMgr": "DyncMgr",
+        "./res/LanguageMgr": "LanguageMgr"
+    }],
+    LoginUI: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "40ea4Tr+EZP34t8n7ZEeWF4", "LoginUI");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.LoginUI = void 0;
+        var r = e("../../base/common/Func")
+          , a = e("../config/Config")
+          , s = e("../../base/res/LanguageMgr")
+          , c = e("../../base/common/MessageMgr")
+          , l = e("../../base/common/SpecialFunc")
+          , h = e("../../base/SoundMgr")
+          , d = e("../../base/res/DyncLoadedBase")
+          , f = e("../../base/res/DyncMgr")
+          , u = e("../../base/LogicMgr")
+          , p = function(e) {
+            function t(t, o) {
+                var i = e.call(this, t, o) || this;
+                return i._accountEdit = null,
+                i._pwdEdit = null,
+                i
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                r.default.removeLoading();
+                var e = u.default.getActualUI(u.ConstDefine.hallUI);
+                f.default.isLoad(e) || f.default.getResInfo(e),
+                this._beautyLogoChildren = this.nodeInfo.root.getChildByName("beautyLogo").children;
+                var t = this.nodeInfo.root.getChildByName("root")
+                  , o = t.getChildByName("login");
+                this._loginBtn = o.getComponent(cc.Button),
+                o.on(u.ConstDefine.click, this.loginClick, this);
+                var i = t.getChildByName("guest");
+                this._guestBtn = i.getComponent(cc.Button),
+                i.on(u.ConstDefine.click, this.guestClick, this);
+                var n = t.getChildByName(u.ConstDefine.account);
+                this._accountEdit = n.getComponent(cc.EditBox),
+                l.default.editInput(n, t);
+                var s = t.getChildByName(u.ConstDefine.password);
+                this._pwdEdit = s.getComponent(cc.EditBox),
+                l.default.editInput(s, t);
+                var c = t.getChildByName("version").getComponent(cc.Label);
+                c.string = a.Config.version,
+                c.node.active = !1;
+                var d = t.getChildByName("assist");
+                d.getChildByName("forget").on(u.ConstDefine.click, this.forget, this);
+                var p = d.getChildByName("rememberMe");
+                p.active = !0,
+                p.on(u.ConstDefine.toggle, this.rememberToggle, this),
+                this._rememberToggle = p.getComponent(cc.Toggle);
+                var g = n.getChildByName("keyboard")
+                  , _ = s.getChildByName("keyboard");
+                u.default.useSoftKeyboard ? (g.active = !1,
+                _.active = !1) : (this._accountEdit._impl._elem.autocomplete = "off",
+                l.default.setSecEdit(this._pwdEdit),
+                s.on("editing-return", this.returnKeyOn, this),
+                n.on("editing-return", this.returnKeyOn, this),
+                s.on("text-changed", function() {
+                    h.default.playEffect("keyClick")
+                }),
+                n.on("text-changed", function() {
+                    h.default.playEffect("keyClick")
+                }),
+                g.on(u.ConstDefine.click, function() {
+                    f.default.getResInfo("keyboardUI", n, t)
+                }),
+                _.on(u.ConstDefine.click, function() {
+                    f.default.getResInfo("keyboardUI", s, t)
+                }))
+            }
+            ,
+            t.prototype.resetParams = function() {
+                if (f.default.hide(u.default.getActualUI(u.ConstDefine.demoTip)),
+                u.default.quitGuestLogin(),
+                u.default.useSoftKeyboard || (this._accountEdit._impl._elem.style.visibility = "visible",
+                this._pwdEdit._impl._elem.style.visibility = "visible"),
+                this._accountEdit.string = "",
+                this._pwdEdit.string = "",
+                this._loginBtn.interactable = !0,
+                this.changeLang(),
+                c.MessageMgr.on(c.MessageName.ChangeLang, this.changeLang, this),
+                c.MessageMgr.on(c.MessageName.TouchStart, this.touchStart, this),
+                c.MessageMgr.on(c.MessageName.LoginSucceeded, this.loginSucceed, this),
+                c.MessageMgr.on(c.MessageName.LoginFail, this.loginFail, this),
+                Number(localStorage.getItem(u.ConstDefine.remember))) {
+                    this._rememberToggle.check();
+                    var e = localStorage.getItem(u.ConstDefine.account);
+                    e && (this._accountEdit.string = e);
+                    var t = localStorage.getItem(u.ConstDefine.savePwd);
+                    t && (this._pwdEdit.string = window.atob(t))
+                } else
+                    this._rememberToggle.uncheck();
+                c.MessageMgr.emit(c.MessageName.ShowCreditBox, !1)
+            }
+            ,
+            t.prototype.loginSucceed = function() {
+                this._rememberToggle.isChecked ? (localStorage.setItem(u.ConstDefine.account, this._accountEdit.string),
+                localStorage.setItem(u.ConstDefine.savePwd, window.btoa(this._pwdEdit.string))) : (localStorage.removeItem(u.ConstDefine.account),
+                localStorage.removeItem(u.ConstDefine.savePwd),
+                this._accountEdit.string = "",
+                this._pwdEdit.string = ""),
+                this.hide()
+            }
+            ,
+            t.prototype.loginFail = function() {
+                var e = this;
+                f.default.getResInfo(u.ConstDefine.loadingTip),
+                setTimeout(function() {
+                    f.default.hide(u.ConstDefine.loadingTip),
+                    e._loginBtn.interactable = !0
+                }, 3e4)
+            }
+            ,
+            t.prototype.hide = function() {
+                u.default.useSoftKeyboard || (this._accountEdit._impl._elem.style.visibility = "hidden",
+                this._pwdEdit._impl._elem.style.visibility = "hidden"),
+                r.default.setStorage("id", this._accountEdit.string),
+                c.MessageMgr.off(c.MessageName.ChangeLang, this.changeLang, this),
+                c.MessageMgr.off(c.MessageName.TouchStart, this.touchStart, this),
+                c.MessageMgr.off(c.MessageName.LoginSucceeded, this.loginSucceed, this),
+                c.MessageMgr.off(c.MessageName.LoginFail, this.loginFail, this),
+                c.MessageMgr.emit(c.MessageName.ShowCreditBox, !0),
+                e.prototype.hide.call(this)
+            }
+            ,
+            t.prototype.touchStart = function() {
+                a.Config.orientation || f.default.isLoad("keyboardUI") || h.default.playEffect(u.ConstDefine.click)
+            }
+            ,
+            t.prototype.returnKeyOn = function() {
+                this._loginBtn.interactable && this.login()
+            }
+            ,
+            t.prototype.changeLang = function() {
+                this._curLang !== s.default.currLang && (this._curLang = s.default.currLang,
+                this.resetBeautyLogo(),
+                this._accountEdit.placeholder = s.default.procLangText("inputAccoutTip"),
+                this._pwdEdit.placeholder = s.default.procLangText("inputPwdTip"))
+            }
+            ,
+            t.prototype.resetBeautyLogo = function() {
+                for (var e = r.default.randomInt(0, this._beautyLogoChildren.length - 1), t = 0; t < this._beautyLogoChildren.length; t++)
+                    this._beautyLogoChildren[t].active = t === e
+            }
+            ,
+            t.prototype.rememberToggle = function() {
+                var e = "1";
+                this._rememberToggle.isChecked || (this._accountEdit.string = "",
+                this._pwdEdit.string = "",
+                e = "0",
+                localStorage.removeItem(u.ConstDefine.account),
+                localStorage.removeItem(u.ConstDefine.savePwd)),
+                localStorage.setItem(u.ConstDefine.remember, e)
+            }
+            ,
+            t.prototype.forget = function() {
+                h.default.playEffect(u.ConstDefine.click),
+                f.default.getResInfo(u.ConstDefine.msgPromptBox, s.default.procLangText("forgetTip"))
+            }
+            ,
+            t.prototype.loginClick = function() {
+                h.default.playEffect(u.ConstDefine.click),
+                this.login()
+            }
+            ,
+            t.prototype.guestClick = function() {
+                var e = this;
+                u.default.guestPlayTime > 1e3 * a.Config.demoDayTime ? f.default.getResInfo(u.ConstDefine.msgPromptBox, s.default.procLangText("guestDemoTip")) : (this._guestBtn.interactable = !1,
+                u.default.guestClick(),
+                setTimeout(function() {
+                    e._guestBtn.interactable || (e._guestBtn.interactable = !0)
+                }, 5e3))
+            }
+            ,
+            t.prototype.login = function() {
+                var e = this._accountEdit.string
+                  , t = this._pwdEdit.string;
+                switch (!0) {
+                case 0 === e.length:
+                    f.default.getResInfo(u.ConstDefine.msgTip, s.default.procLangText("accountEmptyTip"), 2, !0);
+                    break;
+                case 0 === t.length:
+                    f.default.getResInfo(u.ConstDefine.msgTip, s.default.procLangText("pwdEmptyTip"), 2, !0);
+                    break;
+                default:
+                    this._loginBtn.interactable = !1,
+                    u.default.connect(e, r.default.encryMd5(t))
+                }
+            }
+            ,
+            t
+        }(d.default);
+        o.LoginUI = p,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/SoundMgr": "SoundMgr",
+        "../../base/common/Func": "Func",
+        "../../base/common/MessageMgr": "MessageMgr",
+        "../../base/common/SpecialFunc": "SpecialFunc",
+        "../../base/res/DyncLoadedBase": "DyncLoadedBase",
+        "../../base/res/DyncMgr": "DyncMgr",
+        "../../base/res/LanguageMgr": "LanguageMgr",
+        "../config/Config": "Config"
+    }],
+    LotteryTurntable: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "8fbe7WCg1pG376PhzEITrUy", "LotteryTurntable"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.BtnData = void 0;
+        var i = e("../../../my/config/Config")
+          , n = e("../../LogicMgr")
+          , r = e("../../net/EEvent")
+          , a = e("../../net/NetMgr")
+          , s = e("../../SoundMgr")
+          , c = e("../Func")
+          , l = e("../MessageMgr")
+          , h = e("../SpecialFunc");
+        o.BtnData = function() {
+            this.canClick = !0
+        }
+        ;
+        var d = function() {
+            function e(e, t, o) {
+                var r = this;
+                this._scale = 1,
+                this._root = e,
+                this._netSubCmd = t,
+                this._scale = e.scaleX,
+                this._btnData = o,
+                this._centerNode = e.getChildByName("center"),
+                this._panmaskNode = this._centerNode.getChildByName("panmask");
+                var d = this._centerNode.getChildByName("btnSpin");
+                this._spinBtn = d.getComponent(cc.Button),
+                d.on(n.ConstDefine.click, function() {
+                    r._btnData.canClick && (a.NetMgr.createWebSocket(),
+                    r._spinBtn.enabled = !1,
+                    s.default.playEffect("prize_2"),
+                    r._btnData.canClick = !1,
+                    l.MessageMgr.once(l.MessageName.NetOpen, r.netOpen, r))
+                }),
+                this._rotateNode = this._centerNode.getChildByName("rotate"),
+                this._tipNode = this._rotateNode.getChildByName("tip");
+                var f = this._rotateNode.getChildByName("prize")
+                  , u = f.getChildByName("val");
+                u.getChildByName(n.ConstDefine.text).getComponent(cc.Label).string = "GOOD LUCK",
+                this._perAngle = 360 / i.Config.prize1.length;
+                for (var p = 0; p < i.Config.prize1.length; ++p) {
+                    var g = c.default.instanceMount(u, f);
+                    g.angle = -this._perAngle * p;
+                    var _ = i.Config.prize1[p];
+                    0 !== _ && (g.getChildByName(n.ConstDefine.text).getComponent(cc.Label).string = h.default.convertDecimalNum(_))
+                }
+                u.destroy()
+            }
+            return e.prototype.init = function(e) {
+                e ? (this._spinBtn.enabled = !0,
+                this._panmaskNode.active = !1) : (this._panmaskNode.active = !0,
+                this._spinBtn.enabled = !1),
+                this._tipNode.active = !1,
+                this._rotateNode.angle = 0
+            }
+            ,
+            e.prototype.rotate = function(e, t, o) {
+                cc.tween(this._root).to(.1, {
+                    scale: 2
+                }).to(.3, {
+                    scale: this._scale
+                }).start();
+                var i = t * this._perAngle + 90;
+                this._tipNode.angle = -i,
+                i += 4320,
+                cc.tween(this._rotateNode).to(e, {
+                    angle: i
+                }, {
+                    easing: "cubicOut",
+                    onUpdate: function(e, t) {
+                        o(e, t * i)
+                    }
+                }).start()
+            }
+            ,
+            e.prototype.rotateEnd = function() {
+                this._tipNode.active = !0,
+                this._panmaskNode.active = !0
+            }
+            ,
+            e.prototype.setBtnEnable = function(e) {
+                this._spinBtn.enabled = e
+            }
+            ,
+            e.prototype.isEnd = function() {
+                return this._panmaskNode.active
+            }
+            ,
+            e.prototype.netOpen = function() {
+                var e = {
+                    userid: n.default.login.userID,
+                    dynamicpass: n.default.login.dynamicPass
+                };
+                a.NetMgr.send(r.Cmd.MDM_MB_LOGON, this._netSubCmd, e)
+            }
+            ,
+            e
+        }();
+        o.default = d,
+        cc._RF.pop()
+    }
+    , {
+        "../../../my/config/Config": "Config",
+        "../../LogicMgr": "LogicMgr",
+        "../../SoundMgr": "SoundMgr",
+        "../../net/EEvent": "EEvent",
+        "../../net/NetMgr": "NetMgr",
+        "../Func": "Func",
+        "../MessageMgr": "MessageMgr",
+        "../SpecialFunc": "SpecialFunc"
+    }],
+    Main: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "3df069O4aRLa7UVXVrKUwvj", "Main");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        ), r = this && this.__decorate || function(e, t, o, i) {
+            var n, r = arguments.length, a = r < 3 ? t : null === i ? i = Object.getOwnPropertyDescriptor(t, o) : i;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate)
+                a = Reflect.decorate(e, t, o, i);
+            else
+                for (var s = e.length - 1; s >= 0; s--)
+                    (n = e[s]) && (a = (r < 3 ? n(a) : r > 3 ? n(t, o, a) : n(t, o)) || a);
+            return r > 3 && a && Object.defineProperty(t, o, a),
+            a
+        }
+        ;
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var a = e("./common/Func")
+          , s = e("./common/MessageMgr")
+          , c = e("../my/config/Config")
+          , l = e("./effect/EffectMgr")
+          , h = e("./net/NetMgr")
+          , d = e("./res/DyncMgr")
+          , f = e("./res/LanguageMgr")
+          , u = e("./LogicMgr")
+          , p = e("./common/Interface")
+          , g = cc._decorator
+          , _ = g.ccclass
+          , m = (g.property,
+        function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            var o;
+            return n(t, e),
+            o = t,
+            t.prototype.onLoad = function() {}
+            ,
+            t.prototype.start = function() {
+                var e = this;
+                cc.debug.setDisplayStats(!1),
+                o.frameSize = cc.view.getFrameSize();
+                var t = window.top.location.href
+                  , i = t.lastIndexOf("?");
+                if (i >= 0 ? (c.Config.urlParam = t.substring(i + 1, t.length),
+                c.Config.basePath = t.substring(0, i)) : c.Config.basePath = t,
+                (i = (t = window.document.location.href).indexOf("/hall")) >= 0 && (c.Config.basePath = t.substring(0, i + 1)),
+                cc.sys.isBrowser) {
+                    var n = new Date
+                      , r = "";
+                    if (window.parent) {
+                        var a = window.parent.document.getElementById("configSuffix");
+                        a && (r = a.textContent)
+                    }
+                    c.Config.configPath = c.Config.basePath + "plat/config/hall/" + c.Config.platName + r + "/";
+                    var d = c.Config.configPath + "config.json?=" + n.getTime();
+                    h.NetMgr.sendHttpGet(d, this.quaryLoginConfigCB.bind(this)),
+                    this.quaryMsg()
+                } else
+                    this.quaryLoginConfigCB(void 0);
+                cc.game.canvas.style.cursor = "url('" + c.Config.configPath + "cursor.png'), pointer",
+                s.MessageMgr.once(s.MessageName.LoadDyncResFinish, function() {
+                    l.EffectMgr.Instance.trigger(l.EffectMgr.EffectType.EffectMeetCondition, 20, e.quaryMsg.bind(e), u.ConstDefine.emptyFunc)
+                })
+            }
+            ,
+            t.prototype.quaryMsg = function() {
+                var e = new Date
+                  , t = c.Config.configPath + "msg.json?=" + e.getTime();
+                h.NetMgr.sendHttpGet(t, function(e) {
+                    u.default.msgNotify = e
+                })
+            }
+            ,
+            t.prototype.quaryLoginConfigCB = function(e) {
+                a.default.mergeJSON(e, c.Config),
+                a.default.isRotateDev() ? u.default.useSoftKeyboard = !0 : u.default.useSoftKeyboard = c.Config.pcUseSoftKey;
+                for (var t = 0, o = c.Config.bigGG; t < o.length; t++)
+                    --(n = o[t]).t,
+                    u.default.bigGG[n.gid] = n;
+                for (var i in c.Config.bigGG = null,
+                this.convertCardArrCfg(c.Config.kapian),
+                c.Config.kapian = null,
+                this.convertCardArrCfg(c.Config.testGames, !0),
+                c.Config.testGames = null,
+                c.Config.wsUrl = c.Config.gameProtocol + c.Config.bsIp + ":" + c.Config.wsPort,
+                c.Config.wsDemoUrl = c.Config.gameProtocol + c.Config.demoServerIp + ":" + c.Config.wsPort,
+                c.Config.gameSize = c.Config.screenSize[c.Config.orientation],
+                c.Config.center = [c.Config.gameSize[0] / 2, c.Config.gameSize[1] / 2],
+                c.Config.outScreenPos = cc.v2(10 * c.Config.gameSize[0], 10 * c.Config.gameSize[1]),
+                1 == c.Config.orientation && (cc.view.setOrientation(cc.macro.ORIENTATION_AUTO),
+                c.Config.gameSize[1] = window.screen.height,
+                c.Config.center[1] = c.Config.gameSize[1] / 2,
+                cc.view.on("canvas-resize", this.resize.bind(this)),
+                window.addEventListener("resize", this.resize.bind(this))),
+                c.Config.debug || (console.log = u.ConstDefine.emptyFunc),
+                u.default.kpKeyCfg) {
+                    var n;
+                    -1 === (n = u.default.kpKeyCfg[i]).url.indexOf("http://") && (n.url = c.Config.basePath + n.url)
+                }
+                c.Config.bigKaShow && c.Config.bigKaShow["15r"] && (c.Config.bigKaShow.slot = c.Config.bigKaShow["15r"],
+                c.Config.bigKaShow["15r"] = null),
+                u.default.setActualName(),
+                s.MessageMgr.emit(s.MessageName.LoadCfgFinish),
+                f.default.confirmLang(),
+                d.default.init()
+            }
+            ,
+            t.prototype.resize = function() {
+                cc.winSize.height > c.Config.gameSize[1] && (c.Config.gameSize[1] = cc.winSize.height,
+                c.Config.center[1] = c.Config.gameSize[1] / 2),
+                s.MessageMgr.emit(s.MessageName.Resize)
+            }
+            ,
+            t.prototype.convertCardArrCfg = function(e, t) {
+                void 0 === t && (t = !1);
+                for (var o = 0, i = e; o < i.length; o++) {
+                    var n = i[o];
+                    -1 !== u.default.allGid.indexOf(n.gid) ? console.error("\u6ce8\u610f\u5361\u7247\u914d\u7f6e\u4e2d\u6709\u91cd\u590d\u7684gid,\u7a0b\u5e8f\u9ed8\u8ba4\u9009\u53d6\u5148\u914d\u7f6e\u7684", n.gid) : (u.default.allGid.push(n.gid),
+                    u.default.kpKeyCfg[n.gid] = n,
+                    n.testGame = t,
+                    void 0 !== n.t && ((n.t > p.GameTag.num || n.t <= 0) && console.error("\u914d\u7f6e\u91cct\u8d4b\u503c\u8fc7\u5927\u8fc7\u5c0f", n),
+                    n.t -= 1))
+                }
+            }
+            ,
+            t.prototype.registerEvent = function() {
+                a.default.isRotateDev() && (cc.game.canvas.addEventListener("blur", function() {
+                    cc.game.isPaused() || cc.game.pause()
+                }),
+                cc.game.canvas.addEventListener("focus", function() {
+                    cc.game.isPaused() && cc.game.resume()
+                }))
+            }
+            ,
+            t.reSetScreenSize = !0,
+            o = r([_], t)
+        }(cc.Component));
+        o.default = m,
+        cc._RF.pop()
+    }
+    , {
+        "../my/config/Config": "Config",
+        "./LogicMgr": "LogicMgr",
+        "./common/Func": "Func",
+        "./common/Interface": "Interface",
+        "./common/MessageMgr": "MessageMgr",
+        "./effect/EffectMgr": "EffectMgr",
+        "./net/NetMgr": "NetMgr",
+        "./res/DyncMgr": "DyncMgr",
+        "./res/LanguageMgr": "LanguageMgr"
+    }],
+    MessageMgr: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "1bec6YFPxJItrDUe1BlFzER", "MessageMgr");
+        var i, n = this && this.__spreadArrays || function() {
+            for (var e = 0, t = 0, o = arguments.length; t < o; t++)
+                e += arguments[t].length;
+            var i = Array(e)
+              , n = 0;
+            for (t = 0; t < o; t++)
+                for (var r = arguments[t], a = 0, s = r.length; a < s; a++,
+                n++)
+                    i[n] = r[a];
+            return i
+        }
+        ;
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.MessageMgr = o.MessageName = void 0,
+        function(e) {
+            e.LoginSucceeded = "LoginSucceeded",
+            e.LoginFail = "LoginFail",
+            e.LoadCfgFinish = "LoadCfgFinish",
+            e.LoadDyncResFinish = "LoadDyncResFinish",
+            e.TouchStart = "TouchStart",
+            e.TouchMove = "TouchMove",
+            e.TouchEnd = "TouchEnd",
+            e.MouseWheel = "MouseWheel",
+            e.LRMouseWheel = "LRMouseWheel",
+            e.OnRevNetData = "OnRevNetData",
+            e.FrameChange = "FrameChange",
+            e.SetScaleMode = "SetScaleMode",
+            e.ChangeLang = "ChangeLang",
+            e.NetOpen = "NetOpen",
+            e.NetClose = "NetClose",
+            e.FixScore = "FixScore",
+            e.PlayerInfo = "PlayerInfo",
+            e.NetMsg = "NetMsg",
+            e.UserInfo = "UserInfo",
+            e.Resize = "Resize",
+            e.ShowCreditBox = "ShowCreditBox",
+            e.UpdateCredit = "UpdateCredit",
+            e.ChangeHeadIcon = "ChangeHeadIcon",
+            e.NicknameChange = "NicknameChange",
+            e.UpdateFavCards = "UpdateFavCards",
+            e.ExitBrosePage = "ExitBrosePage",
+            e.InitBrosePage = "InitBrosePage"
+        }(i || (i = {})),
+        o.MessageName = i;
+        var r = function() {
+            function e() {}
+            return e.once = function(e, t, o) {
+                this.eventTarget.once(e, t, o)
+            }
+            ,
+            e.on = function(e, t, o) {
+                this.eventTarget.on(e, t, o)
+            }
+            ,
+            e.emit = function(e) {
+                for (var t, o = [], i = 1; i < arguments.length; i++)
+                    o[i - 1] = arguments[i];
+                (t = this.eventTarget).emit.apply(t, n([e], o))
+            }
+            ,
+            e.off = function(e, t, o) {
+                this.eventTarget.off(e, t, o)
+            }
+            ,
+            e.eventTarget = new cc.EventTarget,
+            e
+        }();
+        o.MessageMgr = r,
+        cc._RF.pop()
+    }
+    , {}],
+    ModMusicsBox: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "4da08uO+/hLTpROOH5DDXHe", "ModMusicsBox");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.ModMusicsBox = void 0;
+        var r = e("../../base/SoundMgr")
+          , a = e("../../base/common/view/Tip")
+          , s = e("../../base/LogicMgr")
+          , c = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                var t = this;
+                e.prototype.initParams.call(this),
+                this._popupMethod.root.getChildByName("close").on(s.ConstDefine.click, this.close, this);
+                for (var o = this._popupMethod.root.getChildByName("group").children, i = function(e) {
+                    o[e].on("toggle", function() {
+                        t.musicClick(e)
+                    })
+                }, n = 0; n < o.length; n++)
+                    i(n)
+            }
+            ,
+            t.prototype.musicClick = function(e) {
+                r.default.playEffect(s.ConstDefine.click),
+                e < 6 ? r.default.playBGM("bg" + e) : r.default.playBGM("bg"),
+                localStorage.setItem("musicSelect", e.toString())
+            }
+            ,
+            t
+        }(a.PopupBase);
+        o.ModMusicsBox = c,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/SoundMgr": "SoundMgr",
+        "../../base/common/view/Tip": "Tip"
+    }],
+    ModPwdBox: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "3de2aUVQ1RIfYqxR1cqoN2O", "ModPwdBox");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.ModPwdBox = void 0;
+        var r = e("../../base/res/LanguageMgr")
+          , a = e("../../base/net/NetMgr")
+          , s = e("../../base/net/EEvent")
+          , c = e("../config/Config")
+          , l = e("../../base/SoundMgr")
+          , h = e("../../base/common/view/Tip")
+          , d = e("../../base/res/DyncMgr")
+          , f = e("../../base/common/Func")
+          , u = e("../../base/common/MessageMgr")
+          , p = e("../../base/common/SpecialFunc")
+          , g = e("../../base/LogicMgr")
+          , _ = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                var t = this;
+                e.prototype.initParams.call(this),
+                this._popupMethod.root.getChildByName("close").on(g.ConstDefine.click, this.close, this);
+                var o = this._popupMethod.root.getChildByName("offsetX")
+                  , i = o.getChildByName("old");
+                this._oldNodeEdit = i.getComponent(cc.EditBox),
+                p.default.editInput(i, this._popupMethod.root);
+                var n = o.getChildByName("new");
+                this._newNodeEdit = n.getComponent(cc.EditBox),
+                p.default.editInput(n, this._popupMethod.root);
+                var r = o.getChildByName("reEnter");
+                this._reEnterNodeEdit = r.getComponent(cc.EditBox),
+                p.default.editInput(r, this._popupMethod.root);
+                var a = o.getChildByName("confirm");
+                this._cfmBtn = a.getComponent(cc.Button),
+                a.on(g.ConstDefine.click, this.confirm, this);
+                var s = i.getChildByName("keyboard")
+                  , c = n.getChildByName("keyboard")
+                  , l = r.getChildByName("keyboard");
+                g.default.useSoftKeyboard ? (s.active = !1,
+                c.active = !1,
+                l.active = !1) : (this._oldNodeEdit._impl._elem.autocomplete = "new-password",
+                this._newNodeEdit._impl._elem.autocomplete = "new-password",
+                this._reEnterNodeEdit._impl._elem.autocomplete = "new-password",
+                i.on("editing-return", this.confirm, this),
+                n.on("editing-return", this.confirm, this),
+                r.on("editing-return", this.confirm, this),
+                s.on(g.ConstDefine.click, function() {
+                    d.default.getResInfo("keyboardUI", i, t._popupMethod.root)
+                }),
+                c.on(g.ConstDefine.click, function() {
+                    d.default.getResInfo("keyboardUI", n, t._popupMethod.root)
+                }),
+                l.on(g.ConstDefine.click, function() {
+                    d.default.getResInfo("keyboardUI", r, t._popupMethod.root)
+                }))
+            }
+            ,
+            t.prototype.resetParams = function() {
+                this._oldNodeEdit.string = "",
+                this._newNodeEdit.string = "",
+                this._reEnterNodeEdit.string = "",
+                g.default.useSoftKeyboard || (this._oldNodeEdit._impl._elem.style.visibility = "visible",
+                this._newNodeEdit._impl._elem.style.visibility = "visible",
+                this._reEnterNodeEdit._impl._elem.style.visibility = "visible"),
+                e.prototype.resetParams.call(this),
+                u.MessageMgr.on(u.MessageName.NetMsg, this.onLogonNet, this)
+            }
+            ,
+            t.prototype.hide = function() {
+                g.default.useSoftKeyboard || (this._oldNodeEdit._impl._elem.style.visibility = "hidden",
+                this._newNodeEdit._impl._elem.style.visibility = "hidden",
+                this._reEnterNodeEdit._impl._elem.style.visibility = "hidden"),
+                e.prototype.hide.call(this)
+            }
+            ,
+            t.prototype.close = function() {
+                e.prototype.close.call(this),
+                u.MessageMgr.off(u.MessageName.NetMsg, this.onLogonNet, this)
+            }
+            ,
+            t.prototype.onLogonNet = function(e) {
+                if (e.mainID === s.Cmd.MDM_MB_LOGON && e.subID == s.Cmd.SUB_MB_CHANGEPASSWORD_RESULT) {
+                    var t = e.data;
+                    d.default.getResInfo(g.ConstDefine.msgTip, t.msg, 5, !0),
+                    0 == t.result && (g.default.needReset = !1,
+                    g.default.login.pwd = f.default.encryMd5(this._newPwdStr),
+                    g.default.saveLoginData(),
+                    "1" == localStorage.getItem(g.ConstDefine.remember) && localStorage.setItem(g.ConstDefine.savePwd, window.btoa(this._newPwdStr)),
+                    this.hide()),
+                    clearTimeout(this._cfmTimeOut),
+                    this._cfmBtn.interactable = !0,
+                    a.NetMgr.close()
+                }
+            }
+            ,
+            t.prototype.confirm = function() {
+                var e = this;
+                l.default.playEffect(g.ConstDefine.click);
+                var t = this._oldNodeEdit.string;
+                this._newPwdStr = this._newNodeEdit.string;
+                var o = this._reEnterNodeEdit.string;
+                if ("" !== t && "" !== this._newPwdStr && "" !== o) {
+                    if (!g.default.login.testAcccount) {
+                        if (this._newPwdStr.length < c.Config.accPwdMinLength || this._newPwdStr.length > c.Config.accPwdMaxLength)
+                            return void d.default.getResInfo(g.ConstDefine.msgTip, r.default.procLangText("lengthTip"), 2, !0);
+                        if (!new RegExp("(?=.*[0-9])(?=.*[a-zA-Z])").test(this._newPwdStr))
+                            return void d.default.getResInfo(g.ConstDefine.msgTip, r.default.procLangText("pwdFormatTip"), 2, !0)
+                    }
+                    this._newPwdStr === o ? t !== this._newPwdStr ? g.default.login.succeed && (u.MessageMgr.once(u.MessageName.NetOpen, this.netOpen, this),
+                    a.NetMgr.createWebSocket(),
+                    this._cfmBtn.interactable = !1,
+                    clearTimeout(this._cfmTimeOut),
+                    this._cfmTimeOut = setTimeout(function() {
+                        clearTimeout(e._cfmTimeOut),
+                        e._cfmBtn.interactable = !0,
+                        d.default.getResInfo(g.ConstDefine.msgTip, r.default.procLangText("badNetStatus")),
+                        u.MessageMgr.off(u.MessageName.NetOpen, e.netOpen, e)
+                    }, 5e3)) : d.default.getResInfo(g.ConstDefine.msgTip, r.default.procLangText("noSameTip"), 2, !0) : d.default.getResInfo(g.ConstDefine.msgTip, r.default.procLangText("pwdunlikeTip"), 2, !0)
+                } else
+                    d.default.getResInfo(g.ConstDefine.msgTip, r.default.procLangText("pwdNotEmptyTip"), 2, !0)
+            }
+            ,
+            t.prototype.netOpen = function() {
+                var e = {
+                    userid: g.default.login.userID,
+                    password: f.default.encryMd5(this._oldNodeEdit.string),
+                    newpassword: f.default.encryMd5(this._newPwdStr),
+                    dynamicpass: g.default.login.dynamicPass
+                };
+                a.NetMgr.send(s.Cmd.MDM_MB_LOGON, s.Cmd.SUB_MB_LOGON_CHANGEPASSWORD, e)
+            }
+            ,
+            t
+        }(h.PopupBase);
+        o.ModPwdBox = _,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/SoundMgr": "SoundMgr",
+        "../../base/common/Func": "Func",
+        "../../base/common/MessageMgr": "MessageMgr",
+        "../../base/common/SpecialFunc": "SpecialFunc",
+        "../../base/common/view/Tip": "Tip",
+        "../../base/net/EEvent": "EEvent",
+        "../../base/net/NetMgr": "NetMgr",
+        "../../base/res/DyncMgr": "DyncMgr",
+        "../../base/res/LanguageMgr": "LanguageMgr",
+        "../config/Config": "Config"
+    }],
+    MsgPromptBox: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "77abeXLtDVEs7UPB8dFdojm", "MsgPromptBox");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.GuestPromptBox = o.ExitPromptBox = void 0;
+        var r = e("../../base/common/view/Tip")
+          , a = e("../../base/LogicMgr")
+          , s = e("../../base/res/DyncMgr")
+          , c = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                e.prototype.initParams.call(this);
+                var t = this._popupMethod.root.getChildByName("adjustX").getChildByName("tip");
+                this._textTip = t.getChildByName("text").getComponent(cc.Label),
+                this.regeditBtn()
+            }
+            ,
+            t.prototype.resetParams = function(t) {
+                e.prototype.resetParams.call(this),
+                this._textTip.string = t
+            }
+            ,
+            t.prototype.regeditBtn = function() {
+                this._popupMethod.root.getChildByName("close").on(a.ConstDefine.click, this.close, this),
+                this._popupMethod.root.getChildByName("adjustX").getChildByName("btnConfirm").on(a.ConstDefine.click, this.close, this)
+            }
+            ,
+            t.prototype.isReset = function() {
+                return !0
+            }
+            ,
+            t
+        }(r.PopupBase);
+        o.default = c;
+        var l = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.regeditBtn = function() {
+                this._popupMethod.root.getChildByName("close").on(a.ConstDefine.click, this.close, this),
+                this._popupMethod.root.getChildByName("adjustX").getChildByName("btnConfirm").on(a.ConstDefine.click, this.exitConfirm, this)
+            }
+            ,
+            t.prototype.exitConfirm = function() {
+                a.default.exitLogin(),
+                this.close()
+            }
+            ,
+            t
+        }(c);
+        o.ExitPromptBox = l;
+        var h = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.regeditBtn = function() {
+                var e = this;
+                this._popupMethod.root.getChildByName("close").on(a.ConstDefine.click, function() {
+                    s.default.getResInfo(a.ConstDefine.loginUI),
+                    e.close()
+                }, this),
+                this._popupMethod.root.getChildByName("adjustX").getChildByName("btnConfirm").on(a.ConstDefine.click, this.close, this)
+            }
+            ,
+            t
+        }(c);
+        o.GuestPromptBox = h,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/common/view/Tip": "Tip",
+        "../../base/res/DyncMgr": "DyncMgr"
+    }],
+    MutabEffectCfg: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "344e4047dpMtaUjpG6xOKdG", "MutabEffectCfg"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.TextCfg = o.MutabEffectCfg = void 0,
+        o.MutabEffectCfg = {
+            type: {}
+        },
+        o.TextCfg = {
+            weapon: {
+                scale: .4
+            },
+            golden: {
+                spacingX: -18
+            },
+            score: {
+                spacingX: -10
+            },
+            zhadanxie: {
+                spacingX: -10
+            }
+        },
+        cc._RF.pop()
+    }
+    , {}],
+    MutabResCfg: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "dbeeacVy9RNKq1fq3E685uc", "MutabResCfg"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.DyncResCfg = void 0;
+        var i = e("../../base/common/view/NodeHandle")
+          , n = e("./Config")
+          , r = e("../../base/res/DyncAnimPlay")
+          , a = e("../view/HallUI")
+          , s = e("../view/LoginUI")
+          , c = e("../../base/res/ResCfg")
+          , l = e("../view/HeadUI")
+          , h = e("../view/NoticeTip")
+          , d = e("../view/ModPwdBox")
+          , f = e("../view/SettingBox")
+          , u = e("../view/JpRankUI")
+          , p = e("../../base/common/view/Tip")
+          , g = e("../../base/res/ParticlePlay")
+          , _ = e("../../base/res/DyncLoadedBase")
+          , m = e("../view/MsgPromptBox")
+          , y = e("../view/BigAdvertUI")
+          , v = e("../view/ShareUI")
+          , C = e("../view/KeyboardUI")
+          , b = e("../../base/debug/DebugMgr")
+          , M = e("../view/PcFullScreenUI")
+          , S = e("../view/RollPrize")
+          , N = e("../../base/LogicMgr")
+          , w = e("../view/BounderyMask")
+          , B = e("../view/ModMusicsBox")
+          , P = e("../view/RollWeekPrize")
+          , T = e("../view/HallUIVertical")
+          , k = e("../view/CashbackUI")
+          , I = e("../view/FudaiUI");
+        o.DyncResCfg = {
+            loadingTip: {
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/loadingTip",
+                nodeCfg: {
+                    handle: i.NodeHandleType.none,
+                    layer: n.AdaptLevel.loadTip,
+                    class: p.AutoHideTip
+                }
+            },
+            loginUI: {
+                loadingTip: !0,
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/loginUI",
+                nodeCfg: {
+                    handle: i.NodeHandleType.active,
+                    layer: n.AdaptLevel.loginUI,
+                    class: s.LoginUI
+                }
+            },
+            hallUI: {
+                orientation: 0,
+                loadingTip: !0,
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/hallUI",
+                nodeCfg: {
+                    layer: n.AdaptLevel.hallUI,
+                    class: a.default
+                }
+            },
+            hallUIVertical: {
+                orientation: 1,
+                loadingTip: !0,
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/hallUIVertical",
+                nodeCfg: {
+                    layer: n.AdaptLevel.hallUI,
+                    class: T.default
+                }
+            },
+            rollPrize: {
+                loadingTip: !0,
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/rollPrize",
+                nodeCfg: {
+                    layer: n.AdaptLevel.msgTip,
+                    class: S.default
+                }
+            },
+            rollWeekPrize: {
+                loadingTip: !0,
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/rollWeekPrize",
+                nodeCfg: {
+                    layer: n.AdaptLevel.loginUI,
+                    class: P.default
+                }
+            },
+            headUI: {
+                loadingTip: !0,
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/headUI",
+                nodeCfg: {
+                    handle: i.NodeHandleType.active,
+                    layer: n.AdaptLevel.msgTip,
+                    class: l.HeadUI
+                }
+            },
+            keyboardUI: {
+                loadingTip: !0,
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/softKeyboard",
+                nodeCfg: {
+                    handle: i.NodeHandleType.active,
+                    layer: n.AdaptLevel.keyboardUI,
+                    class: C.default
+                }
+            },
+            msgTip: {
+                preLoad: !0,
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/msgTip",
+                nodeCfg: {
+                    handle: i.NodeHandleType.active,
+                    layer: n.AdaptLevel.msgTip2,
+                    class: p.AutoHideTextTip
+                }
+            },
+            demoTip: {
+                orientation: 0,
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/demoTip",
+                nodeCfg: {
+                    handle: i.NodeHandleType.active,
+                    layer: n.AdaptLevel.demoTip,
+                    class: _.default
+                }
+            },
+            demoTipVertical: {
+                orientation: 1,
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/demoTipVertical",
+                nodeCfg: {
+                    handle: i.NodeHandleType.active,
+                    layer: n.AdaptLevel.demoTip,
+                    class: _.default
+                }
+            },
+            guestGameTip: {
+                preLoad: !0,
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/guestTip",
+                nodeCfg: {
+                    handle: i.NodeHandleType.active,
+                    layer: n.AdaptLevel.msgTip2,
+                    class: p.AutoHideTextTip
+                }
+            },
+            noticeTip: {
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/noticeTip",
+                nodeCfg: {
+                    handle: i.NodeHandleType.active,
+                    layer: n.AdaptLevel.msgTip,
+                    class: h.NoticeTip
+                }
+            },
+            jpRankUI: {
+                loadingTip: !0,
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/jpRankUI",
+                nodeCfg: {
+                    handle: i.NodeHandleType.active,
+                    layer: n.AdaptLevel.jpUI,
+                    class: u.default
+                }
+            },
+            noFavTip: {
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/noFavTip",
+                nodeCfg: {
+                    layer: n.AdaptLevel.hallUI,
+                    class: p.TextTip
+                }
+            },
+            msgPromptBox: {
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/msgPromptBox",
+                nodeCfg: {
+                    handle: i.NodeHandleType.active,
+                    layer: n.AdaptLevel.msgTip,
+                    class: m.default
+                }
+            },
+            exitPromptBox: {
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/msgPromptBox",
+                nodeCfg: {
+                    handle: i.NodeHandleType.active,
+                    layer: n.AdaptLevel.msgTip,
+                    class: m.ExitPromptBox
+                }
+            },
+            modPwdBox: {
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/modPwdBox",
+                nodeCfg: {
+                    handle: i.NodeHandleType.active,
+                    layer: n.AdaptLevel.msgTip,
+                    class: d.ModPwdBox
+                }
+            },
+            modMusicsBox: {
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/modMusicsBox",
+                nodeCfg: {
+                    handle: i.NodeHandleType.active,
+                    layer: n.AdaptLevel.msgTip,
+                    class: B.ModMusicsBox
+                }
+            },
+            settingBox: {
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/settingBox",
+                nodeCfg: {
+                    handle: i.NodeHandleType.active,
+                    layer: n.AdaptLevel.hallUI,
+                    class: f.SettingBox
+                }
+            },
+            shareUI: {
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/shareUI",
+                nodeCfg: {
+                    handle: i.NodeHandleType.active,
+                    layer: n.AdaptLevel.msgTip,
+                    class: v.ShareUI
+                }
+            },
+            pcFullScreenUI: {
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/pcFullScreenUI",
+                nodeCfg: {
+                    handle: i.NodeHandleType.active,
+                    layer: n.AdaptLevel.jpUI,
+                    class: M.default
+                }
+            },
+            bigAdvertUI: {
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/bigAdvertUI",
+                nodeCfg: {
+                    handle: i.NodeHandleType.active,
+                    layer: n.AdaptLevel.msgTip,
+                    class: y.default
+                }
+            },
+            cashbackUI: {
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/cashbackUI",
+                nodeCfg: {
+                    handle: i.NodeHandleType.active,
+                    layer: n.AdaptLevel.loginUI,
+                    class: k.default
+                }
+            },
+            fudaiUI: {
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/FudaiUI",
+                nodeCfg: {
+                    handle: i.NodeHandleType.active,
+                    layer: n.AdaptLevel.loginUI,
+                    class: I.default
+                }
+            },
+            click: {
+                type: c.DyncInfoType.mulNode,
+                path: "anim/click",
+                nodeCfg: {
+                    handle: i.NodeHandleType.opacity,
+                    layer: n.AdaptLevel.clickTip,
+                    class: r.default
+                }
+            },
+            bounderyMask: {
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/bounderyMask",
+                nodeCfg: {
+                    layer: n.AdaptLevel.bounderyMask,
+                    class: w.BounderyMask
+                }
+            },
+            debugPanel: {
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/debugPanel",
+                nodeCfg: {
+                    layer: n.AdaptLevel.debug,
+                    class: b.default
+                }
+            }
+        };
+        for (var D = [], R = 0, L = D; R < L.length; R++) {
+            var E = L[R];
+            o.DyncResCfg[E] = {
+                type: c.DyncInfoType.mulNode,
+                path: "particle/" + E,
+                nodeCfg: {
+                    level: 1,
+                    handle: i.NodeHandleType.active,
+                    class: g.default
+                }
+            }
+        }
+        for (var x = 0, O = D = []; x < O.length; x++) {
+            var F = O[x];
+            o.DyncResCfg[F] = {
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/" + F
+            }
+        }
+        for (var A = 0, U = D = []; A < U.length; A++)
+            F = U[A],
+            o.DyncResCfg[F] = {
+                type: c.DyncInfoType.singleNode,
+                loadIndex: 1,
+                path: "prefabs/" + F,
+                nodeCfg: {
+                    class: _.DyncSetParent
+                }
+            };
+        for (var j = 0, G = D = ["singleToggle", "singleToggleA", "singleToggleB", N.ConstDefine.textMgr]; j < G.length; j++)
+            F = G[j],
+            o.DyncResCfg[F] = {
+                type: c.DyncInfoType.singleNode,
+                path: "prefabs/" + F,
+                nodeCfg: {
+                    handle: i.NodeHandleType.active
+                }
+            };
+        for (var H = 0, z = D = []; H < z.length; H++)
+            F = z[H],
+            o.DyncResCfg[F] = {
+                type: c.DyncInfoType.mulNode,
+                path: "prefabs/" + F,
+                nodeCfg: {
+                    handle: i.NodeHandleType.pos
+                }
+            };
+        for (var V = 0, W = D = ["announcement", "music", "setting", "sound", "music1", "music2", "music3", "music4", "music5", "music6", "randomPlay", "binddevice", "unboundA", "unboundB", "jpRecord", "total", "grand", "major", "minor", "mini", "order", "userID", "jackpot", "time", "bounus", "noData", "noRecordLst", "ranking"]; V < W.length; V++)
+            F = W[V],
+            o.DyncResCfg[F] = {
+                loadMode: c.DyncLoadMode.language,
+                loadType: cc.SpriteFrame,
+                path: F
+            };
+        for (var J = 0, q = D = []; J < q.length; J++)
+            F = q[J],
+            o.DyncResCfg[F] = {
+                loadType: cc.Prefab,
+                loadMode: c.DyncLoadMode.language,
+                path: F
+            };
+        D = null,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/common/view/NodeHandle": "NodeHandle",
+        "../../base/common/view/Tip": "Tip",
+        "../../base/debug/DebugMgr": "DebugMgr",
+        "../../base/res/DyncAnimPlay": "DyncAnimPlay",
+        "../../base/res/DyncLoadedBase": "DyncLoadedBase",
+        "../../base/res/ParticlePlay": "ParticlePlay",
+        "../../base/res/ResCfg": "ResCfg",
+        "../view/BigAdvertUI": "BigAdvertUI",
+        "../view/BounderyMask": "BounderyMask",
+        "../view/CashbackUI": "CashbackUI",
+        "../view/FudaiUI": "FudaiUI",
+        "../view/HallUI": "HallUI",
+        "../view/HallUIVertical": "HallUIVertical",
+        "../view/HeadUI": "HeadUI",
+        "../view/JpRankUI": "JpRankUI",
+        "../view/KeyboardUI": "KeyboardUI",
+        "../view/LoginUI": "LoginUI",
+        "../view/ModMusicsBox": "ModMusicsBox",
+        "../view/ModPwdBox": "ModPwdBox",
+        "../view/MsgPromptBox": "MsgPromptBox",
+        "../view/NoticeTip": "NoticeTip",
+        "../view/PcFullScreenUI": "PcFullScreenUI",
+        "../view/RollPrize": "RollPrize",
+        "../view/RollWeekPrize": "RollWeekPrize",
+        "../view/SettingBox": "SettingBox",
+        "../view/ShareUI": "ShareUI",
+        "./Config": "Config"
+    }],
+    MutabTextDesc: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "8379aR0k1RIlKLtaAAnwPc7", "MutabTextDesc"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.TextCfg = o.MutabLangText = o.OptLangRes = o.LangRes = void 0,
+        o.LangRes = [],
+        o.OptLangRes = {
+            fish: []
+        },
+        o.MutabLangText = {
+            ch: {
+                username: "\u7528\u6237\u540d",
+                password: "\u5bc6\u7801",
+                login: "\u767b\u5f55",
+                loginTip: "\u7528\u6237\u540d\u6216\u5bc6\u7801\u9519\u8bef",
+                homepage: "\u9996\u9875",
+                games: "\u6e38\u620f",
+                download: "\u4e0b\u8f7d",
+                aboutUs: "\u5173\u4e8e",
+                all_games: "\u5168\u90e8",
+                fishing_games: "\u9c7c\u673a",
+                slot_games: "\u8f6e\u7ebf"
+            },
+            en: {
+                username: "user name:",
+                password: "password:",
+                login: "login",
+                loginTip: "Wrong user name or password",
+                homepage: "HOME",
+                games: "Games",
+                download: "Download",
+                aboutUs: "ABOUT",
+                all_games: "ALL",
+                new: "NEW",
+                fishing_games: "FISHING",
+                slot_games: "SLOT",
+                others: "OTHERS",
+                favorite: "FAVORITE",
+                cancle: "cancle",
+                sure: "ok",
+                errorTip: "ERROR",
+                required: "Required",
+                notRunning: "The current game is not running",
+                searchTip: "Find a game",
+                paste: "paste your content here:",
+                pressPaste: "long press to paste your content:",
+                guestGameTip: "Please contact your agent for more exciting games!",
+                guestExitTip: "please confirm to exit the guest mode.\n(credits UNREDEEMABLE)",
+                guestDemoTip: "It's time to try it out today"
+            }
+        },
+        o.TextCfg = {
+            weapon: {
+                scale: .4
+            },
+            golden: {
+                spacingX: -18
+            },
+            score: {
+                spacingX: -10
+            },
+            zhadanxie: {
+                spacingX: -10
+            }
+        },
+        cc._RF.pop()
+    }
+    , {}],
+    NetMgr: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "9091dhAsSVLkLxhqEW+WOhW", "NetMgr"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.NetMgr = o.TipProExt = o.HttpGetProto = void 0;
+        var i, n = e("../common/MessageMgr"), r = e("../../my/config/Config"), a = e("../res/DyncMgr"), s = e("../LogicMgr"), c = e("../res/LanguageMgr");
+        (function(e) {
+            e[e.json = 0] = "json",
+            e[e.string = 1] = "string"
+        }
+        )(i = o.HttpGetProto || (o.HttpGetProto = {})),
+        function(e) {
+            e[e.kick = 0] = "kick",
+            e[e.stoppplay = 1] = "stoppplay",
+            e[e.maintain = 2] = "maintain",
+            e[e.keepGoing = 3] = "keepGoing",
+            e[e.tip = 100] = "tip",
+            e[e.bc = 101] = "bc"
+        }(o.TipProExt || (o.TipProExt = {}));
+        var l = function() {
+            function e() {}
+            return e.reconnect = function(e) {
+                void 0 === e && (e = !1),
+                a.default.getResInfo(s.ConstDefine.msgTip, c.default.procLangText("badNetStatus"))
+            }
+            ,
+            e.createWebSocket = function() {
+                if (this.close(),
+                navigator.onLine)
+                    try {
+                        var e = s.default.login.guestLogin ? r.Config.wsDemoUrl : r.Config.wsUrl;
+                        this._socket = new WebSocket(e,r.Config.wsProtocol),
+                        this._socket.onclose = this.onClose.bind(this),
+                        this._socket.onopen = this.onOpen.bind(this),
+                        this._socket.onmessage = this.onMessage.bind(this),
+                        this._socket.onerror = this.onError.bind(this)
+                    } catch (t) {
+                        this.reconnect()
+                    }
+                else
+                    this.reconnect()
+            }
+            ,
+            e.onMessage = function(e) {
+                var t = JSON.parse(e.data);
+                n.MessageMgr.emit(n.MessageName.NetMsg, t)
+            }
+            ,
+            e.clearConnectTimeOut = function() {
+                null != this._connectTimeout && (clearTimeout(this._connectTimeout),
+                this._connectTimeout = void 0)
+            }
+            ,
+            e.close = function() {
+                this.clearConnectTimeOut(),
+                this._socket && (this._socket.readyState === WebSocket.CLOSED && navigator.onLine || this._socket.close(),
+                this._socket.onopen = null),
+                this._socket = null
+            }
+            ,
+            e.onOpen = function() {
+                n.MessageMgr.emit(n.MessageName.NetOpen)
+            }
+            ,
+            e.onClose = function() {
+                this.clearConnectTimeOut(),
+                n.MessageMgr.emit(n.MessageName.NetClose)
+            }
+            ,
+            e.onError = function(e) {
+                console.error(e)
+            }
+            ,
+            e.isOpen = function() {
+                return !!this._socket && this._socket.readyState === WebSocket.OPEN
+            }
+            ,
+            e.send = function(e, t, o) {
+                this.isOpen() ? (o.mainID = e,
+                o.subID = t,
+                this._socket.send(JSON.stringify(o))) : a.default.getResInfo(s.ConstDefine.msgTip, c.default.procLangText("badNetStatus"))
+            }
+            ,
+            e.sendCmd = function(e, t) {
+                this.send(e, t, {})
+            }
+            ,
+            e.sendHttpGet = function(e, t, o) {
+                void 0 === o && (o = i.json);
+                var n = new XMLHttpRequest;
+                n.open("GET", e, !0),
+                n.onreadystatechange = function() {
+                    if (4 == n.readyState && n.status >= 200 && n.status < 300) {
+                        var e = n.responseText;
+                        switch (o) {
+                        case i.json:
+                            t(JSON.parse(e));
+                            break;
+                        case i.string:
+                            t(e)
+                        }
+                    }
+                }
+                ,
+                n.send()
+            }
+            ,
+            e._connectTimeout = void 0,
+            e
+        }();
+        o.NetMgr = l,
+        cc._RF.pop()
+    }
+    , {
+        "../../my/config/Config": "Config",
+        "../LogicMgr": "LogicMgr",
+        "../common/MessageMgr": "MessageMgr",
+        "../res/DyncMgr": "DyncMgr",
+        "../res/LanguageMgr": "LanguageMgr"
+    }],
+    NodeHandle: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "edb303Cu01LN6uic5aJRPCn", "NodeHandle");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.createNodeHandle = o.NodeHandle = o.NodeHandleType = void 0;
+        var r, a = e("../../../my/config/Config");
+        (function(e) {
+            e[e.none = 0] = "none",
+            e[e.opacity = 1] = "opacity",
+            e[e.active = 2] = "active",
+            e[e.inactive = 3] = "inactive",
+            e[e.pos = 4] = "pos"
+        }
+        )(r = o.NodeHandleType || (o.NodeHandleType = {}));
+        var s = function() {
+            function e() {}
+            return e.prototype.reset = function() {}
+            ,
+            e.prototype.clear = function() {}
+            ,
+            e.prototype.isReset = function() {
+                return !1
+            }
+            ,
+            e
+        }();
+        o.NodeHandle = s;
+        var c = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.reset = function(e) {
+                e.opacity = 255
+            }
+            ,
+            t.prototype.clear = function(e) {
+                e.opacity = 0
+            }
+            ,
+            t.prototype.isReset = function(e) {
+                return 0 === e.opacity
+            }
+            ,
+            t
+        }(s)
+          , l = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.reset = function(e) {
+                e.active = !0
+            }
+            ,
+            t.prototype.clear = function(e) {
+                e.active = !1
+            }
+            ,
+            t.prototype.isReset = function(e) {
+                return !e.active
+            }
+            ,
+            t
+        }(s)
+          , h = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.reset = function(e) {
+                e.active = !1
+            }
+            ,
+            t
+        }(l)
+          , d = function(e) {
+            function t() {
+                var t = null !== e && e.apply(this, arguments) || this;
+                return t._initPos = cc.Vec3.ZERO,
+                t
+            }
+            return n(t, e),
+            t.prototype.reset = function(e) {
+                e.setPosition(this._initPos),
+                e.active = !0
+            }
+            ,
+            t.prototype.clear = function(e) {
+                this._initPos.set(e.position),
+                e.setPosition(a.Config.outScreenPos)
+            }
+            ,
+            t.prototype.isReset = function(e) {
+                return e.position.equals(a.Config.outScreenPos)
+            }
+            ,
+            t
+        }(s);
+        o.createNodeHandle = function(e) {
+            var t = null;
+            switch (e) {
+            case r.opacity:
+                t = new c;
+                break;
+            case r.inactive:
+                t = new h;
+                break;
+            case r.pos:
+                t = new d;
+                break;
+            case r.none:
+                t = new s;
+                break;
+            default:
+                t = new l
+            }
+            return t
+        }
+        ,
+        cc._RF.pop()
+    }
+    , {
+        "../../../my/config/Config": "Config"
+    }],
+    NoticeTip: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "3a2faMXhDNMvoNEh1ntHcuV", "NoticeTip");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.NoticeTip = void 0;
+        var r = e("../../base/common/view/Tip")
+          , a = e("../../base/LogicMgr")
+          , s = e("../../base/SoundMgr")
+          , c = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                var t = this;
+                e.prototype.initParams.call(this),
+                this._popupMethod.root.getChildByName("close").on(a.ConstDefine.click, this.close, this);
+                var o = this._popupMethod.root.getChildByName("offsetX").getChildByName("mid");
+                this._leftFrame = o.getChildByName("leftFrame"),
+                this._toggleChildren = this._leftFrame.children;
+                for (var i = this._toggleChildren[0], n = 1; n < 5; n++)
+                    cc.instantiate(i).setParent(this._leftFrame);
+                var r = function(e) {
+                    s._toggleChildren[e].on("toggle", function() {
+                        t.toggleClick(e)
+                    }, s)
+                }
+                  , s = this;
+                for (n = 0; n < this._toggleChildren.length; n++)
+                    r(n);
+                var c = o.getChildByName("rightFrame");
+                this._content = c.getChildByName("content").getComponent(cc.Label)
+            }
+            ,
+            t.prototype.resetParams = function() {
+                e.prototype.resetParams.call(this);
+                var t = a.default.login.mainContent;
+                if (t.length > 0) {
+                    var o = 0;
+                    for (o = 0; o < t.length; o++) {
+                        var i = this._toggleChildren[o];
+                        i.getChildByName("Background").getChildByName("text").getComponent(cc.Label).string = t[o].maintitle,
+                        i.getChildByName("checkmark").getChildByName("text").getComponent(cc.RichText).string = "<outline color=#FFD800 width=1><color=#ffffff>" + t[o].maintitle + "</color></outline>",
+                        i.active = !0
+                    }
+                    for (; o < this._toggleChildren.length; o++)
+                        this._leftFrame.children[o].active = !1;
+                    this.setContent(0)
+                } else
+                    for (var n = 0, r = this._leftFrame.children; n < r.length; n++)
+                        r[n].active = !1
+            }
+            ,
+            t.prototype.setContent = function(e) {
+                this._lastIndex = e,
+                this._content.string = a.default.login.mainContent[this._lastIndex].maincontent
+            }
+            ,
+            t.prototype.toggleClick = function(e) {
+                s.default.playEffect(a.ConstDefine.click),
+                e !== this._lastIndex && this.setContent(e)
+            }
+            ,
+            t
+        }(r.PopupBase);
+        o.NoticeTip = c,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/SoundMgr": "SoundMgr",
+        "../../base/common/view/Tip": "Tip"
+    }],
+    PageView: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "d5595HwvidDkJm6chwHhLpH", "PageView");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.LoopTogglePageView = o.TogglePageView = o.LeftRightDouble = o.RightShowBtn = o.LeftRightBtn = o.LeftRightOnly = o.BtnControl = o.BtnControlType = void 0;
+        var r, a = e("../../effect/EffectMgr"), s = e("../../LogicMgr"), c = e("../../res/DyncMgr"), l = e("../../SoundMgr");
+        (function(e) {
+            e[e.normal = 0] = "normal",
+            e[e.leftRightSeq = 1] = "leftRightSeq",
+            e[e.rightShow = 2] = "rightShow",
+            e[e.leftRightDouble = 3] = "leftRightDouble"
+        }
+        )(r = o.BtnControlType || (o.BtnControlType = {}));
+        var h = function() {
+            function e(e) {
+                this._pgView = e
+            }
+            return e.prototype.pageChange = function() {}
+            ,
+            e.prototype.resetPageCnt = function() {}
+            ,
+            e
+        }();
+        o.BtnControl = h;
+        var d = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t
+        }(h);
+        o.LeftRightOnly = d;
+        var f = function(e) {
+            function t(t, o) {
+                var i = e.call(this, t, o) || this;
+                return i._leftBtnNode = o.root.getChildByName("leftBtn"),
+                i._leftBtnNode.on(s.ConstDefine.click, i.leftClick, i),
+                i._leftBtnNode.active = !0,
+                i._rightBtnNode = o.root.getChildByName("rightBtn"),
+                i._rightBtnNode.on(s.ConstDefine.click, i.rightClick, i),
+                i._rightBtnNode.active = !0,
+                i
+            }
+            return n(t, e),
+            t.prototype.pageChange = function() {
+                this._rightBtnNode.active = !0,
+                this._leftBtnNode.active = !0,
+                this._pgView.isBegin() && (this._leftBtnNode.active = !1),
+                this._pgView.isEnd() && (this._rightBtnNode.active = !1)
+            }
+            ,
+            t.prototype.leftClick = function() {
+                l.default.playEffect("winslide"),
+                this._pgView.lastPg(),
+                this._rightBtnNode.active = !0,
+                this._pgView.isBegin() && (this._leftBtnNode.active = !1)
+            }
+            ,
+            t.prototype.rightClick = function() {
+                l.default.playEffect("winslide"),
+                this._pgView.nextPg(),
+                this._leftBtnNode.active = !0,
+                this._pgView.isEnd() && (this._rightBtnNode.active = !1)
+            }
+            ,
+            t
+        }(d);
+        o.LeftRightBtn = f;
+        var u, p, g = function(e) {
+            function t(t, o) {
+                var i = e.call(this, t, o) || this;
+                return i._leftBtnNode = o.leftNode || o.root.getChildByName("leftBtn"),
+                i._leftBtnNode.on(s.ConstDefine.click, i.leftClick, i),
+                i._leftBtnNode.active = !1,
+                i._rightBtnNode = o.rightNode || o.root.getChildByName("rightBtn"),
+                i._rightBtnNode.on(s.ConstDefine.click, i.rightClick, i),
+                i._rightBtnNode.active = !1,
+                i
+            }
+            return n(t, e),
+            t.prototype.resetPageCnt = function(e) {
+                e <= 1 && (this._leftBtnNode.active = !1,
+                this._rightBtnNode.active = !1)
+            }
+            ,
+            t.prototype.pageChange = function() {
+                this._pgView.pageCount <= 1 || (this._pgView.isEnd() ? (this._rightBtnNode.active = !1,
+                this._leftBtnNode.active = !0) : (this._rightBtnNode.active = !0,
+                this._leftBtnNode.active = !1))
+            }
+            ,
+            t.prototype.leftClick = function() {
+                l.default.playEffect("winslide"),
+                this._pgView.lastPg(),
+                this._pgView.isEnd() || (this._rightBtnNode.active = !0,
+                this._leftBtnNode.active = !1)
+            }
+            ,
+            t.prototype.rightClick = function() {
+                l.default.playEffect("winslide"),
+                this._pgView.nextPg(),
+                this._pgView.isEnd() && (this._rightBtnNode.active = !1,
+                this._leftBtnNode.active = !0)
+            }
+            ,
+            t
+        }(d);
+        o.RightShowBtn = g,
+        function(e) {
+            e[e.last = 0] = "last",
+            e[e.next = 1] = "next",
+            e[e.num = 2] = "num"
+        }(u || (u = {})),
+        function(e) {
+            e[e.last = 0] = "last",
+            e[e.next = 1] = "next",
+            e[e.num = 2] = "num"
+        }(p || (p = {}));
+        var _ = function(e) {
+            function t(t, o) {
+                var i = e.call(this, t, o) || this;
+                i._btnNode = [],
+                i._defaultShowNode = [],
+                i._defaultHideNode = [];
+                for (var n = 0; n < u.num; ++n)
+                    i._btnNode[n] = [];
+                var r = o.leftNode || o.root.getChildByName("leftBtn");
+                r.active = !0;
+                var a = r.getChildByName("last");
+                i._btnNode[u.last].push(a),
+                i._defaultShowNode.push(a);
+                var c = r.getChildByName("next");
+                i._btnNode[u.next][p.last] = c,
+                i._defaultHideNode.push(c);
+                var l = o.rightNode || o.root.getChildByName("rightBtn");
+                l.active = !0,
+                a = l.getChildByName("last"),
+                i._btnNode[u.last][p.next] = a,
+                i._defaultHideNode.push(a),
+                c = l.getChildByName("next"),
+                i._btnNode[u.next][p.next] = c,
+                i._defaultShowNode.push(c);
+                var h = i._btnNode[u.last];
+                for (n = 0; n < h.length; ++n)
+                    h[n].on(s.ConstDefine.click, i.lastClick, i),
+                    h[n].active = !1;
+                var d = i._btnNode[u.next];
+                for (n = 0; n < d.length; ++n)
+                    d[n].on(s.ConstDefine.click, i.nextClick, i),
+                    d[n].active = !1;
+                return i
+            }
+            return n(t, e),
+            t.prototype.resetPageCnt = function(e) {
+                if (e <= 1)
+                    for (var t = 0; t < u.num - 1; ++t)
+                        for (var o = 0; o < p.num - 1; ++o)
+                            this._btnNode[t][o].active = !1
+            }
+            ,
+            t.prototype.pageChange = function() {
+                if (!(this._pgView.pageCount <= 1))
+                    if (this._pgView.isEnd()) {
+                        for (var e = this._btnNode[u.last], t = 0; t < e.length; ++t)
+                            e[t].active = !0;
+                        var o = this._btnNode[u.next];
+                        for (t = 0; t < o.length; ++t)
+                            o[t].active = !1
+                    } else
+                        this._pgView.isBegin()
+            }
+            ,
+            t.prototype.lastClick = function() {
+                l.default.playEffect("winslide"),
+                this._pgView.lastPg()
+            }
+            ,
+            t.prototype.nextClick = function() {
+                l.default.playEffect("winslide"),
+                this._pgView.nextPg(),
+                this._pgView.isEnd() && (this._rightBtnNode.active = !1,
+                this._leftBtnNode.active = !0)
+            }
+            ,
+            t
+        }(h);
+        o.LeftRightDouble = _;
+        var m = function() {
+            function e() {}
+            return e.prototype.check = function() {}
+            ,
+            e.prototype.setVisible = function() {}
+            ,
+            e.prototype.destroy = function() {}
+            ,
+            e
+        }()
+          , y = function(e) {
+            function t(t, o, i, n, r) {
+                var a = e.call(this) || this;
+                a._toggles = [],
+                a._pgView = r;
+                for (var c = function(e) {
+                    var i = cc.instantiate(t);
+                    i.setParent(o),
+                    h._toggles.push(i.getComponent(cc.Toggle)),
+                    i.on("toggle", function() {
+                        l.default.playEffect(s.ConstDefine.click),
+                        a._pgView.toggleRoll(e),
+                        a._pgView.btnControl.pageChange()
+                    })
+                }, h = this, d = i; d < n; d++)
+                    c(d);
+                return a
+            }
+            return n(t, e),
+            t.prototype.check = function(e) {
+                this._toggles[e].check()
+            }
+            ,
+            t.prototype.setVisible = function(e, t) {
+                this._toggles[e].node.active = t
+            }
+            ,
+            t
+        }(m)
+          , v = function() {
+            function e(e) {
+                var t = this;
+                if (this._playEffect = !0,
+                this._lastPgIndex = 0,
+                this._pgView = e.root.getComponent(cc.PageView),
+                this._pgChangeCall = e.pgChangeCall,
+                e.contents) {
+                    var o = [];
+                    o.push.apply(o, e.contents);
+                    for (var i = 0; i < o.length; i++) {
+                        var n = o[i];
+                        n.setParent(null),
+                        n.active = !0,
+                        this._pgView.addPage(n)
+                    }
+                }
+                switch (this.insertPage(e),
+                this._contents = this._pgView.content.children,
+                e.btnType) {
+                case r.leftRightSeq:
+                    this._btnControl = new f(this,e);
+                    break;
+                case r.rightShow:
+                    this._btnControl = new g(this,e);
+                    break;
+                default:
+                    this._btnControl = new h(this,e)
+                }
+                var a = e.toggleRoot || e.root.getChildByName("toggleRoot");
+                a ? c.default.getResInfo(e.toggleName || s.ConstDefine.singleToggle).then(function(o) {
+                    o || console.warn("\u6ca1\u6709\u8fd9\u6837\u7684toggle\u8d44\u6e90\u540d,\u662f\u4e0d\u662f\u914d\u7f6e\u9519\u8bef\u4e86", e.toggleName, s.ConstDefine.singleToggle),
+                    t._toggle = new y(o.nodeInfo.root,a,t._toggleBeginIndex,t._pageCount,t),
+                    c.default.hide(s.ConstDefine.singleToggle),
+                    t.toggleCreateFinish(e)
+                }) : (this._toggle = new m,
+                this.toggleCreateFinish(e))
+            }
+            return Object.defineProperty(e.prototype, "pageCount", {
+                get: function() {
+                    return this._pageCount
+                },
+                enumerable: !1,
+                configurable: !0
+            }),
+            Object.defineProperty(e.prototype, "pgView", {
+                get: function() {
+                    return this._pgView
+                },
+                enumerable: !1,
+                configurable: !0
+            }),
+            Object.defineProperty(e.prototype, "contents", {
+                get: function() {
+                    return this._contents
+                },
+                enumerable: !1,
+                configurable: !0
+            }),
+            Object.defineProperty(e.prototype, "btnControl", {
+                get: function() {
+                    return this._btnControl
+                },
+                enumerable: !1,
+                configurable: !0
+            }),
+            e.prototype.destroy = function() {
+                this.pgView.node.destroy(),
+                this._toggle.destroy()
+            }
+            ,
+            e.prototype.resetPageCnt = function(e) {
+                this._pageCount = e,
+                this._pgView.getPages().length = e,
+                this._pgView._calculateBoundary(),
+                this._btnControl.resetPageCnt(e)
+            }
+            ,
+            e.prototype.pgTurning = function() {
+                this._playEffect ? l.default.playEffect("winslide") : this._playEffect = !0
+            }
+            ,
+            e.prototype.toggleCreateFinish = function(e) {
+                e.root.on("scroll-ended", this.pgScrollEnded, this),
+                this.toggleRoll(this._toggleBeginIndex, !1),
+                e.finishCall && e.finishCall(this),
+                e.root.on("page-turning", this.pgTurning, this)
+            }
+            ,
+            e.prototype.insertPage = function() {
+                this._toggleBeginIndex = 0,
+                this._pageCount = this._pgView.getPages().length
+            }
+            ,
+            e.prototype.toggleRoll = function(e, t) {
+                void 0 === t && (t = !0),
+                this.toggleOn(e),
+                this.pgScrollEnded(t)
+            }
+            ,
+            e.prototype.toggleOn = function(e) {
+                this._pgView.scrollToPage(e, 0)
+            }
+            ,
+            e.prototype.pgScrollEnded = function(e) {
+                void 0 === e && (e = !0);
+                var t = this._pgView.getCurrentPageIndex();
+                this._toggle.check(t);
+                for (var o = 0; o < this._pageCount; ++o)
+                    this._contents[o].opacity = o < t - 1 || o > t + 1 ? 0 : 255;
+                this._btnControl.pageChange(),
+                this._pgChangeCall && this._pgChangeCall(t, e)
+            }
+            ,
+            e.prototype.setVisible = function(e, t) {
+                this._toggle.setVisible(e, t),
+                this._contents[e].active = t
+            }
+            ,
+            e.prototype.nextPg = function() {
+                var e = this._pgView.getCurrentPageIndex();
+                e = ++e >= this._pageCount ? this._toggleBeginIndex : e,
+                this._pgView.scrollToPage(e, void 0)
+            }
+            ,
+            e.prototype.lastPg = function() {
+                var e = this._pgView.getCurrentPageIndex();
+                e = --e >= 0 ? e : this._pageCount - 1,
+                this._pgView.scrollToPage(e, void 0)
+            }
+            ,
+            e.prototype.clear = function() {
+                for (var e = 0; e < this._contents.length; ++e)
+                    this.setVisible(e, !1);
+                this.resetPageCnt(0)
+            }
+            ,
+            e.prototype.isEnd = function() {
+                return this._pgView.getCurrentPageIndex() === this._pageCount - 1
+            }
+            ,
+            e.prototype.isBegin = function() {
+                return this._pgView.getCurrentPageIndex() === this._toggleBeginIndex
+            }
+            ,
+            e.prototype.isScrolling = function() {
+                return this.pgView.isScrolling() || this.pgView.isAutoScrolling()
+            }
+            ,
+            e
+        }();
+        o.TogglePageView = v;
+        var C = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.insertPage = function(e) {
+                var t = this._pgView.content.childrenCount;
+                if (t > 1) {
+                    var o = this._pgView.content.children[0]
+                      , i = this._pgView.content.children[t - 1];
+                    this._pgView.insertPage(cc.instantiate(i), 0),
+                    this._pgView.addPage(cc.instantiate(o)),
+                    e.audoPlayTime && (this._loopEffect = a.EffectMgr.Instance.trigger(a.EffectMgr.EffectType.EffectMeetCondition, e.audoPlayTime, this.switchAd.bind(this), s.ConstDefine.emptyFunc))
+                }
+                this._toggleBeginIndex = 1,
+                this._pageCount = this._pgView.getPages().length - 1
+            }
+            ,
+            t.prototype.pgScrollEnded = function(e) {
+                if (void 0 === e && (e = !0),
+                !(this._pgView.content.childrenCount <= 1)) {
+                    var t = this._pgView.getCurrentPageIndex();
+                    t === this._pageCount ? (t = 1,
+                    this.toggleOn(t)) : 0 === this._pgView.getCurrentPageIndex() && (t = this._pageCount - 1,
+                    this.toggleOn(t)),
+                    this._toggle.check(t - 1),
+                    this._pgChangeCall && this._pgChangeCall(t - 1, e)
+                }
+            }
+            ,
+            t.prototype.switchAd = function() {
+                var e = this._pgView.getCurrentPageIndex();
+                return e = ++e > this._pageCount ? this._toggleBeginIndex : e,
+                this._playEffect = !1,
+                this._pgView.scrollToPage(e, void 0),
+                !1
+            }
+            ,
+            t.prototype.destroy = function() {
+                this._loopEffect && a.EffectMgr.Instance.removeEffect(this._loopEffect),
+                e.prototype.destroy.call(this)
+            }
+            ,
+            t
+        }(v);
+        o.LoopTogglePageView = C,
+        cc._RF.pop()
+    }
+    , {
+        "../../LogicMgr": "LogicMgr",
+        "../../SoundMgr": "SoundMgr",
+        "../../effect/EffectMgr": "EffectMgr",
+        "../../res/DyncMgr": "DyncMgr"
+    }],
+    ParticlePlay: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "83dab9drO5Dm5Md+nTzB+33", "ParticlePlay");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var r = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                e.prototype.initParams.call(this);
+                var t = this._nodeInfo.root.getComponentsInChildren(cc.ParticleSystem3D);
+                this._particle2Ds = this._nodeInfo.root.getComponentsInChildren(cc.ParticleSystem),
+                this._playTime = 0;
+                for (var o = 0, i = 0; i < this._particle2Ds.length; i++)
+                    (o = this._particle2Ds[i].duration) > this._playTime && (this._playTime = o);
+                for (i = 0; i < t.length; i++)
+                    (o = this.getParTime(t[i])) > this._playTime && (this._playTime = o)
+            }
+            ,
+            t.prototype.resetParams = function(t, o, i) {
+                for (var n = this, r = [], a = 3; a < arguments.length; a++)
+                    r[a - 3] = arguments[a];
+                e.prototype.resetParams.apply(this, r),
+                this._nodeInfo.root.setPosition(t),
+                this._nodeInfo.root.scale = o || 1,
+                this._nodeInfo.root.angle = i || 0;
+                for (var s = 0, c = this._particle2Ds; s < c.length; s++) {
+                    var l = c[s];
+                    l.resetSystem()
+                }
+                setTimeout(function() {
+                    n.hide()
+                }, 1e3 * (this._playTime + .1))
+            }
+            ,
+            t.prototype.hide = function() {
+                e.prototype.hide.call(this);
+                for (var t = 0, o = this._particle2Ds; t < o.length; t++)
+                    o[t].stopSystem()
+            }
+            ,
+            t.prototype.getParTime = function(e) {
+                return e.duration + e.startLifetime.getMax() + e.startDelay.getMax()
+            }
+            ,
+            t
+        }(e("./DyncLoadedBase").default);
+        o.default = r,
+        cc._RF.pop()
+    }
+    , {
+        "./DyncLoadedBase": "DyncLoadedBase"
+    }],
+    PcFullScreenUI2: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "a4af5PKIvtIsZMbZAL3bRYa", "PcFullScreenUI2"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var i = e("../../base/LogicMgr")
+          , n = function() {
+            function e(e) {
+                this._fullScreen = e.getChildByName("fullScreen"),
+                this._fullScreen.on(i.ConstDefine.click, this.fullScreenClick, this),
+                this._normal = e.getChildByName("normal"),
+                this._normal.on(i.ConstDefine.click, this.normalClick, this);
+                var t = Math.abs(window.screen.height - window.document.documentElement.clientHeight) <= 17;
+                t !== this.isFullScreen() && (t ? this.reqFullScreen() : this.exitFullScreen()),
+                this.visibleNormalNode(t),
+                window.addEventListener("resize", this.resize.bind(this))
+            }
+            return e.prototype.fullScreenClick = function() {
+                this.reqFullScreen(),
+                this.visibleNormalNode(!0),
+                this._manual = !0
+            }
+            ,
+            e.prototype.normalClick = function() {
+                this.exitFullScreen(),
+                this.visibleNormalNode(!1),
+                this._manual = !0
+            }
+            ,
+            e.prototype.visibleNormalNode = function(e) {
+                console.log("\u5168\u5c4f\u6309\u94ae\u662f\u5426\u53ef\u89c1", e),
+                this._fullScreen.active = !e,
+                this._normal.active = e
+            }
+            ,
+            e.prototype.reqFullScreen = function() {
+                cc.screen.requestFullScreen()
+            }
+            ,
+            e.prototype.exitFullScreen = function() {
+                cc.screen.exitFullScreen && cc.screen.exitFullScreen()
+            }
+            ,
+            e.prototype.isFullScreen = function() {
+                return cc.screen.fullScreen()
+            }
+            ,
+            e.prototype.resize = function() {
+                if (this._manual)
+                    this._manual = !1;
+                else {
+                    var e = this.isFullScreen();
+                    this.visibleNormalNode(e)
+                }
+            }
+            ,
+            e
+        }();
+        o.default = n,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LogicMgr": "LogicMgr"
+    }],
+    PcFullScreenUI: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "c6fc29Lx8BGl7s55wPI8H0o", "PcFullScreenUI");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var r = e("../../base/LogicMgr")
+          , a = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                this._fullScreen = this.nodeInfo.root.getChildByName("fullScreen"),
+                this._fullScreen.on(r.ConstDefine.click, this.fullScreenClick, this),
+                this._normal = this.nodeInfo.root.getChildByName("normal"),
+                this._normal.on(r.ConstDefine.click, this.normalClick, this),
+                this.visibleFullScreen(!this.isFull()),
+                window.onresize = this.resize.bind(this)
+            }
+            ,
+            t.prototype.fullScreenClick = function() {
+                this.reqFullScreen(),
+                this.visibleFullScreen(!1),
+                this._manual = !0
+            }
+            ,
+            t.prototype.normalClick = function() {
+                this.exitFullScreen(),
+                this.visibleFullScreen(!0),
+                this._manual = !0
+            }
+            ,
+            t.prototype.visibleFullScreen = function(e) {
+                this._fullScreen.active = e,
+                this._normal.active = !e
+            }
+            ,
+            t.prototype.reqFullScreen = function() {
+                if (window.top.reqFullScreen)
+                    return window.top.reqFullScreen();
+                var e = window.top.document.documentElement;
+                e.requestFullscreen ? e.requestFullscreen() : e.webkitRequestFullScreen ? e.webkitRequestFullScreen() : e.mozRequestFullScreen ? e.mozRequestFullScreen() : e.msRequestFullscreen && e.msRequestFullscreen()
+            }
+            ,
+            t.prototype.exitFullScreen = function() {
+                if (window.top.exitFullScreen)
+                    return window.top.exitFullScreen();
+                var e = window.top.document;
+                e.exitFullscreen ? e.exitFullscreen() : e.webkitCancelFullScreen ? e.webkitCancelFullScreen() : e.mozCancelFullScreen ? e.mozCancelFullScreen() : e.msExitFullscreen && e.msExitFullscreen()
+            }
+            ,
+            t.prototype.isFullScreen = function() {
+                if (window.top.isFullScreen)
+                    return window.top.isFullScreen();
+                var e = window.top.document;
+                return e.fullScreen || e.mozFullScreen || e.webkitIsFullScreen || e.msFullscreenElement || !1
+            }
+            ,
+            t.prototype.resize = function() {
+                this._manual ? this._manual = !1 : this.visibleFullScreen(!this.isFull())
+            }
+            ,
+            t.prototype.isFull = function() {
+                return Math.abs(window.screen.height - window.document.documentElement.clientHeight) <= 17
+            }
+            ,
+            t
+        }(e("../../base/res/DyncLoadedBase").default);
+        o.default = a,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/res/DyncLoadedBase": "DyncLoadedBase"
+    }],
+    RankUI: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "7d281HJ5eZPtoG11GtQrdXW", "RankUI");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var r, a = e("../../base/common/Func"), s = e("../../base/common/MessageMgr"), c = e("../../base/common/SpecialFunc"), l = e("../../base/common/view/UIPicText"), h = e("../../base/net/EEvent"), d = e("../../base/net/NetMgr"), f = e("../../base/res/DyncLoadedBase"), u = e("../../base/res/LanguageMgr"), p = e("../../base/LogicMgr");
+        (function(e) {
+            e[e.ranking = 0] = "ranking",
+            e[e.total = 1] = "total",
+            e[e.grand = 2] = "grand",
+            e[e.major = 3] = "major",
+            e[e.minor = 4] = "minor",
+            e[e.mini = 5] = "mini",
+            e[e.order = 6] = "order",
+            e[e.userID = 7] = "userID",
+            e[e.jackpot = 8] = "jackpot",
+            e[e.time = 9] = "time",
+            e[e.bounus = 10] = "bounus",
+            e[e.noData = 11] = "noData",
+            e[e.noRecordLst = 12] = "noRecordLst",
+            e[e.num = 13] = "num"
+        }
+        )(r || (r = {}));
+        var g = ["grand", "major", "minor", "mini"]
+          , _ = function() {
+            function e(e, t) {
+                this._lastShowFrame = 0,
+                this._root = e,
+                this._frameChildren = e.getChildByName("frame").children;
+                for (var o = 0, i = this._frameChildren; o < i.length; o++) {
+                    var n = i[o];
+                    n.opacity = 0,
+                    n.active = !0
+                }
+                this._frameChildren[this._lastShowFrame].opacity = 255,
+                this._orderUItext = new l.default("order",e.getChildByName("order")),
+                this._orderUItext.setStr(t + 1),
+                this._idLabel = cc.find("userID/id", e).getComponent(cc.Label),
+                this._timeLabel = e.getChildByName("time").getComponent(cc.Label),
+                this._creditUItext = new l.default(p.ConstDefine.credit,e.getChildByName(p.ConstDefine.credit))
+            }
+            return e.prototype.init = function(e) {
+                this._idLabel.string = e.gameid.toString(),
+                this._timeLabel.string = e.date,
+                this._creditUItext.setValue(e.score),
+                this._lastShowFrame !== e.jptype && (this._frameChildren[this._lastShowFrame].opacity = 0,
+                this._lastShowFrame = e.jptype,
+                this._frameChildren[this._lastShowFrame].opacity = 255),
+                this.setActive(!0)
+            }
+            ,
+            e.prototype.setActive = function(e) {
+                this._root.active = e
+            }
+            ,
+            e
+        }()
+          , m = function(e) {
+            function t(t, o) {
+                var i = e.call(this, t, o) || this;
+                i._awardCredit = [],
+                i._rankItems = [],
+                i._langSpts = [];
+                for (var n = 0; n < r.num; n++)
+                    i._langSpts[n] = new f.DyncLangSprite;
+                return i
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                var e = this
+                  , t = this.nodeInfo.root.getChildByName("frame");
+                t.getChildByName(p.ConstDefine.close).on(p.ConstDefine.click, this.hide, this);
+                var o = t.getChildByName("offsetX");
+                this._langSpts[r.ranking].init(o.getChildByName("ranking"));
+                var i = o.getChildByName("showInfoFrame");
+                this._infoTip = i.getChildByName("info").getComponent(cc.Label),
+                this._infoTip.string = "",
+                this._noRecordNode = i.getChildByName("noRecordLst"),
+                this._noRecordNode.opacity = 0,
+                this._langSpts[r.noRecordLst].init(this._noRecordNode);
+                for (var n = o.getChildByName("mid").getChildByName("firstCol"), a = function(t) {
+                    n.children[t].on("toggle", function() {
+                        e.firstColClick(t)
+                    })
+                }, s = 0; s < n.childrenCount; s++)
+                    a(s);
+                for (s = 0; s < r.num; s++)
+                    this._langSpts[s].start()
+            }
+            ,
+            t.prototype.resetParams = function(e) {
+                s.MessageMgr.on(s.MessageName.NetMsg, this.onLogonNet, this),
+                this._awrdChildren[e].getComponent(cc.Toggle).check(),
+                this.toggleClick(e)
+            }
+            ,
+            t.prototype.hide = function() {
+                e.prototype.hide.call(this),
+                s.MessageMgr.off(s.MessageName.NetMsg, this.onLogonNet, this)
+            }
+            ,
+            t.prototype.firstColClick = function(e) {
+                if (p.default.login.succeed) {
+                    var t = {
+                        type: 100,
+                        datetype: e
+                    };
+                    d.NetMgr.send(h.Cmd.MDM_MB_LOGON, h.Cmd.SUB_MB_LOGON_GETRANKITEM, t)
+                }
+            }
+            ,
+            t.prototype.toggleClick = function() {}
+            ,
+            t.prototype.onLogonNet = function(e) {
+                if (e.mainID === h.Cmd.MDM_MB_LOGON)
+                    switch (e.subID) {
+                    case h.Cmd.SUB_MB_GETJPRECORD_RESULT:
+                        var t = e.data;
+                        if (0 === t.result)
+                            if (null != t.item) {
+                                for (var o = this._rankItems.length; o < t.item.length; o++) {
+                                    var i = cc.instantiate(this._itemPrefab);
+                                    i.setParent(this._contentNode),
+                                    this._rankItems.push(new _(i,o))
+                                }
+                                for (var n = t.item.length; n < this._rankItems.length; n++)
+                                    this._rankItems[n].setActive(!1);
+                                this._noRecordNode.opacity = 255;
+                                for (var r = 0; r < t.item.length; r++)
+                                    if ((m = t.item[r]).date = a.default.change2Time(m.date),
+                                    this._rankItems[r].init(m),
+                                    255 === this._noRecordNode.opacity && p.default.login.gameID === m.gameid) {
+                                        this._noRecordNode.opacity = 0;
+                                        var s = u.default.procLangText(g[m.jptype])
+                                          , l = p.default.login.creditPrefix + cc.js.formatStr("I get %s prize with %s at %s", s, c.default.convertDecimalNum(m.score), m.date);
+                                        this._infoTip.string = l
+                                    }
+                            } else
+                                this._infoTip.string = "",
+                                this._nodataNode.opacity = 255;
+                        else {
+                            cc.warn(t.msg),
+                            this._infoTip.string = "",
+                            this._nodataNode.opacity = 0;
+                            for (var d = 0, f = this._rankItems; d < f.length; d++) {
+                                var m;
+                                (m = f[d]).setActive(!1)
+                            }
+                        }
+                    }
+            }
+            ,
+            t
+        }(f.default);
+        o.default = m,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/common/Func": "Func",
+        "../../base/common/MessageMgr": "MessageMgr",
+        "../../base/common/SpecialFunc": "SpecialFunc",
+        "../../base/common/view/UIPicText": "UIPicText",
+        "../../base/net/EEvent": "EEvent",
+        "../../base/net/NetMgr": "NetMgr",
+        "../../base/res/DyncLoadedBase": "DyncLoadedBase",
+        "../../base/res/LanguageMgr": "LanguageMgr"
+    }],
+    ReconnectTip: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "073eertZB5Ggr4u/B01v24l", "ReconnectTip");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var r = e("../../base/common/view/Tip")
+          , a = e("../../base/LogicMgr")
+          , s = e("../../base/net/NetMgr")
+          , c = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                e.prototype.initParams.call(this),
+                this._popupMethod.root.getChildByName("cancel").on(a.ConstDefine.click, this.cancelClick, this)
+            }
+            ,
+            t.prototype.cancelClick = function() {
+                s.NetMgr.close()
+            }
+            ,
+            t
+        }(r.PopupBase);
+        o.default = c,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/common/view/Tip": "Tip",
+        "../../base/net/NetMgr": "NetMgr"
+    }],
+    ResCfg: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "7dc6c2andxEaZkef50r/oc3", "ResCfg"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.DyncInfoType = o.DyncLoadMode = o.ResType = o.DyncResMode = o.ResOpera = void 0,
+        function(e) {
+            e[e.NODE = 0] = "NODE",
+            e[e.PROPERTY = 1] = "PROPERTY",
+            e[e.RESSprite = 2] = "RESSprite",
+            e[e.RESLabel = 3] = "RESLabel",
+            e[e.Num = 4] = "Num"
+        }(o.ResOpera || (o.ResOpera = {})),
+        function(e) {
+            e[e.Wait = 0] = "Wait",
+            e[e.Once = 1] = "Once",
+            e[e.Frequent = 2] = "Frequent",
+            e[e.Controlled = 3] = "Controlled",
+            e[e.Destroy = 4] = "Destroy"
+        }(o.DyncResMode || (o.DyncResMode = {})),
+        function(e) {
+            e[e.Prefab = 0] = "Prefab",
+            e[e.SpriteFrame = 1] = "SpriteFrame"
+        }(o.ResType || (o.ResType = {})),
+        function(e) {
+            e[e.default = 0] = "default",
+            e[e.language = 1] = "language"
+        }(o.DyncLoadMode || (o.DyncLoadMode = {})),
+        function(e) {
+            e[e.asset = 0] = "asset",
+            e[e.singleNode = 1] = "singleNode",
+            e[e.mulNode = 2] = "mulNode"
+        }(o.DyncInfoType || (o.DyncInfoType = {})),
+        cc._RF.pop()
+    }
+    , {}],
+    RollPrize: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "32b7ecUnJ1EB5I4ypd7PueQ", "RollPrize");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var r = e("../../base/common/MessageMgr")
+          , a = e("../../base/common/view/UIPicText")
+          , s = e("../config/Config")
+          , c = e("../../base/net/EEvent")
+          , l = e("../../base/SoundMgr")
+          , h = e("../../base/common/view/Tip")
+          , d = e("../../base/common/Func")
+          , f = e("../../base/net/NetMgr")
+          , u = e("../../base/LogicMgr")
+          , p = e("../../base/res/DyncMgr")
+          , g = e("../../base/common/view/LotteryTurntable")
+          , _ = u.default.v3Tmp
+          , m = function(e) {
+            function t() {
+                var t = null !== e && e.apply(this, arguments) || this;
+                return t._effectInfo = {
+                    id: 0,
+                    name: ""
+                },
+                t
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                e.prototype.initParams.call(this);
+                var t = this._popupMethod.root;
+                this._rootAnim = t.getComponent(cc.Animation),
+                this._bg2Node = t.getChildByName("bg2"),
+                this._bg2AnimState = this._bg2Node.getComponent(cc.Animation).getAnimationState("bg2"),
+                this._closeNode = t.getChildByName(u.ConstDefine.close),
+                this._closeNode.on(u.ConstDefine.click, this.close, this),
+                this._btnData = new g.BtnData,
+                this._lotteryTurntable = new g.default(t.getChildByName("pan"),c.Cmd.SUB_MB_LOGON_CHOUJIANG,this._btnData),
+                this._winTipNode = t.getChildByName("winTip");
+                var o = this._winTipNode.getChildByName("frame_bonus tip");
+                this._winText = new a.default(u.ConstDefine.credit,o.getChildByName("text"));
+                var i = o.getChildByName("btn");
+                i.on(u.ConstDefine.click, this.getPrize, this),
+                this._winBtn = i.getComponent(cc.Button),
+                this._jinbiNode = this.nodeInfo.root.getChildByName("jinbi")
+            }
+            ,
+            t.prototype.resetParams = function() {
+                e.prototype.resetParams.call(this),
+                this._rootAnim.setCurrentTime(0, "pan"),
+                this._rootAnim.play(),
+                this._btnData.canClick = !0,
+                this._lotteryTurntable.init(!0),
+                this._bg2Node.active = !0,
+                this._bg2AnimState.speed = .1,
+                this._closeNode.active = !0,
+                this._winTipNode.active = !1,
+                this._winBtn.enabled = !0,
+                this._jinbiNode.setPosition(-33, -67),
+                this.setJinbinodeScale(0),
+                this._popupMethod.root.opacity = 255,
+                r.MessageMgr.on(r.MessageName.NetMsg, this.onLogonNet, this),
+                this._musicName = l.default.getCurBgName(),
+                l.default.playBGM("prize_0", !0)
+            }
+            ,
+            t.prototype.setJinbinodeScale = function(e) {
+                for (var t = 0, o = this._jinbiNode.children; t < o.length; t++)
+                    o[t].setScale(e)
+            }
+            ,
+            t.prototype.hide = function() {
+                e.prototype.hide.call(this),
+                this.setJinbinodeScale(0),
+                l.default.playBGM(this._musicName),
+                r.MessageMgr.off(r.MessageName.NetMsg, this.onLogonNet, this)
+            }
+            ,
+            t.prototype.jinbiMove = function() {
+                var e = this;
+                l.default.playEffect("prize_8"),
+                cc.tween(this._popupMethod.root).to(1.5, {
+                    opacity: 0
+                }).start();
+                for (var t = 0, o = this._jinbiNode.children; t < o.length; t++) {
+                    var i = o[t];
+                    cc.tween(i).to(1, {
+                        scale: 1.5
+                    }).start()
+                }
+                var n = u.default.login.openWinScore ? u.default.doubleCreditPos : u.default.singleCreditPos;
+                this._jinbiNode.parent.convertToNodeSpaceAR(n, _),
+                cc.tween(this._jinbiNode).to(1.5, {
+                    position: _
+                }).delay(1).call(function() {
+                    u.default.reqUserInfo(),
+                    e.hide()
+                }).start()
+            }
+            ,
+            t.prototype.getPrize = function() {
+                var e = this;
+                if (l.default.playEffect("prize_2"),
+                l.default.playEffect("prize_7"),
+                this._winBtn.enabled = !1,
+                1 == s.Config.orientation)
+                    l.default.playEffect("prize_8"),
+                    setTimeout(function() {
+                        u.default.reqUserInfo(),
+                        e.hide()
+                    }, 1500);
+                else {
+                    this._jinbiNode.opacity = 255;
+                    for (var t = 0, o = this._jinbiNode.children; t < o.length; t++)
+                        o[t].setScale(3);
+                    setTimeout(this.jinbiMove.bind(this), 2e3)
+                }
+            }
+            ,
+            t.prototype.showWinTip = function() {
+                l.default.playEffect("prize_5"),
+                l.default.playEffect("prize_6"),
+                this._winTipNode.active = !0,
+                this._winText.setValue(this._prizeVal),
+                this._winTipNode.setScale(0),
+                cc.tween(this._winTipNode).to(.3, {
+                    scale: 1
+                }).start()
+            }
+            ,
+            t.prototype.rotateEnd = function() {
+                var e = this;
+                this._lotteryTurntable.rotateEnd(),
+                this._prizeVal > 0 ? setTimeout(this.showWinTip.bind(this), 1e3) : (u.default.reqUserInfo(),
+                setTimeout(function() {
+                    cc.tween(e._popupMethod.root).to(1.5, {
+                        opacity: 0
+                    }).call(e.hide, e).start()
+                }, 3e3)),
+                l.default.stopEffect(this._effectInfo.id, this._effectInfo.name),
+                l.default.playEffect("prize_4")
+            }
+            ,
+            t.prototype.updateRotate = function(e, t) {
+                var o = .1;
+                e.angle > 0 && (o = e.angle / t),
+                this._bg2AnimState.speed = o > .1 ? o : .1
+            }
+            ,
+            t.prototype.onLogonNet = function(e) {
+                if (e.mainID === c.Cmd.MDM_MB_LOGON && e.subID === c.Cmd.SUB_MB_LOGON_CHOUJIANG_RESULT) {
+                    var t = e.data;
+                    if (0 != t.result)
+                        return void p.default.getResInfo(u.ConstDefine.msgTip, "session timeout, please log in again!");
+                    var o = d.default.findRandomIndex(s.Config.prize1, t.lotteryscore);
+                    -1 == o && (u.default.login.testAcccount && p.default.getResInfo(u.ConstDefine.msgTip, "\u6ce8\u610f\u6ca1\u6709\u627e\u5230\u5408\u7406\u7684\u4e2d\u5956\u9879\u76ee", 5),
+                    o = d.default.findRandomIndex(s.Config.prize1, 0)),
+                    this._prizeIndex = o,
+                    this._prizeVal = s.Config.prize1[o],
+                    this._lotteryTurntable.rotate(12, this._prizeIndex, this.updateRotate.bind(this)),
+                    u.default.login.score = t.score,
+                    l.default.playEffect("prize_3", this._effectInfo),
+                    this._closeNode.active = !1,
+                    f.NetMgr.close(),
+                    setTimeout(this.rotateEnd.bind(this), 12e3)
+                }
+            }
+            ,
+            t
+        }(h.PopupBase);
+        o.default = m,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/SoundMgr": "SoundMgr",
+        "../../base/common/Func": "Func",
+        "../../base/common/MessageMgr": "MessageMgr",
+        "../../base/common/view/LotteryTurntable": "LotteryTurntable",
+        "../../base/common/view/Tip": "Tip",
+        "../../base/common/view/UIPicText": "UIPicText",
+        "../../base/net/EEvent": "EEvent",
+        "../../base/net/NetMgr": "NetMgr",
+        "../../base/res/DyncMgr": "DyncMgr",
+        "../config/Config": "Config"
+    }],
+    RollWeekPrize: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "3e8ccU6dLZGlKBtC+9lPdbJ", "RollWeekPrize");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var r = e("../../base/common/MessageMgr")
+          , a = e("../../base/common/view/UIPicText")
+          , s = e("../config/Config")
+          , c = e("../../base/net/EEvent")
+          , l = e("../../base/SoundMgr")
+          , h = e("../../base/common/view/Tip")
+          , d = e("../../base/common/Func")
+          , f = e("../../base/net/NetMgr")
+          , u = e("../../base/LogicMgr")
+          , p = e("../../base/res/DyncMgr")
+          , g = e("../../base/common/view/LotteryTurntable")
+          , _ = e("../../base/LevelMgr")
+          , m = u.default.v3Tmp
+          , y = cc.v2(49, -33)
+          , v = function(e) {
+            function t() {
+                var t = null !== e && e.apply(this, arguments) || this;
+                return t._effectInfo = {
+                    id: 0,
+                    name: ""
+                },
+                t
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                e.prototype.initParams.call(this);
+                var t = this._popupMethod.root;
+                this._rootAnim = t.getComponent(cc.Animation),
+                this._closeNode = t.getChildByName(u.ConstDefine.close),
+                this._closeNode.on(u.ConstDefine.click, this.close, this),
+                this._effNode = t.getChildByName("eff"),
+                this._btnData = new g.BtnData,
+                this._lotteryTurntable = new g.default(t.getChildByName("pan"),c.Cmd.SUB_MB_LOGON_CHOUJIANG,this._btnData),
+                this._lotteryTurntable2 = new g.default(t.getChildByName("pan2"),c.Cmd.SUB_GET_HAPPY_WEEK,this._btnData),
+                this._winTipNode = t.getChildByName("winTip");
+                var o = this._winTipNode.getChildByName("frame_bonus tip");
+                this._bonusTipSpine = o.getComponent(sp.Skeleton),
+                this._winText = new a.default(u.ConstDefine.credit,o.getChildByName("text"));
+                var i = o.getChildByName("btn");
+                i.on(u.ConstDefine.click, this.getPrize, this),
+                this._winBtn = i.getComponent(cc.Button),
+                this._jinbiNode = this.nodeInfo.root.getChildByName("jinbi"),
+                _.default.Instance.setLevel(this._jinbiNode, s.AdaptLevel.creditUI)
+            }
+            ,
+            t.prototype.resetParams = function() {
+                e.prototype.resetParams.call(this),
+                this._rootAnim.setCurrentTime(0, "beginMove"),
+                this._rootAnim.play(),
+                this._btnData.canClick = !0,
+                this._lotteryTurntable.init(1 == u.default.fuliData.blottery),
+                this._lotteryTurntable2.init(1 == u.default.fuliData.blotteryhappyweek),
+                this._closeNode.active = !0,
+                this._winTipNode.active = !1,
+                this._winBtn.enabled = !0,
+                this._jinbiNode.setPosition(y),
+                this.setJinbinodeScale(0),
+                this._effNode.active = !0,
+                this._popupMethod.root.opacity = 255,
+                r.MessageMgr.on(r.MessageName.NetMsg, this.onLogonNet, this),
+                this._musicName = l.default.getCurBgName(),
+                l.default.playBGM("roll2_4", !0),
+                r.MessageMgr.emit(r.MessageName.ShowCreditBox, !1)
+            }
+            ,
+            t.prototype.setJinbinodeScale = function(e) {
+                for (var t = 0, o = this._jinbiNode.children; t < o.length; t++)
+                    o[t].setScale(e)
+            }
+            ,
+            t.prototype.hide = function() {
+                this.setJinbinodeScale(0),
+                r.MessageMgr.emit(r.MessageName.ShowCreditBox, !0),
+                e.prototype.hide.call(this),
+                l.default.playBGM(this._musicName),
+                r.MessageMgr.off(r.MessageName.NetMsg, this.onLogonNet, this)
+            }
+            ,
+            t.prototype.showEnd = function() {
+                u.default.reqUserInfo(),
+                this.allPanEnd() ? this.hide() : (this._jinbiNode.setPosition(y),
+                this.setJinbinodeScale(0),
+                this._winTipNode.active = !1,
+                this._winBtn.enabled = !0,
+                this._closeNode.active = !0)
+            }
+            ,
+            t.prototype.jinbiMove = function() {
+                l.default.playEffect("prize_8"),
+                this._btnData.canClick = !0,
+                this.allPanEnd() && (this._effNode.active = !1,
+                cc.tween(this._popupMethod.root).delay(1.5).to(1.5, {
+                    opacity: 0
+                }).start());
+                for (var e = 0, t = this._jinbiNode.children; e < t.length; e++) {
+                    var o = t[e];
+                    cc.tween(o).to(1, {
+                        scale: 1.5
+                    }).start()
+                }
+                var i = u.default.login.openWinScore ? u.default.doubleCreditPos : u.default.singleCreditPos;
+                this._jinbiNode.parent.convertToNodeSpaceAR(i, m),
+                cc.tween(this._jinbiNode).to(1.5, {
+                    position: m
+                }).delay(1.6).call(this.showEnd.bind(this)).start()
+            }
+            ,
+            t.prototype.allPanEnd = function() {
+                return this._lotteryTurntable.isEnd() && this._lotteryTurntable2.isEnd()
+            }
+            ,
+            t.prototype.getPrize = function() {
+                var e = this;
+                if (l.default.playEffect("prize_2"),
+                this._winBtn.enabled = !1,
+                1 == s.Config.orientation)
+                    l.default.playEffect("roll2_7"),
+                    setTimeout(function() {
+                        e._btnData.canClick = !0,
+                        e.showEnd()
+                    }, 1500);
+                else {
+                    this._jinbiNode.opacity = 255;
+                    for (var t = 0, o = this._jinbiNode.children; t < o.length; t++)
+                        o[t].setScale(3);
+                    l.default.playEffect("roll2_0"),
+                    setTimeout(this.jinbiMove.bind(this), 2e3),
+                    r.MessageMgr.emit(r.MessageName.ShowCreditBox, !0)
+                }
+            }
+            ,
+            t.prototype.showWinTip = function() {
+                l.default.playEffect("roll2_2"),
+                setTimeout(function() {
+                    l.default.playEffect("roll2_3")
+                }, 1e3),
+                this._winTipNode.active = !0,
+                this._winText.setValue(this._prizeVal),
+                this._winTipNode.setScale(0),
+                this._lotteryDay ? this._bonusTipSpine.setAnimation(0, "dailyWheel_idle", !0) : this._bonusTipSpine.setAnimation(0, "luckyWeekends_idle", !0),
+                cc.tween(this._winTipNode).to(.3, {
+                    scale: 1
+                }).start()
+            }
+            ,
+            t.prototype.rotateEnd = function() {
+                var e = this;
+                this._lotteryDay ? this._lotteryTurntable.rotateEnd() : this._lotteryTurntable2.rotateEnd(),
+                this._prizeVal > 0 ? setTimeout(this.showWinTip.bind(this), 1e3) : (this._btnData.canClick = !0,
+                this._closeNode.active = !0,
+                u.default.reqUserInfo(),
+                this.allPanEnd() && setTimeout(function() {
+                    cc.tween(e._popupMethod.root).to(1.5, {
+                        opacity: 0
+                    }).call(e.hide, e).start()
+                }, 3e3)),
+                l.default.stopEffect(this._effectInfo.id, this._effectInfo.name)
+            }
+            ,
+            t.prototype.updateRotate = function(e) {
+                e.angle > 0 && e.angle
+            }
+            ,
+            t.prototype.onLogonNet = function(e) {
+                if (e.mainID === c.Cmd.MDM_MB_LOGON && (e.subID === c.Cmd.SUB_MB_LOGON_CHOUJIANG_RESULT || e.subID == c.Cmd.SUB_GET_HAPPY_WEEK_RESULT)) {
+                    var t = e.data;
+                    if (0 != t.result)
+                        return void p.default.getResInfo(u.ConstDefine.msgTip, "session timeout, please log in again!");
+                    var o = d.default.findRandomIndex(s.Config.prize1, t.lotteryscore);
+                    -1 == o && (u.default.login.testAcccount && p.default.getResInfo(u.ConstDefine.msgTip, "\u6ce8\u610f\u6ca1\u6709\u627e\u5230\u5408\u7406\u7684\u4e2d\u5956\u9879\u76ee", 5),
+                    o = d.default.findRandomIndex(s.Config.prize1, 0)),
+                    this._prizeIndex = o,
+                    this._prizeVal = s.Config.prize1[o],
+                    e.subID === c.Cmd.SUB_MB_LOGON_CHOUJIANG_RESULT ? (this._lotteryDay = !0,
+                    this._lotteryTurntable.rotate(12, this._prizeIndex, this.updateRotate.bind(this))) : (this._lotteryDay = !1,
+                    this._lotteryTurntable2.rotate(12, this._prizeIndex, this.updateRotate.bind(this))),
+                    u.default.login.score = t.score,
+                    l.default.playEffect("roll2_1", this._effectInfo),
+                    l.default.playBGM("roll2_5", !0),
+                    this._closeNode.active = !1,
+                    f.NetMgr.close(),
+                    setTimeout(this.rotateEnd.bind(this), 12e3)
+                }
+            }
+            ,
+            t
+        }(h.PopupBase);
+        o.default = v,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LevelMgr": "LevelMgr",
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/SoundMgr": "SoundMgr",
+        "../../base/common/Func": "Func",
+        "../../base/common/MessageMgr": "MessageMgr",
+        "../../base/common/view/LotteryTurntable": "LotteryTurntable",
+        "../../base/common/view/Tip": "Tip",
+        "../../base/common/view/UIPicText": "UIPicText",
+        "../../base/net/EEvent": "EEvent",
+        "../../base/net/NetMgr": "NetMgr",
+        "../../base/res/DyncMgr": "DyncMgr",
+        "../config/Config": "Config"
+    }],
+    SceneParticlesBatching: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "26527qRXcJPCIhsvjX2W8Ao", "SceneParticlesBatching");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        ), r = this && this.__decorate || function(e, t, o, i) {
+            var n, r = arguments.length, a = r < 3 ? t : null === i ? i = Object.getOwnPropertyDescriptor(t, o) : i;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate)
+                a = Reflect.decorate(e, t, o, i);
+            else
+                for (var s = e.length - 1; s >= 0; s--)
+                    (n = e[s]) && (a = (r < 3 ? n(a) : r > 3 ? n(t, o, a) : n(t, o)) || a);
+            return r > 3 && a && Object.defineProperty(t, o, a),
+            a
+        }
+        ;
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var a = cc._decorator
+          , s = a.ccclass
+          , c = (a.property,
+        function(e) {
+            function t() {
+                var t = null !== e && e.apply(this, arguments) || this;
+                return t._originFillBuffersFn = null,
+                t
+            }
+            return n(t, e),
+            t.prototype.onLoad = function() {}
+            ,
+            t.prototype.Batching = function() {
+                if (!this._originFillBuffersFn) {
+                    var e = cc.ParticleSystem.__assembler__;
+                    this._originFillBuffersFn = e.prototype.fillBuffers,
+                    e.prototype.fillBuffers = function(e, t) {
+                        if (this._ia) {
+                            var o = e._simulator.particles.length;
+                            if (0 !== o) {
+                                var i = cc.ParticleSystem.PositionType;
+                                e.positionType === i.RELATIVE ? t.node = e.node.parent : t.node = e.node;
+                                var n = this.getBuffer()
+                                  , r = cc.renderer._handle._meshBuffer
+                                  , a = r.request(4 * o, 6 * o)
+                                  , s = a.byteOffset >> 2
+                                  , c = r._vData
+                                  , l = n._vData
+                                  , h = n._iData
+                                  , d = 20 * o;
+                                d + s > c.length ? c.set(l.subarray(0, c.length - s), s) : c.set(l.subarray(0, d), s);
+                                for (var f = r._iData, u = a.indiceOffset, p = a.vertexOffset, g = 6 * o, _ = 0; _ < g; _++)
+                                    f[u++] = p + h[_]
+                            }
+                        }
+                    }
+                }
+            }
+            ,
+            t.prototype.Recover = function() {
+                this._originFillBuffersFn && (cc.ParticleSystem.__assembler__.prototype.fillBuffers = this._originFillBuffersFn,
+                this._originFillBuffersFn = null)
+            }
+            ,
+            t.prototype.onDisable = function() {
+                this.Recover()
+            }
+            ,
+            r([s], t)
+        }(cc.Component));
+        o.default = c,
+        cc._RF.pop()
+    }
+    , {}],
+    ScreenMgr: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "b431eQKy+lDsJ71rwWaKFza", "ScreenMgr");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        ), r = this && this.__decorate || function(e, t, o, i) {
+            var n, r = arguments.length, a = r < 3 ? t : null === i ? i = Object.getOwnPropertyDescriptor(t, o) : i;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate)
+                a = Reflect.decorate(e, t, o, i);
+            else
+                for (var s = e.length - 1; s >= 0; s--)
+                    (n = e[s]) && (a = (r < 3 ? n(a) : r > 3 ? n(t, o, a) : n(t, o)) || a);
+            return r > 3 && a && Object.defineProperty(t, o, a),
+            a
+        }
+        ;
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.ScaleNode = o.Direction = o.ScaleType = o.ScreenMode = void 0;
+        var a, s, c, l = e("./common/MessageMgr"), h = e("../my/config/Config"), d = e("./res/DyncMgr"), f = e("./SoundMgr"), u = e("./LogicMgr"), p = e("./common/Func");
+        (function(e) {
+            e[e.fitScreen = 0] = "fitScreen",
+            e[e.fullScreen = 1] = "fullScreen"
+        }
+        )(a = o.ScreenMode || (o.ScreenMode = {})),
+        function(e) {
+            e[e.ScaleBig = 0] = "ScaleBig",
+            e[e.ScaleSmall = 1] = "ScaleSmall",
+            e[e.UnScale = 2] = "UnScale"
+        }(s = o.ScaleType || (o.ScaleType = {})),
+        function(e) {
+            e[e.DOWN = 0] = "DOWN",
+            e[e.UP = 1] = "UP",
+            e[e.LEFT = 2] = "LEFT",
+            e[e.RIGHT = 3] = "RIGHT"
+        }(c = o.Direction || (o.Direction = {}));
+        var g = cc._decorator
+          , _ = g.ccclass
+          , m = g.executionOrder;
+        cc.ResolutionPolicy.CustomPCVertical = 6;
+        var y = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.apply = function(e, t) {
+                var o = cc.game.canvas.width
+                  , i = cc.game.canvas.height
+                  , n = o
+                  , r = i
+                  , a = 1;
+                return n < t.width && (a = o / t.width),
+                this._buildResult(o, i, n, r, a, a)
+            }
+            ,
+            r([_], t)
+        }(cc.ContentStrategy)
+          , v = function() {
+            function e(e, t, o) {
+                this.node = null,
+                this.scaleType = s.UnScale,
+                this.scaleMode = a.fitScreen,
+                this.init(e, t, o)
+            }
+            return e.prototype.init = function(e, t, o) {
+                this.node = e,
+                this.scaleType = t,
+                this.padDir = o,
+                this.scaleMode = C.Instance.screenMode
+            }
+            ,
+            e.prototype.setScaleMode = function(e, t) {
+                if (this.scaleMode != t) {
+                    switch (this.scaleType) {
+                    case s.ScaleBig:
+                        this.node.scaleX *= e.x,
+                        this.node.scaleY *= e.y;
+                        break;
+                    case s.ScaleSmall:
+                        this.node.scaleX *= 1 / e.x,
+                        this.node.scaleY *= 1 / e.y
+                    }
+                    if (this.padDir)
+                        for (var o = this.node.parent.convertToWorldSpaceAR(this.node.position), i = C.Instance.ca.convertToNodeSpaceAR(o), n = 0, r = this.padDir; n < r.length; n++) {
+                            var a = void 0
+                              , l = void 0;
+                            switch (r[n]) {
+                            case c.UP:
+                                a = (h.Config.gameSize[1] / 2 - i.y) * (1 - 1 / e.y),
+                                l = i.addSelf(new cc.Vec3(0,a,0));
+                                break;
+                            case c.DOWN:
+                                a = (h.Config.gameSize[1] / 2 + i.y) * (1 - 1 / e.y),
+                                l = i.subSelf(new cc.Vec3(0,a,0));
+                                break;
+                            case c.RIGHT:
+                                a = (h.Config.gameSize[0] / 2 - i.x) * (1 - 1 / e.x),
+                                l = i.addSelf(new cc.Vec3(a,0,0));
+                                break;
+                            case c.LEFT:
+                                a = (h.Config.gameSize[0] / 2 + i.x) * (1 - 1 / e.x),
+                                l = i.subSelf(new cc.Vec3(a,0,0))
+                            }
+                            var d = C.Instance.ca.convertToWorldSpaceAR(l);
+                            this.node.setPosition(this.node.parent.convertToNodeSpaceAR(d))
+                        }
+                    this.scaleMode = t
+                }
+            }
+            ,
+            e
+        }();
+        o.ScaleNode = v;
+        var C = function(e) {
+            function t() {
+                var t = null !== e && e.apply(this, arguments) || this;
+                return t.nodes = [],
+                t.variableID = 0,
+                t.variableNode = [],
+                t.screenMode = a.fitScreen,
+                t.curScale = cc.Vec2.ONE,
+                t.lastTouchPos = cc.Vec2.ZERO,
+                t.triggerClick = !0,
+                t.clickSoundName = u.ConstDefine.click,
+                t
+            }
+            var o;
+            return n(t, e),
+            o = t,
+            t.prototype.onLoad = function() {
+                var e = this;
+                this.ca = cc.find("Canvas"),
+                o.Instance = this,
+                l.MessageMgr.once(l.MessageName.LoadDyncResFinish, function() {
+                    d.default.getResInfo("bounderyMask").then(function(t) {
+                        t.nodeInfo.root.on(cc.Node.EventType.TOUCH_START, e.touchStart, e),
+                        t.nodeInfo.root._touchListener.setSwallowTouches(!1),
+                        t.nodeInfo.root.on(cc.Node.EventType.TOUCH_END, e.touchEnd, e),
+                        t.nodeInfo.root.on(cc.Node.EventType.TOUCH_CANCEL, e.touchEnd, e)
+                    })
+                }),
+                l.MessageMgr.once(l.MessageName.LoadCfgFinish, function() {
+                    1 == h.Config.orientation && (cc.view.setDesignResolutionSize(h.Config.gameSize[0], h.Config.gameSize[1], new cc.ResolutionPolicy(cc.ContainerStrategy.EQUAL_TO_FRAME,new y)),
+                    e.ca.setPosition(h.Config.gameSize[0] / 2, h.Config.gameSize[1] / 2),
+                    cc.view._resizeEvent(!0))
+                })
+            }
+            ,
+            t.prototype.addNode = function(e, t) {
+                if (p.default.isRotateDev())
+                    if (e instanceof cc.Node) {
+                        var o = new v(e,t);
+                        this.nodes.push(o)
+                    } else
+                        this.nodes = this.nodes.concat(e)
+            }
+            ,
+            t.prototype.addVariableNode = function(e) {
+                if (p.default.isRotateDev()) {
+                    for (var t = this.variableID, o = 0; o < e.length; o++)
+                        this.variableNode.push({
+                            id: this.variableID++,
+                            node: e[o]
+                        });
+                    return [t, this.variableID - 1]
+                }
+            }
+            ,
+            t.prototype.decVariableNode = function(e) {
+                var t = this;
+                if (p.default.isRotateDev())
+                    for (var o, i = function(e) {
+                        n.variableNode.forEach(function(o, i) {
+                            o.id == e && cc.js.array.fastRemoveAt(t.variableNode, i)
+                        })
+                    }, n = this, r = (o = "number" == typeof e ? [e, e] : e)[0]; r <= o[1]; r++)
+                        i(r)
+            }
+            ,
+            t.prototype.setScaleMode = function(e, t) {
+                for (var o = 0; o < this.nodes.length; )
+                    cc.isValid(this.nodes[o].node) ? (this.nodes[o].setScaleMode(e, t),
+                    o++) : cc.js.array.fastRemoveAt(this.nodes, o);
+                for (o = 0; o < this.variableNode.length; o++)
+                    this.variableNode[o].node.setScaleMode(e, t);
+                l.MessageMgr.emit(l.MessageName.SetScaleMode, e, t)
+            }
+            ,
+            t.prototype.fitScreen = function() {
+                p.default.isRotateDev() && (cc.view.setDesignResolutionSize(h.Config.gameSize[0], h.Config.gameSize[1], cc.ResolutionPolicy.SHOW_ALL),
+                this.setScaleMode(new cc.Vec2(1 / this.curScale.x,1 / this.curScale.y), a.fitScreen),
+                cc.Vec2.set(this.curScale, 1, 1),
+                this.screenMode = a.fitScreen)
+            }
+            ,
+            t.prototype.fullScreen = function() {
+                if (p.default.isRotateDev()) {
+                    cc.view.setDesignResolutionSize(h.Config.gameSize[0], h.Config.gameSize[1], cc.ResolutionPolicy.SHOW_ALL);
+                    var e, t = cc.view.getFrameSize(), o = cc.view.getDesignResolutionSize(), i = t.width / t.height, n = o.width / o.height, r = 1, s = 1;
+                    i > n ? ((e = cc.Size.ZERO).height = t.height,
+                    e.width = e.height * n,
+                    r = t.width / e.width) : ((e = cc.Size.ZERO).width = t.width,
+                    e.height = e.width / n,
+                    s = t.height / e.height),
+                    cc.Vec2.set(this.curScale, r, s),
+                    this.setScaleMode(this.curScale, a.fullScreen),
+                    this.screenMode = a.fullScreen
+                }
+            }
+            ,
+            t.prototype.updateScreenMode = function(e) {
+                e == a.fitScreen ? this.fitScreen() : this.fullScreen()
+            }
+            ,
+            t.prototype.getScaleBig = function(e) {
+                return new cc.Vec2(e.x * this.curScale.x,e.y * this.curScale.y)
+            }
+            ,
+            t.prototype.getScaleSmall = function(e) {
+                return new cc.Vec2(e.x / this.curScale.x,e.y / this.curScale.y)
+            }
+            ,
+            t.prototype.touchStart = function(e) {
+                this.triggerClick && this.playClickAnim(e),
+                l.MessageMgr.emit(l.MessageName.TouchStart, e),
+                this.lastTouchPos = e.getLocation()
+            }
+            ,
+            t.prototype.touchEnd = function(e) {
+                h.Config.orientation && this.triggerClick && (this.lastTouchPos.sub(e.getLocation()).mag() < 10 && f.default.playEffect(this.clickSoundName),
+                this.clickSoundName = u.ConstDefine.click),
+                l.MessageMgr.emit(l.MessageName.TouchEnd, e),
+                this.triggerClick = !0
+            }
+            ,
+            t.prototype.playClickAnim = function(e) {
+                var t = e.getLocation();
+                this.node.convertToNodeSpaceAR(t, t),
+                d.default.getResInfo(u.ConstDefine.click, t)
+            }
+            ,
+            o = r([_, m(-5)], t)
+        }(cc.Component);
+        o.default = C,
+        cc._RF.pop()
+    }
+    , {
+        "../my/config/Config": "Config",
+        "./LogicMgr": "LogicMgr",
+        "./SoundMgr": "SoundMgr",
+        "./common/Func": "Func",
+        "./common/MessageMgr": "MessageMgr",
+        "./res/DyncMgr": "DyncMgr"
+    }],
+    ScrollBarExtent: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "ad9f2MA2eRLBauXRo0AO2i1", "ScrollBarExtent"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var i = new cc.Color(113,108,108,255)
+          , n = new cc.Color(142,137,137,255)
+          , r = function() {
+            function e(e, t, o) {
+                this._dragging = !1,
+                this._dragBeginPos = cc.Vec2.ZERO,
+                this._bgNodeArr = [],
+                this._barNodeArr = [],
+                this._root = e,
+                this._callback = o,
+                this._minBarHeight = t,
+                this._downTriangle = e.getChildByName("downTriangle");
+                var i = e.getChildByName("bg");
+                i.on(cc.Node.EventType.TOUCH_START, this.onTouchBegan, this),
+                this._bgNodeArr.push(i),
+                this._bgNodeArr.push(i.getChildByName("bg")),
+                this._barNode = e.getChildByName("bar"),
+                this._barNodeArr.push(this._barNode),
+                this._barChildNode = this._barNode.getChildByName("bar"),
+                this._barChildNode.color = n,
+                this._barNodeArr.push(this._barChildNode),
+                this._barNode.on(cc.Node.EventType.TOUCH_START, this.onTouchBarBegan, this),
+                this._barNode.on(cc.Node.EventType.TOUCH_MOVE, this.onTouchBarMoved, this),
+                this._barNode.on(cc.Node.EventType.TOUCH_END, this.onTouchBarEnd, this),
+                this._barNode.on(cc.Node.EventType.TOUCH_CANCEL, this.onTouchBarEnd, this)
+            }
+            return e.prototype.setActive = function(e) {
+                this._root.active = e
+            }
+            ,
+            e.prototype.onTouchBegan = function(e) {
+                var t = this._barNode.y
+                  , o = e.getLocation();
+                this._root.convertToNodeSpaceAR(o, o),
+                this._barNode.height - o.y > cc.winSize.height && (o.y = this._barNode.height - cc.winSize.height),
+                this._barNode.setPosition(this._barNode.x, o.y),
+                this._callback((o.y - t) * this._disZoom)
+            }
+            ,
+            e.prototype.onTouchBarBegan = function(e) {
+                this._dragging = !0,
+                this._dragBeginPos = e.getLocation(),
+                this._barChildNode.color = i
+            }
+            ,
+            e.prototype.onTouchBarMoved = function(e) {
+                if (this._dragging) {
+                    var t = e.getLocation()
+                      , o = t.y - this._dragBeginPos.y;
+                    this._barNode.setPosition(this._barNode.x, this._barNode.y + o),
+                    this._callback(o * this._disZoom),
+                    this._dragBeginPos.y = t.y
+                }
+            }
+            ,
+            e.prototype.onTouchBarEnd = function() {
+                this._dragging = !1,
+                this._barChildNode.color = n
+            }
+            ,
+            e.prototype.setBarPos = function(e) {
+                this._barNode.setPosition(this._barNode.x, -e / this._disZoom)
+            }
+            ,
+            e.prototype.setBarArrHeight = function(e) {
+                for (var t = 0; t < this._barNodeArr.length; t++)
+                    this._barNodeArr[t].height = e
+            }
+            ,
+            e.prototype.resetBar = function(e) {
+                var t = e - cc.winSize.height;
+                t <= 0 ? this._root.active = !1 : (this._root.active = !0,
+                t > cc.winSize.height - this._minBarHeight ? (this.setBarArrHeight(this._minBarHeight),
+                this._disZoom = t / (cc.winSize.height - this._minBarHeight)) : (this.setBarArrHeight(cc.winSize.height - t),
+                this._disZoom = 1))
+            }
+            ,
+            e.prototype.reszie = function(e, t) {
+                this._root.setPosition(cc.winSize.width / 2, cc.winSize.height / 2);
+                for (var o = 0; o < this._bgNodeArr.length; o++)
+                    this._bgNodeArr[o].height = cc.winSize.height;
+                this._downTriangle.setPosition(this._downTriangle.position.x, -cc.winSize.height),
+                this.resetBar(e),
+                this.setBarPos(t)
+            }
+            ,
+            e
+        }();
+        o.default = r,
+        cc._RF.pop()
+    }
+    , {}],
+    ScrollPgView: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "a5b4d4tEv9L/Y237ItKi5Vw", "ScrollPgView");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        ), r = this && this.__decorate || function(e, t, o, i) {
+            var n, r = arguments.length, a = r < 3 ? t : null === i ? i = Object.getOwnPropertyDescriptor(t, o) : i;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate)
+                a = Reflect.decorate(e, t, o, i);
+            else
+                for (var s = e.length - 1; s >= 0; s--)
+                    (n = e[s]) && (a = (r < 3 ? n(a) : r > 3 ? n(t, o, a) : n(t, o)) || a);
+            return r > 3 && a && Object.defineProperty(t, o, a),
+            a
+        }
+        ;
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var a = cc._decorator
+          , s = a.ccclass
+          , c = (a.property,
+        function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            r([s], t)
+        }(cc.PageView));
+        o.default = c,
+        cc._RF.pop()
+    }
+    , {}],
+    ScrollViewEx: [function(e, t) {
+        "use strict";
+        cc._RF.push(t, "3ec39R5CfBHA4KYUAKNhlgN", "ScrollViewEx");
+        var o, i = this && this.__extends || (o = function(e, t) {
+            return (o = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function i() {
+                this.constructor = e
+            }
+            o(e, t),
+            e.prototype = null === t ? Object.create(t) : (i.prototype = t.prototype,
+            new i)
+        }
+        ), n = this && this.__decorate || function(e, t, o, i) {
+            var n, r = arguments.length, a = r < 3 ? t : null === i ? i = Object.getOwnPropertyDescriptor(t, o) : i;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate)
+                a = Reflect.decorate(e, t, o, i);
+            else
+                for (var s = e.length - 1; s >= 0; s--)
+                    (n = e[s]) && (a = (r < 3 ? n(a) : r > 3 ? n(t, o, a) : n(t, o)) || a);
+            return r > 3 && a && Object.defineProperty(t, o, a),
+            a
+        }
+        , r = cc._decorator, a = r.ccclass, s = r.property;
+        (function(e) {
+            function t() {
+                var t = e.call(this) || this;
+                return t.autoTimeInterval = .04,
+                t
+            }
+            i(t, e),
+            t.prototype._processAutoScrolling = function() {
+                e.prototype._processAutoScrolling.call(this, this.autoTimeInterval)
+            }
+            ,
+            n([s({
+                tooltip: "\u81ea\u52a8\u6eda\u52a8\u65f6\u95f4\u95f4\u9694"
+            })], t.prototype, "autoTimeInterval", void 0),
+            t = n([a], t)
+        }
+        )(cc.ScrollView),
+        cc._RF.pop()
+    }
+    , {}],
+    ScrollViewHack: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "3be12vxX3RLl7LLqA4WP6GO", "ScrollViewHack");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        ), r = this && this.__decorate || function(e, t, o, i) {
+            var n, r = arguments.length, a = r < 3 ? t : null === i ? i = Object.getOwnPropertyDescriptor(t, o) : i;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate)
+                a = Reflect.decorate(e, t, o, i);
+            else
+                for (var s = e.length - 1; s >= 0; s--)
+                    (n = e[s]) && (a = (r < 3 ? n(a) : r > 3 ? n(t, o, a) : n(t, o)) || a);
+            return r > 3 && a && Object.defineProperty(t, o, a),
+            a
+        }
+        ;
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var a = cc._decorator
+          , s = a.ccclass
+          , c = a.property
+          , l = function(e) {
+            function t() {
+                var t = null !== e && e.apply(this, arguments) || this;
+                return t.mul = 10,
+                t
+            }
+            return n(t, e),
+            t.prototype.onLoad = function() {
+                this.node.on(cc.Node.EventType.MOUSE_WHEEL, this._onMouseWheel, this, !0)
+            }
+            ,
+            t.prototype._onMouseWheel = function(e) {
+                e.setScrollData(e.getScrollX(), -e.getScrollY() * this.mul)
+            }
+            ,
+            r([c({
+                tooltip: "\u6539\u53d8\u6eda\u8f6e\u79fb\u52a8\u8ddd\u79bb\u7684\u500d\u6570"
+            })], t.prototype, "mul", void 0),
+            r([s], t)
+        }(cc.Component);
+        o.default = l,
+        cc._RF.pop()
+    }
+    , {}],
+    ScrollViewOpt: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "e9409LhQelL9LJ10ih5CITL", "ScrollViewOpt");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        ), r = this && this.__decorate || function(e, t, o, i) {
+            var n, r = arguments.length, a = r < 3 ? t : null === i ? i = Object.getOwnPropertyDescriptor(t, o) : i;
+            if ("object" == typeof Reflect && "function" == typeof Reflect.decorate)
+                a = Reflect.decorate(e, t, o, i);
+            else
+                for (var s = e.length - 1; s >= 0; s--)
+                    (n = e[s]) && (a = (r < 3 ? n(a) : r > 3 ? n(t, o, a) : n(t, o)) || a);
+            return r > 3 && a && Object.defineProperty(t, o, a),
+            a
+        }
+        ;
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var a = cc._decorator
+          , s = a.ccclass
+          , c = (a.property,
+        function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype._registerEvent = function() {
+                this.node.on(cc.Node.EventType.TOUCH_START, this._onTouchBegan, this, !0),
+                this.node.on(cc.Node.EventType.TOUCH_MOVE, this._onTouchMoved, this, !0),
+                this.node.on(cc.Node.EventType.TOUCH_END, this._onTouchEnded, this, !0),
+                this.node.on(cc.Node.EventType.TOUCH_CANCEL, this._onTouchCancelled, this, !0)
+            }
+            ,
+            t.prototype._unregisterEvent = function() {
+                this.node.off(cc.Node.EventType.TOUCH_START, this._onTouchBegan, this, !0),
+                this.node.off(cc.Node.EventType.TOUCH_MOVE, this._onTouchMoved, this, !0),
+                this.node.off(cc.Node.EventType.TOUCH_END, this._onTouchEnded, this, !0),
+                this.node.off(cc.Node.EventType.TOUCH_CANCEL, this._onTouchCancelled, this, !0)
+            }
+            ,
+            r([s], t)
+        }(cc.ScrollView));
+        o.default = c,
+        cc._RF.pop()
+    }
+    , {}],
+    SettingBox: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "70b0dE6/NJP9Lm+RWMN4xgF", "SettingBox");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.SettingBox = void 0;
+        var r, a = e("../../base/SoundMgr"), s = e("../../base/common/view/Tip"), c = e("../../base/LogicMgr"), l = e("../../base/res/DyncMgr"), h = e("../../base/res/LanguageMgr"), d = e("../../base/common/MessageMgr"), f = e("../../base/common/SpecialFunc"), u = e("../config/Config");
+        (function(e) {
+            e[e.music = 0] = "music",
+            e[e.sound = 1] = "sound",
+            e[e.music1 = 2] = "music1",
+            e[e.music2 = 3] = "music2",
+            e[e.music3 = 4] = "music3",
+            e[e.music4 = 5] = "music4",
+            e[e.music5 = 6] = "music5",
+            e[e.music6 = 7] = "music6",
+            e[e.randomPlay = 8] = "randomPlay",
+            e[e.binddevice = 9] = "binddevice",
+            e[e.unboundA = 10] = "unboundA",
+            e[e.unboundB = 11] = "unboundB",
+            e[e.setting = 12] = "setting",
+            e[e.num = 13] = "num"
+        }
+        )(r || (r = {}));
+        var p = function(e) {
+            function t(t, o) {
+                return e.call(this, t, o) || this
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                e.prototype.initParams.call(this),
+                this.nodeInfo.root.getChildByName("mask").on(c.ConstDefine.click, this.hide, this),
+                this._nickLabel = this._popupMethod.root.getChildByName("nick").getComponent(cc.Label),
+                this._idLabel = this._popupMethod.root.getChildByName("gameID").getComponent(cc.Label);
+                var t = this._popupMethod.root.getChildByName("head");
+                t.on(c.ConstDefine.click, this.headClick, this),
+                this._headIconSpt = t.getComponent(cc.Sprite);
+                var o = cc.find("music/toggle", this._popupMethod.root);
+                o.on("toggle", this.musicToggle, this);
+                var i = "1" == localStorage.getItem("hMO")
+                  , n = o.getComponent(cc.Toggle);
+                i ? n.uncheck() : n.check();
+                var r = cc.find("sound/toggle", this._popupMethod.root);
+                r.on("toggle", this.soundToggle, this),
+                i = "1" == localStorage.getItem("hEO"),
+                n = r.getComponent(cc.Toggle),
+                i ? n.uncheck() : n.check(),
+                this._popupMethod.root.getChildByName("password").on(c.ConstDefine.click, this.pwdClick, this),
+                this._popupMethod.root.getChildByName("musics").on(c.ConstDefine.click, this.musicsClick, this),
+                this._popupMethod.root.getChildByName("logout").on(c.ConstDefine.click, this.logoutClick, this)
+            }
+            ,
+            t.prototype.resetParams = function() {
+                for (var e = [], t = 0; t < arguments.length; t++)
+                    e[t] = arguments[t];
+                this._idLabel.string = "ID:" + c.default.login.gameID.toString(),
+                f.default.setDyncSpt(u.Config.dyncLoadDirIndex.headIcon, "headIcon/" + c.default.login.headIndex, this._headIconSpt),
+                this.nicknameChange(),
+                d.MessageMgr.on(d.MessageName.NicknameChange, this.nicknameChange, this),
+                this.headIconChange(),
+                d.MessageMgr.on(d.MessageName.ChangeHeadIcon, this.headIconChange, this)
+            }
+            ,
+            t.prototype.close = function() {
+                e.prototype.close.call(this),
+                d.MessageMgr.off(d.MessageName.ChangeHeadIcon, this.headIconChange, this),
+                d.MessageMgr.off(d.MessageName.NicknameChange, this.nicknameChange, this)
+            }
+            ,
+            t.prototype.headClick = function() {
+                c.default.login.guestLogin || (a.default.playEffect(c.ConstDefine.click),
+                l.default.getResInfo("headUI"))
+            }
+            ,
+            t.prototype.nicknameChange = function() {
+                this._nickLabel.string = c.default.login.nickname
+            }
+            ,
+            t.prototype.headIconChange = function() {
+                f.default.setDyncSpt(u.Config.dyncLoadDirIndex.headIcon, "headIcon/" + c.default.login.headIndex, this._headIconSpt)
+            }
+            ,
+            t.prototype.musicToggle = function(e) {
+                e.isChecked ? a.default.offMusic(!1) : a.default.offMusic(!0)
+            }
+            ,
+            t.prototype.soundToggle = function(e) {
+                e.isChecked ? a.default.offEffect(!1) : a.default.offEffect(!0)
+            }
+            ,
+            t.prototype.pwdClick = function() {
+                c.default.login.guestLogin || (a.default.playEffect(c.ConstDefine.click),
+                l.default.getResInfo("modPwdBox"))
+            }
+            ,
+            t.prototype.musicsClick = function() {
+                c.default.login.guestLogin || (a.default.playEffect(c.ConstDefine.click),
+                l.default.getResInfo("modMusicsBox"))
+            }
+            ,
+            t.prototype.logoutClick = function() {
+                a.default.playEffect(c.ConstDefine.click),
+                c.default.login.guestLogin ? (c.default.exitLogin(),
+                l.default.getResInfo(c.ConstDefine.loginUI)) : l.default.getResInfo("exitPromptBox", h.default.procLangText("exitLogin")),
+                this.hide()
+            }
+            ,
+            t
+        }(s.PopupBase);
+        o.SettingBox = p,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/SoundMgr": "SoundMgr",
+        "../../base/common/MessageMgr": "MessageMgr",
+        "../../base/common/SpecialFunc": "SpecialFunc",
+        "../../base/common/view/Tip": "Tip",
+        "../../base/res/DyncMgr": "DyncMgr",
+        "../../base/res/LanguageMgr": "LanguageMgr",
+        "../config/Config": "Config"
+    }],
+    ShareUI: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "de350oijH1M1r2SdM+oy+Gy", "ShareUI");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.ShareUI = void 0;
+        var r = e("../../base/common/view/Tip")
+          , a = e("../../base/LogicMgr")
+          , s = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                e.prototype.initParams.call(this),
+                this._popupMethod.root.getChildByName(a.ConstDefine.close).on(a.ConstDefine.click, this.close, this)
+            }
+            ,
+            t
+        }(r.PopupBase);
+        o.ShareUI = s,
+        cc._RF.pop()
+    }
+    , {
+        "../../base/LogicMgr": "LogicMgr",
+        "../../base/common/view/Tip": "Tip"
+    }],
+    SliderProgress: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "83136jFLk5G7LNVyaf2uStd", "SliderProgress"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var i = function() {
+            function e(e, t) {
+                var o = this;
+                this._slider = e.getComponent(cc.Slider),
+                this._barSptframe = e.getChildByName("progressBar").getChildByName("bar").getComponent(cc.Sprite),
+                this._slider.node.on("slide", function() {
+                    o._barSptframe.fillRange = o._slider.progress,
+                    t(o._slider.progress)
+                }, this)
+            }
+            return e.prototype.setProgress = function(e) {
+                this._slider.progress = e,
+                this._barSptframe.fillRange = this._slider.progress
+            }
+            ,
+            e
+        }();
+        o.default = i,
+        cc._RF.pop()
+    }
+    , {}],
+    SoundMgr: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "28020NzcKtAY7FrNSg0qhP2", "SoundMgr"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var i, n, r = e("./common/Func"), a = e("./common/MessageMgr"), s = e("../my/config/Config"), c = e("./effect/EffectMgr"), l = e("./res/DyncMgr"), h = e("./res/LanguageMgr"), d = e("./LogicMgr"), f = "bg", u = null, p = null, g = 1, _ = 1, m = !0, y = !1, v = !1, C = function() {
+            function e() {}
+            return e.enabled = function() {
+                return m
+            }
+            ,
+            e.loadClip = function(e) {
+                return new Promise(function(t) {
+                    e.asset ? t(e.asset) : l.default.bundles[e.loadIndex].load(e.path, cc.AudioClip, function(o, i) {
+                        o ? (console.error("\u52a0\u8f7d\u97f3\u6548\u51fa\u9519", e.path, o),
+                        t(null)) : (e.asset = i,
+                        e.duration = Math.floor(i.duration),
+                        t(i))
+                    })
+                }
+                )
+            }
+            ,
+            e.removeIdByCfg = function(e, t) {
+                var o = cc.audioEngine.getState(t);
+                (o > cc.audioEngine.AudioState.PLAYING || o < cc.audioEngine.AudioState.INITIALZING) && cc.audioEngine.stopEffect(t),
+                cc.js.array.fastRemove(e.ids, t),
+                e.ids.length <= 0 && this.releaseAsset(e)
+            }
+            ,
+            e.init = function() {
+                var e = this;
+                cc.resources.load("json/soundCfg", cc.JsonAsset, function(t, o) {
+                    if (t)
+                        cc.error(t.message || t);
+                    else {
+                        n = o.json;
+                        var r = s.Config.soundCfg;
+                        i = r.load,
+                        s.Config.soundCfg = null,
+                        function(e) {
+                            for (var t in e)
+                                for (var o = 0, i = e[t]; o < i.length; o++)
+                                    c(i[o], "sound/")
+                        }(n),
+                        localStorage.getItem("hMO") && (y = !0),
+                        localStorage.getItem("hEO") && (v = !0),
+                        y || e.beginPlayMusic();
+                        var a = localStorage.getItem("hSV");
+                        a ? e.setEffectVol(Number(a)) : e.setEffectVol(_)
+                    }
+                    function c(e, t) {
+                        var o = [];
+                        if (e.lst && e.lst.length > 0) {
+                            for (var n = [], r = e.lst[0]; r <= e.lst[1]; r++)
+                                n.push(e.name + String(r).padStart(3, "0"));
+                            e.lst = n,
+                            o = e.lst,
+                            e.name = o[0]
+                        } else
+                            e.lst = [e.name],
+                            o.push(e.name);
+                        for (var a = 0, s = o; a < s.length; a++) {
+                            var c = s[a];
+                            i[c] || (i[c] = {
+                                loadIndex: 0
+                            },
+                            i[c].path = t + c,
+                            i[c].latPlayTime = 0,
+                            i[c].timeOutIndex = 0,
+                            i[c].ids = [])
+                        }
+                    }
+                })
+            }
+            ,
+            e.beginPlayMusic = function() {
+                var e = localStorage.getItem(d.ConstDefine.musicName);
+                e ? this.playBGM(e, !0) : this.playBGM(f, !0);
+                var t = localStorage.getItem("hMV");
+                t ? this.setBGMVol(Number(t)) : this.setBGMVol(g)
+            }
+            ,
+            e.getSoundCfgByName = function(e) {
+                var t = n[e];
+                if (t)
+                    return t[r.default.randomInt(0, t.length - 1)]
+            }
+            ,
+            e.playBGM = function(e, t) {
+                void 0 === t && (t = !1),
+                y || (t || (f = e,
+                localStorage.setItem(d.ConstDefine.musicName, e)),
+                this.playBGMByCfg(this.getSoundCfgByName(e)))
+            }
+            ,
+            e.stopBGM = function(e) {
+                void 0 === e && (e = null),
+                null != e && e.playing && (e.playing = !1,
+                null == e.curMusicId ? this.releaseBgmAssest(e) : this.fadeBgm(e, 1, cc.audioEngine.getVolume(p.curMusicId), 0))
+            }
+            ,
+            e.playMultiBgm = function(e, t, o) {
+                var n = this;
+                void 0 === o && (o = !1);
+                var r = e.lst.length
+                  , a = e.lst[t]
+                  , s = i[a];
+                if (o)
+                    this.lastPlayTime = Date.now() / 1e3,
+                    this.stopBGM(u),
+                    e.curMusicId = cc.audioEngine.play(s.asset, !1, 0),
+                    this.fadeBgm(e, 1, 0, e.vol * g),
+                    e.playTime = performance.now();
+                else {
+                    var l = cc.audioEngine.getVolume(e.curMusicId);
+                    cc.audioEngine.stopEffect(e.curMusicId),
+                    e.curMusicId = cc.audioEngine.play(s.asset, !1, l)
+                }
+                var h = (t + 1) % r;
+                if (!(h <= t) || e.loop) {
+                    var f = 0
+                      , p = -1
+                      , _ = s.duration;
+                    e.timer = c.EffectMgr.Instance.trigger(c.EffectMgr.EffectType.EffectMeetCondition, .01, function() {
+                        if (!e.pause) {
+                            if ((f += .01) < _)
+                                return p < -.01 && f > _ - .1 && cc.audioEngine.getState(e.curMusicId) == cc.audioEngine.AudioState.PLAYING && (p = cc.audioEngine.getVolume(e.curMusicId)),
+                                !1;
+                            var o = Date.now() / 1e3;
+                            return n.lastPlayTime = o,
+                            f = 0,
+                            h <= (t = (t + 1) % r) && !e.loop ? (null != e.timer && (e.timer.forceStop(),
+                            e.timer = null),
+                            !1) : (s = i[e.lst[t]],
+                            _ = s.duration,
+                            cc.audioEngine.stopEffect(e.curMusicId),
+                            e.curMusicId = cc.audioEngine.play(s.asset, !1, p),
+                            p = -1,
+                            !1)
+                        }
+                    }, d.ConstDefine.emptyFunc)
+                }
+            }
+            ,
+            e.loadBgmClip = function(e, t) {
+                var o = this;
+                if (!y) {
+                    var n = e.lst[t]
+                      , r = i[n];
+                    this.loadClip(r).then(function(i) {
+                        if (e.playing && !y) {
+                            if (null !== i) {
+                                var n = e.lst.length;
+                                if (n > 1) {
+                                    if (!(t >= n - 1)) {
+                                        0 == t && (u = p,
+                                        p = e,
+                                        o.playMultiBgm(e, 0, !0));
+                                        var a = (t + 1) % n;
+                                        return void o.loadBgmClip(e, a)
+                                    }
+                                } else
+                                    u = p,
+                                    p = e,
+                                    o.stopBGM(u),
+                                    e.curMusicId = cc.audioEngine.play(r.asset, e.loop, 0),
+                                    o.fadeBgm(e, 1, 0, e.vol * g)
+                            }
+                        } else
+                            o.releaseBgmAssest(e)
+                    })
+                }
+            }
+            ,
+            e.playBGMByCfg = function(e) {
+                y || null != p && p.name == e.name || (e.playing = !0,
+                this.loadBgmClip(e, 0))
+            }
+            ,
+            e.getCurBgName = function() {
+                return f
+            }
+            ,
+            e.stopEffect = function(e, t) {
+                var o = i[t];
+                o && (cc.audioEngine.stopEffect(e),
+                !o.norecycle && this.removeIdByCfg(o, e))
+            }
+            ,
+            e.stopAll = function() {
+                for (var e in this.stopBGM(p),
+                p = null,
+                cc.audioEngine.stopAllEffects(),
+                i) {
+                    var t = i[e];
+                    t.ids.length = 0,
+                    this.releaseAsset(t)
+                }
+            }
+            ,
+            e.releaseAsset = function(e) {
+                e.norecycle || (cc.assetManager.releaseAsset(e.asset),
+                e.asset = null)
+            }
+            ,
+            e.pauseBGM = function() {
+                cc.audioEngine.pauseEffect(p.curMusicId),
+                p.pause = !0
+            }
+            ,
+            e.resumeBGM = function() {
+                p.pause = !1,
+                cc.audioEngine.resume(p.curMusicId)
+            }
+            ,
+            e.setVol = function(e, t) {
+                this.setBGMVol(e),
+                this.setEffectVol(t),
+                m = 0 === e && 0 === t
+            }
+            ,
+            e.setBGMVol = function(e) {
+                if (g = e,
+                localStorage.setItem("hMV", e.toString()),
+                null !== p && null != p.curMusicId) {
+                    var t = g * p.vol;
+                    cc.audioEngine.setVolume(p.curMusicId, t)
+                }
+            }
+            ,
+            e.getBGMVol = function(e) {
+                return void 0 === e && (e = !0),
+                g
+            }
+            ,
+            e.offMusic = function(e) {
+                y = e,
+                e ? (localStorage.setItem("hMO", "1"),
+                null !== p && null != p.curMusicId && cc.audioEngine.setVolume(p.curMusicId, 0)) : (localStorage.removeItem("hMO"),
+                null !== p && null != p.curMusicId ? cc.audioEngine.setVolume(p.curMusicId, 1) : this.beginPlayMusic())
+            }
+            ,
+            e.getOffMusice = function() {
+                return y
+            }
+            ,
+            e.offEffect = function(e) {
+                v = e,
+                e ? localStorage.setItem("hEO", "1") : localStorage.removeItem("hEO")
+            }
+            ,
+            e.getOffEffect = function() {
+                return v
+            }
+            ,
+            e.setEffectVol = function(e) {
+                _ = e,
+                localStorage.setItem("hSV", e.toString())
+            }
+            ,
+            e.getEffectVol = function() {
+                return _
+            }
+            ,
+            e.playEffect = function(e, t) {
+                var o = this;
+                if (!v) {
+                    var n = this.getSoundCfgByName(e);
+                    if (void 0 !== n) {
+                        var r = i[n.name];
+                        if (null == r)
+                            return -2;
+                        var a = performance.now();
+                        r.latPlayTime < a && (r.latPlayTime = a + n.repeatInterval,
+                        this.loadClip(r).then(function(e) {
+                            null !== e && (n.delayTime ? c.EffectMgr.Instance.trigger(c.EffectMgr.EffectType.EffectMeetCondition, n.delayTime, d.ConstDefine.trueFunc, function() {
+                                o.playAsset(r, n, t)
+                            }) : o.playAsset(r, n, t))
+                        }))
+                    }
+                }
+            }
+            ,
+            e.playAsset = function(e, t, o) {
+                var i = this
+                  , n = cc.audioEngine.play(e.asset, t.loop, t.vol * _);
+                t.playTime > 0 && (clearTimeout(e.timeOutIndex),
+                e.timeOutIndex = setTimeout(function() {
+                    i.removeIdByCfg(e, n)
+                }, 1e3 * t.playTime)),
+                e.norecycle || (e.ids.push(n),
+                !t.loop && t.playTime <= 0 && cc.audioEngine.setFinishCallback(n, function() {
+                    i.removeIdByCfg(e, n)
+                })),
+                o && (o.id = n,
+                o.name = t.name)
+            }
+            ,
+            e.releaseBgmAssest = function(e) {
+                for (var t = 0, o = e.lst; t < o.length; t++) {
+                    var n = o[t]
+                      , r = i[n];
+                    r && r.asset && this.releaseAsset(r)
+                }
+                null != e.timer && (e.timer.forceStop(),
+                e.timer = null),
+                e.curMusicId = null
+            }
+            ,
+            e.fadeBgm = function(e, t, o, i) {
+                var n = this;
+                if (o !== i) {
+                    var r = t / .05 * (i - o)
+                      , a = i > o;
+                    c.EffectMgr.Instance.trigger(c.EffectMgr.EffectType.EffectMeetCondition, .05, function() {
+                        if (o += r,
+                        a) {
+                            if (!(o < i))
+                                return cc.audioEngine.setVolume(e.curMusicId, i),
+                                !0;
+                            cc.audioEngine.setVolume(e.curMusicId, o)
+                        } else {
+                            if (!(o > i))
+                                return cc.audioEngine.stopEffect(e.curMusicId),
+                                n.releaseBgmAssest(e),
+                                !0;
+                            cc.audioEngine.setVolume(e.curMusicId, o)
+                        }
+                        return !1
+                    }, d.ConstDefine.emptyFunc)
+                }
+            }
+            ,
+            e.lastPlayTime = 0,
+            e
+        }();
+        o.default = C,
+        a.MessageMgr.once(a.MessageName.LoadDyncResFinish, C.init, C),
+        a.MessageMgr.on(a.MessageName.ChangeLang, function() {
+            r.default.mergeJSON(n[h.default.currLang], n)
+        }),
+        cc._RF.pop()
+    }
+    , {
+        "../my/config/Config": "Config",
+        "./LogicMgr": "LogicMgr",
+        "./common/Func": "Func",
+        "./common/MessageMgr": "MessageMgr",
+        "./effect/EffectMgr": "EffectMgr",
+        "./res/DyncMgr": "DyncMgr",
+        "./res/LanguageMgr": "LanguageMgr"
+    }],
+    SpecialFunc: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "965b9RLdetJVoxgj/5uZ33Z", "SpecialFunc"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var i = e("../../my/config/Config")
+          , n = e("../LogicMgr")
+          , r = e("../res/DyncMgr")
+          , a = e("../res/LanguageMgr")
+          , s = e("./Interface")
+          , c = function() {
+            function e() {}
+            return e.convertDecimalNum = function(e, t) {
+                return 1 === (t = "number" == typeof t ? t : i.Config.decimalPlaces) && e % 10 != 0 && e >= 5 && (e -= 5),
+                (e /= i.Config.decimal).toFixed(t)
+            }
+            ,
+            e.converSepValue = function(t, o) {
+                for (var i = e.convertDecimalNum(t, o); /\d{4}(\.|,)/.test(i); )
+                    i = i.replace(/(\d)(\d{3}(\.|,))/, "$1,$2");
+                return i
+            }
+            ,
+            e.setLangSptArr = function(e, t, o) {
+                for (var i, n = 0; n < t.length; n++) {
+                    var r = t[n];
+                    r.spriteFrame && r.spriteFrame.decRef(),
+                    i = r.node.name,
+                    o && (i = o + "/" + i),
+                    this.setLangSpt(e, i, r)
+                }
+            }
+            ,
+            e.setLangSpt = function(e, t, o) {
+                r.default.bundles[e].load("lang/" + a.default.currLang + "/" + t, cc.SpriteFrame, function(i, n) {
+                    i ? r.default.bundles[e].load("lang/" + a.default.defaultLang + "/" + t, cc.SpriteFrame, function(e, t) {
+                        e || (t.addRef(),
+                        o.spriteFrame = t)
+                    }) : (n.addRef(),
+                    o.spriteFrame = n)
+                })
+            }
+            ,
+            e.loadRemoteSpt = function(e, t, o, n) {
+                void 0 === n && (n = void 0),
+                e += o + (i.Config[t + o] || "") + ".png",
+                cc.assetManager.loadRemote(e, n)
+            }
+            ,
+            e.setRemoteSpt = function(e, t, o, i, n) {
+                void 0 === n && (n = void 0),
+                this.loadRemoteSpt(e, t, o, function(t, o) {
+                    t ? cc.warn("\u52a0\u8f7d\u8fdc\u7a0b\u56fe\u7247\u51fa\u9519" + e) : i.spriteFrame = new cc.SpriteFrame(o),
+                    n && n(t)
+                })
+            }
+            ,
+            e.setDyncSpt = function(e, t, o, i) {
+                r.default.bundles[e].load(t, cc.SpriteFrame, function(e, n) {
+                    e ? cc.error("\u52a0\u8f7d\u52a8\u6001\u7cbe\u7075\u5931\u8d25", t) : o.spriteFrame = n,
+                    i && i(!e)
+                })
+            }
+            ,
+            e.getLangDir = function(e, t, o, i) {
+                r.default.bundles[e].getDirWithPath("lang/" + a.default.currLang + "/" + t, o, i),
+                0 === i.lenght && r.default.bundles[e].getDirWithPath("lang/" + a.default.defaultLang + "/" + t, o, i)
+            }
+            ,
+            e.editInput = function(e, t) {
+                if (n.default.useSoftKeyboard) {
+                    var o = e.getComponent(cc.EditBox);
+                    e.getComponent(cc.EditBox).onDestroy(),
+                    o._impl = null,
+                    e.on(cc.Node.EventType.TOUCH_END, function(o) {
+                        r.default.getResInfo("keyboardUI", e, t),
+                        o.stopPropagation()
+                    })
+                }
+            }
+            ,
+            e.tagCanEnterGame = function(e) {
+                return e !== s.GameTag.comingSoon && e !== s.GameTag.soon
+            }
+            ,
+            e.setSecEdit = function(e) {
+                e._impl
+            }
+            ,
+            e.onMouseWheel = function(e, t) {
+                t.isScrolling() || (e > 0 ? t.lastPg() : t.nextPg())
+            }
+            ,
+            e.copyToClipboard = function(e, t) {
+                if (null == e || e.length < 1)
+                    return t(!1),
+                    !1;
+                if (navigator.clipboard)
+                    return console.log("copyToClipboard navigator 1"),
+                    navigator.clipboard.writeText(e).then(function() {
+                        t(!0)
+                    }).catch(function() {
+                        t(!1)
+                    }),
+                    console.log("copyToClipboard navigator 2"),
+                    !0;
+                if (window.copyToClipBoard) {
+                    var o = window.copyToClipBoard(e);
+                    if (o)
+                        return t(o),
+                        !0
+                }
+                window.openCopyUi ? window.openCopyUi(e, null, function(e) {
+                    t(e)
+                }) : t(!1)
+            }
+            ,
+            e.pasteFormCliboard = function(e, t) {
+                if (!window.pasteFromClipBoard || !window.pasteFromClipBoard(function(o) {
+                    null != o && "" != o.trim() ? (e.string = o,
+                    t(!0)) : t(!1)
+                }))
+                    if (window.showNativeEditBox) {
+                        var o = cc.sys.isMobile ? a.default.procLangText("pressPaste") : a.default.procLangText("paste");
+                        window.showNativeEditBox("", o, function(o) {
+                            null != o && "" != o.trim() ? (e.string = o,
+                            t(!0)) : t(!1)
+                        })
+                    } else
+                        t(!1)
+            }
+            ,
+            e.reqFullScreen = function() {
+                if (window.top.reqFullScreen)
+                    return window.top.reqFullScreen();
+                var e = window.top.document.documentElement;
+                e.requestFullscreen ? e.requestFullscreen() : e.webkitRequestFullScreen ? e.webkitRequestFullScreen() : e.mozRequestFullScreen ? e.mozRequestFullScreen() : e.msRequestFullscreen && e.msRequestFullscreen()
+            }
+            ,
+            e
+        }();
+        o.default = c,
+        cc._RF.pop()
+    }
+    , {
+        "../../my/config/Config": "Config",
+        "../LogicMgr": "LogicMgr",
+        "../res/DyncMgr": "DyncMgr",
+        "../res/LanguageMgr": "LanguageMgr",
+        "./Interface": "Interface"
+    }],
+    TextDesc: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "04b08CNj9pP96XODiJV6tVF", "TextDesc"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.LangText = void 0;
+        var i = e("../../my/config/MutabTextDesc")
+          , n = e("../common/Func")
+          , r = e("../common/MessageMgr")
+          , a = e("../../my/config/Config");
+        o.LangText = {
+            ch: {
+                forgetTip: "\u8bf7\u8054\u7cfb\u60a8\u7684\u5ba2\u6237\u4e13\u5458\u627e\u56de\u5bc6\u7801.",
+                changePwdTip: "\u65b0\u5bc6\u7801\u9700\u8981\u4fee\u6539",
+                username: "\u7528\u6237\u540d",
+                password: "\u5bc6\u7801",
+                login: "\u767b\u5f55",
+                loginTip: "\u7528\u6237\u540d\u6216\u5bc6\u7801\u9519\u8bef",
+                homepage: "\u9996\u9875",
+                games: "\u6e38\u620f",
+                download: "\u4e0b\u8f7d",
+                aboutUs: "\u5173\u4e8e",
+                all_games: "\u5168\u90e8",
+                fishing_games: "\u9c7c\u673a",
+                slot_games: "\u8f6e\u7ebf"
+            },
+            en: {
+                forgetTip: "Please contact the customer service to retrieve the password",
+                commingTip: "The game is coming online, Please look forward to it\uff01",
+                enterGameError: "No table",
+                pwdFormatTip: "New password must include one letter and one number.",
+                badNetStatus: "The server is busy, Please try again later.",
+                exitLogin: "Exit the login?",
+                changePwdTip: "Please change your password at first login.",
+                username: "user name:",
+                password: "password:",
+                login: "login",
+                loginTip: "Wrong user name or password",
+                homepage: "HOME",
+                games: "Games",
+                download: "Download",
+                aboutUs: "ABOUT",
+                all_games: "ALL",
+                new: "NEW",
+                fishing_games: "FISHING",
+                slot_games: "SLOT",
+                others: "OTHERS",
+                favorite: "FAVORITE",
+                grand: "grand",
+                major: "major",
+                minor: "minor",
+                mini: "mini",
+                cancle: "cancle",
+                sure: "ok",
+                inputAccoutTip: "ACCOUNT",
+                inputPwdTip: "PASSWORD",
+                accountEmptyTip: "User name cannot be empty!",
+                pwdEmptyTip: "Password cannot be empty!",
+                pwdNotEmptyTip: "The password cannot be empty!!!",
+                lengthTip: "The length of the account or password should be 6-32 bits",
+                pwdLengthTip: "The length of password should be 6-32 bits",
+                errorTip: "ERROR",
+                required: "Required",
+                notRunning: "The current game is not running",
+                searchTip: "Find a game",
+                pwdunlikeTip: "The two passwords you entered were inconsistent.",
+                noSameTip: "New password should be different from old one",
+                noFavTip: "You didn't pick any game into the favourite list.",
+                maintenanceTip: "The game is under maintenance. Please try again later.",
+                replayAvailable: "Video replay is not available now."
+            }
+        },
+        r.MessageMgr.once(r.MessageName.LoadDyncResFinish, function() {
+            n.default.coverCfgFunc(o.LangText, i.MutabLangText, a.Config.langText)
+        }),
+        cc._RF.pop()
+    }
+    , {
+        "../../my/config/Config": "Config",
+        "../../my/config/MutabTextDesc": "MutabTextDesc",
+        "../common/Func": "Func",
+        "../common/MessageMgr": "MessageMgr"
+    }],
+    TimeOutInterval: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "80f84zMY8lFRLvpNJqE4+38", "TimeOutInterval"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.XFTimeOut = void 0;
+        var i = function() {
+            function e(e, t) {
+                this._tim = null,
+                this._func = e,
+                this._timeOut = t
+            }
+            return e.prototype.start = function() {
+                setTimeout(this._func, this._timeOut)
+            }
+            ,
+            e.prototype.clear = function() {
+                this._tim && (clearTimeout(this._tim),
+                this._tim = null)
+            }
+            ,
+            e
+        }();
+        o.XFTimeOut = i,
+        cc._RF.pop()
+    }
+    , {}],
+    Tip: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "e19cdQK00dDXKulY9wV7fX3", "Tip");
+        var i, n = this && this.__extends || (i = function(e, t) {
+            return (i = Object.setPrototypeOf || {
+                __proto__: []
+            }instanceof Array && function(e, t) {
+                e.__proto__ = t
+            }
+            || function(e, t) {
+                for (var o in t)
+                    Object.prototype.hasOwnProperty.call(t, o) && (e[o] = t[o])
+            }
+            )(e, t)
+        }
+        ,
+        function(e, t) {
+            function o() {
+                this.constructor = e
+            }
+            i(e, t),
+            e.prototype = null === t ? Object.create(t) : (o.prototype = t.prototype,
+            new o)
+        }
+        );
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        }),
+        o.PopupBase = o.PopupMethod = o.AutoHideTip = o.AutoHideTextTip = o.TextTip = void 0;
+        var r = e("../../common/Func")
+          , a = e("../../LogicMgr")
+          , s = e("../../res/DyncLoadedBase")
+          , c = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                this._textTip = this.nodeInfo.root.getChildByName("tip").getComponent(cc.Label)
+            }
+            ,
+            t.prototype.resetParams = function(e) {
+                for (var t = [], o = 1; o < arguments.length; o++)
+                    t[o - 1] = arguments[o];
+                this._textTip.string = e
+            }
+            ,
+            t
+        }(s.default);
+        o.TextTip = c;
+        var l = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                var t = this;
+                e.prototype.initParams.call(this),
+                this._mask = this.nodeInfo.root.getChildByName("mask"),
+                this._mask.on(a.ConstDefine.click, function() {
+                    clearTimeout(t._timeHandle),
+                    t.hide()
+                })
+            }
+            ,
+            t.prototype.resetParams = function(t, o, i) {
+                var n = this;
+                void 0 === o && (o = 2),
+                void 0 === i && (i = !0);
+                for (var r = [], a = 3; a < arguments.length; a++)
+                    r[a - 3] = arguments[a];
+                e.prototype.resetParams.call(this, t),
+                this._mask.active = i,
+                clearTimeout(this._timeHandle),
+                this._timeHandle = setTimeout(function() {
+                    n.hide()
+                }, 1e3 * o)
+            }
+            ,
+            t.prototype.isReset = function() {
+                return !0
+            }
+            ,
+            t
+        }(c);
+        o.AutoHideTextTip = l;
+        var h = function(e) {
+            function t() {
+                var t = null !== e && e.apply(this, arguments) || this;
+                return t._callTimes = 0,
+                t
+            }
+            return n(t, e),
+            t.prototype.resetParams = function(t) {
+                void 0 === t && (t = -1),
+                this.nodeInfo.root.active = !0,
+                e.prototype.resetParams.call(this),
+                ++this._callTimes,
+                t > 0 && setTimeout(this.clear.bind(this), 1e3 * t)
+            }
+            ,
+            t.prototype.isReset = function() {
+                return !0
+            }
+            ,
+            t.prototype.clear = function() {
+                --this._callTimes <= 0 && (this._callTimes = 0,
+                e.prototype.clear.call(this),
+                this.nodeInfo.root.active = !1)
+            }
+            ,
+            t
+        }(s.default);
+        o.AutoHideTip = h;
+        var d = function() {
+            function e(e) {
+                this._root = e
+            }
+            return Object.defineProperty(e.prototype, "root", {
+                get: function() {
+                    return this._root
+                },
+                enumerable: !1,
+                configurable: !0
+            }),
+            e.prototype.start = function() {
+                r.default.nodeZoomIn(this._root, .2)
+            }
+            ,
+            e
+        }();
+        o.PopupMethod = d;
+        var f = function(e) {
+            function t() {
+                return null !== e && e.apply(this, arguments) || this
+            }
+            return n(t, e),
+            t.prototype.initParams = function() {
+                var e = this.nodeInfo.root.getChildByName("root");
+                this._popupMethod = new d(e)
+            }
+            ,
+            t.prototype.resetParams = function() {
+                for (var e = [], t = 0; t < arguments.length; t++)
+                    e[t] = arguments[t];
+                this._popupMethod.start()
+            }
+            ,
+            t
+        }(s.default);
+        o.PopupBase = f,
+        cc._RF.pop()
+    }
+    , {
+        "../../LogicMgr": "LogicMgr",
+        "../../common/Func": "Func",
+        "../../res/DyncLoadedBase": "DyncLoadedBase"
+    }],
+    UIPicText: [function(e, t, o) {
+        "use strict";
+        cc._RF.push(t, "55860iOpn5NdJlFLMModVyf", "UIPicText"),
+        Object.defineProperty(o, "__esModule", {
+            value: !0
+        });
+        var i, n = e("../../../my/config/MutabTextDesc"), r = e("../../res/DyncMgr"), a = e("../MessageMgr"), s = e("../SpecialFunc"), c = e("../../LogicMgr"), l = null, h = null;
+        function d(e) {
+            for (var t = Object.create(null), o = 0; o < e.childrenCount; ++o) {
+                var r = e.children[o]
+                  , a = {
+                    size: r.getContentSize(),
+                    spt: r.getComponent(cc.Sprite).spriteFrame
+                };
+                t[r.name] = a
+            }
+            i.push(t),
+            n.TextCfg[e.name] || (n.TextCfg[e.name] = {}),
+            n.TextCfg[e.name].type = i.length - 1
+        }
+        a.MessageMgr.once(a.MessageName.LoadDyncResFinish, function() {
+            r.default.getResInfo(c.ConstDefine.textMgr).then(function(e) {
+                var t = e.nodeInfo.root;
+                i = [];
+                for (var o = t.getChildByName("uiPicText"), n = 0; n < o.childrenCount; ++n)
+                    d(o.children[n]);
+                o.destroy(),
+                l = t.getChildByName("spritePrefab"),
+                h = t.getChildByName("uiTextPrefab"),
+                c.default.onTextLoad()
+            })
+        });
+        var f = function() {
+            function e(e, t) {
+                this.value = 0,
+                t || (t = cc.instantiate(h));
+                var o = n.TextCfg[e];
+                this._showNum = 0,
+                this._type = o.type,
+                this.root = t,
+                this._sprites = [],
+                this._dir = t.getComponent(cc.Layout).horizontalDirection;
+                for (var i = 0; i < t.childrenCount; ++i)
+                    t.children[i].destroy();
+                var r = t.getComponent(cc.Layout);
+                o.spacingX && (r.spacingX = o.spacingX),
+                o.scale && t.setScale(o.scale)
+            }
+            return e.insertTextCfg = function(e, t) {
+                e && (t && (e.name = t),
+                d(e))
+            }
+            ,
+            e.getTextSpriteFrame = function(e, t) {
+                var o = n.TextCfg[e].type;
+                return i[o][t].spt
+            }
+            ,
+            e.prototype.setValue = function(e, t, o) {
+                void 0 === t && (t = ""),
+                this.value = e;
+                var i = t + s.default.convertDecimalNum(e, o);
+                this.setStr(i)
+            }
+            ,
+            e.prototype.setSepValue = function(e, t, o) {
+                void 0 === t && (t = ""),
+                this.value = e;
+                var i = s.default.converSepValue(e, o);
+                this.setStr(i, t)
+            }
+            ,
+            e.prototype.setStr = function(e, t) {
+                var o;
+                void 0 === t && (t = "");
+                var n, r = (o = "number" == typeof e ? t + e.toString() : t + e).length;
+                this.initImage(r);
+                for (var a = 0; a < r; ++a) {
+                    var s = i[this._type][o.charAt(a)];
+                    n = this._dir ? r - a - 1 : a,
+                    this._sprites[n].setContentSize(s.size),
+                    this._sprites[n].getComponent(cc.Sprite).spriteFrame = s.spt
+                }
+            }
+            ,
+            e.prototype.setDir = function(e) {
+                var t = !1
+                  , o = this.root.getComponent(cc.Layout);
+                null == e ? (t = !0,
+                this._dir = o.horizontalDirection ? cc.Layout.HorizontalDirection.LEFT_TO_RIGHT : cc.Layout.HorizontalDirection.RIGHT_TO_LEFT) : this._dir != e && (t = !0,
+                this._dir = e),
+                t && (o.horizontalDirection = this._dir,
+                this.setValue(this.value))
+            }
+            ,
+            e.prototype.setColor = function(e) {
+                for (var t = 0; t < this._showNum; t++)
+                    this._sprites[t].color = e
+            }
+            ,
+            e.prototype.setActive = function(e) {
+                this.root.active = e
+            }
+            ,
+            e.prototype.initImage = function(e) {
+                var t = this._sprites.length;
+                if (t < e && this.addImage(e - t),
+                this._showNum > e)
+                    for (var o = e; o < this._showNum; ++o)
+                        this._sprites[o].active = !1;
+                else
+                    for (o = this._showNum; o < e; ++o)
+                        this._sprites[o].active = !0;
+                this._showNum = e
+            }
+            ,
+            e.prototype.addImage = function(e) {
+                for (var t = 0; t < e; ++t) {
+                    var o = cc.instantiate(l);
+                    o.parent = this.root,
+                    this._sprites.push(o)
+                }
+            }
+            ,
+            e
+        }();
+        o.default = f,
+        cc._RF.pop()
+    }
+    , {
+        "../../../my/config/MutabTextDesc": "MutabTextDesc",
+        "../../LogicMgr": "LogicMgr",
+        "../../res/DyncMgr": "DyncMgr",
+        "../MessageMgr": "MessageMgr",
+        "../SpecialFunc": "SpecialFunc"
+    }],
+    aes: [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "80d5c0XTMtBN5DyfCVr/IVp", "aes"),
+        i = function(e) {
+            return function() {
+                var t = e
+                  , o = t.lib.BlockCipher
+                  , i = t.algo
+                  , n = []
+                  , r = []
+                  , a = []
+                  , s = []
+                  , c = []
+                  , l = []
+                  , h = []
+                  , d = []
+                  , f = []
+                  , u = [];
+                (function() {
+                    for (var e = [], t = 0; t < 256; t++)
+                        e[t] = t < 128 ? t << 1 : t << 1 ^ 283;
+                    var o = 0
+                      , i = 0;
+                    for (t = 0; t < 256; t++) {
+                        var p = i ^ i << 1 ^ i << 2 ^ i << 3 ^ i << 4;
+                        p = p >>> 8 ^ 255 & p ^ 99,
+                        n[o] = p,
+                        r[p] = o;
+                        var g = e[o]
+                          , _ = e[g]
+                          , m = e[_]
+                          , y = 257 * e[p] ^ 16843008 * p;
+                        a[o] = y << 24 | y >>> 8,
+                        s[o] = y << 16 | y >>> 16,
+                        c[o] = y << 8 | y >>> 24,
+                        l[o] = y,
+                        y = 16843009 * m ^ 65537 * _ ^ 257 * g ^ 16843008 * o,
+                        h[p] = y << 24 | y >>> 8,
+                        d[p] = y << 16 | y >>> 16,
+                        f[p] = y << 8 | y >>> 24,
+                        u[p] = y,
+                        o ? (o = g ^ e[e[e[m ^ g]]],
+                        i ^= e[e[i]]) : o = i = 1
+                    }
+                }
+                )();
+                var p = [0, 1, 2, 4, 8, 16, 32, 64, 128, 27, 54]
+                  , g = i.AES = o.extend({
+                    _doReset: function() {
+                        if (!this._nRounds || this._keyPriorReset !== this._key) {
+                            for (var e = this._keyPriorReset = this._key, t = e.words, o = e.sigBytes / 4, i = 4 * ((this._nRounds = o + 6) + 1), r = this._keySchedule = [], a = 0; a < i; a++)
+                                if (a < o)
+                                    r[a] = t[a];
+                                else {
+                                    var s = r[a - 1];
+                                    a % o ? o > 6 && a % o == 4 && (s = n[s >>> 24] << 24 | n[s >>> 16 & 255] << 16 | n[s >>> 8 & 255] << 8 | n[255 & s]) : (s = n[(s = s << 8 | s >>> 24) >>> 24] << 24 | n[s >>> 16 & 255] << 16 | n[s >>> 8 & 255] << 8 | n[255 & s],
+                                    s ^= p[a / o | 0] << 24),
+                                    r[a] = r[a - o] ^ s
+                                }
+                            for (var c = this._invKeySchedule = [], l = 0; l < i; l++)
+                                a = i - l,
+                                s = l % 4 ? r[a] : r[a - 4],
+                                c[l] = l < 4 || a <= 4 ? s : h[n[s >>> 24]] ^ d[n[s >>> 16 & 255]] ^ f[n[s >>> 8 & 255]] ^ u[n[255 & s]]
+                        }
+                    },
+                    encryptBlock: function(e, t) {
+                        this._doCryptBlock(e, t, this._keySchedule, a, s, c, l, n)
+                    },
+                    decryptBlock: function(e, t) {
+                        var o = e[t + 1];
+                        e[t + 1] = e[t + 3],
+                        e[t + 3] = o,
+                        this._doCryptBlock(e, t, this._invKeySchedule, h, d, f, u, r),
+                        o = e[t + 1],
+                        e[t + 1] = e[t + 3],
+                        e[t + 3] = o
+                    },
+                    _doCryptBlock: function(e, t, o, i, n, r, a, s) {
+                        for (var c = this._nRounds, l = e[t] ^ o[0], h = e[t + 1] ^ o[1], d = e[t + 2] ^ o[2], f = e[t + 3] ^ o[3], u = 4, p = 1; p < c; p++) {
+                            var g = i[l >>> 24] ^ n[h >>> 16 & 255] ^ r[d >>> 8 & 255] ^ a[255 & f] ^ o[u++]
+                              , _ = i[h >>> 24] ^ n[d >>> 16 & 255] ^ r[f >>> 8 & 255] ^ a[255 & l] ^ o[u++]
+                              , m = i[d >>> 24] ^ n[f >>> 16 & 255] ^ r[l >>> 8 & 255] ^ a[255 & h] ^ o[u++]
+                              , y = i[f >>> 24] ^ n[l >>> 16 & 255] ^ r[h >>> 8 & 255] ^ a[255 & d] ^ o[u++];
+                            l = g,
+                            h = _,
+                            d = m,
+                            f = y
+                        }
+                        g = (s[l >>> 24] << 24 | s[h >>> 16 & 255] << 16 | s[d >>> 8 & 255] << 8 | s[255 & f]) ^ o[u++],
+                        _ = (s[h >>> 24] << 24 | s[d >>> 16 & 255] << 16 | s[f >>> 8 & 255] << 8 | s[255 & l]) ^ o[u++],
+                        m = (s[d >>> 24] << 24 | s[f >>> 16 & 255] << 16 | s[l >>> 8 & 255] << 8 | s[255 & h]) ^ o[u++],
+                        y = (s[f >>> 24] << 24 | s[l >>> 16 & 255] << 16 | s[h >>> 8 & 255] << 8 | s[255 & d]) ^ o[u++],
+                        e[t] = g,
+                        e[t + 1] = _,
+                        e[t + 2] = m,
+                        e[t + 3] = y
+                    },
+                    keySize: 8
+                });
+                t.AES = o._createHelper(g)
+            }(),
+            e.AES
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./enc-base64"), e("./md5"), e("./evpkdf"), e("./cipher-core")) : "function" == typeof define && define.amd ? define(["./core", "./enc-base64", "./md5", "./evpkdf", "./cipher-core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./cipher-core": "cipher-core",
+        "./core": "core",
+        "./enc-base64": "enc-base64",
+        "./evpkdf": "evpkdf",
+        "./md5": "md5"
+    }],
+    "cipher-core": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "8d0fb2wjOFOq5zm3d6envEZ", "cipher-core"),
+        i = function(e) {
+            e.lib.Cipher || function(t) {
+                var o = e
+                  , i = o.lib
+                  , n = i.Base
+                  , r = i.WordArray
+                  , a = i.BufferedBlockAlgorithm
+                  , s = o.enc
+                  , c = (s.Utf8,
+                s.Base64)
+                  , l = o.algo.EvpKDF
+                  , h = i.Cipher = a.extend({
+                    cfg: n.extend(),
+                    createEncryptor: function(e, t) {
+                        return this.create(this._ENC_XFORM_MODE, e, t)
+                    },
+                    createDecryptor: function(e, t) {
+                        return this.create(this._DEC_XFORM_MODE, e, t)
+                    },
+                    init: function(e, t, o) {
+                        this.cfg = this.cfg.extend(o),
+                        this._xformMode = e,
+                        this._key = t,
+                        this.reset()
+                    },
+                    reset: function() {
+                        a.reset.call(this),
+                        this._doReset()
+                    },
+                    process: function(e) {
+                        return this._append(e),
+                        this._process()
+                    },
+                    finalize: function(e) {
+                        return e && this._append(e),
+                        this._doFinalize()
+                    },
+                    keySize: 4,
+                    ivSize: 4,
+                    _ENC_XFORM_MODE: 1,
+                    _DEC_XFORM_MODE: 2,
+                    _createHelper: function() {
+                        function e(e) {
+                            return "string" == typeof e ? v : m
+                        }
+                        return function(t) {
+                            return {
+                                encrypt: function(o, i, n) {
+                                    return e(i).encrypt(t, o, i, n)
+                                },
+                                decrypt: function(o, i, n) {
+                                    return e(i).decrypt(t, o, i, n)
+                                }
+                            }
+                        }
+                    }()
+                })
+                  , d = (i.StreamCipher = h.extend({
+                    _doFinalize: function() {
+                        return this._process(!0)
+                    },
+                    blockSize: 1
+                }),
+                o.mode = {})
+                  , f = i.BlockCipherMode = n.extend({
+                    createEncryptor: function(e, t) {
+                        return this.Encryptor.create(e, t)
+                    },
+                    createDecryptor: function(e, t) {
+                        return this.Decryptor.create(e, t)
+                    },
+                    init: function(e, t) {
+                        this._cipher = e,
+                        this._iv = t
+                    }
+                })
+                  , u = d.CBC = function() {
+                    var e = f.extend();
+                    function o(e, o, i) {
+                        var n = this._iv;
+                        if (n) {
+                            var r = n;
+                            this._iv = t
+                        } else
+                            r = this._prevBlock;
+                        for (var a = 0; a < i; a++)
+                            e[o + a] ^= r[a]
+                    }
+                    return e.Encryptor = e.extend({
+                        processBlock: function(e, t) {
+                            var i = this._cipher
+                              , n = i.blockSize;
+                            o.call(this, e, t, n),
+                            i.encryptBlock(e, t),
+                            this._prevBlock = e.slice(t, t + n)
+                        }
+                    }),
+                    e.Decryptor = e.extend({
+                        processBlock: function(e, t) {
+                            var i = this._cipher
+                              , n = i.blockSize
+                              , r = e.slice(t, t + n);
+                            i.decryptBlock(e, t),
+                            o.call(this, e, t, n),
+                            this._prevBlock = r
+                        }
+                    }),
+                    e
+                }()
+                  , p = (o.pad = {}).Pkcs7 = {
+                    pad: function(e, t) {
+                        for (var o = 4 * t, i = o - e.sigBytes % o, n = i << 24 | i << 16 | i << 8 | i, a = [], s = 0; s < i; s += 4)
+                            a.push(n);
+                        var c = r.create(a, i);
+                        e.concat(c)
+                    },
+                    unpad: function(e) {
+                        var t = 255 & e.words[e.sigBytes - 1 >>> 2];
+                        e.sigBytes -= t
+                    }
+                }
+                  , g = (i.BlockCipher = h.extend({
+                    cfg: h.cfg.extend({
+                        mode: u,
+                        padding: p
+                    }),
+                    reset: function() {
+                        h.reset.call(this);
+                        var e = this.cfg
+                          , t = e.iv
+                          , o = e.mode;
+                        if (this._xformMode == this._ENC_XFORM_MODE)
+                            var i = o.createEncryptor;
+                        else
+                            i = o.createDecryptor,
+                            this._minBufferSize = 1;
+                        this._mode && this._mode.__creator == i ? this._mode.init(this, t && t.words) : (this._mode = i.call(o, this, t && t.words),
+                        this._mode.__creator = i)
+                    },
+                    _doProcessBlock: function(e, t) {
+                        this._mode.processBlock(e, t)
+                    },
+                    _doFinalize: function() {
+                        var e = this.cfg.padding;
+                        if (this._xformMode == this._ENC_XFORM_MODE) {
+                            e.pad(this._data, this.blockSize);
+                            var t = this._process(!0)
+                        } else
+                            t = this._process(!0),
+                            e.unpad(t);
+                        return t
+                    },
+                    blockSize: 4
+                }),
+                i.CipherParams = n.extend({
+                    init: function(e) {
+                        this.mixIn(e)
+                    },
+                    toString: function(e) {
+                        return (e || this.formatter).stringify(this)
+                    }
+                }))
+                  , _ = (o.format = {}).OpenSSL = {
+                    stringify: function(e) {
+                        var t = e.ciphertext
+                          , o = e.salt;
+                        if (o)
+                            var i = r.create([1398893684, 1701076831]).concat(o).concat(t);
+                        else
+                            i = t;
+                        return i.toString(c)
+                    },
+                    parse: function(e) {
+                        var t = c.parse(e)
+                          , o = t.words;
+                        if (1398893684 == o[0] && 1701076831 == o[1]) {
+                            var i = r.create(o.slice(2, 4));
+                            o.splice(0, 4),
+                            t.sigBytes -= 16
+                        }
+                        return g.create({
+                            ciphertext: t,
+                            salt: i
+                        })
+                    }
+                }
+                  , m = i.SerializableCipher = n.extend({
+                    cfg: n.extend({
+                        format: _
+                    }),
+                    encrypt: function(e, t, o, i) {
+                        i = this.cfg.extend(i);
+                        var n = e.createEncryptor(o, i)
+                          , r = n.finalize(t)
+                          , a = n.cfg;
+                        return g.create({
+                            ciphertext: r,
+                            key: o,
+                            iv: a.iv,
+                            algorithm: e,
+                            mode: a.mode,
+                            padding: a.padding,
+                            blockSize: e.blockSize,
+                            formatter: i.format
+                        })
+                    },
+                    decrypt: function(e, t, o, i) {
+                        return i = this.cfg.extend(i),
+                        t = this._parse(t, i.format),
+                        e.createDecryptor(o, i).finalize(t.ciphertext)
+                    },
+                    _parse: function(e, t) {
+                        return "string" == typeof e ? t.parse(e, this) : e
+                    }
+                })
+                  , y = (o.kdf = {}).OpenSSL = {
+                    execute: function(e, t, o, i) {
+                        i || (i = r.random(8));
+                        var n = l.create({
+                            keySize: t + o
+                        }).compute(e, i)
+                          , a = r.create(n.words.slice(t), 4 * o);
+                        return n.sigBytes = 4 * t,
+                        g.create({
+                            key: n,
+                            iv: a,
+                            salt: i
+                        })
+                    }
+                }
+                  , v = i.PasswordBasedCipher = m.extend({
+                    cfg: m.cfg.extend({
+                        kdf: y
+                    }),
+                    encrypt: function(e, t, o, i) {
+                        var n = (i = this.cfg.extend(i)).kdf.execute(o, e.keySize, e.ivSize);
+                        i.iv = n.iv;
+                        var r = m.encrypt.call(this, e, t, n.key, i);
+                        return r.mixIn(n),
+                        r
+                    },
+                    decrypt: function(e, t, o, i) {
+                        i = this.cfg.extend(i),
+                        t = this._parse(t, i.format);
+                        var n = i.kdf.execute(o, e.keySize, e.ivSize, t.salt);
+                        return i.iv = n.iv,
+                        m.decrypt.call(this, e, t, n.key, i)
+                    }
+                })
+            }()
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./evpkdf")) : "function" == typeof define && define.amd ? define(["./core", "./evpkdf"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core",
+        "./evpkdf": "evpkdf"
+    }],
+    core: [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "6dd43w9WtRJGaY2XYl6G4sy", "core"),
+        i = function() {
+            var e = e || function(e) {
+                var t = Object.create || function() {
+                    function e() {}
+                    return function(t) {
+                        var o;
+                        return e.prototype = t,
+                        o = new e,
+                        e.prototype = null,
+                        o
+                    }
+                }()
+                  , o = {}
+                  , i = o.lib = {}
+                  , n = i.Base = {
+                    extend: function(e) {
+                        var o = t(this);
+                        return e && o.mixIn(e),
+                        o.hasOwnProperty("init") && this.init !== o.init || (o.init = function() {
+                            o.$super.init.apply(this, arguments)
+                        }
+                        ),
+                        o.init.prototype = o,
+                        o.$super = this,
+                        o
+                    },
+                    create: function() {
+                        var e = this.extend();
+                        return e.init.apply(e, arguments),
+                        e
+                    },
+                    init: function() {},
+                    mixIn: function(e) {
+                        for (var t in e)
+                            e.hasOwnProperty(t) && (this[t] = e[t]);
+                        e.hasOwnProperty("toString") && (this.toString = e.toString)
+                    },
+                    clone: function() {
+                        return this.init.prototype.extend(this)
+                    }
+                }
+                  , r = i.WordArray = n.extend({
+                    init: function(e, t) {
+                        e = this.words = e || [],
+                        this.sigBytes = null != t ? t : 4 * e.length
+                    },
+                    toString: function(e) {
+                        return (e || s).stringify(this)
+                    },
+                    concat: function(e) {
+                        var t = this.words
+                          , o = e.words
+                          , i = this.sigBytes
+                          , n = e.sigBytes;
+                        if (this.clamp(),
+                        i % 4)
+                            for (var r = 0; r < n; r++) {
+                                var a = o[r >>> 2] >>> 24 - r % 4 * 8 & 255;
+                                t[i + r >>> 2] |= a << 24 - (i + r) % 4 * 8
+                            }
+                        else
+                            for (r = 0; r < n; r += 4)
+                                t[i + r >>> 2] = o[r >>> 2];
+                        return this.sigBytes += n,
+                        this
+                    },
+                    clamp: function() {
+                        var t = this.words
+                          , o = this.sigBytes;
+                        t[o >>> 2] &= 4294967295 << 32 - o % 4 * 8,
+                        t.length = e.ceil(o / 4)
+                    },
+                    clone: function() {
+                        var e = n.clone.call(this);
+                        return e.words = this.words.slice(0),
+                        e
+                    },
+                    random: function(t) {
+                        for (var o, i = [], n = function(t) {
+                            t = t;
+                            var o = 987654321
+                              , i = 4294967295;
+                            return function() {
+                                var n = ((o = 36969 * (65535 & o) + (o >> 16) & i) << 16) + (t = 18e3 * (65535 & t) + (t >> 16) & i) & i;
+                                return n /= 4294967296,
+                                (n += .5) * (e.random() > .5 ? 1 : -1)
+                            }
+                        }, a = 0; a < t; a += 4) {
+                            var s = n(4294967296 * (o || e.random()));
+                            o = 987654071 * s(),
+                            i.push(4294967296 * s() | 0)
+                        }
+                        return new r.init(i,t)
+                    }
+                })
+                  , a = o.enc = {}
+                  , s = a.Hex = {
+                    stringify: function(e) {
+                        for (var t = e.words, o = e.sigBytes, i = [], n = 0; n < o; n++) {
+                            var r = t[n >>> 2] >>> 24 - n % 4 * 8 & 255;
+                            i.push((r >>> 4).toString(16)),
+                            i.push((15 & r).toString(16))
+                        }
+                        return i.join("")
+                    },
+                    parse: function(e) {
+                        for (var t = e.length, o = [], i = 0; i < t; i += 2)
+                            o[i >>> 3] |= parseInt(e.substr(i, 2), 16) << 24 - i % 8 * 4;
+                        return new r.init(o,t / 2)
+                    }
+                }
+                  , c = a.Latin1 = {
+                    stringify: function(e) {
+                        for (var t = e.words, o = e.sigBytes, i = [], n = 0; n < o; n++) {
+                            var r = t[n >>> 2] >>> 24 - n % 4 * 8 & 255;
+                            i.push(String.fromCharCode(r))
+                        }
+                        return i.join("")
+                    },
+                    parse: function(e) {
+                        for (var t = e.length, o = [], i = 0; i < t; i++)
+                            o[i >>> 2] |= (255 & e.charCodeAt(i)) << 24 - i % 4 * 8;
+                        return new r.init(o,t)
+                    }
+                }
+                  , l = a.Utf8 = {
+                    stringify: function(e) {
+                        try {
+                            return decodeURIComponent(escape(c.stringify(e)))
+                        } catch (t) {
+                            throw new Error("Malformed UTF-8 data")
+                        }
+                    },
+                    parse: function(e) {
+                        return c.parse(unescape(encodeURIComponent(e)))
+                    }
+                }
+                  , h = i.BufferedBlockAlgorithm = n.extend({
+                    reset: function() {
+                        this._data = new r.init,
+                        this._nDataBytes = 0
+                    },
+                    _append: function(e) {
+                        "string" == typeof e && (e = l.parse(e)),
+                        this._data.concat(e),
+                        this._nDataBytes += e.sigBytes
+                    },
+                    _process: function(t) {
+                        var o = this._data
+                          , i = o.words
+                          , n = o.sigBytes
+                          , a = this.blockSize
+                          , s = n / (4 * a)
+                          , c = (s = t ? e.ceil(s) : e.max((0 | s) - this._minBufferSize, 0)) * a
+                          , l = e.min(4 * c, n);
+                        if (c) {
+                            for (var h = 0; h < c; h += a)
+                                this._doProcessBlock(i, h);
+                            var d = i.splice(0, c);
+                            o.sigBytes -= l
+                        }
+                        return new r.init(d,l)
+                    },
+                    clone: function() {
+                        var e = n.clone.call(this);
+                        return e._data = this._data.clone(),
+                        e
+                    },
+                    _minBufferSize: 0
+                })
+                  , d = (i.Hasher = h.extend({
+                    cfg: n.extend(),
+                    init: function(e) {
+                        this.cfg = this.cfg.extend(e),
+                        this.reset()
+                    },
+                    reset: function() {
+                        h.reset.call(this),
+                        this._doReset()
+                    },
+                    update: function(e) {
+                        return this._append(e),
+                        this._process(),
+                        this
+                    },
+                    finalize: function(e) {
+                        return e && this._append(e),
+                        this._doFinalize()
+                    },
+                    blockSize: 16,
+                    _createHelper: function(e) {
+                        return function(t, o) {
+                            return new e.init(o).finalize(t)
+                        }
+                    },
+                    _createHmacHelper: function(e) {
+                        return function(t, o) {
+                            return new d.HMAC.init(e,o).finalize(t)
+                        }
+                    }
+                }),
+                o.algo = {});
+                return o
+            }(Math);
+            return e
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i() : "function" == typeof define && define.amd ? define([], i) : (void 0).CryptoJS = i(),
+        cc._RF.pop()
+    }
+    , {}],
+    "crypto-js": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "569c8BLikJHVb+g8v1eVbBH", "crypto-js"),
+        i = function() {
+            var e, t, o, i, n, r, a, s, c, l, h = h || function(e) {
+                var t = Object.create || function() {
+                    function e() {}
+                    return function(t) {
+                        var o;
+                        return e.prototype = t,
+                        o = new e,
+                        e.prototype = null,
+                        o
+                    }
+                }()
+                  , o = {}
+                  , i = o.lib = {}
+                  , n = i.Base = {
+                    extend: function(e) {
+                        var o = t(this);
+                        return e && o.mixIn(e),
+                        o.hasOwnProperty("init") && this.init !== o.init || (o.init = function() {
+                            o.$super.init.apply(this, arguments)
+                        }
+                        ),
+                        o.init.prototype = o,
+                        o.$super = this,
+                        o
+                    },
+                    create: function() {
+                        var e = this.extend();
+                        return e.init.apply(e, arguments),
+                        e
+                    },
+                    init: function() {},
+                    mixIn: function(e) {
+                        for (var t in e)
+                            e.hasOwnProperty(t) && (this[t] = e[t]);
+                        e.hasOwnProperty("toString") && (this.toString = e.toString)
+                    },
+                    clone: function() {
+                        return this.init.prototype.extend(this)
+                    }
+                }
+                  , r = i.WordArray = n.extend({
+                    init: function(e, t) {
+                        e = this.words = e || [],
+                        this.sigBytes = null != t ? t : 4 * e.length
+                    },
+                    toString: function(e) {
+                        return (e || s).stringify(this)
+                    },
+                    concat: function(e) {
+                        var t = this.words
+                          , o = e.words
+                          , i = this.sigBytes
+                          , n = e.sigBytes;
+                        if (this.clamp(),
+                        i % 4)
+                            for (var r = 0; r < n; r++) {
+                                var a = o[r >>> 2] >>> 24 - r % 4 * 8 & 255;
+                                t[i + r >>> 2] |= a << 24 - (i + r) % 4 * 8
+                            }
+                        else
+                            for (r = 0; r < n; r += 4)
+                                t[i + r >>> 2] = o[r >>> 2];
+                        return this.sigBytes += n,
+                        this
+                    },
+                    clamp: function() {
+                        var t = this.words
+                          , o = this.sigBytes;
+                        t[o >>> 2] &= 4294967295 << 32 - o % 4 * 8,
+                        t.length = e.ceil(o / 4)
+                    },
+                    clone: function() {
+                        var e = n.clone.call(this);
+                        return e.words = this.words.slice(0),
+                        e
+                    },
+                    random: function(t) {
+                        for (var o, i = [], n = function(t) {
+                            t = t;
+                            var o = 987654321
+                              , i = 4294967295;
+                            return function() {
+                                var n = ((o = 36969 * (65535 & o) + (o >> 16) & i) << 16) + (t = 18e3 * (65535 & t) + (t >> 16) & i) & i;
+                                return n /= 4294967296,
+                                (n += .5) * (e.random() > .5 ? 1 : -1)
+                            }
+                        }, a = 0; a < t; a += 4) {
+                            var s = n(4294967296 * (o || e.random()));
+                            o = 987654071 * s(),
+                            i.push(4294967296 * s() | 0)
+                        }
+                        return new r.init(i,t)
+                    }
+                })
+                  , a = o.enc = {}
+                  , s = a.Hex = {
+                    stringify: function(e) {
+                        for (var t = e.words, o = e.sigBytes, i = [], n = 0; n < o; n++) {
+                            var r = t[n >>> 2] >>> 24 - n % 4 * 8 & 255;
+                            i.push((r >>> 4).toString(16)),
+                            i.push((15 & r).toString(16))
+                        }
+                        return i.join("")
+                    },
+                    parse: function(e) {
+                        for (var t = e.length, o = [], i = 0; i < t; i += 2)
+                            o[i >>> 3] |= parseInt(e.substr(i, 2), 16) << 24 - i % 8 * 4;
+                        return new r.init(o,t / 2)
+                    }
+                }
+                  , c = a.Latin1 = {
+                    stringify: function(e) {
+                        for (var t = e.words, o = e.sigBytes, i = [], n = 0; n < o; n++) {
+                            var r = t[n >>> 2] >>> 24 - n % 4 * 8 & 255;
+                            i.push(String.fromCharCode(r))
+                        }
+                        return i.join("")
+                    },
+                    parse: function(e) {
+                        for (var t = e.length, o = [], i = 0; i < t; i++)
+                            o[i >>> 2] |= (255 & e.charCodeAt(i)) << 24 - i % 4 * 8;
+                        return new r.init(o,t)
+                    }
+                }
+                  , l = a.Utf8 = {
+                    stringify: function(e) {
+                        try {
+                            return decodeURIComponent(escape(c.stringify(e)))
+                        } catch (t) {
+                            throw new Error("Malformed UTF-8 data")
+                        }
+                    },
+                    parse: function(e) {
+                        return c.parse(unescape(encodeURIComponent(e)))
+                    }
+                }
+                  , h = i.BufferedBlockAlgorithm = n.extend({
+                    reset: function() {
+                        this._data = new r.init,
+                        this._nDataBytes = 0
+                    },
+                    _append: function(e) {
+                        "string" == typeof e && (e = l.parse(e)),
+                        this._data.concat(e),
+                        this._nDataBytes += e.sigBytes
+                    },
+                    _process: function(t) {
+                        var o = this._data
+                          , i = o.words
+                          , n = o.sigBytes
+                          , a = this.blockSize
+                          , s = n / (4 * a)
+                          , c = (s = t ? e.ceil(s) : e.max((0 | s) - this._minBufferSize, 0)) * a
+                          , l = e.min(4 * c, n);
+                        if (c) {
+                            for (var h = 0; h < c; h += a)
+                                this._doProcessBlock(i, h);
+                            var d = i.splice(0, c);
+                            o.sigBytes -= l
+                        }
+                        return new r.init(d,l)
+                    },
+                    clone: function() {
+                        var e = n.clone.call(this);
+                        return e._data = this._data.clone(),
+                        e
+                    },
+                    _minBufferSize: 0
+                })
+                  , d = (i.Hasher = h.extend({
+                    cfg: n.extend(),
+                    init: function(e) {
+                        this.cfg = this.cfg.extend(e),
+                        this.reset()
+                    },
+                    reset: function() {
+                        h.reset.call(this),
+                        this._doReset()
+                    },
+                    update: function(e) {
+                        return this._append(e),
+                        this._process(),
+                        this
+                    },
+                    finalize: function(e) {
+                        return e && this._append(e),
+                        this._doFinalize()
+                    },
+                    blockSize: 16,
+                    _createHelper: function(e) {
+                        return function(t, o) {
+                            return new e.init(o).finalize(t)
+                        }
+                    },
+                    _createHmacHelper: function(e) {
+                        return function(t, o) {
+                            return new d.HMAC.init(e,o).finalize(t)
+                        }
+                    }
+                }),
+                o.algo = {});
+                return o
+            }(Math);
+            return function() {
+                var e = h
+                  , t = e.lib.WordArray;
+                function o(e, o, i) {
+                    for (var n = [], r = 0, a = 0; a < o; a++)
+                        if (a % 4) {
+                            var s = i[e.charCodeAt(a - 1)] << a % 4 * 2
+                              , c = i[e.charCodeAt(a)] >>> 6 - a % 4 * 2;
+                            n[r >>> 2] |= (s | c) << 24 - r % 4 * 8,
+                            r++
+                        }
+                    return t.create(n, r)
+                }
+                e.enc.Base64 = {
+                    stringify: function(e) {
+                        var t = e.words
+                          , o = e.sigBytes
+                          , i = this._map;
+                        e.clamp();
+                        for (var n = [], r = 0; r < o; r += 3)
+                            for (var a = (t[r >>> 2] >>> 24 - r % 4 * 8 & 255) << 16 | (t[r + 1 >>> 2] >>> 24 - (r + 1) % 4 * 8 & 255) << 8 | t[r + 2 >>> 2] >>> 24 - (r + 2) % 4 * 8 & 255, s = 0; s < 4 && r + .75 * s < o; s++)
+                                n.push(i.charAt(a >>> 6 * (3 - s) & 63));
+                        var c = i.charAt(64);
+                        if (c)
+                            for (; n.length % 4; )
+                                n.push(c);
+                        return n.join("")
+                    },
+                    parse: function(e) {
+                        var t = e.length
+                          , i = this._map
+                          , n = this._reverseMap;
+                        if (!n) {
+                            n = this._reverseMap = [];
+                            for (var r = 0; r < i.length; r++)
+                                n[i.charCodeAt(r)] = r
+                        }
+                        var a = i.charAt(64);
+                        if (a) {
+                            var s = e.indexOf(a);
+                            -1 !== s && (t = s)
+                        }
+                        return o(e, t, n)
+                    },
+                    _map: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="
+                }
+            }(),
+            function(e) {
+                var t = h
+                  , o = t.lib
+                  , i = o.WordArray
+                  , n = o.Hasher
+                  , r = t.algo
+                  , a = [];
+                (function() {
+                    for (var t = 0; t < 64; t++)
+                        a[t] = 4294967296 * e.abs(e.sin(t + 1)) | 0
+                }
+                )();
+                var s = r.MD5 = n.extend({
+                    _doReset: function() {
+                        this._hash = new i.init([1732584193, 4023233417, 2562383102, 271733878])
+                    },
+                    _doProcessBlock: function(e, t) {
+                        for (var o = 0; o < 16; o++) {
+                            var i = t + o
+                              , n = e[i];
+                            e[i] = 16711935 & (n << 8 | n >>> 24) | 4278255360 & (n << 24 | n >>> 8)
+                        }
+                        var r = this._hash.words
+                          , s = e[t + 0]
+                          , h = e[t + 1]
+                          , u = e[t + 2]
+                          , p = e[t + 3]
+                          , g = e[t + 4]
+                          , _ = e[t + 5]
+                          , m = e[t + 6]
+                          , y = e[t + 7]
+                          , v = e[t + 8]
+                          , C = e[t + 9]
+                          , b = e[t + 10]
+                          , M = e[t + 11]
+                          , S = e[t + 12]
+                          , N = e[t + 13]
+                          , w = e[t + 14]
+                          , B = e[t + 15]
+                          , P = r[0]
+                          , T = r[1]
+                          , k = r[2]
+                          , I = r[3];
+                        P = c(P, T, k, I, s, 7, a[0]),
+                        I = c(I, P, T, k, h, 12, a[1]),
+                        k = c(k, I, P, T, u, 17, a[2]),
+                        T = c(T, k, I, P, p, 22, a[3]),
+                        P = c(P, T, k, I, g, 7, a[4]),
+                        I = c(I, P, T, k, _, 12, a[5]),
+                        k = c(k, I, P, T, m, 17, a[6]),
+                        T = c(T, k, I, P, y, 22, a[7]),
+                        P = c(P, T, k, I, v, 7, a[8]),
+                        I = c(I, P, T, k, C, 12, a[9]),
+                        k = c(k, I, P, T, b, 17, a[10]),
+                        T = c(T, k, I, P, M, 22, a[11]),
+                        P = c(P, T, k, I, S, 7, a[12]),
+                        I = c(I, P, T, k, N, 12, a[13]),
+                        k = c(k, I, P, T, w, 17, a[14]),
+                        P = l(P, T = c(T, k, I, P, B, 22, a[15]), k, I, h, 5, a[16]),
+                        I = l(I, P, T, k, m, 9, a[17]),
+                        k = l(k, I, P, T, M, 14, a[18]),
+                        T = l(T, k, I, P, s, 20, a[19]),
+                        P = l(P, T, k, I, _, 5, a[20]),
+                        I = l(I, P, T, k, b, 9, a[21]),
+                        k = l(k, I, P, T, B, 14, a[22]),
+                        T = l(T, k, I, P, g, 20, a[23]),
+                        P = l(P, T, k, I, C, 5, a[24]),
+                        I = l(I, P, T, k, w, 9, a[25]),
+                        k = l(k, I, P, T, p, 14, a[26]),
+                        T = l(T, k, I, P, v, 20, a[27]),
+                        P = l(P, T, k, I, N, 5, a[28]),
+                        I = l(I, P, T, k, u, 9, a[29]),
+                        k = l(k, I, P, T, y, 14, a[30]),
+                        P = d(P, T = l(T, k, I, P, S, 20, a[31]), k, I, _, 4, a[32]),
+                        I = d(I, P, T, k, v, 11, a[33]),
+                        k = d(k, I, P, T, M, 16, a[34]),
+                        T = d(T, k, I, P, w, 23, a[35]),
+                        P = d(P, T, k, I, h, 4, a[36]),
+                        I = d(I, P, T, k, g, 11, a[37]),
+                        k = d(k, I, P, T, y, 16, a[38]),
+                        T = d(T, k, I, P, b, 23, a[39]),
+                        P = d(P, T, k, I, N, 4, a[40]),
+                        I = d(I, P, T, k, s, 11, a[41]),
+                        k = d(k, I, P, T, p, 16, a[42]),
+                        T = d(T, k, I, P, m, 23, a[43]),
+                        P = d(P, T, k, I, C, 4, a[44]),
+                        I = d(I, P, T, k, S, 11, a[45]),
+                        k = d(k, I, P, T, B, 16, a[46]),
+                        P = f(P, T = d(T, k, I, P, u, 23, a[47]), k, I, s, 6, a[48]),
+                        I = f(I, P, T, k, y, 10, a[49]),
+                        k = f(k, I, P, T, w, 15, a[50]),
+                        T = f(T, k, I, P, _, 21, a[51]),
+                        P = f(P, T, k, I, S, 6, a[52]),
+                        I = f(I, P, T, k, p, 10, a[53]),
+                        k = f(k, I, P, T, b, 15, a[54]),
+                        T = f(T, k, I, P, h, 21, a[55]),
+                        P = f(P, T, k, I, v, 6, a[56]),
+                        I = f(I, P, T, k, B, 10, a[57]),
+                        k = f(k, I, P, T, m, 15, a[58]),
+                        T = f(T, k, I, P, N, 21, a[59]),
+                        P = f(P, T, k, I, g, 6, a[60]),
+                        I = f(I, P, T, k, M, 10, a[61]),
+                        k = f(k, I, P, T, u, 15, a[62]),
+                        T = f(T, k, I, P, C, 21, a[63]),
+                        r[0] = r[0] + P | 0,
+                        r[1] = r[1] + T | 0,
+                        r[2] = r[2] + k | 0,
+                        r[3] = r[3] + I | 0
+                    },
+                    _doFinalize: function() {
+                        var t = this._data
+                          , o = t.words
+                          , i = 8 * this._nDataBytes
+                          , n = 8 * t.sigBytes;
+                        o[n >>> 5] |= 128 << 24 - n % 32;
+                        var r = e.floor(i / 4294967296)
+                          , a = i;
+                        o[15 + (n + 64 >>> 9 << 4)] = 16711935 & (r << 8 | r >>> 24) | 4278255360 & (r << 24 | r >>> 8),
+                        o[14 + (n + 64 >>> 9 << 4)] = 16711935 & (a << 8 | a >>> 24) | 4278255360 & (a << 24 | a >>> 8),
+                        t.sigBytes = 4 * (o.length + 1),
+                        this._process();
+                        for (var s = this._hash, c = s.words, l = 0; l < 4; l++) {
+                            var h = c[l];
+                            c[l] = 16711935 & (h << 8 | h >>> 24) | 4278255360 & (h << 24 | h >>> 8)
+                        }
+                        return s
+                    },
+                    clone: function() {
+                        var e = n.clone.call(this);
+                        return e._hash = this._hash.clone(),
+                        e
+                    }
+                });
+                function c(e, t, o, i, n, r, a) {
+                    var s = e + (t & o | ~t & i) + n + a;
+                    return (s << r | s >>> 32 - r) + t
+                }
+                function l(e, t, o, i, n, r, a) {
+                    var s = e + (t & i | o & ~i) + n + a;
+                    return (s << r | s >>> 32 - r) + t
+                }
+                function d(e, t, o, i, n, r, a) {
+                    var s = e + (t ^ o ^ i) + n + a;
+                    return (s << r | s >>> 32 - r) + t
+                }
+                function f(e, t, o, i, n, r, a) {
+                    var s = e + (o ^ (t | ~i)) + n + a;
+                    return (s << r | s >>> 32 - r) + t
+                }
+                t.MD5 = n._createHelper(s),
+                t.HmacMD5 = n._createHmacHelper(s)
+            }(Math),
+            t = (e = h).lib,
+            o = t.WordArray,
+            i = t.Hasher,
+            n = e.algo,
+            r = [],
+            a = n.SHA1 = i.extend({
+                _doReset: function() {
+                    this._hash = new o.init([1732584193, 4023233417, 2562383102, 271733878, 3285377520])
+                },
+                _doProcessBlock: function(e, t) {
+                    for (var o = this._hash.words, i = o[0], n = o[1], a = o[2], s = o[3], c = o[4], l = 0; l < 80; l++) {
+                        if (l < 16)
+                            r[l] = 0 | e[t + l];
+                        else {
+                            var h = r[l - 3] ^ r[l - 8] ^ r[l - 14] ^ r[l - 16];
+                            r[l] = h << 1 | h >>> 31
+                        }
+                        var d = (i << 5 | i >>> 27) + c + r[l];
+                        d += l < 20 ? 1518500249 + (n & a | ~n & s) : l < 40 ? 1859775393 + (n ^ a ^ s) : l < 60 ? (n & a | n & s | a & s) - 1894007588 : (n ^ a ^ s) - 899497514,
+                        c = s,
+                        s = a,
+                        a = n << 30 | n >>> 2,
+                        n = i,
+                        i = d
+                    }
+                    o[0] = o[0] + i | 0,
+                    o[1] = o[1] + n | 0,
+                    o[2] = o[2] + a | 0,
+                    o[3] = o[3] + s | 0,
+                    o[4] = o[4] + c | 0
+                },
+                _doFinalize: function() {
+                    var e = this._data
+                      , t = e.words
+                      , o = 8 * this._nDataBytes
+                      , i = 8 * e.sigBytes;
+                    return t[i >>> 5] |= 128 << 24 - i % 32,
+                    t[14 + (i + 64 >>> 9 << 4)] = Math.floor(o / 4294967296),
+                    t[15 + (i + 64 >>> 9 << 4)] = o,
+                    e.sigBytes = 4 * t.length,
+                    this._process(),
+                    this._hash
+                },
+                clone: function() {
+                    var e = i.clone.call(this);
+                    return e._hash = this._hash.clone(),
+                    e
+                }
+            }),
+            e.SHA1 = i._createHelper(a),
+            e.HmacSHA1 = i._createHmacHelper(a),
+            function(e) {
+                var t = h
+                  , o = t.lib
+                  , i = o.WordArray
+                  , n = o.Hasher
+                  , r = t.algo
+                  , a = []
+                  , s = [];
+                (function() {
+                    function t(t) {
+                        for (var o = e.sqrt(t), i = 2; i <= o; i++)
+                            if (!(t % i))
+                                return !1;
+                        return !0
+                    }
+                    function o(e) {
+                        return 4294967296 * (e - (0 | e)) | 0
+                    }
+                    for (var i = 2, n = 0; n < 64; )
+                        t(i) && (n < 8 && (a[n] = o(e.pow(i, .5))),
+                        s[n] = o(e.pow(i, 1 / 3)),
+                        n++),
+                        i++
+                }
+                )();
+                var c = []
+                  , l = r.SHA256 = n.extend({
+                    _doReset: function() {
+                        this._hash = new i.init(a.slice(0))
+                    },
+                    _doProcessBlock: function(e, t) {
+                        for (var o = this._hash.words, i = o[0], n = o[1], r = o[2], a = o[3], l = o[4], h = o[5], d = o[6], f = o[7], u = 0; u < 64; u++) {
+                            if (u < 16)
+                                c[u] = 0 | e[t + u];
+                            else {
+                                var p = c[u - 15]
+                                  , g = (p << 25 | p >>> 7) ^ (p << 14 | p >>> 18) ^ p >>> 3
+                                  , _ = c[u - 2]
+                                  , m = (_ << 15 | _ >>> 17) ^ (_ << 13 | _ >>> 19) ^ _ >>> 10;
+                                c[u] = g + c[u - 7] + m + c[u - 16]
+                            }
+                            var y = i & n ^ i & r ^ n & r
+                              , v = (i << 30 | i >>> 2) ^ (i << 19 | i >>> 13) ^ (i << 10 | i >>> 22)
+                              , C = f + ((l << 26 | l >>> 6) ^ (l << 21 | l >>> 11) ^ (l << 7 | l >>> 25)) + (l & h ^ ~l & d) + s[u] + c[u];
+                            f = d,
+                            d = h,
+                            h = l,
+                            l = a + C | 0,
+                            a = r,
+                            r = n,
+                            n = i,
+                            i = C + (v + y) | 0
+                        }
+                        o[0] = o[0] + i | 0,
+                        o[1] = o[1] + n | 0,
+                        o[2] = o[2] + r | 0,
+                        o[3] = o[3] + a | 0,
+                        o[4] = o[4] + l | 0,
+                        o[5] = o[5] + h | 0,
+                        o[6] = o[6] + d | 0,
+                        o[7] = o[7] + f | 0
+                    },
+                    _doFinalize: function() {
+                        var t = this._data
+                          , o = t.words
+                          , i = 8 * this._nDataBytes
+                          , n = 8 * t.sigBytes;
+                        return o[n >>> 5] |= 128 << 24 - n % 32,
+                        o[14 + (n + 64 >>> 9 << 4)] = e.floor(i / 4294967296),
+                        o[15 + (n + 64 >>> 9 << 4)] = i,
+                        t.sigBytes = 4 * o.length,
+                        this._process(),
+                        this._hash
+                    },
+                    clone: function() {
+                        var e = n.clone.call(this);
+                        return e._hash = this._hash.clone(),
+                        e
+                    }
+                });
+                t.SHA256 = n._createHelper(l),
+                t.HmacSHA256 = n._createHmacHelper(l)
+            }(Math),
+            function() {
+                var e = h
+                  , t = e.lib.WordArray
+                  , o = e.enc;
+                function i(e) {
+                    return e << 8 & 4278255360 | e >>> 8 & 16711935
+                }
+                o.Utf16 = o.Utf16BE = {
+                    stringify: function(e) {
+                        for (var t = e.words, o = e.sigBytes, i = [], n = 0; n < o; n += 2) {
+                            var r = t[n >>> 2] >>> 16 - n % 4 * 8 & 65535;
+                            i.push(String.fromCharCode(r))
+                        }
+                        return i.join("")
+                    },
+                    parse: function(e) {
+                        for (var o = e.length, i = [], n = 0; n < o; n++)
+                            i[n >>> 1] |= e.charCodeAt(n) << 16 - n % 2 * 16;
+                        return t.create(i, 2 * o)
+                    }
+                },
+                o.Utf16LE = {
+                    stringify: function(e) {
+                        for (var t = e.words, o = e.sigBytes, n = [], r = 0; r < o; r += 2) {
+                            var a = i(t[r >>> 2] >>> 16 - r % 4 * 8 & 65535);
+                            n.push(String.fromCharCode(a))
+                        }
+                        return n.join("")
+                    },
+                    parse: function(e) {
+                        for (var o = e.length, n = [], r = 0; r < o; r++)
+                            n[r >>> 1] |= i(e.charCodeAt(r) << 16 - r % 2 * 16);
+                        return t.create(n, 2 * o)
+                    }
+                }
+            }(),
+            function() {
+                if ("function" == typeof ArrayBuffer) {
+                    var e = h.lib.WordArray
+                      , t = e.init;
+                    (e.init = function(e) {
+                        if (e instanceof ArrayBuffer && (e = new Uint8Array(e)),
+                        (e instanceof Int8Array || "undefined" != typeof Uint8ClampedArray && e instanceof Uint8ClampedArray || e instanceof Int16Array || e instanceof Uint16Array || e instanceof Int32Array || e instanceof Uint32Array || e instanceof Float32Array || e instanceof Float64Array) && (e = new Uint8Array(e.buffer,e.byteOffset,e.byteLength)),
+                        e instanceof Uint8Array) {
+                            for (var o = e.byteLength, i = [], n = 0; n < o; n++)
+                                i[n >>> 2] |= e[n] << 24 - n % 4 * 8;
+                            t.call(this, i, o)
+                        } else
+                            t.apply(this, arguments)
+                    }
+                    ).prototype = e
+                }
+            }(),
+            function() {
+                var e = h
+                  , t = e.lib
+                  , o = t.WordArray
+                  , i = t.Hasher
+                  , n = e.algo
+                  , r = o.create([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 7, 4, 13, 1, 10, 6, 15, 3, 12, 0, 9, 5, 2, 14, 11, 8, 3, 10, 14, 4, 9, 15, 8, 1, 2, 7, 0, 6, 13, 11, 5, 12, 1, 9, 11, 10, 0, 8, 12, 4, 13, 3, 7, 15, 14, 5, 6, 2, 4, 0, 5, 9, 7, 12, 2, 10, 14, 1, 3, 8, 11, 6, 15, 13])
+                  , a = o.create([5, 14, 7, 0, 9, 2, 11, 4, 13, 6, 15, 8, 1, 10, 3, 12, 6, 11, 3, 7, 0, 13, 5, 10, 14, 15, 8, 12, 4, 9, 1, 2, 15, 5, 1, 3, 7, 14, 6, 9, 11, 8, 12, 2, 10, 0, 4, 13, 8, 6, 4, 1, 3, 11, 15, 0, 5, 12, 2, 13, 9, 7, 10, 14, 12, 15, 10, 4, 1, 5, 8, 7, 6, 2, 13, 14, 0, 3, 9, 11])
+                  , s = o.create([11, 14, 15, 12, 5, 8, 7, 9, 11, 13, 14, 15, 6, 7, 9, 8, 7, 6, 8, 13, 11, 9, 7, 15, 7, 12, 15, 9, 11, 7, 13, 12, 11, 13, 6, 7, 14, 9, 13, 15, 14, 8, 13, 6, 5, 12, 7, 5, 11, 12, 14, 15, 14, 15, 9, 8, 9, 14, 5, 6, 8, 6, 5, 12, 9, 15, 5, 11, 6, 8, 13, 12, 5, 12, 13, 14, 11, 8, 5, 6])
+                  , c = o.create([8, 9, 9, 11, 13, 15, 15, 5, 7, 7, 8, 11, 14, 14, 12, 6, 9, 13, 15, 7, 12, 8, 9, 11, 7, 7, 12, 7, 6, 15, 13, 11, 9, 7, 15, 11, 8, 6, 6, 14, 12, 13, 5, 14, 13, 13, 7, 5, 15, 5, 8, 11, 14, 14, 6, 14, 6, 9, 12, 9, 12, 5, 15, 8, 8, 5, 12, 9, 12, 5, 14, 6, 8, 13, 6, 5, 15, 13, 11, 11])
+                  , l = o.create([0, 1518500249, 1859775393, 2400959708, 2840853838])
+                  , d = o.create([1352829926, 1548603684, 1836072691, 2053994217, 0])
+                  , f = n.RIPEMD160 = i.extend({
+                    _doReset: function() {
+                        this._hash = o.create([1732584193, 4023233417, 2562383102, 271733878, 3285377520])
+                    },
+                    _doProcessBlock: function(e, t) {
+                        for (var o = 0; o < 16; o++) {
+                            var i = t + o
+                              , n = e[i];
+                            e[i] = 16711935 & (n << 8 | n >>> 24) | 4278255360 & (n << 24 | n >>> 8)
+                        }
+                        var h, f, v, C, b, M, S, N, w, B, P, T = this._hash.words, k = l.words, I = d.words, D = r.words, R = a.words, L = s.words, E = c.words;
+                        for (M = h = T[0],
+                        S = f = T[1],
+                        N = v = T[2],
+                        w = C = T[3],
+                        B = b = T[4],
+                        o = 0; o < 80; o += 1)
+                            P = h + e[t + D[o]] | 0,
+                            P += o < 16 ? u(f, v, C) + k[0] : o < 32 ? p(f, v, C) + k[1] : o < 48 ? g(f, v, C) + k[2] : o < 64 ? _(f, v, C) + k[3] : m(f, v, C) + k[4],
+                            P = (P = y(P |= 0, L[o])) + b | 0,
+                            h = b,
+                            b = C,
+                            C = y(v, 10),
+                            v = f,
+                            f = P,
+                            P = M + e[t + R[o]] | 0,
+                            P += o < 16 ? m(S, N, w) + I[0] : o < 32 ? _(S, N, w) + I[1] : o < 48 ? g(S, N, w) + I[2] : o < 64 ? p(S, N, w) + I[3] : u(S, N, w) + I[4],
+                            P = (P = y(P |= 0, E[o])) + B | 0,
+                            M = B,
+                            B = w,
+                            w = y(N, 10),
+                            N = S,
+                            S = P;
+                        P = T[1] + v + w | 0,
+                        T[1] = T[2] + C + B | 0,
+                        T[2] = T[3] + b + M | 0,
+                        T[3] = T[4] + h + S | 0,
+                        T[4] = T[0] + f + N | 0,
+                        T[0] = P
+                    },
+                    _doFinalize: function() {
+                        var e = this._data
+                          , t = e.words
+                          , o = 8 * this._nDataBytes
+                          , i = 8 * e.sigBytes;
+                        t[i >>> 5] |= 128 << 24 - i % 32,
+                        t[14 + (i + 64 >>> 9 << 4)] = 16711935 & (o << 8 | o >>> 24) | 4278255360 & (o << 24 | o >>> 8),
+                        e.sigBytes = 4 * (t.length + 1),
+                        this._process();
+                        for (var n = this._hash, r = n.words, a = 0; a < 5; a++) {
+                            var s = r[a];
+                            r[a] = 16711935 & (s << 8 | s >>> 24) | 4278255360 & (s << 24 | s >>> 8)
+                        }
+                        return n
+                    },
+                    clone: function() {
+                        var e = i.clone.call(this);
+                        return e._hash = this._hash.clone(),
+                        e
+                    }
+                });
+                function u(e, t, o) {
+                    return e ^ t ^ o
+                }
+                function p(e, t, o) {
+                    return e & t | ~e & o
+                }
+                function g(e, t, o) {
+                    return (e | ~t) ^ o
+                }
+                function _(e, t, o) {
+                    return e & o | t & ~o
+                }
+                function m(e, t, o) {
+                    return e ^ (t | ~o)
+                }
+                function y(e, t) {
+                    return e << t | e >>> 32 - t
+                }
+                e.RIPEMD160 = i._createHelper(f),
+                e.HmacRIPEMD160 = i._createHmacHelper(f)
+            }(Math),
+            function() {
+                var e = h
+                  , t = e.lib.Base
+                  , o = e.enc.Utf8;
+                e.algo.HMAC = t.extend({
+                    init: function(e, t) {
+                        e = this._hasher = new e.init,
+                        "string" == typeof t && (t = o.parse(t));
+                        var i = e.blockSize
+                          , n = 4 * i;
+                        t.sigBytes > n && (t = e.finalize(t)),
+                        t.clamp();
+                        for (var r = this._oKey = t.clone(), a = this._iKey = t.clone(), s = r.words, c = a.words, l = 0; l < i; l++)
+                            s[l] ^= 1549556828,
+                            c[l] ^= 909522486;
+                        r.sigBytes = a.sigBytes = n,
+                        this.reset()
+                    },
+                    reset: function() {
+                        var e = this._hasher;
+                        e.reset(),
+                        e.update(this._iKey)
+                    },
+                    update: function(e) {
+                        return this._hasher.update(e),
+                        this
+                    },
+                    finalize: function(e) {
+                        var t = this._hasher
+                          , o = t.finalize(e);
+                        return t.reset(),
+                        t.finalize(this._oKey.clone().concat(o))
+                    }
+                })
+            }(),
+            function() {
+                var e = h
+                  , t = e.lib
+                  , o = t.Base
+                  , i = t.WordArray
+                  , n = e.algo
+                  , r = n.SHA1
+                  , a = n.HMAC
+                  , s = n.PBKDF2 = o.extend({
+                    cfg: o.extend({
+                        keySize: 4,
+                        hasher: r,
+                        iterations: 1
+                    }),
+                    init: function(e) {
+                        this.cfg = this.cfg.extend(e)
+                    },
+                    compute: function(e, t) {
+                        for (var o = this.cfg, n = a.create(o.hasher, e), r = i.create(), s = i.create([1]), c = r.words, l = s.words, h = o.keySize, d = o.iterations; c.length < h; ) {
+                            var f = n.update(t).finalize(s);
+                            n.reset();
+                            for (var u = f.words, p = u.length, g = f, _ = 1; _ < d; _++) {
+                                g = n.finalize(g),
+                                n.reset();
+                                for (var m = g.words, y = 0; y < p; y++)
+                                    u[y] ^= m[y]
+                            }
+                            r.concat(f),
+                            l[0]++
+                        }
+                        return r.sigBytes = 4 * h,
+                        r
+                    }
+                });
+                e.PBKDF2 = function(e, t, o) {
+                    return s.create(o).compute(e, t)
+                }
+            }(),
+            function() {
+                var e = h
+                  , t = e.lib
+                  , o = t.Base
+                  , i = t.WordArray
+                  , n = e.algo
+                  , r = n.MD5
+                  , a = n.EvpKDF = o.extend({
+                    cfg: o.extend({
+                        keySize: 4,
+                        hasher: r,
+                        iterations: 1
+                    }),
+                    init: function(e) {
+                        this.cfg = this.cfg.extend(e)
+                    },
+                    compute: function(e, t) {
+                        for (var o = this.cfg, n = o.hasher.create(), r = i.create(), a = r.words, s = o.keySize, c = o.iterations; a.length < s; ) {
+                            l && n.update(l);
+                            var l = n.update(e).finalize(t);
+                            n.reset();
+                            for (var h = 1; h < c; h++)
+                                l = n.finalize(l),
+                                n.reset();
+                            r.concat(l)
+                        }
+                        return r.sigBytes = 4 * s,
+                        r
+                    }
+                });
+                e.EvpKDF = function(e, t, o) {
+                    return a.create(o).compute(e, t)
+                }
+            }(),
+            function() {
+                var e = h
+                  , t = e.lib.WordArray
+                  , o = e.algo
+                  , i = o.SHA256
+                  , n = o.SHA224 = i.extend({
+                    _doReset: function() {
+                        this._hash = new t.init([3238371032, 914150663, 812702999, 4144912697, 4290775857, 1750603025, 1694076839, 3204075428])
+                    },
+                    _doFinalize: function() {
+                        var e = i._doFinalize.call(this);
+                        return e.sigBytes -= 4,
+                        e
+                    }
+                });
+                e.SHA224 = i._createHelper(n),
+                e.HmacSHA224 = i._createHmacHelper(n)
+            }(),
+            function() {
+                var e = h
+                  , t = e.lib
+                  , o = t.Base
+                  , i = t.WordArray
+                  , n = e.x64 = {};
+                n.Word = o.extend({
+                    init: function(e, t) {
+                        this.high = e,
+                        this.low = t
+                    }
+                }),
+                n.WordArray = o.extend({
+                    init: function(e, t) {
+                        e = this.words = e || [],
+                        this.sigBytes = null != t ? t : 8 * e.length
+                    },
+                    toX32: function() {
+                        for (var e = this.words, t = e.length, o = [], n = 0; n < t; n++) {
+                            var r = e[n];
+                            o.push(r.high),
+                            o.push(r.low)
+                        }
+                        return i.create(o, this.sigBytes)
+                    },
+                    clone: function() {
+                        for (var e = o.clone.call(this), t = e.words = this.words.slice(0), i = t.length, n = 0; n < i; n++)
+                            t[n] = t[n].clone();
+                        return e
+                    }
+                })
+            }(),
+            function(e) {
+                var t = h
+                  , o = t.lib
+                  , i = o.WordArray
+                  , n = o.Hasher
+                  , r = t.x64.Word
+                  , a = t.algo
+                  , s = []
+                  , c = []
+                  , l = [];
+                (function() {
+                    for (var e = 1, t = 0, o = 0; o < 24; o++) {
+                        s[e + 5 * t] = (o + 1) * (o + 2) / 2 % 64;
+                        var i = (2 * e + 3 * t) % 5;
+                        e = t % 5,
+                        t = i
+                    }
+                    for (e = 0; e < 5; e++)
+                        for (t = 0; t < 5; t++)
+                            c[e + 5 * t] = t + (2 * e + 3 * t) % 5 * 5;
+                    for (var n = 1, a = 0; a < 24; a++) {
+                        for (var h = 0, d = 0, f = 0; f < 7; f++) {
+                            if (1 & n) {
+                                var u = (1 << f) - 1;
+                                u < 32 ? d ^= 1 << u : h ^= 1 << u - 32
+                            }
+                            128 & n ? n = n << 1 ^ 113 : n <<= 1
+                        }
+                        l[a] = r.create(h, d)
+                    }
+                }
+                )();
+                var d = [];
+                (function() {
+                    for (var e = 0; e < 25; e++)
+                        d[e] = r.create()
+                }
+                )();
+                var f = a.SHA3 = n.extend({
+                    cfg: n.cfg.extend({
+                        outputLength: 512
+                    }),
+                    _doReset: function() {
+                        for (var e = this._state = [], t = 0; t < 25; t++)
+                            e[t] = new r.init;
+                        this.blockSize = (1600 - 2 * this.cfg.outputLength) / 32
+                    },
+                    _doProcessBlock: function(e, t) {
+                        for (var o = this._state, i = this.blockSize / 2, n = 0; n < i; n++) {
+                            var r = e[t + 2 * n]
+                              , a = e[t + 2 * n + 1];
+                            r = 16711935 & (r << 8 | r >>> 24) | 4278255360 & (r << 24 | r >>> 8),
+                            a = 16711935 & (a << 8 | a >>> 24) | 4278255360 & (a << 24 | a >>> 8),
+                            (T = o[n]).high ^= a,
+                            T.low ^= r
+                        }
+                        for (var h = 0; h < 24; h++) {
+                            for (var f = 0; f < 5; f++) {
+                                for (var u = 0, p = 0, g = 0; g < 5; g++)
+                                    u ^= (T = o[f + 5 * g]).high,
+                                    p ^= T.low;
+                                var _ = d[f];
+                                _.high = u,
+                                _.low = p
+                            }
+                            for (f = 0; f < 5; f++) {
+                                var m = d[(f + 4) % 5]
+                                  , y = d[(f + 1) % 5]
+                                  , v = y.high
+                                  , C = y.low;
+                                for (u = m.high ^ (v << 1 | C >>> 31),
+                                p = m.low ^ (C << 1 | v >>> 31),
+                                g = 0; g < 5; g++)
+                                    (T = o[f + 5 * g]).high ^= u,
+                                    T.low ^= p
+                            }
+                            for (var b = 1; b < 25; b++) {
+                                var M = (T = o[b]).high
+                                  , S = T.low
+                                  , N = s[b];
+                                N < 32 ? (u = M << N | S >>> 32 - N,
+                                p = S << N | M >>> 32 - N) : (u = S << N - 32 | M >>> 64 - N,
+                                p = M << N - 32 | S >>> 64 - N);
+                                var w = d[c[b]];
+                                w.high = u,
+                                w.low = p
+                            }
+                            var B = d[0]
+                              , P = o[0];
+                            for (B.high = P.high,
+                            B.low = P.low,
+                            f = 0; f < 5; f++)
+                                for (g = 0; g < 5; g++) {
+                                    var T = o[b = f + 5 * g]
+                                      , k = d[b]
+                                      , I = d[(f + 1) % 5 + 5 * g]
+                                      , D = d[(f + 2) % 5 + 5 * g];
+                                    T.high = k.high ^ ~I.high & D.high,
+                                    T.low = k.low ^ ~I.low & D.low
+                                }
+                            T = o[0];
+                            var R = l[h];
+                            T.high ^= R.high,
+                            T.low ^= R.low
+                        }
+                    },
+                    _doFinalize: function() {
+                        var t = this._data
+                          , o = t.words
+                          , n = (this._nDataBytes,
+                        8 * t.sigBytes)
+                          , r = 32 * this.blockSize;
+                        o[n >>> 5] |= 1 << 24 - n % 32,
+                        o[(e.ceil((n + 1) / r) * r >>> 5) - 1] |= 128,
+                        t.sigBytes = 4 * o.length,
+                        this._process();
+                        for (var a = this._state, s = this.cfg.outputLength / 8, c = s / 8, l = [], h = 0; h < c; h++) {
+                            var d = a[h]
+                              , f = d.high
+                              , u = d.low;
+                            f = 16711935 & (f << 8 | f >>> 24) | 4278255360 & (f << 24 | f >>> 8),
+                            u = 16711935 & (u << 8 | u >>> 24) | 4278255360 & (u << 24 | u >>> 8),
+                            l.push(u),
+                            l.push(f)
+                        }
+                        return new i.init(l,s)
+                    },
+                    clone: function() {
+                        for (var e = n.clone.call(this), t = e._state = this._state.slice(0), o = 0; o < 25; o++)
+                            t[o] = t[o].clone();
+                        return e
+                    }
+                });
+                t.SHA3 = n._createHelper(f),
+                t.HmacSHA3 = n._createHmacHelper(f)
+            }(Math),
+            function() {
+                var e = h
+                  , t = e.lib.Hasher
+                  , o = e.x64
+                  , i = o.Word
+                  , n = o.WordArray
+                  , r = e.algo;
+                function a() {
+                    return i.create.apply(i, arguments)
+                }
+                var s = [a(1116352408, 3609767458), a(1899447441, 602891725), a(3049323471, 3964484399), a(3921009573, 2173295548), a(961987163, 4081628472), a(1508970993, 3053834265), a(2453635748, 2937671579), a(2870763221, 3664609560), a(3624381080, 2734883394), a(310598401, 1164996542), a(607225278, 1323610764), a(1426881987, 3590304994), a(1925078388, 4068182383), a(2162078206, 991336113), a(2614888103, 633803317), a(3248222580, 3479774868), a(3835390401, 2666613458), a(4022224774, 944711139), a(264347078, 2341262773), a(604807628, 2007800933), a(770255983, 1495990901), a(1249150122, 1856431235), a(1555081692, 3175218132), a(1996064986, 2198950837), a(2554220882, 3999719339), a(2821834349, 766784016), a(2952996808, 2566594879), a(3210313671, 3203337956), a(3336571891, 1034457026), a(3584528711, 2466948901), a(113926993, 3758326383), a(338241895, 168717936), a(666307205, 1188179964), a(773529912, 1546045734), a(1294757372, 1522805485), a(1396182291, 2643833823), a(1695183700, 2343527390), a(1986661051, 1014477480), a(2177026350, 1206759142), a(2456956037, 344077627), a(2730485921, 1290863460), a(2820302411, 3158454273), a(3259730800, 3505952657), a(3345764771, 106217008), a(3516065817, 3606008344), a(3600352804, 1432725776), a(4094571909, 1467031594), a(275423344, 851169720), a(430227734, 3100823752), a(506948616, 1363258195), a(659060556, 3750685593), a(883997877, 3785050280), a(958139571, 3318307427), a(1322822218, 3812723403), a(1537002063, 2003034995), a(1747873779, 3602036899), a(1955562222, 1575990012), a(2024104815, 1125592928), a(2227730452, 2716904306), a(2361852424, 442776044), a(2428436474, 593698344), a(2756734187, 3733110249), a(3204031479, 2999351573), a(3329325298, 3815920427), a(3391569614, 3928383900), a(3515267271, 566280711), a(3940187606, 3454069534), a(4118630271, 4000239992), a(116418474, 1914138554), a(174292421, 2731055270), a(289380356, 3203993006), a(460393269, 320620315), a(685471733, 587496836), a(852142971, 1086792851), a(1017036298, 365543100), a(1126000580, 2618297676), a(1288033470, 3409855158), a(1501505948, 4234509866), a(1607167915, 987167468), a(1816402316, 1246189591)]
+                  , c = [];
+                (function() {
+                    for (var e = 0; e < 80; e++)
+                        c[e] = a()
+                }
+                )();
+                var l = r.SHA512 = t.extend({
+                    _doReset: function() {
+                        this._hash = new n.init([new i.init(1779033703,4089235720), new i.init(3144134277,2227873595), new i.init(1013904242,4271175723), new i.init(2773480762,1595750129), new i.init(1359893119,2917565137), new i.init(2600822924,725511199), new i.init(528734635,4215389547), new i.init(1541459225,327033209)])
+                    },
+                    _doProcessBlock: function(e, t) {
+                        for (var o = this._hash.words, i = o[0], n = o[1], r = o[2], a = o[3], l = o[4], h = o[5], d = o[6], f = o[7], u = i.high, p = i.low, g = n.high, _ = n.low, m = r.high, y = r.low, v = a.high, C = a.low, b = l.high, M = l.low, S = h.high, N = h.low, w = d.high, B = d.low, P = f.high, T = f.low, k = u, I = p, D = g, R = _, L = m, E = y, x = v, O = C, F = b, A = M, U = S, j = N, G = w, H = B, z = P, V = T, W = 0; W < 80; W++) {
+                            var J = c[W];
+                            if (W < 16)
+                                var q = J.high = 0 | e[t + 2 * W]
+                                  , K = J.low = 0 | e[t + 2 * W + 1];
+                            else {
+                                var X = c[W - 15]
+                                  , Y = X.high
+                                  , Z = X.low
+                                  , Q = (Y >>> 1 | Z << 31) ^ (Y >>> 8 | Z << 24) ^ Y >>> 7
+                                  , $ = (Z >>> 1 | Y << 31) ^ (Z >>> 8 | Y << 24) ^ (Z >>> 7 | Y << 25)
+                                  , ee = c[W - 2]
+                                  , te = ee.high
+                                  , oe = ee.low
+                                  , ie = (te >>> 19 | oe << 13) ^ (te << 3 | oe >>> 29) ^ te >>> 6
+                                  , ne = (oe >>> 19 | te << 13) ^ (oe << 3 | te >>> 29) ^ (oe >>> 6 | te << 26)
+                                  , re = c[W - 7]
+                                  , ae = re.high
+                                  , se = re.low
+                                  , ce = c[W - 16]
+                                  , le = ce.high
+                                  , he = ce.low;
+                                q = (q = (q = Q + ae + ((K = $ + se) >>> 0 < $ >>> 0 ? 1 : 0)) + ie + ((K += ne) >>> 0 < ne >>> 0 ? 1 : 0)) + le + ((K += he) >>> 0 < he >>> 0 ? 1 : 0),
+                                J.high = q,
+                                J.low = K
+                            }
+                            var de, fe = F & U ^ ~F & G, ue = A & j ^ ~A & H, pe = k & D ^ k & L ^ D & L, ge = I & R ^ I & E ^ R & E, _e = (k >>> 28 | I << 4) ^ (k << 30 | I >>> 2) ^ (k << 25 | I >>> 7), me = (I >>> 28 | k << 4) ^ (I << 30 | k >>> 2) ^ (I << 25 | k >>> 7), ye = (F >>> 14 | A << 18) ^ (F >>> 18 | A << 14) ^ (F << 23 | A >>> 9), ve = (A >>> 14 | F << 18) ^ (A >>> 18 | F << 14) ^ (A << 23 | F >>> 9), Ce = s[W], be = Ce.high, Me = Ce.low, Se = z + ye + ((de = V + ve) >>> 0 < V >>> 0 ? 1 : 0), Ne = me + ge;
+                            z = G,
+                            V = H,
+                            G = U,
+                            H = j,
+                            U = F,
+                            j = A,
+                            F = x + (Se = (Se = (Se = Se + fe + ((de += ue) >>> 0 < ue >>> 0 ? 1 : 0)) + be + ((de += Me) >>> 0 < Me >>> 0 ? 1 : 0)) + q + ((de += K) >>> 0 < K >>> 0 ? 1 : 0)) + ((A = O + de | 0) >>> 0 < O >>> 0 ? 1 : 0) | 0,
+                            x = L,
+                            O = E,
+                            L = D,
+                            E = R,
+                            D = k,
+                            R = I,
+                            k = Se + (_e + pe + (Ne >>> 0 < me >>> 0 ? 1 : 0)) + ((I = de + Ne | 0) >>> 0 < de >>> 0 ? 1 : 0) | 0
+                        }
+                        p = i.low = p + I,
+                        i.high = u + k + (p >>> 0 < I >>> 0 ? 1 : 0),
+                        _ = n.low = _ + R,
+                        n.high = g + D + (_ >>> 0 < R >>> 0 ? 1 : 0),
+                        y = r.low = y + E,
+                        r.high = m + L + (y >>> 0 < E >>> 0 ? 1 : 0),
+                        C = a.low = C + O,
+                        a.high = v + x + (C >>> 0 < O >>> 0 ? 1 : 0),
+                        M = l.low = M + A,
+                        l.high = b + F + (M >>> 0 < A >>> 0 ? 1 : 0),
+                        N = h.low = N + j,
+                        h.high = S + U + (N >>> 0 < j >>> 0 ? 1 : 0),
+                        B = d.low = B + H,
+                        d.high = w + G + (B >>> 0 < H >>> 0 ? 1 : 0),
+                        T = f.low = T + V,
+                        f.high = P + z + (T >>> 0 < V >>> 0 ? 1 : 0)
+                    },
+                    _doFinalize: function() {
+                        var e = this._data
+                          , t = e.words
+                          , o = 8 * this._nDataBytes
+                          , i = 8 * e.sigBytes;
+                        return t[i >>> 5] |= 128 << 24 - i % 32,
+                        t[30 + (i + 128 >>> 10 << 5)] = Math.floor(o / 4294967296),
+                        t[31 + (i + 128 >>> 10 << 5)] = o,
+                        e.sigBytes = 4 * t.length,
+                        this._process(),
+                        this._hash.toX32()
+                    },
+                    clone: function() {
+                        var e = t.clone.call(this);
+                        return e._hash = this._hash.clone(),
+                        e
+                    },
+                    blockSize: 32
+                });
+                e.SHA512 = t._createHelper(l),
+                e.HmacSHA512 = t._createHmacHelper(l)
+            }(),
+            function() {
+                var e = h
+                  , t = e.x64
+                  , o = t.Word
+                  , i = t.WordArray
+                  , n = e.algo
+                  , r = n.SHA512
+                  , a = n.SHA384 = r.extend({
+                    _doReset: function() {
+                        this._hash = new i.init([new o.init(3418070365,3238371032), new o.init(1654270250,914150663), new o.init(2438529370,812702999), new o.init(355462360,4144912697), new o.init(1731405415,4290775857), new o.init(2394180231,1750603025), new o.init(3675008525,1694076839), new o.init(1203062813,3204075428)])
+                    },
+                    _doFinalize: function() {
+                        var e = r._doFinalize.call(this);
+                        return e.sigBytes -= 16,
+                        e
+                    }
+                });
+                e.SHA384 = r._createHelper(a),
+                e.HmacSHA384 = r._createHmacHelper(a)
+            }(),
+            h.lib.Cipher || function(e) {
+                var t = h
+                  , o = t.lib
+                  , i = o.Base
+                  , n = o.WordArray
+                  , r = o.BufferedBlockAlgorithm
+                  , a = t.enc
+                  , s = (a.Utf8,
+                a.Base64)
+                  , c = t.algo.EvpKDF
+                  , l = o.Cipher = r.extend({
+                    cfg: i.extend(),
+                    createEncryptor: function(e, t) {
+                        return this.create(this._ENC_XFORM_MODE, e, t)
+                    },
+                    createDecryptor: function(e, t) {
+                        return this.create(this._DEC_XFORM_MODE, e, t)
+                    },
+                    init: function(e, t, o) {
+                        this.cfg = this.cfg.extend(o),
+                        this._xformMode = e,
+                        this._key = t,
+                        this.reset()
+                    },
+                    reset: function() {
+                        r.reset.call(this),
+                        this._doReset()
+                    },
+                    process: function(e) {
+                        return this._append(e),
+                        this._process()
+                    },
+                    finalize: function(e) {
+                        return e && this._append(e),
+                        this._doFinalize()
+                    },
+                    keySize: 4,
+                    ivSize: 4,
+                    _ENC_XFORM_MODE: 1,
+                    _DEC_XFORM_MODE: 2,
+                    _createHelper: function() {
+                        function e(e) {
+                            return "string" == typeof e ? v : m
+                        }
+                        return function(t) {
+                            return {
+                                encrypt: function(o, i, n) {
+                                    return e(i).encrypt(t, o, i, n)
+                                },
+                                decrypt: function(o, i, n) {
+                                    return e(i).decrypt(t, o, i, n)
+                                }
+                            }
+                        }
+                    }()
+                })
+                  , d = (o.StreamCipher = l.extend({
+                    _doFinalize: function() {
+                        return this._process(!0)
+                    },
+                    blockSize: 1
+                }),
+                t.mode = {})
+                  , f = o.BlockCipherMode = i.extend({
+                    createEncryptor: function(e, t) {
+                        return this.Encryptor.create(e, t)
+                    },
+                    createDecryptor: function(e, t) {
+                        return this.Decryptor.create(e, t)
+                    },
+                    init: function(e, t) {
+                        this._cipher = e,
+                        this._iv = t
+                    }
+                })
+                  , u = d.CBC = function() {
+                    var t = f.extend();
+                    function o(t, o, i) {
+                        var n = this._iv;
+                        if (n) {
+                            var r = n;
+                            this._iv = e
+                        } else
+                            r = this._prevBlock;
+                        for (var a = 0; a < i; a++)
+                            t[o + a] ^= r[a]
+                    }
+                    return t.Encryptor = t.extend({
+                        processBlock: function(e, t) {
+                            var i = this._cipher
+                              , n = i.blockSize;
+                            o.call(this, e, t, n),
+                            i.encryptBlock(e, t),
+                            this._prevBlock = e.slice(t, t + n)
+                        }
+                    }),
+                    t.Decryptor = t.extend({
+                        processBlock: function(e, t) {
+                            var i = this._cipher
+                              , n = i.blockSize
+                              , r = e.slice(t, t + n);
+                            i.decryptBlock(e, t),
+                            o.call(this, e, t, n),
+                            this._prevBlock = r
+                        }
+                    }),
+                    t
+                }()
+                  , p = (t.pad = {}).Pkcs7 = {
+                    pad: function(e, t) {
+                        for (var o = 4 * t, i = o - e.sigBytes % o, r = i << 24 | i << 16 | i << 8 | i, a = [], s = 0; s < i; s += 4)
+                            a.push(r);
+                        var c = n.create(a, i);
+                        e.concat(c)
+                    },
+                    unpad: function(e) {
+                        var t = 255 & e.words[e.sigBytes - 1 >>> 2];
+                        e.sigBytes -= t
+                    }
+                }
+                  , g = (o.BlockCipher = l.extend({
+                    cfg: l.cfg.extend({
+                        mode: u,
+                        padding: p
+                    }),
+                    reset: function() {
+                        l.reset.call(this);
+                        var e = this.cfg
+                          , t = e.iv
+                          , o = e.mode;
+                        if (this._xformMode == this._ENC_XFORM_MODE)
+                            var i = o.createEncryptor;
+                        else
+                            i = o.createDecryptor,
+                            this._minBufferSize = 1;
+                        this._mode && this._mode.__creator == i ? this._mode.init(this, t && t.words) : (this._mode = i.call(o, this, t && t.words),
+                        this._mode.__creator = i)
+                    },
+                    _doProcessBlock: function(e, t) {
+                        this._mode.processBlock(e, t)
+                    },
+                    _doFinalize: function() {
+                        var e = this.cfg.padding;
+                        if (this._xformMode == this._ENC_XFORM_MODE) {
+                            e.pad(this._data, this.blockSize);
+                            var t = this._process(!0)
+                        } else
+                            t = this._process(!0),
+                            e.unpad(t);
+                        return t
+                    },
+                    blockSize: 4
+                }),
+                o.CipherParams = i.extend({
+                    init: function(e) {
+                        this.mixIn(e)
+                    },
+                    toString: function(e) {
+                        return (e || this.formatter).stringify(this)
+                    }
+                }))
+                  , _ = (t.format = {}).OpenSSL = {
+                    stringify: function(e) {
+                        var t = e.ciphertext
+                          , o = e.salt;
+                        if (o)
+                            var i = n.create([1398893684, 1701076831]).concat(o).concat(t);
+                        else
+                            i = t;
+                        return i.toString(s)
+                    },
+                    parse: function(e) {
+                        var t = s.parse(e)
+                          , o = t.words;
+                        if (1398893684 == o[0] && 1701076831 == o[1]) {
+                            var i = n.create(o.slice(2, 4));
+                            o.splice(0, 4),
+                            t.sigBytes -= 16
+                        }
+                        return g.create({
+                            ciphertext: t,
+                            salt: i
+                        })
+                    }
+                }
+                  , m = o.SerializableCipher = i.extend({
+                    cfg: i.extend({
+                        format: _
+                    }),
+                    encrypt: function(e, t, o, i) {
+                        i = this.cfg.extend(i);
+                        var n = e.createEncryptor(o, i)
+                          , r = n.finalize(t)
+                          , a = n.cfg;
+                        return g.create({
+                            ciphertext: r,
+                            key: o,
+                            iv: a.iv,
+                            algorithm: e,
+                            mode: a.mode,
+                            padding: a.padding,
+                            blockSize: e.blockSize,
+                            formatter: i.format
+                        })
+                    },
+                    decrypt: function(e, t, o, i) {
+                        return i = this.cfg.extend(i),
+                        t = this._parse(t, i.format),
+                        e.createDecryptor(o, i).finalize(t.ciphertext)
+                    },
+                    _parse: function(e, t) {
+                        return "string" == typeof e ? t.parse(e, this) : e
+                    }
+                })
+                  , y = (t.kdf = {}).OpenSSL = {
+                    execute: function(e, t, o, i) {
+                        i || (i = n.random(8));
+                        var r = c.create({
+                            keySize: t + o
+                        }).compute(e, i)
+                          , a = n.create(r.words.slice(t), 4 * o);
+                        return r.sigBytes = 4 * t,
+                        g.create({
+                            key: r,
+                            iv: a,
+                            salt: i
+                        })
+                    }
+                }
+                  , v = o.PasswordBasedCipher = m.extend({
+                    cfg: m.cfg.extend({
+                        kdf: y
+                    }),
+                    encrypt: function(e, t, o, i) {
+                        var n = (i = this.cfg.extend(i)).kdf.execute(o, e.keySize, e.ivSize);
+                        i.iv = n.iv;
+                        var r = m.encrypt.call(this, e, t, n.key, i);
+                        return r.mixIn(n),
+                        r
+                    },
+                    decrypt: function(e, t, o, i) {
+                        i = this.cfg.extend(i),
+                        t = this._parse(t, i.format);
+                        var n = i.kdf.execute(o, e.keySize, e.ivSize, t.salt);
+                        return i.iv = n.iv,
+                        m.decrypt.call(this, e, t, n.key, i)
+                    }
+                })
+            }(),
+            h.mode.CFB = function() {
+                var e = h.lib.BlockCipherMode.extend();
+                function t(e, t, o, i) {
+                    var n = this._iv;
+                    if (n) {
+                        var r = n.slice(0);
+                        this._iv = void 0
+                    } else
+                        r = this._prevBlock;
+                    i.encryptBlock(r, 0);
+                    for (var a = 0; a < o; a++)
+                        e[t + a] ^= r[a]
+                }
+                return e.Encryptor = e.extend({
+                    processBlock: function(e, o) {
+                        var i = this._cipher
+                          , n = i.blockSize;
+                        t.call(this, e, o, n, i),
+                        this._prevBlock = e.slice(o, o + n)
+                    }
+                }),
+                e.Decryptor = e.extend({
+                    processBlock: function(e, o) {
+                        var i = this._cipher
+                          , n = i.blockSize
+                          , r = e.slice(o, o + n);
+                        t.call(this, e, o, n, i),
+                        this._prevBlock = r
+                    }
+                }),
+                e
+            }(),
+            h.mode.ECB = ((s = h.lib.BlockCipherMode.extend()).Encryptor = s.extend({
+                processBlock: function(e, t) {
+                    this._cipher.encryptBlock(e, t)
+                }
+            }),
+            s.Decryptor = s.extend({
+                processBlock: function(e, t) {
+                    this._cipher.decryptBlock(e, t)
+                }
+            }),
+            s),
+            h.pad.AnsiX923 = {
+                pad: function(e, t) {
+                    var o = e.sigBytes
+                      , i = 4 * t
+                      , n = i - o % i
+                      , r = o + n - 1;
+                    e.clamp(),
+                    e.words[r >>> 2] |= n << 24 - r % 4 * 8,
+                    e.sigBytes += n
+                },
+                unpad: function(e) {
+                    var t = 255 & e.words[e.sigBytes - 1 >>> 2];
+                    e.sigBytes -= t
+                }
+            },
+            h.pad.Iso10126 = {
+                pad: function(e, t) {
+                    var o = 4 * t
+                      , i = o - e.sigBytes % o;
+                    e.concat(h.lib.WordArray.random(i - 1)).concat(h.lib.WordArray.create([i << 24], 1))
+                },
+                unpad: function(e) {
+                    var t = 255 & e.words[e.sigBytes - 1 >>> 2];
+                    e.sigBytes -= t
+                }
+            },
+            h.pad.Iso97971 = {
+                pad: function(e, t) {
+                    e.concat(h.lib.WordArray.create([2147483648], 1)),
+                    h.pad.ZeroPadding.pad(e, t)
+                },
+                unpad: function(e) {
+                    h.pad.ZeroPadding.unpad(e),
+                    e.sigBytes--
+                }
+            },
+            h.mode.OFB = (l = (c = h.lib.BlockCipherMode.extend()).Encryptor = c.extend({
+                processBlock: function(e, t) {
+                    var o = this._cipher
+                      , i = o.blockSize
+                      , n = this._iv
+                      , r = this._keystream;
+                    n && (r = this._keystream = n.slice(0),
+                    this._iv = void 0),
+                    o.encryptBlock(r, 0);
+                    for (var a = 0; a < i; a++)
+                        e[t + a] ^= r[a]
+                }
+            }),
+            c.Decryptor = l,
+            c),
+            h.pad.NoPadding = {
+                pad: function() {},
+                unpad: function() {}
+            },
+            function() {
+                var e = h
+                  , t = e.lib.CipherParams
+                  , o = e.enc.Hex;
+                e.format.Hex = {
+                    stringify: function(e) {
+                        return e.ciphertext.toString(o)
+                    },
+                    parse: function(e) {
+                        var i = o.parse(e);
+                        return t.create({
+                            ciphertext: i
+                        })
+                    }
+                }
+            }(),
+            function() {
+                var e = h
+                  , t = e.lib.BlockCipher
+                  , o = e.algo
+                  , i = []
+                  , n = []
+                  , r = []
+                  , a = []
+                  , s = []
+                  , c = []
+                  , l = []
+                  , d = []
+                  , f = []
+                  , u = [];
+                (function() {
+                    for (var e = [], t = 0; t < 256; t++)
+                        e[t] = t < 128 ? t << 1 : t << 1 ^ 283;
+                    var o = 0
+                      , h = 0;
+                    for (t = 0; t < 256; t++) {
+                        var p = h ^ h << 1 ^ h << 2 ^ h << 3 ^ h << 4;
+                        p = p >>> 8 ^ 255 & p ^ 99,
+                        i[o] = p,
+                        n[p] = o;
+                        var g = e[o]
+                          , _ = e[g]
+                          , m = e[_]
+                          , y = 257 * e[p] ^ 16843008 * p;
+                        r[o] = y << 24 | y >>> 8,
+                        a[o] = y << 16 | y >>> 16,
+                        s[o] = y << 8 | y >>> 24,
+                        c[o] = y,
+                        y = 16843009 * m ^ 65537 * _ ^ 257 * g ^ 16843008 * o,
+                        l[p] = y << 24 | y >>> 8,
+                        d[p] = y << 16 | y >>> 16,
+                        f[p] = y << 8 | y >>> 24,
+                        u[p] = y,
+                        o ? (o = g ^ e[e[e[m ^ g]]],
+                        h ^= e[e[h]]) : o = h = 1
+                    }
+                }
+                )();
+                var p = [0, 1, 2, 4, 8, 16, 32, 64, 128, 27, 54]
+                  , g = o.AES = t.extend({
+                    _doReset: function() {
+                        if (!this._nRounds || this._keyPriorReset !== this._key) {
+                            for (var e = this._keyPriorReset = this._key, t = e.words, o = e.sigBytes / 4, n = 4 * ((this._nRounds = o + 6) + 1), r = this._keySchedule = [], a = 0; a < n; a++)
+                                if (a < o)
+                                    r[a] = t[a];
+                                else {
+                                    var s = r[a - 1];
+                                    a % o ? o > 6 && a % o == 4 && (s = i[s >>> 24] << 24 | i[s >>> 16 & 255] << 16 | i[s >>> 8 & 255] << 8 | i[255 & s]) : (s = i[(s = s << 8 | s >>> 24) >>> 24] << 24 | i[s >>> 16 & 255] << 16 | i[s >>> 8 & 255] << 8 | i[255 & s],
+                                    s ^= p[a / o | 0] << 24),
+                                    r[a] = r[a - o] ^ s
+                                }
+                            for (var c = this._invKeySchedule = [], h = 0; h < n; h++)
+                                a = n - h,
+                                s = h % 4 ? r[a] : r[a - 4],
+                                c[h] = h < 4 || a <= 4 ? s : l[i[s >>> 24]] ^ d[i[s >>> 16 & 255]] ^ f[i[s >>> 8 & 255]] ^ u[i[255 & s]]
+                        }
+                    },
+                    encryptBlock: function(e, t) {
+                        this._doCryptBlock(e, t, this._keySchedule, r, a, s, c, i)
+                    },
+                    decryptBlock: function(e, t) {
+                        var o = e[t + 1];
+                        e[t + 1] = e[t + 3],
+                        e[t + 3] = o,
+                        this._doCryptBlock(e, t, this._invKeySchedule, l, d, f, u, n),
+                        o = e[t + 1],
+                        e[t + 1] = e[t + 3],
+                        e[t + 3] = o
+                    },
+                    _doCryptBlock: function(e, t, o, i, n, r, a, s) {
+                        for (var c = this._nRounds, l = e[t] ^ o[0], h = e[t + 1] ^ o[1], d = e[t + 2] ^ o[2], f = e[t + 3] ^ o[3], u = 4, p = 1; p < c; p++) {
+                            var g = i[l >>> 24] ^ n[h >>> 16 & 255] ^ r[d >>> 8 & 255] ^ a[255 & f] ^ o[u++]
+                              , _ = i[h >>> 24] ^ n[d >>> 16 & 255] ^ r[f >>> 8 & 255] ^ a[255 & l] ^ o[u++]
+                              , m = i[d >>> 24] ^ n[f >>> 16 & 255] ^ r[l >>> 8 & 255] ^ a[255 & h] ^ o[u++]
+                              , y = i[f >>> 24] ^ n[l >>> 16 & 255] ^ r[h >>> 8 & 255] ^ a[255 & d] ^ o[u++];
+                            l = g,
+                            h = _,
+                            d = m,
+                            f = y
+                        }
+                        g = (s[l >>> 24] << 24 | s[h >>> 16 & 255] << 16 | s[d >>> 8 & 255] << 8 | s[255 & f]) ^ o[u++],
+                        _ = (s[h >>> 24] << 24 | s[d >>> 16 & 255] << 16 | s[f >>> 8 & 255] << 8 | s[255 & l]) ^ o[u++],
+                        m = (s[d >>> 24] << 24 | s[f >>> 16 & 255] << 16 | s[l >>> 8 & 255] << 8 | s[255 & h]) ^ o[u++],
+                        y = (s[f >>> 24] << 24 | s[l >>> 16 & 255] << 16 | s[h >>> 8 & 255] << 8 | s[255 & d]) ^ o[u++],
+                        e[t] = g,
+                        e[t + 1] = _,
+                        e[t + 2] = m,
+                        e[t + 3] = y
+                    },
+                    keySize: 8
+                });
+                e.AES = t._createHelper(g)
+            }(),
+            function() {
+                var e = h
+                  , t = e.lib
+                  , o = t.WordArray
+                  , i = t.BlockCipher
+                  , n = e.algo
+                  , r = [57, 49, 41, 33, 25, 17, 9, 1, 58, 50, 42, 34, 26, 18, 10, 2, 59, 51, 43, 35, 27, 19, 11, 3, 60, 52, 44, 36, 63, 55, 47, 39, 31, 23, 15, 7, 62, 54, 46, 38, 30, 22, 14, 6, 61, 53, 45, 37, 29, 21, 13, 5, 28, 20, 12, 4]
+                  , a = [14, 17, 11, 24, 1, 5, 3, 28, 15, 6, 21, 10, 23, 19, 12, 4, 26, 8, 16, 7, 27, 20, 13, 2, 41, 52, 31, 37, 47, 55, 30, 40, 51, 45, 33, 48, 44, 49, 39, 56, 34, 53, 46, 42, 50, 36, 29, 32]
+                  , s = [1, 2, 4, 6, 8, 10, 12, 14, 15, 17, 19, 21, 23, 25, 27, 28]
+                  , c = [{
+                    0: 8421888,
+                    268435456: 32768,
+                    536870912: 8421378,
+                    805306368: 2,
+                    1073741824: 512,
+                    1342177280: 8421890,
+                    1610612736: 8389122,
+                    1879048192: 8388608,
+                    2147483648: 514,
+                    2415919104: 8389120,
+                    2684354560: 33280,
+                    2952790016: 8421376,
+                    3221225472: 32770,
+                    3489660928: 8388610,
+                    3758096384: 0,
+                    4026531840: 33282,
+                    134217728: 0,
+                    402653184: 8421890,
+                    671088640: 33282,
+                    939524096: 32768,
+                    1207959552: 8421888,
+                    1476395008: 512,
+                    1744830464: 8421378,
+                    2013265920: 2,
+                    2281701376: 8389120,
+                    2550136832: 33280,
+                    2818572288: 8421376,
+                    3087007744: 8389122,
+                    3355443200: 8388610,
+                    3623878656: 32770,
+                    3892314112: 514,
+                    4160749568: 8388608,
+                    1: 32768,
+                    268435457: 2,
+                    536870913: 8421888,
+                    805306369: 8388608,
+                    1073741825: 8421378,
+                    1342177281: 33280,
+                    1610612737: 512,
+                    1879048193: 8389122,
+                    2147483649: 8421890,
+                    2415919105: 8421376,
+                    2684354561: 8388610,
+                    2952790017: 33282,
+                    3221225473: 514,
+                    3489660929: 8389120,
+                    3758096385: 32770,
+                    4026531841: 0,
+                    134217729: 8421890,
+                    402653185: 8421376,
+                    671088641: 8388608,
+                    939524097: 512,
+                    1207959553: 32768,
+                    1476395009: 8388610,
+                    1744830465: 2,
+                    2013265921: 33282,
+                    2281701377: 32770,
+                    2550136833: 8389122,
+                    2818572289: 514,
+                    3087007745: 8421888,
+                    3355443201: 8389120,
+                    3623878657: 0,
+                    3892314113: 33280,
+                    4160749569: 8421378
+                }, {
+                    0: 1074282512,
+                    16777216: 16384,
+                    33554432: 524288,
+                    50331648: 1074266128,
+                    67108864: 1073741840,
+                    83886080: 1074282496,
+                    100663296: 1073758208,
+                    117440512: 16,
+                    134217728: 540672,
+                    150994944: 1073758224,
+                    167772160: 1073741824,
+                    184549376: 540688,
+                    201326592: 524304,
+                    218103808: 0,
+                    234881024: 16400,
+                    251658240: 1074266112,
+                    8388608: 1073758208,
+                    25165824: 540688,
+                    41943040: 16,
+                    58720256: 1073758224,
+                    75497472: 1074282512,
+                    92274688: 1073741824,
+                    109051904: 524288,
+                    125829120: 1074266128,
+                    142606336: 524304,
+                    159383552: 0,
+                    176160768: 16384,
+                    192937984: 1074266112,
+                    209715200: 1073741840,
+                    226492416: 540672,
+                    243269632: 1074282496,
+                    260046848: 16400,
+                    268435456: 0,
+                    285212672: 1074266128,
+                    301989888: 1073758224,
+                    318767104: 1074282496,
+                    335544320: 1074266112,
+                    352321536: 16,
+                    369098752: 540688,
+                    385875968: 16384,
+                    402653184: 16400,
+                    419430400: 524288,
+                    436207616: 524304,
+                    452984832: 1073741840,
+                    469762048: 540672,
+                    486539264: 1073758208,
+                    503316480: 1073741824,
+                    520093696: 1074282512,
+                    276824064: 540688,
+                    293601280: 524288,
+                    310378496: 1074266112,
+                    327155712: 16384,
+                    343932928: 1073758208,
+                    360710144: 1074282512,
+                    377487360: 16,
+                    394264576: 1073741824,
+                    411041792: 1074282496,
+                    427819008: 1073741840,
+                    444596224: 1073758224,
+                    461373440: 524304,
+                    478150656: 0,
+                    494927872: 16400,
+                    511705088: 1074266128,
+                    528482304: 540672
+                }, {
+                    0: 260,
+                    1048576: 0,
+                    2097152: 67109120,
+                    3145728: 65796,
+                    4194304: 65540,
+                    5242880: 67108868,
+                    6291456: 67174660,
+                    7340032: 67174400,
+                    8388608: 67108864,
+                    9437184: 67174656,
+                    10485760: 65792,
+                    11534336: 67174404,
+                    12582912: 67109124,
+                    13631488: 65536,
+                    14680064: 4,
+                    15728640: 256,
+                    524288: 67174656,
+                    1572864: 67174404,
+                    2621440: 0,
+                    3670016: 67109120,
+                    4718592: 67108868,
+                    5767168: 65536,
+                    6815744: 65540,
+                    7864320: 260,
+                    8912896: 4,
+                    9961472: 256,
+                    11010048: 67174400,
+                    12058624: 65796,
+                    13107200: 65792,
+                    14155776: 67109124,
+                    15204352: 67174660,
+                    16252928: 67108864,
+                    16777216: 67174656,
+                    17825792: 65540,
+                    18874368: 65536,
+                    19922944: 67109120,
+                    20971520: 256,
+                    22020096: 67174660,
+                    23068672: 67108868,
+                    24117248: 0,
+                    25165824: 67109124,
+                    26214400: 67108864,
+                    27262976: 4,
+                    28311552: 65792,
+                    29360128: 67174400,
+                    30408704: 260,
+                    31457280: 65796,
+                    32505856: 67174404,
+                    17301504: 67108864,
+                    18350080: 260,
+                    19398656: 67174656,
+                    20447232: 0,
+                    21495808: 65540,
+                    22544384: 67109120,
+                    23592960: 256,
+                    24641536: 67174404,
+                    25690112: 65536,
+                    26738688: 67174660,
+                    27787264: 65796,
+                    28835840: 67108868,
+                    29884416: 67109124,
+                    30932992: 67174400,
+                    31981568: 4,
+                    33030144: 65792
+                }, {
+                    0: 2151682048,
+                    65536: 2147487808,
+                    131072: 4198464,
+                    196608: 2151677952,
+                    262144: 0,
+                    327680: 4198400,
+                    393216: 2147483712,
+                    458752: 4194368,
+                    524288: 2147483648,
+                    589824: 4194304,
+                    655360: 64,
+                    720896: 2147487744,
+                    786432: 2151678016,
+                    851968: 4160,
+                    917504: 4096,
+                    983040: 2151682112,
+                    32768: 2147487808,
+                    98304: 64,
+                    163840: 2151678016,
+                    229376: 2147487744,
+                    294912: 4198400,
+                    360448: 2151682112,
+                    425984: 0,
+                    491520: 2151677952,
+                    557056: 4096,
+                    622592: 2151682048,
+                    688128: 4194304,
+                    753664: 4160,
+                    819200: 2147483648,
+                    884736: 4194368,
+                    950272: 4198464,
+                    1015808: 2147483712,
+                    1048576: 4194368,
+                    1114112: 4198400,
+                    1179648: 2147483712,
+                    1245184: 0,
+                    1310720: 4160,
+                    1376256: 2151678016,
+                    1441792: 2151682048,
+                    1507328: 2147487808,
+                    1572864: 2151682112,
+                    1638400: 2147483648,
+                    1703936: 2151677952,
+                    1769472: 4198464,
+                    1835008: 2147487744,
+                    1900544: 4194304,
+                    1966080: 64,
+                    2031616: 4096,
+                    1081344: 2151677952,
+                    1146880: 2151682112,
+                    1212416: 0,
+                    1277952: 4198400,
+                    1343488: 4194368,
+                    1409024: 2147483648,
+                    1474560: 2147487808,
+                    1540096: 64,
+                    1605632: 2147483712,
+                    1671168: 4096,
+                    1736704: 2147487744,
+                    1802240: 2151678016,
+                    1867776: 4160,
+                    1933312: 2151682048,
+                    1998848: 4194304,
+                    2064384: 4198464
+                }, {
+                    0: 128,
+                    4096: 17039360,
+                    8192: 262144,
+                    12288: 536870912,
+                    16384: 537133184,
+                    20480: 16777344,
+                    24576: 553648256,
+                    28672: 262272,
+                    32768: 16777216,
+                    36864: 537133056,
+                    40960: 536871040,
+                    45056: 553910400,
+                    49152: 553910272,
+                    53248: 0,
+                    57344: 17039488,
+                    61440: 553648128,
+                    2048: 17039488,
+                    6144: 553648256,
+                    10240: 128,
+                    14336: 17039360,
+                    18432: 262144,
+                    22528: 537133184,
+                    26624: 553910272,
+                    30720: 536870912,
+                    34816: 537133056,
+                    38912: 0,
+                    43008: 553910400,
+                    47104: 16777344,
+                    51200: 536871040,
+                    55296: 553648128,
+                    59392: 16777216,
+                    63488: 262272,
+                    65536: 262144,
+                    69632: 128,
+                    73728: 536870912,
+                    77824: 553648256,
+                    81920: 16777344,
+                    86016: 553910272,
+                    90112: 537133184,
+                    94208: 16777216,
+                    98304: 553910400,
+                    102400: 553648128,
+                    106496: 17039360,
+                    110592: 537133056,
+                    114688: 262272,
+                    118784: 536871040,
+                    122880: 0,
+                    126976: 17039488,
+                    67584: 553648256,
+                    71680: 16777216,
+                    75776: 17039360,
+                    79872: 537133184,
+                    83968: 536870912,
+                    88064: 17039488,
+                    92160: 128,
+                    96256: 553910272,
+                    100352: 262272,
+                    104448: 553910400,
+                    108544: 0,
+                    112640: 553648128,
+                    116736: 16777344,
+                    120832: 262144,
+                    124928: 537133056,
+                    129024: 536871040
+                }, {
+                    0: 268435464,
+                    256: 8192,
+                    512: 270532608,
+                    768: 270540808,
+                    1024: 268443648,
+                    1280: 2097152,
+                    1536: 2097160,
+                    1792: 268435456,
+                    2048: 0,
+                    2304: 268443656,
+                    2560: 2105344,
+                    2816: 8,
+                    3072: 270532616,
+                    3328: 2105352,
+                    3584: 8200,
+                    3840: 270540800,
+                    128: 270532608,
+                    384: 270540808,
+                    640: 8,
+                    896: 2097152,
+                    1152: 2105352,
+                    1408: 268435464,
+                    1664: 268443648,
+                    1920: 8200,
+                    2176: 2097160,
+                    2432: 8192,
+                    2688: 268443656,
+                    2944: 270532616,
+                    3200: 0,
+                    3456: 270540800,
+                    3712: 2105344,
+                    3968: 268435456,
+                    4096: 268443648,
+                    4352: 270532616,
+                    4608: 270540808,
+                    4864: 8200,
+                    5120: 2097152,
+                    5376: 268435456,
+                    5632: 268435464,
+                    5888: 2105344,
+                    6144: 2105352,
+                    6400: 0,
+                    6656: 8,
+                    6912: 270532608,
+                    7168: 8192,
+                    7424: 268443656,
+                    7680: 270540800,
+                    7936: 2097160,
+                    4224: 8,
+                    4480: 2105344,
+                    4736: 2097152,
+                    4992: 268435464,
+                    5248: 268443648,
+                    5504: 8200,
+                    5760: 270540808,
+                    6016: 270532608,
+                    6272: 270540800,
+                    6528: 270532616,
+                    6784: 8192,
+                    7040: 2105352,
+                    7296: 2097160,
+                    7552: 0,
+                    7808: 268435456,
+                    8064: 268443656
+                }, {
+                    0: 1048576,
+                    16: 33555457,
+                    32: 1024,
+                    48: 1049601,
+                    64: 34604033,
+                    80: 0,
+                    96: 1,
+                    112: 34603009,
+                    128: 33555456,
+                    144: 1048577,
+                    160: 33554433,
+                    176: 34604032,
+                    192: 34603008,
+                    208: 1025,
+                    224: 1049600,
+                    240: 33554432,
+                    8: 34603009,
+                    24: 0,
+                    40: 33555457,
+                    56: 34604032,
+                    72: 1048576,
+                    88: 33554433,
+                    104: 33554432,
+                    120: 1025,
+                    136: 1049601,
+                    152: 33555456,
+                    168: 34603008,
+                    184: 1048577,
+                    200: 1024,
+                    216: 34604033,
+                    232: 1,
+                    248: 1049600,
+                    256: 33554432,
+                    272: 1048576,
+                    288: 33555457,
+                    304: 34603009,
+                    320: 1048577,
+                    336: 33555456,
+                    352: 34604032,
+                    368: 1049601,
+                    384: 1025,
+                    400: 34604033,
+                    416: 1049600,
+                    432: 1,
+                    448: 0,
+                    464: 34603008,
+                    480: 33554433,
+                    496: 1024,
+                    264: 1049600,
+                    280: 33555457,
+                    296: 34603009,
+                    312: 1,
+                    328: 33554432,
+                    344: 1048576,
+                    360: 1025,
+                    376: 34604032,
+                    392: 33554433,
+                    408: 34603008,
+                    424: 0,
+                    440: 34604033,
+                    456: 1049601,
+                    472: 1024,
+                    488: 33555456,
+                    504: 1048577
+                }, {
+                    0: 134219808,
+                    1: 131072,
+                    2: 134217728,
+                    3: 32,
+                    4: 131104,
+                    5: 134350880,
+                    6: 134350848,
+                    7: 2048,
+                    8: 134348800,
+                    9: 134219776,
+                    10: 133120,
+                    11: 134348832,
+                    12: 2080,
+                    13: 0,
+                    14: 134217760,
+                    15: 133152,
+                    2147483648: 2048,
+                    2147483649: 134350880,
+                    2147483650: 134219808,
+                    2147483651: 134217728,
+                    2147483652: 134348800,
+                    2147483653: 133120,
+                    2147483654: 133152,
+                    2147483655: 32,
+                    2147483656: 134217760,
+                    2147483657: 2080,
+                    2147483658: 131104,
+                    2147483659: 134350848,
+                    2147483660: 0,
+                    2147483661: 134348832,
+                    2147483662: 134219776,
+                    2147483663: 131072,
+                    16: 133152,
+                    17: 134350848,
+                    18: 32,
+                    19: 2048,
+                    20: 134219776,
+                    21: 134217760,
+                    22: 134348832,
+                    23: 131072,
+                    24: 0,
+                    25: 131104,
+                    26: 134348800,
+                    27: 134219808,
+                    28: 134350880,
+                    29: 133120,
+                    30: 2080,
+                    31: 134217728,
+                    2147483664: 131072,
+                    2147483665: 2048,
+                    2147483666: 134348832,
+                    2147483667: 133152,
+                    2147483668: 32,
+                    2147483669: 134348800,
+                    2147483670: 134217728,
+                    2147483671: 134219808,
+                    2147483672: 134350880,
+                    2147483673: 134217760,
+                    2147483674: 134219776,
+                    2147483675: 0,
+                    2147483676: 133120,
+                    2147483677: 2080,
+                    2147483678: 131104,
+                    2147483679: 134350848
+                }]
+                  , l = [4160749569, 528482304, 33030144, 2064384, 129024, 8064, 504, 2147483679]
+                  , d = n.DES = i.extend({
+                    _doReset: function() {
+                        for (var e = this._key.words, t = [], o = 0; o < 56; o++) {
+                            var i = r[o] - 1;
+                            t[o] = e[i >>> 5] >>> 31 - i % 32 & 1
+                        }
+                        for (var n = this._subKeys = [], c = 0; c < 16; c++) {
+                            var l = n[c] = []
+                              , h = s[c];
+                            for (o = 0; o < 24; o++)
+                                l[o / 6 | 0] |= t[(a[o] - 1 + h) % 28] << 31 - o % 6,
+                                l[4 + (o / 6 | 0)] |= t[28 + (a[o + 24] - 1 + h) % 28] << 31 - o % 6;
+                            for (l[0] = l[0] << 1 | l[0] >>> 31,
+                            o = 1; o < 7; o++)
+                                l[o] = l[o] >>> 4 * (o - 1) + 3;
+                            l[7] = l[7] << 5 | l[7] >>> 27
+                        }
+                        var d = this._invSubKeys = [];
+                        for (o = 0; o < 16; o++)
+                            d[o] = n[15 - o]
+                    },
+                    encryptBlock: function(e, t) {
+                        this._doCryptBlock(e, t, this._subKeys)
+                    },
+                    decryptBlock: function(e, t) {
+                        this._doCryptBlock(e, t, this._invSubKeys)
+                    },
+                    _doCryptBlock: function(e, t, o) {
+                        this._lBlock = e[t],
+                        this._rBlock = e[t + 1],
+                        f.call(this, 4, 252645135),
+                        f.call(this, 16, 65535),
+                        u.call(this, 2, 858993459),
+                        u.call(this, 8, 16711935),
+                        f.call(this, 1, 1431655765);
+                        for (var i = 0; i < 16; i++) {
+                            for (var n = o[i], r = this._lBlock, a = this._rBlock, s = 0, h = 0; h < 8; h++)
+                                s |= c[h][((a ^ n[h]) & l[h]) >>> 0];
+                            this._lBlock = a,
+                            this._rBlock = r ^ s
+                        }
+                        var d = this._lBlock;
+                        this._lBlock = this._rBlock,
+                        this._rBlock = d,
+                        f.call(this, 1, 1431655765),
+                        u.call(this, 8, 16711935),
+                        u.call(this, 2, 858993459),
+                        f.call(this, 16, 65535),
+                        f.call(this, 4, 252645135),
+                        e[t] = this._lBlock,
+                        e[t + 1] = this._rBlock
+                    },
+                    keySize: 2,
+                    ivSize: 2,
+                    blockSize: 2
+                });
+                function f(e, t) {
+                    var o = (this._lBlock >>> e ^ this._rBlock) & t;
+                    this._rBlock ^= o,
+                    this._lBlock ^= o << e
+                }
+                function u(e, t) {
+                    var o = (this._rBlock >>> e ^ this._lBlock) & t;
+                    this._lBlock ^= o,
+                    this._rBlock ^= o << e
+                }
+                e.DES = i._createHelper(d);
+                var p = n.TripleDES = i.extend({
+                    _doReset: function() {
+                        var e = this._key.words;
+                        this._des1 = d.createEncryptor(o.create(e.slice(0, 2))),
+                        this._des2 = d.createEncryptor(o.create(e.slice(2, 4))),
+                        this._des3 = d.createEncryptor(o.create(e.slice(4, 6)))
+                    },
+                    encryptBlock: function(e, t) {
+                        this._des1.encryptBlock(e, t),
+                        this._des2.decryptBlock(e, t),
+                        this._des3.encryptBlock(e, t)
+                    },
+                    decryptBlock: function(e, t) {
+                        this._des3.decryptBlock(e, t),
+                        this._des2.encryptBlock(e, t),
+                        this._des1.decryptBlock(e, t)
+                    },
+                    keySize: 6,
+                    ivSize: 2,
+                    blockSize: 2
+                });
+                e.TripleDES = i._createHelper(p)
+            }(),
+            function() {
+                var e = h
+                  , t = e.lib.StreamCipher
+                  , o = e.algo
+                  , i = o.RC4 = t.extend({
+                    _doReset: function() {
+                        for (var e = this._key, t = e.words, o = e.sigBytes, i = this._S = [], n = 0; n < 256; n++)
+                            i[n] = n;
+                        n = 0;
+                        for (var r = 0; n < 256; n++) {
+                            var a = n % o
+                              , s = t[a >>> 2] >>> 24 - a % 4 * 8 & 255;
+                            r = (r + i[n] + s) % 256;
+                            var c = i[n];
+                            i[n] = i[r],
+                            i[r] = c
+                        }
+                        this._i = this._j = 0
+                    },
+                    _doProcessBlock: function(e, t) {
+                        e[t] ^= n.call(this)
+                    },
+                    keySize: 8,
+                    ivSize: 0
+                });
+                function n() {
+                    for (var e = this._S, t = this._i, o = this._j, i = 0, n = 0; n < 4; n++) {
+                        o = (o + e[t = (t + 1) % 256]) % 256;
+                        var r = e[t];
+                        e[t] = e[o],
+                        e[o] = r,
+                        i |= e[(e[t] + e[o]) % 256] << 24 - 8 * n
+                    }
+                    return this._i = t,
+                    this._j = o,
+                    i
+                }
+                e.RC4 = t._createHelper(i);
+                var r = o.RC4Drop = i.extend({
+                    cfg: i.cfg.extend({
+                        drop: 192
+                    }),
+                    _doReset: function() {
+                        i._doReset.call(this);
+                        for (var e = this.cfg.drop; e > 0; e--)
+                            n.call(this)
+                    }
+                });
+                e.RC4Drop = t._createHelper(r)
+            }(),
+            h.mode.CTRGladman = function() {
+                var e = h.lib.BlockCipherMode.extend();
+                function t(e) {
+                    if (255 == (e >> 24 & 255)) {
+                        var t = e >> 16 & 255
+                          , o = e >> 8 & 255
+                          , i = 255 & e;
+                        255 === t ? (t = 0,
+                        255 === o ? (o = 0,
+                        255 === i ? i = 0 : ++i) : ++o) : ++t,
+                        e = 0,
+                        e += t << 16,
+                        e += o << 8,
+                        e += i
+                    } else
+                        e += 1 << 24;
+                    return e
+                }
+                function o(e) {
+                    return 0 === (e[0] = t(e[0])) && (e[1] = t(e[1])),
+                    e
+                }
+                var i = e.Encryptor = e.extend({
+                    processBlock: function(e, t) {
+                        var i = this._cipher
+                          , n = i.blockSize
+                          , r = this._iv
+                          , a = this._counter;
+                        r && (a = this._counter = r.slice(0),
+                        this._iv = void 0),
+                        o(a);
+                        var s = a.slice(0);
+                        i.encryptBlock(s, 0);
+                        for (var c = 0; c < n; c++)
+                            e[t + c] ^= s[c]
+                    }
+                });
+                return e.Decryptor = i,
+                e
+            }(),
+            function() {
+                var e = h
+                  , t = e.lib.StreamCipher
+                  , o = e.algo
+                  , i = []
+                  , n = []
+                  , r = []
+                  , a = o.Rabbit = t.extend({
+                    _doReset: function() {
+                        for (var e = this._key.words, t = this.cfg.iv, o = 0; o < 4; o++)
+                            e[o] = 16711935 & (e[o] << 8 | e[o] >>> 24) | 4278255360 & (e[o] << 24 | e[o] >>> 8);
+                        var i = this._X = [e[0], e[3] << 16 | e[2] >>> 16, e[1], e[0] << 16 | e[3] >>> 16, e[2], e[1] << 16 | e[0] >>> 16, e[3], e[2] << 16 | e[1] >>> 16]
+                          , n = this._C = [e[2] << 16 | e[2] >>> 16, 4294901760 & e[0] | 65535 & e[1], e[3] << 16 | e[3] >>> 16, 4294901760 & e[1] | 65535 & e[2], e[0] << 16 | e[0] >>> 16, 4294901760 & e[2] | 65535 & e[3], e[1] << 16 | e[1] >>> 16, 4294901760 & e[3] | 65535 & e[0]];
+                        for (this._b = 0,
+                        o = 0; o < 4; o++)
+                            s.call(this);
+                        for (o = 0; o < 8; o++)
+                            n[o] ^= i[o + 4 & 7];
+                        if (t) {
+                            var r = t.words
+                              , a = r[0]
+                              , c = r[1]
+                              , l = 16711935 & (a << 8 | a >>> 24) | 4278255360 & (a << 24 | a >>> 8)
+                              , h = 16711935 & (c << 8 | c >>> 24) | 4278255360 & (c << 24 | c >>> 8)
+                              , d = l >>> 16 | 4294901760 & h
+                              , f = h << 16 | 65535 & l;
+                            for (n[0] ^= l,
+                            n[1] ^= d,
+                            n[2] ^= h,
+                            n[3] ^= f,
+                            n[4] ^= l,
+                            n[5] ^= d,
+                            n[6] ^= h,
+                            n[7] ^= f,
+                            o = 0; o < 4; o++)
+                                s.call(this)
+                        }
+                    },
+                    _doProcessBlock: function(e, t) {
+                        var o = this._X;
+                        s.call(this),
+                        i[0] = o[0] ^ o[5] >>> 16 ^ o[3] << 16,
+                        i[1] = o[2] ^ o[7] >>> 16 ^ o[5] << 16,
+                        i[2] = o[4] ^ o[1] >>> 16 ^ o[7] << 16,
+                        i[3] = o[6] ^ o[3] >>> 16 ^ o[1] << 16;
+                        for (var n = 0; n < 4; n++)
+                            i[n] = 16711935 & (i[n] << 8 | i[n] >>> 24) | 4278255360 & (i[n] << 24 | i[n] >>> 8),
+                            e[t + n] ^= i[n]
+                    },
+                    blockSize: 4,
+                    ivSize: 2
+                });
+                function s() {
+                    for (var e = this._X, t = this._C, o = 0; o < 8; o++)
+                        n[o] = t[o];
+                    for (t[0] = t[0] + 1295307597 + this._b | 0,
+                    t[1] = t[1] + 3545052371 + (t[0] >>> 0 < n[0] >>> 0 ? 1 : 0) | 0,
+                    t[2] = t[2] + 886263092 + (t[1] >>> 0 < n[1] >>> 0 ? 1 : 0) | 0,
+                    t[3] = t[3] + 1295307597 + (t[2] >>> 0 < n[2] >>> 0 ? 1 : 0) | 0,
+                    t[4] = t[4] + 3545052371 + (t[3] >>> 0 < n[3] >>> 0 ? 1 : 0) | 0,
+                    t[5] = t[5] + 886263092 + (t[4] >>> 0 < n[4] >>> 0 ? 1 : 0) | 0,
+                    t[6] = t[6] + 1295307597 + (t[5] >>> 0 < n[5] >>> 0 ? 1 : 0) | 0,
+                    t[7] = t[7] + 3545052371 + (t[6] >>> 0 < n[6] >>> 0 ? 1 : 0) | 0,
+                    this._b = t[7] >>> 0 < n[7] >>> 0 ? 1 : 0,
+                    o = 0; o < 8; o++) {
+                        var i = e[o] + t[o]
+                          , a = 65535 & i
+                          , s = i >>> 16
+                          , c = ((a * a >>> 17) + a * s >>> 15) + s * s
+                          , l = ((4294901760 & i) * i | 0) + ((65535 & i) * i | 0);
+                        r[o] = c ^ l
+                    }
+                    e[0] = r[0] + (r[7] << 16 | r[7] >>> 16) + (r[6] << 16 | r[6] >>> 16) | 0,
+                    e[1] = r[1] + (r[0] << 8 | r[0] >>> 24) + r[7] | 0,
+                    e[2] = r[2] + (r[1] << 16 | r[1] >>> 16) + (r[0] << 16 | r[0] >>> 16) | 0,
+                    e[3] = r[3] + (r[2] << 8 | r[2] >>> 24) + r[1] | 0,
+                    e[4] = r[4] + (r[3] << 16 | r[3] >>> 16) + (r[2] << 16 | r[2] >>> 16) | 0,
+                    e[5] = r[5] + (r[4] << 8 | r[4] >>> 24) + r[3] | 0,
+                    e[6] = r[6] + (r[5] << 16 | r[5] >>> 16) + (r[4] << 16 | r[4] >>> 16) | 0,
+                    e[7] = r[7] + (r[6] << 8 | r[6] >>> 24) + r[5] | 0
+                }
+                e.Rabbit = t._createHelper(a)
+            }(),
+            h.mode.CTR = function() {
+                var e = h.lib.BlockCipherMode.extend()
+                  , t = e.Encryptor = e.extend({
+                    processBlock: function(e, t) {
+                        var o = this._cipher
+                          , i = o.blockSize
+                          , n = this._iv
+                          , r = this._counter;
+                        n && (r = this._counter = n.slice(0),
+                        this._iv = void 0);
+                        var a = r.slice(0);
+                        o.encryptBlock(a, 0),
+                        r[i - 1] = r[i - 1] + 1 | 0;
+                        for (var s = 0; s < i; s++)
+                            e[t + s] ^= a[s]
+                    }
+                });
+                return e.Decryptor = t,
+                e
+            }(),
+            function() {
+                var e = h
+                  , t = e.lib.StreamCipher
+                  , o = e.algo
+                  , i = []
+                  , n = []
+                  , r = []
+                  , a = o.RabbitLegacy = t.extend({
+                    _doReset: function() {
+                        var e = this._key.words
+                          , t = this.cfg.iv
+                          , o = this._X = [e[0], e[3] << 16 | e[2] >>> 16, e[1], e[0] << 16 | e[3] >>> 16, e[2], e[1] << 16 | e[0] >>> 16, e[3], e[2] << 16 | e[1] >>> 16]
+                          , i = this._C = [e[2] << 16 | e[2] >>> 16, 4294901760 & e[0] | 65535 & e[1], e[3] << 16 | e[3] >>> 16, 4294901760 & e[1] | 65535 & e[2], e[0] << 16 | e[0] >>> 16, 4294901760 & e[2] | 65535 & e[3], e[1] << 16 | e[1] >>> 16, 4294901760 & e[3] | 65535 & e[0]];
+                        this._b = 0;
+                        for (var n = 0; n < 4; n++)
+                            s.call(this);
+                        for (n = 0; n < 8; n++)
+                            i[n] ^= o[n + 4 & 7];
+                        if (t) {
+                            var r = t.words
+                              , a = r[0]
+                              , c = r[1]
+                              , l = 16711935 & (a << 8 | a >>> 24) | 4278255360 & (a << 24 | a >>> 8)
+                              , h = 16711935 & (c << 8 | c >>> 24) | 4278255360 & (c << 24 | c >>> 8)
+                              , d = l >>> 16 | 4294901760 & h
+                              , f = h << 16 | 65535 & l;
+                            for (i[0] ^= l,
+                            i[1] ^= d,
+                            i[2] ^= h,
+                            i[3] ^= f,
+                            i[4] ^= l,
+                            i[5] ^= d,
+                            i[6] ^= h,
+                            i[7] ^= f,
+                            n = 0; n < 4; n++)
+                                s.call(this)
+                        }
+                    },
+                    _doProcessBlock: function(e, t) {
+                        var o = this._X;
+                        s.call(this),
+                        i[0] = o[0] ^ o[5] >>> 16 ^ o[3] << 16,
+                        i[1] = o[2] ^ o[7] >>> 16 ^ o[5] << 16,
+                        i[2] = o[4] ^ o[1] >>> 16 ^ o[7] << 16,
+                        i[3] = o[6] ^ o[3] >>> 16 ^ o[1] << 16;
+                        for (var n = 0; n < 4; n++)
+                            i[n] = 16711935 & (i[n] << 8 | i[n] >>> 24) | 4278255360 & (i[n] << 24 | i[n] >>> 8),
+                            e[t + n] ^= i[n]
+                    },
+                    blockSize: 4,
+                    ivSize: 2
+                });
+                function s() {
+                    for (var e = this._X, t = this._C, o = 0; o < 8; o++)
+                        n[o] = t[o];
+                    for (t[0] = t[0] + 1295307597 + this._b | 0,
+                    t[1] = t[1] + 3545052371 + (t[0] >>> 0 < n[0] >>> 0 ? 1 : 0) | 0,
+                    t[2] = t[2] + 886263092 + (t[1] >>> 0 < n[1] >>> 0 ? 1 : 0) | 0,
+                    t[3] = t[3] + 1295307597 + (t[2] >>> 0 < n[2] >>> 0 ? 1 : 0) | 0,
+                    t[4] = t[4] + 3545052371 + (t[3] >>> 0 < n[3] >>> 0 ? 1 : 0) | 0,
+                    t[5] = t[5] + 886263092 + (t[4] >>> 0 < n[4] >>> 0 ? 1 : 0) | 0,
+                    t[6] = t[6] + 1295307597 + (t[5] >>> 0 < n[5] >>> 0 ? 1 : 0) | 0,
+                    t[7] = t[7] + 3545052371 + (t[6] >>> 0 < n[6] >>> 0 ? 1 : 0) | 0,
+                    this._b = t[7] >>> 0 < n[7] >>> 0 ? 1 : 0,
+                    o = 0; o < 8; o++) {
+                        var i = e[o] + t[o]
+                          , a = 65535 & i
+                          , s = i >>> 16
+                          , c = ((a * a >>> 17) + a * s >>> 15) + s * s
+                          , l = ((4294901760 & i) * i | 0) + ((65535 & i) * i | 0);
+                        r[o] = c ^ l
+                    }
+                    e[0] = r[0] + (r[7] << 16 | r[7] >>> 16) + (r[6] << 16 | r[6] >>> 16) | 0,
+                    e[1] = r[1] + (r[0] << 8 | r[0] >>> 24) + r[7] | 0,
+                    e[2] = r[2] + (r[1] << 16 | r[1] >>> 16) + (r[0] << 16 | r[0] >>> 16) | 0,
+                    e[3] = r[3] + (r[2] << 8 | r[2] >>> 24) + r[1] | 0,
+                    e[4] = r[4] + (r[3] << 16 | r[3] >>> 16) + (r[2] << 16 | r[2] >>> 16) | 0,
+                    e[5] = r[5] + (r[4] << 8 | r[4] >>> 24) + r[3] | 0,
+                    e[6] = r[6] + (r[5] << 16 | r[5] >>> 16) + (r[4] << 16 | r[4] >>> 16) | 0,
+                    e[7] = r[7] + (r[6] << 8 | r[6] >>> 24) + r[5] | 0
+                }
+                e.RabbitLegacy = t._createHelper(a)
+            }(),
+            h.pad.ZeroPadding = {
+                pad: function(e, t) {
+                    var o = 4 * t;
+                    e.clamp(),
+                    e.sigBytes += o - (e.sigBytes % o || o)
+                },
+                unpad: function(e) {
+                    for (var t = e.words, o = e.sigBytes - 1; !(t[o >>> 2] >>> 24 - o % 4 * 8 & 255); )
+                        o--;
+                    e.sigBytes = o + 1
+                }
+            },
+            h
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i() : "function" == typeof define && define.amd ? define([], i) : (void 0).CryptoJS = i(),
+        cc._RF.pop()
+    }
+    , {}],
+    "enc-base64": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "67337mIXNFDo7wjCFgbCm0v", "enc-base64"),
+        i = function(e) {
+            return function() {
+                var t = e
+                  , o = t.lib.WordArray;
+                function i(e, t, i) {
+                    for (var n = [], r = 0, a = 0; a < t; a++)
+                        if (a % 4) {
+                            var s = i[e.charCodeAt(a - 1)] << a % 4 * 2
+                              , c = i[e.charCodeAt(a)] >>> 6 - a % 4 * 2;
+                            n[r >>> 2] |= (s | c) << 24 - r % 4 * 8,
+                            r++
+                        }
+                    return o.create(n, r)
+                }
+                t.enc.Base64 = {
+                    stringify: function(e) {
+                        var t = e.words
+                          , o = e.sigBytes
+                          , i = this._map;
+                        e.clamp();
+                        for (var n = [], r = 0; r < o; r += 3)
+                            for (var a = (t[r >>> 2] >>> 24 - r % 4 * 8 & 255) << 16 | (t[r + 1 >>> 2] >>> 24 - (r + 1) % 4 * 8 & 255) << 8 | t[r + 2 >>> 2] >>> 24 - (r + 2) % 4 * 8 & 255, s = 0; s < 4 && r + .75 * s < o; s++)
+                                n.push(i.charAt(a >>> 6 * (3 - s) & 63));
+                        var c = i.charAt(64);
+                        if (c)
+                            for (; n.length % 4; )
+                                n.push(c);
+                        return n.join("")
+                    },
+                    parse: function(e) {
+                        var t = e.length
+                          , o = this._map
+                          , n = this._reverseMap;
+                        if (!n) {
+                            n = this._reverseMap = [];
+                            for (var r = 0; r < o.length; r++)
+                                n[o.charCodeAt(r)] = r
+                        }
+                        var a = o.charAt(64);
+                        if (a) {
+                            var s = e.indexOf(a);
+                            -1 !== s && (t = s)
+                        }
+                        return i(e, t, n)
+                    },
+                    _map: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="
+                }
+            }(),
+            e.enc.Base64
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core")) : "function" == typeof define && define.amd ? define(["./core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core"
+    }],
+    "enc-hex": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "7bb3cSi+N1DQZtcIB1wCEu5", "enc-hex"),
+        i = function(e) {
+            return e.enc.Hex
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core")) : "function" == typeof define && define.amd ? define(["./core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core"
+    }],
+    "enc-latin1": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "3c6fcAS6AlD+5lmrVbVdMWa", "enc-latin1"),
+        i = function(e) {
+            return e.enc.Latin1
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core")) : "function" == typeof define && define.amd ? define(["./core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core"
+    }],
+    "enc-utf16": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "fcdcdUBFgxIDKgY0KvSfniW", "enc-utf16"),
+        i = function(e) {
+            return function() {
+                var t = e
+                  , o = t.lib.WordArray
+                  , i = t.enc;
+                function n(e) {
+                    return e << 8 & 4278255360 | e >>> 8 & 16711935
+                }
+                i.Utf16 = i.Utf16BE = {
+                    stringify: function(e) {
+                        for (var t = e.words, o = e.sigBytes, i = [], n = 0; n < o; n += 2) {
+                            var r = t[n >>> 2] >>> 16 - n % 4 * 8 & 65535;
+                            i.push(String.fromCharCode(r))
+                        }
+                        return i.join("")
+                    },
+                    parse: function(e) {
+                        for (var t = e.length, i = [], n = 0; n < t; n++)
+                            i[n >>> 1] |= e.charCodeAt(n) << 16 - n % 2 * 16;
+                        return o.create(i, 2 * t)
+                    }
+                },
+                i.Utf16LE = {
+                    stringify: function(e) {
+                        for (var t = e.words, o = e.sigBytes, i = [], r = 0; r < o; r += 2) {
+                            var a = n(t[r >>> 2] >>> 16 - r % 4 * 8 & 65535);
+                            i.push(String.fromCharCode(a))
+                        }
+                        return i.join("")
+                    },
+                    parse: function(e) {
+                        for (var t = e.length, i = [], r = 0; r < t; r++)
+                            i[r >>> 1] |= n(e.charCodeAt(r) << 16 - r % 2 * 16);
+                        return o.create(i, 2 * t)
+                    }
+                }
+            }(),
+            e.enc.Utf16
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core")) : "function" == typeof define && define.amd ? define(["./core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core"
+    }],
+    "enc-utf8": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "91aadfHVF1AiptnLK61Mrne", "enc-utf8"),
+        i = function(e) {
+            return e.enc.Utf8
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core")) : "function" == typeof define && define.amd ? define(["./core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core"
+    }],
+    evpkdf: [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "94796igreBDDLNxXND0g+jY", "evpkdf"),
+        i = function(e) {
+            var t, o, i, n, r, a, s;
+            return i = (o = (t = e).lib).Base,
+            n = o.WordArray,
+            a = (r = t.algo).MD5,
+            s = r.EvpKDF = i.extend({
+                cfg: i.extend({
+                    keySize: 4,
+                    hasher: a,
+                    iterations: 1
+                }),
+                init: function(e) {
+                    this.cfg = this.cfg.extend(e)
+                },
+                compute: function(e, t) {
+                    for (var o = this.cfg, i = o.hasher.create(), r = n.create(), a = r.words, s = o.keySize, c = o.iterations; a.length < s; ) {
+                        l && i.update(l);
+                        var l = i.update(e).finalize(t);
+                        i.reset();
+                        for (var h = 1; h < c; h++)
+                            l = i.finalize(l),
+                            i.reset();
+                        r.concat(l)
+                    }
+                    return r.sigBytes = 4 * s,
+                    r
+                }
+            }),
+            t.EvpKDF = function(e, t, o) {
+                return s.create(o).compute(e, t)
+            }
+            ,
+            e.EvpKDF
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./sha1"), e("./hmac")) : "function" == typeof define && define.amd ? define(["./core", "./sha1", "./hmac"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core",
+        "./hmac": "hmac",
+        "./sha1": "sha1"
+    }],
+    "format-hex": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "6cc34QaNVpLbqPaLKNKTLm8", "format-hex"),
+        i = function(e) {
+            var t, o, i;
+            return o = (t = e).lib.CipherParams,
+            i = t.enc.Hex,
+            t.format.Hex = {
+                stringify: function(e) {
+                    return e.ciphertext.toString(i)
+                },
+                parse: function(e) {
+                    var t = i.parse(e);
+                    return o.create({
+                        ciphertext: t
+                    })
+                }
+            },
+            e.format.Hex
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./cipher-core")) : "function" == typeof define && define.amd ? define(["./core", "./cipher-core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./cipher-core": "cipher-core",
+        "./core": "core"
+    }],
+    "format-openssl": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "65161x8QMNG7JVxerZorUL3", "format-openssl"),
+        i = function(e) {
+            return e.format.OpenSSL
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./cipher-core")) : "function" == typeof define && define.amd ? define(["./core", "./cipher-core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./cipher-core": "cipher-core",
+        "./core": "core"
+    }],
+    "hmac-md5": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "4d5b4J+0PlO0p2zXp6vHGgG", "hmac-md5"),
+        i = function(e) {
+            return e.HmacMD5
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./md5"), e("./hmac")) : "function" == typeof define && define.amd ? define(["./core", "./md5", "./hmac"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core",
+        "./hmac": "hmac",
+        "./md5": "md5"
+    }],
+    "hmac-ripemd160": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "de399pJl4BH5qaMLo1YI/qY", "hmac-ripemd160"),
+        i = function(e) {
+            return e.HmacRIPEMD160
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./ripemd160"), e("./hmac")) : "function" == typeof define && define.amd ? define(["./core", "./ripemd160", "./hmac"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core",
+        "./hmac": "hmac",
+        "./ripemd160": "ripemd160"
+    }],
+    "hmac-sha1": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "96478zI1Q1NUZylqDpLkNch", "hmac-sha1"),
+        i = function(e) {
+            return e.HmacSHA1
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./sha1"), e("./hmac")) : "function" == typeof define && define.amd ? define(["./core", "./sha1", "./hmac"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core",
+        "./hmac": "hmac",
+        "./sha1": "sha1"
+    }],
+    "hmac-sha224": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "5d62egNICRN95GL94DrR6QS", "hmac-sha224"),
+        i = function(e) {
+            return e.HmacSHA224
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./sha256"), e("./sha224"), e("./hmac")) : "function" == typeof define && define.amd ? define(["./core", "./sha256", "./sha224", "./hmac"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core",
+        "./hmac": "hmac",
+        "./sha224": "sha224",
+        "./sha256": "sha256"
+    }],
+    "hmac-sha256": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "d24d7WA1T5EN6l1ZX5a5fVd", "hmac-sha256"),
+        i = function(e) {
+            return e.HmacSHA256
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./sha256"), e("./hmac")) : "function" == typeof define && define.amd ? define(["./core", "./sha256", "./hmac"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core",
+        "./hmac": "hmac",
+        "./sha256": "sha256"
+    }],
+    "hmac-sha384": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "e004f/Jk55P87cWYpdUCmCO", "hmac-sha384"),
+        i = function(e) {
+            return e.HmacSHA384
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./x64-core"), e("./sha512"), e("./sha384"), e("./hmac")) : "function" == typeof define && define.amd ? define(["./core", "./x64-core", "./sha512", "./sha384", "./hmac"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core",
+        "./hmac": "hmac",
+        "./sha384": "sha384",
+        "./sha512": "sha512",
+        "./x64-core": "x64-core"
+    }],
+    "hmac-sha3": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "ef8b7lV321PTKLje6N54nUn", "hmac-sha3"),
+        i = function(e) {
+            return e.HmacSHA3
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./x64-core"), e("./sha3"), e("./hmac")) : "function" == typeof define && define.amd ? define(["./core", "./x64-core", "./sha3", "./hmac"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core",
+        "./hmac": "hmac",
+        "./sha3": "sha3",
+        "./x64-core": "x64-core"
+    }],
+    "hmac-sha512": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "6d8c1EYsLtBBLpVg2j3eY0U", "hmac-sha512"),
+        i = function(e) {
+            return e.HmacSHA512
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./x64-core"), e("./sha512"), e("./hmac")) : "function" == typeof define && define.amd ? define(["./core", "./x64-core", "./sha512", "./hmac"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core",
+        "./hmac": "hmac",
+        "./sha512": "sha512",
+        "./x64-core": "x64-core"
+    }],
+    hmac: [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "3f2c9efXJBIppFNXh+qqv/w", "hmac"),
+        i = function(e) {
+            var t, o, i;
+            o = (t = e).lib.Base,
+            i = t.enc.Utf8,
+            t.algo.HMAC = o.extend({
+                init: function(e, t) {
+                    e = this._hasher = new e.init,
+                    "string" == typeof t && (t = i.parse(t));
+                    var o = e.blockSize
+                      , n = 4 * o;
+                    t.sigBytes > n && (t = e.finalize(t)),
+                    t.clamp();
+                    for (var r = this._oKey = t.clone(), a = this._iKey = t.clone(), s = r.words, c = a.words, l = 0; l < o; l++)
+                        s[l] ^= 1549556828,
+                        c[l] ^= 909522486;
+                    r.sigBytes = a.sigBytes = n,
+                    this.reset()
+                },
+                reset: function() {
+                    var e = this._hasher;
+                    e.reset(),
+                    e.update(this._iKey)
+                },
+                update: function(e) {
+                    return this._hasher.update(e),
+                    this
+                },
+                finalize: function(e) {
+                    var t = this._hasher
+                      , o = t.finalize(e);
+                    return t.reset(),
+                    t.finalize(this._oKey.clone().concat(o))
+                }
+            })
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core")) : "function" == typeof define && define.amd ? define(["./core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core"
+    }],
+    index: [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "eef9a+wfoFOpYSyqcj0EAVk", "index"),
+        i = function(e) {
+            return e
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./x64-core"), e("./lib-typedarrays"), e("./enc-utf16"), e("./enc-base64"), e("./md5"), e("./sha1"), e("./sha256"), e("./sha224"), e("./sha512"), e("./sha384"), e("./sha3"), e("./ripemd160"), e("./hmac"), e("./pbkdf2"), e("./evpkdf"), e("./cipher-core"), e("./mode-cfb"), e("./mode-ctr"), e("./mode-ctr-gladman"), e("./mode-ofb"), e("./mode-ecb"), e("./pad-ansix923"), e("./pad-iso10126"), e("./pad-iso97971"), e("./pad-zeropadding"), e("./pad-nopadding"), e("./format-hex"), e("./aes"), e("./tripledes"), e("./rc4"), e("./rabbit"), e("./rabbit-legacy")) : "function" == typeof define && define.amd ? define(["./core", "./x64-core", "./lib-typedarrays", "./enc-utf16", "./enc-base64", "./md5", "./sha1", "./sha256", "./sha224", "./sha512", "./sha384", "./sha3", "./ripemd160", "./hmac", "./pbkdf2", "./evpkdf", "./cipher-core", "./mode-cfb", "./mode-ctr", "./mode-ctr-gladman", "./mode-ofb", "./mode-ecb", "./pad-ansix923", "./pad-iso10126", "./pad-iso97971", "./pad-zeropadding", "./pad-nopadding", "./format-hex", "./aes", "./tripledes", "./rc4", "./rabbit", "./rabbit-legacy"], i) : (void 0).CryptoJS = i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./aes": "aes",
+        "./cipher-core": "cipher-core",
+        "./core": "core",
+        "./enc-base64": "enc-base64",
+        "./enc-utf16": "enc-utf16",
+        "./evpkdf": "evpkdf",
+        "./format-hex": "format-hex",
+        "./hmac": "hmac",
+        "./lib-typedarrays": "lib-typedarrays",
+        "./md5": "md5",
+        "./mode-cfb": "mode-cfb",
+        "./mode-ctr": "mode-ctr",
+        "./mode-ctr-gladman": "mode-ctr-gladman",
+        "./mode-ecb": "mode-ecb",
+        "./mode-ofb": "mode-ofb",
+        "./pad-ansix923": "pad-ansix923",
+        "./pad-iso10126": "pad-iso10126",
+        "./pad-iso97971": "pad-iso97971",
+        "./pad-nopadding": "pad-nopadding",
+        "./pad-zeropadding": "pad-zeropadding",
+        "./pbkdf2": "pbkdf2",
+        "./rabbit": "rabbit",
+        "./rabbit-legacy": "rabbit-legacy",
+        "./rc4": "rc4",
+        "./ripemd160": "ripemd160",
+        "./sha1": "sha1",
+        "./sha224": "sha224",
+        "./sha256": "sha256",
+        "./sha3": "sha3",
+        "./sha384": "sha384",
+        "./sha512": "sha512",
+        "./tripledes": "tripledes",
+        "./x64-core": "x64-core"
+    }],
+    "lib-typedarrays": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "13185nFDUdE/aBF7dctN4AQ", "lib-typedarrays"),
+        i = function(e) {
+            return function() {
+                if ("function" == typeof ArrayBuffer) {
+                    var t = e.lib.WordArray
+                      , o = t.init;
+                    (t.init = function(e) {
+                        if (e instanceof ArrayBuffer && (e = new Uint8Array(e)),
+                        (e instanceof Int8Array || "undefined" != typeof Uint8ClampedArray && e instanceof Uint8ClampedArray || e instanceof Int16Array || e instanceof Uint16Array || e instanceof Int32Array || e instanceof Uint32Array || e instanceof Float32Array || e instanceof Float64Array) && (e = new Uint8Array(e.buffer,e.byteOffset,e.byteLength)),
+                        e instanceof Uint8Array) {
+                            for (var t = e.byteLength, i = [], n = 0; n < t; n++)
+                                i[n >>> 2] |= e[n] << 24 - n % 4 * 8;
+                            o.call(this, i, t)
+                        } else
+                            o.apply(this, arguments)
+                    }
+                    ).prototype = t
+                }
+            }(),
+            e.lib.WordArray
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core")) : "function" == typeof define && define.amd ? define(["./core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core"
+    }],
+    md5: [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "6ad21ekjIJHBbjB078mkwA3", "md5"),
+        i = function(e) {
+            return function(t) {
+                var o = e
+                  , i = o.lib
+                  , n = i.WordArray
+                  , r = i.Hasher
+                  , a = o.algo
+                  , s = [];
+                (function() {
+                    for (var e = 0; e < 64; e++)
+                        s[e] = 4294967296 * t.abs(t.sin(e + 1)) | 0
+                }
+                )();
+                var c = a.MD5 = r.extend({
+                    _doReset: function() {
+                        this._hash = new n.init([1732584193, 4023233417, 2562383102, 271733878])
+                    },
+                    _doProcessBlock: function(e, t) {
+                        for (var o = 0; o < 16; o++) {
+                            var i = t + o
+                              , n = e[i];
+                            e[i] = 16711935 & (n << 8 | n >>> 24) | 4278255360 & (n << 24 | n >>> 8)
+                        }
+                        var r = this._hash.words
+                          , a = e[t + 0]
+                          , c = e[t + 1]
+                          , u = e[t + 2]
+                          , p = e[t + 3]
+                          , g = e[t + 4]
+                          , _ = e[t + 5]
+                          , m = e[t + 6]
+                          , y = e[t + 7]
+                          , v = e[t + 8]
+                          , C = e[t + 9]
+                          , b = e[t + 10]
+                          , M = e[t + 11]
+                          , S = e[t + 12]
+                          , N = e[t + 13]
+                          , w = e[t + 14]
+                          , B = e[t + 15]
+                          , P = r[0]
+                          , T = r[1]
+                          , k = r[2]
+                          , I = r[3];
+                        P = l(P, T, k, I, a, 7, s[0]),
+                        I = l(I, P, T, k, c, 12, s[1]),
+                        k = l(k, I, P, T, u, 17, s[2]),
+                        T = l(T, k, I, P, p, 22, s[3]),
+                        P = l(P, T, k, I, g, 7, s[4]),
+                        I = l(I, P, T, k, _, 12, s[5]),
+                        k = l(k, I, P, T, m, 17, s[6]),
+                        T = l(T, k, I, P, y, 22, s[7]),
+                        P = l(P, T, k, I, v, 7, s[8]),
+                        I = l(I, P, T, k, C, 12, s[9]),
+                        k = l(k, I, P, T, b, 17, s[10]),
+                        T = l(T, k, I, P, M, 22, s[11]),
+                        P = l(P, T, k, I, S, 7, s[12]),
+                        I = l(I, P, T, k, N, 12, s[13]),
+                        k = l(k, I, P, T, w, 17, s[14]),
+                        P = h(P, T = l(T, k, I, P, B, 22, s[15]), k, I, c, 5, s[16]),
+                        I = h(I, P, T, k, m, 9, s[17]),
+                        k = h(k, I, P, T, M, 14, s[18]),
+                        T = h(T, k, I, P, a, 20, s[19]),
+                        P = h(P, T, k, I, _, 5, s[20]),
+                        I = h(I, P, T, k, b, 9, s[21]),
+                        k = h(k, I, P, T, B, 14, s[22]),
+                        T = h(T, k, I, P, g, 20, s[23]),
+                        P = h(P, T, k, I, C, 5, s[24]),
+                        I = h(I, P, T, k, w, 9, s[25]),
+                        k = h(k, I, P, T, p, 14, s[26]),
+                        T = h(T, k, I, P, v, 20, s[27]),
+                        P = h(P, T, k, I, N, 5, s[28]),
+                        I = h(I, P, T, k, u, 9, s[29]),
+                        k = h(k, I, P, T, y, 14, s[30]),
+                        P = d(P, T = h(T, k, I, P, S, 20, s[31]), k, I, _, 4, s[32]),
+                        I = d(I, P, T, k, v, 11, s[33]),
+                        k = d(k, I, P, T, M, 16, s[34]),
+                        T = d(T, k, I, P, w, 23, s[35]),
+                        P = d(P, T, k, I, c, 4, s[36]),
+                        I = d(I, P, T, k, g, 11, s[37]),
+                        k = d(k, I, P, T, y, 16, s[38]),
+                        T = d(T, k, I, P, b, 23, s[39]),
+                        P = d(P, T, k, I, N, 4, s[40]),
+                        I = d(I, P, T, k, a, 11, s[41]),
+                        k = d(k, I, P, T, p, 16, s[42]),
+                        T = d(T, k, I, P, m, 23, s[43]),
+                        P = d(P, T, k, I, C, 4, s[44]),
+                        I = d(I, P, T, k, S, 11, s[45]),
+                        k = d(k, I, P, T, B, 16, s[46]),
+                        P = f(P, T = d(T, k, I, P, u, 23, s[47]), k, I, a, 6, s[48]),
+                        I = f(I, P, T, k, y, 10, s[49]),
+                        k = f(k, I, P, T, w, 15, s[50]),
+                        T = f(T, k, I, P, _, 21, s[51]),
+                        P = f(P, T, k, I, S, 6, s[52]),
+                        I = f(I, P, T, k, p, 10, s[53]),
+                        k = f(k, I, P, T, b, 15, s[54]),
+                        T = f(T, k, I, P, c, 21, s[55]),
+                        P = f(P, T, k, I, v, 6, s[56]),
+                        I = f(I, P, T, k, B, 10, s[57]),
+                        k = f(k, I, P, T, m, 15, s[58]),
+                        T = f(T, k, I, P, N, 21, s[59]),
+                        P = f(P, T, k, I, g, 6, s[60]),
+                        I = f(I, P, T, k, M, 10, s[61]),
+                        k = f(k, I, P, T, u, 15, s[62]),
+                        T = f(T, k, I, P, C, 21, s[63]),
+                        r[0] = r[0] + P | 0,
+                        r[1] = r[1] + T | 0,
+                        r[2] = r[2] + k | 0,
+                        r[3] = r[3] + I | 0
+                    },
+                    _doFinalize: function() {
+                        var e = this._data
+                          , o = e.words
+                          , i = 8 * this._nDataBytes
+                          , n = 8 * e.sigBytes;
+                        o[n >>> 5] |= 128 << 24 - n % 32;
+                        var r = t.floor(i / 4294967296)
+                          , a = i;
+                        o[15 + (n + 64 >>> 9 << 4)] = 16711935 & (r << 8 | r >>> 24) | 4278255360 & (r << 24 | r >>> 8),
+                        o[14 + (n + 64 >>> 9 << 4)] = 16711935 & (a << 8 | a >>> 24) | 4278255360 & (a << 24 | a >>> 8),
+                        e.sigBytes = 4 * (o.length + 1),
+                        this._process();
+                        for (var s = this._hash, c = s.words, l = 0; l < 4; l++) {
+                            var h = c[l];
+                            c[l] = 16711935 & (h << 8 | h >>> 24) | 4278255360 & (h << 24 | h >>> 8)
+                        }
+                        return s
+                    },
+                    clone: function() {
+                        var e = r.clone.call(this);
+                        return e._hash = this._hash.clone(),
+                        e
+                    }
+                });
+                function l(e, t, o, i, n, r, a) {
+                    var s = e + (t & o | ~t & i) + n + a;
+                    return (s << r | s >>> 32 - r) + t
+                }
+                function h(e, t, o, i, n, r, a) {
+                    var s = e + (t & i | o & ~i) + n + a;
+                    return (s << r | s >>> 32 - r) + t
+                }
+                function d(e, t, o, i, n, r, a) {
+                    var s = e + (t ^ o ^ i) + n + a;
+                    return (s << r | s >>> 32 - r) + t
+                }
+                function f(e, t, o, i, n, r, a) {
+                    var s = e + (o ^ (t | ~i)) + n + a;
+                    return (s << r | s >>> 32 - r) + t
+                }
+                o.MD5 = r._createHelper(c),
+                o.HmacMD5 = r._createHmacHelper(c)
+            }(Math),
+            e.MD5
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core")) : "function" == typeof define && define.amd ? define(["./core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core"
+    }],
+    "mode-cfb": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "1115c1ayx9G2pWtEmtSToQj", "mode-cfb"),
+        i = function(e) {
+            return e.mode.CFB = function() {
+                var t = e.lib.BlockCipherMode.extend();
+                function o(e, t, o, i) {
+                    var n = this._iv;
+                    if (n) {
+                        var r = n.slice(0);
+                        this._iv = void 0
+                    } else
+                        r = this._prevBlock;
+                    i.encryptBlock(r, 0);
+                    for (var a = 0; a < o; a++)
+                        e[t + a] ^= r[a]
+                }
+                return t.Encryptor = t.extend({
+                    processBlock: function(e, t) {
+                        var i = this._cipher
+                          , n = i.blockSize;
+                        o.call(this, e, t, n, i),
+                        this._prevBlock = e.slice(t, t + n)
+                    }
+                }),
+                t.Decryptor = t.extend({
+                    processBlock: function(e, t) {
+                        var i = this._cipher
+                          , n = i.blockSize
+                          , r = e.slice(t, t + n);
+                        o.call(this, e, t, n, i),
+                        this._prevBlock = r
+                    }
+                }),
+                t
+            }(),
+            e.mode.CFB
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./cipher-core")) : "function" == typeof define && define.amd ? define(["./core", "./cipher-core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./cipher-core": "cipher-core",
+        "./core": "core"
+    }],
+    "mode-ctr-gladman": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "ac130fdA4lMP6evJnFgpexT", "mode-ctr-gladman"),
+        i = function(e) {
+            return e.mode.CTRGladman = function() {
+                var t = e.lib.BlockCipherMode.extend();
+                function o(e) {
+                    if (255 == (e >> 24 & 255)) {
+                        var t = e >> 16 & 255
+                          , o = e >> 8 & 255
+                          , i = 255 & e;
+                        255 === t ? (t = 0,
+                        255 === o ? (o = 0,
+                        255 === i ? i = 0 : ++i) : ++o) : ++t,
+                        e = 0,
+                        e += t << 16,
+                        e += o << 8,
+                        e += i
+                    } else
+                        e += 1 << 24;
+                    return e
+                }
+                function i(e) {
+                    return 0 === (e[0] = o(e[0])) && (e[1] = o(e[1])),
+                    e
+                }
+                var n = t.Encryptor = t.extend({
+                    processBlock: function(e, t) {
+                        var o = this._cipher
+                          , n = o.blockSize
+                          , r = this._iv
+                          , a = this._counter;
+                        r && (a = this._counter = r.slice(0),
+                        this._iv = void 0),
+                        i(a);
+                        var s = a.slice(0);
+                        o.encryptBlock(s, 0);
+                        for (var c = 0; c < n; c++)
+                            e[t + c] ^= s[c]
+                    }
+                });
+                return t.Decryptor = n,
+                t
+            }(),
+            e.mode.CTRGladman
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./cipher-core")) : "function" == typeof define && define.amd ? define(["./core", "./cipher-core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./cipher-core": "cipher-core",
+        "./core": "core"
+    }],
+    "mode-ctr": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "a4b04P3qpJAMJ5xtIEnkmCu", "mode-ctr"),
+        i = function(e) {
+            var t, o;
+            return e.mode.CTR = (o = (t = e.lib.BlockCipherMode.extend()).Encryptor = t.extend({
+                processBlock: function(e, t) {
+                    var o = this._cipher
+                      , i = o.blockSize
+                      , n = this._iv
+                      , r = this._counter;
+                    n && (r = this._counter = n.slice(0),
+                    this._iv = void 0);
+                    var a = r.slice(0);
+                    o.encryptBlock(a, 0),
+                    r[i - 1] = r[i - 1] + 1 | 0;
+                    for (var s = 0; s < i; s++)
+                        e[t + s] ^= a[s]
+                }
+            }),
+            t.Decryptor = o,
+            t),
+            e.mode.CTR
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./cipher-core")) : "function" == typeof define && define.amd ? define(["./core", "./cipher-core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./cipher-core": "cipher-core",
+        "./core": "core"
+    }],
+    "mode-ecb": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "fb914npRlNP7qz1mhKDMRJe", "mode-ecb"),
+        i = function(e) {
+            var t;
+            return e.mode.ECB = ((t = e.lib.BlockCipherMode.extend()).Encryptor = t.extend({
+                processBlock: function(e, t) {
+                    this._cipher.encryptBlock(e, t)
+                }
+            }),
+            t.Decryptor = t.extend({
+                processBlock: function(e, t) {
+                    this._cipher.decryptBlock(e, t)
+                }
+            }),
+            t),
+            e.mode.ECB
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./cipher-core")) : "function" == typeof define && define.amd ? define(["./core", "./cipher-core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./cipher-core": "cipher-core",
+        "./core": "core"
+    }],
+    "mode-ofb": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "8a7f8pJ6ThLT5/Xa189ZSkX", "mode-ofb"),
+        i = function(e) {
+            var t, o;
+            return e.mode.OFB = (o = (t = e.lib.BlockCipherMode.extend()).Encryptor = t.extend({
+                processBlock: function(e, t) {
+                    var o = this._cipher
+                      , i = o.blockSize
+                      , n = this._iv
+                      , r = this._keystream;
+                    n && (r = this._keystream = n.slice(0),
+                    this._iv = void 0),
+                    o.encryptBlock(r, 0);
+                    for (var a = 0; a < i; a++)
+                        e[t + a] ^= r[a]
+                }
+            }),
+            t.Decryptor = o,
+            t),
+            e.mode.OFB
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./cipher-core")) : "function" == typeof define && define.amd ? define(["./core", "./cipher-core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./cipher-core": "cipher-core",
+        "./core": "core"
+    }],
+    "pad-ansix923": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "26419xcf+1EDIWXQwGKBEsH", "pad-ansix923"),
+        i = function(e) {
+            return e.pad.AnsiX923 = {
+                pad: function(e, t) {
+                    var o = e.sigBytes
+                      , i = 4 * t
+                      , n = i - o % i
+                      , r = o + n - 1;
+                    e.clamp(),
+                    e.words[r >>> 2] |= n << 24 - r % 4 * 8,
+                    e.sigBytes += n
+                },
+                unpad: function(e) {
+                    var t = 255 & e.words[e.sigBytes - 1 >>> 2];
+                    e.sigBytes -= t
+                }
+            },
+            e.pad.Ansix923
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./cipher-core")) : "function" == typeof define && define.amd ? define(["./core", "./cipher-core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./cipher-core": "cipher-core",
+        "./core": "core"
+    }],
+    "pad-iso10126": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "e1128QYW4ZPRZdDEwrP6k3h", "pad-iso10126"),
+        i = function(e) {
+            return e.pad.Iso10126 = {
+                pad: function(t, o) {
+                    var i = 4 * o
+                      , n = i - t.sigBytes % i;
+                    t.concat(e.lib.WordArray.random(n - 1)).concat(e.lib.WordArray.create([n << 24], 1))
+                },
+                unpad: function(e) {
+                    var t = 255 & e.words[e.sigBytes - 1 >>> 2];
+                    e.sigBytes -= t
+                }
+            },
+            e.pad.Iso10126
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./cipher-core")) : "function" == typeof define && define.amd ? define(["./core", "./cipher-core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./cipher-core": "cipher-core",
+        "./core": "core"
+    }],
+    "pad-iso97971": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "787ebP7rr5Kk4jy/JRI18Xx", "pad-iso97971"),
+        i = function(e) {
+            return e.pad.Iso97971 = {
+                pad: function(t, o) {
+                    t.concat(e.lib.WordArray.create([2147483648], 1)),
+                    e.pad.ZeroPadding.pad(t, o)
+                },
+                unpad: function(t) {
+                    e.pad.ZeroPadding.unpad(t),
+                    t.sigBytes--
+                }
+            },
+            e.pad.Iso97971
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./cipher-core")) : "function" == typeof define && define.amd ? define(["./core", "./cipher-core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./cipher-core": "cipher-core",
+        "./core": "core"
+    }],
+    "pad-nopadding": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "6fbc5UDAqpEn7Eqndso+cRK", "pad-nopadding"),
+        i = function(e) {
+            return e.pad.NoPadding = {
+                pad: function() {},
+                unpad: function() {}
+            },
+            e.pad.NoPadding
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./cipher-core")) : "function" == typeof define && define.amd ? define(["./core", "./cipher-core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./cipher-core": "cipher-core",
+        "./core": "core"
+    }],
+    "pad-pkcs7": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "c98038rr95GPKp31aUv94TH", "pad-pkcs7"),
+        i = function(e) {
+            return e.pad.Pkcs7
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./cipher-core")) : "function" == typeof define && define.amd ? define(["./core", "./cipher-core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./cipher-core": "cipher-core",
+        "./core": "core"
+    }],
+    "pad-zeropadding": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "35cc86gixhB0KS5fK/gpTXS", "pad-zeropadding"),
+        i = function(e) {
+            return e.pad.ZeroPadding = {
+                pad: function(e, t) {
+                    var o = 4 * t;
+                    e.clamp(),
+                    e.sigBytes += o - (e.sigBytes % o || o)
+                },
+                unpad: function(e) {
+                    for (var t = e.words, o = e.sigBytes - 1; !(t[o >>> 2] >>> 24 - o % 4 * 8 & 255); )
+                        o--;
+                    e.sigBytes = o + 1
+                }
+            },
+            e.pad.ZeroPadding
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./cipher-core")) : "function" == typeof define && define.amd ? define(["./core", "./cipher-core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./cipher-core": "cipher-core",
+        "./core": "core"
+    }],
+    pbkdf2: [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "4a128E6k3JDXrTw25WQ9srS", "pbkdf2"),
+        i = function(e) {
+            var t, o, i, n, r, a, s, c;
+            return i = (o = (t = e).lib).Base,
+            n = o.WordArray,
+            a = (r = t.algo).SHA1,
+            s = r.HMAC,
+            c = r.PBKDF2 = i.extend({
+                cfg: i.extend({
+                    keySize: 4,
+                    hasher: a,
+                    iterations: 1
+                }),
+                init: function(e) {
+                    this.cfg = this.cfg.extend(e)
+                },
+                compute: function(e, t) {
+                    for (var o = this.cfg, i = s.create(o.hasher, e), r = n.create(), a = n.create([1]), c = r.words, l = a.words, h = o.keySize, d = o.iterations; c.length < h; ) {
+                        var f = i.update(t).finalize(a);
+                        i.reset();
+                        for (var u = f.words, p = u.length, g = f, _ = 1; _ < d; _++) {
+                            g = i.finalize(g),
+                            i.reset();
+                            for (var m = g.words, y = 0; y < p; y++)
+                                u[y] ^= m[y]
+                        }
+                        r.concat(f),
+                        l[0]++
+                    }
+                    return r.sigBytes = 4 * h,
+                    r
+                }
+            }),
+            t.PBKDF2 = function(e, t, o) {
+                return c.create(o).compute(e, t)
+            }
+            ,
+            e.PBKDF2
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./sha1"), e("./hmac")) : "function" == typeof define && define.amd ? define(["./core", "./sha1", "./hmac"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core",
+        "./hmac": "hmac",
+        "./sha1": "sha1"
+    }],
+    "rabbit-legacy": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "cd934gYy8pNh7vlEqLbrIOt", "rabbit-legacy"),
+        i = function(e) {
+            return function() {
+                var t = e
+                  , o = t.lib.StreamCipher
+                  , i = t.algo
+                  , n = []
+                  , r = []
+                  , a = []
+                  , s = i.RabbitLegacy = o.extend({
+                    _doReset: function() {
+                        var e = this._key.words
+                          , t = this.cfg.iv
+                          , o = this._X = [e[0], e[3] << 16 | e[2] >>> 16, e[1], e[0] << 16 | e[3] >>> 16, e[2], e[1] << 16 | e[0] >>> 16, e[3], e[2] << 16 | e[1] >>> 16]
+                          , i = this._C = [e[2] << 16 | e[2] >>> 16, 4294901760 & e[0] | 65535 & e[1], e[3] << 16 | e[3] >>> 16, 4294901760 & e[1] | 65535 & e[2], e[0] << 16 | e[0] >>> 16, 4294901760 & e[2] | 65535 & e[3], e[1] << 16 | e[1] >>> 16, 4294901760 & e[3] | 65535 & e[0]];
+                        this._b = 0;
+                        for (var n = 0; n < 4; n++)
+                            c.call(this);
+                        for (n = 0; n < 8; n++)
+                            i[n] ^= o[n + 4 & 7];
+                        if (t) {
+                            var r = t.words
+                              , a = r[0]
+                              , s = r[1]
+                              , l = 16711935 & (a << 8 | a >>> 24) | 4278255360 & (a << 24 | a >>> 8)
+                              , h = 16711935 & (s << 8 | s >>> 24) | 4278255360 & (s << 24 | s >>> 8)
+                              , d = l >>> 16 | 4294901760 & h
+                              , f = h << 16 | 65535 & l;
+                            for (i[0] ^= l,
+                            i[1] ^= d,
+                            i[2] ^= h,
+                            i[3] ^= f,
+                            i[4] ^= l,
+                            i[5] ^= d,
+                            i[6] ^= h,
+                            i[7] ^= f,
+                            n = 0; n < 4; n++)
+                                c.call(this)
+                        }
+                    },
+                    _doProcessBlock: function(e, t) {
+                        var o = this._X;
+                        c.call(this),
+                        n[0] = o[0] ^ o[5] >>> 16 ^ o[3] << 16,
+                        n[1] = o[2] ^ o[7] >>> 16 ^ o[5] << 16,
+                        n[2] = o[4] ^ o[1] >>> 16 ^ o[7] << 16,
+                        n[3] = o[6] ^ o[3] >>> 16 ^ o[1] << 16;
+                        for (var i = 0; i < 4; i++)
+                            n[i] = 16711935 & (n[i] << 8 | n[i] >>> 24) | 4278255360 & (n[i] << 24 | n[i] >>> 8),
+                            e[t + i] ^= n[i]
+                    },
+                    blockSize: 4,
+                    ivSize: 2
+                });
+                function c() {
+                    for (var e = this._X, t = this._C, o = 0; o < 8; o++)
+                        r[o] = t[o];
+                    for (t[0] = t[0] + 1295307597 + this._b | 0,
+                    t[1] = t[1] + 3545052371 + (t[0] >>> 0 < r[0] >>> 0 ? 1 : 0) | 0,
+                    t[2] = t[2] + 886263092 + (t[1] >>> 0 < r[1] >>> 0 ? 1 : 0) | 0,
+                    t[3] = t[3] + 1295307597 + (t[2] >>> 0 < r[2] >>> 0 ? 1 : 0) | 0,
+                    t[4] = t[4] + 3545052371 + (t[3] >>> 0 < r[3] >>> 0 ? 1 : 0) | 0,
+                    t[5] = t[5] + 886263092 + (t[4] >>> 0 < r[4] >>> 0 ? 1 : 0) | 0,
+                    t[6] = t[6] + 1295307597 + (t[5] >>> 0 < r[5] >>> 0 ? 1 : 0) | 0,
+                    t[7] = t[7] + 3545052371 + (t[6] >>> 0 < r[6] >>> 0 ? 1 : 0) | 0,
+                    this._b = t[7] >>> 0 < r[7] >>> 0 ? 1 : 0,
+                    o = 0; o < 8; o++) {
+                        var i = e[o] + t[o]
+                          , n = 65535 & i
+                          , s = i >>> 16
+                          , c = ((n * n >>> 17) + n * s >>> 15) + s * s
+                          , l = ((4294901760 & i) * i | 0) + ((65535 & i) * i | 0);
+                        a[o] = c ^ l
+                    }
+                    e[0] = a[0] + (a[7] << 16 | a[7] >>> 16) + (a[6] << 16 | a[6] >>> 16) | 0,
+                    e[1] = a[1] + (a[0] << 8 | a[0] >>> 24) + a[7] | 0,
+                    e[2] = a[2] + (a[1] << 16 | a[1] >>> 16) + (a[0] << 16 | a[0] >>> 16) | 0,
+                    e[3] = a[3] + (a[2] << 8 | a[2] >>> 24) + a[1] | 0,
+                    e[4] = a[4] + (a[3] << 16 | a[3] >>> 16) + (a[2] << 16 | a[2] >>> 16) | 0,
+                    e[5] = a[5] + (a[4] << 8 | a[4] >>> 24) + a[3] | 0,
+                    e[6] = a[6] + (a[5] << 16 | a[5] >>> 16) + (a[4] << 16 | a[4] >>> 16) | 0,
+                    e[7] = a[7] + (a[6] << 8 | a[6] >>> 24) + a[5] | 0
+                }
+                t.RabbitLegacy = o._createHelper(s)
+            }(),
+            e.RabbitLegacy
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./enc-base64"), e("./md5"), e("./evpkdf"), e("./cipher-core")) : "function" == typeof define && define.amd ? define(["./core", "./enc-base64", "./md5", "./evpkdf", "./cipher-core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./cipher-core": "cipher-core",
+        "./core": "core",
+        "./enc-base64": "enc-base64",
+        "./evpkdf": "evpkdf",
+        "./md5": "md5"
+    }],
+    rabbit: [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "25cd0YDQcRGZYxYzRJQ9Xy7", "rabbit"),
+        i = function(e) {
+            return function() {
+                var t = e
+                  , o = t.lib.StreamCipher
+                  , i = t.algo
+                  , n = []
+                  , r = []
+                  , a = []
+                  , s = i.Rabbit = o.extend({
+                    _doReset: function() {
+                        for (var e = this._key.words, t = this.cfg.iv, o = 0; o < 4; o++)
+                            e[o] = 16711935 & (e[o] << 8 | e[o] >>> 24) | 4278255360 & (e[o] << 24 | e[o] >>> 8);
+                        var i = this._X = [e[0], e[3] << 16 | e[2] >>> 16, e[1], e[0] << 16 | e[3] >>> 16, e[2], e[1] << 16 | e[0] >>> 16, e[3], e[2] << 16 | e[1] >>> 16]
+                          , n = this._C = [e[2] << 16 | e[2] >>> 16, 4294901760 & e[0] | 65535 & e[1], e[3] << 16 | e[3] >>> 16, 4294901760 & e[1] | 65535 & e[2], e[0] << 16 | e[0] >>> 16, 4294901760 & e[2] | 65535 & e[3], e[1] << 16 | e[1] >>> 16, 4294901760 & e[3] | 65535 & e[0]];
+                        for (this._b = 0,
+                        o = 0; o < 4; o++)
+                            c.call(this);
+                        for (o = 0; o < 8; o++)
+                            n[o] ^= i[o + 4 & 7];
+                        if (t) {
+                            var r = t.words
+                              , a = r[0]
+                              , s = r[1]
+                              , l = 16711935 & (a << 8 | a >>> 24) | 4278255360 & (a << 24 | a >>> 8)
+                              , h = 16711935 & (s << 8 | s >>> 24) | 4278255360 & (s << 24 | s >>> 8)
+                              , d = l >>> 16 | 4294901760 & h
+                              , f = h << 16 | 65535 & l;
+                            for (n[0] ^= l,
+                            n[1] ^= d,
+                            n[2] ^= h,
+                            n[3] ^= f,
+                            n[4] ^= l,
+                            n[5] ^= d,
+                            n[6] ^= h,
+                            n[7] ^= f,
+                            o = 0; o < 4; o++)
+                                c.call(this)
+                        }
+                    },
+                    _doProcessBlock: function(e, t) {
+                        var o = this._X;
+                        c.call(this),
+                        n[0] = o[0] ^ o[5] >>> 16 ^ o[3] << 16,
+                        n[1] = o[2] ^ o[7] >>> 16 ^ o[5] << 16,
+                        n[2] = o[4] ^ o[1] >>> 16 ^ o[7] << 16,
+                        n[3] = o[6] ^ o[3] >>> 16 ^ o[1] << 16;
+                        for (var i = 0; i < 4; i++)
+                            n[i] = 16711935 & (n[i] << 8 | n[i] >>> 24) | 4278255360 & (n[i] << 24 | n[i] >>> 8),
+                            e[t + i] ^= n[i]
+                    },
+                    blockSize: 4,
+                    ivSize: 2
+                });
+                function c() {
+                    for (var e = this._X, t = this._C, o = 0; o < 8; o++)
+                        r[o] = t[o];
+                    for (t[0] = t[0] + 1295307597 + this._b | 0,
+                    t[1] = t[1] + 3545052371 + (t[0] >>> 0 < r[0] >>> 0 ? 1 : 0) | 0,
+                    t[2] = t[2] + 886263092 + (t[1] >>> 0 < r[1] >>> 0 ? 1 : 0) | 0,
+                    t[3] = t[3] + 1295307597 + (t[2] >>> 0 < r[2] >>> 0 ? 1 : 0) | 0,
+                    t[4] = t[4] + 3545052371 + (t[3] >>> 0 < r[3] >>> 0 ? 1 : 0) | 0,
+                    t[5] = t[5] + 886263092 + (t[4] >>> 0 < r[4] >>> 0 ? 1 : 0) | 0,
+                    t[6] = t[6] + 1295307597 + (t[5] >>> 0 < r[5] >>> 0 ? 1 : 0) | 0,
+                    t[7] = t[7] + 3545052371 + (t[6] >>> 0 < r[6] >>> 0 ? 1 : 0) | 0,
+                    this._b = t[7] >>> 0 < r[7] >>> 0 ? 1 : 0,
+                    o = 0; o < 8; o++) {
+                        var i = e[o] + t[o]
+                          , n = 65535 & i
+                          , s = i >>> 16
+                          , c = ((n * n >>> 17) + n * s >>> 15) + s * s
+                          , l = ((4294901760 & i) * i | 0) + ((65535 & i) * i | 0);
+                        a[o] = c ^ l
+                    }
+                    e[0] = a[0] + (a[7] << 16 | a[7] >>> 16) + (a[6] << 16 | a[6] >>> 16) | 0,
+                    e[1] = a[1] + (a[0] << 8 | a[0] >>> 24) + a[7] | 0,
+                    e[2] = a[2] + (a[1] << 16 | a[1] >>> 16) + (a[0] << 16 | a[0] >>> 16) | 0,
+                    e[3] = a[3] + (a[2] << 8 | a[2] >>> 24) + a[1] | 0,
+                    e[4] = a[4] + (a[3] << 16 | a[3] >>> 16) + (a[2] << 16 | a[2] >>> 16) | 0,
+                    e[5] = a[5] + (a[4] << 8 | a[4] >>> 24) + a[3] | 0,
+                    e[6] = a[6] + (a[5] << 16 | a[5] >>> 16) + (a[4] << 16 | a[4] >>> 16) | 0,
+                    e[7] = a[7] + (a[6] << 8 | a[6] >>> 24) + a[5] | 0
+                }
+                t.Rabbit = o._createHelper(s)
+            }(),
+            e.Rabbit
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./enc-base64"), e("./md5"), e("./evpkdf"), e("./cipher-core")) : "function" == typeof define && define.amd ? define(["./core", "./enc-base64", "./md5", "./evpkdf", "./cipher-core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./cipher-core": "cipher-core",
+        "./core": "core",
+        "./enc-base64": "enc-base64",
+        "./evpkdf": "evpkdf",
+        "./md5": "md5"
+    }],
+    rc4: [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "27741iy9StBT5TyqhR5sOp0", "rc4"),
+        i = function(e) {
+            return function() {
+                var t = e
+                  , o = t.lib.StreamCipher
+                  , i = t.algo
+                  , n = i.RC4 = o.extend({
+                    _doReset: function() {
+                        for (var e = this._key, t = e.words, o = e.sigBytes, i = this._S = [], n = 0; n < 256; n++)
+                            i[n] = n;
+                        n = 0;
+                        for (var r = 0; n < 256; n++) {
+                            var a = n % o
+                              , s = t[a >>> 2] >>> 24 - a % 4 * 8 & 255;
+                            r = (r + i[n] + s) % 256;
+                            var c = i[n];
+                            i[n] = i[r],
+                            i[r] = c
+                        }
+                        this._i = this._j = 0
+                    },
+                    _doProcessBlock: function(e, t) {
+                        e[t] ^= r.call(this)
+                    },
+                    keySize: 8,
+                    ivSize: 0
+                });
+                function r() {
+                    for (var e = this._S, t = this._i, o = this._j, i = 0, n = 0; n < 4; n++) {
+                        o = (o + e[t = (t + 1) % 256]) % 256;
+                        var r = e[t];
+                        e[t] = e[o],
+                        e[o] = r,
+                        i |= e[(e[t] + e[o]) % 256] << 24 - 8 * n
+                    }
+                    return this._i = t,
+                    this._j = o,
+                    i
+                }
+                t.RC4 = o._createHelper(n);
+                var a = i.RC4Drop = n.extend({
+                    cfg: n.cfg.extend({
+                        drop: 192
+                    }),
+                    _doReset: function() {
+                        n._doReset.call(this);
+                        for (var e = this.cfg.drop; e > 0; e--)
+                            r.call(this)
+                    }
+                });
+                t.RC4Drop = o._createHelper(a)
+            }(),
+            e.RC4
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./enc-base64"), e("./md5"), e("./evpkdf"), e("./cipher-core")) : "function" == typeof define && define.amd ? define(["./core", "./enc-base64", "./md5", "./evpkdf", "./cipher-core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./cipher-core": "cipher-core",
+        "./core": "core",
+        "./enc-base64": "enc-base64",
+        "./evpkdf": "evpkdf",
+        "./md5": "md5"
+    }],
+    ripemd160: [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "ec65c4ZhL5PyaYRVJGfrcug", "ripemd160"),
+        i = function(e) {
+            return function() {
+                var t = e
+                  , o = t.lib
+                  , i = o.WordArray
+                  , n = o.Hasher
+                  , r = t.algo
+                  , a = i.create([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 7, 4, 13, 1, 10, 6, 15, 3, 12, 0, 9, 5, 2, 14, 11, 8, 3, 10, 14, 4, 9, 15, 8, 1, 2, 7, 0, 6, 13, 11, 5, 12, 1, 9, 11, 10, 0, 8, 12, 4, 13, 3, 7, 15, 14, 5, 6, 2, 4, 0, 5, 9, 7, 12, 2, 10, 14, 1, 3, 8, 11, 6, 15, 13])
+                  , s = i.create([5, 14, 7, 0, 9, 2, 11, 4, 13, 6, 15, 8, 1, 10, 3, 12, 6, 11, 3, 7, 0, 13, 5, 10, 14, 15, 8, 12, 4, 9, 1, 2, 15, 5, 1, 3, 7, 14, 6, 9, 11, 8, 12, 2, 10, 0, 4, 13, 8, 6, 4, 1, 3, 11, 15, 0, 5, 12, 2, 13, 9, 7, 10, 14, 12, 15, 10, 4, 1, 5, 8, 7, 6, 2, 13, 14, 0, 3, 9, 11])
+                  , c = i.create([11, 14, 15, 12, 5, 8, 7, 9, 11, 13, 14, 15, 6, 7, 9, 8, 7, 6, 8, 13, 11, 9, 7, 15, 7, 12, 15, 9, 11, 7, 13, 12, 11, 13, 6, 7, 14, 9, 13, 15, 14, 8, 13, 6, 5, 12, 7, 5, 11, 12, 14, 15, 14, 15, 9, 8, 9, 14, 5, 6, 8, 6, 5, 12, 9, 15, 5, 11, 6, 8, 13, 12, 5, 12, 13, 14, 11, 8, 5, 6])
+                  , l = i.create([8, 9, 9, 11, 13, 15, 15, 5, 7, 7, 8, 11, 14, 14, 12, 6, 9, 13, 15, 7, 12, 8, 9, 11, 7, 7, 12, 7, 6, 15, 13, 11, 9, 7, 15, 11, 8, 6, 6, 14, 12, 13, 5, 14, 13, 13, 7, 5, 15, 5, 8, 11, 14, 14, 6, 14, 6, 9, 12, 9, 12, 5, 15, 8, 8, 5, 12, 9, 12, 5, 14, 6, 8, 13, 6, 5, 15, 13, 11, 11])
+                  , h = i.create([0, 1518500249, 1859775393, 2400959708, 2840853838])
+                  , d = i.create([1352829926, 1548603684, 1836072691, 2053994217, 0])
+                  , f = r.RIPEMD160 = n.extend({
+                    _doReset: function() {
+                        this._hash = i.create([1732584193, 4023233417, 2562383102, 271733878, 3285377520])
+                    },
+                    _doProcessBlock: function(e, t) {
+                        for (var o = 0; o < 16; o++) {
+                            var i = t + o
+                              , n = e[i];
+                            e[i] = 16711935 & (n << 8 | n >>> 24) | 4278255360 & (n << 24 | n >>> 8)
+                        }
+                        var r, f, v, C, b, M, S, N, w, B, P, T = this._hash.words, k = h.words, I = d.words, D = a.words, R = s.words, L = c.words, E = l.words;
+                        for (M = r = T[0],
+                        S = f = T[1],
+                        N = v = T[2],
+                        w = C = T[3],
+                        B = b = T[4],
+                        o = 0; o < 80; o += 1)
+                            P = r + e[t + D[o]] | 0,
+                            P += o < 16 ? u(f, v, C) + k[0] : o < 32 ? p(f, v, C) + k[1] : o < 48 ? g(f, v, C) + k[2] : o < 64 ? _(f, v, C) + k[3] : m(f, v, C) + k[4],
+                            P = (P = y(P |= 0, L[o])) + b | 0,
+                            r = b,
+                            b = C,
+                            C = y(v, 10),
+                            v = f,
+                            f = P,
+                            P = M + e[t + R[o]] | 0,
+                            P += o < 16 ? m(S, N, w) + I[0] : o < 32 ? _(S, N, w) + I[1] : o < 48 ? g(S, N, w) + I[2] : o < 64 ? p(S, N, w) + I[3] : u(S, N, w) + I[4],
+                            P = (P = y(P |= 0, E[o])) + B | 0,
+                            M = B,
+                            B = w,
+                            w = y(N, 10),
+                            N = S,
+                            S = P;
+                        P = T[1] + v + w | 0,
+                        T[1] = T[2] + C + B | 0,
+                        T[2] = T[3] + b + M | 0,
+                        T[3] = T[4] + r + S | 0,
+                        T[4] = T[0] + f + N | 0,
+                        T[0] = P
+                    },
+                    _doFinalize: function() {
+                        var e = this._data
+                          , t = e.words
+                          , o = 8 * this._nDataBytes
+                          , i = 8 * e.sigBytes;
+                        t[i >>> 5] |= 128 << 24 - i % 32,
+                        t[14 + (i + 64 >>> 9 << 4)] = 16711935 & (o << 8 | o >>> 24) | 4278255360 & (o << 24 | o >>> 8),
+                        e.sigBytes = 4 * (t.length + 1),
+                        this._process();
+                        for (var n = this._hash, r = n.words, a = 0; a < 5; a++) {
+                            var s = r[a];
+                            r[a] = 16711935 & (s << 8 | s >>> 24) | 4278255360 & (s << 24 | s >>> 8)
+                        }
+                        return n
+                    },
+                    clone: function() {
+                        var e = n.clone.call(this);
+                        return e._hash = this._hash.clone(),
+                        e
+                    }
+                });
+                function u(e, t, o) {
+                    return e ^ t ^ o
+                }
+                function p(e, t, o) {
+                    return e & t | ~e & o
+                }
+                function g(e, t, o) {
+                    return (e | ~t) ^ o
+                }
+                function _(e, t, o) {
+                    return e & o | t & ~o
+                }
+                function m(e, t, o) {
+                    return e ^ (t | ~o)
+                }
+                function y(e, t) {
+                    return e << t | e >>> 32 - t
+                }
+                t.RIPEMD160 = n._createHelper(f),
+                t.HmacRIPEMD160 = n._createHmacHelper(f)
+            }(Math),
+            e.RIPEMD160
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core")) : "function" == typeof define && define.amd ? define(["./core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core"
+    }],
+    sha1: [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "83012fwd1hHo5XsROJTT1n3", "sha1"),
+        i = function(e) {
+            var t, o, i, n, r, a, s;
+            return o = (t = e).lib,
+            i = o.WordArray,
+            n = o.Hasher,
+            r = t.algo,
+            a = [],
+            s = r.SHA1 = n.extend({
+                _doReset: function() {
+                    this._hash = new i.init([1732584193, 4023233417, 2562383102, 271733878, 3285377520])
+                },
+                _doProcessBlock: function(e, t) {
+                    for (var o = this._hash.words, i = o[0], n = o[1], r = o[2], s = o[3], c = o[4], l = 0; l < 80; l++) {
+                        if (l < 16)
+                            a[l] = 0 | e[t + l];
+                        else {
+                            var h = a[l - 3] ^ a[l - 8] ^ a[l - 14] ^ a[l - 16];
+                            a[l] = h << 1 | h >>> 31
+                        }
+                        var d = (i << 5 | i >>> 27) + c + a[l];
+                        d += l < 20 ? 1518500249 + (n & r | ~n & s) : l < 40 ? 1859775393 + (n ^ r ^ s) : l < 60 ? (n & r | n & s | r & s) - 1894007588 : (n ^ r ^ s) - 899497514,
+                        c = s,
+                        s = r,
+                        r = n << 30 | n >>> 2,
+                        n = i,
+                        i = d
+                    }
+                    o[0] = o[0] + i | 0,
+                    o[1] = o[1] + n | 0,
+                    o[2] = o[2] + r | 0,
+                    o[3] = o[3] + s | 0,
+                    o[4] = o[4] + c | 0
+                },
+                _doFinalize: function() {
+                    var e = this._data
+                      , t = e.words
+                      , o = 8 * this._nDataBytes
+                      , i = 8 * e.sigBytes;
+                    return t[i >>> 5] |= 128 << 24 - i % 32,
+                    t[14 + (i + 64 >>> 9 << 4)] = Math.floor(o / 4294967296),
+                    t[15 + (i + 64 >>> 9 << 4)] = o,
+                    e.sigBytes = 4 * t.length,
+                    this._process(),
+                    this._hash
+                },
+                clone: function() {
+                    var e = n.clone.call(this);
+                    return e._hash = this._hash.clone(),
+                    e
+                }
+            }),
+            t.SHA1 = n._createHelper(s),
+            t.HmacSHA1 = n._createHmacHelper(s),
+            e.SHA1
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core")) : "function" == typeof define && define.amd ? define(["./core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core"
+    }],
+    sha224: [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "7c6c0J1jIdPmZr5yuGjDuA2", "sha224"),
+        i = function(e) {
+            var t, o, i, n, r;
+            return o = (t = e).lib.WordArray,
+            i = t.algo,
+            n = i.SHA256,
+            r = i.SHA224 = n.extend({
+                _doReset: function() {
+                    this._hash = new o.init([3238371032, 914150663, 812702999, 4144912697, 4290775857, 1750603025, 1694076839, 3204075428])
+                },
+                _doFinalize: function() {
+                    var e = n._doFinalize.call(this);
+                    return e.sigBytes -= 4,
+                    e
+                }
+            }),
+            t.SHA224 = n._createHelper(r),
+            t.HmacSHA224 = n._createHmacHelper(r),
+            e.SHA224
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./sha256")) : "function" == typeof define && define.amd ? define(["./core", "./sha256"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core",
+        "./sha256": "sha256"
+    }],
+    sha256: [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "3b1d0UEynhIQ6jqeoR34Z5H", "sha256"),
+        i = function(e) {
+            return function(t) {
+                var o = e
+                  , i = o.lib
+                  , n = i.WordArray
+                  , r = i.Hasher
+                  , a = o.algo
+                  , s = []
+                  , c = [];
+                (function() {
+                    function e(e) {
+                        for (var o = t.sqrt(e), i = 2; i <= o; i++)
+                            if (!(e % i))
+                                return !1;
+                        return !0
+                    }
+                    function o(e) {
+                        return 4294967296 * (e - (0 | e)) | 0
+                    }
+                    for (var i = 2, n = 0; n < 64; )
+                        e(i) && (n < 8 && (s[n] = o(t.pow(i, .5))),
+                        c[n] = o(t.pow(i, 1 / 3)),
+                        n++),
+                        i++
+                }
+                )();
+                var l = []
+                  , h = a.SHA256 = r.extend({
+                    _doReset: function() {
+                        this._hash = new n.init(s.slice(0))
+                    },
+                    _doProcessBlock: function(e, t) {
+                        for (var o = this._hash.words, i = o[0], n = o[1], r = o[2], a = o[3], s = o[4], h = o[5], d = o[6], f = o[7], u = 0; u < 64; u++) {
+                            if (u < 16)
+                                l[u] = 0 | e[t + u];
+                            else {
+                                var p = l[u - 15]
+                                  , g = (p << 25 | p >>> 7) ^ (p << 14 | p >>> 18) ^ p >>> 3
+                                  , _ = l[u - 2]
+                                  , m = (_ << 15 | _ >>> 17) ^ (_ << 13 | _ >>> 19) ^ _ >>> 10;
+                                l[u] = g + l[u - 7] + m + l[u - 16]
+                            }
+                            var y = i & n ^ i & r ^ n & r
+                              , v = (i << 30 | i >>> 2) ^ (i << 19 | i >>> 13) ^ (i << 10 | i >>> 22)
+                              , C = f + ((s << 26 | s >>> 6) ^ (s << 21 | s >>> 11) ^ (s << 7 | s >>> 25)) + (s & h ^ ~s & d) + c[u] + l[u];
+                            f = d,
+                            d = h,
+                            h = s,
+                            s = a + C | 0,
+                            a = r,
+                            r = n,
+                            n = i,
+                            i = C + (v + y) | 0
+                        }
+                        o[0] = o[0] + i | 0,
+                        o[1] = o[1] + n | 0,
+                        o[2] = o[2] + r | 0,
+                        o[3] = o[3] + a | 0,
+                        o[4] = o[4] + s | 0,
+                        o[5] = o[5] + h | 0,
+                        o[6] = o[6] + d | 0,
+                        o[7] = o[7] + f | 0
+                    },
+                    _doFinalize: function() {
+                        var e = this._data
+                          , o = e.words
+                          , i = 8 * this._nDataBytes
+                          , n = 8 * e.sigBytes;
+                        return o[n >>> 5] |= 128 << 24 - n % 32,
+                        o[14 + (n + 64 >>> 9 << 4)] = t.floor(i / 4294967296),
+                        o[15 + (n + 64 >>> 9 << 4)] = i,
+                        e.sigBytes = 4 * o.length,
+                        this._process(),
+                        this._hash
+                    },
+                    clone: function() {
+                        var e = r.clone.call(this);
+                        return e._hash = this._hash.clone(),
+                        e
+                    }
+                });
+                o.SHA256 = r._createHelper(h),
+                o.HmacSHA256 = r._createHmacHelper(h)
+            }(Math),
+            e.SHA256
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core")) : "function" == typeof define && define.amd ? define(["./core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core"
+    }],
+    sha384: [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "a8a6e/merJD34h3NKO22hDt", "sha384"),
+        i = function(e) {
+            var t, o, i, n, r, a, s;
+            return o = (t = e).x64,
+            i = o.Word,
+            n = o.WordArray,
+            r = t.algo,
+            a = r.SHA512,
+            s = r.SHA384 = a.extend({
+                _doReset: function() {
+                    this._hash = new n.init([new i.init(3418070365,3238371032), new i.init(1654270250,914150663), new i.init(2438529370,812702999), new i.init(355462360,4144912697), new i.init(1731405415,4290775857), new i.init(2394180231,1750603025), new i.init(3675008525,1694076839), new i.init(1203062813,3204075428)])
+                },
+                _doFinalize: function() {
+                    var e = a._doFinalize.call(this);
+                    return e.sigBytes -= 16,
+                    e
+                }
+            }),
+            t.SHA384 = a._createHelper(s),
+            t.HmacSHA384 = a._createHmacHelper(s),
+            e.SHA384
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./x64-core"), e("./sha512")) : "function" == typeof define && define.amd ? define(["./core", "./x64-core", "./sha512"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core",
+        "./sha512": "sha512",
+        "./x64-core": "x64-core"
+    }],
+    sha3: [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "b0668ZDLhZPyYapPx/nlnoY", "sha3"),
+        i = function(e) {
+            return function(t) {
+                var o = e
+                  , i = o.lib
+                  , n = i.WordArray
+                  , r = i.Hasher
+                  , a = o.x64.Word
+                  , s = o.algo
+                  , c = []
+                  , l = []
+                  , h = [];
+                (function() {
+                    for (var e = 1, t = 0, o = 0; o < 24; o++) {
+                        c[e + 5 * t] = (o + 1) * (o + 2) / 2 % 64;
+                        var i = (2 * e + 3 * t) % 5;
+                        e = t % 5,
+                        t = i
+                    }
+                    for (e = 0; e < 5; e++)
+                        for (t = 0; t < 5; t++)
+                            l[e + 5 * t] = t + (2 * e + 3 * t) % 5 * 5;
+                    for (var n = 1, r = 0; r < 24; r++) {
+                        for (var s = 0, d = 0, f = 0; f < 7; f++) {
+                            if (1 & n) {
+                                var u = (1 << f) - 1;
+                                u < 32 ? d ^= 1 << u : s ^= 1 << u - 32
+                            }
+                            128 & n ? n = n << 1 ^ 113 : n <<= 1
+                        }
+                        h[r] = a.create(s, d)
+                    }
+                }
+                )();
+                var d = [];
+                (function() {
+                    for (var e = 0; e < 25; e++)
+                        d[e] = a.create()
+                }
+                )();
+                var f = s.SHA3 = r.extend({
+                    cfg: r.cfg.extend({
+                        outputLength: 512
+                    }),
+                    _doReset: function() {
+                        for (var e = this._state = [], t = 0; t < 25; t++)
+                            e[t] = new a.init;
+                        this.blockSize = (1600 - 2 * this.cfg.outputLength) / 32
+                    },
+                    _doProcessBlock: function(e, t) {
+                        for (var o = this._state, i = this.blockSize / 2, n = 0; n < i; n++) {
+                            var r = e[t + 2 * n]
+                              , a = e[t + 2 * n + 1];
+                            r = 16711935 & (r << 8 | r >>> 24) | 4278255360 & (r << 24 | r >>> 8),
+                            a = 16711935 & (a << 8 | a >>> 24) | 4278255360 & (a << 24 | a >>> 8),
+                            (T = o[n]).high ^= a,
+                            T.low ^= r
+                        }
+                        for (var s = 0; s < 24; s++) {
+                            for (var f = 0; f < 5; f++) {
+                                for (var u = 0, p = 0, g = 0; g < 5; g++)
+                                    u ^= (T = o[f + 5 * g]).high,
+                                    p ^= T.low;
+                                var _ = d[f];
+                                _.high = u,
+                                _.low = p
+                            }
+                            for (f = 0; f < 5; f++) {
+                                var m = d[(f + 4) % 5]
+                                  , y = d[(f + 1) % 5]
+                                  , v = y.high
+                                  , C = y.low;
+                                for (u = m.high ^ (v << 1 | C >>> 31),
+                                p = m.low ^ (C << 1 | v >>> 31),
+                                g = 0; g < 5; g++)
+                                    (T = o[f + 5 * g]).high ^= u,
+                                    T.low ^= p
+                            }
+                            for (var b = 1; b < 25; b++) {
+                                var M = (T = o[b]).high
+                                  , S = T.low
+                                  , N = c[b];
+                                N < 32 ? (u = M << N | S >>> 32 - N,
+                                p = S << N | M >>> 32 - N) : (u = S << N - 32 | M >>> 64 - N,
+                                p = M << N - 32 | S >>> 64 - N);
+                                var w = d[l[b]];
+                                w.high = u,
+                                w.low = p
+                            }
+                            var B = d[0]
+                              , P = o[0];
+                            for (B.high = P.high,
+                            B.low = P.low,
+                            f = 0; f < 5; f++)
+                                for (g = 0; g < 5; g++) {
+                                    var T = o[b = f + 5 * g]
+                                      , k = d[b]
+                                      , I = d[(f + 1) % 5 + 5 * g]
+                                      , D = d[(f + 2) % 5 + 5 * g];
+                                    T.high = k.high ^ ~I.high & D.high,
+                                    T.low = k.low ^ ~I.low & D.low
+                                }
+                            T = o[0];
+                            var R = h[s];
+                            T.high ^= R.high,
+                            T.low ^= R.low
+                        }
+                    },
+                    _doFinalize: function() {
+                        var e = this._data
+                          , o = e.words
+                          , i = (this._nDataBytes,
+                        8 * e.sigBytes)
+                          , r = 32 * this.blockSize;
+                        o[i >>> 5] |= 1 << 24 - i % 32,
+                        o[(t.ceil((i + 1) / r) * r >>> 5) - 1] |= 128,
+                        e.sigBytes = 4 * o.length,
+                        this._process();
+                        for (var a = this._state, s = this.cfg.outputLength / 8, c = s / 8, l = [], h = 0; h < c; h++) {
+                            var d = a[h]
+                              , f = d.high
+                              , u = d.low;
+                            f = 16711935 & (f << 8 | f >>> 24) | 4278255360 & (f << 24 | f >>> 8),
+                            u = 16711935 & (u << 8 | u >>> 24) | 4278255360 & (u << 24 | u >>> 8),
+                            l.push(u),
+                            l.push(f)
+                        }
+                        return new n.init(l,s)
+                    },
+                    clone: function() {
+                        for (var e = r.clone.call(this), t = e._state = this._state.slice(0), o = 0; o < 25; o++)
+                            t[o] = t[o].clone();
+                        return e
+                    }
+                });
+                o.SHA3 = r._createHelper(f),
+                o.HmacSHA3 = r._createHmacHelper(f)
+            }(Math),
+            e.SHA3
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./x64-core")) : "function" == typeof define && define.amd ? define(["./core", "./x64-core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core",
+        "./x64-core": "x64-core"
+    }],
+    sha512: [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "a5e61veW3xC5bb/83mCq8lp", "sha512"),
+        i = function(e) {
+            return function() {
+                var t = e
+                  , o = t.lib.Hasher
+                  , i = t.x64
+                  , n = i.Word
+                  , r = i.WordArray
+                  , a = t.algo;
+                function s() {
+                    return n.create.apply(n, arguments)
+                }
+                var c = [s(1116352408, 3609767458), s(1899447441, 602891725), s(3049323471, 3964484399), s(3921009573, 2173295548), s(961987163, 4081628472), s(1508970993, 3053834265), s(2453635748, 2937671579), s(2870763221, 3664609560), s(3624381080, 2734883394), s(310598401, 1164996542), s(607225278, 1323610764), s(1426881987, 3590304994), s(1925078388, 4068182383), s(2162078206, 991336113), s(2614888103, 633803317), s(3248222580, 3479774868), s(3835390401, 2666613458), s(4022224774, 944711139), s(264347078, 2341262773), s(604807628, 2007800933), s(770255983, 1495990901), s(1249150122, 1856431235), s(1555081692, 3175218132), s(1996064986, 2198950837), s(2554220882, 3999719339), s(2821834349, 766784016), s(2952996808, 2566594879), s(3210313671, 3203337956), s(3336571891, 1034457026), s(3584528711, 2466948901), s(113926993, 3758326383), s(338241895, 168717936), s(666307205, 1188179964), s(773529912, 1546045734), s(1294757372, 1522805485), s(1396182291, 2643833823), s(1695183700, 2343527390), s(1986661051, 1014477480), s(2177026350, 1206759142), s(2456956037, 344077627), s(2730485921, 1290863460), s(2820302411, 3158454273), s(3259730800, 3505952657), s(3345764771, 106217008), s(3516065817, 3606008344), s(3600352804, 1432725776), s(4094571909, 1467031594), s(275423344, 851169720), s(430227734, 3100823752), s(506948616, 1363258195), s(659060556, 3750685593), s(883997877, 3785050280), s(958139571, 3318307427), s(1322822218, 3812723403), s(1537002063, 2003034995), s(1747873779, 3602036899), s(1955562222, 1575990012), s(2024104815, 1125592928), s(2227730452, 2716904306), s(2361852424, 442776044), s(2428436474, 593698344), s(2756734187, 3733110249), s(3204031479, 2999351573), s(3329325298, 3815920427), s(3391569614, 3928383900), s(3515267271, 566280711), s(3940187606, 3454069534), s(4118630271, 4000239992), s(116418474, 1914138554), s(174292421, 2731055270), s(289380356, 3203993006), s(460393269, 320620315), s(685471733, 587496836), s(852142971, 1086792851), s(1017036298, 365543100), s(1126000580, 2618297676), s(1288033470, 3409855158), s(1501505948, 4234509866), s(1607167915, 987167468), s(1816402316, 1246189591)]
+                  , l = [];
+                (function() {
+                    for (var e = 0; e < 80; e++)
+                        l[e] = s()
+                }
+                )();
+                var h = a.SHA512 = o.extend({
+                    _doReset: function() {
+                        this._hash = new r.init([new n.init(1779033703,4089235720), new n.init(3144134277,2227873595), new n.init(1013904242,4271175723), new n.init(2773480762,1595750129), new n.init(1359893119,2917565137), new n.init(2600822924,725511199), new n.init(528734635,4215389547), new n.init(1541459225,327033209)])
+                    },
+                    _doProcessBlock: function(e, t) {
+                        for (var o = this._hash.words, i = o[0], n = o[1], r = o[2], a = o[3], s = o[4], h = o[5], d = o[6], f = o[7], u = i.high, p = i.low, g = n.high, _ = n.low, m = r.high, y = r.low, v = a.high, C = a.low, b = s.high, M = s.low, S = h.high, N = h.low, w = d.high, B = d.low, P = f.high, T = f.low, k = u, I = p, D = g, R = _, L = m, E = y, x = v, O = C, F = b, A = M, U = S, j = N, G = w, H = B, z = P, V = T, W = 0; W < 80; W++) {
+                            var J = l[W];
+                            if (W < 16)
+                                var q = J.high = 0 | e[t + 2 * W]
+                                  , K = J.low = 0 | e[t + 2 * W + 1];
+                            else {
+                                var X = l[W - 15]
+                                  , Y = X.high
+                                  , Z = X.low
+                                  , Q = (Y >>> 1 | Z << 31) ^ (Y >>> 8 | Z << 24) ^ Y >>> 7
+                                  , $ = (Z >>> 1 | Y << 31) ^ (Z >>> 8 | Y << 24) ^ (Z >>> 7 | Y << 25)
+                                  , ee = l[W - 2]
+                                  , te = ee.high
+                                  , oe = ee.low
+                                  , ie = (te >>> 19 | oe << 13) ^ (te << 3 | oe >>> 29) ^ te >>> 6
+                                  , ne = (oe >>> 19 | te << 13) ^ (oe << 3 | te >>> 29) ^ (oe >>> 6 | te << 26)
+                                  , re = l[W - 7]
+                                  , ae = re.high
+                                  , se = re.low
+                                  , ce = l[W - 16]
+                                  , le = ce.high
+                                  , he = ce.low;
+                                q = (q = (q = Q + ae + ((K = $ + se) >>> 0 < $ >>> 0 ? 1 : 0)) + ie + ((K += ne) >>> 0 < ne >>> 0 ? 1 : 0)) + le + ((K += he) >>> 0 < he >>> 0 ? 1 : 0),
+                                J.high = q,
+                                J.low = K
+                            }
+                            var de, fe = F & U ^ ~F & G, ue = A & j ^ ~A & H, pe = k & D ^ k & L ^ D & L, ge = I & R ^ I & E ^ R & E, _e = (k >>> 28 | I << 4) ^ (k << 30 | I >>> 2) ^ (k << 25 | I >>> 7), me = (I >>> 28 | k << 4) ^ (I << 30 | k >>> 2) ^ (I << 25 | k >>> 7), ye = (F >>> 14 | A << 18) ^ (F >>> 18 | A << 14) ^ (F << 23 | A >>> 9), ve = (A >>> 14 | F << 18) ^ (A >>> 18 | F << 14) ^ (A << 23 | F >>> 9), Ce = c[W], be = Ce.high, Me = Ce.low, Se = z + ye + ((de = V + ve) >>> 0 < V >>> 0 ? 1 : 0), Ne = me + ge;
+                            z = G,
+                            V = H,
+                            G = U,
+                            H = j,
+                            U = F,
+                            j = A,
+                            F = x + (Se = (Se = (Se = Se + fe + ((de += ue) >>> 0 < ue >>> 0 ? 1 : 0)) + be + ((de += Me) >>> 0 < Me >>> 0 ? 1 : 0)) + q + ((de += K) >>> 0 < K >>> 0 ? 1 : 0)) + ((A = O + de | 0) >>> 0 < O >>> 0 ? 1 : 0) | 0,
+                            x = L,
+                            O = E,
+                            L = D,
+                            E = R,
+                            D = k,
+                            R = I,
+                            k = Se + (_e + pe + (Ne >>> 0 < me >>> 0 ? 1 : 0)) + ((I = de + Ne | 0) >>> 0 < de >>> 0 ? 1 : 0) | 0
+                        }
+                        p = i.low = p + I,
+                        i.high = u + k + (p >>> 0 < I >>> 0 ? 1 : 0),
+                        _ = n.low = _ + R,
+                        n.high = g + D + (_ >>> 0 < R >>> 0 ? 1 : 0),
+                        y = r.low = y + E,
+                        r.high = m + L + (y >>> 0 < E >>> 0 ? 1 : 0),
+                        C = a.low = C + O,
+                        a.high = v + x + (C >>> 0 < O >>> 0 ? 1 : 0),
+                        M = s.low = M + A,
+                        s.high = b + F + (M >>> 0 < A >>> 0 ? 1 : 0),
+                        N = h.low = N + j,
+                        h.high = S + U + (N >>> 0 < j >>> 0 ? 1 : 0),
+                        B = d.low = B + H,
+                        d.high = w + G + (B >>> 0 < H >>> 0 ? 1 : 0),
+                        T = f.low = T + V,
+                        f.high = P + z + (T >>> 0 < V >>> 0 ? 1 : 0)
+                    },
+                    _doFinalize: function() {
+                        var e = this._data
+                          , t = e.words
+                          , o = 8 * this._nDataBytes
+                          , i = 8 * e.sigBytes;
+                        return t[i >>> 5] |= 128 << 24 - i % 32,
+                        t[30 + (i + 128 >>> 10 << 5)] = Math.floor(o / 4294967296),
+                        t[31 + (i + 128 >>> 10 << 5)] = o,
+                        e.sigBytes = 4 * t.length,
+                        this._process(),
+                        this._hash.toX32()
+                    },
+                    clone: function() {
+                        var e = o.clone.call(this);
+                        return e._hash = this._hash.clone(),
+                        e
+                    },
+                    blockSize: 32
+                });
+                t.SHA512 = o._createHelper(h),
+                t.HmacSHA512 = o._createHmacHelper(h)
+            }(),
+            e.SHA512
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./x64-core")) : "function" == typeof define && define.amd ? define(["./core", "./x64-core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core",
+        "./x64-core": "x64-core"
+    }],
+    tripledes: [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "4ce9d3ExWtDiYlnHJixgACN", "tripledes"),
+        i = function(e) {
+            return function() {
+                var t = e
+                  , o = t.lib
+                  , i = o.WordArray
+                  , n = o.BlockCipher
+                  , r = t.algo
+                  , a = [57, 49, 41, 33, 25, 17, 9, 1, 58, 50, 42, 34, 26, 18, 10, 2, 59, 51, 43, 35, 27, 19, 11, 3, 60, 52, 44, 36, 63, 55, 47, 39, 31, 23, 15, 7, 62, 54, 46, 38, 30, 22, 14, 6, 61, 53, 45, 37, 29, 21, 13, 5, 28, 20, 12, 4]
+                  , s = [14, 17, 11, 24, 1, 5, 3, 28, 15, 6, 21, 10, 23, 19, 12, 4, 26, 8, 16, 7, 27, 20, 13, 2, 41, 52, 31, 37, 47, 55, 30, 40, 51, 45, 33, 48, 44, 49, 39, 56, 34, 53, 46, 42, 50, 36, 29, 32]
+                  , c = [1, 2, 4, 6, 8, 10, 12, 14, 15, 17, 19, 21, 23, 25, 27, 28]
+                  , l = [{
+                    0: 8421888,
+                    268435456: 32768,
+                    536870912: 8421378,
+                    805306368: 2,
+                    1073741824: 512,
+                    1342177280: 8421890,
+                    1610612736: 8389122,
+                    1879048192: 8388608,
+                    2147483648: 514,
+                    2415919104: 8389120,
+                    2684354560: 33280,
+                    2952790016: 8421376,
+                    3221225472: 32770,
+                    3489660928: 8388610,
+                    3758096384: 0,
+                    4026531840: 33282,
+                    134217728: 0,
+                    402653184: 8421890,
+                    671088640: 33282,
+                    939524096: 32768,
+                    1207959552: 8421888,
+                    1476395008: 512,
+                    1744830464: 8421378,
+                    2013265920: 2,
+                    2281701376: 8389120,
+                    2550136832: 33280,
+                    2818572288: 8421376,
+                    3087007744: 8389122,
+                    3355443200: 8388610,
+                    3623878656: 32770,
+                    3892314112: 514,
+                    4160749568: 8388608,
+                    1: 32768,
+                    268435457: 2,
+                    536870913: 8421888,
+                    805306369: 8388608,
+                    1073741825: 8421378,
+                    1342177281: 33280,
+                    1610612737: 512,
+                    1879048193: 8389122,
+                    2147483649: 8421890,
+                    2415919105: 8421376,
+                    2684354561: 8388610,
+                    2952790017: 33282,
+                    3221225473: 514,
+                    3489660929: 8389120,
+                    3758096385: 32770,
+                    4026531841: 0,
+                    134217729: 8421890,
+                    402653185: 8421376,
+                    671088641: 8388608,
+                    939524097: 512,
+                    1207959553: 32768,
+                    1476395009: 8388610,
+                    1744830465: 2,
+                    2013265921: 33282,
+                    2281701377: 32770,
+                    2550136833: 8389122,
+                    2818572289: 514,
+                    3087007745: 8421888,
+                    3355443201: 8389120,
+                    3623878657: 0,
+                    3892314113: 33280,
+                    4160749569: 8421378
+                }, {
+                    0: 1074282512,
+                    16777216: 16384,
+                    33554432: 524288,
+                    50331648: 1074266128,
+                    67108864: 1073741840,
+                    83886080: 1074282496,
+                    100663296: 1073758208,
+                    117440512: 16,
+                    134217728: 540672,
+                    150994944: 1073758224,
+                    167772160: 1073741824,
+                    184549376: 540688,
+                    201326592: 524304,
+                    218103808: 0,
+                    234881024: 16400,
+                    251658240: 1074266112,
+                    8388608: 1073758208,
+                    25165824: 540688,
+                    41943040: 16,
+                    58720256: 1073758224,
+                    75497472: 1074282512,
+                    92274688: 1073741824,
+                    109051904: 524288,
+                    125829120: 1074266128,
+                    142606336: 524304,
+                    159383552: 0,
+                    176160768: 16384,
+                    192937984: 1074266112,
+                    209715200: 1073741840,
+                    226492416: 540672,
+                    243269632: 1074282496,
+                    260046848: 16400,
+                    268435456: 0,
+                    285212672: 1074266128,
+                    301989888: 1073758224,
+                    318767104: 1074282496,
+                    335544320: 1074266112,
+                    352321536: 16,
+                    369098752: 540688,
+                    385875968: 16384,
+                    402653184: 16400,
+                    419430400: 524288,
+                    436207616: 524304,
+                    452984832: 1073741840,
+                    469762048: 540672,
+                    486539264: 1073758208,
+                    503316480: 1073741824,
+                    520093696: 1074282512,
+                    276824064: 540688,
+                    293601280: 524288,
+                    310378496: 1074266112,
+                    327155712: 16384,
+                    343932928: 1073758208,
+                    360710144: 1074282512,
+                    377487360: 16,
+                    394264576: 1073741824,
+                    411041792: 1074282496,
+                    427819008: 1073741840,
+                    444596224: 1073758224,
+                    461373440: 524304,
+                    478150656: 0,
+                    494927872: 16400,
+                    511705088: 1074266128,
+                    528482304: 540672
+                }, {
+                    0: 260,
+                    1048576: 0,
+                    2097152: 67109120,
+                    3145728: 65796,
+                    4194304: 65540,
+                    5242880: 67108868,
+                    6291456: 67174660,
+                    7340032: 67174400,
+                    8388608: 67108864,
+                    9437184: 67174656,
+                    10485760: 65792,
+                    11534336: 67174404,
+                    12582912: 67109124,
+                    13631488: 65536,
+                    14680064: 4,
+                    15728640: 256,
+                    524288: 67174656,
+                    1572864: 67174404,
+                    2621440: 0,
+                    3670016: 67109120,
+                    4718592: 67108868,
+                    5767168: 65536,
+                    6815744: 65540,
+                    7864320: 260,
+                    8912896: 4,
+                    9961472: 256,
+                    11010048: 67174400,
+                    12058624: 65796,
+                    13107200: 65792,
+                    14155776: 67109124,
+                    15204352: 67174660,
+                    16252928: 67108864,
+                    16777216: 67174656,
+                    17825792: 65540,
+                    18874368: 65536,
+                    19922944: 67109120,
+                    20971520: 256,
+                    22020096: 67174660,
+                    23068672: 67108868,
+                    24117248: 0,
+                    25165824: 67109124,
+                    26214400: 67108864,
+                    27262976: 4,
+                    28311552: 65792,
+                    29360128: 67174400,
+                    30408704: 260,
+                    31457280: 65796,
+                    32505856: 67174404,
+                    17301504: 67108864,
+                    18350080: 260,
+                    19398656: 67174656,
+                    20447232: 0,
+                    21495808: 65540,
+                    22544384: 67109120,
+                    23592960: 256,
+                    24641536: 67174404,
+                    25690112: 65536,
+                    26738688: 67174660,
+                    27787264: 65796,
+                    28835840: 67108868,
+                    29884416: 67109124,
+                    30932992: 67174400,
+                    31981568: 4,
+                    33030144: 65792
+                }, {
+                    0: 2151682048,
+                    65536: 2147487808,
+                    131072: 4198464,
+                    196608: 2151677952,
+                    262144: 0,
+                    327680: 4198400,
+                    393216: 2147483712,
+                    458752: 4194368,
+                    524288: 2147483648,
+                    589824: 4194304,
+                    655360: 64,
+                    720896: 2147487744,
+                    786432: 2151678016,
+                    851968: 4160,
+                    917504: 4096,
+                    983040: 2151682112,
+                    32768: 2147487808,
+                    98304: 64,
+                    163840: 2151678016,
+                    229376: 2147487744,
+                    294912: 4198400,
+                    360448: 2151682112,
+                    425984: 0,
+                    491520: 2151677952,
+                    557056: 4096,
+                    622592: 2151682048,
+                    688128: 4194304,
+                    753664: 4160,
+                    819200: 2147483648,
+                    884736: 4194368,
+                    950272: 4198464,
+                    1015808: 2147483712,
+                    1048576: 4194368,
+                    1114112: 4198400,
+                    1179648: 2147483712,
+                    1245184: 0,
+                    1310720: 4160,
+                    1376256: 2151678016,
+                    1441792: 2151682048,
+                    1507328: 2147487808,
+                    1572864: 2151682112,
+                    1638400: 2147483648,
+                    1703936: 2151677952,
+                    1769472: 4198464,
+                    1835008: 2147487744,
+                    1900544: 4194304,
+                    1966080: 64,
+                    2031616: 4096,
+                    1081344: 2151677952,
+                    1146880: 2151682112,
+                    1212416: 0,
+                    1277952: 4198400,
+                    1343488: 4194368,
+                    1409024: 2147483648,
+                    1474560: 2147487808,
+                    1540096: 64,
+                    1605632: 2147483712,
+                    1671168: 4096,
+                    1736704: 2147487744,
+                    1802240: 2151678016,
+                    1867776: 4160,
+                    1933312: 2151682048,
+                    1998848: 4194304,
+                    2064384: 4198464
+                }, {
+                    0: 128,
+                    4096: 17039360,
+                    8192: 262144,
+                    12288: 536870912,
+                    16384: 537133184,
+                    20480: 16777344,
+                    24576: 553648256,
+                    28672: 262272,
+                    32768: 16777216,
+                    36864: 537133056,
+                    40960: 536871040,
+                    45056: 553910400,
+                    49152: 553910272,
+                    53248: 0,
+                    57344: 17039488,
+                    61440: 553648128,
+                    2048: 17039488,
+                    6144: 553648256,
+                    10240: 128,
+                    14336: 17039360,
+                    18432: 262144,
+                    22528: 537133184,
+                    26624: 553910272,
+                    30720: 536870912,
+                    34816: 537133056,
+                    38912: 0,
+                    43008: 553910400,
+                    47104: 16777344,
+                    51200: 536871040,
+                    55296: 553648128,
+                    59392: 16777216,
+                    63488: 262272,
+                    65536: 262144,
+                    69632: 128,
+                    73728: 536870912,
+                    77824: 553648256,
+                    81920: 16777344,
+                    86016: 553910272,
+                    90112: 537133184,
+                    94208: 16777216,
+                    98304: 553910400,
+                    102400: 553648128,
+                    106496: 17039360,
+                    110592: 537133056,
+                    114688: 262272,
+                    118784: 536871040,
+                    122880: 0,
+                    126976: 17039488,
+                    67584: 553648256,
+                    71680: 16777216,
+                    75776: 17039360,
+                    79872: 537133184,
+                    83968: 536870912,
+                    88064: 17039488,
+                    92160: 128,
+                    96256: 553910272,
+                    100352: 262272,
+                    104448: 553910400,
+                    108544: 0,
+                    112640: 553648128,
+                    116736: 16777344,
+                    120832: 262144,
+                    124928: 537133056,
+                    129024: 536871040
+                }, {
+                    0: 268435464,
+                    256: 8192,
+                    512: 270532608,
+                    768: 270540808,
+                    1024: 268443648,
+                    1280: 2097152,
+                    1536: 2097160,
+                    1792: 268435456,
+                    2048: 0,
+                    2304: 268443656,
+                    2560: 2105344,
+                    2816: 8,
+                    3072: 270532616,
+                    3328: 2105352,
+                    3584: 8200,
+                    3840: 270540800,
+                    128: 270532608,
+                    384: 270540808,
+                    640: 8,
+                    896: 2097152,
+                    1152: 2105352,
+                    1408: 268435464,
+                    1664: 268443648,
+                    1920: 8200,
+                    2176: 2097160,
+                    2432: 8192,
+                    2688: 268443656,
+                    2944: 270532616,
+                    3200: 0,
+                    3456: 270540800,
+                    3712: 2105344,
+                    3968: 268435456,
+                    4096: 268443648,
+                    4352: 270532616,
+                    4608: 270540808,
+                    4864: 8200,
+                    5120: 2097152,
+                    5376: 268435456,
+                    5632: 268435464,
+                    5888: 2105344,
+                    6144: 2105352,
+                    6400: 0,
+                    6656: 8,
+                    6912: 270532608,
+                    7168: 8192,
+                    7424: 268443656,
+                    7680: 270540800,
+                    7936: 2097160,
+                    4224: 8,
+                    4480: 2105344,
+                    4736: 2097152,
+                    4992: 268435464,
+                    5248: 268443648,
+                    5504: 8200,
+                    5760: 270540808,
+                    6016: 270532608,
+                    6272: 270540800,
+                    6528: 270532616,
+                    6784: 8192,
+                    7040: 2105352,
+                    7296: 2097160,
+                    7552: 0,
+                    7808: 268435456,
+                    8064: 268443656
+                }, {
+                    0: 1048576,
+                    16: 33555457,
+                    32: 1024,
+                    48: 1049601,
+                    64: 34604033,
+                    80: 0,
+                    96: 1,
+                    112: 34603009,
+                    128: 33555456,
+                    144: 1048577,
+                    160: 33554433,
+                    176: 34604032,
+                    192: 34603008,
+                    208: 1025,
+                    224: 1049600,
+                    240: 33554432,
+                    8: 34603009,
+                    24: 0,
+                    40: 33555457,
+                    56: 34604032,
+                    72: 1048576,
+                    88: 33554433,
+                    104: 33554432,
+                    120: 1025,
+                    136: 1049601,
+                    152: 33555456,
+                    168: 34603008,
+                    184: 1048577,
+                    200: 1024,
+                    216: 34604033,
+                    232: 1,
+                    248: 1049600,
+                    256: 33554432,
+                    272: 1048576,
+                    288: 33555457,
+                    304: 34603009,
+                    320: 1048577,
+                    336: 33555456,
+                    352: 34604032,
+                    368: 1049601,
+                    384: 1025,
+                    400: 34604033,
+                    416: 1049600,
+                    432: 1,
+                    448: 0,
+                    464: 34603008,
+                    480: 33554433,
+                    496: 1024,
+                    264: 1049600,
+                    280: 33555457,
+                    296: 34603009,
+                    312: 1,
+                    328: 33554432,
+                    344: 1048576,
+                    360: 1025,
+                    376: 34604032,
+                    392: 33554433,
+                    408: 34603008,
+                    424: 0,
+                    440: 34604033,
+                    456: 1049601,
+                    472: 1024,
+                    488: 33555456,
+                    504: 1048577
+                }, {
+                    0: 134219808,
+                    1: 131072,
+                    2: 134217728,
+                    3: 32,
+                    4: 131104,
+                    5: 134350880,
+                    6: 134350848,
+                    7: 2048,
+                    8: 134348800,
+                    9: 134219776,
+                    10: 133120,
+                    11: 134348832,
+                    12: 2080,
+                    13: 0,
+                    14: 134217760,
+                    15: 133152,
+                    2147483648: 2048,
+                    2147483649: 134350880,
+                    2147483650: 134219808,
+                    2147483651: 134217728,
+                    2147483652: 134348800,
+                    2147483653: 133120,
+                    2147483654: 133152,
+                    2147483655: 32,
+                    2147483656: 134217760,
+                    2147483657: 2080,
+                    2147483658: 131104,
+                    2147483659: 134350848,
+                    2147483660: 0,
+                    2147483661: 134348832,
+                    2147483662: 134219776,
+                    2147483663: 131072,
+                    16: 133152,
+                    17: 134350848,
+                    18: 32,
+                    19: 2048,
+                    20: 134219776,
+                    21: 134217760,
+                    22: 134348832,
+                    23: 131072,
+                    24: 0,
+                    25: 131104,
+                    26: 134348800,
+                    27: 134219808,
+                    28: 134350880,
+                    29: 133120,
+                    30: 2080,
+                    31: 134217728,
+                    2147483664: 131072,
+                    2147483665: 2048,
+                    2147483666: 134348832,
+                    2147483667: 133152,
+                    2147483668: 32,
+                    2147483669: 134348800,
+                    2147483670: 134217728,
+                    2147483671: 134219808,
+                    2147483672: 134350880,
+                    2147483673: 134217760,
+                    2147483674: 134219776,
+                    2147483675: 0,
+                    2147483676: 133120,
+                    2147483677: 2080,
+                    2147483678: 131104,
+                    2147483679: 134350848
+                }]
+                  , h = [4160749569, 528482304, 33030144, 2064384, 129024, 8064, 504, 2147483679]
+                  , d = r.DES = n.extend({
+                    _doReset: function() {
+                        for (var e = this._key.words, t = [], o = 0; o < 56; o++) {
+                            var i = a[o] - 1;
+                            t[o] = e[i >>> 5] >>> 31 - i % 32 & 1
+                        }
+                        for (var n = this._subKeys = [], r = 0; r < 16; r++) {
+                            var l = n[r] = []
+                              , h = c[r];
+                            for (o = 0; o < 24; o++)
+                                l[o / 6 | 0] |= t[(s[o] - 1 + h) % 28] << 31 - o % 6,
+                                l[4 + (o / 6 | 0)] |= t[28 + (s[o + 24] - 1 + h) % 28] << 31 - o % 6;
+                            for (l[0] = l[0] << 1 | l[0] >>> 31,
+                            o = 1; o < 7; o++)
+                                l[o] = l[o] >>> 4 * (o - 1) + 3;
+                            l[7] = l[7] << 5 | l[7] >>> 27
+                        }
+                        var d = this._invSubKeys = [];
+                        for (o = 0; o < 16; o++)
+                            d[o] = n[15 - o]
+                    },
+                    encryptBlock: function(e, t) {
+                        this._doCryptBlock(e, t, this._subKeys)
+                    },
+                    decryptBlock: function(e, t) {
+                        this._doCryptBlock(e, t, this._invSubKeys)
+                    },
+                    _doCryptBlock: function(e, t, o) {
+                        this._lBlock = e[t],
+                        this._rBlock = e[t + 1],
+                        f.call(this, 4, 252645135),
+                        f.call(this, 16, 65535),
+                        u.call(this, 2, 858993459),
+                        u.call(this, 8, 16711935),
+                        f.call(this, 1, 1431655765);
+                        for (var i = 0; i < 16; i++) {
+                            for (var n = o[i], r = this._lBlock, a = this._rBlock, s = 0, c = 0; c < 8; c++)
+                                s |= l[c][((a ^ n[c]) & h[c]) >>> 0];
+                            this._lBlock = a,
+                            this._rBlock = r ^ s
+                        }
+                        var d = this._lBlock;
+                        this._lBlock = this._rBlock,
+                        this._rBlock = d,
+                        f.call(this, 1, 1431655765),
+                        u.call(this, 8, 16711935),
+                        u.call(this, 2, 858993459),
+                        f.call(this, 16, 65535),
+                        f.call(this, 4, 252645135),
+                        e[t] = this._lBlock,
+                        e[t + 1] = this._rBlock
+                    },
+                    keySize: 2,
+                    ivSize: 2,
+                    blockSize: 2
+                });
+                function f(e, t) {
+                    var o = (this._lBlock >>> e ^ this._rBlock) & t;
+                    this._rBlock ^= o,
+                    this._lBlock ^= o << e
+                }
+                function u(e, t) {
+                    var o = (this._rBlock >>> e ^ this._lBlock) & t;
+                    this._lBlock ^= o,
+                    this._rBlock ^= o << e
+                }
+                t.DES = n._createHelper(d);
+                var p = r.TripleDES = n.extend({
+                    _doReset: function() {
+                        var e = this._key.words;
+                        this._des1 = d.createEncryptor(i.create(e.slice(0, 2))),
+                        this._des2 = d.createEncryptor(i.create(e.slice(2, 4))),
+                        this._des3 = d.createEncryptor(i.create(e.slice(4, 6)))
+                    },
+                    encryptBlock: function(e, t) {
+                        this._des1.encryptBlock(e, t),
+                        this._des2.decryptBlock(e, t),
+                        this._des3.encryptBlock(e, t)
+                    },
+                    decryptBlock: function(e, t) {
+                        this._des3.decryptBlock(e, t),
+                        this._des2.encryptBlock(e, t),
+                        this._des1.decryptBlock(e, t)
+                    },
+                    keySize: 6,
+                    ivSize: 2,
+                    blockSize: 2
+                });
+                t.TripleDES = n._createHelper(p)
+            }(),
+            e.TripleDES
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core"), e("./enc-base64"), e("./md5"), e("./evpkdf"), e("./cipher-core")) : "function" == typeof define && define.amd ? define(["./core", "./enc-base64", "./md5", "./evpkdf", "./cipher-core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./cipher-core": "cipher-core",
+        "./core": "core",
+        "./enc-base64": "enc-base64",
+        "./evpkdf": "evpkdf",
+        "./md5": "md5"
+    }],
+    "x64-core": [function(e, t, o) {
+        "use strict";
+        var i;
+        cc._RF.push(t, "163c8aGo6tDCK+NO2YaTaIq", "x64-core"),
+        i = function(e) {
+            var t, o, i, n, r;
+            return o = (t = e).lib,
+            i = o.Base,
+            n = o.WordArray,
+            (r = t.x64 = {}).Word = i.extend({
+                init: function(e, t) {
+                    this.high = e,
+                    this.low = t
+                }
+            }),
+            r.WordArray = i.extend({
+                init: function(e, t) {
+                    e = this.words = e || [],
+                    this.sigBytes = null != t ? t : 8 * e.length
+                },
+                toX32: function() {
+                    for (var e = this.words, t = e.length, o = [], i = 0; i < t; i++) {
+                        var r = e[i];
+                        o.push(r.high),
+                        o.push(r.low)
+                    }
+                    return n.create(o, this.sigBytes)
+                },
+                clone: function() {
+                    for (var e = i.clone.call(this), t = e.words = this.words.slice(0), o = t.length, n = 0; n < o; n++)
+                        t[n] = t[n].clone();
+                    return e
+                }
+            }),
+            e
+        }
+        ,
+        "object" == typeof o ? t.exports = o = i(e("./core")) : "function" == typeof define && define.amd ? define(["./core"], i) : i((void 0).CryptoJS),
+        cc._RF.pop()
+    }
+    , {
+        "./core": "core"
+    }]
+}, {}, ["LevelMgr", "LogicMgr", "Main", "ScreenMgr", "SoundMgr", "BufferPool", "Func", "Interface", "MessageMgr", "SpecialFunc", "TimeOutInterval", "CountdownTime", "EditboxDisplay", "JpBroadcast", "LotteryTurntable", "NodeHandle", "PageView", "ScrollBarExtent", "ScrollViewEx", "SliderProgress", "Tip", "UIPicText", "GTAssembler2D", "GTAutoFitSpriteAssembler2D", "GTSimpleSpriteAssembler2D", "LangChange", "LayeredBatchingAssembler", "LayeredBatchingRootRenderer", "SceneParticlesBatching", "ScrollPgView", "ScrollViewHack", "ScrollViewOpt", "DebugMgr", "EffectBase", "EffectCfg", "EffectMgr", "EffectShake", "EEvent", "GameNet", "GameProto", "NetMgr", "BsLangText", "DyncAnimPlay", "DyncInfo", "DyncLoadedBase", "DyncMgr", "LanguageMgr", "ParticlePlay", "ResCfg", "TextDesc", "Effect_Circular_Bead", "Effect_Dibble", "LabelShader1", "aes", "cipher-core", "core", "crypto-js", "enc-base64", "enc-hex", "enc-latin1", "enc-utf16", "enc-utf8", "evpkdf", "format-hex", "format-openssl", "hmac-md5", "hmac-ripemd160", "hmac-sha1", "hmac-sha224", "hmac-sha256", "hmac-sha3", "hmac-sha384", "hmac-sha512", "hmac", "index", "lib-typedarrays", "md5", "mode-cfb", "mode-ctr-gladman", "mode-ctr", "mode-ecb", "mode-ofb", "pad-ansix923", "pad-iso10126", "pad-iso97971", "pad-nopadding", "pad-pkcs7", "pad-zeropadding", "pbkdf2", "rabbit-legacy", "rabbit", "rc4", "ripemd160", "sha1", "sha224", "sha256", "sha3", "sha384", "sha512", "tripledes", "x64-core", "Config", "MutabEffectCfg", "MutabResCfg", "MutabTextDesc", "AdvertUI", "BigAdvertUI", "BounderyMask", "CardUI", "CardUIVertical", "CashbackUI", "CustomScrollView", "DayPrize", "FudaiUI", "HallUI", "HallUIVertical", "HeadUI", "JpRankUI", "JpUI", "KeyboardUI", "LoginUI", "ModMusicsBox", "ModPwdBox", "MsgPromptBox", "NoticeTip", "PcFullScreenUI", "PcFullScreenUI2", "RankUI", "ReconnectTip", "RollPrize", "RollWeekPrize", "SettingBox", "ShareUI"]);
