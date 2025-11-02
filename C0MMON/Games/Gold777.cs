@@ -106,7 +106,7 @@ public static partial class Games {
 
         Mouse.LongClick(929, 612);
         // Mouse.Click(955, 290);
-        
+
         int FailedSpinChecks = 0, remainingIterations = 20, missingSignalIterations = 5;
         double grandPrior = game.Jackpots.Grand;
         double majorPrior = game.Jackpots.Major;
@@ -147,25 +147,25 @@ public static partial class Games {
                 throw new Exception("Failed to retrieve Jackpot data.");
             }
 
-            if (grandPrior > game.Jackpots.Grand && (grandPrior - game.Jackpots.Grand) > 0.1) {
+            if (grandPrior > game.Jackpots.Grand && (grandPrior - game.Jackpots.Grand) > 1) {
                 if (signal.Priority.Equals(4)) { jackpotPopped = true; signal.Close(grandPrior); signal.Delete(); }
                 Console.WriteLine($"({DateTime.UtcNow}) {game.House} - Grand Popped!!");
                 game.Thresholds.NewGrand(grandPrior);
                 Console.WriteLine();
             }
-            if (majorPrior > game.Jackpots.Major && (majorPrior - game.Jackpots.Major) > 0.1) {
+            if (majorPrior > game.Jackpots.Major && (majorPrior - game.Jackpots.Major) > 1) {
                 if (signal.Priority.Equals(3)) { jackpotPopped = true; signal.Close(majorPrior); signal.Delete(); }
                 Console.WriteLine($"({DateTime.UtcNow}) {game.House} - Major Popped!!");
                 game.Thresholds.NewMajor(majorPrior);
                 Console.WriteLine();
             }
-            if (minorPrior > game.Jackpots.Minor && (minorPrior - game.Jackpots.Minor) > 0.1) {
+            if (minorPrior > game.Jackpots.Minor && (minorPrior - game.Jackpots.Minor) > 1) {
                 if (signal.Priority.Equals(2)) { jackpotPopped = true; signal.Close(minorPrior); signal.Delete(); }
                 Console.WriteLine($"({DateTime.UtcNow}) {game.House} - Minor Popped!!");
                 game.Thresholds.NewMinor(minorPrior);
                 Console.WriteLine();
             }
-            if (miniPrior > game.Jackpots.Mini && (miniPrior - game.Jackpots.Mini) > 0.1) {
+            if (miniPrior > game.Jackpots.Mini && (miniPrior - game.Jackpots.Mini) > 1) {
                 if (signal.Priority.Equals(1)) { jackpotPopped = true; signal.Close(miniPrior); signal.Delete(); }
                 Console.WriteLine($"({DateTime.UtcNow}) {game.House} - Mini Popped!!");
                 game.Thresholds.NewMini(miniPrior);

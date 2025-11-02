@@ -52,13 +52,16 @@ public class Game(string house, string game) {
         return new Database().IO.GetCollection<Game>("G4ME").Find(Builders<Game>.Filter.Empty).ToList();
     }
 
-
-    public static Game? GetNext() {
-        FilterDefinitionBuilder<Game> builder = Builders<Game>.Filter;
-        FilterDefinition<Game> filter = builder.Eq("Unlocked", true) & builder.Eq("Enabled", true) & builder.Or([builder.Eq("Updated", false), builder.Eq("Updated", BsonNull.Value)]);
-        List<Game> games = new Database().IO.GetCollection<Game>("G4ME").Find(filter).SortBy(g => g.LastUpdated).Limit(1).ToList();
-        return games.Count > 0 ? games[0] : null;
+    public static Game GetNext() {
+        return new Database().IO.GetCollection<Game>("N3XT").Find(Builders<Game>.Filter.Empty).First();
     }
+
+    // public static Game? GetNext() {
+    //     FilterDefinitionBuilder<Game> builder = Builders<Game>.Filter;
+    //     FilterDefinition<Game> filter = builder.Eq("Unlocked", true) & builder.Eq("Enabled", true) & builder.Or([builder.Eq("Updated", false), builder.Eq("Updated", BsonNull.Value)]);
+    //     List<Game> games = new Database().IO.GetCollection<Game>("G4ME").Find(filter).SortBy(g => g.LastUpdated).Limit(1).ToList();
+    //     return games.Count > 0 ? games[0] : null;
+    // }
 
     public static Game? GetNext(string Name) {
         FilterDefinitionBuilder<Game> builder = Builders<Game>.Filter;

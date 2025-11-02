@@ -139,14 +139,14 @@ class PROF3T {
             if (game.Settings.Gold777 == null) game.Settings.Gold777 = new Gold777_Settings();
             if (game.Settings.Gold777.ButtonVerified == false) {
                 if (game.Name == Platform) {
-                    // Gold777_Settings x = game.Settings.Gold777;
-                    // if (x.Page == 9 && x.Button_X == 410 && x.Button_Y == 450) {
-                        game.Settings.Gold777.Button_X = 820;
-                        game.Settings.Gold777.Button_Y = 290;
+                    Gold777_Settings x = game.Settings.Gold777;
+                    if (x.Page == 10 && x.Button_X == 440 && x.Button_Y == 450) {
+                        game.Settings.Gold777.Button_X = 210;
+                        game.Settings.Gold777.Button_Y = 450;
                         game.Settings.Gold777.Page = 10;
-                        // game.Settings.Gold777.ButtonVerified = false;
+                        //game.Settings.Gold777.ButtonVerified = false;
                         game.Save();
-                    // }
+                    }
                 }
             }
         });
@@ -187,9 +187,9 @@ class PROF3T {
             foreach (Game game in games) {
                 Console.WriteLine($"{DateTime.UtcNow} - Retrieving Game");
                 Game retrievedGame = Game.Get(game.House, game.Name);
-                if (retrievedGame.Settings.Gold777.ButtonVerified == false && retrievedGame.Unlocked) {
+                if (retrievedGame.Settings.Gold777.ButtonVerified == false) { //&& retrievedGame.Unlocked) {
                     Console.WriteLine($"{DateTime.UtcNow} - Retrieving Credential");
-                    List<Credential> gameCredentials = Credential.GetBy(retrievedGame).Where(x => x.Enabled).ToList();
+                    List<Credential> gameCredentials = Credential.GetBy(retrievedGame).Where(x => x.Enabled && x.Balance > 0).ToList();
                     Credential? credential = gameCredentials.Count.Equals(0) ? null : gameCredentials[0];
                     Console.WriteLine($"{DateTime.UtcNow} - {retrievedGame.House}/{credential?.Username}");
                     if (credential != null) {

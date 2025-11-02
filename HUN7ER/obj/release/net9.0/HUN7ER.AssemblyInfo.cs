@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HUN7ER")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6bca83b670a16680d54ed49b159b2a2eb350d9b2")]
 [assembly: System.Reflection.AssemblyProductAttribute("HUN7ER")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HUN7ER")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

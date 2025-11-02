@@ -6,7 +6,7 @@ using P4NTH30N.C0MMON;
 
 namespace P4NTH30N;
 
-[GenerateFiggleText(sourceText: "v    0 . 5 . 8 . 7", memberName: "Version", fontName: "colossal")]
+[GenerateFiggleText(sourceText: "v    0 . 6 . 2 . 1", memberName: "Version", fontName: "colossal")]
 internal static partial class Header { }
 
 class H4ND {
@@ -28,11 +28,12 @@ class H4ND {
             }
 
             if (signal == null) {
-                Game? game = Game.GetNext();
-                int GamesCheckedSinceRefresh = 0;
-                string QueuedGame = "", priorGame = "";
+                Game game = Game.GetNext();
+                // int GamesCheckedSinceRefresh = 0;
+                // string QueuedGame = "", priorGame = "";
                 bool RanOnce = false, LoginScreenLoaded = false;
-
+                
+                game.Lock();
                 ChromeDriver driver = Actions.Launch();
 
                 try {
@@ -43,31 +44,40 @@ class H4ND {
                             signal.Acknowledge();
                             break;
                         }
+                        
+                        Game lastGame = game;
+                        // priorGame = game != null ? game.Name : "";
+                        // if (GamesCheckedSinceRefresh++ > 5) {
+                        //     game = Game.GetNext();
+                        //     QueuedGame = game != null ? game.Name : "";
+                        //     GamesCheckedSinceRefresh = 0;
+                        // } else {
+                        //     if (RanOnce) {
+                        //         game = Game.GetNext(QueuedGame);
+                        //         if (game == null) {
+                        //             game = Game.GetNext();
+                        //             if (game == null) {
+                        //                 Game.UpdatesComplete();
+                        //                 game = Game.GetNext();
+                        //             }
+                        //             QueuedGame = game != null ? game.Name : "";
+                        //         }
 
-                        priorGame = game != null ? game.Name : "";
-                        if (GamesCheckedSinceRefresh++ > 5) {
+                        //     } else {
+                        //         game = Game.GetNext("OrionStars");
+                        //         QueuedGame = game != null ? game.Name : "";
+                        //         RanOnce = true;
+                        //     }
+                        // }
+
+                        if (RanOnce) {
                             game = Game.GetNext();
-                            QueuedGame = game != null ? game.Name : "";
-                            GamesCheckedSinceRefresh = 0;
+                            game.Lock();
                         } else {
-                            if (RanOnce) {
-                                game = Game.GetNext(QueuedGame);
-                                if (game == null) {
-                                    game = Game.GetNext();
-                                    if (game == null) {
-                                        Game.UpdatesComplete();
-                                        game = Game.GetNext();
-                                    }
-                                    QueuedGame = game != null ? game.Name : "";
-                                }
-
-                            } else {
-                                game = Game.GetNext("OrionStars");
-                                QueuedGame = game != null ? game.Name : "";
-                                RanOnce = true;
-                            }
+                            RanOnce = true;
                         }
-                        if (game != null && priorGame.Equals(game.Name).Equals(false)) {
+
+                        if (game != null && lastGame.Name.Equals(game.Name).Equals(false)) {
                             LoginScreenLoaded = false;
                         }
 
@@ -118,9 +128,11 @@ class H4ND {
                                 int grandChecked = 0;
                                 double currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
 
-                                while (currentGrand.Equals(0) || lastRetrievedGrand.Equals(currentGrand)) {
+                                while (currentGrand.Equals(0) || (lastRetrievedGrand.Equals(currentGrand) && game.Name != lastGame.Name && game.House != lastGame.House)) {
                                     Thread.Sleep(500);
-                                    if (grandChecked++ > 40) throw new Exception("Extension failure.");
+                                    if (grandChecked++ > 40) {
+                                        throw new Exception("Extension failure.");
+                                    }
                                     currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
                                 }
 
@@ -128,7 +140,7 @@ class H4ND {
                                 double currentMinor = Convert.ToDouble(driver.ExecuteScript("return window.parent.Minor")) / 100;
                                 double currentMini = Convert.ToDouble(driver.ExecuteScript("return window.parent.Mini")) / 100;
 
-                                if (lastRetrievedGrand.Equals(currentGrand) == false) {
+                                if ((lastRetrievedGrand.Equals(currentGrand) && game.Name != lastGame.Name && game.House != lastGame.House) == false) {
                                     Signal? gameSignal = Signal.GetOne(game);
                                     if (currentGrand < game.Jackpots.Grand && (game.Jackpots.Grand - currentGrand) > 0.1) {
                                         if (game.DPD.Toggles.GrandPopped == true) {
@@ -178,11 +190,7 @@ class H4ND {
                                 game.Updated = true;
                                 game.Unlock();
 
-                                float currentBalance = Convert.ToSingle(driver.ExecuteScript("return window.parent.Balance")) / 100;
-                                if (credential.CashedOut && currentBalance > credential.Balance && currentBalance > 5) {
-                                    credential.LastDepositDate = DateTime.UtcNow;
-                                    credential.CashedOut = false;
-                                }
+                                double currentBalance = Convert.ToDouble(driver.ExecuteScript("return window.parent.Balance")) / 100;
                                 credential.LastUpdated = DateTime.UtcNow;
                                 credential.Balance = currentBalance;
                                 lastRetrievedGrand = currentGrand;
@@ -244,7 +252,9 @@ class H4ND {
                     int grandChecked = 0;
                     double currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
                     while (currentGrand.Equals(0)) {
-                        Thread.Sleep(500); if (grandChecked++ > 40) throw new Exception("Extension failure.");
+                        Thread.Sleep(500); if (grandChecked++ > 40) {
+                            throw new Exception("Extension failure.");
+                        }
                         currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
                     }
 
@@ -254,7 +264,7 @@ class H4ND {
                         case 3: signal.Receive(Convert.ToDouble(driver.ExecuteScript("return window.parent.Major")) / 100); break;
                         case 4: signal.Receive(currentGrand); break;
                     }
-                    
+
                     signal.Acknowledge();
                     Game game = Game.Get(signal.House, signal.Game);
                     switch (game.Name) {

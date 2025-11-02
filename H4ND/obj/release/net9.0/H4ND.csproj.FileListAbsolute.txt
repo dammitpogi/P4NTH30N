@@ -33,3 +33,4 @@ C:\OneDrive\P4NTH30N\H4ND\obj\release\net9.0\H4ND.pdb
 C:\OneDrive\P4NTH30N\H4ND\obj\release\net9.0\H4ND.genruntimeconfig.cache
 C:\OneDrive\P4NTH30N\H4ND\obj\release\net9.0\ref\H4ND.dll
 C:\OneDrive\P4NTH30N\H4ND\bin\release\net9.0\Figgle.dll
+C:\OneDrive\P4NTH30N\H4ND\obj\release\net9.0\H4ND.sourcelink.json

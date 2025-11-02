@@ -32,3 +32,4 @@ c:\OneDrive\P4NTH30N\PROF3T\bin\Debug\net9.0\Microsoft.Win32.SystemEvents.dll
 c:\OneDrive\P4NTH30N\PROF3T\bin\Debug\net9.0\System.Drawing.Common.dll
 c:\OneDrive\P4NTH30N\PROF3T\bin\Debug\net9.0\System.Private.Windows.Core.dll
 c:\OneDrive\P4NTH30N\PROF3T\bin\Debug\net9.0\runtimes\win\lib\net9.0\Microsoft.Win32.SystemEvents.dll
+c:\OneDrive\P4NTH30N\PROF3T\obj\Debug\net9.0\PROF3T.sourcelink.json

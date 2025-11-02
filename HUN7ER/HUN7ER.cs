@@ -122,9 +122,10 @@ class PROF3T {
                         List<Credential> gameCredentials = Credential.GetAllEnabledFor(game).FindAll(x => x.CashedOut.Equals(false));
                         double avgBalance = gameCredentials.Count > 0 ? gameCredentials.Average(x => x.Balance) : 0;
                         
-                        if ((jackpot.Priority == 1 && DateTime.UtcNow.AddHours(1) > jackpot.EstimatedDate)
+                        if ((jackpot.Priority >= 2 && DateTime.UtcNow.AddHours(6) > jackpot.EstimatedDate && jackpot.Threshold - jackpot.Current < 0.1 && avgBalance >= 6)
+                         || (jackpot.Priority >= 2 && DateTime.UtcNow.AddHours(4) > jackpot.EstimatedDate && jackpot.Threshold - jackpot.Current < 0.1 && avgBalance >= 4)
                          || (jackpot.Priority >= 2 && DateTime.UtcNow.AddHours(2) > jackpot.EstimatedDate)
-                         || (jackpot.Priority >= 2 && DateTime.UtcNow.AddHours(6) > jackpot.EstimatedDate && jackpot.Threshold - jackpot.Current < 0.1 && avgBalance >= 10)
+                         || (jackpot.Priority == 1 && DateTime.UtcNow.AddHours(1) > jackpot.EstimatedDate)
                         ) {
                             gameCredentials.ForEach(delegate (Credential credential) {
                                 Signal? dto = signals.Find(s => s.House == credential.House && s.Game == credential.Game && s.Username == credential.Username);

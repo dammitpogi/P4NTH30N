@@ -13,3 +13,4 @@ C:\OneDrive\P4NTH30N\C0MMON\obj\release\net9.0\C0MMON.dll
 C:\OneDrive\P4NTH30N\C0MMON\obj\release\net9.0\refint\C0MMON.dll
 C:\OneDrive\P4NTH30N\C0MMON\obj\release\net9.0\C0MMON.pdb
 C:\OneDrive\P4NTH30N\C0MMON\obj\release\net9.0\ref\C0MMON.dll
+C:\OneDrive\P4NTH30N\C0MMON\obj\release\net9.0\C0MMON.sourcelink.json
