@@ -32,3 +32,5 @@ C:\OneDrive\P4NTH30N\H0UND\obj\release\net9.0\refint\H0UND.dll
 C:\OneDrive\P4NTH30N\H0UND\obj\release\net9.0\H0UND.pdb
 C:\OneDrive\P4NTH30N\H0UND\obj\release\net9.0\H0UND.genruntimeconfig.cache
 C:\OneDrive\P4NTH30N\H0UND\obj\release\net9.0\ref\H0UND.dll
+C:\OneDrive\P4NTH30N\H0UND\obj\release\net9.0\H0UND.sourcelink.json
+C:\OneDrive\P4NTH30N\H0UND\bin\release\net9.0\Figgle.dll

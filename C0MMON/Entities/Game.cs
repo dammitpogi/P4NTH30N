@@ -52,6 +52,10 @@ public class Game(string house, string game) {
         return new Database().IO.GetCollection<Game>("G4ME").Find(Builders<Game>.Filter.Empty).ToList();
     }
 
+    public static DateTime QueueAge() {
+        return (DateTime) new Database().IO.GetCollection<BsonDocument>("M47URITY").Find(Builders<BsonDocument>.Filter.Empty).ToList()[0]["Updated"].AsBsonDateTime;
+    }
+
     public static Game GetNext() {
         return new Database().IO.GetCollection<Game>("N3XT").Find(Builders<Game>.Filter.Empty).First();
     }

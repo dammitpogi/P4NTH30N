@@ -6,13 +6,17 @@ using OpenQA.Selenium.Chrome;
 namespace P4NTH30N.C0MMON;
 
 public static class OrionStars {
-    public static void Logout() {
+    public static void Logout(ChromeDriver driver) {
         bool loggedOut = false;
+        int iterations = 6;
         while (loggedOut == false) {
             Mouse.Click(975, 630);
             Screen.WaitForColor(new Point(533, 550), Color.FromArgb(255, 228, 228, 228), 5);
             Mouse.Click(535, 555);
             loggedOut = Screen.WaitForColor(new Point(850, 210), Color.FromArgb(255, 229, 148, 29), 5);
+            if (0 > iterations--) {
+                driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
+            }
         }
     }
     public static bool Login(ChromeDriver driver, string username, string password) {
@@ -40,10 +44,10 @@ public static class OrionStars {
             }
 
             // if (Screen.GetColorAt(new Point(930, 187)).Equals(Color.FromArgb(255, 228, 161, 35))) Mouse.Click(940, 185);
-            if (Screen.WaitForColor(new Point(715, 128), Color.FromArgb(255, 254, 242, 181), 10).Equals(false)) {
+            if (Screen.WaitForColor(new Point(715, 128), Color.FromArgb(255, 254, 242, 181), 15).Equals(false)) {
                 throw new Exception("Home Screen failed to load after 15 seconds.");
             }
-            
+
             return true;
 
         } catch (Exception ex) {

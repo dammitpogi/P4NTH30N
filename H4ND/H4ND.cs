@@ -6,7 +6,7 @@ using P4NTH30N.C0MMON;
 
 namespace P4NTH30N;
 
-[GenerateFiggleText(sourceText: "v    0 . 6 . 2 . 1", memberName: "Version", fontName: "colossal")]
+[GenerateFiggleText(sourceText: "v    0 . 6 . 2 . 8", memberName: "Version", fontName: "colossal")]
 internal static partial class Header { }
 
 class H4ND {
@@ -29,10 +29,11 @@ class H4ND {
 
             if (signal == null) {
                 Game game = Game.GetNext();
+                // game = Game.Get("GameVault Ultra Lounge", "OrionStars");
                 // int GamesCheckedSinceRefresh = 0;
                 // string QueuedGame = "", priorGame = "";
                 bool RanOnce = false, LoginScreenLoaded = false;
-                
+
                 game.Lock();
                 ChromeDriver driver = Actions.Launch();
 
@@ -44,7 +45,7 @@ class H4ND {
                             signal.Acknowledge();
                             break;
                         }
-                        
+
                         Game lastGame = game;
                         // priorGame = game != null ? game.Name : "";
                         // if (GamesCheckedSinceRefresh++ > 5) {
@@ -96,8 +97,11 @@ class H4ND {
                                             driver.Navigate().GoToUrl("http://play.firekirin.in/web_mobile/firekirin/");
                                             LoginScreenLoaded = true;
                                         }
-                                        if (Screen.WaitForColor(new Point(650, 505), Color.FromArgb(255, 11, 241, 85), 60) == false)
-                                            throw new Exception("Took too long to load.");
+                                        if (Screen.WaitForColor(new Point(650, 505), Color.FromArgb(255, 11, 241, 85), 60) == false) {
+                                            Console.WriteLine($"{DateTime.Now} - {game.House} took too long to load for {game.Name}");
+                                            game.Lock();
+                                            continue;
+                                        }
                                         if (FireKirin.Login(driver, credential.Username, credential.Password) == false) {
                                             if (Screen.GetColorAt(new Point(893, 117)).Equals(Color.FromArgb(255, 125, 124, 27)))
                                                 throw new Exception("This looks like a stuck Hall Screen. Resetting.");
@@ -109,14 +113,20 @@ class H4ND {
                                     case "OrionStars":
                                         if (LoginScreenLoaded.Equals(false)) {
                                             driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
-                                            if (Screen.WaitForColor(new Point(510, 110), Color.FromArgb(255, 2, 119, 2), 60) == false)
-                                                throw new Exception("Took too long to load.");
+                                            if (Screen.WaitForColor(new Point(510, 110), Color.FromArgb(255, 2, 119, 2), 60) == false) {
+                                                Console.WriteLine($"{DateTime.Now} - {game.House} took too long to load for {game.Name}");
+                                                game.Lock();
+                                                continue;
+                                            }
                                             LoginScreenLoaded = true;
                                             Mouse.Click(535, 615);
                                         }
 
                                         if (OrionStars.Login(driver, credential.Username, credential.Password) == false) {
-                                            throw new Exception("Orion Stars login failed.");
+                                                Console.WriteLine($"{DateTime.Now} - {game.House} login failed for {game.Name}");
+                                                Console.WriteLine($"{DateTime.Now} - {credential.Username} : {credential.Password}");
+                                                game.Lock();
+                                                continue;
                                         }
 
                                         break;
@@ -201,7 +211,7 @@ class H4ND {
                                         FireKirin.Logout();
                                         break;
                                     case "OrionStars":
-                                        OrionStars.Logout();
+                                        OrionStars.Logout(driver);
                                         break;
                                 }
                             }
@@ -286,6 +296,15 @@ class H4ND {
                     //     nextSignal.Acknowledge();
                     //     _Override = nextSignal;
                     // }
+
+                    
+                    signal = Signal.GetNext();
+                    if (signal != null) {
+                        _Override = signal;
+                        signal.Acknowledge();
+                        break;
+                    }
+
                     throw new Exception("Finished Signal.");
                     // for (int i = 0; i < 8; i++) {
                     //     Mouse.Click(937, 177); Thread.Sleep(800);
@@ -297,9 +316,11 @@ class H4ND {
 
                     int line = frame != null ? frame.GetFileLineNumber() : 0;
                     Console.WriteLine($"[{line}]Processing failed: {ex.Message}");
-
                     Console.WriteLine(ex);
-                    signal.Acknowledge();
+
+                    if (signal != null) {
+                        signal.Acknowledge();
+                    }
                 }
                 driver.Quit();
             }

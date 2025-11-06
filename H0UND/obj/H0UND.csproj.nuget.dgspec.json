@@ -125,6 +125,14 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Figgle": {
+              "target": "Package",
+              "version": "[0.6.5, )"
+            },
+            "Figgle.Generator": {
+              "target": "Package",
+              "version": "[0.6.5, )"
+            },
             "Selenium.WebDriver": {
               "target": "Package",
               "version": "[4.34.0, )"

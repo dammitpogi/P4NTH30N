@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\OneDrive\\P4NTH30N\\PROF3T\\PROF3T.csproj": {}
+    "C:\\OneDrive\\P4NTH30N\\PROF3T\\PROF3T.csproj": {}
   },
   "projects": {
-    "c:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj": {
+    "C:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj",
+        "projectUniqueName": "C:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj",
         "projectName": "C0MMON",
-        "projectPath": "c:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj",
+        "projectPath": "C:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj",
         "packagesPath": "C:\\Users\\paulc\\.nuget\\packages\\",
-        "outputPath": "c:\\OneDrive\\P4NTH30N\\C0MMON\\obj\\",
+        "outputPath": "C:\\OneDrive\\P4NTH30N\\C0MMON\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\paulc\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -81,14 +81,14 @@
         }
       }
     },
-    "c:\\OneDrive\\P4NTH30N\\PROF3T\\PROF3T.csproj": {
+    "C:\\OneDrive\\P4NTH30N\\PROF3T\\PROF3T.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\OneDrive\\P4NTH30N\\PROF3T\\PROF3T.csproj",
+        "projectUniqueName": "C:\\OneDrive\\P4NTH30N\\PROF3T\\PROF3T.csproj",
         "projectName": "PROF3T",
-        "projectPath": "c:\\OneDrive\\P4NTH30N\\PROF3T\\PROF3T.csproj",
+        "projectPath": "C:\\OneDrive\\P4NTH30N\\PROF3T\\PROF3T.csproj",
         "packagesPath": "C:\\Users\\paulc\\.nuget\\packages\\",
-        "outputPath": "c:\\OneDrive\\P4NTH30N\\PROF3T\\obj\\",
+        "outputPath": "C:\\OneDrive\\P4NTH30N\\PROF3T\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\paulc\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -103,8 +103,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "c:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj": {
-                "projectPath": "c:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj"
+              "C:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj": {
+                "projectPath": "C:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj"
               }
             }
           }

@@ -12,4 +12,7 @@
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <SourceRoot Include="C:\Users\paulc\.nuget\packages\" />
   </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)figgle.generator\0.6.5\build\Figgle.Generator.props" Condition="Exists('$(NuGetPackageRoot)figgle.generator\0.6.5\build\Figgle.Generator.props')" />
+  </ImportGroup>
 </Project>

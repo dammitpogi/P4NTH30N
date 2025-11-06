@@ -118,6 +118,12 @@ public static partial class Games {
             string page = driver.ExecuteScript("return window.parent.Page")?.ToString() ?? string.Empty;
             if (new string[] { "Slots", "Game" }.Contains(page).Equals(false)) { break; }
 
+            Signal? newSignal = Signal.GetNext();
+            if (newSignal != null && newSignal.Priority > signal.Priority) {
+                signal.Acknowledged = true; signal.Timeout = DateTime.UtcNow.AddMinutes(2); signal.Save();
+                throw new Exception($"Signal for {newSignal.House} stronger than previous signal from {signal.House}.");
+            }
+
             if (signal.Check() == false) {
                 if (missingSignalIterations == 0) {
                     jackpotPopped = true;
@@ -171,7 +177,7 @@ public static partial class Games {
                 game.Thresholds.NewMini(miniPrior);
                 Console.WriteLine();
             }
-            
+
             game.LastUpdated = DateTime.UtcNow;
             grandPrior = game.Jackpots.Grand;
             majorPrior = game.Jackpots.Major;

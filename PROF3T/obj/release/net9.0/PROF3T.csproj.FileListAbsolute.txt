@@ -32,3 +32,4 @@ C:\OneDrive\P4NTH30N\PROF3T\obj\release\net9.0\refint\PROF3T.dll
 C:\OneDrive\P4NTH30N\PROF3T\obj\release\net9.0\PROF3T.pdb
 C:\OneDrive\P4NTH30N\PROF3T\obj\release\net9.0\PROF3T.genruntimeconfig.cache
 C:\OneDrive\P4NTH30N\PROF3T\obj\release\net9.0\ref\PROF3T.dll
+C:\OneDrive\P4NTH30N\PROF3T\obj\Release\net9.0\PROF3T.sourcelink.json

@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "mDE9+ZIyiNQ=",
+  "dgSpecHash": "L6KaL4yaNrs=",
   "success": true,
   "projectFilePath": "C:\\OneDrive\\P4NTH30N\\H0UND\\H0UND.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\paulc\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
+    "C:\\Users\\paulc\\.nuget\\packages\\figgle\\0.6.5\\figgle.0.6.5.nupkg.sha512",
+    "C:\\Users\\paulc\\.nuget\\packages\\figgle.generator\\0.6.5\\figgle.generator.0.6.5.nupkg.sha512",
     "C:\\Users\\paulc\\.nuget\\packages\\h.inputsimulator\\1.5.0\\h.inputsimulator.1.5.0.nupkg.sha512",
     "C:\\Users\\paulc\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\2.0.0\\microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512",
     "C:\\Users\\paulc\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",

@@ -35,6 +35,7 @@ class PROF3T {
 
                 games.ForEach(delegate (Game game) {
                     if (game.Enabled == true) {
+                        House house = House.Get(game.House);
                         if (game.Unlocked == false && DateTime.UtcNow > game.UnlockTimeout) game.Unlock();
 
                         double previousGrand = game.DPD.Data.Count > 0 ? game.DPD.Data[^1].Grand : 0;
@@ -176,7 +177,7 @@ class PROF3T {
                         totalPotential += recommendations[jackpot.House].Equals(0) ? 0 : jackpot.Threshold;
                         Game game = games.FindAll(g => g.Name == jackpot.Game && g.House == jackpot.House)[0];
                         int accounts = credentials.FindAll(c => c.House == jackpot.House && c.Game == jackpot.Game).Count;
-                        if (game.Settings.Hidden.Equals(false))// && jackpot.Category.Equals("Mini").Equals(false))
+                        if (game.Settings.Hidden.Equals(false) && (jackpot.Category.Equals("Mini") && accounts.Equals(0)).Equals(false))
                             Console.WriteLine($"{(jackpot.Category.Equals("Mini") ? "----- " : jackpot.Category + " ").ToUpper()}| {jackpot.EstimatedDate.ToLocalTime().ToString("ddd MM/dd/yyyy HH:mm:ss").ToUpper()} | {game.Name.Substring(0, 9)} | {game.DPD.Average:F2} /day |{current} /{threshold}| ({accounts}) {jackpot.House}");
                         // Console.WriteLine($"{jackpot.Category.ToUpper(),5} | {jackpot.EstimatedDate.ToLocalTime().ToString("ddd MM/dd/yyyy HH:mm:ss").ToUpper()} | {game.DPD.Average:F2} /day | {potentials[game.House],7:F2} | {current} /{threshold} | ({accounts}/{recommendation}) {jackpot.House}");
                     }
@@ -192,9 +193,10 @@ class PROF3T {
                     }
                 });
 
-                double balance = 0f; credentials.ForEach(delegate (Credential credential) { balance += credential.Balance; });
-                DateTime OldestUpdate = games.FindAll(x => x.Enabled).OrderBy(g => g.LastUpdated).ToList()[0].LastUpdated;
-                TimeSpan QueryTime = DateTime.UtcNow.Subtract(OldestUpdate);
+                double balance = 0f; credentials.ForEach(delegate (Credential credential) { if (credential.Enabled) balance += credential.Balance; });
+                // DateTime OldestUpdate = Game.QueueAge();
+
+                TimeSpan QueryTime = DateTime.UtcNow.Subtract(Game.QueueAge());
                 string houndHours = QueryTime.Hours.ToString().PadLeft(2, '0'),
                     houndMinutes = QueryTime.Minutes.ToString().PadLeft(2, '0'),
                     houndSeconds = QueryTime.Seconds.ToString().PadLeft(2, '0');

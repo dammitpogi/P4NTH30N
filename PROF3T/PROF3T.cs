@@ -12,7 +12,7 @@ class PROF3T {
         // LaunchBrowser();
         //sandbox();
         // BurnAccount("ShariNor55", "123qwe");
-        // ResetSignalsTest("FireKirin");
+        ResetSignalsTest("FireKirin");
         TestSignals("FireKirin");
         // PrioritizeTesting("OrionStars");
 
@@ -26,6 +26,230 @@ class PROF3T {
         // ResetDPD();
         // FixDPD();
         // Fix();p
+    }
+
+    private static void ResetSignalsTest(string Platform) {
+        List<Game> games = Game.GetAll();
+        games.ForEach(delegate (Game game) {
+            if (game.Settings.Gold777 == null) game.Settings.Gold777 = new Gold777_Settings();
+            if (game.Settings.Gold777.ButtonVerified == false) {
+                if (game.Name == Platform) {
+                    //Gold777_Settings x = game.Settings.Gold777;
+                    //if (x.Page == 9 && x.Button_X == 820 && x.Button_Y == 280) {
+                        game.Settings.Gold777.Button_X = 440;
+                        game.Settings.Gold777.Button_Y = 280;
+                        game.Settings.Gold777.Page = 10;
+                        //game.Settings.Gold777.ButtonVerified = false;
+                        game.Save();
+                    //}
+                }
+            }
+        });
+    }
+
+    private static void TestSignals(string Platform) {
+        while (true) {
+            List<Game> games = Game.GetAll().FindAll(x => x.Name.Equals(Platform));
+            games.OrderBy(game => game.LastUpdated);
+            double lastRetrievedGrand = 0.0;
+
+            ChromeDriver driver = Actions.Launch();
+            switch (Platform) {
+                case "FireKirin":
+                    driver.Navigate().GoToUrl("http://play.firekirin.in/web_mobile/firekirin/");
+                    break;
+                case "OrionStars":
+                    driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
+                    if (Screen.WaitForColor(new Point(510, 110), Color.FromArgb(255, 2, 119, 2), 60) == false)
+                        throw new Exception("Took too long to load.");
+                    Mouse.Click(535, 615);
+                    break;
+            }
+
+
+            int iteration = 0;
+            Game lastGame = games[^1];
+            foreach (Game game in games) {
+                Console.WriteLine($"{DateTime.UtcNow} - Retrieving Game");
+                Game retrievedGame = Game.Get(game.House, game.Name);
+                // retrievedGame = Game.Get("Playing Bar", "FireKirin");
+                // retrievedGame.Settings.Gold777.ButtonVerified = false;
+
+                if (retrievedGame.Settings.Gold777.ButtonVerified == false && retrievedGame.Unlocked) {
+                    Console.WriteLine($"{DateTime.UtcNow} - Retrieving Credential");
+                    List<Credential> gameCredentials = Credential.GetBy(retrievedGame).Where(x => x.Enabled && x.Banned == false).ToList();
+                    Credential? credential = gameCredentials.Count.Equals(0) ? null : gameCredentials[0];
+                    Console.WriteLine($"{DateTime.UtcNow} - {retrievedGame.House}/{credential?.Username}");
+                    if (credential != null) {
+                        retrievedGame.Lock();
+                        switch (retrievedGame.Name) {
+                            case "FireKirin":
+                                if (Screen.WaitForColor(new Point(999, 128), Color.FromArgb(255, 2, 125, 51), 30) == false) {
+                                    throw new Exception("Took too long to load.");
+                                }
+                                bool loggedIn = false;
+                                while (loggedIn == false) {
+                                    loggedIn = driver.Login(credential.Username, credential.Password);
+                                }
+
+                                Color hallScreen = Screen.GetColorAt(new Point(293, 179));
+                                while (hallScreen.Equals(Color.FromArgb(255, 253, 252, 253)) == false) {
+                                    Console.WriteLine($"{iteration + 1} {retrievedGame.House} - {hallScreen}");
+                                    Thread.Sleep(500); hallScreen = Screen.GetColorAt(new Point(293, 179));
+                                }
+                                Mouse.Click(81, 233); Thread.Sleep(800);
+                                for (int i = 1; i < retrievedGame.Settings.Gold777.Page; i++) {
+                                    Mouse.Click(937, 177); Thread.Sleep(800);
+                                }
+                                break;
+
+                            case "OrionStars":
+                                if (OrionStars.Login(driver, credential.Username, credential.Password) == false) {
+                                    break;
+                                }
+                                Mouse.Click(80, 218);
+                                for (int i = 1; i < retrievedGame.Settings.Gold777.Page; i++) {
+                                    Mouse.Click(995, 375); Thread.Sleep(800);
+                                }
+                                break;
+                        }
+
+
+
+                        Mouse.Move(retrievedGame.Settings.Gold777.Button_X, retrievedGame.Settings.Gold777.Button_Y);
+
+                        retrievedGame = Game.Get(retrievedGame.House, retrievedGame.Name);
+                        Mouse.Click(retrievedGame.Settings.Gold777.Button_X, retrievedGame.Settings.Gold777.Button_Y);
+
+                        int checkAttempts = 0; bool buttonVerified = false;
+                        while (checkAttempts <= 20 && buttonVerified == false) {
+                            // Color splashScreen = Screen.GetColorAt(new Point(620, 305)); // FortunePiggy
+                            // buttonVerified = splashScreen.Equals(Color.FromArgb(255, 252, 227, 227)); // FortunePiggy
+                            Color splashScreen = Color.White;
+                            switch (Platform) {
+                                case "FireKirin":
+                                    splashScreen = Screen.GetColorAt(new Point(316, 434)); // Gold777
+                                    buttonVerified = splashScreen.Equals(Color.FromArgb(255, 255, 255, 183));
+                                    break;
+                                case "OrionStars":
+                                    splashScreen = Screen.GetColorAt(new Point(314, 432)); // Gold777
+                                    buttonVerified = splashScreen.Equals(Color.FromArgb(255, 255, 255, 194));
+                                    break;
+                            }
+                            Console.WriteLine($"{iteration + 1} {retrievedGame.House} - {splashScreen}");
+                            Thread.Sleep(500); checkAttempts++;
+                        }
+
+                        if (buttonVerified) {
+                            retrievedGame = Game.Get(retrievedGame.House, retrievedGame.Name);
+                            retrievedGame.Settings.Gold777.ButtonVerified = true;
+                            retrievedGame.Save();
+                        }
+                        switch (Platform) {
+                            case "FireKirin":
+                                driver.Navigate().GoToUrl("http://play.firekirin.in/web_mobile/firekirin/");
+                                Screen.WaitForColor(new Point(293, 179), Color.FromArgb(255, 253, 252, 253));
+                                break;
+                            case "OrionStars":
+                                driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
+                                Screen.WaitForColor(new Point(715, 128), Color.FromArgb(255, 254, 242, 181));
+                                break;
+                        }
+
+                        // Color hallScreen = Screen.GetColorAt(new Point(294, 171));
+                        // while (hallScreen.Equals(Color.FromArgb(255, 0, 130, 55)) == false) {
+                        //     Console.WriteLine($"{iteration + 1} {retrievedGame.House} - {hallScreen}");
+                        //     Thread.Sleep(500); hallScreen = Screen.GetColorAt(new Point(294, 171));
+                        // }
+
+                        int grandChecked = 0;
+                        double currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
+
+                        while (currentGrand.Equals(0) || (lastRetrievedGrand.Equals(currentGrand) && game.Name != lastGame.Name && game.House != lastGame.House)) {
+                            Thread.Sleep(500);
+                            if (grandChecked++ > 40) {
+                                throw new Exception("Extension failure.");
+                            }
+                            currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
+                        }
+
+                        double currentMajor = Convert.ToDouble(driver.ExecuteScript("return window.parent.Major")) / 100;
+                        double currentMinor = Convert.ToDouble(driver.ExecuteScript("return window.parent.Minor")) / 100;
+                        double currentMini = Convert.ToDouble(driver.ExecuteScript("return window.parent.Mini")) / 100;
+
+                        if ((lastRetrievedGrand.Equals(currentGrand) && game.Name != lastGame.Name && game.House != lastGame.House) == false) {
+                            Signal? gameSignal = Signal.GetOne(game);
+                            if (currentGrand < game.Jackpots.Grand && (game.Jackpots.Grand - currentGrand) > 0.1) {
+                                if (game.DPD.Toggles.GrandPopped == true) {
+                                    game.Jackpots.Grand = currentGrand;
+                                    game.DPD.Toggles.GrandPopped = false;
+                                    game.Thresholds.NewGrand(game.Jackpots.Grand);
+                                    if (gameSignal != null && gameSignal.Priority.Equals(4))
+                                        Signal.DeleteAll(game);
+                                } else game.DPD.Toggles.GrandPopped = true;
+                            } else game.Jackpots.Grand = currentGrand;
+
+                            if (currentMajor < game.Jackpots.Major && (game.Jackpots.Major - currentMajor) > 0.1) {
+                                if (game.DPD.Toggles.MajorPopped == true) {
+                                    game.Jackpots.Major = currentMajor;
+                                    game.DPD.Toggles.MajorPopped = false;
+                                    game.Thresholds.NewMajor(game.Jackpots.Major);
+                                    if (gameSignal != null && gameSignal.Priority.Equals(3))
+                                        Signal.DeleteAll(game);
+                                } else game.DPD.Toggles.MajorPopped = true;
+                            } else game.Jackpots.Major = currentMajor;
+
+                            if (currentMinor < game.Jackpots.Minor && (game.Jackpots.Minor - currentMinor) > 0.1) {
+                                if (game.DPD.Toggles.MinorPopped == true) {
+                                    game.Jackpots.Minor = currentMinor;
+                                    game.DPD.Toggles.MinorPopped = false;
+                                    game.Thresholds.NewMinor(game.Jackpots.Minor);
+                                    if (gameSignal != null && gameSignal.Priority.Equals(2))
+                                        Signal.DeleteAll(game);
+                                } else game.DPD.Toggles.MinorPopped = true;
+                            } else game.Jackpots.Minor = currentMinor;
+
+                            if (currentMini < game.Jackpots.Mini && (game.Jackpots.Mini - currentMini) > 0.1) {
+                                if (game.DPD.Toggles.MiniPopped == true) {
+                                    game.Jackpots.Mini = currentMini;
+                                    game.DPD.Toggles.MiniPopped = false;
+                                    game.Thresholds.NewMini(game.Jackpots.Mini);
+                                    if (gameSignal != null && gameSignal.Priority.Equals(1))
+                                        Signal.DeleteAll(game);
+                                } else game.DPD.Toggles.MiniPopped = true;
+                            } else game.Jackpots.Mini = currentMini;
+
+                        } else {
+                            throw new Exception("Invalid grand retrieved.");
+                        }
+
+                        credential.Balance = Convert.ToDouble(driver.ExecuteScript("return window.parent.Balance")) / 100;
+                        credential.LastUpdated = DateTime.UtcNow;
+                        lastRetrievedGrand = currentGrand;
+
+                        credential.Save();
+                        retrievedGame.Unlock();
+                        lastGame = retrievedGame;
+
+                        switch (Platform) {
+                            case "FireKirin":
+                                // for (int i = 0; i < retrievedGame.Settings.Gold777.Page; i++) {
+                                //     Mouse.Click(880, 177); Thread.Sleep(800);
+                                // }
+                                Mouse.Click(81, 233); Thread.Sleep(800);
+                                FireKirin.Logout();
+                                break;
+                            case "OrionStars":
+                                Mouse.Click(80, 218); Thread.Sleep(800);
+                                OrionStars.Logout(driver);
+                                break;
+                        }
+                    }
+                }
+            }
+            ;
+            driver.Quit();
+        }
     }
 
     private static void LaunchBrowser() {
@@ -133,24 +357,7 @@ class PROF3T {
         driver.Quit();
     }
 
-    private static void ResetSignalsTest(string Platform) {
-        List<Game> games = Game.GetAll();
-        games.ForEach(delegate (Game game) {
-            if (game.Settings.Gold777 == null) game.Settings.Gold777 = new Gold777_Settings();
-            if (game.Settings.Gold777.ButtonVerified == false) {
-                if (game.Name == Platform) {
-                    Gold777_Settings x = game.Settings.Gold777;
-                    if (x.Page == 10 && x.Button_X == 440 && x.Button_Y == 450) {
-                        game.Settings.Gold777.Button_X = 210;
-                        game.Settings.Gold777.Button_Y = 450;
-                        game.Settings.Gold777.Page = 10;
-                        //game.Settings.Gold777.ButtonVerified = false;
-                        game.Save();
-                    }
-                }
-            }
-        });
-    }
+
 
     private static void PrioritizeTesting(string Platform) {
         while (true) {
@@ -160,205 +367,6 @@ class PROF3T {
                 game.Save();
             });
             Thread.Sleep(TimeSpan.FromSeconds(60));
-        }
-    }
-
-    private static void TestSignals(string Platform) {
-        while (true) {
-            List<Game> games = Game.GetAll().FindAll(x => x.Name.Equals(Platform));
-            games.OrderBy(game => game.LastUpdated);
-            double lastRetrievedGrand = 0.0;
-
-            ChromeDriver driver = Actions.Launch();
-            switch (Platform) {
-                case "FireKirin":
-                    driver.Navigate().GoToUrl("http://play.firekirin.in/web_mobile/firekirin/");
-                    break;
-                case "OrionStars":
-                    driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
-                    if (Screen.WaitForColor(new Point(510, 110), Color.FromArgb(255, 2, 119, 2), 60) == false)
-                        throw new Exception("Took too long to load.");
-                    Mouse.Click(535, 615);
-                    break;
-            }
-
-
-            int iteration = 0;
-            foreach (Game game in games) {
-                Console.WriteLine($"{DateTime.UtcNow} - Retrieving Game");
-                Game retrievedGame = Game.Get(game.House, game.Name);
-                if (retrievedGame.Settings.Gold777.ButtonVerified == false) { //&& retrievedGame.Unlocked) {
-                    Console.WriteLine($"{DateTime.UtcNow} - Retrieving Credential");
-                    List<Credential> gameCredentials = Credential.GetBy(retrievedGame).Where(x => x.Enabled && x.Balance > 0).ToList();
-                    Credential? credential = gameCredentials.Count.Equals(0) ? null : gameCredentials[0];
-                    Console.WriteLine($"{DateTime.UtcNow} - {retrievedGame.House}/{credential?.Username}");
-                    if (credential != null) {
-                        retrievedGame.Lock();
-                        switch (retrievedGame.Name) {
-                            case "FireKirin":
-                                if (Screen.WaitForColor(new Point(999, 128), Color.FromArgb(255, 2, 125, 51), 30) == false) {
-                                    throw new Exception("Took too long to load.");
-                                }
-                                bool loggedIn = false;
-                                while (loggedIn == false) {
-                                    loggedIn = driver.Login(credential.Username, credential.Password);
-                                }
-
-                                Color hallScreen = Screen.GetColorAt(new Point(293, 179));
-                                while (hallScreen.Equals(Color.FromArgb(255, 253, 252, 253)) == false) {
-                                    Console.WriteLine($"{iteration + 1} {retrievedGame.House} - {hallScreen}");
-                                    Thread.Sleep(500); hallScreen = Screen.GetColorAt(new Point(293, 179));
-                                }
-                                Mouse.Click(81, 233); Thread.Sleep(800);
-                                for (int i = 1; i < retrievedGame.Settings.Gold777.Page; i++) {
-                                    Mouse.Click(937, 177); Thread.Sleep(800);
-                                }
-                                break;
-
-                            case "OrionStars":
-                                if (OrionStars.Login(driver, credential.Username, credential.Password) == false) {
-                                    break;
-                                }
-                                Mouse.Click(80, 218);
-                                for (int i = 1; i < retrievedGame.Settings.Gold777.Page; i++) {
-                                    Mouse.Click(995, 375); Thread.Sleep(800);
-                                }
-                                break;
-                        }
-
-
-
-                        Mouse.Move(retrievedGame.Settings.Gold777.Button_X, retrievedGame.Settings.Gold777.Button_Y);
-
-                        retrievedGame = Game.Get(retrievedGame.House, retrievedGame.Name);
-                        Mouse.Click(retrievedGame.Settings.Gold777.Button_X, retrievedGame.Settings.Gold777.Button_Y);
-
-                        int checkAttempts = 0; bool buttonVerified = false;
-                        while (checkAttempts <= 20 && buttonVerified == false) {
-                            // Color splashScreen = Screen.GetColorAt(new Point(620, 305)); // FortunePiggy
-                            // buttonVerified = splashScreen.Equals(Color.FromArgb(255, 252, 227, 227)); // FortunePiggy
-                            Color splashScreen = Color.White;
-                            switch (Platform) {
-                                case "FireKirin":
-                                    splashScreen = Screen.GetColorAt(new Point(316, 434)); // Gold777
-                                    buttonVerified = splashScreen.Equals(Color.FromArgb(255, 255, 255, 183));
-                                    break;
-                                case "OrionStars":
-                                    splashScreen = Screen.GetColorAt(new Point(314, 432)); // Gold777
-                                    buttonVerified = splashScreen.Equals(Color.FromArgb(255, 255, 255, 194));
-                                    break;
-                            }
-                            Console.WriteLine($"{iteration + 1} {retrievedGame.House} - {splashScreen}");
-                            Thread.Sleep(500); checkAttempts++;
-                        }
-
-                        if (buttonVerified) {
-                            retrievedGame = Game.Get(retrievedGame.House, retrievedGame.Name);
-                            retrievedGame.Settings.Gold777.ButtonVerified = true;
-                            retrievedGame.Save();
-                        }
-                        switch (Platform) {
-                            case "FireKirin":
-                                driver.Navigate().GoToUrl("http://play.firekirin.in/web_mobile/firekirin/");
-                                Screen.WaitForColor(new Point(293, 179), Color.FromArgb(255, 253, 252, 253));
-                                break;
-                            case "OrionStars":
-                                driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
-                                Screen.WaitForColor(new Point(715, 128), Color.FromArgb(255, 254, 242, 181));
-                                break;
-                        }
-
-                        // Color hallScreen = Screen.GetColorAt(new Point(294, 171));
-                        // while (hallScreen.Equals(Color.FromArgb(255, 0, 130, 55)) == false) {
-                        //     Console.WriteLine($"{iteration + 1} {retrievedGame.House} - {hallScreen}");
-                        //     Thread.Sleep(500); hallScreen = Screen.GetColorAt(new Point(294, 171));
-                        // }
-
-                        int grandChecked = 0;
-                        double currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
-
-                        while (currentGrand.Equals(0) || lastRetrievedGrand.Equals(currentGrand)) {
-                            Thread.Sleep(500);
-                            if (grandChecked++ > 40) throw new Exception("Extension failure.");
-                            currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
-                        }
-
-                        double currentMajor = Convert.ToDouble(driver.ExecuteScript("return window.parent.Major")) / 100;
-                        double currentMinor = Convert.ToDouble(driver.ExecuteScript("return window.parent.Minor")) / 100;
-                        double currentMini = Convert.ToDouble(driver.ExecuteScript("return window.parent.Mini")) / 100;
-
-                        if (lastRetrievedGrand.Equals(currentGrand) == false) {
-                            if (currentGrand < retrievedGame.Jackpots.Grand && (retrievedGame.Jackpots.Grand - currentGrand) > 0.1) {
-                                if (retrievedGame.DPD.Toggles.GrandPopped == true) {
-                                    retrievedGame.Jackpots.Grand = currentGrand;
-                                    retrievedGame.DPD.Toggles.GrandPopped = false;
-                                    retrievedGame.Thresholds.NewGrand(retrievedGame.Jackpots.Grand);
-                                } else retrievedGame.DPD.Toggles.GrandPopped = true;
-                            } else retrievedGame.Jackpots.Grand = currentGrand;
-
-                            if (currentMajor < retrievedGame.Jackpots.Major && (retrievedGame.Jackpots.Major - currentMajor) > 0.1) {
-                                if (retrievedGame.DPD.Toggles.MajorPopped == true) {
-                                    retrievedGame.Jackpots.Major = currentMajor;
-                                    retrievedGame.DPD.Toggles.MajorPopped = false;
-                                    retrievedGame.Thresholds.NewMajor(retrievedGame.Jackpots.Major);
-                                } else retrievedGame.DPD.Toggles.MajorPopped = true;
-                            } else retrievedGame.Jackpots.Major = currentMajor;
-
-                            if (currentMinor < retrievedGame.Jackpots.Minor && (retrievedGame.Jackpots.Minor - currentMinor) > 0.1) {
-                                if (retrievedGame.DPD.Toggles.MinorPopped == true) {
-                                    retrievedGame.Jackpots.Minor = currentMinor;
-                                    retrievedGame.DPD.Toggles.MinorPopped = false;
-                                    retrievedGame.Thresholds.NewMinor(retrievedGame.Jackpots.Minor);
-                                } else retrievedGame.DPD.Toggles.MinorPopped = true;
-                            } else retrievedGame.Jackpots.Minor = currentMinor;
-
-                            if (currentMini < retrievedGame.Jackpots.Mini && (retrievedGame.Jackpots.Mini - currentMini) > 0.1) {
-                                if (retrievedGame.DPD.Toggles.MiniPopped == true) {
-                                    retrievedGame.Jackpots.Mini = currentMini;
-                                    retrievedGame.DPD.Toggles.MiniPopped = false;
-                                    retrievedGame.Thresholds.NewMini(retrievedGame.Jackpots.Mini);
-                                } else retrievedGame.DPD.Toggles.MiniPopped = true;
-                            } else retrievedGame.Jackpots.Mini = currentMini;
-
-                        } else {
-                            throw new Exception("Invalid grand retrieved.");
-                        }
-
-                        float currentBalance = Convert.ToSingle(driver.ExecuteScript("return window.parent.Balance")) / 100;
-                        if (credential.CashedOut && (currentBalance > credential.Balance) && (currentBalance - credential.Balance > 5)) {
-                            credential.LastDepositDate = DateTime.UtcNow;
-                            credential.CashedOut = false;
-                        }
-                        credential.LastUpdated = DateTime.UtcNow;
-                        credential.Balance = currentBalance;
-                        lastRetrievedGrand = currentGrand;
-
-                        credential.Save();
-                        retrievedGame.Unlock();
-
-                        switch (Platform) {
-                            case "FireKirin":
-                                // for (int i = 0; i < retrievedGame.Settings.Gold777.Page; i++) {
-                                //     Mouse.Click(880, 177); Thread.Sleep(800);
-                                // }
-                                Mouse.Click(81, 233); Thread.Sleep(800);
-                                FireKirin.Logout();
-                                break;
-                            case "OrionStars":
-                                Mouse.Click(80, 218); Thread.Sleep(800);
-                                OrionStars.Logout();
-                                break;
-                        }
-
-
-
-
-
-                    }
-                }
-            }
-            ;
-            driver.Quit();
         }
     }
 
@@ -380,7 +388,6 @@ class PROF3T {
         Signal signal = new Signal(100, credential);
         signal.Save();
     }
-
     private static void Fix() {
         List<Game> games = Game.GetAll();
         games.ForEach(delegate (Game game) {
@@ -393,8 +400,6 @@ class PROF3T {
             }
         });
     }
-
-
     private static void Sandbox() {
         int dataCount = 0;
         List<Game> games = Game.GetAll();
@@ -419,7 +424,6 @@ class PROF3T {
         Console.WriteLine(gamesWithNoCredentials.Count);
 
     }
-
     private static void RemoveInvalidDPD_Date() {
         List<Game> games = Game.GetAll();
         // games.RemoveAll(game => game.DPD.Data[0].Grand < 0);
@@ -448,7 +452,6 @@ class PROF3T {
             game.Save();
         });
     }
-
     static void FixDPD() {
         // Game game = Game.GetBy.House(house);
         List<Game> games = Game.GetAll();

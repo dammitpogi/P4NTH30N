@@ -32,3 +32,4 @@ c:\OneDrive\P4NTH30N\HUN7ER\obj\Debug\net9.0\refint\HUN7ER.dll
 c:\OneDrive\P4NTH30N\HUN7ER\obj\Debug\net9.0\HUN7ER.pdb
 c:\OneDrive\P4NTH30N\HUN7ER\obj\Debug\net9.0\HUN7ER.genruntimeconfig.cache
 c:\OneDrive\P4NTH30N\HUN7ER\obj\Debug\net9.0\ref\HUN7ER.dll
+c:\OneDrive\P4NTH30N\HUN7ER\obj\Debug\net9.0\HUN7ER.sourcelink.json

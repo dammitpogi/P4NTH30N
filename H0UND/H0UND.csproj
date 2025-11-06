@@ -12,6 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Figgle" Version="0.6.5" />
+    <PackageReference Include="Figgle.Generator" Version="0.6.5" />
     <PackageReference Include="Selenium.WebDriver" Version="4.34.0" />
   </ItemGroup>
 

@@ -18,6 +18,25 @@
           }
         }
       },
+      "Figgle/0.6.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Figgle.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Figgle.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Figgle.Generator/0.6.5": {
+        "type": "package",
+        "build": {
+          "build/Figgle.Generator.props": {}
+        }
+      },
       "H.InputSimulator/1.5.0": {
         "type": "package",
         "compile": {
@@ -327,6 +346,41 @@
         "lib/netstandard2.0/DnsClient.xml",
         "lib/netstandard2.1/DnsClient.dll",
         "lib/netstandard2.1/DnsClient.xml"
+      ]
+    },
+    "Figgle/0.6.5": {
+      "sha512": "8Z1qvgyDFvqeQB+b/qpp083N5O/1UNEVKpI2TsWD+tM7Ev388VccPysMxre6jeAy7h4m6L6LrguPGmnOh8+ZGA==",
+      "type": "package",
+      "path": "figgle/0.6.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "figgle.0.6.5.nupkg.sha512",
+        "figgle.nuspec",
+        "lib/netstandard2.0/Figgle.dll",
+        "lib/netstandard2.0/Figgle.xml",
+        "logo-square-256px.png"
+      ]
+    },
+    "Figgle.Generator/0.6.5": {
+      "sha512": "yXe/l2YY41hXD/ofLEU3HmsacDq9d8iBW8q8uvAisVFBz+kcq3WbU5Nk2KKQqrHKnPPzea1xEZZIqWesawAIqA==",
+      "type": "package",
+      "path": "figgle.generator/0.6.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "analyzers/dotnet/cs/Figgle.Fonts.dll",
+        "analyzers/dotnet/cs/Figgle.Fonts.pdb",
+        "analyzers/dotnet/cs/Figgle.Generator.dll",
+        "analyzers/dotnet/cs/Figgle.Generator.pdb",
+        "analyzers/dotnet/cs/Figgle.dll",
+        "analyzers/dotnet/cs/Figgle.pdb",
+        "build/Figgle.Generator.props",
+        "figgle.generator.0.6.5.nupkg.sha512",
+        "figgle.generator.nuspec",
+        "logo-square-256px.png"
       ]
     },
     "H.InputSimulator/1.5.0": {
@@ -810,6 +864,8 @@
   "projectFileDependencyGroups": {
     "net9.0": [
       "C0MMON >= 1.0.0",
+      "Figgle >= 0.6.5",
+      "Figgle.Generator >= 0.6.5",
       "Selenium.WebDriver >= 4.34.0"
     ]
   },
@@ -860,6 +916,14 @@
       "net9.0": {
         "targetAlias": "net9.0",
         "dependencies": {
+          "Figgle": {
+            "target": "Package",
+            "version": "[0.6.5, )"
+          },
+          "Figgle.Generator": {
+            "target": "Package",
+            "version": "[0.6.5, )"
+          },
           "Selenium.WebDriver": {
             "target": "Package",
             "version": "[4.34.0, )"
