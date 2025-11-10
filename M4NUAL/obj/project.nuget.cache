@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "dgSpecHash": "ZolH4OCiDAc=",
+  "success": true,
+  "projectFilePath": "C:\\OneDrive\\P4NTH30N\\M4NUAL\\M4NUAL.csproj",
+  "expectedPackageFiles": [
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\figgle\\0.6.5\\figgle.0.6.5.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\figgle.generator\\0.6.5\\figgle.generator.0.6.5.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\h.inputsimulator\\1.5.0\\h.inputsimulator.1.5.0.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\microsoft.extensions.logging.abstractions\\2.0.0\\microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\microsoft.win32.systemevents\\9.0.6\\microsoft.win32.systemevents.9.0.6.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\mongodb.bson\\3.4.0\\mongodb.bson.3.4.0.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\mongodb.driver\\3.4.0\\mongodb.driver.3.4.0.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\selenium.webdriver\\4.38.0\\selenium.webdriver.4.38.0.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\selenium.webdriver.chromedriver\\79.0.3945.3600\\selenium.webdriver.chromedriver.79.0.3945.3600.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\sharpcompress\\0.30.1\\sharpcompress.0.30.1.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\snappier\\1.0.0\\snappier.1.0.0.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\system.drawing.common\\9.0.6\\system.drawing.common.9.0.6.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\zstdsharp.port\\0.7.3\\zstdsharp.port.0.7.3.nupkg.sha512"
+  ],
+  "logs": []
+}

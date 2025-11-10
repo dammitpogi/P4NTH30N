@@ -1,8 +1,9 @@
 <Solution>
-  <Project Path="C0MMON/C0MMON.csproj" />
-  <Project Path="CL0UD/CL0UD.csproj" />
-  <Project Path="H0UND/H0UND.csproj" />
-  <Project Path="H4ND/H4ND.csproj" />
-  <Project Path="HUN7ER/HUN7ER.csproj" />
-  <Project Path="PROF3T/PROF3T.csproj" />
+	<Project Path="C0MMON/C0MMON.csproj" />
+	<Project Path="C0RR3CT/C0RR3CT.csproj" />
+	<Project Path="CL0UD/CL0UD.csproj" />
+	<Project Path="H0UND/H0UND.csproj" />
+	<Project Path="H4ND/H4ND.csproj" />
+	<Project Path="HUN7ER/HUN7ER.csproj" />
+	<Project Path="PROF3T/PROF3T.csproj" />
 </Solution>

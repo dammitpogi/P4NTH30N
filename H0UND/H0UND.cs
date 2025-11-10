@@ -1,8 +1,8 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.Drawing;
+using Figgle;
 using OpenQA.Selenium.Chrome;
 using P4NTH30N.C0MMON;
-using Figgle;
 
 namespace P4NTH30N;
 
@@ -19,14 +19,15 @@ class H0UND {
             // game = Game.Get("GameVault Ultra Lounge", "OrionStars");
             // int GamesCheckedSinceRefresh = 0;
             // string QueuedGame = "", priorGame = "";
-            bool RanOnce = false, LoginScreenLoaded = false;
+            bool RanOnce = false,
+                LoginScreenLoaded = false;
 
             game.Lock();
             ChromeDriver driver = Actions.Launch();
 
             try {
                 while (true) {
-                    Game lastGame = game;
+                    Game? lastGame = game;
                     // priorGame = game != null ? game.Name : "";
                     // if (GamesCheckedSinceRefresh++ > 5) {
                     //     game = Game.GetNext();
@@ -58,7 +59,7 @@ class H0UND {
                         RanOnce = true;
                     }
 
-                    if (game != null && lastGame.Name.Equals(game.Name).Equals(false)) {
+                    if (game != null && (lastGame == null || lastGame.Name != game.Name)) {
                         LoginScreenLoaded = false;
                     }
 
@@ -118,7 +119,10 @@ class H0UND {
                             int grandChecked = 0;
                             double currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
 
-                            while (currentGrand.Equals(0) || (lastRetrievedGrand.Equals(currentGrand) && game.Name != lastGame.Name && game.House != lastGame.House)) {
+                            while (
+                                currentGrand.Equals(0)
+                                || (lastRetrievedGrand.Equals(currentGrand) && (lastGame == null || (game.Name != lastGame.Name && game.House != lastGame.House)))
+                            ) {
                                 Thread.Sleep(500);
                                 if (grandChecked++ > 40) {
                                     throw new Exception("Extension failure.");
@@ -130,7 +134,7 @@ class H0UND {
                             double currentMinor = Convert.ToDouble(driver.ExecuteScript("return window.parent.Minor")) / 100;
                             double currentMini = Convert.ToDouble(driver.ExecuteScript("return window.parent.Mini")) / 100;
 
-                            if ((lastRetrievedGrand.Equals(currentGrand) && game.Name != lastGame.Name && game.House != lastGame.House) == false) {
+                            if ((lastRetrievedGrand.Equals(currentGrand) && (lastGame == null || (game.Name != lastGame.Name && game.House != lastGame.House))) == false) {
                                 Signal? gameSignal = Signal.GetOne(game);
                                 if (currentGrand < game.Jackpots.Grand && (game.Jackpots.Grand - currentGrand) > 0.1) {
                                     if (game.DPD.Toggles.GrandPopped == true) {
@@ -139,8 +143,10 @@ class H0UND {
                                         game.Thresholds.NewGrand(game.Jackpots.Grand);
                                         if (gameSignal != null && gameSignal.Priority.Equals(4))
                                             Signal.DeleteAll(game);
-                                    } else game.DPD.Toggles.GrandPopped = true;
-                                } else game.Jackpots.Grand = currentGrand;
+                                    } else
+                                        game.DPD.Toggles.GrandPopped = true;
+                                } else
+                                    game.Jackpots.Grand = currentGrand;
 
                                 if (currentMajor < game.Jackpots.Major && (game.Jackpots.Major - currentMajor) > 0.1) {
                                     if (game.DPD.Toggles.MajorPopped == true) {
@@ -149,8 +155,10 @@ class H0UND {
                                         game.Thresholds.NewMajor(game.Jackpots.Major);
                                         if (gameSignal != null && gameSignal.Priority.Equals(3))
                                             Signal.DeleteAll(game);
-                                    } else game.DPD.Toggles.MajorPopped = true;
-                                } else game.Jackpots.Major = currentMajor;
+                                    } else
+                                        game.DPD.Toggles.MajorPopped = true;
+                                } else
+                                    game.Jackpots.Major = currentMajor;
 
                                 if (currentMinor < game.Jackpots.Minor && (game.Jackpots.Minor - currentMinor) > 0.1) {
                                     if (game.DPD.Toggles.MinorPopped == true) {
@@ -159,8 +167,10 @@ class H0UND {
                                         game.Thresholds.NewMinor(game.Jackpots.Minor);
                                         if (gameSignal != null && gameSignal.Priority.Equals(2))
                                             Signal.DeleteAll(game);
-                                    } else game.DPD.Toggles.MinorPopped = true;
-                                } else game.Jackpots.Minor = currentMinor;
+                                    } else
+                                        game.DPD.Toggles.MinorPopped = true;
+                                } else
+                                    game.Jackpots.Minor = currentMinor;
 
                                 if (currentMini < game.Jackpots.Mini && (game.Jackpots.Mini - currentMini) > 0.1) {
                                     if (game.DPD.Toggles.MiniPopped == true) {
@@ -169,14 +179,16 @@ class H0UND {
                                         game.Thresholds.NewMini(game.Jackpots.Mini);
                                         if (gameSignal != null && gameSignal.Priority.Equals(1))
                                             Signal.DeleteAll(game);
-                                    } else game.DPD.Toggles.MiniPopped = true;
-                                } else game.Jackpots.Mini = currentMini;
-
+                                    } else
+                                        game.DPD.Toggles.MiniPopped = true;
+                                } else
+                                    game.Jackpots.Mini = currentMini;
                             } else {
                                 throw new Exception("Invalid grand retrieved.");
                             }
 
-                            if (game.Settings.Gold777 == null) game.Settings.Gold777 = new Gold777_Settings();
+                            if (game.Settings.Gold777 == null)
+                                game.Settings.Gold777 = new Gold777_Settings();
                             game.Updated = true;
                             game.Unlock();
 

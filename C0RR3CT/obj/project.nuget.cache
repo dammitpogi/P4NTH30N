@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "dgSpecHash": "2HTQtmy0Nuc=",
+  "success": true,
+  "projectFilePath": "C:\\OneDrive\\P4NTH30N\\C0RR3CT\\C0RR3CT.csproj",
+  "expectedPackageFiles": [
+    "C:\\OneDrive\\P4NTH30N\\C0RR3CT\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\C0RR3CT\\packages\\figgle\\0.6.5\\figgle.0.6.5.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\C0RR3CT\\packages\\figgle.generator\\0.6.5\\figgle.generator.0.6.5.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\C0RR3CT\\packages\\h.inputsimulator\\1.5.0\\h.inputsimulator.1.5.0.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\C0RR3CT\\packages\\microsoft.extensions.logging.abstractions\\2.0.0\\microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\C0RR3CT\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\C0RR3CT\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\C0RR3CT\\packages\\microsoft.win32.systemevents\\9.0.6\\microsoft.win32.systemevents.9.0.6.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\C0RR3CT\\packages\\mongodb.bson\\3.4.0\\mongodb.bson.3.4.0.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\C0RR3CT\\packages\\mongodb.driver\\3.4.0\\mongodb.driver.3.4.0.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\C0RR3CT\\packages\\selenium.webdriver\\4.35.0\\selenium.webdriver.4.35.0.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\C0RR3CT\\packages\\sharpcompress\\0.30.1\\sharpcompress.0.30.1.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\C0RR3CT\\packages\\snappier\\1.0.0\\snappier.1.0.0.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\C0RR3CT\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\C0RR3CT\\packages\\system.drawing.common\\9.0.6\\system.drawing.common.9.0.6.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\C0RR3CT\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\C0RR3CT\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\C0RR3CT\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\C0RR3CT\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\C0RR3CT\\packages\\zstdsharp.port\\0.7.3\\zstdsharp.port.0.7.3.nupkg.sha512"
+  ],
+  "logs": []
+}

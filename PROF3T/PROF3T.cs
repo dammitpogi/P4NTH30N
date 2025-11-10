@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics;
 using System.Drawing;
+using System.Text.Json;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.DevTools.V136.Browser;
 using P4NTH30N.C0MMON;
-using System.Text.Json;
 
 namespace P4NTH30N;
 
@@ -13,7 +13,7 @@ class PROF3T {
         //sandbox();
         // BurnAccount("ShariNor55", "123qwe");
         ResetSignalsTest("FireKirin");
-        TestSignals("FireKirin");
+        // TestSignals("FireKirin");
         // PrioritizeTesting("OrionStars");
 
         // Sandbox();
@@ -30,30 +30,35 @@ class PROF3T {
 
     private static void ResetSignalsTest(string Platform) {
         List<Game> games = Game.GetAll();
-        games.ForEach(delegate (Game game) {
-            if (game.Settings.Gold777 == null) game.Settings.Gold777 = new Gold777_Settings();
-            if (game.Settings.Gold777.ButtonVerified == false) {
+        games.ForEach(
+            delegate (Game game) {
+                //if (game.Settings.Gold777 == null) game.Settings.Gold777 = new Gold777_Settings();
+                //if (game.Settings.Gold777.ButtonVerified == false) {
                 if (game.Name == Platform) {
                     //Gold777_Settings x = game.Settings.Gold777;
-                    //if (x.Page == 9 && x.Button_X == 820 && x.Button_Y == 280) {
-                        game.Settings.Gold777.Button_X = 440;
-                        game.Settings.Gold777.Button_Y = 280;
-                        game.Settings.Gold777.Page = 10;
-                        //game.Settings.Gold777.ButtonVerified = false;
-                        game.Save();
+                    //if (x.Page == 10 && x.Button_X == 440 && x.Button_Y == 280) {
+                    //game.Settings.Gold777.Button_X = 860;
+                    //game.Settings.Gold777.Button_Y = 280;
+                    //game.Settings.Gold777.Page = 10;
+                    game.Settings.Gold777.ButtonVerified = false;
+                    game.Save();
                     //}
                 }
+                //}
             }
-        });
+        );
     }
 
     private static void TestSignals(string Platform) {
         while (true) {
             List<Game> games = Game.GetAll().FindAll(x => x.Name.Equals(Platform));
             games.OrderBy(game => game.LastUpdated);
-            double lastRetrievedGrand = 0.0;
+            // double lastRetrievedGrand = 0.0;
 
-            ChromeDriver driver = Actions.Launch();
+            Mouse.Click(1279, 180);
+            ChromeDriver driver = new();
+            Mouse.Click(1024, 121);
+
             switch (Platform) {
                 case "FireKirin":
                     driver.Navigate().GoToUrl("http://play.firekirin.in/web_mobile/firekirin/");
@@ -66,9 +71,8 @@ class PROF3T {
                     break;
             }
 
-
             int iteration = 0;
-            Game lastGame = games[^1];
+            // Game lastGame = games[^1];
             foreach (Game game in games) {
                 Console.WriteLine($"{DateTime.UtcNow} - Retrieving Game");
                 Game retrievedGame = Game.Get(game.House, game.Name);
@@ -92,14 +96,17 @@ class PROF3T {
                                     loggedIn = driver.Login(credential.Username, credential.Password);
                                 }
 
-                                Color hallScreen = Screen.GetColorAt(new Point(293, 179));
-                                while (hallScreen.Equals(Color.FromArgb(255, 253, 252, 253)) == false) {
-                                    Console.WriteLine($"{iteration + 1} {retrievedGame.House} - {hallScreen}");
-                                    Thread.Sleep(500); hallScreen = Screen.GetColorAt(new Point(293, 179));
+                                Color firstHallScreen = Screen.GetColorAt(new Point(293, 179));
+                                while (firstHallScreen.Equals(Color.FromArgb(255, 253, 252, 253)) == false) {
+                                    Console.WriteLine($"{iteration + 1} {retrievedGame.House} - {firstHallScreen}");
+                                    Thread.Sleep(500);
+                                    firstHallScreen = Screen.GetColorAt(new Point(293, 179));
                                 }
-                                Mouse.Click(81, 233); Thread.Sleep(800);
+                                Mouse.Click(81, 233);
+                                Thread.Sleep(800);
                                 for (int i = 1; i < retrievedGame.Settings.Gold777.Page; i++) {
-                                    Mouse.Click(937, 177); Thread.Sleep(800);
+                                    Mouse.Click(937, 177);
+                                    Thread.Sleep(800);
                                 }
                                 break;
 
@@ -109,19 +116,20 @@ class PROF3T {
                                 }
                                 Mouse.Click(80, 218);
                                 for (int i = 1; i < retrievedGame.Settings.Gold777.Page; i++) {
-                                    Mouse.Click(995, 375); Thread.Sleep(800);
+                                    Mouse.Click(995, 375);
+                                    Thread.Sleep(800);
                                 }
                                 break;
                         }
 
+                        // Mouse.Move(retrievedGame.Settings.Gold777.Button_X, retrievedGame.Settings.Gold777.Button_Y);
 
-
-                        Mouse.Move(retrievedGame.Settings.Gold777.Button_X, retrievedGame.Settings.Gold777.Button_Y);
-
-                        retrievedGame = Game.Get(retrievedGame.House, retrievedGame.Name);
+                        // retrievedGame = Game.Get(retrievedGame.House, retrievedGame.Name);
+                        Mouse.Click(retrievedGame.Settings.Gold777.Button_X, retrievedGame.Settings.Gold777.Button_Y);
                         Mouse.Click(retrievedGame.Settings.Gold777.Button_X, retrievedGame.Settings.Gold777.Button_Y);
 
-                        int checkAttempts = 0; bool buttonVerified = false;
+                        int checkAttempts = 0;
+                        bool buttonVerified = false;
                         while (checkAttempts <= 20 && buttonVerified == false) {
                             // Color splashScreen = Screen.GetColorAt(new Point(620, 305)); // FortunePiggy
                             // buttonVerified = splashScreen.Equals(Color.FromArgb(255, 252, 227, 227)); // FortunePiggy
@@ -137,7 +145,8 @@ class PROF3T {
                                     break;
                             }
                             Console.WriteLine($"{iteration + 1} {retrievedGame.House} - {splashScreen}");
-                            Thread.Sleep(500); checkAttempts++;
+                            Thread.Sleep(500);
+                            checkAttempts++;
                         }
 
                         if (buttonVerified) {
@@ -156,91 +165,94 @@ class PROF3T {
                                 break;
                         }
 
-                        // Color hallScreen = Screen.GetColorAt(new Point(294, 171));
-                        // while (hallScreen.Equals(Color.FromArgb(255, 0, 130, 55)) == false) {
-                        //     Console.WriteLine($"{iteration + 1} {retrievedGame.House} - {hallScreen}");
-                        //     Thread.Sleep(500); hallScreen = Screen.GetColorAt(new Point(294, 171));
+                        Color hallScreen = Screen.GetColorAt(new Point(294, 171));
+                        while (hallScreen.Equals(Color.FromArgb(255, 0, 130, 55)) == false) {
+                            Console.WriteLine($"{iteration + 1} {retrievedGame.House} - {hallScreen}");
+                            Thread.Sleep(500);
+                            hallScreen = Screen.GetColorAt(new Point(294, 171));
+                        }
+
+                        // int grandChecked = 0;
+                        // double currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
+
+                        // while (currentGrand.Equals(0) || (lastRetrievedGrand.Equals(currentGrand) && game.Name != lastGame.Name && game.House != lastGame.House)) {
+                        //     Thread.Sleep(500);
+                        //     if (grandChecked++ > 40) {
+                        //         throw new Exception("Extension failure.");
+                        //     }
+                        //     currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
                         // }
 
-                        int grandChecked = 0;
-                        double currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
+                        // double currentMajor = Convert.ToDouble(driver.ExecuteScript("return window.parent.Major")) / 100;
+                        // double currentMinor = Convert.ToDouble(driver.ExecuteScript("return window.parent.Minor")) / 100;
+                        // double currentMini = Convert.ToDouble(driver.ExecuteScript("return window.parent.Mini")) / 100;
 
-                        while (currentGrand.Equals(0) || (lastRetrievedGrand.Equals(currentGrand) && game.Name != lastGame.Name && game.House != lastGame.House)) {
-                            Thread.Sleep(500);
-                            if (grandChecked++ > 40) {
-                                throw new Exception("Extension failure.");
-                            }
-                            currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
-                        }
+                        // if ((lastRetrievedGrand.Equals(currentGrand) && game.Name != lastGame.Name && game.House != lastGame.House) == false) {
+                        //     Signal? gameSignal = Signal.GetOne(game);
+                        //     if (currentGrand < game.Jackpots.Grand && (game.Jackpots.Grand - currentGrand) > 0.1) {
+                        //         if (game.DPD.Toggles.GrandPopped == true) {
+                        //             game.Jackpots.Grand = currentGrand;
+                        //             game.DPD.Toggles.GrandPopped = false;
+                        //             game.Thresholds.NewGrand(game.Jackpots.Grand);
+                        //             if (gameSignal != null && gameSignal.Priority.Equals(4))
+                        //                 Signal.DeleteAll(game);
+                        //         } else game.DPD.Toggles.GrandPopped = true;
+                        //     } else game.Jackpots.Grand = currentGrand;
 
-                        double currentMajor = Convert.ToDouble(driver.ExecuteScript("return window.parent.Major")) / 100;
-                        double currentMinor = Convert.ToDouble(driver.ExecuteScript("return window.parent.Minor")) / 100;
-                        double currentMini = Convert.ToDouble(driver.ExecuteScript("return window.parent.Mini")) / 100;
+                        //     if (currentMajor < game.Jackpots.Major && (game.Jackpots.Major - currentMajor) > 0.1) {
+                        //         if (game.DPD.Toggles.MajorPopped == true) {
+                        //             game.Jackpots.Major = currentMajor;
+                        //             game.DPD.Toggles.MajorPopped = false;
+                        //             game.Thresholds.NewMajor(game.Jackpots.Major);
+                        //             if (gameSignal != null && gameSignal.Priority.Equals(3))
+                        //                 Signal.DeleteAll(game);
+                        //         } else game.DPD.Toggles.MajorPopped = true;
+                        //     } else game.Jackpots.Major = currentMajor;
 
-                        if ((lastRetrievedGrand.Equals(currentGrand) && game.Name != lastGame.Name && game.House != lastGame.House) == false) {
-                            Signal? gameSignal = Signal.GetOne(game);
-                            if (currentGrand < game.Jackpots.Grand && (game.Jackpots.Grand - currentGrand) > 0.1) {
-                                if (game.DPD.Toggles.GrandPopped == true) {
-                                    game.Jackpots.Grand = currentGrand;
-                                    game.DPD.Toggles.GrandPopped = false;
-                                    game.Thresholds.NewGrand(game.Jackpots.Grand);
-                                    if (gameSignal != null && gameSignal.Priority.Equals(4))
-                                        Signal.DeleteAll(game);
-                                } else game.DPD.Toggles.GrandPopped = true;
-                            } else game.Jackpots.Grand = currentGrand;
+                        //     if (currentMinor < game.Jackpots.Minor && (game.Jackpots.Minor - currentMinor) > 0.1) {
+                        //         if (game.DPD.Toggles.MinorPopped == true) {
+                        //             game.Jackpots.Minor = currentMinor;
+                        //             game.DPD.Toggles.MinorPopped = false;
+                        //             game.Thresholds.NewMinor(game.Jackpots.Minor);
+                        //             if (gameSignal != null && gameSignal.Priority.Equals(2))
+                        //                 Signal.DeleteAll(game);
+                        //         } else game.DPD.Toggles.MinorPopped = true;
+                        //     } else game.Jackpots.Minor = currentMinor;
 
-                            if (currentMajor < game.Jackpots.Major && (game.Jackpots.Major - currentMajor) > 0.1) {
-                                if (game.DPD.Toggles.MajorPopped == true) {
-                                    game.Jackpots.Major = currentMajor;
-                                    game.DPD.Toggles.MajorPopped = false;
-                                    game.Thresholds.NewMajor(game.Jackpots.Major);
-                                    if (gameSignal != null && gameSignal.Priority.Equals(3))
-                                        Signal.DeleteAll(game);
-                                } else game.DPD.Toggles.MajorPopped = true;
-                            } else game.Jackpots.Major = currentMajor;
+                        //     if (currentMini < game.Jackpots.Mini && (game.Jackpots.Mini - currentMini) > 0.1) {
+                        //         if (game.DPD.Toggles.MiniPopped == true) {
+                        //             game.Jackpots.Mini = currentMini;
+                        //             game.DPD.Toggles.MiniPopped = false;
+                        //             game.Thresholds.NewMini(game.Jackpots.Mini);
+                        //             if (gameSignal != null && gameSignal.Priority.Equals(1))
+                        //                 Signal.DeleteAll(game);
+                        //         } else game.DPD.Toggles.MiniPopped = true;
+                        //     } else game.Jackpots.Mini = currentMini;
 
-                            if (currentMinor < game.Jackpots.Minor && (game.Jackpots.Minor - currentMinor) > 0.1) {
-                                if (game.DPD.Toggles.MinorPopped == true) {
-                                    game.Jackpots.Minor = currentMinor;
-                                    game.DPD.Toggles.MinorPopped = false;
-                                    game.Thresholds.NewMinor(game.Jackpots.Minor);
-                                    if (gameSignal != null && gameSignal.Priority.Equals(2))
-                                        Signal.DeleteAll(game);
-                                } else game.DPD.Toggles.MinorPopped = true;
-                            } else game.Jackpots.Minor = currentMinor;
+                        // } else {
+                        //     throw new Exception("Invalid grand retrieved.");
+                        // }
 
-                            if (currentMini < game.Jackpots.Mini && (game.Jackpots.Mini - currentMini) > 0.1) {
-                                if (game.DPD.Toggles.MiniPopped == true) {
-                                    game.Jackpots.Mini = currentMini;
-                                    game.DPD.Toggles.MiniPopped = false;
-                                    game.Thresholds.NewMini(game.Jackpots.Mini);
-                                    if (gameSignal != null && gameSignal.Priority.Equals(1))
-                                        Signal.DeleteAll(game);
-                                } else game.DPD.Toggles.MiniPopped = true;
-                            } else game.Jackpots.Mini = currentMini;
+                        // credential.Balance = Convert.ToDouble(driver.ExecuteScript("return window.parent.Balance")) / 100;
+                        // credential.LastUpdated = DateTime.UtcNow;
+                        // lastRetrievedGrand = currentGrand;
 
-                        } else {
-                            throw new Exception("Invalid grand retrieved.");
-                        }
-
-                        credential.Balance = Convert.ToDouble(driver.ExecuteScript("return window.parent.Balance")) / 100;
-                        credential.LastUpdated = DateTime.UtcNow;
-                        lastRetrievedGrand = currentGrand;
-
-                        credential.Save();
-                        retrievedGame.Unlock();
-                        lastGame = retrievedGame;
+                        // credential.Save();
+                        // retrievedGame.Unlock();
+                        // lastGame = retrievedGame;
 
                         switch (Platform) {
                             case "FireKirin":
                                 // for (int i = 0; i < retrievedGame.Settings.Gold777.Page; i++) {
                                 //     Mouse.Click(880, 177); Thread.Sleep(800);
                                 // }
-                                Mouse.Click(81, 233); Thread.Sleep(800);
+                                Mouse.Click(81, 233);
+                                Thread.Sleep(800);
                                 FireKirin.Logout();
                                 break;
                             case "OrionStars":
-                                Mouse.Click(80, 218); Thread.Sleep(800);
+                                Mouse.Click(80, 218);
+                                Thread.Sleep(800);
                                 OrionStars.Logout(driver);
                                 break;
                         }
@@ -257,18 +269,240 @@ class PROF3T {
     }
 
     private static void sandbox() {
-        List<int> History = []; Dictionary<int, int> Occurences = [];
-        History = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 10, 10, 11, 12, 12, 12, 12, 14, 14, 14];
+        List<int> History = [];
+        Dictionary<int, int> Occurences = [];
+        History =
+        [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            7,
+            7,
+            7,
+            7,
+            8,
+            8,
+            8,
+            8,
+            9,
+            9,
+            9,
+            10,
+            10,
+            11,
+            12,
+            12,
+            12,
+            12,
+            14,
+            14,
+            14,
+        ];
         History.ForEach(Spins => {
-            if (Occurences.Any(x => x.Key == Spins)) Occurences[Spins] = Occurences[Spins] + 1;
-            else Occurences.Add(Spins, 1);
+            if (Occurences.Any(x => x.Key == Spins))
+                Occurences[Spins] = Occurences[Spins] + 1;
+            else
+                Occurences.Add(Spins, 1);
         });
-        List<string> log = []; int y = 0, rows = 4;
-        for (int i = 0; i < rows; i++) { log.Add(""); }
-        Occurences.ToList().ForEach(x => {
-            log[y] = log[y] = $"{(log[y].Length.Equals(0) ? "" : log[y] + " | ")}{x.Key,2}: {x.Value,-3}";
-            y++; if (y.Equals(rows)) y = 0;
-        });
+        List<string> log = [];
+        int y = 0,
+            rows = 4;
+        for (int i = 0; i < rows; i++) {
+            log.Add("");
+        }
+        Occurences
+            .ToList()
+            .ForEach(x => {
+                log[y] = log[y] = $"{(log[y].Length.Equals(0) ? "" : log[y] + " | ")}{x.Key,2}: {x.Value,-3}";
+                y++;
+                if (y.Equals(rows))
+                    y = 0;
+            });
         log.ToList().ForEach(Console.WriteLine);
         Console.WriteLine();
     }
@@ -281,14 +515,16 @@ class PROF3T {
         Mouse.Click(243, 268);
         Color loginScreen = Screen.GetColorAt(new Point(999, 128));
         while (loginScreen.Equals(Color.FromArgb(255, 2, 125, 51)) == false) {
-            Thread.Sleep(500); loginScreen = Screen.GetColorAt(new Point(999, 128));
+            Thread.Sleep(500);
+            loginScreen = Screen.GetColorAt(new Point(999, 128));
         }
         bool loggedIn = false;
         while (loggedIn == false) {
             loggedIn = driver.Login(Username, Password);
         }
         for (int i = 1; i < 10; i++) {
-            Mouse.Click(937, 177); Thread.Sleep(800);
+            Mouse.Click(937, 177);
+            Thread.Sleep(800);
         }
         Mouse.Click(450, 450);
         Screen.WaitForColor(new Point(929, 612), Color.FromArgb(255, 253, 253, 14));
@@ -298,32 +534,716 @@ class PROF3T {
             balance = Convert.ToDouble(driver.ExecuteScript("return window.parent.Balance")) / 100;
         }
 
-        bool Raised = false; int BadSpins = 0, AvgSpinsFTW = 0, Increase = 5, Capacity = 12;
-        List<int> History = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 10, 10, 11, 11, 11, 12, 12, 12, 12, 13, 14, 14, 14, 15, 16, 16, 16, 16, 17, 18];
+        bool Raised = false;
+        int BadSpins = 0,
+            AvgSpinsFTW = 0,
+            Increase = 5,
+            Capacity = 12;
+        List<int> History =
+        [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            4,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            7,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            8,
+            9,
+            9,
+            9,
+            9,
+            9,
+            9,
+            10,
+            10,
+            11,
+            11,
+            11,
+            12,
+            12,
+            12,
+            12,
+            13,
+            14,
+            14,
+            14,
+            15,
+            16,
+            16,
+            16,
+            16,
+            17,
+            18,
+        ];
         List<int> WorkingSet = [];
 
         //Console.WriteLine(balance);
         while (balance > 400 && balance < 600) {
             if (BadSpins.Equals(AvgSpinsFTW) && Raised.Equals(false) && WorkingSet.Count > Capacity) {
                 for (int i = 1; i < Increase; i++) {
-                    Mouse.Click(843, 623); Thread.Sleep(400);
+                    Mouse.Click(843, 623);
+                    Thread.Sleep(400);
                 }
                 Raised = true;
             }
 
             double priorBalance = balance;
-            Mouse.Click(877, 623); Thread.Sleep(300);
+            Mouse.Click(877, 623);
+            Thread.Sleep(300);
             Screen.WaitForColor(new Point(996, 614), Color.FromArgb(255, 244, 253, 7));
-            Mouse.Click(877, 623); Thread.Sleep(300);
+            Mouse.Click(877, 623);
+            Thread.Sleep(300);
             Screen.WaitForColor(new Point(929, 612), Color.FromArgb(255, 253, 253, 14));
             balance = Convert.ToDouble(driver.ExecuteScript("return window.parent.Balance")) / 100;
             //Console.WriteLine($"                                                                                                                                                                                                                         {balance}");
 
             int logSpins = BadSpins;
             if (balance > priorBalance) {
-                History.Add(BadSpins); WorkingSet.Add(BadSpins);
+                History.Add(BadSpins);
+                WorkingSet.Add(BadSpins);
                 AvgSpinsFTW = WorkingSet.GroupBy(i => i).OrderByDescending(grp => grp.Count()).Select(grp => grp.Key).First();
-                if (WorkingSet.Count > 24) WorkingSet.RemoveAt(0);
+                if (WorkingSet.Count > 24)
+                    WorkingSet.RemoveAt(0);
                 BadSpins = 0;
             } else {
                 BadSpins++;
@@ -333,14 +1253,25 @@ class PROF3T {
             Dictionary<int, int> Occurences = [];
             if (BadSpins.Equals(0)) {
                 History.ForEach(Spins => {
-                    if (Occurences.Any(x => x.Key == Spins)) Occurences[Spins] = Occurences[Spins] + 1;
-                    else Occurences.Add(Spins, 1);
+                    if (Occurences.Any(x => x.Key == Spins))
+                        Occurences[Spins] = Occurences[Spins] + 1;
+                    else
+                        Occurences.Add(Spins, 1);
                 });
-                List<string> log = []; int y = 0, rows = 4; for (int i = 0; i < rows; i++) { log.Add(""); }
-                Occurences.ToList().ForEach(x => {
-                    log[y] = log[y] = $"{(log[y].Length.Equals(0) ? "" : log[y] + " | ")}{x.Key,2}: {x.Value,-3}";
-                    y++; if (y.Equals(rows)) y = 0;
-                });
+                List<string> log = [];
+                int y = 0,
+                    rows = 4;
+                for (int i = 0; i < rows; i++) {
+                    log.Add("");
+                }
+                Occurences
+                    .ToList()
+                    .ForEach(x => {
+                        log[y] = log[y] = $"{(log[y].Length.Equals(0) ? "" : log[y] + " | ")}{x.Key,2}: {x.Value,-3}";
+                        y++;
+                        if (y.Equals(rows))
+                            y = 0;
+                    });
                 log.Sort();
                 log.ToList().ForEach(Console.WriteLine);
                 Console.WriteLine($"RaiseOn:{AvgSpinsFTW}, WorkingSet:{WorkingSet.Count}, History:{History.Count} ");
@@ -349,7 +1280,8 @@ class PROF3T {
 
             if (Raised) {
                 for (int i = 1; i < Increase; i++) {
-                    Mouse.Click(702, 623); Thread.Sleep(200);
+                    Mouse.Click(702, 623);
+                    Thread.Sleep(200);
                 }
                 Raised = false;
             }
@@ -357,15 +1289,15 @@ class PROF3T {
         driver.Quit();
     }
 
-
-
     private static void PrioritizeTesting(string Platform) {
         while (true) {
             List<Game> games = Game.GetAll();
-            games.ForEach(delegate (Game game) {
-                game.Updated = game.Name.Equals(Platform).Equals(false);
-                game.Save();
-            });
+            games.ForEach(
+                delegate (Game game) {
+                    game.Updated = game.Name.Equals(Platform).Equals(false);
+                    game.Save();
+                }
+            );
             Thread.Sleep(TimeSpan.FromSeconds(60));
         }
     }
@@ -379,7 +1311,6 @@ class PROF3T {
         //     game.DPD = new DPD();
         //     game.Save();
         // });
-
     }
 
     private static void CheckSignals() {
@@ -388,118 +1319,138 @@ class PROF3T {
         Signal signal = new Signal(100, credential);
         signal.Save();
     }
+
     private static void Fix() {
         List<Game> games = Game.GetAll();
-        games.ForEach(delegate (Game game) {
-            if (game.House.Equals("Candies GameRoom")) {
-                List<DPD_Data> data = game.DPD.History[^1].Data;
-                // game.DPD.Data.RemoveAt(0);
-                data.AddRange(game.DPD.Data);
-                game.DPD.Data = data;
-                game.Save();
+        games.ForEach(
+            delegate (Game game) {
+                if (game.House.Equals("Candies GameRoom")) {
+                    List<DPD_Data> data = game.DPD.History[^1].Data;
+                    // game.DPD.Data.RemoveAt(0);
+                    data.AddRange(game.DPD.Data);
+                    game.DPD.Data = data;
+                    game.Save();
+                }
             }
-        });
+        );
     }
+
     private static void Sandbox() {
         int dataCount = 0;
         List<Game> games = Game.GetAll();
-        games.ForEach(delegate (Game game) {
-            int count = game.DPD.Data.Count;
-            dataCount = count > dataCount ? count : dataCount;
-        });
+        games.ForEach(
+            delegate (Game game) {
+                int count = game.DPD.Data.Count;
+                dataCount = count > dataCount ? count : dataCount;
+            }
+        );
         Console.WriteLine(dataCount);
     }
+
     private static void GamesWithNoCredentials() {
         List<Game> games = Game.GetAll();
         List<Credential> gamesWithNoCredentials = [];
         List<Credential> credentials = Credential.Database();
-        credentials.ForEach(delegate (Credential credential) {
-            if (games.FindAll(c => c.House.Equals(credential.House)).Count.Equals(0)) {
-                Console.WriteLine($"[{gamesWithNoCredentials.Count}] - {credential.Username}");
-                Console.WriteLine($"[{credential.House}]");
-                gamesWithNoCredentials.Add(credential);
-                Console.WriteLine();
+        credentials.ForEach(
+            delegate (Credential credential) {
+                if (games.FindAll(c => c.House.Equals(credential.House)).Count.Equals(0)) {
+                    Console.WriteLine($"[{gamesWithNoCredentials.Count}] - {credential.Username}");
+                    Console.WriteLine($"[{credential.House}]");
+                    gamesWithNoCredentials.Add(credential);
+                    Console.WriteLine();
+                }
             }
-        });
+        );
         Console.WriteLine(gamesWithNoCredentials.Count);
-
     }
+
     private static void RemoveInvalidDPD_Date() {
         List<Game> games = Game.GetAll();
         // games.RemoveAll(game => game.DPD.Data[0].Grand < 0);
-        games.ForEach(delegate (Game game) {
-            if (game.DPD.Data[0].Grand < 0) {
-                game.DPD.Data.RemoveAll(Data => Data.Grand < 0);
-                game.Save();
+        games.ForEach(
+            delegate (Game game) {
+                if (game.DPD.Data[0].Grand < 0) {
+                    game.DPD.Data.RemoveAll(Data => Data.Grand < 0);
+                    game.Save();
+                }
             }
-        });
+        );
     }
+
     static void ClearBalances() {
         List<Credential> credentials = Credential.GetAll();
-        credentials.ForEach(delegate (Credential credential) {
-            credential.Balance = 0F;
-            credential.Save();
-        });
+        credentials.ForEach(
+            delegate (Credential credential) {
+                credential.Balance = 0F;
+                credential.Save();
+            }
+        );
     }
+
     static void SetThresholdsToDefault() {
         List<Game> games = Game.GetAll();
-        games.ForEach(delegate (Game game) {
-            game.Thresholds.Grand = 1785F;
-            game.Thresholds.Major = 565F;
-            game.Thresholds.Minor = 117F;
-            game.Thresholds.Mini = 23F;
-            // game.Thresholds.Data = new Thresholds_Data();
-            game.Save();
-        });
+        games.ForEach(
+            delegate (Game game) {
+                game.Thresholds.Grand = 1785F;
+                game.Thresholds.Major = 565F;
+                game.Thresholds.Minor = 117F;
+                game.Thresholds.Mini = 23F;
+                // game.Thresholds.Data = new Thresholds_Data();
+                game.Save();
+            }
+        );
     }
+
     static void FixDPD() {
         // Game game = Game.GetBy.House(house);
         List<Game> games = Game.GetAll();
         games.RemoveAll(game => game.House != "Lucky Heart Gameroom");
 
-        games.ForEach(delegate (Game game) {
-            // List<DPD_Data> archive = new List<DPD_Data>();
-            // game.DPD.History.ForEach(delegate (DPD_History dto) {
-            //     archive.AddRange(dto.Data);
-            // });
-            //archive.AddRange(game.DPD.Data);
+        games.ForEach(
+            delegate (Game game) {
+                // List<DPD_Data> archive = new List<DPD_Data>();
+                // game.DPD.History.ForEach(delegate (DPD_History dto) {
+                //     archive.AddRange(dto.Data);
+                // });
+                //archive.AddRange(game.DPD.Data);
 
-            game.DPD.Data = game.DPD.History[^1].Data;
-            game.DPD.Average = game.DPD.History[^1].Average;
-            game.Jackpots.Grand = game.DPD.Data[^1].Grand;
-            // game.Unlock();
-            // game.DPD.Average = 0F;
-            // game.DPD.Data = [];
-            // game.DPD.History = [];
+                game.DPD.Data = game.DPD.History[^1].Data;
+                game.DPD.Average = game.DPD.History[^1].Average;
+                game.Jackpots.Grand = game.DPD.Data[^1].Grand;
+                // game.Unlock();
+                // game.DPD.Average = 0F;
+                // game.DPD.Data = [];
+                // game.DPD.History = [];
 
-            // for (int i = 0; i < archive.Count; i++) {
-            //     DPD_Data dto = archive[i];
-            //     float currentGrand = dto.Grand;
-            //     if (game.DPD.Data.Count == 0) game.DPD.Data.Add(dto);
-            //     else {
-            //         float previousGrand = game.DPD.Data[game.DPD.Data.Count - 1].Grand;
-            //         if (currentGrand != previousGrand) {
-            //             if (currentGrand > previousGrand) {
-            //                 game.DPD.Data.Add(dto);
-            //                 float minutes = Convert.ToSingle((game.DPD.Data[game.DPD.Data.Count - 1].Timestamp - game.DPD.Data[0].Timestamp).TotalMinutes);
-            //                 float dollars = game.DPD.Data[game.DPD.Data.Count - 1].Grand - game.DPD.Data[0].Grand;
-            //                 float MinutesInADay = Convert.ToSingle(TimeSpan.FromDays(1).TotalMinutes);
-            //                 float days = minutes / MinutesInADay;
-            //                 float dollarsPerDay = dollars / days;
-            //                 game.DPD.Average = dollarsPerDay;
-            //                 Console.WriteLine("[" + i + "] DPD: " + game.DPD.Average);
-            //             } else {
-            //                 // game.DPD.History.Add(new DPD_History(game.DPD.Average, game.DPD.Data));
-            //                 // game.DPD.Data = [];
-            //                 // game.DPD.Average = 0F;
-            //                 // game.DPD.Data.Add(dto);
-            //             }
-            //         }
-            //     }
-            // }
-            // game.DPD.History[0].Timestamp = DateTime.Now;
-            // game.Unlocked = true;
-            game.Save();
-        });
+                // for (int i = 0; i < archive.Count; i++) {
+                //     DPD_Data dto = archive[i];
+                //     float currentGrand = dto.Grand;
+                //     if (game.DPD.Data.Count == 0) game.DPD.Data.Add(dto);
+                //     else {
+                //         float previousGrand = game.DPD.Data[game.DPD.Data.Count - 1].Grand;
+                //         if (currentGrand != previousGrand) {
+                //             if (currentGrand > previousGrand) {
+                //                 game.DPD.Data.Add(dto);
+                //                 float minutes = Convert.ToSingle((game.DPD.Data[game.DPD.Data.Count - 1].Timestamp - game.DPD.Data[0].Timestamp).TotalMinutes);
+                //                 float dollars = game.DPD.Data[game.DPD.Data.Count - 1].Grand - game.DPD.Data[0].Grand;
+                //                 float MinutesInADay = Convert.ToSingle(TimeSpan.FromDays(1).TotalMinutes);
+                //                 float days = minutes / MinutesInADay;
+                //                 float dollarsPerDay = dollars / days;
+                //                 game.DPD.Average = dollarsPerDay;
+                //                 Console.WriteLine("[" + i + "] DPD: " + game.DPD.Average);
+                //             } else {
+                //                 // game.DPD.History.Add(new DPD_History(game.DPD.Average, game.DPD.Data));
+                //                 // game.DPD.Data = [];
+                //                 // game.DPD.Average = 0F;
+                //                 // game.DPD.Data.Add(dto);
+                //             }
+                //         }
+                //     }
+                // }
+                // game.DPD.History[0].Timestamp = DateTime.Now;
+                // game.Unlocked = true;
+                game.Save();
+            }
+        );
     }
 }

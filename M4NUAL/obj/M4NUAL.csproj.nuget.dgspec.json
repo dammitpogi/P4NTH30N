@@ -1,0 +1,167 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\M4NUAL.csproj": {}
+  },
+  "projects": {
+    "C:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj",
+        "projectName": "C0MMON",
+        "projectPath": "C:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj",
+        "packagesPath": "C:\\Users\\paulc\\.nuget\\packages\\",
+        "outputPath": "C:\\OneDrive\\P4NTH30N\\C0MMON\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\paulc\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0-windows"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0-windows7.0": {
+            "targetAlias": "net9.0-windows",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0-windows7.0": {
+          "targetAlias": "net9.0-windows",
+          "dependencies": {
+            "H.InputSimulator": {
+              "target": "Package",
+              "version": "[1.5.0, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[3.4.0, )"
+            },
+            "Selenium.WebDriver": {
+              "target": "Package",
+              "version": "[4.33.0, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[9.0.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\M4NUAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\OneDrive\\P4NTH30N\\M4NUAL\\M4NUAL.csproj",
+        "projectName": "M4NUAL",
+        "projectPath": "C:\\OneDrive\\P4NTH30N\\M4NUAL\\M4NUAL.csproj",
+        "packagesPath": "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages",
+        "outputPath": "C:\\OneDrive\\P4NTH30N\\M4NUAL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\OneDrive\\P4NTH30N\\M4NUAL\\NuGet.Config",
+          "C:\\Users\\paulc\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0-windows"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0-windows7.0": {
+            "targetAlias": "net9.0-windows",
+            "projectReferences": {
+              "C:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj": {
+                "projectPath": "C:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0-windows7.0": {
+          "targetAlias": "net9.0-windows",
+          "dependencies": {
+            "Figgle": {
+              "target": "Package",
+              "version": "[0.6.5, )"
+            },
+            "Figgle.Generator": {
+              "target": "Package",
+              "version": "[0.6.5, )"
+            },
+            "Selenium.WebDriver": {
+              "target": "Package",
+              "version": "[4.38.0, )"
+            },
+            "Selenium.WebDriver.ChromeDriver": {
+              "target": "Package",
+              "version": "[79.0.3945.3600, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

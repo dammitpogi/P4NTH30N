@@ -4,8 +4,7 @@ using WindowsInput;
 
 namespace P4NTH30N.C0MMON;
 
-public static partial class Actions
-{
+public static partial class Actions {
     public static ChromeDriver Launch() {
         Mouse.Click(1279, 180);
         ChromeDriver driver = new();
@@ -13,7 +12,8 @@ public static partial class Actions
         Thread.Sleep(2000);
         Mouse.Click(1030, 180);
         Mouse.Click(100, 230);
-        Mouse.Click(660, 70); Thread.Sleep(800);
+        Mouse.Click(660, 70);
+        Thread.Sleep(800);
         Keyboard.Send("C:\\OneDrive\\Auto-Firekirin\\auto-override").Enter();
         Mouse.Click(800, 510);
         Mouse.Click(505, 535);
@@ -27,7 +27,8 @@ public static partial class Actions
         Thread.Sleep(200);
         Mouse.Click(692, 450);
         Thread.Sleep(800);
-        Mouse.Click(692, 485); Thread.Sleep(400);
+        Mouse.Click(692, 485);
+        Thread.Sleep(400);
         Keyboard.Send("C:\\OneDrive\\Auto-Firekirin\\resource_override_rules.json").Enter();
         Mouse.Click(855, 192);
         Mouse.Click(944, 332);

@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {
+    "net9.0-windows7.0": {
       "DnsClient/1.6.1": {
         "type": "package",
         "dependencies": {
@@ -787,7 +787,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net9.0": [
+    "net9.0-windows7.0": [
       "H.InputSimulator >= 1.5.0",
       "MongoDB.Driver >= 3.4.0",
       "Selenium.WebDriver >= 4.33.0",
@@ -800,24 +800,24 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj",
+      "projectUniqueName": "C:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj",
       "projectName": "C0MMON",
-      "projectPath": "c:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj",
+      "projectPath": "C:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj",
       "packagesPath": "C:\\Users\\paulc\\.nuget\\packages\\",
-      "outputPath": "c:\\OneDrive\\P4NTH30N\\C0MMON\\obj\\",
+      "outputPath": "C:\\OneDrive\\P4NTH30N\\C0MMON\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\paulc\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
-        "net9.0"
+        "net9.0-windows"
       ],
       "sources": {
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net9.0": {
-          "targetAlias": "net9.0",
+        "net9.0-windows7.0": {
+          "targetAlias": "net9.0-windows",
           "projectReferences": {}
         }
       },
@@ -834,8 +834,8 @@
       "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
-      "net9.0": {
-        "targetAlias": "net9.0",
+      "net9.0-windows7.0": {
+        "targetAlias": "net9.0-windows",
         "dependencies": {
           "H.InputSimulator": {
             "target": "Package",
