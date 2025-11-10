@@ -11,7 +11,7 @@ class PROF3T {
     static void Main() {
         // LaunchBrowser();
         //sandbox();
-        // BurnAccount("ShariNor55", "123qwe");
+        BurnAccount("ShariNor55", "123qwe");
         ResetSignalsTest("FireKirin");
         // TestSignals("FireKirin");
         // PrioritizeTesting("OrionStars");
