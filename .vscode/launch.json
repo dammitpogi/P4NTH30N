@@ -6,7 +6,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/C0RR3CT/bin/Debug/net9.0-windows7.0/C0RR3CT.dll",
+            "program": "${workspaceFolder}/C0RR3CT/bin/Debug/net9.0-windows/C0RR3CT.dll",
             "args": [],
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",

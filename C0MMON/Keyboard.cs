@@ -27,6 +27,13 @@ public class Keyboard {
 		return new Keyboard();
 	}
 
+    public static Keyboard DevTools() {
+		new InputSimulator().Keyboard.ModifiedKeyStroke(
+			[VirtualKeyCode.LCONTROL, VirtualKeyCode.LSHIFT], VirtualKeyCode.VK_I
+		);
+		Thread.Sleep(400);
+		return new Keyboard();
+	}
     public static Keyboard Screenshot() {
         new InputSimulator().Keyboard.ModifiedKeyStroke(
             [VirtualKeyCode.LWIN],

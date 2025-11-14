@@ -339,7 +339,10 @@
         },
         "runtime": {
           "bin/placeholder/C0MMON.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
       }
     }
   },

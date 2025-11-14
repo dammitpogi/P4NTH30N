@@ -8,7 +8,7 @@ using P4NTH30N.C0MMON;
 
 
 namespace P4NTH30N {
-    [GenerateFiggleText(sourceText: "v    0 . 6 . 3 . 0", memberName: "Version", fontName: "colossal")]
+    [GenerateFiggleText(sourceText: "v    0 . 6 . 4 . 4", memberName: "Version", fontName: "colossal")]
     internal static partial class Header { }
 }
 internal class Program {
@@ -249,6 +249,10 @@ internal class Program {
 
                 try {
                     signal.Acknowledge();
+                    Game game = Game.Get(signal.House, signal.Game);
+                    game.Lock();
+
+                    ProcessEvent.Log("SignalReceived", $"Signal for {game.House} - Username: {signal.Username}").Record(signal).Save();
 
                     switch (signal.Game) {
                         case "FireKirin":
@@ -300,11 +304,10 @@ internal class Program {
                     }
 
                     signal.Acknowledge();
-                    Game game = Game.Get(signal.House, signal.Game);
                     switch (game.Name) {
                         case "FireKirin":
                             Games.Gold777(driver, game, signal);
-                            //Games.FortunePiggy(driver, game, signal);
+                            // Games.FortunePiggy(driver, game, signal);
                             break;
                         case "OrionStars":
                             //Games.Gold777(driver, game, signal);
@@ -314,19 +317,21 @@ internal class Program {
 
                     // Games.Quintuple5X(driver, game, signal);
                     // Games.FortunePiggy(driver, game, signal);
-                    Console.WriteLine($"({DateTime.UtcNow}) {game.House} - Completed Reel Spins...");
+                    Console.WriteLine($"({DateTime.Now}) {game.House} - Completed Reel Spins...");
+                    ProcessEvent.Log("SignalReceived", $"Finished Spinning for {game.House} - Username: {signal.Username}").Record(signal).Save();
                     // Signal? nextSignal = Signal.GetNext();
                     // if (nextSignal != null && nextSignal.Priority > signal.Priority) {
                     //     nextSignal.Acknowledge();
                     //     _Override = nextSignal;
                     // }
 
-                    signal = Signal.GetNext();
-                    if (signal != null) {
-                        _Override = signal;
-                        signal.Acknowledge();
-                        break;
-                    }
+                    game.Unlock();
+                    // signal = Signal.GetNext();
+                    // if (signal != null) {
+                    //     _Override = signal;
+                    //     signal.Acknowledge();
+                    //     break;
+                    // }
 
                     throw new Exception("Finished Signal.");
                     // for (int i = 0; i < 8; i++) {

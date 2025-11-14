@@ -1,4 +1,11 @@
+// override
 window.parent.Page = "Hallfire";
+window.parent.Balance = -1.0;
+window.parent.Grand = -1.0;
+window.parent.Major = -1.0;
+window.parent.Minor = -1.0;
+window.parent.Mini = -1.0;
+
 window.__require = function e(t, o, i) {
     function n(a, s) {
         if (!o[a]) {
@@ -5209,7 +5216,7 @@ window.__require = function e(t, o, i) {
             ,
             t.prototype.updateCredit = function() {
                 N.default.login.openWinScore ? this._creditUIPic.setSepValue(N.default.login.score + N.default.login.winScore) : this._creditUIPic.setSepValue(N.default.login.score),
-                window.parent.Balance = N.default.login.score
+                window.parent.Balance = N.default.login.score + N.default.login.winScore
             }
             ,
             t.prototype.updateUserInfo = function() {
@@ -7279,7 +7286,8 @@ window.__require = function e(t, o, i) {
             e.updateUserInfo = function(t) {
                 e.login.dynamicPass = t.dynamicpass,
                 e.login.score = t.score,
-                e.login.winScore = t.winscore
+                e.login.winScore = t.winscore,
+                window.parent.Balance = t.score + t.winscore
             }
             ,
             e.saveLoginData = function() {

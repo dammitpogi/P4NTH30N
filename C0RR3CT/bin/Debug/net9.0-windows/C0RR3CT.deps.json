@@ -9,6 +9,8 @@
       "C0RR3CT/1.0.0": {
         "dependencies": {
           "C0MMON": "1.0.0",
+          "Figgle": "0.6.5",
+          "Figgle.Generator": "0.6.5",
           "Selenium.WebDriver": "4.35.0"
         },
         "runtime": {
@@ -26,6 +28,15 @@
           }
         }
       },
+      "Figgle/0.6.5": {
+        "runtime": {
+          "lib/netstandard2.0/Figgle.dll": {
+            "assemblyVersion": "0.6.5.0",
+            "fileVersion": "0.6.5.0"
+          }
+        }
+      },
+      "Figgle.Generator/0.6.5": {},
       "H.InputSimulator/1.5.0": {
         "runtime": {
           "lib/net9.0/H.InputSimulator.dll": {
@@ -196,6 +207,20 @@
       "sha512": "sha512-4H/f2uYJOZ+YObZjpY9ABrKZI+JNw3uizp6oMzTXwDw6F+2qIPhpRl/1t68O/6e98+vqNiYGu+lswmwdYUy3gg==",
       "path": "dnsclient/1.6.1",
       "hashPath": "dnsclient.1.6.1.nupkg.sha512"
+    },
+    "Figgle/0.6.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8Z1qvgyDFvqeQB+b/qpp083N5O/1UNEVKpI2TsWD+tM7Ev388VccPysMxre6jeAy7h4m6L6LrguPGmnOh8+ZGA==",
+      "path": "figgle/0.6.5",
+      "hashPath": "figgle.0.6.5.nupkg.sha512"
+    },
+    "Figgle.Generator/0.6.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yXe/l2YY41hXD/ofLEU3HmsacDq9d8iBW8q8uvAisVFBz+kcq3WbU5Nk2KKQqrHKnPPzea1xEZZIqWesawAIqA==",
+      "path": "figgle.generator/0.6.5",
+      "hashPath": "figgle.generator.0.6.5.nupkg.sha512"
     },
     "H.InputSimulator/1.5.0": {
       "type": "package",

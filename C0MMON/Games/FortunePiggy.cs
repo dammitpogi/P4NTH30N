@@ -6,7 +6,7 @@ using OpenQA.Selenium.Chrome;
 namespace P4NTH30N.C0MMON;
 
 public static partial class Games {
-    public static void FortunePiggy(ChromeDriver driver, Game game, Signal signal) {
+    public static Signal? FortunePiggy(ChromeDriver driver, Game game, Signal signal) {
         for (int i = 1; i < game.Settings.FortunePiggy.Page; i++) {
             switch (game.Name) {
                 case "FireKirin":
@@ -59,7 +59,7 @@ public static partial class Games {
             balance = Convert.ToDouble(driver.ExecuteScript("return window.parent.Balance")) / 100;
             Console.WriteLine($"{balanceIterations} - ${balance}");
             while (balance.Equals(0)) {
-                if (balanceIterations++ > 30) {
+                if (balanceIterations++ > 20) {
                     driver.Navigate().GoToUrl("http://play.firekirin.in/web_mobile/firekirin/");
                     Console.WriteLine("Took too long to load balance in Slots.");
 
@@ -81,8 +81,8 @@ public static partial class Games {
                         if (ClicksWhileWaiting++ > 20)
                             break;
                         Thread.Sleep(500);
+                        balanceIterations = 0;
                     }
-                    break;
                 }
                 Thread.Sleep(500);
                 signal.Acknowledge();
@@ -127,13 +127,21 @@ public static partial class Games {
             }
 
             Signal? newSignal = Signal.GetNext();
+            // newSignal = (Signal)signal.Clone(); newSignal.Priority = 4;
             if (newSignal != null && newSignal.Priority > signal.Priority) {
-                signal.Acknowledged = true;
-                signal.Timeout = DateTime.UtcNow.AddMinutes(2);
-                signal.Save();
-                throw new Exception(
-                    $"Signal for {newSignal.House} stronger than previous signal from {signal.House}."
-                );
+                newSignal.Acknowledge();
+                Mouse.Click(950, 620); Thread.Sleep(3000);
+                switch (game.Name) {
+                    case "FireKirin":
+                        driver.Navigate().GoToUrl("http://play.firekirin.in/web_mobile/firekirin/");
+                        P4NTH30N.C0MMON.Screen.WaitForColor(new Point(293, 179), Color.FromArgb(255, 253, 252, 253));
+                        break;
+                    case "OrionStars":
+                        driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
+                        P4NTH30N.C0MMON.Screen.WaitForColor(new Point(715, 128), Color.FromArgb(255, 254, 242, 181));
+                        break;
+                }
+                return newSignal;
             }
 
             if (signal.Check() == false) {
@@ -245,5 +253,6 @@ public static partial class Games {
                 );
             }
         }
+        return null;
     }
 }

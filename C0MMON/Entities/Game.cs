@@ -106,6 +106,22 @@ public class Game(string house, string game) {
 		}
 	}
 
+public static List<Game> GetVerified(string Name, string Slots) {
+		FilterDefinitionBuilder<Game> builder = Builders<Game>.Filter;
+		FilterDefinition<Game> filter = Slots switch {
+			"Gold777" => builder.Eq("Name", Name)
+				& builder.Eq("Settings.Gold777.ButtonVerified", true),
+			"FortunePiggy" => builder.Eq("Name", Name)
+				& builder.Eq("Settings.FortunePiggy.ButtonVerified", true),
+			_ => builder.Eq("Name", "UNDEFINED")
+		};
+		return new Database()
+			.IO.GetCollection<Game>("G4ME")
+			.Find(filter)
+			.Sort(Builders<Game>.Sort.Ascending(x => x.LastUpdated))
+			.ToList();
+	}
+
 	public static List<Game> GetUnverified(string Name, string Slots) {
 		FilterDefinitionBuilder<Game> builder = Builders<Game>.Filter;
 		FilterDefinition<Game> filter = Slots switch {

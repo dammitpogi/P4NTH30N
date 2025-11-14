@@ -47,7 +47,7 @@ public static class OrionStars {
 			Thread.Sleep(400);
 
 			int Iterations_LoginNotifications = 0;
-			while (Iterations_LoginNotifications++ < 20) {
+			while (Iterations_LoginNotifications++ < 30) {
 				Thread.Sleep(250);
 				bool dialogBoxPopped = Screen
 					.GetColorAt(new Point(525, 315))

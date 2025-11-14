@@ -36,3 +36,4 @@ C:\OneDrive\P4NTH30N\C0RR3CT\obj\Debug\net9.0-windows\refint\C0RR3CT.dll
 C:\OneDrive\P4NTH30N\C0RR3CT\obj\Debug\net9.0-windows\C0RR3CT.pdb
 C:\OneDrive\P4NTH30N\C0RR3CT\obj\Debug\net9.0-windows\C0RR3CT.genruntimeconfig.cache
 C:\OneDrive\P4NTH30N\C0RR3CT\obj\Debug\net9.0-windows\ref\C0RR3CT.dll
+C:\OneDrive\P4NTH30N\C0RR3CT\bin\Debug\net9.0-windows\Figgle.dll
