@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj": {}
+    "C:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj": {}
   },
   "projects": {
-    "c:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj": {
+    "C:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj",
+        "projectUniqueName": "C:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj",
         "projectName": "C0MMON",
-        "projectPath": "c:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj",
+        "projectPath": "C:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj",
         "packagesPath": "C:\\Users\\paulc\\.nuget\\packages\\",
-        "outputPath": "c:\\OneDrive\\P4NTH30N\\C0MMON\\obj\\",
+        "outputPath": "C:\\OneDrive\\P4NTH30N\\C0MMON\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\paulc\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -80,7 +80,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

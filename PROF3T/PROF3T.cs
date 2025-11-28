@@ -9,8 +9,8 @@ namespace P4NTH30N;
 
 class PROF3T {
     static void Main() {
-        // Cremate();
-        LaunchBrowser();
+        SeperateAllGames();
+        // LaunchBrowser();
         // sandbox();
         // BurnAccount("ShariNor55", "123qwe");
         // ResetSignalsTest("FireKirin");
@@ -29,7 +29,7 @@ class PROF3T {
         // Fix();p
     }
 
-    private static void Cremate() {
+    private static void SeperateAllGames() {
         
     }
     private static void ResetSignalsTest(string Platform) {
