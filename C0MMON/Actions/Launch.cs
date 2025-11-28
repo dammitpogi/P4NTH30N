@@ -7,7 +7,14 @@ namespace P4NTH30N.C0MMON;
 public static partial class Actions {
     public static ChromeDriver Launch() {
         Mouse.Click(1279, 180);
-        ChromeDriver driver = new();
+
+        ChromeOptions options = new();
+        ChromeDriverService service = ChromeDriverService.CreateDefaultService();
+        options.AddArguments(["--disable-logging", "--log-level=3"]);
+        service.SuppressInitialDiagnosticInformation = true;
+        options.AddExcludedArgument("enable-logging");
+        ChromeDriver driver = new(service, options);
+
         driver.Navigate().GoToUrl("chrome://extensions/");
         Thread.Sleep(2000);
         Mouse.Click(1030, 180);

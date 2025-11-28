@@ -38,8 +38,8 @@ public static class FireKirin {
 					Thread.Sleep(200);
 
 					bool HomeScreenLoaded = Screen
-						.GetColorAt(new Point(892, 120))
-						.Equals(Color.FromArgb(255, 254, 250, 38));
+						.GetColorAt(new Point(925, 120))
+						.Equals(Color.FromArgb(255, 255, 251, 48));
 					bool MessageBoxPopped = Screen
 						.GetColorAt(new Point(937, 177))
 						.Equals(Color.FromArgb(255, 228, 227, 70));

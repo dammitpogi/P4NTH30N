@@ -13,6 +13,8 @@ class PROF3T {
 			try {
 				DateTime DateLimit = DateTime.UtcNow.AddDays(5);
 				List<Credential> credentials = Credential.GetAll();
+                Credential.IntroduceProperties();
+                
 				List<Game> games = Game.GetAll()
 					.FindAll(x =>
 						credentials.Any(y => x.House.Equals(y.House) && x.Name.Equals(y.Game))

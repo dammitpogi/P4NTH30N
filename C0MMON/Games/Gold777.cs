@@ -112,8 +112,9 @@ public static partial class Games {
                             Color originColor = screenshot.GetPixel(x, y);
 
                             Color[] possibleOrigins = [
-                                Color.FromArgb(3, 130, 50), Color.FromArgb(116, 73, 64), Color.FromArgb(116, 73, 64),
-                                Color.FromArgb(139, 76, 48), Color.FromArgb(15, 130, 51)
+                                Color.FromArgb(3, 130, 50), 
+                                Color.FromArgb(141, 79, 54), Color.FromArgb(139, 76, 48), Color.FromArgb(126, 79, 70),
+                                Color.FromArgb(15, 130, 51), Color.FromArgb(9, 119, 51)
                             ];
 
                             if (possibleOrigins.Contains(originColor)) {
@@ -122,12 +123,15 @@ public static partial class Games {
 
                                 bool foundLeft = top == Color.FromArgb(0, 89, 46) && originColor == Color.FromArgb(3, 130, 50) && bottom == Color.FromArgb(155, 39, 43);
                                 foundLeft = foundLeft || (top == Color.FromArgb(1, 92, 46) && originColor == Color.FromArgb(3, 130, 50) && bottom == Color.FromArgb(144, 16, 31));
+                                foundLeft = foundLeft || (top == Color.FromArgb(219, 208, 86) && originColor == Color.FromArgb(3, 130, 50) && bottom == Color.FromArgb(37, 216, 54));
 
                                 bool foundCenter = top == Color.FromArgb(145, 89, 75) && originColor == Color.FromArgb(141, 79, 54) && bottom == Color.FromArgb(214, 135, 88);
                                 foundCenter = foundCenter || (top == Color.FromArgb(143, 87, 73) && originColor == Color.FromArgb(139, 76, 48) && bottom == Color.FromArgb(218, 142, 91));
+                                foundCenter = foundCenter || (top == Color.FromArgb(97, 54, 36) && originColor == Color.FromArgb(126, 79, 70) && bottom == Color.FromArgb(226, 191, 175));
 
                                 bool foundRight = top == Color.FromArgb(0, 83, 45) && originColor == Color.FromArgb(15, 130, 51) && bottom == Color.FromArgb(63, 151, 45);
                                 foundRight = foundRight || (top == Color.FromArgb(0, 88, 46) && originColor == Color.FromArgb(15, 130, 51) && bottom == Color.FromArgb(83, 147, 44));
+                                foundRight = foundRight || (top == Color.FromArgb(219, 208, 66) && originColor == Color.FromArgb(9, 119, 51) && bottom == Color.FromArgb(59, 158, 47));
 
                                 if (foundCenter) { possibleButton = new Point(x, y); foundPixels = true; }
                                 if (foundLeft) { possibleButton = new Point(x + 70, y); foundPixels = true; }
@@ -340,6 +344,7 @@ public static partial class Games {
                         P4NTH30N.C0MMON.Screen.WaitForColor(new Point(715, 128), Color.FromArgb(255, 254, 242, 181));
                         break;
                 }
+                Console.WriteLine($"Completing spins. New Signal received for {newSignal.House}...");
                 return newSignal;
             }
 

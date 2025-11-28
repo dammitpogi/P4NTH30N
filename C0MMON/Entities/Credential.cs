@@ -6,16 +6,17 @@ using MongoDB.Driver;
 namespace P4NTH30N.C0MMON;
 
 public class Credential {
-    public ObjectId _id { get; set; }
-    public bool Enabled { get; set; }
-    public bool Banned { get; set; }
-    public int PROF3T_ID { get; set; }
+    public ObjectId _id { get; set; } = ObjectId.GenerateNewId();
+    public bool Enabled { get; set; } = true;
+    public bool Banned { get; set; } = false;
+    public int PROF3T_ID { get; set; } = 1;
     public required string House { get; set; }
     public required string Game { get; set; }
-    public DateTime? LastUpdated { get; set; }
-    public DateTime? LastDepositDate { get; set; }
-    public bool CashedOut { get; set; }
-    public double Balance { get; set; }
+	public DateTime CreateDate { get; set; } = DateTime.UtcNow;
+	public DateTime? LastUpdated { get; set; } = DateTime.UtcNow.AddDays(-1);
+    public DateTime? LastDepositDate { get; set; } = DateTime.UtcNow.AddDays(-1);
+    public bool CashedOut { get; set; } = true;
+    public double Balance { get; set; } = 0;
     public required string Username { get; set; }
     public required string Password { get; set; }
 
@@ -23,6 +24,13 @@ public class Credential {
         return new Database().IO.GetCollection<Credential>("CRED3N7IAL").Find(Builders<Credential>.Filter.Empty).ToList();
     }
 
+    public static void IntroduceProperties() {
+        Database database = new();
+        FilterDefinitionBuilder<Credential> builder = Builders<Credential>.Filter;
+        IMongoCollection<Credential> collection = database.IO.GetCollection<Credential>("CRED3N7IAL");
+        FilterDefinition<Credential> filter = builder.Exists(x => x.Enabled, false);
+        collection.Find(filter).ToList().ForEach(credential => credential.Save());
+    }
     public static List<Credential> GetAll() {
         Database database = new();
         IMongoCollection<Credential> collection = database.IO.GetCollection<Credential>("CRED3N7IAL");

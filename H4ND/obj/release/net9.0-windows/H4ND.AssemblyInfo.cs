@@ -11,9 +11,9 @@ using System;
 using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("H4ND")]
-[assembly: System.Reflection.AssemblyConfigurationAttribute("release")]
+[assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+73be2b3db18f91cc7b6d04add3e864e08c5274bd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5175c787c0bb38b6ef54094c12aa8ec161d64e9b")]
 [assembly: System.Reflection.AssemblyProductAttribute("H4ND")]
 [assembly: System.Reflection.AssemblyTitleAttribute("H4ND")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
