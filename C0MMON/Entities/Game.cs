@@ -32,7 +32,7 @@ public class Game(string house, string game) {
 			});
 	}
 
-	public static Game Get(string house, string game) {
+	public static Game? Get(string house, string game, bool insert = true) {
 		Database database = new();
 		IMongoCollection<Game> collection = database.IO.GetCollection<Game>("G4ME");
 		FilterDefinition<Game> filter =
@@ -42,7 +42,9 @@ public class Game(string house, string game) {
 		while (true) {
 			List<Game> result = collection.Find(filter).ToList();
 			if (result.Count.Equals(0)) {
-				collection.InsertOne(new Game(house, game));
+                if (insert) {
+                    collection.InsertOne(new Game(house, game));
+                } else return null;
 			} else {
 				dto = result[0];
 				break;

@@ -8,7 +8,7 @@ using System.Text.Json;
 
 
 namespace P4NTH30N {
-    [GenerateFiggleText(sourceText: "v    0 . 8 . 0 . 0", memberName: "Version", fontName: "colossal")]
+    [GenerateFiggleText(sourceText: "v    0 . 8 . 1 . 0", memberName: "Version", fontName: "colossal")]
     internal static partial class Header { }
 }
 

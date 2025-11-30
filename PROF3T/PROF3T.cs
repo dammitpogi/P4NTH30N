@@ -30,8 +30,24 @@ class PROF3T {
     }
 
     private static void SeperateAllGames() {
-        
+        List<Game> games = Game.GetAll();
+        foreach(Game game in games) {
+            List<Credential> credentials = Credential.GetBy(game);
+            int offSet = 1;
+            for (int i = 1; i < credentials.Count; i++) {
+
+                Credential dto = credentials[i];
+                string newHouse = $"{dto.House} {i+1}";
+                while (Game.Get(newHouse, dto.Game, false) != null) {
+                    newHouse = $"{dto.House} {i+1+offSet++}";
+                }
+                
+                dto.House = newHouse; dto.Save();
+                game.House = newHouse; game.Save();
+            }
+        }
     }
+
     private static void ResetSignalsTest(string Platform) {
         List<Game> games = Game.GetAll();
         games.ForEach(

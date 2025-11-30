@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("H4ND")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5175c787c0bb38b6ef54094c12aa8ec161d64e9b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0d9e843258a9f433125c8ec0dcc02000a14da103")]
 [assembly: System.Reflection.AssemblyProductAttribute("H4ND")]
 [assembly: System.Reflection.AssemblyTitleAttribute("H4ND")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

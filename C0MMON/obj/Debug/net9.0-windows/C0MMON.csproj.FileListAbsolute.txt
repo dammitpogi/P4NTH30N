@@ -1,0 +1,16 @@
+c:\OneDrive\P4NTH30N\C0MMON\bin\Debug\net9.0-windows\selenium-manager\linux\selenium-manager
+c:\OneDrive\P4NTH30N\C0MMON\bin\Debug\net9.0-windows\selenium-manager\macos\selenium-manager
+c:\OneDrive\P4NTH30N\C0MMON\bin\Debug\net9.0-windows\selenium-manager\windows\selenium-manager.exe
+c:\OneDrive\P4NTH30N\C0MMON\bin\Debug\net9.0-windows\C0MMON.deps.json
+c:\OneDrive\P4NTH30N\C0MMON\bin\Debug\net9.0-windows\C0MMON.dll
+c:\OneDrive\P4NTH30N\C0MMON\bin\Debug\net9.0-windows\C0MMON.pdb
+c:\OneDrive\P4NTH30N\C0MMON\obj\Debug\net9.0-windows\C0MMON.csproj.AssemblyReference.cache
+c:\OneDrive\P4NTH30N\C0MMON\obj\Debug\net9.0-windows\C0MMON.GeneratedMSBuildEditorConfig.editorconfig
+c:\OneDrive\P4NTH30N\C0MMON\obj\Debug\net9.0-windows\C0MMON.AssemblyInfoInputs.cache
+c:\OneDrive\P4NTH30N\C0MMON\obj\Debug\net9.0-windows\C0MMON.AssemblyInfo.cs
+c:\OneDrive\P4NTH30N\C0MMON\obj\Debug\net9.0-windows\C0MMON.csproj.CoreCompileInputs.cache
+c:\OneDrive\P4NTH30N\C0MMON\obj\Debug\net9.0-windows\C0MMON.sourcelink.json
+c:\OneDrive\P4NTH30N\C0MMON\obj\Debug\net9.0-windows\C0MMON.dll
+c:\OneDrive\P4NTH30N\C0MMON\obj\Debug\net9.0-windows\refint\C0MMON.dll
+c:\OneDrive\P4NTH30N\C0MMON\obj\Debug\net9.0-windows\C0MMON.pdb
+c:\OneDrive\P4NTH30N\C0MMON\obj\Debug\net9.0-windows\ref\C0MMON.dll

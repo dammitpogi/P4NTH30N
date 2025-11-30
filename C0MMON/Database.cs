@@ -10,5 +10,6 @@ public class Database {
 
     public Database() {
         IO = new MongoClient("mongodb://192.168.223.1:27017/").GetDatabase("P4NTH30N");
+        // IO = new MongoClient("mongodb://100.105.201.51:27017/").GetDatabase("P4NTH30N");
     }
 }

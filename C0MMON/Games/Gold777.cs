@@ -310,7 +310,7 @@ public static partial class Games {
         // Mouse.Click(955, 290);
 
         int FailedSpinChecks = 0,
-            remainingIterations = 20,
+            remainingIterations = 10,
             missingSignalIterations = 5;
         double grandPrior = game.Jackpots.Grand;
         double majorPrior = game.Jackpots.Major;

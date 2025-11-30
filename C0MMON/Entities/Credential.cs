@@ -15,7 +15,6 @@ public class Credential {
 	public DateTime CreateDate { get; set; } = DateTime.UtcNow;
 	public DateTime? LastUpdated { get; set; } = DateTime.UtcNow.AddDays(-1);
     public DateTime? LastDepositDate { get; set; } = DateTime.UtcNow.AddDays(-1);
-    public string Url { get; set; } = string.Empty;
     public bool CashedOut { get; set; } = true;
     public double Balance { get; set; } = 0;
     public required string Username { get; set; }

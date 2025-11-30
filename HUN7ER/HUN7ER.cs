@@ -348,9 +348,8 @@ class PROF3T {
 									.Count;
 								if (
 									game.Settings.Hidden.Equals(false)
-									&& (
-										jackpot.Category.Equals("Mini") && accounts.Equals(0)
-									).Equals(false)
+                                    && (jackpot.Category.Equals("Mini") == false)
+									// && (jackpot.Category.Equals("Mini") && accounts.Equals(0)).Equals(false)
 								)
 									Console.WriteLine(
 										$"{(jackpot.Category.Equals("Mini") ? "----- " : jackpot.Category + " ").ToUpper()}| {jackpot.EstimatedDate.ToLocalTime().ToString("ddd MM/dd/yyyy HH:mm:ss").ToUpper()} | {game.Name.Substring(0, 9)} | {game.DPD.Average:F2} /day |{current} /{threshold}| ({accounts}) {jackpot.House}"

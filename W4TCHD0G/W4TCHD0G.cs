@@ -8,7 +8,7 @@ using P4NTH30N;
 using P4NTH30N.C0MMON;
 
 namespace P4NTH30N {
-    [GenerateFiggleText(sourceText: "v    0 . 2 . 3 . 4", memberName: "Version", fontName: "colossal")]
+    [GenerateFiggleText(sourceText: "v    0 . 2 . 4 . 5", memberName: "Version", fontName: "colossal")]
     internal static partial class Header { }
 }
 
@@ -39,39 +39,39 @@ internal class Program {
         string homeIP = (string)myIP.Clone();
         Console.WriteLine($"Home IP Address: {homeIP}");
         Console.WriteLine($"Started: {DateTime.Now:f}");
-        Mouse.Click(749, 697); // Cyberghost taskbar
+        // Mouse.Click(749, 697); // Cyberghost taskbar
 
-        while (new[] { "", homeIP }.Contains(myIP)) {
-            try {
-                Thread.Sleep(TimeSpan.FromSeconds(1));
-                myIP = await NetworkAddress.MyIP(client);
-            } catch { }
-        }
+        // while (new[] { "", homeIP }.Contains(myIP)) {
+        //     try {
+        //         Thread.Sleep(TimeSpan.FromSeconds(1));
+        //         myIP = await NetworkAddress.MyIP(client);
+        //     } catch { }
+        // }
 
-        NetworkAddress network = await NetworkAddress.Get(client);
-        while (ForbiddenRegions.Contains(network.location.state_prov)) {
-            // Mouse.Click(1279, 280);
-            Mouse.Click(1120, 280);
+        // NetworkAddress network = await NetworkAddress.Get(client);
+        // while (ForbiddenRegions.Contains(network.location.state_prov)) {
+        //     // Mouse.Click(1279, 280);
+        //     Mouse.Click(1120, 280);
 
-            Thread.Sleep(TimeSpan.FromSeconds(3));
-            while (myIP != homeIP) {
-                Thread.Sleep(TimeSpan.FromSeconds(1));
-                myIP = await NetworkAddress.MyIP(client);
-            }
+        //     Thread.Sleep(TimeSpan.FromSeconds(3));
+        //     while (myIP != homeIP) {
+        //         Thread.Sleep(TimeSpan.FromSeconds(1));
+        //         myIP = await NetworkAddress.MyIP(client);
+        //     }
 
-            Thread.Sleep(TimeSpan.FromSeconds(2));
-            Mouse.Click(1120, 280);
+        //     Thread.Sleep(TimeSpan.FromSeconds(2));
+        //     Mouse.Click(1120, 280);
 
-            Thread.Sleep(TimeSpan.FromSeconds(3));
-            while (new[] { homeIP, "" }.Contains(myIP)) {
-                Thread.Sleep(TimeSpan.FromSeconds(1));
-                myIP = await NetworkAddress.MyIP(client);
-            }
+        //     Thread.Sleep(TimeSpan.FromSeconds(3));
+        //     while (new[] { homeIP, "" }.Contains(myIP)) {
+        //         Thread.Sleep(TimeSpan.FromSeconds(1));
+        //         myIP = await NetworkAddress.MyIP(client);
+        //     }
 
-            network = await NetworkAddress.Get(client);
-        }
-        Console.WriteLine($"VPN Location, Region: {network.location.state_prov}");
-        Console.WriteLine($"VPN Location, District: {network.location.district}");
+        //     network = await NetworkAddress.Get(client);
+        // }
+        // Console.WriteLine($"VPN Location, Region: {network.location.state_prov}");
+        // Console.WriteLine($"VPN Location, District: {network.location.district}");
 
         File.WriteAllText(@"D:\S1GNAL.json", JsonSerializer.Serialize(false));
         ProcessStartInfo H4ND = new() {
@@ -84,7 +84,7 @@ internal class Program {
         Process.Start(H4ND);
         Console.WriteLine("Session successfully launched...\n");
 
-        int minutesToSleep = 30 + new Random().Next(1, 31);
+        int minutesToSleep = 30 + new Random().Next(1, 30);
         DateTime timeToSleep = DateTime.Now.AddMinutes(minutesToSleep);
         Console.WriteLine($"Session will restart at {timeToSleep:t}.\n");
 
