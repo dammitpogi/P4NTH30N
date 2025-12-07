@@ -24,22 +24,13 @@ public static partial class Games {
         bool slotsLoaded = false;
         Mouse.Move(game.Settings.FortunePiggy.Button_X, game.Settings.FortunePiggy.Button_Y);
 
+
         while (slotsLoaded == false) {
             signal.Acknowledge();
             Mouse.Click(game.Settings.FortunePiggy.Button_X, game.Settings.FortunePiggy.Button_Y);
-            // Mouse.Click(970, 440);
-
-            string page =
-                driver.ExecuteScript("return window.parent.Page")?.ToString() ?? string.Empty;
-
-            //signal.Acknowledge();
-
+            string page = driver.ExecuteScript("return window.parent.Page")?.ToString() ?? string.Empty;
             // while ((page.Equals("Slots") || page.Equals("Game")).Equals(false)) {
-            while (
-                new string[] { "Slots", "Game" }
-                    .Contains(page)
-                    .Equals(false)
-            ) {
+            while (new string[] { "Slots", "Game" }.Contains(page).Equals(false)) {
                 if (Screen.GetColorAt(new Point(544, 391)).Equals(Color.FromArgb(255, 129, 1, 1))) {
                     throw new Exception("Account is already spinning Slots.");
                 }
@@ -49,8 +40,7 @@ public static partial class Games {
                 }
 
                 Thread.Sleep(500);
-                page =
-                    driver.ExecuteScript("return window.parent.Page")?.ToString() ?? string.Empty;
+                page = driver.ExecuteScript("return window.parent.Page")?.ToString() ?? string.Empty;
                 Console.WriteLine(page);
             }
 
@@ -65,29 +55,17 @@ public static partial class Games {
 
                     Thread.Sleep(2000);
                     string reloadedPage = string.Empty;
-                    int ClicksWhileWaiting = 0;
-                    while (
-                        new string[] { "Slots", "Game" }
-                            .Contains(reloadedPage)
-                            .Equals(false)
-                    ) {
-                        Mouse.Click(
-                            game.Settings.FortunePiggy.Button_X,
-                            game.Settings.FortunePiggy.Button_Y
-                        );
-                        reloadedPage =
-                            driver.ExecuteScript("return window.parent.Page")?.ToString()
-                            ?? string.Empty;
-                        if (ClicksWhileWaiting++ > 20)
-                            break;
+                    int ClicksWhileWaiting = 0; balanceIterations = 0;
+                    while (new string[] { "Slots", "Game" }.Contains(reloadedPage).Equals(false)) {
+                        Mouse.Click(game.Settings.FortunePiggy.Button_X, game.Settings.FortunePiggy.Button_Y);
+                        reloadedPage = driver.ExecuteScript("return window.parent.Page")?.ToString() ?? string.Empty;
+                        if (ClicksWhileWaiting++ > 20) break;
                         Thread.Sleep(500);
-                        balanceIterations = 0;
                     }
                 }
                 Thread.Sleep(500);
                 signal.Acknowledge();
-                balance =
-                    Convert.ToDouble(driver.ExecuteScript("return window.parent.Balance")) / 100;
+                balance = Convert.ToDouble(driver.ExecuteScript("return window.parent.Balance")) / 100;
                 Console.WriteLine($"{balanceIterations} - ${balance}");
             }
 
@@ -107,8 +85,7 @@ public static partial class Games {
         Mouse.Click(955, 290);
 
         int FailedSpinChecks = 0,
-            remainingIterations = 10,
-            missingSignalIterations = 5;
+            remainingIterations = 10;
         double grandPrior = game.Jackpots.Grand;
         double majorPrior = game.Jackpots.Major;
         double minorPrior = game.Jackpots.Minor;
@@ -134,7 +111,8 @@ public static partial class Games {
                 switch (game.Name) {
                     case "FireKirin":
                         driver.Navigate().GoToUrl("http://play.firekirin.in/web_mobile/firekirin/");
-                        P4NTH30N.C0MMON.Screen.WaitForColor(new Point(293, 179), Color.FromArgb(255, 253, 252, 253));
+                        // .GetColorAt(new Point(925, 120)).Equals(Color.FromArgb(255, 255, 251, 48));
+                        P4NTH30N.C0MMON.Screen.WaitForColor(new Point(925, 120), Color.FromArgb(255, 255, 251, 48));
                         break;
                     case "OrionStars":
                         driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
@@ -145,12 +123,8 @@ public static partial class Games {
             }
 
             if (signal.Check() == false) {
-                if (missingSignalIterations == 0) {
-                    jackpotPopped = true;
-                }
-                missingSignalIterations--;
+                remainingIterations--;
             } else {
-                missingSignalIterations = 5;
                 remainingIterations = 10;
                 jackpotPopped = false;
             }
@@ -161,22 +135,15 @@ public static partial class Games {
             Mouse.Click(533, 564);
             signal.Acknowledge();
 
-            game = Game.Get(signal.House, signal.Game);
+            Game? retrievedGame = Game.Get(signal.House, signal.Game);
+            game = retrievedGame ?? throw new Exception($"Game could not be found: {signal.Game} at {signal.House}");
+			double currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
+            double currentMajor = Convert.ToDouble(driver.ExecuteScript("return window.parent.Major")) / 100;
+            double currentMinor = Convert.ToDouble(driver.ExecuteScript("return window.parent.Minor")) / 100;
+            double currentMini = Convert.ToDouble(driver.ExecuteScript("return window.parent.Mini")) / 100;
+            if (currentGrand.Equals(0)) throw new Exception("Failed to retrieve Jackpot data.");
 
-            game.Jackpots.Grand =
-                Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
-            game.Jackpots.Major =
-                Convert.ToDouble(driver.ExecuteScript("return window.parent.Major")) / 100;
-            game.Jackpots.Minor =
-                Convert.ToDouble(driver.ExecuteScript("return window.parent.Minor")) / 100;
-            game.Jackpots.Mini =
-                Convert.ToDouble(driver.ExecuteScript("return window.parent.Mini")) / 100;
-
-            if (game.Jackpots.Grand.Equals(0)) {
-                throw new Exception("Failed to retrieve Jackpot data.");
-            }
-
-            if (grandPrior > game.Jackpots.Grand && (grandPrior - game.Jackpots.Grand) > 0.1) {
+            if (grandPrior > currentGrand && (grandPrior - currentGrand) > 0.1) {
                 if (signal.Priority.Equals(4)) {
                     jackpotPopped = true;
                     signal.Close(grandPrior);
@@ -186,7 +153,7 @@ public static partial class Games {
                 game.Thresholds.NewGrand(grandPrior);
                 Console.WriteLine();
             }
-            if (majorPrior > game.Jackpots.Major && (majorPrior - game.Jackpots.Major) > 0.1) {
+            if (majorPrior > currentMajor && (majorPrior - currentMajor) > 0.1) {
                 if (signal.Priority.Equals(3)) {
                     jackpotPopped = true;
                     signal.Close(majorPrior);
@@ -196,7 +163,7 @@ public static partial class Games {
                 game.Thresholds.NewMajor(majorPrior);
                 Console.WriteLine();
             }
-            if (minorPrior > game.Jackpots.Minor && (minorPrior - game.Jackpots.Minor) > 0.1) {
+            if (minorPrior > currentMinor && (minorPrior - currentMinor) > 0.1) {
                 if (signal.Priority.Equals(2)) {
                     jackpotPopped = true;
                     signal.Close(minorPrior);
@@ -206,7 +173,7 @@ public static partial class Games {
                 game.Thresholds.NewMinor(minorPrior);
                 Console.WriteLine();
             }
-            if (miniPrior > game.Jackpots.Mini && (miniPrior - game.Jackpots.Mini) > 0.1) {
+            if (miniPrior > currentMini && (miniPrior - currentMini) > 0.1) {
                 if (signal.Priority.Equals(1)) {
                     jackpotPopped = true;
                     signal.Close(miniPrior);
@@ -218,10 +185,10 @@ public static partial class Games {
             }
 
             game.LastUpdated = DateTime.UtcNow;
-            grandPrior = game.Jackpots.Grand;
-            majorPrior = game.Jackpots.Major;
-            minorPrior = game.Jackpots.Minor;
-            miniPrior = game.Jackpots.Mini;
+            game.Jackpots.Grand = currentGrand; grandPrior = game.Jackpots.Grand;
+            game.Jackpots.Major = currentMajor; majorPrior = game.Jackpots.Major;
+            game.Jackpots.Minor = currentMinor; minorPrior = game.Jackpots.Minor;
+            game.Jackpots.Mini = currentMini; miniPrior = game.Jackpots.Mini;
             game.Save();
 
             double balancePrior = balance;
@@ -252,6 +219,21 @@ public static partial class Games {
                     $"({DateTime.UtcNow}) {game.House} - {remainingIterations} Remaining Iterations..."
                 );
             }
+        }
+
+        Mouse.Click(950, 620);
+        Thread.Sleep(6000);
+
+        switch (game.Name) {
+            case "FireKirin":
+                driver.Navigate().GoToUrl("http://play.firekirin.in/web_mobile/firekirin/");
+                // .GetColorAt(new Point(925, 120)).Equals(Color.FromArgb(255, 255, 251, 48));
+                P4NTH30N.C0MMON.Screen.WaitForColor(new Point(925, 120), Color.FromArgb(255, 255, 251, 48));
+                break;
+            case "OrionStars":
+                driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
+                P4NTH30N.C0MMON.Screen.WaitForColor(new Point(715, 128), Color.FromArgb(255, 254, 242, 181));
+                break;
         }
         return null;
     }

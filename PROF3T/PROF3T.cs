@@ -10,6 +10,7 @@ namespace P4NTH30N;
 class PROF3T {
     static void Main() {
         SeperateAllGames();
+        DisableEmptyGames();
         // LaunchBrowser();
         // sandbox();
         // BurnAccount("ShariNor55", "123qwe");
@@ -29,19 +30,29 @@ class PROF3T {
         // Fix();p
     }
 
+    private static void DisableEmptyGames() {
+        List<Game> games = Game.GetAll();
+        foreach (Game game in games) {
+            List<Credential> credentials = Credential.GetBy(game);
+            if (credentials.FindAll(c => c.Enabled).Count == 0) {
+                game.Enabled = false;
+                game.Save();
+            }
+        }
+    }
     private static void SeperateAllGames() {
         List<Game> games = Game.GetAll();
-        foreach(Game game in games) {
+        foreach (Game game in games) {
             List<Credential> credentials = Credential.GetBy(game);
             int offSet = 1;
             for (int i = 1; i < credentials.Count; i++) {
 
                 Credential dto = credentials[i];
-                string newHouse = $"{dto.House} {i+1}";
+                string newHouse = $"{dto.House} {i + 1}";
                 while (Game.Get(newHouse, dto.Game, false) != null) {
-                    newHouse = $"{dto.House} {i+1+offSet++}";
+                    newHouse = $"{dto.House} {i + 1 + offSet++}";
                 }
-                
+
                 dto.House = newHouse; dto.Save();
                 game.House = newHouse; game.Save();
             }

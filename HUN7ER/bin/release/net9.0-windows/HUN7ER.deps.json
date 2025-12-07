@@ -48,7 +48,22 @@
           "System.Security.Principal.Windows": "5.0.0"
         }
       },
-      "Microsoft.Win32.SystemEvents/9.0.6": {},
+      "Microsoft.Win32.SystemEvents/9.0.6": {
+        "runtime": {
+          "lib/net9.0/Microsoft.Win32.SystemEvents.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.625.26613"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net9.0/Microsoft.Win32.SystemEvents.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.625.26613"
+          }
+        }
+      },
       "MongoDB.Bson/3.4.0": {
         "dependencies": {
           "System.Memory": "4.5.5",
@@ -106,6 +121,16 @@
       "System.Drawing.Common/9.0.6": {
         "dependencies": {
           "Microsoft.Win32.SystemEvents": "9.0.6"
+        },
+        "runtime": {
+          "lib/net9.0/System.Drawing.Common.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.625.26605"
+          },
+          "lib/net9.0/System.Private.Windows.Core.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.625.26605"
+          }
         }
       },
       "System.Memory/4.5.5": {},

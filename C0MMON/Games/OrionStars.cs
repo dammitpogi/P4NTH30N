@@ -9,17 +9,15 @@ public static class OrionStars {
 	public static void Logout(ChromeDriver driver) {
 		bool loggedOut = false;
 		int iterations = 6;
-		while (loggedOut == false) {
-			Mouse.Click(975, 630);
+		while (loggedOut == false) { 
+            Thread.Sleep(3000); 
+			Mouse.Click(975, 630); Thread.Sleep(2000);
 			Screen.WaitForColor(new Point(533, 550), Color.FromArgb(255, 228, 228, 228), 5);
-			Mouse.Click(535, 555);
-			loggedOut = Screen.WaitForColor(
-				new Point(850, 210),
-				Color.FromArgb(255, 229, 148, 29),
-				5
-			);
-			if (0 > iterations--) {
+			Mouse.Click(535, 555); Thread.Sleep(2000);
+			loggedOut = Screen.WaitForColor(new Point(850, 210), Color.FromArgb(255, 229, 148, 29), 5);
+			if (iterations-- < 0) {
 				driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
+                iterations = 6; Thread.Sleep(3000);
 			}
 		}
 	}

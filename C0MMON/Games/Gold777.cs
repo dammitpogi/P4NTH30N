@@ -64,7 +64,7 @@ public static partial class Games {
                 switch (game.Name) {
                     case "FireKirin":
                         driver.Navigate().GoToUrl("http://play.firekirin.in/web_mobile/firekirin/");
-                        P4NTH30N.C0MMON.Screen.WaitForColor(new Point(293, 179), Color.FromArgb(255, 253, 252, 253));
+                        P4NTH30N.C0MMON.Screen.WaitForColor(new Point(925, 120), Color.FromArgb(255, 255, 251, 48));
                         break;
                     case "OrionStars":
                         driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
@@ -72,12 +72,12 @@ public static partial class Games {
                         break;
                 }
 
-                Color secondHallScreen = P4NTH30N.C0MMON.Screen.GetColorAt(new Point(293, 179));
-                while (secondHallScreen.Equals(Color.FromArgb(255, 253, 252, 253)) == false) {
-                    //Console.WriteLine($"Waiting for Hall - {retrievedGame.House} - {secondHallScreen}");
-                    Thread.Sleep(500);
-                    secondHallScreen = P4NTH30N.C0MMON.Screen.GetColorAt(new Point(293, 179));
-                }
+                // Color secondHallScreen = P4NTH30N.C0MMON.Screen.GetColorAt(new Point(293, 179));
+                // while (secondHallScreen.Equals(Color.FromArgb(255, 253, 252, 253)) == false) {
+                //     Console.WriteLine($"Waiting for Hall - {game.House} - {secondHallScreen}");
+                //     Thread.Sleep(500);
+                //     secondHallScreen = P4NTH30N.C0MMON.Screen.GetColorAt(new Point(293, 179));
+                // }
 
                 Console.WriteLine($"{DateTime.Now} - Game was not found. Beginning Search.");
 
@@ -112,7 +112,7 @@ public static partial class Games {
                             Color originColor = screenshot.GetPixel(x, y);
 
                             Color[] possibleOrigins = [
-                                Color.FromArgb(3, 130, 50), 
+                                Color.FromArgb(3, 130, 50),
                                 Color.FromArgb(141, 79, 54), Color.FromArgb(139, 76, 48), Color.FromArgb(126, 79, 70),
                                 Color.FromArgb(15, 130, 51), Color.FromArgb(9, 119, 51)
                             ];
@@ -310,8 +310,7 @@ public static partial class Games {
         // Mouse.Click(955, 290);
 
         int FailedSpinChecks = 0,
-            remainingIterations = 10,
-            missingSignalIterations = 5;
+            remainingIterations = 10;
         double grandPrior = game.Jackpots.Grand;
         double majorPrior = game.Jackpots.Major;
         double minorPrior = game.Jackpots.Minor;
@@ -333,55 +332,43 @@ public static partial class Games {
             // newSignal = (Signal)signal.Clone(); newSignal.Priority = 4;
             if (newSignal != null && newSignal.Priority > signal.Priority) {
                 newSignal.Acknowledge();
-                Mouse.Click(929, 612); Thread.Sleep(3000);
+                Mouse.Click(950, 620); Thread.Sleep(3000);
                 switch (game.Name) {
                     case "FireKirin":
                         driver.Navigate().GoToUrl("http://play.firekirin.in/web_mobile/firekirin/");
-                        P4NTH30N.C0MMON.Screen.WaitForColor(new Point(293, 179), Color.FromArgb(255, 253, 252, 253));
+                        // .GetColorAt(new Point(925, 120)).Equals(Color.FromArgb(255, 255, 251, 48));
+                        P4NTH30N.C0MMON.Screen.WaitForColor(new Point(925, 120), Color.FromArgb(255, 255, 251, 48));
                         break;
                     case "OrionStars":
                         driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
                         P4NTH30N.C0MMON.Screen.WaitForColor(new Point(715, 128), Color.FromArgb(255, 254, 242, 181));
                         break;
                 }
-                Console.WriteLine($"Completing spins. New Signal received for {newSignal.House}...");
                 return newSignal;
             }
 
             if (signal.Check() == false) {
-                if (missingSignalIterations == 0) {
-                    jackpotPopped = true;
-                }
-                missingSignalIterations--;
+                remainingIterations--;
             } else {
-                missingSignalIterations = 5;
-                remainingIterations = 20;
+                remainingIterations = 10;
                 jackpotPopped = false;
             }
 
-            // double balancePrior = balance;
             Thread.Sleep(TimeSpan.FromSeconds(10));
             Mouse.Click(534, 466);
             Mouse.Click(534, 523);
             Mouse.Click(533, 564);
             signal.Acknowledge();
 
-            game = Game.Get(signal.House, signal.Game);
+            Game? retrievedGame = Game.Get(signal.House, signal.Game);
+            game = retrievedGame ?? throw new Exception($"Game could not be found: {signal.Game} at {signal.House}");
+            double currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
+            double currentMajor = Convert.ToDouble(driver.ExecuteScript("return window.parent.Major")) / 100;
+            double currentMinor = Convert.ToDouble(driver.ExecuteScript("return window.parent.Minor")) / 100;
+            double currentMini = Convert.ToDouble(driver.ExecuteScript("return window.parent.Mini")) / 100;
+            if (currentGrand.Equals(0)) throw new Exception("Failed to retrieve Jackpot data.");
 
-            game.Jackpots.Grand =
-                Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
-            game.Jackpots.Major =
-                Convert.ToDouble(driver.ExecuteScript("return window.parent.Major")) / 100;
-            game.Jackpots.Minor =
-                Convert.ToDouble(driver.ExecuteScript("return window.parent.Minor")) / 100;
-            game.Jackpots.Mini =
-                Convert.ToDouble(driver.ExecuteScript("return window.parent.Mini")) / 100;
-
-            if (game.Jackpots.Grand.Equals(0)) {
-                throw new Exception("Failed to retrieve Jackpot data.");
-            }
-
-            if (grandPrior > game.Jackpots.Grand && (grandPrior - game.Jackpots.Grand) > 1) {
+            if (grandPrior > currentGrand && (grandPrior - currentGrand) > 0.1) {
                 if (signal.Priority.Equals(4)) {
                     jackpotPopped = true;
                     signal.Close(grandPrior);
@@ -391,7 +378,7 @@ public static partial class Games {
                 game.Thresholds.NewGrand(grandPrior);
                 Console.WriteLine();
             }
-            if (majorPrior > game.Jackpots.Major && (majorPrior - game.Jackpots.Major) > 1) {
+            if (majorPrior > currentMajor && (majorPrior - currentMajor) > 0.1) {
                 if (signal.Priority.Equals(3)) {
                     jackpotPopped = true;
                     signal.Close(majorPrior);
@@ -401,7 +388,7 @@ public static partial class Games {
                 game.Thresholds.NewMajor(majorPrior);
                 Console.WriteLine();
             }
-            if (minorPrior > game.Jackpots.Minor && (minorPrior - game.Jackpots.Minor) > 1) {
+            if (minorPrior > currentMinor && (minorPrior - currentMinor) > 0.1) {
                 if (signal.Priority.Equals(2)) {
                     jackpotPopped = true;
                     signal.Close(minorPrior);
@@ -411,7 +398,7 @@ public static partial class Games {
                 game.Thresholds.NewMinor(minorPrior);
                 Console.WriteLine();
             }
-            if (miniPrior > game.Jackpots.Mini && (miniPrior - game.Jackpots.Mini) > 1) {
+            if (miniPrior > currentMini && (miniPrior - currentMini) > 0.1) {
                 if (signal.Priority.Equals(1)) {
                     jackpotPopped = true;
                     signal.Close(miniPrior);
@@ -423,10 +410,10 @@ public static partial class Games {
             }
 
             game.LastUpdated = DateTime.UtcNow;
-            grandPrior = game.Jackpots.Grand;
-            majorPrior = game.Jackpots.Major;
-            minorPrior = game.Jackpots.Minor;
-            miniPrior = game.Jackpots.Mini;
+            game.Jackpots.Grand = currentGrand; grandPrior = game.Jackpots.Grand;
+            game.Jackpots.Major = currentMajor; majorPrior = game.Jackpots.Major;
+            game.Jackpots.Minor = currentMinor; minorPrior = game.Jackpots.Minor;
+            game.Jackpots.Mini = currentMini; miniPrior = game.Jackpots.Mini;
             game.Save();
 
             double balancePrior = balance;

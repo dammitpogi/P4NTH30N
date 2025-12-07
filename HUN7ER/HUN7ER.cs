@@ -28,7 +28,11 @@ class PROF3T {
 						x.LastDepositDate = DateTime.UtcNow;
 						x.CashedOut = false;
 						x.Save();
-					}
+					} else {
+                        x.Save();
+                    }
+                    
+                    credentials = [.. credentials.Where(x => x.Banned == false)];
 
 					if (games.Any(y => y.House.Equals(x.House) && y.Name.Equals(x.Game)) == false) {
 						Game newGame = new Game(x.House, x.Game);

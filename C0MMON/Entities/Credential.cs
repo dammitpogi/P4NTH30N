@@ -34,7 +34,8 @@ public class Credential {
     public static List<Credential> GetAll() {
         Database database = new();
         IMongoCollection<Credential> collection = database.IO.GetCollection<Credential>("CRED3N7IAL");
-        List<Credential> credentials = collection.Find(Builders<Credential>.Filter.Eq("Banned", false)).SortByDescending(c => c.Balance).ToList();
+        // List<Credential> credentials = collection.Find(Builders<Credential>.Filter.Eq("Banned", false)).SortByDescending(c => c.Balance).ToList();
+        List<Credential> credentials = collection.Find(Builders<Credential>.Filter.Empty).SortByDescending(c => c.Balance).ToList();
         return credentials;
     }
 
