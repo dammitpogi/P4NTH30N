@@ -8,7 +8,7 @@ using System.Text.Json;
 
 
 namespace P4NTH30N {
-    [GenerateFiggleText(sourceText: "v    0 . 8 . 3 . 6", memberName: "Version", fontName: "colossal")]
+    [GenerateFiggleText(sourceText: "v    0 . 8 . 4 . 0", memberName: "Version", fontName: "colossal")]
     internal static partial class Header { }
 }
 
@@ -32,6 +32,9 @@ internal class Program {
                 Game? lastGame = null;
 
                 while (true) {
+                    // Game game = Game.Get("MIDAS 2", "FireKirin", false);
+                    // Credential credential = Credential.GetBy(game, "Stone1020");
+                    // Signal signal = new Signal(4, credential);
                     Signal? signal = listenForSignals ? (overrideSignal ?? Signal.GetNext()) : null;
                     Game game = (signal == null) ? Game.GetNext() : Game.Get(signal.House, signal.Game); overrideSignal = null;
                     Credential? credential = (signal == null) ? Credential.GetBy(game)[0] : Credential.GetBy(game, signal.Username);
@@ -96,34 +99,24 @@ internal class Program {
                             signal.Acknowledge();
                             File.WriteAllText(@"D:\S1GNAL.json", JsonSerializer.Serialize(true));
                             switch (signal.Priority) {
-                                case 1:
-                                    signal.Receive(Convert.ToDouble(driver.ExecuteScript("return window.parent.Mini")) / 100);
-                                    break;
-                                case 2:
-                                    signal.Receive(Convert.ToDouble(driver.ExecuteScript("return window.parent.Minor")) / 100);
-                                    break;
-                                case 3:
-                                    signal.Receive(Convert.ToDouble(driver.ExecuteScript("return window.parent.Major")) / 100);
-                                    break;
-                                case 4:
-                                    signal.Receive(currentGrand);
-                                    break;
+                                case 1: signal.Receive(Convert.ToDouble(driver.ExecuteScript("return window.parent.Mini")) / 100); break;
+                                case 2: signal.Receive(Convert.ToDouble(driver.ExecuteScript("return window.parent.Minor")) / 100); break;
+                                case 3: signal.Receive(Convert.ToDouble(driver.ExecuteScript("return window.parent.Major")) / 100); break;
+                                case 4: signal.Receive(currentGrand); break;
                             }
 
                             signal.Acknowledge();
                             switch (game.Name) {
                                 case "FireKirin":
-                                    Mouse.Click(80, 235); Thread.Sleep(800);
-                                    overrideSignal = Games.Gold777(driver, game, signal);
-                                    //overrideSignal = Games.FortunePiggy(driver, game, signal);
-                                    driver.Navigate().GoToUrl("http://play.firekirin.in/web_mobile/firekirin/");
-                                    P4NTH30N.C0MMON.Screen.WaitForColor(new Point(925, 120), Color.FromArgb(255, 255, 251, 48));
-                                    Thread.Sleep(2000); Mouse.Click(80, 235); Thread.Sleep(800);
+                                    Mouse.Click(80, 235); Thread.Sleep(800); //Reset Hall Screen
+                                    FireKirin.SpinSlots(driver, game, signal);
                                     break;
                                 case "OrionStars":
                                     Mouse.Click(80, 200); Thread.Sleep(800);
                                     // overrideSignal = Games.Gold777(driver, game, signal);
-                                    overrideSignal = Games.FortunePiggy(driver, game, signal);
+                                    bool FortunePiggyLoaded = Games.FortunePiggy.LoadSucessfully(driver, game, signal);
+                                    overrideSignal = FortunePiggyLoaded ? Games.FortunePiggy.Spin(driver, game, signal) : null;
+
                                     driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
                                     P4NTH30N.C0MMON.Screen.WaitForColor(new Point(715, 128), Color.FromArgb(255, 254, 242, 181));
                                     Thread.Sleep(2000); Mouse.Click(80, 200); Thread.Sleep(800);

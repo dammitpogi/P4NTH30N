@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("M4NUAL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7b45afe6f1f292e8578d66dd505cd6641553cefd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ec49db5d096a7a5bfd3853a1f260ccc0ff44202e")]
 [assembly: System.Reflection.AssemblyProductAttribute("M4NUAL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("M4NUAL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
