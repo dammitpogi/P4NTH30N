@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CL0UD")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ec49db5d096a7a5bfd3853a1f260ccc0ff44202e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+268d95452e22f44b5e788a921a29427ef48e9555")]
 [assembly: System.Reflection.AssemblyProductAttribute("CL0UD")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CL0UD")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
