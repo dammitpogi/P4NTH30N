@@ -11,9 +11,9 @@ using System;
 using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("HUN7ER")]
-[assembly: System.Reflection.AssemblyConfigurationAttribute("release")]
+[assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7b45afe6f1f292e8578d66dd505cd6641553cefd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f46b9d4e1ae1b00f680754ae696197865bee43fa")]
 [assembly: System.Reflection.AssemblyProductAttribute("HUN7ER")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HUN7ER")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

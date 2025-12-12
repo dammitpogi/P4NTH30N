@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ReyRkOg7bEI=",
+  "dgSpecHash": "JtUdG9r08p4=",
   "success": true,
   "projectFilePath": "C:\\OneDrive\\P4NTH30N\\H5ND\\H5ND.csproj",
   "expectedPackageFiles": [
@@ -14,7 +14,7 @@
     "C:\\Users\\paulc\\.nuget\\packages\\microsoft.win32.systemevents\\9.0.6\\microsoft.win32.systemevents.9.0.6.nupkg.sha512",
     "C:\\Users\\paulc\\.nuget\\packages\\mongodb.bson\\3.4.0\\mongodb.bson.3.4.0.nupkg.sha512",
     "C:\\Users\\paulc\\.nuget\\packages\\mongodb.driver\\3.4.0\\mongodb.driver.3.4.0.nupkg.sha512",
-    "C:\\Users\\paulc\\.nuget\\packages\\selenium.webdriver\\4.33.0\\selenium.webdriver.4.33.0.nupkg.sha512",
+    "C:\\Users\\paulc\\.nuget\\packages\\selenium.webdriver\\4.39.0\\selenium.webdriver.4.39.0.nupkg.sha512",
     "C:\\Users\\paulc\\.nuget\\packages\\sharpcompress\\0.30.1\\sharpcompress.0.30.1.nupkg.sha512",
     "C:\\Users\\paulc\\.nuget\\packages\\snappier\\1.0.0\\snappier.1.0.0.nupkg.sha512",
     "C:\\Users\\paulc\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",

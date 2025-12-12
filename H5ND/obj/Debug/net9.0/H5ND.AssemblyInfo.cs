@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("H5ND")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+73be2b3db18f91cc7b6d04add3e864e08c5274bd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f46b9d4e1ae1b00f680754ae696197865bee43fa")]
 [assembly: System.Reflection.AssemblyProductAttribute("H5ND")]
 [assembly: System.Reflection.AssemblyTitleAttribute("H5ND")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

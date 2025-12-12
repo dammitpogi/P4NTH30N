@@ -6,7 +6,7 @@ namespace P4NTH30N.C0MMON;
 
 public static partial class Actions {
     public static ChromeDriver Launch() {
-        Mouse.Click(1279, 180);
+        // Mouse.Click(1279, 180);
 
         ChromeOptions options = new();
         ChromeDriverService service = ChromeDriverService.CreateDefaultService();
@@ -22,7 +22,7 @@ public static partial class Actions {
         Mouse.Click(660, 70);
         Thread.Sleep(800);
         Keyboard.Send("C:\\OneDrive\\Auto-Firekirin\\auto-override").Enter();
-        Mouse.Click(800, 510);
+        Mouse.Click(800, 510); Thread.Sleep(800);
         Mouse.Click(505, 535);
         Keyboard.PressPageDown().PageDown();
         Mouse.Click(574, 490);
@@ -36,7 +36,7 @@ public static partial class Actions {
         Thread.Sleep(800);
         Mouse.Click(692, 485);
         Thread.Sleep(400);
-        Keyboard.Send("C:\\OneDrive\\Auto-Firekirin\\resource_override_rules.json").Enter();
+        Keyboard.Send("C:\\OneDrive\\Auto-Firekirin\\resource_override_rules.json").Enter(); Thread.Sleep(1800);
         Mouse.Click(855, 192);
         Mouse.Click(944, 332);
         // Keyboard.WindowsManager();

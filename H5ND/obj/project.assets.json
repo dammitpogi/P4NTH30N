@@ -156,7 +156,7 @@
           }
         }
       },
-      "Selenium.WebDriver/4.33.0": {
+      "Selenium.WebDriver/4.39.0": {
         "type": "package",
         "compile": {
           "lib/net8.0/WebDriver.dll": {
@@ -170,6 +170,20 @@
         },
         "build": {
           "buildTransitive/Selenium.WebDriver.targets": {}
+        },
+        "runtimeTargets": {
+          "runtimes/linux/native/selenium-manager": {
+            "assetType": "native",
+            "rid": "linux"
+          },
+          "runtimes/osx/native/selenium-manager": {
+            "assetType": "native",
+            "rid": "osx"
+          },
+          "runtimes/win/native/selenium-manager.exe": {
+            "assetType": "native",
+            "rid": "win"
+          }
         }
       },
       "SharpCompress/0.30.1": {
@@ -552,10 +566,10 @@
         "packageIcon.png"
       ]
     },
-    "Selenium.WebDriver/4.33.0": {
-      "sha512": "5dzwA1cMorwYWudX46zyeUqyZn48TZeCHbSERxbpKezGxZ8hMBpcL12XwG4RGUuQKGH8FiEOJOFK4eCE//uNpQ==",
+    "Selenium.WebDriver/4.39.0": {
+      "sha512": "LbiWOVW/PA/YVHKAXxMPLwwoupj3XLWKwjnGNkGFF0dG0rX2MJHDWgSf9WPSRWb9Msr3vTWFg0EsEAdNs68NiA==",
       "type": "package",
-      "path": "selenium.webdriver/4.33.0",
+      "path": "selenium.webdriver/4.39.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -563,14 +577,16 @@
         "build/Selenium.WebDriver.targets",
         "buildTransitive/Selenium.WebDriver.targets",
         "icon.png",
+        "lib/net462/WebDriver.dll",
+        "lib/net462/WebDriver.xml",
         "lib/net8.0/WebDriver.dll",
         "lib/net8.0/WebDriver.xml",
         "lib/netstandard2.0/WebDriver.dll",
         "lib/netstandard2.0/WebDriver.xml",
-        "manager/linux/selenium-manager",
-        "manager/macos/selenium-manager",
-        "manager/windows/selenium-manager.exe",
-        "selenium.webdriver.4.33.0.nupkg.sha512",
+        "runtimes/linux/native/selenium-manager",
+        "runtimes/osx/native/selenium-manager",
+        "runtimes/win/native/selenium-manager.exe",
+        "selenium.webdriver.4.39.0.nupkg.sha512",
         "selenium.webdriver.nuspec"
       ]
     },
@@ -868,7 +884,8 @@
     "net9.0-windows7.0": [
       "C0MMON >= 1.0.0",
       "Figgle >= 0.6.5",
-      "Figgle.Generator >= 0.6.5"
+      "Figgle.Generator >= 0.6.5",
+      "Selenium.WebDriver >= 4.39.0"
     ]
   },
   "packageFolders": {
@@ -925,6 +942,10 @@
           "Figgle.Generator": {
             "target": "Package",
             "version": "[0.6.5, )"
+          },
+          "Selenium.WebDriver": {
+            "target": "Package",
+            "version": "[4.39.0, )"
           }
         },
         "imports": [
@@ -943,7 +964,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

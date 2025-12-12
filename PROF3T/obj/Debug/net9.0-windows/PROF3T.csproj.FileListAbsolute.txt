@@ -29,7 +29,3 @@ c:\OneDrive\P4NTH30N\PROF3T\obj\Debug\net9.0-windows\refint\PROF3T.dll
 c:\OneDrive\P4NTH30N\PROF3T\obj\Debug\net9.0-windows\PROF3T.pdb
 c:\OneDrive\P4NTH30N\PROF3T\obj\Debug\net9.0-windows\PROF3T.genruntimeconfig.cache
 c:\OneDrive\P4NTH30N\PROF3T\obj\Debug\net9.0-windows\ref\PROF3T.dll
-c:\OneDrive\P4NTH30N\PROF3T\bin\Debug\net9.0-windows\Microsoft.Win32.SystemEvents.dll
-c:\OneDrive\P4NTH30N\PROF3T\bin\Debug\net9.0-windows\System.Drawing.Common.dll
-c:\OneDrive\P4NTH30N\PROF3T\bin\Debug\net9.0-windows\System.Private.Windows.Core.dll
-c:\OneDrive\P4NTH30N\PROF3T\bin\Debug\net9.0-windows\runtimes\win\lib\net9.0\Microsoft.Win32.SystemEvents.dll
