@@ -8,7 +8,7 @@ namespace P4NTH30N.C0MMON;
 public static partial class Games {
 
     public static class NewFortunePiggy {
-        public static bool LoadSucessfully(ChromeDriver driver, NewCredential credential, Signal signal) {
+        public static bool LoadSucessfully(ChromeDriver driver, NewCredential credential, NewSignal signal) {
             for (int i = 1; i < credential.Settings.FortunePiggy.Page; i++) {
                 switch (credential.Game) {
                     case "FireKirin": Mouse.Click(937, 177); break;
@@ -79,7 +79,7 @@ public static partial class Games {
             return slotsLoaded;
         }
 
-        public static Signal? Spin(ChromeDriver driver, NewCredential credential, Signal signal) {
+        public static NewSignal? Spin(ChromeDriver driver, NewCredential credential, NewSignal signal) {
             Color Confirmation = credential.Game switch {
                 "FireKirin" => Color.FromArgb(255, 255, 255, 255),
                 "OrionStars" => Color.FromArgb(255, 51, 199, 109),
@@ -113,7 +113,7 @@ public static partial class Games {
                     break;
                 }
 
-                Signal? newSignal = Signal.GetNext();
+                NewSignal? newSignal = NewSignal.GetNext();
                 // newSignal = (Signal)signal.Clone(); newSignal.Priority = 4;
                 if (newSignal != null && newSignal.Priority > signal.Priority) {
                     newSignal.Acknowledge();
