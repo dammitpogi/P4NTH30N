@@ -39,7 +39,7 @@ public class NewSignal(float priority, NewCredential credential) : ICloneable {
         return dto.Count.Equals(0) ? null : dto[0];
     }
 
-    public static NewSignal? Get(Credential credential) {
+    public static NewSignal? Get(NewCredential credential) {
         FilterDefinitionBuilder<NewSignal> builder = Builders<NewSignal>.Filter;
         FilterDefinition<NewSignal> filter = builder.Eq("Game", credential.Game) & builder.Eq("Username", credential.Username);
         List<NewSignal> dto = new Database().IO.GetCollection<NewSignal>("SIGN4L").Find(filter).ToList();
@@ -56,7 +56,7 @@ public class NewSignal(float priority, NewCredential credential) : ICloneable {
         return dto.Count.Equals(0) ? null : dto[0];
     }
 
-    public static void DeleteAll(Credential credential) {
+    public static void DeleteAll(NewCredential credential) {
         FilterDefinitionBuilder<NewSignal> builder = Builders<NewSignal>.Filter;
         FilterDefinition<NewSignal> filter =
             builder.Eq("Username", credential.Username) & builder.Eq("Game", credential.Game);

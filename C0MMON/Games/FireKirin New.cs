@@ -7,8 +7,8 @@ namespace P4NTH30N.C0MMON;
 
 public static class NewFireKirin {
 
-    public static Signal? SpinSlots(ChromeDriver driver, NewCredential credential, Signal signal) {
-        Signal? overrideSignal = null;
+    public static NewSignal? SpinSlots(ChromeDriver driver, NewCredential credential, NewSignal signal) {
+        NewSignal? overrideSignal = null;
         bool FortunePiggyLoaded = Games.NewFortunePiggy.LoadSucessfully(driver, credential, signal);
         bool Gold777Loaded = FortunePiggyLoaded ? false : Games.NewGold777.LoadSucessfully(driver, credential, signal);
 

@@ -39,15 +39,15 @@ namespace P4NTH30N.C0MMON;
 //     }
 
 //     public static List<House> GetAll() {
-//         return new Database().IO.GetCollection<House>("H0USE").Find(Builders<House>.Filter.Empty).ToList();
+//         return Database.Find(Builders<House>.Filter.Empty).ToList();
 //     }
 
 //     public static void DeleteAll() {
-//         new Database().IO.GetCollection<House>("H0USE").DeleteMany(Builders<House>.Filter.Empty);
+//         Database.DeleteMany(Builders<House>.Filter.Empty);
 //     }
 //     public void Delete() {
 //         FilterDefinition<House> filter = Builders<House>.Filter.Eq(x => x._id, _id);
-//         new Database().IO.GetCollection<House>("H0USE").DeleteOne(filter);
+//         Database.DeleteOne(filter);
 //     }
 
 //     public void Save() {
@@ -70,18 +70,26 @@ public class House(string name, string uRL) {
     public string Comments { get; set; } = "";
     public int Lifespan { get; set; } = 7;
 
-    public static House? Get(string uRL) {
-        List<House> dto = new Database().IO.GetCollection<House>("H0USE").Find(Builders<House>.Filter.Eq("URL", uRL)).ToList();
+	private static readonly IMongoCollection<House> Database =
+		 new Database().IO.GetCollection<House>("H0USE");
+	public static List<House> GetAll() {
+		return Database.Find(Builders<House>.Filter.Empty).ToList();
+	}
+	public static House? Get(string uRL) {
+        List<House> dto = Database.Find(Builders<House>.Filter.Eq("URL", uRL)).ToList();
         return dto.Count > 0 ? dto[0] : null;
     }
+	public void Delete() {
+		Database.DeleteOne(Builders<House>.Filter.Eq("_id", _id));
+	}
     public void Save() {
-        FilterDefinition<House> filter = Builders<House>.Filter.Eq("URL", URL);
-        List<House> dto = new Database().IO.GetCollection<House>("H0USE").Find(filter).ToList();
+        FilterDefinition<House> filter = Builders<House>.Filter.Eq("_id", _id);
+        List<House> dto = Database.Find(filter).ToList();
         if (dto.Count.Equals(0)) {
-            new Database().IO.GetCollection<House>("H0USE").InsertOne(this);
+            Database.InsertOne(this);
         } else {
             _id = dto[0]._id;
-            new Database().IO.GetCollection<House>("H0USE").ReplaceOne(filter, this);
+            Database.ReplaceOne(filter, this);
         }
     }
 }

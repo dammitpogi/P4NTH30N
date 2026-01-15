@@ -1,0 +1,6 @@
+C:\OneDrive\P4NTH30N\CL0UD\obj\Debug\net10.0-windows7.0\CL0UD.csproj.AssemblyReference.cache
+C:\OneDrive\P4NTH30N\CL0UD\obj\Debug\net10.0-windows7.0\CL0UD.GeneratedMSBuildEditorConfig.editorconfig
+C:\OneDrive\P4NTH30N\CL0UD\obj\Debug\net10.0-windows7.0\CL0UD.AssemblyInfoInputs.cache
+C:\OneDrive\P4NTH30N\CL0UD\obj\Debug\net10.0-windows7.0\CL0UD.AssemblyInfo.cs
+C:\OneDrive\P4NTH30N\CL0UD\obj\Debug\net10.0-windows7.0\CL0UD.csproj.CoreCompileInputs.cache
+C:\OneDrive\P4NTH30N\CL0UD\obj\Debug\net10.0-windows7.0\CL0UD.sourcelink.json

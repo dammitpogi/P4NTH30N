@@ -20,12 +20,12 @@ public class ProcessEvent(string process, string description) {
         Console.WriteLine($"({DateTime.Now}) {description}");
         return new ProcessEvent(process, description);
     }
-    public ProcessEvent Record(Credential credential) {
+    public ProcessEvent Record(NewCredential credential) {
         House = credential.House;
         Game = credential.Game;
         return this;
     }
-    public ProcessEvent Record(Signal signal) {
+    public ProcessEvent Record(NewSignal signal) {
         Username = signal.Username;
         Password = signal.Password;
         House = signal.House;

@@ -1,4 +1,3 @@
-using System;
 using System.Net.Http.Json;
 
 namespace C0MMON.Entities;
