@@ -6,7 +6,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace P4NTH30N.C0MMON;
 
-public class NewJackpot(string category, NewCredential credential) {
+public class JackpotRecord(string category, CredentialRecord credential) {
 	public ObjectId _id { get; set; } = ObjectId.GenerateNewId();
 	public ObjectId Credential_id { get; set; } = credential._id;
 	public string House { get; set; } = credential.House;
@@ -23,21 +23,29 @@ public class NewJackpot(string category, NewCredential credential) {
 	public double DPM { get; set; } = 0;
 	public JackpotToggles Toggles { get; set; } = new JackpotToggles();
 	public JackpotDates Dates { get; set; } = new JackpotDates();
-	public NewDPD DPD { get; set; } = new NewDPD();
+	public DpdRecord DPD { get; set; } = new DpdRecord();
 
 
-	private static readonly IMongoCollection<NewJackpot> Database =
-		new Database().IO.GetCollection<NewJackpot>("J4CKP0T_New");
+	private static readonly IMongoCollection<JackpotRecord> Database =
+		new Database().IO.GetCollection<JackpotRecord>("J4CKP0T_New");
 
-	public static List<NewJackpot> GetBy(NewCredential credential) {
-		return Database.Find(Builders<NewJackpot>.Filter.Eq("_id", credential._id)).ToList();
+	public static List<JackpotRecord> GetBy(CredentialRecord credential) {
+		return Database.Find(Builders<JackpotRecord>.Filter.Eq("Credential_id", credential._id)).ToList();
+	}
+
+	public static JackpotRecord? Get(CredentialRecord credential, string category) {
+		FilterDefinitionBuilder<JackpotRecord> builder = Builders<JackpotRecord>.Filter;
+		FilterDefinition<JackpotRecord> query =
+			builder.Eq("Credential_id", credential._id) & builder.Eq("Category", category);
+		List<JackpotRecord> results = Database.Find(query).ToList();
+		return results.Count.Equals(0) ? null : results[0];
 	}
 
 	public void Save() {
-		FilterDefinitionBuilder<NewJackpot> builder = Builders<NewJackpot>.Filter;
-		FilterDefinition<NewJackpot> query = builder.Eq("Credential_id", Credential_id) & builder.Eq("Category", Category);
-		List<NewJackpot> results = Database.Find(query).ToList();
-		NewJackpot? existing = results.Count.Equals(0) ? null : results[0];
+		FilterDefinitionBuilder<JackpotRecord> builder = Builders<JackpotRecord>.Filter;
+		FilterDefinition<JackpotRecord> query = builder.Eq("Credential_id", Credential_id) & builder.Eq("Category", Category);
+		List<JackpotRecord> results = Database.Find(query).ToList();
+		JackpotRecord? existing = results.Count.Equals(0) ? null : results[0];
 		if (existing != null) {
 			_id = existing._id; Database.ReplaceOne(query, this);
 		} else {
@@ -57,6 +65,7 @@ public class JackpotToggles {
 	public bool WeekSinceReset { get; set; } = false;
 	public bool OverdueForUpdate { get; set; } = false;
 	public bool EnoughDataCollected { get; set; } = false;
+	public bool PendingReset { get; set; } = false;
 	public JackpotEstimated Estimated { get; set; } = new JackpotEstimated();
 }
 
@@ -66,27 +75,27 @@ public class JackpotDates {
 	public DateTime LastUpdated { get; set; } = DateTime.UtcNow;
 	public DateTime EstimatedDate { get; set; } = DateTime.MaxValue;
 }
-public class NewDPD() {
+public class DpdRecord() {
 	public double Average { get; set; } = 0F;
-	public List<NewDPD_History> History { get; set; } = [];
-	public List<NewDPD_Data> Data { get; set; } = [];
+	public List<DpdRecordHistory> History { get; set; } = [];
+	public List<DpdRecordData> Data { get; set; } = [];
 }
 
-public class NewDPD_History(double average, List<NewDPD_Data> data) {
+public class DpdRecordHistory(double average, List<DpdRecordData> data) {
 	public double Average { get; set; } = average;
 	public DateTime Timestamp { get; set; } = DateTime.UtcNow;
-	public List<NewDPD_Data> Data { get; set; } = data;
+	public List<DpdRecordData> Data { get; set; } = data;
 }
 
-public class NewDPD_Data(double value) {
+public class DpdRecordData(double value) {
 	public DateTime Timestamp { get; set; } = DateTime.UtcNow;
 	public double Value { get; set; } = value;
 }
 
 
 // [method: SetsRequiredMembers]
-// public NewJackpot(
-//     NewCredential credential,
+// public JackpotRecord(
+//     CredentialRecord credential,
 //     string category,
 //     double current,
 //     double threshold,
@@ -116,7 +125,7 @@ public class NewDPD_Data(double value) {
 //     //     EstimatedDate = DateTime.UtcNow.AddMinutes(MinutesToJackpot);
 //     // }
 
-//     List<NewDPD_Data> dataZoom = DPD.Data.FindAll(x => x.Timestamp > DateTime.UtcNow.AddDays(-1))
+//     List<DpdRecordData> dataZoom = DPD.Data.FindAll(x => x.Timestamp > DateTime.UtcNow.AddDays(-1))
 //         .OrderBy(x => x.Timestamp)
 //         .ToList();
 //     if (eta < DateTime.UtcNow.AddDays(3) && dataZoom.Count >= 2) {
@@ -145,32 +154,29 @@ public class NewDPD_Data(double value) {
 //     current += estimatedGrowth;
 // }
 
-// public static List<NewJackpot> GetAll() {
+// public static List<JackpotRecord> GetAll() {
 //     return new Database()
-//         .IO.GetCollection<NewJackpot>("J4CKP0TNew")
-//         .Find(Builders<NewJackpot>.Filter.Empty)
+//         .IO.GetCollection<JackpotRecord>("J4CKP0TNew")
+//         .Find(Builders<JackpotRecord>.Filter.Empty)
 //         .SortByDescending(x => x.Dates.EstimatedDate)
 //         .ToList();
 // }
 
 // public void Save() {
-//     FilterDefinitionBuilder<NewJackpot> builder = Builders<NewJackpot>.Filter;
-//     FilterDefinition<NewJackpot> filter =
+//     FilterDefinitionBuilder<JackpotRecord> builder = Builders<JackpotRecord>.Filter;
+//     FilterDefinition<JackpotRecord> filter =
 //         builder.Eq("Username", Username)
 //         & builder.Eq("Game", Game)
 //         & builder.Eq("Category", Category);
-//     List<NewJackpot> dto = new Database()
-//         .IO.GetCollection<NewJackpot>("J4CKP0TNew")
+//     List<JackpotRecord> dto = new Database()
+//         .IO.GetCollection<JackpotRecord>("J4CKP0TNew")
 //         .Find(filter)
 //         .ToList();
 //     if (dto.Count.Equals(0))
-//         new Database().IO.GetCollection<NewJackpot>("J4CKP0TNew").InsertOne(this);
+//         new Database().IO.GetCollection<JackpotRecord>("J4CKP0TNew").InsertOne(this);
 //     else {
 //         _id = dto[0]._id;
-//         new Database().IO.GetCollection<NewJackpot>("J4CKP0TNew").ReplaceOne(filter, this);
+//         new Database().IO.GetCollection<JackpotRecord>("J4CKP0TNew").ReplaceOne(filter, this);
 //     }
 // }
-
-
-
 

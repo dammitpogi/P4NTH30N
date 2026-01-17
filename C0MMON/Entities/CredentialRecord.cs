@@ -6,7 +6,7 @@ using MongoDB.Driver;
 
 namespace P4NTH30N.C0MMON;
 
-public class NewCredential(string game) {
+public class CredentialRecord(string game) {
 	public ObjectId _id { get; set; } = ObjectId.GenerateNewId();
 	public ObjectId? PROF3T_id { get; set; } = null;
 	public bool Enabled { get; set; } = true;
@@ -17,24 +17,24 @@ public class NewCredential(string game) {
 	public string Username { get; set; } = "";
 	public string Password { get; set; } = "";
 	public CredentialJackpots Jackpots { get; set; } = new CredentialJackpots();
-	public NewGameSettings Settings { get; set; } = new NewGameSettings(game);
+	public CredentialGameSettings Settings { get; set; } = new CredentialGameSettings(game);
 	public CredentialToggles Toggles { get; set; } = new CredentialToggles();
 	public CredentialDates Dates { get; set; } = new CredentialDates();
 
 
-	private static readonly IMongoCollection<NewCredential> Database =
-		 new Database().IO.GetCollection<NewCredential>("CRED3N7IAL_New");
+	private static readonly IMongoCollection<CredentialRecord> Database =
+		 new Database().IO.GetCollection<CredentialRecord>("CRED3N7IAL_New");
 
 	// Central credential collection backing the "iterate credentials" flow (replacing Game-level iteration).
-	public static List<NewCredential> GetAll() {
-		return Database.Find(Builders<NewCredential>.Filter.Empty).ToList();
+	public static List<CredentialRecord> GetAll() {
+		return Database.Find(Builders<CredentialRecord>.Filter.Empty).ToList();
 	}
 
 	// Pulls the next unlocked, enabled credential to work on, ordered by least-recently-updated.
 	// This mirrors the old "Game.GetNext()" queue semantics but operates at the credential level.
-	public static NewCredential GetNext() {
-		FilterDefinitionBuilder<NewCredential> builder = Builders<NewCredential>.Filter;
-		FilterDefinition<NewCredential> filter =
+	public static CredentialRecord GetNext() {
+		FilterDefinitionBuilder<CredentialRecord> builder = Builders<CredentialRecord>.Filter;
+		FilterDefinition<CredentialRecord> filter =
 			builder.Eq("Enabled", true)
 			& builder.Eq("Toggles.Banned", false)
 			& builder.Eq("Toggles.Unlocked", true);
@@ -45,10 +45,10 @@ public class NewCredential(string game) {
 	}
 
 	public static class GetBy {
-		public static NewCredential? Username(string game, string username) {
-			FilterDefinitionBuilder<NewCredential> builder = Builders<NewCredential>.Filter;
-			FilterDefinition<NewCredential> query = builder.Eq("Game", game) & builder.Eq("Username", username);
-			List<NewCredential> results = Database.Find(query).ToList();
+		public static CredentialRecord? Username(string game, string username) {
+			FilterDefinitionBuilder<CredentialRecord> builder = Builders<CredentialRecord>.Filter;
+			FilterDefinition<CredentialRecord> query = builder.Eq("Game", game) & builder.Eq("Username", username);
+			List<CredentialRecord> results = Database.Find(query).ToList();
 			return results.Count.Equals(0) ? null : results[0];
 		}
 	}
@@ -64,10 +64,10 @@ public class NewCredential(string game) {
 		Save();
 	}
 	public void Save() {
-		FilterDefinitionBuilder<NewCredential> builder = Builders<NewCredential>.Filter;
-		FilterDefinition<NewCredential> query = builder.Eq("Game", Game) & builder.Eq("Username", Username);
-		List<NewCredential> results = Database.Find(query).ToList();
-		NewCredential? existing = results.Count.Equals(0) ? null : results[0];
+		FilterDefinitionBuilder<CredentialRecord> builder = Builders<CredentialRecord>.Filter;
+		FilterDefinition<CredentialRecord> query = builder.Eq("Game", Game) & builder.Eq("Username", Username);
+		List<CredentialRecord> results = Database.Find(query).ToList();
+		CredentialRecord? existing = results.Count.Equals(0) ? null : results[0];
 		if (existing != null) {
 			_id = existing._id; Database.ReplaceOne(query, this);
 		} else {
@@ -122,10 +122,10 @@ public class CredentialJackpots {
 //     }
 // }
 
-public class NewGameSettings(string game) {
-	public NewFortunePiggy_Settings FortunePiggy { get; set; } = new NewFortunePiggy_Settings(game);
-	public NewQuintuple5X_Settings Quintuple5X { get; set; } = new NewQuintuple5X_Settings();
-	public NewGold777_Settings Gold777 { get; set; } = new NewGold777_Settings();
+public class CredentialGameSettings(string game) {
+	public FortunePiggySettings FortunePiggy { get; set; } = new FortunePiggySettings(game);
+	public Quintuple5XSettings Quintuple5X { get; set; } = new Quintuple5XSettings();
+	public Gold777Settings Gold777 { get; set; } = new Gold777Settings();
 	public bool SpinGrand { get; set; } = true;
 	public bool SpinMajor { get; set; } = true;
 	public bool SpinMinor { get; set; } = true;
@@ -133,7 +133,7 @@ public class NewGameSettings(string game) {
 	public bool Hidden { get; set; } = false;
 }
 
-public class NewGold777_Settings {
+public class Gold777Settings {
 	public int Page { get; set; } = 10;
 
 	// public int Button_X { get; set; } = 603;
@@ -143,13 +143,13 @@ public class NewGold777_Settings {
 	public bool ButtonVerified { get; set; } = false;
 }
 
-public class NewFortunePiggy_Settings {
+public class FortunePiggySettings {
 	public int Page { get; set; } // = game.Equals("FireKirin") ? 7 : 7;
 	public int Button_X { get; set; } // = game.Equals("FireKirin") ? 820 : 820;
 	public int Button_Y { get; set; } // = game.Equals("FireKirin") ? 450 : 450;
 	public bool ButtonVerified { get; set; } = false;
 
-	public NewFortunePiggy_Settings(string game) {
+	public FortunePiggySettings(string game) {
 		ButtonVerified = false;
 		switch (game) {
 			case "FireKirin":
@@ -173,7 +173,7 @@ public class NewFortunePiggy_Settings {
 	}
 }
 
-public class NewQuintuple5X_Settings {
+public class Quintuple5XSettings {
 	public int Page { get; set; } = 7;
 
 	// public int Button_X { get; set; } = 603;

@@ -5,16 +5,16 @@ using OpenQA.Selenium.Chrome;
 
 namespace P4NTH30N.C0MMON;
 
-public static class NewFireKirin {
+public static class FireKirinFlow {
 
-    public static NewSignal? SpinSlots(ChromeDriver driver, NewCredential credential, NewSignal signal) {
-        NewSignal? overrideSignal = null;
-        bool FortunePiggyLoaded = Games.NewFortunePiggy.LoadSucessfully(driver, credential, signal);
-        bool Gold777Loaded = FortunePiggyLoaded ? false : Games.NewGold777.LoadSucessfully(driver, credential, signal);
+    public static SignalRecord? SpinSlots(ChromeDriver driver, CredentialRecord credential, SignalRecord signal) {
+        SignalRecord? overrideSignal = null;
+        bool FortunePiggyLoaded = FortunePiggyFlow.LoadSucessfully(driver, credential, signal);
+        bool Gold777Loaded = FortunePiggyLoaded ? false : Gold777Flow.LoadSucessfully(driver, credential, signal);
 
         if (FortunePiggyLoaded) {
-            overrideSignal = Games.NewFortunePiggy.Spin(driver, credential, signal);
-        } else if (Gold777Loaded) { overrideSignal = Games.NewGold777.Spin(driver, credential, signal); }
+            overrideSignal = FortunePiggyFlow.Spin(driver, credential, signal);
+        } else if (Gold777Loaded) { overrideSignal = Gold777Flow.Spin(driver, credential, signal); }
 
         driver.Navigate().GoToUrl("http://play.firekirin.in/web_mobile/firekirin/");
         P4NTH30N.C0MMON.Screen.WaitForColor(new Point(925, 120), Color.FromArgb(255, 255, 251, 48));

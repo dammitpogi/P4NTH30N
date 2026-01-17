@@ -5,9 +5,9 @@ using MongoDB.Driver;
 
 namespace P4NTH30N.C0MMON;
 
-public static class NewReceivedExt {
-	public static void Receive(this NewSignal signal, double triggered) {
-		NewReceived? dto = NewReceived.GetOpen(signal);
+public static class ReceivedRecordExtensions {
+	public static void Receive(this SignalRecord signal, double triggered) {
+		ReceivedRecord? dto = ReceivedRecord.GetOpen(signal);
 		if (dto == null) {
 			dto = new(signal, triggered);
 		} else {
@@ -18,8 +18,8 @@ public static class NewReceivedExt {
 		dto.Save();
 	}
 
-	public static void Close(this NewSignal signal, double threshold) {
-		NewReceived? dto = NewReceived.GetOpen(signal);
+	public static void Close(this SignalRecord signal, double threshold) {
+		ReceivedRecord? dto = ReceivedRecord.GetOpen(signal);
 		if (dto != null) {
 			dto.Rewarded = DateTime.UtcNow;
 			dto.Threshold = threshold;
@@ -29,7 +29,7 @@ public static class NewReceivedExt {
 }
 
 [method: SetsRequiredMembers]
-public class NewReceived(NewSignal signal, double triggered) {
+public class ReceivedRecord(SignalRecord signal, double triggered) {
 	public ObjectId? _id { get; set; } = null;
 	public DateTime Acknowledged { get; set; } = DateTime.UtcNow;
 	public DateTime? Rewarded { get; set; } = null;
@@ -41,22 +41,22 @@ public class NewReceived(NewSignal signal, double triggered) {
 	public double Triggered { get; set; } = triggered;
 	public double? Threshold { get; set; } = null;
 
-	public static List<NewReceived> GetAll() {
+	public static List<ReceivedRecord> GetAll() {
 		return new Database()
-			.IO.GetCollection<NewReceived>("REC31VED")
-			.Find(Builders<NewReceived>.Filter.Empty)
+			.IO.GetCollection<ReceivedRecord>("REC31VED")
+			.Find(Builders<ReceivedRecord>.Filter.Empty)
 			.ToList();
 	}
 
-	public static NewReceived? GetOpen(NewSignal signal) {
-		FilterDefinitionBuilder<NewReceived> builder = Builders<NewReceived>.Filter;
-		FilterDefinition<NewReceived> filter =
+	public static ReceivedRecord? GetOpen(SignalRecord signal) {
+		FilterDefinitionBuilder<ReceivedRecord> builder = Builders<ReceivedRecord>.Filter;
+		FilterDefinition<ReceivedRecord> filter =
 			builder.Eq("House", signal.House)
 			& builder.Eq("Game", signal.Game)
 			& builder.Eq("Username", signal.Username)
 			& builder.Eq("Rewarded", BsonNull.Value);
-		List<NewReceived> dto = new Database()
-			.IO.GetCollection<NewReceived>("REC31VED")
+		List<ReceivedRecord> dto = new Database()
+			.IO.GetCollection<ReceivedRecord>("REC31VED")
 			.Find(filter)
 			.ToList();
 		return dto.Count.Equals(0) ? null : dto[0];
@@ -65,11 +65,11 @@ public class NewReceived(NewSignal signal, double triggered) {
 	public void Save() {
 		if (_id == null) {
 			_id = ObjectId.GenerateNewId();
-			new Database().IO.GetCollection<NewReceived>("REC31VED").InsertOne(this);
+			new Database().IO.GetCollection<ReceivedRecord>("REC31VED").InsertOne(this);
 		} else {
 			new Database()
-				.IO.GetCollection<NewReceived>("REC31VED")
-				.ReplaceOne(Builders<NewReceived>.Filter.Eq("_id", _id), this);
+				.IO.GetCollection<ReceivedRecord>("REC31VED")
+				.ReplaceOne(Builders<ReceivedRecord>.Filter.Eq("_id", _id), this);
 		}
 	}
 

@@ -5,9 +5,8 @@ using OpenQA.Selenium.Chrome;
 
 namespace P4NTH30N.C0MMON;
 
-public static partial class Games {
-    public static class NewGold777 {
-        public static bool LoadSucessfully(ChromeDriver driver, NewCredential credential, NewSignal signal) {
+public static class Gold777Flow {
+    public static bool LoadSucessfully(ChromeDriver driver, CredentialRecord credential, SignalRecord signal) {
             for (int i = 1; i < credential.Settings.Gold777.Page; i++) {
                 switch (credential.Game) {
                     case "FireKirin": Mouse.Click(937, 177); break;
@@ -44,7 +43,7 @@ public static partial class Games {
 
                 if (buttonVerified == false) {
                     if (credential.Settings.Gold777.ButtonVerified == true) {
-                        credential = NewCredential.GetBy.Username(credential.Game, credential.Username);
+                        credential = CredentialRecord.GetBy.Username(credential.Game, credential.Username);
                         credential.Settings.Gold777.ButtonVerified = false;
                         credential.Save();
                     }
@@ -190,7 +189,7 @@ public static partial class Games {
 
                             }
                             if (buttonVerified) {
-                                credential = NewCredential.GetBy.Username(credential.Game, credential.Username);
+                                credential = CredentialRecord.GetBy.Username(credential.Game, credential.Username);
                                 credential.Settings.Gold777.Button_X = possibleButton.X;
                                 credential.Settings.Gold777.Button_Y = possibleButton.Y;
                                 credential.Settings.Gold777.Page = workingPage;
@@ -204,7 +203,7 @@ public static partial class Games {
                 }
                 if (credential.Settings.Gold777.ButtonVerified == false) {
                     if (buttonVerified) {
-                        credential = NewCredential.GetBy.Username(credential.Game, credential.Username);
+                        credential = CredentialRecord.GetBy.Username(credential.Game, credential.Username);
                         credential.Settings.Gold777.ButtonVerified = true;
                         credential.Save();
                     } else {
@@ -303,7 +302,7 @@ public static partial class Games {
             }
             return slotsLoaded;
         }
-        public static NewSignal? Spin(ChromeDriver driver, NewCredential credential, NewSignal signal) {
+    public static SignalRecord? Spin(ChromeDriver driver, CredentialRecord credential, SignalRecord signal) {
             Mouse.LongClick(929, 612);
             // Mouse.Click(955, 290);
 
@@ -326,7 +325,7 @@ public static partial class Games {
                     break;
                 }
 
-                NewSignal? newSignal = NewSignal.GetNext();
+                SignalRecord? newSignal = SignalRecord.GetNext();
                 // newSignal = (Signal)signal.Clone(); newSignal.Priority = 4;
                 if (newSignal != null && newSignal.Priority > signal.Priority) {
                     newSignal.Acknowledge();
@@ -436,5 +435,4 @@ public static partial class Games {
             }
             return null;
         }
-    }
 }
