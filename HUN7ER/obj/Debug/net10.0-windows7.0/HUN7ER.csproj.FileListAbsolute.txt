@@ -4,3 +4,34 @@ C:\OneDrive\P4NTH30N\HUN7ER\obj\Debug\net10.0-windows7.0\HUN7ER.AssemblyInfoInpu
 C:\OneDrive\P4NTH30N\HUN7ER\obj\Debug\net10.0-windows7.0\HUN7ER.AssemblyInfo.cs
 C:\OneDrive\P4NTH30N\HUN7ER\obj\Debug\net10.0-windows7.0\HUN7ER.csproj.CoreCompileInputs.cache
 C:\OneDrive\P4NTH30N\HUN7ER\obj\Debug\net10.0-windows7.0\HUN7ER.sourcelink.json
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\bin\Debug\net10.0-windows7.0\HUN7ER.exe
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\bin\Debug\net10.0-windows7.0\HUN7ER.deps.json
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\bin\Debug\net10.0-windows7.0\HUN7ER.runtimeconfig.json
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\bin\Debug\net10.0-windows7.0\HUN7ER.dll
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\bin\Debug\net10.0-windows7.0\HUN7ER.pdb
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\bin\Debug\net10.0-windows7.0\DnsClient.dll
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\bin\Debug\net10.0-windows7.0\H.InputSimulator.dll
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\bin\Debug\net10.0-windows7.0\Microsoft.Extensions.Logging.Abstractions.dll
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\bin\Debug\net10.0-windows7.0\MongoDB.Bson.dll
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\bin\Debug\net10.0-windows7.0\MongoDB.Driver.dll
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\bin\Debug\net10.0-windows7.0\WebDriver.dll
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\bin\Debug\net10.0-windows7.0\SharpCompress.dll
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\bin\Debug\net10.0-windows7.0\Snappier.dll
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\bin\Debug\net10.0-windows7.0\ZstdSharp.dll
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\bin\Debug\net10.0-windows7.0\runtimes\linux\native\selenium-manager
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\bin\Debug\net10.0-windows7.0\runtimes\osx\native\selenium-manager
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\bin\Debug\net10.0-windows7.0\runtimes\win\native\selenium-manager.exe
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\bin\Debug\net10.0-windows7.0\C0MMON.dll
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\bin\Debug\net10.0-windows7.0\C0MMON.pdb
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\obj\Debug\net10.0-windows7.0\HUN7ER.csproj.AssemblyReference.cache
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\obj\Debug\net10.0-windows7.0\HUN7ER.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\obj\Debug\net10.0-windows7.0\HUN7ER.AssemblyInfoInputs.cache
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\obj\Debug\net10.0-windows7.0\HUN7ER.AssemblyInfo.cs
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\obj\Debug\net10.0-windows7.0\HUN7ER.csproj.CoreCompileInputs.cache
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\obj\Debug\net10.0-windows7.0\HUN7ER.sourcelink.json
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\obj\Debug\net10.0-windows7.0\HUN7ER.csproj.Up2Date
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\obj\Debug\net10.0-windows7.0\HUN7ER.dll
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\obj\Debug\net10.0-windows7.0\refint\HUN7ER.dll
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\obj\Debug\net10.0-windows7.0\HUN7ER.pdb
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\obj\Debug\net10.0-windows7.0\HUN7ER.genruntimeconfig.cache
+c:\Users\paulc\OneDrive\Documents\New folder (2)\P4NTH30N\HUN7ER\obj\Debug\net10.0-windows7.0\ref\HUN7ER.dll

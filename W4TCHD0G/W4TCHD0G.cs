@@ -75,7 +75,7 @@ internal class Program {
 
         File.WriteAllText(@"D:\S1GNAL.json", JsonSerializer.Serialize(false));
         ProcessStartInfo H4ND = new() {
-            FileName = @"C:\OneDrive\P4NTH30N\H4ND\bin\release\net9.0-windows\H4ND.exe",
+            FileName = @"C:\OneDrive\P4NTH30N\H4ND\bin\release\net10.0-windows7.0\H4ND.exe",
             WindowStyle = ProcessWindowStyle.Normal,
             UseShellExecute = true,
             CreateNoWindow = false,

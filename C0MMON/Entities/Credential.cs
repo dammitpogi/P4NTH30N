@@ -68,6 +68,15 @@ public class Credential(string game) {
         else
             return dto[0];
     }
+public void Lock() {
+		UnlockTimeout = DateTime.UtcNow.AddMinutes(1.5);
+		Unlocked = false;
+		Save();
+	}
+	public void Unlock() {
+		Unlocked = true;
+		Save();
+	}
 
     // public static List<Credential> GetBy(House house)
     // {

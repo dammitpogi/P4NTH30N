@@ -17,7 +17,8 @@ class PROF3T {
 		// SeperateAllGames();
 		// DisableEmptyGames();
 		// UpdateCredentials();
-		LaunchBrowser();
+		// LaunchBrowser();
+        ResetGames();
 		// sandbox();
 		// BurnAccount("ShariNor55", "123qwe");
 		// ResetSignalsTest("FireKirin");
@@ -37,6 +38,17 @@ class PROF3T {
 		// Fix();p
 	}
 
+static void ResetGames()
+    {
+        List<Game> games = Game.GetAll();
+        foreach (Game game in games)
+        {
+            game.DPD.Average = 0;
+            game.DPD.History = [];
+            game.DPD.Data = [];
+            game.Save();
+        }
+    }
 	private static void Test2() {
 		//List<House> houses = House.GetAll();
 		//foreach (House house in houses.ToList()) {

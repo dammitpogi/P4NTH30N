@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "rWu1zQ7xwXk=",
+  "dgSpecHash": "hQIylxbqu2g=",
   "success": false,
   "projectFilePath": "C:\\OneDrive\\P4NTH30N\\M4NUAL\\M4NUAL.csproj",
   "expectedPackageFiles": [
@@ -8,10 +8,10 @@
     "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\figgle.generator\\0.6.5\\figgle.generator.0.6.5.nupkg.sha512",
     "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\selenium.webdriver\\4.38.0\\selenium.webdriver.4.38.0.nupkg.sha512",
     "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\selenium.webdriver.chromedriver\\79.0.3945.3600\\selenium.webdriver.chromedriver.79.0.3945.3600.nupkg.sha512",
-    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\microsoft.netcore.app.ref\\9.0.11\\microsoft.netcore.app.ref.9.0.11.nupkg.sha512",
-    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\microsoft.windowsdesktop.app.ref\\9.0.11\\microsoft.windowsdesktop.app.ref.9.0.11.nupkg.sha512",
-    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\microsoft.aspnetcore.app.ref\\9.0.11\\microsoft.aspnetcore.app.ref.9.0.11.nupkg.sha512",
-    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\microsoft.netcore.app.host.win-x64\\9.0.11\\microsoft.netcore.app.host.win-x64.9.0.11.nupkg.sha512"
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\microsoft.netcore.app.ref\\9.0.12\\microsoft.netcore.app.ref.9.0.12.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\microsoft.windowsdesktop.app.ref\\9.0.12\\microsoft.windowsdesktop.app.ref.9.0.12.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\microsoft.aspnetcore.app.ref\\9.0.12\\microsoft.aspnetcore.app.ref.9.0.12.nupkg.sha512",
+    "C:\\OneDrive\\P4NTH30N\\M4NUAL\\packages\\microsoft.netcore.app.host.win-x64\\9.0.12\\microsoft.netcore.app.host.win-x64.9.0.12.nupkg.sha512"
   ],
   "logs": [
     {

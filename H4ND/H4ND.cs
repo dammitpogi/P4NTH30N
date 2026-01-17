@@ -5,10 +5,11 @@ using Figgle;
 using P4NTH30N.C0MMON;
 using System.Drawing;
 using System.Text.Json;
+using System.Diagnostics;
 
 
 namespace P4NTH30N {
-    [GenerateFiggleText(sourceText: "v    0 . 8 . 5 . 3", memberName: "Version", fontName: "colossal")]
+    [GenerateFiggleText(sourceText: "v    0 . 8 . 5 . 5", memberName: "Version", fontName: "colossal")]
     internal static partial class Header { }
 }
 
@@ -89,8 +90,9 @@ internal class Program {
                         while (currentGrand.Equals(0)) {
                             Thread.Sleep(500);
                             if (grandChecked++ > 40) {
-                                Console.WriteLine($"Checking Grand failed at {grandChecked} attempts.");
-                                throw new Exception("Extension failure.");
+                                ProcessEvent alert = ProcessEvent.Log("H4ND",$"Grand check signalled an Extension Failure for {game.Name}");
+                                Console.WriteLine($"Checking Grand on {game.Name} failed at {grandChecked} attempts.");
+                                alert.Record(credential).Save(); throw new Exception("Extension failure.");
                             }
                             currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
                         }
