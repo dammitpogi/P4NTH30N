@@ -1,0 +1,8 @@
+<Project>
+  <PropertyGroup>
+    <VersionPrefix>0.8.5.3</VersionPrefix>
+    <AssemblyVersion>$(VersionPrefix)</AssemblyVersion>
+    <FileVersion>$(VersionPrefix)</FileVersion>
+    <AssemblyInformationalVersion>$(VersionPrefix)</AssemblyInformationalVersion>
+  </PropertyGroup>
+</Project>
