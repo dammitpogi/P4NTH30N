@@ -1,0 +1,55 @@
+{
+  "request": "architecture_visualization_inputs",
+  "questions": [
+    {
+      "id": "ft1_tree_command",
+      "priority": "high",
+      "question": "Run a repo tree command and paste output so we can visualize architecture. Preferred: `tree -L 5 -a` from repo root. If `tree` is unavailable, use: `find . -maxdepth 5 -print` (Linux/macOS) or `Get-ChildItem -Recurse -Depth 5` (PowerShell)."
+    },
+    {
+      "id": "ft2_solution_files",
+      "priority": "high",
+      "question": "List solution-level files at repo root (e.g., `*.sln`, `global.json`, `Directory.Build.props/targets`, `nuget.config`, `README.md`, `AGENTS.md`)."
+    },
+    {
+      "id": "ft3_projects_inventory",
+      "priority": "high",
+      "question": "Provide paths to all `*.csproj` files (command: `find . -name \"*.csproj\" -print`)."
+    },
+    {
+      "id": "ft4_key_dirs",
+      "priority": "medium",
+      "question": "Identify the primary source roots (e.g., `src/`, `apps/`, `C0MMON/`, `H4ND/`, `HUN7ER/`) and confirm which are buildable projects vs shared folders."
+    },
+    {
+      "id": "ft5_entrypoints",
+      "priority": "medium",
+      "question": "For each executable app, provide the entrypoint file (typically `Program.cs`) path and any host/bootstrap files."
+    },
+    {
+      "id": "ft6_config_files",
+      "priority": "medium",
+      "question": "List configuration files (e.g., `appsettings*.json`, `.env.example`) and where config is loaded (file names/paths only; do not include secrets)."
+    },
+    {
+      "id": "ft7_dependency_graph",
+      "priority": "low",
+      "question": "Optionally generate a dependency graph: `dotnet list <solution-or-project> reference` for each app project."
+    },
+    {
+      "id": "ft8_mongo_layer_locations",
+      "priority": "low",
+      "question": "Point to where DB access lives (folders like `Infrastructure/Persistence`, `Repositories`, `Mongo*`), using paths only."
+    }
+  ],
+  "outputs_expected": [
+    "tree_output_text",
+    "project_file_list",
+    "root_file_inventory"
+  ],
+  "notes": [
+    "Do not include credentials, connection strings, tokens, or private paths that reveal personal identity. Paths may be redacted to repo-relative form.",
+    "If the repo is very large, you can provide multiple tree outputs focused on key folders (e.g., `src/`, `tests/`, `C0MMON/`)."
+  ],
+  "generated_at_utc": "2026-01-17T19:55:16.364558Z"
+}
