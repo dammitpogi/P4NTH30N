@@ -40,7 +40,10 @@ internal class Program {
 					// Signal signal = new Signal(4, credential);
 
 
+					// Signals preempt the normal credential queue so urgent spins can run immediately.
 					NewSignal? signal = listenForSignals ? (overrideSignal ?? NewSignal.GetNext()) : null;
+					// We now iterate through credentials directly (instead of iterating through Games).
+					// This lets each account be locked/unlocked independently while sharing the same game flow.
 					NewCredential credential = (signal == null) ? NewCredential.GetNext() : NewCredential.GetBy.Username(signal.Game, signal.Username);
 					overrideSignal = null; credential.Lock(); signal?.Acknowledge();
 
@@ -85,6 +88,7 @@ internal class Program {
 
 
 					int grandChecked = 0;
+					// Jackpot values are read from the game's shared parent frame for the current account.
 					double currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
 					while (currentGrand <= 0 || (lastRetrievedGrand.Equals(currentGrand) && lastCredential != null && (credential.Game != lastCredential.Game || credential.URL != lastCredential.URL))) {
 						Thread.Sleep(500);
@@ -101,6 +105,7 @@ internal class Program {
 					double currentMini = Convert.ToDouble(driver.ExecuteScript("return window.parent.Mini")) / 100;
 					credential.Lock();
 
+					// Track deltas so we can build jackpot updates per credential instead of per game.
 					bool miniUpdated = credential.Jackpots.Mini != currentMini,
 						 grandUpdated = credential.Jackpots.Grand != currentGrand,
 						 majorUpdated = credential.Jackpots.Major != currentMajor,
@@ -158,6 +163,7 @@ internal class Program {
 					// } else
 					//     credential.Jackpots.Mini = currentMini;
 
+					// Balance and timestamps are saved on the credential record for later analytics (HUN7ERv2, etc.).
 					double currentBalance = Convert.ToDouble(driver.ExecuteScript("return window.parent.Balance")) / 100;
 					credential.Dates.LastUpdated = DateTime.UtcNow;
 					credential.Balance = currentBalance;

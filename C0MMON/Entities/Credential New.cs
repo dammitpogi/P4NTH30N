@@ -25,6 +25,25 @@ public class NewCredential(string game) {
 	private static readonly IMongoCollection<NewCredential> Database =
 		 new Database().IO.GetCollection<NewCredential>("CRED3N7IAL_New");
 
+	// Central credential collection backing the "iterate credentials" flow (replacing Game-level iteration).
+	public static List<NewCredential> GetAll() {
+		return Database.Find(Builders<NewCredential>.Filter.Empty).ToList();
+	}
+
+	// Pulls the next unlocked, enabled credential to work on, ordered by least-recently-updated.
+	// This mirrors the old "Game.GetNext()" queue semantics but operates at the credential level.
+	public static NewCredential GetNext() {
+		FilterDefinitionBuilder<NewCredential> builder = Builders<NewCredential>.Filter;
+		FilterDefinition<NewCredential> filter =
+			builder.Eq("Enabled", true)
+			& builder.Eq("Toggles.Banned", false)
+			& builder.Eq("Toggles.Unlocked", true);
+		return Database
+			.Find(filter)
+			.SortBy(credential => credential.Dates.LastUpdated)
+			.First();
+	}
+
 	public static class GetBy {
 		public static NewCredential? Username(string game, string username) {
 			FilterDefinitionBuilder<NewCredential> builder = Builders<NewCredential>.Filter;
@@ -34,11 +53,13 @@ public class NewCredential(string game) {
 		}
 	}
 	public void Lock() {
+		// Credential-level lock mirrors the old Game lock, but applies to a single account instead.
 		Dates.UnlockTimeout = DateTime.UtcNow.AddMinutes(1.5);
 		Toggles.Unlocked = false;
 		Save();
 	}
 	public void Unlock() {
+		// Unlocking re-enables this credential for iteration after the session finishes.
 		Toggles.Unlocked = true;
 		Save();
 	}
@@ -161,4 +182,3 @@ public class NewQuintuple5X_Settings {
 	public int Button_Y { get; set; } = 450;
 	public bool ButtonVerified { get; set; } = false;
 }
-
