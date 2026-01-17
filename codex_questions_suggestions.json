@@ -1,0 +1,182 @@
+{
+  "questions": [
+    {
+      "id": "q1_repo_root",
+      "priority": "high",
+      "question": "What is the repository root path used in your environment (e.g., /workspace/P4NTH30N or different)?"
+    },
+    {
+      "id": "q2_solution_layout",
+      "priority": "high",
+      "question": "Provide the top-level repo structure (output of `tree -L 3` or equivalent)."
+    },
+    {
+      "id": "q3_projects_list",
+      "priority": "high",
+      "question": "List the .NET projects involved (paths to .csproj for H4ND, HUN7ER, C0MMON, and any others)."
+    },
+    {
+      "id": "q4_banner_source",
+      "priority": "high",
+      "question": "Which file prints the runtime banner/version today? Paste the banner-related code block (or name the file path)."
+    },
+    {
+      "id": "q5_common_namespace",
+      "priority": "medium",
+      "question": "What is the root namespace for C0MMON (e.g., C0MMON or something else)?"
+    },
+    {
+      "id": "q6_net_version",
+      "priority": "medium",
+      "question": "What .NET SDK / target framework(s) are used (e.g., net6.0, net7.0, net8.0)?"
+    },
+    {
+      "id": "q7_existing_build_props",
+      "priority": "medium",
+      "question": "Do you already have Directory.Build.props/targets or a centralized MSBuild props file anywhere in the repo?"
+    },
+    {
+      "id": "q8_version_source_preference",
+      "priority": "medium",
+      "question": "Do you prefer versioning via Directory.Build.props (MSBuild properties) or a shared Version.cs constant (fallback if MSBuild is constrained)?"
+    },
+    {
+      "id": "q9_ci_stamp",
+      "priority": "low",
+      "question": "Do you want CI to stamp InformationalVersion (e.g., include build number or git SHA), or keep it manual only?"
+    },
+    {
+      "id": "q10_docs_location",
+      "priority": "low",
+      "question": "Do you want schemas/architecture notes under /docs, /README only, or both?"
+    },
+    {
+      "id": "q11_migration_cutover",
+      "priority": "medium",
+      "question": "For the legacy\u2192New* migration, is the goal dual-read/dual-write for a period, or a hard cutover with a one-time backfill?"
+    },
+    {
+      "id": "q12_legacy_retention",
+      "priority": "low",
+      "question": "Should legacy classes/collections remain for a defined deprecation window, or be removed immediately after cutover?"
+    },
+    {
+      "id": "q13_feature_flags",
+      "priority": "low",
+      "question": "Do you have an existing feature-flag mechanism (config switch) to gate migration behavior, or should one be introduced?"
+    },
+    {
+      "id": "q14_indexes_migrations",
+      "priority": "low",
+      "question": "Are DB indexes/migrations managed in code, scripts, or manually today?"
+    }
+  ],
+  "suggestions": [
+    {
+      "id": "s1_add_directory_build_props",
+      "priority": "high",
+      "title": "Centralize versioning with Directory.Build.props",
+      "details": [
+        "Add `Directory.Build.props` at repo root with `VersionPrefix`, `AssemblyVersion`, `FileVersion`, `AssemblyInformationalVersion`.",
+        "Allow CI to optionally override `InformationalVersion` without changing source."
+      ],
+      "acceptance_criteria": [
+        "All projects inherit version settings without per-project duplication.",
+        "AssemblyInformationalVersion is present in built artifacts."
+      ],
+      "deliverables": [
+        "New file: `Directory.Build.props`"
+      ]
+    },
+    {
+      "id": "s2_add_shared_version_helper",
+      "priority": "high",
+      "title": "Add a shared helper to read version from assembly metadata",
+      "details": [
+        "Create `C0MMON/Versioning/AppVersion.cs` (or equivalent) to read `AssemblyInformationalVersionAttribute`.",
+        "Use it in banners/log headers instead of hard-coded version strings."
+      ],
+      "acceptance_criteria": [
+        "Runtime banner prints the informational version when available; otherwise falls back to assembly version or 'unknown'."
+      ],
+      "deliverables": [
+        "New file: `C0MMON/Versioning/AppVersion.cs`",
+        "Small edit: replace hard-coded version string in the banner location."
+      ]
+    },
+    {
+      "id": "s3_add_agents_md",
+      "priority": "high",
+      "title": "Add AGENTS.md defining project conventions and refactor rules",
+      "details": [
+        "Define preferred folder layout (Domain/Application/Infrastructure/etc.).",
+        "Define object-centric behavior guidance (what stays on entities vs services).",
+        "Define naming conventions (including migration namespaces like `*.V2.*` or `*.Migration.*`).",
+        "Define MongoDB naming/schema/index conventions and PR requirements for migrations/refactors."
+      ],
+      "acceptance_criteria": [
+        "Repo includes a clear, repo-wide conventions file used as the default reference in PRs.",
+        "New code follows the naming/layout rules without ad-hoc structures."
+      ],
+      "deliverables": [
+        "New file: `AGENTS.md`"
+      ]
+    },
+    {
+      "id": "s4_add_root_readme",
+      "priority": "high",
+      "title": "Create root README for onboarding and architecture overview",
+      "details": [
+        "Add `README.md` describing components at a high level, responsibilities, and data model concepts.",
+        "List collections by name (as implemented in code), but keep environment-specific and sensitive runtime details out of public docs.",
+        "Document where to find deeper schema/architecture notes (e.g., `docs/`)."
+      ],
+      "acceptance_criteria": [
+        "A new contributor can understand what each component is responsible for and where core code lives.",
+        "README does not embed secrets or environment-specific operational details."
+      ],
+      "deliverables": [
+        "New file: `README.md`"
+      ]
+    },
+    {
+      "id": "s5_migration_scaffolding",
+      "priority": "medium",
+      "title": "Structure the legacy\u2192New* migration with adapters and flags",
+      "details": [
+        "Introduce interfaces/boundaries (e.g., selectors/routers/repositories) so legacy and New* implementations can be swapped.",
+        "Add a feature flag/config switch to select old vs new flows at runtime.",
+        "If needed, implement dual-write (new + legacy) or read-through adapters during a transition window.",
+        "Plan a deprecation window and remove legacy references after stability."
+      ],
+      "acceptance_criteria": [
+        "Code compiles with both legacy and New* implementations available.",
+        "A single flag controls which implementation is active without invasive changes."
+      ],
+      "deliverables": [
+        "One small config flag (appsettings/env var) and an implementation selection point.",
+        "Adapter classes or repository wrappers as needed."
+      ]
+    },
+    {
+      "id": "s6_schema_docs",
+      "priority": "low",
+      "title": "Add docs/schema.md with collections, key fields, and indexes",
+      "details": [
+        "Document each collection\u2019s purpose, primary keys, and critical indexes.",
+        "Include retention/TTL behavior if any."
+      ],
+      "acceptance_criteria": [
+        "Schema changes reference an updated doc and index notes."
+      ],
+      "deliverables": [
+        "New file: `docs/schema.md` (optional but recommended)"
+      ]
+    }
+  ],
+  "notes": [
+    "This JSON is intended as an input bundle for another coding agent (e.g., Codex) to generate repo-specific diffs once file paths and layout are known.",
+    "No secrets are requested; do not include credentials or environment-specific sensitive operational details in shared documents."
+  ],
+  "generated_at_utc": "2026-01-17T19:47:22.779611Z"
+}
