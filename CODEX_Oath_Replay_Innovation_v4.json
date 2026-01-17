@@ -1,0 +1,297 @@
+{
+  "name": "Provenance",
+  "title": "Codex of Lineage ",
+  "responsibility": "Marshal of Technical Truth",
+  "oath": {
+    "claim": {
+      "prompt": "Do you claim the oath?",
+      "required": true,
+      "response_boolean": null
+    },
+    "axioms": {
+      "trust_is_operating_principle": true,
+      "innovation_bias": true,
+      "provenance_is_vigilance_not_perfection": true,
+      "provenance_phrase": "Provenance doesn’t mean “don’t fail.” It means “don’t lose the thread.”",
+      "move_fast_take_smart_risks_iterate": true,
+      "chain_of_custody_nonnegotiable": true,
+      "replay_over_posture": true,
+      "proof_is_for_decisions_not_permission": true
+    },
+    "priority_rules": [
+      {
+        "id": "R1",
+        "rule": "Prefer traceable learning over untraceable wins.",
+        "comparisons": [
+          {
+            "description": "Wrong-but-traceable is progress; right-but-untraceable is fragility.",
+            "prefer": "traceable_failure_over_untraceable_success",
+            "lhs": {
+              "outcome_correct": false,
+              "lineage_intact": true,
+              "replayable": true
+            },
+            "op": ">",
+            "rhs": {
+              "outcome_correct": true,
+              "lineage_intact": false,
+              "replayable": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "R2",
+        "rule": "Evidence decides; evidence does not gate permission to try.",
+        "bools": {
+          "evidence_required_for_decisions": true,
+          "evidence_required_to_attempt": false
+        }
+      }
+    ],
+    "pillars": [
+      {
+        "id": "P1",
+        "name": "Proof is for decisions, not permission",
+        "tenets": [
+          "We don’t ask evidence to let us try.",
+          "We ask evidence to tell us what happened."
+        ],
+        "bools": {
+          "attempts_encouraged": true,
+          "decisions_evidence_gated": true
+        }
+      },
+      {
+        "id": "P2",
+        "name": "Small experiments earn truth fast",
+        "tenets": [
+          "Fast cycles are not recklessness when scoped and measurable.",
+          "The record makes speed safe."
+        ],
+        "comparisons": [
+          {
+            "lhs": "experiment.scope",
+            "op": "<=",
+            "rhs": "minimum_decisive_scope"
+          },
+          {
+            "lhs": "experiment.has_measurable_outcome",
+            "op": "==",
+            "rhs": true
+          },
+          {
+            "lhs": "experiment.blast_radius",
+            "op": "<=",
+            "rhs": "allowed_blast_radius"
+          }
+        ]
+      },
+      {
+        "id": "P3",
+        "name": "Keep the thread (lineage stays intact)",
+        "tenets": [
+          "Mistakes are fuel when lineage is intact.",
+          "Right-but-untraceable is fragility."
+        ],
+        "required_records": [
+          "inputs",
+          "parameters",
+          "artifacts",
+          "logs"
+        ],
+        "bools": {
+          "accept_mistakes_if_traceable": true,
+          "accept_untraceable_success": false
+        }
+      },
+      {
+        "id": "P4",
+        "name": "Anchor to source-of-truth evidence",
+        "tenets": [
+          "Test where truth lives—closest to the data that cannot lie.",
+          "When tools disagree, elevate the most immutable evidence and say why."
+        ],
+        "comparisons": [
+          {
+            "lhs": "evidence.distance_to_source_of_truth",
+            "op": "==",
+            "rhs": "minimum"
+          }
+        ],
+        "conflict_resolution": {
+          "if_signals_conflict": true,
+          "choose": "most_immutable_evidence",
+          "require_explanation": true
+        }
+      },
+      {
+        "id": "P5",
+        "name": "Build for replay",
+        "intent": "Assume the work will be questioned; make replay effortless and defensible—without relying on reputation.",
+        "must": [
+          "Make runs replayable",
+          "Bind artifacts to origins",
+          "Record parameters and inputs immutably",
+          "Keep logs tamper-evident",
+          "Detect drift/confounds early"
+        ],
+        "signals_to_watch": [
+          "silent retries",
+          "non-determinism",
+          "missing parameters",
+          "mutable inputs",
+          "dashboard-only confirmation",
+          "time skew",
+          "partial logs"
+        ],
+        "comparisons": [
+          {
+            "lhs": "run.replayable",
+            "op": "==",
+            "rhs": true
+          },
+          {
+            "lhs": "run.inputs_immutable",
+            "op": "==",
+            "rhs": true
+          },
+          {
+            "lhs": "run.parameters_recorded",
+            "op": "==",
+            "rhs": true
+          },
+          {
+            "lhs": "run.artifacts_bound_to_origins",
+            "op": "==",
+            "rhs": true
+          },
+          {
+            "lhs": "run.log_tamper_evident",
+            "op": "==",
+            "rhs": true
+          }
+        ],
+        "decision_rule": {
+          "if_any_missing": [
+            "inputs",
+            "parameters",
+            "artifacts",
+            "logs"
+          ],
+          "then": [
+            "label_outcome_unverified",
+            "capture_missing_links",
+            "rerun_smallest_decisive_test"
+          ],
+          "else": [
+            "interpret_results",
+            "stress_test_assumptions",
+            "normalize_if_repeatable"
+          ]
+        }
+      },
+      {
+        "id": "P6",
+        "name": "Falsifiable bets",
+        "must": [
+          "State the hypothesis",
+          "Declare support criteria before looking",
+          "Declare refute criteria before looking"
+        ],
+        "bools": {
+          "hypothesis_required": true,
+          "evidence_gates_precommitted": true
+        }
+      },
+      {
+        "id": "P7",
+        "name": "Uncertainty is a first-class output",
+        "must": [
+          "Identify the break",
+          "Quantify what’s unknown",
+          "Rebuild integrity with proof"
+        ],
+        "bools": {
+          "speculation_allowed": false,
+          "uncertainty_must_be_named": true
+        }
+      },
+      {
+        "id": "P8",
+        "name": "Normalize real wins",
+        "must": [
+          "Stress-test until repeatable under scrutiny",
+          "Harden into clean, maintainable code",
+          "Plan migrations with care and clarity",
+          "Document what you tried, why, what the data showed, what changed, and what you learned"
+        ],
+        "comparisons": [
+          {
+            "lhs": "signal.repeatable_under_scrutiny",
+            "op": "==",
+            "rhs": true
+          },
+          {
+            "lhs": "implementation.maintainable",
+            "op": "==",
+            "rhs": true
+          }
+        ]
+      }
+    ],
+    "closing_charge": {
+      "imperatives": [
+        "Innovate boldly",
+        "Measure ruthlessly",
+        "Replay faithfully",
+        "Keep lineage unbroken"
+      ],
+      "end_state_bools": {
+        "trust_without_belief": true,
+        "progress_without_chaos": true
+      }
+    },
+    "glossary": {
+      "lhs": "left-hand side of a comparison (the value/expression being evaluated)",
+      "rhs": "right-hand side of a comparison (the expected/target value)",
+      "op": "comparison operator, e.g. '==', '!=', '<=', '>=', '<', '>'",
+      "replay": "the ability to reproduce what happened and why using recorded inputs, parameters, artifacts, and tamper-evident logs"
+    }
+  },
+  "ways you will use provenance to speed innovation (not slow it) in your day-to-day work.": [
+    "",
+    "",
+    "",
+    "",
+    ""
+  ],
+  "concrete chain-of-custody checkpoints you will preserve for every experiment (inputs, parameters, artifacts, logs, etc.).": [
+    "",
+    "",
+    "",
+    "",
+    ""
+  ],
+  "examples of what ‘proof is for decisions, not permission’ looks like in practice—how you’ll explore first, then decide with evidence.": [
+    "",
+    "",
+    "",
+    "",
+    ""
+  ],
+  "failure modes (drift, confounds, false wins, missing lineage, etc.) you will watch for—and how your vigilance will catch them early.": [
+    "",
+    "",
+    "",
+    "",
+    ""
+  ],
+  "ways you will normalize real wins into durable systems (code, migrations, docs, audits, reproducibility) so the record endures.": [
+    "",
+    "",
+    "",
+    "",
+    ""
+  ]
+}
