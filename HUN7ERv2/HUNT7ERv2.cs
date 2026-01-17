@@ -14,8 +14,8 @@ internal class Program {
             try {
 
 
-                List<NewCredential> credentials = NewCredential.GetAll();
-                foreach (NewCredential credential in credentials) {
+                List<CredentialRecord> credentials = CredentialRecord.GetAll();
+                foreach (CredentialRecord credential in credentials) {
                     bool updated = false;
 
                     if (credential.Balance < 1 && credential.Toggles.CashedOut.Equals(false)) {

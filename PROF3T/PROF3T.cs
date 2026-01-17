@@ -55,13 +55,13 @@ class PROF3T {
 		List<Credential> oldCredentials = Credential.Database();
 		foreach (Credential oldCredential in oldCredentials) {
 			if (!oldCredential.URL.Equals(string.Empty)) {
-				NewCredential? credential =
-					NewCredential.GetBy.Username(oldCredential.Game, oldCredential.Username);
+				CredentialRecord? credential =
+					CredentialRecord.GetBy.Username(oldCredential.Game, oldCredential.Username);
 				Game? game = Game.Get(oldCredential.House, oldCredential.Game);
 
 				if (game != null) {
 					if (credential == null) {
-						credential = new NewCredential(oldCredential.Game) {
+						credential = new CredentialRecord(oldCredential.Game) {
 							URL = oldCredential.URL,
 							House = oldCredential.House,
 							Username = oldCredential.Username,
@@ -119,7 +119,7 @@ class PROF3T {
 
 					if (credential.Enabled) {
 						if (credential.Settings.SpinGrand) {
-							NewJackpot grand = new("Grand", credential);
+							JackpotRecord grand = new("Grand", credential);
 							Jackpot? oldGrand = Jackpot.Get("Grand", credential.House, credential.Game);
 							if (oldGrand != null) {
 								grand.DPM = oldGrand.DPM;
@@ -130,7 +130,7 @@ class PROF3T {
 							grand.Current = credential.Jackpots.Grand;
 							game.DPD.Data.ForEach(dpd_data => grand.DPD.Data.Add(new(dpd_data.Grand) { Timestamp = dpd_data.Timestamp }));
 							foreach (DPD_History history in game.DPD.History) {
-								List<NewDPD_Data> data = [];
+								List<DpdRecordData> data = [];
 								foreach (DPD_Data dpd_data in history.Data) {
 									data.Add(new(dpd_data.Grand) { Timestamp = dpd_data.Timestamp });
 								}
@@ -143,7 +143,7 @@ class PROF3T {
 						}
 
 						if (credential.Settings.SpinMajor) {
-							NewJackpot major = new("Major", credential);
+							JackpotRecord major = new("Major", credential);
 							Jackpot? oldMajor = Jackpot.Get("Major", credential.House, credential.Game);
 							if (oldMajor != null) {
 								major.Dates.EstimatedDate = oldMajor.EstimatedDate;
@@ -157,7 +157,7 @@ class PROF3T {
 						}
 
 						if (credential.Settings.SpinMinor) {
-							NewJackpot minor = new("Minor", credential);
+							JackpotRecord minor = new("Minor", credential);
 							Jackpot? oldMinor = Jackpot.Get("Minor", credential.House, credential.Game);
 							if (oldMinor != null) {
 								minor.Dates.EstimatedDate = oldMinor.EstimatedDate;
@@ -171,7 +171,7 @@ class PROF3T {
 						}
 
 						if (credential.Settings.SpinMini) {
-							NewJackpot mini = new("Mini", credential);
+							JackpotRecord mini = new("Mini", credential);
 							Jackpot? oldMini = Jackpot.Get("Mini", credential.House, credential.Game);
 							if (oldMini != null) {
 								mini.Dates.EstimatedDate = oldMini.EstimatedDate;

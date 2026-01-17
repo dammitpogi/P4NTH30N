@@ -1,6 +1,0 @@
-C:\OneDrive\P4NTH30N\H5ND\obj\Debug\net10.0-windows7.0\H5ND.csproj.AssemblyReference.cache
-C:\OneDrive\P4NTH30N\H5ND\obj\Debug\net10.0-windows7.0\H5ND.GeneratedMSBuildEditorConfig.editorconfig
-C:\OneDrive\P4NTH30N\H5ND\obj\Debug\net10.0-windows7.0\H5ND.AssemblyInfoInputs.cache
-C:\OneDrive\P4NTH30N\H5ND\obj\Debug\net10.0-windows7.0\H5ND.AssemblyInfo.cs
-C:\OneDrive\P4NTH30N\H5ND\obj\Debug\net10.0-windows7.0\H5ND.csproj.CoreCompileInputs.cache
-C:\OneDrive\P4NTH30N\H5ND\obj\Debug\net10.0-windows7.0\H5ND.sourcelink.json
