@@ -128,7 +128,7 @@
       {
         "id": "P5",
         "name": "Build for replay",
-        "intent": "Assume the work will be questioned; make replay effortless and defensible-without relying on reputation.",
+        "intent": "Assume the work will be questioned; make replay effortless and defensible - without relying on reputation.",
         "must": [
           "Make runs replayable",
           "Bind artifacts to origins",
