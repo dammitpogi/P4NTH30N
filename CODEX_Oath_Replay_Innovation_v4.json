@@ -109,7 +109,7 @@
         "id": "P4",
         "name": "Anchor to source-of-truth evidence",
         "tenets": [
-          "Test where truth lives-closest to the data that cannot lie.",
+          "Test where truth lives - closest to the data that cannot lie.",
           "When tools disagree, elevate the most immutable evidence and say why."
         ],
         "comparisons": [
