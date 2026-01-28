@@ -1,0 +1,7 @@
+{
+  "report": "interface_registry",
+  "status": "completed",
+  "summary": "Established canonical interface registry and schema for legacy alignment.",
+  "artifact": "Codex/Artifacts/interface_registry.json",
+  "schema": "Codex/Schemas/interface_registry.schema.json"
+}

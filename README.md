@@ -100,6 +100,7 @@ Recommended next steps:
 - `HUN7ERv2/`, `H5ND/`, `H0UND/` – sibling tools/experiments
 - `W4TCHD0G/`, `PROF3T/`, `M4NUAL/` – supporting tools
 - `RUL3S/` – static resources/overrides used by automation
+- `Codex/` – provenance and governance canon (artifacts, schemas, reports)
 
 ## Contributing notes
 

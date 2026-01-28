@@ -46,6 +46,24 @@
       "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
     },
     {
+      "path": "C0MMON/Interfaces",
+      "type": "directory",
+      "description": "Shared interface contracts for repositories and services.",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
+      "path": "C0MMON/Interfaces/ICredentialRepository.cs",
+      "type": "file",
+      "description": "Interface contract for credential persistence operations.",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
+      "path": "C0MMON/Interfaces/ISignalRepository.cs",
+      "type": "file",
+      "description": "Interface contract for signal persistence operations.",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
       "path": "C0MMON/Keyboard.cs",
       "type": "file",
       "description": "Keyboard input simulator used by automation.",
@@ -133,6 +151,84 @@
       "path": "CL0UD/obj",
       "type": "directory",
       "description": "Directory in the repo root.",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
+      "path": "Codex",
+      "type": "directory",
+      "description": "Codex governance artifacts and provenance guidance.",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
+      "path": "Codex/Artifacts",
+      "type": "directory",
+      "description": "Canonical codex artifacts (oaths, identity, governance).",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
+      "path": "Codex/Artifacts/CODEX_Oath_Replay_Innovation_v4.json",
+      "type": "file",
+      "description": "Codex oath, pillars, and provenance practice prompts.",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
+      "path": "Codex/Artifacts/CODEX_of_Provenance_v1.0.3.json",
+      "type": "file",
+      "description": "Provenance identity, governance, and operating principles.",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
+      "path": "Codex/Artifacts/interface_registry.json",
+      "type": "file",
+      "description": "Canonical registry of cross-process interfaces and contracts.",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
+      "path": "Codex/Reports",
+      "type": "directory",
+      "description": "Generated provenance and relocation reports.",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
+      "path": "Codex/Reports/codex_relocation_report.json",
+      "type": "file",
+      "description": "Report describing codex artifact relocation and schemas added.",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
+      "path": "Codex/Reports/framework_upgrade_report.json",
+      "type": "file",
+      "description": "Report describing framework upgrade gates and evidence pack requirements.",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
+      "path": "Codex/Reports/interface_registry_report.json",
+      "type": "file",
+      "description": "Report establishing the interface registry and schema.",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
+      "path": "Codex/Schemas",
+      "type": "directory",
+      "description": "JSON schemas for codex governance structures.",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
+      "path": "Codex/Schemas/architecture_governance.schema.json",
+      "type": "file",
+      "description": "Schema for architecture governance structure.",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
+      "path": "Codex/Schemas/interface_registry.schema.json",
+      "type": "file",
+      "description": "Schema for interface registry entries.",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
+      "path": "Codex/Schemas/relationships.schema.json",
+      "type": "file",
+      "description": "Schema for identity relationships entries.",
       "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
     },
     {
@@ -379,6 +475,66 @@
       "path": "codex_questions_suggestions.json",
       "type": "file",
       "description": "JSON configuration or documentation metadata.",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
+      "path": "Codex/Artifacts/changelog_protocol.json",
+      "type": "file",
+      "description": "Changelog protocol defining per-run reporting requirements.",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
+      "path": "Codex/Artifacts/entity_mongo_inventory.json",
+      "type": "file",
+      "description": "Inventory mapping C0MMON entities to MongoDB collections.",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
+      "path": "Codex/Inbox",
+      "type": "directory",
+      "description": "Inbox for incoming Codex artifacts and lineage notes.",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
+      "path": "Codex/Inbox/README.txt",
+      "type": "file",
+      "description": "Inbox placeholder note for Codex submissions.",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
+      "path": "Codex/Reports/mongo_architecture_report.json",
+      "type": "file",
+      "description": "Report documenting MongoDB architecture observations and plan.",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
+      "path": "Codex/Reports/run_changelog_20260118.json",
+      "type": "file",
+      "description": "Run changelog capturing documentation updates and open questions.",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
+      "path": "Nexus",
+      "type": "directory",
+      "description": "Folder for Nexus lineage submissions and artifacts.",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
+      "path": "Nexus/Inbox",
+      "type": "directory",
+      "description": "Inbox for Nexus submissions.",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
+      "path": "Nexus/Inbox/README.txt",
+      "type": "file",
+      "description": "Inbox placeholder note for Nexus submissions.",
+      "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
+    },
+    {
+      "path": "refactor_questions.json",
+      "type": "file",
+      "description": "Blocking questions and ideas for the planned refactor.",
       "ties_to_root": "Part of the P4NTH30N repo; referenced by solution/projects or supporting assets."
     }
   ]

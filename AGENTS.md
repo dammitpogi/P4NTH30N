@@ -25,7 +25,7 @@ Recommended folder layout (when adding new code):
   /Integrations
 ```
 
-> This layout is a guide; do not reorganize existing folders unless part of an agreed migration plan.
+> This layout is a guide; reorganization is allowed and encouraged when it improves clarity or maintainability. Document intent, scope, and rollback notes to keep lineage intact.
 
 ## 2. Naming conventions
 
@@ -60,4 +60,3 @@ When implementing:
 - Keep all pixel coordinates and UI assumptions close to the owning game helper.
 - Never embed secrets in code or docs.
 - If a change impacts automated flow, note rollback steps in the commit or PR summary.
-

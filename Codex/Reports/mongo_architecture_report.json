@@ -1,0 +1,53 @@
+{
+  "report": "mongo_architecture_review",
+  "version": "1.0.0",
+  "timestamp_utc": "2026-01-18",
+  "author": "Provenance",
+  "commentary": {
+    "overview": "C0MMON entities use direct MongoDB collection access with shared Database.IO. Most persistence is embedded in entity classes, with some migration variants using alternate collections.",
+    "lineage_notes": [
+      "Credentials, games, signals, and jackpots are directly coupled to MongoDB collection names.",
+      "Migration variants (NewCredential, NewJackpot, NewSignal) are present alongside legacy entities.",
+      "Received legacy code is commented out; NewReceived is active and uses REC31VED."
+    ]
+  },
+  "documented_sources": [
+    "C0MMON/Database.cs",
+    "C0MMON/Entities/Credential.cs",
+    "C0MMON/Entities/Credential New.cs",
+    "C0MMON/Entities/Game.cs",
+    "C0MMON/Entities/House.cs",
+    "C0MMON/Entities/Jackpot.cs",
+    "C0MMON/Entities/Jackpot New.cs",
+    "C0MMON/Entities/Signal.cs",
+    "C0MMON/Entities/Signal copy.cs",
+    "C0MMON/Entities/Received copy.cs",
+    "C0MMON/Entities/EventLog.cs"
+  ],
+  "plan": {
+    "phase_1": [
+      "Confirm canonical collections for each domain entity.",
+      "Inventory indexes and document performance-critical queries.",
+      "Define repository interfaces and adapters for legacy/new collection access."
+    ],
+    "phase_2": [
+      "Introduce configuration-based toggles for dual-run migrations.",
+      "Move entity persistence concerns into Infrastructure/Persistence adapters.",
+      "Add domain services for credential and signal workflows."
+    ],
+    "phase_3": [
+      "Migrate automation flows to new adapters.",
+      "Deprecate legacy collections with clear rollback instructions.",
+      "Archive migration variants once stability is proven."
+    ]
+  },
+  "risks": [
+    "Direct collection access in entities increases refactor coupling.",
+    "Shared collections between legacy and new entities can introduce data drift.",
+    "Hard-coded connection strings complicate environment-specific overrides."
+  ],
+  "rollback_notes": [
+    "No runtime behavior changed in this report; rollback not required.",
+    "If future refactors proceed, maintain dual-run toggles until data parity is verified."
+  ]
+}
