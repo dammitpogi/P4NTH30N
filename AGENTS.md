@@ -60,3 +60,13 @@ When implementing:
 - Keep all pixel coordinates and UI assumptions close to the owning game helper.
 - Never embed secrets in code or docs.
 - If a change impacts automated flow, note rollback steps in the commit or PR summary.
+
+### PROF3T safety
+- Default state: all admin commands and test harness calls in `PROF3T.cs` must remain commented out.
+- Only uncomment a single intended call for a run; re-comment it immediately after.
+- If a run is requested, confirm the active call list before executing.
+
+## 7. PROF3T safety
+
+- Before running `PROF3T.cs`, ensure every admin/test call in `Main()` is commented out unless the user explicitly requests it.
+- Always confirm which `Main()` line(s) will execute before running `PROF3T.cs`.

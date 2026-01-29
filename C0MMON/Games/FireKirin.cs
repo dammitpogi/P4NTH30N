@@ -1,11 +1,28 @@
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
+using System.IO;
+using System.Net.Http;
+using System.Net.WebSockets;
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.Json;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 namespace P4NTH30N.C0MMON;
 
 public static class FireKirin {
+    public sealed record FireKirinBalances(decimal Balance, decimal Grand, decimal Major, decimal Minor, decimal Mini);
+
+    private sealed record FireKirinNetConfig(
+        string BsIp,
+        int WsPort,
+        string WsProtocol,
+        string GameProtocol,
+        string Version
+    );
 
     public static Signal? SpinSlots(ChromeDriver driver, Game game, Signal signal) {
         Signal? overrideSignal = null;
@@ -97,5 +114,227 @@ public static class FireKirin {
             Console.WriteLine($"Exception on Login: {ex.Message}");
             return false;
         }
+    }
+
+    public static FireKirinBalances QueryBalances(string username, string password) {
+        FireKirinNetConfig config = FetchNetConfig();
+        string wsUrl = $"{config.GameProtocol}{config.BsIp}:{config.WsPort}";
+        using var ws = new ClientWebSocket();
+
+        if (!string.IsNullOrWhiteSpace(config.WsProtocol)) {
+            ws.Options.AddSubProtocol(config.WsProtocol);
+        }
+
+        using var connectCts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+        ws.ConnectAsync(new Uri(wsUrl), connectCts.Token).GetAwaiter().GetResult();
+
+        string md5Password = ComputeMd5Hex(password);
+        SendJson(
+            ws,
+            new {
+                mainID = 100,
+                subID = 6,
+                account = username,
+                password = md5Password,
+                version = config.Version
+            },
+            TimeSpan.FromSeconds(10)
+        );
+
+        int bossId = 0;
+        decimal balance = 0;
+        WaitForMessage(
+            ws,
+            100,
+            116,
+            TimeSpan.FromSeconds(10),
+            data => {
+                int result = GetInt32(data, "result");
+                if (result != 0) {
+                    string message = GetString(data, "msg") ?? "Login failed.";
+                    throw new InvalidOperationException(message);
+                }
+
+                bossId = GetInt32(data, "bossid");
+                balance = GetDecimal(data, "score");
+            }
+        );
+
+        SendJson(
+            ws,
+            new {
+                mainID = 100,
+                subID = 10,
+                bossid = bossId
+            },
+            TimeSpan.FromSeconds(10)
+        );
+
+        decimal grand = 0;
+        decimal major = 0;
+        decimal minor = 0;
+        decimal mini = 0;
+
+        WaitForMessage(
+            ws,
+            100,
+            120,
+            TimeSpan.FromSeconds(10),
+            data => {
+                grand = GetDecimal(data, "grand");
+                major = GetDecimal(data, "major");
+                minor = GetDecimal(data, "minor");
+                mini = GetDecimal(data, "mini");
+            }
+        );
+
+        try {
+            if (ws.State == WebSocketState.Open || ws.State == WebSocketState.CloseReceived) {
+                ws.CloseAsync(
+                    WebSocketCloseStatus.NormalClosure,
+                    "done",
+                    CancellationToken.None
+                ).GetAwaiter().GetResult();
+            }
+        } catch (WebSocketException) {
+            // Ignore close handshake failures from server.
+        }
+
+        return new FireKirinBalances(balance, grand, major, minor, mini);
+    }
+
+    private static FireKirinNetConfig FetchNetConfig() {
+        const string configUrl =
+            "http://play.firekirin.in/web_mobile/plat/config/hall/firekirin/config.json";
+
+        using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(10) };
+        string json = http.GetStringAsync(configUrl).GetAwaiter().GetResult();
+        using var doc = JsonDocument.Parse(json);
+        JsonElement root = doc.RootElement;
+
+        string bsIp = GetString(root, "bsIp") ?? string.Empty;
+        int wsPort = GetInt32(root, "wsPort", 8600);
+        string wsProtocol = GetString(root, "wsProtocol") ?? "wl";
+        string gameProtocol = GetString(root, "gameProtocol") ?? "ws://";
+        string version = GetString(root, "version") ?? "2.0.1";
+
+        if (string.IsNullOrWhiteSpace(bsIp)) {
+            throw new InvalidOperationException("Missing bsIp in FireKirin config.");
+        }
+
+        return new FireKirinNetConfig(bsIp, wsPort, wsProtocol, gameProtocol, version);
+    }
+
+    private static void SendJson(ClientWebSocket ws, object payload, TimeSpan timeout) {
+        string json = JsonSerializer.Serialize(payload);
+        byte[] bytes = Encoding.UTF8.GetBytes(json);
+
+        using var sendCts = new CancellationTokenSource(timeout);
+        ws.SendAsync(bytes, WebSocketMessageType.Text, true, sendCts.Token)
+            .GetAwaiter()
+            .GetResult();
+    }
+
+    private static void WaitForMessage(
+        ClientWebSocket ws,
+        int mainId,
+        int subId,
+        TimeSpan timeout,
+        Action<JsonElement> onData
+    ) {
+        DateTime deadline = DateTime.UtcNow.Add(timeout);
+
+        while (DateTime.UtcNow <= deadline) {
+            TimeSpan remaining = deadline - DateTime.UtcNow;
+            if (remaining <= TimeSpan.Zero) {
+                break;
+            }
+
+            string message = ReceiveText(ws, remaining);
+            using var doc = JsonDocument.Parse(message);
+            JsonElement root = doc.RootElement;
+
+            if (
+                GetInt32(root, "mainID") == mainId
+                && GetInt32(root, "subID") == subId
+                && root.TryGetProperty("data", out JsonElement data)
+            ) {
+                onData(data);
+                return;
+            }
+        }
+
+        throw new TimeoutException($"Timed out waiting for {mainId}/{subId}.");
+    }
+
+    private static string ReceiveText(ClientWebSocket ws, TimeSpan timeout) {
+        using var receiveCts = new CancellationTokenSource(timeout);
+        ArraySegment<byte> buffer = new(new byte[8192]);
+        using var ms = new MemoryStream();
+
+        while (true) {
+            WebSocketReceiveResult result = ws.ReceiveAsync(buffer, receiveCts.Token)
+                .GetAwaiter()
+                .GetResult();
+
+            if (result.MessageType == WebSocketMessageType.Close) {
+                throw new WebSocketException("WebSocket closed while waiting for data.");
+            }
+
+            ms.Write(buffer.Array!, buffer.Offset, result.Count);
+            if (result.EndOfMessage) {
+                break;
+            }
+        }
+
+        return Encoding.UTF8.GetString(ms.ToArray());
+    }
+
+    private static string ComputeMd5Hex(string input) {
+        using var md5 = MD5.Create();
+        byte[] hash = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
+        var sb = new StringBuilder(hash.Length * 2);
+        foreach (byte b in hash) {
+            sb.Append(b.ToString("x2", CultureInfo.InvariantCulture));
+        }
+        return sb.ToString();
+    }
+
+    private static int GetInt32(JsonElement element, string name, int fallback = 0) {
+        if (element.TryGetProperty(name, out JsonElement value)) {
+            if (value.ValueKind == JsonValueKind.Number && value.TryGetInt32(out int i)) {
+                return i;
+            }
+
+            if (value.ValueKind == JsonValueKind.String &&
+                int.TryParse(value.GetString(), NumberStyles.Integer, CultureInfo.InvariantCulture, out int s)) {
+                return s;
+            }
+        }
+
+        return fallback;
+    }
+
+    private static decimal GetDecimal(JsonElement element, string name, decimal fallback = 0) {
+        if (element.TryGetProperty(name, out JsonElement value)) {
+            if (value.ValueKind == JsonValueKind.Number && value.TryGetDecimal(out decimal d)) {
+                return d;
+            }
+
+            if (value.ValueKind == JsonValueKind.String &&
+                decimal.TryParse(value.GetString(), NumberStyles.Any, CultureInfo.InvariantCulture, out decimal s)) {
+                return s;
+            }
+        }
+
+        return fallback;
+    }
+
+    private static string? GetString(JsonElement element, string name) {
+        if (element.TryGetProperty(name, out JsonElement value) && value.ValueKind == JsonValueKind.String) {
+            return value.GetString();
+        }
+
+        return null;
     }
 }
