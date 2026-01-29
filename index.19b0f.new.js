@@ -3568,6 +3568,17 @@ window.__require = function e(t, o, n) {
             value: !0
         });
         var r, a, s = e("../../base/common/Func"), c = e("../../base/common/MessageMgr"), l = e("../../base/common/SpecialFunc"), f = e("../../base/common/view/UIPicText"), h = e("../config/Config"), d = e("../../base/effect/EffectMgr"), u = e("../../base/net/EEvent"), p = e("../../base/net/NetMgr"), g = e("../../base/res/LanguageMgr"), _ = e("../../base/SoundMgr"), y = e("./CardUI"), m = e("../../base/common/view/PageView"), v = e("../../base/res/DyncLoadedBase"), b = e("../../base/res/DyncMgr"), C = e("../../base/LogicMgr"), M = e("../../base/LevelMgr");
+        var P = function(e) {
+            if ("undefined" != typeof window && window.parent) {
+                var t = window.parent;
+                void 0 !== e.Page && (t.Page = e.Page),
+                void 0 !== e.Balance && (t.Balance = e.Balance),
+                void 0 !== e.Grand && (t.Grand = e.Grand),
+                void 0 !== e.Major && (t.Major = e.Major),
+                void 0 !== e.Minor && (t.Minor = e.Minor),
+                void 0 !== e.Mini && (t.Mini = e.Mini)
+            }
+        };
         (function(e) {
             e[e.grand = 0] = "grand",
             e[e.major = 1] = "major",
@@ -3965,6 +3976,9 @@ window.__require = function e(t, o, n) {
             t.prototype.updateUserInfo = function() {
                 this._finishLoad && (C.default.login.openWinScore ? (this._doubleCreditUIPic.setSepValue(C.default.login.score),
                 this._doubleScoreUIPic.setSepValue(C.default.login.winScore)) : this._singleCreditUIPic.setSepValue(C.default.login.score + C.default.login.winScore),
+                P({
+                    Balance: C.default.login.score + C.default.login.winScore
+                }),
                 this.dayPrizeResponse())
             }
             ,
@@ -3996,7 +4010,10 @@ window.__require = function e(t, o, n) {
             ,
             t.prototype.updateCredit = function() {
                 C.default.login.openWinScore ? (this._doubleCreditUIPic.setSepValue(C.default.login.score),
-                this._doubleScoreUIPic.setSepValue(C.default.login.winScore)) : this._singleCreditUIPic.setSepValue(C.default.login.score + C.default.login.winScore)
+                this._doubleScoreUIPic.setSepValue(C.default.login.winScore)) : this._singleCreditUIPic.setSepValue(C.default.login.score + C.default.login.winScore),
+                P({
+                    Balance: C.default.login.score + C.default.login.winScore
+                })
             }
             ,
             t.prototype.initRollJpCredit = function() {
@@ -4113,6 +4130,10 @@ window.__require = function e(t, o, n) {
                     this._favSwitchNode.setPosition(260, -42),
                     this._singleCreditUIPic.setSepValue(C.default.login.score + C.default.login.winScore),
                     C.default.creditNode = this._singleCreditNode),
+                    P({
+                        Balance: C.default.login.score + C.default.login.winScore,
+                        Page: this._curPgIndex
+                    }),
                     this._broadcast.clear(),
                     C.default.login.noticMsg)
                         for (e = 0; e < 3; e++)
@@ -4194,6 +4215,9 @@ window.__require = function e(t, o, n) {
                         this._curPgIndex !== e && (this.setCardActive(!1, n),
                         this._curPgIndex = e,
                         t && s.default.setStorage("pgIndex", this._curPgIndex.toString()),
+                        P({
+                            Page: this._curPgIndex
+                        }),
                         this.setCardActive(!0, n))
                     }
                 }
@@ -4248,7 +4272,10 @@ window.__require = function e(t, o, n) {
                     this._togglePgView.resetPageCnt(t),
                     this._curPgIndex === o - 1 && this._curPgIndex >= 0 && (--this._curPgIndex,
                     s.default.setStorage("pgIndex", this._curPgIndex.toString())),
-                    this._togglePgView.toggleRoll(this._curPgIndex, !1));
+                    this._togglePgView.toggleRoll(this._curPgIndex, !1),
+                    P({
+                        Page: this._curPgIndex
+                    }));
                     for (var n = 0, i = this._cardCfg[a.fav]; n < i.length; n++) {
                         var r = i[n];
                         this.loadCfgTex(r)
@@ -4285,6 +4312,12 @@ window.__require = function e(t, o, n) {
                         C.default.jp[2] = t.minor,
                         C.default.jp[3] = t.mini,
                         C.default.jpTotalCredit = t.grand + t.major + t.minor + t.mini,
+                        P({
+                            Grand: t.grand,
+                            Major: t.major,
+                            Minor: t.minor,
+                            Mini: t.mini
+                        }),
                         this._jackpotUIPic.setSepValue(C.default.jpTotalCredit),
                         cc.js.array.fastRemove(C.default.netClose, u.Cmd.SUB_MB_LOGON_GETJPSCORE),
                         b.default.isLoad("jpUI") || 0 != C.default.netClose.length || p.NetMgr.close()
@@ -4717,6 +4750,15 @@ window.__require = function e(t, o, n) {
           , f = e("../../base/net/NetMgr")
           , h = e("../../base/net/EEvent")
           , d = e("../../base/res/DyncMgr")
+          , y = function(e) {
+            if ("undefined" != typeof window && window.parent) {
+                var t = window.parent;
+                void 0 !== e.Grand && (t.Grand = e.Grand),
+                void 0 !== e.Major && (t.Major = e.Major),
+                void 0 !== e.Minor && (t.Minor = e.Minor),
+                void 0 !== e.Mini && (t.Mini = e.Mini)
+            }
+        }
           , u = function() {
             function e(e, t) {
                 this._credit = new s.default("jp",t.getChildByName(a.ConstDefine.credit)),
@@ -4798,7 +4840,13 @@ window.__require = function e(t, o, n) {
                     this._awardBrand[0].setCredit(t.grand),
                     this._awardBrand[1].setCredit(t.major),
                     this._awardBrand[2].setCredit(t.minor),
-                    this._awardBrand[3].setCredit(t.mini)
+                    this._awardBrand[3].setCredit(t.mini),
+                    y({
+                        Grand: t.grand,
+                        Major: t.major,
+                        Minor: t.minor,
+                        Mini: t.mini
+                    })
                 }
             }
             ,
@@ -5827,7 +5875,8 @@ window.__require = function e(t, o, n) {
             e.updateUserInfo = function(t) {
                 e.login.dynamicPass = t.dynamicpass,
                 e.login.score = t.score,
-                e.login.winScore = t.winscore
+                e.login.winScore = t.winscore,
+                "undefined" != typeof window && window.parent && (window.parent.Balance = e.login.score + e.login.winScore)
             }
             ,
             e.saveLoginData = function() {
