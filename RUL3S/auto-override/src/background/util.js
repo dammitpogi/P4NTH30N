@@ -3,7 +3,7 @@
     bgapp.util = {};
 
     bgapp.util.logOnTab = function(tabId, message, important) {
-        if (bgapp.settings?.showLogs === "true") {
+        if (localStorage.showLogs === "true") {
             important = !!important;
             chrome.tabs.sendMessage(tabId, {
                 action: "log",

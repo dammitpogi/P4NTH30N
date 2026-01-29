@@ -15,10 +15,7 @@ public static partial class Actions {
         service.SuppressInitialDiagnosticInformation = true;
         options.AddExcludedArgument("enable-logging");
         ChromeDriver driver = new(service, options);
-
-        string extensionPath = Path.GetFullPath(Path.Combine(".", "RUL3S"));
-        string rulesPath = Path.GetFullPath(Path.Combine(".", "RUL3S", "resource_override_rules.json"));
-
+        
         driver.Navigate().GoToUrl("chrome://extensions/");
         Thread.Sleep(2000);
         Mouse.Click(1030, 180);

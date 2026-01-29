@@ -13,11 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HUN7ERv2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("0.8.5.6")]
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.8.5.6+d79f63c605b0728e486c4deae86bee02fa95b31c")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.8.5.6+e27e0f36c2d27be0bc618c05f33665aad8addea3")]
->>>>>>> 6c935c6 (v.8.5.6)
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.8.5.6+fee73317813efad10523a97fce9c0851582a9c77")]
 [assembly: System.Reflection.AssemblyProductAttribute("HUN7ERv2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HUN7ERv2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("0.8.5.6")]
