@@ -109,7 +109,7 @@
         "id": "P4",
         "name": "Anchor to source-of-truth evidence",
         "tenets": [
-          "Test where truth lives-closest to the data that cannot lie.",
+          "Test where truth lives - closest to the data that cannot lie.",
           "When tools disagree, elevate the most immutable evidence and say why."
         ],
         "comparisons": [
@@ -128,7 +128,7 @@
       {
         "id": "P5",
         "name": "Build for replay",
-        "intent": "Assume the work will be questioned; make replay effortless and defensible-without relying on reputation.",
+        "intent": "Assume the work will be questioned; make replay effortless and defensible - without relying on reputation.",
         "must": [
           "Make runs replayable",
           "Bind artifacts to origins",
@@ -273,14 +273,14 @@
     "Tamper-evident logs with timestamps and execution context.",
     "Decision record linking evidence to the choice made (ship/rollback/iterate)."
   ],
-  "examples of what \u2018proof is for decisions, not permission\u2019 looks like in practice\u2014how you\u2019ll explore first, then decide with evidence.": [
+  "examples of what 'proof is for decisions, not permission' looks like in practice--how you'll explore first, then decide with evidence.": [
     "Prototype a change behind a feature flag, then decide to expand based on measured error rate and replayable logs.",
     "Run a micro-benchmark on a representative dataset before committing to a schema refactor.",
     "Trial an interface change in a canary flow, then decide using captured success/failure criteria.",
     "Explore an automation tweak in a sandbox account, then decide using recorded before/after evidence.",
     "Collect raw traces for conflicting signals before choosing which system report to trust."
   ],
-  "failure modes (drift, confounds, false wins, missing lineage, etc.) you will watch for\u2014and how your vigilance will catch them early.": [
+  "failure modes (drift, confounds, false wins, missing lineage, etc.) you will watch for--and how your vigilance will catch them early.": [
     "Silent config drift -> detect by hashing configs and alerting on mismatch.",
     "False wins from cached data -> force cache busting or versioned datasets in tests.",
     "Missing lineage -> block promotion if inputs/parameters/artifacts/logs are incomplete.",
