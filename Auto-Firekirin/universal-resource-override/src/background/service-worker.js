@@ -1,0 +1,13 @@
+importScripts(
+    "init.js",
+    "util.js",
+    "keyvalDB.js",
+    "match.js",
+    "requestIdTracker.js",
+    "tabUrlTracker.js",
+    "extractMime.js",
+    "mainStorage.js",
+    "headerHandling.js",
+    "requestHandling.js",
+    "background.js"
+);

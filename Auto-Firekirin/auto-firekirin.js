@@ -23,9 +23,9 @@ function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
     while (true) {
         try {
             let options = new chrome.Options();
-            // options.addExtensions('auto-override.crx');
+            // options.addExtensions('universal-resource-override.crx');
             // options.addArguments("--remote-allow-origins=*"); 
-            // options.addArguments('--load-extension=C:\\OneDrive\\Auto-Firekirin\\auto-override');
+            // options.addArguments('--load-extension=C:\\OneDrive\\Auto-Firekirin\\universal-resource-override');
             //driver = await new Builder().forBrowser(Browser.CHROME).setChromeOptions(options).build();
             driver = await new Builder().forBrowser(Browser.CHROME).build();
 
@@ -40,7 +40,7 @@ function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
             await handle.mouse.click("left", 70, 400);
             await handle.mouse.humanMoveTo(660, 70);
             await handle.mouse.click("left", 70, 400);
-            await handle.keyboard.printText(FilePath + "auto-override"); await sleep(400);
+            await handle.keyboard.printText(FilePath + "universal-resource-override"); await sleep(400);
             await handle.keyboard.sendKey("enter"); await sleep(800);
 
             // await handle.keyboard.sendKey("enter"); await sleep(400);
