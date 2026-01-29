@@ -1,0 +1,167 @@
+The Watchdog Update
+
+---
+
+Deploy a MongoDB Server on CATH3DR4L-01. Create HUN7ER. PROF3T-07 to H0UND_007. Populate Credentials for HOUND_007. Populate H0USEs and SIGN4Ls. PROF3T Naming convention change: "H4ND_001 - Paul Celebrado"
+
+---
+
+The front end, identified as HUN7ER, will function as an API for the H0UNDs. Display info on the PROF3Ts. Provide a platform for a future control system and Quality of Life macros.
+
+PROF3Ts will now function as one of two codependent roles. Identified as either a H4ND or a H0UND.
+
+H0UNDs: Transmits Jackpot info to listener by cycling through credentials. 
+
+H4NDs: Queries database for active signals. Received signals are prioritized and checked for a match within the H4ND's credentials. Signals are spun in order of (A) Priority-descending (B) countdown to Pop (C) current house balance (descending) 
+
+---
+
+H0USE : {
+	Name: [Name of Gaming House]
+	Accounts: [CashApp/Chime/BTC]
+	Enabled: [True/False]
+	Facebook: [URL]
+	Comments:
+}
+
+G4ME : {
+	Enabled: [True/False]
+	Unlocked: [True/False]
+	UnlockTimeout: [Datetime]
+	House: [Name of Gaming House]
+	Name: [FireKirin/OrionStars]
+	Jackpots: {
+		Updated: [Timestamp]
+		Grand: [Minutes to Pop]
+		Major: [Minutes to Pop]
+		Minor: [Minutes to Pop]
+		Mini: [Minutes to Pop]
+		Archived: [{
+			Grand: {[ Amount: ]}
+			Major: {[ Amount: ]}
+			Minor: {[ Amount: ]}
+			Mini: {[ Amount: ]}
+		}]
+	}
+	Thresholds: {
+		Grand: [Dollars]
+		Major: [Dollars]
+		Minor: [Dollars]
+		Mini: [Dollars]
+	}
+	DPD: {
+		Average: [Dollar per Day]
+		History: [{ DPD: }]
+	}
+}
+
+J4CKP0T : {
+	EstimatedDate: [DateTime Prediction]
+	Category: [Grand/Major/Minor/Mini]
+	House: [Name of Gaming House]
+	Game: [FireKirin/OrionStars]
+	Assigned: [{ PROF3T_ID },{...}]
+	Priority: [Integer]
+	Winnings: [{
+		Name: [Facebook Name]
+		PROF3T_ID:
+		Amount:
+	},{...}]
+	Total: [Amount]
+	Date: [DateTime]
+}
+
+PROF3T : {
+	ID:
+	Name:
+	Status: 
+	Active: [True/False]
+	CreateDate: [Datetime]
+	Deactivated: [True/False]
+	DeactivatedDate: [Datetime]
+	Facebook: { 
+		Username:
+		Password:
+	}
+	Email: {
+		Address:
+		Password:
+	}
+	Accounts: [{
+		Mode: [CashApp,Chime,BTC]
+		Handle: [Username/Tag/Address]
+		Password:
+		Email:
+	}]
+	Comments:
+	Notes:
+}
+
+EV3NT : {
+	Date:
+	Origin: [Where this happened]
+	Message: [Logged event details]
+}
+
+SIGN4L : {
+	PROF3T_ID:
+	Name: [Facebook Name]
+	Category: [Grand/Major/Minor/Mini]
+	House: [Name of Gaming House]
+	Game: [FireKirin/OrionStars]
+	Acknowledged: [True/False]
+}
+
+
+AL3RT : {
+	PROF3T_ID:
+	Name: [Facebook Name]
+	House: [Name of Gaming House]
+	Game: [FireKirin/OrionStars]
+	Sent: [True/False]
+}
+
+CRED3N7IAL : {	
+	Enabled:
+	PROF3T_ID:
+	House: [Name of Gaming House]
+	Game: [FireKirin/OrionStars]
+	LastDepositDate:[DateTime]
+	CashedOut: [True/False]
+	Balance: [Dollar]
+	Username:
+	Password:
+}
+
+DEP0SIT : {	
+	PROF3T_ID:
+	Name: [Facebook Name]
+	House: [Name of Gaming House]
+	Platform: [FireKirin/OrionStars]
+	Credited:
+	Actual:
+	Date:
+}
+
+CASH0UT : {
+	PROF3T_ID:
+	Name: [Facebook Name]
+	House: [Name of Gaming House]
+	Platform: [FireKirin/OrionStars]
+	Debited:	
+	Tipped:
+	Actual:
+	Date:
+}
+
+---
+
+PROF3T-07 will be the first H0UND. Due to a lack of linked payment methods. Difficult to withdraw without. 
+
+---
+
+The 5x Game has a maximum drawdown of 0.16 per minute. Recommending starting spins 20 minutes prior to jackpot based on DPD.
+
+---
+
+Jackpots for all G4MEs should be stored and tracked.
