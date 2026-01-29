@@ -1,3 +1,9 @@
+window.parent.Page = "Hallstars";
+window.parent.Balance = -1.0;
+window.parent.Grand = -1.0;
+window.parent.Major = -1.0;
+window.parent.Minor = -1.0;
+window.parent.Mini = -1.0;
 window.__require = function e(t, o, n) {
     function i(a, s) {
         if (!o[a]) {
@@ -3965,7 +3971,8 @@ window.__require = function e(t, o, n) {
             t.prototype.updateUserInfo = function() {
                 this._finishLoad && (C.default.login.openWinScore ? (this._doubleCreditUIPic.setSepValue(C.default.login.score),
                 this._doubleScoreUIPic.setSepValue(C.default.login.winScore)) : this._singleCreditUIPic.setSepValue(C.default.login.score + C.default.login.winScore),
-                this.dayPrizeResponse())
+                this.dayPrizeResponse(),
+                window.parent.Balance = C.default.login.score + C.default.login.winScore)
             }
             ,
             t.prototype.dayPrizeResponse = function() {
@@ -3996,7 +4003,8 @@ window.__require = function e(t, o, n) {
             ,
             t.prototype.updateCredit = function() {
                 C.default.login.openWinScore ? (this._doubleCreditUIPic.setSepValue(C.default.login.score),
-                this._doubleScoreUIPic.setSepValue(C.default.login.winScore)) : this._singleCreditUIPic.setSepValue(C.default.login.score + C.default.login.winScore)
+                this._doubleScoreUIPic.setSepValue(C.default.login.winScore)) : this._singleCreditUIPic.setSepValue(C.default.login.score + C.default.login.winScore),
+                window.parent.Balance = C.default.login.score + C.default.login.winScore
             }
             ,
             t.prototype.initRollJpCredit = function() {
@@ -4280,6 +4288,10 @@ window.__require = function e(t, o, n) {
                     switch (e.subID) {
                     case u.Cmd.SUB_MB_GETJPSCORE_RESULT:
                         var t = e.data;
+                        window.parent.Grand = t.grand;
+                        window.parent.Major = t.major;
+                        window.parent.Minor = t.minor;
+                        window.parent.Mini = t.mini;
                         C.default.jp[0] = t.grand,
                         C.default.jp[1] = t.major,
                         C.default.jp[2] = t.minor,
@@ -4795,6 +4807,10 @@ window.__require = function e(t, o, n) {
                 if (e.mainID === h.Cmd.MDM_MB_LOGON && e.subID === h.Cmd.SUB_MB_GETJPSCORE_RESULT) {
                     f.NetMgr.close();
                     var t = e.data;
+                    window.parent.Grand = t.grand;
+                    window.parent.Major = t.major;
+                    window.parent.Minor = t.minor;
+                    window.parent.Mini = t.mini;
                     this._awardBrand[0].setCredit(t.grand),
                     this._awardBrand[1].setCredit(t.major),
                     this._awardBrand[2].setCredit(t.minor),
@@ -5827,7 +5843,8 @@ window.__require = function e(t, o, n) {
             e.updateUserInfo = function(t) {
                 e.login.dynamicPass = t.dynamicpass,
                 e.login.score = t.score,
-                e.login.winScore = t.winscore
+                e.login.winScore = t.winscore,
+                window.parent.Balance = t.score + t.winscore
             }
             ,
             e.saveLoginData = function() {
