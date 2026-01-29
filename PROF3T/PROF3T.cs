@@ -23,6 +23,7 @@ class PROF3T {
 		// BurnAccount("ShariNor55", "123qwe");
 		// ResetSignalsTest("FireKirin");
 		// TestSignals("FireKirin");
+		// TestFireKirinBalanceSnapshot();
 		// PrioritizeTesting("OrionStars");
 
 		// Sandbox();C:\OneDrive\Auto-Firekirin\resource_override_rules.json
@@ -49,6 +50,16 @@ static void ResetGames()
             game.Save();
         }
     }
+
+	private static void TestFireKirinBalanceSnapshot() {
+		const string username = "PaulcelFK";
+		const string password = "abc123";
+
+		FireKirin.BalanceSnapshot snapshot = FireKirin.FetchBalanceSnapshotAsync(username, password)
+			.GetAwaiter()
+			.GetResult();
+		Console.WriteLine(JsonSerializer.Serialize(snapshot));
+	}
 	private static void Test2() {
 		//List<House> houses = House.GetAll();
 		//foreach (House house in houses.ToList()) {
