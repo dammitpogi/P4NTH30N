@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using OpenQA.Selenium.Chrome;
 using WindowsInput;
 
@@ -15,13 +16,16 @@ public static partial class Actions {
         options.AddExcludedArgument("enable-logging");
         ChromeDriver driver = new(service, options);
 
+        string extensionPath = Path.GetFullPath(Path.Combine(".", "Auto-Firekirin", "auto-override"));
+        string rulesPath = Path.GetFullPath(Path.Combine(".", "RUL3S", "resource_override_rules.json"));
+
         driver.Navigate().GoToUrl("chrome://extensions/");
         Thread.Sleep(2000);
         Mouse.Click(1030, 180);
         Mouse.Click(100, 230);
         Mouse.Click(660, 70);
         Thread.Sleep(800);
-        Keyboard.Send("C:\\OneDrive\\Auto-Firekirin\\auto-override").Enter();
+        Keyboard.Send(extensionPath).Enter();
         Mouse.Click(800, 510); Thread.Sleep(800);
         Mouse.Click(505, 535);
         Keyboard.PressPageDown().PageDown();
@@ -36,7 +40,7 @@ public static partial class Actions {
         Thread.Sleep(800);
         Mouse.Click(692, 485);
         Thread.Sleep(400);
-        Keyboard.Send("C:\\OneDrive\\Auto-Firekirin\\resource_override_rules.json").Enter(); Thread.Sleep(1800);
+        Keyboard.Send(rulesPath).Enter(); Thread.Sleep(1800);
         Mouse.Click(855, 192);
         Mouse.Click(944, 332);
         // Keyboard.WindowsManager();
