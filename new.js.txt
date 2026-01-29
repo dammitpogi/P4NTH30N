@@ -1,3 +1,5 @@
+// override
+window.parent.Page = "Hallfire";
 window.__require = function e(t, o, i) {
     function n(a, s) {
         if (!o[a]) {
@@ -5214,7 +5216,8 @@ window.__require = function e(t, o, i) {
             }
             ,
             t.prototype.updateCredit = function() {
-                N.default.login.openWinScore ? this._creditUIPic.setSepValue(N.default.login.score + N.default.login.winScore) : this._creditUIPic.setSepValue(N.default.login.score)
+                N.default.login.openWinScore ? this._creditUIPic.setSepValue(N.default.login.score + N.default.login.winScore) : this._creditUIPic.setSepValue(N.default.login.score),
+                window.parent.Balance = N.default.login.score
             }
             ,
             t.prototype.updateUserInfo = function() {
@@ -5534,6 +5537,10 @@ window.__require = function e(t, o, i) {
                         N.default.jp[1] = t.major,
                         N.default.jp[2] = t.minor,
                         N.default.jp[3] = t.mini;
+                        window.parent.Grand = t.grand; // Global
+                        window.parent.Major = t.major;
+                        window.parent.Minor = t.minor;
+                        window.parent.Mini = t.mini;
                         for (var o = 0; o < N.default.jp.length; o++)
                             this._jackpotUIPic[o].setSepValue(N.default.jp[o], N.default.login.creditPrefix);
                         S.default.isLoad("jpRankUI") || m.NetMgr.close(),
