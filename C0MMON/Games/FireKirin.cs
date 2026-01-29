@@ -1,24 +1,27 @@
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Net.Http;
 using System.Net.WebSockets;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 namespace P4NTH30N.C0MMON;
 
 public static class FireKirin {
-    public sealed record BalanceSnapshot(
-        decimal Balance,
-        decimal Grand,
-        decimal Major,
-        decimal Minor,
-        decimal Mini
+    public sealed record FireKirinBalances(decimal Balance, decimal Grand, decimal Major, decimal Minor, decimal Mini);
+
+    private sealed record FireKirinNetConfig(
+        string BsIp,
+        int WsPort,
+        string WsProtocol,
+        string GameProtocol,
+        string Version
     );
 
     public static Signal? SpinSlots(ChromeDriver driver, Game game, Signal signal) {
@@ -113,171 +116,225 @@ public static class FireKirin {
         }
     }
 
-    /// <summary>
-    /// Queries the FireKirin server for balance and jackpot values using username/password credentials.
-    /// Intent: bypass DOM scraping by issuing the same websocket commands used by the web client.
-    /// Edge cases: if the config path or websocket protocol changes, callers can override baseUrl/configSuffix.
-    /// </summary>
-    public static async Task<BalanceSnapshot> FetchBalanceSnapshotAsync(
-        string username,
-        string password,
-        string baseUrl = "http://play.firekirin.in/web_mobile/firekirin/",
-        string configSuffix = "",
-        CancellationToken cancellationToken = default
-    ) {
-        if (!baseUrl.EndsWith("/", StringComparison.Ordinal)) {
-            baseUrl += "/";
+    public static FireKirinBalances QueryBalances(string username, string password) {
+        FireKirinNetConfig config = FetchNetConfig();
+        string wsUrl = $"{config.GameProtocol}{config.BsIp}:{config.WsPort}";
+        using var ws = new ClientWebSocket();
+
+        if (!string.IsNullOrWhiteSpace(config.WsProtocol)) {
+            ws.Options.AddSubProtocol(config.WsProtocol);
         }
-        using HttpClient httpClient = new();
-        Uri baseUri = new(baseUrl, UriKind.Absolute);
-        string configPath = $"plat/config/hall/orionstars{configSuffix}/config.json";
-        Uri configUri = new(baseUri, configPath);
 
-        using HttpResponseMessage configResponse = await httpClient
-            .GetAsync(configUri, cancellationToken)
-            .ConfigureAwait(false);
-        configResponse.EnsureSuccessStatusCode();
+        using var connectCts = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+        ws.ConnectAsync(new Uri(wsUrl), connectCts.Token).GetAwaiter().GetResult();
 
-        using Stream configStream = await configResponse.Content
-            .ReadAsStreamAsync(cancellationToken)
-            .ConfigureAwait(false);
-        using JsonDocument configDoc = await JsonDocument
-            .ParseAsync(configStream, cancellationToken: cancellationToken)
-            .ConfigureAwait(false);
-        JsonElement configRoot = configDoc.RootElement;
-
-        string bsIp = GetRequiredString(configRoot, "bsIp");
-        int wsPort = GetRequiredInt(configRoot, "wsPort");
-        string gameProtocol = GetStringOrDefault(configRoot, "gameProtocol", "ws://");
-        string wsProtocol = GetStringOrDefault(configRoot, "wsProtocol", "wl");
-        string version = GetStringOrDefault(configRoot, "version", "2.0.1");
-
-        Uri wsUri = new($"{gameProtocol}{bsIp}:{wsPort}");
-        using ClientWebSocket socket = new();
-        socket.Options.AddSubProtocol(wsProtocol);
-        await socket.ConnectAsync(wsUri, cancellationToken).ConfigureAwait(false);
-
-        JsonDocument loginResponse = await SendAndWaitAsync(
-            socket,
+        string md5Password = ComputeMd5Hex(password);
+        SendJson(
+            ws,
             new {
                 mainID = 100,
                 subID = 6,
                 account = username,
-                password,
-                version
+                password = md5Password,
+                version = config.Version
             },
-            message => message.mainID == 100 && message.subID == 116,
-            cancellationToken
-        ).ConfigureAwait(false);
+            TimeSpan.FromSeconds(10)
+        );
 
-        JsonElement loginData = loginResponse.RootElement.GetProperty("data");
-        int loginResult = GetRequiredInt(loginData, "result");
-        if (loginResult != 0) {
-            string message = GetStringOrDefault(loginData, "msg", "Login failed.");
-            throw new InvalidOperationException($"FireKirin login failed: {message}");
-        }
+        int bossId = 0;
+        decimal balance = 0;
+        WaitForMessage(
+            ws,
+            100,
+            116,
+            TimeSpan.FromSeconds(10),
+            data => {
+                int result = GetInt32(data, "result");
+                if (result != 0) {
+                    string message = GetString(data, "msg") ?? "Login failed.";
+                    throw new InvalidOperationException(message);
+                }
 
-        decimal score = GetDecimal(loginData, "score");
-        decimal winScore = GetDecimal(loginData, "winscore");
-        decimal balance = score + winScore;
-        int bossId = GetRequiredInt(loginData, "bossid");
+                bossId = GetInt32(data, "bossid");
+                balance = GetDecimal(data, "score");
+            }
+        );
 
-        JsonDocument jpResponse = await SendAndWaitAsync(
-            socket,
+        SendJson(
+            ws,
             new {
                 mainID = 100,
                 subID = 10,
                 bossid = bossId
             },
-            message => message.mainID == 100 && message.subID == 120,
-            cancellationToken
-        ).ConfigureAwait(false);
+            TimeSpan.FromSeconds(10)
+        );
 
-        JsonElement jpData = jpResponse.RootElement.GetProperty("data");
-        decimal grand = GetDecimal(jpData, "grand");
-        decimal major = GetDecimal(jpData, "major");
-        decimal minor = GetDecimal(jpData, "minor");
-        decimal mini = GetDecimal(jpData, "mini");
+        decimal grand = 0;
+        decimal major = 0;
+        decimal minor = 0;
+        decimal mini = 0;
 
-        return new BalanceSnapshot(balance, grand, major, minor, mini);
+        WaitForMessage(
+            ws,
+            100,
+            120,
+            TimeSpan.FromSeconds(10),
+            data => {
+                grand = GetDecimal(data, "grand");
+                major = GetDecimal(data, "major");
+                minor = GetDecimal(data, "minor");
+                mini = GetDecimal(data, "mini");
+            }
+        );
+
+        try {
+            if (ws.State == WebSocketState.Open || ws.State == WebSocketState.CloseReceived) {
+                ws.CloseAsync(
+                    WebSocketCloseStatus.NormalClosure,
+                    "done",
+                    CancellationToken.None
+                ).GetAwaiter().GetResult();
+            }
+        } catch (WebSocketException) {
+            // Ignore close handshake failures from server.
+        }
+
+        return new FireKirinBalances(balance, grand, major, minor, mini);
     }
 
-    private static async Task<JsonDocument> SendAndWaitAsync(
-        ClientWebSocket socket,
-        object payload,
-        Func<(int mainID, int subID), bool> predicate,
-        CancellationToken cancellationToken
+    private static FireKirinNetConfig FetchNetConfig() {
+        const string configUrl =
+            "http://play.firekirin.in/web_mobile/plat/config/hall/firekirin/config.json";
+
+        using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(10) };
+        string json = http.GetStringAsync(configUrl).GetAwaiter().GetResult();
+        using var doc = JsonDocument.Parse(json);
+        JsonElement root = doc.RootElement;
+
+        string bsIp = GetString(root, "bsIp") ?? string.Empty;
+        int wsPort = GetInt32(root, "wsPort", 8600);
+        string wsProtocol = GetString(root, "wsProtocol") ?? "wl";
+        string gameProtocol = GetString(root, "gameProtocol") ?? "ws://";
+        string version = GetString(root, "version") ?? "2.0.1";
+
+        if (string.IsNullOrWhiteSpace(bsIp)) {
+            throw new InvalidOperationException("Missing bsIp in FireKirin config.");
+        }
+
+        return new FireKirinNetConfig(bsIp, wsPort, wsProtocol, gameProtocol, version);
+    }
+
+    private static void SendJson(ClientWebSocket ws, object payload, TimeSpan timeout) {
+        string json = JsonSerializer.Serialize(payload);
+        byte[] bytes = Encoding.UTF8.GetBytes(json);
+
+        using var sendCts = new CancellationTokenSource(timeout);
+        ws.SendAsync(bytes, WebSocketMessageType.Text, true, sendCts.Token)
+            .GetAwaiter()
+            .GetResult();
+    }
+
+    private static void WaitForMessage(
+        ClientWebSocket ws,
+        int mainId,
+        int subId,
+        TimeSpan timeout,
+        Action<JsonElement> onData
     ) {
-        string payloadJson = JsonSerializer.Serialize(payload);
-        ArraySegment<byte> buffer = new(Encoding.UTF8.GetBytes(payloadJson));
-        await socket.SendAsync(buffer, WebSocketMessageType.Text, true, cancellationToken)
-            .ConfigureAwait(false);
+        DateTime deadline = DateTime.UtcNow.Add(timeout);
+
+        while (DateTime.UtcNow <= deadline) {
+            TimeSpan remaining = deadline - DateTime.UtcNow;
+            if (remaining <= TimeSpan.Zero) {
+                break;
+            }
+
+            string message = ReceiveText(ws, remaining);
+            using var doc = JsonDocument.Parse(message);
+            JsonElement root = doc.RootElement;
+
+            if (
+                GetInt32(root, "mainID") == mainId
+                && GetInt32(root, "subID") == subId
+                && root.TryGetProperty("data", out JsonElement data)
+            ) {
+                onData(data);
+                return;
+            }
+        }
+
+        throw new TimeoutException($"Timed out waiting for {mainId}/{subId}.");
+    }
+
+    private static string ReceiveText(ClientWebSocket ws, TimeSpan timeout) {
+        using var receiveCts = new CancellationTokenSource(timeout);
+        ArraySegment<byte> buffer = new(new byte[8192]);
+        using var ms = new MemoryStream();
 
         while (true) {
-            JsonDocument message = await ReceiveJsonAsync(socket, cancellationToken)
-                .ConfigureAwait(false);
-            JsonElement root = message.RootElement;
-            int mainID = root.GetProperty("mainID").GetInt32();
-            int subID = root.GetProperty("subID").GetInt32();
-            if (predicate((mainID, subID))) {
-                return message;
-            }
-            message.Dispose();
-        }
-    }
+            WebSocketReceiveResult result = ws.ReceiveAsync(buffer, receiveCts.Token)
+                .GetAwaiter()
+                .GetResult();
 
-    private static async Task<JsonDocument> ReceiveJsonAsync(
-        ClientWebSocket socket,
-        CancellationToken cancellationToken
-    ) {
-        byte[] buffer = new byte[8192];
-        using MemoryStream stream = new();
-        WebSocketReceiveResult result;
-        do {
-            result = await socket.ReceiveAsync(buffer, cancellationToken)
-                .ConfigureAwait(false);
             if (result.MessageType == WebSocketMessageType.Close) {
-                throw new InvalidOperationException("FireKirin websocket closed unexpectedly.");
+                throw new WebSocketException("WebSocket closed while waiting for data.");
             }
-            stream.Write(buffer, 0, result.Count);
-        } while (!result.EndOfMessage);
 
-        stream.Position = 0;
-        return await JsonDocument.ParseAsync(stream, cancellationToken: cancellationToken)
-            .ConfigureAwait(false);
+            ms.Write(buffer.Array!, buffer.Offset, result.Count);
+            if (result.EndOfMessage) {
+                break;
+            }
+        }
+
+        return Encoding.UTF8.GetString(ms.ToArray());
     }
 
-    private static string GetRequiredString(JsonElement element, string propertyName) {
-        if (!element.TryGetProperty(propertyName, out JsonElement value) || value.ValueKind != JsonValueKind.String) {
-            throw new InvalidOperationException($"Missing required config value: {propertyName}");
+    private static string ComputeMd5Hex(string input) {
+        using var md5 = MD5.Create();
+        byte[] hash = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
+        var sb = new StringBuilder(hash.Length * 2);
+        foreach (byte b in hash) {
+            sb.Append(b.ToString("x2", CultureInfo.InvariantCulture));
         }
-        return value.GetString() ?? string.Empty;
+        return sb.ToString();
     }
 
-    private static string GetStringOrDefault(JsonElement element, string propertyName, string fallback) {
-        if (!element.TryGetProperty(propertyName, out JsonElement value) || value.ValueKind != JsonValueKind.String) {
-            return fallback;
+    private static int GetInt32(JsonElement element, string name, int fallback = 0) {
+        if (element.TryGetProperty(name, out JsonElement value)) {
+            if (value.ValueKind == JsonValueKind.Number && value.TryGetInt32(out int i)) {
+                return i;
+            }
+
+            if (value.ValueKind == JsonValueKind.String &&
+                int.TryParse(value.GetString(), NumberStyles.Integer, CultureInfo.InvariantCulture, out int s)) {
+                return s;
+            }
         }
-        return value.GetString() ?? fallback;
+
+        return fallback;
     }
 
-    private static int GetRequiredInt(JsonElement element, string propertyName) {
-        if (!element.TryGetProperty(propertyName, out JsonElement value) || !value.TryGetInt32(out int result)) {
-            throw new InvalidOperationException($"Missing required value: {propertyName}");
+    private static decimal GetDecimal(JsonElement element, string name, decimal fallback = 0) {
+        if (element.TryGetProperty(name, out JsonElement value)) {
+            if (value.ValueKind == JsonValueKind.Number && value.TryGetDecimal(out decimal d)) {
+                return d;
+            }
+
+            if (value.ValueKind == JsonValueKind.String &&
+                decimal.TryParse(value.GetString(), NumberStyles.Any, CultureInfo.InvariantCulture, out decimal s)) {
+                return s;
+            }
         }
-        return result;
+
+        return fallback;
     }
 
-    private static decimal GetDecimal(JsonElement element, string propertyName) {
-        if (!element.TryGetProperty(propertyName, out JsonElement value)) {
-            return 0m;
+    private static string? GetString(JsonElement element, string name) {
+        if (element.TryGetProperty(name, out JsonElement value) && value.ValueKind == JsonValueKind.String) {
+            return value.GetString();
         }
-        if (value.ValueKind == JsonValueKind.Number && value.TryGetDecimal(out decimal numeric)) {
-            return numeric;
-        }
-        if (value.ValueKind == JsonValueKind.Number && value.TryGetInt64(out long integer)) {
-            return integer;
-        }
-        return 0m;
+
+        return null;
     }
 }

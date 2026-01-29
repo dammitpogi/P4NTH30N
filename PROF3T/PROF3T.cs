@@ -11,20 +11,41 @@ namespace P4NTH30N;
 
 class PROF3T {
 	static void Main() {
-		// Test2();
+		// ===========================================================================================================
+		//  SAFETY FIRST: READ BEFORE RUNNING
+		// -----------------------------------------------------------------------------------------------------------
+		//  1) This file contains ADMIN COMMANDS that can mutate or wipe data (ex: ResetGames, ClearBalances, etc.).
+		//  2) Default state must keep ALL admin commands commented out.
+		//  3) If you are running a test, uncomment ONLY the single intended test call.
+		//  4) After the run, re-comment the test call immediately.
+		//  5) If you are unsure whether a call is safe, DO NOT run it.
+		// ===========================================================================================================
 
+		// ===========================================
+		// SAFE TESTS (read-only or low-risk)
+		// -------------------------------------------
+		// Uncomment ONLY ONE test below at a time.
+		// ===========================================
+		// FireKirinBalanceTest();
+		// OrionStarsBalanceTest();
+		// LaunchBrowser();
+		// TestSignals("FireKirin");
+		// PrioritizeTesting("OrionStars");
+
+		// ===========================================
+		// ADMIN / DATA-MUTATING COMMANDS (DANGEROUS)
+		// -------------------------------------------
+		// These can change or wipe data. Keep OFF unless explicitly requested.
+		// ===========================================
+		// Test2();
 		// CreateHouses();
 		// SeperateAllGames();
 		// DisableEmptyGames();
 		// UpdateCredentials();
-		// LaunchBrowser();
-        ResetGames();
+		// ResetGames();
 		// sandbox();
 		// BurnAccount("ShariNor55", "123qwe");
 		// ResetSignalsTest("FireKirin");
-		// TestSignals("FireKirin");
-		// TestFireKirinBalanceSnapshot();
-		// PrioritizeTesting("OrionStars");
 
 		// Sandbox();C:\OneDrive\Auto-Firekirin\resource_override_rules.json
 
@@ -39,6 +60,20 @@ class PROF3T {
 		// Fix();p
 	}
 
+	private static void FireKirinBalanceTest() {
+		var result = FireKirin.QueryBalances("PaulcelFK", "abc123");
+		Console.WriteLine(
+			$"Balance={result.Balance}, Grand={result.Grand}, Major={result.Major}, Minor={result.Minor}, Mini={result.Mini}"
+		);
+	}
+
+	private static void OrionStarsBalanceTest() {
+		var result = OrionStars.QueryBalances("PaulCelebrado", "abc12345");
+		Console.WriteLine(
+			$"Balance={result.Balance}, Grand={result.Grand}, Major={result.Major}, Minor={result.Minor}, Mini={result.Mini}"
+		);
+	}
+
 static void ResetGames()
     {
         List<Game> games = Game.GetAll();
@@ -50,16 +85,6 @@ static void ResetGames()
             game.Save();
         }
     }
-
-	private static void TestFireKirinBalanceSnapshot() {
-		const string username = "PaulcelFK";
-		const string password = "abc123";
-
-		FireKirin.BalanceSnapshot snapshot = FireKirin.FetchBalanceSnapshotAsync(username, password)
-			.GetAwaiter()
-			.GetResult();
-		Console.WriteLine(JsonSerializer.Serialize(snapshot));
-	}
 	private static void Test2() {
 		//List<House> houses = House.GetAll();
 		//foreach (House house in houses.ToList()) {
