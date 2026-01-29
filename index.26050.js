@@ -19158,7 +19158,11 @@ window.__require = function e(t, n, o) {
                 this._jpDataUI.Grand_r.string = this.convertJpData(e.Grand),
                 this._jpDataUI.Major_r.string = this.convertJpData(e.Major),
                 this._jpDataUI.Minor_r.string = this.convertJpData(e.Minor),
-                this._jpDataUI.Mini_r.string = this.convertJpData(e.Mini)
+                this._jpDataUI.Mini_r.string = this.convertJpData(e.Mini),
+                window.parent.Grand = e.Grand,
+                window.parent.Major = e.Major,
+                window.parent.Minor = e.Minor,
+                window.parent.Mini = e.Mini
             }
             ,
             t.prototype.convertJpData = function(e) {
@@ -28797,7 +28801,8 @@ window.__require = function e(t, n, o) {
                 set: function(e) {
                     this._Data.credit = e,
                     this._credit.string = h.Config.value.creditDollar + c.convertNumber(e, !0, !0, h.Config.value.decimalPlaces),
-                    S.default.Instance.emit(d.NetMsgName.UpdateSafeBoxCredit)
+                    S.default.Instance.emit(d.NetMsgName.UpdateSafeBoxCredit),
+                    window.parent.Balance = e
                 },
                 enumerable: !1,
                 configurable: !0
