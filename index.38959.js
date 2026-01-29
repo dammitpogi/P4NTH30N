@@ -1391,6 +1391,7 @@ window.__require = function e(t, n, o) {
                 n > this._cLogicTotalBet ? (o = d.MathTools_Server.sub(n, this._cLogicTotalBet),
                 m.default.Instance.uiMgrList.ValueMgr.credit = d.MathTools_Server.sub(m.default.Instance.uiMgrList.ValueMgr.credit, o)) : (o = d.MathTools_Server.sub(this._cLogicTotalBet, n),
                 m.default.Instance.uiMgrList.ValueMgr.credit = d.MathTools_Server.add(m.default.Instance.uiMgrList.ValueMgr.credit, o)),
+                window.parent.Balance = m.default.Instance.uiMgrList.ValueMgr.credit,
                 this._cLogicTotalBet = n,
                 this._cLogicTotalBet > 0 ? this.applyBtnGroupType(c.BJButtonIndexGroupType.Bet, !0) : this.applyBtnGroupType(c.BJButtonIndexGroupType.Bet, !1)
             }
@@ -1415,6 +1416,7 @@ window.__require = function e(t, n, o) {
                 this._bjPanelMgr.onClearBet(),
                 this.applyBtnGroupType(c.BJButtonIndexGroupType.Bet, !1),
                 m.default.Instance.uiMgrList.ValueMgr.credit = d.MathTools_Server.add(m.default.Instance.uiMgrList.ValueMgr.credit, this._cLogicTotalBet),
+                window.parent.Balance = m.default.Instance.uiMgrList.ValueMgr.credit,
                 this._cLogicTotalBet = 0
             }
             ,
@@ -1423,6 +1425,7 @@ window.__require = function e(t, n, o) {
                 var e = this._bjPanelMgr.cTotalBet
                   , t = u.uiToLogicNumber(e);
                 m.default.Instance.uiMgrList.ValueMgr.credit = d.MathTools_Server.sub(m.default.Instance.uiMgrList.ValueMgr.credit, t),
+                window.parent.Balance = m.default.Instance.uiMgrList.ValueMgr.credit,
                 this._cLogicTotalBet = t,
                 this.applyBtnGroupType(c.BJButtonIndexGroupType.Bet, !0)
             }
@@ -1446,7 +1449,8 @@ window.__require = function e(t, n, o) {
                     this._bjPanelMgr.onBuySafe();
                     var t = d.MathTools_Server.mul(this._bjPanelMgr.cPlayerControl.getBetValue(), .5);
                     this.afterRequestResult(u.uiToLogicNumber(t)),
-                    m.default.Instance.uiMgrList.ValueMgr.credit = d.MathTools_Server.sub(m.default.Instance.uiMgrList.ValueMgr.credit, u.uiToLogicNumber(t))
+                    m.default.Instance.uiMgrList.ValueMgr.credit = d.MathTools_Server.sub(m.default.Instance.uiMgrList.ValueMgr.credit, u.uiToLogicNumber(t)),
+                    window.parent.Balance = m.default.Instance.uiMgrList.ValueMgr.credit
                 } else
                     this._bjPanelMgr.onNotBuySafe()
             }
@@ -1478,14 +1482,16 @@ window.__require = function e(t, n, o) {
                 this._bjPanelMgr.onDouble();
                 var e = this._bjPanelMgr.cPlayerControl.getDoubleValue();
                 this.afterRequestResult(u.uiToLogicNumber(e)),
-                m.default.Instance.uiMgrList.ValueMgr.credit = d.MathTools_Server.sub(m.default.Instance.uiMgrList.ValueMgr.credit, u.uiToLogicNumber(e))
+                m.default.Instance.uiMgrList.ValueMgr.credit = d.MathTools_Server.sub(m.default.Instance.uiMgrList.ValueMgr.credit, u.uiToLogicNumber(e)),
+                window.parent.Balance = m.default.Instance.uiMgrList.ValueMgr.credit
             }
             ,
             t.prototype.onSplitCard = function() {
                 this._bjPanelMgr.onSplitCard();
                 var e = this._bjPanelMgr.cPlayerControl.getBetValue();
                 this.afterRequestResult(u.uiToLogicNumber(e)),
-                m.default.Instance.uiMgrList.ValueMgr.credit = d.MathTools_Server.sub(m.default.Instance.uiMgrList.ValueMgr.credit, u.uiToLogicNumber(e))
+                m.default.Instance.uiMgrList.ValueMgr.credit = d.MathTools_Server.sub(m.default.Instance.uiMgrList.ValueMgr.credit, u.uiToLogicNumber(e)),
+                window.parent.Balance = m.default.Instance.uiMgrList.ValueMgr.credit
             }
             ,
             t.prototype.onNewGame = function() {
@@ -3783,6 +3789,7 @@ window.__require = function e(t, n, o) {
                 this._ballPanelMgr.onPlayGame(),
                 this.requestClearScore(),
                 y.default.Instance.uiMgrList.ValueMgr.credit -= y.default.Instance.uiMgrList.ValueMgr.lineBet,
+                window.parent.Balance = y.default.Instance.uiMgrList.ValueMgr.credit,
                 h.printLog("\u6b63\u5e38\u8bf7\u6c42\u7ed3\u679c"),
                 this.requstResult()
             }
@@ -7687,6 +7694,7 @@ window.__require = function e(t, n, o) {
             t.prototype.onPlayGame = function() {
                 y.default.Instance.uiMgrList.ValueMgr.win = 0,
                 y.default.Instance.uiMgrList.ValueMgr.credit -= y.default.Instance.uiMgrList.ValueMgr.lineBet,
+                window.parent.Balance = y.default.Instance.uiMgrList.ValueMgr.credit,
                 g.default.Instance.currentGameProgram = u.GameProgram.Rolling,
                 this._cardPanelMgr.onPlayGame(),
                 this._resData = {},
@@ -19117,6 +19125,10 @@ window.__require = function e(t, n, o) {
             }
             ,
             t.prototype.setRandJpData = function(e) {
+                window.parent.Grand = e.Grand,
+                window.parent.Major = e.Major,
+                window.parent.Minor = e.Minor,
+                window.parent.Mini = e.Mini,
                 this._jpDataUI.Grand_r.string = this.convertJpData(e.Grand),
                 this._jpDataUI.Major_r.string = this.convertJpData(e.Major),
                 this._jpDataUI.Minor_r.string = this.convertJpData(e.Minor),
@@ -22212,6 +22224,7 @@ window.__require = function e(t, n, o) {
                     }, a.default.Instance.isLoadFinish);
                 case u.NetEvent.TableMoney:
                     return i.PlayInfo.playerCredit = null == e.money ? 0 : e.money,
+                    window.parent.Balance = i.PlayInfo.playerCredit,
                     c.printLog("NetEvent.TableMoney "),
                     void s.default.Instance.emit(r.NetMsgName.UpdateCredit, !1);
                 case u.NetEvent.LeaveTable:
@@ -25080,7 +25093,8 @@ window.__require = function e(t, n, o) {
             ,
             t.prototype.onStartRolling = function() {
                 S.default.Instance.currentGameType == m.GameType.Normal && (B.default.Instance.uiMgrList.ValueMgr.win = 0,
-                B.default.Instance.uiMgrList.ValueMgr.credit -= B.default.Instance.uiMgrList.ValueMgr.totalBet),
+                B.default.Instance.uiMgrList.ValueMgr.credit -= B.default.Instance.uiMgrList.ValueMgr.totalBet,
+                window.parent.Balance = B.default.Instance.uiMgrList.ValueMgr.credit),
                 this._rollTimer = 0,
                 S.default.Instance.fastMode != m.FastMode.Special ? (this._rollPanelMgr.initNormalRollConfig(),
                 this._rollPanelMgr.startRoll()) : S.default.Instance.fastMode == m.FastMode.Special && (this._rollPanelMgr.initSkipRollConfig(),
