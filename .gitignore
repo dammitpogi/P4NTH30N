@@ -21,6 +21,7 @@ obj/
 project.lock.json
 project.fragment.lock.json
 artifacts/
+packages/
 
 # OS files
 Thumbs.db
