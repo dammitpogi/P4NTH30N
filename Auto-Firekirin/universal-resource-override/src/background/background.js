@@ -2,11 +2,24 @@
 {
     bgapp.ruleDomains = {};
     bgapp.syncFunctions = [];
+    bgapp.settings = bgapp.settings || {};
 
     const simpleError = bgapp.util.simpleError;
+    const settingsDefaults = {
+        devTools: "true",
+        showSuggestions: "true",
+        showLogs: "false"
+    };
+
+    const loadSettings = () => new Promise(resolve => {
+        chrome.storage.local.get(settingsDefaults, items => {
+            Object.assign(bgapp.settings, items);
+            resolve(bgapp.settings);
+        });
+    });
 
     // Called when the user clicks on the browser action icon.
-    chrome.browserAction.onClicked.addListener(function() {
+    chrome.action.onClicked.addListener(function() {
         // open or focus options page.
         const optionsUrl = chrome.runtime.getURL("src/ui/devtoolstab.html");
         chrome.tabs.query({}, function(extensionTabs) {
@@ -75,9 +88,13 @@
             };
             xhr.send();
         } else if (request.action === "setSetting") {
-            localStorage[request.setting] = request.value;
+            chrome.storage.local.set({[request.setting]: request.value}, () => {
+                bgapp.settings[request.setting] = request.value;
+            });
         } else if (request.action === "getSetting") {
-            sendResponse(localStorage[request.setting]);
+            chrome.storage.local.get(request.setting, items => {
+                sendResponse(items[request.setting]);
+            });
         } else if (request.action === "syncMe") {
             bgapp.syncFunctions.push(sendResponse);
         } else if (request.action === "match") {
@@ -120,16 +137,21 @@
         urls: ["<all_urls>"]
     }, ["blocking", "requestHeaders"]);
 
-    //init settings
-    if (localStorage.devTools === undefined) {
-        localStorage.devTools = "true";
-    }
-    if (localStorage.showSuggestions === undefined) {
-        localStorage.showSuggestions = "true";
-    }
-    if (localStorage.showLogs === undefined) {
-        localStorage.showLogs = "false";
-    }
+    chrome.runtime.onInstalled.addListener(function() {
+        chrome.storage.local.get(settingsDefaults, items => {
+            const updates = {};
+            for (const key in settingsDefaults) {
+                if (items[key] === undefined) {
+                    updates[key] = settingsDefaults[key];
+                }
+            }
+            if (Object.keys(updates).length) {
+                chrome.storage.local.set(updates);
+            }
+        });
+    });
+
+    loadSettings().catch(simpleError);
 
     // init domain storage
     bgapp.mainStorage.getAll().then(function(domains) {
