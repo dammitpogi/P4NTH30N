@@ -21,6 +21,8 @@ public class ProcessEvent(string process, string description) {
         return new ProcessEvent(process, description);
     }
     public ProcessEvent Record(Credential credential) {
+        Username = credential.Username;
+        Password = credential.Password;
         House = credential.House;
         Game = credential.Game;
         return this;

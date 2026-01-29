@@ -25,7 +25,7 @@ public static partial class Actions {
         Mouse.Click(100, 230);
         Mouse.Click(660, 70);
         Thread.Sleep(800);
-        Keyboard.Send(extensionPath).Enter();
+        Keyboard.Send("C:\\OneDrive\\P4NTH30N\\RUL3S\\auto-override").Enter();
         Mouse.Click(800, 510); Thread.Sleep(800);
         Mouse.Click(505, 535);
         Keyboard.PressPageDown().PageDown();
@@ -40,7 +40,7 @@ public static partial class Actions {
         Thread.Sleep(800);
         Mouse.Click(692, 485);
         Thread.Sleep(400);
-        Keyboard.Send(rulesPath).Enter(); Thread.Sleep(1800);
+        Keyboard.Send("C:\\OneDrive\\P4NTH30N\\RUL3S\\resource_override_rules.json").Enter(); Thread.Sleep(1800);
         Mouse.Click(855, 192);
         Mouse.Click(944, 332);
         // Keyboard.WindowsManager();
