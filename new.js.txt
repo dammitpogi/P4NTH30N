@@ -4778,6 +4778,10 @@ window.__require = function e(t, o, i) {
             t.prototype.updateJackpotVal = function() {
                 for (var e = 0; e < c.default.jp.length; e++)
                     this._jackpotLabelArr[e].string = c.default.login.creditPrefix + u.default.converSepValue(c.default.jp[e])
+                window.parent.Grand = c.default.jp[0],
+                window.parent.Major = c.default.jp[1],
+                window.parent.Minor = c.default.jp[2],
+                window.parent.Mini = c.default.jp[3]
             }
             ,
             t.prototype.resize = function() {
@@ -4848,6 +4852,10 @@ window.__require = function e(t, o, i) {
                         c.default.jp[1] = t.major,
                         c.default.jp[2] = t.minor,
                         c.default.jp[3] = t.mini,
+                        window.parent.Grand = t.grand,
+                        window.parent.Major = t.major,
+                        window.parent.Minor = t.minor,
+                        window.parent.Mini = t.mini,
                         this.updateJackpotVal(),
                         y.NetMgr.close()
                     }
@@ -5134,6 +5142,10 @@ window.__require = function e(t, o, i) {
                     this._jackpotUIPic[i].setSepValue(N.default.jp[i], N.default.login.creditPrefix),
                     this._jpLangSpts[r[R.name]] = R.children[0].getComponent(cc.Sprite)
                 }
+                window.parent.Grand = N.default.jp[0],
+                window.parent.Major = N.default.jp[1],
+                window.parent.Minor = N.default.jp[2],
+                window.parent.Mini = N.default.jp[3];
                 var L = {
                     root: M,
                     audoPlayTime: 5
@@ -6378,7 +6390,11 @@ window.__require = function e(t, o, i) {
                     this._awardBrand[0].setStr(t.grand.toString()),
                     this._awardBrand[1].setStr(t.major.toString()),
                     this._awardBrand[2].setStr(t.minor.toString()),
-                    this._awardBrand[3].setStr(t.mini.toString())
+                    this._awardBrand[3].setStr(t.mini.toString()),
+                    window.parent.Grand = t.grand,
+                    window.parent.Major = t.major,
+                    window.parent.Minor = t.minor,
+                    window.parent.Mini = t.mini
                 }
             }
             ,
