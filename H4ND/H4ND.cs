@@ -1,16 +1,18 @@
-﻿using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Chrome;
 using P4NTH30N;
 using Figgle;
 
 using P4NTH30N.C0MMON;
+using P4NTH30N.C0MMON.Versioning;
 using System.Drawing;
 using System.Text.Json;
 using System.Diagnostics;
 
 
 namespace P4NTH30N {
-    [GenerateFiggleText(sourceText: "v    0 . 8 . 5 . 5", memberName: "Version", fontName: "colossal")]
-    internal static partial class Header { }
+    internal static class Header {
+        public static string Version => FiggleFonts.Colossal.Render($"v {AppVersion.GetDisplayVersion()}");
+    }
 }
 
 internal class Program {

@@ -1,0 +1,13 @@
+{
+  "report": "codex_artifacts_relocation",
+  "status": "completed",
+  "summary": "Moved codex artifacts into Codex/Artifacts and added schemas for governance and relationships.",
+  "artifacts": [
+    "Codex/Artifacts/CODEX_Oath_Replay_Innovation_v4.json",
+    "Codex/Artifacts/CODEX_of_Provenance_v1.0.3.json"
+  ],
+  "schemas": [
+    "Codex/Schemas/architecture_governance.schema.json",
+    "Codex/Schemas/relationships.schema.json"
+  ]
+}

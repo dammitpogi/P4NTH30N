@@ -1,0 +1,63 @@
+{
+  "created_at": "2026-01-18",
+  "owner": "Provenance",
+  "context": "Questions blocking a full refactor and interface alignment.",
+  "questions": [
+    {
+      "id": "Q-001",
+      "question": "Which domain slice should be refactored first (C0MMON entities, persistence adapters, or H4ND/HUN7ER process flows)?",
+      "why_it_blocks": "Refactor order determines required adapters and safe cutover paths.",
+      "suggested_inputs": [
+        "Rank domains by risk or business criticality.",
+        "Confirm which process is allowed to change behavior first."
+      ]
+    },
+    {
+      "id": "Q-002",
+      "question": "Which MongoDB collections are authoritative vs. transitional (e.g., CRED3N7IAL vs. CRED3N7IAL_New)?",
+      "why_it_blocks": "Dual-write and migration steps depend on which collection is canonical.",
+      "suggested_inputs": [
+        "Identify the source of truth per collection.",
+        "Confirm whether legacy collections must remain read-only."
+      ]
+    },
+    {
+      "id": "Q-003",
+      "question": "What feature flags or configuration switches are acceptable for dual-run migrations?",
+      "why_it_blocks": "Cutover safety requires a controlled toggle for old/new flow.",
+      "suggested_inputs": [
+        "Preferred config mechanism (env, appsettings, runtime control).",
+        "Who owns toggling in production?"
+      ]
+    },
+    {
+      "id": "Q-004",
+      "question": "What is the expected retention and compliance policy for sensitive credentials data?",
+      "why_it_blocks": "Schema changes for credentials must respect retention, masking, and audit constraints.",
+      "suggested_inputs": [
+        "Retention window for credential records.",
+        "Masking or encryption requirements."
+      ]
+    },
+    {
+      "id": "Q-005",
+      "question": "Do we have a canonical list of MongoDB indexes and any required new indexes?",
+      "why_it_blocks": "Schema refactors should not regress performance or query plans.",
+      "suggested_inputs": [
+        "Existing index inventory.",
+        "Priority queries that must stay fast."
+      ]
+    }
+  ],
+  "ideas": [
+    "Introduce repository interfaces for each entity collection, with adapters for legacy and new collections.",
+    "Extract MongoDB collection names into a centralized map for audit and migration tracking.",
+    "Add migration reports per run to capture collection diffs and rollback points.",
+    "Create explicit domain services for credential lifecycle and signal orchestration."
+  ],
+  "next_actions": [
+    "Confirm refactor order and source-of-truth collections.",
+    "Define migration toggles and owners.",
+    "Capture MongoDB index inventory before schema moves."
+  ]
+}
