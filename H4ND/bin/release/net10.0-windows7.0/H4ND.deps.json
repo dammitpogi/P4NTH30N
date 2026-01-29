@@ -6,10 +6,11 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v10.0": {
-      "H4ND/1.0.0": {
+      "H4ND/0.8.5.6": {
         "dependencies": {
-          "C0MMON": "1.0.0",
+          "C0MMON": "0.8.5.6",
           "Figgle": "0.6.5",
+          "Figgle.Fonts": "0.6.5",
           "Selenium.WebDriver": "4.39.0"
         },
         "runtime": {
@@ -27,6 +28,17 @@
       "Figgle/0.6.5": {
         "runtime": {
           "lib/netstandard2.0/Figgle.dll": {
+            "assemblyVersion": "0.6.5.0",
+            "fileVersion": "0.6.5.0"
+          }
+        }
+      },
+      "Figgle.Fonts/0.6.5": {
+        "dependencies": {
+          "Figgle": "0.6.5"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Figgle.Fonts.dll": {
             "assemblyVersion": "0.6.5.0",
             "fileVersion": "0.6.5.0"
           }
@@ -121,7 +133,7 @@
           }
         }
       },
-      "C0MMON/1.0.0": {
+      "C0MMON/0.8.5.6": {
         "dependencies": {
           "H.InputSimulator": "1.5.0",
           "MongoDB.Driver": "3.5.2",
@@ -129,15 +141,15 @@
         },
         "runtime": {
           "C0MMON.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
+            "assemblyVersion": "0.8.5.6",
+            "fileVersion": "0.8.5.6"
           }
         }
       }
     }
   },
   "libraries": {
-    "H4ND/1.0.0": {
+    "H4ND/0.8.5.6": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -155,6 +167,13 @@
       "sha512": "sha512-8Z1qvgyDFvqeQB+b/qpp083N5O/1UNEVKpI2TsWD+tM7Ev388VccPysMxre6jeAy7h4m6L6LrguPGmnOh8+ZGA==",
       "path": "figgle/0.6.5",
       "hashPath": "figgle.0.6.5.nupkg.sha512"
+    },
+    "Figgle.Fonts/0.6.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-AFGGUXBF/u44qOww7Zyro0pwhuq7uuZA68N/y1z6GHd+CRj6pWpGHMc7/+XyjZwgJFi3as4diEG/EULOmQAkPQ==",
+      "path": "figgle.fonts/0.6.5",
+      "hashPath": "figgle.fonts.0.6.5.nupkg.sha512"
     },
     "H.InputSimulator/1.5.0": {
       "type": "package",
@@ -212,7 +231,7 @@
       "path": "zstdsharp.port/0.7.3",
       "hashPath": "zstdsharp.port.0.7.3.nupkg.sha512"
     },
-    "C0MMON/1.0.0": {
+    "C0MMON/0.8.5.6": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

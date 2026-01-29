@@ -155,7 +155,7 @@
           "lib/net7.0/ZstdSharp.dll": {}
         }
       },
-      "C0MMON/1.0.0": {
+      "C0MMON/0.8.5.6": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
@@ -385,7 +385,7 @@
         "zstdsharp.port.nuspec"
       ]
     },
-    "C0MMON/1.0.0": {
+    "C0MMON/0.8.5.6": {
       "type": "project",
       "path": "../C0MMON/C0MMON.csproj",
       "msbuildProject": "../C0MMON/C0MMON.csproj"
@@ -393,7 +393,7 @@
   },
   "projectFileDependencyGroups": {
     "net10.0-windows7.0": [
-      "C0MMON >= 1.0.0",
+      "C0MMON >= 0.8.5.6",
       "Figgle >= 0.6.5",
       "Figgle.Generator >= 0.6.5",
       "Selenium.WebDriver >= 4.39.0"
@@ -403,7 +403,7 @@
     "C:\\Users\\paulc\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "0.8.5.6",
     "restore": {
       "projectUniqueName": "C:\\OneDrive\\P4NTH30N\\H5ND\\H5ND.csproj",
       "projectName": "H5ND",

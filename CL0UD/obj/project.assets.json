@@ -136,7 +136,7 @@
           "lib/net7.0/ZstdSharp.dll": {}
         }
       },
-      "C0MMON/1.0.0": {
+      "C0MMON/0.8.5.6": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
@@ -331,7 +331,7 @@
         "zstdsharp.port.nuspec"
       ]
     },
-    "C0MMON/1.0.0": {
+    "C0MMON/0.8.5.6": {
       "type": "project",
       "path": "../C0MMON/C0MMON.csproj",
       "msbuildProject": "../C0MMON/C0MMON.csproj"
@@ -339,14 +339,14 @@
   },
   "projectFileDependencyGroups": {
     "net10.0-windows7.0": [
-      "C0MMON >= 1.0.0"
+      "C0MMON >= 0.8.5.6"
     ]
   },
   "packageFolders": {
     "C:\\Users\\paulc\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "0.8.5.6",
     "restore": {
       "projectUniqueName": "C:\\OneDrive\\P4NTH30N\\CL0UD\\CL0UD.csproj",
       "projectName": "CL0UD",

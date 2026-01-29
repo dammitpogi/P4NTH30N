@@ -28,6 +28,22 @@
           }
         }
       },
+      "Figgle.Fonts/0.6.5": {
+        "type": "package",
+        "dependencies": {
+          "Figgle": "0.6.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Figgle.Fonts.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Figgle.Fonts.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Figgle.Generator/0.6.5": {
         "type": "package",
         "build": {
@@ -155,7 +171,7 @@
           "lib/net7.0/ZstdSharp.dll": {}
         }
       },
-      "C0MMON/1.0.0": {
+      "C0MMON/0.8.5.6": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
@@ -212,6 +228,21 @@
         "figgle.nuspec",
         "lib/netstandard2.0/Figgle.dll",
         "lib/netstandard2.0/Figgle.xml",
+        "logo-square-256px.png"
+      ]
+    },
+    "Figgle.Fonts/0.6.5": {
+      "sha512": "AFGGUXBF/u44qOww7Zyro0pwhuq7uuZA68N/y1z6GHd+CRj6pWpGHMc7/+XyjZwgJFi3as4diEG/EULOmQAkPQ==",
+      "type": "package",
+      "path": "figgle.fonts/0.6.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "figgle.fonts.0.6.5.nupkg.sha512",
+        "figgle.fonts.nuspec",
+        "lib/netstandard2.0/Figgle.Fonts.dll",
+        "lib/netstandard2.0/Figgle.Fonts.xml",
         "logo-square-256px.png"
       ]
     },
@@ -385,7 +416,7 @@
         "zstdsharp.port.nuspec"
       ]
     },
-    "C0MMON/1.0.0": {
+    "C0MMON/0.8.5.6": {
       "type": "project",
       "path": "../C0MMON/C0MMON.csproj",
       "msbuildProject": "../C0MMON/C0MMON.csproj"
@@ -393,8 +424,9 @@
   },
   "projectFileDependencyGroups": {
     "net10.0-windows7.0": [
-      "C0MMON >= 1.0.0",
+      "C0MMON >= 0.8.5.6",
       "Figgle >= 0.6.5",
+      "Figgle.Fonts >= 0.6.5",
       "Figgle.Generator >= 0.6.5",
       "Selenium.WebDriver >= 4.39.0"
     ]
@@ -403,7 +435,7 @@
     "C:\\Users\\paulc\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "0.8.5.6",
     "restore": {
       "projectUniqueName": "C:\\OneDrive\\P4NTH30N\\H4ND\\H4ND.csproj",
       "projectName": "H4ND",
@@ -447,6 +479,10 @@
         "targetAlias": "net10.0-windows7.0",
         "dependencies": {
           "Figgle": {
+            "target": "Package",
+            "version": "[0.6.5, )"
+          },
+          "Figgle.Fonts": {
             "target": "Package",
             "version": "[0.6.5, )"
           },

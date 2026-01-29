@@ -5,7 +5,7 @@
   },
   "projects": {
     "C:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj": {
-      "version": "1.0.0",
+      "version": "0.8.5.6",
       "restore": {
         "projectUniqueName": "C:\\OneDrive\\P4NTH30N\\C0MMON\\C0MMON.csproj",
         "projectName": "C0MMON",
@@ -371,7 +371,7 @@
       }
     },
     "C:\\OneDrive\\P4NTH30N\\W4TCHD0G\\W4TCHD0G.csproj": {
-      "version": "1.0.0",
+      "version": "0.8.5.6",
       "restore": {
         "projectUniqueName": "C:\\OneDrive\\P4NTH30N\\W4TCHD0G\\W4TCHD0G.csproj",
         "projectName": "W4TCHD0G",

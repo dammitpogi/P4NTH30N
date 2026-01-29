@@ -1,4 +1,4 @@
-using OpenQA.Selenium.Chrome;
+﻿using OpenQA.Selenium.Chrome;
 using P4NTH30N;
 using Figgle;
 
@@ -7,6 +7,7 @@ using P4NTH30N.C0MMON.Versioning;
 using System.Drawing;
 using System.Text.Json;
 using System.Diagnostics;
+using Figgle.Fonts;
 
 
 namespace P4NTH30N {

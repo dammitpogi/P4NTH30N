@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net9.0-windows7.0": {
-      "C0MMON/1.0.0": {
+      "C0MMON/0.8.5.6": {
         "type": "project",
         "framework": "Unsupported,Version=v0.0",
         "compile": {
@@ -15,7 +15,7 @@
     }
   },
   "libraries": {
-    "C0MMON/1.0.0": {
+    "C0MMON/0.8.5.6": {
       "type": "project",
       "path": "../C0MMON/C0MMON.csproj",
       "msbuildProject": "../C0MMON/C0MMON.csproj"
@@ -23,14 +23,14 @@
   },
   "projectFileDependencyGroups": {
     "net9.0-windows7.0": [
-      "C0MMON >= 1.0.0"
+      "C0MMON >= 0.8.5.6"
     ]
   },
   "packageFolders": {
     "C:\\Users\\paulc\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "0.8.5.6",
     "restore": {
       "projectUniqueName": "C:\\OneDrive\\P4NTH30N\\HUN7ER\\HUN7ER.csproj",
       "projectName": "HUN7ER",

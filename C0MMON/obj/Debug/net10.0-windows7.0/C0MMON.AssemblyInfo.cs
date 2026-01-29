@@ -12,11 +12,11 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("C0MMON")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d093f2cbd89d3f98169e63ea6d825fa00f512879")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("0.8.5.6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.8.5.6+d79f63c605b0728e486c4deae86bee02fa95b31c")]
 [assembly: System.Reflection.AssemblyProductAttribute("C0MMON")]
 [assembly: System.Reflection.AssemblyTitleAttribute("C0MMON")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("0.8.5.6")]
 [assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows7.0")]
 [assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Windows7.0")]
 
