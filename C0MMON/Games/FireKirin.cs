@@ -125,11 +125,13 @@ public static class FireKirin {
         string configSuffix = "",
         CancellationToken cancellationToken = default
     ) {
+        if (!baseUrl.EndsWith("/", StringComparison.Ordinal)) {
+            baseUrl += "/";
+        }
         using HttpClient httpClient = new();
         Uri baseUri = new(baseUrl, UriKind.Absolute);
-        Uri basePathUri = new(baseUri, "../");
         string configPath = $"plat/config/hall/orionstars{configSuffix}/config.json";
-        Uri configUri = new(basePathUri, configPath);
+        Uri configUri = new(baseUri, configPath);
 
         using HttpResponseMessage configResponse = await httpClient
             .GetAsync(configUri, cancellationToken)
