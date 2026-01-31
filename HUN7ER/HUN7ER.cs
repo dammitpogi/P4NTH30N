@@ -15,22 +15,29 @@ class PROF3T {
 				List<Credential> credentials = Credential.GetAll();
                 Credential.IntroduceProperties();
                 
-				List<Game> games = Game.GetAll()
+	List<Game> games = Game.GetAll()
 					.FindAll(x =>
 						credentials.Any(y => x.House.Equals(y.House) && x.Name.Equals(y.Game))
 					);
 
+				List<Signal> signals = Signal.GetAll();
 				credentials.ForEach(x => {
-					if (x.Balance < 1 && x.CashedOut.Equals(false)) {
+					// Check if there are any signals for this credential
+					bool hasSignals = signals.Any(s => 
+						s.House == x.House && 
+						s.Game == x.Game && 
+						s.Username == x.Username
+					);
+					
+					if ((x.Balance < 3 && !hasSignals && !x.CashedOut) || (x.Balance < 0.2 && !x.CashedOut)) {
+						// Set to cashed out if: (no signals and balance < 3) OR (balance < 0.2 regardless of signals)
 						x.CashedOut = true;
 						x.Save();
 					} else if (x.Balance > 3 && x.CashedOut) {
-						x.LastDepositDate = DateTime.UtcNow;
+						// Set to false if balance > 3 and none of the previous conditions apply
 						x.CashedOut = false;
 						x.Save();
-					} else {
-                        x.Save();
-                    }
+					}
                     
                     credentials = [.. credentials.Where(x => x.Banned == false)];
 
@@ -183,7 +190,6 @@ if (
 					}
 				);
 
-				List<Signal> signals = Signal.GetAll();
 				List<Jackpot> jackpots = Jackpot
 					.GetAll()
 					.FindAll(x => x.EstimatedDate < DateLimit)

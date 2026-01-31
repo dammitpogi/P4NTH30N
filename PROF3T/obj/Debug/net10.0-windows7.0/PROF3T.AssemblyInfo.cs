@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PROF3T")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("0.8.5.6")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.8.5.6+8b4d4e76ec8f464a730e98d21c2da5284f32baba")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.8.5.6+aa3647d4a8b56c5faeb284df0891ce0a2b43cd15")]
 [assembly: System.Reflection.AssemblyProductAttribute("PROF3T")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PROF3T")]
 [assembly: System.Reflection.AssemblyVersionAttribute("0.8.5.6")]
