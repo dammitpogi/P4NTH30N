@@ -36,119 +36,138 @@ class H0UND
 					{
 						game.Lock();
 
-						var balances = GetBalancesWithRetry(game, credential);
-						double currentGrand = balances.Grand;
-
-						double currentMajor = balances.Major;
-						double currentMinor = balances.Minor;
-						double currentMini = balances.Mini;
-
-						if ((lastRetrievedGrand.Equals(currentGrand) && (lastGame == null || game.Name != lastGame.Name && game.House != lastGame.House)) == false)
+						try
 						{
-							Signal? gameSignal = Signal.GetOne(game);
-							if (currentGrand < game.Jackpots.Grand && game.Jackpots.Grand - currentGrand > 0.1)
+							var balances = GetBalancesWithRetry(game, credential);
+							double currentGrand = balances.Grand;
+
+							double currentMajor = balances.Major;
+							double currentMinor = balances.Minor;
+							double currentMini = balances.Mini;
+
+							if ((lastRetrievedGrand.Equals(currentGrand) && (lastGame == null || game.Name != lastGame.Name && game.House != lastGame.House)) == false)
 							{
-								if (game.DPD.Toggles.GrandPopped == true)
+								Signal? gameSignal = Signal.GetOne(game);
+								if (currentGrand < game.Jackpots.Grand && game.Jackpots.Grand - currentGrand > 0.1)
 								{
-									if (currentGrand >= 0 && currentGrand <= 10000) {
+									if (game.DPD.Toggles.GrandPopped == true)
+									{
+										if (currentGrand >= 0 && currentGrand <= 10000)
+										{
+											game.Jackpots.Grand = currentGrand;
+										}
+										game.DPD.Toggles.GrandPopped = false;
+										game.Thresholds.NewGrand(game.Jackpots.Grand);
+										if (gameSignal != null && gameSignal.Priority.Equals(4))
+											Signal.DeleteAll(game);
+									}
+									else
+										game.DPD.Toggles.GrandPopped = true;
+								}
+								else
+								{
+									if (currentGrand >= 0 && currentGrand <= 10000)
+									{
 										game.Jackpots.Grand = currentGrand;
 									}
-									game.DPD.Toggles.GrandPopped = false;
-									game.Thresholds.NewGrand(game.Jackpots.Grand);
-									if (gameSignal != null && gameSignal.Priority.Equals(4))
-										Signal.DeleteAll(game);
+								}
+
+								if (currentMajor < game.Jackpots.Major && game.Jackpots.Major - currentMajor > 0.1)
+								{
+									if (game.DPD.Toggles.MajorPopped == true)
+									{
+										if (currentMajor >= 0 && currentMajor <= 10000)
+										{
+											game.Jackpots.Major = currentMajor;
+										}
+										game.DPD.Toggles.MajorPopped = false;
+										game.Thresholds.NewMajor(game.Jackpots.Major);
+										if (gameSignal != null && gameSignal.Priority.Equals(3))
+											Signal.DeleteAll(game);
+									}
+									else
+										game.DPD.Toggles.MajorPopped = true;
 								}
 								else
-									game.DPD.Toggles.GrandPopped = true;
-							}
-							else {
-								if (currentGrand >= 0 && currentGrand <= 10000) {
-									game.Jackpots.Grand = currentGrand;
-								}
-							}
-
-							if (currentMajor < game.Jackpots.Major && game.Jackpots.Major - currentMajor > 0.1)
-							{
-								if (game.DPD.Toggles.MajorPopped == true)
 								{
-									if (currentMajor >= 0 && currentMajor <= 10000) {
+									if (currentMajor >= 0 && currentMajor <= 10000)
+									{
 										game.Jackpots.Major = currentMajor;
 									}
-									game.DPD.Toggles.MajorPopped = false;
-									game.Thresholds.NewMajor(game.Jackpots.Major);
-									if (gameSignal != null && gameSignal.Priority.Equals(3))
-										Signal.DeleteAll(game);
+								}
+
+								if (currentMinor < game.Jackpots.Minor && game.Jackpots.Minor - currentMinor > 0.1)
+								{
+									if (game.DPD.Toggles.MinorPopped == true)
+									{
+										if (currentMinor >= 0 && currentMinor <= 10000)
+										{
+											game.Jackpots.Minor = currentMinor;
+										}
+										game.DPD.Toggles.MinorPopped = false;
+										game.Thresholds.NewMinor(game.Jackpots.Minor);
+										if (gameSignal != null && gameSignal.Priority.Equals(2))
+											Signal.DeleteAll(game);
+									}
+									else
+										game.DPD.Toggles.MinorPopped = true;
 								}
 								else
-									game.DPD.Toggles.MajorPopped = true;
-							}
-							else {
-								if (currentMajor >= 0 && currentMajor <= 10000) {
-									game.Jackpots.Major = currentMajor;
-								}
-							}
-
-							if (currentMinor < game.Jackpots.Minor && game.Jackpots.Minor - currentMinor > 0.1)
-							{
-								if (game.DPD.Toggles.MinorPopped == true)
 								{
-									if (currentMinor >= 0 && currentMinor <= 10000) {
+									if (currentMinor >= 0 && currentMinor <= 10000)
+									{
 										game.Jackpots.Minor = currentMinor;
 									}
-									game.DPD.Toggles.MinorPopped = false;
-									game.Thresholds.NewMinor(game.Jackpots.Minor);
-									if (gameSignal != null && gameSignal.Priority.Equals(2))
-										Signal.DeleteAll(game);
+								}
+
+								if (currentMini < game.Jackpots.Mini && game.Jackpots.Mini - currentMini > 0.1)
+								{
+									if (game.DPD.Toggles.MiniPopped == true)
+									{
+										if (currentMini >= 0 && currentMini <= 10000)
+										{
+											game.Jackpots.Mini = currentMini;
+										}
+										game.DPD.Toggles.MiniPopped = false;
+										game.Thresholds.NewMini(game.Jackpots.Mini);
+										if (gameSignal != null && gameSignal.Priority.Equals(1))
+											Signal.DeleteAll(game);
+									}
+									else
+										game.DPD.Toggles.MiniPopped = true;
 								}
 								else
-									game.DPD.Toggles.MinorPopped = true;
-							}
-							else {
-								if (currentMinor >= 0 && currentMinor <= 10000) {
-									game.Jackpots.Minor = currentMinor;
-								}
-							}
-
-							if (currentMini < game.Jackpots.Mini && game.Jackpots.Mini - currentMini > 0.1)
-							{
-								if (game.DPD.Toggles.MiniPopped == true)
 								{
-									if (currentMini >= 0 && currentMini <= 10000) {
+									if (currentMini >= 0 && currentMini <= 10000)
+									{
 										game.Jackpots.Mini = currentMini;
 									}
-									game.DPD.Toggles.MiniPopped = false;
-									game.Thresholds.NewMini(game.Jackpots.Mini);
-									if (gameSignal != null && gameSignal.Priority.Equals(1))
-										Signal.DeleteAll(game);
-								}
-								else
-									game.DPD.Toggles.MiniPopped = true;
-							}
-							else {
-								if (currentMini >= 0 && currentMini <= 10000) {
-									game.Jackpots.Mini = currentMini;
 								}
 							}
+							else
+							{
+								throw new Exception("Invalid grand retrieved.");
+							}
+
+							if (game.Settings.Gold777 == null)
+								game.Settings.Gold777 = new Gold777_Settings();
+							game.Updated = true;
+							game.Unlock();
+
+							double currentBalance = balances.Balance;
+							credential.LastUpdated = DateTime.UtcNow;
+							credential.Balance = currentBalance;
+							lastRetrievedGrand = currentGrand;
+							credential.Save();
+							lastGame = game;
+
+							// Console.WriteLine($"{DateTime.Now} - {game.House} - Completed data retrieval for {game.Name}");
+							Thread.Sleep(new Random().Next(0, 1501));
 						}
-						else
+						catch (InvalidOperationException ex) when (ex.Message.Contains("Your account has been suspended"))
 						{
-							throw new Exception("Invalid grand retrieved.");
+							game.Unlock();
 						}
-
-						if (game.Settings.Gold777 == null)
-							game.Settings.Gold777 = new Gold777_Settings();
-						game.Updated = true;
-						game.Unlock();
-
-						double currentBalance = balances.Balance;
-						credential.LastUpdated = DateTime.UtcNow;
-						credential.Balance = currentBalance;
-						lastRetrievedGrand = currentGrand;
-						credential.Save();
-						lastGame = game;
-
-						// Console.WriteLine($"{DateTime.Now} - {game.House} - Completed data retrieval for {game.Name}");
-						Thread.Sleep(new Random().Next(0, 1501));
 					}
 				}
 			}
@@ -167,28 +186,38 @@ class H0UND
 		int delayMs = random.Next(500, 2001);
 		Thread.Sleep(delayMs);
 
-		switch (game.Name)
+		try
 		{
-			case "FireKirin":
+			switch (game.Name)
 			{
-				// Console.WriteLine($"{DateTime.Now} - Querying FireKirin balances and jackpot data for {credential.Username}");
-				var balances = FireKirin.QueryBalances(credential.Username, credential.Password);
-				Console.WriteLine(
-                    $"{DateTime.Now} - {game.Name} - {game.House} - {credential.Username} - ${balances.Balance:F2} - [{balances.Grand:F2}, {balances.Major:F2}, {balances.Minor:F2}, {balances.Mini:F2}]"
-				);
-				return ((double)balances.Balance, (double)balances.Grand, (double)balances.Major, (double)balances.Minor, (double)balances.Mini);
+				case "FireKirin":
+				{
+					// Console.WriteLine($"{DateTime.Now} - Querying FireKirin balances and jackpot data for {credential.Username}");
+					var balances = FireKirin.QueryBalances(credential.Username, credential.Password);
+					Console.WriteLine(
+						$"{DateTime.Now} - {game.Name} - {game.House} - {credential.Username} - ${balances.Balance:F2} - [{balances.Grand:F2}, {balances.Major:F2}, {balances.Minor:F2}, {balances.Mini:F2}]"
+					);
+					return ((double)balances.Balance, (double)balances.Grand, (double)balances.Major, (double)balances.Minor, (double)balances.Mini);
+				}
+				case "OrionStars":
+				{
+					// Console.WriteLine($"{DateTime.Now} - Querying OrionStars balances and jackpot data for {credential.Username}");
+					var balances = OrionStars.QueryBalances(credential.Username, credential.Password);
+					Console.WriteLine(
+						$"{DateTime.Now} - {game.Name} - {game.House} - {credential.Username} - ${balances.Balance:F2} - [{balances.Grand:F2}, {balances.Major:F2}, {balances.Minor:F2}, {balances.Mini:F2}]"
+					);
+					return ((double)balances.Balance, (double)balances.Grand, (double)balances.Major, (double)balances.Minor, (double)balances.Mini);
+				}
+				default:
+					throw new Exception($"Uncrecognized Game Found. ('{game.Name}')");
 			}
-			case "OrionStars":
-			{
-				// Console.WriteLine($"{DateTime.Now} - Querying OrionStars balances and jackpot data for {credential.Username}");
-				var balances = OrionStars.QueryBalances(credential.Username, credential.Password);
-				Console.WriteLine(
-                    $"{DateTime.Now} - {game.Name} - {game.House} - {credential.Username} - ${balances.Balance:F2} - [{balances.Grand:F2}, {balances.Major:F2}, {balances.Minor:F2}, {balances.Mini:F2}]"
-				);
-				return ((double)balances.Balance, (double)balances.Grand, (double)balances.Major, (double)balances.Minor, (double)balances.Mini);
-			}
-			default:
-				throw new Exception($"Uncrecognized Game Found. ('{game.Name}')");
+		}
+		catch (InvalidOperationException ex) when (ex.Message.Contains("Your account has been suspended"))
+		{
+			Console.WriteLine($"{DateTime.Now} - Account suspended for {credential.Username} on {game.Name}. Marking as banned.");
+			credential.Banned = true;
+			credential.Save();
+			throw;
 		}
 	}
 
@@ -209,9 +238,16 @@ class H0UND
 				alert.Record(credential).Save();
 				throw new Exception("Extension failure.");
 			}
-			Console.WriteLine($"{DateTime.Now} - Retrying balance query for {game.Name} (attempt {grandChecked})");
-			balances = QueryBalances(game, credential);
-			currentGrand = balances.Grand;
+			try
+			{
+				Console.WriteLine($"{DateTime.Now} - Retrying balance query for {game.Name} (attempt {grandChecked})");
+				balances = QueryBalances(game, credential);
+				currentGrand = balances.Grand;
+			}
+			catch (InvalidOperationException ex) when (ex.Message.Contains("Your account has been suspended"))
+			{
+				throw;
+			}
 		}
 
 		return balances;
