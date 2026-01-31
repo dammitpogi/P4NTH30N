@@ -8,7 +8,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HUN7ER (1)", "HUN7ER (1)", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HUN7ER", "HUN7ER\HUN7ER.csproj", "{B129C372-1737-E615-8E02-024FA0D6D295}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HUN7ER-CATH3DR4L-01", "HUN7ER\HUN7ER-CATH3DR4L-01.csproj", "{7230415A-A894-777D-28E7-97CC33ECB677}"
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INT3RF4C3", "INT3RF4C3\INT3RF4C3.csproj", "{8F4D2B1C-9A3E-4F7D-B2C5-6E8A7F9D1E2B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,17 +25,19 @@ Global
 		{B129C372-1737-E615-8E02-024FA0D6D295}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B129C372-1737-E615-8E02-024FA0D6D295}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B129C372-1737-E615-8E02-024FA0D6D295}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7230415A-A894-777D-28E7-97CC33ECB677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+{7230415A-A894-777D-28E7-97CC33ECB677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7230415A-A894-777D-28E7-97CC33ECB677}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7230415A-A894-777D-28E7-97CC33ECB677}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7230415A-A894-777D-28E7-97CC33ECB677}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F4D2B1C-9A3E-4F7D-B2C5-6E8A7F9D1E2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F4D2B1C-9A3E-4F7D-B2C5-6E8A7F9D1E2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F4D2B1C-9A3E-4F7D-B2C5-6E8A7F9D1E2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F4D2B1C-9A3E-4F7D-B2C5-6E8A7F9D1E2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{7230415A-A894-777D-28E7-97CC33ECB677} = {4CC9C6F3-9851-B027-5369-13BC0E431E38}
-	EndGlobalSection
+
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {75BF8CB6-CF0D-4668-8DB7-F2D8E2CDA9AE}
 	EndGlobalSection

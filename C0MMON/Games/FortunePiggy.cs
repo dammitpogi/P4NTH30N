@@ -194,11 +194,19 @@ public static partial class Games {
                     Console.WriteLine();
                 }
 
-                game.LastUpdated = DateTime.UtcNow;
-                game.Jackpots.Grand = currentGrand; grandPrior = game.Jackpots.Grand;
-                game.Jackpots.Major = currentMajor; majorPrior = game.Jackpots.Major;
-                game.Jackpots.Minor = currentMinor; minorPrior = game.Jackpots.Minor;
-                game.Jackpots.Mini = currentMini; miniPrior = game.Jackpots.Mini;
+game.LastUpdated = DateTime.UtcNow;
+                if (currentGrand >= 0 && currentGrand <= 10000) {
+                    game.Jackpots.Grand = currentGrand; grandPrior = game.Jackpots.Grand;
+                }
+                if (currentMajor >= 0 && currentMajor <= 10000) {
+                    game.Jackpots.Major = currentMajor; majorPrior = game.Jackpots.Major;
+                }
+                if (currentMinor >= 0 && currentMinor <= 10000) {
+                    game.Jackpots.Minor = currentMinor; minorPrior = game.Jackpots.Minor;
+                }
+                if (currentMini >= 0 && currentMini <= 10000) {
+                    game.Jackpots.Mini = currentMini; miniPrior = game.Jackpots.Mini;
+                }
                 game.Save();
 
                 double balancePrior = balance;

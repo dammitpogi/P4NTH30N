@@ -138,7 +138,7 @@ public static class OrionStars {
 				}
 
 				bossId = GetInt32(data, "bossid");
-				balance = GetDecimal(data, "score");
+				balance = GetDecimal(data, "score")/100;
 			}
 		);
 
@@ -163,10 +163,10 @@ public static class OrionStars {
 			120,
 			TimeSpan.FromSeconds(10),
 			data => {
-				grand = GetDecimal(data, "grand");
-				major = GetDecimal(data, "major");
-				minor = GetDecimal(data, "minor");
-				mini = GetDecimal(data, "mini");
+				grand = GetDecimal(data, "grand")/100;
+				major = GetDecimal(data, "major")/100;
+				minor = GetDecimal(data, "minor")/100;
+				mini = GetDecimal(data, "mini")/100;
 			}
 		);
 

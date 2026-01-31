@@ -1,4 +1,4 @@
-﻿using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Chrome;
 using P4NTH30N;
 using Figgle;
 
@@ -144,55 +144,75 @@ internal class Program {
                         double currentMinor = balances.Minor;
                         double currentMini = balances.Mini;
 
-                        if ((lastRetrievedGrand.Equals(currentGrand) && (lastGame == null || game.Name != lastGame.Name && game.House != lastGame.House)) == false) {
+if ((lastRetrievedGrand.Equals(currentGrand) && (lastGame == null || game.Name != lastGame.Name && game.House != lastGame.House)) == false) {
                             Signal? gameSignal = Signal.GetOne(game);
                             if (currentGrand < game.Jackpots.Grand && game.Jackpots.Grand - currentGrand > 0.1) {
                                 if (game.DPD.Toggles.GrandPopped == true) {
-                                    game.Jackpots.Grand = currentGrand;
+                                    if (currentGrand >= 0 && currentGrand <= 10000) {
+                                        game.Jackpots.Grand = currentGrand;
+                                    }
                                     game.DPD.Toggles.GrandPopped = false;
                                     game.Thresholds.NewGrand(game.Jackpots.Grand);
                                     if (gameSignal != null && gameSignal.Priority.Equals(4))
                                         Signal.DeleteAll(game);
-                                } else
+} else
                                     game.DPD.Toggles.GrandPopped = true;
-                            } else
-                                game.Jackpots.Grand = currentGrand;
+                            } else {
+                                if (currentGrand >= 0 && currentGrand <= 10000) {
+                                    game.Jackpots.Grand = currentGrand;
+                                }
+                            }
 
-                            if (currentMajor < game.Jackpots.Major && game.Jackpots.Major - currentMajor > 0.1) {
+if (currentMajor < game.Jackpots.Major && game.Jackpots.Major - currentMajor > 0.1) {
                                 if (game.DPD.Toggles.MajorPopped == true) {
-                                    game.Jackpots.Major = currentMajor;
+                                    if (currentMajor >= 0 && currentMajor <= 10000) {
+                                        game.Jackpots.Major = currentMajor;
+                                    }
                                     game.DPD.Toggles.MajorPopped = false;
                                     game.Thresholds.NewMajor(game.Jackpots.Major);
                                     if (gameSignal != null && gameSignal.Priority.Equals(3))
                                         Signal.DeleteAll(game);
-                                } else
+} else
                                     game.DPD.Toggles.MajorPopped = true;
-                            } else
-                                game.Jackpots.Major = currentMajor;
+                            } else {
+                                if (currentMajor >= 0 && currentMajor <= 10000) {
+                                    game.Jackpots.Major = currentMajor;
+                                }
+                            }
 
-                            if (currentMinor < game.Jackpots.Minor && game.Jackpots.Minor - currentMinor > 0.1) {
+if (currentMinor < game.Jackpots.Minor && game.Jackpots.Minor - currentMinor > 0.1) {
                                 if (game.DPD.Toggles.MinorPopped == true) {
-                                    game.Jackpots.Minor = currentMinor;
+                                    if (currentMinor >= 0 && currentMinor <= 10000) {
+                                        game.Jackpots.Minor = currentMinor;
+                                    }
                                     game.DPD.Toggles.MinorPopped = false;
                                     game.Thresholds.NewMinor(game.Jackpots.Minor);
                                     if (gameSignal != null && gameSignal.Priority.Equals(2))
                                         Signal.DeleteAll(game);
-                                } else
+} else
                                     game.DPD.Toggles.MinorPopped = true;
-                            } else
-                                game.Jackpots.Minor = currentMinor;
+                            } else {
+                                if (currentMinor >= 0 && currentMinor <= 10000) {
+                                    game.Jackpots.Minor = currentMinor;
+                                }
+                            }
 
-                            if (currentMini < game.Jackpots.Mini && game.Jackpots.Mini - currentMini > 0.1) {
+if (currentMini < game.Jackpots.Mini && game.Jackpots.Mini - currentMini > 0.1) {
                                 if (game.DPD.Toggles.MiniPopped == true) {
-                                    game.Jackpots.Mini = currentMini;
+                                    if (currentMini >= 0 && currentMini <= 10000) {
+                                        game.Jackpots.Mini = currentMini;
+                                    }
                                     game.DPD.Toggles.MiniPopped = false;
                                     game.Thresholds.NewMini(game.Jackpots.Mini);
                                     if (gameSignal != null && gameSignal.Priority.Equals(1))
                                         Signal.DeleteAll(game);
-                                } else
+} else
                                     game.DPD.Toggles.MiniPopped = true;
-                            } else
-                                game.Jackpots.Mini = currentMini;
+                            } else {
+                                if (currentMini >= 0 && currentMini <= 10000) {
+                                    game.Jackpots.Mini = currentMini;
+                                }
+                            }
                         } else {
                             throw new Exception("Invalid grand retrieved.");
                         }
@@ -245,9 +265,17 @@ internal class Program {
         Game game,
         Credential credential
     ) {
+        // Add human-like staggering before each balance query (3-5 seconds)
+        Random random = new();
+        int delayMs = random.Next(3000, 5001);
+        Console.WriteLine($"{DateTime.Now} - Waiting {delayMs / 1000.0:F1}s before querying {game.Name} balances for {credential.Username}");
+        Thread.Sleep(delayMs);
+
         switch (game.Name) {
             case "FireKirin": {
+                Console.WriteLine($"{DateTime.Now} - Querying FireKirin balances and jackpot data for {credential.Username}");
                 var balances = FireKirin.QueryBalances(credential.Username, credential.Password);
+                Console.WriteLine($"{DateTime.Now} - FireKirin retrieved: Balance={balances.Balance:F2}, Grand={balances.Grand:F2}, Major={balances.Major:F2}, Minor={balances.Minor:F2}, Mini={balances.Mini:F2}");
                 return (
                     (double)balances.Balance,
                     (double)balances.Grand,
@@ -257,7 +285,9 @@ internal class Program {
                 );
             }
             case "OrionStars": {
+                Console.WriteLine($"{DateTime.Now} - Querying OrionStars balances and jackpot data for {credential.Username}");
                 var balances = OrionStars.QueryBalances(credential.Username, credential.Password);
+                Console.WriteLine($"{DateTime.Now} - OrionStars retrieved: Balance={balances.Balance:F2}, Grand={balances.Grand:F2}, Major={balances.Major:F2}, Minor={balances.Minor:F2}, Mini={balances.Mini:F2}");
                 return (
                     (double)balances.Balance,
                     (double)balances.Grand,
@@ -279,13 +309,16 @@ internal class Program {
         var balances = QueryBalances(game, credential);
         double currentGrand = balances.Grand;
         while (currentGrand.Equals(0)) {
+            grandChecked++;
+            Console.WriteLine($"{DateTime.Now} - Grand jackpot is 0 for {game.Name}, retrying attempt {grandChecked}/40");
             Thread.Sleep(500);
-            if (grandChecked++ > 40) {
+            if (grandChecked > 40) {
                 ProcessEvent alert = ProcessEvent.Log("H4ND", $"Grand check signalled an Extension Failure for {game.Name}");
                 Console.WriteLine($"Checking Grand on {game.Name} failed at {grandChecked} attempts.");
                 alert.Record(credential).Save();
                 throw new Exception("Extension failure.");
             }
+            Console.WriteLine($"{DateTime.Now} - Retrying balance query for {game.Name} (attempt {grandChecked})");
             balances = QueryBalances(game, credential);
             currentGrand = balances.Grand;
         }

@@ -42,7 +42,7 @@ class PROF3T {
 		// SeperateAllGames();
 		// DisableEmptyGames();
 		// UpdateCredentials();
-		// ResetGames();
+		ResetGames();
 		// sandbox();
 		// BurnAccount("ShariNor55", "123qwe");
 		// ResetSignalsTest("FireKirin");
@@ -76,12 +76,40 @@ class PROF3T {
 
 static void ResetGames()
     {
+        List<Credential> cr = Credential.GetAll();
+        foreach (Credential credential in cr)
+        {
+            credential.DPD.Average = 0;
+            credential.DPD.History = [];
+            
+            // Target specific elements within DPD.Data array
+            if (credential.DPD.Data != null)
+            {
+                // Remove elements with insane values, keep original timestamps
+                credential.DPD.Data = credential.DPD.Data
+                    .Where(dpd => dpd.Grand >= 0 && dpd.Grand <= 10000) // Filter out insane values
+                    .ToList();
+            }
+            
+            // credential.Balance = 0;
+            credential.Save();
+        }
+        
         List<Game> games = Game.GetAll();
         foreach (Game game in games)
         {
             game.DPD.Average = 0;
             game.DPD.History = [];
-            game.DPD.Data = [];
+            
+            // Target specific elements within DPD.Data array
+            if (game.DPD.Data != null)
+            {
+                // Remove elements with insane values, keep original timestamps
+                game.DPD.Data = game.DPD.Data
+                    .Where(dpd => dpd.Grand >= 0 && dpd.Grand <= 10000) // Filter out insane values
+                    .ToList();
+            }
+            
             game.Save();
         }
     }

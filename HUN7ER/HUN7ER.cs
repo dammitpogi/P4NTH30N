@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using P4NTH30N.C0MMON;
 
 namespace P4NTH30N;
@@ -50,8 +50,8 @@ class PROF3T {
 
 							double previousGrand =
 								game.DPD.Data.Count > 0 ? game.DPD.Data[^1].Grand : 0;
-							if (game.Jackpots.Grand != previousGrand) {
-								if (game.Jackpots.Grand > previousGrand) {
+if (game.Jackpots.Grand != previousGrand) {
+								if (game.Jackpots.Grand > previousGrand && game.Jackpots.Grand >= 0 && game.Jackpots.Grand <= 10000) {
 									game.DPD.Data.Add(new DPD_Data(game.Jackpots.Grand));
 									if (game.DPD.Data.Count > 2) {
 										float minutes = Convert.ToSingle(
@@ -78,12 +78,14 @@ class PROF3T {
 											game.DPD.Average = dollarsPerDay;
 									}
 								} else {
-									if (
+if (
 										game.DPD.History.Count.Equals(0).Equals(false)
 										&& game.DPD.History[^1].Data[^1].Grand <= previousGrand
 									) {
 										game.DPD.Data = [];
-										game.DPD.Data.Add(new DPD_Data(game.Jackpots.Grand));
+										if (game.Jackpots.Grand >= 0 && game.Jackpots.Grand <= 10000) {
+											game.DPD.Data.Add(new DPD_Data(game.Jackpots.Grand));
+										}
 										game.DPD.Average = 0F;
 									} else {
 										game.DPD.History.Add(
