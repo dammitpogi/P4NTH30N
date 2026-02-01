@@ -61,12 +61,17 @@ public class Game(string house, string game) {
 	}
 
 	public static DateTime QueueAge() {
-		return (DateTime)
-			new Database()
-				.IO.GetCollection<BsonDocument>("M47URITY")
-				.Find(Builders<BsonDocument>.Filter.Empty)
-				.ToList()[0]["Updated"]
-				.AsBsonDateTime;
+		List<BsonDocument> results = new Database()
+			.IO.GetCollection<BsonDocument>("M47URITY")
+			.Find(Builders<BsonDocument>.Filter.Empty)
+			.ToList();
+		
+		if (results.Count == 0) {
+			Console.WriteLine($"{DateTime.Now} - WARNING: M47URITY view is empty, returning DateTime.MinValue");
+			return DateTime.MinValue;
+		}
+		
+		return (DateTime)results[0]["Updated"].AsBsonDateTime;
 	}
 
 	public static Game GetNext() {

@@ -1,8 +1,7 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.Net.NetworkInformation;
 using System.Text.Json;
 using System.Threading.Tasks;
-using C0MMON.Entities;
 using Figgle;
 using P4NTH30N;
 using P4NTH30N.C0MMON;

@@ -5,6 +5,7 @@ using Figgle;
 using P4NTH30N;
 using P4NTH30N.C0MMON;
 using P4NTH30N.C0MMON.Versioning;
+using P4NTH30N.Services;
 
 namespace P4NTH30N;
 
@@ -15,9 +16,20 @@ class H0UND
 {
 	static void Main(string[] args)
 	{
+		VPNService.Initialize().Wait();
+		Dashboard.VPNStatus = "Active";
 		while (true)
 		{
-			Console.WriteLine(Header.Version);
+			while (!VPNService.EnsureCompliantConnection().Result)
+			{
+				Dashboard.VPNStatus = "Non-Compliant";
+				Dashboard.CurrentTask = "VPN Wait";
+				Dashboard.AddLog("VPN Non-Compliant. Retrying...", "yellow");
+				Dashboard.Render();
+				Thread.Sleep(5000);
+			}
+			Dashboard.VPNStatus = "Active";
+			Dashboard.AddLog($"H0UND {Header.Version}", "blue");
 			try
 			{
 				double lastRetrievedGrand = 0;
@@ -25,8 +37,16 @@ class H0UND
 
 				while (true)
 				{
+					Dashboard.CurrentTask = "Polling Queue";
+					Dashboard.Render();
+
 					Game game = Game.GetNext();
 					Credential? credential = Credential.GetBy(game)[0];
+
+					Dashboard.CurrentGame = game.Name;
+					Dashboard.CurrentUser = credential?.Username ?? "None";
+					Dashboard.CurrentTask = "Retrieving Balances";
+					Dashboard.Render();
 
 					if (credential == null)
 					{
@@ -161,11 +181,13 @@ class H0UND
 							credential.Save();
 							lastGame = game;
 
-							// Console.WriteLine($"{DateTime.Now} - {game.House} - Completed data retrieval for {game.Name}");
+							Dashboard.Render();
 							Thread.Sleep(new Random().Next(0, 1501));
 						}
 						catch (InvalidOperationException ex) when (ex.Message.Contains("Your account has been suspended"))
 						{
+							Dashboard.AddLog($"Account suspended for {credential.Username} on {game.Name}", "red");
+							Dashboard.Render();
 							game.Unlock();
 						}
 					}
@@ -173,8 +195,9 @@ class H0UND
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine(ex.Message);
-				Console.WriteLine(ex);
+				Dashboard.CurrentTask = "Error - Waiting";
+				Dashboard.AddLog(ex.Message, "red");
+				Dashboard.Render();
 				Thread.Sleep(30000);
 			}
 		}
@@ -194,8 +217,9 @@ class H0UND
 				{
 					// Console.WriteLine($"{DateTime.Now} - Querying FireKirin balances and jackpot data for {credential.Username}");
 					var balances = FireKirin.QueryBalances(credential.Username, credential.Password);
-					Console.WriteLine(
-						$"{DateTime.Now} - {game.Name} - {game.House} - {credential.Username} - ${balances.Balance:F2} - [{balances.Grand:F2}, {balances.Major:F2}, {balances.Minor:F2}, {balances.Mini:F2}]"
+					Dashboard.AddLog(
+						$"{game.Name} - {game.House} - {credential.Username} - ${balances.Balance:F2} - [{balances.Grand:F2}, {balances.Major:F2}, {balances.Minor:F2}, {balances.Mini:F2}]",
+						"green"
 					);
 					return ((double)balances.Balance, (double)balances.Grand, (double)balances.Major, (double)balances.Minor, (double)balances.Mini);
 				}
@@ -203,8 +227,9 @@ class H0UND
 				{
 					// Console.WriteLine($"{DateTime.Now} - Querying OrionStars balances and jackpot data for {credential.Username}");
 					var balances = OrionStars.QueryBalances(credential.Username, credential.Password);
-					Console.WriteLine(
-						$"{DateTime.Now} - {game.Name} - {game.House} - {credential.Username} - ${balances.Balance:F2} - [{balances.Grand:F2}, {balances.Major:F2}, {balances.Minor:F2}, {balances.Mini:F2}]"
+					Dashboard.AddLog(
+						$"{game.Name} - {game.House} - {credential.Username} - ${balances.Balance:F2} - [{balances.Grand:F2}, {balances.Major:F2}, {balances.Minor:F2}, {balances.Mini:F2}]",
+						"green"
 					);
 					return ((double)balances.Balance, (double)balances.Grand, (double)balances.Major, (double)balances.Minor, (double)balances.Mini);
 				}
@@ -214,7 +239,7 @@ class H0UND
 		}
 		catch (InvalidOperationException ex) when (ex.Message.Contains("Your account has been suspended"))
 		{
-			Console.WriteLine($"{DateTime.Now} - Account suspended for {credential.Username} on {game.Name}. Marking as banned.");
+			Dashboard.AddLog($"Account suspended for {credential.Username} on {game.Name}. Marking as banned.", "red");
 			credential.Banned = true;
 			credential.Save();
 			throw;
@@ -223,31 +248,52 @@ class H0UND
 
 	private static (double Balance, double Grand, double Major, double Minor, double Mini) GetBalancesWithRetry(Game game, Credential credential)
 	{
+		(double Balance, double Grand, double Major, double Minor, double Mini) ExecuteQuery()
+		{
+			int networkAttempts = 0;
+			while (true)
+			{
+				try
+				{
+					return QueryBalances(game, credential);
+				}
+				catch (InvalidOperationException ex) when (ex.Message.Contains("Your account has been suspended"))
+				{
+					throw;
+				}
+				catch (Exception ex)
+				{
+					networkAttempts++;
+					if (networkAttempts >= 3)
+						throw;
+					Dashboard.AddLog($"QueryBalances failed (Attempt {networkAttempts}): {ex.Message}. Retrying...", "yellow");
+					Dashboard.Render();
+					Thread.Sleep(2000);
+				}
+			}
+		}
+
 		int grandChecked = 0;
-		var balances = QueryBalances(game, credential);
+		var balances = ExecuteQuery();
 		double currentGrand = balances.Grand;
 		while (currentGrand.Equals(0))
 		{
 			grandChecked++;
-			Console.WriteLine($"{DateTime.Now} - Grand jackpot is 0 for {game.Name}, retrying attempt {grandChecked}/40");
+			Dashboard.AddLog($"Grand jackpot is 0 for {game.Name}, retrying attempt {grandChecked}/40", "yellow");
+			Dashboard.Render();
 			Thread.Sleep(500);
 			if (grandChecked > 40)
 			{
 				ProcessEvent alert = ProcessEvent.Log("H0UND", $"Grand check signalled an Extension Failure for {game.Name}");
-				Console.WriteLine($"Checking Grand on {game.Name} failed at {grandChecked} attempts.");
+				Dashboard.AddLog($"Checking Grand on {game.Name} failed at {grandChecked} attempts.", "red");
+				Dashboard.Render();
 				alert.Record(credential).Save();
 				throw new Exception("Extension failure.");
 			}
-			try
-			{
-				Console.WriteLine($"{DateTime.Now} - Retrying balance query for {game.Name} (attempt {grandChecked})");
-				balances = QueryBalances(game, credential);
-				currentGrand = balances.Grand;
-			}
-			catch (InvalidOperationException ex) when (ex.Message.Contains("Your account has been suspended"))
-			{
-				throw;
-			}
+			Dashboard.AddLog($"Retrying balance query for {game.Name} (attempt {grandChecked})", "yellow");
+			Dashboard.Render();
+			balances = ExecuteQuery();
+			currentGrand = balances.Grand;
 		}
 
 		return balances;

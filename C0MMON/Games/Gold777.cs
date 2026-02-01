@@ -8,7 +8,7 @@ namespace P4NTH30N.C0MMON;
 public static partial class Games {
     public static class Gold777 {
         public static bool LoadSucessfully(ChromeDriver driver, Game game, Signal signal) {
-            for (int i = 1; i < game.Settings.Gold777.Page; i++) {
+            for (int i = 1; i < (game.Settings?.Gold777?.Page ?? 1); i++) {
                 switch (game.Name) {
                     case "FireKirin": Mouse.Click(937, 177); break;
                     case "OrionStars": Mouse.Click(995, 375); break;
@@ -17,12 +17,12 @@ public static partial class Games {
             Thread.Sleep(800);
             int iterations = 0;
             bool slotsLoaded = false;
-            Mouse.Move(game.Settings.Gold777.Button_X, game.Settings.Gold777.Button_Y);
+            Mouse.Move(game.Settings?.Gold777?.Button_X ?? 0, game.Settings?.Gold777?.Button_Y ?? 0);
 
             game.Lock();
             signal.Acknowledge();
             while (slotsLoaded == false) {
-                Mouse.Click(game.Settings.Gold777.Button_X, game.Settings.Gold777.Button_Y);
+                Mouse.Click(game.Settings?.Gold777?.Button_X ?? 0, game.Settings?.Gold777?.Button_Y ?? 0);
 
                 int checkAttempts = 20;
                 bool buttonVerified = false;
@@ -43,9 +43,10 @@ public static partial class Games {
                 }
 
                 if (buttonVerified == false) {
-                    if (game.Settings.Gold777.ButtonVerified == true) {
-                        game = Game.Get(game.House, game.Name);
-                        game.Settings.Gold777.ButtonVerified = false;
+                    if (game.Settings?.Gold777?.ButtonVerified == true) {
+                        var freshGame = Game.Get(game.House, game.Name);
+                        if (freshGame != null) game = freshGame;
+                        if (game.Settings?.Gold777 != null) game.Settings.Gold777.ButtonVerified = false;
                         game.Save();
                     }
 
@@ -82,7 +83,7 @@ public static partial class Games {
                         // driver.Manage().Window.Minimize();
                         foreach (int pageModifier in new int[] { 0, -1, 1, -2, 2 }) {
                             signal.Acknowledge();
-                            int workingPage = game.Settings.Gold777.Page + pageModifier;
+                            int workingPage = (game.Settings?.Gold777?.Page ?? 1) + pageModifier;
                             if (pageModifier.Equals(0) == false) {
                                 Mouse.Click(81, 233); Thread.Sleep(800);
                                 for (int i = 1; i < workingPage; i++) {
@@ -190,10 +191,13 @@ public static partial class Games {
 
                             }
                             if (buttonVerified) {
-                                game = Game.Get(game.House, game.Name);
-                                game.Settings.Gold777.Button_X = possibleButton.X;
-                                game.Settings.Gold777.Button_Y = possibleButton.Y;
-                                game.Settings.Gold777.Page = workingPage;
+                                var freshGame = Game.Get(game.House, game.Name);
+                                if (freshGame != null) game = freshGame;
+                                if (game.Settings?.Gold777 != null) {
+                                    game.Settings.Gold777.Button_X = possibleButton.X;
+                                    game.Settings.Gold777.Button_Y = possibleButton.Y;
+                                    game.Settings.Gold777.Page = workingPage;
+                                }
                                 break;
                             }
                             searchAttempts = 5;
@@ -202,9 +206,9 @@ public static partial class Games {
                         // foundPossibilities.Order().ToList().ForEach(Console.WriteLine);
                     }
                 }
-                if (game.Settings.Gold777.ButtonVerified == false) {
+                if (game.Settings?.Gold777?.ButtonVerified == false) {
                     if (buttonVerified) {
-                        game.Settings.Gold777.ButtonVerified = true;
+                        if (game.Settings?.Gold777 != null) game.Settings.Gold777.ButtonVerified = true;
                         game.Save();
                     } else {
                         // throw new Exception("Couldn't find the damn button.");
@@ -254,7 +258,7 @@ public static partial class Games {
                                 .Contains(reloadedPage)
                                 .Equals(false)
                         ) {
-                            Mouse.Click(game.Settings.Gold777.Button_X, game.Settings.Gold777.Button_Y);
+                            Mouse.Click(game.Settings?.Gold777?.Button_X ?? 0, game.Settings?.Gold777?.Button_Y ?? 0);
                             reloadedPage =
                                 driver.ExecuteScript("return window.parent.Page")?.ToString()
                                 ?? string.Empty;
