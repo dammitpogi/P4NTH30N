@@ -4,6 +4,7 @@ using Figgle;
 
 using P4NTH30N.C0MMON;
 using P4NTH30N.C0MMON.Versioning;
+using P4NTH30N.Services;
 using System.Drawing;
 using System.Text.Json;
 using System.Diagnostics;
@@ -26,6 +27,8 @@ internal class Program {
         } else if (runMode.Equals("H0UND")) {
             listenForSignals = false;
         }
+
+        VPNService.Initialize().Wait();
 
         while (true) {
             Console.WriteLine(Header.Version);
@@ -55,6 +58,10 @@ internal class Program {
 
                         if (signal != null) {
                             if (driver == null) {
+                                while (!VPNService.EnsureCompliantConnection().Result) {
+                                    Console.WriteLine($"{DateTime.Now} - VPN Non-Compliant. Retrying indefinitely...");
+                                    Thread.Sleep(5000);
+                                }
                                 driver = Actions.Launch();
                                 driverFresh = true;
                             }
@@ -88,7 +95,6 @@ internal class Program {
                                     }
                                     if (OrionStars.Login(driver!, credential.Username, credential.Password) == false) {
                                         Console.WriteLine($"{DateTime.Now} - {game.House} login failed for {game.Name}");
-                                        Console.WriteLine($"{DateTime.Now} - {credential.Username} : {credential.Password}");
                                         game.Lock();
                                         continue;
                                     }
@@ -254,6 +260,7 @@ if (currentMini < game.Jackpots.Mini && game.Jackpots.Mini - currentMini > 0.1) 
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
                 Console.WriteLine(ex);
+                Thread.Sleep(5000);
                 if (driver != null) {
                     driver.Quit();
                 }

@@ -1,8 +1,7 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Drawing;
 using System.Text.Json;
 using MongoDB.Bson;
-using MongoDB.Driver;
 using OpenQA.Selenium.Chrome;
 using P4NTH30N.C0MMON;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -31,11 +30,7 @@ class PROF3T {
 		// OrionStarsBalanceTest();
 		// LaunchBrowser();
 		// TestSignals("FireKirin");
-		// AnalyzeBiggestAccounts();
 		// PrioritizeTesting("OrionStars");
-		// InspectN3XT();
-
-        // UpdateN3XT();
 
 		// ===========================================
 		// ADMIN / DATA-MUTATING COMMANDS (DANGEROUS)
@@ -47,7 +42,7 @@ class PROF3T {
 		// SeperateAllGames();
 		// DisableEmptyGames();
 		// UpdateCredentials();
-		// ResetGames();
+		ResetGames();
 		// sandbox();
 		// BurnAccount("ShariNor55", "123qwe");
 		// ResetSignalsTest("FireKirin");
@@ -64,85 +59,6 @@ class PROF3T {
 		// FixDPD();
 		// Fix();p
 	}
-
-    private static void UpdateN3XT() {
-		try {
-			Console.WriteLine("Updating N3XT view...");
-			var db = new Database().IO;
-			
-			// Drop existing view
-			try {
-				db.DropCollection("N3XT");
-				Console.WriteLine("Dropped existing N3XT view.");
-			} catch (Exception ex) {
-				Console.WriteLine($"Error dropping view (might not exist): {ex.Message}");
-			}
-
-			// Define pipeline
-			var pipeline = new BsonDocument[] {
-				BsonDocument.Parse("{ $match: { Unlocked: true } }"),
-				// Lookup G4ME
-				BsonDocument.Parse(@"{ $lookup: {
-					from: 'G4ME',
-					let: { qHouse: '$House', qGame: '$Game' },
-					pipeline: [ { $match: { $expr: { $and: [ { $eq: ['$House', '$$qHouse'] }, { $eq: ['$Name', '$$qGame'] } ] } } } ],
-					as: 'G'
-				}}"),
-				BsonDocument.Parse("{ $unwind: '$G' }"),
-				// PRUNE: Exclude disabled games
-				BsonDocument.Parse("{ $match: { 'G.Enabled': true } }"),
-				// CALCULATE URGENCY
-				BsonDocument.Parse(@"{ $addFields: {
-					Urgency: {
-						$add: [
-							1,
-							{ $cond: ['$Jackpot3H', 100, 0] },
-							{ $cond: ['$Jackpot12H', 20, 0] },
-							{ $cond: ['$JackpotDay', 5, 0] },
-							{ $cond: ['$Overdue', 2, 0] }
-						]
-					}
-				}}"),
-				// CALCULATE SORT KEY (Time + Interval / Urgency)
-				BsonDocument.Parse(@"{ $addFields: {
-					SortKey: {
-						$add: [
-							'$Updated',
-							{ $multiply: [
-								3600000,
-								{ $divide: [ 
-									1, 
-									{ $multiply: [
-										'$Urgency', 
-										{ $add: [ 1, { $divide: [ { $ifNull: ['$G.DPD.Average', 0] }, 100 ] } ] }
-									]}
-								] }
-							]}
-						]
-					}
-				}}"),
-				BsonDocument.Parse("{ $sort: { SortKey: 1 } }"),
-				BsonDocument.Parse("{ $limit: 1 }"),
-				BsonDocument.Parse("{ $replaceRoot: { newRoot: '$G' } }")
-			};
-
-            // Attempt to find the queue collection name
-            var collections = db.ListCollectionNames().ToList();
-            var queueName = collections.FirstOrDefault(c => c.Contains("QU3EU"));
-            if (string.IsNullOrEmpty(queueName)) {
-                 // Fallback to documented name
-                 queueName = " QU3UE"; 
-            }
-            Console.WriteLine($"Using queue collection: '{queueName}'");
-
-			db.CreateView<BsonDocument, BsonDocument>("N3XT", queueName, pipeline);
-			Console.WriteLine("Successfully created N3XT view with DPD priority.");
-
-		} catch (Exception ex) {
-			Console.WriteLine($"Failed to update N3XT: {ex}");
-		}
-	}
-
 
 	private static void FireKirinBalanceTest() {
 		var result = FireKirin.QueryBalances("PaulcelFK", "abc123");
@@ -686,127 +602,6 @@ static void ResetGames()
 		ChromeDriver driver = Actions.Launch();
 	}
 
-	private static void AnalyzeBiggestAccounts() {
-		Console.WriteLine("=== P4NTH30N BIGGEST ACCOUNTS ANALYSIS ===");
-		Console.WriteLine($"Analysis Date: {DateTime.Now:yyyy-MM-dd HH:mm:ss} UTC");
-		Console.WriteLine();
-
-		// 1. TOP ACCOUNTS BY BALANCE
-		Console.WriteLine("=== TOP 20 ACCOUNTS BY BALANCE ===");
-		List<Credential> topAccounts = Credential.GetAll().Take(20).ToList();
-		for (int i = 0; i < topAccounts.Count; i++) {
-			var cred = topAccounts[i];
-			Console.WriteLine($"{i + 1,2}. Balance: {cred.Balance,8:F2} | House: {cred.House,-20} | Game: {cred.Game,-12} | User: {cred.Username,-15} | Enabled: {cred.Enabled,5} | Banned: {cred.Banned,5}");
-		}
-		Console.WriteLine();
-
-		// 2. HOUSE-LEVEL ACCOUNT DISTRIBUTION
-		Console.WriteLine("=== ACCOUNT DISTRIBUTION BY HOUSE ===");
-		var houseGroups = Credential.GetAll()
-			.GroupBy(c => c.House)
-			.Select(g => new {
-				House = g.Key,
-				TotalAccounts = g.Count(),
-				EnabledAccounts = g.Count(c => c.Enabled && !c.Banned),
-				TotalBalance = g.Sum(c => c.Balance),
-				AvgBalance = g.Average(c => c.Balance),
-				MaxBalance = g.Max(c => c.Balance)
-			})
-			.OrderByDescending(h => h.TotalBalance)
-			.ToList();
-
-		foreach (var house in houseGroups) {
-			Console.WriteLine($"House: {house.House,-25} | Total: {house.TotalAccounts,3} | Active: {house.EnabledAccounts,3} | Balance: {house.TotalBalance,10:F2} | Avg: {house.AvgBalance,7:F2} | Max: {house.MaxBalance,8:F2}");
-		}
-		Console.WriteLine();
-
-		// 3. GAME-LEVEL ANALYSIS
-		Console.WriteLine("=== GAME PLATFORM ANALYSIS ===");
-		var gameGroups = Credential.GetAll()
-			.GroupBy(c => c.Game)
-			.Select(g => new {
-				Game = g.Key,
-				TotalAccounts = g.Count(),
-				EnabledAccounts = g.Count(c => c.Enabled && !c.Banned),
-				TotalBalance = g.Sum(c => c.Balance),
-				AvgBalance = g.Average(c => c.Balance),
-				MaxBalance = g.Max(c => c.Balance)
-			})
-			.OrderByDescending(g => g.TotalBalance)
-			.ToList();
-
-		foreach (var game in gameGroups) {
-			Console.WriteLine($"Game: {game.Game,-15} | Total: {game.TotalAccounts,3} | Active: {game.EnabledAccounts,3} | Balance: {game.TotalBalance,10:F2} | Avg: {game.AvgBalance,7:F2} | Max: {game.MaxBalance,8:F2}");
-		}
-		Console.WriteLine();
-
-		// 4. HIGH-VALUE ACCOUNTS (Balance > $100)
-		Console.WriteLine("=== HIGH-VALUE ACCOUNTS (Balance > $100) ===");
-		var highValueAccounts = Credential.GetAll().Where(c => c.Balance > 100).OrderByDescending(c => c.Balance).ToList();
-		Console.WriteLine($"Total High-Value Accounts: {highValueAccounts.Count}");
-		Console.WriteLine($"Total Value in High-Value Accounts: ${highValueAccounts.Sum(c => c.Balance):F2}");
-		Console.WriteLine();
-
-		for (int i = 0; i < Math.Min(10, highValueAccounts.Count); i++) {
-			var cred = highValueAccounts[i];
-			Console.WriteLine($"{i + 1,2}. Balance: ${cred.Balance,8:F2} | House: {cred.House,-20} | Game: {cred.Game,-12} | User: {cred.Username,-15}");
-		}
-		Console.WriteLine();
-
-		// 5. DPD GROWTH ANALYSIS
-		Console.WriteLine("=== DPD GROWTH LEADERS ===");
-		var dpdLeaders = Credential.GetAll()
-			.Where(c => c.DPD.Average > 0)
-			.OrderByDescending(c => c.DPD.Average)
-			.Take(15)
-			.ToList();
-
-		Console.WriteLine("Top 15 Accounts by DPD Growth Rate:");
-		for (int i = 0; i < dpdLeaders.Count; i++) {
-			var cred = dpdLeaders[i];
-			Console.WriteLine($"{i + 1,2}. DPD: {cred.DPD.Average,8:F2}/day | Balance: ${cred.Balance,8:F2} | House: {cred.House,-20} | Game: {cred.Game,-12} | User: {cred.Username,-15}");
-		}
-		Console.WriteLine();
-
-		// 6. JACKPOT POTENTIAL ANALYSIS
-		Console.WriteLine("=== JACKPOT POTENTIAL BY HOUSE ===");
-		var jackpotData = Game.GetAll()
-			.GroupBy(g => g.House)
-			.Select(g => new {
-				House = g.Key,
-				TotalGrandPotential = g.Sum(x => x.Thresholds.Grand),
-				TotalMajorPotential = g.Sum(x => x.Thresholds.Major),
-				TotalMinorPotential = g.Sum(x => x.Thresholds.Minor),
-				TotalMiniPotential = g.Sum(x => x.Thresholds.Mini),
-				CurrentGrand = g.Sum(x => x.Jackpots.Grand),
-				CurrentMajor = g.Sum(x => x.Jackpots.Major),
-				AvgDPD = g.Average(x => x.DPD.Average)
-			})
-			.OrderByDescending(h => h.TotalGrandPotential)
-			.ToList();
-
-		foreach (var house in jackpotData) {
-			double totalPotential = house.TotalGrandPotential + house.TotalMajorPotential + house.TotalMinorPotential + house.TotalMiniPotential;
-			Console.WriteLine($"House: {house.House,-25} | Potential: ${totalPotential,8:F2} | Grand: ${house.TotalGrandPotential,7:F2} | Major: ${house.TotalMajorPotential,6:F2} | Minor: ${house.TotalMinorPotential,6:F2} | Mini: ${house.TotalMiniPotential,5:F2} | DPD: {house.AvgDPD,6:F2}/day");
-		}
-		Console.WriteLine();
-
-		// 7. SUMMARY STATISTICS
-		Console.WriteLine("=== SUMMARY STATISTICS ===");
-		var allCredentials = Credential.GetAll();
-		var enabledCredentials = allCredentials.Where(c => c.Enabled && !c.Banned).ToList();
-		Console.WriteLine($"Total Accounts: {allCredentials.Count}");
-		Console.WriteLine($"Enabled/Active Accounts: {enabledCredentials.Count}");
-		Console.WriteLine($"Total Balance Across All Accounts: ${allCredentials.Sum(c => c.Balance):F2}");
-		Console.WriteLine($"Average Balance Per Account: ${allCredentials.Average(c => c.Balance):F2}");
-		Console.WriteLine($"Total Houses: {houseGroups.Count}");
-		Console.WriteLine($"Total Games: {gameGroups.Count}");
-		Console.WriteLine($"Accounts with DPD Growth: {allCredentials.Count(c => c.DPD.Average > 0)}");
-		Console.WriteLine($"Average DPD Growth: ${allCredentials.Average(c => c.DPD.Average):F2}/day");
-		Console.WriteLine();
-
-		Console.WriteLine("=== ANALYSIS COMPLETE ===");
-	}
 	// private static void sandbox() {
 	//     List<Game> games = Game.GetAll();
 	//     foreach (Game game in games) {

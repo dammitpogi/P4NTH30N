@@ -1,0 +1,119 @@
+# OpenCode Zen Model Assignments
+# Recommended model configurations for optimal agent performance
+
+# Category-based Models (delegate_task categories)
+categories:
+  visual-engineering:
+    model: "claude-3.5-sonnet"
+    reasoning: "Best for UI/UX design, frontend styling, and visual tasks with strong creative capabilities"
+  
+  ultrabrain:
+    model: "claude-3.5-sonnet"
+    reasoning: "Highest reasoning capacity for complex logic-heavy tasks requiring deep analysis"
+  
+  deep:
+    model: "claude-3.5-sonnet"
+    reasoning: "Optimal for autonomous problem-solving with comprehensive research requirements"
+  
+  artistry:
+    model: "claude-3.5-sonnet"
+    reasoning: "Creative and unconventional approaches benefit from advanced reasoning"
+  
+  quick:
+    model: "claude-3.5-haiku"
+    reasoning: "Fast response for simple, single-file changes and quick modifications"
+  
+  unspecified-low:
+    model: "claude-3.5-haiku"
+    reasoning: "Low-effort tasks don't require full reasoning power"
+  
+  unspecified-high:
+    model: "claude-3.5-sonnet"
+    reasoning: "High-effort tasks benefit from comprehensive capabilities"
+  
+  writing:
+    model: "claude-3.5-sonnet"
+    reasoning: "Superior for documentation and technical writing with strong language skills"
+
+# Specialized Subagent Models
+subagents:
+  build:
+    model: "claude-3.5-sonnet"
+    reasoning: "General purpose tasks need reliable execution capabilities"
+  
+  plan:
+    model: "claude-3.5-sonnet"
+    reasoning: "Planning requires strong reasoning and organization skills"
+  
+  general:
+    model: "claude-3.5-sonnet"
+    reasoning: "Multi-step tasks benefit from comprehensive capabilities"
+  
+  explore:
+    model: "claude-3.5-haiku"
+    reasoning: "Code searching is fast-paced, benefits from speed over deep reasoning"
+  
+  sisyphus-junior:
+    model: "claude-3.5-sonnet"
+    reasoning: "Focused task execution needs reliable capabilities"
+  
+  prometheus:
+    model: "claude-3.5-sonnet"
+    reasoning: "Planning agent requires strong reasoning capabilities"
+  
+  oracle:
+    model: "claude-3.5-sonnet"
+    reasoning: "High-IQ consultation demands maximum reasoning power"
+  
+  librarian:
+    model: "claude-3.5-haiku"
+    reasoning: "External reference searching benefits from speed over deep analysis"
+  
+  multimodal-looker:
+    model: "claude-3.5-sonnet"
+    reasoning: "Media analysis requires comprehensive capabilities"
+  
+  metis:
+    model: "claude-3.5-sonnet"
+    reasoning: "Pre-planning consultation needs advanced reasoning"
+  
+  momus:
+    model: "claude-3.5-sonnet"
+    reasoning: "Review and evaluation requires strong analytical capabilities"
+
+# Skills-specific Optimizations
+skills:
+  playwright:
+    model: "claude-3.5-sonnet"
+    reasoning: "Browser automation needs reliable execution and debugging"
+  
+  frontend-ui-ux:
+    model: "claude-3.5-sonnet"
+    reasoning: "UI/UX design requires creative and visual reasoning"
+  
+  git-master:
+    model: "claude-3.5-haiku"
+    reasoning: "Git operations are mostly procedural, speed preferred"
+  
+  dev-browser:
+    model: "claude-3.5-sonnet"
+    reasoning: "Browser automation needs robust execution capabilities"
+
+# Fallback Model (when specific models unavailable)
+fallback:
+  model: "claude-3.5-sonnet"
+  reasoning: "Reliable default with strong general capabilities"
+
+# Performance Tuning
+tuning:
+  # Enable model-specific optimizations
+  enable_context_optimization: true
+  enable_tool_usage_optimization: true
+  
+  # Cost management
+  prefer_haiku_for_simple_tasks: true
+  batch_parallel_requests: true
+  
+  # Quality assurance
+  enable_model_quality_gates: true
+  fallback_on_model_failure: true

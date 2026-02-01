@@ -1,6 +1,6 @@
 using System.Net.Http.Json;
 
-namespace C0MMON.Entities;
+namespace P4NTH30N.C0MMON;
 
 public class CountryMetadata {
     public string calling_code { get; set; }
