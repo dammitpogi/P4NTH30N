@@ -1,9 +1,9 @@
-<!-- Context: project-intelligence/technical | Priority: critical | Version: 1.1 | Updated: 2026-01-31 -->
+<!-- Context: project-intelligence/technical | Priority: critical | Version: 1.2 | Updated: 2026-02-01 -->
 
 # Technical Domain
 
 **Purpose**: Tech stack, architecture, development patterns for this project.
-**Last Updated**: 2026-01-31
+**Last Updated**: 2026-02-01
 
 ## Quick Reference
 **Update Triggers**: Tech stack changes | New patterns | Architecture decisions
@@ -51,8 +51,10 @@ public class Game(string house, string game) {
 | Type | Convention | Example |
 |------|-----------|---------|
 | Files | PascalCase folders, PascalCase files | Domain/Entities/Game.cs, C0MMON/Database.cs |
-| Classes | PascalCase | Game, Database, Credential |
-| Functions | camelCase | queryBalances, updateGame |
+| Classes/Interfaces | PascalCase (Interfaces prefixed with 'I') | Game, Database, ICredential |
+| Methods/Properties | PascalCase | QueryBalances, UpdateGame |
+| Local Variables/Parameters | camelCase | credential, gameName |
+| Private Fields | _camelCase | _retryCount |
 | Database | Leetspeak (4→4, 7→7) | CRED3N7IAL, G4ME, SIGN4L, J4CKP0T |
 
 ## Code Standards
