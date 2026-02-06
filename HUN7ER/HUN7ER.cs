@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using P4NTH30N.C0MMON;
+using P4NTH30N.C0MMON.SanityCheck;
 
 namespace P4NTH30N;
 
@@ -9,6 +10,10 @@ class PROF3T {
 	}
 
 	private static void HUN7ER() {
+		// Health monitoring for sanity checks
+		List<(string tier, double value, double threshold)> recentJackpots = new();
+		DateTime lastHealthCheck = DateTime.MinValue;
+		
 		while (true) {
 			try {
 				DateTime DateLimit = DateTime.UtcNow.AddDays(5);
@@ -57,9 +62,30 @@ class PROF3T {
 
 							double previousGrand =
 								game.DPD.Data.Count > 0 ? game.DPD.Data[^1].Grand : 0;
-if (game.Jackpots.Grand != previousGrand) {
-								if (game.Jackpots.Grand > previousGrand && game.Jackpots.Grand >= 0 && game.Jackpots.Grand <= 10000) {
-									game.DPD.Data.Add(new DPD_Data(game.Jackpots.Grand));
+
+							// SANITY CHECK: Validate jackpot progression with embedded validation
+							var jackpotValidation = P4NTH30NSanityChecker.ValidateJackpot("Grand", game.Jackpots.Grand, game.Thresholds.Grand);
+							if (!jackpotValidation.IsValid)
+							{
+								Console.WriteLine($"🔴 Invalid Grand jackpot detected for {game.Name}: {string.Join(", ", jackpotValidation.Errors)}");
+								continue; // Skip this iteration for corrupted data
+							}
+							
+							// Use validated values
+							var validatedGrandValue = jackpotValidation.ValidatedValue;
+							var validatedGrandThreshold = jackpotValidation.ValidatedThreshold;
+							
+							// Update game with validated values if repairs were made
+							if (jackpotValidation.WasRepaired)
+							{
+								game.Jackpots.Grand = validatedGrandValue;
+								game.Thresholds.Grand = validatedGrandThreshold;
+								Console.WriteLine($"🔧 Repaired Grand jackpot for {game.Name}: {string.Join(", ", jackpotValidation.RepairActions)}");
+							}
+
+if (validatedGrandValue != previousGrand) {
+								if (validatedGrandValue > previousGrand && validatedGrandValue >= 0 && validatedGrandValue <= 10000) {
+									game.DPD.Data.Add(new DPD_Data(validatedGrandValue));
 									if (game.DPD.Data.Count > 2) {
 										float minutes = Convert.ToSingle(
 											game.DPD.Data[game.DPD.Data.Count - 1]
@@ -74,6 +100,19 @@ if (game.Jackpots.Grand != previousGrand) {
 											/ Convert.ToSingle(TimeSpan.FromDays(1).TotalMinutes);
 										double dollarsPerDay = dollars / days;
 
+										// SANITY CHECK: Validate DPD rate before using it
+										var dpdValidation = P4NTH30NSanityChecker.ValidateDPD(dollarsPerDay, game.Name);
+										if (!dpdValidation.IsValid)
+										{
+											Console.WriteLine($"🔴 Invalid DPD rate for {game.Name}: {string.Join(", ", dpdValidation.Errors)}");
+											dollarsPerDay = 0; // Use safe fallback
+										}
+										else if (dpdValidation.WasRepaired)
+										{
+											dollarsPerDay = dpdValidation.ValidatedRate;
+											Console.WriteLine($"🔧 Repaired DPD rate for {game.Name}: {string.Join(", ", dpdValidation.RepairActions)}");
+										}
+
 										if (
 											dollarsPerDay > 5
 											&& game.DPD.History.Count.Equals(0) == false
@@ -86,12 +125,19 @@ if (game.Jackpots.Grand != previousGrand) {
 									}
 								} else {
 if (
-										game.DPD.History.Count.Equals(0).Equals(false)
-										&& game.DPD.History[^1].Data[^1].Grand <= previousGrand
-									) {
+	game.DPD.History.Count.Equals(0).Equals(false)
+	&& game.DPD.History[^1].Data.Count > 0
+	&& game.DPD.History[^1].Data[^1].Grand <= previousGrand
+) {
 										game.DPD.Data = [];
-										if (game.Jackpots.Grand >= 0 && game.Jackpots.Grand <= 10000) {
-											game.DPD.Data.Add(new DPD_Data(game.Jackpots.Grand));
+										// SANITY CHECK: Validate reset values before using
+										var resetValidation = P4NTH30NSanityChecker.ValidateJackpot("Grand", game.Jackpots.Grand, game.Thresholds.Grand);
+										if (resetValidation.IsValid && resetValidation.ValidatedValue >= 0 && resetValidation.ValidatedValue <= 10000) {
+											game.DPD.Data.Add(new DPD_Data(resetValidation.ValidatedValue));
+											if (resetValidation.WasRepaired) {
+												game.Jackpots.Grand = resetValidation.ValidatedValue;
+												Console.WriteLine($"🔧 Repaired Grand during reset for {game.Name}");
+											}
 										}
 										game.DPD.Average = 0F;
 									} else {
@@ -112,10 +158,58 @@ if (
 							}
 
 							if (game.DPD.Average > 0.1) {
+								// SANITY CHECK: Comprehensive validation of all game jackpots and thresholds
+								var gameStateValidation = P4NTH30NSanityChecker.ValidateGameState(
+									game.Jackpots.Grand, game.Thresholds.Grand,
+									game.Jackpots.Major, game.Thresholds.Major,
+									game.Jackpots.Minor, game.Thresholds.Minor,
+									game.Jackpots.Mini, game.Thresholds.Mini,
+									game.DPD.Average, game.Name
+								);
+
+								if (!gameStateValidation.IsValid) {
+									Console.WriteLine($"🔴 Game state validation failed for {game.Name}");
+									continue; // Skip processing for invalid game state
+								}
+
+								// Apply any repairs made during validation
+								if (gameStateValidation.GrandResult.WasRepaired) {
+									game.Jackpots.Grand = gameStateValidation.GrandResult.ValidatedValue;
+									game.Thresholds.Grand = gameStateValidation.GrandResult.ValidatedThreshold;
+								}
+								if (gameStateValidation.MajorResult.WasRepaired) {
+									game.Jackpots.Major = gameStateValidation.MajorResult.ValidatedValue;
+									game.Thresholds.Major = gameStateValidation.MajorResult.ValidatedThreshold;
+								}
+								if (gameStateValidation.MinorResult.WasRepaired) {
+									game.Jackpots.Minor = gameStateValidation.MinorResult.ValidatedValue;
+									game.Thresholds.Minor = gameStateValidation.MinorResult.ValidatedThreshold;
+								}
+								if (gameStateValidation.MiniResult.WasRepaired) {
+									game.Jackpots.Mini = gameStateValidation.MiniResult.ValidatedValue;
+									game.Thresholds.Mini = gameStateValidation.MiniResult.ValidatedThreshold;
+								}
+								if (gameStateValidation.DPDResult.WasRepaired) {
+									game.DPD.Average = gameStateValidation.DPDResult.ValidatedRate;
+								}
+
+								// Track for health monitoring
+								recentJackpots.Add(("Grand", game.Jackpots.Grand, game.Thresholds.Grand));
+								recentJackpots.Add(("Major", game.Jackpots.Major, game.Thresholds.Major));
+								recentJackpots.Add(("Minor", game.Jackpots.Minor, game.Thresholds.Minor));
+								recentJackpots.Add(("Mini", game.Jackpots.Mini, game.Thresholds.Mini));
+
+								// Limit tracking to last 20 entries per tier
+								if (recentJackpots.Count > 80) {
+									recentJackpots.RemoveRange(0, 20);
+								}
+
+								// Continue with validated values
+								double validatedDPM = gameStateValidation.DPDResult.ValidatedRate / TimeSpan.FromDays(1).TotalMinutes;
 								// game.Thresholds.Grand -= 1F; game.Thresholds.Major -= 0.5F;
 								// game.Thresholds.Minor -= 0.25F; game.Thresholds.Mini -= 0.1F;
 
-								double DPM = game.DPD.Average / TimeSpan.FromDays(1).TotalMinutes;
+								double DPM = validatedDPM;
 								double estimatedGrowth =
 									DateTime.Now.Subtract(game.LastUpdated).TotalMinutes * DPM;
 
@@ -406,6 +500,14 @@ if (
 					$"|{$"({credentials.Count})".PadLeft(4, '-')}-H0UNDS:{houndHours}:{houndMinutes}:{houndSeconds}----------"
 				);
 				Console.WriteLine(footer);
+
+				// SANITY CHECK: Periodic health monitoring
+				if ((DateTime.Now - lastHealthCheck).TotalMinutes >= 5) {
+					P4NTH30NSanityChecker.PerformHealthCheck(recentJackpots);
+					var healthStatus = P4NTH30NSanityChecker.GetSystemHealth();
+					Console.WriteLine($"💊 System Health: {healthStatus.Status} | Errors: {healthStatus.ErrorCount} | Repairs: {healthStatus.RepairCount} | Rate: {healthStatus.RepairSuccessRate:P1}");
+					lastHealthCheck = DateTime.Now;
+				}
 
 				Thread.Sleep(Convert.ToInt32(TimeSpan.FromSeconds(10).TotalMilliseconds));
 			} catch (Exception ex) {

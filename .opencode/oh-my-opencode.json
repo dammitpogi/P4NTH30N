@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/main/dist/oh-my-opencode.schema.json",
+  "agents": {
+    "sisyphus": {
+      "model": "opencode/glm-4.7-free"
+    },
+    "hephaestus": {
+      "model": "opencode/glm-4.7-free"
+    },
+    "prometheus": {
+      "model": "opencode/glm-4.7-free"
+    },
+    "sisyphus-junior": {
+      "model": "opencode/kimi-k2.5-free"
+    },
+    "oracle": {
+      "model": "opencode/glm-4.7-free"
+    },
+    "metis": {
+      "model": "opencode/glm-4.7-free"
+    },
+    "momus": {
+      "model": "opencode/glm-4.7-free"
+    },
+    "librarian": {
+      "model": "opencode/glm-4.7-free"
+    },
+    "multimodal-looker": {
+      "model": "opencode/glm-4.7-free"
+    },
+    "explore": {
+      "model": "opencode/kimi-k2.5-free"
+    }
+  },
+  "categories": {
+    "visual-engineering": {
+      "model": "opencode/kimi-k2.5-free"
+    },
+    "ultrabrain": {
+      "model": "opencode/glm-4.7-free"
+    },
+    "deep": {
+      "model": "opencode/glm-4.7-free"
+    },
+    "artistry": {
+      "model": "opencode/glm-4.7-free"
+    },
+    "quick": {
+      "model": "opencode/kimi-k2.5-free"
+    },
+    "unspecified-low": {
+      "model": "opencode/kimi-k2.5-free"
+    },
+    "unspecified-high": {
+      "model": "opencode/glm-4.7-free"
+    },
+    "writing": {
+      "model": "opencode/glm-4.7-free"
+    }
+  }
+}

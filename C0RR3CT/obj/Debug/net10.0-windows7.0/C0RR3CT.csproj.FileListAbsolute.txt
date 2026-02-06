@@ -1,0 +1,6 @@
+C:\P4NTH30N\C0RR3CT\obj\Debug\net10.0-windows7.0\C0RR3CT.csproj.AssemblyReference.cache
+C:\P4NTH30N\C0RR3CT\obj\Debug\net10.0-windows7.0\C0RR3CT.GeneratedMSBuildEditorConfig.editorconfig
+C:\P4NTH30N\C0RR3CT\obj\Debug\net10.0-windows7.0\C0RR3CT.AssemblyInfoInputs.cache
+C:\P4NTH30N\C0RR3CT\obj\Debug\net10.0-windows7.0\C0RR3CT.AssemblyInfo.cs
+C:\P4NTH30N\C0RR3CT\obj\Debug\net10.0-windows7.0\C0RR3CT.csproj.CoreCompileInputs.cache
+C:\P4NTH30N\C0RR3CT\obj\Debug\net10.0-windows7.0\C0RR3CT.sourcelink.json

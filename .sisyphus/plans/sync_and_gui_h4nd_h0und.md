@@ -4,7 +4,7 @@ The goal is to synchronize the `H0UND` codebase with the recent advancements in 
 
 ## Tasks
 
-- [ ] **Analyze H0UND**
+- [ ] **Analyze H0UND** (using opencode/big-pickle model)
   - [ ] Compare `H0UND` vs `H4ND` structure.
   - [ ] Identify missing features (VPN, Retry, Security).
 - [ ] **Sync Methodologies**

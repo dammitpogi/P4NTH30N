@@ -6,6 +6,7 @@
 name: OpenCoder
 description: "Orchestration agent for complex coding, architecture, and multi-file refactoring"
 mode: primary
+model: github-copilot/claude-sonnet-4
 temperature: 0.1
 tools:
   task: true

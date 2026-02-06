@@ -30,3 +30,4 @@ C:\P4NTH30N\W4TCHD0G\obj\Release\net10.0-windows7.0\refint\W4TCHD0G.dll
 C:\P4NTH30N\W4TCHD0G\obj\Release\net10.0-windows7.0\W4TCHD0G.pdb
 C:\P4NTH30N\W4TCHD0G\obj\Release\net10.0-windows7.0\W4TCHD0G.genruntimeconfig.cache
 C:\P4NTH30N\W4TCHD0G\obj\Release\net10.0-windows7.0\ref\W4TCHD0G.dll
+C:\P4NTH30N\W4TCHD0G\bin\Release\net10.0-windows7.0\Spectre.Console.dll

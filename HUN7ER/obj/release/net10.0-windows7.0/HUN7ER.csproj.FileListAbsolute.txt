@@ -29,3 +29,4 @@ C:\P4NTH30N\HUN7ER\obj\Release\net10.0-windows7.0\refint\HUN7ER.dll
 C:\P4NTH30N\HUN7ER\obj\Release\net10.0-windows7.0\HUN7ER.pdb
 C:\P4NTH30N\HUN7ER\obj\Release\net10.0-windows7.0\HUN7ER.genruntimeconfig.cache
 C:\P4NTH30N\HUN7ER\obj\Release\net10.0-windows7.0\ref\HUN7ER.dll
+C:\P4NTH30N\HUN7ER\bin\Release\net10.0-windows7.0\Spectre.Console.dll

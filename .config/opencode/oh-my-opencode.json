@@ -1,0 +1,62 @@
+{
+  "providers": {
+    "openrouter": {
+      "options": {
+        "baseURL": "https://openrouter.ai/api/v1/models",
+        "apiKey": {
+          "env": "OPENROUTER_API_KEY"
+        }
+      }
+    },
+    "anthropic": {
+      "options": {
+        "baseURL": "https://api.anthropic.com/v1",
+        "apiKey": {
+          "env": "ANTHROPIC_API_KEY"
+        }
+      }
+    },
+    "openai": {
+      "options": {
+        "baseURL": "https://api.openai.com/v1",
+        "apiKey": {
+          "env": "OPENAI_API_KEY"
+        }
+      }
+    },
+    "huggingface": {
+      "options": {
+        "baseURL": "https://huggingface.co/api/models",
+        "apiKey": {
+          "env": "HUGGINGFACE_API_KEY"
+        }
+      }
+    },
+    "github": {
+      "options": {
+        "baseURL": "https://api.github.com",
+        "apiKey": {
+          "env": "GITHUB_TOKEN"
+        }
+      }
+    }
+  },
+  "civitai": {
+      "options": {
+        "baseURL": "https://api.civitai.com/v1",
+        "apiKey": {
+          "env": "CIVITAI_API_KEY"
+        }
+      }
+    }
+  },
+  "modelscope": {
+    "options": {
+        "baseURL": "https://modelscope.ai/api/v1",
+        "apiKey": {
+          "env": "MODELSCOPE_API_KEY"
+        }
+      }
+    }
+  }
+}

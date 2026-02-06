@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using P4NTH30N.C0MMON.SanityCheck;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace P4NTH30N.C0MMON;
@@ -78,7 +79,8 @@ public class Jackpot {
             EstimatedDate = DateTime.UtcNow.AddMinutes(MinutesToJackpot);
         }
 
-        current += estimatedGrowth;
+        // FIX: Apply estimated growth to Current property, not just the parameter
+        Current = current + estimatedGrowth;
     }
 
 	public static Jackpot? Get(string category, string house, string game) {
@@ -96,6 +98,22 @@ public class Jackpot {
     }
 
     public void Save() {
+        // SANITY CHECK: Validate before saving to prevent invalid jackpot data
+        var validation = P4NTH30NSanityChecker.ValidateJackpot(Category, Current, Threshold);
+        if (!validation.IsValid)
+        {
+            Console.WriteLine($"🔴 J4CKP0T save rejected for {Game}: {string.Join(", ", validation.Errors)}");
+            return; // Don't save invalid data
+        }
+
+        // Apply any repairs made during validation
+        if (validation.WasRepaired)
+        {
+            Current = validation.ValidatedValue;
+            Threshold = validation.ValidatedThreshold;
+            Console.WriteLine($"🔧 J4CKP0T auto-repaired before save for {Game}: {string.Join(", ", validation.RepairActions)}");
+        }
+
         FilterDefinitionBuilder<Jackpot> builder = Builders<Jackpot>.Filter;
         FilterDefinition<Jackpot> filter =
             builder.Eq("House", House)

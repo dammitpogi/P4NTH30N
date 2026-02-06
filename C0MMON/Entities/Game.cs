@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using P4NTH30N.C0MMON.SanityCheck;
 
 namespace P4NTH30N.C0MMON;
 
@@ -173,37 +174,187 @@ public static List<Game> GetVerified(string Name, string Slots) {
 }
 
 public class Jackpots {
-	public double Grand { get; set; } = 0F;
-	public double Major { get; set; } = 0F;
-	public double Minor { get; set; } = 0F;
-	public double Mini { get; set; } = 0F;
+	private double _grand = 0F;
+	private double _major = 0F;
+	private double _minor = 0F;
+	private double _mini = 0F;
+
+	public double Grand { 
+		get => _grand;
+		set {
+			var validation = P4NTH30NSanityChecker.ValidateJackpot("Grand", value, 2000);
+			if (!validation.IsValid) {
+				Console.WriteLine($"🔴 Invalid Grand jackpot value rejected: {value:F2}");
+				return; // Don't update with invalid value
+			}
+			if (validation.WasRepaired) {
+				Console.WriteLine($"🔧 Grand jackpot auto-repaired: {value:F2} -> {validation.ValidatedValue:F2}");
+			}
+			_grand = validation.ValidatedValue;
+		}
+	}
+
+	public double Major { 
+		get => _major;
+		set {
+			var validation = P4NTH30NSanityChecker.ValidateJackpot("Major", value, 1000);
+			if (!validation.IsValid) {
+				Console.WriteLine($"🔴 Invalid Major jackpot value rejected: {value:F2}");
+				return;
+			}
+			if (validation.WasRepaired) {
+				Console.WriteLine($"🔧 Major jackpot auto-repaired: {value:F2} -> {validation.ValidatedValue:F2}");
+			}
+			_major = validation.ValidatedValue;
+		}
+	}
+
+	public double Minor { 
+		get => _minor;
+		set {
+			var validation = P4NTH30NSanityChecker.ValidateJackpot("Minor", value, 200);
+			if (!validation.IsValid) {
+				Console.WriteLine($"🔴 Invalid Minor jackpot value rejected: {value:F2}");
+				return;
+			}
+			if (validation.WasRepaired) {
+				Console.WriteLine($"🔧 Minor jackpot auto-repaired: {value:F2} -> {validation.ValidatedValue:F2}");
+			}
+			_minor = validation.ValidatedValue;
+		}
+	}
+
+	public double Mini { 
+		get => _mini;
+		set {
+			var validation = P4NTH30NSanityChecker.ValidateJackpot("Mini", value, 50);
+			if (!validation.IsValid) {
+				Console.WriteLine($"🔴 Invalid Mini jackpot value rejected: {value:F2}");
+				return;
+			}
+			if (validation.WasRepaired) {
+				Console.WriteLine($"🔧 Mini jackpot auto-repaired: {value:F2} -> {validation.ValidatedValue:F2}");
+			}
+			_mini = validation.ValidatedValue;
+		}
+	}
 }
 
 public class Thresholds {
-	public double Grand { get; set; } = 1785;
-	public double Major { get; set; } = 565;
-	public double Minor { get; set; } = 117F;
-	public double Mini { get; set; } = 23F;
+	private double _grand = 1785;
+	private double _major = 565;
+	private double _minor = 117F;
+	private double _mini = 23F;
+
+	public double Grand { 
+		get => _grand;
+		set {
+			var validation = P4NTH30NSanityChecker.ValidateJackpot("Grand", value, 10000);
+			if (!validation.IsValid || validation.ValidatedValue > 2000) {
+				Console.WriteLine($"🔴 Invalid Grand threshold rejected: {value:F2}");
+				return;
+			}
+			if (validation.WasRepaired) {
+				Console.WriteLine($"🔧 Grand threshold auto-repaired: {value:F2} -> {validation.ValidatedValue:F2}");
+			}
+			_grand = validation.ValidatedValue;
+		}
+	}
+
+	public double Major { 
+		get => _major;
+		set {
+			var validation = P4NTH30NSanityChecker.ValidateJackpot("Major", value, 1000);
+			if (!validation.IsValid || validation.ValidatedValue > 600) {
+				Console.WriteLine($"🔴 Invalid Major threshold rejected: {value:F2}");
+				return;
+			}
+			if (validation.WasRepaired) {
+				Console.WriteLine($"🔧 Major threshold auto-repaired: {value:F2} -> {validation.ValidatedValue:F2}");
+			}
+			_major = validation.ValidatedValue;
+		}
+	}
+
+	public double Minor { 
+		get => _minor;
+		set {
+			var validation = P4NTH30NSanityChecker.ValidateJackpot("Minor", value, 200);
+			if (!validation.IsValid || validation.ValidatedValue > 150) {
+				Console.WriteLine($"🔴 Invalid Minor threshold rejected: {value:F2}");
+				return;
+			}
+			if (validation.WasRepaired) {
+				Console.WriteLine($"🔧 Minor threshold auto-repaired: {value:F2} -> {validation.ValidatedValue:F2}");
+			}
+			_minor = validation.ValidatedValue;
+		}
+	}
+
+	public double Mini { 
+		get => _mini;
+		set {
+			var validation = P4NTH30NSanityChecker.ValidateJackpot("Mini", value, 50);
+			if (!validation.IsValid || validation.ValidatedValue > 40) {
+				Console.WriteLine($"🔴 Invalid Mini threshold rejected: {value:F2}");
+				return;
+			}
+			if (validation.WasRepaired) {
+				Console.WriteLine($"🔧 Mini threshold auto-repaired: {value:F2} -> {validation.ValidatedValue:F2}");
+			}
+			_mini = validation.ValidatedValue;
+		}
+	}
+
 	public Thresholds_Data Data { get; set; } = new Thresholds_Data();
 
 	public void NewGrand(double grand) {
-		Data.Grand.Add(grand);
-		// Grand = grand;
+		// Validate before adding to data
+		var validation = P4NTH30NSanityChecker.ValidateJackpot("Grand", grand, _grand);
+		if (validation.IsValid) {
+			Data.Grand.Add(validation.ValidatedValue);
+			if (validation.WasRepaired) {
+				Console.WriteLine($"🔧 Grand data entry repaired: {grand:F2} -> {validation.ValidatedValue:F2}");
+			}
+		} else {
+			Console.WriteLine($"🔴 Invalid Grand data entry rejected: {grand:F2}");
+		}
 	}
 
 	public void NewMajor(double major) {
-		Data.Major.Add(major);
-		// Major = major;
+		var validation = P4NTH30NSanityChecker.ValidateJackpot("Major", major, _major);
+		if (validation.IsValid) {
+			Data.Major.Add(validation.ValidatedValue);
+			if (validation.WasRepaired) {
+				Console.WriteLine($"🔧 Major data entry repaired: {major:F2} -> {validation.ValidatedValue:F2}");
+			}
+		} else {
+			Console.WriteLine($"🔴 Invalid Major data entry rejected: {major:F2}");
+		}
 	}
 
 	public void NewMinor(double minor) {
-		Data.Minor.Add(minor);
-		// Minor = minor;
+		var validation = P4NTH30NSanityChecker.ValidateJackpot("Minor", minor, _minor);
+		if (validation.IsValid) {
+			Data.Minor.Add(validation.ValidatedValue);
+			if (validation.WasRepaired) {
+				Console.WriteLine($"🔧 Minor data entry repaired: {minor:F2} -> {validation.ValidatedValue:F2}");
+			}
+		} else {
+			Console.WriteLine($"🔴 Invalid Minor data entry rejected: {minor:F2}");
+		}
 	}
 
 	public void NewMini(double mini) {
-		Data.Mini.Add(mini);
-		// Mini = mini;
+		var validation = P4NTH30NSanityChecker.ValidateJackpot("Mini", mini, _mini);
+		if (validation.IsValid) {
+			Data.Mini.Add(validation.ValidatedValue);
+			if (validation.WasRepaired) {
+				Console.WriteLine($"🔧 Mini data entry repaired: {mini:F2} -> {validation.ValidatedValue:F2}");
+			}
+		} else {
+			Console.WriteLine($"🔴 Invalid Mini data entry rejected: {mini:F2}");
+		}
 	}
 }
 
@@ -217,7 +368,23 @@ public class Thresholds_Data() {
 
 [method: SetsRequiredMembers]
 public class DPD() {
-	public double Average { get; set; } = 0F;
+	private double _average = 0F;
+	
+	public double Average { 
+		get => _average;
+		set {
+			var validation = P4NTH30NSanityChecker.ValidateDPD(value, "DPD_Average");
+			if (!validation.IsValid) {
+				Console.WriteLine($"🔴 Invalid DPD average rejected: {value:F2}");
+				return;
+			}
+			if (validation.WasRepaired) {
+				Console.WriteLine($"🔧 DPD average auto-repaired: {value:F2} -> {validation.ValidatedRate:F2}");
+			}
+			_average = validation.ValidatedRate;
+		}
+	}
+	
 	public required List<DPD_History> History { get; set; } = [];
 	public required List<DPD_Data> Data { get; set; } = [];
 	public DPD_Toggles Toggles { get; set; } = new DPD_Toggles();
@@ -232,7 +399,22 @@ public class DPD_History(double average, List<DPD_Data> data) {
 
 public class DPD_Data(double grand) {
 	public DateTime Timestamp { get; set; } = DateTime.UtcNow;
-	public double Grand { get; set; } = grand;
+	private double _grand = grand;
+	
+	public double Grand { 
+		get => _grand;
+		set {
+			var validation = P4NTH30NSanityChecker.ValidateJackpot("Grand", value, 10000);
+			if (!validation.IsValid) {
+				Console.WriteLine($"🔴 Invalid DPD Grand data rejected: {value:F2}");
+				return;
+			}
+			if (validation.WasRepaired) {
+				Console.WriteLine($"🔧 DPD Grand data auto-repaired: {value:F2} -> {validation.ValidatedValue:F2}");
+			}
+			_grand = validation.ValidatedValue;
+		}
+	}
 }
 
 public class DPD_Toggles() {

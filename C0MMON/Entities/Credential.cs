@@ -2,6 +2,7 @@ using System;
 using System.Security.Cryptography.X509Certificates;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using P4NTH30N.C0MMON.SanityCheck;
 
 namespace P4NTH30N.C0MMON;
 
@@ -24,7 +25,23 @@ public class Credential(string game) {
 	public GameSettings Settings { get; set; } = new GameSettings(game);
 	public DPD DPD { get; set; } = new DPD();
     public bool CashedOut { get; set; } = true;
-    public double Balance { get; set; } = 0;
+    
+    private double _balance = 0;
+    public double Balance { 
+        get => _balance;
+        set {
+            var validation = P4NTH30NSanityChecker.ValidateBalance(value, Username ?? "Unknown");
+            if (!validation.IsValid) {
+                Console.WriteLine($"🔴 Invalid balance rejected for {Username}: {value:F2}");
+                return;
+            }
+            if (validation.WasRepaired) {
+                Console.WriteLine($"🔧 Balance auto-repaired for {Username}: {value:F2} -> {validation.ValidatedBalance:F2}");
+            }
+            _balance = validation.ValidatedBalance;
+        }
+    }
+    
     public required string Username { get; set; }
     public required string Password { get; set; }
 

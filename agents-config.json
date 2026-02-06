@@ -1,0 +1,54 @@
+{
+  "agents": {
+    "lmstudio-mcp": {
+      "type": "lmstudio-mcp",
+      "model": "llm/osmosis-mcp-4b",
+      "description": "LM Studio MCP bridge for model management",
+      "skills": ["python", "mcp", "api-integration"],
+      "category": "model-management",
+      "enabled": true,
+      "configuration": {
+        "command": "python",
+        "args": ["C:\\OpenCode\\References.ModelForge\\LMStudio-MCP\\lmstudio_bridge.py"],
+        "env": {
+          "LMSTUDIO_HOST": "127.0.0.1",
+          "LMSTUDIO_PORT": "1234",
+          "PYTHONPATH": "C:\\OpenCode\\References.ModelForge\\LMStudio-MCP"
+        }
+      },
+      "cost": {
+        "perMillionTokens": {
+          "input": 0.10,
+          "output": 0.50
+        },
+        "currency": "USD"
+      }
+    },
+    "lmstudio-advanced": {
+      "type": "lmstudio-mcp",
+      "model": "llm/osmosis-mcp-4b",
+      "description": "Advanced agentic model management for LM Studio",
+      "skills": ["python", "mcp", "api-integration", "model-research", "agentic-planning"],
+      "category": "model-management",
+      "enabled": true,
+      "configuration": {
+        "command": "python",
+        "args": ["C:\\OpenCode\\References.ModelForge\\LMStudio-MCP\\agentic_model_manager.py"],
+        "env": {
+          "LMSTUDIO_HOST": "127.0.0.1",
+          "LMSTUDIO_PORT": "1234",
+          "PYTHONPATH": "C:\\OpenCode\\References.ModelForge\\LMStudio-MCP",
+          "OPENCODE_GLOBAL_CONFIG": "C:\\P4NTH30N\\agents-config.json",
+          "OPENCODE_USER_CONFIG": "C:\\P4NTH30N\\.config\\opencode\\oh-my-opencode.json"
+        }
+      },
+      "cost": {
+        "perMillionTokens": {
+          "input": 0.10,
+          "output": 0.50
+        },
+        "currency": "USD"
+      }
+    }
+  }
+}

@@ -2,6 +2,7 @@
 name: TestEngineer
 description: Test authoring and TDD agent
 mode: subagent
+model: github-copilot/claude-sonnet-4
 temperature: 0.1
 tools:
   read: true

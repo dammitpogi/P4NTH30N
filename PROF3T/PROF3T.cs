@@ -31,11 +31,11 @@ class PROF3T {
 		// OrionStarsBalanceTest();
 		// LaunchBrowser();
 		// TestSignals("FireKirin");
-		// AnalyzeBiggestAccounts();
+		//AnalyzeBiggestAccounts();
 		// PrioritizeTesting("OrionStars");
 		// InspectN3XT();
 
-        // UpdateN3XT();
+		//         // UpdateN3XT();
 
 		// ===========================================
 		// ADMIN / DATA-MUTATING COMMANDS (DANGEROUS)
@@ -47,7 +47,7 @@ class PROF3T {
 		// SeperateAllGames();
 		// DisableEmptyGames();
 		// UpdateCredentials();
-		// ResetGames();
+		ResetGames();
 		// sandbox();
 		// BurnAccount("ShariNor55", "123qwe");
 		// ResetSignalsTest("FireKirin");
@@ -65,7 +65,7 @@ class PROF3T {
 		// Fix();p
 	}
 
-    private static void UpdateN3XT() {
+	private static void UpdateN3XT() {
 		try {
 			Console.WriteLine("Updating N3XT view...");
 			var db = new Database().IO;
@@ -175,7 +175,7 @@ static void ResetGames()
                     .ToList();
             }
             
-            // credential.Balance = 0;
+            credential.Balance = 0;
             credential.Save();
         }
         

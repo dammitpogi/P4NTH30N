@@ -1,0 +1,54 @@
+{
+  "PrizeTierLimits": {
+    "MINOR": {
+      "MinValue": 0.01,
+      "MaxValue": 200.0,
+      "MaxThreshold": 150.0,
+      "Description": "Small prizes for regular gameplay"
+    },
+    "MAJOR": {
+      "MinValue": 50.0,
+      "MaxValue": 1000.0,
+      "MaxThreshold": 600.0,
+      "Description": "Medium prizes for significant wins"
+    },
+    "GRAND": {
+      "MinValue": 500.0,
+      "MaxValue": 5000.0,
+      "MaxThreshold": 2000.0,
+      "Description": "Large prizes for jackpot wins"
+    }
+  },
+  "RateLimits": {
+    "MaxDailyRate": 50.0,
+    "MinDailyRate": 0.01,
+    "Description": "Acceptable range for daily rate calculations"
+  },
+  "WatchdogSettings": {
+    "MonitoringIntervalMinutes": 5,
+    "MaxConsecutiveErrors": 3,
+    "RecentEntriesToCheck": 50,
+    "EnableAutoRemediation": true,
+    "LogRetentionDays": 30
+  },
+  "AlertSettings": {
+    "EnableEmailAlerts": false,
+    "EmailRecipients": [],
+    "CriticalThresholdCount": 3,
+    "EnableConsoleAlerts": true,
+    "EnableFileLogging": true
+  },
+  "Platform": {
+    "SupportedPlatforms": ["FireKirin", "OrionStar"],
+    "DefaultLogPath": "C:\\HUN7ER\\logs\\hunter.log",
+    "BackupLogPath": "C:\\HUN7ER\\logs\\backup\\",
+    "WatchdogLogPath": "C:\\HUN7ER\\logs\\watchdog.log"
+  },
+  "AutoRepair": {
+    "EnableDecimalPointCorrection": true,
+    "EnableThresholdNormalization": true,
+    "EnableRateClamping": true,
+    "MaxRepairAttempts": 3,
+    "DiscardUnrepairableEntries": true
+  }
+}

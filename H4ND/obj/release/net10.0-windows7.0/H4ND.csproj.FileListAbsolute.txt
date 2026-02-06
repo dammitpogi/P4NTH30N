@@ -31,3 +31,4 @@ C:\P4NTH30N\H4ND\obj\Release\net10.0-windows7.0\refint\H4ND.dll
 C:\P4NTH30N\H4ND\obj\Release\net10.0-windows7.0\H4ND.pdb
 C:\P4NTH30N\H4ND\obj\Release\net10.0-windows7.0\H4ND.genruntimeconfig.cache
 C:\P4NTH30N\H4ND\obj\Release\net10.0-windows7.0\ref\H4ND.dll
+C:\P4NTH30N\H4ND\bin\Release\net10.0-windows7.0\Spectre.Console.dll

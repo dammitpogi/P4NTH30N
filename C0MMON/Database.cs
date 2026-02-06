@@ -12,9 +12,9 @@ public class Database {
 #if DEBUG
 		//IO = new MongoClient("mongodb://192.168.223.1:27017/").GetDatabase("P4NTH30N");
 		//IO = new MongoClient("mongodb://100.105.201.51:27017/").GetDatabase("P4NTH30N");
-		IO = new MongoClient("mongodb://10.8.12.8:27017/").GetDatabase("P4NTH30N");
+		IO = new MongoClient("mongodb://localhost:27017/").GetDatabase("P4NTH30N");
 #else
-        IO = new MongoClient("mongodb://192.168.223.1:27017/").GetDatabase("P4NTH30N");
+        IO = new MongoClient("mongodb://localhost:27017/").GetDatabase("P4NTH30N");
 #endif
 	}
 }

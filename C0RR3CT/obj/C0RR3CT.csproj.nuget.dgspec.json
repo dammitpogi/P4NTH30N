@@ -14,12 +14,14 @@
         "outputPath": "C:\\P4NTH30N\\C0MMON\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\paulc\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\paulc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net10.0-windows7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -380,17 +382,18 @@
         "projectUniqueName": "C:\\P4NTH30N\\C0RR3CT\\C0RR3CT.csproj",
         "projectName": "C0RR3CT",
         "projectPath": "C:\\P4NTH30N\\C0RR3CT\\C0RR3CT.csproj",
-        "packagesPath": "C:\\P4NTH30N\\C0RR3CT\\packages",
+        "packagesPath": "C:\\Users\\paulc\\.nuget\\packages\\",
         "outputPath": "C:\\P4NTH30N\\C0RR3CT\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\P4NTH30N\\C0RR3CT\\NuGet.Config",
-          "C:\\Users\\paulc\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\paulc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net10.0-windows7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

@@ -1,5 +1,6 @@
 using Spectre.Console;
 using P4NTH30N.C0MMON;
+using P4NTH30N.C0MMON.SanityCheck;
 
 namespace P4NTH30N.Services;
 
@@ -10,6 +11,8 @@ public static class Dashboard {
     public static string CurrentUser { get; set; } = "None";
     public static string CurrentGame { get; set; } = "None";
     public static string VPNStatus { get; set; } = "Checking...";
+    public static string HealthStatus { get; set; } = "INITIALIZING";
+    private static DateTime _lastHealthUpdate = DateTime.MinValue;
 
     public static void AddLog(string message, string style = "white") {
         _events.Add((DateTime.Now, message, style));
@@ -18,7 +21,18 @@ public static class Dashboard {
         }
     }
 
+    public static void UpdateHealthStatus() {
+        if ((DateTime.Now - _lastHealthUpdate).TotalSeconds >= 30) {
+            var health = P4NTH30NSanityChecker.GetSystemHealth();
+            HealthStatus = $"{health.Status} | E:{health.ErrorCount} R:{health.RepairCount}";
+            _lastHealthUpdate = DateTime.Now;
+        }
+    }
+
     public static void Render() {
+        // Update health status before rendering
+        UpdateHealthStatus();
+        
         AnsiConsole.Clear();
 
         // Header
@@ -27,7 +41,7 @@ public static class Dashboard {
         headerGrid.AddColumn();
         headerGrid.AddRow(
             new FigletText("P4NTH30N").Color(Spectre.Console.Color.Teal),
-            new Markup($"[bold]VPN:[/] {VPNStatus}\n[bold]Task:[/] {CurrentTask}\n[bold]User:[/] {CurrentUser}\n[bold]Game:[/] {CurrentGame}")
+            new Markup($"[bold]VPN:[/] {VPNStatus}\n[bold]Task:[/] {CurrentTask}\n[bold]User:[/] {CurrentUser}\n[bold]Game:[/] {CurrentGame}\n[bold]Health:[/] {GetHealthStatusColor()}")
         );
         AnsiConsole.Write(new Spectre.Console.Panel(headerGrid).Border(BoxBorder.Double).Header("Instance Status"));
 
@@ -48,5 +62,12 @@ public static class Dashboard {
         
         // Footer hint
         AnsiConsole.MarkupLine("[grey]Press Ctrl+C to exit[/]");
+    }
+
+    private static string GetHealthStatusColor() {
+        return HealthStatus.Contains("HEALTHY") ? $"[green]{HealthStatus}[/]" :
+               HealthStatus.Contains("CRITICAL") ? $"[red]{HealthStatus}[/]" :
+               HealthStatus.Contains("WARNING") ? $"[yellow]{HealthStatus}[/]" :
+               $"[cyan]{HealthStatus}[/]";
     }
 }
