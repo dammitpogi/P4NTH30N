@@ -12,7 +12,7 @@ using Figgle.Fonts;
 
 namespace P4NTH30N {
     internal static class Header {
-        public static string Version => FiggleFonts.Colossal.Render($"v 0  .  8  .  6  .  3");
+        public static string Version => FiggleFonts.Colossal.Render($"v {AppVersion.GetDisplayVersion()}");
     }
 }
 
@@ -29,23 +29,19 @@ internal class Program {
 
         while (true) {
             Console.WriteLine(Header.Version);
-            ChromeDriver? driver = null;
-            bool driverFresh = false;
+            ChromeDriver driver = Actions.Launch();
             try {
                 double lastRetrievedGrand = 0;
                 Signal? overrideSignal = null;
                 Game? lastGame = null;
 
                 while (true) {
+                    // Game game = Game.Get("MIDAS 2", "FireKirin", false);
+                    // Credential credential = Credential.GetBy(game, "Stone1020");
+                    // Signal signal = new Signal(4, credential);
                     Signal? signal = listenForSignals ? (overrideSignal ?? Signal.GetNext()) : null;
                     Game game = (signal == null) ? Game.GetNext() : Game.Get(signal.House, signal.Game); overrideSignal = null;
                     Credential? credential = (signal == null) ? Credential.GetBy(game)[0] : Credential.GetBy(game, signal.Username);
-
-                    if (signal == null && driver != null) {
-                        driver.Quit();
-                        driver = null;
-                        driverFresh = false;
-                    }
 
                     if (credential == null) {
                         game.Unlock();
@@ -53,64 +49,64 @@ internal class Program {
                         game.Lock();
                         signal?.Acknowledge();
 
-                        if (signal != null) {
-                            if (driver == null) {
-                                driver = Actions.Launch();
-                                driverFresh = true;
-                            }
+                        switch (game.Name) {
+                            case "FireKirin":
+                                if (lastGame == null || lastGame.Name != game.Name) {
+                                    driver.Navigate().GoToUrl("http://play.firekirin.in/web_mobile/firekirin/");
+                                }
+                                // if (Screen.WaitForColor(new Point(650, 505), Color.FromArgb(255, 11, 241, 85), 60) == false) {
+                                if (Screen.WaitForColor(new Point(999, 128), Color.FromArgb(255, 2, 125, 51), 60) == false) {
+                                    Console.WriteLine($"{DateTime.Now} - {game.House} took too long to load for {game.Name}");
+                                    game.Lock(); //throw new Exception("Took too long to load.");
+                                }
+                                if (FireKirin.Login(driver, credential.Username, credential.Password) == false) {
+                                    if (Screen.GetColorAt(new Point(893, 117)).Equals(Color.FromArgb(255, 125, 124, 27)))
+                                        throw new Exception("This looks like a stuck Hall Screen. Resetting.");
+                                    game.Lock();
+                                    continue;
+                                }
+                                break;
 
-                            switch (game.Name) {
-                                case "FireKirin":
-                                    if (driverFresh || lastGame == null || lastGame.Name != game.Name) {
-                                        driver!.Navigate().GoToUrl("http://play.firekirin.in/web_mobile/firekirin/");
-                                    }
-                                    // if (Screen.WaitForColor(new Point(650, 505), Color.FromArgb(255, 11, 241, 85), 60) == false) {
-                                    if (Screen.WaitForColor(new Point(999, 128), Color.FromArgb(255, 2, 125, 51), 60) == false) {
+                            case "OrionStars":
+                                if (lastGame == null || lastGame.Name != game.Name) {
+                                    driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
+                                    if (Screen.WaitForColor(new Point(510, 110), Color.FromArgb(255, 2, 119, 2), 60) == false) {
                                         Console.WriteLine($"{DateTime.Now} - {game.House} took too long to load for {game.Name}");
                                         game.Lock(); //throw new Exception("Took too long to load.");
                                     }
-                                    if (FireKirin.Login(driver!, credential.Username, credential.Password) == false) {
-                                        if (Screen.GetColorAt(new Point(893, 117)).Equals(Color.FromArgb(255, 125, 124, 27)))
-                                            throw new Exception("This looks like a stuck Hall Screen. Resetting.");
-                                        game.Lock();
-                                        continue;
-                                    }
-                                    break;
+                                    Mouse.Click(535, 615);
+                                }
+                                if (OrionStars.Login(driver, credential.Username, credential.Password) == false) {
+                                    Console.WriteLine($"{DateTime.Now} - {game.House} login failed for {game.Name}");
+                                    Console.WriteLine($"{DateTime.Now} - {credential.Username} : {credential.Password}");
+                                    game.Lock();
+                                    continue;
+                                }
+                                break;
 
-                                case "OrionStars":
-                                    if (driverFresh || lastGame == null || lastGame.Name != game.Name) {
-                                        driver!.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
-                                        if (Screen.WaitForColor(new Point(510, 110), Color.FromArgb(255, 2, 119, 2), 60) == false) {
-                                            Console.WriteLine($"{DateTime.Now} - {game.House} took too long to load for {game.Name}");
-                                            game.Lock(); //throw new Exception("Took too long to load.");
-                                        }
-                                        Mouse.Click(535, 615);
-                                    }
-                                    if (OrionStars.Login(driver!, credential.Username, credential.Password) == false) {
-                                        Console.WriteLine($"{DateTime.Now} - {game.House} login failed for {game.Name}");
-                                        Console.WriteLine($"{DateTime.Now} - {credential.Username} : {credential.Password}");
-                                        game.Lock();
-                                        continue;
-                                    }
-                                    break;
-
-                                default:
-                                    throw new Exception($"Uncrecognized Game Found. ('{game.Name}')");
-                            }
-
-                            driverFresh = false;
+                            default:
+                                throw new Exception($"Uncrecognized Game Found. ('{game.Name}')");
                         }
 
-                        var balances = GetBalancesWithRetry(game, credential);
-                        double currentGrand = balances.Grand;
+                        int grandChecked = 0;
+                        double currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
+                        while (currentGrand.Equals(0)) {
+                            Thread.Sleep(500);
+                            if (grandChecked++ > 40) {
+                                ProcessEvent alert = ProcessEvent.Log("H4ND",$"Grand check signalled an Extension Failure for {game.Name}");
+                                Console.WriteLine($"Checking Grand on {game.Name} failed at {grandChecked} attempts.");
+                                alert.Record(credential).Save(); throw new Exception("Extension failure.");
+                            }
+                            currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
+                        }
 
                         if (signal != null) {
                             signal.Acknowledge();
                             File.WriteAllText(@"D:\S1GNAL.json", JsonSerializer.Serialize(true));
                             switch (signal.Priority) {
-                                case 1: signal.Receive(balances.Mini); break;
-                                case 2: signal.Receive(balances.Minor); break;
-                                case 3: signal.Receive(balances.Major); break;
+                                case 1: signal.Receive(Convert.ToDouble(driver.ExecuteScript("return window.parent.Mini")) / 100); break;
+                                case 2: signal.Receive(Convert.ToDouble(driver.ExecuteScript("return window.parent.Minor")) / 100); break;
+                                case 3: signal.Receive(Convert.ToDouble(driver.ExecuteScript("return window.parent.Major")) / 100); break;
                                 case 4: signal.Receive(currentGrand); break;
                             }
 
@@ -118,15 +114,15 @@ internal class Program {
                             switch (game.Name) {
                                 case "FireKirin":
                                     Mouse.Click(80, 235); Thread.Sleep(800); //Reset Hall Screen
-                                    FireKirin.SpinSlots(driver!, game, signal);
+                                    FireKirin.SpinSlots(driver, game, signal);
                                     break;
                                 case "OrionStars":
                                     Mouse.Click(80, 200); Thread.Sleep(800);
                                     // overrideSignal = Games.Gold777(driver, game, signal);
-                                    bool FortunePiggyLoaded = Games.FortunePiggy.LoadSucessfully(driver!, game, signal);
-                                    overrideSignal = FortunePiggyLoaded ? Games.FortunePiggy.Spin(driver!, game, signal) : null;
+                                    bool FortunePiggyLoaded = Games.FortunePiggy.LoadSucessfully(driver, game, signal);
+                                    overrideSignal = FortunePiggyLoaded ? Games.FortunePiggy.Spin(driver, game, signal) : null;
 
-                                    driver!.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
+                                    driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
                                     P4NTH30N.C0MMON.Screen.WaitForColor(new Point(715, 128), Color.FromArgb(255, 254, 242, 181));
                                     Thread.Sleep(2000); Mouse.Click(80, 200); Thread.Sleep(800);
                                     break;
@@ -135,14 +131,13 @@ internal class Program {
                             //ProcessEvent.Log("SignalReceived", $"Finished Spinning for {game.House} - Username: {signal.Username}").Record(signal).Save();
                             // throw new Exception("Finished Spinning");
                             lastGame = null;
-                            balances = GetBalancesWithRetry(game, credential);
                         } else if (signal == null) {
                             game.Lock();
                         }
 
-                        double currentMajor = balances.Major;
-                        double currentMinor = balances.Minor;
-                        double currentMini = balances.Mini;
+                        double currentMajor = Convert.ToDouble(driver.ExecuteScript("return window.parent.Major")) / 100;
+                        double currentMinor = Convert.ToDouble(driver.ExecuteScript("return window.parent.Minor")) / 100;
+                        double currentMini = Convert.ToDouble(driver.ExecuteScript("return window.parent.Mini")) / 100;
 
                         if ((lastRetrievedGrand.Equals(currentGrand) && (lastGame == null || game.Name != lastGame.Name && game.House != lastGame.House)) == false) {
                             Signal? gameSignal = Signal.GetOne(game);
@@ -202,7 +197,7 @@ internal class Program {
                         game.Updated = true;
                         game.Unlock();
 
-                        double currentBalance = balances.Balance;
+                        double currentBalance = Convert.ToDouble(driver.ExecuteScript("return window.parent.Balance")) / 100;
                         credential.LastUpdated = DateTime.UtcNow;
                         credential.Balance = currentBalance;
                         lastRetrievedGrand = currentGrand;
@@ -213,83 +208,21 @@ internal class Program {
                             File.WriteAllText(@"D:\S1GNAL.json", JsonSerializer.Serialize(false));
                         }
 
-                        if (signal != null) {
-                            switch (game.Name) {
-                                case "FireKirin":
-                                    FireKirin.Logout();
-                                    break;
-                                case "OrionStars":
-                                    OrionStars.Logout(driver!);
-                                    break;
-                            }
-
-                            if (overrideSignal == null && driver != null) {
-                                driver.Quit();
-                                driver = null;
-                                driverFresh = false;
-                            }
+                        switch (game.Name) {
+                            case "FireKirin":
+                                FireKirin.Logout();
+                                break;
+                            case "OrionStars":
+                                OrionStars.Logout(driver);
+                                break;
                         }
                     }
                 }
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
                 Console.WriteLine(ex);
-                if (driver != null) {
-                    driver.Quit();
-                }
+                driver.Quit();
             }
         }
-    }
-
-    private static (double Balance, double Grand, double Major, double Minor, double Mini) QueryBalances(
-        Game game,
-        Credential credential
-    ) {
-        switch (game.Name) {
-            case "FireKirin": {
-                var balances = FireKirin.QueryBalances(credential.Username, credential.Password);
-                return (
-                    (double)balances.Balance,
-                    (double)balances.Grand,
-                    (double)balances.Major,
-                    (double)balances.Minor,
-                    (double)balances.Mini
-                );
-            }
-            case "OrionStars": {
-                var balances = OrionStars.QueryBalances(credential.Username, credential.Password);
-                return (
-                    (double)balances.Balance,
-                    (double)balances.Grand,
-                    (double)balances.Major,
-                    (double)balances.Minor,
-                    (double)balances.Mini
-                );
-            }
-            default:
-                throw new Exception($"Uncrecognized Game Found. ('{game.Name}')");
-        }
-    }
-
-    private static (double Balance, double Grand, double Major, double Minor, double Mini) GetBalancesWithRetry(
-        Game game,
-        Credential credential
-    ) {
-        int grandChecked = 0;
-        var balances = QueryBalances(game, credential);
-        double currentGrand = balances.Grand;
-        while (currentGrand.Equals(0)) {
-            Thread.Sleep(500);
-            if (grandChecked++ > 40) {
-                ProcessEvent alert = ProcessEvent.Log("H4ND", $"Grand check signalled an Extension Failure for {game.Name}");
-                Console.WriteLine($"Checking Grand on {game.Name} failed at {grandChecked} attempts.");
-                alert.Record(credential).Save();
-                throw new Exception("Extension failure.");
-            }
-            balances = QueryBalances(game, credential);
-            currentGrand = balances.Grand;
-        }
-
-        return balances;
     }
 }
