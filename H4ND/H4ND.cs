@@ -14,7 +14,7 @@ using Figgle.Fonts;
 
 namespace P4NTH30N {
     internal static class Header {
-        public static string Version => FiggleFonts.Colossal.Render($"v 0  .  8  .  6  .  3");
+        public static string Version => FiggleFonts.Colossal.Render($"v {AppVersion.GetDisplayVersion()}");
     }
 }
 
@@ -46,15 +46,12 @@ internal class Program {
                 Game? lastGame = null;
 
                 while (true) {
+                    // Game game = Game.Get("MIDAS 2", "FireKirin", false);
+                    // Credential credential = Credential.GetBy(game, "Stone1020");
+                    // Signal signal = new Signal(4, credential);
                     Signal? signal = listenForSignals ? (overrideSignal ?? Signal.GetNext()) : null;
                     Game game = (signal == null) ? Game.GetNext() : Game.Get(signal.House, signal.Game); overrideSignal = null;
                     Credential? credential = (signal == null) ? Credential.GetBy(game)[0] : Credential.GetBy(game, signal.Username);
-
-                    if (signal == null && driver != null) {
-                        driver.Quit();
-                        driver = null;
-                        driverFresh = false;
-                    }
 
                     if (credential == null) {
                         game.Unlock();
@@ -72,45 +69,37 @@ internal class Program {
                                 driverFresh = true;
                             }
 
-                            switch (game.Name) {
-                                case "FireKirin":
-                                    if (driverFresh || lastGame == null || lastGame.Name != game.Name) {
-                                        driver!.Navigate().GoToUrl("http://play.firekirin.in/web_mobile/firekirin/");
-                                    }
-                                    // if (Screen.WaitForColor(new Point(650, 505), Color.FromArgb(255, 11, 241, 85), 60) == false) {
-                                    if (Screen.WaitForColor(new Point(999, 128), Color.FromArgb(255, 2, 125, 51), 60) == false) {
+                            case "OrionStars":
+                                if (lastGame == null || lastGame.Name != game.Name) {
+                                    driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
+                                    if (Screen.WaitForColor(new Point(510, 110), Color.FromArgb(255, 2, 119, 2), 60) == false) {
                                         Console.WriteLine($"{DateTime.Now} - {game.House} took too long to load for {game.Name}");
                                         game.Lock(); //throw new Exception("Took too long to load.");
                                     }
-                                    if (FireKirin.Login(driver!, credential.Username, credential.Password) == false) {
-                                        if (Screen.GetColorAt(new Point(893, 117)).Equals(Color.FromArgb(255, 125, 124, 27)))
-                                            throw new Exception("This looks like a stuck Hall Screen. Resetting.");
-                                        game.Lock();
-                                        continue;
-                                    }
-                                    break;
+                                    Mouse.Click(535, 615);
+                                }
+                                if (OrionStars.Login(driver, credential.Username, credential.Password) == false) {
+                                    Console.WriteLine($"{DateTime.Now} - {game.House} login failed for {game.Name}");
+                                    Console.WriteLine($"{DateTime.Now} - {credential.Username} : {credential.Password}");
+                                    game.Lock();
+                                    continue;
+                                }
+                                break;
 
-                                case "OrionStars":
-                                    if (driverFresh || lastGame == null || lastGame.Name != game.Name) {
-                                        driver!.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
-                                        if (Screen.WaitForColor(new Point(510, 110), Color.FromArgb(255, 2, 119, 2), 60) == false) {
-                                            Console.WriteLine($"{DateTime.Now} - {game.House} took too long to load for {game.Name}");
-                                            game.Lock(); //throw new Exception("Took too long to load.");
-                                        }
-                                        Mouse.Click(535, 615);
-                                    }
-                                    if (OrionStars.Login(driver!, credential.Username, credential.Password) == false) {
-                                        Console.WriteLine($"{DateTime.Now} - {game.House} login failed for {game.Name}");
-                                        game.Lock();
-                                        continue;
-                                    }
-                                    break;
+                            default:
+                                throw new Exception($"Uncrecognized Game Found. ('{game.Name}')");
+                        }
 
-                                default:
-                                    throw new Exception($"Uncrecognized Game Found. ('{game.Name}')");
+                        int grandChecked = 0;
+                        double currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
+                        while (currentGrand.Equals(0)) {
+                            Thread.Sleep(500);
+                            if (grandChecked++ > 40) {
+                                ProcessEvent alert = ProcessEvent.Log("H4ND",$"Grand check signalled an Extension Failure for {game.Name}");
+                                Console.WriteLine($"Checking Grand on {game.Name} failed at {grandChecked} attempts.");
+                                alert.Record(credential).Save(); throw new Exception("Extension failure.");
                             }
-
-                            driverFresh = false;
+                            currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
                         }
 
                         var balances = GetBalancesWithRetry(game, credential);
@@ -170,15 +159,15 @@ internal class Program {
                             switch (game.Name) {
                                 case "FireKirin":
                                     Mouse.Click(80, 235); Thread.Sleep(800); //Reset Hall Screen
-                                    FireKirin.SpinSlots(driver!, game, signal);
+                                    FireKirin.SpinSlots(driver, game, signal);
                                     break;
                                 case "OrionStars":
                                     Mouse.Click(80, 200); Thread.Sleep(800);
                                     // overrideSignal = Games.Gold777(driver, game, signal);
-                                    bool FortunePiggyLoaded = Games.FortunePiggy.LoadSucessfully(driver!, game, signal);
-                                    overrideSignal = FortunePiggyLoaded ? Games.FortunePiggy.Spin(driver!, game, signal) : null;
+                                    bool FortunePiggyLoaded = Games.FortunePiggy.LoadSucessfully(driver, game, signal);
+                                    overrideSignal = FortunePiggyLoaded ? Games.FortunePiggy.Spin(driver, game, signal) : null;
 
-                                    driver!.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
+                                    driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
                                     P4NTH30N.C0MMON.Screen.WaitForColor(new Point(715, 128), Color.FromArgb(255, 254, 242, 181));
                                     Thread.Sleep(2000); Mouse.Click(80, 200); Thread.Sleep(800);
                                     break;
@@ -294,21 +283,13 @@ if (currentMini < game.Jackpots.Mini && game.Jackpots.Mini - currentMini > 0.1) 
                             File.WriteAllText(@"D:\S1GNAL.json", JsonSerializer.Serialize(false));
                         }
 
-                        if (signal != null) {
-                            switch (game.Name) {
-                                case "FireKirin":
-                                    FireKirin.Logout();
-                                    break;
-                                case "OrionStars":
-                                    OrionStars.Logout(driver!);
-                                    break;
-                            }
-
-                            if (overrideSignal == null && driver != null) {
-                                driver.Quit();
-                                driver = null;
-                                driverFresh = false;
-                            }
+                        switch (game.Name) {
+                            case "FireKirin":
+                                FireKirin.Logout();
+                                break;
+                            case "OrionStars":
+                                OrionStars.Logout(driver);
+                                break;
                         }
                     }
                 }
