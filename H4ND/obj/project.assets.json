@@ -472,11 +472,11 @@
   "project": {
     "version": "0.8.5.6",
     "restore": {
-      "projectUniqueName": "c:\\P4NTH30N\\H4ND\\H4ND.csproj",
+      "projectUniqueName": "C:\\P4NTH30N\\H4ND\\H4ND.csproj",
       "projectName": "H4ND",
-      "projectPath": "c:\\P4NTH30N\\H4ND\\H4ND.csproj",
+      "projectPath": "C:\\P4NTH30N\\H4ND\\H4ND.csproj",
       "packagesPath": "C:\\Users\\paulc\\.nuget\\packages\\",
-      "outputPath": "c:\\P4NTH30N\\H4ND\\obj\\",
+      "outputPath": "C:\\P4NTH30N\\H4ND\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\paulc\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -493,8 +493,8 @@
         "net10.0-windows7.0": {
           "targetAlias": "net10.0-windows7.0",
           "projectReferences": {
-            "c:\\P4NTH30N\\C0MMON\\C0MMON.csproj": {
-              "projectPath": "c:\\P4NTH30N\\C0MMON\\C0MMON.csproj"
+            "C:\\P4NTH30N\\C0MMON\\C0MMON.csproj": {
+              "projectPath": "C:\\P4NTH30N\\C0MMON\\C0MMON.csproj"
             }
           }
         }

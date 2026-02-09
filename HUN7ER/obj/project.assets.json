@@ -383,11 +383,11 @@
   "project": {
     "version": "0.8.5.6",
     "restore": {
-      "projectUniqueName": "c:\\P4NTH30N\\HUN7ER\\HUN7ER.csproj",
+      "projectUniqueName": "C:\\P4NTH30N\\HUN7ER\\HUN7ER.csproj",
       "projectName": "HUN7ER",
-      "projectPath": "c:\\P4NTH30N\\HUN7ER\\HUN7ER.csproj",
+      "projectPath": "C:\\P4NTH30N\\HUN7ER\\HUN7ER.csproj",
       "packagesPath": "C:\\Users\\paulc\\.nuget\\packages\\",
-      "outputPath": "c:\\P4NTH30N\\HUN7ER\\obj\\",
+      "outputPath": "C:\\P4NTH30N\\HUN7ER\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\paulc\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -404,8 +404,8 @@
         "net10.0-windows7.0": {
           "targetAlias": "net10.0-windows7.0",
           "projectReferences": {
-            "c:\\P4NTH30N\\C0MMON\\C0MMON.csproj": {
-              "projectPath": "c:\\P4NTH30N\\C0MMON\\C0MMON.csproj"
+            "C:\\P4NTH30N\\C0MMON\\C0MMON.csproj": {
+              "projectPath": "C:\\P4NTH30N\\C0MMON\\C0MMON.csproj"
             }
           }
         }

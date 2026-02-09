@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7Wt/6GyzYOs=",
+  "dgSpecHash": "9TNiwd0VBR0=",
   "success": true,
-  "projectFilePath": "c:\\P4NTH30N\\PROF3T\\PROF3T.csproj",
+  "projectFilePath": "C:\\P4NTH30N\\PROF3T\\PROF3T.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\paulc\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\paulc\\.nuget\\packages\\h.inputsimulator\\1.5.0\\h.inputsimulator.1.5.0.nupkg.sha512",

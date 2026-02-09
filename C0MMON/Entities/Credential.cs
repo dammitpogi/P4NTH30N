@@ -1,6 +1,7 @@
 using System;
 using System.Security.Cryptography.X509Certificates;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
 using P4NTH30N.C0MMON.SanityCheck;
 
@@ -44,7 +45,19 @@ public class Credential(string game) {
     }
     
     public required string Username { get; set; }
-    public required string Password { get; set; }
+	public required string Password { get; set; }
+
+	[BsonIgnoreExtraElements]
+	private sealed class NextCredentialView {
+		public required ObjectId CredentialId { get; set; }
+		public DateTime Updated { get; set; }
+		public string? House { get; set; }
+		public string? Game { get; set; }
+		public string? Username { get; set; }
+		public int Priority { get; set; }
+		public DateTime? By { get; set; }
+		public bool Overdue { get; set; }
+	}
 
     public static List<Credential> Database() {
         return new Database().IO.GetCollection<Credential>("CRED3N7IAL").Find(Builders<Credential>.Filter.Empty).ToList();
@@ -87,12 +100,19 @@ public class Credential(string game) {
             return dto[0];
     }
 
-    public static Credential GetNext() {
-        return new Database()
-            .IO.GetCollection<Credential>("N3XT_CRED")
-            .Find(Builders<Credential>.Filter.Empty)
-            .First();
-    }
+	public static Credential GetNext() {
+		Database database = new();
+		IMongoCollection<NextCredentialView> queue = database.IO.GetCollection<NextCredentialView>("N3XT_CRED");
+		NextCredentialView? next = queue.Find(Builders<NextCredentialView>.Filter.Empty).FirstOrDefault();
+		if (next == null)
+			throw new InvalidOperationException("N3XT_CRED returned no credentials.");
+
+		IMongoCollection<Credential> credentials = database.IO.GetCollection<Credential>("CRED3N7IAL");
+		Credential? credential = credentials.Find(Builders<Credential>.Filter.Eq(x => x._id, next.CredentialId)).FirstOrDefault();
+		if (credential == null)
+			throw new InvalidOperationException($"CredentialId {next.CredentialId} from N3XT_CRED not found in CRED3N7IAL.");
+		return credential;
+	}
 public void Lock() {
 		UnlockTimeout = DateTime.UtcNow.AddMinutes(1.5);
 		Unlocked = false;
