@@ -5,7 +5,6 @@ using Figgle;
 using P4NTH30N.C0MMON;
 using P4NTH30N.C0MMON.Versioning;
 using P4NTH30N.C0MMON.SanityCheck;
-using P4NTH30N.Services;
 using System.Drawing;
 using System.Text.Json;
 using System.Diagnostics;
@@ -29,94 +28,92 @@ internal class Program {
             listenForSignals = false;
         }
 
-        VPNService.Initialize().Wait();
-
-        while (true) {
-            Console.WriteLine(Header.Version);
-            ChromeDriver? driver = null;
-            bool driverFresh = false;
-            
-            // Health monitoring for H4ND
-            List<(string tier, double value, double threshold)> recentJackpots = new();
-            DateTime lastHealthCheck = DateTime.MinValue;
-            
+		while (true) {
+			Console.WriteLine(Header.Version);
+			ChromeDriver? driver = null;
+			
+			// Health monitoring for H4ND
+			List<(string tier, double value, double threshold)> recentJackpots = new();
+			DateTime lastHealthCheck = DateTime.MinValue;
+			
             try {
                 double lastRetrievedGrand = 0;
                 Signal? overrideSignal = null;
-                Game? lastGame = null;
+                Credential? lastCredential = null;
 
                 while (true) {
-                    // Game game = Game.Get("MIDAS 2", "FireKirin", false);
-                    // Credential credential = Credential.GetBy(game, "Stone1020");
+                    // Credential credential = Credential.GetBy("FireKirin", "MIDAS 2", "Stone1020");
                     // Signal signal = new Signal(4, credential);
                     Signal? signal = listenForSignals ? (overrideSignal ?? Signal.GetNext()) : null;
-                    Game game = (signal == null) ? Game.GetNext() : Game.Get(signal.House, signal.Game); overrideSignal = null;
-                    Credential? credential = (signal == null) ? Credential.GetBy(game)[0] : Credential.GetBy(game, signal.Username);
+                    Credential? credential = (signal == null) ? Credential.GetNext() : Credential.GetBy(signal.House, signal.Game, signal.Username); overrideSignal = null;
 
                     if (credential == null) {
-                        game.Unlock();
+                        continue;
                     } else {
-                        game.Lock();
+                        credential.Lock();
                         signal?.Acknowledge();
 
-                        if (signal != null) {
-                            if (driver == null) {
-                                while (!VPNService.EnsureCompliantConnection().Result) {
-                                    Console.WriteLine($"{DateTime.Now} - VPN Non-Compliant. Retrying indefinitely...");
-                                    Thread.Sleep(5000);
-                                }
-                                driver = Actions.Launch();
-                                driverFresh = true;
-                            }
+						if (signal != null) {
+							if (driver == null) {
+								driver = Actions.Launch();
+							}
 
-                            case "OrionStars":
-                                if (lastGame == null || lastGame.Name != game.Name) {
-                                    driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
-                                    if (Screen.WaitForColor(new Point(510, 110), Color.FromArgb(255, 2, 119, 2), 60) == false) {
-                                        Console.WriteLine($"{DateTime.Now} - {game.House} took too long to load for {game.Name}");
-                                        game.Lock(); //throw new Exception("Took too long to load.");
+							switch (credential.Game) {
+								case "FireKirin":
+									break;
+                                case "OrionStars":
+                                    if (lastCredential == null || lastCredential.Game != credential.Game) {
+                                        driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
+                                        if (Screen.WaitForColor(new Point(510, 110), Color.FromArgb(255, 2, 119, 2), 60) == false) {
+                                            Console.WriteLine($"{DateTime.Now} - {credential.House} took too long to load for {credential.Game}");
+                                            credential.Lock(); //throw new Exception("Took too long to load.");
+                                        }
+                                        Mouse.Click(535, 615);
                                     }
-                                    Mouse.Click(535, 615);
-                                }
-                                if (OrionStars.Login(driver, credential.Username, credential.Password) == false) {
-                                    Console.WriteLine($"{DateTime.Now} - {game.House} login failed for {game.Name}");
-                                    Console.WriteLine($"{DateTime.Now} - {credential.Username} : {credential.Password}");
-                                    game.Lock();
-                                    continue;
-                                }
-                                break;
-
-                            default:
-                                throw new Exception($"Uncrecognized Game Found. ('{game.Name}')");
-                        }
-
-                        int grandChecked = 0;
-                        double currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
-                        while (currentGrand.Equals(0)) {
-                            Thread.Sleep(500);
-                            if (grandChecked++ > 40) {
-                                ProcessEvent alert = ProcessEvent.Log("H4ND",$"Grand check signalled an Extension Failure for {game.Name}");
-                                Console.WriteLine($"Checking Grand on {game.Name} failed at {grandChecked} attempts.");
-                                alert.Record(credential).Save(); throw new Exception("Extension failure.");
+                                    if (OrionStars.Login(driver, credential.Username, credential.Password) == false) {
+                                        Console.WriteLine($"{DateTime.Now} - {credential.House} login failed for {credential.Game}");
+                                        Console.WriteLine($"{DateTime.Now} - {credential.Username} : {credential.Password}");
+                                        credential.Lock();
+                                        continue;
+                                    }
+                                    break;
+                                default:
+                                    throw new Exception($"Uncrecognized Game Found. ('{credential.Game}')");
                             }
-                            currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
                         }
 
-                        var balances = GetBalancesWithRetry(game, credential);
-                        
+						int grandChecked = 0;
+						if (driver == null) {
+							driver = Actions.Launch();
+						}
+
+						ChromeDriver activeDriver = driver;
+						double extensionGrand = Convert.ToDouble(activeDriver.ExecuteScript("return window.parent.Grand")) / 100;
+						while (extensionGrand.Equals(0)) {
+							Thread.Sleep(500);
+							if (grandChecked++ > 40) {
+								ProcessEvent alert = ProcessEvent.Log("H4ND",$"Grand check signalled an Extension Failure for {credential.Game}");
+								Console.WriteLine($"Checking Grand on {credential.Game} failed at {grandChecked} attempts.");
+								alert.Record(credential).Save(); throw new Exception("Extension failure.");
+							}
+							extensionGrand = Convert.ToDouble(activeDriver.ExecuteScript("return window.parent.Grand")) / 100;
+						}
+
+                        var balances = GetBalancesWithRetry(credential);
+
                         // SANITY CHECK: Validate all retrieved values before processing
-                        var grandValidation = P4NTH30NSanityChecker.ValidateJackpot("Grand", balances.Grand, game.Thresholds.Grand);
-                        var majorValidation = P4NTH30NSanityChecker.ValidateJackpot("Major", balances.Major, game.Thresholds.Major);
-                        var minorValidation = P4NTH30NSanityChecker.ValidateJackpot("Minor", balances.Minor, game.Thresholds.Minor);
-                        var miniValidation = P4NTH30NSanityChecker.ValidateJackpot("Mini", balances.Mini, game.Thresholds.Mini);
+                        var grandValidation = P4NTH30NSanityChecker.ValidateJackpot("Grand", balances.Grand, credential.Thresholds.Grand);
+                        var majorValidation = P4NTH30NSanityChecker.ValidateJackpot("Major", balances.Major, credential.Thresholds.Major);
+                        var minorValidation = P4NTH30NSanityChecker.ValidateJackpot("Minor", balances.Minor, credential.Thresholds.Minor);
+                        var miniValidation = P4NTH30NSanityChecker.ValidateJackpot("Mini", balances.Mini, credential.Thresholds.Mini);
                         var balanceValidation = P4NTH30NSanityChecker.ValidateBalance(balances.Balance, credential.Username);
                         
                         // Check for critical validation failures
-                        if (!grandValidation.IsValid || !majorValidation.IsValid || 
+                        if (!grandValidation.IsValid || !majorValidation.IsValid ||
                             !minorValidation.IsValid || !miniValidation.IsValid || !balanceValidation.IsValid)
                         {
-                            Console.WriteLine($"🔴 Critical validation failure for {game.Name} - {credential.Username}");
-                            game.Unlock();
+                            Console.WriteLine($"🔴 Critical validation failure for {credential.Game} - {credential.Username}");
+                            credential.Unlock();
                             continue; // Skip this iteration for corrupted data
                         }
                         
@@ -128,10 +125,10 @@ internal class Program {
                         double validatedBalance = balanceValidation.ValidatedBalance;
                         
                         // Log any repairs that were made
-                        if (grandValidation.WasRepaired || majorValidation.WasRepaired || 
+                        if (grandValidation.WasRepaired || majorValidation.WasRepaired ||
                             minorValidation.WasRepaired || miniValidation.WasRepaired || balanceValidation.WasRepaired)
                         {
-                            Console.WriteLine($"🔧 Data repairs applied for {game.Name} - {credential.Username}");
+                            Console.WriteLine($"🔧 Data repairs applied for {credential.Game} - {credential.Username}");
                         }
                         
                         // Track for health monitoring
@@ -156,120 +153,120 @@ internal class Program {
                             }
 
                             signal.Acknowledge();
-                            switch (game.Name) {
+                            switch (credential.Game) {
                                 case "FireKirin":
                                     Mouse.Click(80, 235); Thread.Sleep(800); //Reset Hall Screen
-                                    FireKirin.SpinSlots(driver, game, signal);
+                                    FireKirin.SpinSlots(driver, credential, signal);
                                     break;
                                 case "OrionStars":
                                     Mouse.Click(80, 200); Thread.Sleep(800);
-                                    // overrideSignal = Games.Gold777(driver, game, signal);
-                                    bool FortunePiggyLoaded = Games.FortunePiggy.LoadSucessfully(driver, game, signal);
-                                    overrideSignal = FortunePiggyLoaded ? Games.FortunePiggy.Spin(driver, game, signal) : null;
+                                    // overrideSignal = Games.Gold777(driver, credential, signal);
+                                    bool FortunePiggyLoaded = Games.FortunePiggy.LoadSucessfully(driver, credential, signal);
+                                    overrideSignal = FortunePiggyLoaded ? Games.FortunePiggy.Spin(driver, credential, signal) : null;
 
                                     driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
                                     P4NTH30N.C0MMON.Screen.WaitForColor(new Point(715, 128), Color.FromArgb(255, 254, 242, 181));
                                     Thread.Sleep(2000); Mouse.Click(80, 200); Thread.Sleep(800);
                                     break;
                             }
-                            Console.WriteLine($"({DateTime.Now}) {game.House} - Completed Reel Spins...");
-                            //ProcessEvent.Log("SignalReceived", $"Finished Spinning for {game.House} - Username: {signal.Username}").Record(signal).Save();
+                            Console.WriteLine($"({DateTime.Now}) {credential.House} - Completed Reel Spins...");
+                            //ProcessEvent.Log("SignalReceived", $"Finished Spinning for {credential.House} - Username: {signal.Username}").Record(signal).Save();
                             // throw new Exception("Finished Spinning");
-                            lastGame = null;
-                            balances = GetBalancesWithRetry(game, credential);
+                            lastCredential = null;
+                            balances = GetBalancesWithRetry(credential);
                             // Re-validate post-spin balances
                             var postSpinBalanceValidation = P4NTH30NSanityChecker.ValidateBalance(balances.Balance, credential.Username);
                             validatedBalance = postSpinBalanceValidation.ValidatedBalance;
                         } else if (signal == null) {
-                            game.Lock();
+                            credential.Lock();
                         }
 
                         // Use validated values from earlier in the processing loop
                         // currentMajor, currentMinor, currentMini already set from validation above
 
-if ((lastRetrievedGrand.Equals(currentGrand) && (lastGame == null || game.Name != lastGame.Name && game.House != lastGame.House)) == false) {
-                            Signal? gameSignal = Signal.GetOne(game);
-                            if (currentGrand < game.Jackpots.Grand && game.Jackpots.Grand - currentGrand > 0.1) {
-                                if (game.DPD.Toggles.GrandPopped == true) {
+if ((lastRetrievedGrand.Equals(currentGrand) && (lastCredential == null || credential.Game != lastCredential.Game && credential.House != lastCredential.House)) == false) {
+                            Signal? gameSignal = Signal.GetOne(credential.House, credential.Game);
+                            if (currentGrand < credential.Jackpots.Grand && credential.Jackpots.Grand - currentGrand > 0.1) {
+                                if (credential.DPD.Toggles.GrandPopped == true) {
                                     if (currentGrand >= 0 && currentGrand <= 10000) {
-                                        game.Jackpots.Grand = currentGrand;
+                                        credential.Jackpots.Grand = currentGrand;
                                     }
-                                    game.DPD.Toggles.GrandPopped = false;
-                                    game.Thresholds.NewGrand(game.Jackpots.Grand);
+                                    credential.DPD.Toggles.GrandPopped = false;
+                                    credential.Thresholds.NewGrand(credential.Jackpots.Grand);
                                     if (gameSignal != null && gameSignal.Priority.Equals(4))
-                                        Signal.DeleteAll(game);
+                                        Signal.DeleteAll(credential.House, credential.Game);
 } else
-                                    game.DPD.Toggles.GrandPopped = true;
+                                    credential.DPD.Toggles.GrandPopped = true;
                             } else {
                                 if (currentGrand >= 0 && currentGrand <= 10000) {
-                                    game.Jackpots.Grand = currentGrand;
+                                    credential.Jackpots.Grand = currentGrand;
                                 }
                             }
 
-if (currentMajor < game.Jackpots.Major && game.Jackpots.Major - currentMajor > 0.1) {
-                                if (game.DPD.Toggles.MajorPopped == true) {
+if (currentMajor < credential.Jackpots.Major && credential.Jackpots.Major - currentMajor > 0.1) {
+                                if (credential.DPD.Toggles.MajorPopped == true) {
                                     if (currentMajor >= 0 && currentMajor <= 10000) {
-                                        game.Jackpots.Major = currentMajor;
+                                        credential.Jackpots.Major = currentMajor;
                                     }
-                                    game.DPD.Toggles.MajorPopped = false;
-                                    game.Thresholds.NewMajor(game.Jackpots.Major);
+                                    credential.DPD.Toggles.MajorPopped = false;
+                                    credential.Thresholds.NewMajor(credential.Jackpots.Major);
                                     if (gameSignal != null && gameSignal.Priority.Equals(3))
-                                        Signal.DeleteAll(game);
+                                        Signal.DeleteAll(credential.House, credential.Game);
 } else
-                                    game.DPD.Toggles.MajorPopped = true;
+                                    credential.DPD.Toggles.MajorPopped = true;
                             } else {
                                 if (currentMajor >= 0 && currentMajor <= 10000) {
-                                    game.Jackpots.Major = currentMajor;
+                                    credential.Jackpots.Major = currentMajor;
                                 }
                             }
 
-if (currentMinor < game.Jackpots.Minor && game.Jackpots.Minor - currentMinor > 0.1) {
-                                if (game.DPD.Toggles.MinorPopped == true) {
+if (currentMinor < credential.Jackpots.Minor && credential.Jackpots.Minor - currentMinor > 0.1) {
+                                if (credential.DPD.Toggles.MinorPopped == true) {
                                     if (currentMinor >= 0 && currentMinor <= 10000) {
-                                        game.Jackpots.Minor = currentMinor;
+                                        credential.Jackpots.Minor = currentMinor;
                                     }
-                                    game.DPD.Toggles.MinorPopped = false;
-                                    game.Thresholds.NewMinor(game.Jackpots.Minor);
+                                    credential.DPD.Toggles.MinorPopped = false;
+                                    credential.Thresholds.NewMinor(credential.Jackpots.Minor);
                                     if (gameSignal != null && gameSignal.Priority.Equals(2))
-                                        Signal.DeleteAll(game);
+                                        Signal.DeleteAll(credential.House, credential.Game);
 } else
-                                    game.DPD.Toggles.MinorPopped = true;
+                                    credential.DPD.Toggles.MinorPopped = true;
                             } else {
                                 if (currentMinor >= 0 && currentMinor <= 10000) {
-                                    game.Jackpots.Minor = currentMinor;
+                                    credential.Jackpots.Minor = currentMinor;
                                 }
                             }
 
-if (currentMini < game.Jackpots.Mini && game.Jackpots.Mini - currentMini > 0.1) {
-                                if (game.DPD.Toggles.MiniPopped == true) {
+if (currentMini < credential.Jackpots.Mini && credential.Jackpots.Mini - currentMini > 0.1) {
+                                if (credential.DPD.Toggles.MiniPopped == true) {
                                     if (currentMini >= 0 && currentMini <= 10000) {
-                                        game.Jackpots.Mini = currentMini;
+                                        credential.Jackpots.Mini = currentMini;
                                     }
-                                    game.DPD.Toggles.MiniPopped = false;
-                                    game.Thresholds.NewMini(game.Jackpots.Mini);
+                                    credential.DPD.Toggles.MiniPopped = false;
+                                    credential.Thresholds.NewMini(credential.Jackpots.Mini);
                                     if (gameSignal != null && gameSignal.Priority.Equals(1))
-                                        Signal.DeleteAll(game);
+                                        Signal.DeleteAll(credential.House, credential.Game);
 } else
-                                    game.DPD.Toggles.MiniPopped = true;
+                                    credential.DPD.Toggles.MiniPopped = true;
                             } else {
                                 if (currentMini >= 0 && currentMini <= 10000) {
-                                    game.Jackpots.Mini = currentMini;
+                                    credential.Jackpots.Mini = currentMini;
                                 }
                             }
                         } else {
                             throw new Exception("Invalid grand retrieved.");
                         }
 
-                        if (game.Settings.Gold777 == null)
-                            game.Settings.Gold777 = new Gold777_Settings();
-                        game.Updated = true;
-                        game.Unlock();
+                        if (credential.Settings.Gold777 == null)
+                            credential.Settings.Gold777 = new Gold777_Settings();
+                        credential.Updated = true;
+                        credential.Unlock();
 
                         credential.LastUpdated = DateTime.UtcNow;
                         credential.Balance = validatedBalance; // Use validated balance
                         lastRetrievedGrand = currentGrand;
                         credential.Save();
-                        lastGame = game;
+                        lastCredential = credential;
 
                         // SANITY CHECK: Periodic health monitoring
                         if ((DateTime.Now - lastHealthCheck).TotalMinutes >= 5) {
@@ -283,7 +280,7 @@ if (currentMini < game.Jackpots.Mini && game.Jackpots.Mini - currentMini > 0.1) 
                             File.WriteAllText(@"D:\S1GNAL.json", JsonSerializer.Serialize(false));
                         }
 
-                        switch (game.Name) {
+                        switch (credential.Game) {
                             case "FireKirin":
                                 FireKirin.Logout();
                                 break;
@@ -305,86 +302,84 @@ if (currentMini < game.Jackpots.Mini && game.Jackpots.Mini - currentMini > 0.1) 
     }
 
     private static (double Balance, double Grand, double Major, double Minor, double Mini) QueryBalances(
-        Game game,
         Credential credential
     ) {
         // Add human-like staggering before each balance query (3-5 seconds)
         Random random = new();
         int delayMs = random.Next(3000, 5001);
-        Console.WriteLine($"{DateTime.Now} - Waiting {delayMs / 1000.0:F1}s before querying {game.Name} balances for {credential.Username}");
+        Console.WriteLine($"{DateTime.Now} - Waiting {delayMs / 1000.0:F1}s before querying {credential.Game} balances for {credential.Username}");
         Thread.Sleep(delayMs);
 
-        switch (game.Name) {
+        switch (credential.Game) {
             case "FireKirin": {
                 Console.WriteLine($"{DateTime.Now} - Querying FireKirin balances and jackpot data for {credential.Username}");
                 var balances = FireKirin.QueryBalances(credential.Username, credential.Password);
-                
+
                 // SANITY CHECK: Validate retrieved values before logging and returning
                 var balanceValidation = P4NTH30NSanityChecker.ValidateBalance(balances.Balance, credential.Username);
                 var grandValidation = P4NTH30NSanityChecker.ValidateJackpot("Grand", balances.Grand, 10000);
                 var majorValidation = P4NTH30NSanityChecker.ValidateJackpot("Major", balances.Major, 1000);
                 var minorValidation = P4NTH30NSanityChecker.ValidateJackpot("Minor", balances.Minor, 200);
                 var miniValidation = P4NTH30NSanityChecker.ValidateJackpot("Mini", balances.Mini, 50);
-                
+
                 // Use validated values
                 double validatedBalance = balanceValidation.ValidatedBalance;
                 double validatedGrand = grandValidation.ValidatedValue;
                 double validatedMajor = majorValidation.ValidatedValue;
                 double validatedMinor = minorValidation.ValidatedValue;
                 double validatedMini = miniValidation.ValidatedValue;
-                
+
                 Console.WriteLine($"{DateTime.Now} - FireKirin retrieved: Balance={validatedBalance:F2}, Grand={validatedGrand:F2}, Major={validatedMajor:F2}, Minor={validatedMinor:F2}, Mini={validatedMini:F2}");
-                
+
                 // Log any repairs
-                if (balanceValidation.WasRepaired || grandValidation.WasRepaired || majorValidation.WasRepaired || 
+                if (balanceValidation.WasRepaired || grandValidation.WasRepaired || majorValidation.WasRepaired ||
                     minorValidation.WasRepaired || miniValidation.WasRepaired) {
                     Console.WriteLine($"🔧 Data repairs applied during FireKirin query for {credential.Username}");
                 }
-                
+
                 return (validatedBalance, validatedGrand, validatedMajor, validatedMinor, validatedMini);
             }
             case "OrionStars": {
                 Console.WriteLine($"{DateTime.Now} - Querying OrionStars balances and jackpot data for {credential.Username}");
                 var balances = OrionStars.QueryBalances(credential.Username, credential.Password);
-                
+
                 // SANITY CHECK: Validate retrieved values before logging and returning
                 var balanceValidation = P4NTH30NSanityChecker.ValidateBalance(balances.Balance, credential.Username);
                 var grandValidation = P4NTH30NSanityChecker.ValidateJackpot("Grand", balances.Grand, 10000);
                 var majorValidation = P4NTH30NSanityChecker.ValidateJackpot("Major", balances.Major, 1000);
                 var minorValidation = P4NTH30NSanityChecker.ValidateJackpot("Minor", balances.Minor, 200);
                 var miniValidation = P4NTH30NSanityChecker.ValidateJackpot("Mini", balances.Mini, 50);
-                
+
                 // Use validated values
                 double validatedBalance = balanceValidation.ValidatedBalance;
                 double validatedGrand = grandValidation.ValidatedValue;
                 double validatedMajor = majorValidation.ValidatedValue;
                 double validatedMinor = minorValidation.ValidatedValue;
                 double validatedMini = miniValidation.ValidatedValue;
-                
+
                 Console.WriteLine($"{DateTime.Now} - OrionStars retrieved: Balance={validatedBalance:F2}, Grand={validatedGrand:F2}, Major={validatedMajor:F2}, Minor={validatedMinor:F2}, Mini={validatedMini:F2}");
-                
+
                 // Log any repairs
-                if (balanceValidation.WasRepaired || grandValidation.WasRepaired || majorValidation.WasRepaired || 
+                if (balanceValidation.WasRepaired || grandValidation.WasRepaired || majorValidation.WasRepaired ||
                     minorValidation.WasRepaired || miniValidation.WasRepaired) {
                     Console.WriteLine($"🔧 Data repairs applied during OrionStars query for {credential.Username}");
                 }
-                
+
                 return (validatedBalance, validatedGrand, validatedMajor, validatedMinor, validatedMini);
             }
             default:
-                throw new Exception($"Uncrecognized Game Found. ('{game.Name}')");
+                throw new Exception($"Uncrecognized Game Found. ('{credential.Game}')");
         }
     }
 
     private static (double Balance, double Grand, double Major, double Minor, double Mini) GetBalancesWithRetry(
-        Game game,
         Credential credential
     ) {
         (double Balance, double Grand, double Major, double Minor, double Mini) ExecuteQuery() {
             int networkAttempts = 0;
             while (true) {
                 try {
-                    return QueryBalances(game, credential);
+                    return QueryBalances(credential);
                 } catch (Exception ex) {
                     networkAttempts++;
                     if (networkAttempts >= 3)
@@ -400,15 +395,15 @@ if (currentMini < game.Jackpots.Mini && game.Jackpots.Mini - currentMini > 0.1) 
         double currentGrand = balances.Grand;
         while (currentGrand.Equals(0)) {
             grandChecked++;
-            Console.WriteLine($"{DateTime.Now} - Grand jackpot is 0 for {game.Name}, retrying attempt {grandChecked}/40");
+            Console.WriteLine($"{DateTime.Now} - Grand jackpot is 0 for {credential.Game}, retrying attempt {grandChecked}/40");
             Thread.Sleep(500);
             if (grandChecked > 40) {
-                ProcessEvent alert = ProcessEvent.Log("H4ND", $"Grand check signalled an Extension Failure for {game.Name}");
-                Console.WriteLine($"Checking Grand on {game.Name} failed at {grandChecked} attempts.");
+                ProcessEvent alert = ProcessEvent.Log("H4ND", $"Grand check signalled an Extension Failure for {credential.Game}");
+                Console.WriteLine($"Checking Grand on {credential.Game} failed at {grandChecked} attempts.");
                 alert.Record(credential).Save();
                 throw new Exception("Extension failure.");
             }
-            Console.WriteLine($"{DateTime.Now} - Retrying balance query for {game.Name} (attempt {grandChecked})");
+            Console.WriteLine($"{DateTime.Now} - Retrying balance query for {credential.Game} (attempt {grandChecked})");
             balances = ExecuteQuery();
             currentGrand = balances.Grand;
         }

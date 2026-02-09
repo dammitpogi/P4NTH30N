@@ -10,7 +10,6 @@ public static class Dashboard {
     public static string CurrentTask { get; set; } = "Idle";
     public static string CurrentUser { get; set; } = "None";
     public static string CurrentGame { get; set; } = "None";
-    public static string VPNStatus { get; set; } = "Checking...";
     public static string HealthStatus { get; set; } = "INITIALIZING";
     private static DateTime _lastHealthUpdate = DateTime.MinValue;
 
@@ -41,7 +40,7 @@ public static class Dashboard {
         headerGrid.AddColumn();
         headerGrid.AddRow(
             new FigletText("P4NTH30N").Color(Spectre.Console.Color.Teal),
-            new Markup($"[bold]VPN:[/] {VPNStatus}\n[bold]Task:[/] {CurrentTask}\n[bold]User:[/] {CurrentUser}\n[bold]Game:[/] {CurrentGame}\n[bold]Health:[/] {GetHealthStatusColor()}")
+            new Markup($"[bold]Task:[/] {CurrentTask}\n[bold]User:[/] {CurrentUser}\n[bold]Game:[/] {CurrentGame}\n[bold]Health:[/] {GetHealthStatusColor()}")
         );
         AnsiConsole.Write(new Spectre.Console.Panel(headerGrid).Border(BoxBorder.Double).Header("Instance Status"));
 

@@ -38,7 +38,7 @@ internal class Program {
         string homeIP = (string)myIP.Clone();
         Console.WriteLine($"Home IP Address: {homeIP}");
         Console.WriteLine($"Started: {DateTime.Now:f}");
-        // Mouse.Click(749, 697); // Cyberghost taskbar
+        // Mouse.Click(749, 697);
 
         // while (new[] { "", homeIP }.Contains(myIP)) {
         //     try {
@@ -69,8 +69,8 @@ internal class Program {
 
         //     network = await NetworkAddress.Get(client);
         // }
-        // Console.WriteLine($"VPN Location, Region: {network.location.state_prov}");
-        // Console.WriteLine($"VPN Location, District: {network.location.district}");
+        // Console.WriteLine($"Location, Region: {network.location.state_prov}");
+        // Console.WriteLine($"Location, District: {network.location.district}");
 
         File.WriteAllText(@"D:\S1GNAL.json", JsonSerializer.Serialize(false));
         ProcessStartInfo H4ND = new() {
