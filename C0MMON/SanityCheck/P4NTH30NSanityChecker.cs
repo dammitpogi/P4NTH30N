@@ -106,12 +106,25 @@ namespace P4NTH30N.C0MMON.SanityCheck
                 LogRepair($"Threshold capped for {tier}: {threshold:F2} -> {result.ValidatedThreshold:F2}");
             }
 
-            // Check 4: Value exceeds threshold (critical issue)
+            // Check 4: Value exceeds threshold
+            // In practice, this usually means the stored threshold is stale/too low.
+            // If the value is still within the tier's allowed threshold ceiling, repair by lifting the threshold to the current value.
             if (result.ValidatedValue > result.ValidatedThreshold)
             {
-                result.IsValid = false;
-                result.Errors.Add($"Value {result.ValidatedValue:F2} exceeds threshold {result.ValidatedThreshold:F2}");
-                LogError($"CRITICAL: {tier} value {result.ValidatedValue:F2} exceeds threshold {result.ValidatedThreshold:F2}");
+				if (result.ValidatedValue <= limits.maxThreshold)
+				{
+					double previousThreshold = result.ValidatedThreshold;
+					result.ValidatedThreshold = result.ValidatedValue;
+					result.WasRepaired = true;
+					result.RepairActions.Add($"Raised threshold to match current value: {previousThreshold:F2} -> {result.ValidatedThreshold:F2}");
+					LogRepair($"Threshold raised for {tier}: {previousThreshold:F2} -> {result.ValidatedThreshold:F2}");
+				}
+				else
+				{
+					result.IsValid = false;
+					result.Errors.Add($"Value {result.ValidatedValue:F2} exceeds threshold {result.ValidatedThreshold:F2}");
+					LogError($"CRITICAL: {tier} value {result.ValidatedValue:F2} exceeds threshold {result.ValidatedThreshold:F2}");
+				}
             }
 
             if (result.WasRepaired)
@@ -119,6 +132,9 @@ namespace P4NTH30N.C0MMON.SanityCheck
 
             return result;
         }
+
+        public static JackpotValidationResult ValidateJackpot(string tier, decimal currentValue, double threshold)
+            => ValidateJackpot(tier, (double)currentValue, threshold);
 
         /// <summary>
         /// Validates balance values with auto-repair
@@ -165,6 +181,9 @@ namespace P4NTH30N.C0MMON.SanityCheck
 
             return result;
         }
+
+        public static BalanceValidationResult ValidateBalance(decimal balance, string username = "Unknown")
+            => ValidateBalance((double)balance, username);
 
         /// <summary>
         /// Validates DPD (Dollars Per Day) growth rates

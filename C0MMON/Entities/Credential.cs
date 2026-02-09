@@ -25,6 +25,7 @@ public class Credential(string game) {
 	public GameSettings Settings { get; set; } = new GameSettings(game);
 	public DPD DPD { get; set; } = new DPD();
     public bool CashedOut { get; set; } = true;
+    public bool Updated { get; set; } = false;
     
     private double _balance = 0;
     public double Balance { 
@@ -64,26 +65,33 @@ public class Credential(string game) {
         return credentials;
     }
 
-    public static List<Credential> GetBy(Game game) {
+    public static List<Credential> GetBy(string house, string game) {
         FilterDefinitionBuilder<Credential> builder = Builders<Credential>.Filter;
-        FilterDefinition<Credential> filter = builder.Eq("House", game.House) & builder.Eq("Game", game.Name) & builder.Eq("Banned", false);
+        FilterDefinition<Credential> filter = builder.Eq("House", house) & builder.Eq("Game", game) & builder.Eq("Banned", false);
         return new Database().IO.GetCollection<Credential>("CRED3N7IAL").Find(filter).SortBy(g => g.LastUpdated).ToList();
     }
 
-    public static List<Credential> GetAllEnabledFor(Game game) {
+    public static List<Credential> GetAllEnabledFor(string house, string game) {
         FilterDefinitionBuilder<Credential> builder = Builders<Credential>.Filter;
-        FilterDefinition<Credential> filter = builder.Eq("House", game.House) & builder.Eq("Game", game.Name) & builder.Eq("Enabled", true) & builder.Eq("Banned", false);
+        FilterDefinition<Credential> filter = builder.Eq("House", house) & builder.Eq("Game", game) & builder.Eq("Enabled", true) & builder.Eq("Banned", false);
         return new Database().IO.GetCollection<Credential>("CRED3N7IAL").Find(filter).SortBy(g => g.LastUpdated).ToList();
     }
 
-    public static Credential? GetBy(Game game, string username) {
+    public static Credential? GetBy(string house, string game, string username) {
         FilterDefinitionBuilder<Credential> builder = Builders<Credential>.Filter;
-        FilterDefinition<Credential> filter = builder.Eq("House", game.House) & builder.Eq("Game", game.Name) & builder.Eq("Username", username);
+        FilterDefinition<Credential> filter = builder.Eq("House", house) & builder.Eq("Game", game) & builder.Eq("Username", username);
         List<Credential> dto = new Database().IO.GetCollection<Credential>("CRED3N7IAL").Find(filter).ToList();
         if (dto.Count == 0)
             return null;
         else
             return dto[0];
+    }
+
+    public static Credential GetNext() {
+        return new Database()
+            .IO.GetCollection<Credential>("N3XT_CRED")
+            .Find(Builders<Credential>.Filter.Empty)
+            .First();
     }
 public void Lock() {
 		UnlockTimeout = DateTime.UtcNow.AddMinutes(1.5);

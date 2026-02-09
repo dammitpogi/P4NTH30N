@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PROF3T")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("0.8.5.6")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.8.5.6+d6295b3f7551eda3e77f55641a1b3f8caa5612be")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.8.5.6+ccc91584e313cae3aef77a86ddd04a4342428d02")]
 [assembly: System.Reflection.AssemblyProductAttribute("PROF3T")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PROF3T")]
 [assembly: System.Reflection.AssemblyVersionAttribute("0.8.5.6")]

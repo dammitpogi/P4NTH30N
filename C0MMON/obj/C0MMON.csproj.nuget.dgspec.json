@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\P4NTH30N\\C0MMON\\C0MMON.csproj": {}
+    "c:\\P4NTH30N\\C0MMON\\C0MMON.csproj": {}
   },
   "projects": {
-    "C:\\P4NTH30N\\C0MMON\\C0MMON.csproj": {
+    "c:\\P4NTH30N\\C0MMON\\C0MMON.csproj": {
       "version": "0.8.5.6",
       "restore": {
-        "projectUniqueName": "C:\\P4NTH30N\\C0MMON\\C0MMON.csproj",
+        "projectUniqueName": "c:\\P4NTH30N\\C0MMON\\C0MMON.csproj",
         "projectName": "C0MMON",
-        "projectPath": "C:\\P4NTH30N\\C0MMON\\C0MMON.csproj",
+        "projectPath": "c:\\P4NTH30N\\C0MMON\\C0MMON.csproj",
         "packagesPath": "C:\\Users\\paulc\\.nuget\\packages\\",
-        "outputPath": "C:\\P4NTH30N\\C0MMON\\obj\\",
+        "outputPath": "c:\\P4NTH30N\\C0MMON\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\paulc\\AppData\\Roaming\\NuGet\\NuGet.Config",

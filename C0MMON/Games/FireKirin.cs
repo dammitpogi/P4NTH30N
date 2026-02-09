@@ -24,14 +24,14 @@ public static class FireKirin {
         string Version
     );
 
-    public static Signal? SpinSlots(ChromeDriver driver, Game game, Signal signal) {
+    public static Signal? SpinSlots(ChromeDriver driver, Credential credential, Signal signal) {
         Signal? overrideSignal = null;
-        bool FortunePiggyLoaded = Games.FortunePiggy.LoadSucessfully(driver, game, signal);
-        bool Gold777Loaded = FortunePiggyLoaded ? false : Games.Gold777.LoadSucessfully(driver, game, signal);
+        bool FortunePiggyLoaded = Games.FortunePiggy.LoadSucessfully(driver, credential, signal);
+        bool Gold777Loaded = FortunePiggyLoaded ? false : Games.Gold777.LoadSucessfully(driver, credential, signal);
 
         if (FortunePiggyLoaded) {
-            overrideSignal = Games.FortunePiggy.Spin(driver, game, signal);
-        } else if (Gold777Loaded) { overrideSignal = Games.Gold777.Spin(driver, game, signal); }
+            overrideSignal = Games.FortunePiggy.Spin(driver, credential, signal);
+        } else if (Gold777Loaded) { overrideSignal = Games.Gold777.Spin(driver, credential, signal); }
 
         driver.Navigate().GoToUrl("http://play.firekirin.in/web_mobile/firekirin/");
         P4NTH30N.C0MMON.Screen.WaitForColor(new Point(925, 120), Color.FromArgb(255, 255, 251, 48));

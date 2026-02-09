@@ -25,7 +25,7 @@ The entire system is comprised of multiple projects within a single .NET solutio
 The project is a standard .NET solution. To build all projects, run the following command from the root directory:
 
 ```shell
-dotnet build P4NTH30N.sln
+dotnet build P4NTH30N.slnx
 ```
 
 ### Running the Platform

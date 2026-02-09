@@ -439,11 +439,11 @@
   "project": {
     "version": "0.8.5.6",
     "restore": {
-      "projectUniqueName": "C:\\P4NTH30N\\W4TCHD0G\\W4TCHD0G.csproj",
+      "projectUniqueName": "c:\\P4NTH30N\\W4TCHD0G\\W4TCHD0G.csproj",
       "projectName": "W4TCHD0G",
-      "projectPath": "C:\\P4NTH30N\\W4TCHD0G\\W4TCHD0G.csproj",
+      "projectPath": "c:\\P4NTH30N\\W4TCHD0G\\W4TCHD0G.csproj",
       "packagesPath": "C:\\Users\\paulc\\.nuget\\packages\\",
-      "outputPath": "C:\\P4NTH30N\\W4TCHD0G\\obj\\",
+      "outputPath": "c:\\P4NTH30N\\W4TCHD0G\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\paulc\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -460,8 +460,8 @@
         "net10.0-windows7.0": {
           "targetAlias": "net10.0-windows7.0",
           "projectReferences": {
-            "C:\\P4NTH30N\\C0MMON\\C0MMON.csproj": {
-              "projectPath": "C:\\P4NTH30N\\C0MMON\\C0MMON.csproj"
+            "c:\\P4NTH30N\\C0MMON\\C0MMON.csproj": {
+              "projectPath": "c:\\P4NTH30N\\C0MMON\\C0MMON.csproj"
             }
           }
         }

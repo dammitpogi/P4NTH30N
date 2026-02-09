@@ -47,7 +47,7 @@ class PROF3T {
 		// SeperateAllGames();
 		// DisableEmptyGames();
 		// UpdateCredentials();
-		ResetGames();
+		// ResetGames();
 		// sandbox();
 		// BurnAccount("ShariNor55", "123qwe");
 		// ResetSignalsTest("FireKirin");
@@ -179,174 +179,31 @@ static void ResetGames()
             credential.Save();
         }
         
-        List<Game> games = Game.GetAll();
-        foreach (Game game in games)
+        // Game entity removed - use Credential-driven approach
+        // All DPD data is now stored on Credentials directly
+        List<Credential> allCredentials = Credential.GetAll();
+        foreach (Credential cred in allCredentials)
         {
-            game.DPD.Average = 0;
-            game.DPD.History = [];
+            cred.DPD.Average = 0;
+            cred.DPD.History = [];
             
             // Target specific elements within DPD.Data array
-            if (game.DPD.Data != null)
+            if (cred.DPD.Data != null)
             {
                 // Remove elements with insane values, keep original timestamps
-                game.DPD.Data = game.DPD.Data
+                cred.DPD.Data = cred.DPD.Data
                     .Where(dpd => dpd.Grand >= 0 && dpd.Grand <= 10000) // Filter out insane values
                     .ToList();
             }
             
-            game.Save();
+            cred.Save();
         }
     }
 	private static void Test2() {
-		//List<House> houses = House.GetAll();
-		//foreach (House house in houses.ToList()) {
-		//	house.Name = house.Name.TrimEnd('0', '1', '2', '3', '4', '5', '6', '7', '8', '9').TrimEnd('#').Trim();
-		//	house.URL = house.URL.TrimEnd('#').TrimEnd('/');
-
-		//	List<House> duplicates = houses.FindAll(x => x.URL == house.URL && x._id != house._id).ToList();
-		//	if (duplicates.Count > 0 && house.Description == "") {
-		//		houses.RemoveAll(x => x._id == house._id);
-		//		house.Delete();
-		//	} else {!
-		//		house.Save();
-		//	}
-		//}
-
-		List<Credential> oldCredentials = Credential.Database();
-		foreach (Credential oldCredential in oldCredentials) {
-			if (!oldCredential.URL.Equals(string.Empty)) {
-				NewCredential? credential =
-					NewCredential.GetBy.Username(oldCredential.Game, oldCredential.Username);
-				Game? game = Game.Get(oldCredential.House, oldCredential.Game);
-
-				if (game != null) {
-					if (credential == null) {
-						credential = new NewCredential(oldCredential.Game) {
-							URL = oldCredential.URL,
-							House = oldCredential.House,
-							Username = oldCredential.Username,
-							Password = oldCredential.Password,
-							Enabled = oldCredential.Enabled,
-							Balance = oldCredential.Balance
-						};
-
-						credential.Toggles.Banned = oldCredential.Banned;
-						credential.Toggles.CashedOut = credential.Toggles.CashedOut;
-
-						credential.Jackpots.Grand = oldCredential.Jackpots.Grand;
-						credential.Jackpots.Major = oldCredential.Jackpots.Major;
-						credential.Jackpots.Minor = oldCredential.Jackpots.Minor;
-						credential.Jackpots.Mini = oldCredential.Jackpots.Mini;
-
-						credential.Dates.CreateDate = oldCredential.CreateDate;
-						credential.Dates.LastUpdated = oldCredential.LastUpdated;
-						credential.Dates.UnlockTimeout = oldCredential.UnlockTimeout;
-						credential.Dates.LastDepositDate = oldCredential.LastDepositDate ?? DateTime.MinValue;
-
-						credential.Settings.FortunePiggy.Page = oldCredential.Settings.FortunePiggy.Page;
-						credential.Settings.FortunePiggy.Button_X = oldCredential.Settings.FortunePiggy.Button_X;
-						credential.Settings.FortunePiggy.Button_Y = oldCredential.Settings.FortunePiggy.Button_Y;
-						credential.Settings.FortunePiggy.ButtonVerified = oldCredential.Settings.FortunePiggy.ButtonVerified;
-
-						credential.Settings.Quintuple5X.Page = oldCredential.Settings.Quintuple5X.Page;
-						credential.Settings.Quintuple5X.Button_X = oldCredential.Settings.Quintuple5X.Button_X;
-						credential.Settings.Quintuple5X.Button_Y = oldCredential.Settings.Quintuple5X.Button_Y;
-						credential.Settings.Quintuple5X.ButtonVerified = oldCredential.Settings.Quintuple5X.ButtonVerified;
-
-						credential.Settings.Gold777.Page = oldCredential.Settings.Gold777.Page;
-						credential.Settings.Gold777.Button_X = oldCredential.Settings.Gold777.Button_X;
-						credential.Settings.Gold777.Button_Y = oldCredential.Settings.Gold777.Button_Y;
-						credential.Settings.Gold777.ButtonVerified = oldCredential.Settings.Gold777.ButtonVerified;
-
-						credential.Settings.SpinGrand = oldCredential.Settings.SpinGrand;
-						credential.Settings.SpinMajor = oldCredential.Settings.SpinMajor;
-						credential.Settings.SpinMinor = oldCredential.Settings.SpinMinor;
-						credential.Settings.SpinMini = oldCredential.Settings.SpinMini;
-						credential.Settings.Hidden = oldCredential.Settings.Hidden;
-
-						credential.Save();
-					}
-
-
-					House? house = House.Get(credential.URL);
-					if (house == null) {
-						house = new(credential.House, credential.URL);
-					} else {
-						house.Name = credential.House;
-					}
-					house.Save();
-
-
-					if (credential.Enabled) {
-						if (credential.Settings.SpinGrand) {
-							NewJackpot grand = new("Grand", credential);
-							Jackpot? oldGrand = Jackpot.Get("Grand", credential.House, credential.Game);
-							if (oldGrand != null) {
-								grand.DPM = oldGrand.DPM;
-								grand.Dates.EstimatedDate = oldGrand.EstimatedDate;
-							}
-							grand.DPD.Average = game.DPD.Average;
-							grand.Threshold = game.Thresholds.Grand;
-							grand.Current = credential.Jackpots.Grand;
-							game.DPD.Data.ForEach(dpd_data => grand.DPD.Data.Add(new(dpd_data.Grand) { Timestamp = dpd_data.Timestamp }));
-							foreach (DPD_History history in game.DPD.History) {
-								List<NewDPD_Data> data = [];
-								foreach (DPD_Data dpd_data in history.Data) {
-									data.Add(new(dpd_data.Grand) { Timestamp = dpd_data.Timestamp });
-								}
-								grand.DPD.History.Add(new(history.Average, data));
-							}
-							grand.Toggles.EnoughDataCollected = true;
-							grand.Dates.LastUpdated = game.LastUpdated;
-							grand.Dates.ResetDate = game.DPD.Data.Count > 0 ? game.DPD.Data[0].Timestamp : game.LastUpdated;
-							grand.Save();
-						}
-
-						if (credential.Settings.SpinMajor) {
-							NewJackpot major = new("Major", credential);
-							Jackpot? oldMajor = Jackpot.Get("Major", credential.House, credential.Game);
-							if (oldMajor != null) {
-								major.Dates.EstimatedDate = oldMajor.EstimatedDate;
-							}
-							major.DPD.Data.Add(new(credential.Jackpots.Major) { Timestamp = game.LastUpdated });
-							major.Dates.LastUpdated = game.LastUpdated;
-							major.Current = credential.Jackpots.Major;
-							major.Dates.ResetDate = game.LastUpdated;
-							major.Threshold = game.Thresholds.Major;
-							major.Save();
-						}
-
-						if (credential.Settings.SpinMinor) {
-							NewJackpot minor = new("Minor", credential);
-							Jackpot? oldMinor = Jackpot.Get("Minor", credential.House, credential.Game);
-							if (oldMinor != null) {
-								minor.Dates.EstimatedDate = oldMinor.EstimatedDate;
-							}
-							minor.DPD.Data.Add(new(credential.Jackpots.Minor) { Timestamp = game.LastUpdated });
-							minor.Dates.LastUpdated = game.LastUpdated;
-							minor.Current = credential.Jackpots.Minor;
-							minor.Dates.ResetDate = game.LastUpdated;
-							minor.Threshold = game.Thresholds.Minor;
-							minor.Save();
-						}
-
-						if (credential.Settings.SpinMini) {
-							NewJackpot mini = new("Mini", credential);
-							Jackpot? oldMini = Jackpot.Get("Mini", credential.House, credential.Game);
-							if (oldMini != null) {
-								mini.Dates.EstimatedDate = oldMini.EstimatedDate;
-							}
-							mini.DPD.Data.Add(new(credential.Jackpots.Mini) { Timestamp = game.LastUpdated });
-							mini.Dates.LastUpdated = game.LastUpdated;
-							mini.Current = credential.Jackpots.Mini;
-							mini.Dates.ResetDate = game.LastUpdated;
-							mini.Threshold = game.Thresholds.Mini;
-							mini.Save();
-						}
-					}
-				}
-			}
-		}
+		// DEPRECATED: This migration code is no longer needed after the Game entity removal refactor.
+		// The Credential entity now contains all necessary data (Jackpots, Thresholds, DPD, Settings).
+		// Game entity and NewCredential temporary types have been removed.
+		Console.WriteLine("Test2 is deprecated - migration completed.");
 	}
 
 	// private static void Test() {
@@ -770,8 +627,9 @@ static void ResetGames()
 
 		// 6. JACKPOT POTENTIAL ANALYSIS
 		Console.WriteLine("=== JACKPOT POTENTIAL BY HOUSE ===");
-		var jackpotData = Game.GetAll()
-			.GroupBy(g => g.House)
+		// Use Credential.GetAll() with House+Game grouping since Game entity was removed
+		var jackpotData = Credential.GetAll()
+			.GroupBy(c => c.House)
 			.Select(g => new {
 				House = g.Key,
 				TotalGrandPotential = g.Sum(x => x.Thresholds.Grand),

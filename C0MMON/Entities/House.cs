@@ -60,10 +60,11 @@ namespace P4NTH30N.C0MMON;
 
 
 [method: SetsRequiredMembers]
-public class House(string name, string uRL) {
-    public ObjectId? _id { get; set; } = ObjectId.GenerateNewId();
-    public required string URL { get; set; } = uRL;
-    public required string Name { get; set; } = name;
+public class House(string name, string? uRL = null) {
+	public ObjectId? _id { get; set; } = ObjectId.GenerateNewId();
+	// URL is user-facing metadata; allow null/blank.
+	public string? URL { get; set; } = uRL;
+	public required string Name { get; set; } = name;
     public string Description { get; set; } = "";
     public string Redemption { get; set; } = "";
     public string OffLimits { get; set; } = "";
@@ -75,10 +76,19 @@ public class House(string name, string uRL) {
 	public static List<House> GetAll() {
 		return Database.Find(Builders<House>.Filter.Empty).ToList();
 	}
-	public static House? Get(string uRL) {
-        List<House> dto = Database.Find(Builders<House>.Filter.Eq("URL", uRL)).ToList();
-        return dto.Count > 0 ? dto[0] : null;
-    }
+	public static House? Get(string name) {
+		if (string.IsNullOrWhiteSpace(name))
+			return null;
+
+		House? dto = Database.Find(Builders<House>.Filter.Eq("Name", name)).FirstOrDefault();
+		if (dto is not null)
+			return dto;
+
+		// House docs are allowed to exist without a URL; create stub record on demand.
+		House house = new(name, "");
+		Database.InsertOne(house);
+		return house;
+	}
 	public void Delete() {
 		Database.DeleteOne(Builders<House>.Filter.Eq("_id", _id));
 	}

@@ -7,9 +7,9 @@ namespace P4NTH30N.C0MMON;
 
 public static partial class Games {
     public static class Gold777 {
-        public static bool LoadSucessfully(ChromeDriver driver, Game game, Signal signal) {
-            for (int i = 1; i < (game.Settings?.Gold777?.Page ?? 1); i++) {
-                switch (game.Name) {
+        public static bool LoadSucessfully(ChromeDriver driver, Credential credential, Signal signal) {
+            for (int i = 1; i < (credential.Settings?.Gold777?.Page ?? 1); i++) {
+                switch (credential.Game) {
                     case "FireKirin": Mouse.Click(937, 177); break;
                     case "OrionStars": Mouse.Click(995, 375); break;
                 }
@@ -17,18 +17,18 @@ public static partial class Games {
             Thread.Sleep(800);
             int iterations = 0;
             bool slotsLoaded = false;
-            Mouse.Move(game.Settings?.Gold777?.Button_X ?? 0, game.Settings?.Gold777?.Button_Y ?? 0);
+            Mouse.Move(credential.Settings?.Gold777?.Button_X ?? 0, credential.Settings?.Gold777?.Button_Y ?? 0);
 
-            game.Lock();
+            credential.Lock();
             signal.Acknowledge();
             while (slotsLoaded == false) {
-                Mouse.Click(game.Settings?.Gold777?.Button_X ?? 0, game.Settings?.Gold777?.Button_Y ?? 0);
+                Mouse.Click(credential.Settings?.Gold777?.Button_X ?? 0, credential.Settings?.Gold777?.Button_Y ?? 0);
 
                 int checkAttempts = 20;
                 bool buttonVerified = false;
                 while (checkAttempts >= 0 && buttonVerified == false) {
                     Color splashScreen;
-                    switch (game.Name) {
+                    switch (credential.Game) {
                         case "FireKirin":
                             splashScreen = P4NTH30N.C0MMON.Screen.GetColorAt(new Point(316, 434)); // Gold777
                             buttonVerified = splashScreen.Equals(Color.FromArgb(255, 255, 255, 183));
@@ -43,14 +43,12 @@ public static partial class Games {
                 }
 
                 if (buttonVerified == false) {
-                    if (game.Settings?.Gold777?.ButtonVerified == true) {
-                        var freshGame = Game.Get(game.House, game.Name);
-                        if (freshGame != null) game = freshGame;
-                        if (game.Settings?.Gold777 != null) game.Settings.Gold777.ButtonVerified = false;
-                        game.Save();
+                    if (credential.Settings?.Gold777?.ButtonVerified == true) {
+                        if (credential.Settings?.Gold777 != null) credential.Settings.Gold777.ButtonVerified = false;
+                        credential.Save();
                     }
 
-                    switch (game.Name) {
+                    switch (credential.Game) {
                         case "FireKirin":
                             driver.Navigate().GoToUrl("http://play.firekirin.in/web_mobile/firekirin/");
                             P4NTH30N.C0MMON.Screen.WaitForColor(new Point(925, 120), Color.FromArgb(255, 255, 251, 48));
@@ -63,7 +61,7 @@ public static partial class Games {
 
                     // Color secondHallScreen = P4NTH30N.C0MMON.Screen.GetColorAt(new Point(293, 179));
                     // while (secondHallScreen.Equals(Color.FromArgb(255, 253, 252, 253)) == false) {
-                    //     Console.WriteLine($"Waiting for Hall - {game.House} - {secondHallScreen}");
+                    //     Console.WriteLine($"Waiting for Hall - {credential.House} - {secondHallScreen}");
                     //     Thread.Sleep(500);
                     //     secondHallScreen = P4NTH30N.C0MMON.Screen.GetColorAt(new Point(293, 179));
                     // }
@@ -83,7 +81,7 @@ public static partial class Games {
                         // driver.Manage().Window.Minimize();
                         foreach (int pageModifier in new int[] { 0, -1, 1, -2, 2 }) {
                             signal.Acknowledge();
-                            int workingPage = (game.Settings?.Gold777?.Page ?? 1) + pageModifier;
+                            int workingPage = (credential.Settings?.Gold777?.Page ?? 1) + pageModifier;
                             if (pageModifier.Equals(0) == false) {
                                 Mouse.Click(81, 233); Thread.Sleep(800);
                                 for (int i = 1; i < workingPage; i++) {
@@ -137,7 +135,7 @@ public static partial class Games {
                                     Mouse.Click(possibleButton.X, possibleButton.Y);
                                     while (checkAttempts <= 20 && buttonVerified == false) {
                                         Color splashScreen = Color.White;
-                                        switch (game.Name) {
+                                        switch (credential.Game) {
                                             case "FireKirin":
                                                 splashScreen = P4NTH30N.C0MMON.Screen.GetColorAt(new Point(316, 434)); // Gold777
                                                 buttonVerified = splashScreen.Equals(Color.FromArgb(255, 255, 255, 183));
@@ -147,7 +145,7 @@ public static partial class Games {
                                                 buttonVerified = splashScreen.Equals(Color.FromArgb(255, 255, 255, 194));
                                                 break;
                                         }
-                                        // Console.WriteLine($"{checkAttempts + 1} {retrievedGame.House} - {splashScreen}");
+                                        // Console.WriteLine($"{checkAttempts + 1} {credential.House} - {splashScreen}");
                                         Thread.Sleep(500);
                                         checkAttempts++;
                                     }
@@ -155,7 +153,7 @@ public static partial class Games {
                                     if (buttonVerified == false) {
                                         foundPixels = false;
                                         Console.WriteLine("But it wasn't the right one.");
-                                        switch (game.Name) {
+                                        switch (credential.Game) {
                                             case "FireKirin":
                                                 driver.Navigate().GoToUrl("http://play.firekirin.in/web_mobile/firekirin/");
                                                 Console.WriteLine("Returning to Menu");
@@ -191,12 +189,10 @@ public static partial class Games {
 
                             }
                             if (buttonVerified) {
-                                var freshGame = Game.Get(game.House, game.Name);
-                                if (freshGame != null) game = freshGame;
-                                if (game.Settings?.Gold777 != null) {
-                                    game.Settings.Gold777.Button_X = possibleButton.X;
-                                    game.Settings.Gold777.Button_Y = possibleButton.Y;
-                                    game.Settings.Gold777.Page = workingPage;
+                                if (credential.Settings?.Gold777 != null) {
+                                    credential.Settings.Gold777.Button_X = possibleButton.X;
+                                    credential.Settings.Gold777.Button_Y = possibleButton.Y;
+                                    credential.Settings.Gold777.Page = workingPage;
                                 }
                                 break;
                             }
@@ -206,10 +202,10 @@ public static partial class Games {
                         // foundPossibilities.Order().ToList().ForEach(Console.WriteLine);
                     }
                 }
-                if (game.Settings?.Gold777?.ButtonVerified == false) {
+                if (credential.Settings?.Gold777?.ButtonVerified == false) {
                     if (buttonVerified) {
-                        if (game.Settings?.Gold777 != null) game.Settings.Gold777.ButtonVerified = true;
-                        game.Save();
+                        if (credential.Settings?.Gold777 != null) credential.Settings.Gold777.ButtonVerified = true;
+                        credential.Save();
                     } else {
                         // throw new Exception("Couldn't find the damn button.");
                         Console.WriteLine("Couldn't find the damn button.");
@@ -258,7 +254,7 @@ public static partial class Games {
                                 .Contains(reloadedPage)
                                 .Equals(false)
                         ) {
-                            Mouse.Click(game.Settings?.Gold777?.Button_X ?? 0, game.Settings?.Gold777?.Button_Y ?? 0);
+                            Mouse.Click(credential.Settings?.Gold777?.Button_X ?? 0, credential.Settings?.Gold777?.Button_Y ?? 0);
                             reloadedPage =
                                 driver.ExecuteScript("return window.parent.Page")?.ToString()
                                 ?? string.Empty;
@@ -275,7 +271,7 @@ public static partial class Games {
                     Console.WriteLine($"{balanceIterations} - ${balance}");
                 }
                 Color SpinButtonFontColor = Color.Black;
-                Color Confirmation = game.Name switch {
+                Color Confirmation = credential.Game switch {
                     "FireKirin" => Color.FromArgb(255, 253, 253, 14),
                     "OrionStars" => Color.FromArgb(255, 253, 253, 14),
                     _ => Color.Black,
@@ -289,8 +285,8 @@ public static partial class Games {
                     Thread.Sleep(500);
                 }
                 // Console.WriteLine("");
-                Console.WriteLine($"[{game.Name}] Gold777 Confirmation: {Confirmation}");
-                Console.WriteLine($"[{game.Name}] Gold777 SpinButtonFontColor: {SpinButtonFontColor}");
+                Console.WriteLine($"[{credential.Game}] Gold777 Confirmation: {Confirmation}");
+                Console.WriteLine($"[{credential.Game}] Gold777 SpinButtonFontColor: {SpinButtonFontColor}");
 
                 if (SpinButtonLocated == false) {
                     // Console.WriteLine("");
@@ -306,15 +302,15 @@ public static partial class Games {
             }
             return slotsLoaded;
         }
-        public static Signal? Spin(ChromeDriver driver, Game game, Signal signal) {
+        public static Signal? Spin(ChromeDriver driver, Credential credential, Signal signal) {
             Mouse.LongClick(929, 612);
             // Mouse.Click(955, 290);
 
             int FailedSpinChecks = 0, remainingIterations = 10;
-            double grandPrior = game.Jackpots.Grand;
-            double majorPrior = game.Jackpots.Major;
-            double minorPrior = game.Jackpots.Minor;
-            double miniPrior = game.Jackpots.Mini;
+            double grandPrior = credential.Jackpots.Grand;
+            double majorPrior = credential.Jackpots.Major;
+            double minorPrior = credential.Jackpots.Minor;
+            double miniPrior = credential.Jackpots.Mini;
             bool jackpotPopped = false;
             double balance = 0;
 
@@ -334,7 +330,7 @@ public static partial class Games {
                 if (newSignal != null && newSignal.Priority > signal.Priority) {
                     newSignal.Acknowledge();
                     Mouse.Click(950, 620); Thread.Sleep(3000);
-                    switch (game.Name) {
+                    switch (credential.Game) {
                         case "FireKirin":
                             driver.Navigate().GoToUrl("http://play.firekirin.in/web_mobile/firekirin/");
                             // .GetColorAt(new Point(925, 120)).Equals(Color.FromArgb(255, 255, 251, 48));
@@ -360,9 +356,6 @@ public static partial class Games {
                 Mouse.Click(534, 523);
                 Mouse.Click(533, 564);
                 signal.Acknowledge();
-
-                Game? retrievedGame = Game.Get(signal.House, signal.Game);
-                game = retrievedGame ?? throw new Exception($"Game could not be found: {signal.Game} at {signal.House}");
                 double currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
                 double currentMajor = Convert.ToDouble(driver.ExecuteScript("return window.parent.Major")) / 100;
                 double currentMinor = Convert.ToDouble(driver.ExecuteScript("return window.parent.Minor")) / 100;
@@ -375,8 +368,8 @@ public static partial class Games {
                         signal.Close(grandPrior);
                         signal.Delete();
                     }
-                    Console.WriteLine($"({DateTime.UtcNow}) {game.House} - Grand Popped!!");
-                    game.Thresholds.NewGrand(grandPrior);
+                    Console.WriteLine($"({DateTime.UtcNow}) {credential.House} - Grand Popped!!");
+                    credential.Thresholds.NewGrand(grandPrior);
                     Console.WriteLine();
                 }
                 if (majorPrior > currentMajor && (majorPrior - currentMajor) > 0.1) {
@@ -385,8 +378,8 @@ public static partial class Games {
                         signal.Close(majorPrior);
                         signal.Delete();
                     }
-                    Console.WriteLine($"({DateTime.UtcNow}) {game.House} - Major Popped!!");
-                    game.Thresholds.NewMajor(majorPrior);
+                    Console.WriteLine($"({DateTime.UtcNow}) {credential.House} - Major Popped!!");
+                    credential.Thresholds.NewMajor(majorPrior);
                     Console.WriteLine();
                 }
                 if (minorPrior > currentMinor && (minorPrior - currentMinor) > 0.1) {
@@ -395,8 +388,8 @@ public static partial class Games {
                         signal.Close(minorPrior);
                         signal.Delete();
                     }
-                    Console.WriteLine($"({DateTime.UtcNow}) {game.House} - Minor Popped!!");
-                    game.Thresholds.NewMinor(minorPrior);
+                    Console.WriteLine($"({DateTime.UtcNow}) {credential.House} - Minor Popped!!");
+                    credential.Thresholds.NewMinor(minorPrior);
                     Console.WriteLine();
                 }
                 if (miniPrior > currentMini && (miniPrior - currentMini) > 0.1) {
@@ -405,37 +398,31 @@ public static partial class Games {
                         signal.Close(miniPrior);
                         signal.Delete();
                     }
-                    Console.WriteLine($"({DateTime.UtcNow}) {game.House} - Mini Popped!!");
-                    game.Thresholds.NewMini(miniPrior);
+                    Console.WriteLine($"({DateTime.UtcNow}) {credential.House} - Mini Popped!!");
+                    credential.Thresholds.NewMini(miniPrior);
                     Console.WriteLine();
                 }
 
-game.LastUpdated = DateTime.UtcNow;
+                credential.LastUpdated = DateTime.UtcNow;
                 if (currentGrand >= 0 && currentGrand <= 10000) {
-                    game.Jackpots.Grand = currentGrand; grandPrior = game.Jackpots.Grand;
+                    credential.Jackpots.Grand = currentGrand; grandPrior = credential.Jackpots.Grand;
                 }
                 if (currentMajor >= 0 && currentMajor <= 10000) {
-                    game.Jackpots.Major = currentMajor; majorPrior = game.Jackpots.Major;
+                    credential.Jackpots.Major = currentMajor; majorPrior = credential.Jackpots.Major;
                 }
                 if (currentMinor >= 0 && currentMinor <= 10000) {
-                    game.Jackpots.Minor = currentMinor; minorPrior = game.Jackpots.Minor;
+                    credential.Jackpots.Minor = currentMinor; minorPrior = credential.Jackpots.Minor;
                 }
                 if (currentMini >= 0 && currentMini <= 10000) {
-                    game.Jackpots.Mini = currentMini; miniPrior = game.Jackpots.Mini;
+                    credential.Jackpots.Mini = currentMini; miniPrior = credential.Jackpots.Mini;
                 }
-                game.Save();
+                credential.Save();
 
                 double balancePrior = balance;
                 balance = Convert.ToDouble(driver.ExecuteScript("return window.parent.Balance")) / 100;
-                Credential? credential = Credential.GetBy(
-                    game,
-                    signal.Username
-                );
-                if (credential != null) {
-                    credential.LastUpdated = DateTime.UtcNow;
-                    credential.Balance = balance;
-                    credential.Save();
-                }
+                credential.LastUpdated = DateTime.UtcNow;
+                credential.Balance = balance;
+                credential.Save();
 
                 if (balance.Equals(balancePrior)) {
                     if (FailedSpinChecks++ > 3) {
@@ -449,7 +436,7 @@ game.LastUpdated = DateTime.UtcNow;
                 if (jackpotPopped) {
                     remainingIterations--;
                     Console.WriteLine(
-                        $"({DateTime.UtcNow}) {game.House} - {remainingIterations} Remaining Iterations..."
+                        $"({DateTime.UtcNow}) {credential.House} - {remainingIterations} Remaining Iterations..."
                     );
                 }
             }

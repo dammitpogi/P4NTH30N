@@ -13,27 +13,30 @@ class PROF3T {
 		// Health monitoring for sanity checks
 		List<(string tier, double value, double threshold)> recentJackpots = new();
 		DateTime lastHealthCheck = DateTime.MinValue;
-		
+
 		while (true) {
 			try {
 				DateTime DateLimit = DateTime.UtcNow.AddDays(5);
 				List<Credential> credentials = Credential.GetAll();
-                Credential.IntroduceProperties();
-                
-	List<Game> games = Game.GetAll()
-					.FindAll(x =>
-						credentials.Any(y => x.House.Equals(y.House) && x.Name.Equals(y.Game))
-					);
+				Credential.IntroduceProperties();
+
+				// Filter out banned credentials
+				credentials = [.. credentials.Where(x => x.Banned == false)];
+
+				// Group credentials by House+Game to get game profiles
+				var credentialGroups = credentials
+					.GroupBy(c => (c.House, c.Game))
+					.ToList();
 
 				List<Signal> signals = Signal.GetAll();
 				credentials.ForEach(x => {
 					// Check if there are any signals for this credential
-					bool hasSignals = signals.Any(s => 
-						s.House == x.House && 
-						s.Game == x.Game && 
+					bool hasSignals = signals.Any(s =>
+						s.House == x.House &&
+						s.Game == x.Game &&
 						s.Username == x.Username
 					);
-					
+
 					if ((x.Balance < 3 && !hasSignals && !x.CashedOut) || (x.Balance < 0.2 && !x.CashedOut)) {
 						// Set to cashed out if: (no signals and balance < 3) OR (balance < 0.2 regardless of signals)
 						x.CashedOut = true;
@@ -43,273 +46,285 @@ class PROF3T {
 						x.CashedOut = false;
 						x.Save();
 					}
-                    
-                    credentials = [.. credentials.Where(x => x.Banned == false)];
-
-					if (games.Any(y => y.House.Equals(x.House) && y.Name.Equals(x.Game)) == false) {
-						Game newGame = new Game(x.House, x.Game);
-						games.Add(newGame);
-						newGame.Save();
-					}
 				});
 
-				games.ForEach(
-					delegate (Game game) {
-						if (game.Enabled == true) {
-							House house = House.Get(game.House);
-							if (game.Unlocked == false && DateTime.UtcNow > game.UnlockTimeout)
-								game.Unlock();
+				// Process each credential group (represents a game)
+				credentialGroups.ForEach(group => {
+					// Pick representative credential (most recent LastUpdated) for game profile
+					Credential representative = group.OrderByDescending(c => c.LastUpdated).First();
+					List<Credential> gameCredentials = group.ToList();
 
-							double previousGrand =
-								game.DPD.Data.Count > 0 ? game.DPD.Data[^1].Grand : 0;
+					if (representative.Enabled == true) {
 
-							// SANITY CHECK: Validate jackpot progression with embedded validation
-							var jackpotValidation = P4NTH30NSanityChecker.ValidateJackpot("Grand", game.Jackpots.Grand, game.Thresholds.Grand);
-							if (!jackpotValidation.IsValid)
-							{
-								Console.WriteLine($"🔴 Invalid Grand jackpot detected for {game.Name}: {string.Join(", ", jackpotValidation.Errors)}");
-								continue; // Skip this iteration for corrupted data
+						// Handle unlock timeout - use representative credential's lock/unlock
+						if (representative.Unlocked == false && DateTime.UtcNow > representative.UnlockTimeout)
+							representative.Unlock();
+
+						double previousGrand =
+							representative.DPD.Data.Count > 0 ? representative.DPD.Data[^1].Grand : 0;
+
+						// SANITY CHECK: Validate jackpot progression with embedded validation
+						var jackpotValidation = P4NTH30NSanityChecker.ValidateJackpot("Grand", representative.Jackpots.Grand, representative.Thresholds.Grand);
+						if (!jackpotValidation.IsValid) {
+							Console.WriteLine($"🔴 Invalid Grand jackpot detected for {representative.Game}: {string.Join(", ", jackpotValidation.Errors)}");
+							return; // Skip this game for corrupted data
+						}
+
+						// Use validated values
+						var validatedGrandValue = jackpotValidation.ValidatedValue;
+						var validatedGrandThreshold = jackpotValidation.ValidatedThreshold;
+
+						// Update representative with validated values if repairs were made
+						if (jackpotValidation.WasRepaired) {
+							representative.Jackpots.Grand = validatedGrandValue;
+							representative.Thresholds.Grand = validatedGrandThreshold;
+							Console.WriteLine($"🔧 Repaired Grand jackpot for {representative.Game}: {string.Join(", ", jackpotValidation.RepairActions)}");
+
+							// Persist repairs even if the Grand value itself did not change.
+							foreach (var cred in gameCredentials) {
+								cred.Jackpots = representative.Jackpots;
+								cred.Thresholds = representative.Thresholds;
+								cred.DPD = representative.DPD;
+								cred.Save();
 							}
-							
-							// Use validated values
-							var validatedGrandValue = jackpotValidation.ValidatedValue;
-							var validatedGrandThreshold = jackpotValidation.ValidatedThreshold;
-							
-							// Update game with validated values if repairs were made
-							if (jackpotValidation.WasRepaired)
-							{
-								game.Jackpots.Grand = validatedGrandValue;
-								game.Thresholds.Grand = validatedGrandThreshold;
-								Console.WriteLine($"🔧 Repaired Grand jackpot for {game.Name}: {string.Join(", ", jackpotValidation.RepairActions)}");
-							}
+						}
 
-if (validatedGrandValue != previousGrand) {
-								if (validatedGrandValue > previousGrand && validatedGrandValue >= 0 && validatedGrandValue <= 10000) {
-									game.DPD.Data.Add(new DPD_Data(validatedGrandValue));
-									if (game.DPD.Data.Count > 2) {
-										float minutes = Convert.ToSingle(
-											game.DPD.Data[game.DPD.Data.Count - 1]
-												.Timestamp.Subtract(game.DPD.Data[0].Timestamp)
-												.TotalMinutes
-										);
-										double dollars =
-											game.DPD.Data[game.DPD.Data.Count - 1].Grand
-											- game.DPD.Data[0].Grand;
-										float days =
-											minutes
-											/ Convert.ToSingle(TimeSpan.FromDays(1).TotalMinutes);
-										double dollarsPerDay = dollars / days;
+						if (validatedGrandValue != previousGrand) {
+							if (validatedGrandValue > previousGrand && validatedGrandValue >= 0 && validatedGrandValue <= 10000) {
+								representative.DPD.Data.Add(new DPD_Data(validatedGrandValue));
+								if (representative.DPD.Data.Count > 2) {
+									float minutes = Convert.ToSingle(
+										representative.DPD.Data[representative.DPD.Data.Count - 1]
+											.Timestamp.Subtract(representative.DPD.Data[0].Timestamp)
+											.TotalMinutes
+									);
+									double dollars =
+										representative.DPD.Data[representative.DPD.Data.Count - 1].Grand
+										- representative.DPD.Data[0].Grand;
+									float days =
+										minutes
+										/ Convert.ToSingle(TimeSpan.FromDays(1).TotalMinutes);
+									double dollarsPerDay = dollars / days;
 
-										// SANITY CHECK: Validate DPD rate before using it
-										var dpdValidation = P4NTH30NSanityChecker.ValidateDPD(dollarsPerDay, game.Name);
-										if (!dpdValidation.IsValid)
-										{
-											Console.WriteLine($"🔴 Invalid DPD rate for {game.Name}: {string.Join(", ", dpdValidation.Errors)}");
-											dollarsPerDay = 0; // Use safe fallback
-										}
-										else if (dpdValidation.WasRepaired)
-										{
-											dollarsPerDay = dpdValidation.ValidatedRate;
-											Console.WriteLine($"🔧 Repaired DPD rate for {game.Name}: {string.Join(", ", dpdValidation.RepairActions)}");
-										}
-
-										if (
-											dollarsPerDay > 5
-											&& game.DPD.History.Count.Equals(0) == false
-										)
-											game.DPD.Average = game.DPD.History.Average(x =>
-												x.Average
-											);
-										else
-											game.DPD.Average = dollarsPerDay;
+									// SANITY CHECK: Validate DPD rate before using it
+									var dpdValidation = P4NTH30NSanityChecker.ValidateDPD(dollarsPerDay, representative.Game);
+									if (!dpdValidation.IsValid) {
+										Console.WriteLine($"🔴 Invalid DPD rate for {representative.Game}: {string.Join(", ", dpdValidation.Errors)}");
+										dollarsPerDay = 0; // Use safe fallback
 									}
-								} else {
-if (
-	game.DPD.History.Count.Equals(0).Equals(false)
-	&& game.DPD.History[^1].Data.Count > 0
-	&& game.DPD.History[^1].Data[^1].Grand <= previousGrand
-) {
-										game.DPD.Data = [];
-										// SANITY CHECK: Validate reset values before using
-										var resetValidation = P4NTH30NSanityChecker.ValidateJackpot("Grand", game.Jackpots.Grand, game.Thresholds.Grand);
-										if (resetValidation.IsValid && resetValidation.ValidatedValue >= 0 && resetValidation.ValidatedValue <= 10000) {
-											game.DPD.Data.Add(new DPD_Data(resetValidation.ValidatedValue));
-											if (resetValidation.WasRepaired) {
-												game.Jackpots.Grand = resetValidation.ValidatedValue;
-												Console.WriteLine($"🔧 Repaired Grand during reset for {game.Name}");
-											}
-										}
-										game.DPD.Average = 0F;
-									} else {
-										game.DPD.History.Add(
-											new DPD_History(game.DPD.Average, game.DPD.Data)
-										);
+									else if (dpdValidation.WasRepaired) {
+										dollarsPerDay = dpdValidation.ValidatedRate;
+										Console.WriteLine($"🔧 Repaired DPD rate for {representative.Game}: {string.Join(", ", dpdValidation.RepairActions)}");
 									}
+
+									if (
+										dollarsPerDay > 5
+										&& representative.DPD.History.Count.Equals(0) == false
+									)
+										representative.DPD.Average = representative.DPD.History.Average(x =>
+											x.Average
+										);
+									else
+										representative.DPD.Average = dollarsPerDay;
 								}
-								game.Save();
+							}
+							else {
+								DPD_History? lastHistory = representative.DPD.History is { Count: > 0 }
+									? representative.DPD.History[^1]
+									: null;
+								List<DPD_Data>? lastHistoryData = lastHistory?.Data;
+								if (lastHistoryData is { Count: > 0 } && lastHistoryData[^1].Grand <= previousGrand) {
+									representative.DPD.Data = [];
+									// SANITY CHECK: Validate reset values before using
+									var resetValidation = P4NTH30NSanityChecker.ValidateJackpot("Grand", representative.Jackpots.Grand, representative.Thresholds.Grand);
+									if (resetValidation.IsValid && resetValidation.ValidatedValue >= 0 && resetValidation.ValidatedValue <= 10000) {
+										representative.DPD.Data.Add(new DPD_Data(resetValidation.ValidatedValue));
+										if (resetValidation.WasRepaired) {
+											representative.Jackpots.Grand = resetValidation.ValidatedValue;
+											Console.WriteLine($"🔧 Repaired Grand during reset for {representative.Game}");
+										}
+									}
+									representative.DPD.Average = 0F;
+								}
+								else {
+									representative.DPD.History.Add(
+										new DPD_History(representative.DPD.Average, representative.DPD.Data)
+									);
+								}
+							}
+							// Save all credentials in the group with updated DPD/jackpot data
+							foreach (var cred in gameCredentials) {
+								cred.Jackpots = representative.Jackpots;
+								cred.Thresholds = representative.Thresholds;
+								cred.DPD = representative.DPD;
+								cred.Save();
+							}
+						}
+
+						if (representative.DPD.Average.Equals(0) && representative.DPD.History is { Count: > 0 }) {
+							double lastAverage = representative.DPD.History[^1].Average;
+							if (lastAverage > 0.1)
+								representative.DPD.Average = lastAverage;
+						}
+
+						if (representative.DPD.Average > 0.1) {
+							// SANITY CHECK: Comprehensive validation of all jackpot tiers and thresholds
+							var gameStateValidation = P4NTH30NSanityChecker.ValidateGameState(
+								representative.Jackpots.Grand, representative.Thresholds.Grand,
+								representative.Jackpots.Major, representative.Thresholds.Major,
+								representative.Jackpots.Minor, representative.Thresholds.Minor,
+								representative.Jackpots.Mini, representative.Thresholds.Mini,
+								representative.DPD.Average, representative.Game
+							);
+
+							if (!gameStateValidation.IsValid) {
+								Console.WriteLine($"🔴 Game state validation failed for {representative.Game}");
+								return; // Skip processing for invalid game state
+							}
+
+							// Apply any repairs made during validation
+							if (gameStateValidation.GrandResult.WasRepaired) {
+								representative.Jackpots.Grand = gameStateValidation.GrandResult.ValidatedValue;
+								representative.Thresholds.Grand = gameStateValidation.GrandResult.ValidatedThreshold;
+							}
+							if (gameStateValidation.MajorResult.WasRepaired) {
+								representative.Jackpots.Major = gameStateValidation.MajorResult.ValidatedValue;
+								representative.Thresholds.Major = gameStateValidation.MajorResult.ValidatedThreshold;
+							}
+							if (gameStateValidation.MinorResult.WasRepaired) {
+								representative.Jackpots.Minor = gameStateValidation.MinorResult.ValidatedValue;
+								representative.Thresholds.Minor = gameStateValidation.MinorResult.ValidatedThreshold;
+							}
+							if (gameStateValidation.MiniResult.WasRepaired) {
+								representative.Jackpots.Mini = gameStateValidation.MiniResult.ValidatedValue;
+								representative.Thresholds.Mini = gameStateValidation.MiniResult.ValidatedThreshold;
+							}
+							if (gameStateValidation.DPDResult.WasRepaired) {
+								representative.DPD.Average = gameStateValidation.DPDResult.ValidatedRate;
 							}
 
 							if (
-								game.DPD.Average.Equals(0)
-								&& game.DPD.History.Count > 0
-								&& game.DPD.History[^1].Average > 0.1
+								gameStateValidation.GrandResult.WasRepaired
+								|| gameStateValidation.MajorResult.WasRepaired
+								|| gameStateValidation.MinorResult.WasRepaired
+								|| gameStateValidation.MiniResult.WasRepaired
+								|| gameStateValidation.DPDResult.WasRepaired
 							) {
-								game.DPD.Average = game.DPD.History[^1].Average;
+								foreach (var cred in gameCredentials) {
+									cred.Jackpots = representative.Jackpots;
+									cred.Thresholds = representative.Thresholds;
+									cred.DPD = representative.DPD;
+									cred.Save();
+								}
 							}
 
-							if (game.DPD.Average > 0.1) {
-								// SANITY CHECK: Comprehensive validation of all game jackpots and thresholds
-								var gameStateValidation = P4NTH30NSanityChecker.ValidateGameState(
-									game.Jackpots.Grand, game.Thresholds.Grand,
-									game.Jackpots.Major, game.Thresholds.Major,
-									game.Jackpots.Minor, game.Thresholds.Minor,
-									game.Jackpots.Mini, game.Thresholds.Mini,
-									game.DPD.Average, game.Name
-								);
+							// Track for health monitoring
+							recentJackpots.Add(("Grand", representative.Jackpots.Grand, representative.Thresholds.Grand));
+							recentJackpots.Add(("Major", representative.Jackpots.Major, representative.Thresholds.Major));
+							recentJackpots.Add(("Minor", representative.Jackpots.Minor, representative.Thresholds.Minor));
+							recentJackpots.Add(("Mini", representative.Jackpots.Mini, representative.Thresholds.Mini));
 
-								if (!gameStateValidation.IsValid) {
-									Console.WriteLine($"🔴 Game state validation failed for {game.Name}");
-									continue; // Skip processing for invalid game state
-								}
-
-								// Apply any repairs made during validation
-								if (gameStateValidation.GrandResult.WasRepaired) {
-									game.Jackpots.Grand = gameStateValidation.GrandResult.ValidatedValue;
-									game.Thresholds.Grand = gameStateValidation.GrandResult.ValidatedThreshold;
-								}
-								if (gameStateValidation.MajorResult.WasRepaired) {
-									game.Jackpots.Major = gameStateValidation.MajorResult.ValidatedValue;
-									game.Thresholds.Major = gameStateValidation.MajorResult.ValidatedThreshold;
-								}
-								if (gameStateValidation.MinorResult.WasRepaired) {
-									game.Jackpots.Minor = gameStateValidation.MinorResult.ValidatedValue;
-									game.Thresholds.Minor = gameStateValidation.MinorResult.ValidatedThreshold;
-								}
-								if (gameStateValidation.MiniResult.WasRepaired) {
-									game.Jackpots.Mini = gameStateValidation.MiniResult.ValidatedValue;
-									game.Thresholds.Mini = gameStateValidation.MiniResult.ValidatedThreshold;
-								}
-								if (gameStateValidation.DPDResult.WasRepaired) {
-									game.DPD.Average = gameStateValidation.DPDResult.ValidatedRate;
-								}
-
-								// Track for health monitoring
-								recentJackpots.Add(("Grand", game.Jackpots.Grand, game.Thresholds.Grand));
-								recentJackpots.Add(("Major", game.Jackpots.Major, game.Thresholds.Major));
-								recentJackpots.Add(("Minor", game.Jackpots.Minor, game.Thresholds.Minor));
-								recentJackpots.Add(("Mini", game.Jackpots.Mini, game.Thresholds.Mini));
-
-								// Limit tracking to last 20 entries per tier
-								if (recentJackpots.Count > 80) {
-									recentJackpots.RemoveRange(0, 20);
-								}
-
-								// Continue with validated values
-								double validatedDPM = gameStateValidation.DPDResult.ValidatedRate / TimeSpan.FromDays(1).TotalMinutes;
-								// game.Thresholds.Grand -= 1F; game.Thresholds.Major -= 0.5F;
-								// game.Thresholds.Minor -= 0.25F; game.Thresholds.Mini -= 0.1F;
-
-								double DPM = validatedDPM;
-								double estimatedGrowth =
-									DateTime.Now.Subtract(game.LastUpdated).TotalMinutes * DPM;
-
-								double MinutesToGrand = Math.Max(
-									(
-										game.Thresholds.Grand
-										- (game.Jackpots.Grand + estimatedGrowth)
-									) / DPM,
-									0
-								);
-								double MinutesToMajor = Math.Max(
-									(
-										game.Thresholds.Major
-										- (game.Jackpots.Major + estimatedGrowth)
-									) / DPM,
-									0
-								);
-								double MinutesToMinor = Math.Max(
-									(
-										game.Thresholds.Minor
-										- (game.Jackpots.Minor + estimatedGrowth)
-									) / DPM,
-									0
-								);
-								double MinutesToMini = Math.Max(
-									(game.Thresholds.Mini - (game.Jackpots.Mini + estimatedGrowth))
-										/ DPM,
-									0
-								);
-
-								if (game.Settings.SpinGrand)
-									new Jackpot(
-										game,
-										"Grand",
-										game.Jackpots.Grand,
-										game.Thresholds.Grand,
-										4,
-										DateTime.UtcNow.AddMinutes(MinutesToGrand)
-									).Save();
-
-								if (game.Settings.SpinMajor)
-									new Jackpot(
-										game,
-										"Major",
-										game.Jackpots.Major,
-										game.Thresholds.Major,
-										3,
-										DateTime.UtcNow.AddMinutes(MinutesToMajor)
-									).Save();
-
-								if (game.Settings.SpinMinor)
-									new Jackpot(
-										game,
-										"Minor",
-										game.Jackpots.Minor,
-										game.Thresholds.Minor,
-										2,
-										DateTime.UtcNow.AddMinutes(MinutesToMinor)
-									).Save();
-
-								if (game.Settings.SpinMini)
-									new Jackpot(
-										game,
-										"Mini",
-										game.Jackpots.Mini,
-										game.Thresholds.Mini,
-										1,
-										DateTime.UtcNow.AddMinutes(MinutesToMini)
-									).Save();
+							// Limit tracking to last 20 entries per tier
+							if (recentJackpots.Count > 80) {
+								recentJackpots.RemoveRange(0, 20);
 							}
+
+							// Continue with validated values
+							double validatedDPM = gameStateValidation.DPDResult.ValidatedRate / TimeSpan.FromDays(1).TotalMinutes;
+
+							double DPM = validatedDPM;
+							double estimatedGrowth =
+								DateTime.Now.Subtract(representative.LastUpdated).TotalMinutes * DPM;
+
+							const double DpmEpsilon = 1e-9;
+							double unreachableMinutes = TimeSpan.FromDays(365 * 100).TotalMinutes;
+
+							double SafeMinutesTo(double threshold, double jackpotValue) {
+								double remaining = threshold - (jackpotValue + estimatedGrowth);
+								if (remaining <= 0)
+									return 0;
+
+								if (double.IsNaN(DPM) || double.IsInfinity(DPM) || DPM <= DpmEpsilon)
+									return unreachableMinutes;
+
+								return remaining / DPM;
+							}
+
+							double MinutesToGrand = SafeMinutesTo(representative.Thresholds.Grand, representative.Jackpots.Grand);
+							double MinutesToMajor = SafeMinutesTo(representative.Thresholds.Major, representative.Jackpots.Major);
+							double MinutesToMinor = SafeMinutesTo(representative.Thresholds.Minor, representative.Jackpots.Minor);
+							double MinutesToMini = SafeMinutesTo(representative.Thresholds.Mini, representative.Jackpots.Mini);
+
+							if (representative.Settings.SpinGrand)
+								new Jackpot(
+									representative,
+									"Grand",
+									representative.Jackpots.Grand,
+									representative.Thresholds.Grand,
+									4,
+									DateTime.UtcNow.AddMinutes(MinutesToGrand)
+								).Save();
+
+							if (representative.Settings.SpinMajor)
+								new Jackpot(
+									representative,
+									"Major",
+									representative.Jackpots.Major,
+									representative.Thresholds.Major,
+									3,
+									DateTime.UtcNow.AddMinutes(MinutesToMajor)
+								).Save();
+
+							if (representative.Settings.SpinMinor)
+								new Jackpot(
+									representative,
+									"Minor",
+									representative.Jackpots.Minor,
+									representative.Thresholds.Minor,
+									2,
+									DateTime.UtcNow.AddMinutes(MinutesToMinor)
+								).Save();
+
+							if (representative.Settings.SpinMini)
+								new Jackpot(
+									representative,
+									"Mini",
+									representative.Jackpots.Mini,
+									representative.Thresholds.Mini,
+									1,
+									DateTime.UtcNow.AddMinutes(MinutesToMini)
+								).Save();
 						}
 					}
-				);
+				});
 
+				// Get all jackpots for enabled games (where we have credentials)
+				var gameKeys = credentialGroups.Select(g => (House: g.Key.House, Game: g.Key.Game)).ToHashSet();
 				List<Jackpot> jackpots = Jackpot
 					.GetAll()
 					.FindAll(x => x.EstimatedDate < DateLimit)
-					.FindAll(x =>
-						games.Any(y =>
-							y.Enabled && x.Game.Equals(y.Name) && x.House.Equals(y.House)
-						)
-					);
+					.FindAll(x => gameKeys.Contains((x.House, x.Game)));
 
 				List<Signal> qualified = [];
 				List<Jackpot> predictions = [];
 				foreach (Jackpot jackpot in jackpots) {
-					Game game = games.FindAll(g =>
-						g.Name == jackpot.Game && g.House == jackpot.House
-					)[0];
-					if (game.Settings.SpinGrand.Equals(false) && jackpot.Category.Equals("Grand"))
+					// Get representative credential for this jackpot's game
+					var group = credentialGroups.FirstOrDefault(g =>
+						g.Key.House == jackpot.House && g.Key.Game == jackpot.Game);
+					if (group == null) continue;
+					Credential? representative = group.OrderByDescending(c => c.LastUpdated).FirstOrDefault();
+					if (representative == null) continue;
+
+					if (representative.Settings.SpinGrand.Equals(false) && jackpot.Category.Equals("Grand"))
 						continue;
-					if (game.Settings.SpinMajor.Equals(false) && jackpot.Category.Equals("Major"))
+					if (representative.Settings.SpinMajor.Equals(false) && jackpot.Category.Equals("Major"))
 						continue;
-					if (game.Settings.SpinMinor.Equals(false) && jackpot.Category.Equals("Minor"))
+					if (representative.Settings.SpinMinor.Equals(false) && jackpot.Category.Equals("Minor"))
 						continue;
-					if (game.Settings.SpinMini.Equals(false) && jackpot.Category.Equals("Mini"))
+					if (representative.Settings.SpinMini.Equals(false) && jackpot.Category.Equals("Mini"))
 						continue;
 
-					// Console.WriteLine(game.House);
-					if (game.DPD.Average > 0.01) {
+					if (representative.DPD.Average > 0.01) {
 						predictions.Add(jackpot);
 						double capacity =
 							jackpot.Threshold
@@ -320,7 +335,7 @@ if (
 								"Mini" => 20,
 								_ => 0,
 							};
-						double daysToAdd = capacity / game.DPD.Average;
+						double daysToAdd = capacity / representative.DPD.Average;
 						int iterations = 1;
 						for (
 							DateTime i = jackpot.EstimatedDate.AddDays(daysToAdd);
@@ -329,7 +344,7 @@ if (
 						) {
 							predictions.Add(
 								new Jackpot(
-									game,
+									representative,
 									jackpot.Category,
 									jackpot.Current,
 									jackpot.Threshold + (capacity * iterations++),
@@ -346,9 +361,9 @@ if (
 							Math.Max((jackpot.Threshold - jackpot.Current) / jackpot.DPM, 0)
 						);
 
-						List<Credential> gameCredentials = Credential
-							.GetAllEnabledFor(game)
-							.FindAll(x => x.CashedOut.Equals(false));
+						List<Credential> gameCredentials = group
+							.Where(x => x.Enabled && !x.Banned && !x.CashedOut)
+							.ToList();
 						double avgBalance =
 							gameCredentials.Count > 0 ? gameCredentials.Average(x => x.Balance) : 0;
 
@@ -414,7 +429,6 @@ if (
 					double potential = potentials.ElementAt(i).Value;
 					int give = (int)potential / 100;
 					if (give.Equals(0) == false) {
-						// Console.WriteLine($"{house} : $ {potential:F2}");
 						if (potential - (give * 100) > 74)
 							give++;
 						recommendations.Add(house, give);
@@ -444,23 +458,23 @@ if (
 								totalPotential += recommendations[jackpot.House].Equals(0)
 									? 0
 									: jackpot.Threshold;
-								Game game = games.FindAll(g =>
-									g.Name == jackpot.Game && g.House == jackpot.House
-								)[0];
+
+								// Get representative credential for printing
+								var group = credentialGroups.FirstOrDefault(g =>
+									g.Key.House == jackpot.House && g.Key.Game == jackpot.Game);
+								if (group == null) return;
+								Credential? representative = group.OrderByDescending(c => c.LastUpdated).FirstOrDefault();
+								if (representative == null) return;
+
 								int accounts = credentials
 									.FindAll(c =>
 										c.House == jackpot.House && c.Game == jackpot.Game
 									)
 									.Count;
-								if (
-									game.Settings.Hidden.Equals(false)
-                                    && (jackpot.Category.Equals("Mini") == false)
-									// && (jackpot.Category.Equals("Mini") && accounts.Equals(0)).Equals(false)
-								)
+								if (representative.Settings.Hidden.Equals(false) && (jackpot.Category.Equals("Mini") == false))
 									Console.WriteLine(
-										$"{(jackpot.Category.Equals("Mini") ? "----- " : jackpot.Category + " ").ToUpper()}| {jackpot.EstimatedDate.ToLocalTime().ToString("ddd MM/dd/yyyy HH:mm:ss").ToUpper()} | {game.Name.Substring(0, 9)} | {game.DPD.Average:F2} /day |{current} /{threshold}| ({accounts}) {jackpot.House}"
+										$"{(jackpot.Category.Equals("Mini") ? "----- " : jackpot.Category + " ").ToUpper()}| {jackpot.EstimatedDate.ToLocalTime().ToString("ddd MM/dd/yyyy HH:mm:ss").ToUpper()} | {representative.Game.Substring(0, 9)} | {representative.DPD.Average:F2} /day |{current} /{threshold}| ({accounts}) {jackpot.House}"
 									);
-								// Console.WriteLine($"{jackpot.Category.ToUpper(),5} | {jackpot.EstimatedDate.ToLocalTime().ToString("ddd MM/dd/yyyy HH:mm:ss").ToUpper()} | {game.DPD.Average:F2} /day | {potentials[game.House],7:F2} | {current} /{threshold} | ({accounts}/{recommendation}) {jackpot.House}");
 							}
 						}
 					);
@@ -474,7 +488,8 @@ if (
 						);
 						if (qc == null) {
 							signal.Delete();
-						} else if (signal.Acknowledged && signal.Timeout < DateTime.UtcNow) {
+						}
+						else if (signal.Acknowledged && signal.Timeout < DateTime.UtcNow) {
 							signal.Acknowledged = false;
 							signal.Save();
 						}
@@ -488,9 +503,13 @@ if (
 							balance += credential.Balance;
 					}
 				);
-				// DateTime OldestUpdate = Game.QueueAge();
 
-				TimeSpan QueryTime = DateTime.UtcNow.Subtract(Game.QueueAge());
+				// Use oldest LastUpdated among credentials as queue age
+				DateTime oldestUpdate = credentials.Count > 0
+					? credentials.Min(c => c.LastUpdated)
+					: DateTime.UtcNow;
+
+				TimeSpan QueryTime = DateTime.UtcNow.Subtract(oldestUpdate);
 				string houndHours = QueryTime.Hours.ToString().PadLeft(2, '0'),
 					houndMinutes = QueryTime.Minutes.ToString().PadLeft(2, '0'),
 					houndSeconds = QueryTime.Seconds.ToString().PadLeft(2, '0');
@@ -510,7 +529,8 @@ if (
 				}
 
 				Thread.Sleep(Convert.ToInt32(TimeSpan.FromSeconds(10).TotalMilliseconds));
-			} catch (Exception ex) {
+			}
+			catch (Exception ex) {
 				StackTrace st = new(ex, true);
 				StackFrame? frame = st.GetFrame(0);
 				int line = frame != null ? frame.GetFileLineNumber() : 0;

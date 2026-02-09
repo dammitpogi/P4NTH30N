@@ -75,7 +75,7 @@ Contains:
 
 > This repo assumes a Windows host, Selenium, a Chrome extension, and a reachable MongoDB.
 
-- Build all projects using the solution (`P4NTH30N.sln`) or project files.
+- Build all projects using the solution (`P4NTH30N.slnx`) or project files.
 - Launch **HUN7ER** and **H4ND** together.
 - H4ND supports `H0UND` mode to disable signal listening for manual runs.
 
