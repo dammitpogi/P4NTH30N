@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("H0UND")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("0.8.5.6")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.8.5.6+5547e89c33d70ed1c7ea174059878ac2a5d24bee")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.8.5.6+644c63996098e5b17950e65c55198777ed72bdf1")]
 [assembly: System.Reflection.AssemblyProductAttribute("H0UND")]
 [assembly: System.Reflection.AssemblyTitleAttribute("H0UND")]
 [assembly: System.Reflection.AssemblyVersionAttribute("0.8.5.6")]

@@ -42,13 +42,13 @@ public static class Dashboard {
             new FigletText("P4NTH30N").Color(Spectre.Console.Color.Teal),
             new Markup($"[bold]Task:[/] {CurrentTask}\n[bold]User:[/] {CurrentUser}\n[bold]Game:[/] {CurrentGame}\n[bold]Health:[/] {GetHealthStatusColor()}")
         );
-        AnsiConsole.Write(new Spectre.Console.Panel(headerGrid).Border(BoxBorder.Double).Header("Instance Status"));
+        AnsiConsole.Write(new Spectre.Console.Panel(headerGrid).Border(BoxBorder.Double).Header("Instance Status").Expand());
 
-        // Events Table
-        var table = new Table().Expand();
-        table.AddColumn("Time");
-        table.AddColumn("Message");
-        table.Border(TableBorder.Rounded);
+		// Events Table
+		var table = new Table().Expand();
+		table.AddColumn(new TableColumn("Time").Width(10).NoWrap());
+		table.AddColumn(new TableColumn("Message"));
+		table.Border(TableBorder.None);
 
         foreach (var evt in _events.AsEnumerable().Reverse()) {
             table.AddRow(
@@ -57,7 +57,11 @@ public static class Dashboard {
             );
         }
 
-        AnsiConsole.Write(new Spectre.Console.Panel(table).Header("Event Log"));
+		AnsiConsole.Write(new Spectre.Console.Panel(table)
+			.Border(BoxBorder.Double)
+			.Header("Event Log")
+			.Expand()
+		);
         
         // Footer hint
         AnsiConsole.MarkupLine("[grey]Press Ctrl+C to exit[/]");

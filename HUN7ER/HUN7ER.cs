@@ -83,7 +83,6 @@ class PROF3T {
 							// Persist repairs even if the Grand value itself did not change.
 							foreach (var cred in gameCredentials) {
 								cred.Jackpots = representative.Jackpots;
-								cred.Thresholds = representative.Thresholds;
 								cred.DPD = representative.DPD;
 								cred.Save();
 							}
@@ -152,14 +151,13 @@ class PROF3T {
 									);
 								}
 							}
-							// Save all credentials in the group with updated DPD/jackpot data
-							foreach (var cred in gameCredentials) {
-								cred.Jackpots = representative.Jackpots;
-								cred.Thresholds = representative.Thresholds;
-								cred.DPD = representative.DPD;
-								cred.Save();
-							}
+						// Save all credentials in the group with updated DPD/jackpot data
+						foreach (var cred in gameCredentials) {
+							cred.Jackpots = representative.Jackpots;
+							cred.DPD = representative.DPD;
+							cred.Save();
 						}
+					}
 
 						if (representative.DPD.Average.Equals(0) && representative.DPD.History is { Count: > 0 }) {
 							double lastAverage = representative.DPD.History[^1].Average;
@@ -212,7 +210,6 @@ class PROF3T {
 							) {
 								foreach (var cred in gameCredentials) {
 									cred.Jackpots = representative.Jackpots;
-									cred.Thresholds = representative.Thresholds;
 									cred.DPD = representative.DPD;
 									cred.Save();
 								}

@@ -15,6 +15,9 @@ internal static partial class Header { }
 
 class H0UND
 {
+	// Control flag: true = use priority calculation, false = full sweep (oldest first)
+	private static readonly bool UsePriorityCalculation = false;
+	
 	static void Main(string[] args)
 	{
 		while (true)
@@ -23,7 +26,9 @@ class H0UND
 			List<(string tier, double value, double threshold)> recentJackpots = new();
 			DateTime lastHealthCheck = DateTime.MinValue;
 			
-			Dashboard.AddLog($"H0UND {Header.Version}", "blue");
+			Dashboard.AddLog($"{Header.Version}", "blue");
+			Dashboard.AddLog("H0UND", "blue");
+			Dashboard.AddLog($"Priority: {(UsePriorityCalculation ? "ON" : "OFF (Full Sweep)")}", "blue");
 			try
 			{
 				double lastRetrievedGrand = 0;
@@ -34,7 +39,7 @@ class H0UND
 					Dashboard.CurrentTask = "Polling Queue";
 					Dashboard.Render();
 
-					Credential credential = Credential.GetNext();
+					Credential credential = Credential.GetNext(UsePriorityCalculation);
 
 					Dashboard.CurrentGame = credential.Game;
 					Dashboard.CurrentUser = credential.Username ?? "None";
@@ -221,9 +226,9 @@ class H0UND
 								lastHealthCheck = DateTime.Now;
 							}
 
-							Dashboard.Render();
-							Thread.Sleep(new Random().Next(0, 1501));
-						}
+						Dashboard.Render();
+						Thread.Sleep(Random.Shared.Next(3000, 5001));
+					}
 						catch (InvalidOperationException ex) when (ex.Message.Contains("Your account has been suspended"))
 						{
 							Dashboard.AddLog($"Account suspended for {credential.Username} on {credential.Game}", "red");
@@ -245,7 +250,7 @@ class H0UND
 	private static (double Balance, double Grand, double Major, double Minor, double Mini) QueryBalances(Credential credential)
 	{
 		Random random = new();
-		int delayMs = random.Next(500, 2001);
+		int delayMs = random.Next(3000, 5001);
 		Thread.Sleep(delayMs);
 
 		try
@@ -337,7 +342,12 @@ class H0UND
 						throw;
 					Dashboard.AddLog($"QueryBalances failed (Attempt {networkAttempts}): {ex.Message}. Retrying...", "yellow");
 					Dashboard.Render();
-					Thread.Sleep(2000);
+					const int baseDelayMs = 2000;
+					const int maxDelayMs = 30000;
+					int exponentialDelay = (int)Math.Min(maxDelayMs, baseDelayMs * Math.Pow(2, networkAttempts - 1));
+					int jitter = Random.Shared.Next(0, 1000);
+					int delayMs = Math.Min(maxDelayMs, exponentialDelay + jitter);
+					Thread.Sleep(delayMs);
 				}
 			}
 		}

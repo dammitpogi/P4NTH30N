@@ -47,17 +47,7 @@ public class Credential(string game) {
     public required string Username { get; set; }
 	public required string Password { get; set; }
 
-	[BsonIgnoreExtraElements]
-	private sealed class NextCredentialView {
-		public required ObjectId CredentialId { get; set; }
-		public DateTime Updated { get; set; }
-		public string? House { get; set; }
-		public string? Game { get; set; }
-		public string? Username { get; set; }
-		public int Priority { get; set; }
-		public DateTime? By { get; set; }
-		public bool Overdue { get; set; }
-	}
+	
 
     public static List<Credential> Database() {
         return new Database().IO.GetCollection<Credential>("CRED3N7IAL").Find(Builders<Credential>.Filter.Empty).ToList();
@@ -100,18 +90,130 @@ public class Credential(string game) {
             return dto[0];
     }
 
-	public static Credential GetNext() {
+public static Credential GetNext() {
+		return GetNext(false);
+	}
+	
+	public static Credential GetNext(bool usePriorityCalculation) {
 		Database database = new();
-		IMongoCollection<NextCredentialView> queue = database.IO.GetCollection<NextCredentialView>("N3XT_CRED");
-		NextCredentialView? next = queue.Find(Builders<NextCredentialView>.Filter.Empty).FirstOrDefault();
-		if (next == null)
-			throw new InvalidOperationException("N3XT_CRED returned no credentials.");
-
-		IMongoCollection<Credential> credentials = database.IO.GetCollection<Credential>("CRED3N7IAL");
-		Credential? credential = credentials.Find(Builders<Credential>.Filter.Eq(x => x._id, next.CredentialId)).FirstOrDefault();
-		if (credential == null)
-			throw new InvalidOperationException($"CredentialId {next.CredentialId} from N3XT_CRED not found in CRED3N7IAL.");
-		return credential;
+		IMongoCollection<Credential> collection = database.IO.GetCollection<Credential>("CRED3N7IAL");
+		
+		// Get all enabled, non-banned credentials
+		FilterDefinitionBuilder<Credential> builder = Builders<Credential>.Filter;
+		FilterDefinition<Credential> filter = builder.Eq(c => c.Enabled, true) & builder.Eq(c => c.Banned, false);
+		List<Credential> credentials = collection.Find(filter).ToList();
+		
+		if (credentials.Count == 0)
+			throw new InvalidOperationException("No enabled, non-banned credentials found.");
+		
+		// Simple mode: full sweep of unlocked credentials (for when priority calculation is disabled)
+		if (!usePriorityCalculation) {
+			// Find first unlocked credential, sorted by LastUpdated (oldest first)
+			var unlockedCredentials = credentials
+				.Where(c => c.Unlocked)
+				.OrderBy(c => c.LastUpdated)
+				.ToList();
+				
+			if (unlockedCredentials.Count == 0)
+				throw new InvalidOperationException("No unlocked credentials available.");
+				
+			return unlockedCredentials.First();
+		}
+		
+		// Priority mode: calculate priorities for each credential
+		List<(Credential credential, int priority, DateTime by, bool overdue)> prioritized = new();
+		IMongoCollection<Jackpot> jackpotCollection = database.IO.GetCollection<Jackpot>("J4CKP0T");
+		
+		foreach (Credential cred in credentials) {
+			// Calculate created/updated dates
+			DateTime created = cred.CreateDate;
+			DateTime updated = cred.LastUpdated > DateTime.MinValue ? cred.LastUpdated : created;
+			bool funded = !cred.CashedOut;
+			double dpdAverage = cred.DPD.Average;
+			
+			// Get jackpot estimations
+			List<Jackpot> estimations = jackpotCollection
+				.Find(Builders<Jackpot>.Filter.And(
+					Builders<Jackpot>.Filter.Eq(j => j.House, cred.House),
+					Builders<Jackpot>.Filter.Eq(j => j.Game, cred.Game),
+					Builders<Jackpot>.Filter.Gte(j => j.Priority, 2)
+				))
+				.SortBy(j => j.EstimatedDate)
+				.ToList();
+			
+			// Get mini jackpot (priority 1)
+			Jackpot? mini = jackpotCollection
+				.Find(Builders<Jackpot>.Filter.And(
+					Builders<Jackpot>.Filter.Eq(j => j.House, cred.House),
+					Builders<Jackpot>.Filter.Eq(j => j.Game, cred.Game),
+					Builders<Jackpot>.Filter.Eq(j => j.Priority, 1)
+				))
+				.FirstOrDefault();
+			
+			// Calculate time-based flags
+			bool leastWeekOld = created < DateTime.UtcNow.AddDays(-7);
+			DateTime now = DateTime.UtcNow;
+			Jackpot? latestEstimation = estimations.FirstOrDefault();
+			
+			bool jackpotWeek = latestEstimation == null || latestEstimation.EstimatedDate > now.AddDays(7);
+			bool jackpotDay = latestEstimation == null || latestEstimation.EstimatedDate > now.AddDays(1);
+			bool jackpot12H = latestEstimation == null || latestEstimation.EstimatedDate > now.AddHours(12);
+			bool jackpot3H = latestEstimation == null || latestEstimation.EstimatedDate > now.AddHours(3);
+			
+			// Calculate differences
+			double miniDiff = mini != null ? mini.Threshold - mini.Current : 0;
+			double jackpotDiff = latestEstimation != null ? latestEstimation.Threshold - latestEstimation.Current : 0;
+			
+			// Calculate priority (1-7 scale, lower is higher priority)
+			int priority = 7;
+			if (jackpotDiff != 0) {
+				if ((jackpotDiff <= 0.12 || (miniDiff <= 0.07 && funded))) {
+					priority = 1;
+				} else if (jackpot3H || jackpotDiff <= 0.3 || (miniDiff <= 0.15 && funded)) {
+					priority = 2;
+				} else if (jackpot12H) {
+					priority = 3;
+				} else if (!leastWeekOld && latestEstimation == null) {
+					priority = 4;
+				} else if (jackpotDay) {
+					priority = 5;
+				} else if (jackpotWeek) {
+					priority = 6;
+				}
+			}
+			
+			// Calculate "by" time based on priority
+			DateTime by = priority switch {
+				1 => updated.AddMinutes(4),
+				2 => updated.AddMinutes(8),
+				3 => updated.AddMinutes(16),
+				4 => updated.AddHours(1),
+				5 => updated.AddHours(3),
+				6 => updated.AddHours(6),
+				_ => updated.AddDays(1)
+			};
+			
+			bool overdue = now > by;
+			
+			prioritized.Add((cred, priority, by, overdue));
+		}
+		
+		// Sort by priority (ascending), then by overdue (descending), then by updated (ascending)
+		var sorted = prioritized
+			.OrderBy(p => p.priority)
+			.ThenByDescending(p => p.overdue)
+			.ThenBy(p => p.credential.LastUpdated)
+			.ToList();
+		
+		// Filter to only unlocked credentials and get the first one
+		var nextCredential = sorted
+			.Where(p => p.credential.Unlocked)
+			.FirstOrDefault();
+		
+		if (nextCredential.credential == null)
+			throw new InvalidOperationException("No unlocked credentials available.");
+			
+		return nextCredential.credential;
 	}
 public void Lock() {
 		UnlockTimeout = DateTime.UtcNow.AddMinutes(1.5);

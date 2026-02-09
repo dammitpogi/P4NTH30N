@@ -5,6 +5,7 @@ using Figgle;
 using P4NTH30N.C0MMON;
 using P4NTH30N.C0MMON.Versioning;
 using P4NTH30N.C0MMON.SanityCheck;
+using P4NTH30N.Services;
 using System.Drawing;
 using System.Text.Json;
 using System.Diagnostics;
@@ -106,13 +107,14 @@ internal class Program {
                         var majorValidation = P4NTH30NSanityChecker.ValidateJackpot("Major", balances.Major, credential.Thresholds.Major);
                         var minorValidation = P4NTH30NSanityChecker.ValidateJackpot("Minor", balances.Minor, credential.Thresholds.Minor);
                         var miniValidation = P4NTH30NSanityChecker.ValidateJackpot("Mini", balances.Mini, credential.Thresholds.Mini);
-                        var balanceValidation = P4NTH30NSanityChecker.ValidateBalance(balances.Balance, credential.Username);
+                        var balanceValidation = P4NTH30NSanityChecker.ValidateBalance(balances.Balance, credential.Username ?? "Unknown");
                         
                         // Check for critical validation failures
                         if (!grandValidation.IsValid || !majorValidation.IsValid ||
                             !minorValidation.IsValid || !miniValidation.IsValid || !balanceValidation.IsValid)
                         {
-                            Console.WriteLine($"🔴 Critical validation failure for {credential.Game} - {credential.Username}");
+                            Dashboard.AddLog($"🔴 Critical validation failure for {credential.Game} - {credential.Username}", "red");
+                            Dashboard.Render();
                             credential.Unlock();
                             continue; // Skip this iteration for corrupted data
                         }
@@ -125,10 +127,20 @@ internal class Program {
                         double validatedBalance = balanceValidation.ValidatedBalance;
                         
                         // Log any repairs that were made
-                        if (grandValidation.WasRepaired || majorValidation.WasRepaired ||
-                            minorValidation.WasRepaired || miniValidation.WasRepaired || balanceValidation.WasRepaired)
-                        {
-                            Console.WriteLine($"🔧 Data repairs applied for {credential.Game} - {credential.Username}");
+                        if (grandValidation.WasRepaired) {
+                            Dashboard.AddLog($"🔧 Repaired Grand for {credential.Game}: {string.Join(", ", grandValidation.RepairActions)}", "yellow");
+                        }
+                        if (majorValidation.WasRepaired) {
+                            Dashboard.AddLog($"🔧 Repaired Major for {credential.Game}: {string.Join(", ", majorValidation.RepairActions)}", "yellow");
+                        }
+                        if (minorValidation.WasRepaired) {
+                            Dashboard.AddLog($"🔧 Repaired Minor for {credential.Game}: {string.Join(", ", minorValidation.RepairActions)}", "yellow");
+                        }
+                        if (miniValidation.WasRepaired) {
+                            Dashboard.AddLog($"🔧 Repaired Mini for {credential.Game}: {string.Join(", ", miniValidation.RepairActions)}", "yellow");
+                        }
+                        if (balanceValidation.WasRepaired) {
+                            Dashboard.AddLog($"🔧 Repaired Balance for {credential.Username}: {string.Join(", ", balanceValidation.RepairActions)}", "yellow");
                         }
                         
                         // Track for health monitoring
@@ -175,7 +187,7 @@ internal class Program {
                             lastCredential = null;
                             balances = GetBalancesWithRetry(credential);
                             // Re-validate post-spin balances
-                            var postSpinBalanceValidation = P4NTH30NSanityChecker.ValidateBalance(balances.Balance, credential.Username);
+                            var postSpinBalanceValidation = P4NTH30NSanityChecker.ValidateBalance(balances.Balance, credential.Username ?? "Unknown");
                             validatedBalance = postSpinBalanceValidation.ValidatedBalance;
                         } else if (signal == null) {
                             credential.Lock();
@@ -304,71 +316,64 @@ if (currentMini < credential.Jackpots.Mini && credential.Jackpots.Mini - current
     private static (double Balance, double Grand, double Major, double Minor, double Mini) QueryBalances(
         Credential credential
     ) {
-        // Add human-like staggering before each balance query (3-5 seconds)
         Random random = new();
         int delayMs = random.Next(3000, 5001);
-        Console.WriteLine($"{DateTime.Now} - Waiting {delayMs / 1000.0:F1}s before querying {credential.Game} balances for {credential.Username}");
         Thread.Sleep(delayMs);
 
-        switch (credential.Game) {
-            case "FireKirin": {
-                Console.WriteLine($"{DateTime.Now} - Querying FireKirin balances and jackpot data for {credential.Username}");
-                var balances = FireKirin.QueryBalances(credential.Username, credential.Password);
+        try {
+            switch (credential.Game) {
+                case "FireKirin": {
+                    var balances = FireKirin.QueryBalances(credential.Username, credential.Password);
 
-                // SANITY CHECK: Validate retrieved values before logging and returning
-                var balanceValidation = P4NTH30NSanityChecker.ValidateBalance(balances.Balance, credential.Username);
-                var grandValidation = P4NTH30NSanityChecker.ValidateJackpot("Grand", balances.Grand, 10000);
-                var majorValidation = P4NTH30NSanityChecker.ValidateJackpot("Major", balances.Major, 1000);
-                var minorValidation = P4NTH30NSanityChecker.ValidateJackpot("Minor", balances.Minor, 200);
-                var miniValidation = P4NTH30NSanityChecker.ValidateJackpot("Mini", balances.Mini, 50);
+                    var balanceValidation = P4NTH30NSanityChecker.ValidateBalance(balances.Balance, credential.Username ?? "Unknown");
+                    var grandValidation = P4NTH30NSanityChecker.ValidateJackpot("Grand", balances.Grand, 10000);
+                    var majorValidation = P4NTH30NSanityChecker.ValidateJackpot("Major", balances.Major, 1000);
+                    var minorValidation = P4NTH30NSanityChecker.ValidateJackpot("Minor", balances.Minor, 200);
+                    var miniValidation = P4NTH30NSanityChecker.ValidateJackpot("Mini", balances.Mini, 50);
 
-                // Use validated values
-                double validatedBalance = balanceValidation.ValidatedBalance;
-                double validatedGrand = grandValidation.ValidatedValue;
-                double validatedMajor = majorValidation.ValidatedValue;
-                double validatedMinor = minorValidation.ValidatedValue;
-                double validatedMini = miniValidation.ValidatedValue;
+                    double validatedBalance = balanceValidation.ValidatedBalance;
+                    double validatedGrand = grandValidation.ValidatedValue;
+                    double validatedMajor = majorValidation.ValidatedValue;
+                    double validatedMinor = minorValidation.ValidatedValue;
+                    double validatedMini = miniValidation.ValidatedValue;
 
-                Console.WriteLine($"{DateTime.Now} - FireKirin retrieved: Balance={validatedBalance:F2}, Grand={validatedGrand:F2}, Major={validatedMajor:F2}, Minor={validatedMinor:F2}, Mini={validatedMini:F2}");
+                    Dashboard.AddLog(
+                        $"{credential.Game} - {credential.House} - {credential.Username} - ${validatedBalance:F2} - [{validatedGrand:F2}, {validatedMajor:F2}, {validatedMinor:F2}, {validatedMini:F2}]",
+                        "green"
+                    );
 
-                // Log any repairs
-                if (balanceValidation.WasRepaired || grandValidation.WasRepaired || majorValidation.WasRepaired ||
-                    minorValidation.WasRepaired || miniValidation.WasRepaired) {
-                    Console.WriteLine($"🔧 Data repairs applied during FireKirin query for {credential.Username}");
+                    return (validatedBalance, validatedGrand, validatedMajor, validatedMinor, validatedMini);
                 }
+                case "OrionStars": {
+                    var balances = OrionStars.QueryBalances(credential.Username, credential.Password);
 
-                return (validatedBalance, validatedGrand, validatedMajor, validatedMinor, validatedMini);
-            }
-            case "OrionStars": {
-                Console.WriteLine($"{DateTime.Now} - Querying OrionStars balances and jackpot data for {credential.Username}");
-                var balances = OrionStars.QueryBalances(credential.Username, credential.Password);
+                    var balanceValidation = P4NTH30NSanityChecker.ValidateBalance(balances.Balance, credential.Username ?? "Unknown");
+                    var grandValidation = P4NTH30NSanityChecker.ValidateJackpot("Grand", balances.Grand, 10000);
+                    var majorValidation = P4NTH30NSanityChecker.ValidateJackpot("Major", balances.Major, 1000);
+                    var minorValidation = P4NTH30NSanityChecker.ValidateJackpot("Minor", balances.Minor, 200);
+                    var miniValidation = P4NTH30NSanityChecker.ValidateJackpot("Mini", balances.Mini, 50);
 
-                // SANITY CHECK: Validate retrieved values before logging and returning
-                var balanceValidation = P4NTH30NSanityChecker.ValidateBalance(balances.Balance, credential.Username);
-                var grandValidation = P4NTH30NSanityChecker.ValidateJackpot("Grand", balances.Grand, 10000);
-                var majorValidation = P4NTH30NSanityChecker.ValidateJackpot("Major", balances.Major, 1000);
-                var minorValidation = P4NTH30NSanityChecker.ValidateJackpot("Minor", balances.Minor, 200);
-                var miniValidation = P4NTH30NSanityChecker.ValidateJackpot("Mini", balances.Mini, 50);
+                    double validatedBalance = balanceValidation.ValidatedBalance;
+                    double validatedGrand = grandValidation.ValidatedValue;
+                    double validatedMajor = majorValidation.ValidatedValue;
+                    double validatedMinor = minorValidation.ValidatedValue;
+                    double validatedMini = miniValidation.ValidatedValue;
 
-                // Use validated values
-                double validatedBalance = balanceValidation.ValidatedBalance;
-                double validatedGrand = grandValidation.ValidatedValue;
-                double validatedMajor = majorValidation.ValidatedValue;
-                double validatedMinor = minorValidation.ValidatedValue;
-                double validatedMini = miniValidation.ValidatedValue;
+                    Dashboard.AddLog(
+                        $"{credential.Game} - {credential.House} - {credential.Username} - ${validatedBalance:F2} - [{validatedGrand:F2}, {validatedMajor:F2}, {validatedMinor:F2}, {validatedMini:F2}]",
+                        "green"
+                    );
 
-                Console.WriteLine($"{DateTime.Now} - OrionStars retrieved: Balance={validatedBalance:F2}, Grand={validatedGrand:F2}, Major={validatedMajor:F2}, Minor={validatedMinor:F2}, Mini={validatedMini:F2}");
-
-                // Log any repairs
-                if (balanceValidation.WasRepaired || grandValidation.WasRepaired || majorValidation.WasRepaired ||
-                    minorValidation.WasRepaired || miniValidation.WasRepaired) {
-                    Console.WriteLine($"🔧 Data repairs applied during OrionStars query for {credential.Username}");
+                    return (validatedBalance, validatedGrand, validatedMajor, validatedMinor, validatedMini);
                 }
-
-                return (validatedBalance, validatedGrand, validatedMajor, validatedMinor, validatedMini);
+                default:
+                    throw new Exception($"Uncrecognized Game Found. ('{credential.Game}')");
             }
-            default:
-                throw new Exception($"Uncrecognized Game Found. ('{credential.Game}')");
+        } catch (InvalidOperationException ex) when (ex.Message.Contains("Your account has been suspended")) {
+            Dashboard.AddLog($"Account suspended for {credential.Username} on {credential.Game}. Marking as banned.", "red");
+            credential.Banned = true;
+            credential.Save();
+            throw;
         }
     }
 
@@ -380,12 +385,22 @@ if (currentMini < credential.Jackpots.Mini && credential.Jackpots.Mini - current
             while (true) {
                 try {
                     return QueryBalances(credential);
+                } catch (InvalidOperationException ex) when (ex.Message.Contains("Your account has been suspended")) {
+                    throw;
                 } catch (Exception ex) {
                     networkAttempts++;
                     if (networkAttempts >= 3)
                         throw; // Give up
-                    Console.WriteLine($"{DateTime.Now} - QueryBalances failed (Attempt {networkAttempts}): {ex.Message}. Retrying...");
-                    Thread.Sleep(2000);
+
+                    Dashboard.AddLog($"QueryBalances failed (Attempt {networkAttempts}): {ex.Message}. Retrying...", "yellow");
+                    Dashboard.Render();
+
+                    const int baseDelayMs = 2000;
+                    const int maxDelayMs = 30000;
+                    int exponentialDelay = (int)Math.Min(maxDelayMs, baseDelayMs * Math.Pow(2, networkAttempts - 1));
+                    int jitter = Random.Shared.Next(0, 1000);
+                    int delayMs = Math.Min(maxDelayMs, exponentialDelay + jitter);
+                    Thread.Sleep(delayMs);
                 }
             }
         }
@@ -395,15 +410,18 @@ if (currentMini < credential.Jackpots.Mini && credential.Jackpots.Mini - current
         double currentGrand = balances.Grand;
         while (currentGrand.Equals(0)) {
             grandChecked++;
-            Console.WriteLine($"{DateTime.Now} - Grand jackpot is 0 for {credential.Game}, retrying attempt {grandChecked}/40");
+            Dashboard.AddLog($"Grand jackpot is 0 for {credential.Game}, retrying attempt {grandChecked}/40", "yellow");
+            Dashboard.Render();
             Thread.Sleep(500);
             if (grandChecked > 40) {
                 ProcessEvent alert = ProcessEvent.Log("H4ND", $"Grand check signalled an Extension Failure for {credential.Game}");
-                Console.WriteLine($"Checking Grand on {credential.Game} failed at {grandChecked} attempts.");
+                Dashboard.AddLog($"Checking Grand on {credential.Game} failed at {grandChecked} attempts.", "red");
+                Dashboard.Render();
                 alert.Record(credential).Save();
                 throw new Exception("Extension failure.");
             }
-            Console.WriteLine($"{DateTime.Now} - Retrying balance query for {credential.Game} (attempt {grandChecked})");
+            Dashboard.AddLog($"Retrying balance query for {credential.Game} (attempt {grandChecked})", "yellow");
+            Dashboard.Render();
             balances = ExecuteQuery();
             currentGrand = balances.Grand;
         }

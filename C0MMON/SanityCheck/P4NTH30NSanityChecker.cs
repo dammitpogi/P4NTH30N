@@ -16,7 +16,7 @@ namespace P4NTH30N.C0MMON.SanityCheck
         {
             { "Mini", (0.01, 50.0, 40.0) },      // Mini jackpots: $0.01 - $50
             { "Minor", (0.01, 200.0, 150.0) },   // Minor jackpots: $0.01 - $200  
-            { "Major", (50.0, 1000.0, 600.0) },  // Major jackpots: $50 - $1000
+            { "Major", (50.0, 1000.0, 1000.0) },  // Major jackpots: $50 - $1000
             { "Grand", (500.0, 10000.0, 2000.0) } // Grand jackpots: $500 - $10,000 (matches your validation)
         };
 
