@@ -263,7 +263,7 @@ internal sealed class SignalRepository(IMongoDatabaseProvider provider) : ISigna
 
 		var existing = _signals.Find(filter).FirstOrDefault();
 		if (existing != null) {
-			signal._id = existing._id;
+			signal._id = existing._id;  // PRESERVE EXISTING _ID
 			_signals.ReplaceOne(filter, signal);
 		} else {
 			_signals.InsertOne(signal);
@@ -305,13 +305,13 @@ internal sealed class JackpotRepository(IMongoDatabaseProvider provider) : IJack
 	public void Upsert(Jackpot jackpot) {
 		var builder = Builders<Jackpot>.Filter;
 		FilterDefinition<Jackpot> filter = builder.Eq("House", jackpot.House) & builder.Eq("Game", jackpot.Game) & builder.Eq("Category", jackpot.Category);
-		
+
 		var existing = _jackpots.Find(filter).FirstOrDefault();
 		if (existing != null) {
-			jackpot._id = existing._id; // Preserve the existing _id
+			jackpot._id = existing._id;  // PRESERVE EXISTING _ID
 			_jackpots.ReplaceOne(filter, jackpot);
 		} else {
-			_jackpots.InsertOne(jackpot); // Insert new document
+			_jackpots.InsertOne(jackpot);
 		}
 	}
 }
