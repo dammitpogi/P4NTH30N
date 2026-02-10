@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Linq;
 using P4NTH30N.C0MMON;
 using P4NTH30N.C0MMON.SanityCheck;
 using P4NTH30N.C0MMON.Persistence;
@@ -8,6 +9,30 @@ namespace P4NTH30N;
 class PROF3T {
 	static void Main() {
 		HUN7ER();
+	}
+
+	/// <summary>
+	/// Validates if a credential has sufficient data points for reliable DPD-based predictions
+	/// </summary>
+	/// <param name="credential">The credential to validate</param>
+	/// <returns>True if the credential is statistically reliable, false otherwise</returns>
+	private static bool IsCredentialStatisticallyReliable(Credential credential) {
+		// High DPD values require more data points for statistical reliability
+		// DPD > 10 requires at least 25 data points for statistical significance
+		if (credential.DPD.Average > 10 && credential.DPD.Data.Count < 25) {
+			return false;
+		}
+		return true;
+	}
+
+	/// <summary>
+	/// Gets validation details for a credential's DPD reliability
+	/// </summary>
+	private static (bool IsReliable, string Reason) GetCredentialReliabilityDetails(Credential credential) {
+		if (credential.DPD.Average > 10 && credential.DPD.Data.Count < 25) {
+			return (false, $"DPD={credential.DPD.Average:F2} > 10 but only {credential.DPD.Data.Count} data points (minimum 25 required)");
+		}
+		return (true, "Statistically reliable for predictions");
 	}
 
 	private static void HUN7ER() {
@@ -24,6 +49,28 @@ class PROF3T {
 
 				// Filter out banned credentials
 				credentials = [.. credentials.Where(x => x.Banned == false)];
+
+				// Filter out credentials with insufficient data for high DPD values
+				var representatives = credentials
+					.GroupBy(c => (c.House, c.Game))
+					.Select(g => g.OrderByDescending(c => c.LastUpdated).First()) // Get representative for each game
+					.ToList();
+
+				var excludedGames = representatives
+					.Where(rep => !IsCredentialStatisticallyReliable(rep))
+					.Select(rep => (rep.House, rep.Game))
+					.ToHashSet();
+
+				if (excludedGames.Any()) {
+					Console.WriteLine($"🚫 Excluding {excludedGames.Count} games from HUN7ER due to insufficient data points for high DPD values:");
+					foreach (var (house, game) in excludedGames) {
+						var rep = representatives.First(r => r.House == house && r.Game == game);
+						var (_, reason) = GetCredentialReliabilityDetails(rep);
+						Console.WriteLine($"   - {game} at {house}: {reason}");
+					}
+				}
+
+				credentials = [.. credentials.Where(x => !excludedGames.Contains((x.House, x.Game)))];
 
 				// Group credentials by House+Game to get game profiles
 				var credentialGroups = credentials
@@ -57,6 +104,12 @@ class PROF3T {
 					List<Credential> gameCredentials = group.ToList();
 
 					if (representative.Enabled == true) {
+						// VALIDATION: Check DPD reliability before processing
+						if (!IsCredentialStatisticallyReliable(representative)) {
+							var (_, reason) = GetCredentialReliabilityDetails(representative);
+							Console.WriteLine($"⚠️  {representative.Game}: {reason} (processing for data collection only)");
+							// Still allow processing for data collection but mark as statistically unreliable
+						}
 
 						// Handle unlock timeout - use representative credential's lock/unlock
 						if (representative.Unlocked == false && DateTime.UtcNow > representative.UnlockTimeout)
@@ -324,6 +377,14 @@ class PROF3T {
 						continue;
 
 					if (representative.DPD.Average > 0.01) {
+						// VALIDATION: Exclude credentials with high DPD but insufficient data points
+						// This ensures statistical reliability for predictions
+						if (!IsCredentialStatisticallyReliable(representative)) {
+							var (_, reason) = GetCredentialReliabilityDetails(representative);
+							Console.WriteLine($"🚫 Excluding {representative.Game} from HUN7ER: {reason}");
+							continue;
+						}
+						
 						predictions.Add(jackpot);
 						double capacity =
 							jackpot.Threshold
