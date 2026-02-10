@@ -116,10 +116,16 @@ namespace P4NTH30N.C0MMON.SanityCheck
 					// Value is valid within tier limits - auto-repair stale threshold
 					// Set threshold to 85% of current value to provide reasonable buffer
 					double previousThreshold = result.ValidatedThreshold;
-					result.ValidatedThreshold = Math.Max(limits.maxThreshold * 0.5, result.ValidatedValue * 0.85);
-					result.WasRepaired = true;
-					result.RepairActions.Add($"Auto-repaired stale threshold: {previousThreshold:F2} -> {result.ValidatedThreshold:F2} (value {result.ValidatedValue:F2} within tier max {limits.max:F2})");
-					LogRepair($"Threshold auto-repaired for {tier}: {previousThreshold:F2} -> {result.ValidatedThreshold:F2}");
+					double newThreshold = Math.Max(limits.maxThreshold * 0.5, result.ValidatedValue * 0.85);
+
+					// Only repair and log if threshold actually changes
+					if (newThreshold != previousThreshold)
+					{
+						result.ValidatedThreshold = newThreshold;
+						result.WasRepaired = true;
+						result.RepairActions.Add($"Auto-repaired stale threshold: {previousThreshold:F2} -> {result.ValidatedThreshold:F2} (value {result.ValidatedValue:F2} within tier max {limits.max:F2})");
+						LogRepair($"Threshold auto-repaired for {tier}: {previousThreshold:F2} -> {result.ValidatedThreshold:F2}");
+					}
 				}
 				else
 				{

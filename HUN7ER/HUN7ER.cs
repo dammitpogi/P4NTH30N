@@ -334,19 +334,37 @@ class PROF3T {
 								"Mini" => 20,
 								_ => 0,
 							};
+
+						// Guard against zero or extremely small DPD to prevent overflow
+						if (representative.DPD.Average <= 0.01)
+						{
+							continue;
+						}
+
 						double daysToAdd = capacity / representative.DPD.Average;
-						int iterations = 1;
-						for (
-							DateTime i = jackpot.EstimatedDate.AddDays(daysToAdd);
-							i < DateLimit;
-							i = i.AddDays(daysToAdd)
-						) {
+
+						// Cap daysToAdd to reasonable max (1 year)
+						const double maxDaysToAdd = 365;
+						if (daysToAdd > maxDaysToAdd)
+						{
+							daysToAdd = maxDaysToAdd;
+						}
+
+						int maxIterations = (int)((DateLimit - jackpot.EstimatedDate).TotalDays / daysToAdd) + 1;
+						maxIterations = Math.Min(maxIterations, 100); // Prevent excessive loops
+
+						for (int iter = 0; iter < maxIterations; iter++)
+						{
+							DateTime i = jackpot.EstimatedDate.AddDays(daysToAdd * iter);
+							if (i >= DateLimit || i > DateTime.MaxValue.AddDays(-1))
+								break;
+
 							predictions.Add(
 								new Jackpot(
 									representative,
 									jackpot.Category,
 									jackpot.Current,
-									jackpot.Threshold + (capacity * iterations++),
+									jackpot.Threshold + (capacity * (iter + 1)),
 									jackpot.Priority,
 									i
 								)
