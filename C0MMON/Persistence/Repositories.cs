@@ -258,9 +258,16 @@ internal sealed class SignalRepository(IMongoDatabaseProvider provider) : ISigna
 	}
 
 	public void Upsert(Signal signal) {
-		FilterDefinitionBuilder<Signal> builder = Builders<Signal>.Filter;
+		var builder = Builders<Signal>.Filter;
 		FilterDefinition<Signal> filter = builder.Eq("House", signal.House) & builder.Eq("Game", signal.Game) & builder.Eq("Username", signal.Username);
-		_signals.ReplaceOne(filter, signal, new ReplaceOptions { IsUpsert = true });
+
+		var existing = _signals.Find(filter).FirstOrDefault();
+		if (existing != null) {
+			signal._id = existing._id;
+			_signals.ReplaceOne(filter, signal);
+		} else {
+			_signals.InsertOne(signal);
+		}
 	}
 
 	public void Delete(Signal signal) {
