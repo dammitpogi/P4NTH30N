@@ -173,4 +173,42 @@ return collection.Find(Builders<Credential>.Filter.Empty)
 
 ---
 
+---
+
+## Agent Skills
+
+All agents have access to the `toolhive` skill for ToolHive MCP tool categorization:
+
+```yaml
+skill: toolhive
+```
+
+**Purpose**: Quick reference for the 10 tools across 4 MCP servers (search, scrape, crawl, docs, fetch)
+
+**When to Load**: Before using any ToolHive tools to get category-aware guidance
+
+### ⚠️ CRITICAL: MCP Tool Calling
+
+**NEVER** call `websearch`, `codesearch`, `webfetch`, `tavily_search`, etc. directly - these tools do NOT exist.
+
+**ALWAYS** use the `toolhive_*` wrapper functions:
+
+1. **Find the tool**: `toolhive_find_tool({ tool_description: "...", tool_keywords: "..." })`
+2. **Call the tool**: `toolhive_call_tool({ server_name: "...", tool_name: "...", parameters: {...} })`
+
+**Example - Web Search**:
+```javascript
+// ❌ WRONG: websearch({ query: "..." })
+// ✅ CORRECT:
+toolhive_call_tool({
+  server_name: "tavily-mcp",
+  tool_name: "tavily_search",
+  parameters: { query: "...", max_results: 5 }
+})
+```
+
+See the `toolhive` skill for complete calling patterns.
+
+---
+
 *Note: No Cursor rules or Copilot instructions exist in this repo.*

@@ -5,12 +5,15 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using OpenQA.Selenium.Chrome;
 using P4NTH30N.C0MMON;
+using P4NTH30N.C0MMON.Persistence;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace P4NTH30N;
 
 class PROF3T {
+	private static readonly MongoUnitOfWork s_uow = new();
+
 	static void Main() {
 		// ===========================================================================================================
 		//  SAFETY FIRST: READ BEFORE RUNNING
@@ -68,7 +71,7 @@ class PROF3T {
 	private static void UpdateN3XT() {
 		try {
 			Console.WriteLine("Updating N3XT view...");
-			var db = new Database().IO;
+			var db = MongoDatabaseProvider.FromEnvironment().Database;
 			
 			// Drop existing view
 			try {
@@ -160,7 +163,7 @@ class PROF3T {
 
 static void ResetGames()
     {
-        List<Credential> cr = Credential.GetAll();
+		List<Credential> cr = s_uow.Credentials.GetAll();
         foreach (Credential credential in cr)
         {
             credential.DPD.Average = 0;
@@ -175,13 +178,13 @@ static void ResetGames()
                     .ToList();
             }
             
-            credential.Balance = 0;
-            credential.Save();
-        }
+			credential.Balance = 0;
+			s_uow.Credentials.Upsert(credential);
+		}
         
         // Game entity removed - use Credential-driven approach
         // All DPD data is now stored on Credentials directly
-        List<Credential> allCredentials = Credential.GetAll();
+		List<Credential> allCredentials = s_uow.Credentials.GetAll();
         foreach (Credential cred in allCredentials)
         {
             cred.DPD.Average = 0;
@@ -196,7 +199,7 @@ static void ResetGames()
                     .ToList();
             }
             
-            cred.Save();
+			s_uow.Credentials.Upsert(cred);
         }
     }
 	private static void Test2() {
@@ -550,7 +553,7 @@ static void ResetGames()
 
 		// 1. TOP ACCOUNTS BY BALANCE
 		Console.WriteLine("=== TOP 20 ACCOUNTS BY BALANCE ===");
-		List<Credential> topAccounts = Credential.GetAll().Take(20).ToList();
+		List<Credential> topAccounts = s_uow.Credentials.GetAll().Take(20).ToList();
 		for (int i = 0; i < topAccounts.Count; i++) {
 			var cred = topAccounts[i];
 			Console.WriteLine($"{i + 1,2}. Balance: {cred.Balance,8:F2} | House: {cred.House,-20} | Game: {cred.Game,-12} | User: {cred.Username,-15} | Enabled: {cred.Enabled,5} | Banned: {cred.Banned,5}");
@@ -559,7 +562,7 @@ static void ResetGames()
 
 		// 2. HOUSE-LEVEL ACCOUNT DISTRIBUTION
 		Console.WriteLine("=== ACCOUNT DISTRIBUTION BY HOUSE ===");
-		var houseGroups = Credential.GetAll()
+		var houseGroups = s_uow.Credentials.GetAll()
 			.GroupBy(c => c.House)
 			.Select(g => new {
 				House = g.Key,
@@ -579,7 +582,7 @@ static void ResetGames()
 
 		// 3. GAME-LEVEL ANALYSIS
 		Console.WriteLine("=== GAME PLATFORM ANALYSIS ===");
-		var gameGroups = Credential.GetAll()
+		var gameGroups = s_uow.Credentials.GetAll()
 			.GroupBy(c => c.Game)
 			.Select(g => new {
 				Game = g.Key,
@@ -599,7 +602,7 @@ static void ResetGames()
 
 		// 4. HIGH-VALUE ACCOUNTS (Balance > $100)
 		Console.WriteLine("=== HIGH-VALUE ACCOUNTS (Balance > $100) ===");
-		var highValueAccounts = Credential.GetAll().Where(c => c.Balance > 100).OrderByDescending(c => c.Balance).ToList();
+		var highValueAccounts = s_uow.Credentials.GetAll().Where(c => c.Balance > 100).OrderByDescending(c => c.Balance).ToList();
 		Console.WriteLine($"Total High-Value Accounts: {highValueAccounts.Count}");
 		Console.WriteLine($"Total Value in High-Value Accounts: ${highValueAccounts.Sum(c => c.Balance):F2}");
 		Console.WriteLine();
@@ -612,7 +615,7 @@ static void ResetGames()
 
 		// 5. DPD GROWTH ANALYSIS
 		Console.WriteLine("=== DPD GROWTH LEADERS ===");
-		var dpdLeaders = Credential.GetAll()
+		var dpdLeaders = s_uow.Credentials.GetAll()
 			.Where(c => c.DPD.Average > 0)
 			.OrderByDescending(c => c.DPD.Average)
 			.Take(15)
@@ -628,7 +631,7 @@ static void ResetGames()
 		// 6. JACKPOT POTENTIAL ANALYSIS
 		Console.WriteLine("=== JACKPOT POTENTIAL BY HOUSE ===");
 		// Use Credential.GetAll() with House+Game grouping since Game entity was removed
-		var jackpotData = Credential.GetAll()
+		var jackpotData = s_uow.Credentials.GetAll()
 			.GroupBy(c => c.House)
 			.Select(g => new {
 				House = g.Key,
@@ -651,7 +654,7 @@ static void ResetGames()
 
 		// 7. SUMMARY STATISTICS
 		Console.WriteLine("=== SUMMARY STATISTICS ===");
-		var allCredentials = Credential.GetAll();
+		var allCredentials = s_uow.Credentials.GetAll();
 		var enabledCredentials = allCredentials.Where(c => c.Enabled && !c.Banned).ToList();
 		Console.WriteLine($"Total Accounts: {allCredentials.Count}");
 		Console.WriteLine($"Enabled/Active Accounts: {enabledCredentials.Count}");

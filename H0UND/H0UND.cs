@@ -6,6 +6,7 @@ using P4NTH30N;
 using P4NTH30N.C0MMON;
 using P4NTH30N.C0MMON.Versioning;
 using P4NTH30N.C0MMON.SanityCheck;
+using P4NTH30N.C0MMON.Persistence;
 using P4NTH30N.Services;
 
 namespace P4NTH30N;
@@ -15,11 +16,14 @@ internal static partial class Header { }
 
 class H0UND
 {
+	private static readonly MongoUnitOfWork s_uow = new();
+
 	// Control flag: true = use priority calculation, false = full sweep (oldest first)
 	private static readonly bool UsePriorityCalculation = false;
 	
 	static void Main(string[] args)
 	{
+		MongoUnitOfWork uow = s_uow;
 		while (true)
 		{
 			// Health monitoring for H0UND
@@ -39,14 +43,14 @@ class H0UND
 					Dashboard.CurrentTask = "Polling Queue";
 					Dashboard.Render();
 
-					Credential credential = Credential.GetNext(UsePriorityCalculation);
+					Credential credential = uow.Credentials.GetNext(UsePriorityCalculation);
 
 					Dashboard.CurrentGame = credential.Game;
 					Dashboard.CurrentUser = credential.Username ?? "None";
 					Dashboard.CurrentTask = "Retrieving Balances";
 					Dashboard.Render();
 
-					credential.Lock();
+					uow.Credentials.Lock(credential);
 
 					try
 					{
@@ -64,7 +68,7 @@ class H0UND
 								!minorValidation.IsValid || !miniValidation.IsValid || !balanceValidation.IsValid)
 							{
 								Dashboard.AddLog($"🔴 Critical validation failure for {credential.Game} - {credential.Username}", "red");
-								credential.Unlock();
+								uow.Credentials.Unlock(credential);
 								continue; // Skip this iteration for corrupted data
 							}
 							
@@ -105,7 +109,7 @@ class H0UND
 
 							if ((lastRetrievedGrand.Equals(currentGrand) && (lastCredential == null || credential.Game != lastCredential.Game && credential.House != lastCredential.House)) == false)
 							{
-								Signal? gameSignal = Signal.GetOne(credential.House, credential.Game);
+								Signal? gameSignal = uow.Signals.GetOne(credential.House, credential.Game);
 								if (currentGrand < credential.Jackpots.Grand && credential.Jackpots.Grand - currentGrand > 0.1)
 								{
 									if (credential.DPD.Toggles.GrandPopped == true)
@@ -117,7 +121,7 @@ class H0UND
 										credential.DPD.Toggles.GrandPopped = false;
 										credential.Thresholds.NewGrand(credential.Jackpots.Grand);
 										if (gameSignal != null && gameSignal.Priority.Equals(4))
-											Signal.DeleteAll(credential.House, credential.Game);
+											uow.Signals.DeleteAll(credential.House, credential.Game);
 									}
 									else
 										credential.DPD.Toggles.GrandPopped = true;
@@ -141,7 +145,7 @@ class H0UND
 										credential.DPD.Toggles.MajorPopped = false;
 										credential.Thresholds.NewMajor(credential.Jackpots.Major);
 										if (gameSignal != null && gameSignal.Priority.Equals(3))
-											Signal.DeleteAll(credential.House, credential.Game);
+											uow.Signals.DeleteAll(credential.House, credential.Game);
 									}
 									else
 										credential.DPD.Toggles.MajorPopped = true;
@@ -165,7 +169,7 @@ class H0UND
 										credential.DPD.Toggles.MinorPopped = false;
 										credential.Thresholds.NewMinor(credential.Jackpots.Minor);
 										if (gameSignal != null && gameSignal.Priority.Equals(2))
-											Signal.DeleteAll(credential.House, credential.Game);
+											uow.Signals.DeleteAll(credential.House, credential.Game);
 									}
 									else
 										credential.DPD.Toggles.MinorPopped = true;
@@ -189,7 +193,7 @@ class H0UND
 										credential.DPD.Toggles.MiniPopped = false;
 										credential.Thresholds.NewMini(credential.Jackpots.Mini);
 										if (gameSignal != null && gameSignal.Priority.Equals(1))
-											Signal.DeleteAll(credential.House, credential.Game);
+											uow.Signals.DeleteAll(credential.House, credential.Game);
 									}
 									else
 										credential.DPD.Toggles.MiniPopped = true;
@@ -210,12 +214,12 @@ class H0UND
 							if (credential.Settings.Gold777 == null)
 								credential.Settings.Gold777 = new Gold777_Settings();
 							credential.Updated = true;
-							credential.Unlock();
+							uow.Credentials.Unlock(credential);
 
 							credential.LastUpdated = DateTime.UtcNow;
 							credential.Balance = currentBalance; // Use validated balance
 							lastRetrievedGrand = currentGrand;
-							credential.Save();
+							uow.Credentials.Upsert(credential);
 							lastCredential = credential;
 
 							// SANITY CHECK: Periodic health monitoring
@@ -233,7 +237,7 @@ class H0UND
 						{
 							Dashboard.AddLog($"Account suspended for {credential.Username} on {credential.Game}", "red");
 							Dashboard.Render();
-							credential.Unlock();
+							uow.Credentials.Unlock(credential);
 					}
 				}
 			}
@@ -315,7 +319,7 @@ class H0UND
 		{
 			Dashboard.AddLog($"Account suspended for {credential.Username} on {credential.Game}. Marking as banned.", "red");
 			credential.Banned = true;
-			credential.Save();
+			s_uow.Credentials.Upsert(credential);
 			throw;
 		}
 	}
@@ -366,7 +370,7 @@ class H0UND
 				ProcessEvent alert = ProcessEvent.Log("H0UND", $"Grand check signalled an Extension Failure for {credential.Game}");
 				Dashboard.AddLog($"Checking Grand on {credential.Game} failed at {grandChecked} attempts.", "red");
 				Dashboard.Render();
-				alert.Record(credential).Save();
+				s_uow.ProcessEvents.Insert(alert.Record(credential));
 				throw new Exception("Extension failure.");
 			}
 			Dashboard.AddLog($"Retrying balance query for {credential.Game} (attempt {grandChecked})", "yellow");

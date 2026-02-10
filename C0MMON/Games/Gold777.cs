@@ -2,12 +2,13 @@ using System;
 using System.Drawing;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using P4NTH30N.C0MMON.Persistence;
 
 namespace P4NTH30N.C0MMON;
 
 public static partial class Games {
-    public static class Gold777 {
-        public static bool LoadSucessfully(ChromeDriver driver, Credential credential, Signal signal) {
+	public static class Gold777 {
+		public static bool LoadSucessfully(ChromeDriver driver, Credential credential, Signal signal, IMongoUnitOfWork uow) {
             for (int i = 1; i < (credential.Settings?.Gold777?.Page ?? 1); i++) {
                 switch (credential.Game) {
                     case "FireKirin": Mouse.Click(937, 177); break;
@@ -19,8 +20,8 @@ public static partial class Games {
             bool slotsLoaded = false;
             Mouse.Move(credential.Settings?.Gold777?.Button_X ?? 0, credential.Settings?.Gold777?.Button_Y ?? 0);
 
-            credential.Lock();
-            signal.Acknowledge();
+			uow.Credentials.Lock(credential);
+			uow.Signals.Acknowledge(signal);
             while (slotsLoaded == false) {
                 Mouse.Click(credential.Settings?.Gold777?.Button_X ?? 0, credential.Settings?.Gold777?.Button_Y ?? 0);
 
@@ -43,10 +44,10 @@ public static partial class Games {
                 }
 
                 if (buttonVerified == false) {
-                    if (credential.Settings?.Gold777?.ButtonVerified == true) {
-                        if (credential.Settings?.Gold777 != null) credential.Settings.Gold777.ButtonVerified = false;
-                        credential.Save();
-                    }
+					if (credential.Settings?.Gold777?.ButtonVerified == true) {
+						if (credential.Settings?.Gold777 != null) credential.Settings.Gold777.ButtonVerified = false;
+						uow.Credentials.Upsert(credential);
+					}
 
                     switch (credential.Game) {
                         case "FireKirin":
@@ -80,7 +81,7 @@ public static partial class Games {
 
                         // driver.Manage().Window.Minimize();
                         foreach (int pageModifier in new int[] { 0, -1, 1, -2, 2 }) {
-                            signal.Acknowledge();
+							uow.Signals.Acknowledge(signal);
                             int workingPage = (credential.Settings?.Gold777?.Page ?? 1) + pageModifier;
                             if (pageModifier.Equals(0) == false) {
                                 Mouse.Click(81, 233); Thread.Sleep(800);
@@ -205,7 +206,7 @@ public static partial class Games {
                 if (credential.Settings?.Gold777?.ButtonVerified == false) {
                     if (buttonVerified) {
                         if (credential.Settings?.Gold777 != null) credential.Settings.Gold777.ButtonVerified = true;
-                        credential.Save();
+									uow.Credentials.Upsert(credential);
                     } else {
                         // throw new Exception("Couldn't find the damn button.");
                         Console.WriteLine("Couldn't find the damn button.");
@@ -237,8 +238,8 @@ public static partial class Games {
                     Console.WriteLine(page);
                 }
 
-                int balanceIterations = 0;
-                signal.Acknowledge();
+				int balanceIterations = 0;
+				uow.Signals.Acknowledge(signal);
 				double balance = Convert.ToDouble(driver.ExecuteScript("return window.parent.Balance")) / 100;
                 Console.WriteLine($"{balanceIterations} - ${balance}");
                 while (balance.Equals(0)) {
@@ -264,8 +265,8 @@ public static partial class Games {
                         }
                         balanceIterations = 0;
                     }
-                    Thread.Sleep(500);
-                    signal.Acknowledge();
+					Thread.Sleep(500);
+					uow.Signals.Acknowledge(signal);
                     balance =
                         Convert.ToDouble(driver.ExecuteScript("return window.parent.Balance")) / 100;
                     Console.WriteLine($"{balanceIterations} - ${balance}");
@@ -302,7 +303,7 @@ public static partial class Games {
             }
             return slotsLoaded;
         }
-        public static Signal? Spin(ChromeDriver driver, Credential credential, Signal signal) {
+		public static Signal? Spin(ChromeDriver driver, Credential credential, Signal signal, IMongoUnitOfWork uow) {
             Mouse.LongClick(929, 612);
             // Mouse.Click(955, 290);
 
@@ -325,10 +326,10 @@ public static partial class Games {
                     break;
                 }
 
-                Signal? newSignal = Signal.GetNext();
+				Signal? newSignal = uow.Signals.GetNext();
                 // newSignal = (Signal)signal.Clone(); newSignal.Priority = 4;
-                if (newSignal != null && newSignal.Priority > signal.Priority) {
-                    newSignal.Acknowledge();
+				if (newSignal != null && newSignal.Priority > signal.Priority) {
+					uow.Signals.Acknowledge(newSignal);
                     Mouse.Click(950, 620); Thread.Sleep(3000);
                     switch (credential.Game) {
                         case "FireKirin":
@@ -344,7 +345,7 @@ public static partial class Games {
                     return newSignal;
                 }
 
-                if (signal.Check() == false) {
+				if (uow.Signals.Exists(signal) == false) {
                     remainingIterations--;
                 } else {
                     remainingIterations = 10;
@@ -355,7 +356,7 @@ public static partial class Games {
                 Mouse.Click(534, 466);
                 Mouse.Click(534, 523);
                 Mouse.Click(533, 564);
-                signal.Acknowledge();
+				uow.Signals.Acknowledge(signal);
                 double currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
                 double currentMajor = Convert.ToDouble(driver.ExecuteScript("return window.parent.Major")) / 100;
                 double currentMinor = Convert.ToDouble(driver.ExecuteScript("return window.parent.Minor")) / 100;
@@ -365,8 +366,8 @@ public static partial class Games {
                 if (grandPrior > currentGrand && (grandPrior - currentGrand) > 0.1) {
                     if (signal.Priority.Equals(4)) {
                         jackpotPopped = true;
-                        signal.Close(grandPrior);
-                        signal.Delete();
+						signal.Close(grandPrior, uow.Received);
+						uow.Signals.Delete(signal);
                     }
                     Console.WriteLine($"({DateTime.UtcNow}) {credential.House} - Grand Popped!!");
                     credential.Thresholds.NewGrand(grandPrior);
@@ -375,8 +376,8 @@ public static partial class Games {
                 if (majorPrior > currentMajor && (majorPrior - currentMajor) > 0.1) {
                     if (signal.Priority.Equals(3)) {
                         jackpotPopped = true;
-                        signal.Close(majorPrior);
-                        signal.Delete();
+						signal.Close(majorPrior, uow.Received);
+						uow.Signals.Delete(signal);
                     }
                     Console.WriteLine($"({DateTime.UtcNow}) {credential.House} - Major Popped!!");
                     credential.Thresholds.NewMajor(majorPrior);
@@ -385,8 +386,8 @@ public static partial class Games {
                 if (minorPrior > currentMinor && (minorPrior - currentMinor) > 0.1) {
                     if (signal.Priority.Equals(2)) {
                         jackpotPopped = true;
-                        signal.Close(minorPrior);
-                        signal.Delete();
+						signal.Close(minorPrior, uow.Received);
+						uow.Signals.Delete(signal);
                     }
                     Console.WriteLine($"({DateTime.UtcNow}) {credential.House} - Minor Popped!!");
                     credential.Thresholds.NewMinor(minorPrior);
@@ -395,8 +396,8 @@ public static partial class Games {
                 if (miniPrior > currentMini && (miniPrior - currentMini) > 0.1) {
                     if (signal.Priority.Equals(1)) {
                         jackpotPopped = true;
-                        signal.Close(miniPrior);
-                        signal.Delete();
+						signal.Close(miniPrior, uow.Received);
+						uow.Signals.Delete(signal);
                     }
                     Console.WriteLine($"({DateTime.UtcNow}) {credential.House} - Mini Popped!!");
                     credential.Thresholds.NewMini(miniPrior);
@@ -416,13 +417,13 @@ public static partial class Games {
                 if (currentMini >= 0 && currentMini <= 10000) {
                     credential.Jackpots.Mini = currentMini; miniPrior = credential.Jackpots.Mini;
                 }
-                credential.Save();
+				uow.Credentials.Upsert(credential);
 
                 double balancePrior = balance;
                 balance = Convert.ToDouble(driver.ExecuteScript("return window.parent.Balance")) / 100;
                 credential.LastUpdated = DateTime.UtcNow;
                 credential.Balance = balance;
-                credential.Save();
+				uow.Credentials.Upsert(credential);
 
                 if (balance.Equals(balancePrior)) {
                     if (FailedSpinChecks++ > 3) {

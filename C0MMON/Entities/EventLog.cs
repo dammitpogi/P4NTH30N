@@ -1,7 +1,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using MongoDB.Bson;
-using MongoDB.Driver;
 
 namespace P4NTH30N.C0MMON;
 
@@ -27,14 +26,11 @@ public class ProcessEvent(string process, string description) {
         Game = credential.Game;
         return this;
     }
-    public ProcessEvent Record(Signal signal) {
-        Username = signal.Username;
-        Password = signal.Password;
-        House = signal.House;
-        Game = signal.Game;
-        return this;
-    }
-	public void Save() {
-        new Database().IO.GetCollection<ProcessEvent>("EV3NT").InsertOne(this);
+	public ProcessEvent Record(Signal signal) {
+		Username = signal.Username;
+		Password = signal.Password;
+		House = signal.House;
+		Game = signal.Game;
+		return this;
 	}
 }

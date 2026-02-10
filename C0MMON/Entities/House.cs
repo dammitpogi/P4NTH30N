@@ -1,8 +1,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using MongoDB.Bson;
-using MongoDB.Driver;
-using P4NTH30N.C0MMON;
 
 namespace P4NTH30N.C0MMON;
 
@@ -70,36 +68,4 @@ public class House(string name, string? uRL = null) {
     public string OffLimits { get; set; } = "";
     public string Comments { get; set; } = "";
     public int Lifespan { get; set; } = 7;
-
-	private static readonly IMongoCollection<House> Database =
-		 new Database().IO.GetCollection<House>("H0USE");
-	public static List<House> GetAll() {
-		return Database.Find(Builders<House>.Filter.Empty).ToList();
-	}
-	public static House? Get(string name) {
-		if (string.IsNullOrWhiteSpace(name))
-			return null;
-
-		House? dto = Database.Find(Builders<House>.Filter.Eq("Name", name)).FirstOrDefault();
-		if (dto is not null)
-			return dto;
-
-		// House docs are allowed to exist without a URL; create stub record on demand.
-		House house = new(name, "");
-		Database.InsertOne(house);
-		return house;
-	}
-	public void Delete() {
-		Database.DeleteOne(Builders<House>.Filter.Eq("_id", _id));
-	}
-    public void Save() {
-        FilterDefinition<House> filter = Builders<House>.Filter.Eq("_id", _id);
-        List<House> dto = Database.Find(filter).ToList();
-        if (dto.Count.Equals(0)) {
-            Database.InsertOne(this);
-        } else {
-            _id = dto[0]._id;
-            Database.ReplaceOne(filter, this);
-        }
-    }
 }

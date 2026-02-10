@@ -1,9 +1,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using MongoDB.Bson;
-using MongoDB.Driver;
 using P4NTH30N.C0MMON.SanityCheck;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace P4NTH30N.C0MMON;
 
@@ -69,52 +67,5 @@ public class Jackpot {
 		}
 
 		Current = current + estimatedGrowth;
-	}
-
-	public static Jackpot? Get(string category, string house, string game) {
-		FilterDefinitionBuilder<Jackpot> builder = Builders<Jackpot>.Filter;
-		FilterDefinition<Jackpot> query = builder.Eq("Category", category) & builder.Eq("House", house) & builder.Eq("Game", game);
-		List<Jackpot> results = new Database().IO.GetCollection<Jackpot>("J4CKP0T").Find(query).ToList();
-		return results.Count.Equals(0) ? null : results[0];
-	}
-
-	public static List<Jackpot> GetAll() {
-		return new Database()
-			.IO.GetCollection<Jackpot>("J4CKP0T")
-			.Find(Builders<Jackpot>.Filter.Empty)
-			.SortByDescending(x => x.EstimatedDate)
-			.ToList();
-	}
-
-	public void Save() {
-		// SANITY CHECK: Validate before saving to prevent invalid jackpot data
-		var validation = P4NTH30NSanityChecker.ValidateJackpot(Category, Current, Threshold);
-		if (!validation.IsValid) {
-			Console.WriteLine($"🔴 J4CKP0T save rejected for {Game}: {string.Join(", ", validation.Errors)}");
-			return; // Don't save invalid data
-		}
-
-		// Apply any repairs made during validation
-		if (validation.WasRepaired) {
-			Current = validation.ValidatedValue;
-			Threshold = validation.ValidatedThreshold;
-			Console.WriteLine($"🔧 J4CKP0T auto-repaired before save for {Game}: {string.Join(", ", validation.RepairActions)}");
-		}
-
-		FilterDefinitionBuilder<Jackpot> builder = Builders<Jackpot>.Filter;
-		FilterDefinition<Jackpot> filter =
-			builder.Eq("House", House)
-			& builder.Eq("Game", Game)
-			& builder.Eq("Category", Category);
-		List<Jackpot> dto = new Database()
-			.IO.GetCollection<Jackpot>("J4CKP0T")
-			.Find(filter)
-			.ToList();
-		if (dto.Count.Equals(0))
-			new Database().IO.GetCollection<Jackpot>("J4CKP0T").InsertOne(this);
-		else {
-			_id = dto[0]._id;
-			new Database().IO.GetCollection<Jackpot>("J4CKP0T").ReplaceOne(filter, this);
-		}
 	}
 }

@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using P4NTH30N.C0MMON;
 using P4NTH30N.C0MMON.SanityCheck;
+using P4NTH30N.C0MMON.Persistence;
 
 namespace P4NTH30N;
 
@@ -10,6 +11,7 @@ class PROF3T {
 	}
 
 	private static void HUN7ER() {
+		MongoUnitOfWork uow = new();
 		// Health monitoring for sanity checks
 		List<(string tier, double value, double threshold)> recentJackpots = new();
 		DateTime lastHealthCheck = DateTime.MinValue;
@@ -17,8 +19,8 @@ class PROF3T {
 		while (true) {
 			try {
 				DateTime DateLimit = DateTime.UtcNow.AddDays(5);
-				List<Credential> credentials = Credential.GetAll();
-				Credential.IntroduceProperties();
+				List<Credential> credentials = uow.Credentials.GetAll();
+				uow.Credentials.IntroduceProperties();
 
 				// Filter out banned credentials
 				credentials = [.. credentials.Where(x => x.Banned == false)];
@@ -28,7 +30,7 @@ class PROF3T {
 					.GroupBy(c => (c.House, c.Game))
 					.ToList();
 
-				List<Signal> signals = Signal.GetAll();
+				List<Signal> signals = uow.Signals.GetAll();
 				credentials.ForEach(x => {
 					// Check if there are any signals for this credential
 					bool hasSignals = signals.Any(s =>
@@ -40,11 +42,11 @@ class PROF3T {
 					if ((x.Balance < 3 && !hasSignals && !x.CashedOut) || (x.Balance < 0.2 && !x.CashedOut)) {
 						// Set to cashed out if: (no signals and balance < 3) OR (balance < 0.2 regardless of signals)
 						x.CashedOut = true;
-						x.Save();
+						uow.Credentials.Upsert(x);
 					} else if (x.Balance > 3 && x.CashedOut) {
 						// Set to false if balance > 3 and none of the previous conditions apply
 						x.CashedOut = false;
-						x.Save();
+						uow.Credentials.Upsert(x);
 					}
 				});
 
@@ -58,7 +60,7 @@ class PROF3T {
 
 						// Handle unlock timeout - use representative credential's lock/unlock
 						if (representative.Unlocked == false && DateTime.UtcNow > representative.UnlockTimeout)
-							representative.Unlock();
+							uow.Credentials.Unlock(representative);
 
 						double previousGrand =
 							representative.DPD.Data.Count > 0 ? representative.DPD.Data[^1].Grand : 0;
@@ -84,7 +86,7 @@ class PROF3T {
 							foreach (var cred in gameCredentials) {
 								cred.Jackpots = representative.Jackpots;
 								cred.DPD = representative.DPD;
-								cred.Save();
+								uow.Credentials.Upsert(cred);
 							}
 						}
 
@@ -155,7 +157,7 @@ class PROF3T {
 						foreach (var cred in gameCredentials) {
 							cred.Jackpots = representative.Jackpots;
 							cred.DPD = representative.DPD;
-							cred.Save();
+							uow.Credentials.Upsert(cred);
 						}
 					}
 
@@ -211,7 +213,7 @@ class PROF3T {
 								foreach (var cred in gameCredentials) {
 									cred.Jackpots = representative.Jackpots;
 									cred.DPD = representative.DPD;
-									cred.Save();
+									uow.Credentials.Upsert(cred);
 								}
 							}
 
@@ -253,51 +255,51 @@ class PROF3T {
 							double MinutesToMini = SafeMinutesTo(representative.Thresholds.Mini, representative.Jackpots.Mini);
 
 							if (representative.Settings.SpinGrand)
-								new Jackpot(
+								uow.Jackpots.Upsert(new Jackpot(
 									representative,
 									"Grand",
 									representative.Jackpots.Grand,
 									representative.Thresholds.Grand,
 									4,
 									DateTime.UtcNow.AddMinutes(MinutesToGrand)
-								).Save();
+							));
 
 							if (representative.Settings.SpinMajor)
-								new Jackpot(
+								uow.Jackpots.Upsert(new Jackpot(
 									representative,
 									"Major",
 									representative.Jackpots.Major,
 									representative.Thresholds.Major,
 									3,
 									DateTime.UtcNow.AddMinutes(MinutesToMajor)
-								).Save();
+							));
 
 							if (representative.Settings.SpinMinor)
-								new Jackpot(
+								uow.Jackpots.Upsert(new Jackpot(
 									representative,
 									"Minor",
 									representative.Jackpots.Minor,
 									representative.Thresholds.Minor,
 									2,
 									DateTime.UtcNow.AddMinutes(MinutesToMinor)
-								).Save();
+							));
 
 							if (representative.Settings.SpinMini)
-								new Jackpot(
+								uow.Jackpots.Upsert(new Jackpot(
 									representative,
 									"Mini",
 									representative.Jackpots.Mini,
 									representative.Thresholds.Mini,
 									1,
 									DateTime.UtcNow.AddMinutes(MinutesToMini)
-								).Save();
+							));
 						}
 					}
 				});
 
 				// Get all jackpots for enabled games (where we have credentials)
 				var gameKeys = credentialGroups.Select(g => (House: g.Key.House, Game: g.Key.Game)).ToHashSet();
-				List<Jackpot> jackpots = Jackpot
+				List<Jackpot> jackpots = uow.Jackpots
 					.GetAll()
 					.FindAll(x => x.EstimatedDate < DateLimit)
 					.FindAll(x => gameKeys.Contains((x.House, x.Game)));
@@ -396,13 +398,13 @@ class PROF3T {
 									Signal signal = new Signal(jackpot.Priority, credential);
 									signal.Timeout = DateTime.UtcNow.AddSeconds(30);
 									signal.Acknowledged = true;
-									qualified.Add(signal);
-									if (dto == null)
-										signal.Save();
-									else if (signal.Priority > dto.Priority) {
-										signal.Acknowledged = dto.Acknowledged;
-										signal.Save();
-									}
+							qualified.Add(signal);
+							if (dto == null)
+								uow.Signals.Upsert(signal);
+							else if (signal.Priority > dto.Priority) {
+								signal.Acknowledged = dto.Acknowledged;
+								uow.Signals.Upsert(signal);
+							}
 								}
 							);
 						}
@@ -484,11 +486,11 @@ class PROF3T {
 							&& s.Username == signal.Username
 						);
 						if (qc == null) {
-							signal.Delete();
+							uow.Signals.Delete(signal);
 						}
 						else if (signal.Acknowledged && signal.Timeout < DateTime.UtcNow) {
 							signal.Acknowledged = false;
-							signal.Save();
+							uow.Signals.Upsert(signal);
 						}
 					}
 				);

@@ -5,6 +5,7 @@ using Figgle;
 using P4NTH30N.C0MMON;
 using P4NTH30N.C0MMON.Versioning;
 using P4NTH30N.C0MMON.SanityCheck;
+using P4NTH30N.C0MMON.Persistence;
 using P4NTH30N.Services;
 using System.Drawing;
 using System.Text.Json;
@@ -19,7 +20,10 @@ namespace P4NTH30N {
 }
 
 internal class Program {
+	private static readonly MongoUnitOfWork s_uow = new();
+
     private static void Main(string[] args) {
+		MongoUnitOfWork uow = s_uow;
         string runMode = args.Length > 0 ? args[0] : "H4ND"; bool listenForSignals = true;
         if (new[] { "H4ND", "H0UND" }.Contains(runMode).Equals(false)) {
             string errorMessage = $"RunMode Argument was invalid. ({runMode})";
@@ -45,14 +49,16 @@ internal class Program {
                 while (true) {
                     // Credential credential = Credential.GetBy("FireKirin", "MIDAS 2", "Stone1020");
                     // Signal signal = new Signal(4, credential);
-                    Signal? signal = listenForSignals ? (overrideSignal ?? Signal.GetNext()) : null;
-                    Credential? credential = (signal == null) ? Credential.GetNext() : Credential.GetBy(signal.House, signal.Game, signal.Username); overrideSignal = null;
+					Signal? signal = listenForSignals ? (overrideSignal ?? uow.Signals.GetNext()) : null;
+					Credential? credential = (signal == null) ? uow.Credentials.GetNext(false) : uow.Credentials.GetBy(signal.House, signal.Game, signal.Username);
+					overrideSignal = null;
 
                     if (credential == null) {
                         continue;
                     } else {
-                        credential.Lock();
-                        signal?.Acknowledge();
+						uow.Credentials.Lock(credential);
+						if (signal != null)
+							uow.Signals.Acknowledge(signal);
 
 						if (signal != null) {
 							if (driver == null) {
@@ -65,18 +71,18 @@ internal class Program {
                                 case "OrionStars":
                                     if (lastCredential == null || lastCredential.Game != credential.Game) {
                                         driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
-                                        if (Screen.WaitForColor(new Point(510, 110), Color.FromArgb(255, 2, 119, 2), 60) == false) {
-                                            Console.WriteLine($"{DateTime.Now} - {credential.House} took too long to load for {credential.Game}");
-                                            credential.Lock(); //throw new Exception("Took too long to load.");
-                                        }
+										if (Screen.WaitForColor(new Point(510, 110), Color.FromArgb(255, 2, 119, 2), 60) == false) {
+											Console.WriteLine($"{DateTime.Now} - {credential.House} took too long to load for {credential.Game}");
+											uow.Credentials.Lock(credential); //throw new Exception("Took too long to load.");
+										}
                                         Mouse.Click(535, 615);
                                     }
-                                    if (OrionStars.Login(driver, credential.Username, credential.Password) == false) {
-                                        Console.WriteLine($"{DateTime.Now} - {credential.House} login failed for {credential.Game}");
-                                        Console.WriteLine($"{DateTime.Now} - {credential.Username} : {credential.Password}");
-                                        credential.Lock();
-                                        continue;
-                                    }
+										if (OrionStars.Login(driver, credential.Username, credential.Password) == false) {
+											Console.WriteLine($"{DateTime.Now} - {credential.House} login failed for {credential.Game}");
+											Console.WriteLine($"{DateTime.Now} - {credential.Username} : {credential.Password}");
+											uow.Credentials.Lock(credential);
+											continue;
+										}
                                     break;
                                 default:
                                     throw new Exception($"Uncrecognized Game Found. ('{credential.Game}')");
@@ -92,11 +98,12 @@ internal class Program {
 						double extensionGrand = Convert.ToDouble(activeDriver.ExecuteScript("return window.parent.Grand")) / 100;
 						while (extensionGrand.Equals(0)) {
 							Thread.Sleep(500);
-							if (grandChecked++ > 40) {
-								ProcessEvent alert = ProcessEvent.Log("H4ND",$"Grand check signalled an Extension Failure for {credential.Game}");
-								Console.WriteLine($"Checking Grand on {credential.Game} failed at {grandChecked} attempts.");
-								alert.Record(credential).Save(); throw new Exception("Extension failure.");
-							}
+									if (grandChecked++ > 40) {
+										ProcessEvent alert = ProcessEvent.Log("H4ND",$"Grand check signalled an Extension Failure for {credential.Game}");
+										Console.WriteLine($"Checking Grand on {credential.Game} failed at {grandChecked} attempts.");
+										uow.ProcessEvents.Insert(alert.Record(credential));
+										throw new Exception("Extension failure.");
+									}
 							extensionGrand = Convert.ToDouble(activeDriver.ExecuteScript("return window.parent.Grand")) / 100;
 						}
 
@@ -110,14 +117,14 @@ internal class Program {
                         var balanceValidation = P4NTH30NSanityChecker.ValidateBalance(balances.Balance, credential.Username ?? "Unknown");
                         
                         // Check for critical validation failures
-                        if (!grandValidation.IsValid || !majorValidation.IsValid ||
-                            !minorValidation.IsValid || !miniValidation.IsValid || !balanceValidation.IsValid)
-                        {
-                            Dashboard.AddLog($"🔴 Critical validation failure for {credential.Game} - {credential.Username}", "red");
-                            Dashboard.Render();
-                            credential.Unlock();
-                            continue; // Skip this iteration for corrupted data
-                        }
+							if (!grandValidation.IsValid || !majorValidation.IsValid ||
+								!minorValidation.IsValid || !miniValidation.IsValid || !balanceValidation.IsValid)
+							{
+								Dashboard.AddLog($"🔴 Critical validation failure for {credential.Game} - {credential.Username}", "red");
+								Dashboard.Render();
+								uow.Credentials.Unlock(credential);
+								continue; // Skip this iteration for corrupted data
+							}
                         
                         // Use validated values for all subsequent processing
                         double currentGrand = grandValidation.ValidatedValue;
@@ -154,27 +161,27 @@ internal class Program {
                             recentJackpots.RemoveRange(0, 4);
                         }
 
-                        if (signal != null) {
-                            signal.Acknowledge();
-                            File.WriteAllText(@"D:\S1GNAL.json", JsonSerializer.Serialize(true));
-                            switch (signal.Priority) {
-                                case 1: signal.Receive(currentMini); break;
-                                case 2: signal.Receive(currentMinor); break;
-                                case 3: signal.Receive(currentMajor); break;
-                                case 4: signal.Receive(currentGrand); break;
-                            }
+							if (signal != null) {
+								uow.Signals.Acknowledge(signal);
+								File.WriteAllText(@"D:\S1GNAL.json", JsonSerializer.Serialize(true));
+								switch (signal.Priority) {
+									case 1: signal.Receive(currentMini, uow.Received); break;
+									case 2: signal.Receive(currentMinor, uow.Received); break;
+									case 3: signal.Receive(currentMajor, uow.Received); break;
+									case 4: signal.Receive(currentGrand, uow.Received); break;
+								}
 
-                            signal.Acknowledge();
-                            switch (credential.Game) {
-                                case "FireKirin":
-                                    Mouse.Click(80, 235); Thread.Sleep(800); //Reset Hall Screen
-                                    FireKirin.SpinSlots(driver, credential, signal);
-                                    break;
-                                case "OrionStars":
-                                    Mouse.Click(80, 200); Thread.Sleep(800);
-                                    // overrideSignal = Games.Gold777(driver, credential, signal);
-                                    bool FortunePiggyLoaded = Games.FortunePiggy.LoadSucessfully(driver, credential, signal);
-                                    overrideSignal = FortunePiggyLoaded ? Games.FortunePiggy.Spin(driver, credential, signal) : null;
+								uow.Signals.Acknowledge(signal);
+								switch (credential.Game) {
+									case "FireKirin":
+										Mouse.Click(80, 235); Thread.Sleep(800); //Reset Hall Screen
+										FireKirin.SpinSlots(driver, credential, signal, uow);
+										break;
+									case "OrionStars":
+										Mouse.Click(80, 200); Thread.Sleep(800);
+										// overrideSignal = Games.Gold777(driver, credential, signal);
+										bool FortunePiggyLoaded = Games.FortunePiggy.LoadSucessfully(driver, credential, signal, uow);
+										overrideSignal = FortunePiggyLoaded ? Games.FortunePiggy.Spin(driver, credential, signal, uow) : null;
 
                                     driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
                                     P4NTH30N.C0MMON.Screen.WaitForColor(new Point(715, 128), Color.FromArgb(255, 254, 242, 181));
@@ -188,16 +195,16 @@ internal class Program {
                             balances = GetBalancesWithRetry(credential);
                             // Re-validate post-spin balances
                             var postSpinBalanceValidation = P4NTH30NSanityChecker.ValidateBalance(balances.Balance, credential.Username ?? "Unknown");
-                            validatedBalance = postSpinBalanceValidation.ValidatedBalance;
-                        } else if (signal == null) {
-                            credential.Lock();
-                        }
+							validatedBalance = postSpinBalanceValidation.ValidatedBalance;
+						} else if (signal == null) {
+							uow.Credentials.Lock(credential);
+						}
 
                         // Use validated values from earlier in the processing loop
                         // currentMajor, currentMinor, currentMini already set from validation above
 
 if ((lastRetrievedGrand.Equals(currentGrand) && (lastCredential == null || credential.Game != lastCredential.Game && credential.House != lastCredential.House)) == false) {
-                            Signal? gameSignal = Signal.GetOne(credential.House, credential.Game);
+							Signal? gameSignal = uow.Signals.GetOne(credential.House, credential.Game);
                             if (currentGrand < credential.Jackpots.Grand && credential.Jackpots.Grand - currentGrand > 0.1) {
                                 if (credential.DPD.Toggles.GrandPopped == true) {
                                     if (currentGrand >= 0 && currentGrand <= 10000) {
@@ -206,7 +213,7 @@ if ((lastRetrievedGrand.Equals(currentGrand) && (lastCredential == null || crede
                                     credential.DPD.Toggles.GrandPopped = false;
                                     credential.Thresholds.NewGrand(credential.Jackpots.Grand);
                                     if (gameSignal != null && gameSignal.Priority.Equals(4))
-                                        Signal.DeleteAll(credential.House, credential.Game);
+									uow.Signals.DeleteAll(credential.House, credential.Game);
 } else
                                     credential.DPD.Toggles.GrandPopped = true;
                             } else {
@@ -223,7 +230,7 @@ if (currentMajor < credential.Jackpots.Major && credential.Jackpots.Major - curr
                                     credential.DPD.Toggles.MajorPopped = false;
                                     credential.Thresholds.NewMajor(credential.Jackpots.Major);
                                     if (gameSignal != null && gameSignal.Priority.Equals(3))
-                                        Signal.DeleteAll(credential.House, credential.Game);
+									uow.Signals.DeleteAll(credential.House, credential.Game);
 } else
                                     credential.DPD.Toggles.MajorPopped = true;
                             } else {
@@ -240,7 +247,7 @@ if (currentMinor < credential.Jackpots.Minor && credential.Jackpots.Minor - curr
                                     credential.DPD.Toggles.MinorPopped = false;
                                     credential.Thresholds.NewMinor(credential.Jackpots.Minor);
                                     if (gameSignal != null && gameSignal.Priority.Equals(2))
-                                        Signal.DeleteAll(credential.House, credential.Game);
+									uow.Signals.DeleteAll(credential.House, credential.Game);
 } else
                                     credential.DPD.Toggles.MinorPopped = true;
                             } else {
@@ -257,7 +264,7 @@ if (currentMini < credential.Jackpots.Mini && credential.Jackpots.Mini - current
                                     credential.DPD.Toggles.MiniPopped = false;
                                     credential.Thresholds.NewMini(credential.Jackpots.Mini);
                                     if (gameSignal != null && gameSignal.Priority.Equals(1))
-                                        Signal.DeleteAll(credential.House, credential.Game);
+									uow.Signals.DeleteAll(credential.House, credential.Game);
 } else
                                     credential.DPD.Toggles.MiniPopped = true;
                             } else {
@@ -269,15 +276,15 @@ if (currentMini < credential.Jackpots.Mini && credential.Jackpots.Mini - current
                             throw new Exception("Invalid grand retrieved.");
                         }
 
-                        if (credential.Settings.Gold777 == null)
-                            credential.Settings.Gold777 = new Gold777_Settings();
-                        credential.Updated = true;
-                        credential.Unlock();
+						if (credential.Settings.Gold777 == null)
+							credential.Settings.Gold777 = new Gold777_Settings();
+						credential.Updated = true;
+						uow.Credentials.Unlock(credential);
 
-                        credential.LastUpdated = DateTime.UtcNow;
-                        credential.Balance = validatedBalance; // Use validated balance
-                        lastRetrievedGrand = currentGrand;
-                        credential.Save();
+						credential.LastUpdated = DateTime.UtcNow;
+						credential.Balance = validatedBalance; // Use validated balance
+						lastRetrievedGrand = currentGrand;
+						uow.Credentials.Upsert(credential);
                         lastCredential = credential;
 
                         // SANITY CHECK: Periodic health monitoring
@@ -369,12 +376,12 @@ if (currentMini < credential.Jackpots.Mini && credential.Jackpots.Mini - current
                 default:
                     throw new Exception($"Uncrecognized Game Found. ('{credential.Game}')");
             }
-        } catch (InvalidOperationException ex) when (ex.Message.Contains("Your account has been suspended")) {
-            Dashboard.AddLog($"Account suspended for {credential.Username} on {credential.Game}. Marking as banned.", "red");
-            credential.Banned = true;
-            credential.Save();
-            throw;
-        }
+		} catch (InvalidOperationException ex) when (ex.Message.Contains("Your account has been suspended")) {
+			Dashboard.AddLog($"Account suspended for {credential.Username} on {credential.Game}. Marking as banned.", "red");
+			credential.Banned = true;
+			s_uow.Credentials.Upsert(credential);
+			throw;
+		}
     }
 
     private static (double Balance, double Grand, double Major, double Minor, double Mini) GetBalancesWithRetry(
@@ -413,13 +420,13 @@ if (currentMini < credential.Jackpots.Mini && credential.Jackpots.Mini - current
             Dashboard.AddLog($"Grand jackpot is 0 for {credential.Game}, retrying attempt {grandChecked}/40", "yellow");
             Dashboard.Render();
             Thread.Sleep(500);
-            if (grandChecked > 40) {
-                ProcessEvent alert = ProcessEvent.Log("H4ND", $"Grand check signalled an Extension Failure for {credential.Game}");
-                Dashboard.AddLog($"Checking Grand on {credential.Game} failed at {grandChecked} attempts.", "red");
-                Dashboard.Render();
-                alert.Record(credential).Save();
-                throw new Exception("Extension failure.");
-            }
+			if (grandChecked > 40) {
+				ProcessEvent alert = ProcessEvent.Log("H4ND", $"Grand check signalled an Extension Failure for {credential.Game}");
+				Dashboard.AddLog($"Checking Grand on {credential.Game} failed at {grandChecked} attempts.", "red");
+				Dashboard.Render();
+				s_uow.ProcessEvents.Insert(alert.Record(credential));
+				throw new Exception("Extension failure.");
+			}
             Dashboard.AddLog($"Retrying balance query for {credential.Game} (attempt {grandChecked})", "yellow");
             Dashboard.Render();
             balances = ExecuteQuery();
