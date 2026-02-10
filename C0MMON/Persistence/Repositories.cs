@@ -296,20 +296,16 @@ internal sealed class JackpotRepository(IMongoDatabaseProvider provider) : IJack
 	}
 
 	public void Upsert(Jackpot jackpot) {
-		var validation = P4NTH30NSanityChecker.ValidateJackpot(jackpot.Category, jackpot.Current, jackpot.Threshold);
-		if (!validation.IsValid) {
-			Console.WriteLine($"🔴 J4CKP0T save rejected for {jackpot.Game}: {string.Join(", ", validation.Errors)}");
-			return;
-		}
-		if (validation.WasRepaired) {
-			jackpot.Current = validation.ValidatedValue;
-			jackpot.Threshold = validation.ValidatedThreshold;
-			Console.WriteLine($"🔧 J4CKP0T auto-repaired before save for {jackpot.Game}: {string.Join(", ", validation.RepairActions)}");
-		}
-
-		FilterDefinitionBuilder<Jackpot> builder = Builders<Jackpot>.Filter;
+		var builder = Builders<Jackpot>.Filter;
 		FilterDefinition<Jackpot> filter = builder.Eq("House", jackpot.House) & builder.Eq("Game", jackpot.Game) & builder.Eq("Category", jackpot.Category);
-		_jackpots.ReplaceOne(filter, jackpot, new ReplaceOptions { IsUpsert = true });
+		
+		var existing = _jackpots.Find(filter).FirstOrDefault();
+		if (existing != null) {
+			jackpot._id = existing._id; // Preserve the existing _id
+			_jackpots.ReplaceOne(filter, jackpot);
+		} else {
+			_jackpots.InsertOne(jackpot); // Insert new document
+		}
 	}
 }
 

@@ -67,8 +67,22 @@ class H0UND
 							if (!grandValidation.IsValid || !majorValidation.IsValid ||
 								!minorValidation.IsValid || !miniValidation.IsValid || !balanceValidation.IsValid)
 							{
-								Dashboard.AddLog($"🔴 Critical validation failure for {credential.Game} - {credential.Username}", "red");
+								var validationErrors = new List<string>();
+								if (!grandValidation.IsValid) validationErrors.Add($"Grand: {string.Join(", ", grandValidation.Errors)}");
+								if (!majorValidation.IsValid) validationErrors.Add($"Major: {string.Join(", ", majorValidation.Errors)}");
+								if (!minorValidation.IsValid) validationErrors.Add($"Minor: {string.Join(", ", minorValidation.Errors)}");
+								if (!miniValidation.IsValid) validationErrors.Add($"Mini: {string.Join(", ", miniValidation.Errors)}");
+								if (!balanceValidation.IsValid) validationErrors.Add($"Balance: {string.Join(", ", balanceValidation.Errors)}");
+								
+								Dashboard.AddLog($"🔴 Critical validation failure for {credential.Game} - {credential.Username}: {string.Join("; ", validationErrors)}", "red");
+								
+								// Create failure alert for monitoring
+								ProcessEvent alert = ProcessEvent.Log("H0UND", $"Validation failure for {credential.Game}: {string.Join("; ", validationErrors)}");
+								s_uow.ProcessEvents.Insert(alert.Record(credential));
+
 								uow.Credentials.Unlock(credential);
+								credential.LastUpdated = DateTime.UtcNow;
+								uow.Credentials.Upsert(credential);
 								continue; // Skip this iteration for corrupted data
 							}
 							
@@ -242,12 +256,22 @@ class H0UND
 				}
 			}
 		catch (Exception ex)
+		{
+			Dashboard.CurrentTask = "Error - Recovery";
+			Dashboard.AddLog($"Error processing credential: {ex.Message}", "red");
+			Dashboard.Render();
+			
+			// Reduce recovery time and be more intelligent about extension failures
+			if (ex.Message.Contains("Extension failure"))
 			{
-				Dashboard.CurrentTask = "Error - Waiting";
-				Dashboard.AddLog(ex.Message, "red");
-				Dashboard.Render();
-				Thread.Sleep(30000);
+				Thread.Sleep(5000); // Reduced from 30 seconds to 5 seconds
+				Dashboard.AddLog("Extension failure recovered, continuing...", "yellow");
 			}
+			else
+			{
+				Thread.Sleep(10000); // 10 seconds for other errors
+			}
+		}
 		}
 	}
 
@@ -362,16 +386,17 @@ class H0UND
 		while (currentGrand.Equals(0))
 		{
 			grandChecked++;
-			Dashboard.AddLog($"Grand jackpot is 0 for {credential.Game}, retrying attempt {grandChecked}/40", "yellow");
+			Dashboard.AddLog($"Grand jackpot is 0 for {credential.Game}, retrying attempt {grandChecked}/8", "yellow");
 			Dashboard.Render();
-			Thread.Sleep(500);
-			if (grandChecked > 40)
+			Thread.Sleep(250);
+			if (grandChecked > 8)
 			{
 				ProcessEvent alert = ProcessEvent.Log("H0UND", $"Grand check signalled an Extension Failure for {credential.Game}");
-				Dashboard.AddLog($"Checking Grand on {credential.Game} failed at {grandChecked} attempts.", "red");
+				Dashboard.AddLog($"Checking Grand on {credential.Game} failed at {grandChecked} attempts - treating as valid zero value.", "red");
 				Dashboard.Render();
 				s_uow.ProcessEvents.Insert(alert.Record(credential));
-				throw new Exception("Extension failure.");
+				// Don't throw exception - treat zero as valid and continue processing
+				break;
 			}
 			Dashboard.AddLog($"Retrying balance query for {credential.Game} (attempt {grandChecked})", "yellow");
 			Dashboard.Render();

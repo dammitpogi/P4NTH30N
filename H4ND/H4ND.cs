@@ -123,6 +123,8 @@ internal class Program {
 								Dashboard.AddLog($"🔴 Critical validation failure for {credential.Game} - {credential.Username}", "red");
 								Dashboard.Render();
 								uow.Credentials.Unlock(credential);
+								credential.LastUpdated = DateTime.UtcNow;
+								uow.Credentials.Upsert(credential);
 								continue; // Skip this iteration for corrupted data
 							}
                         

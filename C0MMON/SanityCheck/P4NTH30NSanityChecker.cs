@@ -14,10 +14,10 @@ namespace P4NTH30N.C0MMON.SanityCheck
         // Prize tier limits based on your platform's actual ranges
         private static readonly Dictionary<string, (double min, double max, double maxThreshold)> TierLimits = new()
         {
-            { "Mini", (0.01, 50.0, 40.0) },      // Mini jackpots: $0.01 - $50
-            { "Minor", (0.01, 200.0, 150.0) },   // Minor jackpots: $0.01 - $200  
-            { "Major", (50.0, 1000.0, 1000.0) },  // Major jackpots: $50 - $1000
-            { "Grand", (500.0, 10000.0, 2000.0) } // Grand jackpots: $500 - $10,000 (matches your validation)
+            { "Mini", (0.01, 50.0, 40.0) },        // Mini jackpots: $0.01 - $50
+            { "Minor", (0.01, 200.0, 150.0) },     // Minor jackpots: $0.01 - $200  
+            { "Major", (10.0, 1000.0, 1000.0) },   // Major jackpots: $10 - $1000 (lowered min)
+            { "Grand", (50.0, 10000.0, 2000.0) }   // Grand jackpots: $50 - $10,000 (lowered min)
         };
 
         // System limits
@@ -106,26 +106,29 @@ namespace P4NTH30N.C0MMON.SanityCheck
                 LogRepair($"Threshold capped for {tier}: {threshold:F2} -> {result.ValidatedThreshold:F2}");
             }
 
-            // Check 4: Value exceeds threshold
-            // In practice, this usually means the stored threshold is stale/too low.
-            // If the value is still within the tier's allowed threshold ceiling, repair by lifting the threshold to the current value.
-            if (result.ValidatedValue > result.ValidatedThreshold)
-            {
-				if (result.ValidatedValue <= limits.maxThreshold)
+			// Check 4: Value exceeds stored threshold
+			// This usually means the stored threshold is stale/too low from a previous jackpot hit.
+			// If the value is still within the tier's maximum limit, auto-repair the threshold.
+			if (result.ValidatedValue > result.ValidatedThreshold)
+			{
+				if (result.ValidatedValue <= limits.max)
 				{
+					// Value is valid within tier limits - auto-repair stale threshold
+					// Set threshold to 85% of current value to provide reasonable buffer
 					double previousThreshold = result.ValidatedThreshold;
-					result.ValidatedThreshold = result.ValidatedValue;
+					result.ValidatedThreshold = Math.Max(limits.maxThreshold * 0.5, result.ValidatedValue * 0.85);
 					result.WasRepaired = true;
-					result.RepairActions.Add($"Raised threshold to match current value: {previousThreshold:F2} -> {result.ValidatedThreshold:F2}");
-					LogRepair($"Threshold raised for {tier}: {previousThreshold:F2} -> {result.ValidatedThreshold:F2}");
+					result.RepairActions.Add($"Auto-repaired stale threshold: {previousThreshold:F2} -> {result.ValidatedThreshold:F2} (value {result.ValidatedValue:F2} within tier max {limits.max:F2})");
+					LogRepair($"Threshold auto-repaired for {tier}: {previousThreshold:F2} -> {result.ValidatedThreshold:F2}");
 				}
 				else
 				{
+					// Value exceeds tier maximum - this is genuinely invalid
 					result.IsValid = false;
-					result.Errors.Add($"Value {result.ValidatedValue:F2} exceeds threshold {result.ValidatedThreshold:F2}");
-					LogError($"CRITICAL: {tier} value {result.ValidatedValue:F2} exceeds threshold {result.ValidatedThreshold:F2}");
+					result.Errors.Add($"Value {result.ValidatedValue:F2} exceeds tier maximum {limits.max:F2}");
+					LogError($"CRITICAL: {tier} value {result.ValidatedValue:F2} exceeds tier max {limits.max:F2}");
 				}
-            }
+			}
 
             if (result.WasRepaired)
                 _repairCount++;

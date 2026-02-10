@@ -1,7 +1,0 @@
-{
-  "report": "framework_upgrades",
-  "status": "completed",
-  "summary": "Added framework upgrade gates and evidence pack requirements to the codex.",
-  "artifact": "Codex/Artifacts/CODEX_of_Provenance_v1.0.3.json",
-  "version": "1.0.0"
-}

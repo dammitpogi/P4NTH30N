@@ -4,10 +4,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
+using P4NTH30N.C0MMON;
+using P4NTH30N.C0MMON.SanityCheck;
 
 namespace HUN7ER.SelfMonitoring
 {
-    public class HunterWatchdog
+    public class HunterWatchdog : IDisposable
     {
         private readonly string _logFilePath;
         private readonly Timer _monitorTimer;
@@ -53,7 +55,7 @@ namespace HUN7ER.SelfMonitoring
                         return;
                     }
 
-                    var entries = HUN7ER.SanityCheck.GameDataSanityChecker.SanitizeAndRepairEntries(recentLines);
+                    var entries = GameDataSanityChecker.SanitizeAndRepairEntries(recentLines);
                     var anomalies = DetectAnomalies(entries);
 
                     if (anomalies.Count > 0)
@@ -88,7 +90,7 @@ namespace HUN7ER.SelfMonitoring
             }
         }
 
-        private List<AnomalyReport> DetectAnomalies(List<HUN7ER.SanityCheck.GameDataSanityChecker.GameEntry> entries)
+        private List<AnomalyReport> DetectAnomalies(List<GameDataSanityChecker.GameEntry> entries)
         {
             var anomalies = new List<AnomalyReport>();
 
@@ -255,6 +257,11 @@ namespace HUN7ER.SelfMonitoring
             _monitorTimer?.Dispose();
             WriteToLog("WATCHDOG", "Service stopped");
         }
+
+        public void Dispose()
+        {
+            Stop();
+        }
     }
 
     public class AnomalyReport
@@ -262,7 +269,7 @@ namespace HUN7ER.SelfMonitoring
         public string Type { get; set; }
         public string Severity { get; set; }
         public string Message { get; set; }
-        public HUN7ER.SanityCheck.GameDataSanityChecker.GameEntry Entry { get; set; }
+        public GameDataSanityChecker.GameEntry Entry { get; set; }
         public DateTime Timestamp { get; set; }
     }
 

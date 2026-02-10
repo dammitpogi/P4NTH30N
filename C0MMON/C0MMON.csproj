@@ -1,16 +1,54 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>net10.0-windows7.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UseWindowsForms>true</UseWindowsForms>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
+
+	<PropertyGroup>
+		<RepoRoot>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..'))\</RepoRoot>
+		<ReleasesRoot>$(RepoRoot)Releases\</ReleasesRoot>
+		<ReleasePrefix>CANON_P4NTH30N_Rollout_v</ReleasePrefix>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<PackageReference Include="H.InputSimulator" Version="1.5.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.12" />
+		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="9.0.12" />
 		<PackageReference Include="MongoDB.Driver" Version="3.6.0" />
+		<PackageReference Include="MongoDB.EntityFrameworkCore" Version="9.0.4" />
 		<PackageReference Include="Selenium.WebDriver" Version="4.40.0" />
 		<PackageReference Include="Spectre.Console" Version="0.54.0" />
 	</ItemGroup>
+
+	<Target Name="CopyToReleases" AfterTargets="Build" Condition="'$(Configuration)' == 'Release'">
+		<MakeDir Directories="$(ReleasesRoot)" />
+
+		<Exec
+			Condition="'$(VersionNumber)' == ''"
+			Command="powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;$root='$(ReleasesRoot)'; $prefix='$(ReleasePrefix)'; $max=0; if (Test-Path -LiteralPath $root) { $re='^'+[regex]::Escape($prefix)+'(?&lt;v&gt;[0-9]{4})$'; Get-ChildItem -LiteralPath $root -Directory -ErrorAction SilentlyContinue | ForEach-Object { if ($_.Name -match $re) { $v=[int]$matches.v; if ($v -gt $max) { $max=$v } } } }; '{0:D4}' -f ($max+1)&quot;"
+			ConsoleToMSBuild="true">
+			<Output TaskParameter="ConsoleOutput" ItemName="_ComputedVersion" />
+		</Exec>
+
+		<PropertyGroup Condition="'$(VersionNumber)' == ''">
+			<VersionNumber>@(_ComputedVersion)</VersionNumber>
+		</PropertyGroup>
+
+		<PropertyGroup>
+			<ReleaseRolloutDir>$(ReleasesRoot)$(ReleasePrefix)$(VersionNumber)\</ReleaseRolloutDir>
+		</PropertyGroup>
+
+		<MakeDir Directories="$(ReleaseRolloutDir)" />
+
+		<ItemGroup>
+			<_ReleaseBinaries Include="$(MSBuildProjectDirectory)\bin\$(Configuration)\net10.0-windows*\*.exe" />
+			<_ReleaseBinaries Include="$(MSBuildProjectDirectory)\bin\$(Configuration)\net10.0-windows*\*.dll" />
+		</ItemGroup>
+
+		<Copy SourceFiles="@(_ReleaseBinaries)" DestinationFolder="$(ReleaseRolloutDir)" SkipUnchangedFiles="true" />
+	</Target>
 </Project>
 
 
