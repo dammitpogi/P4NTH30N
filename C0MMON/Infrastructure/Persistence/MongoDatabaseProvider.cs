@@ -1,6 +1,6 @@
 using MongoDB.Driver;
 
-namespace P4NTH30N.C0MMON.Persistence;
+namespace P4NTH30N.C0MMON.Infrastructure.Persistence;
 
 public interface IMongoDatabaseProvider {
 	IMongoDatabase Database { get; }

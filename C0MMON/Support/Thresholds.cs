@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.Serialization;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace P4NTH30N.C0MMON;
@@ -12,47 +13,45 @@ public class Thresholds {
 
 	public double Grand {
 		get => _grand;
-		set => _grand = Sanitize(value);
+		set => _grand = value;
 	}
 
 	public double Major {
 		get => _major;
-		set => _major = Sanitize(value);
+		set => _major = value;
 	}
 
 	public double Minor {
 		get => _minor;
-		set => _minor = Sanitize(value);
+		set => _minor = value;
 	}
 
 	public double Mini {
 		get => _mini;
-		set => _mini = Sanitize(value);
+		set => _mini = value;
 	}
 
 	public void NewGrand(double priorJackpot) {
-		Grand = Math.Min(Math.Max(priorJackpot + 0.2, 0), 10000);
+		if (priorJackpot > Grand) {
+			Grand = priorJackpot;
+		}
 	}
 
 	public void NewMajor(double priorJackpot) {
-		Major = Math.Min(Math.Max(priorJackpot + 0.2, 0), 10000);
+		if (priorJackpot > Major) {
+			Major = priorJackpot;
+		}
 	}
 
 	public void NewMinor(double priorJackpot) {
-		Minor = Math.Min(Math.Max(priorJackpot + 0.2, 0), 10000);
+		if (priorJackpot > Minor) {
+			Minor = priorJackpot;
+		}
 	}
 
 	public void NewMini(double priorJackpot) {
-		Mini = Math.Min(Math.Max(priorJackpot + 0.2, 0), 10000);
-	}
-
-	private static double Sanitize(double value) {
-		if (double.IsNaN(value) || double.IsInfinity(value))
-			return 0;
-		if (value < 0)
-			return 0;
-		if (value > 10000)
-			return 10000;
-		return value;
+		if (priorJackpot > Mini) {
+			Mini = priorJackpot;
+		}
 	}
 }

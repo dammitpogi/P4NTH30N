@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Persistence;
+using P4NTH30N.C0MMON.Infrastructure.Persistence;
 
 namespace P4NTH30N.C0MMON.EF;
 

@@ -5,8 +5,7 @@ using Figgle;
 using P4NTH30N;
 using P4NTH30N.C0MMON;
 using P4NTH30N.C0MMON.Versioning;
-using P4NTH30N.C0MMON.SanityCheck;
-using P4NTH30N.C0MMON.Persistence;
+using P4NTH30N.C0MMON.Infrastructure.Persistence;
 using P4NTH30N.Services;
 
 namespace P4NTH30N;
@@ -56,70 +55,47 @@ class H0UND
 					{
 						var balances = GetBalancesWithRetry(credential);
 							
-						// SANITY CHECK: Validate all jackpot values before processing
-							var grandValidation = P4NTH30NSanityChecker.ValidateJackpot("Grand", balances.Grand, credential.Thresholds.Grand);
-							var majorValidation = P4NTH30NSanityChecker.ValidateJackpot("Major", balances.Major, credential.Thresholds.Major);
-							var minorValidation = P4NTH30NSanityChecker.ValidateJackpot("Minor", balances.Minor, credential.Thresholds.Minor);
-							var miniValidation = P4NTH30NSanityChecker.ValidateJackpot("Mini", balances.Mini, credential.Thresholds.Mini);
-						var balanceValidation = P4NTH30NSanityChecker.ValidateBalance(balances.Balance, credential.Username ?? "Unknown");
+						// Validate raw values before processing
+						bool rawValuesValid = 
+							!double.IsNaN(balances.Grand) && !double.IsInfinity(balances.Grand) && balances.Grand >= 0 &&
+							!double.IsNaN(balances.Major) && !double.IsInfinity(balances.Major) && balances.Major >= 0 &&
+							!double.IsNaN(balances.Minor) && !double.IsInfinity(balances.Minor) && balances.Minor >= 0 &&
+							!double.IsNaN(balances.Mini) && !double.IsInfinity(balances.Mini) && balances.Mini >= 0 &&
+							!double.IsNaN(balances.Balance) && !double.IsInfinity(balances.Balance) && balances.Balance >= 0;
 
-							// Check for critical validation failures
-							if (!grandValidation.IsValid || !majorValidation.IsValid ||
-								!minorValidation.IsValid || !miniValidation.IsValid || !balanceValidation.IsValid)
-							{
-								var validationErrors = new List<string>();
-								if (!grandValidation.IsValid) validationErrors.Add($"Grand: {string.Join(", ", grandValidation.Errors)}");
-								if (!majorValidation.IsValid) validationErrors.Add($"Major: {string.Join(", ", majorValidation.Errors)}");
-								if (!minorValidation.IsValid) validationErrors.Add($"Minor: {string.Join(", ", minorValidation.Errors)}");
-								if (!miniValidation.IsValid) validationErrors.Add($"Mini: {string.Join(", ", miniValidation.Errors)}");
-								if (!balanceValidation.IsValid) validationErrors.Add($"Balance: {string.Join(", ", balanceValidation.Errors)}");
-								
-								Dashboard.AddLog($"🔴 Critical validation failure for {credential.Game} - {credential.Username}: {string.Join("; ", validationErrors)}", "red");
-								
-								// Create failure alert for monitoring
-								ProcessEvent alert = ProcessEvent.Log("H0UND", $"Validation failure for {credential.Game}: {string.Join("; ", validationErrors)}");
-								s_uow.ProcessEvents.Insert(alert.Record(credential));
+						if (!rawValuesValid) {
+							Dashboard.AddLog($"🔴 Critical validation failure for {credential.Game} - {credential.Username}: invalid raw values", "red");
+							uow.Errors.Insert(ErrorLog.Create(
+								ErrorType.ValidationError,
+								"H0UND",
+								$"Invalid raw values for {credential.Username}@{credential.Game}: Grand={balances.Grand}, Major={balances.Major}, Minor={balances.Minor}, Mini={balances.Mini}, Balance={balances.Balance}",
+								ErrorSeverity.Critical
+							));
+							ProcessEvent alert = ProcessEvent.Log("H0UND", $"Validation failure for {credential.Game}: invalid raw values");
+							s_uow.ProcessEvents.Insert(alert.Record(credential));
+							uow.Credentials.Unlock(credential);
+							credential.LastUpdated = DateTime.UtcNow;
+							uow.Credentials.Upsert(credential);
+							continue;
+						}
 
-								uow.Credentials.Unlock(credential);
-								credential.LastUpdated = DateTime.UtcNow;
-								uow.Credentials.Upsert(credential);
-								continue; // Skip this iteration for corrupted data
-							}
-							
-							// Use validated values
-							double currentGrand = grandValidation.ValidatedValue;
-							double currentMajor = majorValidation.ValidatedValue;
-							double currentMinor = minorValidation.ValidatedValue;
-							double currentMini = miniValidation.ValidatedValue;
-							double currentBalance = balanceValidation.ValidatedBalance;
-							
-							// Log any repairs that were made
-							if (grandValidation.WasRepaired) {
-								Dashboard.AddLog($"🔧 Repaired Grand for {credential.Game}: {string.Join(", ", grandValidation.RepairActions)}", "yellow");
-							}
-							if (majorValidation.WasRepaired) {
-								Dashboard.AddLog($"🔧 Repaired Major for {credential.Game}: {string.Join(", ", majorValidation.RepairActions)}", "yellow");
-							}
-							if (minorValidation.WasRepaired) {
-								Dashboard.AddLog($"🔧 Repaired Minor for {credential.Game}: {string.Join(", ", minorValidation.RepairActions)}", "yellow");
-							}
-							if (miniValidation.WasRepaired) {
-								Dashboard.AddLog($"🔧 Repaired Mini for {credential.Game}: {string.Join(", ", miniValidation.RepairActions)}", "yellow");
-							}
-							if (balanceValidation.WasRepaired) {
-								Dashboard.AddLog($"🔧 Repaired Balance for {credential.Username}: {string.Join(", ", balanceValidation.RepairActions)}", "yellow");
-							}
-							
-							// Track validated values for health monitoring
-							recentJackpots.Add(("Grand", currentGrand, grandValidation.ValidatedThreshold));
-							recentJackpots.Add(("Major", currentMajor, majorValidation.ValidatedThreshold));
-							recentJackpots.Add(("Minor", currentMinor, minorValidation.ValidatedThreshold));
-							recentJackpots.Add(("Mini", currentMini, miniValidation.ValidatedThreshold));
-							
-							// Limit to last 40 entries (10 per tier)
-							if (recentJackpots.Count > 40) {
-								recentJackpots.RemoveRange(0, 4);
-							}
+						// Use values
+						double currentGrand = balances.Grand;
+						double currentMajor = balances.Major;
+						double currentMinor = balances.Minor;
+						double currentMini = balances.Mini;
+						double currentBalance = balances.Balance;
+
+						// Track values for health monitoring
+						recentJackpots.Add(("Grand", currentGrand, credential.Thresholds.Grand));
+						recentJackpots.Add(("Major", currentMajor, credential.Thresholds.Major));
+						recentJackpots.Add(("Minor", currentMinor, credential.Thresholds.Minor));
+						recentJackpots.Add(("Mini", currentMini, credential.Thresholds.Mini));
+						
+						// Limit to last 40 entries (10 per tier)
+						if (recentJackpots.Count > 40) {
+							recentJackpots.RemoveRange(0, 4);
+						}
 
 							if ((lastRetrievedGrand.Equals(currentGrand) && (lastCredential == null || credential.Game != lastCredential.Game && credential.House != lastCredential.House)) == false)
 							{
@@ -236,11 +212,11 @@ class H0UND
 							uow.Credentials.Upsert(credential);
 							lastCredential = credential;
 
-							// SANITY CHECK: Periodic health monitoring
+							// Periodic health monitoring
 							if ((DateTime.Now - lastHealthCheck).TotalMinutes >= 5) {
-								P4NTH30NSanityChecker.PerformHealthCheck(recentJackpots);
-								var healthStatus = P4NTH30NSanityChecker.GetSystemHealth();
-								Dashboard.AddLog($"💊 H0UND Health: {healthStatus.Status} | E:{healthStatus.ErrorCount} R:{healthStatus.RepairCount}", "blue");
+								var recentErrors = uow.Errors.GetBySource("H0UND").Take(10).ToList();
+								string status = recentErrors.Any(e => e.Severity == ErrorSeverity.Critical) ? "CRITICAL" : "HEALTHY";
+								Dashboard.AddLog($"💊 H0UND Health: {status} | Errors: {recentErrors.Count}", "blue");
 								lastHealthCheck = DateTime.Now;
 							}
 
@@ -287,22 +263,31 @@ class H0UND
 			{
 				case "FireKirin":
 				{
-					// Console.WriteLine($"{DateTime.Now} - Querying FireKirin balances and jackpot data for {credential.Username}");
 					var balances = FireKirin.QueryBalances(credential.Username, credential.Password);
 
-					// SANITY CHECK: Validate retrieved balances before logging
-					var balanceValidation = P4NTH30NSanityChecker.ValidateBalance(balances.Balance, credential.Username ?? "Unknown");
-					var grandValidation = P4NTH30NSanityChecker.ValidateJackpot("Grand", balances.Grand, 10000);
-					var majorValidation = P4NTH30NSanityChecker.ValidateJackpot("Major", balances.Major, 1000);
-					var minorValidation = P4NTH30NSanityChecker.ValidateJackpot("Minor", balances.Minor, 200);
-					var miniValidation = P4NTH30NSanityChecker.ValidateJackpot("Mini", balances.Mini, 50);
+					// Simple validation - reject invalid values
+					double validatedBalance = (double)balances.Balance;
+					double validatedGrand = (double)balances.Grand;
+					double validatedMajor = (double)balances.Major;
+					double validatedMinor = (double)balances.Minor;
+					double validatedMini = (double)balances.Mini;
 
-					// Use validated values for logging and return
-					double validatedBalance = balanceValidation.ValidatedBalance;
-					double validatedGrand = grandValidation.ValidatedValue;
-					double validatedMajor = majorValidation.ValidatedValue;
-					double validatedMinor = minorValidation.ValidatedValue;
-					double validatedMini = miniValidation.ValidatedValue;
+					// Check for invalid values and clamp to 0 if invalid
+					if (double.IsNaN(validatedBalance) || double.IsInfinity(validatedBalance) || validatedBalance < 0) {
+						validatedBalance = 0;
+					}
+					if (double.IsNaN(validatedGrand) || double.IsInfinity(validatedGrand) || validatedGrand < 0) {
+						validatedGrand = 0;
+					}
+					if (double.IsNaN(validatedMajor) || double.IsInfinity(validatedMajor) || validatedMajor < 0) {
+						validatedMajor = 0;
+					}
+					if (double.IsNaN(validatedMinor) || double.IsInfinity(validatedMinor) || validatedMinor < 0) {
+						validatedMinor = 0;
+					}
+					if (double.IsNaN(validatedMini) || double.IsInfinity(validatedMini) || validatedMini < 0) {
+						validatedMini = 0;
+					}
 
 					Dashboard.AddLog(
 						$"{credential.Game} - {credential.House} - {credential.Username} - ${validatedBalance:F2} - [{validatedGrand:F2}, {validatedMajor:F2}, {validatedMinor:F2}, {validatedMini:F2}]",
@@ -312,22 +297,31 @@ class H0UND
 				}
 				case "OrionStars":
 				{
-					// Console.WriteLine($"{DateTime.Now} - Querying OrionStars balances and jackpot data for {credential.Username}");
 					var balances = OrionStars.QueryBalances(credential.Username, credential.Password);
 
-					// SANITY CHECK: Validate retrieved balances before logging
-					var balanceValidation = P4NTH30NSanityChecker.ValidateBalance(balances.Balance, credential.Username ?? "Unknown");
-					var grandValidation = P4NTH30NSanityChecker.ValidateJackpot("Grand", balances.Grand, 10000);
-					var majorValidation = P4NTH30NSanityChecker.ValidateJackpot("Major", balances.Major, 1000);
-					var minorValidation = P4NTH30NSanityChecker.ValidateJackpot("Minor", balances.Minor, 200);
-					var miniValidation = P4NTH30NSanityChecker.ValidateJackpot("Mini", balances.Mini, 50);
+					// Simple validation - reject invalid values
+					double validatedBalance = (double)balances.Balance;
+					double validatedGrand = (double)balances.Grand;
+					double validatedMajor = (double)balances.Major;
+					double validatedMinor = (double)balances.Minor;
+					double validatedMini = (double)balances.Mini;
 
-					// Use validated values for logging and return
-					double validatedBalance = balanceValidation.ValidatedBalance;
-					double validatedGrand = grandValidation.ValidatedValue;
-					double validatedMajor = majorValidation.ValidatedValue;
-					double validatedMinor = minorValidation.ValidatedValue;
-					double validatedMini = miniValidation.ValidatedValue;
+					// Check for invalid values and clamp to 0 if invalid
+					if (double.IsNaN(validatedBalance) || double.IsInfinity(validatedBalance) || validatedBalance < 0) {
+						validatedBalance = 0;
+					}
+					if (double.IsNaN(validatedGrand) || double.IsInfinity(validatedGrand) || validatedGrand < 0) {
+						validatedGrand = 0;
+					}
+					if (double.IsNaN(validatedMajor) || double.IsInfinity(validatedMajor) || validatedMajor < 0) {
+						validatedMajor = 0;
+					}
+					if (double.IsNaN(validatedMinor) || double.IsInfinity(validatedMinor) || validatedMinor < 0) {
+						validatedMinor = 0;
+					}
+					if (double.IsNaN(validatedMini) || double.IsInfinity(validatedMini) || validatedMini < 0) {
+						validatedMini = 0;
+					}
 
 					Dashboard.AddLog(
 						$"{credential.Game} - {credential.House} - {credential.Username} - ${validatedBalance:F2} - [{validatedGrand:F2}, {validatedMajor:F2}, {validatedMinor:F2}, {validatedMini:F2}]",

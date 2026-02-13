@@ -2,60 +2,11 @@ using System;
 using System.Collections.Generic;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using P4NTH30N.C0MMON.SanityCheck;
+using P4NTH30N.C0MMON.Interfaces;
 
-namespace P4NTH30N.C0MMON.Persistence;
+namespace P4NTH30N.C0MMON.Infrastructure.Persistence;
 
-public interface ICredentialRepository {
-	List<Credential> GetAll();
-	void IntroduceProperties();
-	List<Credential> GetBy(string house, string game);
-	List<Credential> GetAllEnabledFor(string house, string game);
-	Credential? GetBy(string house, string game, string username);
-	Credential GetNext(bool usePriorityCalculation);
-	void Upsert(Credential credential);
-	void Lock(Credential credential);
-	void Unlock(Credential credential);
-}
-
-public interface ISignalRepository {
-	List<Signal> GetAll();
-	Signal? Get(string house, string game, string username);
-	Signal? GetOne(string house, string game);
-	Signal? GetNext();
-	void DeleteAll(string house, string game);
-	bool Exists(Signal signal);
-	void Acknowledge(Signal signal);
-	void Upsert(Signal signal);
-	void Delete(Signal signal);
-}
-
-public interface IJackpotRepository {
-	Jackpot? Get(string category, string house, string game);
-	List<Jackpot> GetAll();
-	List<Jackpot> GetEstimations(string house, string game);
-	Jackpot? GetMini(string house, string game);
-	void Upsert(Jackpot jackpot);
-}
-
-public interface IHouseRepository {
-	List<House> GetAll();
-	House? GetOrCreate(string name);
-	void Upsert(House house);
-	void Delete(House house);
-}
-
-public interface IReceivedRepository {
-	List<Received> GetAll();
-	Received? GetOpen(Signal signal);
-	void Upsert(Received received);
-}
-
-public interface IProcessEventRepository {
-	void Insert(ProcessEvent processEvent);
-}
-
-internal sealed class CredentialRepository(IMongoDatabaseProvider provider) : ICredentialRepository {
+internal sealed class RepoCredentials(IMongoDatabaseProvider provider) : IRepoCredentials {
 	private readonly IMongoCollection<Credential> _credentials = provider.Database.GetCollection<Credential>(MongoCollectionNames.Credentials);
 	private readonly IMongoCollection<Jackpot> _jackpots = provider.Database.GetCollection<Jackpot>(MongoCollectionNames.Jackpots);
 
@@ -204,7 +155,7 @@ internal sealed class CredentialRepository(IMongoDatabaseProvider provider) : IC
 	}
 }
 
-internal sealed class SignalRepository(IMongoDatabaseProvider provider) : ISignalRepository {
+internal sealed class Signals(IMongoDatabaseProvider provider) 	: IRepoSignals {
 	private readonly IMongoCollection<Signal> _signals = provider.Database.GetCollection<Signal>(MongoCollectionNames.Signals);
 
 	public List<Signal> GetAll() {
@@ -277,7 +228,7 @@ internal sealed class SignalRepository(IMongoDatabaseProvider provider) : ISigna
 	}
 }
 
-internal sealed class JackpotRepository(IMongoDatabaseProvider provider) : IJackpotRepository {
+internal sealed class RepoJackpots(IMongoDatabaseProvider provider) 	: IRepoJackpots {
 	private readonly IMongoCollection<Jackpot> _jackpots = provider.Database.GetCollection<Jackpot>(MongoCollectionNames.Jackpots);
 
 	public Jackpot? Get(string category, string house, string game) {
@@ -316,7 +267,7 @@ internal sealed class JackpotRepository(IMongoDatabaseProvider provider) : IJack
 	}
 }
 
-internal sealed class HouseRepository(IMongoDatabaseProvider provider) : IHouseRepository {
+internal sealed class Houses(IMongoDatabaseProvider provider) 	: IRepoHouses {
 	private readonly IMongoCollection<House> _houses = provider.Database.GetCollection<House>(MongoCollectionNames.Houses);
 
 	public List<House> GetAll() {
@@ -346,7 +297,7 @@ internal sealed class HouseRepository(IMongoDatabaseProvider provider) : IHouseR
 	}
 }
 
-internal sealed class ReceivedRepository(IMongoDatabaseProvider provider) : IReceivedRepository {
+public sealed class ReceivedRepository(IMongoDatabaseProvider provider) : IReceiveSignals {
 	private readonly IMongoCollection<Received> _received = provider.Database.GetCollection<Received>(MongoCollectionNames.Received);
 
 	public List<Received> GetAll() {
@@ -366,10 +317,36 @@ internal sealed class ReceivedRepository(IMongoDatabaseProvider provider) : IRec
 	}
 }
 
-internal sealed class ProcessEventRepository(IMongoDatabaseProvider provider) : IProcessEventRepository {
+internal sealed class ProcessEventRepository(IMongoDatabaseProvider provider) : IStoreEvents {
 	private readonly IMongoCollection<ProcessEvent> _events = provider.Database.GetCollection<ProcessEvent>(MongoCollectionNames.Events);
 
 	public void Insert(ProcessEvent processEvent) {
 		_events.InsertOne(processEvent);
+	}
+}
+
+internal sealed class ErrorLogRepository(IMongoDatabaseProvider provider) : IStoreErrors {
+	private readonly IMongoCollection<ErrorLog> _errors = provider.Database.GetCollection<ErrorLog>(MongoCollectionNames.Errors);
+
+	public void Insert(ErrorLog error) {
+		_errors.InsertOne(error);
+	}
+
+	public List<ErrorLog> GetAll() {
+		return _errors.Find(Builders<ErrorLog>.Filter.Empty).SortByDescending(e => e.Timestamp).ToList();
+	}
+
+	public List<ErrorLog> GetBySource(string source) {
+		return _errors.Find(e => e.Source == source).SortByDescending(e => e.Timestamp).ToList();
+	}
+
+	public List<ErrorLog> GetUnresolved() {
+		return _errors.Find(e => !e.Resolved).SortByDescending(e => e.Timestamp).ToList();
+	}
+
+	public void MarkResolved(ObjectId id) {
+		var filter = Builders<ErrorLog>.Filter.Eq("_id", id);
+		var update = Builders<ErrorLog>.Update.Set(e => e.Resolved, true).Set(e => e.ResolvedAt, DateTime.UtcNow);
+		_errors.UpdateOne(filter, update);
 	}
 }

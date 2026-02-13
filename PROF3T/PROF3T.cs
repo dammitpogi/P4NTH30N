@@ -5,7 +5,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using OpenQA.Selenium.Chrome;
 using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Persistence;
+using P4NTH30N.C0MMON.Infrastructure.Persistence;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 

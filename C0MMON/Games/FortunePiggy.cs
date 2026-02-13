@@ -2,7 +2,7 @@ using System;
 using System.Drawing;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using P4NTH30N.C0MMON.Persistence;
+using P4NTH30N.C0MMON.Infrastructure.Persistence;
 
 namespace P4NTH30N.C0MMON;
 

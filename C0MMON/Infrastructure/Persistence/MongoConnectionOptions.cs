@@ -1,6 +1,6 @@
 using System;
 
-namespace P4NTH30N.C0MMON.Persistence;
+namespace P4NTH30N.C0MMON.Infrastructure.Persistence;
 
 public sealed class MongoConnectionOptions {
 	public string ConnectionString { get; init; } = "mongodb://localhost:27017/";
