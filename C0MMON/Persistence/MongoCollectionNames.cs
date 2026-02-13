@@ -7,6 +7,7 @@ public static class MongoCollectionNames {
 	public const string Houses = "H0USE";
 	public const string Received = "REC31VED";
 	public const string Events = "EV3NT";
+	public const string Errors = "ERR0R";
 
 	public const string ViewNext = "N3XT";
 }

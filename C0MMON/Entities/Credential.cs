@@ -1,7 +1,7 @@
 using System;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using P4NTH30N.C0MMON.SanityCheck;
+using P4NTH30N.C0MMON.Persistence;
 
 namespace P4NTH30N.C0MMON;
 
@@ -30,16 +30,32 @@ public class Credential(string game) {
     public double Balance { 
         get => _balance;
         set {
-            var validation = P4NTH30NSanityChecker.ValidateBalance(value, Username ?? "Unknown");
-            if (!validation.IsValid) {
-                Console.WriteLine($"🔴 Invalid balance rejected for {Username}: {value:F2}");
+            if (double.IsNaN(value) || double.IsInfinity(value)) {
+                Console.WriteLine($"🔴 Invalid balance rejected for {Username}: {value}");
                 return;
             }
-            if (validation.WasRepaired) {
-                Console.WriteLine($"🔧 Balance auto-repaired for {Username}: {value:F2} -> {validation.ValidatedBalance:F2}");
+            if (value < 0) {
+                Console.WriteLine($"🔴 Negative balance rejected for {Username}: {value:F2}");
+                return;
             }
-            _balance = validation.ValidatedBalance;
+            _balance = value;
         }
+    }
+    
+    /// <summary>
+    /// Validates credential - returns true if valid. Logs to ERR0R if invalid and errorLogger provided.
+    /// </summary>
+    public bool IsValid(IStoreErrors? errorLogger = null) {
+        if (Balance < 0 || double.IsNaN(Balance) || double.IsInfinity(Balance)) {
+            errorLogger?.Insert(ErrorLog.Create(
+                ErrorType.ValidationError,
+                $"Credential:{Username}@{House}/{Game}",
+                $"Invalid balance: {Balance}",
+                ErrorSeverity.High
+            ));
+            return false;
+        }
+        return true;
     }
     
     public required string Username { get; set; }

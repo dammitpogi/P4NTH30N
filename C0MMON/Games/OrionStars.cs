@@ -163,10 +163,10 @@ public static class OrionStars {
 			120,
 			TimeSpan.FromSeconds(10),
 			data => {
-				grand = GetDecimal(data, "grand")/100;
-				major = GetDecimal(data, "major")/100;
-				minor = GetDecimal(data, "minor")/100;
-				mini = GetDecimal(data, "mini")/100;
+				grand = AdjustJackpot(GetDecimal(data, "grand")/100);
+				major = AdjustJackpot(GetDecimal(data, "major")/100);
+				minor = AdjustJackpot(GetDecimal(data, "minor")/100);
+				mini = AdjustJackpot(GetDecimal(data, "mini")/100);
 			}
 		);
 
@@ -184,6 +184,10 @@ public static class OrionStars {
 
 		return new OrionStarsBalances(balance, grand, major, minor, mini);
 	}
+
+    private static decimal AdjustJackpot(decimal value) {
+        return value > 2000 ? value / 100 : value;
+    }
 
 	private static OrionStarsNetConfig FetchNetConfig() {
 		const string configUrl =

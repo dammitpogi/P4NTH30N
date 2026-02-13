@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0-windows7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>P4NTH30N.MongoCleanup</AssemblyName>
+    <RootNamespace>P4NTH30N.CLEANUP</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Driver" Version="3.6.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.12" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.12" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\C0MMON\C0MMON.csproj" />
+  </ItemGroup>
+
+</Project>
