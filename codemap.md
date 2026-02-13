@@ -5,7 +5,10 @@ Multi-agent automation platform for online casino game portals (FireKirin and Or
 
 ## System Entry Points
 - `HUN7ER/HUN7ER.cs`: Analytics agent entry point (PROF3T.Main → HUN7ER())
-- `H4ND/`: Automation agent (referenced in docs, not in repository root)
+- `H4ND/`: Automation agent (H4ND.Main → H4ND())
+- `H0UND/`: Monitoring/credential polling service (H0UND.Main → H0UND())
+- `T00L5ET/`: Manual utilities for database operations and one-off tasks
+- `UNI7T35T/`: Testing platform for features and bug simulation
 - `C0MMON/`: Shared library for all components
 - `P4NTH30N.slnx`: .NET solution file
 - `HunterConfig.json`: Configuration for prize tiers, rate limits, watchdog
@@ -16,19 +19,42 @@ Multi-agent automation platform for online casino game portals (FireKirin and Or
 |-----------|------------------------|--------------|
 | `C0MMON/` | Core shared library providing data persistence, validation, services, and utilities. Repository pattern, Unit of Work, ValidatedMongoRepository for data integrity. | [View Map](C0MMON/codemap.md) |
 | `HUN7ER/` | Analytics agent ("The Brain") that processes game data, builds DPD forecasting models, and generates SIGN4L records for automation. | [View Map](HUN7ER/codemap.md) |
+| `H4ND/` | Automation agent ("The Hands") that consumes signals and performs automated gameplay. | [View Map](H4ND/codemap.md) |
+| `H0UND/` | Watchdog/monitoring service for system health tracking and credential polling. | [View Map](H0UND/codemap.md) |
+| `T00L5ET/` | Manual use tools for database operations, data cleanup, and one-off utilities. | — |
+| `UNI7T35T/` | Testing platform for new features, bug simulation, and regression testing. | — |
 | `RUL3S/` | Resource override system with Chrome extension for JavaScript injection, header manipulation, and asset overrides to enable browser automation. | [View Map](RUL3S/codemap.md) |
 | `docs/` | Comprehensive documentation: architecture specs (CODEX), migration guides, modernization roadmap, and system overviews. | [View Map](docs/codemap.md) |
-| `H0UND/` | Watchdog monitoring service for system health tracking and error detection. | [View Map](H0UND/codemap.md) |
-| `H4ND/` | Automation agent ("The Hands") that consumes signals and performs automated gameplay. | [View Map](H4ND/codemap.md) |
 | `PROF3T/` | Profit analysis tools and utilities for performance tracking. | [View Map](PROF3T/codemap.md) |
-| `CLEANUP/` | Data cleanup utilities and MongoDB corruption prevention services. | [View Map](CLEANUP/codemap.md) |
-| `MONITOR/` | System monitoring and health check services. | [View Map](MONITOR/codemap.md) |
+| `CLEANUP/` | Data cleanup utilities and MongoDB corruption prevention services. | — |
+| `MONITOR/` | System monitoring and health check services. | — |
 | `W4TCHD0G/` | Hunter watchdog for monitoring automation agent status. | [View Map](W4TCHD0G/codemap.md) |
-| `C0RR3CT/` | Correction utilities for data repair and system fixes. | [View Map](C0RR3CT/codemap.md) |
+| `C0RR3CT/` | Correction utilities for data repair and system fixes. | — |
 
 ## Architecture Overview
 
 ### Multi-Agent System
+```
+┌─────────────┐     MongoDB Collections     ┌─────────────┐
+│  HUN7ER     │ ◄───── credentials ───────► │    H4ND     │
+│ (Analytics) │ ◄───── signals ──────────► │ (Automation)│
+│   "Brain"   │ ◄───── eventlogs ───────► │   "Hands"   │
+└─────────────┘                             └─────────────┘
+       ▲                                           ▲
+       │ Uses for data access                      │ Uses for automation
+       │                                           │
+┌─────────────┐                             ┌─────────────┐
+│   C0MMON    │                             │   RUL3S     │
+│   Library   │                             │   (Chrome   │
+│             │                             │  Extension) │
+└─────────────┘                             └─────────────┘
+       │
+       ▼
+┌─────────────────────────────────────────────────────┐
+│  T00L5ET (Manual Tools)  │  UNI7T35T (Testing)     │
+│  - Database cleanup       │  - Feature testing      │
+│  - One-off operations    │  - Bug simulation       │
+└─────────────────────────────────────────────────────┘
 ```
 ┌─────────────┐     MongoDB Collections     ┌─────────────┐
 │  HUN7ER     │ ◄───── credentials ───────► │    H4ND     │
@@ -88,8 +114,17 @@ dotnet build P4NTH30N.slnx
 # Run HUN7ER analytics agent
 dotnet run --project ./HUN7ER/HUN7ER.csproj
 
-# Run H4ND automation agent (if available)
+# Run H4ND automation agent
 dotnet run --project ./H4ND/H4ND.csproj
+
+# Run H0UND monitoring service
+dotnet run --project ./H0UND/H0UND.csproj
+
+# Run T00L5ET tools (specific tool via args)
+dotnet run --project ./T00L5ET/T00L5ET.csproj
+
+# Run UNI7T35T tests
+dotnet test ./UNI7T35T/UNI7T35T.csproj
 ```
 
 ### Running the Platform
@@ -104,9 +139,7 @@ Requires two terminals:
 
 ## Critical Notes
 
-**BUG_001**: Subagent delegation system is non-functional. All `task()` calls return task IDs but subagents never execute. Workaround: Direct manual exploration and codemap creation.
-
-**Data Validation**: All writes go through `ValidatedMongoRepository` which performs sanity checks and auto-repair to prevent corruption.
+**Data Validation**: Entities use `IsValid(IStoreErrors?)` pattern - validates but does NOT mutate. Invalid data is logged to ERR0R MongoDB collection for monitoring. P4NTH30NSanityChecker (auto-repair) has been removed.
 
 **DPD System**: Dollars-Per-Day analysis requires minimum 25 data points for statistical reliability when DPD > 10.
 

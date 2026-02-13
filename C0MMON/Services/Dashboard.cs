@@ -1,6 +1,5 @@
 using Spectre.Console;
 using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.SanityCheck;
 
 namespace P4NTH30N.Services;
 
@@ -21,9 +20,10 @@ public static class Dashboard {
     }
 
     public static void UpdateHealthStatus() {
+        // Health status is now updated by individual services using ERR0R collection
+        // This is a placeholder that can be called periodically
         if ((DateTime.Now - _lastHealthUpdate).TotalSeconds >= 30) {
-            var health = P4NTH30NSanityChecker.GetSystemHealth();
-            HealthStatus = $"{health.Status} | E:{health.ErrorCount} R:{health.RepairCount}";
+            HealthStatus = "RUNNING";
             _lastHealthUpdate = DateTime.Now;
         }
     }

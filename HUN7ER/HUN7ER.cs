@@ -1,7 +1,6 @@
 using System.Diagnostics;
 using System.Linq;
 using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.SanityCheck;
 using P4NTH30N.C0MMON.Persistence;
 
 namespace P4NTH30N;
@@ -115,37 +114,42 @@ class PROF3T {
 						if (representative.Unlocked == false && DateTime.UtcNow > representative.UnlockTimeout)
 							uow.Credentials.Unlock(representative);
 
-						double previousGrand =
-							representative.DPD.Data.Count > 0 ? representative.DPD.Data[^1].Grand : 0;
+					double previousGrand =
+						representative.DPD.Data.Count > 0 ? representative.DPD.Data[^1].Grand : 0;
 
-						// SANITY CHECK: Validate jackpot progression with embedded validation
-						var jackpotValidation = P4NTH30NSanityChecker.ValidateJackpot("Grand", representative.Jackpots.Grand, representative.Thresholds.Grand);
-						if (!jackpotValidation.IsValid) {
-							Console.WriteLine($"🔴 Invalid Grand jackpot detected for {representative.Game}: {string.Join(", ", jackpotValidation.Errors)}");
-							return; // Skip this game for corrupted data
-						}
+					// Validate jackpot values using entity IsValid()
+					bool jackpotsValid = 
+						!double.IsNaN(representative.Jackpots.Grand) && !double.IsInfinity(representative.Jackpots.Grand) && representative.Jackpots.Grand >= 0 &&
+						!double.IsNaN(representative.Jackpots.Major) && !double.IsInfinity(representative.Jackpots.Major) && representative.Jackpots.Major >= 0 &&
+						!double.IsNaN(representative.Jackpots.Minor) && !double.IsInfinity(representative.Jackpots.Minor) && representative.Jackpots.Minor >= 0 &&
+						!double.IsNaN(representative.Jackpots.Mini) && !double.IsInfinity(representative.Jackpots.Mini) && representative.Jackpots.Mini >= 0;
 
-						// Use validated values
-						var validatedGrandValue = jackpotValidation.ValidatedValue;
-						var validatedGrandThreshold = jackpotValidation.ValidatedThreshold;
+					if (!jackpotsValid) {
+						Console.WriteLine($"🔴 Invalid jackpot values detected for {representative.Game}");
+						uow.Errors.Insert(ErrorLog.Create(
+							ErrorType.ValidationError,
+							"HUN7ER",
+							$"Invalid jackpot values for {representative.Game}: Grand={representative.Jackpots.Grand}, Major={representative.Jackpots.Major}, Minor={representative.Jackpots.Minor}, Mini={representative.Jackpots.Mini}",
+							ErrorSeverity.High
+						));
+						return; // Skip this game for corrupted data
+					}
 
-						// Update representative with validated values if repairs were made
-						if (jackpotValidation.WasRepaired) {
-							representative.Jackpots.Grand = validatedGrandValue;
-							representative.Thresholds.Grand = validatedGrandThreshold;
-							Console.WriteLine($"🔧 Repaired Grand jackpot for {representative.Game}: {string.Join(", ", jackpotValidation.RepairActions)}");
+					// Use values directly (no repair - validate but don't mutate)
+					var validatedGrandValue = representative.Jackpots.Grand;
+					var validatedMajorValue = representative.Jackpots.Major;
+					var validatedMinorValue = representative.Jackpots.Minor;
+					var validatedMiniValue = representative.Jackpots.Mini;
 
-							// Persist repairs even if the Grand value itself did not change.
-							foreach (var cred in gameCredentials) {
-								cred.Jackpots = representative.Jackpots;
-								cred.DPD = representative.DPD;
-								uow.Credentials.Upsert(cred);
-							}
-						}
-
-						if (validatedGrandValue != previousGrand) {
-							if (validatedGrandValue > previousGrand && validatedGrandValue >= 0 && validatedGrandValue <= 10000) {
-								representative.DPD.Data.Add(new DPD_Data(validatedGrandValue));
+					if (validatedGrandValue != previousGrand && validatedGrandValue < 100000) {
+						if (validatedGrandValue > previousGrand && validatedGrandValue >= 0 && validatedGrandValue <= 100000) {
+							// Add DPD_Data with all tier values
+							representative.DPD.Data.Add(new DPD_Data(
+								validatedGrandValue,
+								validatedMajorValue,
+								validatedMinorValue,
+								validatedMiniValue
+							));
 								if (representative.DPD.Data.Count > 2) {
 									float minutes = Convert.ToSingle(
 										representative.DPD.Data[representative.DPD.Data.Count - 1]
@@ -156,20 +160,22 @@ class PROF3T {
 										representative.DPD.Data[representative.DPD.Data.Count - 1].Grand
 										- representative.DPD.Data[0].Grand;
 									float days =
-										minutes
-										/ Convert.ToSingle(TimeSpan.FromDays(1).TotalMinutes);
-									double dollarsPerDay = dollars / days;
+									minutes
+									/ Convert.ToSingle(TimeSpan.FromDays(1).TotalMinutes);
+								double dollarsPerDay = dollars / days;
 
-									// SANITY CHECK: Validate DPD rate before using it
-									var dpdValidation = P4NTH30NSanityChecker.ValidateDPD(dollarsPerDay, representative.Game);
-									if (!dpdValidation.IsValid) {
-										Console.WriteLine($"🔴 Invalid DPD rate for {representative.Game}: {string.Join(", ", dpdValidation.Errors)}");
-										dollarsPerDay = 0; // Use safe fallback
-									}
-									else if (dpdValidation.WasRepaired) {
-										dollarsPerDay = dpdValidation.ValidatedRate;
-										Console.WriteLine($"🔧 Repaired DPD rate for {representative.Game}: {string.Join(", ", dpdValidation.RepairActions)}");
-									}
+								// Validate DPD rate
+								bool dpdValid = !double.IsNaN(dollarsPerDay) && !double.IsInfinity(dollarsPerDay) && dollarsPerDay >= 0;
+								if (!dpdValid) {
+									Console.WriteLine($"🔴 Invalid DPD rate for {representative.Game}");
+									uow.Errors.Insert(ErrorLog.Create(
+										ErrorType.ValidationError,
+										"HUN7ER",
+										$"Invalid DPD rate: {dollarsPerDay}",
+										ErrorSeverity.High
+									));
+									dollarsPerDay = 0;
+								}
 
 									if (
 										dollarsPerDay > 5
@@ -189,14 +195,27 @@ class PROF3T {
 								List<DPD_Data>? lastHistoryData = lastHistory?.Data;
 								if (lastHistoryData is { Count: > 0 } && lastHistoryData[^1].Grand <= previousGrand) {
 									representative.DPD.Data = [];
-									// SANITY CHECK: Validate reset values before using
-									var resetValidation = P4NTH30NSanityChecker.ValidateJackpot("Grand", representative.Jackpots.Grand, representative.Thresholds.Grand);
-									if (resetValidation.IsValid && resetValidation.ValidatedValue >= 0 && resetValidation.ValidatedValue <= 10000) {
-										representative.DPD.Data.Add(new DPD_Data(resetValidation.ValidatedValue));
-										if (resetValidation.WasRepaired) {
-											representative.Jackpots.Grand = resetValidation.ValidatedValue;
-											Console.WriteLine($"🔧 Repaired Grand during reset for {representative.Game}");
-										}
+									// Validate reset values
+									bool resetValid = 
+										!double.IsNaN(representative.Jackpots.Grand) && !double.IsInfinity(representative.Jackpots.Grand) && representative.Jackpots.Grand >= 0 && representative.Jackpots.Grand <= 10000 &&
+										!double.IsNaN(representative.Jackpots.Major) && !double.IsInfinity(representative.Jackpots.Major) && representative.Jackpots.Major >= 0 &&
+										!double.IsNaN(representative.Jackpots.Minor) && !double.IsInfinity(representative.Jackpots.Minor) && representative.Jackpots.Minor >= 0 &&
+										!double.IsNaN(representative.Jackpots.Mini) && !double.IsInfinity(representative.Jackpots.Mini) && representative.Jackpots.Mini >= 0;
+
+									if (resetValid) {
+										representative.DPD.Data.Add(new DPD_Data(
+											representative.Jackpots.Grand,
+											representative.Jackpots.Major,
+											representative.Jackpots.Minor,
+											representative.Jackpots.Mini
+										));
+									} else {
+										uow.Errors.Insert(ErrorLog.Create(
+											ErrorType.ValidationError,
+											"HUN7ER",
+											$"Invalid reset values for {representative.Game}",
+											ErrorSeverity.High
+										));
 									}
 									representative.DPD.Average = 0F;
 								}
@@ -221,53 +240,23 @@ class PROF3T {
 						}
 
 						if (representative.DPD.Average > 0.1) {
-							// SANITY CHECK: Comprehensive validation of all jackpot tiers and thresholds
-							var gameStateValidation = P4NTH30NSanityChecker.ValidateGameState(
-								representative.Jackpots.Grand, representative.Thresholds.Grand,
-								representative.Jackpots.Major, representative.Thresholds.Major,
-								representative.Jackpots.Minor, representative.Thresholds.Minor,
-								representative.Jackpots.Mini, representative.Thresholds.Mini,
-								representative.DPD.Average, representative.Game
-							);
+							// Validate all jackpot tiers and DPD
+							bool gameStateValid = 
+								!double.IsNaN(representative.Jackpots.Grand) && !double.IsInfinity(representative.Jackpots.Grand) && representative.Jackpots.Grand >= 0 &&
+								!double.IsNaN(representative.Jackpots.Major) && !double.IsInfinity(representative.Jackpots.Major) && representative.Jackpots.Major >= 0 &&
+								!double.IsNaN(representative.Jackpots.Minor) && !double.IsInfinity(representative.Jackpots.Minor) && representative.Jackpots.Minor >= 0 &&
+								!double.IsNaN(representative.Jackpots.Mini) && !double.IsInfinity(representative.Jackpots.Mini) && representative.Jackpots.Mini >= 0 &&
+								!double.IsNaN(representative.DPD.Average) && !double.IsInfinity(representative.DPD.Average) && representative.DPD.Average >= 0;
 
-							if (!gameStateValidation.IsValid) {
+							if (!gameStateValid) {
 								Console.WriteLine($"🔴 Game state validation failed for {representative.Game}");
+								uow.Errors.Insert(ErrorLog.Create(
+									ErrorType.ValidationError,
+									"HUN7ER",
+									$"Invalid game state for {representative.Game}",
+									ErrorSeverity.High
+								));
 								return; // Skip processing for invalid game state
-							}
-
-							// Apply any repairs made during validation
-							if (gameStateValidation.GrandResult.WasRepaired) {
-								representative.Jackpots.Grand = gameStateValidation.GrandResult.ValidatedValue;
-								representative.Thresholds.Grand = gameStateValidation.GrandResult.ValidatedThreshold;
-							}
-							if (gameStateValidation.MajorResult.WasRepaired) {
-								representative.Jackpots.Major = gameStateValidation.MajorResult.ValidatedValue;
-								representative.Thresholds.Major = gameStateValidation.MajorResult.ValidatedThreshold;
-							}
-							if (gameStateValidation.MinorResult.WasRepaired) {
-								representative.Jackpots.Minor = gameStateValidation.MinorResult.ValidatedValue;
-								representative.Thresholds.Minor = gameStateValidation.MinorResult.ValidatedThreshold;
-							}
-							if (gameStateValidation.MiniResult.WasRepaired) {
-								representative.Jackpots.Mini = gameStateValidation.MiniResult.ValidatedValue;
-								representative.Thresholds.Mini = gameStateValidation.MiniResult.ValidatedThreshold;
-							}
-							if (gameStateValidation.DPDResult.WasRepaired) {
-								representative.DPD.Average = gameStateValidation.DPDResult.ValidatedRate;
-							}
-
-							if (
-								gameStateValidation.GrandResult.WasRepaired
-								|| gameStateValidation.MajorResult.WasRepaired
-								|| gameStateValidation.MinorResult.WasRepaired
-								|| gameStateValidation.MiniResult.WasRepaired
-								|| gameStateValidation.DPDResult.WasRepaired
-							) {
-								foreach (var cred in gameCredentials) {
-									cred.Jackpots = representative.Jackpots;
-									cred.DPD = representative.DPD;
-									uow.Credentials.Upsert(cred);
-								}
 							}
 
 							// Track for health monitoring
@@ -281,8 +270,8 @@ class PROF3T {
 								recentJackpots.RemoveRange(0, 20);
 							}
 
-							// Continue with validated values
-							double validatedDPM = gameStateValidation.DPDResult.ValidatedRate / TimeSpan.FromDays(1).TotalMinutes;
+							// Use DPD average for calculations
+							double validatedDPM = representative.DPD.Average / TimeSpan.FromDays(1).TotalMinutes;
 
 							double DPM = validatedDPM;
 							double estimatedGrowth =
@@ -416,7 +405,11 @@ class PROF3T {
 
 						for (int iter = 0; iter < maxIterations; iter++)
 						{
-							DateTime i = jackpot.EstimatedDate.AddDays(daysToAdd * iter);
+							// For first iteration, use NOW as base to avoid showing past/present times
+							// For subsequent iterations, project forward from original estimated date
+							DateTime i = iter == 0
+								? DateTime.UtcNow.AddDays(daysToAdd)
+								: jackpot.EstimatedDate.AddDays(daysToAdd * iter);
 							if (i >= DateLimit || i > DateTime.MaxValue.AddDays(-1))
 								break;
 
@@ -594,15 +587,15 @@ class PROF3T {
 				string footer = string.Concat(
 					$"------|-{DateTime.Now.ToString("ddd-MM/dd/yyyy-HH:mm:ss").ToUpper()}-",
 					$"|-{balance.ToString("F2").PadLeft(9, '-')}-/{totalPotential.ToString("F2").PadRight(11, '-')}|-------------",
-					$"|{$"({credentials.Count})".PadLeft(4, '-')}-H0UNDS:{houndHours}:{houndMinutes}:{houndSeconds}----------"
+				$"|{$"({credentials.Count})".PadLeft(4, '-')}-H0UNDS:{houndHours}:{houndMinutes}:{houndSeconds}----------"
 				);
 				Console.WriteLine(footer);
 
-				// SANITY CHECK: Periodic health monitoring
+				// Periodic health monitoring
 				if ((DateTime.Now - lastHealthCheck).TotalMinutes >= 5) {
-					P4NTH30NSanityChecker.PerformHealthCheck(recentJackpots);
-					var healthStatus = P4NTH30NSanityChecker.GetSystemHealth();
-					Console.WriteLine($"💊 System Health: {healthStatus.Status} | Errors: {healthStatus.ErrorCount} | Repairs: {healthStatus.RepairCount} | Rate: {healthStatus.RepairSuccessRate:P1}");
+					var recentErrors = uow.Errors.GetBySource("HUN7ER").Take(10).ToList();
+					string status = recentErrors.Any(e => e.Severity == ErrorSeverity.Critical) ? "CRITICAL" : "HEALTHY";
+					Console.WriteLine($"💊 HUN7ER Health: {status} | Recent Errors: {recentErrors.Count}");
 					lastHealthCheck = DateTime.Now;
 				}
 

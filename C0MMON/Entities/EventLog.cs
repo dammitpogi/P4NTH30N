@@ -4,10 +4,20 @@ using MongoDB.Bson;
 
 namespace P4NTH30N.C0MMON;
 
+public enum EventType {
+	SignalTriggered,
+	LoginAttempt,
+	JackpotPopped,
+	JackpotWon,
+	CashedOut,
+	Other
+}
+
 [method: SetsRequiredMembers]
 public class ProcessEvent(string process, string description) {
 	public ObjectId _id { get; set; } = ObjectId.GenerateNewId();
 	public DateTime Date { get; set; } = DateTime.Now;
+	public EventType EventType { get; set; } = EventType.Other;
 	public string Process { get; set; } = process;
 	public string Description { get; set; } = description;
     public string House { get; set; } = string.Empty;
