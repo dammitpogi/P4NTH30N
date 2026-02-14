@@ -4,8 +4,8 @@ using System.Text.Json;
 using Figgle;
 using P4NTH30N;
 using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Versioning;
 using P4NTH30N.C0MMON.Infrastructure.Persistence;
+using P4NTH30N.C0MMON.Versioning;
 using P4NTH30N.Services;
 
 namespace P4NTH30N;
@@ -19,7 +19,7 @@ class H0UND
 
 	// Control flag: true = use priority calculation, false = full sweep (oldest first)
 	private static readonly bool UsePriorityCalculation = false;
-	
+
 	static void Main(string[] args)
 	{
 		MongoUnitOfWork uow = s_uow;
@@ -28,7 +28,7 @@ class H0UND
 			// Health monitoring for H0UND
 			List<(string tier, double value, double threshold)> recentJackpots = new();
 			DateTime lastHealthCheck = DateTime.MinValue;
-			
+
 			Dashboard.AddLog($"{Header.Version}", "blue");
 			Dashboard.AddLog("H0UND", "blue");
 			Dashboard.AddLog($"Priority: {(UsePriorityCalculation ? "ON" : "OFF (Full Sweep)")}", "blue");
@@ -54,23 +54,36 @@ class H0UND
 					try
 					{
 						var balances = GetBalancesWithRetry(credential);
-							
-						// Validate raw values before processing
-						bool rawValuesValid = 
-							!double.IsNaN(balances.Grand) && !double.IsInfinity(balances.Grand) && balances.Grand >= 0 &&
-							!double.IsNaN(balances.Major) && !double.IsInfinity(balances.Major) && balances.Major >= 0 &&
-							!double.IsNaN(balances.Minor) && !double.IsInfinity(balances.Minor) && balances.Minor >= 0 &&
-							!double.IsNaN(balances.Mini) && !double.IsInfinity(balances.Mini) && balances.Mini >= 0 &&
-							!double.IsNaN(balances.Balance) && !double.IsInfinity(balances.Balance) && balances.Balance >= 0;
 
-						if (!rawValuesValid) {
+						// Validate raw values before processing
+						bool rawValuesValid =
+							!double.IsNaN(balances.Grand)
+							&& !double.IsInfinity(balances.Grand)
+							&& balances.Grand >= 0
+							&& !double.IsNaN(balances.Major)
+							&& !double.IsInfinity(balances.Major)
+							&& balances.Major >= 0
+							&& !double.IsNaN(balances.Minor)
+							&& !double.IsInfinity(balances.Minor)
+							&& balances.Minor >= 0
+							&& !double.IsNaN(balances.Mini)
+							&& !double.IsInfinity(balances.Mini)
+							&& balances.Mini >= 0
+							&& !double.IsNaN(balances.Balance)
+							&& !double.IsInfinity(balances.Balance)
+							&& balances.Balance >= 0;
+
+						if (!rawValuesValid)
+						{
 							Dashboard.AddLog($"🔴 Critical validation failure for {credential.Game} - {credential.Username}: invalid raw values", "red");
-							uow.Errors.Insert(ErrorLog.Create(
-								ErrorType.ValidationError,
-								"H0UND",
-								$"Invalid raw values for {credential.Username}@{credential.Game}: Grand={balances.Grand}, Major={balances.Major}, Minor={balances.Minor}, Mini={balances.Mini}, Balance={balances.Balance}",
-								ErrorSeverity.Critical
-							));
+							uow.Errors.Insert(
+								ErrorLog.Create(
+									ErrorType.ValidationError,
+									"H0UND",
+									$"Invalid raw values for {credential.Username}@{credential.Game}: Grand={balances.Grand}, Major={balances.Major}, Minor={balances.Minor}, Mini={balances.Mini}, Balance={balances.Balance}",
+									ErrorSeverity.Critical
+								)
+							);
 							ProcessEvent alert = ProcessEvent.Log("H0UND", $"Validation failure for {credential.Game}: invalid raw values");
 							s_uow.ProcessEvents.Insert(alert.Record(credential));
 							uow.Credentials.Unlock(credential);
@@ -91,163 +104,170 @@ class H0UND
 						recentJackpots.Add(("Major", currentMajor, credential.Thresholds.Major));
 						recentJackpots.Add(("Minor", currentMinor, credential.Thresholds.Minor));
 						recentJackpots.Add(("Mini", currentMini, credential.Thresholds.Mini));
-						
+
 						// Limit to last 40 entries (10 per tier)
-						if (recentJackpots.Count > 40) {
+						if (recentJackpots.Count > 40)
+						{
 							recentJackpots.RemoveRange(0, 4);
 						}
 
-							if ((lastRetrievedGrand.Equals(currentGrand) && (lastCredential == null || credential.Game != lastCredential.Game && credential.House != lastCredential.House)) == false)
+						if (
+							(
+								lastRetrievedGrand.Equals(currentGrand)
+								&& (lastCredential == null || credential.Game != lastCredential.Game && credential.House != lastCredential.House)
+							) == false
+						)
+						{
+							Signal? gameSignal = uow.Signals.GetOne(credential.House, credential.Game);
+							if (currentGrand < credential.Jackpots.Grand && credential.Jackpots.Grand - currentGrand > 0.1)
 							{
-								Signal? gameSignal = uow.Signals.GetOne(credential.House, credential.Game);
-								if (currentGrand < credential.Jackpots.Grand && credential.Jackpots.Grand - currentGrand > 0.1)
-								{
-									if (credential.DPD.Toggles.GrandPopped == true)
-									{
-										if (currentGrand >= 0 && currentGrand <= 10000)
-										{
-											credential.Jackpots.Grand = currentGrand;
-										}
-										credential.DPD.Toggles.GrandPopped = false;
-										credential.Thresholds.NewGrand(credential.Jackpots.Grand);
-										if (gameSignal != null && gameSignal.Priority.Equals(4))
-											uow.Signals.DeleteAll(credential.House, credential.Game);
-									}
-									else
-										credential.DPD.Toggles.GrandPopped = true;
-								}
-								else
+								if (credential.DPD.Toggles.GrandPopped == true)
 								{
 									if (currentGrand >= 0 && currentGrand <= 10000)
 									{
 										credential.Jackpots.Grand = currentGrand;
 									}
-								}
-
-								if (currentMajor < credential.Jackpots.Major && credential.Jackpots.Major - currentMajor > 0.1)
-								{
-									if (credential.DPD.Toggles.MajorPopped == true)
-									{
-										if (currentMajor >= 0 && currentMajor <= 10000)
-										{
-											credential.Jackpots.Major = currentMajor;
-										}
-										credential.DPD.Toggles.MajorPopped = false;
-										credential.Thresholds.NewMajor(credential.Jackpots.Major);
-										if (gameSignal != null && gameSignal.Priority.Equals(3))
-											uow.Signals.DeleteAll(credential.House, credential.Game);
-									}
-									else
-										credential.DPD.Toggles.MajorPopped = true;
+									credential.DPD.Toggles.GrandPopped = false;
+									credential.Thresholds.NewGrand(credential.Jackpots.Grand);
+									if (gameSignal != null && gameSignal.Priority.Equals(4))
+										uow.Signals.DeleteAll(credential.House, credential.Game);
 								}
 								else
+									credential.DPD.Toggles.GrandPopped = true;
+							}
+							else
+							{
+								if (currentGrand >= 0 && currentGrand <= 10000)
+								{
+									credential.Jackpots.Grand = currentGrand;
+								}
+							}
+
+							if (currentMajor < credential.Jackpots.Major && credential.Jackpots.Major - currentMajor > 0.1)
+							{
+								if (credential.DPD.Toggles.MajorPopped == true)
 								{
 									if (currentMajor >= 0 && currentMajor <= 10000)
 									{
 										credential.Jackpots.Major = currentMajor;
 									}
-								}
-
-								if (currentMinor < credential.Jackpots.Minor && credential.Jackpots.Minor - currentMinor > 0.1)
-								{
-									if (credential.DPD.Toggles.MinorPopped == true)
-									{
-										if (currentMinor >= 0 && currentMinor <= 10000)
-										{
-											credential.Jackpots.Minor = currentMinor;
-										}
-										credential.DPD.Toggles.MinorPopped = false;
-										credential.Thresholds.NewMinor(credential.Jackpots.Minor);
-										if (gameSignal != null && gameSignal.Priority.Equals(2))
-											uow.Signals.DeleteAll(credential.House, credential.Game);
-									}
-									else
-										credential.DPD.Toggles.MinorPopped = true;
+									credential.DPD.Toggles.MajorPopped = false;
+									credential.Thresholds.NewMajor(credential.Jackpots.Major);
+									if (gameSignal != null && gameSignal.Priority.Equals(3))
+										uow.Signals.DeleteAll(credential.House, credential.Game);
 								}
 								else
+									credential.DPD.Toggles.MajorPopped = true;
+							}
+							else
+							{
+								if (currentMajor >= 0 && currentMajor <= 10000)
+								{
+									credential.Jackpots.Major = currentMajor;
+								}
+							}
+
+							if (currentMinor < credential.Jackpots.Minor && credential.Jackpots.Minor - currentMinor > 0.1)
+							{
+								if (credential.DPD.Toggles.MinorPopped == true)
 								{
 									if (currentMinor >= 0 && currentMinor <= 10000)
 									{
 										credential.Jackpots.Minor = currentMinor;
 									}
-								}
-
-								if (currentMini < credential.Jackpots.Mini && credential.Jackpots.Mini - currentMini > 0.1)
-								{
-									if (credential.DPD.Toggles.MiniPopped == true)
-									{
-										if (currentMini >= 0 && currentMini <= 10000)
-										{
-											credential.Jackpots.Mini = currentMini;
-										}
-										credential.DPD.Toggles.MiniPopped = false;
-										credential.Thresholds.NewMini(credential.Jackpots.Mini);
-										if (gameSignal != null && gameSignal.Priority.Equals(1))
-											uow.Signals.DeleteAll(credential.House, credential.Game);
-									}
-									else
-										credential.DPD.Toggles.MiniPopped = true;
+									credential.DPD.Toggles.MinorPopped = false;
+									credential.Thresholds.NewMinor(credential.Jackpots.Minor);
+									if (gameSignal != null && gameSignal.Priority.Equals(2))
+										uow.Signals.DeleteAll(credential.House, credential.Game);
 								}
 								else
+									credential.DPD.Toggles.MinorPopped = true;
+							}
+							else
+							{
+								if (currentMinor >= 0 && currentMinor <= 10000)
+								{
+									credential.Jackpots.Minor = currentMinor;
+								}
+							}
+
+							if (currentMini < credential.Jackpots.Mini && credential.Jackpots.Mini - currentMini > 0.1)
+							{
+								if (credential.DPD.Toggles.MiniPopped == true)
 								{
 									if (currentMini >= 0 && currentMini <= 10000)
 									{
 										credential.Jackpots.Mini = currentMini;
 									}
+									credential.DPD.Toggles.MiniPopped = false;
+									credential.Thresholds.NewMini(credential.Jackpots.Mini);
+									if (gameSignal != null && gameSignal.Priority.Equals(1))
+										uow.Signals.DeleteAll(credential.House, credential.Game);
 								}
+								else
+									credential.DPD.Toggles.MiniPopped = true;
 							}
 							else
 							{
-								throw new Exception("Invalid grand retrieved.");
+								if (currentMini >= 0 && currentMini <= 10000)
+								{
+									credential.Jackpots.Mini = currentMini;
+								}
 							}
+						}
+						else
+						{
+							throw new Exception("Invalid grand retrieved.");
+						}
 
-							if (credential.Settings.Gold777 == null)
-								credential.Settings.Gold777 = new Gold777_Settings();
-							credential.Updated = true;
-							uow.Credentials.Unlock(credential);
+						if (credential.Settings.Gold777 == null)
+							credential.Settings.Gold777 = new Gold777_Settings();
+						credential.Updated = true;
+						uow.Credentials.Unlock(credential);
 
-							credential.LastUpdated = DateTime.UtcNow;
-							credential.Balance = currentBalance; // Use validated balance
-							lastRetrievedGrand = currentGrand;
-							uow.Credentials.Upsert(credential);
-							lastCredential = credential;
+						credential.LastUpdated = DateTime.UtcNow;
+						credential.Balance = currentBalance; // Use validated balance
+						lastRetrievedGrand = currentGrand;
+						uow.Credentials.Upsert(credential);
+						lastCredential = credential;
 
-							// Periodic health monitoring
-							if ((DateTime.Now - lastHealthCheck).TotalMinutes >= 5) {
-								var recentErrors = uow.Errors.GetBySource("H0UND").Take(10).ToList();
-								string status = recentErrors.Any(e => e.Severity == ErrorSeverity.Critical) ? "CRITICAL" : "HEALTHY";
-								Dashboard.AddLog($"💊 H0UND Health: {status} | Errors: {recentErrors.Count}", "blue");
-								lastHealthCheck = DateTime.Now;
-							}
+						// Periodic health monitoring
+						if ((DateTime.Now - lastHealthCheck).TotalMinutes >= 5)
+						{
+							var recentErrors = uow.Errors.GetBySource("H0UND").Take(10).ToList();
+							string status = recentErrors.Any(e => e.Severity == ErrorSeverity.Critical) ? "CRITICAL" : "HEALTHY";
+							Dashboard.AddLog($"💊 H0UND Health: {status} | Errors: {recentErrors.Count}", "blue");
+							lastHealthCheck = DateTime.Now;
+						}
 
 						Dashboard.Render();
 						Thread.Sleep(Random.Shared.Next(3000, 5001));
 					}
-						catch (InvalidOperationException ex) when (ex.Message.Contains("Your account has been suspended"))
-						{
-							Dashboard.AddLog($"Account suspended for {credential.Username} on {credential.Game}", "red");
-							Dashboard.Render();
-							uow.Credentials.Unlock(credential);
+					catch (InvalidOperationException ex) when (ex.Message.Contains("Your account has been suspended"))
+					{
+						Dashboard.AddLog($"Account suspended for {credential.Username} on {credential.Game}", "red");
+						Dashboard.Render();
+						uow.Credentials.Unlock(credential);
 					}
 				}
 			}
-		catch (Exception ex)
-		{
-			Dashboard.CurrentTask = "Error - Recovery";
-			Dashboard.AddLog($"Error processing credential: {ex.Message}", "red");
-			Dashboard.Render();
-			
-			// Reduce recovery time and be more intelligent about extension failures
-			if (ex.Message.Contains("Extension failure"))
+			catch (Exception ex)
 			{
-				Thread.Sleep(5000); // Reduced from 30 seconds to 5 seconds
-				Dashboard.AddLog("Extension failure recovered, continuing...", "yellow");
+				Dashboard.CurrentTask = "Error - Recovery";
+				Dashboard.AddLog($"Error processing credential: {ex.Message}", "red");
+				Dashboard.Render();
+
+				// Reduce recovery time and be more intelligent about extension failures
+				if (ex.Message.Contains("Extension failure"))
+				{
+					Thread.Sleep(5000); // Reduced from 30 seconds to 5 seconds
+					Dashboard.AddLog("Extension failure recovered, continuing...", "yellow");
+				}
+				else
+				{
+					Thread.Sleep(10000); // 10 seconds for other errors
+				}
 			}
-			else
-			{
-				Thread.Sleep(10000); // 10 seconds for other errors
-			}
-		}
 		}
 	}
 
@@ -273,19 +293,24 @@ class H0UND
 					double validatedMini = (double)balances.Mini;
 
 					// Check for invalid values and clamp to 0 if invalid
-					if (double.IsNaN(validatedBalance) || double.IsInfinity(validatedBalance) || validatedBalance < 0) {
+					if (double.IsNaN(validatedBalance) || double.IsInfinity(validatedBalance) || validatedBalance < 0)
+					{
 						validatedBalance = 0;
 					}
-					if (double.IsNaN(validatedGrand) || double.IsInfinity(validatedGrand) || validatedGrand < 0) {
+					if (double.IsNaN(validatedGrand) || double.IsInfinity(validatedGrand) || validatedGrand < 0)
+					{
 						validatedGrand = 0;
 					}
-					if (double.IsNaN(validatedMajor) || double.IsInfinity(validatedMajor) || validatedMajor < 0) {
+					if (double.IsNaN(validatedMajor) || double.IsInfinity(validatedMajor) || validatedMajor < 0)
+					{
 						validatedMajor = 0;
 					}
-					if (double.IsNaN(validatedMinor) || double.IsInfinity(validatedMinor) || validatedMinor < 0) {
+					if (double.IsNaN(validatedMinor) || double.IsInfinity(validatedMinor) || validatedMinor < 0)
+					{
 						validatedMinor = 0;
 					}
-					if (double.IsNaN(validatedMini) || double.IsInfinity(validatedMini) || validatedMini < 0) {
+					if (double.IsNaN(validatedMini) || double.IsInfinity(validatedMini) || validatedMini < 0)
+					{
 						validatedMini = 0;
 					}
 
@@ -307,19 +332,24 @@ class H0UND
 					double validatedMini = (double)balances.Mini;
 
 					// Check for invalid values and clamp to 0 if invalid
-					if (double.IsNaN(validatedBalance) || double.IsInfinity(validatedBalance) || validatedBalance < 0) {
+					if (double.IsNaN(validatedBalance) || double.IsInfinity(validatedBalance) || validatedBalance < 0)
+					{
 						validatedBalance = 0;
 					}
-					if (double.IsNaN(validatedGrand) || double.IsInfinity(validatedGrand) || validatedGrand < 0) {
+					if (double.IsNaN(validatedGrand) || double.IsInfinity(validatedGrand) || validatedGrand < 0)
+					{
 						validatedGrand = 0;
 					}
-					if (double.IsNaN(validatedMajor) || double.IsInfinity(validatedMajor) || validatedMajor < 0) {
+					if (double.IsNaN(validatedMajor) || double.IsInfinity(validatedMajor) || validatedMajor < 0)
+					{
 						validatedMajor = 0;
 					}
-					if (double.IsNaN(validatedMinor) || double.IsInfinity(validatedMinor) || validatedMinor < 0) {
+					if (double.IsNaN(validatedMinor) || double.IsInfinity(validatedMinor) || validatedMinor < 0)
+					{
 						validatedMinor = 0;
 					}
-					if (double.IsNaN(validatedMini) || double.IsInfinity(validatedMini) || validatedMini < 0) {
+					if (double.IsNaN(validatedMini) || double.IsInfinity(validatedMini) || validatedMini < 0)
+					{
 						validatedMini = 0;
 					}
 
