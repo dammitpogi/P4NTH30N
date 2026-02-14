@@ -2,14 +2,21 @@
 
 ### Build Commands
 ```bash
-# Build entire solution
-dotnet build
-
-# Build specific project
-dotnet build C0RR3CT/C0RR3CT.csproj
+# Build entire solution (using .slnx file)
+dotnet build P4NTH30N.slnx
 
 # Build with full paths (VS Code default)
-dotnet build /property:GenerateFullPaths=true /consoleloggerparameters:NoSummary
+dotnet build P4NTH30N.slnx /property:GenerateFullPaths=true /consoleloggerparameters:NoSummary
+
+# Build specific project
+dotnet build C0MMON/C0MMON.csproj
+dotnet build HUN7ER/HUN7ER.csproj
+dotnet build H4ND/H4ND.csproj
+dotnet build H0UND/H0UND.csproj
+
+# Clean and rebuild
+dotnet clean P4NTH30N.slnx
+dotnet build P4NTH30N.slnx --no-incremental
 ```
 
 ### Lint and Format Commands
@@ -17,21 +24,55 @@ dotnet build /property:GenerateFullPaths=true /consoleloggerparameters:NoSummary
 # Format all code with CSharpier
 dotnet csharpier .
 
-# Check formatting without applying changes
-dotnet csharpier . --check
+# Check formatting without applying changes (CI/CD verification)
+dotnet csharpier check
+
+# Format specific project
+dotnet csharpier C0MMON/ HUN7ER/ H4ND/
 ```
 
 ### Test Commands
-**No test framework is currently implemented.** When adding tests:
 ```bash
-# Run all tests (future)
-dotnet test
+# Run all tests
+dotnet test UNI7T35T/UNI7T35T.csproj
 
-# Run specific test
-dotnet test --filter "FullyQualifiedName~TestClassName"
+# Run tests with coverage
+dotnet test UNI7T35T/UNI7T35T.csproj --collect:"XPlat Code Coverage"
 
-# Watch mode for TDD (future)
-dotnet watch test
+# Run specific test class or method
+dotnet test UNI7T35T/UNI7T35T.csproj --filter "FullyQualifiedName~TestClassName"
+dotnet test UNI7T35T/UNI7T35T.csproj --filter "FullyQualifiedName~TestMethodName"
+
+# Watch mode for TDD
+dotnet watch test --project ./UNI7T35T/UNI7T35T.csproj
+```
+
+### Verification Steps
+```bash
+# 1. Verify build
+dotnet build P4NTH30N.slnx --no-restore
+# Check: No errors or warnings (except nullable warnings if enabled)
+# Note: Currently failing with CS1729 in MongoUnitOfWork.cs - see investigation
+
+# 2. Verify formatting
+dotnet csharpier check
+# Check: Exit code 0 means formatted correctly
+# Note: Use 'dotnet csharpier .' to apply formatting
+
+# 3. Run tests
+dotnet test UNI7T35T/UNI7T35T.csproj
+# Check: All tests pass (exit code 0)
+# Note: Test framework exists but may not be fully implemented
+
+# 4. Verify dependencies
+dotnet restore P4NTH30N.slnx
+# Check: All packages restore successfully
+
+# 5. Runtime verification
+dotnet run --project ./HUN7ER/HUN7ER.csproj -- --dry-run
+dotnet run --project ./H4ND/H4ND.csproj -- --dry-run
+# Check: Agents start without errors and initialize properly
+# Prerequisite: MongoDB connection must be established
 ```
 
 ## Code Style Guidelines

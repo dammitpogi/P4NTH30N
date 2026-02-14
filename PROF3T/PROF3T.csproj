@@ -15,4 +15,3 @@
 		<ProjectReference Include="..\C0MMON\C0MMON.csproj" />
 	</ItemGroup>
 </Project>
-

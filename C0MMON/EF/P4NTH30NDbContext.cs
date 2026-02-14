@@ -12,7 +12,7 @@ namespace P4NTH30N.C0MMON.EF
 	/// Entity Framework DbContext for P4NTH30N platform using MongoDB provider.
 	/// This provides an alternative to the existing MongoDB.Driver repository pattern.
 	/// Use alongside existing repositories for gradual migration or specific scenarios.
-	/// 
+	///
 	/// NOTE: MongoDB EF Core provider has different APIs than standard EF Core.
 	/// This is a basic example - full feature mapping may require additional configuration.
 	/// </summary>
@@ -102,16 +102,11 @@ namespace P4NTH30N.C0MMON.EF
 			});
 		}
 
-		public ICredentialAnalyticsRepository CreateCredentialAnalyticsRepository()
-			=> new CredentialAnalyticsRepository(this);
+		public ICredentialAnalyticsRepository CreateCredentialAnalyticsRepository() => new CredentialAnalyticsRepository(this);
 
-		public IJackpotAnalyticsRepository CreateJackpotAnalyticsRepository()
-			=> new JackpotAnalyticsRepository(this);
+		public IJackpotAnalyticsRepository CreateJackpotAnalyticsRepository() => new JackpotAnalyticsRepository(this);
 
-		public IAnalyticsService CreateAnalyticsService()
-			=> new AnalyticsService(
-				new CredentialAnalyticsRepository(this),
-				new JackpotAnalyticsRepository(this));
+		public IAnalyticsService CreateAnalyticsService() => new AnalyticsService(new CredentialAnalyticsRepository(this), new JackpotAnalyticsRepository(this));
 	}
 
 	/// <summary>

@@ -3,7 +3,8 @@ using P4NTH30N.C0MMON;
 
 namespace P4NTH30N.C0MMON.Interfaces;
 
-public interface IRepoSignals {
+public interface IRepoSignals
+{
 	List<Signal> GetAll();
 	Signal? Get(string house, string game, string username);
 	Signal? GetOne(string house, string game);

@@ -1,6 +1,7 @@
 namespace P4NTH30N.C0MMON.Infrastructure.Persistence;
 
-public interface IMongoUnitOfWork {
+public interface IMongoUnitOfWork
+{
 	IRepoCredentials Credentials { get; }
 	IRepoSignals Signals { get; }
 	IRepoJackpots Jackpots { get; }
@@ -10,7 +11,8 @@ public interface IMongoUnitOfWork {
 	IStoreErrors Errors { get; }
 }
 
-public sealed class MongoUnitOfWork : IMongoUnitOfWork {
+public sealed class MongoUnitOfWork : IMongoUnitOfWork
+{
 	private readonly IMongoDatabaseProvider _provider;
 
 	public IRepoCredentials Credentials { get; }
@@ -21,7 +23,8 @@ public sealed class MongoUnitOfWork : IMongoUnitOfWork {
 	public IStoreEvents ProcessEvents { get; }
 	public IStoreErrors Errors { get; }
 
-	public MongoUnitOfWork(IMongoDatabaseProvider provider) {
+	public MongoUnitOfWork(IMongoDatabaseProvider provider)
+	{
 		_provider = provider;
 		Credentials = new RepoCredentials(_provider);
 		Signals = new Signals(_provider);

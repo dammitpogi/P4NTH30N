@@ -5,7 +5,8 @@ namespace P4NTH30N.C0MMON.Persistence.Analytics;
 /// <summary>
 /// Analytics event stored in MongoDB.
 /// </summary>
-public class AnalyticsEvent {
+public class AnalyticsEvent
+{
 	/// <summary>
 	/// MongoDB document id.
 	/// </summary>
@@ -40,7 +41,8 @@ public class AnalyticsEvent {
 /// <summary>
 /// DPD analysis record stored in MongoDB.
 /// </summary>
-public class DPDRecord {
+public class DPDRecord
+{
 	/// <summary>
 	/// MongoDB document id.
 	/// </summary>
@@ -85,7 +87,8 @@ public class DPDRecord {
 /// <summary>
 /// Jackpot forecast record stored in MongoDB.
 /// </summary>
-public class JackpotForecastRecord {
+public class JackpotForecastRecord
+{
 	/// <summary>
 	/// MongoDB document id.
 	/// </summary>
@@ -150,7 +153,8 @@ public class JackpotForecastRecord {
 /// <summary>
 /// Credential health report record stored in MongoDB.
 /// </summary>
-public class HealthReportRecord {
+public class HealthReportRecord
+{
 	/// <summary>
 	/// MongoDB document id.
 	/// </summary>

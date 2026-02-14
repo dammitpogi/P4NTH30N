@@ -11,10 +11,12 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace P4NTH30N;
 
-class PROF3T {
+class PROF3T
+{
 	private static readonly MongoUnitOfWork s_uow = new();
 
-	static void Main() {
+	static void Main()
+	{
 		// ===========================================================================================================
 		//  SAFETY FIRST: READ BEFORE RUNNING
 		// -----------------------------------------------------------------------------------------------------------
@@ -57,7 +59,6 @@ class PROF3T {
 
 		// Sandbox();C:\OneDrive\Auto-Firekirin\resource_override_rules.json
 
-
 		// RemoveInvalidDPD_Date();
 		// CheckSignals();
 		// SetThresholdsToDefault();
@@ -68,34 +69,43 @@ class PROF3T {
 		// Fix();p
 	}
 
-	private static void UpdateN3XT() {
-		try {
+	private static void UpdateN3XT()
+	{
+		try
+		{
 			Console.WriteLine("Updating N3XT view...");
 			var db = MongoDatabaseProvider.FromEnvironment().Database;
-			
+
 			// Drop existing view
-			try {
+			try
+			{
 				db.DropCollection("N3XT");
 				Console.WriteLine("Dropped existing N3XT view.");
-			} catch (Exception ex) {
+			}
+			catch (Exception ex)
+			{
 				Console.WriteLine($"Error dropping view (might not exist): {ex.Message}");
 			}
 
 			// Define pipeline
-			var pipeline = new BsonDocument[] {
+			var pipeline = new BsonDocument[]
+			{
 				BsonDocument.Parse("{ $match: { Unlocked: true } }"),
 				// Lookup G4ME
-				BsonDocument.Parse(@"{ $lookup: {
+				BsonDocument.Parse(
+					@"{ $lookup: {
 					from: 'G4ME',
 					let: { qHouse: '$House', qGame: '$Game' },
 					pipeline: [ { $match: { $expr: { $and: [ { $eq: ['$House', '$$qHouse'] }, { $eq: ['$Name', '$$qGame'] } ] } } } ],
 					as: 'G'
-				}}"),
+				}}"
+				),
 				BsonDocument.Parse("{ $unwind: '$G' }"),
 				// PRUNE: Exclude disabled games
 				BsonDocument.Parse("{ $match: { 'G.Enabled': true } }"),
 				// CALCULATE URGENCY
-				BsonDocument.Parse(@"{ $addFields: {
+				BsonDocument.Parse(
+					@"{ $addFields: {
 					Urgency: {
 						$add: [
 							1,
@@ -105,9 +115,11 @@ class PROF3T {
 							{ $cond: ['$Overdue', 2, 0] }
 						]
 					}
-				}}"),
+				}}"
+				),
 				// CALCULATE SORT KEY (Time + Interval / Urgency)
-				BsonDocument.Parse(@"{ $addFields: {
+				BsonDocument.Parse(
+					@"{ $addFields: {
 					SortKey: {
 						$add: [
 							'$Updated',
@@ -123,86 +135,88 @@ class PROF3T {
 							]}
 						]
 					}
-				}}"),
+				}}"
+				),
 				BsonDocument.Parse("{ $sort: { SortKey: 1 } }"),
 				BsonDocument.Parse("{ $limit: 1 }"),
-				BsonDocument.Parse("{ $replaceRoot: { newRoot: '$G' } }")
+				BsonDocument.Parse("{ $replaceRoot: { newRoot: '$G' } }"),
 			};
 
-            // Attempt to find the queue collection name
-            var collections = db.ListCollectionNames().ToList();
-            var queueName = collections.FirstOrDefault(c => c.Contains("QU3EU"));
-            if (string.IsNullOrEmpty(queueName)) {
-                 // Fallback to documented name
-                 queueName = " QU3UE"; 
-            }
-            Console.WriteLine($"Using queue collection: '{queueName}'");
+			// Attempt to find the queue collection name
+			var collections = db.ListCollectionNames().ToList();
+			var queueName = collections.FirstOrDefault(c => c.Contains("QU3EU"));
+			if (string.IsNullOrEmpty(queueName))
+			{
+				// Fallback to documented name
+				queueName = " QU3UE";
+			}
+			Console.WriteLine($"Using queue collection: '{queueName}'");
 
 			db.CreateView<BsonDocument, BsonDocument>("N3XT", queueName, pipeline);
 			Console.WriteLine("Successfully created N3XT view with DPD priority.");
-
-		} catch (Exception ex) {
+		}
+		catch (Exception ex)
+		{
 			Console.WriteLine($"Failed to update N3XT: {ex}");
 		}
 	}
 
-
-	private static void FireKirinBalanceTest() {
+	private static void FireKirinBalanceTest()
+	{
 		var result = FireKirin.QueryBalances("PaulcelFK", "abc123");
-		Console.WriteLine(
-			$"Balance={result.Balance}, Grand={result.Grand}, Major={result.Major}, Minor={result.Minor}, Mini={result.Mini}"
-		);
+		Console.WriteLine($"Balance={result.Balance}, Grand={result.Grand}, Major={result.Major}, Minor={result.Minor}, Mini={result.Mini}");
 	}
 
-	private static void OrionStarsBalanceTest() {
+	private static void OrionStarsBalanceTest()
+	{
 		var result = OrionStars.QueryBalances("PaulCelebrado", "abc12345");
-		Console.WriteLine(
-			$"Balance={result.Balance}, Grand={result.Grand}, Major={result.Major}, Minor={result.Minor}, Mini={result.Mini}"
-		);
+		Console.WriteLine($"Balance={result.Balance}, Grand={result.Grand}, Major={result.Major}, Minor={result.Minor}, Mini={result.Mini}");
 	}
 
-static void ResetGames()
-    {
+	static void ResetGames()
+	{
 		List<Credential> cr = s_uow.Credentials.GetAll();
-        foreach (Credential credential in cr)
-        {
-            credential.DPD.Average = 0;
-            credential.DPD.History = [];
-            
-            // Target specific elements within DPD.Data array
-            if (credential.DPD.Data != null)
-            {
-                // Remove elements with insane values, keep original timestamps
-                credential.DPD.Data = credential.DPD.Data
-                    .Where(dpd => dpd.Grand >= 0 && dpd.Grand <= 10000) // Filter out insane values
-                    .ToList();
-            }
-            
+		foreach (Credential credential in cr)
+		{
+			credential.DPD.Average = 0;
+			credential.DPD.History = [];
+
+			// Target specific elements within DPD.Data array
+			if (credential.DPD.Data != null)
+			{
+				// Remove elements with insane values, keep original timestamps
+				credential.DPD.Data = credential
+					.DPD.Data.Where(dpd => dpd.Grand >= 0 && dpd.Grand <= 10000) // Filter out insane values
+					.ToList();
+			}
+
 			credential.Balance = 0;
 			s_uow.Credentials.Upsert(credential);
 		}
-        
-        // Game entity removed - use Credential-driven approach
-        // All DPD data is now stored on Credentials directly
+
+		// Game entity removed - use Credential-driven approach
+		// All DPD data is now stored on Credentials directly
 		List<Credential> allCredentials = s_uow.Credentials.GetAll();
-        foreach (Credential cred in allCredentials)
-        {
-            cred.DPD.Average = 0;
-            cred.DPD.History = [];
-            
-            // Target specific elements within DPD.Data array
-            if (cred.DPD.Data != null)
-            {
-                // Remove elements with insane values, keep original timestamps
-                cred.DPD.Data = cred.DPD.Data
-                    .Where(dpd => dpd.Grand >= 0 && dpd.Grand <= 10000) // Filter out insane values
-                    .ToList();
-            }
-            
+		foreach (Credential cred in allCredentials)
+		{
+			cred.DPD.Average = 0;
+			cred.DPD.History = [];
+
+			// Target specific elements within DPD.Data array
+			if (cred.DPD.Data != null)
+			{
+				// Remove elements with insane values, keep original timestamps
+				cred.DPD.Data = cred
+					.DPD.Data.Where(dpd => dpd.Grand >= 0 && dpd.Grand <= 10000) // Filter out insane values
+					.ToList();
+			}
+
 			s_uow.Credentials.Upsert(cred);
-        }
-    }
-	private static void Test2() {
+		}
+	}
+
+	private static void Test2()
+	{
 		// DEPRECATED: This migration code is no longer needed after the Game entity removal refactor.
 		// The Credential entity now contains all necessary data (Jackpots, Thresholds, DPD, Settings).
 		// Game entity and NewCredential temporary types have been removed.
@@ -542,11 +556,13 @@ static void ResetGames()
 	//     }
 	// }
 
-	private static void LaunchBrowser() {
+	private static void LaunchBrowser()
+	{
 		ChromeDriver driver = Actions.Launch();
 	}
 
-	private static void AnalyzeBiggestAccounts() {
+	private static void AnalyzeBiggestAccounts()
+	{
 		Console.WriteLine("=== P4NTH30N BIGGEST ACCOUNTS ANALYSIS ===");
 		Console.WriteLine($"Analysis Date: {DateTime.Now:yyyy-MM-dd HH:mm:ss} UTC");
 		Console.WriteLine();
@@ -554,49 +570,62 @@ static void ResetGames()
 		// 1. TOP ACCOUNTS BY BALANCE
 		Console.WriteLine("=== TOP 20 ACCOUNTS BY BALANCE ===");
 		List<Credential> topAccounts = s_uow.Credentials.GetAll().Take(20).ToList();
-		for (int i = 0; i < topAccounts.Count; i++) {
+		for (int i = 0; i < topAccounts.Count; i++)
+		{
 			var cred = topAccounts[i];
-			Console.WriteLine($"{i + 1,2}. Balance: {cred.Balance,8:F2} | House: {cred.House,-20} | Game: {cred.Game,-12} | User: {cred.Username,-15} | Enabled: {cred.Enabled,5} | Banned: {cred.Banned,5}");
+			Console.WriteLine(
+				$"{i + 1, 2}. Balance: {cred.Balance, 8:F2} | House: {cred.House, -20} | Game: {cred.Game, -12} | User: {cred.Username, -15} | Enabled: {cred.Enabled, 5} | Banned: {cred.Banned, 5}"
+			);
 		}
 		Console.WriteLine();
 
 		// 2. HOUSE-LEVEL ACCOUNT DISTRIBUTION
 		Console.WriteLine("=== ACCOUNT DISTRIBUTION BY HOUSE ===");
-		var houseGroups = s_uow.Credentials.GetAll()
+		var houseGroups = s_uow
+			.Credentials.GetAll()
 			.GroupBy(c => c.House)
-			.Select(g => new {
+			.Select(g => new
+			{
 				House = g.Key,
 				TotalAccounts = g.Count(),
 				EnabledAccounts = g.Count(c => c.Enabled && !c.Banned),
 				TotalBalance = g.Sum(c => c.Balance),
 				AvgBalance = g.Average(c => c.Balance),
-				MaxBalance = g.Max(c => c.Balance)
+				MaxBalance = g.Max(c => c.Balance),
 			})
 			.OrderByDescending(h => h.TotalBalance)
 			.ToList();
 
-		foreach (var house in houseGroups) {
-			Console.WriteLine($"House: {house.House,-25} | Total: {house.TotalAccounts,3} | Active: {house.EnabledAccounts,3} | Balance: {house.TotalBalance,10:F2} | Avg: {house.AvgBalance,7:F2} | Max: {house.MaxBalance,8:F2}");
+		foreach (var house in houseGroups)
+		{
+			Console.WriteLine(
+				$"House: {house.House, -25} | Total: {house.TotalAccounts, 3} | Active: {house.EnabledAccounts, 3} | Balance: {house.TotalBalance, 10:F2} | Avg: {house.AvgBalance, 7:F2} | Max: {house.MaxBalance, 8:F2}"
+			);
 		}
 		Console.WriteLine();
 
 		// 3. GAME-LEVEL ANALYSIS
 		Console.WriteLine("=== GAME PLATFORM ANALYSIS ===");
-		var gameGroups = s_uow.Credentials.GetAll()
+		var gameGroups = s_uow
+			.Credentials.GetAll()
 			.GroupBy(c => c.Game)
-			.Select(g => new {
+			.Select(g => new
+			{
 				Game = g.Key,
 				TotalAccounts = g.Count(),
 				EnabledAccounts = g.Count(c => c.Enabled && !c.Banned),
 				TotalBalance = g.Sum(c => c.Balance),
 				AvgBalance = g.Average(c => c.Balance),
-				MaxBalance = g.Max(c => c.Balance)
+				MaxBalance = g.Max(c => c.Balance),
 			})
 			.OrderByDescending(g => g.TotalBalance)
 			.ToList();
 
-		foreach (var game in gameGroups) {
-			Console.WriteLine($"Game: {game.Game,-15} | Total: {game.TotalAccounts,3} | Active: {game.EnabledAccounts,3} | Balance: {game.TotalBalance,10:F2} | Avg: {game.AvgBalance,7:F2} | Max: {game.MaxBalance,8:F2}");
+		foreach (var game in gameGroups)
+		{
+			Console.WriteLine(
+				$"Game: {game.Game, -15} | Total: {game.TotalAccounts, 3} | Active: {game.EnabledAccounts, 3} | Balance: {game.TotalBalance, 10:F2} | Avg: {game.AvgBalance, 7:F2} | Max: {game.MaxBalance, 8:F2}"
+			);
 		}
 		Console.WriteLine();
 
@@ -607,33 +636,35 @@ static void ResetGames()
 		Console.WriteLine($"Total Value in High-Value Accounts: ${highValueAccounts.Sum(c => c.Balance):F2}");
 		Console.WriteLine();
 
-		for (int i = 0; i < Math.Min(10, highValueAccounts.Count); i++) {
+		for (int i = 0; i < Math.Min(10, highValueAccounts.Count); i++)
+		{
 			var cred = highValueAccounts[i];
-			Console.WriteLine($"{i + 1,2}. Balance: ${cred.Balance,8:F2} | House: {cred.House,-20} | Game: {cred.Game,-12} | User: {cred.Username,-15}");
+			Console.WriteLine($"{i + 1, 2}. Balance: ${cred.Balance, 8:F2} | House: {cred.House, -20} | Game: {cred.Game, -12} | User: {cred.Username, -15}");
 		}
 		Console.WriteLine();
 
 		// 5. DPD GROWTH ANALYSIS
 		Console.WriteLine("=== DPD GROWTH LEADERS ===");
-		var dpdLeaders = s_uow.Credentials.GetAll()
-			.Where(c => c.DPD.Average > 0)
-			.OrderByDescending(c => c.DPD.Average)
-			.Take(15)
-			.ToList();
+		var dpdLeaders = s_uow.Credentials.GetAll().Where(c => c.DPD.Average > 0).OrderByDescending(c => c.DPD.Average).Take(15).ToList();
 
 		Console.WriteLine("Top 15 Accounts by DPD Growth Rate:");
-		for (int i = 0; i < dpdLeaders.Count; i++) {
+		for (int i = 0; i < dpdLeaders.Count; i++)
+		{
 			var cred = dpdLeaders[i];
-			Console.WriteLine($"{i + 1,2}. DPD: {cred.DPD.Average,8:F2}/day | Balance: ${cred.Balance,8:F2} | House: {cred.House,-20} | Game: {cred.Game,-12} | User: {cred.Username,-15}");
+			Console.WriteLine(
+				$"{i + 1, 2}. DPD: {cred.DPD.Average, 8:F2}/day | Balance: ${cred.Balance, 8:F2} | House: {cred.House, -20} | Game: {cred.Game, -12} | User: {cred.Username, -15}"
+			);
 		}
 		Console.WriteLine();
 
 		// 6. JACKPOT POTENTIAL ANALYSIS
 		Console.WriteLine("=== JACKPOT POTENTIAL BY HOUSE ===");
 		// Use Credential.GetAll() with House+Game grouping since Game entity was removed
-		var jackpotData = s_uow.Credentials.GetAll()
+		var jackpotData = s_uow
+			.Credentials.GetAll()
 			.GroupBy(c => c.House)
-			.Select(g => new {
+			.Select(g => new
+			{
 				House = g.Key,
 				TotalGrandPotential = g.Sum(x => x.Thresholds.Grand),
 				TotalMajorPotential = g.Sum(x => x.Thresholds.Major),
@@ -641,14 +672,17 @@ static void ResetGames()
 				TotalMiniPotential = g.Sum(x => x.Thresholds.Mini),
 				CurrentGrand = g.Sum(x => x.Jackpots.Grand),
 				CurrentMajor = g.Sum(x => x.Jackpots.Major),
-				AvgDPD = g.Average(x => x.DPD.Average)
+				AvgDPD = g.Average(x => x.DPD.Average),
 			})
 			.OrderByDescending(h => h.TotalGrandPotential)
 			.ToList();
 
-		foreach (var house in jackpotData) {
+		foreach (var house in jackpotData)
+		{
 			double totalPotential = house.TotalGrandPotential + house.TotalMajorPotential + house.TotalMinorPotential + house.TotalMiniPotential;
-			Console.WriteLine($"House: {house.House,-25} | Potential: ${totalPotential,8:F2} | Grand: ${house.TotalGrandPotential,7:F2} | Major: ${house.TotalMajorPotential,6:F2} | Minor: ${house.TotalMinorPotential,6:F2} | Mini: ${house.TotalMiniPotential,5:F2} | DPD: {house.AvgDPD,6:F2}/day");
+			Console.WriteLine(
+				$"House: {house.House, -25} | Potential: ${totalPotential, 8:F2} | Grand: ${house.TotalGrandPotential, 7:F2} | Major: ${house.TotalMajorPotential, 6:F2} | Minor: ${house.TotalMinorPotential, 6:F2} | Mini: ${house.TotalMiniPotential, 5:F2} | DPD: {house.AvgDPD, 6:F2}/day"
+			);
 		}
 		Console.WriteLine();
 

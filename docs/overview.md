@@ -44,9 +44,50 @@ dotnet run --project ./H4ND/H4ND.csproj
 
 *   **`H0UND` Mode:** The `H4ND` agent can be run in a manual mode that ignores signals by passing the `H0UND` argument: `dotnet run --project ./H4ND/H4ND.csproj H0UND`
 
+### Verification Steps
+
+Before operating the platform, verify it’s properly configured:
+
+```bash
+# 1. Verify build
+dotnet build P4NTH30N.slnx --no-restore
+# Check: No errors or warnings (except nullable warnings if enabled)
+
+# 2. Verify formatting
+dotnet csharpier . --check
+# Check: Exit code 0 means formatted correctly
+
+# 3. Run tests
+dotnet test UNI7T35T/UNI7T35T.csproj
+# Check: All tests pass (exit code 0)
+
+# 4. Verify dependencies
+dotnet restore P4NTH30N.slnx
+# Check: All packages restore successfully
+
+# 5. Runtime verification
+dotnet run --project ./HUN7ER/HUN7ER.csproj -- --dry-run
+dotnet run --project ./H4ND/H4ND.csproj -- --dry-run
+# Check: Agents start without errors and initialize properly
+```
+
 ### Testing
 
-The project does not currently contain a dedicated unit or integration test suite. Testing appears to be done through direct execution of the agents. A future improvement would be to create formal test projects for the business logic within the `C0MMON` library.
+The project includes a dedicated test suite in `UNI7T35T/`. Run tests with:
+
+```bash
+# Run all tests
+dotnet test UNI7T35T/UNI7T35T.csproj
+
+# Run tests with coverage reporting
+dotnet test UNI7T35T/UNI7T35T.csproj --collect:"XPlat Code Coverage"
+
+# Run a specific test class
+ dotnet test UNI7T35T/UNI7T35T.csproj --filter "FullyQualifiedName~TestClassName"
+
+# Watch mode for TDD (auto-re-run on file changes)
+dotnet watch test --project ./UNI7T35T/UNI7T35T.csproj
+```
 
 ## Development Conventions
 

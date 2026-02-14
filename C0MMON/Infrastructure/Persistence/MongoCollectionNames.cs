@@ -1,6 +1,7 @@
 namespace P4NTH30N.C0MMON.Infrastructure.Persistence;
 
-public static class MongoCollectionNames {
+public static class MongoCollectionNames
+{
 	public const string Credentials = "CRED3N7IAL";
 	public const string Signals = "SIGN4L";
 	public const string Jackpots = "J4CKP0T";

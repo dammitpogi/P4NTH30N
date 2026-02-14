@@ -5,12 +5,17 @@ using P4NTH30N.C0MMON.Infrastructure.Persistence;
 
 namespace P4NTH30N.C0MMON;
 
-public static class ReceivedExt {
-	public static void Receive(this Signal signal, double triggered, IReceiveSignals received) {
+public static class ReceivedExt
+{
+	public static void Receive(this Signal signal, double triggered, IReceiveSignals received)
+	{
 		Received? dto = received.GetOpen(signal);
-		if (dto == null) {
+		if (dto == null)
+		{
 			dto = new Received(signal, triggered) { _id = ObjectId.GenerateNewId() };
-		} else {
+		}
+		else
+		{
 			dto.Acknowledged = DateTime.UtcNow;
 			dto.Priority = signal.Priority;
 			dto.Triggered = triggered;
@@ -18,9 +23,11 @@ public static class ReceivedExt {
 		received.Upsert(dto);
 	}
 
-	public static void Close(this Signal signal, double threshold, IReceiveSignals received) {
+	public static void Close(this Signal signal, double threshold, IReceiveSignals received)
+	{
 		Received? dto = received.GetOpen(signal);
-		if (dto != null) {
+		if (dto != null)
+		{
 			dto.Rewarded = DateTime.UtcNow;
 			dto.Threshold = threshold;
 			received.Upsert(dto);
@@ -29,7 +36,8 @@ public static class ReceivedExt {
 }
 
 [method: SetsRequiredMembers]
-public class Received(Signal signal, double triggered) {
+public class Received(Signal signal, double triggered)
+{
 	public ObjectId _id { get; set; } = ObjectId.GenerateNewId();
 	public DateTime Acknowledged { get; set; } = DateTime.UtcNow;
 	public DateTime? Rewarded { get; set; } = null;

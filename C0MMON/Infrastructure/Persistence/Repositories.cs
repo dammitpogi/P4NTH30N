@@ -6,48 +6,57 @@ using P4NTH30N.C0MMON.Interfaces;
 
 namespace P4NTH30N.C0MMON.Infrastructure.Persistence;
 
-internal sealed class RepoCredentials(IMongoDatabaseProvider provider) : IRepoCredentials {
+internal sealed class RepoCredentials(IMongoDatabaseProvider provider) : IRepoCredentials
+{
 	private readonly IMongoCollection<Credential> _credentials = provider.Database.GetCollection<Credential>(MongoCollectionNames.Credentials);
 	private readonly IMongoCollection<Jackpot> _jackpots = provider.Database.GetCollection<Jackpot>(MongoCollectionNames.Jackpots);
 
-	public List<Credential> GetAll() {
+	public List<Credential> GetAll()
+	{
 		return _credentials.Find(Builders<Credential>.Filter.Empty).SortByDescending(c => c.Balance).ToList();
 	}
 
-	public void IntroduceProperties() {
+	public void IntroduceProperties()
+	{
 		FilterDefinition<Credential> filter = Builders<Credential>.Filter.Exists(x => x.Enabled, false);
 		List<Credential> missing = _credentials.Find(filter).ToList();
-		foreach (Credential credential in missing) {
+		foreach (Credential credential in missing)
+		{
 			Upsert(credential);
 		}
 	}
 
-	public List<Credential> GetBy(string house, string game) {
+	public List<Credential> GetBy(string house, string game)
+	{
 		FilterDefinitionBuilder<Credential> builder = Builders<Credential>.Filter;
 		FilterDefinition<Credential> filter = builder.Eq("House", house) & builder.Eq("Game", game) & builder.Eq("Banned", false);
 		return _credentials.Find(filter).SortBy(g => g.LastUpdated).ToList();
 	}
 
-	public List<Credential> GetAllEnabledFor(string house, string game) {
+	public List<Credential> GetAllEnabledFor(string house, string game)
+	{
 		FilterDefinitionBuilder<Credential> builder = Builders<Credential>.Filter;
 		FilterDefinition<Credential> filter = builder.Eq("House", house) & builder.Eq("Game", game) & builder.Eq("Enabled", true) & builder.Eq("Banned", false);
 		return _credentials.Find(filter).SortBy(g => g.LastUpdated).ToList();
 	}
 
-	public Credential? GetBy(string house, string game, string username) {
+	public Credential? GetBy(string house, string game, string username)
+	{
 		FilterDefinitionBuilder<Credential> builder = Builders<Credential>.Filter;
 		FilterDefinition<Credential> filter = builder.Eq("House", house) & builder.Eq("Game", game) & builder.Eq("Username", username);
 		return _credentials.Find(filter).FirstOrDefault();
 	}
 
-	public Credential GetNext(bool usePriorityCalculation) {
+	public Credential GetNext(bool usePriorityCalculation)
+	{
 		FilterDefinitionBuilder<Credential> builder = Builders<Credential>.Filter;
 		FilterDefinition<Credential> filter = builder.Eq(c => c.Enabled, true) & builder.Eq(c => c.Banned, false);
 		List<Credential> credentials = _credentials.Find(filter).ToList();
 		if (credentials.Count == 0)
 			throw new InvalidOperationException("No enabled, non-banned credentials found.");
 
-		if (!usePriorityCalculation) {
+		if (!usePriorityCalculation)
+		{
 			List<Credential> unlockedCredentials = credentials.Where(c => c.Unlocked).OrderBy(c => c.LastUpdated).ToList();
 			if (unlockedCredentials.Count == 0)
 				throw new InvalidOperationException("No unlocked credentials available.");
@@ -55,7 +64,8 @@ internal sealed class RepoCredentials(IMongoDatabaseProvider provider) : IRepoCr
 		}
 
 		List<(Credential credential, int priority, DateTime by, bool overdue)> prioritized = new();
-		foreach (Credential cred in credentials) {
+		foreach (Credential cred in credentials)
+		{
 			DateTime created = cred.CreateDate;
 			DateTime updated = cred.LastUpdated > DateTime.MinValue ? cred.LastUpdated : created;
 			bool funded = !cred.CashedOut;
@@ -95,30 +105,43 @@ internal sealed class RepoCredentials(IMongoDatabaseProvider provider) : IRepoCr
 			double jackpotDiff = latestEstimation != null ? latestEstimation.Threshold - latestEstimation.Current : 0;
 
 			int priority = 7;
-			if (jackpotDiff != 0) {
-				if (jackpotDiff <= 0.12 || (miniDiff <= 0.07 && funded)) {
+			if (jackpotDiff != 0)
+			{
+				if (jackpotDiff <= 0.12 || (miniDiff <= 0.07 && funded))
+				{
 					priority = 1;
-				} else if (jackpot3H || jackpotDiff <= 0.3 || (miniDiff <= 0.15 && funded)) {
+				}
+				else if (jackpot3H || jackpotDiff <= 0.3 || (miniDiff <= 0.15 && funded))
+				{
 					priority = 2;
-				} else if (jackpot12H) {
+				}
+				else if (jackpot12H)
+				{
 					priority = 3;
-				} else if (!leastWeekOld && latestEstimation == null) {
+				}
+				else if (!leastWeekOld && latestEstimation == null)
+				{
 					priority = 4;
-				} else if (jackpotDay) {
+				}
+				else if (jackpotDay)
+				{
 					priority = 5;
-				} else if (jackpotWeek) {
+				}
+				else if (jackpotWeek)
+				{
 					priority = 6;
 				}
 			}
 
-			DateTime by = priority switch {
+			DateTime by = priority switch
+			{
 				1 => updated.AddMinutes(4),
 				2 => updated.AddMinutes(8),
 				3 => updated.AddMinutes(16),
 				4 => updated.AddHours(1),
 				5 => updated.AddHours(3),
 				6 => updated.AddHours(6),
-				_ => updated.AddDays(1)
+				_ => updated.AddDays(1),
 			};
 
 			bool overdue = now > by;
@@ -138,143 +161,165 @@ internal sealed class RepoCredentials(IMongoDatabaseProvider provider) : IRepoCr
 		return nextCredential.credential;
 	}
 
-	public void Upsert(Credential credential) {
+	public void Upsert(Credential credential)
+	{
 		FilterDefinition<Credential> filter = Builders<Credential>.Filter.Eq(x => x._id, credential._id);
 		_credentials.ReplaceOne(filter, credential, new ReplaceOptions { IsUpsert = true });
 	}
 
-	public void Lock(Credential credential) {
+	public void Lock(Credential credential)
+	{
 		credential.UnlockTimeout = DateTime.UtcNow.AddMinutes(1.5);
 		credential.Unlocked = false;
 		Upsert(credential);
 	}
 
-	public void Unlock(Credential credential) {
+	public void Unlock(Credential credential)
+	{
 		credential.Unlocked = true;
 		Upsert(credential);
 	}
 }
 
-internal sealed class Signals(IMongoDatabaseProvider provider) 	: IRepoSignals {
+internal sealed class Signals(IMongoDatabaseProvider provider) : IRepoSignals
+{
 	private readonly IMongoCollection<Signal> _signals = provider.Database.GetCollection<Signal>(MongoCollectionNames.Signals);
 
-	public List<Signal> GetAll() {
+	public List<Signal> GetAll()
+	{
 		return _signals.Find(Builders<Signal>.Filter.Empty).ToList();
 	}
 
-	public Signal? Get(string house, string game, string username) {
+	public Signal? Get(string house, string game, string username)
+	{
 		FilterDefinitionBuilder<Signal> builder = Builders<Signal>.Filter;
 		FilterDefinition<Signal> filter = builder.Eq("House", house) & builder.Eq("Game", game) & builder.Eq("Username", username);
 		return _signals.Find(filter).FirstOrDefault();
 	}
 
-	public Signal? GetOne(string house, string game) {
+	public Signal? GetOne(string house, string game)
+	{
 		FilterDefinitionBuilder<Signal> builder = Builders<Signal>.Filter;
 		FilterDefinition<Signal> filter = builder.Eq("House", house) & builder.Eq("Game", game);
 		return _signals.Find(filter).FirstOrDefault();
 	}
 
-	public Signal? GetNext() {
-		return _signals
-			.Find(Builders<Signal>.Filter.Eq("Acknowledged", false))
-			.SortByDescending(g => g.Priority)
-			.Limit(1)
-			.FirstOrDefault();
+	public Signal? GetNext()
+	{
+		return _signals.Find(Builders<Signal>.Filter.Eq("Acknowledged", false)).SortByDescending(g => g.Priority).Limit(1).FirstOrDefault();
 	}
 
-	public void DeleteAll(string house, string game) {
+	public void DeleteAll(string house, string game)
+	{
 		FilterDefinitionBuilder<Signal> builder = Builders<Signal>.Filter;
 		FilterDefinition<Signal> filter = builder.Eq("House", house) & builder.Eq("Game", game);
 		_signals.DeleteMany(filter);
 	}
 
-	public bool Exists(Signal signal) {
+	public bool Exists(Signal signal)
+	{
 		FilterDefinitionBuilder<Signal> builder = Builders<Signal>.Filter;
 		FilterDefinition<Signal> filter = builder.Eq("House", signal.House) & builder.Eq("Game", signal.Game) & builder.Eq("Username", signal.Username);
 		return _signals.Find(filter).Limit(1).Any();
 	}
 
-	public void Acknowledge(Signal signal) {
+	public void Acknowledge(Signal signal)
+	{
 		FilterDefinitionBuilder<Signal> builder = Builders<Signal>.Filter;
 		FilterDefinition<Signal> filter = builder.Eq("House", signal.House) & builder.Eq("Game", signal.Game) & builder.Eq("Username", signal.Username);
 
 		signal.Acknowledged = true;
 		signal.Timeout = DateTime.UtcNow.AddMinutes(1);
 
-		UpdateDefinition<Signal> update = Builders<Signal>.Update
-			.Set(x => x.Acknowledged, true)
-			.Set(x => x.Timeout, signal.Timeout);
+		UpdateDefinition<Signal> update = Builders<Signal>.Update.Set(x => x.Acknowledged, true).Set(x => x.Timeout, signal.Timeout);
 
 		_signals.UpdateOne(filter, update, new UpdateOptions { IsUpsert = false });
 	}
 
-	public void Upsert(Signal signal) {
+	public void Upsert(Signal signal)
+	{
 		var builder = Builders<Signal>.Filter;
 		FilterDefinition<Signal> filter = builder.Eq("House", signal.House) & builder.Eq("Game", signal.Game) & builder.Eq("Username", signal.Username);
 
 		var existing = _signals.Find(filter).FirstOrDefault();
-		if (existing != null) {
-			signal._id = existing._id;  // PRESERVE EXISTING _ID
+		if (existing != null)
+		{
+			signal._id = existing._id; // PRESERVE EXISTING _ID
 			_signals.ReplaceOne(filter, signal);
-		} else {
+		}
+		else
+		{
 			_signals.InsertOne(signal);
 		}
 	}
 
-	public void Delete(Signal signal) {
+	public void Delete(Signal signal)
+	{
 		FilterDefinitionBuilder<Signal> builder = Builders<Signal>.Filter;
 		FilterDefinition<Signal> filter = builder.Eq("House", signal.House) & builder.Eq("Game", signal.Game) & builder.Eq("Username", signal.Username);
 		_signals.DeleteOne(filter);
 	}
 }
 
-internal sealed class RepoJackpots(IMongoDatabaseProvider provider) 	: IRepoJackpots {
+internal sealed class RepoJackpots(IMongoDatabaseProvider provider) : IRepoJackpots
+{
 	private readonly IMongoCollection<Jackpot> _jackpots = provider.Database.GetCollection<Jackpot>(MongoCollectionNames.Jackpots);
 
-	public Jackpot? Get(string category, string house, string game) {
+	public Jackpot? Get(string category, string house, string game)
+	{
 		FilterDefinitionBuilder<Jackpot> builder = Builders<Jackpot>.Filter;
 		FilterDefinition<Jackpot> query = builder.Eq("Category", category) & builder.Eq("House", house) & builder.Eq("Game", game);
 		return _jackpots.Find(query).FirstOrDefault();
 	}
 
-	public List<Jackpot> GetAll() {
+	public List<Jackpot> GetAll()
+	{
 		return _jackpots.Find(Builders<Jackpot>.Filter.Empty).SortByDescending(x => x.EstimatedDate).ToList();
 	}
 
-	public List<Jackpot> GetEstimations(string house, string game) {
+	public List<Jackpot> GetEstimations(string house, string game)
+	{
 		FilterDefinitionBuilder<Jackpot> builder = Builders<Jackpot>.Filter;
 		FilterDefinition<Jackpot> query = builder.Eq(x => x.House, house) & builder.Eq(x => x.Game, game) & builder.Gte(x => x.Priority, 2);
 		return _jackpots.Find(query).SortBy(x => x.EstimatedDate).ToList();
 	}
 
-	public Jackpot? GetMini(string house, string game) {
+	public Jackpot? GetMini(string house, string game)
+	{
 		FilterDefinitionBuilder<Jackpot> builder = Builders<Jackpot>.Filter;
 		FilterDefinition<Jackpot> query = builder.Eq(x => x.House, house) & builder.Eq(x => x.Game, game) & builder.Eq(x => x.Priority, 1);
 		return _jackpots.Find(query).FirstOrDefault();
 	}
 
-	public void Upsert(Jackpot jackpot) {
+	public void Upsert(Jackpot jackpot)
+	{
 		var builder = Builders<Jackpot>.Filter;
 		FilterDefinition<Jackpot> filter = builder.Eq("House", jackpot.House) & builder.Eq("Game", jackpot.Game) & builder.Eq("Category", jackpot.Category);
 
 		var existing = _jackpots.Find(filter).FirstOrDefault();
-		if (existing != null) {
-			jackpot._id = existing._id;  // PRESERVE EXISTING _ID
+		if (existing != null)
+		{
+			jackpot._id = existing._id; // PRESERVE EXISTING _ID
 			_jackpots.ReplaceOne(filter, jackpot);
-		} else {
+		}
+		else
+		{
 			_jackpots.InsertOne(jackpot);
 		}
 	}
 }
 
-internal sealed class Houses(IMongoDatabaseProvider provider) 	: IRepoHouses {
+internal sealed class Houses(IMongoDatabaseProvider provider) : IRepoHouses
+{
 	private readonly IMongoCollection<House> _houses = provider.Database.GetCollection<House>(MongoCollectionNames.Houses);
 
-	public List<House> GetAll() {
+	public List<House> GetAll()
+	{
 		return _houses.Find(Builders<House>.Filter.Empty).ToList();
 	}
 
-	public House? GetOrCreate(string name) {
+	public House? GetOrCreate(string name)
+	{
 		if (string.IsNullOrWhiteSpace(name))
 			return null;
 
@@ -287,64 +332,82 @@ internal sealed class Houses(IMongoDatabaseProvider provider) 	: IRepoHouses {
 		return house;
 	}
 
-	public void Upsert(House house) {
+	public void Upsert(House house)
+	{
 		FilterDefinition<House> filter = Builders<House>.Filter.Eq("_id", house._id);
 		_houses.ReplaceOne(filter, house, new ReplaceOptions { IsUpsert = true });
 	}
 
-	public void Delete(House house) {
+	public void Delete(House house)
+	{
 		_houses.DeleteOne(Builders<House>.Filter.Eq("_id", house._id));
 	}
 }
 
-public sealed class ReceivedRepository(IMongoDatabaseProvider provider) : IReceiveSignals {
+public sealed class ReceivedRepository(IMongoDatabaseProvider provider) : IReceiveSignals
+{
 	private readonly IMongoCollection<Received> _received = provider.Database.GetCollection<Received>(MongoCollectionNames.Received);
 
-	public List<Received> GetAll() {
+	public List<Received> GetAll()
+	{
 		return _received.Find(Builders<Received>.Filter.Empty).ToList();
 	}
 
-	public Received? GetOpen(Signal signal) {
+	public Received? GetOpen(Signal signal)
+	{
 		FilterDefinitionBuilder<Received> builder = Builders<Received>.Filter;
-		FilterDefinition<Received> filter = builder.Eq("House", signal.House) & builder.Eq("Game", signal.Game) & builder.Eq("Username", signal.Username) & builder.Eq("Rewarded", MongoDB.Bson.BsonNull.Value);
+		FilterDefinition<Received> filter =
+			builder.Eq("House", signal.House)
+			& builder.Eq("Game", signal.Game)
+			& builder.Eq("Username", signal.Username)
+			& builder.Eq("Rewarded", MongoDB.Bson.BsonNull.Value);
 		return _received.Find(filter).FirstOrDefault();
 	}
 
-	public void Upsert(Received received) {
+	public void Upsert(Received received)
+	{
 		if (received._id == null)
 			received._id = ObjectId.GenerateNewId();
 		_received.ReplaceOne(Builders<Received>.Filter.Eq("_id", received._id), received, new ReplaceOptions { IsUpsert = true });
 	}
 }
 
-internal sealed class ProcessEventRepository(IMongoDatabaseProvider provider) : IStoreEvents {
+internal sealed class ProcessEventRepository(IMongoDatabaseProvider provider) : IStoreEvents
+{
 	private readonly IMongoCollection<ProcessEvent> _events = provider.Database.GetCollection<ProcessEvent>(MongoCollectionNames.Events);
 
-	public void Insert(ProcessEvent processEvent) {
+	public void Insert(ProcessEvent processEvent)
+	{
 		_events.InsertOne(processEvent);
 	}
 }
 
-internal sealed class ErrorLogRepository(IMongoDatabaseProvider provider) : IStoreErrors {
+internal sealed class ErrorLogRepository(IMongoDatabaseProvider provider) : IStoreErrors
+{
 	private readonly IMongoCollection<ErrorLog> _errors = provider.Database.GetCollection<ErrorLog>(MongoCollectionNames.Errors);
 
-	public void Insert(ErrorLog error) {
+	public void Insert(ErrorLog error)
+	{
 		_errors.InsertOne(error);
 	}
 
-	public List<ErrorLog> GetAll() {
+	public List<ErrorLog> GetAll()
+	{
 		return _errors.Find(Builders<ErrorLog>.Filter.Empty).SortByDescending(e => e.Timestamp).ToList();
 	}
 
-	public List<ErrorLog> GetBySource(string source) {
+	public List<ErrorLog> GetBySource(string source)
+	{
 		return _errors.Find(e => e.Source == source).SortByDescending(e => e.Timestamp).ToList();
 	}
 
-	public List<ErrorLog> GetUnresolved() {
+	public List<ErrorLog> GetUnresolved()
+	{
 		return _errors.Find(e => !e.Resolved).SortByDescending(e => e.Timestamp).ToList();
 	}
 
-	public void MarkResolved(ObjectId id) {
+	public void MarkResolved(ObjectId id)
+	{
 		var filter = Builders<ErrorLog>.Filter.Eq("_id", id);
 		var update = Builders<ErrorLog>.Update.Set(e => e.Resolved, true).Set(e => e.ResolvedAt, DateTime.UtcNow);
 		_errors.UpdateOne(filter, update);

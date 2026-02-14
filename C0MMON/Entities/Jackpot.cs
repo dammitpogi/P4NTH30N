@@ -6,7 +6,8 @@ using P4NTH30N.C0MMON.Infrastructure.Persistence;
 
 namespace P4NTH30N.C0MMON;
 
-public class Jackpot {
+public class Jackpot
+{
 	public ObjectId _id { get; set; }
 	public double GrandDPM { get; set; }
 	public double MajorDPM { get; set; }
@@ -24,91 +25,100 @@ public class Jackpot {
 	/// <summary>
 	/// Validates jackpot values - logs error to ERR0R if invalid and errorLogger provided.
 	/// </summary>
-	public bool IsValid(IStoreErrors? errorLogger = null) {
-		if (double.IsNaN(Current) || double.IsInfinity(Current)) {
+	public bool IsValid(IStoreErrors? errorLogger = null)
+	{
+		if (double.IsNaN(Current) || double.IsInfinity(Current))
+		{
 			Console.WriteLine($"🔴 Jackpot validation failed: {Game} {Category} has invalid value {Current}");
-			errorLogger?.Insert(ErrorLog.Create(
-				ErrorType.ValidationError,
-				$"Jackpot:{Game}/{Category}",
-				$"Invalid jackpot value: {Current}",
-				ErrorSeverity.High
-			));
+			errorLogger?.Insert(ErrorLog.Create(ErrorType.ValidationError, $"Jackpot:{Game}/{Category}", $"Invalid jackpot value: {Current}", ErrorSeverity.High));
 			return false;
 		}
-		if (Current < 0) {
+		if (Current < 0)
+		{
 			Console.WriteLine($"🔴 Jackpot validation failed: {Game} {Category} has negative value {Current}");
-			errorLogger?.Insert(ErrorLog.Create(
-				ErrorType.ValidationError,
-				$"Jackpot:{Game}/{Category}",
-				$"Negative jackpot value: {Current}",
-				ErrorSeverity.High
-			));
+			errorLogger?.Insert(ErrorLog.Create(ErrorType.ValidationError, $"Jackpot:{Game}/{Category}", $"Negative jackpot value: {Current}", ErrorSeverity.High));
 			return false;
 		}
 		return true;
 	}
 
 	// Legacy DPM property for backwards compatibility
-	public double DPM {
-		get => Category switch {
-			"Grand" => GrandDPM,
-			"Major" => MajorDPM,
-			"Minor" => MinorDPM,
-			"Mini" => MiniDPM,
-			_ => GrandDPM
-		};
-		set {
-			switch (Category) {
-				case "Grand": GrandDPM = value; break;
-				case "Major": MajorDPM = value; break;
-				case "Minor": MinorDPM = value; break;
-				case "Mini": MiniDPM = value; break;
+	public double DPM
+	{
+		get =>
+			Category switch
+			{
+				"Grand" => GrandDPM,
+				"Major" => MajorDPM,
+				"Minor" => MinorDPM,
+				"Mini" => MiniDPM,
+				_ => GrandDPM,
+			};
+		set
+		{
+			switch (Category)
+			{
+				case "Grand":
+					GrandDPM = value;
+					break;
+				case "Major":
+					MajorDPM = value;
+					break;
+				case "Minor":
+					MinorDPM = value;
+					break;
+				case "Mini":
+					MiniDPM = value;
+					break;
 			}
 		}
 	}
 
 	// Helper to get tier name from priority
-	private static string GetCategoryFromPriority(int priority) => priority switch {
-		4 => "Grand",
-		3 => "Major",
-		2 => "Minor",
-		1 => "Mini",
-		_ => "Unknown"
-	};
+	private static string GetCategoryFromPriority(int priority) =>
+		priority switch
+		{
+			4 => "Grand",
+			3 => "Major",
+			2 => "Minor",
+			1 => "Mini",
+			_ => "Unknown",
+		};
 
 	// Helper to get DPD value for a tier
-	private static double GetDPDValue(List<DPD_Data> data, string tier) {
-		if (data.Count < 2) return 0;
-		return tier switch {
+	private static double GetDPDValue(List<DPD_Data> data, string tier)
+	{
+		if (data.Count < 2)
+			return 0;
+		return tier switch
+		{
 			"Grand" => data[^1].Grand - data[0].Grand,
 			"Major" => data[^1].Major - data[0].Major,
 			"Minor" => data[^1].Minor - data[0].Minor,
 			"Mini" => data[^1].Mini - data[0].Mini,
-			_ => 0
+			_ => 0,
 		};
 	}
 
 	// Calculate DPM for a specific tier using DPD data
-	private static double CalculateTierDPM(List<DPD_Data> dataZoom, string tier, double fallbackDPM) {
-		if (dataZoom.Count < 2) return fallbackDPM;
+	private static double CalculateTierDPM(List<DPD_Data> dataZoom, string tier, double fallbackDPM)
+	{
+		if (dataZoom.Count < 2)
+			return fallbackDPM;
 
 		double minutes = dataZoom[^1].Timestamp.Subtract(dataZoom[0].Timestamp).TotalMinutes;
-		if (minutes <= 0) return fallbackDPM;
+		if (minutes <= 0)
+			return fallbackDPM;
 
 		double dollars = GetDPDValue(dataZoom, tier);
-		if (dollars <= 0) return fallbackDPM;
+		if (dollars <= 0)
+			return fallbackDPM;
 
 		return dollars / minutes;
 	}
 
-	public Jackpot(
-		Credential credential,
-		string category,
-		double current,
-		double threshold,
-		int priority,
-		DateTime eta
-	) {
+	public Jackpot(Credential credential, string category, double current, double threshold, int priority, DateTime eta)
+	{
 		Category = category;
 		House = credential.House;
 		Game = credential.Game;
@@ -129,19 +139,14 @@ public class Jackpot {
 		MiniDPM = fallbackDPM;
 
 		// Get tier-specific DPD data for last 24 hours
-		List<DPD_Data> dataZoom24h = credential
-			.DPD.Data.FindAll(x => x.Timestamp > DateTime.UtcNow.AddDays(-1))
-			.OrderBy(x => x.Timestamp)
-			.ToList();
+		List<DPD_Data> dataZoom24h = credential.DPD.Data.FindAll(x => x.Timestamp > DateTime.UtcNow.AddDays(-1)).OrderBy(x => x.Timestamp).ToList();
 
 		// Get tier-specific DPD data for last 8 hours
-		List<DPD_Data> dataZoom8h = credential
-			.DPD.Data.FindAll(x => x.Timestamp > DateTime.UtcNow.AddHours(-8))
-			.OrderBy(x => x.Timestamp)
-			.ToList();
+		List<DPD_Data> dataZoom8h = credential.DPD.Data.FindAll(x => x.Timestamp > DateTime.UtcNow.AddHours(-8)).OrderBy(x => x.Timestamp).ToList();
 
 		// Calculate per-tier DPM
-		if (dataZoom24h.Count >= 2 && eta < DateTime.UtcNow.AddDays(3)) {
+		if (dataZoom24h.Count >= 2 && eta < DateTime.UtcNow.AddDays(3))
+		{
 			GrandDPM = CalculateTierDPM(dataZoom24h, "Grand", fallbackDPM);
 			MajorDPM = CalculateTierDPM(dataZoom24h, "Major", fallbackDPM);
 			MinorDPM = CalculateTierDPM(dataZoom24h, "Minor", fallbackDPM);
@@ -149,7 +154,8 @@ public class Jackpot {
 		}
 
 		// Recalculate with 8-hour data if more recent and within time window
-		if (dataZoom8h.Count >= 2 && eta < DateTime.UtcNow.AddHours(4)) {
+		if (dataZoom8h.Count >= 2 && eta < DateTime.UtcNow.AddHours(4))
+		{
 			GrandDPM = CalculateTierDPM(dataZoom8h, "Grand", GrandDPM);
 			MajorDPM = CalculateTierDPM(dataZoom8h, "Major", MajorDPM);
 			MinorDPM = CalculateTierDPM(dataZoom8h, "Minor", MinorDPM);
@@ -157,12 +163,13 @@ public class Jackpot {
 		}
 
 		// Get the DPM for this specific category
-		double tierDPM = Category switch {
+		double tierDPM = Category switch
+		{
 			"Grand" => GrandDPM,
 			"Major" => MajorDPM,
 			"Minor" => MinorDPM,
 			"Mini" => MiniDPM,
-			_ => fallbackDPM
+			_ => fallbackDPM,
 		};
 
 		// Calculate estimated growth using tier-specific DPM

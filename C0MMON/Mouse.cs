@@ -3,23 +3,27 @@ using System.Runtime.InteropServices;
 
 namespace P4NTH30N.C0MMON;
 
-public class Mouse {
+public class Mouse
+{
 	private static readonly Random random = new();
 	private static readonly int mouseSpeed = 15;
 
-	public static void Click(int x, int y) {
+	public static void Click(int x, int y)
+	{
 		MoveMouse(x, y, 0, 0);
 		SetCursorPos(x, y);
 		mouse_event(LMBDown, x, y, 0, 0);
 		mouse_event(LMBUp, x, y, 0, 0);
 	}
 
-	public static void Move(int x, int y) {
+	public static void Move(int x, int y)
+	{
 		MoveMouse(x, y, 0, 0);
 		SetCursorPos(x, y);
 	}
 
-	public static void LongClick(int x, int y) {
+	public static void LongClick(int x, int y)
+	{
 		MoveMouse(x, y, 0, 0);
 		SetCursorPos(x, y);
 		mouse_event(LMBDown, x, y, 0, 0);
@@ -27,14 +31,16 @@ public class Mouse {
 		mouse_event(LMBUp, x, y, 0, 0);
 	}
 
-	public static void RtClick(int x, int y) {
+	public static void RtClick(int x, int y)
+	{
 		MoveMouse(x, y, 0, 0);
 		SetCursorPos(x, y);
 		mouse_event(RMBDown, x, y, 0, 0);
 		mouse_event(RMBUp, x, y, 0, 0);
 	}
 
-	private static void MoveMouse(int x, int y, int rx, int ry) {
+	private static void MoveMouse(int x, int y, int rx, int ry)
+	{
 		Point c = new();
 		GetCursorPos(out c);
 
@@ -43,18 +49,7 @@ public class Mouse {
 
 		double randomSpeed = Math.Max((random.Next(mouseSpeed) / 2.0 + mouseSpeed) / 10.0, 0.1);
 
-		WindMouse(
-			c.X,
-			c.Y,
-			x,
-			y,
-			9.0,
-			3.0,
-			10.0 / randomSpeed,
-			15.0 / randomSpeed,
-			10.0 * randomSpeed,
-			10.0 * randomSpeed
-		);
+		WindMouse(c.X, c.Y, x, y, 9.0, 3.0, 10.0 / randomSpeed, 15.0 / randomSpeed, 10.0 * randomSpeed, 10.0 * randomSpeed);
 	}
 
 	private static void WindMouse(
@@ -68,7 +63,8 @@ public class Mouse {
 		double maxWait,
 		double maxStep,
 		double targetArea
-	) {
+	)
+	{
 		double dist,
 			windX = 0,
 			windY = 0,
@@ -89,14 +85,18 @@ public class Mouse {
 
 		dist = Hypot(xe - xs, ye - ys);
 
-		while (dist > 1.0) {
+		while (dist > 1.0)
+		{
 			wind = Math.Min(wind, dist);
 
-			if (dist >= targetArea) {
+			if (dist >= targetArea)
+			{
 				int w = random.Next((int)Math.Round(wind) * 2 + 1);
 				windX = windX / sqrt3 + (w - wind) / sqrt5;
 				windY = windY / sqrt3 + (w - wind) / sqrt5;
-			} else {
+			}
+			else
+			{
 				windX /= sqrt2;
 				windY /= sqrt2;
 				if (maxStep < 3)
@@ -110,7 +110,8 @@ public class Mouse {
 			veloX += gravity * (xe - xs) / dist;
 			veloY += gravity * (ye - ys) / dist;
 
-			if (Hypot(veloX, veloY) > maxStep) {
+			if (Hypot(veloX, veloY) > maxStep)
+			{
 				randomDist = maxStep / 2.0 + random.Next((int)Math.Round(maxStep) / 2);
 				veloMag = Hypot(veloX, veloY);
 				veloX = veloX / veloMag * randomDist;
@@ -139,7 +140,8 @@ public class Mouse {
 			SetCursorPos(endX, endY);
 	}
 
-	private static double Hypot(double dx, double dy) {
+	private static double Hypot(double dx, double dy)
+	{
 		return Math.Sqrt(dx * dx + dy * dy);
 	}
 
@@ -150,13 +152,7 @@ public class Mouse {
 	private static extern bool SetCursorPos(int X, int Y);
 
 	[DllImport("user32.dll")]
-	private static extern void mouse_event(
-		int dwFlags,
-		int dx,
-		int dy,
-		int cButtons,
-		int dwExtraInfo
-	);
+	private static extern void mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
 
 	private const int LMBDown = 0x02,
 		LMBUp = 0x04,

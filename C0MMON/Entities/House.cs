@@ -56,16 +56,17 @@ namespace P4NTH30N.C0MMON;
 //     }
 // }
 
-
 [method: SetsRequiredMembers]
-public class House(string name, string? uRL = null) {
+public class House(string name, string? uRL = null)
+{
 	public ObjectId? _id { get; set; } = ObjectId.GenerateNewId();
+
 	// URL is user-facing metadata; allow null/blank.
 	public string? URL { get; set; } = uRL;
 	public required string Name { get; set; } = name;
-    public string Description { get; set; } = "";
-    public string Redemption { get; set; } = "";
-    public string OffLimits { get; set; } = "";
-    public string Comments { get; set; } = "";
-    public int Lifespan { get; set; } = 7;
+	public string Description { get; set; } = "";
+	public string Redemption { get; set; } = "";
+	public string OffLimits { get; set; } = "";
+	public string Comments { get; set; } = "";
+	public int Lifespan { get; set; } = 7;
 }

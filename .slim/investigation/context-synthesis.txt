@@ -1,0 +1,88 @@
+# Context Synthesis
+
+## Project Purpose
+OpenCode is a configuration management system for agentic workflows, designed to coordinate multiple specialized agents (Orchestrator, Explorer, Oracle, Librarian, Designer, Fixer) across diverse project environments. It enables automated configuration management, documentation updates, and infrastructure orchestration while maintaining strict separation between code and configuration.
+
+## Key Components
+- **Agent Framework**: Modular agents with distinct responsibilities
+- **Configuration Management**: Centralized control over project settings
+- **Documentation Automation**: Automatic updates to AGENTS.md and other docs
+- **Infrastructure Orchestration**: Coordinated deployment of agents and tools
+- **Model Management**: Specialized model assignments per agent role
+
+## Build Commands
+```bash
+# Build entire solution
+dotnet build
+
+# Build specific project
+dotnet build C0RR3CT/C0RR3CT.csproj
+
+# Format code with CSharpier
+dotnet csharpier .
+
+# Check formatting
+dotnet csharpier . --check
+```
+
+## Test Infrastructure
+- **No test framework currently implemented** - When adding tests:
+  - Use `dotnet test` (future)
+  - Run specific tests with filters
+  - Implement TDD with `dotnet watch test`
+
+## Models & Configuration
+- **MODELS_available.md**: Comprehensive model database with benchmarks
+- **MODELS_recommended.md**: Agent-specific model recommendations
+- **oh-my-opencode-slim.json**: Plugin configuration for model assignments
+- **opencode.json**: Main configuration settings
+
+## Notes from MODELS Files
+- **Model Selection**: Use `MODELS_recommended.md` for agent-specific model assignments
+- **Benchmark Correlation**: Model strengths mapped to agent requirements
+- **Model Characteristics**: Speed, context windows, reasoning power, coding excellence
+- **Model Categories**: Primary, secondary, and tertiary options per role
+
+## Key Patterns
+- **Primary Constructors**: Preferred for class initialization
+- **File-scoped Namespaces**: Preferred for namespace declarations
+- **Nullable Reference Types**: Enabled for safer code
+- **Expression-bodied Members**: Used for accessors and properties
+- **Pattern Matching**: Preferred over traditional casts
+- **Null Propagation**: Used with `?.` operator
+
+## Security Considerations
+- **Current Priority**: Automation first - credentials stored in plain text in EV3NT collection is acceptable for now
+- **Future Hardening**: Password encryption, credential vault, access controls
+
+## Directory Structure
+```
+~/.config/opencode/
+├── agents/
+├── skills/
+├── plugin/
+├── opencode.json
+└── oh-my-opencode-slim.json
+
+~/.cache/opencode/node_modules/oh-my-opencode-slim/
+```
+
+## Agent Coordination
+- **@orchestrator**: Coordinates all configuration work
+- **@explorer**: Finds relevant files and patterns
+- **@oracle**: Provides architectural guidance
+- **@librarian**: Researches documentation and best practices
+- **@designer**: Improves user experience and documentation
+- **@fixer**: Implements changes and builds plugin
+
+## Tool Usage
+- **Always use toolhive for MCP tools**: `toolhive_find_tool` and `toolhive_call_tool`
+- **Never call websearch, codesearch, or webfetch directly**
+
+## Documentation Updates
+- **Always verify configuration syntax** before changes
+- **Always test agent functionality** after prompt changes
+- **Always use proper delegation** for complex tasks
+
+## Final Notes
+This synthesis provides a comprehensive overview of the OpenCode configuration system. Key areas for future development include implementing a test framework, enhancing security measures, and expanding model capabilities across all agent roles.

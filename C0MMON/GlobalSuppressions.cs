@@ -5,13 +5,7 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage(
-	"Style",
-	"IDE0130:Namespace does not match folder structure",
-	Justification = "<Pending>",
-	Scope = "namespace",
-	Target = "~N:P4NTH30N.C0MMON"
-)]
+[assembly: SuppressMessage("Style", "IDE0130:Namespace does not match folder structure", Justification = "<Pending>", Scope = "namespace", Target = "~N:P4NTH30N.C0MMON")]
 [assembly: SuppressMessage(
 	"Interoperability",
 	"CA1416:Validate platform compatibility",

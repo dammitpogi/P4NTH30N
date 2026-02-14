@@ -5,7 +5,8 @@ namespace P4NTH30N.C0MMON.Persistence.Analytics;
 /// <summary>
 /// MongoDB collection names for analytics storage.
 /// </summary>
-public static class AnalyticsCollectionNames {
+public static class AnalyticsCollectionNames
+{
 	/// <summary>
 	/// General analytics collection (events and health reports).
 	/// </summary>
@@ -30,7 +31,8 @@ public static class AnalyticsCollectionNames {
 /// <summary>
 /// Repository for writing and reading analytics data stored in MongoDB.
 /// </summary>
-public interface IAnalyticsRepository {
+public interface IAnalyticsRepository
+{
 	/// <summary>
 	/// Inserts a DPD analysis record.
 	/// </summary>
@@ -70,71 +72,72 @@ public interface IAnalyticsRepository {
 /// <summary>
 /// MongoDB-backed analytics repository.
 /// </summary>
-public class AnalyticsRepository(IMongoDatabase database) : IAnalyticsRepository {
+public class AnalyticsRepository(IMongoDatabase database) : IAnalyticsRepository
+{
 	private readonly IMongoCollection<AnalyticsEvent> _events = database.GetCollection<AnalyticsEvent>(AnalyticsCollectionNames.Events);
 	private readonly IMongoCollection<DPDRecord> _dpd = database.GetCollection<DPDRecord>(AnalyticsCollectionNames.DPDRecords);
 	private readonly IMongoCollection<JackpotForecastRecord> _forecasts = database.GetCollection<JackpotForecastRecord>(AnalyticsCollectionNames.Forecasts);
 	private readonly IMongoCollection<HealthReportRecord> _health = database.GetCollection<HealthReportRecord>(AnalyticsCollectionNames.HealthReports);
 
 	/// <inheritdoc />
-	public Task LogDPDAsync(DPDRecord record) {
+	public Task LogDPDAsync(DPDRecord record)
+	{
 		ArgumentNullException.ThrowIfNull(record);
 		return _dpd.InsertOneAsync(record);
 	}
 
 	/// <inheritdoc />
-	public Task LogForecastAsync(JackpotForecastRecord record) {
+	public Task LogForecastAsync(JackpotForecastRecord record)
+	{
 		ArgumentNullException.ThrowIfNull(record);
 		return _forecasts.InsertOneAsync(record);
 	}
 
 	/// <inheritdoc />
-	public Task LogHealthReportAsync(HealthReportRecord record) {
+	public Task LogHealthReportAsync(HealthReportRecord record)
+	{
 		ArgumentNullException.ThrowIfNull(record);
 		return _health.InsertOneAsync(record);
 	}
 
 	/// <inheritdoc />
-	public Task<List<DPDRecord>> GetDPDHistoryAsync(string house, string game, DateTime since) {
-		FilterDefinition<DPDRecord> filter = Builders<DPDRecord>.Filter.Eq(x => x.House, house)
+	public Task<List<DPDRecord>> GetDPDHistoryAsync(string house, string game, DateTime since)
+	{
+		FilterDefinition<DPDRecord> filter =
+			Builders<DPDRecord>.Filter.Eq(x => x.House, house)
 			& Builders<DPDRecord>.Filter.Eq(x => x.Game, game)
 			& Builders<DPDRecord>.Filter.Gte(x => x.Timestamp, since);
 
-		return _dpd.Find(filter)
-			.SortByDescending(x => x.Timestamp)
-			.ToListAsync();
+		return _dpd.Find(filter).SortByDescending(x => x.Timestamp).ToListAsync();
 	}
 
 	/// <inheritdoc />
-	public Task<List<JackpotForecastRecord>> GetForecastsAsync(string house, string game, int limit) {
+	public Task<List<JackpotForecastRecord>> GetForecastsAsync(string house, string game, int limit)
+	{
 		if (limit <= 0)
 			return Task.FromResult(new List<JackpotForecastRecord>());
 
-		FilterDefinition<JackpotForecastRecord> filter = Builders<JackpotForecastRecord>.Filter.Eq(x => x.House, house)
-			& Builders<JackpotForecastRecord>.Filter.Eq(x => x.Game, game);
+		FilterDefinition<JackpotForecastRecord> filter =
+			Builders<JackpotForecastRecord>.Filter.Eq(x => x.House, house) & Builders<JackpotForecastRecord>.Filter.Eq(x => x.Game, game);
 
-		return _forecasts.Find(filter)
-			.SortByDescending(x => x.Timestamp)
-			.Limit(limit)
-			.ToListAsync();
+		return _forecasts.Find(filter).SortByDescending(x => x.Timestamp).Limit(limit).ToListAsync();
 	}
 
 	/// <inheritdoc />
-	public Task LogEventAsync(AnalyticsEvent evt) {
+	public Task LogEventAsync(AnalyticsEvent evt)
+	{
 		ArgumentNullException.ThrowIfNull(evt);
 		return _events.InsertOneAsync(evt);
 	}
 
 	/// <inheritdoc />
-	public Task<List<AnalyticsEvent>> GetEventsAsync(string eventType, int limit) {
+	public Task<List<AnalyticsEvent>> GetEventsAsync(string eventType, int limit)
+	{
 		if (limit <= 0)
 			return Task.FromResult(new List<AnalyticsEvent>());
 
 		FilterDefinition<AnalyticsEvent> filter = Builders<AnalyticsEvent>.Filter.Eq(x => x.EventType, eventType);
 
-		return _events.Find(filter)
-			.SortByDescending(x => x.Timestamp)
-			.Limit(limit)
-			.ToListAsync();
+		return _events.Find(filter).SortByDescending(x => x.Timestamp).Limit(limit).ToListAsync();
 	}
 }
