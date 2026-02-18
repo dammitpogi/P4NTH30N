@@ -1,20 +1,16 @@
 namespace P4NTH30N.C0MMON.Infrastructure.Persistence;
 
-public interface IMongoUnitOfWork
+public interface IMongoUnitOfWork : IUnitOfWork
 {
-	IRepoCredentials Credentials { get; }
-	IRepoSignals Signals { get; }
-	IRepoJackpots Jackpots { get; }
-	IRepoHouses Houses { get; }
-	IReceiveSignals Received { get; }
-	IStoreEvents ProcessEvents { get; }
-	IStoreErrors Errors { get; }
+	// MongoDB-specific extensions can be added here if needed
+	// Currently just inherits from IUnitOfWork for compatibility
 }
 
-public sealed class MongoUnitOfWork : IMongoUnitOfWork
+public sealed class MongoUnitOfWork : IMongoUnitOfWork, IUnitOfWork
 {
 	private readonly IMongoDatabaseProvider _provider;
 
+	public IMongoDatabaseProvider DatabaseProvider => _provider;
 	public IRepoCredentials Credentials { get; }
 	public IRepoSignals Signals { get; }
 	public IRepoJackpots Jackpots { get; }

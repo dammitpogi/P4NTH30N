@@ -6,6 +6,7 @@ using P4NTH30N;
 using P4NTH30N.C0MMON;
 using P4NTH30N.C0MMON.Infrastructure.Persistence;
 using P4NTH30N.C0MMON.Infrastructure.Resilience;
+using P4NTH30N.C0MMON.Monitoring;
 using P4NTH30N.C0MMON.Versioning;
 using P4NTH30N.H0UND.Application.Analytics;
 using P4NTH30N.H0UND.Application.Polling;
@@ -41,6 +42,7 @@ internal class Program
 	);
 	private static readonly SystemDegradationManager s_degradation = new(logger: msg => Dashboard.AddLog(msg, "yellow"));
 	private static readonly OperationTracker s_opTracker = new(TimeSpan.FromMinutes(5));
+	private static HealthCheckService? s_healthService;
 
 	static void Main(string[] args)
 	{
@@ -48,6 +50,7 @@ internal class Program
 		AnalyticsWorker analyticsWorker = new AnalyticsWorker();
 		BalanceProviderFactory balanceProviderFactory = new BalanceProviderFactory();
 		PollingWorker pollingWorker = new PollingWorker(balanceProviderFactory);
+		s_healthService = new HealthCheckService(uow.DatabaseProvider, s_apiCircuit, s_mongoCircuit, uow);
 
 		// Initialize dashboard with startup info
 		Dashboard.AddLog($"{Header.Version}", "blue");
@@ -151,7 +154,10 @@ internal class Program
 									ErrorSeverity.Critical
 								)
 							);
-							ProcessEvent alert = ProcessEvent.Log("H0UND", $"Validation failure for {credential.Game}: invalid raw values");
+							P4NTH30N.C0MMON.ProcessEvent alert = P4NTH30N.C0MMON.ProcessEvent.Log(
+								"H0UND",
+								$"Validation failure for {credential.Game}: invalid raw values"
+							);
 							s_uow.ProcessEvents.Insert(alert.Record(credential));
 							uow.Credentials.Unlock(credential);
 							credential.LastUpdated = DateTime.UtcNow;
@@ -305,15 +311,18 @@ internal class Program
 						Dashboard.IncrementPoll(true);
 						Dashboard.ActiveCredentials = 1;
 
-						// Periodic health monitoring with degradation check
+						// Periodic health monitoring with full system health check
 						if ((DateTime.Now - lastHealthCheck).TotalMinutes >= 5)
 						{
-							var recentErrors = uow.Errors.GetBySource("H0UND").Take(10).ToList();
-							string status = recentErrors.Any(e => e.Severity == ErrorSeverity.Critical) ? "CRITICAL" : "HEALTHY";
-							Dashboard.AddLog(
-								$"H0UND Health: {status} | Errors: {recentErrors.Count} | API Circuit: {s_apiCircuit.State} | Degradation: {s_degradation.CurrentLevel}",
-								"blue"
-							);
+							if (s_healthService != null)
+							{
+								SystemHealth health = s_healthService.GetSystemHealthAsync().GetAwaiter().GetResult();
+								string checksummary = string.Join(" | ", health.Checks.Select(c => $"{c.Component}:{c.Status}"));
+								Dashboard.AddLog(
+									$"H0UND Health: {health.OverallStatus} | {checksummary} | Degradation: {s_degradation.CurrentLevel} | Uptime: {health.Uptime:hh\\:mm\\:ss}",
+									health.OverallStatus == HealthStatus.Healthy ? "blue" : "red"
+								);
+							}
 							lastHealthCheck = DateTime.Now;
 						}
 
