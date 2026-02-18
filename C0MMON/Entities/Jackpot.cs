@@ -9,6 +9,8 @@ namespace P4NTH30N.C0MMON;
 public class Jackpot
 {
 	public ObjectId _id { get; set; }
+	public DPD DPD { get; set; } = new DPD();
+
 	public double GrandDPM { get; set; }
 	public double MajorDPM { get; set; }
 	public double MinorDPM { get; set; }
@@ -21,6 +23,8 @@ public class Jackpot
 	public double Current { get; set; }
 	public double Threshold { get; set; }
 	public int Priority { get; set; }
+
+	public Jackpot() { }
 
 	/// <summary>
 	/// Validates jackpot values - logs error to ERR0R if invalid and errorLogger provided.
@@ -129,8 +133,8 @@ public class Jackpot
 		LastUpdated = DateTime.UtcNow;
 		EstimatedDate = eta;
 
-		// Default fallback DPM from DPD.Average (per day to per minute)
-		double fallbackDPM = credential.DPD.Average / TimeSpan.FromDays(1).TotalMinutes;
+		DPD.Data.Add(new DPD_Data(credential.Jackpots.Grand, credential.Jackpots.Major, credential.Jackpots.Minor, credential.Jackpots.Mini));
+		double fallbackDPM = DPD.Average > 0 ? DPD.Average / TimeSpan.FromDays(1).TotalMinutes : 0;
 
 		// Initialize tier DPMs
 		GrandDPM = fallbackDPM;
@@ -139,10 +143,10 @@ public class Jackpot
 		MiniDPM = fallbackDPM;
 
 		// Get tier-specific DPD data for last 24 hours
-		List<DPD_Data> dataZoom24h = credential.DPD.Data.FindAll(x => x.Timestamp > DateTime.UtcNow.AddDays(-1)).OrderBy(x => x.Timestamp).ToList();
+		List<DPD_Data> dataZoom24h = DPD.Data.FindAll(x => x.Timestamp > DateTime.UtcNow.AddDays(-1)).OrderBy(x => x.Timestamp).ToList();
 
 		// Get tier-specific DPD data for last 8 hours
-		List<DPD_Data> dataZoom8h = credential.DPD.Data.FindAll(x => x.Timestamp > DateTime.UtcNow.AddHours(-8)).OrderBy(x => x.Timestamp).ToList();
+		List<DPD_Data> dataZoom8h = DPD.Data.FindAll(x => x.Timestamp > DateTime.UtcNow.AddHours(-8)).OrderBy(x => x.Timestamp).ToList();
 
 		// Calculate per-tier DPM
 		if (dataZoom24h.Count >= 2 && eta < DateTime.UtcNow.AddDays(3))

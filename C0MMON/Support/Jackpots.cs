@@ -12,6 +12,16 @@ public class Jackpots
 	private double _minor;
 	private double _mini;
 
+	public Jackpots() { }
+
+	public Jackpots(Jackpots other)
+	{
+		_grand = other._grand;
+		_major = other._major;
+		_minor = other._minor;
+		_mini = other._mini;
+	}
+
 	public double Grand
 	{
 		get => _grand;

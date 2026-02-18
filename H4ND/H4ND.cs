@@ -10,6 +10,10 @@ using P4NTH30N.C0MMON.Infrastructure.Persistence;
 using P4NTH30N.C0MMON.Versioning;
 using P4NTH30N.Services;
 
+// DECISION 0: Vision Architecture Approach - Replace browser automation with OBS video streams
+// Current: Selenium ChromeDriver for game interaction and balance queries
+// Target: OBS video stream + LM Studio + Hugging Face models for vision-based automation
+
 namespace P4NTH30N
 {
 	internal static class Header
@@ -81,6 +85,9 @@ internal class Program
 
 							switch (credential.Game)
 							{
+								// TODO: FIX - Game switch handles OrionStars login but FireKirin case is empty (Decision 0)
+								// Current: FireKirin signals may not have proper login state
+								// Fix: Add FireKirin login flow similar to OrionStars case
 								case "FireKirin":
 									break;
 								case "OrionStars":
@@ -186,7 +193,7 @@ internal class Program
 						if (signal != null)
 						{
 							uow.Signals.Acknowledge(signal);
-							File.WriteAllText(@"D:\S1GNAL.json", JsonSerializer.Serialize(true));
+							File.WriteAllText(Path.Combine(Path.GetTempPath(), "S1GNAL.json"), JsonSerializer.Serialize(true));
 							switch (signal.Priority)
 							{
 								case 1:
@@ -250,19 +257,20 @@ internal class Program
 							Signal? gameSignal = uow.Signals.GetOne(credential.House, credential.Game);
 							if (currentGrand < credential.Jackpots.Grand && credential.Jackpots.Grand - currentGrand > 0.1)
 							{
-								if (credential.DPD.Toggles.GrandPopped == true)
+								var grandJackpot = uow.Jackpots.Get("Grand", credential.House, credential.Game);
+								if (grandJackpot != null && grandJackpot.DPD.Toggles.GrandPopped == true)
 								{
 									if (currentGrand >= 0 && currentGrand <= 10000)
 									{
 										credential.Jackpots.Grand = currentGrand;
 									}
-									credential.DPD.Toggles.GrandPopped = false;
+									grandJackpot.DPD.Toggles.GrandPopped = false;
 									credential.Thresholds.NewGrand(credential.Jackpots.Grand);
 									if (gameSignal != null && gameSignal.Priority.Equals(4))
 										uow.Signals.DeleteAll(credential.House, credential.Game);
 								}
 								else
-									credential.DPD.Toggles.GrandPopped = true;
+									grandJackpot.DPD.Toggles.GrandPopped = true;
 							}
 							else
 							{
@@ -274,19 +282,20 @@ internal class Program
 
 							if (currentMajor < credential.Jackpots.Major && credential.Jackpots.Major - currentMajor > 0.1)
 							{
-								if (credential.DPD.Toggles.MajorPopped == true)
+								var majorJackpot = uow.Jackpots.Get("Major", credential.House, credential.Game);
+								if (majorJackpot != null && majorJackpot.DPD.Toggles.MajorPopped == true)
 								{
 									if (currentMajor >= 0 && currentMajor <= 10000)
 									{
 										credential.Jackpots.Major = currentMajor;
 									}
-									credential.DPD.Toggles.MajorPopped = false;
+									majorJackpot.DPD.Toggles.MajorPopped = false;
 									credential.Thresholds.NewMajor(credential.Jackpots.Major);
 									if (gameSignal != null && gameSignal.Priority.Equals(3))
 										uow.Signals.DeleteAll(credential.House, credential.Game);
 								}
 								else
-									credential.DPD.Toggles.MajorPopped = true;
+									majorJackpot.DPD.Toggles.MajorPopped = true;
 							}
 							else
 							{
@@ -298,19 +307,20 @@ internal class Program
 
 							if (currentMinor < credential.Jackpots.Minor && credential.Jackpots.Minor - currentMinor > 0.1)
 							{
-								if (credential.DPD.Toggles.MinorPopped == true)
+								var minorJackpot = uow.Jackpots.Get("Minor", credential.House, credential.Game);
+								if (minorJackpot != null && minorJackpot.DPD.Toggles.MinorPopped == true)
 								{
 									if (currentMinor >= 0 && currentMinor <= 10000)
 									{
 										credential.Jackpots.Minor = currentMinor;
 									}
-									credential.DPD.Toggles.MinorPopped = false;
+									minorJackpot.DPD.Toggles.MinorPopped = false;
 									credential.Thresholds.NewMinor(credential.Jackpots.Minor);
 									if (gameSignal != null && gameSignal.Priority.Equals(2))
 										uow.Signals.DeleteAll(credential.House, credential.Game);
 								}
 								else
-									credential.DPD.Toggles.MinorPopped = true;
+									minorJackpot.DPD.Toggles.MinorPopped = true;
 							}
 							else
 							{
@@ -322,19 +332,20 @@ internal class Program
 
 							if (currentMini < credential.Jackpots.Mini && credential.Jackpots.Mini - currentMini > 0.1)
 							{
-								if (credential.DPD.Toggles.MiniPopped == true)
+								var miniJackpot = uow.Jackpots.Get("Mini", credential.House, credential.Game);
+								if (miniJackpot != null && miniJackpot.DPD.Toggles.MiniPopped == true)
 								{
 									if (currentMini >= 0 && currentMini <= 10000)
 									{
 										credential.Jackpots.Mini = currentMini;
 									}
-									credential.DPD.Toggles.MiniPopped = false;
+									miniJackpot.DPD.Toggles.MiniPopped = false;
 									credential.Thresholds.NewMini(credential.Jackpots.Mini);
 									if (gameSignal != null && gameSignal.Priority.Equals(1))
 										uow.Signals.DeleteAll(credential.House, credential.Game);
 								}
 								else
-									credential.DPD.Toggles.MiniPopped = true;
+									miniJackpot.DPD.Toggles.MiniPopped = true;
 							}
 							else
 							{
@@ -389,7 +400,7 @@ internal class Program
 
 						if (overrideSignal == null)
 						{
-							File.WriteAllText(@"D:\S1GNAL.json", JsonSerializer.Serialize(false));
+							File.WriteAllText(Path.Combine(Path.GetTempPath(), "S1GNAL.json"), JsonSerializer.Serialize(false));
 						}
 
 						switch (credential.Game)
@@ -409,9 +420,17 @@ internal class Program
 				Console.WriteLine(ex.Message);
 				Console.WriteLine(ex);
 				Thread.Sleep(5000);
+			}
+			finally
+			{
 				if (driver != null)
 				{
-					driver.Quit();
+					try
+					{
+						driver.Quit();
+					}
+					catch { }
+					driver = null;
 				}
 			}
 		}

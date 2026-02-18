@@ -4,32 +4,38 @@ using MongoDB.Bson;
 
 namespace P4NTH30N.C0MMON;
 
-[method: SetsRequiredMembers]
-public class Signal(float priority, Credential credential) : ICloneable
+public class Signal : ICloneable
 {
 	public ObjectId _id { get; set; } = ObjectId.GenerateNewId();
 	public DateTime Timeout { get; set; } = DateTime.MinValue;
 	public DateTime CreateDate { get; set; } = DateTime.UtcNow;
 	public bool Acknowledged { get; set; } = false;
-	public required string House { get; set; } = credential.House;
-	public required string Username { get; set; } = credential.Username;
-	public required string Password { get; set; } = credential.Password;
-	public required string Game { get; set; } = credential.Game;
-	public float Priority { get; set; } = priority;
+	public string House { get; set; } = string.Empty;
+	public string Username { get; set; } = string.Empty;
+	public string Password { get; set; } = string.Empty;
+	public string Game { get; set; } = string.Empty;
+	public float Priority { get; set; }
+
+	public Signal() { }
+
+	public Signal(float priority, Credential credential)
+	{
+		Priority = priority;
+		House = credential.House;
+		Username = credential.Username;
+		Password = credential.Password;
+		Game = credential.Game;
+	}
 
 	public object Clone()
 	{
-		return new Signal(
-			this.Priority,
-			new Credential(this.Game)
-			{
-				House = this.House,
-				Game = this.Game,
-				Username = this.Username,
-				Password = this.Password,
-			}
-		)
+		return new Signal
 		{
+			Priority = this.Priority,
+			House = this.House,
+			Game = this.Game,
+			Username = this.Username,
+			Password = this.Password,
 			Acknowledged = this.Acknowledged,
 			CreateDate = this.CreateDate,
 			Timeout = this.Timeout,
