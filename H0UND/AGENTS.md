@@ -16,29 +16,41 @@ H0UND is the analytics and polling engine for P4NTH30N. It monitors game platfor
 
 **Application Layer:**
 - `AnalyticsWorker`: Orchestrates business logic for analytics
-- `PollingWorker`: Manages polling operations
+- `PollingWorker`: Manages polling operations with retry logic
 
 **Domain Layer:**
 - `DpdCalculator`: Calculates Days Past Due for forecasting
 - `ForecastingService`: Handles prediction and forecasting logic
-- `SignalService`: Processes incoming signals
+- `SignalService`: Processes incoming signals, generates signals, cleans up stale signals
 
 **Infrastructure Layer:**
 - `BalanceProviderFactory`: Creates platform-specific providers
 - `FireKirinBalanceProvider`: FireKirin-specific balance fetching
 - `OrionStarsBalanceProvider`: OrionStars-specific balance fetching
+- `IBalanceProvider`: Interface for platform-agnostic balance fetching
+
+**Resilience Infrastructure:**
+- `CircuitBreaker`: API and MongoDB circuit breakers (5 failures/60s for API, 3 failures/30s for MongoDB)
+- `SystemDegradationManager`: Adaptive throttling (Emergency/Minimal/Reduced/Normal levels)
+- `OperationTracker`: Tracks operations within time windows
+- `HealthCheckService`: Full system health checks with component status
 
 ## Key Patterns
 
 - **Balance Provider Factory**: Creates platform-specific balance providers
 - **Worker Pattern**: Background services for polling and analytics
 - **Interface-based design**: IBalanceProvider for loose coupling
+- **Circuit Breaker Pattern**: Prevents cascading failures (API: 5 failures, MongoDB: 3 failures)
+- **Degradation-aware Throttling**: Adaptive delays based on system health (30s/15s/8s/3-5s)
+- **Analytics Interval**: Time-gated analytics phase (default 10 seconds between runs)
+- **Cashed-out Detection**: Automatically marks accounts as cashed-out based on balance thresholds
 
 ## Data Flows
 
-1. **Polling Flow**: PollingWorker → BalanceProviderFactory → [FireKirinBalanceProvider | OrionStarsBalanceProvider] → MongoDB (EV3NT collection)
-2. **Analytics Flow**: AnalyticsWorker → ForecastingService → DpdCalculator → Update forecasts in database
-3. **Signal Flow**: SignalService processes incoming signals from H4ND
+1. **Polling Flow**: PollingWorker → BalanceProviderFactory → [FireKirinBalanceProvider | OrionStarsBalanceProvider] → CircuitBreaker → MongoDB (EV3NT collection)
+2. **Analytics Flow**: AnalyticsWorker → ForecastingService → DpdCalculator → SignalService.GenerateSignals → SignalService.CleanupStaleSignals → MongoDB
+3. **Signal Flow**: SignalService processes incoming signals from H4ND, generates new signals based on forecasting, cleans up stale signals
+4. **Health Monitoring Flow**: HealthCheckService → CircuitBreaker status → SystemDegradationManager → Adaptive throttling
 
 ## Dependencies
 

@@ -14,13 +14,16 @@ Defines core domain models and data structures for the P4NTH30N system. These en
 
 ## Core Entities
 
-- **Credential**: User auth data, jackpot tracking, thresholds, DPD toggles
-- **Signal**: Priority-based automation triggers (1=Mini, 2=Minor, 3=Major, 4=Grand)
-- **Jackpot**: 4-tier jackpot system with current values and historical tracking
-- **House**: Physical location/grouping for credential organization
-- **Received**: Signal acknowledgment and processing tracking
-- **ErrorLog**: Validation failures and system errors with context
-- **EventLog**: System events and processing milestones
+| Entity | File | Description |
+|--------|------|-------------|
+| **Credential** | `Credential.cs` | User auth data, jackpot tracking, thresholds, DPD. Has `IsValid()` method. |
+| **Signal** | `Signal.cs` | Priority-based automation triggers (1=Mini, 2=Minor, 3=Major, 4=Grand). Implements `ICloneable`. |
+| **Jackpot** | `Jackpot.cs` | 4-tier jackpot system with DPD calculations, thresholds, ETA forecasting. Has `IsValid()` method. |
+| **House** | `House.cs` | Physical location/grouping for credential organization |
+| **Received** | `Received.cs` | Signal acknowledgment and processing tracking. Includes `ReceivedExt` extension methods. |
+| **ErrorLog** | `ErrorLog.cs` | Validation failures and system errors. Has factory methods `Create()` and `FromException()`. |
+| **ProcessEvent** | `EventLog.cs` | System events and processing milestones (named ProcessEvent to avoid conflict) |
+| **NetworkAddress** | `NetworkAddress.cs` | IP/geolocation data with fallback services, includes `NetworkDiagnostics` |
 
 ## Entity Lifecycle
 
@@ -32,29 +35,40 @@ Creation → Validation → Persistence → Retrieval → Modification → Re-va
 
 - Credential → House: Many-to-one relationship
 - Signal → Credential: Targets specific credentials via House/Game/Username
-- Jackpot → Credential: Embedded within credentials
+- Jackpot → Credential: Embedded within credentials, uses DPD data for forecasting
 - ErrorLog → Any Entity: References failing entities with context
 
 ## MongoDB Collections
 
 - **CR3D3N7IAL**: Credential entities (user data, jackpots, thresholds)
-- **EV3NT**: Signal, Received, EventLog entities
+- **EV3NT**: Signal, Received, ProcessEvent entities
 - **ERR0R**: ErrorLog entities (validation failures)
 - **H0U53**: House entities
 
 ## Validation Pattern
 
 ```csharp
+// Entity with validation
 public bool IsValid(IStoreErrors? errorLog = null)
 {
     bool isValid = true;
-    if (string.IsNullOrEmpty(RequiredField))
+    if (double.IsNaN(Current) || double.IsInfinity(Current))
     {
-        errorLog?.LogError($"[{nameof(Entity)}] Validation failed: RequiredField is null");
-        isValid = false;
+        errorLog?.Insert(ErrorLog.Create(ErrorType.ValidationError, $"Jackpot:{Game}/{Category}", 
+            $"Invalid jackpot value: {Current}", ErrorSeverity.High));
+        return false;
     }
     return isValid;
 }
+```
+
+**Factory Methods (ErrorLog):**
+```csharp
+// Create validation error
+ErrorLog.Create(ErrorType.ValidationError, source, message, ErrorSeverity.High)
+
+// Create from exception
+ErrorLog.FromException(ex, source, ErrorType.SystemError)
 ```
 
 ## Used By

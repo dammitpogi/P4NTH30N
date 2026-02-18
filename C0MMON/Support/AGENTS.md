@@ -14,10 +14,10 @@ Contains value objects, configuration structures, and utility types that support
 
 ## Core Support Types
 
-- **DPD**: Days Past Due calculations and toggle management for jackpot detection
-- **Jackpots**: 4-tier jackpot system with value tracking and validation
+- **DPD** (Days Past Due): Calculates average drop rate and manages toggle states for jackpot detection
+- **Jackpots**: 4-tier jackpot system (Grand/Major/Minor/Mini) with value tracking
 - **Thresholds**: Dynamic threshold calculations for jackpot reset detection
-- **GameSettings**: Platform-specific configuration and settings management
+- **GameSettings**: Platform-specific configuration for Gold777, FortunePiggy, Quintuple5X
 
 ## Key Patterns
 
@@ -43,17 +43,26 @@ Contains value objects, configuration structures, and utility types that support
 
 ## Business Rules
 
-**Jackpot Detection (DPD):**
-- Two consecutive drops required for confirmation
-- First drop: Toggle DPD state
-- Second consecutive drop: Confirm jackpot pop
-- Reset toggle after processing
+**DPD Detection Structure:**
+- `DPD_Toggles`: Boolean flags (GrandPopped, MajorPopped, MinorPopped, MiniPopped) for jackpot detection
+- `DPD_Data`: Timestamp + Grand/Major/Minor/Mini values for historical tracking
+- `DPD_History`: Average + Data list for trend analysis
+
+**Jackpot Detection (DPD Toggle Pattern):**
+- First drop detected: Set toggle to true (wait for confirmation)
+- Second consecutive drop: Confirm jackpot pop, reset toggle, recalculate threshold
+- Two consecutive drops required for confirmation (> 0.1 threshold difference)
 
 **Threshold Calculation:**
 - Default thresholds: Grand=1785, Major=565, Minor=117, Mini=23
-- Statistical analysis of pop patterns
-- Apply minimum/maximum bounds
-- Recalculate after confirmed jackpot pop
+- Methods: `NewGrand()`, `NewMajor()`, `NewMinor()`, `NewMini()` - update threshold if prior jackpot is higher
+- Applied after confirmed jackpot pop to track new baseline
+
+**GameSettings Platform Config:**
+- `Gold777_Settings`: Page, Button_X, Button_Y, ButtonVerified
+- `FortunePiggy_Settings`: Page, Button_X, Button_Y, ButtonVerified
+- `Quintuple5X_Settings`: Page, Button_X, Button_Y, ButtonVerified
+- Spin flags: SpinGrand, SpinMajor, SpinMinor, SpinMini (enable/disable tier automation)
 
 **Validation:**
 - NaN, Infinity, and negative value protection

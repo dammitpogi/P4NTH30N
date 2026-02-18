@@ -1,0 +1,70 @@
+# C0MMON/Versioning
+
+## Responsibility
+
+Application versioning and release management for P4NTH30N. Provides centralized version information across all agents and components.
+
+## When Working Here
+
+- **Single source of truth**: One place for version info
+- **Semantic versioning**: Follow SemVer guidelines
+- **Build integration**: Automate version increments
+- **Display formatting**: Human-readable version strings
+
+## Core Components
+
+### AppVersion.cs
+Centralized version management:
+- `GetInformationalVersion`: Returns full version from assembly attribute (e.g., "1.0.0+20260217")
+- `GetDisplayVersion`: Returns version without build metadata (e.g., "1.0.0")
+- Uses AssemblyInformationalVersionAttribute for version storage
+
+## Version Format
+
+```csharp
+// Get full informational version (includes build metadata)
+string fullVersion = AppVersion.GetInformationalVersion();
+// Returns: "1.0.0+20260217" or "1.0.0.0"
+
+// Get display version (clean, without metadata)
+string displayVersion = AppVersion.GetDisplayVersion();
+// Returns: "1.0.0"
+```
+
+## Usage
+
+```csharp
+// In agent header
+Console.WriteLine(AppVersion.GetDisplayVersion());
+
+// In logs
+logger.Info($"Starting P4NTH30N {AppVersion.GetInformationalVersion()}");
+
+// Display version without build metadata
+Console.WriteLine($"Version: {AppVersion.GetDisplayVersion()}");
+```
+
+## Versioning Strategy
+
+- **Major**: Breaking changes, architectural updates
+- **Minor**: New features, backward compatible
+- **Patch**: Bug fixes, optimizations
+- **Build**: CI/CD build number
+
+## Build Integration
+
+Recommended approach with Directory.Build.props:
+```xml
+<PropertyGroup>
+  <VersionPrefix>0.8.6</VersionPrefix>
+  <VersionSuffix>beta</VersionSuffix>
+  <BuildNumber>$([System.DateTime]::Now.ToString('yyyyMMdd'))</BuildNumber>
+</PropertyGroup>
+```
+
+## Future Enhancements
+
+- Git commit SHA integration
+- Automatic version bumping
+- Release notes generation
+- API version negotiation

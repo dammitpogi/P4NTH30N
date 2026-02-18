@@ -14,9 +14,35 @@ Defines contracts and abstractions that enable loose coupling between system com
 
 ## Core Interface Categories
 
-- **Repository Pattern**: IRepoCredentials, IRepoSignals, IRepoJackpots, IRepoHouses
-- **Storage Contracts**: IStoreEvents, IStoreErrors, IReceiveSignals
-- **Unit of Work**: IUnitOfWork for transaction management
+### Repository Pattern
+
+| Interface | File | Description |
+|-----------|------|-------------|
+| **IRepoCredentials** | `IRepoCredentials.cs` | Credential CRUD: GetAll, GetBy, GetAllEnabledFor, GetNext, Upsert, Lock, Unlock |
+| **IRepoSignals** | `IRepoSignals.cs` | Signal CRUD: Get, GetOne, GetNext, DeleteAll, Exists, Acknowledge, Upsert, Delete |
+| **IRepoJackpots** | `IRepoJackpots.cs` | Jackpot operations: Get, GetAll, GetEstimations, GetMini, Upsert |
+| **IRepoHouses** | `IRepoHouses.cs` | House operations: GetAll, GetOrCreate, Upsert, Delete |
+
+### Storage Contracts
+
+| Interface | File | Description |
+|-----------|------|-------------|
+| **IStoreEvents** | `IStoreEvents.cs` | Event logging: Insert(ProcessEvent) |
+| **IStoreErrors** | `IStoreErrors.cs` | Error logging: Insert, GetAll, GetBySource, GetUnresolved, MarkResolved |
+| **IReceiveSignals** | `IReceiveSignals.cs` | Signal acknowledgment: GetAll, GetOpen, Upsert |
+
+### Unit of Work
+
+| Interface | File | Description |
+|-----------|------|-------------|
+| **IUnitOfWork** | `IUnitOfWork.cs` | Unified access: Credentials, Signals, Jackpots, ProcessEvents, Errors, Received, Houses |
+
+### Legacy/Stage Interfaces
+
+| Interface | File | Description |
+|-----------|------|-------------|
+| **ISignalRepository** | `ISignalRepository.cs` | Legacy signal persistence (different namespace: `C0MMON.Interfaces`) |
+| **ICredentialRepository** | `ICredentialRepository.cs` | Legacy credential persistence (different namespace: `C0MMON.Interfaces`) |
 
 ## Key Patterns
 

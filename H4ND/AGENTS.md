@@ -28,25 +28,25 @@ Initialize (display header, MongoDB UoW)
 Outer while (true) - Exception recovery
 └── Inner while (true) - Signal processing
     ├── Get signal (optional) → Get credential → Lock credential
-    ├── If signal: Login to platform (OrionStars)
-    │   └── Launch ChromeDriver (reuse)
-    ├── Check extension Grand value (JS execution)
-    │   └── Validate Grand > 0 (40 retries, 500ms)
-    ├── Query balances (GetBalancesWithRetry)
-    │   ├── 3 network attempts with exponential backoff
+    ├── If signal: Login to platform (OrionStars, FireKirin)
+    │   └── Launch ChromeDriver (reuse if available)
+    ├── Check extension Grand value via JS: window.parent.Grand
+    │   └── Validate Grand > 0 (40 retries, 500ms interval)
+    ├── GetBalancesWithRetry()
+    │   ├── 3 network attempts with exponential backoff (2s-30s)
     │   └── Validate Grand > 0 (40 retries)
-    ├── Validate raw values (NaN, Infinity, negative)
+    ├── Validate raw values (NaN, Infinity, negative checks)
     ├── If signal:
-    │   ├── Receive signal values (store to EV3NT)
-    │   ├── Spin game (FireKirin or FortunePiggy)
+    │   ├── Receive signal values (store to EV3NT via IReceiveSignals)
+    │   ├── Spin game (FireKirin.SpinSlots or FortunePiggy.Spin)
     │   └── Acknowledge signal
     ├── Update credential jackpots:
-    │   ├── Detect drops via DPD toggles
-    │   ├── Reset thresholds if jackpot popped
+    │   ├── Detect drops via DPD toggles (2 consecutive drops)
+    │   ├── Reset thresholds if jackpot popped (NewGrand/NewMajor/etc)
     │   └── Clear signals for dropped priority
     ├── Validate credential → Upsert to CRED3N7IAL
-    ├── Periodic health check (every 5 min)
-    └── Logout
+    ├── Periodic health check (every 5 min) - query ERR0R collection
+    └── Logout (FireKirin.Logout or OrionStars.Logout)
 ```
 
 ## Jackpot Detection Logic
@@ -60,9 +60,11 @@ Outer while (true) - Exception recovery
 
 1. **Signal Processing Loop**: Infinite while-loop with try/catch resilience
 2. **Platform Abstraction**: Game-specific logic for FireKirin and OrionStars
-3. **Jackpot Reset Detection**: DPD toggle pattern for reliable detection
+3. **Jackpot Reset Detection**: DPD toggle pattern for reliable detection (2 consecutive drops > 0.1)
 4. **Validation-First Approach**: Extensive validation, invalid data logged to ERR0R (no auto-repair)
-5. **Retry with Exponential Backoff**: 3 network attempts (2s to 30s max), 40 retries for Grand check
+5. **Retry with Exponential Backoff**: 3 network attempts (2s base, 30s max + jitter), 40 retries for Grand check
+6. **ChromeDriver Reuse**: Single driver instance reused across credentials when possible
+7. **Health Monitoring**: Periodic ERR0R collection queries for validation error tracking
 
 ## Dependencies
 
@@ -90,3 +92,5 @@ Outer while (true) - Exception recovery
 
 - **FireKirin**: Login/Logout, SpinSlots, QueryBalances
 - **OrionStars**: Login/Logout, QueryBalances, FortunePiggy.Spin
+- **Gold777**: Supported via FortunePiggy game loader
+- **FortunePiggy**: LoadSuccessfully + Spin for OrionStars platform

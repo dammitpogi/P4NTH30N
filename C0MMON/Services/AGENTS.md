@@ -14,9 +14,10 @@ Provides cross-cutting services and monitoring capabilities that support the ent
 
 ## Core Services
 
-- **Dashboard**: Real-time monitoring and visualization interface
+- **Dashboard**: Real-time monitoring and visualization interface (Spectre.Console)
 - **Health Monitoring**: System health checks and error tracking
 - **Coordination Services**: Inter-agent communication and synchronization
+- **AI/ModelRouting**: ModelRouter, ModelRoutingConfig for dynamic model selection
 
 ## Key Patterns
 
@@ -47,6 +48,13 @@ Provides cross-cutting services and monitoring capabilities that support the ent
 - **Performance Metrics**: Response times, throughput, resource usage
 - **Credential Management**: Lock status, balance tracking, jackpot monitoring
 - **Alert System**: Threshold-based notifications and escalation
+- **Spectre.Console UI**: Rich terminal interface with 5 view modes:
+  - **Overview**: Header, CRED3N7IAL panel, H0UND events, HUN7ER analytics
+  - **Jackpots**: 4-tier values (Grand/Major/Minor/Mini) with thresholds and differences
+  - **Queue**: Total credentials, currently processing, queue size
+  - **Analytics**: Total polls, successful/failed, success rate, polls/minute
+  - **Errors**: Error type counts and percentages
+- **Keyboard Controls**: SPACE=Pause, TAB=Next View, 1-5=Jump to View, Ctrl+C=Clear
 
 ## Dependencies
 

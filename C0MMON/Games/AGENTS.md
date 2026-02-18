@@ -14,11 +14,13 @@ Provides platform-specific automation implementations for different gaming platf
 
 ## Supported Platforms
 
-- **FireKirin**: Slot machine automation with balance queries and spin operations
-- **OrionStars**: Multi-game platform with Fortune Piggy integration
-- **FortunePiggy**: Specific game implementation within OrionStars
-- **Gold777**: Additional platform support
-- **Quintuple5X**: Specialized slot game implementation
+| Platform | File | Description |
+|----------|------|-------------|
+| **FireKirin** | `FireKirin.cs` | Slot machine automation with WebSocket-based balance queries and spin operations |
+| **OrionStars** | `OrionStars.cs` | Multi-game platform with Fortune Piggy integration |
+| **FortunePiggy** | `FortunePiggy.cs` | Specific game implementation within OrionStars |
+| **Gold777** | `Gold777.cs` | Additional platform support |
+| **Quintuple5X** | `Quintuple5X.cs` | Specialized slot game implementation |
 
 ## Core Operations
 
@@ -30,27 +32,65 @@ Provides platform-specific automation implementations for different gaming platf
    - Verify login success
 
 2. **Balance Queries**
-   - Execute JavaScript for balance extraction
+   - FireKirin uses WebSocket protocol for real-time balance and jackpot queries
    - Parse jackpot values (Grand/Major/Minor/Mini)
    - Validate numeric values (NaN, Infinity checks)
+   - Returns `FireKirinBalances` record
 
 3. **Game Spins**
    - Navigate to specific game
    - Locate and click spin elements
    - Wait for spin completion
-   - Return structured results
+   - Return structured results (Signal? for override signals)
 
 4. **Logout**
    - Clear session data
    - Navigate to logout or close browser
    - Cleanup resources
 
+## FireKirin Implementation Details
+
+```csharp
+// WebSocket-based balance query
+public static FireKirinBalances QueryBalances(string username, string password)
+{
+    FireKirinNetConfig config = FetchNetConfig();
+    string wsUrl = $"{config.GameProtocol}{config.BsIp}:{config.WsPort}";
+    using var ws = new ClientWebSocket();
+    
+    // Connect and authenticate via WebSocket
+    ws.ConnectAsync(new Uri(wsUrl), connectCts.Token);
+    
+    // Query balance
+    SendJson(ws, new { mainID = 100, subID = 6, account = username, password = md5Password });
+    
+    // Query jackpots
+    SendJson(ws, new { mainID = 100, subID = 10, bossid = bossId });
+    
+    return new FireKirinBalances(balance, grand, major, minor, mini);
+}
+
+// Spin with platform override detection
+public static Signal? SpinSlots(ChromeDriver driver, Credential credential, Signal signal, IUnitOfWork uow)
+{
+    // Check for FortunePiggy or Gold777 overlay
+    bool FortunePiggyLoaded = Games.FortunePiggy.LoadSucessfully(driver, credential, signal, uow);
+    bool Gold777Loaded = FortunePiggyLoaded ? false : Games.Gold777.LoadSucessfully(driver, credential, signal, uow);
+    
+    // Override signal if alternative platform loaded
+    if (FortunePiggyLoaded)
+        overrideSignal = Games.FortunePiggy.Spin(driver, credential, signal, uow);
+    // ... navigate to FireKirin and spin
+}
+```
+
 ## Error Handling
 
 - Element not found exceptions with retry logic
-- Network timeout handling
+- Network timeout handling (10-second timeouts)
 - Invalid balance data detection (NaN, Infinity, negative)
 - Session expiration detection and recovery
+- WebSocket connection failures with fallback
 
 ## Dependencies
 
@@ -62,7 +102,9 @@ Provides platform-specific automation implementations for different gaming platf
 ## Platform-Specific Notes
 
 **FireKirin:**
-- Direct web interface with standard login form
+- Uses WebSocket protocol (port 8600) for real-time data
+- Config fetched from `http://play.firekirin.in/web_mobile/plat/config/hall/firekirin/config.json`
+- Supports FortunePiggy and Gold777 overlay detection
 - JavaScript balance extraction from page variables
 - Session management via cookie handling
 
