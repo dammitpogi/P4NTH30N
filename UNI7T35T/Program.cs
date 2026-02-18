@@ -1,3 +1,4 @@
+using P4NTH30N.UNI7T35T.Tests;
 using UNI7T35T.Mocks;
 using UNI7T35T.Tests;
 
@@ -8,14 +9,14 @@ class Program
 	static int Main(string[] args)
 	{
 		Console.WriteLine("╔════════════════════════════════════════════════════════════════════╗");
-		Console.WriteLine("║          UNI7T35T - Bug Reproduction Platform                      ║");
-		Console.WriteLine("║          H0UND Analytics Engine Test Suite                         ║");
+		Console.WriteLine("║          UNI7T35T - P4NTH30N Test Platform                        ║");
+		Console.WriteLine("║          H0UND Analytics + Security + Pipeline Test Suite          ║");
 		Console.WriteLine("╚════════════════════════════════════════════════════════════════════╝\n");
 
 		int totalTests = 0;
 		int passedTests = 0;
 
-		// Run ForecastingService Tests
+		// ── ForecastingService Tests ──────────────────────────────────────
 		Console.WriteLine("Running ForecastingService Tests...\n");
 		ForecastingServiceTests forecastingTests = new ForecastingServiceTests();
 
@@ -35,19 +36,51 @@ class Program
 			passedTests++;
 		}
 
-		// Print Summary
+		// ── EncryptionService Tests (INFRA-009) ──────────────────────────
+		Console.WriteLine("\nRunning EncryptionService Tests...\n");
+		EncryptionServiceTests encTests = new EncryptionServiceTests();
+
+		Func<bool>[] encryptionTestMethods =
+		[
+			() => { encTests.Setup(); try { return encTests.TestKeyGenerationAndLoading(); } finally { encTests.Cleanup(); } },
+			() => { encTests.Setup(); try { return encTests.TestEncryptDecryptRoundTrip(); } finally { encTests.Cleanup(); } },
+			() => { encTests.Setup(); try { return encTests.TestNonceUniqueness(); } finally { encTests.Cleanup(); } },
+			() => { encTests.Setup(); try { return encTests.TestTamperDetection(); } finally { encTests.Cleanup(); } },
+			() => { encTests.Setup(); try { return encTests.TestCompactStringRoundTrip(); } finally { encTests.Cleanup(); } },
+			() => { encTests.Setup(); try { return encTests.TestDifferentKeysProduceDifferentCiphertext(); } finally { encTests.Cleanup(); } },
+			() => { encTests.Setup(); try { return encTests.TestPreventAccidentalKeyOverwrite(); } finally { encTests.Cleanup(); } },
+			() => { encTests.Setup(); try { return encTests.TestInvalidCompactStringFormats(); } finally { encTests.Cleanup(); } },
+			() => { encTests.Setup(); try { return encTests.TestKeyDerivationDeterminism(); } finally { encTests.Cleanup(); } },
+		];
+
+		foreach (Func<bool> test in encryptionTestMethods)
+		{
+			totalTests++;
+			if (test())
+			{
+				passedTests++;
+			}
+		}
+
+		// ── Pipeline Integration Tests (WIN-001) ────────────────────────
+		Console.WriteLine("\nRunning Pipeline Integration Tests...\n");
+		(int pipelinePassed, int pipelineFailed) = PipelineIntegrationTests.RunAll();
+		totalTests += pipelinePassed + pipelineFailed;
+		passedTests += pipelinePassed;
+
+		// ── Summary ──────────────────────────────────────────────────────
 		Console.WriteLine("\n╔════════════════════════════════════════════════════════════════════╗");
 		Console.WriteLine($"║  TEST SUMMARY: {passedTests}/{totalTests} tests passed                                   ║");
 		Console.WriteLine("╚════════════════════════════════════════════════════════════════════╝\n");
 
 		if (passedTests == totalTests)
 		{
-			Console.WriteLine("✓ All tests passed! The bug has been fixed.");
+			Console.WriteLine("✓ All tests passed!");
 			return 0;
 		}
 		else
 		{
-			Console.WriteLine("✗ Some tests failed. The bug is still present.");
+			Console.WriteLine($"✗ {totalTests - passedTests} test(s) failed.");
 			return 1;
 		}
 	}

@@ -8,6 +8,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\C0MMON\C0MMON.csproj" />
 		<ProjectReference Include="..\H0UND\H0UND.csproj" />
+		<ProjectReference Include="..\W4TCHD0G\W4TCHD0G.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="MongoDB.Driver" Version="3.6.0" />
