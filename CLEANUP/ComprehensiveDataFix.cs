@@ -25,7 +25,6 @@ public class ComprehensiveDataFix
 
 			int updatedCredentialsCount = 0;
 			int thresholdsResetCount = 0;
-			int dpdCleanedCount = 0;
 
 			foreach (var credential in credentials)
 			{
@@ -51,21 +50,7 @@ public class ComprehensiveDataFix
 					Console.WriteLine($"Reset insane thresholds for {credential.Username} ({credential.House}/{credential.Game})");
 				}
 
-				// Clean DPD.Data - remove any points where Grand > 15000
-				if (credential.DPD?.Data != null && credential.DPD.Data.Count > 0)
-				{
-					var initialCount = credential.DPD.Data.Count;
-					var cleanedData = credential.DPD.Data.Where(d => d.Grand <= 15000).ToList();
-					var removedCount = initialCount - cleanedData.Count;
-
-					if (removedCount > 0)
-					{
-						credential.DPD.Data = cleanedData;
-						wasModified = true;
-						dpdCleanedCount += removedCount;
-						Console.WriteLine($"Removed {removedCount} insane DPD values (Grand > 15000) from {credential.Username}");
-					}
-				}
+				// DPD removed from Credential - data migrated to Jackpot collection via DpdMigration
 
 				// Save changes if modified
 				if (wasModified)
@@ -78,7 +63,6 @@ public class ComprehensiveDataFix
 			Console.WriteLine($"\nCredentials cleanup complete!");
 			Console.WriteLine($"- Updated {updatedCredentialsCount} credentials");
 			Console.WriteLine($"- Reset thresholds for {thresholdsResetCount} credentials");
-			Console.WriteLine($"- Removed {dpdCleanedCount} insane DPD values");
 
 			// Clean Jackpots collection
 			var jackpotsRepo = unitOfWork.Jackpots;

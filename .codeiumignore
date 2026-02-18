@@ -1,0 +1,30 @@
+# WindSurf Permission Override
+# This file allows Cascade/Fixer to access normally restricted files
+
+# Allow access to all config files
+!.env*
+!appsettings*.json
+!*.config
+!*.settings
+
+# Allow scripts
+!scripts/**
+!*.ps1
+!*.sh
+!*.bat
+
+# Allow build artifacts
+!bin/
+!obj/
+!dist/
+
+# Allow secrets templates (not actual secrets)
+!*.key.template
+!master.key.template
+
+# Still protect actual secrets
+.env
+*.key
+master.key
+id_rsa
+*.pem

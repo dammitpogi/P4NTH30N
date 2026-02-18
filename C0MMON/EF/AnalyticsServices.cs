@@ -207,6 +207,14 @@ public class AnalyticsService(P4NTH30NDbContext context, ICredentialAnalyticsRep
 		var enabled = credentials.Where(c => c.Enabled && !c.Banned).ToList();
 		var games = credentials.Select(c => c.Game).Distinct().ToList();
 
+		DateTime lastUpdated = DateTime.UtcNow;
+		if (credentials.Any())
+		{
+			var maxLastUpdated = credentials.Max(c => c.LastUpdated);
+			if (maxLastUpdated > DateTime.MinValue.AddYears(1) && maxLastUpdated < DateTime.MaxValue.AddYears(-1))
+				lastUpdated = maxLastUpdated;
+		}
+
 		return new HouseSummary
 		{
 			House = house,
@@ -216,7 +224,7 @@ public class AnalyticsService(P4NTH30NDbContext context, ICredentialAnalyticsRep
 			GameCount = games.Count,
 			Games = games,
 			ActiveJackpots = jackpots.Count,
-			LastUpdated = credentials.Max(c => c.LastUpdated),
+			LastUpdated = lastUpdated,
 		};
 	}
 }

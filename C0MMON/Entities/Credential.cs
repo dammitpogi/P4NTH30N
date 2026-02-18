@@ -5,6 +5,7 @@ using P4NTH30N.C0MMON.Infrastructure.Persistence;
 
 namespace P4NTH30N.C0MMON;
 
+[BsonIgnoreExtraElements]
 public class Credential
 {
 	public ObjectId _id { get; set; } = ObjectId.GenerateNewId();

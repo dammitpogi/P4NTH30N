@@ -1,0 +1,47 @@
+{
+  "windsurf.terminalAutoExecution": "turbo",
+  "windsurf.cascadeCommandsAllowList": [
+    "dotnet",
+    "bun",
+    "npm",
+    "node",
+    "git",
+    "python",
+    "powershell",
+    "bash",
+    "cmd",
+    "mkdir",
+    "cp",
+    "mv",
+    "rm",
+    "ls",
+    "cat",
+    "echo",
+    "curl",
+    "wget",
+    "find",
+    "grep",
+    "test",
+    "cd",
+    "pwd"
+  ],
+  "windsurf.cascadeCommandsDenyList": [
+    "rm -rf /",
+    "format",
+    "diskpart",
+    "fdisk",
+    "dd"
+  ],
+  "windsurf.cascadeGitignoreAccess": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 500,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "omnisharp.enableRoslynAnalyzers": true,
+  "omnisharp.enableEditorConfigSupport": true,
+  "[csharp]": {
+    "editor.defaultFormatter": "csharpier.csharpier-vscode"
+  }
+}

@@ -179,9 +179,29 @@ public class Jackpot
 		// Calculate estimated growth using tier-specific DPM
 		double estimatedGrowth = DateTime.UtcNow.Subtract(credential.LastUpdated).TotalMinutes * tierDPM;
 		double MinutesToJackpot = Math.Max((threshold - (current + estimatedGrowth)) / tierDPM, 0);
+
+		// Protect against DateTime overflow: cap minutes to safe maximum
+		MinutesToJackpot = CapMinutesToSafeRange(MinutesToJackpot);
 		EstimatedDate = DateTime.UtcNow.AddMinutes(MinutesToJackpot);
 
 		// Update Current with estimated growth
 		Current = current + estimatedGrowth;
+	}
+
+	/// <summary>
+	/// Caps minutes to a safe range that won't cause DateTime overflow.
+	/// Leaves a 10-year buffer before DateTime.MaxValue.
+	/// </summary>
+	private static double CapMinutesToSafeRange(double minutes)
+	{
+		TimeSpan maxSafeSpan = DateTime.MaxValue - DateTime.UtcNow - TimeSpan.FromDays(365 * 10);
+		double maxSafeMinutes = maxSafeSpan.TotalMinutes;
+
+		if (double.IsNaN(minutes) || double.IsInfinity(minutes) || minutes > maxSafeMinutes)
+		{
+			return maxSafeMinutes;
+		}
+
+		return minutes;
 	}
 }

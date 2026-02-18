@@ -13,15 +13,32 @@ public static class ForecastingService
 			return 0;
 
 		if (double.IsNaN(dpd) || double.IsInfinity(dpd) || dpd <= 1e-9)
-			return TimeSpan.FromDays(365 * 100).TotalMinutes;
+			return GetSafeMaxMinutes();
 
 		double dollarsPerMinute = dpd / 1440.0;
 		double minutes = remaining / dollarsPerMinute;
 
 		if (double.IsNaN(minutes) || double.IsInfinity(minutes) || minutes < 0)
-			return TimeSpan.FromDays(365 * 100).TotalMinutes;
+			return GetSafeMaxMinutes();
+
+		// Cap to a safe maximum that won't overflow DateTime
+		double safeMax = GetSafeMaxMinutes();
+		if (minutes > safeMax)
+			return safeMax;
 
 		return minutes;
+	}
+
+	/// <summary>
+	/// Returns the maximum safe number of minutes that can be added to DateTime.UtcNow
+	/// without causing an overflow (keeps the result well under DateTime.MaxValue).
+	/// </summary>
+	private static double GetSafeMaxMinutes()
+	{
+		// Calculate max minutes that won't overflow DateTime
+		// Leave a buffer of 10 years to be safe
+		TimeSpan maxSpan = DateTime.MaxValue - DateTime.UtcNow - TimeSpan.FromDays(365 * 10);
+		return maxSpan.TotalMinutes;
 	}
 
 	public static void GeneratePredictions(Credential cred, IUnitOfWork uow, DateTime dateLimit)

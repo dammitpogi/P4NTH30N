@@ -52,40 +52,15 @@ public class FixData
 					wasModified = true;
 				}
 
-				if (wasModified)
-				{
-					jackpotResetCount++;
-					Console.WriteLine($"Reset jackpots for {credential.Username} ({credential.House}/{credential.Game})");
-				}
+			if (wasModified)
+			{
+				jackpotResetCount++;
+				Console.WriteLine($"Reset jackpots for {credential.Username} ({credential.House}/{credential.Game})");
+			}
 
-				if (credential.Thresholds.Mini != 23 || credential.Thresholds.Minor != 117 || credential.Thresholds.Major != 565 || credential.Thresholds.Grand != 1785)
-				{
-					credential.Thresholds.Mini = 23;
-					credential.Thresholds.Minor = 117;
-					credential.Thresholds.Major = 565;
-					credential.Thresholds.Grand = 1785;
-					wasModified = true;
-					Console.WriteLine(
-						$"Reset thresholds for {credential.Username} ({credential.House}/{credential.Game}): {credential.Thresholds.Grand}/{credential.Thresholds.Major}/{credential.Thresholds.Minor}/{credential.Thresholds.Mini}"
-					);
-				}
+			// DPD removed from Credential - data migrated to Jackpot collection via DpdMigration
 
-				if (credential.DPD?.Data != null && credential.DPD.Data.Count > 0)
-				{
-					int initialCount = credential.DPD.Data.Count;
-					List<DPD_Data> cleanedData = credential.DPD.Data.Where(d => d.Grand <= 15000).ToList();
-					int removedCount = initialCount - cleanedData.Count;
-
-					if (removedCount > 0)
-					{
-						credential.DPD.Data = cleanedData;
-						wasModified = true;
-						dpdCleanedCount += removedCount;
-						Console.WriteLine($"Removed {removedCount} insane DPD values (> 15000) from {credential.Username}");
-					}
-				}
-
-				if (wasModified)
+			if (wasModified)
 				{
 					credentialsRepo.Upsert(credential);
 					updatedCount++;

@@ -4,6 +4,7 @@
 	<Project Path="H4ND/H4ND.csproj" />
 	<Project Path="PROF3T/PROF3T.csproj" />
 	<Project Path="T00L5ET/T00L5ET.csproj" Id="32444544-90e6-4b84-80b8-48c7f148d21a" />
+	<Project Path="T4CT1CS/T4CT1CS.csproj" Id="3bc59fe5-d84c-46f8-aa28-d43ccc9ce465" />
 	<Project Path="UNI7T35T/UNI7T35T.csproj" Id="08393a5c-c385-48bd-b897-46b573c55f67" />
 	<Project Path="W4TCHD0G/W4TCHD0G.csproj" />
 </Solution>
