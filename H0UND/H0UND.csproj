@@ -7,6 +7,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\C0MMON\C0MMON.csproj" />
+		<ProjectReference Include="..\W4TCHD0G\W4TCHD0G.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Figgle" Version="0.6.5" />
