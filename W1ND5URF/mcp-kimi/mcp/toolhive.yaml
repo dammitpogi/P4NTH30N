@@ -1,0 +1,28 @@
+name: kimi-code-mcp
+version: 1.0.0
+description: Kimi Code MCP Server for Windsurf integration
+
+build:
+  dockerfile: Dockerfile
+  context: .
+
+runtime:
+  env:
+    KIMI_API_KEY: ${KIMI_API_KEY}
+    KIMI_BASE_URL: https://api.kimi.com/coding
+  
+  # Resource limits
+  resources:
+    cpu: 0.5
+    memory: 512Mi
+
+  # Port configuration (if using HTTP transport)
+  # ports:
+  #   - 3000:3000
+
+  # Health check
+  health_check:
+    command: ["node", "-e", "console.log('healthy')"]
+    interval: 30s
+    timeout: 10s
+    retries: 3

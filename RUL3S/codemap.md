@@ -88,7 +88,7 @@ Resource override system that manipulates browser behavior for game automation. 
 
 **Consumed By**:
 - `H4ND`: Automation agent uses injected JavaScript hooks to control games
-- `HUN7ER`: May use for data collection if direct API access unavailable
+- `H0UND`: May use for data collection if direct API access unavailable
 
 **Dependencies**:
 - Chrome Extension APIs: `webRequest`, `webNavigation`, `storage`, `tabs`

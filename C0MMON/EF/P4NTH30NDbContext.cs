@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MongoDB.EntityFrameworkCore;
@@ -18,9 +19,6 @@ namespace P4NTH30N.C0MMON.EF
 	/// </summary>
 	public class P4NTH30NDbContext : DbContext
 	{
-		// MongoDB connection string - same as existing Database class
-		private const string ConnectionString = "mongodb://localhost:27017/P4NTH30N";
-
 		// Entity sets mirroring existing MongoDB collections
 		public DbSet<Credential> Credentials { get; set; }
 		public DbSet<Signal> Signals { get; set; }
@@ -28,11 +26,13 @@ namespace P4NTH30N.C0MMON.EF
 		public DbSet<House> Houses { get; set; }
 		public DbSet<ProcessEvent> ProcessEvents { get; set; }
 		public DbSet<Received> Received { get; set; }
+		public DbSet<ErrorLog> ErrorLogs { get; set; }
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			// Configure MongoDB EF Core provider
-			optionsBuilder.UseMongoDB(ConnectionString, "P4NTH30N");
+			MongoConnectionOptions options = MongoConnectionOptions.FromEnvironment();
+			optionsBuilder.UseMongoDB(options.ConnectionString, options.DatabaseName);
 		}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -100,13 +100,25 @@ namespace P4NTH30N.C0MMON.EF
 				entity.Property(e => e.Game);
 				entity.Property(e => e.Username);
 			});
+
+			// Configure ErrorLog entity
+			modelBuilder.Entity<ErrorLog>(entity =>
+			{
+				entity.HasKey(e => e._id);
+				entity.Property(e => e.Timestamp);
+				entity.Property(e => e.ErrorType);
+				entity.Property(e => e.Severity);
+				entity.Property(e => e.Source);
+				entity.Property(e => e.Message);
+				entity.Property(e => e.Resolved);
+			});
 		}
 
 		public ICredentialAnalyticsRepository CreateCredentialAnalyticsRepository() => new CredentialAnalyticsRepository(this);
 
 		public IJackpotAnalyticsRepository CreateJackpotAnalyticsRepository() => new JackpotAnalyticsRepository(this);
 
-		public IAnalyticsService CreateAnalyticsService() => new AnalyticsService(new CredentialAnalyticsRepository(this), new JackpotAnalyticsRepository(this));
+		public IAnalyticsService CreateAnalyticsService() => new AnalyticsService(this, new CredentialAnalyticsRepository(this), new JackpotAnalyticsRepository(this));
 	}
 
 	/// <summary>

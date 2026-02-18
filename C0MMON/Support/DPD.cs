@@ -61,8 +61,16 @@ public class DPD_Data
 }
 
 [BsonIgnoreExtraElements]
-public class DPD_History(double average, List<DPD_Data> data)
+public class DPD_History
 {
-	public double Average { get; set; } = average;
-	public List<DPD_Data> Data { get; set; } = data;
+	public double Average { get; set; } = 0;
+	public List<DPD_Data> Data { get; set; } = [];
+
+	public DPD_History() { }
+
+	public DPD_History(double average, List<DPD_Data> data)
+	{
+		Average = average;
+		Data = data;
+	}
 }

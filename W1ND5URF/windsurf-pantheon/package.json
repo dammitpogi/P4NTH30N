@@ -1,0 +1,109 @@
+{
+  "name": "windsurf-follower",
+  "displayName": "Windsurf Follower",
+  "description": "Automatically follows and centers the view on recent code changes",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "windsurfFollower.enable",
+        "title": "Enable Windsurf Following",
+        "category": "Windsurf Follower"
+      },
+      {
+        "command": "windsurfFollower.disable",
+        "title": "Disable Windsurf Following",
+        "category": "Windsurf Follower"
+      },
+      {
+        "command": "windsurfFollower.toggle",
+        "title": "Toggle Windsurf Following",
+        "category": "Windsurf Follower"
+      },
+      {
+        "command": "windsurfFollower.showDecisions",
+        "title": "Show Cascade Decisions",
+        "category": "Windsurf Follower"
+      }
+    ],
+    "configuration": {
+      "title": "Windsurf Follower",
+      "properties": {
+        "windsurfFollower.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable automatic following of code changes"
+        },
+        "windsurfFollower.followExternalChanges": {
+          "type": "boolean",
+          "default": true,
+          "description": "Follow changes made by external tools (e.g., Windsurf, Copilot)"
+        },
+        "windsurfFollower.followSelfChanges": {
+          "type": "boolean",
+          "default": false,
+          "description": "Follow changes made by yourself"
+        },
+        "windsurfFollower.debounceMs": {
+          "type": "number",
+          "default": 100,
+          "description": "Debounce time in milliseconds before centering view"
+        },
+        "windsurfFollower.focusPane": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically focus/show the editor pane where changes occur (disable if Windsurf already opens files)"
+        },
+        "windsurfFollower.autoCloseInactivePanes": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically close inactive editor panes when moving to new files"
+        },
+        "windsurfFollower.maxOpenEditors": {
+          "type": "number",
+          "default": 5,
+          "minimum": 1,
+          "maximum": 20,
+          "description": "Maximum number of editor panes to keep open before closing inactive ones"
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "windsurfFollower",
+          "title": "Decisions",
+          "icon": "$(git-commit)"
+        }
+      ]
+    },
+    "views": {
+      "windsurfFollower": [
+        {
+          "id": "windsurfFollowerDecisionsView",
+          "name": "Decisions"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "18.x",
+    "typescript": "^5.3.0"
+  }
+}

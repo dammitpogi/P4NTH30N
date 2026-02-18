@@ -60,22 +60,6 @@ namespace P4NTH30N.C0MMON.Infrastructure.Persistence
 					}
 				}
 
-				// Validate DPD data arrays for historical corruption
-				if (credential.DPD?.Data != null)
-				{
-					var cleanedDpdData = new List<DPD_Data>();
-					foreach (var dpdEntry in credential.DPD.Data)
-					{
-						if (dpdEntry.Grand < 0 || dpdEntry.Grand > 10000)
-						{
-							issues.Add($"Removed corrupted DPD entry: Grand={dpdEntry.Grand}");
-							continue; // Skip corrupted entries
-						}
-						cleanedDpdData.Add(dpdEntry);
-					}
-					credential.DPD.Data = cleanedDpdData;
-				}
-
 				// Log any repairs or issues
 				if (issues.Any())
 				{
@@ -127,6 +111,22 @@ namespace P4NTH30N.C0MMON.Infrastructure.Persistence
 						hasCriticalIssues = true;
 						issues.Add($"{jackpot.Category}: {jackpot.Current}");
 					}
+				}
+
+				// Validate DPD data arrays for historical corruption
+				if (jackpot.DPD?.Data != null)
+				{
+					var cleanedDpdData = new List<DPD_Data>();
+					foreach (var dpdEntry in jackpot.DPD.Data)
+					{
+						if (dpdEntry.Grand < 0 || dpdEntry.Grand > 10000)
+						{
+							issues.Add($"Removed corrupted DPD entry: Grand={dpdEntry.Grand}");
+							continue; // Skip corrupted entries
+						}
+						cleanedDpdData.Add(dpdEntry);
+					}
+					jackpot.DPD.Data = cleanedDpdData;
 				}
 
 				if (hasCriticalIssues)

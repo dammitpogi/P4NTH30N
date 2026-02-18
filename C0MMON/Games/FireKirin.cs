@@ -20,7 +20,7 @@ public static class FireKirin
 
 	private sealed record FireKirinNetConfig(string BsIp, int WsPort, string WsProtocol, string GameProtocol, string Version);
 
-	public static Signal? SpinSlots(ChromeDriver driver, Credential credential, Signal signal, IMongoUnitOfWork uow)
+	public static Signal? SpinSlots(ChromeDriver driver, Credential credential, Signal signal, IUnitOfWork uow)
 	{
 		Signal? overrideSignal = null;
 		bool FortunePiggyLoaded = Games.FortunePiggy.LoadSucessfully(driver, credential, signal, uow);
@@ -35,6 +35,9 @@ public static class FireKirin
 			overrideSignal = Games.Gold777.Spin(driver, credential, signal, uow);
 		}
 
+		// TODO: FIX - Hardcoded casino URLs throughout code (Decision 0)
+		// Current: Cannot update URLs without code changes, brittle if casinos change domains
+		// Fix: Move URLs to configuration files or settings
 		driver.Navigate().GoToUrl("http://play.firekirin.in/web_mobile/firekirin/");
 		P4NTH30N.C0MMON.Screen.WaitForColor(new Point(925, 120), Color.FromArgb(255, 255, 251, 48));
 		Thread.Sleep(2000);

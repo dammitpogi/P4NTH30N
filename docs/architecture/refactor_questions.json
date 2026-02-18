@@ -5,7 +5,7 @@
   "questions": [
     {
       "id": "Q-001",
-      "question": "Which domain slice should be refactored first (C0MMON entities, persistence adapters, or H4ND/HUN7ER process flows)?",
+      "question": "Which domain slice should be refactored first (C0MMON entities, persistence adapters, or H4ND/H0UND process flows)?",
       "why_it_blocks": "Refactor order determines required adapters and safe cutover paths.",
       "suggested_inputs": [
         "Rank domains by risk or business criticality.",

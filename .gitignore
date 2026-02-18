@@ -50,3 +50,4 @@ appsettings.*.json
 
 # Tool output artifacts
 C:Userspaulc.localshareopencodetool-outputfull_config.json
+.aider*

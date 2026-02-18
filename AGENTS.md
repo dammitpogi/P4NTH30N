@@ -1,18 +1,83 @@
+# P4NTH30N Repository
+
+## Responsibility
+
+P4NTH30N is a multi-process automation platform built in C# that coordinates **jackpot discovery**, **signal generation**, and **automated spins** for supported casino game portals.
+
+## Architecture Overview
+
+```
+H0UND (polling + analytics loop)
+  ├─ reads CRED3N7IAL (credentials)
+  ├─ builds DPD + forecasts jackpots
+  └─ writes SIGN4L + J4CKP0T (signals + predictions)
+
+H4ND (automation loop)
+  ├─ pulls SIGN4L (or N3XT queue if no signal)
+  ├─ logs in via Selenium + input simulation
+  ├─ reads jackpot/balance values via JS
+  └─ updates G4ME / CRED3N7IAL data
+```
+
+## Core Agents
+
+| Agent | Purpose | Entry Point |
+|-------|---------|-------------|
+| **H4ND** | Executes browser automation (login, navigate, read jackpots, spin) | `H4ND/H4ND.cs` |
+| **H0UND** | Polls credentials, computes DPD, forecasts jackpots, emits signals | `H0UND/H0UND.cs` |
+| **C0MMON** | Shared library with entities, MongoDB access, automation primitives | `C0MMON/` |
+
+## Supporting Tools
+
+| Tool | Purpose |
+|------|---------|
+| **W4TCHD0G** | Vision system placeholder for future OBS integration |
+| **PROF3T** | Autonomous learning system placeholder |
+| **RUL3S** | Resource override rules and Chrome extension for browser manipulation |
+| **CLEANUP** | Data cleanup and corruption prevention utilities |
+| **T00L5ET** | Toolset utilities |
+| **UNI7T35T** | Unit testing project |
+
+## Data Model (MongoDB Collections)
+
+| Collection | Purpose |
+|------------|---------|
+| `CRED3N7IAL` | Credential + balance + DPD storage |
+| `G4ME` | Game-level jackpot & thresholds |
+| `SIGN4L` | Signal requests for H4ND |
+| `J4CKP0T` | Jackpot forecast rows |
+| `N3XT` | Queue for H4ND non-signal polling |
+| `M47URITY` | Queue age timestamps |
+| `EV3NT` | Event data (signals, game events) |
+| `ERR0R` | Validation errors and processing failures |
+| `H0U53` | House/location organization |
+
+---
+
 ## Build, Lint, and Test Commands
 
 ### Build Commands
 ```bash
+# Development builds
+# - Default is Debug; keep it that way during development.
+# - Agents should not build Release. The Nexus handles production Release builds.
+
 # Build entire solution (using .slnx file)
 dotnet build P4NTH30N.slnx
+
+# Explicit Debug build (preferred when being explicit)
+dotnet build P4NTH30N.slnx -c Debug
 
 # Build with full paths (VS Code default)
 dotnet build P4NTH30N.slnx /property:GenerateFullPaths=true /consoleloggerparameters:NoSummary
 
 # Build specific project
 dotnet build C0MMON/C0MMON.csproj
-dotnet build HUN7ER/HUN7ER.csproj
 dotnet build H4ND/H4ND.csproj
 dotnet build H0UND/H0UND.csproj
+
+# Explicit Debug build for a specific project
+dotnet build H0UND/H0UND.csproj -c Debug
 
 # Clean and rebuild
 dotnet clean P4NTH30N.slnx
@@ -27,13 +92,16 @@ dotnet csharpier .
 # Check formatting without applying changes (CI/CD verification)
 dotnet csharpier check
 
-# Format specific project
-dotnet csharpier C0MMON/ HUN7ER/ H4ND/
+# Format a specific file or directory
+dotnet csharpier format C0MMON/
+dotnet csharpier format H4ND/
+dotnet csharpier format H0UND/
 ```
 
 ### Test Commands
 ```bash
-# Run all tests
+# Unit tests / build-test gate (development)
+# We validate builds by running the UnitTest project.
 dotnet test UNI7T35T/UNI7T35T.csproj
 
 # Run tests with coverage
@@ -60,6 +128,7 @@ dotnet csharpier check
 # Note: Use 'dotnet csharpier .' to apply formatting
 
 # 3. Run tests
+# Run the UnitTest project to validate builds (Debug).
 dotnet test UNI7T35T/UNI7T35T.csproj
 # Check: All tests pass (exit code 0)
 # Note: Test framework exists but may not be fully implemented
@@ -69,10 +138,25 @@ dotnet restore P4NTH30N.slnx
 # Check: All packages restore successfully
 
 # 5. Runtime verification
-dotnet run --project ./HUN7ER/HUN7ER.csproj -- --dry-run
+dotnet run --project ./H0UND/H0UND.csproj -- --dry-run
 dotnet run --project ./H4ND/H4ND.csproj -- --dry-run
 # Check: Agents start without errors and initialize properly
 # Prerequisite: MongoDB connection must be established
+```
+
+## Cartography And Codemaps
+
+This repo uses Cartography to keep `codemap.md` files up to date. These files are auto-generated and auto-injected into agent context when you work in a directory.
+
+- Do not delete `**/codemap.md` files or `.slim/cartography.json`.
+- If you finish a task that changes code structure, run Cartography before considering the task complete.
+
+```bash
+# Detect which maps need updating
+python3 ~/.config/opencode/skills/cartography/scripts/cartographer.py changes --root ./
+
+# Update all affected codemaps
+python3 ~/.config/opencode/skills/cartography/scripts/cartographer.py update --root ./
 ```
 
 ## Code Style Guidelines
@@ -168,7 +252,7 @@ public bool IsValid(IStoreErrors? errorLog = null)
 
 **Validation Usage in Services**:
 ```csharp
-// H4ND, H0UND, HUN7ER - inline validation, no auto-repair
+// H4ND, H0UND - inline validation, no auto-repair
 if (!entity.IsValid(_errorStore))
 {
     // Entity is logged to ERR0R collection via IStoreErrors
@@ -197,7 +281,7 @@ if (!entity.IsValid(_errorStore))
 - **Avoid async void**: Only use for event handlers
 
 ### MongoDB/EF Core Specific
-- **Hybrid pattern**: H4ND uses MongoDB.Driver, HUN7ER uses EF Core
+- **Hybrid pattern**: H4ND uses MongoDB.Driver, H0UND uses EF Core for analytics
 - **BSON serialization**: Be aware of private field deserialization bypassing setters
 - **Entity design**: Use records for immutable data, classes for mutable state
 

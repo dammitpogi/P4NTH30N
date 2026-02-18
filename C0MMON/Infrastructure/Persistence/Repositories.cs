@@ -69,7 +69,6 @@ internal sealed class RepoCredentials(IMongoDatabaseProvider provider) : IRepoCr
 			DateTime created = cred.CreateDate;
 			DateTime updated = cred.LastUpdated > DateTime.MinValue ? cred.LastUpdated : created;
 			bool funded = !cred.CashedOut;
-			double dpdAverage = cred.DPD.Average;
 
 			List<Jackpot> estimations = _jackpots
 				.Find(
@@ -81,6 +80,7 @@ internal sealed class RepoCredentials(IMongoDatabaseProvider provider) : IRepoCr
 				)
 				.SortBy(j => j.EstimatedDate)
 				.ToList();
+			double dpdAverage = estimations.Any() ? estimations.Average(j => j.DPD.Average) : 0;
 
 			Jackpot? mini = _jackpots
 				.Find(
@@ -163,6 +163,17 @@ internal sealed class RepoCredentials(IMongoDatabaseProvider provider) : IRepoCr
 
 	public void Upsert(Credential credential)
 	{
+		credential.Settings ??= new GameSettings(credential.Game);
+
+		if (credential.Thresholds.Grand > 1800)
+			credential.Settings.SpinGrand = false;
+		if (credential.Thresholds.Major > 630)
+			credential.Settings.SpinMajor = false;
+		if (credential.Thresholds.Minor > 134)
+			credential.Settings.SpinMinor = false;
+		if (credential.Thresholds.Mini > 30)
+			credential.Settings.SpinMini = false;
+
 		FilterDefinition<Credential> filter = Builders<Credential>.Filter.Eq(x => x._id, credential._id);
 		_credentials.ReplaceOne(filter, credential, new ReplaceOptions { IsUpsert = true });
 	}

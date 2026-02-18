@@ -40,9 +40,9 @@
   },
   "Platform": {
     "SupportedPlatforms": ["FireKirin", "OrionStar"],
-    "DefaultLogPath": "C:\\HUN7ER\\logs\\hunter.log",
-    "BackupLogPath": "C:\\HUN7ER\\logs\\backup\\",
-    "WatchdogLogPath": "C:\\HUN7ER\\logs\\watchdog.log"
+    "DefaultLogPath": "C:\\H0UND\\logs\\hound.log",
+    "BackupLogPath": "C:\\H0UND\\logs\\backup\\",
+    "WatchdogLogPath": "C:\\H0UND\\logs\\watchdog.log"
   },
   "AutoRepair": {
     "EnableDecimalPointCorrection": true,

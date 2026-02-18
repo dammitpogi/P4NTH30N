@@ -1,0 +1,26 @@
+{
+  "vision_ocr": {
+    "model_id": "microsoft/trocr-base-handwritten",
+    "size": "58MB",
+    "latency_target_ms": 100,
+    "device": "cpu"
+  },
+  "vision_state": {
+    "model_id": "microsoft/dit-base-finetuned",
+    "size": "1.5GB",
+    "latency_target_ms": 50,
+    "device": "cpu"
+  },
+  "animation_detection": {
+    "model_id": "nvidia/nvdino",
+    "size": "600MB",
+    "latency_target_ms": 30,
+    "device": "cpu"
+  },
+  "error_detection": {
+    "model_id": "google/owlvit-base-patch32",
+    "size": "1.1GB",
+    "latency_target_ms": 40,
+    "device": "cpu"
+  }
+}

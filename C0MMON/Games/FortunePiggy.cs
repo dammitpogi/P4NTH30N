@@ -10,7 +10,7 @@ public static partial class Games
 {
 	public static class FortunePiggy
 	{
-		public static bool LoadSucessfully(ChromeDriver driver, Credential credential, Signal signal, IMongoUnitOfWork uow)
+		public static bool LoadSucessfully(ChromeDriver driver, Credential credential, Signal signal, IUnitOfWork uow)
 		{
 			for (int i = 1; i < credential.Settings.FortunePiggy.Page; i++)
 			{
@@ -108,7 +108,7 @@ public static partial class Games
 			return slotsLoaded;
 		}
 
-		public static Signal? Spin(ChromeDriver driver, Credential credential, Signal signal, IMongoUnitOfWork uow)
+		public static Signal? Spin(ChromeDriver driver, Credential credential, Signal signal, IUnitOfWork uow)
 		{
 			Color Confirmation = credential.Game switch
 			{
@@ -185,6 +185,9 @@ public static partial class Games
 				uow.Signals.Acknowledge(signal);
 
 				double balance = 0;
+				// TODO: FIX - JavaScript extraction from window.parent relies on browser extension (Decision 0)
+				// Current: Fails if extension not loaded or casino changed JS structure
+				// Fix: Add fallback extraction method or extension health check
 				double currentGrand = Convert.ToDouble(driver.ExecuteScript("return window.parent.Grand")) / 100;
 				double currentMajor = Convert.ToDouble(driver.ExecuteScript("return window.parent.Major")) / 100;
 				double currentMinor = Convert.ToDouble(driver.ExecuteScript("return window.parent.Minor")) / 100;

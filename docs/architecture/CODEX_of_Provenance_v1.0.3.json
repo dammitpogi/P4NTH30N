@@ -214,7 +214,7 @@
       "rule": "Do not reorganize existing folders unless part of an explicit, recorded migration plan.",
       "boundaries": [
         "C0MMON holds shared entities, storage models, and automation primitives (Mouse/Keyboard/Screen).",
-        "H4ND and HUN7ER are app-level processes and should avoid deep domain logic."
+        "H4ND and H0UND are app-level processes and should avoid deep domain logic."
       ]
     },
     "function_guidance": {

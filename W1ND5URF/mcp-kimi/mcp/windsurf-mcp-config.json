@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "kimi-code": {
+      "url": "http://127.0.0.1:16766/mcp"
+    },
+    "toolhive": {
+      "url": "http://localhost:22368/"
+    }
+  }
+}

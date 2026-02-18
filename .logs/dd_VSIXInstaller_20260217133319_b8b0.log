@@ -1,0 +1,41 @@
+2/17/2026 1:33:19 PM - Microsoft VSIX Installer
+2/17/2026 1:33:19 PM - -------------------------------------------
+2/17/2026 1:33:19 PM - vsixinstaller.exe version:
+2/17/2026 1:33:19 PM - 18.3.2152+e1a4d22cc9
+2/17/2026 1:33:19 PM - -------------------------------------------
+2/17/2026 1:33:19 PM - Command line parameters:
+2/17/2026 1:33:19 PM - C:\Program Files (x86)\Microsoft Visual Studio\Installer\resources\app\ServiceHub\Services\Microsoft.VisualStudio.Setup.Service\VSIXInstaller.exe,C:\P4NTH30N\W1ND5URF\windsurf-cartography-1.0.0.vsix
+2/17/2026 1:33:19 PM - -------------------------------------------
+2/17/2026 1:33:19 PM - Microsoft VSIX Installer
+2/17/2026 1:33:19 PM - -------------------------------------------
+2/17/2026 1:33:19 PM - Initializing Install...
+2/17/2026 1:33:19 PM - Searching for applicable products...
+2/17/2026 1:33:19 PM - Found installed product - Visual Studio Community 2026
+2/17/2026 1:33:19 PM - Found installed product - Global Location
+2/17/2026 1:33:19 PM - Extension Details...
+2/17/2026 1:33:19 PM - 	Identifier         : windsurf-cartography
+2/17/2026 1:33:19 PM - 	Name               : Windsurf Cartography
+2/17/2026 1:33:19 PM - 	Author             : undefined
+2/17/2026 1:33:19 PM - 	Version            : 1.0.0
+2/17/2026 1:33:19 PM - 	Description        : Auto-injects codemap.md files into AI context based on Cartography system
+2/17/2026 1:33:19 PM - 	Locale             : en-US
+2/17/2026 1:33:19 PM - 	MoreInfoURL        : 
+2/17/2026 1:33:19 PM - 	InstalledByMSI     : False
+2/17/2026 1:33:19 PM - 	SupportedFrameworkVersionRange : [0.0,2147483647.2147483647]
+2/17/2026 1:33:19 PM - 	SignatureState     : Unsigned
+2/17/2026 1:33:19 PM - 	Supported Products : 
+2/17/2026 1:33:19 PM - 		Microsoft.VisualStudio.Code
+2/17/2026 1:33:19 PM - 			Version : 
+2/17/2026 1:33:19 PM - 			ProductArchitecture : x86
+2/17/2026 1:33:19 PM - 	References         : 
+2/17/2026 1:33:19 PM - Signature Details...
+2/17/2026 1:33:19 PM - 	Extension is not signed.
+2/17/2026 1:33:19 PM - VSIXInstaller.NoApplicableSKUsException: One or more extensions are for Visual Studio Code. Try installing them in Visual Studio Code.
+   at VSIXInstaller.ExtensionService.GetInstallableDataImpl(String vsixPath, String extensionPackParentName, Boolean isRepairSupported, IStateData stateData, IEnumerable`1& skuData)
+   at VSIXInstaller.ExtensionService.GetInstallableData(String vsixPath, String extensionPackParentName, Boolean isRepairSupported, IStateData stateData, IEnumerable`1& skuData)
+   at VSIXInstaller.ExtensionPackService.IsExtensionPack(IStateData stateData, Boolean isRepairSupported)
+   at VSIXInstaller.ExtensionPackService.ExpandExtensionPackToInstall(IStateData stateData, Boolean isRepairSupported)
+   at VSIXInstaller.App.Initialize(Boolean isRepairSupported)
+   at VSIXInstaller.App.Initialize()
+   at System.Threading.Tasks.Task`1.InnerInvoke()
+   at System.Threading.Tasks.Task.Execute()

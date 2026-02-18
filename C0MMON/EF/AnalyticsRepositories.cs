@@ -9,7 +9,7 @@ using P4NTH30N.C0MMON.Infrastructure.Persistence;
 namespace P4NTH30N.C0MMON.EF;
 
 /// <summary>
-/// EF Core-based analytics repositories for HUN7ER workloads.
+/// EF Core-based analytics repositories for H0UND workloads.
 /// These provide LINQ-based querying for complex analytics operations.
 ///
 /// NOTE: MongoDB EF Core provider limitations:

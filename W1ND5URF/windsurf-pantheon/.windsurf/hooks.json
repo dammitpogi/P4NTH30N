@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "pre_read_code": [
+      {
+        "command": "node .windsurf/hooks/focus-editor.js",
+        "show_output": false
+      }
+    ],
+    "pre_write_code": [
+      {
+        "command": "node .windsurf/hooks/focus-editor.js",
+        "show_output": false
+      }
+    ],
+    "post_cascade_response": [
+      {
+        "command": "node .windsurf/hooks/capture-decisions.js",
+        "show_output": false
+      }
+    ],
+    "post_mcp_tool_use": [
+      {
+        "command": "node .windsurf/hooks/capture-mcp-decisions.js",
+        "show_output": false
+      }
+    ]
+  }
+}

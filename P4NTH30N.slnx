@@ -2,7 +2,6 @@
 	<Project Path="C0MMON/C0MMON.csproj" />
 	<Project Path="H0UND/H0UND.csproj" />
 	<Project Path="H4ND/H4ND.csproj" />
-	<Project Path="HUN7ER/HUN7ER.csproj" />
 	<Project Path="PROF3T/PROF3T.csproj" />
 	<Project Path="T00L5ET/T00L5ET.csproj" Id="32444544-90e6-4b84-80b8-48c7f148d21a" />
 	<Project Path="UNI7T35T/UNI7T35T.csproj" Id="08393a5c-c385-48bd-b897-46b573c55f67" />

@@ -1,12 +1,11 @@
 # Repository Atlas: P4NTH30N Platform
 
 ## Project Responsibility
-Multi-agent automation platform for online casino game portals (FireKirin and OrionStars). Event-driven system with two primary agents (HUN7ER analytics and H4ND automation) communicating asynchronously via MongoDB to discover jackpots, generate signals, and automate gameplay.
+Multi-agent automation platform for online casino game portals (FireKirin and OrionStars). Event-driven system with two primary agents (H0UND polling+analytics and H4ND automation) communicating asynchronously via MongoDB to discover jackpots, generate signals, and automate gameplay.
 
 ## System Entry Points
-- `HUN7ER/HUN7ER.cs`: Analytics agent entry point (PROF3T.Main → HUN7ER())
 - `H4ND/`: Automation agent (H4ND.Main → H4ND())
-- `H0UND/`: Monitoring/credential polling service (H0UND.Main → H0UND())
+- `H0UND/`: Polling + analytics agent (H0UND.Main → H0UND())
 - `T00L5ET/`: Manual utilities for database operations and one-off tasks
 - `UNI7T35T/`: Testing platform for features and bug simulation
 - `C0MMON/`: Shared library for all components
@@ -18,14 +17,13 @@ Multi-agent automation platform for online casino game portals (FireKirin and Or
 | Directory | Responsibility Summary | Detailed Map |
 |-----------|------------------------|--------------|
 | `C0MMON/` | Core shared library providing data persistence, validation, services, and utilities. Repository pattern, Unit of Work, ValidatedMongoRepository for data integrity. | [View Map](C0MMON/codemap.md) |
-| `HUN7ER/` | Analytics agent ("The Brain") that processes game data, builds DPD forecasting models, and generates SIGN4L records for automation. | [View Map](HUN7ER/codemap.md) |
 | `H4ND/` | Automation agent ("The Hands") that consumes signals and performs automated gameplay. | [View Map](H4ND/codemap.md) |
-| `H0UND/` | Watchdog/monitoring service for system health tracking and credential polling. | [View Map](H0UND/codemap.md) |
+| `H0UND/` | Polling + analytics agent that updates telemetry, computes DPD forecasts, and emits SIGN4L records. | [View Map](H0UND/codemap.md) |
 | `T00L5ET/` | Manual use tools for database operations, data cleanup, and one-off utilities. | — |
 | `UNI7T35T/` | Testing platform for new features, bug simulation, and regression testing. | — |
 | `RUL3S/` | Resource override system with Chrome extension for JavaScript injection, header manipulation, and asset overrides to enable browser automation. | [View Map](RUL3S/codemap.md) |
 | `docs/` | Comprehensive documentation: architecture specs (CODEX), migration guides, modernization roadmap, and system overviews. | [View Map](docs/codemap.md) |
-| `PROF3T/` | Profit analysis tools and utilities for performance tracking. | [View Map](PROF3T/codemap.md) |
+| `PROF3T/` | Administrative console application for maintenance, diagnostics, and analytics. Contains test methods, balance queries, MongoDB view operations (N3XT), and data analysis utilities. | [View Map](PROF3T/codemap.md) |
 | `CLEANUP/` | Data cleanup utilities and MongoDB corruption prevention services. | — |
 | `MONITOR/` | System monitoring and health check services. | — |
 | `W4TCHD0G/` | Hunter watchdog for monitoring automation agent status. | [View Map](W4TCHD0G/codemap.md) |
@@ -36,9 +34,10 @@ Multi-agent automation platform for online casino game portals (FireKirin and Or
 ### Multi-Agent System
 ```
 ┌─────────────┐     MongoDB Collections     ┌─────────────┐
-│  HUN7ER     │ ◄───── credentials ───────► │    H4ND     │
+│  H0UND      │ ◄───── credentials ───────► │    H4ND     │
 │ (Analytics) │ ◄───── signals ──────────► │ (Automation)│
 │   "Brain"   │ ◄───── eventlogs ───────► │   "Hands"   │
+
 └─────────────┘                             └─────────────┘
        ▲                                           ▲
        │ Uses for data access                      │ Uses for automation
@@ -57,7 +56,7 @@ Multi-agent automation platform for online casino game portals (FireKirin and Or
 └─────────────────────────────────────────────────────┘
 ```
 ┌─────────────┐     MongoDB Collections     ┌─────────────┐
-│  HUN7ER     │ ◄───── credentials ───────► │    H4ND     │
+│  H0UND      │ ◄───── credentials ───────► │    H4ND     │
 │ (Analytics) │ ◄───── signals ──────────► │ (Automation)│
 │   "Brain"   │ ◄───── eventlogs ────────► │   "Hands"   │
 └─────────────┘                             └─────────────┘
@@ -103,7 +102,7 @@ All other projects reference C0MMON as their primary dependency
 
 ### Agent Dependencies and Coordination
 ```
-HUN7ER (Analytics - "The Brain")
+H0UND (Polling + Analytics - "The Brain")
 ├── References: C0MMON
 ├── Depends on: MongoDB (credentials, signals, jackpots collections)
 ├── Uses: IMongoUnitOfWork for data persistence
@@ -125,13 +124,13 @@ H0UND (Watchdog)
 
 W4TCHD0G (Hunter Watchdog)
 ├── References: C0MMON
-├── Monitors: HUN7ER/H4ND process health
+├── Monitors: H0UND/H4ND process health
 └── Produces: Process-level metrics and restarts
 ```
 
 ### Project Dependency Graph (Topological Order)
 1. **C0MMON** (base layer - no dependencies on other projects)
-2. **HUN7ER**, **H4ND**, **H0UND**, **W4TCHD0G** (depend on C0MMON)
+2. **H4ND**, **H0UND**, **W4TCHD0G** (depend on C0MMON)
 3. **T00L5ET**, **UNI7T35T**, **PROF3T** (utility and test projects)
 4. **CLEANUP**, **C0RR3CT** (specialized maintenance tools)
 
@@ -170,11 +169,11 @@ W4TCHD0G (Hunter Watchdog)
 └─────────────────┴─────────────────┴─────────────────────────┘
 
 Flow:
-1. HUN7ER reads CRED3N7IAL (credentials) and writes JACKPOTS
-2. HUN7ER analyzes thresholds and writes SIGN4L to EV3NT (agent: "HUN7ER", action: "SignalGenerated")
-3. H4ND reads EV3NT (filter: agent="HUN7ER", action="SignalGenerated") and credentials from CRED3N7IAL
+1. H0UND reads CRED3N7IAL (credentials), updates telemetry, and writes JACKPOTS
+2. H0UND analyzes thresholds and writes SIGN4L records
+3. H4ND reads signals and credentials from CRED3N7IAL
 4. H4ND performs automation and writes logs to EV3NT (agent: "H4ND", action: "Login", "Launch", etc.)
-5. Validation failures (IsValid) are written to ERR0R by H4ND/HUN7ER via IStoreErrors
+5. Validation failures (IsValid) are written to ERR0R by H4ND/H0UND via IStoreErrors
 6. H0UND queries ERR0R for health monitoring: count errors in last 24h, alert if >200/hr
 ```
 
@@ -193,7 +192,7 @@ IMongoDatabaseProvider : Factory for database connections (FromEnvironment())
 ```
 
 ### Timing Constraints
-- **Signal Generation**: HUN7ER processes credentials every 5-15 minutes (configurable)
+- **Signal Generation**: H0UND processes credentials continuously; analytics phase runs on a short interval (configurable)
 - **Signal Consumption**: H4ND polls EV3NT every 2-5 seconds for new signals
 - **Validation**: synchronous, must complete <100ms (benchmarked)
 - **Database Writes**: async acknowledgment required; batch size <100 documents
@@ -222,8 +221,8 @@ IMongoDatabaseProvider : Factory for database connections (FromEnvironment())
 # Build entire solution
 dotnet build P4NTH30N.slnx
 
-# Run HUN7ER analytics agent
-dotnet run --project ./HUN7ER/HUN7ER.csproj
+# Run H0UND polling+analytics agent
+dotnet run --project ./H0UND/H0UND.csproj
 
 # Run H4ND automation agent
 dotnet run --project ./H4ND/H4ND.csproj
@@ -240,7 +239,7 @@ dotnet test ./UNI7T35T/UNI7T35T.csproj
 
 ### Running the Platform
 Requires two terminals:
-- **Terminal 1**: `dotnet run --project ./HUN7ER/HUN7ER.csproj` (analytics)
+- **Terminal 1**: `dotnet run --project ./H0UND/H0UND.csproj` (polling+analytics)
 - **Terminal 2**: `dotnet run --project ./H4ND/H4ND.csproj` (automation)
 
 ### Documentation

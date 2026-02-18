@@ -10,7 +10,7 @@ public static partial class Games
 {
 	public static class Gold777
 	{
-		public static bool LoadSucessfully(ChromeDriver driver, Credential credential, Signal signal, IMongoUnitOfWork uow)
+		public static bool LoadSucessfully(ChromeDriver driver, Credential credential, Signal signal, IUnitOfWork uow)
 		{
 			for (int i = 1; i < (credential.Settings?.Gold777?.Page ?? 1); i++)
 			{
@@ -390,7 +390,7 @@ public static partial class Games
 			return slotsLoaded;
 		}
 
-		public static Signal? Spin(ChromeDriver driver, Credential credential, Signal signal, IMongoUnitOfWork uow)
+		public static Signal? Spin(ChromeDriver driver, Credential credential, Signal signal, IUnitOfWork uow)
 		{
 			Mouse.LongClick(929, 612);
 			// Mouse.Click(955, 290);

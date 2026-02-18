@@ -9,7 +9,7 @@ using P4NTH30N.C0MMON.Infrastructure.Persistence;
 namespace P4NTH30N.C0MMON.EF;
 
 /// <summary>
-/// High-level analytics services for HUN7ER workloads.
+/// High-level analytics services for H0UND workloads.
 /// Provides DPD analysis, jackpot forecasting, and credential health reporting.
 /// </summary>
 public interface IAnalyticsService
@@ -38,7 +38,7 @@ public class DPDCredentialData
 {
 	public required string Username { get; set; }
 	public double Balance { get; set; }
-	public double DPD { get; set; }
+
 	public DateTime LastUpdated { get; set; }
 	public bool IsHealthy { get; set; }
 }
@@ -99,8 +99,10 @@ public class HouseSummary
 	public DateTime LastUpdated { get; set; }
 }
 
-public class AnalyticsService(ICredentialAnalyticsRepository credentialRepo, IJackpotAnalyticsRepository jackpotRepo) : IAnalyticsService
+public class AnalyticsService(P4NTH30NDbContext context, ICredentialAnalyticsRepository credentialRepo, IJackpotAnalyticsRepository jackpotRepo) : IAnalyticsService
 {
+	private readonly P4NTH30NDbContext _context = context;
+
 	public async Task<DPDAnalysisResult> AnalyzeDPDAsync(string house, string game)
 	{
 		var credentials = await credentialRepo.GetEnabledCredentialsAsync(house, game);
@@ -111,13 +113,14 @@ public class AnalyticsService(ICredentialAnalyticsRepository credentialRepo, IJa
 			{
 				Username = c.Username,
 				Balance = c.Balance,
-				DPD = c.DPD.Average,
+
 				LastUpdated = c.LastUpdated,
 				IsHealthy = c.LastUpdated > DateTime.UtcNow.AddDays(-3),
 			})
 			.ToList();
 
-		var avgDPD = credentialData.Any() ? credentialData.Average(c => c.DPD) : 0;
+		var jackpots = await jackpotRepo.GetJackpotsByHouseGameAsync(house, game);
+		var avgDPD = jackpots.Any() ? jackpots.Average(j => j.DPD.Average) : 0;
 
 		return new DPDAnalysisResult
 		{
@@ -216,6 +219,4 @@ public class AnalyticsService(ICredentialAnalyticsRepository credentialRepo, IJa
 			LastUpdated = credentials.Max(c => c.LastUpdated),
 		};
 	}
-
-	private P4NTH30NDbContext _context => throw new NotImplementedException("Use constructor injection");
 }

@@ -1,0 +1,43 @@
+{
+  "recommendations": [
+    // Core C# Development
+    "ms-dotnettools.csharp",
+    "ms-dotnettools.csdevkit",
+    "ms-dotnettools.dotnet-interactive-vscode",
+    
+    // Solution & Project Management
+    "ms-dotnettools.vscode-solution-explorer",
+    "formulahendry.dotnet-test-explorer",
+    "k--kato.dockyard-docker-for-vscode",
+    
+    // Code Quality & Formatting
+    "ms-dotnettools.csharpier",
+    "ms-vscode.vscode-json",
+    "redhat.vscode-yaml",
+    
+    // Database & MongoDB
+    "mongodb.mongodb-vscode",
+    "ms-mssql.mssql",
+    
+    // Web Development (if needed)
+    "ms-vscode.vscode-html-css-support",
+    "bradlc.vscode-tailwindcss",
+    
+    // Git & Version Control
+    "eamodio.gitlens",
+    "mhutchie.git-graph",
+    
+    // Productivity & Utilities
+    "ms-vscode.vscode-typescript-next",
+    "streetsidesoftware.code-spell-checker",
+    "gruntfuggly.todo-tree",
+    
+    // Debugging & Diagnostics
+    "ms-vscode.hexeditor",
+    "ms-vscode-remote.remote-containers",
+    
+    // API Development
+    "humao.rest-client",
+    "ms-vscode.vscode-openapi"
+  ]
+}

@@ -35,17 +35,28 @@ public static class ReceivedExt
 	}
 }
 
-[method: SetsRequiredMembers]
-public class Received(Signal signal, double triggered)
+public class Received
 {
 	public ObjectId _id { get; set; } = ObjectId.GenerateNewId();
 	public DateTime Acknowledged { get; set; } = DateTime.UtcNow;
 	public DateTime? Rewarded { get; set; } = null;
-	public required string House { get; set; } = signal.House;
-	public required string Game { get; set; } = signal.Game;
-	public required string Username { get; set; } = signal.Username;
-	public required string Password { get; set; } = signal.Password;
-	public float Priority { get; set; } = signal.Priority;
-	public double Triggered { get; set; } = triggered;
+	public string House { get; set; } = string.Empty;
+	public string Game { get; set; } = string.Empty;
+	public string Username { get; set; } = string.Empty;
+	public string Password { get; set; } = string.Empty;
+	public float Priority { get; set; }
+	public double Triggered { get; set; }
 	public double? Threshold { get; set; } = null;
+
+	public Received() { }
+
+	public Received(Signal signal, double triggered)
+	{
+		House = signal.House;
+		Game = signal.Game;
+		Username = signal.Username;
+		Password = signal.Password;
+		Priority = signal.Priority;
+		Triggered = triggered;
+	}
 }

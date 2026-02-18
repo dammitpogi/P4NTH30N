@@ -3,9 +3,9 @@ using MongoDB.Bson.Serialization.Attributes;
 namespace P4NTH30N.C0MMON;
 
 [BsonIgnoreExtraElements]
-public class GameSettings(string game)
+public class GameSettings
 {
-	public string Game { get; set; } = game;
+	public string Game { get; set; } = string.Empty;
 	public string Preferred { get; set; } = "FortunePiggy";
 
 	public bool SpinGrand { get; set; } = true;
@@ -18,6 +18,13 @@ public class GameSettings(string game)
 	public Gold777_Settings Gold777 { get; set; } = new();
 	public FortunePiggy_Settings FortunePiggy { get; set; } = new();
 	public Quintuple5X_Settings Quintuple5X { get; set; } = new();
+
+	public GameSettings() { }
+
+	public GameSettings(string game)
+	{
+		Game = game;
+	}
 }
 
 public class Gold777_Settings

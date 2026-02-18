@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "kimi-code": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-openai" 
+      ],
+      "env": {
+        "OPENAI_BASE_URL": "https://api.kimi.com/coding/v1",
+        "OPENAI_API_KEY": "${KIMI_API_KEY}",
+        "OPENAI_MODEL": "kimi-k2"
+      }
+    }
+  }
+}

@@ -5,7 +5,7 @@ using P4NTH30N.C0MMON.Infrastructure.Persistence;
 
 namespace P4NTH30N.C0MMON;
 
-public class Credential(string game)
+public class Credential
 {
 	public ObjectId _id { get; set; } = ObjectId.GenerateNewId();
 	public ObjectId? PROF3T_id { get; set; } = null;
@@ -14,18 +14,26 @@ public class Credential(string game)
 	public bool Unlocked { get; set; } = true;
 	public int PROF3T_ID { get; set; } = 1;
 	public string URL { get; set; } = string.Empty;
-	public required string House { get; set; }
-	public required string Game { get; set; }
+	public string House { get; set; } = string.Empty;
+	public string Game { get; set; } = string.Empty;
 	public DateTime CreateDate { get; set; } = DateTime.UtcNow;
 	public DateTime UnlockTimeout { get; set; } = DateTime.MinValue;
 	public DateTime LastUpdated { get; set; } = DateTime.UtcNow.AddDays(-1);
 	public DateTime? LastDepositDate { get; set; } = DateTime.UtcNow.AddDays(-1);
 	public Jackpots Jackpots { get; set; } = new Jackpots();
 	public Thresholds Thresholds { get; set; } = new Thresholds();
-	public GameSettings Settings { get; set; } = new GameSettings(game);
-	public DPD DPD { get; set; } = new DPD();
+	public GameSettings Settings { get; set; } = new GameSettings();
+
 	public bool CashedOut { get; set; } = true;
 	public bool Updated { get; set; } = false;
+
+	public Credential() { }
+
+	public Credential(string game)
+	{
+		Game = game;
+		Settings = new GameSettings(game);
+	}
 
 	private double _balance = 0;
 	public double Balance
@@ -60,6 +68,6 @@ public class Credential(string game)
 		return true;
 	}
 
-	public required string Username { get; set; }
-	public required string Password { get; set; }
+	public string Username { get; set; } = string.Empty;
+	public string Password { get; set; } = string.Empty;
 }

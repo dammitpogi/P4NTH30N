@@ -32,7 +32,7 @@ Comprehensive documentation repository for P4NTH30N platform architecture, migra
 
 **System Overviews**:
 - `overview.md`: High-level platform description and agent interactions
-  - HUN7ER (analytics) and H4ND (automation) agent communication
+  - H0UND (polling+analytics) and H4ND (automation) agent communication
   - MongoDB as asynchronous message bus
   - Event-driven architecture patterns
 - `modernization.md`: Technical debt assessment and improvement roadmap
@@ -68,7 +68,7 @@ Comprehensive documentation repository for P4NTH30N platform architecture, migra
 
 **Related to Code**:
 - `C0MMON/`: Architecture docs explain persistence layer design
-- `HUN7ER/`: CODEX details analytics algorithms and forecasting models
+- `H0UND/`: CODEX details analytics algorithms and forecasting models
 - `H4ND/`: Documentation covers automation patterns and Selenium usage
 - `RUL3S/`: Architecture specifies resource override requirements
 
@@ -86,7 +86,7 @@ Comprehensive documentation repository for P4NTH30N platform architecture, migra
 ## Key Concepts
 
 **Agent Communication**:
-- HUN7ER and H4ND communicate via MongoDB collections
+- H0UND and H4ND communicate via MongoDB collections
 - Signals act as asynchronous messages between agents
 - Event-driven architecture enables loose coupling
 

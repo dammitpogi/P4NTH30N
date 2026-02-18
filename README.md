@@ -4,14 +4,14 @@
 P4NTH30N is a multi-process automation platform built in C# that coordinates **jackpot discovery**, **signal generation**, and **automated spins** for supported casino game portals. The core of the system is two always-on workers that run together:
 
 - **H4ND**: Executes automation in the browser (login, navigate, read jackpot values, spin). It consumes `SIGN4L` signals and updates MongoDB with jackpot and balance telemetry.
-- **HUN7ER**: Computes growth rates (DPD), forecasts jackpot timing, and emits `SIGN4L` signals when thresholds are near.
+- **H0UND**: Polls credentials for balance/jackpot data, computes growth rates (DPD), forecasts jackpot timing, and emits `SIGN4L` signals when thresholds are near.
 
-This repo also contains supporting services/tools (e.g., W4TCHD0G, H0UND, H5ND, PROF3T) plus a shared library, **C0MMON**, that houses all shared entities, automation primitives, and MongoDB access.
+This repo also contains supporting services/tools (e.g., W4TCHD0G, PROF3T) plus a shared library, **C0MMON**, that houses all shared entities, automation primitives, and MongoDB access.
 
 ## High-level architecture
 
 ```
-HUN7ER (analytics loop)
+H0UND (polling + analytics loop)
   ├─ reads CRED3N7IAL (credentials)
   ├─ builds DPD + forecasts jackpots
   └─ writes SIGN4L + J4CKP0T (signals + predictions)
@@ -35,13 +35,18 @@ Entry point: `H4ND/H4ND.cs`
 - If a signal is active, performs slot spins and then updates thresholds.
 - Updates credential balance and unlocks the game for the next worker.
 
-### HUN7ER (analytics worker)
-Entry point: `HUN7ER/HUN7ER.cs`
+### H0UND (polling + analytics worker)
+Entry point: `H0UND/H0UND.cs`
 
-- Iterates all credentials, calculates DPD (dollars per day).
-- Forecasts jackpot estimates and writes `J4CKP0T` entries.
+- Polls credentials for jackpot/balance data.
+- Calculates DPD (dollars per day) and forecasts jackpot estimates (writes `J4CKP0T`).
 - Emits `SIGN4L` signals when thresholds are near or imminent.
-- Prints a console dashboard with ETA and funding recommendations.
+- Renders a Spectre.Console dashboard with an analytics panel.
+
+Tier suppression (safety caps):
+- Each credential has per-tier Spin settings (`Settings.SpinGrand/Major/Minor/Mini`). These are treated as enable-to-include (true = eligible).
+- If a tier threshold exceeds sanity caps (Mini > 30, Minor > 134, Major > 630, Grand > 1800), that tier is automatically disabled by forcing the corresponding `Spin* = false` at credential upsert.
+- Disabled tiers do not generate signals and do not appear in the analytics output; jackpot polling + DPD tracking continues.
 
 ### C0MMON (shared library)
 Location: `C0MMON/`
@@ -67,7 +72,7 @@ Contains:
 
 ## Runtime flow summary
 
-1. **HUN7ER** reads credentials → calculates DPD → predicts jackpots → writes signals.
+1. **H0UND** reads credentials → calculates DPD → predicts jackpots → writes signals.
 2. **H4ND** polls signals → logs in → reads jackpot values → spins and updates DB.
 3. **Signals** auto-expire if not acknowledged; both workers maintain locks/timeouts.
 
@@ -76,7 +81,7 @@ Contains:
 > This repo assumes a Windows host, Selenium, a Chrome extension, and a reachable MongoDB.
 
 - Build all projects using the solution (`P4NTH30N.slnx`) or project files.
-- Launch **HUN7ER** and **H4ND** together.
+- Launch **H0UND** and **H4ND** together.
 - H4ND supports `H0UND` mode to disable signal listening for manual runs.
 
 ## Versioning
@@ -96,8 +101,8 @@ Recommended next steps:
 
 - `C0MMON/` – shared library
 - `H4ND/` – automation worker
-- `HUN7ER/` – analytics worker
-- `HUN7ERv2/`, `H5ND/`, `H0UND/` – sibling tools/experiments
+- `H0UND/` – polling + analytics worker
+- `HUN7ERv2/`, `H5ND/` – sibling tools/experiments
 - `W4TCHD0G/`, `PROF3T/`, `M4NUAL/` – supporting tools
 - `RUL3S/` – static resources/overrides used by automation
 - `Codex/` – provenance and governance canon (artifacts, schemas, reports)
