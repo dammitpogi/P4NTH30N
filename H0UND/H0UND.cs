@@ -5,7 +5,11 @@ using Figgle;
 using P4NTH30N;
 using P4NTH30N.C0MMON;
 using P4NTH30N.C0MMON.Infrastructure.Persistence;
+using P4NTH30N.C0MMON.Infrastructure.Resilience;
 using P4NTH30N.C0MMON.Versioning;
+using P4NTH30N.H0UND.Application.Analytics;
+using P4NTH30N.H0UND.Application.Polling;
+using P4NTH30N.H0UND.Infrastructure.Polling;
 using P4NTH30N.Services;
 
 namespace P4NTH30N;
@@ -13,25 +17,61 @@ namespace P4NTH30N;
 [GenerateFiggleText(sourceText: "v    0 . 8 . 6 . 3", memberName: "Version", fontName: "colossal")]
 internal static partial class Header { }
 
-class H0UND
+internal class Program
 {
 	private static readonly MongoUnitOfWork s_uow = new();
 
 	// Control flag: true = use priority calculation, false = full sweep (oldest first)
 	private static readonly bool UsePriorityCalculation = false;
 
+	// Analytics phase timing
+	private static DateTime s_lastAnalyticsRunUtc = DateTime.MinValue;
+	private const int AnalyticsIntervalSeconds = 10;
+
+	// Resilience infrastructure
+	private static readonly CircuitBreaker s_apiCircuit = new(
+		failureThreshold: 5,
+		recoveryTimeout: TimeSpan.FromSeconds(60),
+		logger: msg => Dashboard.AddLog(msg, "yellow")
+	);
+	private static readonly CircuitBreaker s_mongoCircuit = new(
+		failureThreshold: 3,
+		recoveryTimeout: TimeSpan.FromSeconds(30),
+		logger: msg => Dashboard.AddLog(msg, "yellow")
+	);
+	private static readonly SystemDegradationManager s_degradation = new(logger: msg => Dashboard.AddLog(msg, "yellow"));
+	private static readonly OperationTracker s_opTracker = new(TimeSpan.FromMinutes(5));
+
 	static void Main(string[] args)
 	{
 		MongoUnitOfWork uow = s_uow;
+		AnalyticsWorker analyticsWorker = new AnalyticsWorker();
+		BalanceProviderFactory balanceProviderFactory = new BalanceProviderFactory();
+		PollingWorker pollingWorker = new PollingWorker(balanceProviderFactory);
+
+		// Initialize dashboard with startup info
+		Dashboard.AddLog($"{Header.Version}", "blue");
+		Dashboard.AddLog("H0UND Started", "blue");
+		Dashboard.AddLog($"Priority: {(UsePriorityCalculation ? "ON" : "OFF (Full Sweep)")}", "blue");
+		Dashboard.AddAnalyticsLog("Analytics engine initialized", "cyan");
+		Dashboard.AddAnalyticsLog("Awaiting telemetry...", "grey");
+
+		// Set total credentials count
+		try
+		{
+			var allCreds = uow.Credentials.GetAll();
+			Dashboard.TotalCredentials = allCreds.Count();
+			Dashboard.AddLog($"Loaded {Dashboard.TotalCredentials} credentials", "green");
+		}
+		catch (Exception ex)
+		{
+			Dashboard.AddLog($"Warning: Could not load credential count: {ex.Message}", "yellow");
+		}
+
 		while (true)
 		{
-			// Health monitoring for H0UND
-			List<(string tier, double value, double threshold)> recentJackpots = new();
 			DateTime lastHealthCheck = DateTime.MinValue;
 
-			Dashboard.AddLog($"{Header.Version}", "blue");
-			Dashboard.AddLog("H0UND", "blue");
-			Dashboard.AddLog($"Priority: {(UsePriorityCalculation ? "ON" : "OFF (Full Sweep)")}", "blue");
 			try
 			{
 				double lastRetrievedGrand = 0;
@@ -39,6 +79,23 @@ class H0UND
 
 				while (true)
 				{
+					// Handle pause state
+					if (Dashboard.IsPaused)
+					{
+						Dashboard.Render();
+						Thread.Sleep(100);
+						continue;
+					}
+
+					// Time-gated analytics phase
+					if ((DateTime.UtcNow - s_lastAnalyticsRunUtc).TotalSeconds >= AnalyticsIntervalSeconds)
+					{
+						Dashboard.CurrentTask = "Running Analytics";
+						Dashboard.Render();
+						analyticsWorker.RunAnalytics(uow);
+						s_lastAnalyticsRunUtc = DateTime.UtcNow;
+					}
+
 					Dashboard.CurrentTask = "Polling Queue";
 					Dashboard.Render();
 
@@ -46,6 +103,7 @@ class H0UND
 
 					Dashboard.CurrentGame = credential.Game;
 					Dashboard.CurrentUser = credential.Username ?? "None";
+					Dashboard.CurrentHouse = credential.House ?? "Unknown";
 					Dashboard.CurrentTask = "Retrieving Balances";
 					Dashboard.Render();
 
@@ -53,7 +111,14 @@ class H0UND
 
 					try
 					{
-						var balances = GetBalancesWithRetry(credential);
+						// Circuit breaker around API polling
+						(double Balance, double Grand, double Major, double Minor, double Mini) balances = s_apiCircuit
+							.ExecuteAsync(async () =>
+							{
+								return pollingWorker.GetBalancesWithRetry(credential, uow);
+							})
+							.GetAwaiter()
+							.GetResult();
 
 						// Validate raw values before processing
 						bool rawValuesValid =
@@ -75,7 +140,9 @@ class H0UND
 
 						if (!rawValuesValid)
 						{
-							Dashboard.AddLog($"🔴 Critical validation failure for {credential.Game} - {credential.Username}: invalid raw values", "red");
+							Dashboard.AddLog($"Critical validation failure for {credential.Game} - {credential.Username}: invalid raw values", "red");
+							Dashboard.TrackError("ValidationFailure");
+							Dashboard.IncrementPoll(false);
 							uow.Errors.Insert(
 								ErrorLog.Create(
 									ErrorType.ValidationError,
@@ -99,17 +166,16 @@ class H0UND
 						double currentMini = balances.Mini;
 						double currentBalance = balances.Balance;
 
-						// Track values for health monitoring
-						recentJackpots.Add(("Grand", currentGrand, credential.Thresholds.Grand));
-						recentJackpots.Add(("Major", currentMajor, credential.Thresholds.Major));
-						recentJackpots.Add(("Minor", currentMinor, credential.Thresholds.Minor));
-						recentJackpots.Add(("Mini", currentMini, credential.Thresholds.Mini));
-
-						// Limit to last 40 entries (10 per tier)
-						if (recentJackpots.Count > 40)
-						{
-							recentJackpots.RemoveRange(0, 4);
-						}
+						// Update dashboard with current values
+						Dashboard.CurrentGrand = currentGrand;
+						Dashboard.CurrentMajor = currentMajor;
+						Dashboard.CurrentMinor = currentMinor;
+						Dashboard.CurrentMini = currentMini;
+						Dashboard.CurrentBalance = currentBalance;
+						Dashboard.ThresholdGrand = credential.Thresholds.Grand;
+						Dashboard.ThresholdMajor = credential.Thresholds.Major;
+						Dashboard.ThresholdMinor = credential.Thresholds.Minor;
+						Dashboard.ThresholdMini = credential.Thresholds.Mini;
 
 						if (
 							(
@@ -118,22 +184,23 @@ class H0UND
 							) == false
 						)
 						{
-							Signal? gameSignal = uow.Signals.GetOne(credential.House, credential.Game);
+							Signal? gameSignal = uow.Signals.GetOne(credential.House ?? "Unknown", credential.Game);
 							if (currentGrand < credential.Jackpots.Grand && credential.Jackpots.Grand - currentGrand > 0.1)
 							{
-								if (credential.DPD.Toggles.GrandPopped == true)
+								var grandJackpot = uow.Jackpots.Get("Grand", credential.House, credential.Game);
+								if (grandJackpot != null && grandJackpot.DPD.Toggles.GrandPopped == true)
 								{
 									if (currentGrand >= 0 && currentGrand <= 10000)
 									{
 										credential.Jackpots.Grand = currentGrand;
 									}
-									credential.DPD.Toggles.GrandPopped = false;
+									grandJackpot.DPD.Toggles.GrandPopped = false;
 									credential.Thresholds.NewGrand(credential.Jackpots.Grand);
 									if (gameSignal != null && gameSignal.Priority.Equals(4))
-										uow.Signals.DeleteAll(credential.House, credential.Game);
+										uow.Signals.DeleteAll(credential.House ?? "Unknown", credential.Game);
 								}
 								else
-									credential.DPD.Toggles.GrandPopped = true;
+									grandJackpot.DPD.Toggles.GrandPopped = true;
 							}
 							else
 							{
@@ -145,19 +212,20 @@ class H0UND
 
 							if (currentMajor < credential.Jackpots.Major && credential.Jackpots.Major - currentMajor > 0.1)
 							{
-								if (credential.DPD.Toggles.MajorPopped == true)
+								var majorJackpot = uow.Jackpots.Get("Major", credential.House, credential.Game);
+								if (majorJackpot != null && majorJackpot.DPD.Toggles.MajorPopped == true)
 								{
 									if (currentMajor >= 0 && currentMajor <= 10000)
 									{
 										credential.Jackpots.Major = currentMajor;
 									}
-									credential.DPD.Toggles.MajorPopped = false;
+									majorJackpot.DPD.Toggles.MajorPopped = false;
 									credential.Thresholds.NewMajor(credential.Jackpots.Major);
 									if (gameSignal != null && gameSignal.Priority.Equals(3))
-										uow.Signals.DeleteAll(credential.House, credential.Game);
+										uow.Signals.DeleteAll(credential.House ?? "Unknown", credential.Game);
 								}
 								else
-									credential.DPD.Toggles.MajorPopped = true;
+									majorJackpot.DPD.Toggles.MajorPopped = true;
 							}
 							else
 							{
@@ -169,19 +237,20 @@ class H0UND
 
 							if (currentMinor < credential.Jackpots.Minor && credential.Jackpots.Minor - currentMinor > 0.1)
 							{
-								if (credential.DPD.Toggles.MinorPopped == true)
+								var minorJackpot = uow.Jackpots.Get("Minor", credential.House, credential.Game);
+								if (minorJackpot != null && minorJackpot.DPD.Toggles.MinorPopped == true)
 								{
 									if (currentMinor >= 0 && currentMinor <= 10000)
 									{
 										credential.Jackpots.Minor = currentMinor;
 									}
-									credential.DPD.Toggles.MinorPopped = false;
+									minorJackpot.DPD.Toggles.MinorPopped = false;
 									credential.Thresholds.NewMinor(credential.Jackpots.Minor);
 									if (gameSignal != null && gameSignal.Priority.Equals(2))
-										uow.Signals.DeleteAll(credential.House, credential.Game);
+										uow.Signals.DeleteAll(credential.House ?? "Unknown", credential.Game);
 								}
 								else
-									credential.DPD.Toggles.MinorPopped = true;
+									minorJackpot.DPD.Toggles.MinorPopped = true;
 							}
 							else
 							{
@@ -193,19 +262,20 @@ class H0UND
 
 							if (currentMini < credential.Jackpots.Mini && credential.Jackpots.Mini - currentMini > 0.1)
 							{
-								if (credential.DPD.Toggles.MiniPopped == true)
+								var miniJackpot = uow.Jackpots.Get("Mini", credential.House, credential.Game);
+								if (miniJackpot != null && miniJackpot.DPD.Toggles.MiniPopped == true)
 								{
 									if (currentMini >= 0 && currentMini <= 10000)
 									{
 										credential.Jackpots.Mini = currentMini;
 									}
-									credential.DPD.Toggles.MiniPopped = false;
+									miniJackpot.DPD.Toggles.MiniPopped = false;
 									credential.Thresholds.NewMini(credential.Jackpots.Mini);
 									if (gameSignal != null && gameSignal.Priority.Equals(1))
-										uow.Signals.DeleteAll(credential.House, credential.Game);
+										uow.Signals.DeleteAll(credential.House ?? "Unknown", credential.Game);
 								}
 								else
-									credential.DPD.Toggles.MiniPopped = true;
+									miniJackpot.DPD.Toggles.MiniPopped = true;
 							}
 							else
 							{
@@ -226,26 +296,52 @@ class H0UND
 						uow.Credentials.Unlock(credential);
 
 						credential.LastUpdated = DateTime.UtcNow;
-						credential.Balance = currentBalance; // Use validated balance
+						credential.Balance = currentBalance;
 						lastRetrievedGrand = currentGrand;
 						uow.Credentials.Upsert(credential);
 						lastCredential = credential;
 
-						// Periodic health monitoring
+						// Track successful poll
+						Dashboard.IncrementPoll(true);
+						Dashboard.ActiveCredentials = 1;
+
+						// Periodic health monitoring with degradation check
 						if ((DateTime.Now - lastHealthCheck).TotalMinutes >= 5)
 						{
 							var recentErrors = uow.Errors.GetBySource("H0UND").Take(10).ToList();
 							string status = recentErrors.Any(e => e.Severity == ErrorSeverity.Critical) ? "CRITICAL" : "HEALTHY";
-							Dashboard.AddLog($"💊 H0UND Health: {status} | Errors: {recentErrors.Count}", "blue");
+							Dashboard.AddLog(
+								$"H0UND Health: {status} | Errors: {recentErrors.Count} | API Circuit: {s_apiCircuit.State} | Degradation: {s_degradation.CurrentLevel}",
+								"blue"
+							);
 							lastHealthCheck = DateTime.Now;
 						}
 
 						Dashboard.Render();
-						Thread.Sleep(Random.Shared.Next(3000, 5001));
+
+						// Degradation-aware throttling
+						int delay = s_degradation.CurrentLevel switch
+						{
+							DegradationLevel.Emergency => 30000,
+							DegradationLevel.Minimal => 15000,
+							DegradationLevel.Reduced => 8000,
+							_ => Random.Shared.Next(3000, 5001),
+						};
+						Thread.Sleep(delay);
+					}
+					catch (CircuitBreakerOpenException)
+					{
+						Dashboard.AddLog($"API circuit open - skipping {credential.Username}@{credential.Game}", "yellow");
+						Dashboard.IncrementPoll(false);
+						Dashboard.Render();
+						uow.Credentials.Unlock(credential);
+						Thread.Sleep(5000);
 					}
 					catch (InvalidOperationException ex) when (ex.Message.Contains("Your account has been suspended"))
 					{
 						Dashboard.AddLog($"Account suspended for {credential.Username} on {credential.Game}", "red");
+						Dashboard.TrackError("AccountSuspended");
+						Dashboard.IncrementPoll(false);
 						Dashboard.Render();
 						uow.Credentials.Unlock(credential);
 					}
@@ -255,179 +351,21 @@ class H0UND
 			{
 				Dashboard.CurrentTask = "Error - Recovery";
 				Dashboard.AddLog($"Error processing credential: {ex.Message}", "red");
+				Dashboard.TrackError("GeneralException");
+				Dashboard.IncrementPoll(false);
 				Dashboard.Render();
 
 				// Reduce recovery time and be more intelligent about extension failures
 				if (ex.Message.Contains("Extension failure"))
 				{
-					Thread.Sleep(5000); // Reduced from 30 seconds to 5 seconds
+					Thread.Sleep(5000);
 					Dashboard.AddLog("Extension failure recovered, continuing...", "yellow");
 				}
 				else
 				{
-					Thread.Sleep(10000); // 10 seconds for other errors
+					Thread.Sleep(10000);
 				}
 			}
 		}
-	}
-
-	private static (double Balance, double Grand, double Major, double Minor, double Mini) QueryBalances(Credential credential)
-	{
-		Random random = new();
-		int delayMs = random.Next(3000, 5001);
-		Thread.Sleep(delayMs);
-
-		try
-		{
-			switch (credential.Game)
-			{
-				case "FireKirin":
-				{
-					var balances = FireKirin.QueryBalances(credential.Username, credential.Password);
-
-					// Simple validation - reject invalid values
-					double validatedBalance = (double)balances.Balance;
-					double validatedGrand = (double)balances.Grand;
-					double validatedMajor = (double)balances.Major;
-					double validatedMinor = (double)balances.Minor;
-					double validatedMini = (double)balances.Mini;
-
-					// Check for invalid values and clamp to 0 if invalid
-					if (double.IsNaN(validatedBalance) || double.IsInfinity(validatedBalance) || validatedBalance < 0)
-					{
-						validatedBalance = 0;
-					}
-					if (double.IsNaN(validatedGrand) || double.IsInfinity(validatedGrand) || validatedGrand < 0)
-					{
-						validatedGrand = 0;
-					}
-					if (double.IsNaN(validatedMajor) || double.IsInfinity(validatedMajor) || validatedMajor < 0)
-					{
-						validatedMajor = 0;
-					}
-					if (double.IsNaN(validatedMinor) || double.IsInfinity(validatedMinor) || validatedMinor < 0)
-					{
-						validatedMinor = 0;
-					}
-					if (double.IsNaN(validatedMini) || double.IsInfinity(validatedMini) || validatedMini < 0)
-					{
-						validatedMini = 0;
-					}
-
-					Dashboard.AddLog(
-						$"{credential.Game} - {credential.House} - {credential.Username} - ${validatedBalance:F2} - [{validatedGrand:F2}, {validatedMajor:F2}, {validatedMinor:F2}, {validatedMini:F2}]",
-						"green"
-					);
-					return (validatedBalance, validatedGrand, validatedMajor, validatedMinor, validatedMini);
-				}
-				case "OrionStars":
-				{
-					var balances = OrionStars.QueryBalances(credential.Username, credential.Password);
-
-					// Simple validation - reject invalid values
-					double validatedBalance = (double)balances.Balance;
-					double validatedGrand = (double)balances.Grand;
-					double validatedMajor = (double)balances.Major;
-					double validatedMinor = (double)balances.Minor;
-					double validatedMini = (double)balances.Mini;
-
-					// Check for invalid values and clamp to 0 if invalid
-					if (double.IsNaN(validatedBalance) || double.IsInfinity(validatedBalance) || validatedBalance < 0)
-					{
-						validatedBalance = 0;
-					}
-					if (double.IsNaN(validatedGrand) || double.IsInfinity(validatedGrand) || validatedGrand < 0)
-					{
-						validatedGrand = 0;
-					}
-					if (double.IsNaN(validatedMajor) || double.IsInfinity(validatedMajor) || validatedMajor < 0)
-					{
-						validatedMajor = 0;
-					}
-					if (double.IsNaN(validatedMinor) || double.IsInfinity(validatedMinor) || validatedMinor < 0)
-					{
-						validatedMinor = 0;
-					}
-					if (double.IsNaN(validatedMini) || double.IsInfinity(validatedMini) || validatedMini < 0)
-					{
-						validatedMini = 0;
-					}
-
-					Dashboard.AddLog(
-						$"{credential.Game} - {credential.House} - {credential.Username} - ${validatedBalance:F2} - [{validatedGrand:F2}, {validatedMajor:F2}, {validatedMinor:F2}, {validatedMini:F2}]",
-						"green"
-					);
-					return (validatedBalance, validatedGrand, validatedMajor, validatedMinor, validatedMini);
-				}
-				default:
-					throw new Exception($"Uncrecognized Game Found. ('{credential.Game}')");
-			}
-		}
-		catch (InvalidOperationException ex) when (ex.Message.Contains("Your account has been suspended"))
-		{
-			Dashboard.AddLog($"Account suspended for {credential.Username} on {credential.Game}. Marking as banned.", "red");
-			credential.Banned = true;
-			s_uow.Credentials.Upsert(credential);
-			throw;
-		}
-	}
-
-	private static (double Balance, double Grand, double Major, double Minor, double Mini) GetBalancesWithRetry(Credential credential)
-	{
-		(double Balance, double Grand, double Major, double Minor, double Mini) ExecuteQuery()
-		{
-			int networkAttempts = 0;
-			while (true)
-			{
-				try
-				{
-					return QueryBalances(credential);
-				}
-				catch (InvalidOperationException ex) when (ex.Message.Contains("Your account has been suspended"))
-				{
-					throw;
-				}
-				catch (Exception ex)
-				{
-					networkAttempts++;
-					if (networkAttempts >= 3)
-						throw;
-					Dashboard.AddLog($"QueryBalances failed (Attempt {networkAttempts}): {ex.Message}. Retrying...", "yellow");
-					Dashboard.Render();
-					const int baseDelayMs = 2000;
-					const int maxDelayMs = 30000;
-					int exponentialDelay = (int)Math.Min(maxDelayMs, baseDelayMs * Math.Pow(2, networkAttempts - 1));
-					int jitter = Random.Shared.Next(0, 1000);
-					int delayMs = Math.Min(maxDelayMs, exponentialDelay + jitter);
-					Thread.Sleep(delayMs);
-				}
-			}
-		}
-
-		int grandChecked = 0;
-		var balances = ExecuteQuery();
-		double currentGrand = balances.Grand;
-		while (currentGrand.Equals(0))
-		{
-			grandChecked++;
-			Dashboard.AddLog($"Grand jackpot is 0 for {credential.Game}, retrying attempt {grandChecked}/8", "yellow");
-			Dashboard.Render();
-			Thread.Sleep(250);
-			if (grandChecked > 8)
-			{
-				ProcessEvent alert = ProcessEvent.Log("H0UND", $"Grand check signalled an Extension Failure for {credential.Game}");
-				Dashboard.AddLog($"Checking Grand on {credential.Game} failed at {grandChecked} attempts - treating as valid zero value.", "red");
-				Dashboard.Render();
-				s_uow.ProcessEvents.Insert(alert.Record(credential));
-				// Don't throw exception - treat zero as valid and continue processing
-				break;
-			}
-			Dashboard.AddLog($"Retrying balance query for {credential.Game} (attempt {grandChecked})", "yellow");
-			Dashboard.Render();
-			balances = ExecuteQuery();
-			currentGrand = balances.Grand;
-		}
-
-		return balances;
 	}
 }
