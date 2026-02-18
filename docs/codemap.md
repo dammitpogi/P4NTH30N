@@ -1,125 +1,206 @@
 # docs/
 
 ## Responsibility
-Comprehensive documentation repository for P4NTH30N platform architecture, migration plans, and development guides. Serves as knowledge base for system design, modernization roadmap, and operational procedures.
+
+Comprehensive documentation repository for P4NTH30N platform architecture, migration plans, operational procedures, and development guides. Serves as the single source of truth for system design, modernization roadmap, security policies, and runbooks. Contains Architecture Decision Records (ADRs), operational runbooks, security documentation, and migration guides.
 
 ## Design
 
-### Documentation Structure
-- **Architecture-Centric**: Heavy focus on system design and component interactions
-- **Migration-Focused**: Detailed plans for transitioning between system versions
-- **Process-Oriented**: Guides for development, deployment, and maintenance
-- **Historical Context**: Preserves design decisions and evolution timeline
+**Documentation Structure**: Hierarchical organization by topic
+- **Architecture**: System design, ADRs, component specifications
+- **Migration**: Data migration scripts and procedures
+- **Operations**: Runbooks, procedures, and checklists
+- **Security**: Policies, credentials setup, disaster recovery
+- **Strategy**: Threshold calibration, deployment strategies
 
-### Core Components
+### Directory Structure
 
-**Architecture Documentation** (`architecture/`):
-- `CODEX_of_Provenance_v1.0.3.json`: Comprehensive system architecture specification
-  - Component definitions and responsibilities
-  - Data flow diagrams and sequence charts
-  - API contracts and integration points
-  - Technology stack and dependencies
-- `refactor_questions.json`: Design decision records and architectural questions
-- `CODEX_questions_suggestions`: Community feedback and improvement proposals
-
-**Migration Guides** (`migration/`):
-- `README.md`: Overview of migration strategy and timeline
-- `preflight.js`: Pre-migration validation and system checks
-- `quick-check.js`: Rapid verification of migration readiness
-- `deduplicate-qu3ue.js`: Data cleanup for queue structures
-- `embed-game-into-queue.js`: Game data migration utilities
-- `recreate-n3xt-view.js`: View and projection regeneration
-
-**System Overviews**:
-- `overview.md`: High-level platform description and agent interactions
-  - H0UND (polling+analytics) and H4ND (automation) agent communication
-  - MongoDB as asynchronous message bus
-  - Event-driven architecture patterns
-- `modernization.md`: Technical debt assessment and improvement roadmap
-  - Code quality metrics and targets
-  - Refactoring priorities and sequencing
-  - Technology upgrade paths
+```
+docs/
+├── architecture/           # System architecture documentation
+│   ├── ADR-001-Core-Systems.md        # Architecture Decision Record (CORE-001)
+│   ├── CODEX_of_Provenance_v1.0.3.json # Comprehensive system spec
+│   ├── refactor_questions.json        # Design decision records
+│   └── CODEX_questions_suggestions    # Community feedback
+├── credentials/            # Credential management docs
+│   └── CASINO_SETUP.md    # Casino setup guide (WIN-005)
+├── deployment/             # Deployment documentation
+│   └── GOLIVE_CHECKLIST.md # Production go-live checklist (WIN-008)
+├── migration/              # Migration guides and scripts
+│   ├── README.md          # Migration strategy overview
+│   ├── preflight.js       # Pre-migration validation
+│   ├── quick-check.js     # Readiness verification
+│   ├── deduplicate-qu3ue.js # Data cleanup
+│   ├── embed-game-into-queue.js # Game data migration
+│   └── recreate-n3xt-view.js # View regeneration
+├── procedures/             # Operational procedures
+│   ├── EMERGENCY_RESPONSE.md   # Emergency procedures (WIN-002)
+│   └── FIRST_JACKPOT_ATTEMPT.md # First jackpot guide (WIN-006)
+├── runbooks/               # Operational runbooks (INFRA-008)
+│   ├── DEPLOYMENT.md      # Deployment procedures
+│   ├── INCIDENT_RESPONSE.md # Incident handling
+│   ├── TROUBLESHOOTING.md # Troubleshooting guide
+│   └── POST_MORTEM.md     # Post-incident analysis
+├── strategy/               # Strategy documentation
+│   └── THRESHOLD_CALIBRATION.md # Threshold tuning guide (WIN-007)
+├── DISASTER_RECOVERY.md    # DR procedures (INFRA-005)
+├── modernization.md        # Technical debt roadmap
+├── overview.md            # High-level system overview
+├── SECURITY.md            # Security policies (INFRA-006)
+└── TECH-001/              # Technical specifications
+    ├── model-versioning.md # Model versioning (TECH-001)
+    ├── hardware-assessment.md # Hardware requirements (TECH-002)
+    └── GT710-benchmark.md # GPU benchmarks (TECH-003)
+```
 
 ## Flow
 
 ### Documentation Usage Flow
 1. **New Developer Onboarding**: Start with `overview.md` for system context
-2. **Architecture Deep Dive**: Reference `CODEX_of_Provenance` for technical details
+2. **Architecture Deep Dive**: Reference `architecture/ADR-001-Core-Systems.md` and `CODEX_of_Provenance`
 3. **Development Tasks**: Consult `modernization.md` for coding standards
-4. **Migration Work**: Follow `migration/README.md` for step-by-step guides
-5. **Design Decisions**: Review `refactor_questions.json` for historical context
+4. **Deployment**: Follow `deployment/GOLIVE_CHECKLIST.md` and `runbooks/DEPLOYMENT.md`
+5. **Emergency**: Reference `procedures/EMERGENCY_RESPONSE.md` and `runbooks/INCIDENT_RESPONSE.md`
+6. **Migration Work**: Execute scripts from `migration/` following README
 
-### Migration Execution Flow
-1. Run `preflight.js` to validate system state
-2. Execute `quick-check.js` for readiness verification
-3. Run data cleanup scripts (`deduplicate-qu3ue.js`)
-4. Execute migration scripts (`embed-game-into-queue.js`)
-5. Regenerate views with `recreate-n3xt-view.js`
-6. Verify migration success with post-checks
+### Architecture Decision Flow
+```
+New Decision Required
+    ↓
+Draft ADR in architecture/
+    ↓
+Review with team
+    ↓
+Update ADR-001-Core-Systems.md (CORE-001)
+    ↓
+Implement decision
+    ↓
+Update relevant codemaps
+```
 
-### Architecture Reference Flow
-1. Consult `CODEX_of_Provenance` for component definitions
-2. Review data flow diagrams for integration understanding
-3. Check API contracts for interface implementation
-4. Reference technology stack for environment setup
-5. Review design decisions for context
+### Emergency Response Flow
+```
+Incident Detected
+    ↓
+Consult procedures/EMERGENCY_RESPONSE.md
+    ↓
+Follow runbooks/INCIDENT_RESPONSE.md
+    ↓
+Execute procedures
+    ↓
+Document in runbooks/POST_MORTEM.md
+```
 
 ## Integration
 
-**Related to Code**:
-- `C0MMON/`: Architecture docs explain persistence layer design
-- `H0UND/`: CODEX details analytics algorithms and forecasting models
-- `H4ND/`: Documentation covers automation patterns and Selenium usage
+### Related to Code
+- `C0MMON/`: Security.md explains encryption patterns
+- `H0UND/`: ADRs document analytics algorithms and forecasting models
+- `H4ND/`: Procedures cover automation patterns and Selenium usage
 - `RUL3S/`: Architecture specifies resource override requirements
+- `W4TCHD0G/`: Runbooks include safety monitoring procedures
+- `UNI7T35T/`: Testing procedures in runbooks
 
-**Development Workflow**:
+### Development Workflow
 - Guides coding standards in `modernization.md`
 - Informs refactoring priorities and approach
-- Provides context for design decisions
+- Provides context for design decisions (refactor_questions.json)
 - Establishes patterns for new component development
 
-**Operational Procedures**:
-- Migration scripts automate deployment tasks
+### Operational Procedures
+- Migration scripts automate deployment tasks (migration/)
 - Preflight checks prevent failed deployments
-- Recovery procedures documented in migration guides
+- Recovery procedures documented in `DISASTER_RECOVERY.md`
+- Go-live checklist in `deployment/GOLIVE_CHECKLIST.md`
 
-## Key Concepts
+## Key Documents
 
-**Agent Communication**:
-- H0UND and H4ND communicate via MongoDB collections
-- Signals act as asynchronous messages between agents
-- Event-driven architecture enables loose coupling
+### Architecture (CORE-001)
+- **ADR-001-Core-Systems.md**: Architecture Decision Record for core system design
+- **CODEX_of_Provenance_v1.0.3.json**: Comprehensive system architecture specification
+  - Component definitions and responsibilities
+  - Data flow diagrams and sequence charts
+  - API contracts and integration points
+  - Technology stack and dependencies
 
-**Data Architecture**:
-- MongoDB serves as both database and message bus
-- Collections: credentials, signals, eventlogs, jackpots, houses
-- DPD data structure enables predictive analytics
+### Operations (INFRA-008)
+- **runbooks/DEPLOYMENT.md**: Step-by-step deployment procedures
+- **runbooks/INCIDENT_RESPONSE.md**: Incident handling procedures
+- **runbooks/TROUBLESHOOTING.md**: Common issues and solutions
+- **runbooks/POST_MORTEM.md**: Post-incident analysis template
+- **DISASTER_RECOVERY.md**: Backup/restore procedures (INFRA-005)
 
-**Automation Strategy**:
-- Resource overrides enable browser automation
-- Selenium for navigation, direct APIs for gameplay
-- Stealth techniques to avoid detection
+### Security (INFRA-006)
+- **SECURITY.md**: Security policies and best practices
+- **credentials/CASINO_SETUP.md**: Secure credential setup (WIN-005)
 
-**Quality Assurance**:
-- Sanity checking prevents data corruption
-- Validation at multiple layers (repository, service, UI)
-- Automated repair for common data issues
+### Procedures
+- **procedures/EMERGENCY_RESPONSE.md**: Emergency response procedures (WIN-002)
+- **procedures/FIRST_JACKPOT_ATTEMPT.md**: First jackpot guide (WIN-006)
+- **deployment/GOLIVE_CHECKLIST.md**: Production deployment checklist (WIN-008)
+- **strategy/THRESHOLD_CALIBRATION.md**: Threshold tuning guide (WIN-007)
 
-## Maintenance
+### Technical Specifications (TECH-001/002/003)
+- **TECH-001/model-versioning.md**: Model versioning strategy
+- **TECH-002/hardware-assessment.md**: Hardware requirements assessment
+- **TECH-003/GT710-benchmark.md**: GPU performance benchmarks
 
-**Documentation Updates**:
+### Migration
+- **migration/README.md**: Migration strategy overview
+- **migration/preflight.js**: Pre-migration validation
+- **migration/quick-check.js**: Readiness verification
+
+## Critical Notes
+
+### Documentation Standards
+- Keep ADRs current with system changes
+- Update runbooks after incidents
+- Version control documentation with code
+- Review documentation in PRs
+
+### Maintenance
 - Update CODEX when architecture changes
 - Record design decisions in `refactor_questions.json`
 - Maintain migration scripts for version upgrades
 - Keep `modernization.md` current with technical debt status
 
-**Version Control**:
-- Architecture docs versioned with code
-- Migration scripts tested before commits
-- Documentation changes reviewed in PRs
-- Historical docs preserved for reference
+### Security
+- Security policies in `SECURITY.md`
+- Credential procedures in `credentials/CASINO_SETUP.md`
+- Disaster recovery in `DISASTER_RECOVERY.md`
 
-**Community Contributions**:
-- `CODEX_questions_suggestions` captures community input
-- Review and incorporate feedback regularly
-- Maintain changelog for documentation updates
+## Recent Additions (This Session)
+
+**WIN-002: Emergency Response**
+- `procedures/EMERGENCY_RESPONSE.md`
+
+**WIN-005: Casino Setup**
+- `credentials/CASINO_SETUP.md`
+
+**WIN-006: First Jackpot Guide**
+- `procedures/FIRST_JACKPOT_ATTEMPT.md`
+
+**WIN-007: Threshold Calibration**
+- `strategy/THRESHOLD_CALIBRATION.md`
+
+**WIN-008: Go-Live Checklist**
+- `deployment/GOLIVE_CHECKLIST.md`
+
+**INFRA-005: Disaster Recovery**
+- `DISASTER_RECOVERY.md`
+- MongoDB backup/restore scripts referenced
+
+**INFRA-006: Security**
+- `SECURITY.md`
+
+**INFRA-008: Runbooks**
+- `runbooks/DEPLOYMENT.md`
+- `runbooks/INCIDENT_RESPONSE.md`
+- `runbooks/TROUBLESHOOTING.md`
+- `runbooks/POST_MORTEM.md`
+
+**CORE-001: Architecture Decision Records**
+- `architecture/ADR-001-Core-Systems.md`
+
+**TECH-001/002/003: Technical Specifications**
+- Model versioning, hardware assessment, GPU benchmarks
