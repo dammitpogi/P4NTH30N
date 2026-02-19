@@ -10,6 +10,7 @@ using P4NTH30N.C0MMON.Monitoring;
 using P4NTH30N.C0MMON.Versioning;
 using P4NTH30N.H0UND.Application.Analytics;
 using P4NTH30N.H0UND.Application.Polling;
+using P4NTH30N.H0UND.Domain.Signals;
 using P4NTH30N.H0UND.Infrastructure.Polling;
 using P4NTH30N.Services;
 
@@ -24,6 +25,9 @@ internal class Program
 
 	// Control flag: true = use priority calculation, false = full sweep (oldest first)
 	private static readonly bool UsePriorityCalculation = false;
+
+	// Feature flag: true = use idempotent signal generation (race condition fix)
+	private static readonly bool UseIdempotentSignals = true;
 
 	// Analytics phase timing
 	private static DateTime s_lastAnalyticsRunUtc = DateTime.MinValue;
@@ -42,15 +46,49 @@ internal class Program
 	);
 	private static readonly SystemDegradationManager s_degradation = new(logger: msg => Dashboard.AddLog(msg, "yellow"));
 	private static readonly OperationTracker s_opTracker = new(TimeSpan.FromMinutes(5));
-	private static HealthCheckService? s_healthService;
+	private static C0MMON.Monitoring.HealthCheckService? s_healthService;
 
 	static void Main(string[] args)
 	{
 		MongoUnitOfWork uow = s_uow;
-		AnalyticsWorker analyticsWorker = new AnalyticsWorker();
+
+		// Initialize idempotent signal generation infrastructure
+		AnalyticsWorker analyticsWorker;
+		if (UseIdempotentSignals)
+		{
+			Action<string> signalLogger = msg => Dashboard.AddAnalyticsLog(msg, "grey");
+			DistributedLockService lockService = new(uow.DatabaseProvider, signalLogger);
+			SignalDeduplicationCache dedupCache = new();
+			InMemoryDeadLetterQueue deadLetterQueue = new();
+			RetryPolicy retryPolicy = new(
+				maxRetries: 3,
+				baseDelay: TimeSpan.FromMilliseconds(100),
+				logger: signalLogger);
+			P4NTH30N.C0MMON.Infrastructure.Monitoring.SignalMetrics signalMetrics = new(
+				logger: msg => Dashboard.AddAnalyticsLog(msg, "cyan"),
+				reportInterval: TimeSpan.FromSeconds(60));
+
+			IdempotentSignalGenerator idempotentGenerator = new(
+				lockService,
+				dedupCache,
+				deadLetterQueue,
+				retryPolicy,
+				s_mongoCircuit,
+				signalMetrics,
+				signalLogger);
+
+			analyticsWorker = new AnalyticsWorker(idempotentGenerator);
+			Dashboard.AddLog("Idempotent signal generation ENABLED", "green");
+		}
+		else
+		{
+			analyticsWorker = new AnalyticsWorker();
+			Dashboard.AddLog("Idempotent signal generation DISABLED (legacy mode)", "yellow");
+		}
+
 		BalanceProviderFactory balanceProviderFactory = new BalanceProviderFactory();
 		PollingWorker pollingWorker = new PollingWorker(balanceProviderFactory);
-		s_healthService = new HealthCheckService(uow.DatabaseProvider, s_apiCircuit, s_mongoCircuit, uow);
+		s_healthService = new C0MMON.Monitoring.HealthCheckService(uow.DatabaseProvider, s_apiCircuit, s_mongoCircuit, uow);
 
 		// Initialize dashboard with startup info
 		Dashboard.AddLog($"{Header.Version}", "blue");
@@ -316,11 +354,11 @@ internal class Program
 						{
 							if (s_healthService != null)
 							{
-								SystemHealth health = s_healthService.GetSystemHealthAsync().GetAwaiter().GetResult();
+								C0MMON.Monitoring.SystemHealth health = s_healthService.GetSystemHealthAsync().GetAwaiter().GetResult();
 								string checksummary = string.Join(" | ", health.Checks.Select(c => $"{c.Component}:{c.Status}"));
 								Dashboard.AddLog(
 									$"H0UND Health: {health.OverallStatus} | {checksummary} | Degradation: {s_degradation.CurrentLevel} | Uptime: {health.Uptime:hh\\:mm\\:ss}",
-									health.OverallStatus == HealthStatus.Healthy ? "blue" : "red"
+									health.OverallStatus == C0MMON.Monitoring.HealthStatus.Healthy ? "blue" : "red"
 								);
 							}
 							lastHealthCheck = DateTime.Now;

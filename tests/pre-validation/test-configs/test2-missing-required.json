@@ -1,0 +1,22 @@
+{
+	"name": "Test 2: Missing required field (username)",
+	"config": {
+		"platform": "orionstars",
+		"house": "HOUSE_B",
+		"thresholds": {
+			"grand": 500.00,
+			"major": 200.00,
+			"minor": 50.00,
+			"mini": 10.00
+		},
+		"enabled": true,
+		"maxRetries": 3,
+		"timeoutSeconds": 30,
+		"balanceMinimum": 5.00
+	},
+	"expected": {
+		"valid": false,
+		"confidence_min": 0.8,
+		"failures": ["missing_required_field:username"]
+	}
+}

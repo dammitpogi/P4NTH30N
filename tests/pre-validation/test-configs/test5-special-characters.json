@@ -1,0 +1,32 @@
+{
+	"name": "Test 5: Edge case - special characters",
+	"config": {
+		"username": "user<script>alert('xss')</script>",
+		"platform": "firekirin; DROP TABLE credentials;--",
+		"house": "HOUSE_A' OR '1'='1",
+		"thresholds": {
+			"grand": -500.00,
+			"major": 200.00,
+			"minor": 50.00,
+			"mini": 0.00
+		},
+		"enabled": true,
+		"maxRetries": -1,
+		"timeoutSeconds": 999999,
+		"balanceMinimum": -100.00
+	},
+	"expected": {
+		"valid": false,
+		"confidence_min": 0.7,
+		"failures": [
+			"invalid_characters:username",
+			"invalid_characters:platform",
+			"invalid_characters:house",
+			"negative_value:thresholds.grand",
+			"zero_value:thresholds.mini",
+			"negative_value:maxRetries",
+			"excessive_value:timeoutSeconds",
+			"negative_value:balanceMinimum"
+		]
+	}
+}

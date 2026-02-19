@@ -1,0 +1,22 @@
+{
+	"simple": {
+		"keywords": ["doc", "docs", "typo", "comment", "readme", "bugfix", "hotfix", "lint", "format", "rename", "spelling"],
+		"score": 1,
+		"description": "Documentation, typo fixes, formatting changes"
+	},
+	"medium": {
+		"keywords": ["feature", "refactor", "update", "add", "remove", "change", "fix", "test", "endpoint", "service", "handler"],
+		"score": 2,
+		"description": "Feature additions, refactors, service changes"
+	},
+	"complex": {
+		"keywords": ["architecture", "migration", "redesign", "infrastructure", "database", "schema", "pipeline", "security", "auth", "encryption", "multi-agent"],
+		"score": 3,
+		"description": "Architectural changes, migrations, security overhauls"
+	},
+	"critical": {
+		"keywords": ["breaking", "rollback", "disaster", "production", "hotdeploy", "emergency"],
+		"score": 4,
+		"description": "Breaking changes, production emergencies"
+	}
+}

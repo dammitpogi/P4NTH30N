@@ -1,0 +1,82 @@
+﻿{
+    "lastDeployment":  "2026-02-18_21-52-23",
+    "deploymentCount":  2,
+    "agents":  {
+                   "oracle.md":  {
+                                     "hash":  "6B46D6F31FF5EE0C90EE298D2A05606CCCB9CBF045DFBFEBB5FEA21FB9B59256",
+                                     "lastDeployed":  "2026-02-19T01-46-54",
+                                     "status":  "initial-sync"
+                                 },
+                   "openfixer.md":  {
+                                        "hash":  "BAC9EC28E01FA3E4529764A0E6A449ABC17E08556A0DA95B1AB980D24C95C2F6",
+                                        "lastDeployed":  "2026-02-19T01-46-54",
+                                        "status":  "initial-sync"
+                                    },
+                   "designer.md":  {
+                                       "hash":  "80E09BDE78A1ABF73AF8BFC1D9A86878153AD2C2C6CA8A8E9D5D8A61FF2BE231",
+                                       "lastDeployed":  "2026-02-19T01-46-54",
+                                       "status":  "initial-sync"
+                                   },
+                   "strategist.md":  {
+                                         "hash":  "2D88513259E6FCEFEA1585453D946C32186FF7C1A4304453211ACBC1408706F2",
+                                         "lastDeployed":  "2026-02-18_21-52-23",
+                                         "status":  "modified"
+                                     },
+                   "windfixer.md":  {
+                                        "hash":  "018623B93C2E849E26C0D89B55D03379F0ED246E24C56593650F69471FCE8C06",
+                                        "lastDeployed":  "2026-02-18_21-52-23",
+                                        "status":  "new"
+                                    },
+                   "explorer.md":  {
+                                       "hash":  "2E19C7E1FFEE13F9CFAD9C0714A90ECF0D3AF6E37D4527C06DFDD025AEA1D885",
+                                       "lastDeployed":  "2026-02-19T01-46-54",
+                                       "status":  "initial-sync"
+                                   },
+                   "librarian.md":  {
+                                        "hash":  "C0840F5829C6E25E3E398036AD199F22C59371017F8EC81F7DD7BA18DCA5E1B4",
+                                        "lastDeployed":  "2026-02-19T01-46-54",
+                                        "status":  "initial-sync"
+                                    },
+                   "orchestrator.md":  {
+                                           "hash":  "5000ABC9B38D0D2B47A30109F15D8140582EA72ED1D7EC67C199E1044D0AA198",
+                                           "lastDeployed":  "2026-02-19T01-46-54",
+                                           "status":  "initial-sync"
+                                       },
+                   "fixer.md":  {
+                                    "hash":  "DECAFD00733B338F6AD90456E06F211288E39453E87651B980C1D5238D57E76F",
+                                    "lastDeployed":  "2026-02-19T01-46-54",
+                                    "status":  "initial-sync"
+                                },
+                   "forgewright.md":  {
+                                          "hash":  "9331674DA6DC5954D092D0F9AAF5650C6B9A88FCB261168434B19A0BAA07B54F",
+                                          "lastDeployed":  "2026-02-19T01-46-54",
+                                          "status":  "initial-sync"
+                                      }
+               },
+    "history":  [
+                    {
+                        "timestamp":  "2026-02-19T01-46-54",
+                        "filesDeployed":  10,
+                        "files":  [
+                                      "designer.md",
+                                      "explorer.md",
+                                      "fixer.md",
+                                      "forgewright.md",
+                                      "librarian.md",
+                                      "openfixer.md",
+                                      "oracle.md",
+                                      "orchestrator.md",
+                                      "strategist.md",
+                                      "windfixer.md"
+                                  ]
+                    },
+                    {
+                        "timestamp":  "2026-02-18_21-52-23",
+                        "filesDeployed":  2,
+                        "files":  [
+                                      "strategist.md",
+                                      "windfixer.md"
+                                  ]
+                    }
+                ]
+}

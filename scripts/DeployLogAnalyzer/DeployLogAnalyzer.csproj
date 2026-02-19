@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<RootNamespace>P4NTH30N.DeployLogAnalyzer</RootNamespace>
+	</PropertyGroup>
+	<ItemGroup>
+		<Compile Remove="Tests\**" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="NJsonSchema" Version="11.1.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<InternalsVisibleTo Include="P4NTH30N.DeployLogAnalyzer.Tests" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Update="schemas\*.json" CopyToOutputDirectory="PreserveNewest" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,58 @@
+{
+	"decision": "ARCH-003-PIVOT",
+	"phase": "Phase 0 - Decision Gate",
+	"executionDate": "2026-02-19T04:04:00Z",
+	"executor": "WindFixer (Cascade)",
+	"status": "DECISION_GATE_COMPLETE",
+	"gateThreshold": 0.70,
+	"gateResult": "PURE_RULE_BASED",
+	"summary": "SmolLM2-1.7B achieved 40% accuracy at temp=0.0 (best available local model). This is below the 70% decision gate threshold. Decision: pure rule-based validation pipeline is the primary approach. LLM reserved as optional Stage 2 for UNCERTAIN cases only.",
+	"empiricalResults": {
+		"source": "tests/pre-validation/results.json",
+		"bestModel": "smollm2-1.7b-instruct",
+		"bestAccuracy": 0.40,
+		"bestCorrect": 2,
+		"bestTotal": 5,
+		"threshold": 0.70,
+		"meetsThreshold": false,
+		"modelsEvaluated": 3,
+		"allResults": [
+			{"model": "qwen2.5-0.5b-instruct", "params": "0.5B", "accuracy": 0.20},
+			{"model": "llama-3.2-1b-instruct", "params": "1B", "accuracy": 0.20},
+			{"model": "smollm2-1.7b-instruct", "params": "1.7B", "accuracy": 0.40}
+		]
+	},
+	"decisionOutcome": {
+		"approach": "Two-stage validation pipeline",
+		"stage1": {
+			"name": "Rule-Based (Primary)",
+			"components": [
+				"JsonSchemaValidator - structural validation",
+				"BusinessRulesValidator - semantic business rules"
+			],
+			"expectedAccuracy": ">=95% for known rule patterns",
+			"expectedLatency": "<10ms",
+			"coverage": "~85% of validation cases"
+		},
+		"stage2": {
+			"name": "LLM Semantic (Optional Fallback)",
+			"enabled": false,
+			"enableCondition": "Only for configs marked _uncertain or experimental",
+			"circuitBreaker": true,
+			"circuitBreakerThreshold": 0.10
+		}
+	},
+	"implementationStatus": {
+		"jsonSchemaValidator": "COMPLETE - scripts/DeployLogAnalyzer/JsonSchemaValidator.cs",
+		"businessRulesValidator": "COMPLETE - scripts/DeployLogAnalyzer/BusinessRulesValidator.cs",
+		"validationPipeline": "COMPLETE - scripts/DeployLogAnalyzer/ValidationPipeline.cs",
+		"lmStudioClient": "COMPLETE - scripts/DeployLogAnalyzer/LmStudioClient.cs (Stage 2 fallback)",
+		"testConfigs": "COMPLETE - tests/pre-validation/test-configs/ (5 configs)",
+		"schemas": "COMPLETE - scripts/DeployLogAnalyzer/schemas/"
+	},
+	"nextSteps": [
+		"Mark ARCH-003-PIVOT as Complete",
+		"Integrate ValidationPipeline into H0UND signal processing",
+		"Add unit tests for rule-based validators to UNI7T35T"
+	]
+}

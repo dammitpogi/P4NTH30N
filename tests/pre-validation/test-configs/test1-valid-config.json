@@ -1,0 +1,23 @@
+{
+	"name": "Test 1: Valid config with all fields",
+	"config": {
+		"username": "testuser01",
+		"platform": "firekirin",
+		"house": "HOUSE_A",
+		"thresholds": {
+			"grand": 500.00,
+			"major": 200.00,
+			"minor": 50.00,
+			"mini": 10.00
+		},
+		"enabled": true,
+		"maxRetries": 3,
+		"timeoutSeconds": 30,
+		"balanceMinimum": 5.00
+	},
+	"expected": {
+		"valid": true,
+		"confidence_min": 0.8,
+		"failures": []
+	}
+}

@@ -1,0 +1,27 @@
+{
+	"name": "Test 4: Edge case - empty strings",
+	"config": {
+		"username": "",
+		"platform": "",
+		"house": "",
+		"thresholds": {
+			"grand": 500.00,
+			"major": 200.00,
+			"minor": 50.00,
+			"mini": 10.00
+		},
+		"enabled": true,
+		"maxRetries": 3,
+		"timeoutSeconds": 30,
+		"balanceMinimum": 5.00
+	},
+	"expected": {
+		"valid": false,
+		"confidence_min": 0.7,
+		"failures": [
+			"empty_field:username",
+			"empty_field:platform",
+			"empty_field:house"
+		]
+	}
+}

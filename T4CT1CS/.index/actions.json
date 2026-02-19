@@ -1,0 +1,28 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-02-18T20:00:00Z",
+  "description": "Master registry of all actions in T4CT1CS",
+  "actions": [],
+  "counters": {
+    "ready": 0,
+    "blocked": 0,
+    "inProgress": 0,
+    "done": 0
+  },
+  "nextActionId": 50,
+  "schema": {
+    "action": {
+      "id": "string - e.g., ACT-001",
+      "filePath": "string - relative path from T4CT1CS/",
+      "title": "string - human-readable title",
+      "status": "string - ready|blocked|in-progress|done",
+      "priority": "string - Critical|High|Medium|Low",
+      "decisionId": "string - parent decision ID or null",
+      "assignedTo": "string - agent name or null",
+      "createdAt": "string - ISO8601 timestamp",
+      "startedAt": "string - ISO8601 timestamp or null",
+      "completedAt": "string - ISO8601 timestamp or null",
+      "results": "string - brief summary of results or null"
+    }
+  }
+}

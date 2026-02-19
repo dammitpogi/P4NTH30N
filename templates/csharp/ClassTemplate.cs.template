@@ -1,0 +1,26 @@
+// P4NTH30N C# 12 Class Template
+// Maximum: 800 lines per class
+// Style: File-scoped namespace, explicit types, _camelCase private fields
+
+using System;
+
+namespace P4NTH30N.{{Namespace}};
+
+/// <summary>
+/// {{ClassDescription}}
+/// </summary>
+public sealed class {{ClassName}} {
+	private readonly {{DependencyType}} _{{dependencyName}};
+
+	public {{ClassName}}({{DependencyType}} {{dependencyName}}) {
+		_{{dependencyName}} = {{dependencyName}};
+	}
+
+	/// <summary>
+	/// {{MethodDescription}}
+	/// </summary>
+	public {{ReturnType}} {{MethodName}}({{Parameters}}) {
+		// Implementation (max 50 lines per method)
+		throw new NotImplementedException();
+	}
+}

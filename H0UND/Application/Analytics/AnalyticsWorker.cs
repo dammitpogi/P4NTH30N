@@ -10,6 +10,15 @@ namespace P4NTH30N.H0UND.Application.Analytics;
 
 public sealed class AnalyticsWorker
 {
+	private readonly IdempotentSignalGenerator? _idempotentGenerator;
+
+	public AnalyticsWorker() { }
+
+	public AnalyticsWorker(IdempotentSignalGenerator idempotentGenerator)
+	{
+		_idempotentGenerator = idempotentGenerator;
+	}
+
 	public void RunAnalytics(IUnitOfWork uow)
 	{
 		try
@@ -27,7 +36,9 @@ public sealed class AnalyticsWorker
 			ProcessPredictionPhase(uow, dateLimit, groups);
 
 			List<Jackpot> upcomingJackpots = GetUpcomingJackpots(jackpots, groups, dateLimit);
-			List<Signal> qualifiedSignals = SignalService.GenerateSignals(uow, groups, upcomingJackpots, signals);
+			List<Signal> qualifiedSignals = _idempotentGenerator != null
+				? _idempotentGenerator.GenerateSignals(uow, groups, upcomingJackpots, signals)
+				: SignalService.GenerateSignals(uow, groups, upcomingJackpots, signals);
 			SignalService.CleanupStaleSignals(uow, signals, qualifiedSignals);
 
 			PrintSummary(activeCredentials, upcomingJackpots);

@@ -1,0 +1,25 @@
+// P4NTH30N C# 12 Record Template
+// Use records for immutable data transfer objects
+
+namespace P4NTH30N.{{Namespace}};
+
+/// <summary>
+/// {{RecordDescription}}
+/// </summary>
+public sealed record {{RecordName}}(
+	{{PropertyType1}} {{PropertyName1}},
+	{{PropertyType2}} {{PropertyName2}}) {
+	/// <summary>
+	/// Validates this record instance.
+	/// </summary>
+	public bool IsValid(IStoreErrors? errorLog = null) {
+		bool isValid = true;
+
+		if ({{PropertyName1}} == null) {
+			errorLog?.LogError($"[{nameof({{RecordName}})}] {{PropertyName1}} is null");
+			isValid = false;
+		}
+
+		return isValid;
+	}
+}

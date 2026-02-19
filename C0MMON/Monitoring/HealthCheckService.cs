@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using P4NTH30N.C0MMON.Infrastructure.Persistence;
 using P4NTH30N.C0MMON.Infrastructure.Resilience;
+using P4NTH30N.C0MMON.Interfaces;
 
 namespace P4NTH30N.C0MMON.Monitoring;
 
@@ -14,14 +15,16 @@ public class HealthCheckService : IHealthCheckService
 	private readonly ICircuitBreaker? _apiCircuit;
 	private readonly ICircuitBreaker? _mongoCircuit;
 	private readonly IUnitOfWork? _uow;
+	private readonly IOBSClient? _obsClient;
 	private readonly Stopwatch _uptimeStopwatch = Stopwatch.StartNew();
 
-	public HealthCheckService(IMongoDatabaseProvider dbProvider, ICircuitBreaker? apiCircuit = null, ICircuitBreaker? mongoCircuit = null, IUnitOfWork? uow = null)
+	public HealthCheckService(IMongoDatabaseProvider dbProvider, ICircuitBreaker? apiCircuit = null, ICircuitBreaker? mongoCircuit = null, IUnitOfWork? uow = null, IOBSClient? obsClient = null)
 	{
 		_dbProvider = dbProvider;
 		_apiCircuit = apiCircuit;
 		_mongoCircuit = mongoCircuit;
 		_uow = uow;
+		_obsClient = obsClient;
 	}
 
 	public async Task<SystemHealth> GetSystemHealthAsync()
@@ -96,6 +99,29 @@ public class HealthCheckService : IHealthCheckService
 
 	public async Task<HealthCheck> CheckVisionStreamHealth()
 	{
-		return await Task.FromResult(new HealthCheck("VisionStream", HealthStatus.Healthy, "Not yet configured (W4TCHD0G pending)"));
+		if (_obsClient == null)
+			return await Task.FromResult(new HealthCheck("VisionStream", HealthStatus.Healthy, "No OBS client configured"));
+
+		try
+		{
+			if (!_obsClient.IsConnected)
+				return new HealthCheck("VisionStream", HealthStatus.Unhealthy, "OBS not connected");
+
+			bool streamActive = await _obsClient.IsStreamActiveAsync();
+			if (!streamActive)
+				return new HealthCheck("VisionStream", HealthStatus.Unhealthy, "Stream not active");
+
+			long latency = await _obsClient.GetLatencyAsync();
+			if (latency > 1000)
+				return new HealthCheck("VisionStream", HealthStatus.Unhealthy, $"Stream latency critical: {latency}ms", latency);
+			if (latency > 500)
+				return new HealthCheck("VisionStream", HealthStatus.Degraded, $"Stream latency high: {latency}ms", latency);
+
+			return new HealthCheck("VisionStream", HealthStatus.Healthy, $"Stream active, latency: {latency}ms", latency);
+		}
+		catch (Exception ex)
+		{
+			return new HealthCheck("VisionStream", HealthStatus.Unhealthy, $"Vision check failed: {ex.Message}");
+		}
 	}
 }

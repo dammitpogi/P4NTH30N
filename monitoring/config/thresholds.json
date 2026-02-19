@@ -1,0 +1,72 @@
+{
+	"version": "1.0.0",
+	"description": "Tunable thresholds for P4NTH30N monitoring and alerting",
+	"environment": "production",
+	"thresholds": {
+		"agents": {
+			"h0und": {
+				"pollingCycleMaxSeconds": 120,
+				"memoryMaxMB": 1024,
+				"errorRateMaxPercent": 10,
+				"forecastAccuracyMinPercent": 60,
+				"dpdCalculationMaxSeconds": 5,
+				"signalGenerationMaxSeconds": 2
+			},
+			"h4nd": {
+				"loginMaxSeconds": 30,
+				"navigationMaxSeconds": 10,
+				"jackpotReadMaxSeconds": 5,
+				"spinCycleMaxSeconds": 10,
+				"memoryMaxMB": 1024,
+				"chromeProcessMaxCount": 10
+			}
+		},
+		"database": {
+			"mongodb": {
+				"connectionTimeoutMs": 5000,
+				"queryP95MaxMs": 500,
+				"connectionPoolMax": 100,
+				"maxCollectionSizeGB": 10
+			}
+		},
+		"system": {
+			"diskSpaceCriticalPercent": 5,
+			"diskSpaceWarningPercent": 15,
+			"memoryUsageMaxPercent": 90,
+			"cpuUsageMaxPercent": 95
+		},
+		"alerting": {
+			"p1SustainedMinutes": 5,
+			"p2SustainedMinutes": 10,
+			"p3SustainedMinutes": 30,
+			"falsePositiveTargetPercent": 10,
+			"cooldownMinutes": 15,
+			"maxAlertsPerHour": 20
+		},
+		"swe15": {
+			"analysisMaxMs": 5000,
+			"generationMaxMs": 15000,
+			"contextWarningPercent": 75,
+			"contextCriticalPercent": 90,
+			"softTurnLimit": 30,
+			"hardTurnLimit": 50,
+			"maxContextTokens": 128000,
+			"degradationBaselineTokens": 50000,
+			"degradationPercentPer25K": 12.5
+		},
+		"lmStudio": {
+			"healthCheckIntervalSeconds": 10,
+			"inferenceTimeoutSeconds": 30,
+			"maxRetries": 3,
+			"modelLoadTimeoutSeconds": 60
+		}
+	},
+	"overrides": {
+		"development": {
+			"agents.h0und.pollingCycleMaxSeconds": 300,
+			"agents.h4nd.memoryMaxMB": 2048,
+			"alerting.p1SustainedMinutes": 15,
+			"alerting.maxAlertsPerHour": 100
+		}
+	}
+}

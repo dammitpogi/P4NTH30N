@@ -378,15 +378,7 @@ public class EncryptionServiceTests
 		string testName = nameof(TestInvalidCompactStringFormats);
 		try
 		{
-			string[] invalidInputs =
-			[
-				"",
-				"   ",
-				"onlyonepart",
-				"two:parts",
-				"four:parts:here:extra",
-				"not-base64:also-not:base64!!",
-			];
+			string[] invalidInputs = ["", "   ", "onlyonepart", "two:parts", "four:parts:here:extra", "not-base64:also-not:base64!!"];
 
 			int caught = 0;
 			foreach (string input in invalidInputs)

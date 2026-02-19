@@ -391,3 +391,40 @@ C0MMON/
 global using P4NTH30N.C0MMON.Interfaces;
 global using P4NTH30N.C0MMON.Infrastructure.Persistence;
 ```
+
+## WindSurf Integration
+
+This repository includes WindSurf-specific configuration for AI-assisted development.
+
+### Workflows (.windsurf/workflows/)
+
+Slash command workflows for Cascade:
+- `/address-pr-comments` - Process PR review comments
+- `/run-tests` - Execute test suite with coverage
+- `/deploy` - Deploy to staging/production
+- `/decision-implementation` - Implement a Decision from the framework
+- `/fixer-execution` - Execute Fixer workflow autonomously
+
+### Skills (.windsurf/skills/)
+
+Reusable capabilities for Cascade:
+- `@decision-analysis` - Analyze Decision specifications
+- `@code-review` - Review code for P4NTH30N compliance
+- `@test-execution` - Run and manage tests
+- `@deployment` - Deploy with validation
+
+### AGENTS.md Files
+
+Directory-scoped instructions:
+- Root AGENTS.md (this file) - Global conventions
+- C0MMON/AGENTS.md - Shared library patterns
+- H0UND/AGENTS.md - Analytics agent guidelines
+- H4ND/AGENTS.md - Automation agent guidelines
+
+### Cascade Modes
+
+- **Code Mode** (default): Full agentic implementation
+- **Plan Mode**: Create implementation plans in ~/.windsurf/plans/
+- **Ask Mode**: Search-only for learning
+
+See docs/windsurf/ for detailed documentation.

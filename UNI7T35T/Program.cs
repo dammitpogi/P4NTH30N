@@ -62,11 +62,35 @@ class Program
 			}
 		}
 
+		// ── Idempotent Signal Generation Tests (ADR-002) ────────────────
+		Console.WriteLine("\nRunning Idempotent Signal Generation Tests...\n");
+		(int idempotentPassed, int idempotentFailed) = IdempotentSignalTests.RunAll();
+		totalTests += idempotentPassed + idempotentFailed;
+		passedTests += idempotentPassed;
+
 		// ── Pipeline Integration Tests (WIN-001) ────────────────────────
 		Console.WriteLine("\nRunning Pipeline Integration Tests...\n");
 		(int pipelinePassed, int pipelineFailed) = PipelineIntegrationTests.RunAll();
 		totalTests += pipelinePassed + pipelineFailed;
 		passedTests += pipelinePassed;
+
+		// ── CircuitBreaker State Transition Tests (PROD-003) ─────────
+		Console.WriteLine("\nRunning CircuitBreaker Tests...\n");
+		(int cbPassed, int cbFailed) = CircuitBreakerTests.RunAll();
+		totalTests += cbPassed + cbFailed;
+		passedTests += cbPassed;
+
+		// ── DPD Calculator Edge Case Tests (PROD-003) ───────────────
+		Console.WriteLine("\nRunning DPD Calculator Tests...\n");
+		(int dpdPassed, int dpdFailed) = DpdCalculatorTests.RunAll();
+		totalTests += dpdPassed + dpdFailed;
+		passedTests += dpdPassed;
+
+		// ── SignalService Generation Tests (PROD-003) ───────────────
+		Console.WriteLine("\nRunning SignalService Tests...\n");
+		(int sigPassed, int sigFailed) = SignalServiceTests.RunAll();
+		totalTests += sigPassed + sigFailed;
+		passedTests += sigPassed;
 
 		// ── Summary ──────────────────────────────────────────────────────
 		Console.WriteLine("\n╔════════════════════════════════════════════════════════════════════╗");

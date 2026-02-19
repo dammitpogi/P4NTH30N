@@ -1,0 +1,14 @@
+// P4NTH30N C# 12 Interface Template
+// Naming: I<Verb><Noun> pattern (e.g., IReceiveSignals, IStoreErrors)
+
+namespace P4NTH30N.{{Namespace}};
+
+/// <summary>
+/// {{InterfaceDescription}}
+/// </summary>
+public interface I{{InterfaceName}} {
+	/// <summary>
+	/// {{MethodDescription}}
+	/// </summary>
+	{{ReturnType}} {{MethodName}}({{Parameters}});
+}

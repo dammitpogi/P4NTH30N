@@ -1,0 +1,60 @@
+// P4NTH30N C# 12 Method Templates
+// Maximum: 50 lines per method
+// Async suffix for async methods
+// ConfigureAwait(false) for library code
+
+// --- Standard method ---
+/// <summary>
+/// {{MethodDescription}}
+/// </summary>
+public {{ReturnType}} {{MethodName}}({{Parameters}}) {
+	// Implementation
+}
+
+// --- Async method ---
+/// <summary>
+/// {{MethodDescription}}
+/// </summary>
+public async Task<{{ReturnType}}> {{MethodName}}Async(
+	{{Parameters}},
+	CancellationToken cancellationToken = default) {
+	// Implementation
+}
+
+// --- Retry pattern ---
+/// <summary>
+/// {{MethodDescription}} with standard retry logic.
+/// </summary>
+public {{ReturnType}} {{MethodName}}WithRetry({{Parameters}}) {
+	try {
+		int iterations = 0;
+		while (true) {
+			if (iterations++.Equals(10))
+				throw new Exception($"[{{context}}] Retries exceeded.");
+			// Attempt operation
+			return {{result}};
+		}
+	}
+	catch (Exception ex) {
+		StackTrace trace = new(ex, true);
+		StackFrame? frame = trace.GetFrame(0);
+		int line = frame?.GetFileLineNumber() ?? 0;
+		Console.WriteLine($"[{line}] Processing failed: {ex.Message}");
+		throw;
+	}
+}
+
+// --- Validation pattern ---
+/// <summary>
+/// Validates entity with optional error logging.
+/// </summary>
+public bool IsValid(IStoreErrors? errorLog = null) {
+	bool isValid = true;
+
+	if (string.IsNullOrEmpty({{RequiredField}})) {
+		errorLog?.LogError($"[{nameof({{EntityType}})}] {{RequiredField}} is null or empty");
+		isValid = false;
+	}
+
+	return isValid;
+}

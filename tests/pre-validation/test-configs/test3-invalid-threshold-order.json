@@ -1,0 +1,23 @@
+{
+	"name": "Test 3: Invalid threshold order (minor > major)",
+	"config": {
+		"username": "testuser03",
+		"platform": "firekirin",
+		"house": "HOUSE_C",
+		"thresholds": {
+			"grand": 500.00,
+			"major": 50.00,
+			"minor": 200.00,
+			"mini": 10.00
+		},
+		"enabled": true,
+		"maxRetries": 3,
+		"timeoutSeconds": 30,
+		"balanceMinimum": 5.00
+	},
+	"expected": {
+		"valid": false,
+		"confidence_min": 0.7,
+		"failures": ["invalid_threshold_order:minor_greater_than_major"]
+	}
+}

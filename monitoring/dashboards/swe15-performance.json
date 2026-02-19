@@ -1,0 +1,113 @@
+{
+	"dashboard": {
+		"title": "SWE-1.5 Performance Monitor",
+		"uid": "swe15-perf",
+		"version": 1,
+		"timezone": "UTC",
+		"refresh": "10s",
+		"panels": [
+			{
+				"id": 1,
+				"title": "Response Time (ms)",
+				"type": "timeseries",
+				"gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+				"targets": [
+					{
+						"expr": "swe15_response_time_ms{operation=~\".*\"}",
+						"legendFormat": "{{operation}}"
+					}
+				],
+				"thresholds": [
+					{ "value": 5000, "color": "yellow", "label": "Analysis Max" },
+					{ "value": 15000, "color": "red", "label": "Generation Max" }
+				]
+			},
+			{
+				"id": 2,
+				"title": "Context Usage (%)",
+				"type": "gauge",
+				"gridPos": { "h": 8, "w": 6, "x": 12, "y": 0 },
+				"targets": [
+					{
+						"expr": "swe15_context_usage_percent"
+					}
+				],
+				"thresholds": [
+					{ "value": 75, "color": "green" },
+					{ "value": 90, "color": "yellow" },
+					{ "value": 95, "color": "red" }
+				]
+			},
+			{
+				"id": 3,
+				"title": "Turn Counter",
+				"type": "stat",
+				"gridPos": { "h": 4, "w": 6, "x": 18, "y": 0 },
+				"targets": [
+					{
+						"expr": "swe15_current_turn"
+					}
+				],
+				"thresholds": [
+					{ "value": 30, "color": "green" },
+					{ "value": 50, "color": "yellow" },
+					{ "value": 60, "color": "red" }
+				]
+			},
+			{
+				"id": 4,
+				"title": "Error Rate",
+				"type": "stat",
+				"gridPos": { "h": 4, "w": 6, "x": 18, "y": 4 },
+				"targets": [
+					{
+						"expr": "rate(swe15_errors_total[5m])"
+					}
+				],
+				"thresholds": [
+					{ "value": 0.1, "color": "green" },
+					{ "value": 0.3, "color": "red" }
+				]
+			},
+			{
+				"id": 5,
+				"title": "Active Alerts",
+				"type": "table",
+				"gridPos": { "h": 8, "w": 24, "x": 0, "y": 8 },
+				"targets": [
+					{
+						"expr": "swe15_alerts{resolved=\"false\"}"
+					}
+				]
+			},
+			{
+				"id": 6,
+				"title": "Estimated Degradation",
+				"type": "gauge",
+				"gridPos": { "h": 8, "w": 8, "x": 0, "y": 16 },
+				"targets": [
+					{
+						"expr": "swe15_estimated_degradation_percent"
+					}
+				],
+				"thresholds": [
+					{ "value": 10, "color": "green" },
+					{ "value": 25, "color": "yellow" },
+					{ "value": 40, "color": "red" }
+				]
+			},
+			{
+				"id": 7,
+				"title": "P95 Response Time Trend",
+				"type": "timeseries",
+				"gridPos": { "h": 8, "w": 16, "x": 8, "y": 16 },
+				"targets": [
+					{
+						"expr": "histogram_quantile(0.95, swe15_response_time_ms_bucket)",
+						"legendFormat": "P95"
+					}
+				]
+			}
+		]
+	}
+}

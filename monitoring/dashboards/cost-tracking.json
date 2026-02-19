@@ -1,0 +1,132 @@
+{
+	"dashboard": {
+		"title": "P4NTH30N Model Cost Tracking",
+		"uid": "model-cost-tracking",
+		"version": 1,
+		"timezone": "UTC",
+		"refresh": "1h",
+		"panels": [
+			{
+				"id": 1,
+				"title": "Model Usage Distribution",
+				"type": "piechart",
+				"gridPos": { "h": 8, "w": 8, "x": 0, "y": 0 },
+				"targets": [
+					{
+						"expr": "sum by (model) (model_usage_count)",
+						"legendFormat": "{{model}}"
+					}
+				]
+			},
+			{
+				"id": 2,
+				"title": "Daily Cost (USD)",
+				"type": "timeseries",
+				"gridPos": { "h": 8, "w": 16, "x": 8, "y": 0 },
+				"targets": [
+					{
+						"expr": "increase(model_cost_total{model=\"swe15\"}[1d])",
+						"legendFormat": "SWE-1.5"
+					},
+					{
+						"expr": "increase(model_cost_total{model=\"opus46\"}[1d])",
+						"legendFormat": "Opus 4.6"
+					}
+				],
+				"fieldConfig": {
+					"defaults": {
+						"unit": "currencyUSD"
+					}
+				}
+			},
+			{
+				"id": 3,
+				"title": "Escalation Rate (%)",
+				"type": "gauge",
+				"gridPos": { "h": 8, "w": 8, "x": 0, "y": 8 },
+				"targets": [
+					{
+						"expr": "model_escalation_count / model_usage_count{model=\"swe15\"} * 100"
+					}
+				],
+				"thresholds": [
+					{ "value": 5, "color": "green" },
+					{ "value": 10, "color": "yellow" },
+					{ "value": 20, "color": "red" }
+				]
+			},
+			{
+				"id": 4,
+				"title": "Cost Savings vs All-Opus Baseline",
+				"type": "stat",
+				"gridPos": { "h": 4, "w": 8, "x": 8, "y": 8 },
+				"targets": [
+					{
+						"expr": "(sum(model_usage_count) * 0.15) - sum(model_cost_total)",
+						"legendFormat": "Savings"
+					}
+				],
+				"fieldConfig": {
+					"defaults": {
+						"unit": "currencyUSD",
+						"thresholds": {
+							"steps": [
+								{ "value": 0, "color": "red" },
+								{ "value": 10, "color": "yellow" },
+								{ "value": 50, "color": "green" }
+							]
+						}
+					}
+				}
+			},
+			{
+				"id": 5,
+				"title": "Quality Score Comparison",
+				"type": "bargauge",
+				"gridPos": { "h": 4, "w": 8, "x": 8, "y": 12 },
+				"targets": [
+					{
+						"expr": "avg by (model) (model_quality_score)",
+						"legendFormat": "{{model}}"
+					}
+				],
+				"fieldConfig": {
+					"defaults": {
+						"max": 100,
+						"thresholds": {
+							"steps": [
+								{ "value": 70, "color": "red" },
+								{ "value": 85, "color": "yellow" },
+								{ "value": 95, "color": "green" }
+							]
+						}
+					}
+				}
+			},
+			{
+				"id": 6,
+				"title": "Turns per Task by Model",
+				"type": "timeseries",
+				"gridPos": { "h": 8, "w": 8, "x": 16, "y": 8 },
+				"targets": [
+					{
+						"expr": "avg by (model) (model_turns_per_task)",
+						"legendFormat": "{{model}}"
+					}
+				]
+			},
+			{
+				"id": 7,
+				"title": "Monthly Cost Projection",
+				"type": "table",
+				"gridPos": { "h": 8, "w": 24, "x": 0, "y": 16 },
+				"targets": [
+					{
+						"expr": "predict_linear(model_cost_total[7d], 30*86400)",
+						"legendFormat": "30-day projection"
+					}
+				]
+			}
+		]
+	}
+}

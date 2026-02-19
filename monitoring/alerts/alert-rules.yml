@@ -1,0 +1,140 @@
+# P4NTH30N Alert Rules
+# Decision: PROD-005
+# Target: <10% false positive rate
+# Thresholds: 5-minute sustained
+
+groups:
+  - name: p4nth30n_p1_critical
+    rules:
+      - alert: AgentDown
+        expr: up{job=~"h0und|h4nd"} == 0
+        for: 5m
+        labels:
+          severity: P1
+          team: platform
+        annotations:
+          summary: "Agent {{ $labels.job }} is down"
+          description: "{{ $labels.job }} has been unreachable for 5 minutes"
+          runbook: "docs/DISASTER_RECOVERY.md#agent-down"
+
+      - alert: MongoDBDown
+        expr: mongodb_up == 0
+        for: 2m
+        labels:
+          severity: P1
+          team: platform
+        annotations:
+          summary: "MongoDB is unreachable"
+          description: "MongoDB connection failed for 2+ minutes"
+          runbook: "docs/DISASTER_RECOVERY.md#mongodb-down"
+
+      - alert: HighErrorRate
+        expr: rate(p4nth30n_errors_total[5m]) > 0.1
+        for: 5m
+        labels:
+          severity: P1
+          team: platform
+        annotations:
+          summary: "Error rate exceeds 10%"
+          description: "Error rate {{ $value | humanize }}% sustained for 5 minutes"
+
+      - alert: DiskSpaceCritical
+        expr: node_filesystem_avail_bytes{mountpoint="C:"} / node_filesystem_size_bytes{mountpoint="C:"} < 0.05
+        for: 5m
+        labels:
+          severity: P1
+          team: infrastructure
+        annotations:
+          summary: "Disk space below 5%"
+          description: "Drive C: has less than 5% free space"
+
+  - name: p4nth30n_p2_warning
+    rules:
+      - alert: HighMemoryUsage
+        expr: process_working_set_bytes{job=~"h0und|h4nd"} > 1073741824
+        for: 10m
+        labels:
+          severity: P2
+          team: platform
+        annotations:
+          summary: "{{ $labels.job }} memory usage above 1GB"
+          description: "Working set {{ $value | humanize }} sustained for 10 minutes"
+
+      - alert: SlowPollingCycle
+        expr: h0und_polling_cycle_duration_seconds > 120
+        for: 5m
+        labels:
+          severity: P2
+          team: platform
+        annotations:
+          summary: "H0UND polling cycle exceeds 2 minutes"
+          description: "Polling cycle taking {{ $value | humanize }} seconds"
+
+      - alert: SignalBacklog
+        expr: p4nth30n_signal_queue_size > 50
+        for: 5m
+        labels:
+          severity: P2
+          team: platform
+        annotations:
+          summary: "Signal queue backlog"
+          description: "{{ $value }} signals pending processing"
+
+      - alert: HighLatencyMongoDB
+        expr: mongodb_query_duration_seconds_p95 > 0.5
+        for: 5m
+        labels:
+          severity: P2
+          team: infrastructure
+        annotations:
+          summary: "MongoDB P95 latency above 500ms"
+
+      - alert: ChromeProcessLeak
+        expr: count(process_info{name="chrome"}) > 10
+        for: 15m
+        labels:
+          severity: P2
+          team: platform
+        annotations:
+          summary: "Possible Chrome process leak"
+          description: "{{ $value }} Chrome processes detected"
+
+  - name: p4nth30n_p3_info
+    rules:
+      - alert: DiskSpaceWarning
+        expr: node_filesystem_avail_bytes{mountpoint="C:"} / node_filesystem_size_bytes{mountpoint="C:"} < 0.15
+        for: 30m
+        labels:
+          severity: P3
+          team: infrastructure
+        annotations:
+          summary: "Disk space below 15%"
+
+      - alert: CredentialValidationErrors
+        expr: increase(p4nth30n_validation_errors_total{collection="CRED3N7IAL"}[1h]) > 10
+        for: 5m
+        labels:
+          severity: P3
+          team: platform
+        annotations:
+          summary: "Credential validation errors increasing"
+          description: "{{ $value }} validation errors in the last hour"
+
+      - alert: ForecastAccuracyDrift
+        expr: h0und_forecast_accuracy_percent < 60
+        for: 1h
+        labels:
+          severity: P3
+          team: analytics
+        annotations:
+          summary: "Forecast accuracy below 60%"
+
+      - alert: LMStudioUnresponsive
+        expr: lmstudio_health_check_success == 0
+        for: 10m
+        labels:
+          severity: P3
+          team: ai
+        annotations:
+          summary: "LM Studio not responding"
+          description: "LM Studio health check failing for 10+ minutes"

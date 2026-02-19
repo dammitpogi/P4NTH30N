@@ -11,4 +11,6 @@ public static class MongoCollectionNames
 	public const string Errors = "ERR0R";
 
 	public const string ViewNext = "N3XT";
+	public const string Locks = "L0CK";
+	public const string DeadLetters = "D34DL3TT3R";
 }

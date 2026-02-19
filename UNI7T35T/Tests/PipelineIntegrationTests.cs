@@ -67,7 +67,10 @@ public static class PipelineIntegrationTests
 			Assert(buffer.TotalDropped >= 7, $"Should have dropped at least 7, got {buffer.TotalDropped}");
 			Pass("FrameBuffer_CircularOverflow");
 		}
-		catch (Exception ex) { Fail("FrameBuffer_CircularOverflow", ex); }
+		catch (Exception ex)
+		{
+			Fail("FrameBuffer_CircularOverflow", ex);
+		}
 	}
 
 	private static void Test_FrameBuffer_LatestFrame()
@@ -84,7 +87,10 @@ public static class PipelineIntegrationTests
 			Assert(latest!.FrameNumber == 42, $"Latest frame should be 42, got {latest.FrameNumber}");
 			Pass("FrameBuffer_LatestFrame");
 		}
-		catch (Exception ex) { Fail("FrameBuffer_LatestFrame", ex); }
+		catch (Exception ex)
+		{
+			Fail("FrameBuffer_LatestFrame", ex);
+		}
 	}
 
 	// ── ScreenMapper Tests ───────────────────────────────────────────
@@ -99,7 +105,10 @@ public static class PipelineIntegrationTests
 			Assert(vmY == 540, $"Expected vmY=540, got {vmY}");
 			Pass("ScreenMapper_FrameToVm");
 		}
-		catch (Exception ex) { Fail("ScreenMapper_FrameToVm", ex); }
+		catch (Exception ex)
+		{
+			Fail("ScreenMapper_FrameToVm", ex);
+		}
 	}
 
 	private static void Test_ScreenMapper_VmToFrame_RoundTrip()
@@ -113,7 +122,10 @@ public static class PipelineIntegrationTests
 			Assert(Math.Abs(frameY - 200) <= 1, $"Round-trip Y should be ~200, got {frameY}");
 			Pass("ScreenMapper_VmToFrame_RoundTrip");
 		}
-		catch (Exception ex) { Fail("ScreenMapper_VmToFrame_RoundTrip", ex); }
+		catch (Exception ex)
+		{
+			Fail("ScreenMapper_VmToFrame_RoundTrip", ex);
+		}
 	}
 
 	// ── ActionQueue Tests ────────────────────────────────────────────
@@ -129,18 +141,26 @@ public static class PipelineIntegrationTests
 			queue.Enqueue(InputAction.Click(10, 20));
 			queue.Enqueue(InputAction.TypeText("test"));
 
-			int executed = queue.ExecuteAllAsync(async (action, ct) =>
-			{
-				executionOrder.Add(executionOrder.Count);
-				await Task.CompletedTask;
-			}).GetAwaiter().GetResult();
+			int executed = queue
+				.ExecuteAllAsync(
+					async (action, ct) =>
+					{
+						executionOrder.Add(executionOrder.Count);
+						await Task.CompletedTask;
+					}
+				)
+				.GetAwaiter()
+				.GetResult();
 
 			Assert(executed == 3, $"Should have executed 3, got {executed}");
 			Assert(queue.Count == 0, "Queue should be empty after execution");
 			Assert(queue.TotalExecuted == 3, $"TotalExecuted should be 3, got {queue.TotalExecuted}");
 			Pass("ActionQueue_ExecutionOrder");
 		}
-		catch (Exception ex) { Fail("ActionQueue_ExecutionOrder", ex); }
+		catch (Exception ex)
+		{
+			Fail("ActionQueue_ExecutionOrder", ex);
+		}
 	}
 
 	// ── DecisionEngine Tests ─────────────────────────────────────────
@@ -157,7 +177,10 @@ public static class PipelineIntegrationTests
 			Assert(result.Type == DecisionType.Pause, $"Expected Pause, got {result.Type}");
 			Pass("DecisionEngine_SafetyLimits");
 		}
-		catch (Exception ex) { Fail("DecisionEngine_SafetyLimits", ex); }
+		catch (Exception ex)
+		{
+			Fail("DecisionEngine_SafetyLimits", ex);
+		}
 	}
 
 	private static void Test_DecisionEngine_LossLimitPause()
@@ -176,7 +199,10 @@ public static class PipelineIntegrationTests
 			Assert(engine.IsLossLimitReached, "Loss limit should be reached");
 			Pass("DecisionEngine_LossLimitPause");
 		}
-		catch (Exception ex) { Fail("DecisionEngine_LossLimitPause", ex); }
+		catch (Exception ex)
+		{
+			Fail("DecisionEngine_LossLimitPause", ex);
+		}
 	}
 
 	private static void Test_DecisionEngine_IdleWithSignal()
@@ -191,7 +217,10 @@ public static class PipelineIntegrationTests
 			Assert(result.Actions.Count > 0, "Should have actions to execute");
 			Pass("DecisionEngine_IdleWithSignal");
 		}
-		catch (Exception ex) { Fail("DecisionEngine_IdleWithSignal", ex); }
+		catch (Exception ex)
+		{
+			Fail("DecisionEngine_IdleWithSignal", ex);
+		}
 	}
 
 	private static void Test_DecisionEngine_BusyNoAction()
@@ -205,7 +234,10 @@ public static class PipelineIntegrationTests
 			Assert(result.Type == DecisionType.NoAction, $"Expected NoAction during spin, got {result.Type}");
 			Pass("DecisionEngine_BusyNoAction");
 		}
-		catch (Exception ex) { Fail("DecisionEngine_BusyNoAction", ex); }
+		catch (Exception ex)
+		{
+			Fail("DecisionEngine_BusyNoAction", ex);
+		}
 	}
 
 	// ── SafetyMonitor Tests ──────────────────────────────────────────
@@ -226,7 +258,10 @@ public static class PipelineIntegrationTests
 			Assert(alertFired, "Kill switch should have fired");
 			Pass("SafetyMonitor_DailySpendLimit");
 		}
-		catch (Exception ex) { Fail("SafetyMonitor_DailySpendLimit", ex); }
+		catch (Exception ex)
+		{
+			Fail("SafetyMonitor_DailySpendLimit", ex);
+		}
 	}
 
 	private static void Test_SafetyMonitor_ConsecutiveLosses()
@@ -243,7 +278,10 @@ public static class PipelineIntegrationTests
 			Assert(!monitor.IsSafeToContinue(), "Should NOT be safe after 3 consecutive losses");
 			Pass("SafetyMonitor_ConsecutiveLosses");
 		}
-		catch (Exception ex) { Fail("SafetyMonitor_ConsecutiveLosses", ex); }
+		catch (Exception ex)
+		{
+			Fail("SafetyMonitor_ConsecutiveLosses", ex);
+		}
 	}
 
 	private static void Test_SafetyMonitor_KillSwitch()
@@ -260,7 +298,10 @@ public static class PipelineIntegrationTests
 			Assert(status.KillSwitchActive, "Kill switch should be active in status");
 			Pass("SafetyMonitor_KillSwitch");
 		}
-		catch (Exception ex) { Fail("SafetyMonitor_KillSwitch", ex); }
+		catch (Exception ex)
+		{
+			Fail("SafetyMonitor_KillSwitch", ex);
+		}
 	}
 
 	private static void Test_SafetyMonitor_KillSwitchOverride()
@@ -279,7 +320,10 @@ public static class PipelineIntegrationTests
 			Assert(monitor.IsSafeToContinue(), "Should be safe after override");
 			Pass("SafetyMonitor_KillSwitchOverride");
 		}
-		catch (Exception ex) { Fail("SafetyMonitor_KillSwitchOverride", ex); }
+		catch (Exception ex)
+		{
+			Fail("SafetyMonitor_KillSwitchOverride", ex);
+		}
 	}
 
 	// ── WinDetector Tests ────────────────────────────────────────────
@@ -303,7 +347,10 @@ public static class PipelineIntegrationTests
 			Assert(result2.IsOurWin, "Should be flagged as our win");
 			Pass("WinDetector_BalanceIncrease");
 		}
-		catch (Exception ex) { Fail("WinDetector_BalanceIncrease", ex); }
+		catch (Exception ex)
+		{
+			Fail("WinDetector_BalanceIncrease", ex);
+		}
 	}
 
 	private static void Test_WinDetector_NoWinOnLoss()
@@ -320,7 +367,10 @@ public static class PipelineIntegrationTests
 			Assert(result is null, "Should not detect win on balance decrease");
 			Pass("WinDetector_NoWinOnLoss");
 		}
-		catch (Exception ex) { Fail("WinDetector_NoWinOnLoss", ex); }
+		catch (Exception ex)
+		{
+			Fail("WinDetector_NoWinOnLoss", ex);
+		}
 	}
 
 	// ── InputAction Tests ────────────────────────────────────────────
@@ -347,7 +397,10 @@ public static class PipelineIntegrationTests
 
 			Pass("InputAction_FactoryMethods");
 		}
-		catch (Exception ex) { Fail("InputAction_FactoryMethods", ex); }
+		catch (Exception ex)
+		{
+			Fail("InputAction_FactoryMethods", ex);
+		}
 	}
 
 	// ── Helpers ──────────────────────────────────────────────────────
