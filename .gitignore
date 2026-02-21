@@ -1,53 +1,53 @@
+# Large binary files and directories
+DE51GN3R/references/
+*.zip
+*.iso
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.ico
+*.icns
+*.tiff
+*.ttf
+*.woff
+*.woff2
+
+# MongoDB data files
+WiredTiger*
+*.wt
+journal/
+storage.bson
+mongod.lock
+diagnostic.data/
+collection-*.wt
+index-*.wt
+
+# Node modules (large)
+node_modules/
+
 # Build outputs
-bin/
-obj/
+publish/
+dist/
+build_output.txt
 
-# NuGet
-*.nupkg
-*.snupkg
-.nuget/
-packages/
+# Temporary files
+temp_*
+*.tmp
+*.log
 
-# User-specific files
-*.user
-*.suo
-*.userosscache
-*.sln.docuser
+# VM scripts (large ISOs)
+scripts/vm/*.iso
 
-# VS / Rider
-.vs/
-.idea/
-*.rsuser
+# Audio driver files
+VBCABLE_Driver_Pack43.zip
+VBCable/
+SoundVolumeView/
+SoundVolumeView.zip
 
-# Build results
-[Dd]ebug/
-[Rr]elease/
-x64/
-x86/
-[Ww][Ii][Nn]32/
-bld/
-[Bb]in/
-[Oo]bj/
-[Ll]og/
-[Ll]ogs/
-msbuild.log
-msbuild.err
-msbuild.wrn
+# Release packages
+Releases/
 
-# OS files
-nul
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-.DS_Store
-
-# Secrets / credentials
-*.env
-.env.*
-appsettings.*.json
-!appsettings.json
-!appsettings.Development.json
-
-# Tool output artifacts
-C:Userspaulc.localshareopencodetool-outputfull_config.json
-.aider*
+# Test results with screenshots
+test-results/
+verify-screenshot.png
