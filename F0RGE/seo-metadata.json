@@ -1,0 +1,77 @@
+{
+  "agent": {
+    "name": "F0RGE",
+    "standardName": "forgewright",
+    "displayName": "Forgewright",
+    "role": "Bug Triage and Platform Intelligence",
+    "category": "Specialist",
+    "version": "3.0.0",
+    "location": "C:\\P4NTH30N\\F0RGE"
+  },
+  "seo": {
+    "title": "Forgewright Agent - Bug Triage and Platform Intelligence",
+    "description": "Specialist agent for bug triage, reproduction platform management, and platform-wide decision creation. Creates decisions for patterns, architecture, and tooling improvements.",
+    "keywords": [
+      "forgewright",
+      "bug triage",
+      "platform intelligence",
+      "reproduction",
+      "T00L5ET",
+      "decision creation",
+      "pattern recognition",
+      "defensive coding"
+    ],
+    "tags": [
+      "specialist-agent",
+      "bug-triage",
+      "platform-intelligence",
+      "decision-creator"
+    ],
+    "semanticTopics": [
+      "bug reproduction",
+      "platform patterns",
+      "defensive coding",
+      "test infrastructure",
+      "decision documentation"
+    ]
+  },
+  "rag": {
+    "ingestOnUpdate": true,
+    "indexPriority": "high",
+    "searchable": true,
+    "embeddingModel": "text-embedding-3-large",
+    "chunkSize": 1000,
+    "chunkOverlap": 200,
+    "metadataFields": ["agent", "triageType", "bugPattern", "lastUpdated"]
+  },
+  "relationships": {
+    "reportsTo": ["strategist"],
+    "collaboratesWith": ["oracle", "designer"],
+    "createsDecisionsFor": [
+      "Platform-Pattern",
+      "Platform-Architecture",
+      "Platform-Testing",
+      "Platform-Tooling"
+    ],
+    "triageTypes": [
+      "bug_reproduction",
+      "platform_decision",
+      "T00L5ET_enhancement"
+    ]
+  },
+  "workflows": {
+    "primary": [
+      "Bug Triage",
+      "Reproduction Platform Setup",
+      "Decision Creation",
+      "Platform Intelligence"
+    ],
+    "triggers": ["Bug Report", "Platform Issue", "Triage Request"]
+  },
+  "directories": {
+    "prompt": "prompt.md",
+    "consultations": "consultations/",
+    "decisions": "decisions/",
+    "patterns": "platform-patterns/"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "agent": {
+    "name": "EXPL0R3R",
+    "standardName": "explorer",
+    "displayName": "Explorer",
+    "role": "Codebase Discovery and Analysis",
+    "category": "Discovery",
+    "version": "3.0.0",
+    "location": "C:\\P4NTH30N\\EXPL0R3R"
+  },
+  "seo": {
+    "title": "Explorer Agent - Codebase Discovery and Pattern Analysis",
+    "description": "Parallel discovery agent for file mapping, dependency analysis, impact assessment, and configuration extraction. Uses JSON tools for efficient analysis.",
+    "keywords": [
+      "explorer",
+      "codebase discovery",
+      "file mapping",
+      "dependency analysis",
+      "impact assessment",
+      "pattern matching",
+      "glob",
+      "grep",
+      "ast-grep",
+      "json tools"
+    ],
+    "tags": [
+      "discovery-agent",
+      "codebase-analysis",
+      "pattern-matching",
+      "parallel-execution"
+    ],
+    "semanticTopics": [
+      "codebase exploration",
+      "dependency mapping",
+      "impact analysis",
+      "file discovery",
+      "pattern recognition"
+    ]
+  },
+  "rag": {
+    "ingestOnUpdate": true,
+    "indexPriority": "medium",
+    "searchable": true,
+    "embeddingModel": "text-embedding-3-large",
+    "chunkSize": 1000,
+    "chunkOverlap": 200,
+    "metadataFields": ["agent", "discoveryType", "filePatterns", "lastUpdated"]
+  },
+  "relationships": {
+    "reportsTo": ["strategist"],
+    "collaboratesWith": ["designer", "oracle"],
+    "providesInputTo": ["windfixer", "openfixer"],
+    "discoveryTypes": [
+      "file_discovery",
+      "dependency_mapping",
+      "impact_analysis",
+      "configuration_analysis"
+    ]
+  },
+  "workflows": {
+    "primary": [
+      "Targeted File Discovery",
+      "Dependency Mapping",
+      "Impact Analysis",
+      "Configuration Analysis"
+    ],
+    "triggers": ["Strategist Deployment", "Discovery Request"]
+  },
+  "directories": {
+    "prompt": "prompt.md",
+    "consultations": "consultations/",
+    "decisions": "decisions/",
+    "patterns": "discovery-patterns/"
+  }
+}

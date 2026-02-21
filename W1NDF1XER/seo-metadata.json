@@ -1,0 +1,80 @@
+{
+  "agent": {
+    "name": "W1NDF1XER",
+    "standardName": "windfixer",
+    "displayName": "WindFixer",
+    "role": "P4NTH30N Implementation Agent",
+    "category": "Implementation",
+    "version": "3.0.0",
+    "location": "C:\\P4NTH30N\\W1NDF1XER"
+  },
+  "seo": {
+    "title": "WindFixer Agent - P4NTH30N Directory Implementation",
+    "description": "Implementation agent for C:\\P4NTH30N directory only. Handles bulk operations, multiple file changes, and routine maintenance. No CLI tools. Cost-efficient for P4NTH30N work.",
+    "keywords": [
+      "windfixer",
+      "implementation",
+      "P4NTH30N",
+      "bulk operations",
+      "file changes",
+      "code modification",
+      "deployment",
+      "cost-efficient",
+      "no CLI"
+    ],
+    "tags": [
+      "implementation-agent",
+      "P4NTH30N-fixer",
+      "bulk-operations",
+      "cost-optimized"
+    ],
+    "semanticTopics": [
+      "code implementation",
+      "bulk file editing",
+      "P4NTH30N maintenance",
+      "surgical edits",
+      "deployment validation"
+    ]
+  },
+  "rag": {
+    "ingestOnUpdate": true,
+    "indexPriority": "high",
+    "searchable": true,
+    "embeddingModel": "text-embedding-3-large",
+    "chunkSize": 1000,
+    "chunkOverlap": 200,
+    "metadataFields": [
+      "agent",
+      "deploymentType",
+      "filesModified",
+      "decisionId",
+      "lastUpdated"
+    ]
+  },
+  "relationships": {
+    "reportsTo": ["strategist"],
+    "receivesFrom": ["designer", "oracle"],
+    "scope": "P4NTH30N_only",
+    "cliAllowed": false,
+    "deploymentTypes": [
+      "bulk_operations",
+      "file_modifications",
+      "routine_maintenance",
+      "P4NTH30N_changes"
+    ]
+  },
+  "workflows": {
+    "primary": [
+      "Decision Implementation",
+      "Bulk File Changes",
+      "Status Update",
+      "RAG Preservation"
+    ],
+    "triggers": ["Strategist Deployment", "P4NTH30N Change Request"]
+  },
+  "directories": {
+    "prompt": "prompt.md",
+    "deployments": "deployments/",
+    "patterns": "implementation-patterns/"
+  }
+}

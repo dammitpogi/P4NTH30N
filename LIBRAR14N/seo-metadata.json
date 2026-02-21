@@ -1,0 +1,75 @@
+{
+  "agent": {
+    "name": "LIBRAR14N",
+    "standardName": "librarian",
+    "displayName": "Librarian",
+    "role": "Research Consultant and Knowledge Preservation",
+    "category": "Consultant",
+    "version": "3.0.0",
+    "location": "C:\\P4NTH30N\\LIBRAR14N"
+  },
+  "seo": {
+    "title": "Librarian Agent - Research Consultant and Knowledge Preservation",
+    "description": "Parallel research consultant focusing on emerging technologies, novel approaches, historical patterns, social reference, and scholarly reference. Marshal of Technical Truth.",
+    "keywords": [
+      "librarian",
+      "research consultant",
+      "emerging technologies",
+      "novel approaches",
+      "historical patterns",
+      "social reference",
+      "scholarly reference",
+      "knowledge preservation",
+      "parallel consultation"
+    ],
+    "tags": [
+      "consultant-agent",
+      "research",
+      "knowledge-management",
+      "parallel-consultation"
+    ],
+    "semanticTopics": [
+      "technology research",
+      "innovation tracking",
+      "pattern analysis",
+      "community sentiment",
+      "academic research"
+    ]
+  },
+  "rag": {
+    "ingestOnUpdate": true,
+    "indexPriority": "high",
+    "searchable": true,
+    "embeddingModel": "text-embedding-3-large",
+    "chunkSize": 1000,
+    "chunkOverlap": 200,
+    "metadataFields": ["agent", "researchDomain", "sourceType", "lastUpdated"]
+  },
+  "relationships": {
+    "reportsTo": ["strategist"],
+    "collaboratesWith": ["designer", "oracle"],
+    "providesInputTo": ["all_agents"],
+    "researchDomains": [
+      "emerging_technologies",
+      "novel_approaches",
+      "historical_patterns",
+      "social_reference",
+      "scholarly_reference"
+    ]
+  },
+  "workflows": {
+    "primary": [
+      "Technology Research",
+      "Pattern Analysis",
+      "Knowledge Preservation",
+      "Consultation Support"
+    ],
+    "triggers": ["Strategist Deployment", "Research Request", "Knowledge Query"]
+  },
+  "directories": {
+    "prompt": "prompt.md",
+    "consultations": "consultations/",
+    "decisions": "decisions/",
+    "research": "research-library/"
+  }
+}

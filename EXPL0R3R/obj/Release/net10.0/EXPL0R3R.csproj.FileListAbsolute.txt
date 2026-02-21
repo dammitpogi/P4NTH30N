@@ -1,0 +1,15 @@
+C:\P4NTH30N\EXPL0R3R\bin\Release\net10.0\EXPL0R3R.exe
+C:\P4NTH30N\EXPL0R3R\bin\Release\net10.0\EXPL0R3R.deps.json
+C:\P4NTH30N\EXPL0R3R\bin\Release\net10.0\EXPL0R3R.runtimeconfig.json
+C:\P4NTH30N\EXPL0R3R\bin\Release\net10.0\EXPL0R3R.dll
+C:\P4NTH30N\EXPL0R3R\bin\Release\net10.0\EXPL0R3R.pdb
+C:\P4NTH30N\EXPL0R3R\obj\Release\net10.0\EXPL0R3R.GeneratedMSBuildEditorConfig.editorconfig
+C:\P4NTH30N\EXPL0R3R\obj\Release\net10.0\EXPL0R3R.AssemblyInfoInputs.cache
+C:\P4NTH30N\EXPL0R3R\obj\Release\net10.0\EXPL0R3R.AssemblyInfo.cs
+C:\P4NTH30N\EXPL0R3R\obj\Release\net10.0\EXPL0R3R.csproj.CoreCompileInputs.cache
+C:\P4NTH30N\EXPL0R3R\obj\Release\net10.0\EXPL0R3R.sourcelink.json
+C:\P4NTH30N\EXPL0R3R\obj\Release\net10.0\EXPL0R3R.dll
+C:\P4NTH30N\EXPL0R3R\obj\Release\net10.0\refint\EXPL0R3R.dll
+C:\P4NTH30N\EXPL0R3R\obj\Release\net10.0\EXPL0R3R.pdb
+C:\P4NTH30N\EXPL0R3R\obj\Release\net10.0\EXPL0R3R.genruntimeconfig.cache
+C:\P4NTH30N\EXPL0R3R\obj\Release\net10.0\ref\EXPL0R3R.dll

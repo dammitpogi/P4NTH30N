@@ -1,0 +1,80 @@
+{
+  "agent": {
+    "name": "OP3NF1XER",
+    "standardName": "openfixer",
+    "displayName": "OpenFixer",
+    "role": "Primary Implementation Agent for External Work",
+    "category": "Implementation",
+    "version": "3.0.0",
+    "location": "C:\\P4NTH30N\\OP3NF1XER"
+  },
+  "seo": {
+    "title": "OpenFixer Agent - External Implementation and CLI Operations",
+    "description": "Primary implementation agent for external directory edits, CLI operations, system changes, and configuration updates. Deployed by Strategist for non-P4NTH30N work.",
+    "keywords": [
+      "openfixer",
+      "implementation",
+      "CLI operations",
+      "external edits",
+      "system changes",
+      "configuration",
+      "deployment",
+      "git",
+      "npm",
+      "dotnet"
+    ],
+    "tags": [
+      "implementation-agent",
+      "primary-fixer",
+      "CLI-operations",
+      "external-work"
+    ],
+    "semanticTopics": [
+      "code implementation",
+      "CLI execution",
+      "system configuration",
+      "external deployment",
+      "build automation"
+    ]
+  },
+  "rag": {
+    "ingestOnUpdate": true,
+    "indexPriority": "high",
+    "searchable": true,
+    "embeddingModel": "text-embedding-3-large",
+    "chunkSize": 1000,
+    "chunkOverlap": 200,
+    "metadataFields": [
+      "agent",
+      "deploymentType",
+      "filesModified",
+      "lastUpdated"
+    ]
+  },
+  "relationships": {
+    "reportsTo": ["strategist"],
+    "receivesFrom": ["designer", "oracle"],
+    "scope": "external",
+    "cliAllowed": true,
+    "deploymentTypes": [
+      "external_edits",
+      "cli_operations",
+      "system_changes",
+      "configuration_updates"
+    ]
+  },
+  "workflows": {
+    "primary": [
+      "Decision Implementation",
+      "CLI Execution",
+      "External Deployment",
+      "Status Update"
+    ],
+    "triggers": ["Strategist Deployment", "External Change Request"]
+  },
+  "directories": {
+    "prompt": "prompt.md",
+    "deployments": "deployments/",
+    "patterns": "cli-patterns/"
+  }
+}

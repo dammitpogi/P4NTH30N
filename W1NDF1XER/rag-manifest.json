@@ -1,0 +1,33 @@
+{
+  "agent": "W1NDF1XER",
+  "standardName": "windfixer",
+  "documents": [],
+  "ingestionRules": {
+    "autoIngest": true,
+    "watchPatterns": ["*.md", "*.json", "deployments/**/*.md"],
+    "excludePatterns": ["*.tmp", "*.log"]
+  },
+  "embeddingConfig": {
+    "model": "text-embedding-3-large",
+    "chunkSize": 1000,
+    "chunkOverlap": 200,
+    "dimensions": 3072
+  },
+  "searchConfig": {
+    "defaultTopK": 5,
+    "minScore": 0.7,
+    "boostRecent": true,
+    "recencyWeight": 0.3
+  },
+  "metadataSchema": {
+    "required": ["agent", "source", "type"],
+    "optional": [
+      "deploymentType",
+      "filesModified",
+      "decisionId",
+      "version",
+      "tags"
+    ]
+  },
+  "lastUpdated": "2026-02-19T08:30:00Z"
+}

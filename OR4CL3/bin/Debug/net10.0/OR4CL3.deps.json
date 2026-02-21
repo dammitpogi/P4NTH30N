@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "OR4CL3/0.8.5.6": {
+        "runtime": {
+          "OR4CL3.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "OR4CL3/0.8.5.6": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

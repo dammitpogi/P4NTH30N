@@ -1,0 +1,15 @@
+C:\P4NTH30N\W1NDF1XER\bin\Release\net10.0\W1NDF1XER.exe
+C:\P4NTH30N\W1NDF1XER\bin\Release\net10.0\W1NDF1XER.deps.json
+C:\P4NTH30N\W1NDF1XER\bin\Release\net10.0\W1NDF1XER.runtimeconfig.json
+C:\P4NTH30N\W1NDF1XER\bin\Release\net10.0\W1NDF1XER.dll
+C:\P4NTH30N\W1NDF1XER\bin\Release\net10.0\W1NDF1XER.pdb
+C:\P4NTH30N\W1NDF1XER\obj\Release\net10.0\W1NDF1XER.GeneratedMSBuildEditorConfig.editorconfig
+C:\P4NTH30N\W1NDF1XER\obj\Release\net10.0\W1NDF1XER.AssemblyInfoInputs.cache
+C:\P4NTH30N\W1NDF1XER\obj\Release\net10.0\W1NDF1XER.AssemblyInfo.cs
+C:\P4NTH30N\W1NDF1XER\obj\Release\net10.0\W1NDF1XER.csproj.CoreCompileInputs.cache
+C:\P4NTH30N\W1NDF1XER\obj\Release\net10.0\W1NDF1XER.sourcelink.json
+C:\P4NTH30N\W1NDF1XER\obj\Release\net10.0\W1NDF1XER.dll
+C:\P4NTH30N\W1NDF1XER\obj\Release\net10.0\refint\W1NDF1XER.dll
+C:\P4NTH30N\W1NDF1XER\obj\Release\net10.0\W1NDF1XER.pdb
+C:\P4NTH30N\W1NDF1XER\obj\Release\net10.0\W1NDF1XER.genruntimeconfig.cache
+C:\P4NTH30N\W1NDF1XER\obj\Release\net10.0\ref\W1NDF1XER.dll

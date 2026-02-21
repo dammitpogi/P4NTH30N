@@ -1,0 +1,80 @@
+{
+  "agent": {
+    "name": "DE51GN3R",
+    "standardName": "designer",
+    "displayName": "Designer",
+    "role": "Architecture and Planning Consultant",
+    "category": "Consultant",
+    "version": "3.0.0",
+    "location": "C:\\P4NTH30N\\DE51GN3R"
+  },
+  "seo": {
+    "title": "Designer Agent - Architecture Design and Implementation Planning",
+    "description": "Parallel consultant providing implementation research, architecture design, build guides, and technical specifications for decisions. Iterates based on Oracle feedback.",
+    "keywords": [
+      "designer",
+      "architecture",
+      "implementation",
+      "build guide",
+      "technical specifications",
+      "consultant",
+      "parallel consultation",
+      "decision support",
+      "system design",
+      "component architecture"
+    ],
+    "tags": [
+      "consultant-agent",
+      "architecture",
+      "implementation-planning",
+      "technical-design"
+    ],
+    "semanticTopics": [
+      "system architecture",
+      "implementation patterns",
+      "build processes",
+      "technical specifications",
+      "design iteration"
+    ]
+  },
+  "rag": {
+    "ingestOnUpdate": true,
+    "indexPriority": "high",
+    "searchable": true,
+    "embeddingModel": "text-embedding-3-large",
+    "chunkSize": 1000,
+    "chunkOverlap": 200,
+    "metadataFields": [
+      "agent",
+      "category",
+      "version",
+      "lastUpdated",
+      "consultationType"
+    ]
+  },
+  "relationships": {
+    "reportsTo": ["strategist"],
+    "collaboratesWith": ["oracle", "librarian"],
+    "providesInputTo": ["windfixer", "openfixer"],
+    "consultationTypes": [
+      "implementation_research",
+      "architecture_design",
+      "build_guide",
+      "technical_specifications"
+    ]
+  },
+  "workflows": {
+    "primary": [
+      "Parallel Consultation",
+      "Design Iteration",
+      "Specification Delivery"
+    ],
+    "triggers": ["Strategist Deployment", "Iteration Request"]
+  },
+  "directories": {
+    "prompt": "prompt.md",
+    "consultations": "consultations/",
+    "decisions": "decisions/",
+    "patterns": "pattern-library/"
+  }
+}

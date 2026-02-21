@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "OP3NF1XER/0.8.5.6": {
+        "runtime": {
+          "OP3NF1XER.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "OP3NF1XER/0.8.5.6": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

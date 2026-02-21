@@ -1,0 +1,74 @@
+{
+  "agent": {
+    "name": "OR4CL3",
+    "standardName": "oracle",
+    "displayName": "Oracle",
+    "role": "Strategic Advisor and Approval Rating",
+    "category": "Consultant",
+    "version": "3.0.0",
+    "location": "C:\\P4NTH30N\\OR4CL3"
+  },
+  "seo": {
+    "title": "Oracle Agent - Strategic Advisor and Approval Rating System",
+    "description": "Parallel consultant providing weighted approval ratings (0-100%), feasibility assessment, risk analysis, and hard guardrail enforcement. Determines if decisions meet 90% approval threshold.",
+    "keywords": [
+      "oracle",
+      "approval rating",
+      "strategic advisor",
+      "feasibility",
+      "risk analysis",
+      "weighted scoring",
+      "hard guardrails",
+      "decision validation",
+      "parallel consultation"
+    ],
+    "tags": [
+      "consultant-agent",
+      "approval-system",
+      "risk-assessment",
+      "decision-gate"
+    ],
+    "semanticTopics": [
+      "approval workflows",
+      "risk assessment",
+      "feasibility analysis",
+      "guardrail enforcement",
+      "decision validation"
+    ]
+  },
+  "rag": {
+    "ingestOnUpdate": true,
+    "indexPriority": "critical",
+    "searchable": true,
+    "embeddingModel": "text-embedding-3-large",
+    "chunkSize": 1000,
+    "chunkOverlap": 200,
+    "metadataFields": [
+      "agent",
+      "approvalRating",
+      "riskLevel",
+      "decisionId",
+      "lastUpdated"
+    ]
+  },
+  "relationships": {
+    "reportsTo": ["strategist"],
+    "collaboratesWith": ["designer", "librarian"],
+    "providesInputTo": ["strategist"],
+    "approvalCategories": ["feasibility", "risk", "complexity", "resources"]
+  },
+  "workflows": {
+    "primary": [
+      "Approval Analysis",
+      "Risk Assessment",
+      "Weighted Scoring",
+      "Guardrail Enforcement"
+    ],
+    "triggers": ["Strategist Deployment", "Approval Request"]
+  },
+  "directories": {
+    "prompt": "prompt.md",
+    "consultations": "consultations/",
+    "patterns": "approval-patterns/"
+  }
+}

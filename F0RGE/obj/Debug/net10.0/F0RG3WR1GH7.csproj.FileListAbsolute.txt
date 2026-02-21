@@ -1,0 +1,15 @@
+C:\P4NTH30N\F0RGE\bin\Debug\net10.0\F0RG3WR1GH7.exe
+C:\P4NTH30N\F0RGE\bin\Debug\net10.0\F0RG3WR1GH7.deps.json
+C:\P4NTH30N\F0RGE\bin\Debug\net10.0\F0RG3WR1GH7.runtimeconfig.json
+C:\P4NTH30N\F0RGE\bin\Debug\net10.0\F0RG3WR1GH7.dll
+C:\P4NTH30N\F0RGE\bin\Debug\net10.0\F0RG3WR1GH7.pdb
+C:\P4NTH30N\F0RGE\obj\Debug\net10.0\F0RG3WR1GH7.GeneratedMSBuildEditorConfig.editorconfig
+C:\P4NTH30N\F0RGE\obj\Debug\net10.0\F0RG3WR1GH7.AssemblyInfoInputs.cache
+C:\P4NTH30N\F0RGE\obj\Debug\net10.0\F0RG3WR1GH7.AssemblyInfo.cs
+C:\P4NTH30N\F0RGE\obj\Debug\net10.0\F0RG3WR1GH7.csproj.CoreCompileInputs.cache
+C:\P4NTH30N\F0RGE\obj\Debug\net10.0\F0RG3WR1GH7.sourcelink.json
+C:\P4NTH30N\F0RGE\obj\Debug\net10.0\F0RG3WR1GH7.dll
+C:\P4NTH30N\F0RGE\obj\Debug\net10.0\refint\F0RG3WR1GH7.dll
+C:\P4NTH30N\F0RGE\obj\Debug\net10.0\F0RG3WR1GH7.pdb
+C:\P4NTH30N\F0RGE\obj\Debug\net10.0\F0RG3WR1GH7.genruntimeconfig.cache
+C:\P4NTH30N\F0RGE\obj\Debug\net10.0\ref\F0RG3WR1GH7.dll
