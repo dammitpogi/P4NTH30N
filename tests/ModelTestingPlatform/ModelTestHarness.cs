@@ -9,7 +9,8 @@ namespace P4NTH30N.ModelTestingPlatform;
 /// <summary>
 /// Configurable inference parameters for LLM backend calls.
 /// </summary>
-public sealed class InferenceParams {
+public sealed class InferenceParams
+{
 	public double Temperature { get; init; } = 0.1;
 	public double TopP { get; init; } = 0.9;
 	public int TopK { get; init; } = 40;
@@ -19,33 +20,37 @@ public sealed class InferenceParams {
 	/// <summary>
 	/// Deterministic config for reproducibility testing (temp=0.0, no sampling).
 	/// </summary>
-	public static InferenceParams Deterministic => new() {
-		Temperature = 0.0,
-		TopP = 1.0,
-		TopK = 1,
-		DoSample = false,
-		MaxTokens = 512,
-	};
+	public static InferenceParams Deterministic =>
+		new()
+		{
+			Temperature = 0.0,
+			TopP = 1.0,
+			TopK = 1,
+			DoSample = false,
+			MaxTokens = 512,
+		};
 
 	/// <summary>
 	/// Default creative params (temp=0.7, standard sampling).
 	/// </summary>
-	public static InferenceParams Creative => new() {
-		Temperature = 0.7,
-		TopP = 0.9,
-		TopK = 40,
-		DoSample = true,
-		MaxTokens = 512,
-	};
+	public static InferenceParams Creative =>
+		new()
+		{
+			Temperature = 0.7,
+			TopP = 0.9,
+			TopK = 40,
+			DoSample = true,
+			MaxTokens = 512,
+		};
 
-	public override string ToString() =>
-		$"temp={Temperature:F2} top_p={TopP:F2} top_k={TopK} sample={DoSample} max={MaxTokens}";
+	public override string ToString() => $"temp={Temperature:F2} top_p={TopP:F2} top_k={TopK} sample={DoSample} max={MaxTokens}";
 }
 
 /// <summary>
 /// Result of a single LLM inference call with timing and metadata.
 /// </summary>
-public sealed class InferenceResult {
+public sealed class InferenceResult
+{
 	public string Response { get; init; } = string.Empty;
 	public long LatencyMs { get; init; }
 	public string ModelId { get; init; } = string.Empty;
@@ -57,12 +62,15 @@ public sealed class InferenceResult {
 	/// <summary>
 	/// Attempts to parse the response as JSON. Returns null if invalid.
 	/// </summary>
-	public JsonDocument? TryParseJson() {
-		try {
+	public JsonDocument? TryParseJson()
+	{
+		try
+		{
 			string json = ExtractJsonBlock(Response);
 			return JsonDocument.Parse(json);
 		}
-		catch {
+		catch
+		{
 			return null;
 		}
 	}
@@ -72,10 +80,12 @@ public sealed class InferenceResult {
 	/// </summary>
 	public bool IsValidJson => TryParseJson() != null;
 
-	private static string ExtractJsonBlock(string text) {
+	private static string ExtractJsonBlock(string text)
+	{
 		int start = text.IndexOf('{');
 		int end = text.LastIndexOf('}');
-		if (start >= 0 && end > start) {
+		if (start >= 0 && end > start)
+		{
 			return text[start..(end + 1)];
 		}
 		return text;
@@ -86,7 +96,8 @@ public sealed class InferenceResult {
 /// Backend interface for LLM inference. Implementations can target LM Studio,
 /// Ollama, OpenAI-compatible APIs, or mock backends for testing.
 /// </summary>
-public interface ILlmBackend : IDisposable {
+public interface ILlmBackend : IDisposable
+{
 	/// <summary>
 	/// Unique identifier for this backend (e.g., "lmstudio", "ollama", "mock").
 	/// </summary>
@@ -110,18 +121,15 @@ public interface ILlmBackend : IDisposable {
 	/// <summary>
 	/// Sends a chat completion request with configurable inference parameters.
 	/// </summary>
-	Task<InferenceResult> ChatAsync(
-		string systemPrompt,
-		string userMessage,
-		InferenceParams? inferenceParams = null,
-		CancellationToken cancellationToken = default);
+	Task<InferenceResult> ChatAsync(string systemPrompt, string userMessage, InferenceParams? inferenceParams = null, CancellationToken cancellationToken = default);
 }
 
 /// <summary>
 /// LM Studio backend implementation targeting localhost:1234 OpenAI-compatible API.
 /// Supports configurable temperature, top_p, top_k, do_sample, and max_tokens.
 /// </summary>
-public sealed class LmStudioBackend : ILlmBackend {
+public sealed class LmStudioBackend : ILlmBackend
+{
 	private readonly HttpClient _httpClient;
 	private readonly string _baseUrl;
 	private bool _disposed;
@@ -129,61 +137,61 @@ public sealed class LmStudioBackend : ILlmBackend {
 	public string BackendId => "lmstudio";
 	public string ModelId { get; }
 
-	public LmStudioBackend(
-		string baseUrl = "http://localhost:1234",
-		string modelId = "smollm2-1.7b-instruct",
-		string? apiKey = null,
-		int timeoutSeconds = 120) {
+	public LmStudioBackend(string baseUrl = "http://localhost:1234", string modelId = "smollm2-1.7b-instruct", string? apiKey = null, int timeoutSeconds = 120)
+	{
 		_baseUrl = baseUrl.TrimEnd('/');
 		ModelId = modelId;
 
-		_httpClient = new HttpClient {
-			BaseAddress = new Uri(_baseUrl),
-			Timeout = TimeSpan.FromSeconds(timeoutSeconds),
-		};
+		_httpClient = new HttpClient { BaseAddress = new Uri(_baseUrl), Timeout = TimeSpan.FromSeconds(timeoutSeconds) };
 
-		_httpClient.DefaultRequestHeaders.Accept.Add(
-			new MediaTypeWithQualityHeaderValue("application/json"));
+		_httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-		if (!string.IsNullOrWhiteSpace(apiKey)) {
-			_httpClient.DefaultRequestHeaders.Authorization =
-				new AuthenticationHeaderValue("Bearer", apiKey);
+		if (!string.IsNullOrWhiteSpace(apiKey))
+		{
+			_httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
 		}
 	}
 
-	public async Task<bool> IsAvailableAsync(CancellationToken cancellationToken = default) {
-		try {
-			HttpResponseMessage response = await _httpClient.GetAsync(
-				"/v1/models", cancellationToken);
+	public async Task<bool> IsAvailableAsync(CancellationToken cancellationToken = default)
+	{
+		try
+		{
+			HttpResponseMessage response = await _httpClient.GetAsync("/v1/models", cancellationToken);
 			return response.IsSuccessStatusCode;
 		}
-		catch {
+		catch
+		{
 			return false;
 		}
 	}
 
-	public async Task<IReadOnlyList<string>> ListModelsAsync(CancellationToken cancellationToken = default) {
-		try {
-			HttpResponseMessage response = await _httpClient.GetAsync(
-				"/v1/models", cancellationToken);
+	public async Task<IReadOnlyList<string>> ListModelsAsync(CancellationToken cancellationToken = default)
+	{
+		try
+		{
+			HttpResponseMessage response = await _httpClient.GetAsync("/v1/models", cancellationToken);
 			string json = await response.Content.ReadAsStringAsync(cancellationToken);
 
 			using JsonDocument doc = JsonDocument.Parse(json);
 			List<string> models = new();
 
-			if (doc.RootElement.TryGetProperty("data", out JsonElement data) &&
-				data.ValueKind == JsonValueKind.Array) {
-				foreach (JsonElement model in data.EnumerateArray()) {
-					if (model.TryGetProperty("id", out JsonElement id)) {
+			if (doc.RootElement.TryGetProperty("data", out JsonElement data) && data.ValueKind == JsonValueKind.Array)
+			{
+				foreach (JsonElement model in data.EnumerateArray())
+				{
+					if (model.TryGetProperty("id", out JsonElement id))
+					{
 						string? modelId = id.GetString();
-						if (modelId != null) models.Add(modelId);
+						if (modelId != null)
+							models.Add(modelId);
 					}
 				}
 			}
 
 			return models.AsReadOnly();
 		}
-		catch {
+		catch
+		{
 			return Array.Empty<string>();
 		}
 	}
@@ -192,19 +200,20 @@ public sealed class LmStudioBackend : ILlmBackend {
 		string systemPrompt,
 		string userMessage,
 		InferenceParams? inferenceParams = null,
-		CancellationToken cancellationToken = default) {
+		CancellationToken cancellationToken = default
+	)
+	{
 		ObjectDisposedException.ThrowIf(_disposed, this);
 
 		InferenceParams p = inferenceParams ?? new InferenceParams();
 		Stopwatch sw = Stopwatch.StartNew();
 
-		try {
-			object requestBody = new {
+		try
+		{
+			object requestBody = new
+			{
 				model = ModelId,
-				messages = new[] {
-					new { role = "system", content = systemPrompt },
-					new { role = "user", content = userMessage },
-				},
+				messages = new[] { new { role = "system", content = systemPrompt }, new { role = "user", content = userMessage } },
 				max_tokens = p.MaxTokens,
 				temperature = p.Temperature,
 				top_p = p.TopP,
@@ -215,14 +224,15 @@ public sealed class LmStudioBackend : ILlmBackend {
 			string json = JsonSerializer.Serialize(requestBody);
 			using StringContent content = new(json, Encoding.UTF8, "application/json");
 
-			HttpResponseMessage response = await _httpClient.PostAsync(
-				"/v1/chat/completions", content, cancellationToken);
+			HttpResponseMessage response = await _httpClient.PostAsync("/v1/chat/completions", content, cancellationToken);
 
 			string responseJson = await response.Content.ReadAsStringAsync(cancellationToken);
 			sw.Stop();
 
-			if (!response.IsSuccessStatusCode) {
-				return new InferenceResult {
+			if (!response.IsSuccessStatusCode)
+			{
+				return new InferenceResult
+				{
 					Response = responseJson,
 					LatencyMs = sw.ElapsedMilliseconds,
 					ModelId = ModelId,
@@ -233,13 +243,10 @@ public sealed class LmStudioBackend : ILlmBackend {
 			}
 
 			using JsonDocument doc = JsonDocument.Parse(responseJson);
-			string? completionText = doc.RootElement
-				.GetProperty("choices")[0]
-				.GetProperty("message")
-				.GetProperty("content")
-				.GetString();
+			string? completionText = doc.RootElement.GetProperty("choices")[0].GetProperty("message").GetProperty("content").GetString();
 
-			return new InferenceResult {
+			return new InferenceResult
+			{
 				Response = completionText ?? string.Empty,
 				LatencyMs = sw.ElapsedMilliseconds,
 				ModelId = ModelId,
@@ -247,9 +254,11 @@ public sealed class LmStudioBackend : ILlmBackend {
 				Success = true,
 			};
 		}
-		catch (Exception ex) {
+		catch (Exception ex)
+		{
 			sw.Stop();
-			return new InferenceResult {
+			return new InferenceResult
+			{
 				Response = string.Empty,
 				LatencyMs = sw.ElapsedMilliseconds,
 				ModelId = ModelId,
@@ -260,8 +269,10 @@ public sealed class LmStudioBackend : ILlmBackend {
 		}
 	}
 
-	public void Dispose() {
-		if (!_disposed) {
+	public void Dispose()
+	{
+		if (!_disposed)
+		{
 			_disposed = true;
 			_httpClient.Dispose();
 		}
@@ -272,7 +283,8 @@ public sealed class LmStudioBackend : ILlmBackend {
 /// Mock backend for unit testing without LM Studio dependency.
 /// Returns configurable responses for deterministic test scenarios.
 /// </summary>
-public sealed class MockLlmBackend : ILlmBackend {
+public sealed class MockLlmBackend : ILlmBackend
+{
 	private readonly Queue<string> _responses = new();
 	private readonly int _latencyMs;
 	private readonly bool _available;
@@ -281,10 +293,8 @@ public sealed class MockLlmBackend : ILlmBackend {
 	public string ModelId { get; }
 	public int CallCount { get; private set; }
 
-	public MockLlmBackend(
-		string modelId = "mock-model",
-		int latencyMs = 10,
-		bool available = true) {
+	public MockLlmBackend(string modelId = "mock-model", int latencyMs = 10, bool available = true)
+	{
 		ModelId = modelId;
 		_latencyMs = latencyMs;
 		_available = available;
@@ -293,24 +303,29 @@ public sealed class MockLlmBackend : ILlmBackend {
 	/// <summary>
 	/// Enqueues a response to be returned on the next ChatAsync call.
 	/// </summary>
-	public void EnqueueResponse(string response) {
+	public void EnqueueResponse(string response)
+	{
 		_responses.Enqueue(response);
 	}
 
 	/// <summary>
 	/// Enqueues multiple responses.
 	/// </summary>
-	public void EnqueueResponses(params string[] responses) {
-		foreach (string r in responses) {
+	public void EnqueueResponses(params string[] responses)
+	{
+		foreach (string r in responses)
+		{
 			_responses.Enqueue(r);
 		}
 	}
 
-	public Task<bool> IsAvailableAsync(CancellationToken cancellationToken = default) {
+	public Task<bool> IsAvailableAsync(CancellationToken cancellationToken = default)
+	{
 		return Task.FromResult(_available);
 	}
 
-	public Task<IReadOnlyList<string>> ListModelsAsync(CancellationToken cancellationToken = default) {
+	public Task<IReadOnlyList<string>> ListModelsAsync(CancellationToken cancellationToken = default)
+	{
 		IReadOnlyList<string> models = new List<string> { ModelId }.AsReadOnly();
 		return Task.FromResult(models);
 	}
@@ -319,18 +334,20 @@ public sealed class MockLlmBackend : ILlmBackend {
 		string systemPrompt,
 		string userMessage,
 		InferenceParams? inferenceParams = null,
-		CancellationToken cancellationToken = default) {
+		CancellationToken cancellationToken = default
+	)
+	{
 		CallCount++;
 
-		if (_latencyMs > 0) {
+		if (_latencyMs > 0)
+		{
 			await Task.Delay(_latencyMs, cancellationToken);
 		}
 
-		string response = _responses.Count > 0
-			? _responses.Dequeue()
-			: "{\"valid\": true, \"confidence\": 0.5, \"failures\": []}";
+		string response = _responses.Count > 0 ? _responses.Dequeue() : "{\"valid\": true, \"confidence\": 0.5, \"failures\": []}";
 
-		return new InferenceResult {
+		return new InferenceResult
+		{
 			Response = response,
 			LatencyMs = _latencyMs,
 			ModelId = ModelId,
@@ -346,7 +363,8 @@ public sealed class MockLlmBackend : ILlmBackend {
 /// Test case definition for model validation testing.
 /// Links a config JSON input to expected validation output.
 /// </summary>
-public sealed class TestCase {
+public sealed class TestCase
+{
 	public string Name { get; init; } = string.Empty;
 	public string ConfigJson { get; init; } = string.Empty;
 	public bool ExpectedValid { get; init; }
@@ -357,14 +375,14 @@ public sealed class TestCase {
 	/// <summary>
 	/// Builds the user message from the template and config.
 	/// </summary>
-	public string BuildUserMessage() =>
-		string.Format(UserPromptTemplate, ConfigJson);
+	public string BuildUserMessage() => string.Format(UserPromptTemplate, ConfigJson);
 }
 
 /// <summary>
 /// Result of evaluating a single test case against a model response.
 /// </summary>
-public sealed class TestCaseResult {
+public sealed class TestCaseResult
+{
 	public string TestName { get; init; } = string.Empty;
 	public string ModelId { get; init; } = string.Empty;
 	public InferenceParams Params { get; init; } = new();
@@ -383,11 +401,13 @@ public sealed class TestCaseResult {
 /// Harness for running test cases against LLM backends with configurable parameters.
 /// Supports single runs, batch evaluation, and result aggregation.
 /// </summary>
-public sealed class ModelTestHarness {
+public sealed class ModelTestHarness
+{
 	private readonly ILlmBackend _backend;
 	private readonly string _defaultSystemPrompt;
 
-	public ModelTestHarness(ILlmBackend backend, string? systemPrompt = null) {
+	public ModelTestHarness(ILlmBackend backend, string? systemPrompt = null)
+	{
 		_backend = backend;
 		_defaultSystemPrompt = systemPrompt ?? P4NTH30N.DeployLogAnalyzer.FewShotPrompt.GetConfigValidationPrompt();
 	}
@@ -395,23 +415,17 @@ public sealed class ModelTestHarness {
 	/// <summary>
 	/// Runs a single test case with specified inference params.
 	/// </summary>
-	public async Task<TestCaseResult> RunTestAsync(
-		TestCase testCase,
-		InferenceParams? inferenceParams = null,
-		CancellationToken cancellationToken = default) {
+	public async Task<TestCaseResult> RunTestAsync(TestCase testCase, InferenceParams? inferenceParams = null, CancellationToken cancellationToken = default)
+	{
 		InferenceParams p = inferenceParams ?? new InferenceParams();
-		string systemPrompt = string.IsNullOrEmpty(testCase.SystemPrompt)
-			? _defaultSystemPrompt
-			: testCase.SystemPrompt;
+		string systemPrompt = string.IsNullOrEmpty(testCase.SystemPrompt) ? _defaultSystemPrompt : testCase.SystemPrompt;
 
-		InferenceResult inference = await _backend.ChatAsync(
-			systemPrompt,
-			testCase.BuildUserMessage(),
-			p,
-			cancellationToken);
+		InferenceResult inference = await _backend.ChatAsync(systemPrompt, testCase.BuildUserMessage(), p, cancellationToken);
 
-		if (!inference.Success) {
-			return new TestCaseResult {
+		if (!inference.Success)
+		{
+			return new TestCaseResult
+			{
 				TestName = testCase.Name,
 				ModelId = _backend.ModelId,
 				Params = p,
@@ -435,11 +449,14 @@ public sealed class ModelTestHarness {
 	public async Task<BatchTestResult> RunBatchAsync(
 		IReadOnlyList<TestCase> testCases,
 		InferenceParams? inferenceParams = null,
-		CancellationToken cancellationToken = default) {
+		CancellationToken cancellationToken = default
+	)
+	{
 		List<TestCaseResult> results = new();
 		Stopwatch sw = Stopwatch.StartNew();
 
-		foreach (TestCase tc in testCases) {
+		foreach (TestCase tc in testCases)
+		{
 			cancellationToken.ThrowIfCancellationRequested();
 			TestCaseResult result = await RunTestAsync(tc, inferenceParams, cancellationToken);
 			results.Add(result);
@@ -453,16 +470,18 @@ public sealed class ModelTestHarness {
 	/// Loads test cases from the pre-validation test-configs directory.
 	/// Compatible with the existing test config format.
 	/// </summary>
-	public static async Task<List<TestCase>> LoadTestCasesAsync(
-		string directory,
-		CancellationToken cancellationToken = default) {
+	public static async Task<List<TestCase>> LoadTestCasesAsync(string directory, CancellationToken cancellationToken = default)
+	{
 		List<TestCase> cases = new();
 
-		if (!Directory.Exists(directory)) return cases;
+		if (!Directory.Exists(directory))
+			return cases;
 
-		foreach (string file in Directory.GetFiles(directory, "*.json").OrderBy(f => f)) {
+		foreach (string file in Directory.GetFiles(directory, "*.json").OrderBy(f => f))
+		{
 			string json = await File.ReadAllTextAsync(file, cancellationToken);
-			try {
+			try
+			{
 				using JsonDocument doc = JsonDocument.Parse(json);
 				JsonElement root = doc.RootElement;
 
@@ -470,33 +489,40 @@ public sealed class ModelTestHarness {
 					? n.GetString() ?? Path.GetFileNameWithoutExtension(file)
 					: Path.GetFileNameWithoutExtension(file);
 
-				string configJson = root.TryGetProperty("config", out JsonElement cfg)
-					? cfg.GetRawText() : json;
+				string configJson = root.TryGetProperty("config", out JsonElement cfg) ? cfg.GetRawText() : json;
 
 				bool expectedValid = false;
 				List<string> expectedFailures = new();
 
-				if (root.TryGetProperty("expected", out JsonElement expected)) {
-					if (expected.TryGetProperty("valid", out JsonElement v)) {
+				if (root.TryGetProperty("expected", out JsonElement expected))
+				{
+					if (expected.TryGetProperty("valid", out JsonElement v))
+					{
 						expectedValid = v.GetBoolean();
 					}
-					if (expected.TryGetProperty("failures", out JsonElement f) &&
-						f.ValueKind == JsonValueKind.Array) {
-						foreach (JsonElement item in f.EnumerateArray()) {
+					if (expected.TryGetProperty("failures", out JsonElement f) && f.ValueKind == JsonValueKind.Array)
+					{
+						foreach (JsonElement item in f.EnumerateArray())
+						{
 							string? s = item.GetString();
-							if (s != null) expectedFailures.Add(s);
+							if (s != null)
+								expectedFailures.Add(s);
 						}
 					}
 				}
 
-				cases.Add(new TestCase {
-					Name = name,
-					ConfigJson = configJson,
-					ExpectedValid = expectedValid,
-					ExpectedFailures = expectedFailures,
-				});
+				cases.Add(
+					new TestCase
+					{
+						Name = name,
+						ConfigJson = configJson,
+						ExpectedValid = expectedValid,
+						ExpectedFailures = expectedFailures,
+					}
+				);
 			}
-			catch {
+			catch
+			{
 				// Skip malformed test files
 			}
 		}
@@ -504,38 +530,42 @@ public sealed class ModelTestHarness {
 		return cases;
 	}
 
-	private TestCaseResult ParseTestResult(
-		TestCase testCase,
-		InferenceResult inference,
-		InferenceParams p) {
+	private TestCaseResult ParseTestResult(TestCase testCase, InferenceResult inference, InferenceParams p)
+	{
 		bool predictedValid = false;
 		double confidence = 0.0;
 		bool jsonValid = false;
 		List<string> predictedFailures = new();
 
 		using JsonDocument? doc = inference.TryParseJson();
-		if (doc != null) {
+		if (doc != null)
+		{
 			jsonValid = true;
 			JsonElement root = doc.RootElement;
 
-			if (root.TryGetProperty("valid", out JsonElement v)) {
+			if (root.TryGetProperty("valid", out JsonElement v))
+			{
 				predictedValid = v.GetBoolean();
 			}
-			if (root.TryGetProperty("confidence", out JsonElement c)) {
+			if (root.TryGetProperty("confidence", out JsonElement c))
+			{
 				confidence = c.GetDouble();
 			}
-			if (root.TryGetProperty("failures", out JsonElement f) &&
-				f.ValueKind == JsonValueKind.Array) {
-				foreach (JsonElement item in f.EnumerateArray()) {
+			if (root.TryGetProperty("failures", out JsonElement f) && f.ValueKind == JsonValueKind.Array)
+			{
+				foreach (JsonElement item in f.EnumerateArray())
+				{
 					string? s = item.GetString();
-					if (s != null) predictedFailures.Add(s);
+					if (s != null)
+						predictedFailures.Add(s);
 				}
 			}
 		}
 
 		bool correct = predictedValid == testCase.ExpectedValid;
 
-		return new TestCaseResult {
+		return new TestCaseResult
+		{
 			TestName = testCase.Name,
 			ModelId = _backend.ModelId,
 			Params = p,
@@ -554,7 +584,8 @@ public sealed class ModelTestHarness {
 /// <summary>
 /// Aggregated results from running a batch of test cases.
 /// </summary>
-public sealed class BatchTestResult {
+public sealed class BatchTestResult
+{
 	public string ModelId { get; init; } = string.Empty;
 	public InferenceParams Params { get; init; } = new();
 	public int TotalTests { get; init; }
@@ -569,16 +600,14 @@ public sealed class BatchTestResult {
 	public List<TestCaseResult> Results { get; init; } = new();
 	public DateTime Timestamp { get; init; } = DateTime.UtcNow;
 
-	public static BatchTestResult FromResults(
-		List<TestCaseResult> results,
-		string modelId,
-		InferenceParams inferenceParams,
-		long totalDurationMs) {
+	public static BatchTestResult FromResults(List<TestCaseResult> results, string modelId, InferenceParams inferenceParams, long totalDurationMs)
+	{
 		int total = results.Count;
 		int correct = results.Count(r => r.Correct);
 		int jsonValid = results.Count(r => r.JsonValid);
 
-		return new BatchTestResult {
+		return new BatchTestResult
+		{
 			ModelId = modelId,
 			Params = inferenceParams,
 			TotalTests = total,
@@ -602,17 +631,19 @@ public sealed class BatchTestResult {
 	/// <summary>
 	/// Human-readable summary for console output.
 	/// </summary>
-	public override string ToString() {
+	public override string ToString()
+	{
 		string gate = MeetsDecisionGate() ? "PASS" : "FAIL";
-		return $"[{ModelId}] {Params} | Accuracy: {Accuracy:P1} ({CorrectCount}/{TotalTests}) | " +
-			$"JSON Valid: {JsonValidRate:P1} | Mean Latency: {MeanLatencyMs:F0}ms | Gate: {gate}";
+		return $"[{ModelId}] {Params} | Accuracy: {Accuracy:P1} ({CorrectCount}/{TotalTests}) | "
+			+ $"JSON Valid: {JsonValidRate:P1} | Mean Latency: {MeanLatencyMs:F0}ms | Gate: {gate}";
 	}
 }
 
 /// <summary>
 /// Serializable report combining multiple batch results for comparison.
 /// </summary>
-public sealed class ModelComparisonReport {
+public sealed class ModelComparisonReport
+{
 	public DateTime Timestamp { get; init; } = DateTime.UtcNow;
 	public string DecisionGateThreshold { get; init; } = "70%";
 	public List<BatchTestResult> BatchResults { get; init; } = new();
@@ -620,26 +651,25 @@ public sealed class ModelComparisonReport {
 	/// <summary>
 	/// Returns the best-performing batch result by accuracy.
 	/// </summary>
-	public BatchTestResult? GetBestResult() =>
-		BatchResults.OrderByDescending(b => b.Accuracy).ThenBy(b => b.MeanLatencyMs).FirstOrDefault();
+	public BatchTestResult? GetBestResult() => BatchResults.OrderByDescending(b => b.Accuracy).ThenBy(b => b.MeanLatencyMs).FirstOrDefault();
 
 	/// <summary>
 	/// Serializes the report to JSON.
 	/// </summary>
-	public string ToJson() {
-		JsonSerializerOptions options = new() {
-			WriteIndented = true,
-			Converters = { new JsonStringEnumConverter() },
-		};
+	public string ToJson()
+	{
+		JsonSerializerOptions options = new() { WriteIndented = true, Converters = { new JsonStringEnumConverter() } };
 		return JsonSerializer.Serialize(this, options);
 	}
 
 	/// <summary>
 	/// Saves report to disk.
 	/// </summary>
-	public async Task SaveAsync(string path, CancellationToken cancellationToken = default) {
+	public async Task SaveAsync(string path, CancellationToken cancellationToken = default)
+	{
 		string? dir = Path.GetDirectoryName(path);
-		if (dir != null && !Directory.Exists(dir)) {
+		if (dir != null && !Directory.Exists(dir))
+		{
 			Directory.CreateDirectory(dir);
 		}
 		await File.WriteAllTextAsync(path, ToJson(), cancellationToken);

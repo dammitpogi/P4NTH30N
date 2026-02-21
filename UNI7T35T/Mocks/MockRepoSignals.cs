@@ -60,6 +60,23 @@ public class MockRepoSignals : IRepoSignals
 		_signals.RemoveAll(s => s._id == signal._id);
 	}
 
+	public Signal? ClaimNext(string workerId)
+	{
+		var signal = _signals.FirstOrDefault(s => !s.Acknowledged && s.ClaimedBy == null);
+		if (signal != null)
+		{
+			signal.ClaimedBy = workerId;
+			signal.ClaimedAt = DateTime.UtcNow;
+		}
+		return signal;
+	}
+
+	public void ReleaseClaim(Signal signal)
+	{
+		signal.ClaimedBy = null;
+		signal.ClaimedAt = null;
+	}
+
 	public void Add(Signal signal)
 	{
 		_signals.Add(signal);

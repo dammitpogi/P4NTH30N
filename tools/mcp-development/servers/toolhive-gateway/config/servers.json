@@ -1,0 +1,349 @@
+{
+  "schemaVersion": "1.0.0",
+  "lastUpdated": "2026-02-21T00:21:00.656Z",
+  "sourceDirectory": "C:/Users/paulc/AppData/Local/ToolHive/runconfigs",
+  "servers": [
+    {
+      "id": "toolhive-brightdata-mcp",
+      "name": "brightdata-mcp",
+      "transport": "http",
+      "connection": {
+        "url": "http://127.0.0.1:40203/mcp",
+        "port": 40203
+      },
+      "tags": [
+        "toolhive-desktop",
+        "proxy",
+        "web",
+        "scrape"
+      ],
+      "description": "Enterprise web data extraction via BrightData",
+      "source": "brightdata-mcp.json",
+      "image": "ghcr.io/stacklok/dockyard/npx/brightdata-mcp:2.8.4",
+      "envVars": {
+        "BROWSER_ZONE": "mcp_browser",
+        "MCP_TRANSPORT": "stdio",
+        "PRO_MODE": "false",
+        "WEB_UNLOCKER_ZONE": "mcp_unlocker"
+      },
+      "enabled": true
+    },
+    {
+      "id": "toolhive-chrome-devtools-mcp",
+      "name": "chrome-devtools-mcp",
+      "transport": "http",
+      "connection": {
+        "url": "http://127.0.0.1:37139/mcp",
+        "port": 37139
+      },
+      "tags": [
+        "toolhive-desktop",
+        "browser",
+        "automation",
+        "cdp"
+      ],
+      "description": "Chrome DevTools Protocol integration",
+      "source": "chrome-devtools-mcp.json",
+      "image": "ghcr.io/stacklok/dockyard/npx/chrome-devtools-mcp:0.17.0",
+      "envVars": {
+        "MCP_TRANSPORT": "stdio"
+      },
+      "enabled": true
+    },
+    {
+      "id": "toolhive-context7-remote",
+      "name": "context7-remote",
+      "transport": "http",
+      "connection": {
+        "url": "http://127.0.0.1:29249/mcp",
+        "port": 29249
+      },
+      "tags": [
+        "toolhive-desktop",
+        "documentation",
+        "context"
+      ],
+      "description": "Documentation context and knowledge base",
+      "source": "context7-remote.json",
+      "image": "",
+      "envVars": {
+        "FASTMCP_PORT": "31838",
+        "MCP_PORT": "31838",
+        "MCP_TRANSPORT": "streamable-http"
+      },
+      "enabled": true
+    },
+    {
+      "id": "toolhive-decisions-server",
+      "name": "decisions-server",
+      "transport": "http",
+      "connection": {
+        "url": "http://127.0.0.1:46818/mcp",
+        "port": 46818
+      },
+      "tags": [
+        "toolhive-desktop",
+        "p4nth30n"
+      ],
+      "description": "Decision management and workflow",
+      "source": "decisions-server.json",
+      "image": "decisions-server:v1.2.0",
+      "envVars": {
+        "MCP_TRANSPORT": "stdio",
+        "MONGODB_URI": "mongodb://host.docker.internal:27017/P4NTH30N"
+      },
+      "enabled": true
+    },
+    {
+      "id": "toolhive-fetch",
+      "name": "fetch",
+      "transport": "http",
+      "connection": {
+        "url": "http://127.0.0.1:36802/mcp",
+        "port": 36802
+      },
+      "tags": [
+        "toolhive-desktop",
+        "web",
+        "scrape",
+        "fetch"
+      ],
+      "description": "Web content fetching and HTML processing",
+      "source": "fetch.json",
+      "image": "ghcr.io/stackloklabs/gofetch/server:1.0.3",
+      "envVars": {
+        "FASTMCP_PORT": "8080",
+        "MCP_PORT": "8080",
+        "MCP_TRANSPORT": "streamable-http"
+      },
+      "enabled": true
+    },
+    {
+      "id": "toolhive-firecrawl",
+      "name": "firecrawl",
+      "transport": "http",
+      "connection": {
+        "url": "http://127.0.0.1:17681/mcp",
+        "port": 17681
+      },
+      "tags": [
+        "toolhive-desktop",
+        "web",
+        "scrape",
+        "fetch"
+      ],
+      "description": "Advanced web scraping with JavaScript rendering",
+      "source": "firecrawl.json",
+      "image": "docker.io/mcp/firecrawl:latest",
+      "envVars": {
+        "MCP_TRANSPORT": "stdio"
+      },
+      "enabled": true
+    },
+    {
+      "id": "toolhive-json-query-mcp",
+      "name": "json-query-mcp",
+      "transport": "http",
+      "connection": {
+        "url": "http://127.0.0.1:30264/mcp",
+        "port": 30264
+      },
+      "tags": [
+        "toolhive-desktop",
+        "json",
+        "data"
+      ],
+      "description": "JSON data querying and manipulation",
+      "source": "json-query-mcp.json",
+      "image": "json-query-mcp",
+      "envVars": {
+        "MCP_TRANSPORT": "stdio"
+      },
+      "enabled": true
+    },
+    {
+      "id": "toolhive-memory",
+      "name": "memory",
+      "transport": "http",
+      "connection": {
+        "url": "http://127.0.0.1:40357/mcp",
+        "port": 40357
+      },
+      "tags": [
+        "toolhive-desktop",
+        "database",
+        "storage"
+      ],
+      "description": "Persistent memory and context storage",
+      "source": "memory.json",
+      "image": "docker.io/mcp/memory:latest",
+      "envVars": {
+        "MCP_TRANSPORT": "stdio"
+      },
+      "enabled": true
+    },
+    {
+      "id": "toolhive-modelcontextprotocol-server-filesystem",
+      "name": "modelcontextprotocol-server-filesystem",
+      "transport": "http",
+      "connection": {
+        "url": "http://127.0.0.1:41711/mcp",
+        "port": 41711
+      },
+      "tags": [
+        "toolhive-desktop",
+        "filesystem",
+        "io"
+      ],
+      "description": "Filesystem access and file operations",
+      "source": "modelcontextprotocol-server-filesystem.json",
+      "image": "toolhivelocal/npx-modelcontextprotocol-server-filesystem:20260219000701",
+      "envVars": {
+        "MCP_TRANSPORT": "stdio"
+      },
+      "enabled": true
+    },
+    {
+      "id": "toolhive-mongodb-p4nth30n",
+      "name": "mongodb-p4nth30n",
+      "transport": "http",
+      "connection": {
+        "url": "http://127.0.0.1:59767/mcp",
+        "port": 59767
+      },
+      "tags": [
+        "toolhive-desktop",
+        "database",
+        "storage",
+        "p4nth30n"
+      ],
+      "description": "MongoDB database access for P4NTH30N",
+      "source": "mongodb-p4nth30n.json",
+      "image": "mongodb-server:v1.1.0",
+      "envVars": {
+        "MCP_TRANSPORT": "stdio",
+        "MONGODB_URI": "mongodb://host.docker.internal:27017/P4NTH30N"
+      },
+      "enabled": true
+    },
+    {
+      "id": "toolhive-playwright",
+      "name": "playwright",
+      "transport": "http",
+      "connection": {
+        "url": "http://127.0.0.1:41224/mcp",
+        "port": 41224
+      },
+      "tags": [
+        "toolhive-desktop",
+        "browser",
+        "automation",
+        "cdp"
+      ],
+      "description": "Browser automation and web testing",
+      "source": "playwright.json",
+      "image": "mcr.microsoft.com/playwright/mcp:v0.0.68",
+      "envVars": {
+        "MCP_TRANSPORT": "stdio"
+      },
+      "enabled": true
+    },
+    {
+      "id": "toolhive-rag-server",
+      "name": "rag-server",
+      "transport": "http",
+      "connection": {
+        "url": "http://127.0.0.1:5001/mcp",
+        "port": 5001
+      },
+      "tags": [
+        "toolhive-desktop",
+        "search",
+        "p4nth30n"
+      ],
+      "description": "Retrieval-Augmented Generation server",
+      "source": "rag-server.json",
+      "image": "http://127.0.0.1:5300/mcp",
+      "envVars": {
+        "FASTMCP_PORT": "34599",
+        "MCP_PORT": "34599",
+        "MCP_TRANSPORT": "streamable-http"
+      },
+      "enabled": true
+    },
+    {
+      "id": "toolhive-sequentialthinking",
+      "name": "sequentialthinking",
+      "transport": "http",
+      "connection": {
+        "url": "http://127.0.0.1:24596/mcp",
+        "port": 24596
+      },
+      "tags": [
+        "toolhive-desktop",
+        "ai",
+        "reasoning"
+      ],
+      "description": "Sequential thinking and reasoning tools",
+      "source": "sequentialthinking.json",
+      "image": "docker.io/mcp/sequentialthinking:latest",
+      "envVars": {
+        "MCP_TRANSPORT": "stdio"
+      },
+      "enabled": true
+    },
+    {
+      "id": "toolhive-tavily-mcp",
+      "name": "tavily-mcp",
+      "transport": "http",
+      "connection": {
+        "url": "http://127.0.0.1:20854/mcp",
+        "port": 20854
+      },
+      "tags": [
+        "toolhive-desktop",
+        "web",
+        "scrape",
+        "fetch",
+        "search"
+      ],
+      "description": "AI-powered web search and content extraction",
+      "source": "tavily-mcp.json",
+      "image": "ghcr.io/stacklok/dockyard/npx/tavily-mcp:0.2.16",
+      "envVars": {
+        "MCP_TRANSPORT": "stdio"
+      },
+      "enabled": true
+    },
+    {
+      "id": "toolhive-toolhive-mcp-optimizer",
+      "name": "toolhive-mcp-optimizer",
+      "transport": "http",
+      "connection": {
+        "url": "http://127.0.0.1:19206/mcp",
+        "port": 19206
+      },
+      "tags": [
+        "toolhive-desktop",
+        "tooling",
+        "optimization"
+      ],
+      "description": "ToolHive MCP server optimization",
+      "source": "toolhive-mcp-optimizer.json",
+      "image": "ghcr.io/stackloklabs/mcp-optimizer:0.2.5",
+      "envVars": {
+        "ALLOWED_GROUPS": "default",
+        "FASTMCP_PORT": "25809",
+        "MCP_PORT": "25809",
+        "MCP_TRANSPORT": "stdio"
+      },
+      "enabled": true
+    }
+  ],
+  "metadata": {
+    "totalServers": 15,
+    "enabledServers": 15,
+    "httpServers": 15,
+    "stdioServers": 0
+  }
+}

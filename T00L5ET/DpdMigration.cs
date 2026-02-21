@@ -34,9 +34,7 @@ public class DpdMigrationRunner
 			var credentialsCollection = database.GetCollection<BsonDocument>("CR3D3N7IAL");
 			var jackpotsCollection = database.GetCollection<BsonDocument>("J4CKP0T");
 
-			var credentialsWithDpd = await credentialsCollection
-				.Find(new BsonDocument("DPD", new BsonDocument("$exists", true)))
-				.ToListAsync();
+			var credentialsWithDpd = await credentialsCollection.Find(new BsonDocument("DPD", new BsonDocument("$exists", true))).ToListAsync();
 
 			Console.WriteLine($"📋 Found {credentialsWithDpd.Count} credentials with DPD data");
 
@@ -52,10 +50,7 @@ public class DpdMigrationRunner
 
 				var dpd = cred["Dpd"].AsBsonDocument;
 
-				var filter = Builders<BsonDocument>.Filter.And(
-					Builders<BsonDocument>.Filter.Eq("House", house),
-					Builders<BsonDocument>.Filter.Eq("Game", game)
-				);
+				var filter = Builders<BsonDocument>.Filter.And(Builders<BsonDocument>.Filter.Eq("House", house), Builders<BsonDocument>.Filter.Eq("Game", game));
 
 				var existingJackpot = await jackpotsCollection.Find(filter).FirstOrDefaultAsync();
 

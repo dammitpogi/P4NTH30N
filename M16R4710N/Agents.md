@@ -19,6 +19,19 @@ Migration utility for transitioning between data formats or system versions. Han
   - Database: P4NTH30N
   - Current migration: DPD values from Credential to Jackpot documents
 
+## Recent Updates (2026-02-19)
+
+### CDP Migration Support
+- **Selenium to CDP Configuration**: Migrate browser automation settings
+- **Extension Path Updates**: Update RUL3S extension paths for CDP compatibility
+- **WebSocket Configuration**: Migrate from Selenium driver configs to CDP configs
+- **Selector-Based Automation**: Convert XPath/CSS selectors for CDP targeting
+
+### Data Structure Migrations
+- **VisionCommand Collection**: New collection for FourEyes integration
+- **SpinMetrics History**: Migrate operational monitoring data
+- **CDP Configuration**: New config format for HostIp, Port, timeouts
+
 ## Migration Types
 
 ### Schema Migrations

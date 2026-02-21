@@ -1,0 +1,36 @@
+{
+  "version": "1.0.0",
+  "description": "P4NTH30N Config Deployer manifest - maps repo sources to runtime destinations",
+  "mappings": {
+    "agents": [
+      { "source": "STR4TEG15T/prompt.md", "destination": "~/.config/opencode/agents/strategist.md" },
+      { "source": "OP3NF1XER/prompt.md", "destination": "~/.config/opencode/agents/openfixer.md" },
+      { "source": "W1NDF1XER/prompt.md", "destination": "~/.config/opencode/agents/windfixer.md" },
+      { "source": "OR4CL3/prompt.md", "destination": "~/.config/opencode/agents/oracle.md" },
+      { "source": "DE51GN3R/prompt.md", "destination": "~/.config/opencode/agents/designer.md" },
+      { "source": "LIBRAR14N/prompt.md", "destination": "~/.config/opencode/agents/librarian.md" },
+      { "source": "EXPL0R3R/prompt.md", "destination": "~/.config/opencode/agents/explorer.md" },
+      { "source": "F0RGE/prompt.md", "destination": "~/.config/opencode/agents/forgewright.md" }
+    ],
+    "windsurf": [
+      { "source": ".windsurf/settings.json", "destination": ".windsurf/settings.json", "type": "inrepo" },
+      { "source": ".windsurf/workflows/", "destination": ".windsurf/workflows/", "type": "directory_sync" }
+    ],
+    "mcp": [
+      { "source": ".config/opencode/oh-my-opencode.json", "destination": "~/.config/opencode/oh-my-opencode.json" }
+    ],
+    "binaries": [
+      {
+        "source": "src/RAG.McpHost/RAG.McpHost.csproj",
+        "destination": "C:\\ProgramData\\P4NTH30N\\bin\\",
+        "type": "publish",
+        "runtime": "win-x64",
+        "configuration": "Release"
+      }
+    ]
+  },
+  "validation": {
+    "hashAlgorithm": "SHA256",
+    "verifyAfterCopy": true
+  }
+}

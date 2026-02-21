@@ -1,12 +1,14 @@
 using P4NTH30N.UNI7T35T.Tests;
 using UNI7T35T.Mocks;
 using UNI7T35T.Tests;
+using P4NTH35T.Tests;
+using EndToEndTests = P4NTH30N.UNI7T35T.Tests.EndToEndTests;
 
 namespace UNI7T35T;
 
 class Program
 {
-	static int Main(string[] args)
+	static async Task<int> Main(string[] args)
 	{
 		Console.WriteLine("╔════════════════════════════════════════════════════════════════════╗");
 		Console.WriteLine("║          UNI7T35T - P4NTH30N Test Platform                        ║");
@@ -42,15 +44,114 @@ class Program
 
 		Func<bool>[] encryptionTestMethods =
 		[
-			() => { encTests.Setup(); try { return encTests.TestKeyGenerationAndLoading(); } finally { encTests.Cleanup(); } },
-			() => { encTests.Setup(); try { return encTests.TestEncryptDecryptRoundTrip(); } finally { encTests.Cleanup(); } },
-			() => { encTests.Setup(); try { return encTests.TestNonceUniqueness(); } finally { encTests.Cleanup(); } },
-			() => { encTests.Setup(); try { return encTests.TestTamperDetection(); } finally { encTests.Cleanup(); } },
-			() => { encTests.Setup(); try { return encTests.TestCompactStringRoundTrip(); } finally { encTests.Cleanup(); } },
-			() => { encTests.Setup(); try { return encTests.TestDifferentKeysProduceDifferentCiphertext(); } finally { encTests.Cleanup(); } },
-			() => { encTests.Setup(); try { return encTests.TestPreventAccidentalKeyOverwrite(); } finally { encTests.Cleanup(); } },
-			() => { encTests.Setup(); try { return encTests.TestInvalidCompactStringFormats(); } finally { encTests.Cleanup(); } },
-			() => { encTests.Setup(); try { return encTests.TestKeyDerivationDeterminism(); } finally { encTests.Cleanup(); } },
+			() =>
+			{
+				encTests.Setup();
+				try
+				{
+					return encTests.TestKeyGenerationAndLoading();
+				}
+				finally
+				{
+					encTests.Cleanup();
+				}
+			},
+			() =>
+			{
+				encTests.Setup();
+				try
+				{
+					return encTests.TestEncryptDecryptRoundTrip();
+				}
+				finally
+				{
+					encTests.Cleanup();
+				}
+			},
+			() =>
+			{
+				encTests.Setup();
+				try
+				{
+					return encTests.TestNonceUniqueness();
+				}
+				finally
+				{
+					encTests.Cleanup();
+				}
+			},
+			() =>
+			{
+				encTests.Setup();
+				try
+				{
+					return encTests.TestTamperDetection();
+				}
+				finally
+				{
+					encTests.Cleanup();
+				}
+			},
+			() =>
+			{
+				encTests.Setup();
+				try
+				{
+					return encTests.TestCompactStringRoundTrip();
+				}
+				finally
+				{
+					encTests.Cleanup();
+				}
+			},
+			() =>
+			{
+				encTests.Setup();
+				try
+				{
+					return encTests.TestDifferentKeysProduceDifferentCiphertext();
+				}
+				finally
+				{
+					encTests.Cleanup();
+				}
+			},
+			() =>
+			{
+				encTests.Setup();
+				try
+				{
+					return encTests.TestPreventAccidentalKeyOverwrite();
+				}
+				finally
+				{
+					encTests.Cleanup();
+				}
+			},
+			() =>
+			{
+				encTests.Setup();
+				try
+				{
+					return encTests.TestInvalidCompactStringFormats();
+				}
+				finally
+				{
+					encTests.Cleanup();
+				}
+			},
+			() =>
+			{
+				encTests.Setup();
+				try
+				{
+					return encTests.TestKeyDerivationDeterminism();
+				}
+				finally
+				{
+					encTests.Cleanup();
+				}
+			},
 		];
 
 		foreach (Func<bool> test in encryptionTestMethods)
@@ -91,6 +192,138 @@ class Program
 		(int sigPassed, int sigFailed) = SignalServiceTests.RunAll();
 		totalTests += sigPassed + sigFailed;
 		passedTests += sigPassed;
+
+		// ── CdpGameActions Tests (OPS_009) ─────────────────────────────
+		Console.WriteLine("\nRunning CdpGameActions Tests (OPS_009)...\n");
+		(int cdpPassed, int cdpFailed) = CdpGameActionsTests.RunAll();
+		totalTests += cdpPassed + cdpFailed;
+		passedTests += cdpPassed;
+
+		// ── E2E Test Harness Tests (TEST-035) ─────────────────────────
+		Console.WriteLine("\nRunning E2E Test Harness Tests (TEST-035)...\n");
+		(int e2ePassed, int e2eFailed) = EndToEndTests.RunAll();
+		totalTests += e2ePassed + e2eFailed;
+		passedTests += e2ePassed;
+
+		// ── FirstSpinController Tests (SPIN-044) ──────────────────────
+		Console.WriteLine("\nRunning FirstSpinController Tests...\n");
+		(int fsPassed, int fsFailed) = FirstSpinControllerTests.RunAll();
+		totalTests += fsPassed + fsFailed;
+		passedTests += fsPassed;
+
+		// ── FourEyes Vision Test (FEAT-036) ────────────────────────────────
+		Console.WriteLine("\nRunning FourEyes Vision Pipeline Test...\n");
+		try
+		{
+			await FourEyesVisionTest.RunAsync();
+			totalTests++;
+			passedTests++;
+			Console.WriteLine("✅ FourEyes vision test completed");
+		}
+		catch (Exception ex)
+		{
+			totalTests++;
+			Console.WriteLine($"❌ FourEyes vision test failed: {ex.Message}");
+		}
+
+		// ── Parallel Execution Tests (ARCH-047) ───────────────────────────
+		Console.WriteLine("\nRunning Parallel Execution Tests (ARCH-047)...\n");
+		(int parPassed, int parFailed) = ParallelExecutionTests.RunAll();
+		totalTests += parPassed + parFailed;
+		passedTests += parPassed;
+
+		// ── Session Renewal Tests (AUTH-041) ───────────────────────────────
+		Console.WriteLine("\nRunning Session Renewal Tests (AUTH-041)...\n");
+		(int srPassed, int srFailed) = SessionRenewalTests.RunAll();
+		totalTests += srPassed + srFailed;
+		passedTests += srPassed;
+
+		// ── Signal Generator Tests (ARCH-055) ─────────────────────────────
+		Console.WriteLine("\nRunning Signal Generator Tests (ARCH-055)...\n");
+		(int sgPassed, int sgFailed) = SignalGeneratorTests.RunAll();
+		totalTests += sgPassed + sgFailed;
+		passedTests += sgPassed;
+
+		// ── System Health Report Tests (ARCH-055) ─────────────────────────
+		Console.WriteLine("\nRunning System Health Report Tests (ARCH-055)...\n");
+		(int shPassed, int shFailed) = SystemHealthReportTests.RunAll();
+		totalTests += shPassed + shFailed;
+		passedTests += shPassed;
+
+		// ── Anomaly Detector Tests (DECISION_025) ────────────────────────
+		Console.WriteLine("\nRunning Anomaly Detector Tests...\n");
+		(int adPassed, int adFailed) = AnomalyDetectorTests.RunAll();
+		totalTests += adPassed + adFailed;
+		passedTests += adPassed;
+
+		// ── CDP Lifecycle Manager Tests (AUTO-056) ───────────────────────
+		Console.WriteLine("\nRunning CDP Lifecycle Manager Tests (AUTO-056)...\n");
+		(int clPassed, int clFailed) = CdpLifecycleManagerTests.RunAll();
+		totalTests += clPassed + clFailed;
+		passedTests += clPassed;
+
+		// ── Burn-In Monitor Tests (MON-057/058/059/060) ─────────────────
+		Console.WriteLine("\nRunning Burn-In Monitor Tests (MON-057/058/059/060)...\n");
+		(int bmPassed, int bmFailed) = BurnInMonitorTests.RunAll();
+		totalTests += bmPassed + bmFailed;
+		passedTests += bmPassed;
+
+		// ── DECISION_070: Credential Lock Leak Tests ────────────────────
+		Console.WriteLine("\nRunning Credential Lock Tests (DECISION_070)...\n");
+		(int d070Passed, int d070Failed) = H0UNDCredentialLockTests.RunAll();
+		totalTests += d070Passed + d070Failed;
+		passedTests += d070Passed;
+
+		// ── DECISION_069: DPD Data Persistence Tests ───────────────────
+		Console.WriteLine("\nRunning DPD Data Persistence Tests (DECISION_069)...\n");
+		(int d069Passed, int d069Failed) = AnalyticsWorkerDPDTests.RunAll();
+		totalTests += d069Passed + d069Failed;
+		passedTests += d069Passed;
+
+		// ── DECISION_071: Signal Preservation Tests ────────────────────
+		Console.WriteLine("\nRunning Signal Preservation Tests (DECISION_071)...\n");
+		(int d071Passed, int d071Failed) = AnalyticsWorkerSignalPreservationTests.RunAll();
+		totalTests += d071Passed + d071Failed;
+		passedTests += d071Passed;
+
+		// ── DECISION_072: Idempotent Generator Fallback Tests ─────────
+		Console.WriteLine("\nRunning Idempotent Generator Fallback Tests (DECISION_072)...\n");
+		(int d072Passed, int d072Failed) = IdempotentSignalGeneratorDecision072Tests.RunAll();
+		totalTests += d072Passed + d072Failed;
+		passedTests += d072Passed;
+
+		// ── DECISION_073: WebSocket Error Handling Tests ───────────────
+		Console.WriteLine("\nRunning WebSocket Error Handling Tests (DECISION_073)...\n");
+		(int d073Passed, int d073Failed) = FireKirinQueryBalancesTests.RunAll();
+		totalTests += d073Passed + d073Failed;
+		passedTests += d073Passed;
+
+		// ── DECISION_074: Dedup TTL Tests ─────────────────────────────
+		Console.WriteLine("\nRunning Dedup TTL Tests (DECISION_074)...\n");
+		(int d074Passed, int d074Failed) = SignalDeduplicationCacheDecision074Tests.RunAll();
+		totalTests += d074Passed + d074Failed;
+		passedTests += d074Passed;
+
+		// ── DECISION_075: Signal Reclaim Window Tests ─────────────────
+		Console.WriteLine("\nRunning Signal Reclaim Window Tests (DECISION_075)...\n");
+		(int d075Passed, int d075Failed) = SignalDistributorReclaimTests.RunAll();
+		totalTests += d075Passed + d075Failed;
+		passedTests += d075Passed;
+
+		// ── Canvas Login Tests (FireKirin Typing Fix) ─────────────────────
+		Console.WriteLine("\nRunning Canvas Login Tests (FireKirin Typing Fix)...\n");
+		try
+		{
+			bool canvasResult = await CanvasLoginTests.TestFireKirinLoginWithScreenshot();
+			totalTests++;
+			if (canvasResult) passedTests++;
+			Console.WriteLine($"Canvas Login Test: {(canvasResult ? "PASSED" : "FAILED")}");
+		}
+		catch (Exception ex)
+		{
+			totalTests++;
+			Console.WriteLine($"Canvas Login Test: EXCEPTION - {ex.Message}");
+		}
 
 		// ── Summary ──────────────────────────────────────────────────────
 		Console.WriteLine("\n╔════════════════════════════════════════════════════════════════════╗");

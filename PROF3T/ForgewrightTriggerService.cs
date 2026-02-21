@@ -11,13 +11,15 @@ namespace P4NTH30N.PROF3T;
 /// FOUREYES-024: Forgewright auto-triage trigger service.
 /// Monitors AutoBugLogger and triggers automated triage based on severity and frequency.
 /// </summary>
-public class ForgewrightTriggerService {
+public class ForgewrightTriggerService
+{
 	private readonly AutoBugLogger _bugLogger;
 	private readonly ForgewrightConfig _config;
 
 	public event Action<BugReport, TriageDecision>? OnTriageDecision;
 
-	public ForgewrightTriggerService(AutoBugLogger bugLogger, ForgewrightConfig? config = null) {
+	public ForgewrightTriggerService(AutoBugLogger bugLogger, ForgewrightConfig? config = null)
+	{
 		_bugLogger = bugLogger;
 		_config = config ?? new ForgewrightConfig();
 	}
@@ -25,11 +27,13 @@ public class ForgewrightTriggerService {
 	/// <summary>
 	/// Evaluates all new bugs and makes triage decisions.
 	/// </summary>
-	public List<TriageDecision> EvaluateAndTriage() {
+	public List<TriageDecision> EvaluateAndTriage()
+	{
 		List<TriageDecision> decisions = new();
 		IReadOnlyList<BugReport> newBugs = _bugLogger.GetNewBugs();
 
-		foreach (BugReport bug in newBugs.Where(b => b.TriageStatus == BugTriageStatus.New)) {
+		foreach (BugReport bug in newBugs.Where(b => b.TriageStatus == BugTriageStatus.New))
+		{
 			TriageDecision decision = MakeTriageDecision(bug);
 			decisions.Add(decision);
 
@@ -42,10 +46,13 @@ public class ForgewrightTriggerService {
 		return decisions;
 	}
 
-	private TriageDecision MakeTriageDecision(BugReport bug) {
+	private TriageDecision MakeTriageDecision(BugReport bug)
+	{
 		// Critical + frequent = immediate escalation
-		if (bug.Severity == BugSeverity.Critical && bug.OccurrenceCount >= _config.CriticalEscalationThreshold) {
-			return new TriageDecision {
+		if (bug.Severity == BugSeverity.Critical && bug.OccurrenceCount >= _config.CriticalEscalationThreshold)
+		{
+			return new TriageDecision
+			{
 				BugId = bug.Id,
 				Action = TriageAction.Escalate,
 				Reason = $"Critical bug with {bug.OccurrenceCount} occurrences",
@@ -54,8 +61,10 @@ public class ForgewrightTriggerService {
 		}
 
 		// Critical = auto-fix attempt
-		if (bug.Severity == BugSeverity.Critical) {
-			return new TriageDecision {
+		if (bug.Severity == BugSeverity.Critical)
+		{
+			return new TriageDecision
+			{
 				BugId = bug.Id,
 				Action = TriageAction.AutoFix,
 				Reason = "Critical severity - attempting automated fix",
@@ -64,8 +73,10 @@ public class ForgewrightTriggerService {
 		}
 
 		// High + frequent = queue for human review
-		if (bug.Severity == BugSeverity.High && bug.OccurrenceCount >= _config.HighFrequencyThreshold) {
-			return new TriageDecision {
+		if (bug.Severity == BugSeverity.High && bug.OccurrenceCount >= _config.HighFrequencyThreshold)
+		{
+			return new TriageDecision
+			{
 				BugId = bug.Id,
 				Action = TriageAction.HumanReview,
 				Reason = $"High severity bug occurring {bug.OccurrenceCount} times",
@@ -74,8 +85,10 @@ public class ForgewrightTriggerService {
 		}
 
 		// High = auto-fix attempt
-		if (bug.Severity == BugSeverity.High) {
-			return new TriageDecision {
+		if (bug.Severity == BugSeverity.High)
+		{
+			return new TriageDecision
+			{
 				BugId = bug.Id,
 				Action = TriageAction.AutoFix,
 				Reason = "High severity - attempting automated fix",
@@ -84,8 +97,10 @@ public class ForgewrightTriggerService {
 		}
 
 		// Medium = log and monitor
-		if (bug.Severity == BugSeverity.Medium) {
-			return new TriageDecision {
+		if (bug.Severity == BugSeverity.Medium)
+		{
+			return new TriageDecision
+			{
 				BugId = bug.Id,
 				Action = TriageAction.Monitor,
 				Reason = "Medium severity - monitoring for escalation",
@@ -94,7 +109,8 @@ public class ForgewrightTriggerService {
 		}
 
 		// Low = log only
-		return new TriageDecision {
+		return new TriageDecision
+		{
 			BugId = bug.Id,
 			Action = TriageAction.LogOnly,
 			Reason = "Low severity - logged for reference",
@@ -103,13 +119,15 @@ public class ForgewrightTriggerService {
 	}
 }
 
-public class ForgewrightConfig {
+public class ForgewrightConfig
+{
 	public int CriticalEscalationThreshold { get; set; } = 5;
 	public int HighFrequencyThreshold { get; set; } = 10;
 	public int AutoFixMaxAttempts { get; set; } = 3;
 }
 
-public class TriageDecision {
+public class TriageDecision
+{
 	public string BugId { get; set; } = string.Empty;
 	public TriageAction Action { get; set; }
 	public string Reason { get; set; } = string.Empty;
@@ -117,7 +135,8 @@ public class TriageDecision {
 	public DateTime Timestamp { get; set; } = DateTime.UtcNow;
 }
 
-public enum TriageAction {
+public enum TriageAction
+{
 	LogOnly,
 	Monitor,
 	AutoFix,

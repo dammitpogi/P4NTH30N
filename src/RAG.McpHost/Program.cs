@@ -113,11 +113,19 @@ public static class Program
 			Console.WriteLine($"[RAG.McpHost] Python bridge: {(bridgeHealthy ? "healthy" : "unavailable")}");
 		}
 
-		// Run MCP server via stdio transport
-		StdioMcpTransport transport = new(mcpServer);
-		Console.WriteLine("[RAG.McpHost] MCP server ready. Listening on stdio.");
-
-		await transport.RunAsync(cancellationToken);
+		// Run MCP server via selected transport
+		if (config.Transport.Equals("http", StringComparison.OrdinalIgnoreCase))
+		{
+			HttpMcpTransport httpTransport = new(mcpServer, config.Port);
+			Console.Error.WriteLine($"[RAG.McpHost] MCP server ready. Listening on http://127.0.0.1:{config.Port}/mcp");
+			await httpTransport.RunAsync(cancellationToken);
+		}
+		else
+		{
+			StdioMcpTransport stdioTransport = new(mcpServer);
+			Console.Error.WriteLine("[RAG.McpHost] MCP server ready. Listening on stdio.");
+			await stdioTransport.RunAsync(cancellationToken);
+		}
 
 		// Cleanup
 		await vectorStore.SaveAsync(CancellationToken.None);
@@ -200,7 +208,7 @@ public static class Program
 			  --mongo <uri>             MongoDB connection URI (default: mongodb://localhost:27017)
 			  --db <name>               MongoDB database name (default: P4NTH30N)
 			  --max-restarts <n>        Max auto-restart attempts (default: 5)
-			  --transport, -t <mode>    Transport mode: stdio (default: stdio)
+			  --transport, -t <mode>    Transport mode: stdio or http (default: http)
 			  --help, -h                Show this help
 			"""
 		);
@@ -219,5 +227,5 @@ internal sealed class HostConfig
 	public string MongoUri { get; set; } = "mongodb://localhost:27017";
 	public string DatabaseName { get; set; } = "P4NTH30N";
 	public int MaxRestarts { get; set; } = 5;
-	public string Transport { get; set; } = "stdio";
+	public string Transport { get; set; } = "http";
 }

@@ -1,0 +1,17 @@
+{
+	"name": "p4nth30n-foureyes-mcp",
+	"version": "1.0.0",
+	"description": "MCP server exposing FourEyes vision capabilities — CDP screenshots + LMStudio local model analysis. Accessible by WindSurf and OpenCode.",
+	"type": "module",
+	"main": "server.js",
+	"bin": {
+		"p4nth30n-foureyes-mcp": "./server.js"
+	},
+	"scripts": {
+		"start": "node server.js",
+		"start:stdio": "node server.js stdio"
+	},
+	"dependencies": {
+		"ws": "^8.18.0"
+	}
+}

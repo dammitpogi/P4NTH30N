@@ -9,12 +9,15 @@ namespace P4NTH30N.PROF3T.Forgewright;
 /// FOUREYES-024-C: Platform-specific code generator for Forgewright fixes.
 /// Generates platform-appropriate fix code based on bug analysis.
 /// </summary>
-public class PlatformGenerator {
+public class PlatformGenerator
+{
 	/// <summary>
 	/// Generates a fix patch for the given analysis and suggestion.
 	/// </summary>
-	public string GeneratePatch(FixAnalysis analysis, FixSuggestion suggestion) {
-		return suggestion.FixType switch {
+	public string GeneratePatch(FixAnalysis analysis, FixSuggestion suggestion)
+	{
+		return suggestion.FixType switch
+		{
 			FixType.NullGuard => GenerateNullGuard(analysis),
 			FixType.RetryLogic => GenerateRetryLogic(analysis),
 			FixType.CircuitBreaker => GenerateCircuitBreakerPatch(analysis),
@@ -25,7 +28,8 @@ public class PlatformGenerator {
 		};
 	}
 
-	private static string GenerateNullGuard(FixAnalysis analysis) {
+	private static string GenerateNullGuard(FixAnalysis analysis)
+	{
 		StringBuilder sb = new();
 		sb.AppendLine($"// FOUREYES-024-C: Auto-generated null guard for {analysis.ExceptionType}");
 		sb.AppendLine($"// Source: {analysis.SourceFile}:{analysis.SourceLine}");
@@ -37,7 +41,8 @@ public class PlatformGenerator {
 		return sb.ToString();
 	}
 
-	private static string GenerateRetryLogic(FixAnalysis analysis) {
+	private static string GenerateRetryLogic(FixAnalysis analysis)
+	{
 		StringBuilder sb = new();
 		sb.AppendLine($"// FOUREYES-024-C: Auto-generated retry logic for {analysis.ExceptionType}");
 		sb.AppendLine("int retries = 0;");
@@ -55,7 +60,8 @@ public class PlatformGenerator {
 		return sb.ToString();
 	}
 
-	private static string GenerateCircuitBreakerPatch(FixAnalysis analysis) {
+	private static string GenerateCircuitBreakerPatch(FixAnalysis analysis)
+	{
 		StringBuilder sb = new();
 		sb.AppendLine($"// FOUREYES-024-C: Circuit breaker integration for {analysis.Component}");
 		sb.AppendLine("if (_circuitBreaker.State == CircuitState.Open) {");
@@ -65,7 +71,8 @@ public class PlatformGenerator {
 		return sb.ToString();
 	}
 
-	private static string GenerateInputValidation(FixAnalysis analysis) {
+	private static string GenerateInputValidation(FixAnalysis analysis)
+	{
 		StringBuilder sb = new();
 		sb.AppendLine($"// FOUREYES-024-C: Input validation for {analysis.ExceptionType}");
 		sb.AppendLine("ArgumentNullException.ThrowIfNull(parameter);");
@@ -74,7 +81,8 @@ public class PlatformGenerator {
 		return sb.ToString();
 	}
 
-	private static string GenerateLogging(FixAnalysis analysis) {
+	private static string GenerateLogging(FixAnalysis analysis)
+	{
 		StringBuilder sb = new();
 		sb.AppendLine($"// FOUREYES-024-C: Structured logging at error site");
 		sb.AppendLine("catch (Exception ex) {");
@@ -86,7 +94,8 @@ public class PlatformGenerator {
 		return sb.ToString();
 	}
 
-	private static string GenerateExceptionHandler(FixAnalysis analysis) {
+	private static string GenerateExceptionHandler(FixAnalysis analysis)
+	{
 		StringBuilder sb = new();
 		sb.AppendLine($"// FOUREYES-024-C: Exception handler for {analysis.ExceptionType}");
 		sb.AppendLine("try {");

@@ -80,12 +80,25 @@ Resource override system that manipulates browser behavior for game automation. 
 ## Integration
 
 **Consumed By**:
-- `H4ND`: Automation agent uses injected JavaScript hooks to control games
+- `H4ND`: Automation agent uses injected JavaScript hooks to control games (now CDP-compatible)
 - `H0UND`: May use for data collection if direct API access unavailable
 
 **Dependencies**:
 - Chrome Extension APIs: `webRequest`, `webNavigation`, `storage`, `tabs`
 - Third-party libraries: Ace editor (rule editing), jQuery (DOM manipulation)
+
+## Recent Updates (2026-02-19)
+
+### CDP Compatibility
+- Extension remains compatible with Chrome DevTools Protocol
+- JavaScript injection hooks now accessible via CDP evaluate
+- Header manipulation still works with CDP WebSocket connections
+- Asset override rules unchanged for CDP-based automation
+
+### H4ND Integration
+- Extension loading via CdpGameActions instead of Selenium Launch
+- Grand jackpot reading via `window.parent.Grand` still supported
+- Resource override rules enhanced for CDP selector targeting
 
 ## File Structure
 ```

@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  decisions-server:
+    image: decisions-server:v1.2.0
+    container_name: decisions-server
+    restart: unless-stopped
+    environment:
+      # MongoDB connection using host.docker.internal which maps to host
+      - MONGODB_URI=mongodb://host.docker.internal:27017/P4NTH30N
+      - MCP_TRANSPORT=stdio
+      # Additional config for Node.js to properly resolve host.docker.internal
+      - NODE_OPTIONS=--dns-result-order=ipv4first
+    # Use host networking mode for direct access to host services
+    # This bypasses the need for port mapping and allows localhost:27017 to work
+    network_mode: host
+    # Alternative: Use bridge network with extra_hosts
+    # networks:
+    #   - toolhive-external
+    # extra_hosts:
+    #   - "host.docker.internal:host-gateway"
+    labels:
+      - "toolhive=true"
+      - "toolhive-basename=decisions-server"
+      - "toolhive-name=decisions-server"
+      - "toolhive-transport=stdio"
+    healthcheck:
+      test: ["CMD", "nc", "-z", "host.docker.internal", "27017"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+# networks:
+#   toolhive-external:
+#     external: true

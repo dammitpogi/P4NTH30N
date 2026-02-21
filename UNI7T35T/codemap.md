@@ -211,3 +211,33 @@ dotnet watch test --project ./UNI7T35T/UNI7T35T.csproj
 - Build: Clean (no errors)
 - Formatting: Passes csharpier check
 - Test Suite: All green
+
+### New Test Components (2026-02-20)
+- **TestHarness/CdpTestClient.cs**: CDP test client for testing
+- **TestHarness/GameReadinessChecker.cs**: Game readiness validation
+- **TestHarness/LoginValidator.cs**: Login validation testing
+- **TestHarness/SpinExecutor.cs**: Spin execution testing
+- **TestHarness/SplashDetector.cs**: Splash screen detection
+- **TestHarness/TestConfiguration.cs**: Test configuration
+- **TestHarness/TestFixture.cs**: Test fixture setup
+- **TestHarness/TestOrchestrator.cs**: Test orchestration
+- **TestHarness/TestReportGenerator.cs**: Test report generation
+- **TestHarness/TestSignalInjector.cs**: Signal injection for testing
+- **TestHarness/VisionCapture.cs**: Vision capture for testing
+- **Mocks/MockCdpClient.cs**: Mock CDP client
+- **Mocks/MockFourEyesClient.cs**: Mock FourEyes client
+- **Mocks/MockRepoTestResults.cs**: Mock test results repository
+- **Tests/FourEyesVisionTest.cs**: FourEyes vision tests
+- **Tests/LiveJackpotReaderTest.cs**: Live jackpot reader tests
+- **Tests/AnomalyDetectorTests.cs**: Anomaly detector tests
+- **Tests/CdpGameActionsTests.cs**: CDP game actions tests
+- **Tests/EndToEndTests.cs**: End-to-end integration tests
+- **Tests/FirstSpinControllerTests.cs**: First spin controller tests
+- **Tests/ParallelExecutionTests.cs**: Parallel execution tests
+- **Tests/SessionRenewalTests.cs**: Session renewal tests
+- **Tests/SignalGeneratorTests.cs**: Signal generator tests
+- **Tests/SystemHealthReportTests.cs**: System health report tests
+- **Tests/CdpLifecycleManagerTests.cs**: CDP lifecycle manager tests
+- **Tests/BurnInMonitorTests.cs**: Burn-in monitor tests
+
+(End of file)

@@ -1,0 +1,22 @@
+{
+  "name": "@p4nth30n/toolhive-gateway",
+  "version": "1.1.0",
+  "description": "Unified MCP tool discovery, routing, and health monitoring gateway for P4NTH30N agents with ToolHive Desktop integration (DECISION_051)",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "config:discover": "ts-node scripts/discover-toolhive-desktop.ts",
+    "config:validate": "ts-node scripts/validate-config.ts",
+    "config:deploy": "ts-node scripts/deploy-config.ts --backup",
+    "config:rollback": "ts-node scripts/rollback-config.ts",
+    "config:full": "npm run config:discover && npm run config:validate && npm run config:deploy"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "typescript": "^5.3.0",
+    "ts-node": "^10.9.0"
+  }
+}

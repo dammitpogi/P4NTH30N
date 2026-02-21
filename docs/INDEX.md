@@ -1,52 +1,76 @@
 # P4NTH30N Documentation
 
-Welcome to the P4NTH30N documentation. This is your comprehensive guide to understanding, deploying, and extending the platform.
+Welcome to the P4NTH30N **Self-Funded Agentic Development Environment** documentation. This is your comprehensive guide to understanding, deploying, and extending an autonomous ecosystem where agents collaborate to fund their own development through intelligent automation.
+
+## 🎯 Platform Evolution
+
+**Phase 1: Casino Automation** → **Phase 2: Agent Framework** → **Phase 3: Self-Funding Ecosystem**
+
+P4NTH30N has evolved from a specialized casino automation system into a comprehensive autonomous development environment where 9 specialized agents collaborate through formal decision frameworks to generate revenue, fund development, and continuously expand their capabilities.
 
 ## 🚀 Quick Navigation
 
 **I am a...**
 
 ### New Developer
-1. [System Overview](overview.md) — What is P4NTH30N?
+1. [System Overview](overview.md) — From casino automation to self-funding ecosystem
 2. [Quick Start Guide](getting-started/quickstart.md) — Get running in 5 minutes
-3. [Core Concepts](getting-started/concepts.md) — DPD, signals, and architecture
+3. [Core Concepts](getting-started/concepts.md) — Agents, decisions, RAG, and self-funding
 4. [Development Setup](development/setup.md) — Configure your dev environment
 
-### Operator / DevOps
-1. [System Requirements](SYSTEM_REQUIREMENTS.md) — What you need
-2. [Setup Guide](SETUP.md) — Installation procedures
-3. [Deployment Runbook](operations/runbooks/DEPLOYMENT.md) — Deploy to production
-4. [Go-Live Checklist](deployment/GOLIVE_CHECKLIST.md) — Production readiness
-5. [Troubleshooting Guide](operations/runbooks/TROUBLESHOOTING.md) — Fix issues
+### Agent Operator
+1. [Agent Framework Guide](agents/FRAMEWORK.md) — Understanding the 9-agent ecosystem
+2. [Decision Framework](agents/DECISIONS.md) — 204 decisions across 41 categories
+3. [Consultation Patterns](agents/CONSULTATIONS.md) — Oracle approval and Designer assessment
+4. [Execution Workflows](agents/EXECUTION.md) — WindFixer + OpenFixer sequential handoffs
 
-### Architect / Decision Maker
-1. [Architecture Decision Records](architecture/decisions/)
-2. [Core Systems Architecture](architecture/decisions/ADR-001-Core-Systems.md)
-3. [Implementation Plan](deployment/IMPLEMENTATION_PLAN.md)
-4. [Modernization Roadmap](modernization.md)
+### Revenue Operator
+1. [Revenue Generation](revenue/GENERATION.md) — Casino automation and income streams
+2. [Funding Allocation](revenue/ALLOCATION.md) — Self-funding development cycles
+3. [Performance Metrics](revenue/METRICS.md) — ROI and efficiency tracking
+4. **Safety Systems**: [Spend Limits](revenue/SAFETY.md), [Circuit Breakers](revenue/CIRCUITS.md)
 
-### Security Engineer
-1. [Security Policy](security/SECURITY.md)
-2. [Key Management](security/KEY_MANAGEMENT.md)
-3. [Casino Setup](security/credentials/CASINO_SETUP.md)
-4. [Emergency Response](operations/procedures/EMERGENCY_RESPONSE.md)
+### System Architect
+1. [Architecture Evolution](architecture/EVOLUTION.md) — Three-phase development roadmap
+2. [Agent Architecture](architecture/AGENTS.md) — 9 specialized agents and interactions
+3. [Decision Framework](architecture/DECISIONS.md) — 204 formalized decisions
+4. [RAG System](architecture/RAG.md) — Institutional memory and learning
+5. [Self-Funding Model](architecture/SELF-FUNDING.md) — Economic sustainability design
 
 ## 📚 Documentation Structure
 
 ### 🎓 [Getting Started](getting-started/)
-Essential first steps and core concepts.
+Essential first steps and core concepts for the self-funding ecosystem.
+
+### 🤖 [Agent Framework](agents/)
+The 9-agent ecosystem: Strategist, Oracle, Designer, WindFixer, OpenFixer, Explorer, Librarian, Forgewright, W1NDF1XER.
 
 ### 🏗️ [Architecture](architecture/)
-System design, patterns, and decision records.
+System design evolution, decision framework, RAG system, and self-funding model.
+
+### 💰 [Revenue & Self-Funding](revenue/)
+Revenue generation, funding allocation, safety systems, and economic sustainability.
 
 ### 💻 [Development](development/)
-Guides for developers working on the codebase.
+Guides for developers working on the autonomous agent codebase.
 
 ### 🔧 [Configuration](configuration/)
-Complete reference for all configuration options.
+Complete reference for all configuration options across agents and systems.
 
 ### 📚 [API Reference](api-reference/)
-Interface documentation for all public APIs.
+Interface documentation for all public APIs and MCP tools.
+
+### 🛡️ [Operations & Safety](operations/)
+Deployment runbooks, incident response, emergency procedures, and safety systems.
+
+### 🔐 [Security](security/)
+Security policies, key management, credential setup, and audit procedures.
+
+### 📊 [Decision Archive](decisions/)
+Complete archive of 204 formalized decisions with consultation history and outcomes.
+
+### 🧠 [Knowledge & Learning](knowledge/)
+RAG system documentation, institutional memory, and agent learning capabilities.
 
 ### 📊 [Data Models](data-models/)
 MongoDB schemas and entity relationships.

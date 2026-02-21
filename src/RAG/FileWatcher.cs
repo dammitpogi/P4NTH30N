@@ -212,7 +212,26 @@ public sealed class FileWatcherConfig
 	/// Directories to watch for changes.
 	/// </summary>
 	public List<string> WatchPaths { get; init; } =
-		new() { @"C:\P4NTH30N\docs", @"C:\P4NTH30N\T4CT1CS\intel", @"C:\P4NTH30N\C0MMON", @"C:\P4NTH30N\H0UND", @"C:\P4NTH30N\H4ND" };
+		new()
+		{
+			@"C:\P4NTH30N\docs",
+			@"C:\P4NTH30N\STR4TEG15T\decisions",
+			@"C:\P4NTH30N\STR4TEG15T\speech",
+			@"C:\P4NTH30N\STR4TEG15T\canon",
+			@"C:\P4NTH30N\STR4TEG15T\intel",
+			@"C:\P4NTH30N\OP3NF1XER\deployments",
+			@"C:\P4NTH30N\OP3NF1XER\knowledge",
+			@"C:\P4NTH30N\W1NDF1XER\deployments",
+			@"C:\P4NTH30N\W1NDF1XER\knowledge",
+			@"C:\P4NTH30N\OR4CL3\consultations",
+			@"C:\P4NTH30N\DE51GN3R\consultations",
+			@"C:\P4NTH30N\DE51GN3R\decisions",
+			@"C:\P4NTH30N\T4CT1CS\intel",
+			@"C:\P4NTH30N\C0MMON",
+			@"C:\P4NTH30N\H0UND",
+			@"C:\P4NTH30N\H4ND",
+			@"C:\P4NTH30N\W4TCHD0G",
+		};
 
 	/// <summary>
 	/// File patterns to watch.

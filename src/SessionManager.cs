@@ -7,7 +7,8 @@ namespace P4NTH30N.SWE;
 /// Manages SWE-1.5 session lifecycle including turn counting, context tracking,
 /// boundary detection, and handoff state serialization.
 /// </summary>
-public sealed class SessionManager {
+public sealed class SessionManager
+{
 	private readonly SessionConfig _config;
 	private readonly List<string> _modifiedFiles = new();
 	private readonly List<string> _completedTasks = new();
@@ -41,7 +42,8 @@ public sealed class SessionManager {
 	/// </summary>
 	public DateTime StartedAt { get; }
 
-	public SessionManager(string agentName = "WindFixer", SessionConfig? config = null) {
+	public SessionManager(string agentName = "WindFixer", SessionConfig? config = null)
+	{
 		SessionId = Guid.NewGuid().ToString("N")[..12];
 		AgentName = agentName;
 		StartedAt = DateTime.UtcNow;
@@ -52,7 +54,8 @@ public sealed class SessionManager {
 	/// <summary>
 	/// Advances the turn counter and returns the session status.
 	/// </summary>
-	public SessionStatus AdvanceTurn(long estimatedNewTokens = 0) {
+	public SessionStatus AdvanceTurn(long estimatedNewTokens = 0)
+	{
 		CurrentTurn++;
 		EstimatedTokens += estimatedNewTokens;
 		_consecutiveErrors = 0;
@@ -63,7 +66,8 @@ public sealed class SessionManager {
 	/// <summary>
 	/// Records a turn that resulted in an error.
 	/// </summary>
-	public SessionStatus RecordError() {
+	public SessionStatus RecordError()
+	{
 		CurrentTurn++;
 		_errorCount++;
 		_consecutiveErrors++;
@@ -74,32 +78,37 @@ public sealed class SessionManager {
 	/// <summary>
 	/// Evaluates current session status based on turn count, context size, and errors.
 	/// </summary>
-	public SessionStatus EvaluateStatus() {
-		if (_consecutiveErrors >= _config.MaxConsecutiveErrors) {
+	public SessionStatus EvaluateStatus()
+	{
+		if (_consecutiveErrors >= _config.MaxConsecutiveErrors)
+		{
 			return SessionStatus.ErrorThreshold;
 		}
 
-		if (_errorCount >= _config.MaxTotalErrors) {
+		if (_errorCount >= _config.MaxTotalErrors)
+		{
 			return SessionStatus.ErrorThreshold;
 		}
 
-		if (CurrentTurn >= _config.HardTurnLimit) {
+		if (CurrentTurn >= _config.HardTurnLimit)
+		{
 			return SessionStatus.MustReset;
 		}
 
-		double contextUsage = _config.MaxContextTokens > 0
-			? (double)EstimatedTokens / _config.MaxContextTokens
-			: 0.0;
+		double contextUsage = _config.MaxContextTokens > 0 ? (double)EstimatedTokens / _config.MaxContextTokens : 0.0;
 
-		if (contextUsage >= 0.9) {
+		if (contextUsage >= 0.9)
+		{
 			return SessionStatus.MustReset;
 		}
 
-		if (CurrentTurn >= _config.SoftTurnLimit || contextUsage >= 0.8) {
+		if (CurrentTurn >= _config.SoftTurnLimit || contextUsage >= 0.8)
+		{
 			return SessionStatus.CompressNeeded;
 		}
 
-		if (CurrentTurn >= _config.WarningThreshold || contextUsage >= 0.7) {
+		if (CurrentTurn >= _config.WarningThreshold || contextUsage >= 0.7)
+		{
 			return SessionStatus.Warning;
 		}
 
@@ -109,8 +118,10 @@ public sealed class SessionManager {
 	/// <summary>
 	/// Records a file modification.
 	/// </summary>
-	public void TrackFileModification(string filePath) {
-		if (!_modifiedFiles.Contains(filePath)) {
+	public void TrackFileModification(string filePath)
+	{
+		if (!_modifiedFiles.Contains(filePath))
+		{
 			_modifiedFiles.Add(filePath);
 		}
 	}
@@ -118,7 +129,8 @@ public sealed class SessionManager {
 	/// <summary>
 	/// Marks a task as completed.
 	/// </summary>
-	public void CompleteTask(string taskId) {
+	public void CompleteTask(string taskId)
+	{
 		_completedTasks.Add(taskId);
 		_pendingTasks.Remove(taskId);
 	}
@@ -126,8 +138,10 @@ public sealed class SessionManager {
 	/// <summary>
 	/// Adds a pending task.
 	/// </summary>
-	public void AddPendingTask(string taskId) {
-		if (!_pendingTasks.Contains(taskId) && !_completedTasks.Contains(taskId)) {
+	public void AddPendingTask(string taskId)
+	{
+		if (!_pendingTasks.Contains(taskId) && !_completedTasks.Contains(taskId))
+		{
 			_pendingTasks.Add(taskId);
 		}
 	}
@@ -135,15 +149,18 @@ public sealed class SessionManager {
 	/// <summary>
 	/// Sets a state value for handoff.
 	/// </summary>
-	public void SetState(string key, object value) {
+	public void SetState(string key, object value)
+	{
 		_state[key] = value;
 	}
 
 	/// <summary>
 	/// Gets a state value.
 	/// </summary>
-	public T? GetState<T>(string key) {
-		if (_state.TryGetValue(key, out object? value) && value is T typed) {
+	public T? GetState<T>(string key)
+	{
+		if (_state.TryGetValue(key, out object? value) && value is T typed)
+		{
 			return typed;
 		}
 		return default;
@@ -152,7 +169,8 @@ public sealed class SessionManager {
 	/// <summary>
 	/// Whether the session should be reset based on current status.
 	/// </summary>
-	public bool ShouldReset() {
+	public bool ShouldReset()
+	{
 		SessionStatus status = EvaluateStatus();
 		return status == SessionStatus.MustReset || status == SessionStatus.ErrorThreshold;
 	}
@@ -160,17 +178,19 @@ public sealed class SessionManager {
 	/// <summary>
 	/// Whether context compression should begin.
 	/// </summary>
-	public bool ShouldCompress() {
+	public bool ShouldCompress()
+	{
 		SessionStatus status = EvaluateStatus();
-		return status == SessionStatus.CompressNeeded ||
-			   status == SessionStatus.MustReset;
+		return status == SessionStatus.CompressNeeded || status == SessionStatus.MustReset;
 	}
 
 	/// <summary>
 	/// Serializes current session state for handoff to next session.
 	/// </summary>
-	public SessionHandoff CreateHandoff(string summary = "") {
-		return new SessionHandoff {
+	public SessionHandoff CreateHandoff(string summary = "")
+	{
+		return new SessionHandoff
+		{
 			SessionId = SessionId,
 			Agent = AgentName,
 			TurnsCompleted = CurrentTurn,
@@ -188,13 +208,11 @@ public sealed class SessionManager {
 	/// <summary>
 	/// Serializes handoff to JSON string.
 	/// </summary>
-	public string SerializeHandoff(string summary = "") {
+	public string SerializeHandoff(string summary = "")
+	{
 		SessionHandoff handoff = CreateHandoff(summary);
 
-		JsonSerializerOptions options = new() {
-			WriteIndented = true,
-			Converters = { new JsonStringEnumConverter() },
-		};
+		JsonSerializerOptions options = new() { WriteIndented = true, Converters = { new JsonStringEnumConverter() } };
 
 		return JsonSerializer.Serialize(handoff, options);
 	}
@@ -202,10 +220,12 @@ public sealed class SessionManager {
 	/// <summary>
 	/// Saves handoff state to a file.
 	/// </summary>
-	public async Task SaveHandoffAsync(string filePath, string summary = "", CancellationToken cancellationToken = default) {
+	public async Task SaveHandoffAsync(string filePath, string summary = "", CancellationToken cancellationToken = default)
+	{
 		string json = SerializeHandoff(summary);
 		string? dir = Path.GetDirectoryName(filePath);
-		if (dir != null && !Directory.Exists(dir)) {
+		if (dir != null && !Directory.Exists(dir))
+		{
 			Directory.CreateDirectory(dir);
 		}
 		await File.WriteAllTextAsync(filePath, json, cancellationToken);
@@ -214,13 +234,13 @@ public sealed class SessionManager {
 	/// <summary>
 	/// Loads handoff state from a previous session.
 	/// </summary>
-	public static SessionHandoff? LoadHandoff(string filePath) {
-		if (!File.Exists(filePath)) return null;
+	public static SessionHandoff? LoadHandoff(string filePath)
+	{
+		if (!File.Exists(filePath))
+			return null;
 
 		string json = File.ReadAllText(filePath);
-		JsonSerializerOptions options = new() {
-			Converters = { new JsonStringEnumConverter() },
-		};
+		JsonSerializerOptions options = new() { Converters = { new JsonStringEnumConverter() } };
 
 		return JsonSerializer.Deserialize<SessionHandoff>(json, options);
 	}
@@ -228,7 +248,8 @@ public sealed class SessionManager {
 	/// <summary>
 	/// Restores session state from a handoff.
 	/// </summary>
-	public void RestoreFromHandoff(SessionHandoff handoff) {
+	public void RestoreFromHandoff(SessionHandoff handoff)
+	{
 		_completedTasks.Clear();
 		_completedTasks.AddRange(handoff.CompletedTasks);
 		_pendingTasks.Clear();
@@ -236,7 +257,8 @@ public sealed class SessionManager {
 		_modifiedFiles.Clear();
 		_modifiedFiles.AddRange(handoff.ModifiedFiles);
 		_state.Clear();
-		foreach (KeyValuePair<string, object> kvp in handoff.State) {
+		foreach (KeyValuePair<string, object> kvp in handoff.State)
+		{
 			_state[kvp.Key] = kvp.Value;
 		}
 		_errorCount = handoff.ErrorCount;
@@ -246,7 +268,8 @@ public sealed class SessionManager {
 /// <summary>
 /// Session configuration parameters.
 /// </summary>
-public sealed class SessionConfig {
+public sealed class SessionConfig
+{
 	public int SoftTurnLimit { get; init; } = 30;
 	public int HardTurnLimit { get; init; } = 50;
 	public int WarningThreshold { get; init; } = 25;
@@ -258,7 +281,8 @@ public sealed class SessionConfig {
 /// <summary>
 /// Session status levels.
 /// </summary>
-public enum SessionStatus {
+public enum SessionStatus
+{
 	Normal,
 	Warning,
 	CompressNeeded,
@@ -269,7 +293,8 @@ public enum SessionStatus {
 /// <summary>
 /// Serializable handoff state for session transitions.
 /// </summary>
-public sealed class SessionHandoff {
+public sealed class SessionHandoff
+{
 	public string SessionId { get; init; } = string.Empty;
 	public string Agent { get; init; } = string.Empty;
 	public int TurnsCompleted { get; init; }

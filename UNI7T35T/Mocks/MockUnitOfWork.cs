@@ -12,6 +12,7 @@ public class MockUnitOfWork : IUnitOfWork
 	public IStoreErrors Errors { get; }
 	public IReceiveSignals Received { get; }
 	public IRepoHouses Houses { get; }
+	public IRepoTestResults TestResults { get; }
 
 	public MockUnitOfWork()
 	{
@@ -22,6 +23,7 @@ public class MockUnitOfWork : IUnitOfWork
 		Errors = new MockStoreErrors();
 		Received = new MockReceiveSignals();
 		Houses = new MockRepoHouses();
+		TestResults = new MockRepoTestResults();
 	}
 
 	public void ClearAll()

@@ -1,0 +1,18 @@
+{
+	"name": "p4nth30n-cdp-mcp",
+	"version": "1.0.0",
+	"description": "MCP server for remote Chrome DevTools Protocol execution. Supports per-call host/port targeting for H4ND VM → Host Chrome CDP.",
+	"type": "module",
+	"main": "server.js",
+	"bin": {
+		"p4nth30n-cdp-mcp": "./server.js"
+	},
+	"scripts": {
+		"start": "node server.js"
+	},
+	"dependencies": {
+		"@modelcontextprotocol/sdk": "^1.12.1",
+		"mongodb": "^7.1.0",
+		"ws": "^8.18.0"
+	}
+}

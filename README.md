@@ -1,6 +1,6 @@
 # P4NTH30N Platform
 
-> Multi-agent automation platform for intelligent game analytics and automated gameplay
+> Self-Funded Agentic Development Environment for intelligent automation and autonomous growth
 
 [![Build Status](https://img.shields.io/badge/build-clean-success)](https://github.com/your-org/P4NTH30N)
 [![Tests](https://img.shields.io/badge/tests-27%2F27%20passing-success)](https://github.com/your-org/P4NTH30N)
@@ -9,46 +9,146 @@
 
 ## 🎯 What is P4NTH30N?
 
-P4NTH30N is a sophisticated, multi-agent automation platform built in C# that coordinates **jackpot discovery**, **signal generation**, and **automated gameplay** for supported casino game portals. The system uses statistical forecasting and computer vision to optimize timing and ensure safety.
+P4NTH30N is a **Self-Funded Agentic Development Environment** - a sophisticated ecosystem where autonomous agents collaborate to fund their own development through intelligent automation while continuously evolving their capabilities. The platform began as a casino automation system and has grown into a comprehensive framework for autonomous software development, decision-making, and operational execution.
+
+### Core Philosophy
+
+**Self-Funding**: Agents generate revenue through intelligent automation, which funds further development and expansion of capabilities.
+
+**Agentic Collaboration**: Multiple specialized agents work together through formal decision frameworks, consultation patterns, and delegation workflows.
+
+**Autonomous Growth**: The system learns, adapts, and expands its capabilities without human intervention, using RAG for institutional memory and consensus-driven decision making.
+
+### Evolution: Casino Automation → Development Environment
+
+**Phase 1: Casino Automation** (Original)
+- Jackpot discovery and DPD forecasting
+- Signal-driven automated gameplay
+- Vision-based win detection and safety systems
+
+**Phase 2: Agent Framework** (Current)
+- 9 specialized agents with distinct roles
+- Formal decision-making framework (204 decisions)
+- RAG system for institutional memory
+- Autonomous execution capabilities
+
+**Phase 3: Self-Funding Ecosystem** (Emerging)
+- Revenue generation funds development
+- Autonomous project selection and execution
+- Self-improving agent capabilities
+- External service integration
 
 ### Key Capabilities
 
-- **🔍 Jackpot Discovery**: Automated polling and balance monitoring via HTTP/WebSocket APIs
-- **📊 DPD Forecasting**: Statistical "Dollars Per Day" analysis to predict jackpot timing
-- **🤖 Intelligent Automation**: Signal-driven gameplay with browser automation (Selenium)
-- **🛡️ Safety Systems**: Spend limits, loss circuit breakers, and emergency kill switches
-- **👁️ Vision Integration**: OBS-based computer vision for win detection and monitoring
-- **🔒 Security**: AES-256 encryption, secure credential management, key rotation
-- **🧠 ML Integration**: Local model inference, RAG system, autonomous learning
+**🎰 Revenue Generation**
+- **Jackpot Discovery**: Automated polling and balance monitoring via HTTP/WebSocket APIs
+- **DPD Forecasting**: Statistical "Dollars Per Day" analysis to predict optimal timing
+- **Intelligent Automation**: Signal-driven gameplay with browser automation (Selenium)
+- **Risk Management**: Spend limits, loss circuit breakers, and emergency kill switches
+
+**🤖 Agent Framework**
+- **9 Specialized Agents**: Designer, Explorer, Forgewright, Librarian, OpenFixer, Oracle, Strategist, WindFixer, W1NDF1XER
+- **Decision Framework**: 204 formalized decisions across 41 categories with consensus-driven approval
+- **Consultation Patterns**: Structured agent consultations with Oracle approval and Designer assessment
+- **Autonomous Execution**: WindFixer (codebase) + OpenFixer (deployment) sequential handoff workflow
+
+**🧠 Knowledge & Learning**
+- **RAG System**: 87MB executable with 6 MCP tools, hybrid BM25+FAISS search, 14.3ms embeddings
+- **Institutional Memory**: Real-time ingestion from docs, MongoDB change streams, scheduled rebuilds
+- **Self-Healing**: Circuit breakers, retry policies, metrics collection, automatic recovery
+- **Local LLM**: LM Studio integration with Pleias-RAG-1B, CPU-optimized inference
+
+**👁️ Vision & Safety**
+- **Computer Vision**: OBS-based frame processing, OCR analysis, win detection
+- **Safety Systems**: Real-time monitoring, spend limits, kill switches, circuit breakers
+- **Health Monitoring**: System-wide metrics, alerting, automated incident response
+
+**🔒 Enterprise Security**
+- **Encryption**: AES-256 for sensitive data at rest
+- **Key Management**: Secure lifecycle with rotation policies
+- **Access Control**: Per-credential validation and management
+- **Audit Trail**: Comprehensive logging and decision tracking
+
+### Agent Ecosystem
+
+| Agent | Role | Purpose | Key Capabilities |
+|-------|------|---------|------------------|
+| **Strategist** | 🎯 Coordinator | Decision orchestration, consultation management, speech synthesis | 204 decisions, consensus tracking, strategic planning |
+| **Oracle** | 🔮 Validator | Decision approval, requirements validation, quality gates | Conditional approval, safety requirements, architecture review |
+| **Designer** | 🎨 Architect | System design, implementation specifications, assessment | 90% architecture ratings, detailed implementation specs |
+| **WindFixer** | 🔧 Codebase Executor | P4NTH30N codebase decisions, C# implementation, build validation | 33 files delivered, 0 build errors, sequential execution |
+| **OpenFixer** | 🚀 Deployment Executor | OpenCode deployment, external integrations, infrastructure setup | MCP registration, Python bridge, agent configs |
+| **Explorer** | 🔍 Researcher | External research, technology scouting, opportunity discovery | Research consultations, technology assessment |
+| **Librarian** | 📚 Knowledge Manager | Documentation, knowledge organization, RAG management | Knowledge ingestion, documentation standards |
+| **Forgewright** | ⚒️ Tool Builder | Tool development, utility creation, framework enhancement | MockFactory, utility tools, development infrastructure |
+| **W1NDF1XER** | 🛠️ Problem Solver | Issue resolution, bug fixing, optimization | Problem diagnosis, solution implementation |
+
+### Decision Framework
+
+**204 Formalized Decisions** across 41 categories:
+- **Infrastructure** (11): Environment setup, CI/CD, monitoring, backup, security
+- **Core Systems** (3): Architecture patterns, circuit breakers, hybrid database access
+- **Agent Architecture** (15): FourEyes, VM infrastructure, delegation patterns
+- **Production Hardening** (5): Readiness verification, monitoring, deployment procedures
+- **Strategy** (8): Delegation patterns, workflow optimization, RAG implementation
+- **Technical** (5): Model registry, decisions-server enhancement, tool development
+
+**Consensus-Driven Approval**:
+- Oracle conditional approval (82% threshold)
+- Designer architecture assessment (90% rating)
+- Strategist coordination and tracking
+- Status progression: Proposed → InProgress → Completed
+
+### 🧠 Knowledge & Learning System
+
+**Local Model Inference**:
+- **LM Studio**: Local inference server on port 1234
+- **Models**: Pleias-RAG-1B (RAG-optimized), Mistral-7B-Q4, Qwen-7B-Q4
+- **Hardware**: AMD Ryzen 9 3900X (12C/24T), 128GB RAM, NVIDIA GT 710 (2GB)
+- **Performance**: 20-40 tokens/sec for 1B models on CPU
+- **Client**: `LmStudioClient` with OpenAI SDK compatibility
+
+**RAG System**:
+- **Vector Store**: FAISS with BM25 hybrid search
+- **Embeddings**: all-MiniLM-L6-v2 via Python bridge (14.3ms latency)
+- **MCP Server**: 6 tools (search, index, health, stats, ingest, query)
+- **Self-Healing**: Circuit breakers, retry policies, metrics collection
+- **Real-time**: FileWatcher + MongoDB change streams
+- **Maintenance**: 4hr incremental + 3AM nightly rebuilds
 
 ## 🏗️ Architecture Overview
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                         P4NTH30N PLATFORM                        │
+│                    P4NTH30N SELF-FUNDING ECOSYSTEM              │
 ├─────────────────────────────────────────────────────────────────┤
-│                                                                   │
-│  ┌─────────────┐    ┌─────────────┐    ┌─────────────────────┐ │
-│  │   H0UND     │    │    H4ND     │    │     W4TCHD0G        │ │
-│  │  (Brain)    │◄──►│   (Hands)   │    │  (Vision + Safety)  │ │
-│  │  Analytics  │    │  Automation │    │   OBS Integration   │ │
-│  │   Polling   │    │   Selenium  │    │  Safety Monitoring  │ │
-│  └──────┬──────┘    └──────┬──────┘    └──────────┬──────────┘ │
-│         │                  │                      │             │
-│         └──────────────────┼──────────────────────┘             │
-│                            │                                    │
-│                   ┌────────┴────────┐                          │
-│                   │     C0MMON      │                          │
-│                   │  Shared Library │                          │
-│                   │  MongoDB Access │                          │
-│                   │  LLM | RAG | Security                     │ │
-│                   └────────┬────────┘                          │
-│                            │                                    │
-│                   ┌────────┴────────┐                          │
-│                   │    MongoDB      │                          │
-│                   │   P4NTH30N      │                          │
-│                   └─────────────────┘                          │
-│                                                                   │
+│                                                                 │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────────────┐  │
+│  │   H0UND     │    │    H4ND     │    │     W4TCHD0G        │  │
+│  │  (Brain)    │◄──►│   (Hands)   │    │  (Vision + Safety)  │  │
+│  │  Analytics  │    │  Automation │    │   OBS Integration   │  │
+│  │   Polling   │    │   Selenium  │    │  Safety Monitoring  │  │
+│  └──────┬──────┘    └──────┬──────┘    └──────────┬──────────┘  │
+│         │                  │                      │              │
+│         └──────────────────┼──────────────────────┘              │
+│                            │                                     │
+│                   ┌────────┴────────┐                           │
+│                   │     C0MMON      │                           │
+│                   │  Shared Library │                           │
+│                   │  MongoDB Access │                           │
+│                   │  LLM | RAG | Security                      │
+│                   └────────┬────────┘                           │
+│                            │                                     │
+│  ┌─────────────────────────┼─────────────────────────┐          │
+│  │                         │                         │          │
+│  ▼                         ▼                         ▼          │
+│ ┌─────────────┐   ┌─────────────┐   ┌─────────────┐              │
+│ │ Agent Layer │   │ RAG System  │   │ Revenue     │              │
+│ │ 9 Agents    │   │ 87MB Exec   │   │ Generation  │              │
+│ │ Decision    │   │ 6 MCP Tools │   │ Self-Funding│              │
+│ │ Framework   │   │ 14.3ms Lat  │   │ Automation   │              │
+│ └─────────────┘   └─────────────┘   └─────────────┘              │
+│                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -395,15 +495,85 @@ P4NTH30N/
 
 ## 📈 Current Status
 
-| Component | Status |
-|-----------|--------|
-| **Build** | ✅ Clean |
-| **Tests** | ✅ 27/27 Passing |
-| **Documentation** | ✅ Comprehensive (37/39 decisions) |
-| **Security** | ✅ AES-256 Encryption |
-| **Safety** | ✅ Kill Switch + Circuit Breakers |
-| **Vision** | ✅ OBS Integration + Win Detection |
-| **Coverage** | ✅ 16 Integration Tests |
+| Component | Status | Details |
+|-----------|--------|---------|
+| **Build** | ✅ Clean | 0 errors, 0 warnings |
+| **Tests** | ✅ 27/27 Passing | 16 integration tests, 11 unit tests |
+| **Documentation** | ✅ Comprehensive | 204 decisions across 41 categories |
+| **Security** | ✅ AES-256 Encryption | Credential encryption at rest |
+| **Safety** | ✅ Kill Switch + Circuit Breakers | 5 failure thresholds, auto-recovery |
+| **Vision** | ✅ OBS Integration + Win Detection | Frame processing, OCR analysis |
+| **Coverage** | ✅ 16 Integration Tests | Real-world scenario coverage |
+| **RAG System** | ✅ Fully Operational | 87MB executable, 6 MCP tools, self-healing |
+| **Decision Framework** | ✅ 146 Decisions | 136 completed, 3 in progress, 7 proposed |
+| **Agent Framework** | ✅ 9 Active Agents | Designer, Explorer, Forgewright, Librarian, OpenFixer, Oracle, Strategist, WindFixer, W1NDF1XER |
+
+### Recent Major Achievements (February 2026)
+
+**🧠 RAG-001 Complete**: Production-ready Retrieval-Augmented Generation system
+- 87MB self-contained executable (RAG.McpHost)
+- 6 MCP tools: search, index, health, stats, ingest, query
+- Hybrid BM25 + FAISS vector search with Reciprocal Rank Fusion
+- 14.3ms embedding latency (7x faster than 100ms target)
+- Real-time file watching + MongoDB change streams
+- 4hr incremental rebuilds + 3AM nightly full rebuilds
+- Circuit breaker protection + retry policies with exponential backoff
+
+**🔧 WindFixer + OpenFixer Framework**: Dual-architecture autonomous execution
+- WindFixer: P4NTH30N codebase decisions (C# implementation)
+- OpenFixer: OpenCode deployment and external integrations
+- Sequential handoff workflow validated with zero conflicts
+- 33 files delivered across 3 phases, all builds passing
+
+**🏗️ Architecture Decisions**: 41 categories of formalized decisions
+- **Infrastructure** (11 decisions): Environment setup, CI/CD, monitoring, backup, security
+
+### New Components (2026-02-20)
+
+**C0MMON:**
+- Entities: AnomalyEvent, AutomationTrace, TestResult
+- Interfaces: IAgent, IRepoTestResults
+- Infrastructure: GameSelectorConfig, AgentRegistry
+- Support: AtypicalityScore, WagerFeatures
+- Services: CdpLifecycleConfig, CdpLifecycleManager
+
+**H0UND:**
+- Agents: PredictorAgent
+- Services: AnomalyDetector, WagerOptimizer
+- Recent: H0UND.cs (v0.8.6.3, AnalyticsIntervalSeconds=10)
+
+**H4ND:**
+- Parallel: ParallelH4NDEngine, ParallelMetrics, ParallelSpinWorker, SignalClaimResult, SignalDistributor, SignalWorkItem, WorkerPool
+- Services: JackpotReader, SessionPool, SessionRenewalService, SignalGenerator, SystemHealthReport, BurnInController, FirstSpinController, BurnInConfig, FirstSpinConfig, NetworkInterceptor, SignalGenerationResult
+- Vision: VisionCommandHandler, VisionCommandPublisher, VisionExecutionTracker
+- Agents: ExecutorAgent, MonitorAgent
+- EntryPoint: UnifiedEntryPoint
+- Infrastructure: ChromeSessionManager, VmHealthMonitor
+- Monitoring: AlertNotificationDispatcher, AlertSeverity, BurnInAlertConfig, BurnInAlertEvaluator, BurnInCompletionAnalyzer, BurnInDashboardServer, BurnInHaltDiagnostics, BurnInMonitor, BurnInProgressCalculator, DecisionPromoter, BurnInStatus, OperationalConfig
+- Recent: H4ND.cs (RunMode.GenerateSignals, ARCH-055, TECH-H4ND-001, TECH-FE-015, TECH-JP-001, TECH-JP-002, OPS-JP-001), UnifiedEntryPoint.cs (ParseMode)
+
+**W4TCHD0G:**
+- Development: ConfirmationGate, DeveloperDashboard, FourEyesDevMode, TrainingDataCapture
+- Stream: CDPScreenshotReceiver
+- Vision Implementations: HeuristicStateClassifier, TemplateButtonDetector, TesseractJackpotDetector
+- Vision Stubs: StubButtonDetector, StubJackpotDetector, StubStateClassifier
+
+**T00L5ET:**
+- CdpDiagnostic, CredCheck, FireKirinLogin, GameNavigator, LiveValidator, SessionHarvester
+
+**UNI7T35T:**
+- TestHarness: CdpTestClient, GameReadinessChecker, LoginValidator, SpinExecutor, SplashDetector, TestConfiguration, TestFixture, TestOrchestrator, TestReportGenerator, TestSignalInjector, VisionCapture
+- Mocks: MockCdpClient, MockFourEyesClient, MockRepoTestResults
+- Tests: FourEyesVisionTest, LiveJackpotReaderTest, AnomalyDetectorTests, CdpGameActionsTests, EndToEndTests, FirstSpinControllerTests, ParallelExecutionTests, SessionRenewalTests, SignalGeneratorTests, SystemHealthReportTests, CdpLifecycleManagerTests, BurnInMonitorTests
+
+**publish:**
+- TestJackpotReader, TestJackpot
+- **Core Systems** (3 decisions): Monolithic vs microservices, circuit breakers
+- **Features** (2 decisions): LLM inference strategy, model registry
+- **Technical** (5 decisions): Model registry, decisions-server enhancement
+- **Production Hardening** (5 decisions): Readiness verification, monitoring, deployment
+- **Agent Architecture** (15 decisions): FourEyes, WindFixer, VM infrastructure, delegation
+- **Strategy** (8 decisions): Delegation patterns, workflow optimization, RAG implementation
 
 ## 📜 License
 

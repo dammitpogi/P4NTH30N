@@ -7,7 +7,8 @@ namespace P4NTH30N.ModelTestingPlatform;
 /// Tests prompt consistency by running the same test case N times and measuring variance.
 /// Oracle mandate: n=10 runs, acceptance criteria: variance < 5% = production ready.
 /// </summary>
-public sealed class PromptConsistencyTester {
+public sealed class PromptConsistencyTester
+{
 	private readonly ILlmBackend _backend;
 	private readonly string _systemPrompt;
 	private readonly int _runsPerTest;
@@ -22,10 +23,8 @@ public sealed class PromptConsistencyTester {
 	/// </summary>
 	public const double MaxProductionVariance = 0.05;
 
-	public PromptConsistencyTester(
-		ILlmBackend backend,
-		string? systemPrompt = null,
-		int runsPerTest = DefaultRunCount) {
+	public PromptConsistencyTester(ILlmBackend backend, string? systemPrompt = null, int runsPerTest = DefaultRunCount)
+	{
 		_backend = backend;
 		_systemPrompt = systemPrompt ?? P4NTH30N.DeployLogAnalyzer.FewShotPrompt.GetConfigValidationPrompt();
 		_runsPerTest = runsPerTest;
@@ -37,13 +36,16 @@ public sealed class PromptConsistencyTester {
 	public async Task<ConsistencyResult> MeasureConsistencyAsync(
 		TestCase testCase,
 		InferenceParams? inferenceParams = null,
-		CancellationToken cancellationToken = default) {
+		CancellationToken cancellationToken = default
+	)
+	{
 		InferenceParams p = inferenceParams ?? new InferenceParams();
 		ModelTestHarness harness = new(_backend, _systemPrompt);
 
 		List<TestCaseResult> runs = new();
 
-		for (int i = 0; i < _runsPerTest; i++) {
+		for (int i = 0; i < _runsPerTest; i++)
+		{
 			cancellationToken.ThrowIfCancellationRequested();
 			TestCaseResult result = await harness.RunTestAsync(testCase, p, cancellationToken);
 			runs.Add(result);
@@ -58,11 +60,14 @@ public sealed class PromptConsistencyTester {
 	public async Task<ConsistencyReport> RunFullConsistencyTestAsync(
 		IReadOnlyList<TestCase> testCases,
 		InferenceParams? inferenceParams = null,
-		CancellationToken cancellationToken = default) {
+		CancellationToken cancellationToken = default
+	)
+	{
 		List<ConsistencyResult> results = new();
 		long totalStartMs = Environment.TickCount64;
 
-		foreach (TestCase tc in testCases) {
+		foreach (TestCase tc in testCases)
+		{
 			cancellationToken.ThrowIfCancellationRequested();
 			ConsistencyResult result = await MeasureConsistencyAsync(tc, inferenceParams, cancellationToken);
 			results.Add(result);
@@ -70,7 +75,8 @@ public sealed class PromptConsistencyTester {
 
 		long totalDurationMs = Environment.TickCount64 - totalStartMs;
 
-		return new ConsistencyReport {
+		return new ConsistencyReport
+		{
 			ModelId = _backend.ModelId,
 			Params = inferenceParams ?? new InferenceParams(),
 			RunsPerTest = _runsPerTest,
@@ -81,15 +87,12 @@ public sealed class PromptConsistencyTester {
 			MeanLatencyMs = results.Count > 0 ? results.Average(r => r.MeanLatencyMs) : 0.0,
 			TotalDurationMs = totalDurationMs,
 			IsProductionReady = results.Count > 0 && results.All(r => r.IsProductionReady),
-			MeetsDecisionGate = results.Count > 0 &&
-				results.Average(r => r.AccuracyRate) >= 0.70,
+			MeetsDecisionGate = results.Count > 0 && results.Average(r => r.AccuracyRate) >= 0.70,
 		};
 	}
 
-	private ConsistencyResult CalculateConsistency(
-		TestCase testCase,
-		List<TestCaseResult> runs,
-		InferenceParams p) {
+	private ConsistencyResult CalculateConsistency(TestCase testCase, List<TestCaseResult> runs, InferenceParams p)
+	{
 		int totalRuns = runs.Count;
 		int correctRuns = runs.Count(r => r.Correct);
 		int jsonValidRuns = runs.Count(r => r.JsonValid);
@@ -116,7 +119,8 @@ public sealed class PromptConsistencyTester {
 		double meanConfidence = runs.Where(r => r.JsonValid).Select(r => r.Confidence).DefaultIfEmpty(0.0).Average();
 		double stdDevConfidence = CalculateStdDev(runs.Where(r => r.JsonValid).Select(r => r.Confidence));
 
-		return new ConsistencyResult {
+		return new ConsistencyResult
+		{
 			TestName = testCase.Name,
 			ExpectedValid = testCase.ExpectedValid,
 			ModelId = _backend.ModelId,
@@ -145,8 +149,10 @@ public sealed class PromptConsistencyTester {
 	/// Calculates prediction variance as proportion of minority class.
 	/// 0.0 = all predictions identical, 0.5 = maximum disagreement.
 	/// </summary>
-	private static double CalculatePredictionVariance(List<TestCaseResult> runs) {
-		if (runs.Count == 0) return 0.0;
+	private static double CalculatePredictionVariance(List<TestCaseResult> runs)
+	{
+		if (runs.Count == 0)
+			return 0.0;
 
 		int trueCount = runs.Count(r => r.PredictedValid);
 		int falseCount = runs.Count - trueCount;
@@ -159,8 +165,10 @@ public sealed class PromptConsistencyTester {
 	/// Standard error for binary outcome (correct/incorrect).
 	/// SE = sqrt(p * (1-p) / n)
 	/// </summary>
-	private static double CalculateStandardError(List<TestCaseResult> runs) {
-		if (runs.Count <= 1) return 0.0;
+	private static double CalculateStandardError(List<TestCaseResult> runs)
+	{
+		if (runs.Count <= 1)
+			return 0.0;
 
 		double p = (double)runs.Count(r => r.Correct) / runs.Count;
 		return Math.Sqrt(p * (1.0 - p) / runs.Count);
@@ -169,9 +177,11 @@ public sealed class PromptConsistencyTester {
 	/// <summary>
 	/// Calculates standard deviation for a sequence of doubles.
 	/// </summary>
-	private static double CalculateStdDev(IEnumerable<double> values) {
+	private static double CalculateStdDev(IEnumerable<double> values)
+	{
 		List<double> list = values.ToList();
-		if (list.Count <= 1) return 0.0;
+		if (list.Count <= 1)
+			return 0.0;
 
 		double mean = list.Average();
 		double sumSquaredDiffs = list.Sum(v => (v - mean) * (v - mean));
@@ -182,7 +192,8 @@ public sealed class PromptConsistencyTester {
 /// <summary>
 /// Consistency measurement for a single test case across N runs.
 /// </summary>
-public sealed class ConsistencyResult {
+public sealed class ConsistencyResult
+{
 	public string TestName { get; init; } = string.Empty;
 	public bool ExpectedValid { get; init; }
 	public string ModelId { get; init; } = string.Empty;
@@ -223,17 +234,19 @@ public sealed class ConsistencyResult {
 	[JsonIgnore]
 	public List<TestCaseResult> Runs { get; init; } = new();
 
-	public override string ToString() {
+	public override string ToString()
+	{
 		string status = IsProductionReady ? "PROD-READY" : "UNSTABLE";
-		return $"[{TestName}] Accuracy: {AccuracyRate:P0} | Variance: {VarianceScore:P1} | " +
-			$"SE: {StandardError:F4} | Latency: {MeanLatencyMs:F0}ms +/- {StdDevLatencyMs:F0}ms | {status}";
+		return $"[{TestName}] Accuracy: {AccuracyRate:P0} | Variance: {VarianceScore:P1} | "
+			+ $"SE: {StandardError:F4} | Latency: {MeanLatencyMs:F0}ms +/- {StdDevLatencyMs:F0}ms | {status}";
 	}
 }
 
 /// <summary>
 /// Full consistency report across all test cases.
 /// </summary>
-public sealed class ConsistencyReport {
+public sealed class ConsistencyReport
+{
 	public string ModelId { get; init; } = string.Empty;
 	public InferenceParams Params { get; init; } = new();
 	public int RunsPerTest { get; init; }
@@ -250,7 +263,8 @@ public sealed class ConsistencyReport {
 	/// <summary>
 	/// Human-readable summary.
 	/// </summary>
-	public override string ToString() {
+	public override string ToString()
+	{
 		string gate = MeetsDecisionGate ? "PASS (>=70%)" : "FAIL (<70%)";
 		string prod = IsProductionReady ? "YES" : "NO";
 		return $"""
@@ -272,20 +286,20 @@ public sealed class ConsistencyReport {
 	/// <summary>
 	/// Serializes to JSON for persistence.
 	/// </summary>
-	public string ToJson() {
-		JsonSerializerOptions options = new() {
-			WriteIndented = true,
-			Converters = { new JsonStringEnumConverter() },
-		};
+	public string ToJson()
+	{
+		JsonSerializerOptions options = new() { WriteIndented = true, Converters = { new JsonStringEnumConverter() } };
 		return JsonSerializer.Serialize(this, options);
 	}
 
 	/// <summary>
 	/// Saves report to disk.
 	/// </summary>
-	public async Task SaveAsync(string path, CancellationToken cancellationToken = default) {
+	public async Task SaveAsync(string path, CancellationToken cancellationToken = default)
+	{
 		string? dir = Path.GetDirectoryName(path);
-		if (dir != null && !Directory.Exists(dir)) {
+		if (dir != null && !Directory.Exists(dir))
+		{
 			Directory.CreateDirectory(dir);
 		}
 		await File.WriteAllTextAsync(path, ToJson(), cancellationToken);

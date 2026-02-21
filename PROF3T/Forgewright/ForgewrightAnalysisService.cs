@@ -9,14 +9,17 @@ namespace P4NTH30N.PROF3T.Forgewright;
 /// FOUREYES-024-C: Forgewright analysis service for assisted bug fixing.
 /// Analyzes bug reports to generate fix suggestions and code patches.
 /// </summary>
-public class ForgewrightAnalysisService {
+public class ForgewrightAnalysisService
+{
 	private readonly List<FixSuggestion> _suggestions = new();
 
 	/// <summary>
 	/// Analyzes a bug report and generates fix suggestions.
 	/// </summary>
-	public FixAnalysis Analyze(BugReport bug) {
-		FixAnalysis analysis = new() {
+	public FixAnalysis Analyze(BugReport bug)
+	{
+		FixAnalysis analysis = new()
+		{
 			BugId = bug.Id,
 			ExceptionType = bug.ExceptionType,
 			Component = bug.Component,
@@ -29,83 +32,110 @@ public class ForgewrightAnalysisService {
 		analysis.Confidence = CalculateConfidence(bug, analysis.Suggestions);
 		analysis.CanAutoFix = analysis.Confidence >= 0.7 && analysis.Suggestions.Any(s => s.IsAutoFixable);
 
-		Console.WriteLine($"[ForgewrightAnalysis] Bug {bug.Id}: {analysis.Suggestions.Count} suggestions, confidence: {analysis.Confidence:F2}, autofix: {analysis.CanAutoFix}");
+		Console.WriteLine(
+			$"[ForgewrightAnalysis] Bug {bug.Id}: {analysis.Suggestions.Count} suggestions, confidence: {analysis.Confidence:F2}, autofix: {analysis.CanAutoFix}"
+		);
 		return analysis;
 	}
 
-	private List<FixSuggestion> GenerateSuggestions(BugReport bug) {
+	private List<FixSuggestion> GenerateSuggestions(BugReport bug)
+	{
 		List<FixSuggestion> suggestions = new();
 
-		switch (bug.ExceptionType) {
+		switch (bug.ExceptionType)
+		{
 			case "NullReferenceException":
-				suggestions.Add(new FixSuggestion {
-					Description = "Add null check before access",
-					FixType = FixType.NullGuard,
-					IsAutoFixable = true,
-					Confidence = 0.8,
-				});
+				suggestions.Add(
+					new FixSuggestion
+					{
+						Description = "Add null check before access",
+						FixType = FixType.NullGuard,
+						IsAutoFixable = true,
+						Confidence = 0.8,
+					}
+				);
 				break;
 
 			case "TimeoutException":
-				suggestions.Add(new FixSuggestion {
-					Description = "Increase timeout or add retry logic",
-					FixType = FixType.RetryLogic,
-					IsAutoFixable = true,
-					Confidence = 0.7,
-				});
+				suggestions.Add(
+					new FixSuggestion
+					{
+						Description = "Increase timeout or add retry logic",
+						FixType = FixType.RetryLogic,
+						IsAutoFixable = true,
+						Confidence = 0.7,
+					}
+				);
 				break;
 
 			case "HttpRequestException":
-				suggestions.Add(new FixSuggestion {
-					Description = "Add circuit breaker or retry with backoff",
-					FixType = FixType.CircuitBreaker,
-					IsAutoFixable = true,
-					Confidence = 0.75,
-				});
+				suggestions.Add(
+					new FixSuggestion
+					{
+						Description = "Add circuit breaker or retry with backoff",
+						FixType = FixType.CircuitBreaker,
+						IsAutoFixable = true,
+						Confidence = 0.75,
+					}
+				);
 				break;
 
 			case "InvalidOperationException":
-				suggestions.Add(new FixSuggestion {
-					Description = "Add state validation before operation",
-					FixType = FixType.StateValidation,
-					IsAutoFixable = false,
-					Confidence = 0.6,
-				});
+				suggestions.Add(
+					new FixSuggestion
+					{
+						Description = "Add state validation before operation",
+						FixType = FixType.StateValidation,
+						IsAutoFixable = false,
+						Confidence = 0.6,
+					}
+				);
 				break;
 
 			case "ArgumentException":
 			case "ArgumentNullException":
-				suggestions.Add(new FixSuggestion {
-					Description = "Add input validation",
-					FixType = FixType.InputValidation,
-					IsAutoFixable = true,
-					Confidence = 0.85,
-				});
+				suggestions.Add(
+					new FixSuggestion
+					{
+						Description = "Add input validation",
+						FixType = FixType.InputValidation,
+						IsAutoFixable = true,
+						Confidence = 0.85,
+					}
+				);
 				break;
 
 			default:
-				suggestions.Add(new FixSuggestion {
-					Description = "Wrap in try-catch with appropriate error handling",
-					FixType = FixType.ExceptionHandling,
-					IsAutoFixable = false,
-					Confidence = 0.5,
-				});
+				suggestions.Add(
+					new FixSuggestion
+					{
+						Description = "Wrap in try-catch with appropriate error handling",
+						FixType = FixType.ExceptionHandling,
+						IsAutoFixable = false,
+						Confidence = 0.5,
+					}
+				);
 				break;
 		}
 
 		// Add logging suggestion for all bugs
-		suggestions.Add(new FixSuggestion {
-			Description = "Add structured logging at error site",
-			FixType = FixType.Logging,
-			IsAutoFixable = true,
-			Confidence = 0.9,
-		});
+		suggestions.Add(
+			new FixSuggestion
+			{
+				Description = "Add structured logging at error site",
+				FixType = FixType.Logging,
+				IsAutoFixable = true,
+				Confidence = 0.9,
+			}
+		);
 
 		return suggestions;
 	}
 
-	private static double CalculateConfidence(BugReport bug, List<FixSuggestion> suggestions) {
-		if (suggestions.Count == 0) return 0;
+	private static double CalculateConfidence(BugReport bug, List<FixSuggestion> suggestions)
+	{
+		if (suggestions.Count == 0)
+			return 0;
 
 		double baseConfidence = suggestions.Max(s => s.Confidence);
 
@@ -121,7 +151,8 @@ public class ForgewrightAnalysisService {
 	}
 }
 
-public class FixAnalysis {
+public class FixAnalysis
+{
 	public string BugId { get; set; } = string.Empty;
 	public string ExceptionType { get; set; } = string.Empty;
 	public string Component { get; set; } = string.Empty;
@@ -132,7 +163,8 @@ public class FixAnalysis {
 	public bool CanAutoFix { get; set; }
 }
 
-public class FixSuggestion {
+public class FixSuggestion
+{
 	public string Description { get; set; } = string.Empty;
 	public FixType FixType { get; set; }
 	public bool IsAutoFixable { get; set; }
@@ -140,7 +172,8 @@ public class FixSuggestion {
 	public string PatchCode { get; set; } = string.Empty;
 }
 
-public enum FixType {
+public enum FixType
+{
 	NullGuard,
 	RetryLogic,
 	CircuitBreaker,

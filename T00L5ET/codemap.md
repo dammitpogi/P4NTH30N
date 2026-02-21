@@ -2,171 +2,71 @@
 
 ## Responsibility
 
-General utility tools and helper programs for the P4NTH30N ecosystem. Contains standalone tools for diagnostics, data manipulation, database migrations, and system administration. Includes MockFactory for test data generation and DPD migration utilities.
-
-**Core Functions:**
-- **Mock Infrastructure**: Reusable test data factories (FORGE-2024-002)
-- **Database Utilities**: Migration scripts, data cleanup, report generation
-- **Diagnostic Tools**: Health checks, connectivity tests, performance benchmarks
-- **Administrative Tools**: User management, configuration updates, maintenance
+Hosts the multi-tool CLI dispatcher (DECISION_032 / 034) plus a suite of diagnosis, automation, and validation helpers that lean on the shared C0MMON/H4ND services.
+The directory now acts as:
+- **Config Deployer**: `Program` parses flags (`--dry-run`, `--agents-only`, `--rag`, `--rag-binary`) and serially copies agent prompts, MCP configs, and optionally publishes RAG binaries based on `deploy-manifest.json`.
+- **Live Validator**: `LiveValidator` drives DECISION_045/044/041 by fetching a FireKirin credential, calling `FireKirin.QueryBalances`, checking OrionStars balances, and validating CDP login state via `CdpGameActions` plus jackpot readers.
+- **Operational Automation**: `FireKirinLogin`, `GameNavigator`, `CdpDiagnostic`, and `CredCheck` automate login attempts, in-browser navigation, network diagnostics, and MongoDB credential inspection for the FireKirin platform.
+- **Session Harvester**: `SessionHarvester` reads OpenCode SQLite sessions, tool outputs, and logs, serializes them into markdown, and optionally pushes documents into the RAG ingestion endpoint.
 
 ## Design
 
-**Architecture Pattern**: Standalone CLI tools with single responsibility
-- Each tool has one clear purpose
-- Command-line interface with argument parsing
-- Robust error reporting and exit codes
-- Uses C0MMON for shared infrastructure
+**Command Router**
+- `Program` is a single-entry-point CLI that switches on the first argument (`validate`, `login`, `nav`, `diag`, `credcheck`, `harvest`) before falling back to deploy logic; the deploy path still coordinates manifest-driven file copies with SHA256 verification.
+- Each tool exposes a `RunAsync`/`Run` entry that can be invoked directly (e.g., `LiveValidator.RunAsync`, `SessionHarvester.Run`).
 
-### Key Components
+**CDP‑first Automation**
+- `FireKirinLogin` and `GameNavigator` both own CDP clients configured for `localhost:9222`, issue targeted `ClickAtAsync` sequences, capture screenshots, and instrument WebSocket traffic (`window._wsFrames`, `window._wsJackpots`) through `Page.addScriptToEvaluateOnNewDocument`.
+- `CdpDiagnostic` leans on the CDP WebSocket, Network, and Security domains to inspect cookies, storage, transports, flags, console errors, and handshake behaviors for FireKirin pages.
 
-#### Mock Infrastructure (FORGE-2024-002)
-- **Mocks/MockFactory.cs**: Reusable test data factories
-  - CreateCredential() - Generate test credentials with jackpots
-  - CreateSignal() - Generate test signals
-  - CreateJackpot() - Generate test jackpot data
-  - Sensible defaults with override capabilities
-  - Used by UNI7T35T for consistent test data
-
-#### Migration Tools
-- **DpdMigration.cs**: DPD data migration utilities
-  - Migrate legacy DPD formats
-  - Data transformation for analytics
-  - Validation during migration
-
-#### Diagnostic Tools
-- Health check utilities
-- Connectivity tests for MongoDB and game platforms
-- Performance benchmarking
-
-#### Administrative Tools
-- User management scripts
-- Configuration update utilities
-- System maintenance procedures
+**Data Harvesting Pattern**
+- `SessionHarvester` opens `opencode.db` read-only, introspects schema, serializes rows into markdown artifacts under `rag/harvested`, and calls a configurable `rag_ingest_file` tool via HTTP when not in dry-run.
+- Tool output and log cataloging happens separately but uses the same markdown + ingest template, ensuring consistent metadata (size, timestamp, snippet truncation).
 
 ## Flow
 
-### Tool Execution Flow
+### CLI Dispatch Flow
 ```
-dotnet run --project T00L5ET/T00L5ET.csproj -- [tool-name] [args]
+dotnet run --project T00L5ET/T00L5ET.csproj -- [command] [flags]
     ↓
-Parse Arguments
+; command matches validate/login/nav/diag/credcheck/harvest → delegate to corresponding helper
     ↓
-Execute Tool
-    ↓
-Report Results / Exit Code
+; otherwise → load deploy-manifest, copy agents/mcp artifacts, optionally publish binaries (rag/rag-binary) with hash verification
 ```
 
-### MockFactory Usage Flow
-```
-Test or Tool needs data
-    ↓
-MockFactory.CreateEntity()
-    ↓
-Returns Populated Entity
-    ↓
-Use in Test/Tool
-```
+### Live Validation Flow
+1. Connect to MongoDB, select the top FireKirin credential (enabled, not banned, positive balance).
+2. Run `FireKirin.QueryBalances` (DECISION_045) and persist jackpot evidence in `T35T_R3SULT`.
+3. Probe OrionStars (DECISION_041) via config endpoint and WebSocket query if credentials exist.
+4. Connect to Chrome CDP, call `CdpGameActions.LoginFireKirinAsync`, verify with `CdpGameActions.VerifyGamePageLoadedAsync`, and read jackpots with `JackpotReader`.
 
-### Migration Flow
-```
-Run Migration Tool
-    ↓
-Connect to MongoDB (via C0MMON)
-    ↓
-Query Source Data
-    ↓
-Transform Data
-    ↓
-Validate Transformed Data
-    ↓
-Write to Destination
-    ↓
-Report Results
-```
+### Automation & Diagnostics Flow
+1. `FireKirinLogin` loops enabled credentials, reloads the FireKirin canvas, types into hidden inputs or dispatches key events, clicks login, waits for websocket-backed `window._wsLoginResult`, and records failures to `test-results/login_failures.log` plus screenshots.
+2. `GameNavigator` uses sequential clicks to close overlays, navigate the slot sidebar, and launch Fortune Piggy (fallback to Gold777), capturing screenshots at each milestone.
+3. `CdpDiagnostic` interrogates cookies, storage, WebSocket reachability (including wss://), security flags, and console errors; `CredCheck` inspects the `CRED3N7IAL` collection to enumerate houses and summarize counts of enabled FireKirin credentials.
+
+### Session Harvest Flow
+1. Open `opencode.db`, enumerate tables, and sample the most recent 50 sessions/messages; render each row as markdown and ingest if allowed.
+2. Enumerate `tool-output` files and tail `log/*.log`, truncating oversized content; tag outputs with metadata headers before writing markdown slices under `rag/harvested/{sessions,tool-outputs,logs}`.
+3. For each artifact, optionally POST to `http://127.0.0.1:5100/mcp` (configurable `--rag-url`). Dry runs skip disk writes and HTTP calls.
 
 ## Integration
 
 ### Dependencies
-- **C0MMON**: Shared entities, interfaces, MongoDB access
-- **MongoDB.Driver**: Database operations
-- **Standard .NET**: CLI libraries, file I/O
+- **C0MMON**: Provides CDP helpers (`CdpClient`, `CdpGameActions`, `CdpGameActions.VerifyGamePageLoadedAsync`), infrastructure types (e.g., `CdpConfig`), and shared constants for Chrome/FireKirin automation.
+- **H4ND**: Supplies services like `FireKirin.QueryBalances`, `OrionStars.QueryBalances`, `JackpotReader`, and any CDP-based game helpers used by the live validator.
+- **MongoDB.Driver**: Accesses `CRED3N7IAL` and `T35T_R3SULT` collections for credential selection, diagnostics, and validation evidence.
+- **Microsoft.Data.Sqlite**: Reads `opencode.db` for session harvesting.
+- **System.Net.Http**: Fetches remote config endpoints (FireKirin config, OrionStars config) and optionally ingests harvested files into the RAG service.
 
-### Consumed By
-- **UNI7T35T**: Uses MockFactory for test data
-- **Manual execution**: Run via dotnet CLI
-- **CI/CD**: Migration scripts in deployment pipelines
+### Consumers & Callers
+- **DECISION_032**: Config deployment logic executed when no special command argument is passed; ensures agent prompts, MCP configs, and binaries stay in sync with `deploy-manifest.json`.
+- **DECISIONS_041/044/045**: LIVE VALIDATOR reuses `FireKirin.QueryBalances` and `OrionStars.QueryBalances`, corroborating jackpot data and writing validation evidence back to MongoDB.
+- **RAG pipelines**: Session/tool/log markdowns produced by `SessionHarvester` are meant for ingestion by downstream RAG systems via the `rag_ingest_file` tool.
+- **Operations & Diagnostics**: Manual invocations of `credcheck`, `diag`, `login`, `nav`, and `validate` support troubleshooting FireKirin stability and player sessions.
 
-### Data Access
-- Uses IMongoUnitOfWork from C0MMON
-- Operates on all MongoDB collections
-- Follows validation patterns from C0MMON
-
-## Key Components
-
-### MockFactory (FORGE-2024-002)
-```csharp
-// Usage example
-var credential = MockFactory.CreateCredential(
-    username: "testuser",
-    platform: "FireKirin",
-    grandJackpot: 1500.00
-);
-
-var signal = MockFactory.CreateSignal(
-    priority: 4, // Grand
-    house: "FireKirin",
-    game: "Slots"
-);
+### Build Integration
 ```
-
-### DpdMigration
-- Legacy DPD format migration
-- Data validation and cleanup
-- Progress reporting
-
-## Build Integration
-
-### Commands
-```bash
-# Build toolset
 dotnet build T00L5ET/T00L5ET.csproj
-
-# Run specific tool
-dotnet run --project T00L5ET/T00L5ET.csproj -- [tool-name] [args]
-
-# List available tools
-dotnet run --project T00L5ET/T00L5ET.csproj -- help
+dotnet run --project T00L5ET/T00L5ET.csproj -- [command] [args]
 ```
-
-## Recent Additions (This Session)
-
-**FORGE-2024-002: MockFactory**
-- Comprehensive test data factory
-- Supports all entity types
-- Sensible defaults with customization
-- Used by UNI7T35T integration tests
-
-**DpdMigration**
-- DPD data migration utilities
-- Legacy format support
-
-## Critical Notes
-
-### Tool Development
-- Single responsibility per tool
-- Clear command-line interface
-- Proper error handling and exit codes
-- Documentation in code comments
-
-### MockFactory Design
-- Consistent naming conventions
-- Realistic default values
-- Edge case coverage
-- Thread-safe for parallel tests
-
-### Safety
-- Validate before write operations
-- Backup before migrations
-- Dry-run mode for dangerous operations
-- Confirmation prompts for destructive actions

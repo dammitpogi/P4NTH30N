@@ -18,7 +18,7 @@ Multi-agent automation platform for online casino game portals (FireKirin and Or
 | Directory | Responsibility Summary | Detailed Map |
 |-----------|------------------------|--------------|
 | `C0MMON/` | Core shared library with LLM client, RAG system, caching, security, and MongoDB persistence. Repository pattern, Unit of Work, validation infrastructure. | [View Map](C0MMON/codemap.md) |
-| `H4ND/` | Automation agent with signal-driven gameplay, jackpot monitoring, and browser automation via Selenium. | [View Map](H4ND/codemap.md) |
+| `H4ND/` | Automation agent with signal-driven gameplay, jackpot monitoring, and browser automation via CDP (Chrome DevTools Protocol). | [View Map](H4ND/codemap.md) |
 | `H0UND/` | Polling + analytics agent with DPD forecasting, circuit breakers, and adaptive throttling. | [View Map](H0UND/codemap.md) |
 | `W4TCHD0G/` | Vision system with OBS integration, safety monitoring (spend/loss limits, kill switch), win detection (balance+OCR), and health monitoring. | [View Map](W4TCHD0G/codemap.md) |
 | `T00L5ET/` | Manual tools including MockFactory for test data, DPD migration utilities, and database operations. | [View Map](T00L5ET/codemap.md) |
@@ -28,6 +28,7 @@ Multi-agent automation platform for online casino game portals (FireKirin and Or
 | `PROF3T/` | Administrative console for maintenance, diagnostics, and analytics. | [View Map](PROF3T/codemap.md) |
 | `CLEANUP/` | Data cleanup utilities and MongoDB corruption prevention services. | [View Map](CLEANUP/codemap.md) |
 | `MONITOR/` | System monitoring and health check services. | [View Map](MONITOR/codemap.md) |
+| `publish/` | Published binaries and test utilities. | — |
 | `.github/` | CI/CD workflows: PR validation and release build automation. | — |
 
 ## Architecture Overview
@@ -62,10 +63,10 @@ Multi-agent automation platform for online casino game portals (FireKirin and Or
 - **Language**: C# .NET 10.0
 - **Database**: MongoDB (primary), EF Core (analytics)
 - **UI**: Spectre.Console (Dashboard)
-- **Automation**: Selenium WebDriver, HTTP/WebSocket APIs
+- **Automation**: Chrome DevTools Protocol (CDP), HTTP/WebSocket APIs (Selenium deprecated)
 - **Vision**: OBS WebSocket, computer vision, OCR
 - **ML**: LM Studio local inference, LLM client
-- **Browser**: Chrome with resource overrides
+- **Browser**: Chrome with CDP remote debugging (incognito, no extension)
 - **Architecture**: Event-driven, asynchronous, circuit breaker pattern
 
 ## Dependency Flow
@@ -117,11 +118,12 @@ H0UND (Polling + Analytics - "The Brain")
 └── Model: DPD forecasting with Thresholds validation
 
 H4ND (Automation - "The Hands")
-├── References: C0MMON, RUL3S (Chrome extension)
+├── References: C0MMON
 ├── Depends on: MongoDB (signals from EV3NT, credentials from CRED3N7IAL)
 ├── Consumes: SIGN4L records (read via Signals repository)
 ├── Produces: Event logs (written via IStoreEvents)
-└── Actions: Login, Launch, Overwrite, Logout (via Actions namespace)
+├── CDP Infrastructure: CdpClient, CdpHealthCheck, CdpGameActions
+└── VM Deployment: H4NDv2-Production VM (192.168.56.10) → Host Chrome (192.168.56.1:9222)
 
 W4TCHD0G (Vision + Safety System)
 ├── References: C0MMON
@@ -146,14 +148,15 @@ W4TCHD0G (Vision + Safety System)
 - **NuGet Packages**:
   - `MongoDB.Driver` (3.6.0) - Direct MongoDB access
   - `MongoDB.EntityFrameworkCore` (9.0.4) - EF Core integration
-  - `Selenium.WebDriver` (4.40.0) - Browser automation
+  - `Selenium.WebDriver` (4.40.0) - Browser automation (deprecated, use CDP)
   - `Spectre.Console` (0.54.0) - Dashboard UI
   - `Microsoft.EntityFrameworkCore` (9.0.12) - Analytics data access
   - `H.InputSimulator` (1.5.0) - Input simulation
 - **Environment Variables**:
   - `MONGODB_CONNECTION_STRING` (required)
   - `MONGODB_DATABASE_NAME` (optional, default: P4NTH30N)
-- **Browser**: Chrome with RUL3S extension for resource overrides
+  - `P4NTH30N_MONGODB_URI` (optional, overrides connection string)
+- **Browser**: Chrome with CDP remote debugging (incognito, no extension)
 
 ### Data Flow and MongoDB Collections
 ```
@@ -319,8 +322,35 @@ Dollars-Per-Day analysis requires minimum 25 data points for statistical reliabi
 - **Kill Switch**: Immediate halt capability with override code
 - **Win Detection**: Dual detection (balance change + OCR) with alerting
 
+### VM Deployment Architecture (2026-02-19)
+
+**H4ND VM Deployment Pattern**:
+- **VM**: H4NDv2-Production (Windows 11, 192.168.56.10)
+- **Host**: Chrome CDP (192.168.56.1:9222) + MongoDB (192.168.56.1:27017)
+- **Network**: Hyper-V H4ND-Switch (192.168.56.0/24) with NAT
+- **Chrome**: Runs on host in incognito mode, **no extension loaded**
+- **Jackpot Reading**: Direct JavaScript evaluation via CDP (reads from page, not extension)
+
+**Key Configuration**:
+```bash
+# MongoDB connection string (VM side)
+mongodb://192.168.56.1:27017/?directConnection=true
+
+# Chrome startup (host side)
+chrome.exe --remote-debugging-port=9222 --remote-debugging-address=0.0.0.0 --incognito
+
+# Port proxy (host side)
+netsh interface portproxy add v4tov4 listenaddress=192.168.56.1 listenport=9222 connectaddress=127.0.0.1 connectport=9222
+```
+
+**Infrastructure Fixes Applied**:
+- MongoDB `?directConnection=true` prevents replica set redirect to localhost
+- CDP WebSocket URL rewriting (localhost→HostIp) for remote connections
+- Command ID matching to handle CDP event message interleaving
+- Non-single-file publish for correct `AppContext.BaseDirectory`
+
 ### Security
-- RUL3S uses Chrome extension with resource overrides for automation
+- Chrome runs incognito without extension; jackpot values read directly from page JavaScript
 - EncryptionService provides AES-256 encryption for sensitive data
 - KeyManagement handles encryption key lifecycle
 - Current priority: Automation first - credentials stored in plain text acceptable for now
@@ -343,6 +373,17 @@ Dollars-Per-Day analysis requires minimum 25 data points for statistical reliabi
 - FORGE-2024-001/002: SafeDateTime, MockFactory
 - INFRA-003/004/005/006/007/008: CI/CD, HealthChecks, Backups, Security, Caching, Runbooks
 - CORE-001/ACT-001/FOUR-003/FOUR-008/FEAT-001: ADR docs, SignalPoller, HealthMonitor, FrameTimestamp, LLM client
+
+**New Components (2026-02-20):**
+- C0MMON: AnomalyEvent, AutomationTrace, TestResult, GameSelectorConfig, AgentRegistry, IAgent, IRepoTestResults, AtypicalityScore, WagerFeatures
+- H0UND: PredictorAgent, AnomalyDetector, WagerOptimizer
+- H4ND: ParallelH4NDEngine, ParallelMetrics, ParallelSpinWorker, SignalClaimResult, SignalDistributor, SignalWorkItem, WorkerPool, BurnInConfig, BurnInController, FirstSpinConfig, FirstSpinController, JackpotReader, NetworkInterceptor, SessionPool, SessionRenewalService, SignalGenerationResult, SignalGenerator, SystemHealthReport, VisionCommandHandler, VisionCommandPublisher, VisionExecutionTracker, ExecutorAgent, MonitorAgent, UnifiedEntryPoint, ChromeSessionManager, VmHealthMonitor, CdpLifecycleConfig, CdpLifecycleManager
+- H4ND Monitoring: AlertNotificationDispatcher, AlertSeverity, BurnInAlertConfig, BurnInAlertEvaluator, BurnInCompletionAnalyzer, BurnInDashboardServer, BurnInHaltDiagnostics, BurnInMonitor, BurnInProgressCalculator, DecisionPromoter, BurnInStatus, OperationalConfig
+- H4ND Recent Modifications: H4ND.cs (RunMode.GenerateSignals), UnifiedEntryPoint.cs (ParseMode)
+
+**Recent Modifications:**
+- H0UND.cs: Version 0.8.6.3, AnalyticsIntervalSeconds = 10
+- H4ND.cs: Added RunMode.GenerateSignals, ARCH-055, TECH-H4ND-001, TECH-FE-015, TECH-JP-001, TECH-JP-002, OPS-JP-001
 
 **Remaining (2 — Deferred):**
 - TECH-005/TECH-006: OpenCode plugin fallback system (outside P4NTH30N workspace)

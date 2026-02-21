@@ -406,6 +406,13 @@ Explorer → Designer → WindFixer → OpenFixer → Strategist
   discover   design    implement    deploy     validate
 ```
 
+**CRITICAL**: OpenFixer MUST create documentation for EVERY deployment:
+- Decision file: `STR4TEG15T/decisions/active/DECISION_XXX.md`
+- Deployment journal: `OP3NF1XER/deployments/JOURNAL_YYYY-MM-DD_TITLE.md`
+- Manifest entry: Update `STR4TEG15T/manifest/manifest.json`
+
+**Even for direct Nexus requests** - NO EXCEPTIONS. Post-hoc documentation is acceptable but immediate is preferred.
+
 ### Pattern 3: Fan-Out / Fan-In
 Get parallel input from multiple agents before proceeding:
 ```

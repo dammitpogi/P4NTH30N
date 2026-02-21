@@ -7,6 +7,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\C0MMON\C0MMON.csproj" />
+		<ProjectReference Include="..\H4ND\H4ND.csproj" />
 		<ProjectReference Include="..\H0UND\H0UND.csproj" />
 		<ProjectReference Include="..\W4TCHD0G\W4TCHD0G.csproj" />
 	</ItemGroup>

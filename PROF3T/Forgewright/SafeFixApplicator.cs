@@ -10,11 +10,13 @@ namespace P4NTH30N.PROF3T.Forgewright;
 /// FOUREYES-024-C: Safe fix applicator for Forgewright assisted fixes.
 /// Applies code patches with backup, rollback, and validation.
 /// </summary>
-public class SafeFixApplicator {
+public class SafeFixApplicator
+{
 	private readonly string _backupDir;
 	private readonly List<AppliedFix> _appliedFixes = new();
 
-	public SafeFixApplicator(string? backupDir = null) {
+	public SafeFixApplicator(string? backupDir = null)
+	{
 		_backupDir = backupDir ?? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ".forgewright", "backups");
 		Directory.CreateDirectory(_backupDir);
 	}
@@ -22,8 +24,10 @@ public class SafeFixApplicator {
 	/// <summary>
 	/// Applies a fix suggestion to the target file with backup.
 	/// </summary>
-	public AppliedFix ApplyFix(FixAnalysis analysis, FixSuggestion suggestion) {
-		AppliedFix fix = new() {
+	public AppliedFix ApplyFix(FixAnalysis analysis, FixSuggestion suggestion)
+	{
+		AppliedFix fix = new()
+		{
 			BugId = analysis.BugId,
 			SourceFile = analysis.SourceFile,
 			SourceLine = analysis.SourceLine,
@@ -31,8 +35,10 @@ public class SafeFixApplicator {
 			Description = suggestion.Description,
 		};
 
-		try {
-			if (string.IsNullOrEmpty(analysis.SourceFile) || !File.Exists(analysis.SourceFile)) {
+		try
+		{
+			if (string.IsNullOrEmpty(analysis.SourceFile) || !File.Exists(analysis.SourceFile))
+			{
 				fix.Success = false;
 				fix.ErrorMessage = "Source file not found or not specified";
 				return fix;
@@ -50,7 +56,8 @@ public class SafeFixApplicator {
 			_appliedFixes.Add(fix);
 			Console.WriteLine($"[SafeFixApplicator] Fix prepared for {analysis.SourceFile}:{analysis.SourceLine} ({suggestion.FixType})");
 		}
-		catch (Exception ex) {
+		catch (Exception ex)
+		{
 			StackTrace trace = new(ex, true);
 			StackFrame? frame = trace.GetFrame(0);
 			int line = frame?.GetFileLineNumber() ?? 0;
@@ -65,20 +72,24 @@ public class SafeFixApplicator {
 	/// <summary>
 	/// Rolls back a previously applied fix.
 	/// </summary>
-	public bool Rollback(string fixId) {
+	public bool Rollback(string fixId)
+	{
 		AppliedFix? fix = _appliedFixes.FirstOrDefault(f => f.Id == fixId);
 		if (fix == null || string.IsNullOrEmpty(fix.BackupPath))
 			return false;
 
-		try {
-			if (File.Exists(fix.BackupPath)) {
+		try
+		{
+			if (File.Exists(fix.BackupPath))
+			{
 				File.Copy(fix.BackupPath, fix.SourceFile, overwrite: true);
 				fix.RolledBack = true;
 				Console.WriteLine($"[SafeFixApplicator] Rolled back fix {fixId} for {fix.SourceFile}");
 				return true;
 			}
 		}
-		catch (Exception ex) {
+		catch (Exception ex)
+		{
 			Console.WriteLine($"[SafeFixApplicator] Rollback failed for {fixId}: {ex.Message}");
 		}
 
@@ -88,11 +99,13 @@ public class SafeFixApplicator {
 	/// <summary>
 	/// Gets all applied fixes.
 	/// </summary>
-	public IReadOnlyList<AppliedFix> GetAppliedFixes() {
+	public IReadOnlyList<AppliedFix> GetAppliedFixes()
+	{
 		return _appliedFixes;
 	}
 
-	private string CreateBackup(string sourceFile) {
+	private string CreateBackup(string sourceFile)
+	{
 		string fileName = Path.GetFileName(sourceFile);
 		string timestamp = DateTime.UtcNow.ToString("yyyyMMddHHmmss");
 		string backupPath = Path.Combine(_backupDir, $"{fileName}.{timestamp}.bak");
@@ -101,7 +114,8 @@ public class SafeFixApplicator {
 	}
 }
 
-public class AppliedFix {
+public class AppliedFix
+{
 	public string Id { get; set; } = Guid.NewGuid().ToString("N");
 	public string BugId { get; set; } = string.Empty;
 	public string SourceFile { get; set; } = string.Empty;

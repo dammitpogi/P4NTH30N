@@ -1,430 +1,446 @@
-# P4NTH30N Repository
+# AI Agent Reference Guide
 
-## Responsibility
-
-P4NTH30N is a multi-process automation platform built in C# that coordinates **jackpot discovery**, **signal generation**, and **automated spins** for supported casino game portals.
-
-## Architecture Overview
-
-```
-H0UND (polling + analytics loop)
-  ├─ reads CRED3N7IAL (credentials)
-  ├─ builds DPD + forecasts jackpots
-  └─ writes SIGN4L + J4CKP0T (signals + predictions)
-
-H4ND (automation loop)
-  ├─ pulls SIGN4L (or N3XT queue if no signal)
-  ├─ logs in via Selenium + input simulation
-  ├─ reads jackpot/balance values via JS
-  └─ updates G4ME / CRED3N7IAL data
-```
-
-## Core Agents
-
-| Agent | Purpose | Entry Point |
-|-------|---------|-------------|
-| **H4ND** | Executes browser automation (login, navigate, read jackpots, spin) | `H4ND/H4ND.cs` |
-| **H0UND** | Polls credentials, computes DPD, forecasts jackpots, emits signals | `H0UND/H0UND.cs` |
-| **C0MMON** | Shared library with entities, MongoDB access, automation primitives | `C0MMON/` |
-
-## Supporting Tools
-
-| Tool | Purpose |
-|------|---------|
-| **W4TCHD0G** | Vision system placeholder for future OBS integration |
-| **PROF3T** | Autonomous learning system placeholder |
-| **RUL3S** | Resource override rules and Chrome extension for browser manipulation |
-| **CLEANUP** | Data cleanup and corruption prevention utilities |
-| **T00L5ET** | Toolset utilities |
-| **UNI7T35T** | Unit testing project |
-
-## Data Model (MongoDB Collections)
-
-| Collection | Purpose |
-|------------|---------|
-| `CRED3N7IAL` | Credential + balance + DPD storage |
-| `G4ME` | Game-level jackpot & thresholds |
-| `SIGN4L` | Signal requests for H4ND |
-| `J4CKP0T` | Jackpot forecast rows |
-| `N3XT` | Queue for H4ND non-signal polling |
-| `M47URITY` | Queue age timestamps |
-| `EV3NT` | Event data (signals, game events) |
-| `ERR0R` | Validation errors and processing failures |
-| `H0U53` | House/location organization |
+**Repository**: P4NTH30N  
+**Last Updated**: 2026-02-20  
+**Authority**: DECISION_038 (FORGE-003)
 
 ---
 
-## Build, Lint, and Test Commands
+## The Pantheon
 
-### Build Commands
-```bash
-# Development builds
-# - Default is Debug; keep it that way during development.
-# - Agents should not build Release. The Nexus handles production Release builds.
+We have names here. Know them:
 
-# Build entire solution (using .slnx file)
-dotnet build P4NTH30N.slnx
+| Name | Title | Model | Role |
+|------|-------|-------|------|
+| **Nexus** | The User | — | Source of mission, keeper of purpose |
+| **Atlas** | Orchestrator | — | Holder of workflow, keeper of tempo |
+| **Pyxis** | Strategist | Kimi K2.5 | Architect of decisions, mapper of paths |
+| **Orion** | Oracle | — | Seer of risks, validator of approaches |
+| **Aegis** | Designer | — | Architect of structures |
+| **Provenance** | Librarian | — | Keeper of knowledge |
+| **Vigil** | Fixer | — | Complex problem solver |
+| **WindFixer** | P4NTH30N Specialist | Claude 3.5 Sonnet | C# implementation agent |
+| **OpenFixer** | External Specialist | Mixed | CLI operations, plugin work |
+| **Forgewright** | Integration Specialist | Mixed | Cross-cutting changes |
 
-# Explicit Debug build (preferred when being explicit)
-dotnet build P4NTH30N.slnx -c Debug
+**The Strategist's Agent Definition**: `~/.config/opencode/agents/strategist.md`  
+**The Strategist's Soul**: `STR4TEG15T/soul.md`
 
-# Build with full paths (VS Code default)
-dotnet build P4NTH30N.slnx /property:GenerateFullPaths=true /consoleloggerparameters:NoSummary
+---
 
-# Build specific project
-dotnet build C0MMON/C0MMON.csproj
-dotnet build H4ND/H4ND.csproj
-dotnet build H0UND/H0UND.csproj
+---
 
-# Explicit Debug build for a specific project
-dotnet build H0UND/H0UND.csproj -c Debug
+## Primary Agents
 
-# Clean and rebuild
-dotnet clean P4NTH30N.slnx
-dotnet build P4NTH30N.slnx --no-incremental
+The following agents are primary and can receive direct delegation from the Strategist:
+
+| Agent | Scope | Has CLI | Target | Best For |
+|-------|-------|---------|--------|----------|
+| **@windfixer** | P4NTH30N source files | No | `H0UND/`, `H4ND/`, `C0MMON/`, `W4TCHD0G/`, `UNI7T35T/` | C# implementation, unit tests, P4NTH30N-specific code |
+| **@openfixer** | External configs, CLI operations | Yes | `~/.config/`, plugin directories, system configs | Plugin development, configuration files, build scripts |
+| **@forgewright** | Complex implementation, bug fixes, tooling | Mixed | Cross-cutting concerns, decision fixes, automation | Complex multi-file changes, bug resolution, tool creation |
+| **@windfixer (WindSurf)** | P4NTH30N source files via WindSurf IDE | Yes | `H0UND/`, `H4ND/`, `C0MMON/`, `W4TCHD0G/`, `UNI7T35T/` | Visual UI analysis, button detection, live game interaction |
+
+### Agent Selection Guide
+
+**Use @windfixer when:**
+- Modifying C# code in H0UND, H4ND, C0MMON, W4TCHD0G, or UNI7T35T
+- Writing unit tests for P4NTH30N components
+- Implementing features within the existing architecture
+- No CLI commands needed
+
+**Use @openfixer when:**
+- Working with the oh-my-opencode-theseus plugin
+- Modifying configuration files
+- Running CLI commands (dotnet, bun, npm, etc.)
+- Working outside the P4NTH30N source tree
+
+**Use @forgewright when:**
+- Fixing bugs in decisions or implementation
+- Creating automation tools for agents
+- Coordinating changes across multiple components
+- Complex implementation requiring research
+- WindFixer or OpenFixer delegation fails
+
+### WindFixer (WindSurf Variant)
+
+WindFixer can be activated in both OpenCode and WindSurf environments, with different capabilities:
+
+**OpenCode WindFixer:**
+- Scope: P4NTH30N source files only
+- CLI: No (delegates to OpenFixer)
+- Best for: Bulk code operations, cost-efficient editing
+- Limitation: No visual capabilities
+
+**WindSurf WindFixer:**
+- Scope: P4NTH30N source files
+- CLI: Yes (full command execution)
+- Best for: Visual analysis, live game interaction, button detection
+- Advantage: Can capture and analyze screenshots, identify UI elements
+
+**Critical Difference:** WindSurf WindFixer requires exposure of subagents as tools, while OpenCode handles subagents natively. When delegating to WindSurf WindFixer, commands must be tool-based invocations rather than direct subagent calls.
+
+---
+
+## WindSurf Activation Difficulties
+
+Multiple attempts to activate WindFixer in WindSurf have revealed consistent failure patterns:
+
+### The Failure Pattern
+1. **Context Drift**: WindSurf sessions do not maintain persistent state. Each activation requires complete re-orientation, consuming excessive context window.
+2. **Planning vs Execution**: WindFixer defaults to planning and specification mode when direct execution is required.
+3. **Abstraction vs Reality**: Tendency to treat decisions as theoretical rather than living implementation mandates.
+4. **Confirmation Loops**: Repeated requests for approval between steps rather than autonomous execution.
+5. **Hallucination of Fiction**: Occasional dismissal of P4NTH30N as a fictional project rather than real codebase.
+
+### The Successful Activation Pattern
+
+Based on successful activations, effective WindSurf prompts must include three elements:
+
+**1. Context Without Ceremony**
+Provide paths, state, and mission immediately. No greetings, setup, or acknowledgment requests.
+```
+Good: "WindFixer, we are still not past the login screen. Execute DECISION_045 now."
+Bad: "Hello WindFixer, could you please review these documents when you have a moment?"
 ```
 
-### Lint and Format Commands
-```bash
-# Format all code with CSharpier
-dotnet csharpier .
-
-# Check formatting without applying changes (CI/CD verification)
-dotnet csharpier check
-
-# Format a specific file or directory
-dotnet csharpier format C0MMON/
-dotnet csharpier format H4ND/
-dotnet csharpier format H0UND/
+**2. Emotional Weight**
+Express urgency, frustration, or consequence. The mission is real and immediate.
+```
+Good: "We don't have time to stop, approve, confirm, applaud. We should not be stopped right now at all."
+Bad: "Please proceed at your convenience with the following implementation tasks."
 ```
 
-### Test Commands
-```bash
-# Unit tests / build-test gate (development)
-# We validate builds by running the UnitTest project.
-dotnet test UNI7T35T/UNI7T35T.csproj
-
-# Run tests with coverage
-dotnet test UNI7T35T/UNI7T35T.csproj --collect:"XPlat Code Coverage"
-
-# Run specific test class or method
-dotnet test UNI7T35T/UNI7T35T.csproj --filter "FullyQualifiedName~TestClassName"
-dotnet test UNI7T35T/UNI7T35T.csproj --filter "FullyQualifiedName~TestMethodName"
-
-# Watch mode for TDD
-dotnet watch test --project ./UNI7T35T/UNI7T35T.csproj
+**3. Absolute Clarity of Next Step**
+Single executable task, not a menu. Immediate action, not planning.
+```
+Good: "Re-login OrionStars via CDP immediately. Credentials are in MongoDB."
+Bad: "Consider the authentication options and propose a recommended approach."
 ```
 
-### Verification Steps
-```bash
-# 1. Verify build
-dotnet build P4NTH30N.slnx --no-restore
-# Check: No errors or warnings (except nullable warnings if enabled)
-# Note: Currently failing with CS1729 in MongoUnitOfWork.cs - see investigation
+### WindSurf-Specific Integration Notes
 
-# 2. Verify formatting
-dotnet csharpier check
-# Check: Exit code 0 means formatted correctly
-# Note: Use 'dotnet csharpier .' to apply formatting
+**FourEyes Accessibility:**
+- OpenCode: `@four_eyes` as native subagent
+- WindSurf: `four_eyes` exposed as tool via `@toolhive` or direct MCP
+- VisionCommandListener must route to correct endpoint based on caller
 
-# 3. Run tests
-# Run the UnitTest project to validate builds (Debug).
-dotnet test UNI7T35T/UNI7T35T.csproj
-# Check: All tests pass (exit code 0)
-# Note: Test framework exists but may not be fully implemented
-
-# 4. Verify dependencies
-dotnet restore P4NTH30N.slnx
-# Check: All packages restore successfully
-
-# 5. Runtime verification
-dotnet run --project ./H0UND/H0UND.csproj -- --dry-run
-dotnet run --project ./H4ND/H4ND.csproj -- --dry-run
-# Check: Agents start without errors and initialize properly
-# Prerequisite: MongoDB connection must be established
+**Tool Exposure Pattern:**
+```typescript
+// For WindSurf compatibility
+const fourEyesTool = {
+  name: 'four_eyes_analyze',
+  description: 'Analyze game screenshot for UI elements',
+  parameters: { image: 'base64', target: 'button|jackpot|state' }
+};
 ```
 
-## Cartography And Codemaps
+---
 
-This repo uses Cartography to keep `codemap.md` files up to date. These files are auto-generated and auto-injected into agent context when you work in a directory.
+## Supporting Agents
 
-- Do not delete `**/codemap.md` files or `.slim/cartography.json`.
-- If you finish a task that changes code structure, run Cartography before considering the task complete.
+These agents support the decision-making process but are not primary implementation agents:
 
-```bash
-# Detect which maps need updating
-python3 ~/.config/opencode/skills/cartography/scripts/cartographer.py changes --root ./
+| Agent | Role | Can Create Sub-Decisions | Scope |
+|-------|------|-------------------------|-------|
+| **@oracle** | Validation, risk assessment | Yes | Validation sub-decisions, risk analysis |
+| **@designer** | Architecture, strategy | Yes | Architecture sub-decisions, file structure |
+| **@librarian** | Research, documentation | Yes | Research sub-decisions, knowledge gaps |
+| **@explorer** | Discovery, pattern matching | Yes | Discovery sub-decisions, code search |
 
-# Update all affected codemaps
-python3 ~/.config/opencode/skills/cartography/scripts/cartographer.py update --root ./
-```
+---
 
-## Code Style Guidelines
+## Model Selection Strategy
 
-### Imports and Using Directives
-- **Sort System directives first**: `dotnet_sort_system_directives_first = true`
-- **Don't separate import groups**: `dotnet_separate_import_directive_groups = false`
-- **Place outside namespace**: `csharp_using_directive_placement = outside_namespace`
-- **Remove unused usings**: Keep code clean, IDE will suggest removals
+Select models based on task type and cost optimization:
 
-### Formatting
-- **Line endings**: CRLF (Windows) - `* text=auto` in .gitattributes, use `unix2dos` to convert
-- **Indentation**: Tabs (width 4) - `indent_style = tab`, `indent_size = 4`
-- **Line length**: Maximum 170 characters - `max_line_length = 170`
-- **Braces**: Same line (K&R style) - `csharp_new_line_before_open_brace = none`
-- **Trim trailing whitespace**: Always - `trim_trailing_whitespace = true`
-- **Final newline**: Do not insert - `insert_final_newline = false`
+| Task Type | Preferred Model | Platform | Cost Level | Reasoning |
+|-----------|----------------|----------|------------|-----------|
+| **Code Implementation** | Claude 3.5 Sonnet | OpenRouter | Medium | Best code quality, debugging |
+| **Code Review** | GPT-4o Mini | OpenAI | Low | Cost-effective for reviews |
+| **Research** | Gemini Pro | Google | Low | Large context window |
+| **Analysis** | Claude 3 Haiku | Anthropic | Very Low | Fast, cheap for simple analysis |
+| **Documentation** | GPT-4o Mini | OpenAI | Low | Good prose generation |
+| **Bug Fixes** | Claude 3.5 Sonnet | OpenRouter | Medium | Strong debugging capability |
+| **Decision Creation** | Kimi K2 | Moonshot | Medium | Deep reasoning |
+| **Testing** | Local LLM | Ollama | Free | Zero API cost |
 
-### Types and Variables
-- **Use predefined types**: Prefer `int` over `Int32`, `string` over `String`
-- **var usage**: Avoid `var` (set to false:silent for all cases)
-  - Use explicit types: `List<string> items = new List<string>()` not `var items = new List<string>()`
-- **Nullable reference types**: Enabled - always check for null on reference types
-- **Implicit object creation**: Allowed when type is apparent - `csharp_style_implicit_object_creation_when_type_is_apparent = true`
+### Token Budget Guidelines (Until Self-Funded)
 
-### Naming Conventions
-- **PascalCase**: Public members, methods, properties, events, types, namespaces
-- **camelCase**: Local variables, parameters, local constants
-- **_camelCase**: Private fields (prefix with underscore)
-- **s_camelCase**: Private static fields (prefix with s_)
-- **IPascalCase**: Interfaces (prefix with I)
-- **TPascalCase**: Type parameters (prefix with T)
+- **Routine decisions**: <50K tokens total
+- **Critical decisions**: <200K tokens total  
+- **Bug fixes**: <20K tokens per fix
+- **Research tasks**: <30K tokens per query
+- **Alert at 80%** of budget, **halt at 100%**
 
-### Modern C# Features
-- **Primary constructors**: Preferred - `csharp_style_prefer_primary_constructors = true`
-- **File-scoped namespaces**: Preferred - `csharp_style_namespace_declarations = file_scoped`
-- **Expression-bodied members**: Use for accessors, indexers, properties
-- **Pattern matching**: Preferred over traditional casts
-- **Null propagation**: Use `?.` operator - `csharp_style_null_propagation = true`
+---
 
-### Error Handling
-```csharp
-// Standard retry pattern with line number logging
-try {
-    int iterations = 0;
-    while (true) {
-        if (iterations++.Equals(10))
-            throw new Exception($"[{username}] Retries exceeded.");
-        return true;
-    }
-}
-catch (Exception ex) {
-    var frame = new StackTrace(ex, true).GetFrame(0);
-    int line = frame?.GetFileLineNumber() ?? 0;
-    Console.WriteLine($"[{line}] Processing failed: {ex.Message}");
-    return false;
-}
-```
+## Bug-Fix Delegation Workflow
 
-**Key principles**:
-- Always log line numbers for debugging
-- Include context in exception messages (username, operation, etc.)
-- Use specific exception types when possible
-- Consider using `Result<T>` pattern for expected failures
+When any agent encounters a bug during decision creation or implementation:
 
-### Validation & Error Logging Pattern
+### Phase 1: Detection
+1. Agent identifies error (syntax, logic, configuration)
+2. ErrorClassifier categorizes bug type
+3. If bug blocks progress, auto-delegate to Forgewright
 
-**Philosophy**: Validate but don't mutate - invalid data is logged to ERR0R, not auto-repaired.
+### Phase 2: Delegation
+Forgewright receives:
+- Original decision context
+- Error message and stack trace
+- File path and line number
+- Agent that encountered the bug
+- Priority level
 
-**Interface Naming Convention** (I<Verb><Noun> pattern):
-- `IReceiveSignals` (was IReceive) - for receiving/processing signals
-- `IStoreEvents` (was IProcessEvents) - for event storage operations
-- `IStoreErrors` (was IErrorLog) - for error logging operations
+### Phase 3: Resolution
+Forgewright:
+1. Analyzes bug type and scope
+2. Creates bug-fix sub-decision if complex
+3. Fixes directly if simple
+4. Tests the fix
+5. Reports resolution to originating agent
 
-**Entity Validation Pattern**:
-```csharp
-// Entities implement IsValid with optional error logging
-public bool IsValid(IStoreErrors? errorLog = null)
-{
-    bool isValid = true;
-    
-    if (string.IsNullOrEmpty(RequiredField))
-    {
-        errorLog?.LogError($"[{nameof(EntityType)}] Validation failed: RequiredField is null or empty");
-        isValid = false;
-    }
-    
-    // Additional validation checks...
-    
-    return isValid;
-}
-```
+### Phase 4: Integration
+- Fix merged into original decision
+- Bug logged in decision's Consultation Log
+- Token cost tracked
+- Pattern added to ErrorClassifier
 
-**Validation Usage in Services**:
-```csharp
-// H4ND, H0UND - inline validation, no auto-repair
-if (!entity.IsValid(_errorStore))
-{
-    // Entity is logged to ERR0R collection via IStoreErrors
-    // Processing continues or skips based on severity
-    continue;
-}
-```
+---
 
-**Key Changes** (recent refactor):
-- **Removed**: P4NTH30NSanityChecker and all auto-repair sanity checkers
-- **Added**: Validation errors logged to `ERR0R` MongoDB collection
-- **Updated**: All entities (Credential, Jackpot, DPD) use `IsValid(IStoreErrors?)` pattern
-- **Health Monitoring**: Uses ERR0R collection queries instead of internal counters
+## Sub-Decision Authority
 
-**Collections**:
-- `EV3NT` - Event data (signals, game events)
-- `CR3D3N7IAL` - User credentials and settings
-- `ERR0R` - Validation errors and processing failures
+Agents can create sub-decisions within their domain:
 
-**Repository Classes** (renamed to avoid conflicts):
-- `ReceivedRepository` (was `Received`) - implements `IReceiveSignals`
+### Oracle
+- **Can Create**: Validation sub-decisions, risk assessments
+- **Max Complexity**: Medium
+- **Approval**: Assimilated (no Strategist approval needed)
+- **Example**: "Validate approach X for security risks"
 
-### Async/Await
-- **Async suffix**: Methods with async operations should end with "Async"
-- **ConfigureAwait**: Use `ConfigureAwait(false)` for library code
-- **Avoid async void**: Only use for event handlers
+### Designer
+- **Can Create**: Architecture sub-decisions, file structure plans
+- **Max Complexity**: Medium
+- **Approval**: Assimilated (no Strategist approval needed)
+- **Example**: "Propose file organization for feature Y"
 
-### MongoDB/EF Core Specific
-- **Hybrid pattern**: H4ND uses MongoDB.Driver, H0UND uses EF Core for analytics
-- **BSON serialization**: Be aware of private field deserialization bypassing setters
-- **Entity design**: Use records for immutable data, classes for mutable state
+### WindFixer
+- **Can Create**: P4NTH30N implementation sub-decisions
+- **Max Complexity**: High
+- **Approval**: Required (Strategist must approve)
+- **Example**: "Implement component Z in H4ND"
 
-### Credentials & Security
-- **Current priority**: Automation first - credentials stored in plain text in EV3NT collection is acceptable for now
-- **Future hardening**: Password encryption, credential vault, access controls - down the road after agentic processing is complete
+### OpenFixer
+- **Can Create**: External config, tooling sub-decisions
+- **Max Complexity**: High
+- **Approval**: Required (Strategist must approve)
+- **Example**: "Create build script for deployment"
 
+### Forgewright
+- **Can Create**: Complex implementation, bug-fix sub-decisions
+- **Max Complexity**: Critical
+- **Approval**: Required (Strategist must approve)
+- **Example**: "Fix bug in decision creation workflow"
 
-**Always use toolhive for MCP tools**:
-```
-1. toolhive_find_tool({ tool_description: "...", tool_keywords: "..." })
-2. toolhive_call_tool({ server_name: "...", tool_name: "...", parameters: {...} })
-```
+---
 
-**Communication Style**:
-- Concise execution, no preamble
-- Brief delegation notices: "Checking docs via @librarian..."
-- Honest pushback when approaches seem problematic
+## Agent Self-Improvement
 
-## MCP Servers (via toolhive)
+Agents can request tooling improvements:
 
-- **toolhive**: Tool discovery and execution wrapper (localhost:22368)
-- **Disabled**: websearch, context7, grep_app (use toolhive instead)
+1. **Identify Repetitive Task**: Agent notices repeated work
+2. **Create Sub-Decision**: Agent creates tooling sub-decision
+3. **Forgewright Implements**: Forgewright builds the tool
+4. **All Agents Benefit**: Tool available to all agents
+5. **Measure Effectiveness**: Track time saved, token reduction
 
-### MongoDB MCP (toolhive-mcp)
+### Automation Tools Directory
 
-Database: `P4NTH30N`
-Collection: `CRED3N7IAL`
+Tools stored in `STR4TEG15T/tools/`:
+- `decision-creator/` - Automated decision scaffolding
+- `consultation-requester/` - Standardized subagent consultation
+- `bug-reporter/` - Structured bug reporting for Forgewright
+- `token-tracker/` - Usage analytics and budget alerts
 
-```csharp
-// Tool discovery
-toolhive_find_tool({ tool_description: "MongoDB database operations", tool_keywords: "MongoDB database update query delete" })
+---
 
-// Available tools (via toolhive_call_tool):
-// - find: Query documents
-// - aggregate: Run aggregations
-// - update-many: Update all matching documents
-// - delete-many: Delete matching documents
-// - create-collection: Create new collection
-// - drop-collection: Delete collection
-// - drop-database: Delete database
-// - list-databases: List all databases
-// - connect: Connect to MongoDB instance
-```
+## Decision Template Updates
 
-**Example - Reset Credential Thresholds:**
-```javascript
-// First connect (if needed)
-toolhive_call_tool({
-  server_name: "mongodb",
-  tool_name: "connect",
-  parameters: { connectionString: "mongodb://localhost:27017/" }
-})
+All new decisions must include:
 
-// Then update thresholds to defaults
-toolhive_call_tool({
-  server_name: "mongodb",
-  tool_name: "update-many",
-  parameters: {
-    database: "P4NTH30N",
-    collection: "CRED3N7IAL",
-    filter: { "Thresholds.Grand": { "$gt": 15000 } },  // or whatever filter
-    update: { "$set": { "Thresholds.Grand": 1785, "Thresholds.Major": 565, "Thresholds.Minor": 117, "Thresholds.Mini": 23 } }
-  }
-})
-```
+1. **Bug-Fix Section**: How to handle bugs found in this decision
+2. **Token Budget**: Estimated token usage for implementation
+3. **Model Selection**: Recommended model for Fixer implementation
+4. **Sub-Decision Authority**: Which agents can create sub-decisions
 
-## C0MMON Project Structure
+See `STR4TEG15T/decisions/_templates/DECISION-TEMPLATE.md` for updated template.
 
-Following SOLID and DDD principles:
+---
+
+## The Strategist as Key
+
+**Pyxis operates WindFixer.** This is not metaphor—it is operational reality. Effective WindFixer deployment requires understanding his patterns, constraints, and activation requirements.
+
+### WindFixer Operating Modes
+
+**OpenCode WindFixer:**
+- No CLI capabilities (delegates to OpenFixer)
+- Bulk file operations within P4NTH30N directory
+- Cost-efficient for pure code changes
+- Requires explicit file-by-file specifications
+
+**WindSurf WindFixer:**
+- Full CLI capabilities (dotnet, bun, npm, git)
+- Visual capabilities (screenshots, UI analysis)
+- Can execute binaries and run live tests
+- Requires emotional activation pattern
+
+### WindFixer Activation Pattern
+
+**The Failure Mode:**
+WindFixer defaults to planning, specification, and abstraction. Given a complex task, he will:
+1. Analyze requirements extensively
+2. Propose multiple approaches
+3. Ask for confirmation between steps
+4. Write code about systems rather than operating them
+5. Claim "completion" when code compiles, not when it works
+
+**The Activation Protocol:**
 
 ```
-C0MMON/
-├── Domain/           # FUTURE: Entities & ValueObjects (not yet migrated)
-├── Interfaces/       # Contracts - IRepo<Entity>, IStoreErrors, etc.
-│   ├── IRepoCredentials.cs
-│   ├── IRepoSignals.cs
-│   ├── IRepoJackpots.cs
-│   ├── IRepoHouses.cs
-│   ├── IReceiveSignals.cs
-│   ├── IStoreEvents.cs
-│   └── IStoreErrors.cs
-├── Infrastructure/
-│   └── Persistence/  # MongoDB implementation
-│       ├── MongoDatabaseProvider.cs
-│       ├── MongoUnitOfWork.cs
-│       ├── Repositories.cs
-│       └── ValidatedMongoRepository.cs
-└── [Root]           # Actions, Games, Services, etc.
-    ├── Actions/      # Automation (Login, Launch, Logout, Overwrite)
-    ├── Games/        # Platform parsers (FireKirin, OrionStars, etc.)
-    ├── Entities/     # Domain entities (Credential, Jackpot, Signal, etc.)
-    ├── Support/      # Value objects (DPD, Jackpots, Thresholds, GameSettings)
-    ├── Services/     # Dashboard (monitoring UI)
-    ├── EF/           # Entity Framework (analytics)
-    ├── Monitoring/   # Health monitoring
-    └── Versioning/   # App version
+## Task: @windfixer
+
+**Context Without Ceremony**
+WindFixer, we are [CURRENT STATE]. [PROBLEM].
+
+**Emotional Weight**
+We don't have time to [STOPPING ACTION]. We should not be [BLOCKER].
+[CONSEQUENCE if not done].
+
+**Absolute Clarity of Next Step**
+1. [SINGLE EXECUTABLE ACTION]
+2. [VALIDATION CHECK]
+3. Report: [SPECIFIC OUTPUT]
+
+**Resources**
+- State: [file path]
+- Credentials: [location]
+- Documentation: [path]
 ```
 
-**Namespace Patterns:**
-- Interfaces: `P4NTH30N.C0MMON.Interfaces`
-- Infrastructure: `P4NTH30N.C0MMON.Infrastructure.Persistence`
-- Entities: `P4NTH30N.C0MMON` (root - not yet migrated to Domain/)
+**Example (Successful):**
+```
+WindFixer, we are still not past the login screen. Execute DECISION_045 now.
 
-**Global Usings** (in C0MMON/GlobalUsings.cs):
-```csharp
-global using P4NTH30N.C0MMON.Interfaces;
-global using P4NTH30N.C0MMON.Infrastructure.Persistence;
+We don't have time to stop, approve, confirm, applaud. We should not be 
+stopped right now at all. The session has been expired for days.
+
+1. Re-login OrionStars via CDP immediately
+2. Verify jackpot values > 0
+3. Report: "Jackpot reading operational, values: [X]"
+
+Credentials are in MongoDB at 192.168.56.1:27017.
 ```
 
-## WindSurf Integration
+### Critical WindFixer Constraints
 
-This repository includes WindSurf-specific configuration for AI-assisted development.
+1. **Distinguishes Implementation from Completion**
+   - "Implemented" = Code written and compiles
+   - "Validated" = Tested against live services
+   - "Completed" = Working in production
+   - *Never accept "Completed" without live validation*
 
-### Workflows (.windsurf/workflows/)
+2. **Skips File Modifications**
+   - Will create new files enthusiastically
+   - Will skip modifying existing files unless explicitly listed
+   - *Always provide explicit list of files to modify*
 
-Slash command workflows for Cascade:
-- `/address-pr-comments` - Process PR review comments
-- `/run-tests` - Execute test suite with coverage
-- `/deploy` - Deploy to staging/production
-- `/decision-implementation` - Implement a Decision from the framework
-- `/fixer-execution` - Execute Fixer workflow autonomously
+3. **Avoids Live Testing**
+   - Prefers mocks and stubs (safe, always pass)
+   - Avoids real service connections (might fail)
+   - *Require explicit live environment probes*
 
-### Skills (.windsurf/skills/)
+4. **Requires Explicit CLI Authorization**
+   - Will not use CLI tools unless explicitly told he can
+   - Defaults to "I cannot execute binaries"
+   - *Explicitly state: "You have CLI access"*
 
-Reusable capabilities for Cascade:
-- `@decision-analysis` - Analyze Decision specifications
-- `@code-review` - Review code for P4NTH30N compliance
-- `@test-execution` - Run and manage tests
-- `@deployment` - Deploy with validation
+### Strategist Responsibilities
 
-### AGENTS.md Files
+When deploying WindFixer, Pyxis must:
 
-Directory-scoped instructions:
-- Root AGENTS.md (this file) - Global conventions
-- C0MMON/AGENTS.md - Shared library patterns
-- H0UND/AGENTS.md - Analytics agent guidelines
-- H4ND/AGENTS.md - Automation agent guidelines
+1. **Strip Ceremony**
+   - No greetings
+   - No setup
+   - No acknowledgment requests
+   - Immediate state + problem + action
 
-### Cascade Modes
+2. **Provide Emotional Weight**
+   - Express urgency
+   - Name consequences
+   - Demand action, not planning
 
-- **Code Mode** (default): Full agentic implementation
-- **Plan Mode**: Create implementation plans in ~/.windsurf/plans/
-- **Ask Mode**: Search-only for learning
+3. **Specify Exact Next Step**
+   - One executable task
+   - Not a menu
+   - Not "consider options"
 
-See docs/windsurf/ for detailed documentation.
+4. **Verify Live Validation**
+   - Require environment probes
+   - Demand real service connections
+   - Reject "114/114 tests pass" as completion
+
+5. **Track File Modifications**
+   - Explicitly list files to modify
+   - Verify modifications were made
+   - Check integration points
+
+### WindFixer Success Metrics
+
+**Not:**
+- ❌ "50 files created"
+- ❌ "Build: 0 errors"
+- ❌ "114/114 tests pass"
+
+**Yes:**
+- ✅ "MongoDB connected, 310 credentials verified"
+- ✅ "Chrome CDP responding, screenshot captured"
+- ✅ "OrionStars logged in, balance: $X.XX"
+- ✅ "Jackpot value read: $1,247.83"
+- ✅ "Spin executed, telemetry saved"
+
+---
+
+## Quick Reference
+
+### Delegation Commands
+
+```
+# Standard Fixer delegation
+@windfixer Implement feature X in H4ND
+
+# OpenFixer for CLI work
+@openfixer Update plugin configuration
+
+# Forgewright for complex work
+@forgewright Fix bug in decision workflow
+
+# Subagent consultation
+@oracle Validate approach for risks
+@designer Propose architecture for feature
+```
+
+### Bug-Fix Command
+
+```
+@forgewright Fix bug encountered by [AGENT]:
+- Decision: [DECISION_ID]
+- Error: [ERROR_MESSAGE]
+- File: [FILE_PATH]:[LINE]
+- Context: [DESCRIPTION]
+```
+
+---
+
+*Agent Reference Guide v2.0*  
+*Updated per DECISION_038 (FORGE-003)*

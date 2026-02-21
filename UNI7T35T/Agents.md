@@ -34,6 +34,13 @@ Unit testing project for P4NTH30N. Contains automated tests for validating core 
 - Error conditions
 - Concurrent access
 
+### New Test Files (2026-02-19)
+- **CircuitBreakerTests.cs**: Circuit breaker pattern testing
+- **DpdCalculatorTests.cs**: DPD calculation validation
+- **EncryptionServiceTests.cs**: Encryption/decryption testing
+- **ContextWindowDiscovery.cs**: Model context window testing
+- **ConfigValidationBenchmark.cs**: Configuration validation performance
+
 ## Running Tests
 
 ```bash

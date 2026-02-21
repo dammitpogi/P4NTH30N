@@ -25,7 +25,8 @@ public static class MockFactory
 		double balance = 100.00,
 		bool enabled = true,
 		string house = "test_casino",
-		string game = "test_game")
+		string game = "test_game"
+	)
 	{
 		return new Credential(game)
 		{
@@ -47,10 +48,7 @@ public static class MockFactory
 		List<Credential> credentials = new();
 		for (int i = 0; i < count; i++)
 		{
-			credentials.Add(CreateCredential(
-				username: $"user_{i:D3}",
-				balance: startingBalance + (i * 10)
-			));
+			credentials.Add(CreateCredential(username: $"user_{i:D3}", balance: startingBalance + (i * 10)));
 		}
 		return credentials;
 	}
@@ -98,11 +96,9 @@ public class CollectingErrorStore : IStoreErrors
 
 	public List<ErrorLog> GetAll() => Errors;
 
-	public List<ErrorLog> GetBySource(string source) =>
-		Errors.Where(e => e.Source == source).ToList();
+	public List<ErrorLog> GetBySource(string source) => Errors.Where(e => e.Source == source).ToList();
 
-	public List<ErrorLog> GetUnresolved() =>
-		Errors.Where(e => !e.Resolved).ToList();
+	public List<ErrorLog> GetUnresolved() => Errors.Where(e => !e.Resolved).ToList();
 
 	public void MarkResolved(ObjectId id)
 	{

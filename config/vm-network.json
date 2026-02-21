@@ -1,0 +1,37 @@
+{
+	"_comment": "VM network configuration for H4NDv2 Hyper-V infrastructure (INFRA-VM-001)",
+	"_usage": "All scripts in scripts/vm/ read from this file. Override per-environment by copying and editing.",
+	"Switch": {
+		"Name": "H4ND-Switch",
+		"Type": "Internal",
+		"_note": "Internal vSwitch for host<->VM only. Not Default Switch."
+	},
+	"Host": {
+		"GatewayIP": "192.168.56.1",
+		"PrefixLength": 24,
+		"_note": "Static IP assigned to vEthernet (H4ND-Switch) adapter on host"
+	},
+	"VM": {
+		"StaticIP": "192.168.56.10",
+		"PrefixLength": 24,
+		"DefaultGateway": "192.168.56.1",
+		"DnsServer": "8.8.8.8",
+		"_note": "Set inside VM guest OS via Provision-H4NDv2.ps1 or manually"
+	},
+	"Subnet": "192.168.56.0/24",
+	"NAT": {
+		"Name": "H4ND-NAT",
+		"InternalPrefix": "192.168.56.0/24",
+		"_note": "NAT for VM internet access via host. Created by Setup-CDPNetwork.ps1."
+	},
+	"CDP": {
+		"Port": 9222,
+		"_note": "Chrome DevTools Protocol port. Must match CdpConfig.Port in appsettings.json."
+	},
+	"Firewall": {
+		"RuleName": "P4NTH30N-CDP-VM",
+		"Direction": "Inbound",
+		"Protocol": "TCP",
+		"_note": "Allows TCP {CDP.Port} from {Subnet} only. Created by Setup-CDPNetwork.ps1."
+	}
+}

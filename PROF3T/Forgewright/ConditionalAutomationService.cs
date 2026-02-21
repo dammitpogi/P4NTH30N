@@ -11,7 +11,8 @@ namespace P4NTH30N.PROF3T.Forgewright;
 /// Automatically applies fixes that meet confidence and safety thresholds.
 /// Only applies auto-fixable suggestions with high confidence and low risk.
 /// </summary>
-public class ConditionalAutomationService {
+public class ConditionalAutomationService
+{
 	private readonly ForgewrightAnalysisService _analysisService;
 	private readonly SafeFixApplicator _applicator;
 	private readonly PlatformGenerator _generator;
@@ -22,7 +23,9 @@ public class ConditionalAutomationService {
 		ForgewrightAnalysisService analysisService,
 		SafeFixApplicator applicator,
 		PlatformGenerator generator,
-		AutomationConfig? config = null) {
+		AutomationConfig? config = null
+	)
+	{
 		_analysisService = analysisService;
 		_applicator = applicator;
 		_generator = generator;
@@ -32,41 +35,47 @@ public class ConditionalAutomationService {
 	/// <summary>
 	/// Evaluates a bug report and conditionally applies an automated fix.
 	/// </summary>
-	public AutomationResult EvaluateAndFix(BugReport bug) {
+	public AutomationResult EvaluateAndFix(BugReport bug)
+	{
 		AutomationResult result = new() { BugId = bug.Id };
 
-		try {
+		try
+		{
 			// Step 1: Analyze the bug
 			FixAnalysis analysis = _analysisService.Analyze(bug);
 			result.Analysis = analysis;
 
 			// Step 2: Check if auto-fix is possible and safe
-			if (!analysis.CanAutoFix) {
+			if (!analysis.CanAutoFix)
+			{
 				result.Decision = AutomationDecision.RequiresHumanReview;
 				result.Reason = "Analysis indicates manual review needed";
 				return result;
 			}
 
-			if (analysis.Confidence < _config.MinConfidenceForAutoFix) {
+			if (analysis.Confidence < _config.MinConfidenceForAutoFix)
+			{
 				result.Decision = AutomationDecision.InsufficientConfidence;
 				result.Reason = $"Confidence {analysis.Confidence:F2} below threshold {_config.MinConfidenceForAutoFix:F2}";
 				return result;
 			}
 
 			// Step 3: Find the best auto-fixable suggestion
-			FixSuggestion? bestSuggestion = analysis.Suggestions
-				.Where(s => s.IsAutoFixable && s.Confidence >= _config.MinSuggestionConfidence)
+			FixSuggestion? bestSuggestion = analysis
+				.Suggestions.Where(s => s.IsAutoFixable && s.Confidence >= _config.MinSuggestionConfidence)
 				.OrderByDescending(s => s.Confidence)
 				.FirstOrDefault();
 
-			if (bestSuggestion == null) {
+			if (bestSuggestion == null)
+			{
 				result.Decision = AutomationDecision.NoSuitableFix;
 				result.Reason = "No auto-fixable suggestions meet confidence threshold";
 				return result;
 			}
 
 			// Step 4: Check safety constraints
-			if (!IsSafeToAutoFix(bug, analysis)) {
+			if (!IsSafeToAutoFix(bug, analysis))
+			{
 				result.Decision = AutomationDecision.SafetyBlock;
 				result.Reason = "Safety constraints prevent auto-fix";
 				return result;
@@ -76,17 +85,21 @@ public class ConditionalAutomationService {
 			string patch = _generator.GeneratePatch(analysis, bestSuggestion);
 			result.GeneratedPatch = patch;
 
-			if (_config.DryRun) {
+			if (_config.DryRun)
+			{
 				result.Decision = AutomationDecision.DryRunSuccess;
 				result.Reason = "Dry run - patch generated but not applied";
-			} else {
+			}
+			else
+			{
 				AppliedFix appliedFix = _applicator.ApplyFix(analysis, bestSuggestion);
 				result.AppliedFix = appliedFix;
 				result.Decision = appliedFix.Success ? AutomationDecision.Applied : AutomationDecision.ApplyFailed;
 				result.Reason = appliedFix.Success ? "Fix applied successfully" : $"Apply failed: {appliedFix.ErrorMessage}";
 			}
 		}
-		catch (Exception ex) {
+		catch (Exception ex)
+		{
 			StackTrace trace = new(ex, true);
 			StackFrame? frame = trace.GetFrame(0);
 			int line = frame?.GetFileLineNumber() ?? 0;
@@ -103,20 +116,24 @@ public class ConditionalAutomationService {
 	/// <summary>
 	/// Gets all automation results.
 	/// </summary>
-	public IReadOnlyList<AutomationResult> GetResults() {
+	public IReadOnlyList<AutomationResult> GetResults()
+	{
 		return _results;
 	}
 
 	/// <summary>
 	/// Gets automation success rate.
 	/// </summary>
-	public double GetSuccessRate() {
-		if (_results.Count == 0) return 0;
+	public double GetSuccessRate()
+	{
+		if (_results.Count == 0)
+			return 0;
 		int successful = _results.Count(r => r.Decision == AutomationDecision.Applied || r.Decision == AutomationDecision.DryRunSuccess);
 		return (double)successful / _results.Count;
 	}
 
-	private bool IsSafeToAutoFix(BugReport bug, FixAnalysis analysis) {
+	private bool IsSafeToAutoFix(BugReport bug, FixAnalysis analysis)
+	{
 		// Don't auto-fix critical infrastructure components
 		if (_config.ProtectedComponents.Contains(bug.Component))
 			return false;
@@ -133,7 +150,8 @@ public class ConditionalAutomationService {
 	}
 }
 
-public class AutomationConfig {
+public class AutomationConfig
+{
 	public double MinConfidenceForAutoFix { get; set; } = 0.7;
 	public double MinSuggestionConfidence { get; set; } = 0.6;
 	public int MinOccurrencesForAutoFix { get; set; } = 3;
@@ -141,7 +159,8 @@ public class AutomationConfig {
 	public HashSet<string> ProtectedComponents { get; set; } = new() { "H4ND", "H0UND", "Database" };
 }
 
-public class AutomationResult {
+public class AutomationResult
+{
 	public string BugId { get; set; } = string.Empty;
 	public AutomationDecision Decision { get; set; }
 	public string Reason { get; set; } = string.Empty;
@@ -151,7 +170,8 @@ public class AutomationResult {
 	public DateTime Timestamp { get; set; } = DateTime.UtcNow;
 }
 
-public enum AutomationDecision {
+public enum AutomationDecision
+{
 	Applied,
 	DryRunSuccess,
 	RequiresHumanReview,

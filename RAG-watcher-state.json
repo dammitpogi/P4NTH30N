@@ -1,0 +1,1259 @@
+﻿{
+    "lastRun":  "2026-02-21T04:06:31.9189558-07:00",
+    "ingested":  {
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t19-30-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:12.3202997-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T19-30-00",
+                                                                                      "hash":  "B42C4AF981B759A589B1681C2E2AF7E6"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_069.md":  {
+                                                                                          "ingestedAt":  "2026-02-21T01:05:30.7187249-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/069",
+                                                                                          "hash":  "36FC778D31D1A586F29D0689D55A5599"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\completed\\decision_033.md":  {
+                                                                                             "ingestedAt":  "2026-02-20T21:13:11.3452319-07:00",
+                                                                                             "docType":  "decision",
+                                                                                             "source":  "decisions/completed/033",
+                                                                                             "hash":  "D4F04C2FC3117743C22AD9602A33E3CF"
+                                                                                         },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\journal_2026-02-19_achieved.md":  {
+                                                                                                  "ingestedAt":  "2026-02-20T21:13:14.6771716-07:00",
+                                                                                                  "docType":  "deployment",
+                                                                                                  "source":  "deployments/JOURNAL_2026-02-19_ACHIEVED",
+                                                                                                  "hash":  "2BE9D86A8398BABA2CEEA8A460240184"
+                                                                                              },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260220t0515windfixer_honest_report.md":  {
+                                                                                                       "ingestedAt":  "2026-02-20T21:13:13.7685213-07:00",
+                                                                                                       "docType":  "speech",
+                                                                                                       "source":  "speech/20260220T0515WindFixer_Honest_Report",
+                                                                                                       "hash":  "422E410414823F835B4E2DDDE85C4D54"
+                                                                                                   },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602181830_calm_synthesis.md":  {
+                                                                                              "ingestedAt":  "2026-02-20T21:13:12.9097031-07:00",
+                                                                                              "docType":  "speech",
+                                                                                              "source":  "speech/202602181830_Calm_Synthesis",
+                                                                                              "hash":  "90CFC97C8F71B0F51AAA1FD66E5FEFA3"
+                                                                                          },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260220t0630_session_complete.md":  {
+                                                                                                 "ingestedAt":  "2026-02-20T21:13:14.1438203-07:00",
+                                                                                                 "docType":  "speech",
+                                                                                                 "source":  "speech/20260220T0630_Session_Complete",
+                                                                                                 "hash":  "CDB4A27F46ABEC6E5EC927F8DB6F34BF"
+                                                                                             },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602182130_decision_readiness_report.md":  {
+                                                                                                         "ingestedAt":  "2026-02-20T21:13:13.1403518-07:00",
+                                                                                                         "docType":  "speech",
+                                                                                                         "source":  "speech/202602182130_Decision_Readiness_Report",
+                                                                                                         "hash":  "8600257890C104F3CCC519507E1C4048"
+                                                                                                     },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_038.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:13:10.4266460-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/038",
+                                                                                          "hash":  "C14836EC86966C0328F95E595DEF8A4B"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\completed\\decision_044.md":  {
+                                                                                             "ingestedAt":  "2026-02-20T21:13:11.4642171-07:00",
+                                                                                             "docType":  "decision",
+                                                                                             "source":  "decisions/completed/044",
+                                                                                             "hash":  "23F206A8CE2C7A168E68ABE68549A5A0"
+                                                                                         },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602192400_rag001_fully_operational_final.md":  {
+                                                                                                              "ingestedAt":  "2026-02-20T21:13:13.5262170-07:00",
+                                                                                                              "docType":  "speech",
+                                                                                                              "source":  "speech/202602192400_RAG001_Fully_Operational_Final",
+                                                                                                              "hash":  "62CF3165E7FA06F7880D727221F489B5"
+                                                                                                          },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602200400_first_jackpot_approach.md":  {
+                                                                                                      "ingestedAt":  "2026-02-20T21:13:13.6211204-07:00",
+                                                                                                      "docType":  "speech",
+                                                                                                      "source":  "speech/202602200400_First_Jackpot_Approach",
+                                                                                                      "hash":  "43BBD40B5F3EE4163B73A54BA2D0B855"
+                                                                                                  },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\decision_062_implementation_package.md":  {
+                                                                                                          "ingestedAt":  "2026-02-20T21:20:54.1804513-07:00",
+                                                                                                          "docType":  "deployment",
+                                                                                                          "source":  "deployments/DECISION_062_IMPLEMENTATION_PACKAGE",
+                                                                                                          "hash":  "6E00E73F3286813C1F28A91F76EA828F"
+                                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t15-00-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:11.9406089-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T15-00-00",
+                                                                                      "hash":  "39DC3CC2863D7BA8D112522830269267"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_036.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:13:10.4028361-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/036",
+                                                                                          "hash":  "72A00980EB070ED64C64CCAA587E4C35"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_072.md":  {
+                                                                                          "ingestedAt":  "2026-02-21T00:31:00.5394338-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/072",
+                                                                                          "hash":  "24D84673976A6E1D89CF40AC27A4CAE3"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t17-15-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:12.1527593-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T17-15-00",
+                                                                                      "hash":  "C25B997F639A47E75B5529AEF9BED5FF"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260221t1700_convergence_achieved.md":  {
+                                                                                                     "ingestedAt":  "2026-02-21T00:32:00.9684376-07:00",
+                                                                                                     "docType":  "speech",
+                                                                                                     "source":  "speech/20260221T1700_CONVERGENCE_ACHIEVED",
+                                                                                                     "hash":  "DF970A3F519762F813957EF2BA302641"
+                                                                                                 },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_052.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:13:10.6561479-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/052",
+                                                                                          "hash":  "F78A91761EEB24BCEC996A4688528A3E"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260220t0555_windfixer_final_push.md":  {
+                                                                                                     "ingestedAt":  "2026-02-20T21:13:13.9815328-07:00",
+                                                                                                     "docType":  "speech",
+                                                                                                     "source":  "speech/20260220T0555_WindFixer_Final_Push",
+                                                                                                     "hash":  "154086152970BD990C98CDAE2AB07680"
+                                                                                                 },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\completed\\decision_040.md":  {
+                                                                                             "ingestedAt":  "2026-02-20T21:13:11.4184447-07:00",
+                                                                                             "docType":  "decision",
+                                                                                             "source":  "decisions/completed/040",
+                                                                                             "hash":  "FA74613514AC0D8A73F5A9CD275FE7CB"
+                                                                                         },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t12-00-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:11.7019593-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T12-00-00",
+                                                                                      "hash":  "602495B61D8346C60DA4ED7A28DB7071"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260220t1234_windfixer_assimilation_report.md":  {
+                                                                                                              "ingestedAt":  "2026-02-20T21:13:14.2086068-07:00",
+                                                                                                              "docType":  "speech",
+                                                                                                              "source":  "speech/20260220T1234_WindFixer_Assimilation_Report",
+                                                                                                              "hash":  "3F17A82AA2BC7D3BA575C741A07282B9"
+                                                                                                          },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t21-30-00-forge-002-framework-created.md":  {
+                                                                                                                  "ingestedAt":  "2026-02-20T21:13:12.6203264-07:00",
+                                                                                                                  "docType":  "speech",
+                                                                                                                  "source":  "speech/2026-02-18T21-30-00-FORGE-002-Framework-Created",
+                                                                                                                  "hash":  "48308FCE4CF9D4EA10A694D1D7E10222"
+                                                                                                              },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602192100_rag001_fully_deployed.md":  {
+                                                                                                     "ingestedAt":  "2026-02-20T21:13:13.4102799-07:00",
+                                                                                                     "docType":  "speech",
+                                                                                                     "source":  "speech/202602192100_RAG001_Fully_Deployed",
+                                                                                                     "hash":  "FCFAF138A5CB065DB791E4566FBBD231"
+                                                                                                 },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260220t0535_windfixer_flowing.md":  {
+                                                                                                  "ingestedAt":  "2026-02-20T21:13:13.8939353-07:00",
+                                                                                                  "docType":  "speech",
+                                                                                                  "source":  "speech/20260220T0535_WindFixer_Flowing",
+                                                                                                  "hash":  "72FC6C0A91B626EC3C94960837AE870D"
+                                                                                              },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t21-00-00-forge-001-assimilation-complete.md":  {
+                                                                                                                      "ingestedAt":  "2026-02-20T21:13:12.5343446-07:00",
+                                                                                                                      "docType":  "speech",
+                                                                                                                      "source":  "speech/2026-02-18T21-00-00-FORGE-001-Assimilation-Complete",
+                                                                                                                      "hash":  "8B973121B158885A520981EDD419A59B"
+                                                                                                                  },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\journal_2026-02-20_windows_audio_recording.md":  {
+                                                                                                                 "ingestedAt":  "2026-02-20T21:13:14.9752850-07:00",
+                                                                                                                 "docType":  "deployment",
+                                                                                                                 "source":  "deployments/JOURNAL_2026-02-20_Windows_Audio_Recording",
+                                                                                                                 "hash":  "E8EEF5E22D6E5A8EC1C733EC9AC8BB1D"
+                                                                                                             },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260220t0545_first_spin_executed.md":  {
+                                                                                                    "ingestedAt":  "2026-02-20T21:13:13.9255663-07:00",
+                                                                                                    "docType":  "speech",
+                                                                                                    "source":  "speech/20260220T0545_First_Spin_Executed",
+                                                                                                    "hash":  "C4356BEB91FE50569B9F0C4C4C69189A"
+                                                                                                },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_075.md":  {
+                                                                                          "ingestedAt":  "2026-02-21T00:31:00.9117961-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/075",
+                                                                                          "hash":  "487FB31DEB0A426B2F1EBBA58139AABE"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t19-15-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:12.2942211-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T19-15-00",
+                                                                                      "hash":  "86D9B31FBA68FAD09BCF8893C6FA36DD"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t16-00-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:12.0482167-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T16-00-00",
+                                                                                      "hash":  "2A3D7F5A42B0F865DF9162C1F209B736"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\infra-068_mcp_consolidation.md":  {
+                                                                                                         "ingestedAt":  "2026-02-21T01:42:39.6635317-07:00",
+                                                                                                         "docType":  "decision",
+                                                                                                         "source":  null,
+                                                                                                         "hash":  "88F0F66B3C6395E66AB059FDDC734E99"
+                                                                                                     },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t22-00-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:12.7047603-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T22-00-00",
+                                                                                      "hash":  "AEA5FEC27F96107A56222882F60DBF25"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t20-15-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:12.4495442-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T20-15-00",
+                                                                                      "hash":  "B9E7EA281CF2D7A8DB2075DE186743A4"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t13-15-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:11.8316611-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T13-15-00",
+                                                                                      "hash":  "D140470C4DA5CB08CCFDAFFCFACC528A"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\strategy-architecture-v3.md":  {
+                                                                                                      "ingestedAt":  "2026-02-20T21:13:11.1815024-07:00",
+                                                                                                      "docType":  "decision",
+                                                                                                      "source":  null,
+                                                                                                      "hash":  "F9A8E6ADBB51D500F37455528C6A9B43"
+                                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260221t1730_burn_in_readiness.md":  {
+                                                                                                  "ingestedAt":  "2026-02-21T03:39:09.8115726-07:00",
+                                                                                                  "docType":  "speech",
+                                                                                                  "source":  "speech/20260221T1730_BURN_IN_READINESS",
+                                                                                                  "hash":  "B325B5367FB0B383C82D3BC4147A642C"
+                                                                                              },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_046.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:13:10.5070284-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/046",
+                                                                                          "hash":  "4481D59D685C32D66534DC0CE962D29B"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602210700_windfixer_summons.md":  {
+                                                                                                 "ingestedAt":  "2026-02-20T21:13:14.4349904-07:00",
+                                                                                                 "docType":  "speech",
+                                                                                                 "source":  "speech/202602210700_WINDFIXER_SUMMONS",
+                                                                                                 "hash":  "C02C043511BBA6A18739CD22A6B28343"
+                                                                                             },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602181900_both_fixers_complete.md":  {
+                                                                                                    "ingestedAt":  "2026-02-20T21:13:12.9361049-07:00",
+                                                                                                    "docType":  "speech",
+                                                                                                    "source":  "speech/202602181900_Both_Fixers_Complete",
+                                                                                                    "hash":  "280A45DC3825727EF65B84ED9BAECFFF"
+                                                                                                },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260220t0408_the_forge_awakens.md":  {
+                                                                                                  "ingestedAt":  "2026-02-20T21:13:13.7169570-07:00",
+                                                                                                  "docType":  "speech",
+                                                                                                  "source":  "speech/20260220T0408_The_Forge_Awakens",
+                                                                                                  "hash":  "4BC4D988DDAAF6815401E354475EC5E3"
+                                                                                              },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t15-15-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:11.9676331-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T15-15-00",
+                                                                                      "hash":  "F373B2C9D481956129F3E0E1DE36F296"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t16-30-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:12.0731061-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T16-30-00",
+                                                                                      "hash":  "EE5B5A2054F006FC0AD662E606AE158D"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260220t0530_windfixer_audit_complete.md":  {
+                                                                                                         "ingestedAt":  "2026-02-20T21:13:13.8655970-07:00",
+                                                                                                         "docType":  "speech",
+                                                                                                         "source":  "speech/20260220T0530_WindFixer_Audit_Complete",
+                                                                                                         "hash":  "E33E9E2585EF6DFE6853F71B8A52A3EA"
+                                                                                                     },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\journal_2026-02-20_agent_workflow_update.md":  {
+                                                                                                               "ingestedAt":  "2026-02-20T21:13:14.7742792-07:00",
+                                                                                                               "docType":  "deployment",
+                                                                                                               "source":  "deployments/JOURNAL_2026-02-20_AGENT_WORKFLOW_UPDATE",
+                                                                                                               "hash":  "7A90C9D5979A3D251EC5CAD308237EFD"
+                                                                                                           },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t12-00-00-foureyes-decisions.md":  {
+                                                                                                         "ingestedAt":  "2026-02-20T21:13:11.6721014-07:00",
+                                                                                                         "docType":  "speech",
+                                                                                                         "source":  "speech/2026-02-18T12-00-00-FOUREYES-DECISIONS",
+                                                                                                         "hash":  "9D37CDD0F29F2C61F4847BD3BC655BBA"
+                                                                                                     },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\completed\\decision_032.md":  {
+                                                                                             "ingestedAt":  "2026-02-20T21:13:11.3206284-07:00",
+                                                                                             "docType":  "decision",
+                                                                                             "source":  "decisions/completed/032",
+                                                                                             "hash":  "A3EC5A859839DD42EF137145C9A8AAFD"
+                                                                                         },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_054.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:13:10.7238718-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/054",
+                                                                                          "hash":  "C929DB5A786408AD92918AD10F48ADFA"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2025-02-17t20-45-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:11.5144953-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2025-02-17T20-45-00",
+                                                                                      "hash":  "28F19F76D755C23A4D26B03349B839FD"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\completed\\decision_037.md":  {
+                                                                                             "ingestedAt":  "2026-02-20T21:13:11.3934034-07:00",
+                                                                                             "docType":  "decision",
+                                                                                             "source":  "decisions/completed/037",
+                                                                                             "hash":  "E29472051E5D8FCC8A2567D7B93A08A6"
+                                                                                         },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_039.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:13:10.4453627-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/039",
+                                                                                          "hash":  "72069B7E62B79D99097E8FB8CC95ACDA"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_056.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:13:10.7886829-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/056",
+                                                                                          "hash":  "E2486654D1A23362853D975D4010B1BD"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\completed\\decision_045.md":  {
+                                                                                             "ingestedAt":  "2026-02-20T21:13:11.4878215-07:00",
+                                                                                             "docType":  "decision",
+                                                                                             "source":  "decisions/completed/045",
+                                                                                             "hash":  "08D6074A02509322357AB9B0184A7B82"
+                                                                                         },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\forge-002-decision-making-enhancement.md":  {
+                                                                                                                   "ingestedAt":  "2026-02-20T21:13:11.0863039-07:00",
+                                                                                                                   "docType":  "decision",
+                                                                                                                   "source":  null,
+                                                                                                                   "hash":  "62A7B5AD6EDABC8B2AC8EE8D0104F7EB"
+                                                                                                               },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\complete-decision-inventory.md":  {
+                                                                                                         "ingestedAt":  "2026-02-20T21:13:10.2241035-07:00",
+                                                                                                         "docType":  "decision",
+                                                                                                         "source":  null,
+                                                                                                         "hash":  "AC016616A263047FA012BE11A35BF9FA"
+                                                                                                     },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260220t0550_strategist_duties_complete.md":  {
+                                                                                                           "ingestedAt":  "2026-02-20T21:13:13.9536307-07:00",
+                                                                                                           "docType":  "speech",
+                                                                                                           "source":  "speech/20260220T0550_Strategist_Duties_Complete",
+                                                                                                           "hash":  "031A600177C9B1A1557E2803CA39E62C"
+                                                                                                       },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\windfixer_chronological_journal_speechify.md":  {
+                                                                                                            "ingestedAt":  "2026-02-20T21:13:14.5616512-07:00",
+                                                                                                            "docType":  "speech",
+                                                                                                            "source":  "speech/WindFixer_Chronological_Journal_Speechify",
+                                                                                                            "hash":  "AE3E56E80D410B1984B8C24836C52C31"
+                                                                                                        },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_073.md":  {
+                                                                                          "ingestedAt":  "2026-02-21T00:31:00.6863187-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/073",
+                                                                                          "hash":  "5CEF7B5528961A56DF9A27CB8A789C31"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260217_genesis_logs.md":  {
+                                                                                        "ingestedAt":  "2026-02-20T21:13:12.7839245-07:00",
+                                                                                        "docType":  "speech",
+                                                                                        "source":  "speech/20260217_Genesis_logs",
+                                                                                        "hash":  "C7B498F78C1A110E3F9E76AB4E73C148"
+                                                                                    },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\idempotent signal generation system.md":  {
+                                                                                                                 "ingestedAt":  "2026-02-20T21:13:11.1600431-07:00",
+                                                                                                                 "docType":  "decision",
+                                                                                                                 "source":  null,
+                                                                                                                 "hash":  "EEC62D8BC61940B09A7D95A3BFBDF186"
+                                                                                                             },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_053.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:13:10.6876520-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/053",
+                                                                                          "hash":  "220A027122F44B912AE5D354EB1C043E"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260221t1800_canvas_typing_failure.md":  {
+                                                                                                      "ingestedAt":  "2026-02-21T04:06:31.9189558-07:00",
+                                                                                                      "docType":  "speech",
+                                                                                                      "source":  "speech/20260221T1800_CANVAS_TYPING_FAILURE",
+                                                                                                      "hash":  "426102B4D48794AAECD934C88B1F547F"
+                                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260220t1210_windsurf_difficulties_speechify.md":  {
+                                                                                                                "ingestedAt":  "2026-02-20T21:13:14.1816863-07:00",
+                                                                                                                "docType":  "speech",
+                                                                                                                "source":  "speech/20260220T1210_WindSurf_Difficulties_Speechify",
+                                                                                                                "hash":  "090D7B86C8D181FE29DF6DB89FE4007C"
+                                                                                                            },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\journal_2026-02-21_mcp-infrastructure-status.md":  {
+                                                                                                                   "ingestedAt":  "2026-02-21T00:52:06.8314097-07:00",
+                                                                                                                   "docType":  "deployment",
+                                                                                                                   "source":  "deployments/JOURNAL_2026-02-21_MCP-INFRASTRUCTURE-STATUS",
+                                                                                                                   "hash":  "8FE9CF3956307F3C55EAF2567D085871"
+                                                                                                               },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602192500_commands_executed_complete.md":  {
+                                                                                                          "ingestedAt":  "2026-02-20T21:13:13.5626066-07:00",
+                                                                                                          "docType":  "speech",
+                                                                                                          "source":  "speech/202602192500_Commands_Executed_Complete",
+                                                                                                          "hash":  "985B48509DE6C00CA3F4B4ED1650726A"
+                                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t09-00-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:11.5701289-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T09-00-00",
+                                                                                      "hash":  "59691FA7B9101452258949B56B5953E2"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260220t0615_session_synthesis.md":  {
+                                                                                                  "ingestedAt":  "2026-02-20T21:13:14.1131601-07:00",
+                                                                                                  "docType":  "speech",
+                                                                                                  "source":  "speech/20260220T0615_Session_Synthesis",
+                                                                                                  "hash":  "D057AAE7F6E00910870535AE5F01850B"
+                                                                                              },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t15-00-00-oracle-final.md":  {
+                                                                                                   "ingestedAt":  "2026-02-20T21:13:11.9114120-07:00",
+                                                                                                   "docType":  "speech",
+                                                                                                   "source":  "speech/2026-02-18T15-00-00-ORACLE-FINAL",
+                                                                                                   "hash":  "60E83B83D16988AADF15F4180D0C1E3C"
+                                                                                               },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602192310_service_reset_not_database.md":  {
+                                                                                                          "ingestedAt":  "2026-02-20T21:13:13.4969216-07:00",
+                                                                                                          "docType":  "speech",
+                                                                                                          "source":  "speech/202602192310_Service_Reset_Not_Database",
+                                                                                                          "hash":  "4439C564A797BF2DDAEB45CC54ADB315"
+                                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\foureyes_decision_framework.md":  {
+                                                                                                         "ingestedAt":  "2026-02-20T21:13:11.1333583-07:00",
+                                                                                                         "docType":  "decision",
+                                                                                                         "source":  "decisions/active/FRAMEWORK",
+                                                                                                         "hash":  "C12D059D9A2A637AA09D5C4AB8798EA8"
+                                                                                                     },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision-toolhive-001.md":  {
+                                                                                                   "ingestedAt":  "2026-02-20T21:13:10.2518058-07:00",
+                                                                                                   "docType":  "decision",
+                                                                                                   "source":  null,
+                                                                                                   "hash":  "262EC8B7B9ABE6872367C3275D30C17C"
+                                                                                               },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\ops-jp-002-status-report.md":  {
+                                                                                               "ingestedAt":  "2026-02-20T21:13:15.0996382-07:00",
+                                                                                               "docType":  "deployment",
+                                                                                               "source":  "deployments/OPS-JP-002-STATUS-REPORT",
+                                                                                               "hash":  "1CE744A55A1824D08D8222AD00C79497"
+                                                                                           },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\all-decisions-approved-status.md":  {
+                                                                                                           "ingestedAt":  "2026-02-20T21:13:10.1681665-07:00",
+                                                                                                           "docType":  "decision",
+                                                                                                           "source":  null,
+                                                                                                           "hash":  "DE8BB2A947788C4F06DB9D5A5CE53289"
+                                                                                                       },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\journal_2026-02-20_agent-model-update.md":  {
+                                                                                                            "ingestedAt":  "2026-02-20T21:13:14.7467914-07:00",
+                                                                                                            "docType":  "deployment",
+                                                                                                            "source":  "deployments/JOURNAL_2026-02-20_agent-model-update",
+                                                                                                            "hash":  "0B47271D93829458B6F241E36E6CD01B"
+                                                                                                        },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602210800_the_completion.md":  {
+                                                                                              "ingestedAt":  "2026-02-20T21:13:14.4687867-07:00",
+                                                                                              "docType":  "speech",
+                                                                                              "source":  "speech/202602210800_THE_COMPLETION",
+                                                                                              "hash":  "671DF26386AE49B1AF7DFBC4B971BBC0"
+                                                                                          },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260220t0445_windfixer_batch_complete.md":  {
+                                                                                                         "ingestedAt":  "2026-02-20T21:13:13.7434833-07:00",
+                                                                                                         "docType":  "speech",
+                                                                                                         "source":  "speech/20260220T0445_WindFixer_Batch_Complete",
+                                                                                                         "hash":  "5913B233FBF3FF67ECA917FE5779585C"
+                                                                                                     },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260221t150000_full_synthesis.md":  {
+                                                                                                 "ingestedAt":  "2026-02-20T22:47:07.0032465-07:00",
+                                                                                                 "docType":  "speech",
+                                                                                                 "source":  "speech/20260221T150000_FULL_SYNTHESIS",
+                                                                                                 "hash":  "8EBDFF944AEF226DCBE545FEE0CDE380"
+                                                                                             },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\journal_2026-02-21_mcp_consolidation.md":  {
+                                                                                                           "ingestedAt":  "2026-02-21T01:43:46.6306223-07:00",
+                                                                                                           "docType":  "deployment",
+                                                                                                           "source":  "deployments/JOURNAL_2026-02-21_MCP_Consolidation",
+                                                                                                           "hash":  "7539A3EC3D3A24279F03A099AAFC184F"
+                                                                                                       },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602192200_scheduled_tasks_active.md":  {
+                                                                                                      "ingestedAt":  "2026-02-20T21:13:13.4397673-07:00",
+                                                                                                      "docType":  "speech",
+                                                                                                      "source":  "speech/202602192200_Scheduled_Tasks_Active",
+                                                                                                      "hash":  "DE5F0C2A8EEAE573E07E8812B67C107F"
+                                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_061.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:36:18.8217915-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/061",
+                                                                                          "hash":  "25818E5A2E2969C464B81C35653ED768"
+                                                                                      },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\journal_2026-02-19_the_long_night.md":  {
+                                                                                                        "ingestedAt":  "2026-02-20T21:13:14.7168301-07:00",
+                                                                                                        "docType":  "deployment",
+                                                                                                        "source":  "deployments/JOURNAL_2026-02-19_THE_LONG_NIGHT",
+                                                                                                        "hash":  "8821B94AF7456964F5C095C4F4268272"
+                                                                                                    },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602181930_empirical_findings.md":  {
+                                                                                                  "ingestedAt":  "2026-02-20T21:13:12.9645273-07:00",
+                                                                                                  "docType":  "speech",
+                                                                                                  "source":  "speech/202602181930_Empirical_Findings",
+                                                                                                  "hash":  "80BCC26BCCC6A0CF5B31B42B902B27BB"
+                                                                                              },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t16-00-00-implementation-direction.md":  {
+                                                                                                               "ingestedAt":  "2026-02-20T21:13:12.0210638-07:00",
+                                                                                                               "docType":  "speech",
+                                                                                                               "source":  "speech/2026-02-18T16-00-00-IMPLEMENTATION-DIRECTION",
+                                                                                                               "hash":  "B7149923DBEE5089C3BD6A060F55E0CD"
+                                                                                                           },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\forge-001-directory-architecture.md":  {
+                                                                                                              "ingestedAt":  "2026-02-20T21:13:11.0588679-07:00",
+                                                                                                              "docType":  "decision",
+                                                                                                              "source":  null,
+                                                                                                              "hash":  "1496C3A917341C7459FE3CA450C4A924"
+                                                                                                          },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_027.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:13:10.3063536-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/027",
+                                                                                          "hash":  "EAB8414850D58B07616ABCEABF3DE184"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_055.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:13:10.7564195-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/055",
+                                                                                          "hash":  "E9C36A55A20B55408C2414E9304BC7CF"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t20-45-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:12.5073644-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T20-45-00",
+                                                                                      "hash":  "CFB9CB76F89832ADAC1ECD6043834E73"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t18-30-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:12.2117595-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T18-30-00",
+                                                                                      "hash":  "0740D1BAE24CA9C7D5AD5A8FD0DA1E3D"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_057.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:36:32.1891496-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/057",
+                                                                                          "hash":  "281ADF986E2D94968699E35B62703F3A"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602182015_windfixer_started.md":  {
+                                                                                                 "ingestedAt":  "2026-02-20T21:13:13.0557079-07:00",
+                                                                                                 "docType":  "speech",
+                                                                                                 "source":  "speech/202602182015_WindFixer_Started",
+                                                                                                 "hash":  "DE8FFC98876685630B356F0ACD97D30D"
+                                                                                             },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260219t0454_the_long_night.md":  {
+                                                                                               "ingestedAt":  "2026-02-20T21:13:13.5900285-07:00",
+                                                                                               "docType":  "speech",
+                                                                                               "source":  "speech/20260219T0454_THE_LONG_NIGHT",
+                                                                                               "hash":  "A616BF0AE179F4610471C8F3D9F6A5FD"
+                                                                                           },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t20-30-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:12.4785122-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T20-30-00",
+                                                                                      "hash":  "267CB6974D9097BE13A0C0C468C6F3B1"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t17-00-00-assimilation-complete.md":  {
+                                                                                                            "ingestedAt":  "2026-02-20T21:13:12.1009251-07:00",
+                                                                                                            "docType":  "speech",
+                                                                                                            "source":  "speech/2026-02-18T17-00-00-ASSIMILATION-COMPLETE",
+                                                                                                            "hash":  "0E78AC84CB15C1C2F42CE8B06D4F435A"
+                                                                                                        },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_060.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:13:10.9311338-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/060",
+                                                                                          "hash":  "5BBA680E1B7CC0CAC95D67050DA5474F"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_050.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:13:10.5988644-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/050",
+                                                                                          "hash":  "D6228108FE84D47C87EE02D4A4767FD6"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602211400_burn_in_readiness.md":  {
+                                                                                                 "ingestedAt":  "2026-02-20T21:40:16.2283163-07:00",
+                                                                                                 "docType":  "speech",
+                                                                                                 "source":  "speech/202602211400_BURN_IN_READINESS",
+                                                                                                 "hash":  "F5C31F830271C46323A3BBB8F7D008F3"
+                                                                                             },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260220_final_openfixer_report.md":  {
+                                                                                                  "ingestedAt":  "2026-02-20T21:13:14.2660096-07:00",
+                                                                                                  "docType":  "speech",
+                                                                                                  "source":  "speech/20260220_FINAL_OpenFixer_Report",
+                                                                                                  "hash":  "9C9EDE495E96FB83A357A0250BD57313"
+                                                                                              },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602182000_both_consultations_complete.md":  {
+                                                                                                           "ingestedAt":  "2026-02-20T21:13:13.0207224-07:00",
+                                                                                                           "docType":  "speech",
+                                                                                                           "source":  "speech/202602182000_Both_Consultations_Complete",
+                                                                                                           "hash":  "4370EFCDE9CB4B06ADD1C6959D1549E2"
+                                                                                                       },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\completed\\decision_043.md":  {
+                                                                                             "ingestedAt":  "2026-02-20T21:13:11.4418392-07:00",
+                                                                                             "docType":  "decision",
+                                                                                             "source":  "decisions/completed/043",
+                                                                                             "hash":  "A1B85B8A644B05D92B11115A66A60EEF"
+                                                                                         },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\journal_2026-02-20_decision_050.md":  {
+                                                                                                      "ingestedAt":  "2026-02-20T21:13:14.8417570-07:00",
+                                                                                                      "docType":  "deployment",
+                                                                                                      "source":  "deployments/JOURNAL_2026-02-20_DECISION_050",
+                                                                                                      "hash":  "41B4D279BBAA2A184678ABF77F3C7438"
+                                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_048.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:13:10.5495827-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/048",
+                                                                                          "hash":  "1B288E4F7BC35E7F018F0731CDE5FDA7"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602210600_the_triumph.md":  {
+                                                                                           "ingestedAt":  "2026-02-20T21:13:14.3977394-07:00",
+                                                                                           "docType":  "speech",
+                                                                                           "source":  "speech/202602210600_THE_TRIUMPH",
+                                                                                           "hash":  "D8ADF7F2F4F376567D01F243D8E75D22"
+                                                                                       },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602192000_rag001_all_phases_complete.md":  {
+                                                                                                          "ingestedAt":  "2026-02-20T21:13:13.3830344-07:00",
+                                                                                                          "docType":  "speech",
+                                                                                                          "source":  "speech/202602192000_RAG001_All_Phases_Complete",
+                                                                                                          "hash":  "1CBDEE01DE6C45086C0D9EDB7D590E1E"
+                                                                                                      },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\windfixer_research_package_064-067.md":  {
+                                                                                                         "ingestedAt":  "2026-02-20T23:28:38.8594676-07:00",
+                                                                                                         "docType":  "deployment",
+                                                                                                         "source":  "deployments/WINDFIXER_RESEARCH_PACKAGE_064-067",
+                                                                                                         "hash":  "31E1A8514B0103420E5EA71E4A90A04B"
+                                                                                                     },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t12-30-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:11.7529191-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T12-30-00",
+                                                                                      "hash":  "71A7D47674487C89753F56A69BB78809"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t19-45-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:12.3505252-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T19-45-00",
+                                                                                      "hash":  "79714AC1BEA9E13753941BDEBF806CC7"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t13-00-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:11.8027784-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T13-00-00",
+                                                                                      "hash":  "9B032062839ED3A664B0426359D5382C"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602191700_exhausted_but_proud.md":  {
+                                                                                                   "ingestedAt":  "2026-02-20T21:13:13.3473407-07:00",
+                                                                                                   "docType":  "speech",
+                                                                                                   "source":  "speech/202602191700_Exhausted_But_Proud",
+                                                                                                   "hash":  "4757116123318AE5E4CD0C3B2B86B442"
+                                                                                               },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t22-15-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:12.7317566-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T22-15-00",
+                                                                                      "hash":  "37EBB7A754A3D0CAF025F89D60B141F1"
+                                                                                  },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\journal_2026-02-21_decision-051.md":  {
+                                                                                                      "ingestedAt":  "2026-02-20T21:13:15.0019235-07:00",
+                                                                                                      "docType":  "deployment",
+                                                                                                      "source":  "deployments/JOURNAL_2026-02-21_DECISION-051",
+                                                                                                      "hash":  "E99EB6BEED46233E961F28825304A7BF"
+                                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t11-00-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:11.6231325-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T11-00-00",
+                                                                                      "hash":  "7D1D3F1E2CAB1E80A09AB87A3BD16846"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t23-00-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:12.7585421-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T23-00-00",
+                                                                                      "hash":  "9204581D9F4784A5E16578D277D08436"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t14-00-00-designer-assessment.md":  {
+                                                                                                          "ingestedAt":  "2026-02-20T21:13:11.8573054-07:00",
+                                                                                                          "docType":  "speech",
+                                                                                                          "source":  "speech/2026-02-18T14-00-00-DESIGNER-ASSESSMENT",
+                                                                                                          "hash":  "A9EAEC5D10F2A167ED4E4985223DE6F3"
+                                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_062.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:35:58.6860944-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/062",
+                                                                                          "hash":  "29F3D9457C28EB05E1A6A57ADAA3905D"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\completed\\decision-aud-001.md":  {
+                                                                                                 "ingestedAt":  "2026-02-20T21:13:11.2299563-07:00",
+                                                                                                 "docType":  "decision",
+                                                                                                 "source":  null,
+                                                                                                 "hash":  "60C536425F92CC723A8E50A120637597"
+                                                                                             },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\windfixer_056_package.md":  {
+                                                                                            "ingestedAt":  "2026-02-20T21:13:15.1310827-07:00",
+                                                                                            "docType":  "deployment",
+                                                                                            "source":  "deployments/WINDFIXER_056_PACKAGE",
+                                                                                            "hash":  "14037B0D6420715625E8F451E7241E6D"
+                                                                                        },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\strategist_report_2026-02-21.md":  {
+                                                                                                          "ingestedAt":  "2026-02-20T23:29:40.8093125-07:00",
+                                                                                                          "docType":  "decision",
+                                                                                                          "source":  null,
+                                                                                                          "hash":  "D6FC794DCCDCA39CAFF8AF74BC27371B"
+                                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260221t1630_parallel_fixers_synthesis.md":  {
+                                                                                                          "ingestedAt":  "2026-02-21T00:20:45.8323955-07:00",
+                                                                                                          "docType":  "speech",
+                                                                                                          "source":  "speech/20260221T1630_PARALLEL_FIXERS_SYNTHESIS",
+                                                                                                          "hash":  "71155B01A5AB3978FCB8DC96FF000F66"
+                                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_025.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:13:10.2796084-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/025",
+                                                                                          "hash":  "DC5E432F29613593FBBD79BD38669B76"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260220t0605_oracle_status_report.md":  {
+                                                                                                     "ingestedAt":  "2026-02-20T21:13:14.0512210-07:00",
+                                                                                                     "docType":  "speech",
+                                                                                                     "source":  "speech/20260220T0605_Oracle_Status_Report",
+                                                                                                     "hash":  "438FA79460FD3511E3535D4A06666AE4"
+                                                                                                 },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_058.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:36:45.6425142-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/058",
+                                                                                          "hash":  "47B96281DDC8F08F0847A4A98D07FEDC"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_067.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:46:26.6282224-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/067",
+                                                                                          "hash":  "E3BB9C023D2B578335C6433CE74F446C"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t11-30-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:11.6464640-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T11-30-00",
+                                                                                      "hash":  "9A7839A73A61DD15EA4313B43B7E237E"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602210900_burn_in_readiness.md":  {
+                                                                                                 "ingestedAt":  "2026-02-20T22:17:11.5737448-07:00",
+                                                                                                 "docType":  "speech",
+                                                                                                 "source":  "speech/202602210900_BURN_IN_READINESS",
+                                                                                                 "hash":  "4B93657E92931E3E437E7BFD417B0834"
+                                                                                             },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_051.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:13:10.6295258-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/051",
+                                                                                          "hash":  "CEC03C1A1F339A97A34B1FB69B62C10F"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_035.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:13:10.3790173-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/035",
+                                                                                          "hash":  "1FFD64D38DB75D67C04DDA23FBA51FE9"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_065.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:45:16.6578662-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/065",
+                                                                                          "hash":  "D4CC80F5FA588388272E407718612321"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602191600_24_hour_synthesis.md":  {
+                                                                                                 "ingestedAt":  "2026-02-20T21:13:13.3154937-07:00",
+                                                                                                 "docType":  "speech",
+                                                                                                 "source":  "speech/202602191600_24_Hour_Synthesis",
+                                                                                                 "hash":  "46AE404E13E85DA37C13107BC701A4DD"
+                                                                                             },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602210900_windfixer_building.md":  {
+                                                                                                  "ingestedAt":  "2026-02-20T21:13:14.4966104-07:00",
+                                                                                                  "docType":  "speech",
+                                                                                                  "source":  "speech/202602210900_WINDFIXER_BUILDING",
+                                                                                                  "hash":  "BE0D2B30D6AF435FA8BAFB0DBC3A2CE3"
+                                                                                              },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_031.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:13:10.3540071-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/031",
+                                                                                          "hash":  "528E9993A7F6B4BA96F2D33D68960273"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t13-00-00-codebase-assessment.md":  {
+                                                                                                          "ingestedAt":  "2026-02-20T21:13:11.7788320-07:00",
+                                                                                                          "docType":  "speech",
+                                                                                                          "source":  "speech/2026-02-18T13-00-00-CODEBASE-ASSESSMENT",
+                                                                                                          "hash":  "85EE20F3420AD0C5120033AB3FB1EFD7"
+                                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602210300_the_memory_of_machines.md":  {
+                                                                                                      "ingestedAt":  "2026-02-20T21:13:14.3361317-07:00",
+                                                                                                      "docType":  "speech",
+                                                                                                      "source":  "speech/202602210300_THE_MEMORY_OF_MACHINES",
+                                                                                                      "hash":  "1F589D7A4FD6919826AFA2730E67BB1C"
+                                                                                                  },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\h4ndv2-vm-deployment.md":  {
+                                                                                           "ingestedAt":  "2026-02-20T21:13:14.6496833-07:00",
+                                                                                           "docType":  "deployment",
+                                                                                           "source":  "deployments/H4NDv2-VM-DEPLOYMENT",
+                                                                                           "hash":  "3E0A2CDB6D98AC34A52C678E5318C0E6"
+                                                                                       },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\windfixer_057_060_package.md":  {
+                                                                                                "ingestedAt":  "2026-02-20T21:13:15.1603460-07:00",
+                                                                                                "docType":  "deployment",
+                                                                                                "source":  "deployments/WINDFIXER_057_060_PACKAGE",
+                                                                                                "hash":  "758BC3D6F8160A0C457ADAF9953C703D"
+                                                                                            },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602192300_mongodb_reset_recovery.md":  {
+                                                                                                      "ingestedAt":  "2026-02-20T21:13:13.4692164-07:00",
+                                                                                                      "docType":  "speech",
+                                                                                                      "source":  "speech/202602192300_MongoDB_Reset_Recovery",
+                                                                                                      "hash":  "4BF23D326A1E1FFEC8E087AF0B965467"
+                                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602191237_newday_logs.md":  {
+                                                                                           "ingestedAt":  "2026-02-20T21:13:13.2595713-07:00",
+                                                                                           "docType":  "speech",
+                                                                                           "source":  "speech/202602191237_newDay_logs",
+                                                                                           "hash":  "886DE8D70D8F66762394E5938971128A"
+                                                                                       },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602182030_rag_implementation_guide.md":  {
+                                                                                                        "ingestedAt":  "2026-02-20T21:13:13.0832330-07:00",
+                                                                                                        "docType":  "speech",
+                                                                                                        "source":  "speech/202602182030_RAG_Implementation_Guide",
+                                                                                                        "hash":  "BCB66357085D60DA7584BEA21BE00982"
+                                                                                                    },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\windfixer_057_060_prompt.md":  {
+                                                                                               "ingestedAt":  "2026-02-20T21:13:15.2013057-07:00",
+                                                                                               "docType":  "deployment",
+                                                                                               "source":  "deployments/WINDFIXER_057_060_PROMPT",
+                                                                                               "hash":  "88692637DD4D46235067038E78B94826"
+                                                                                           },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\journal_2026-02-20_rag_restoration.md":  {
+                                                                                                         "ingestedAt":  "2026-02-20T21:13:14.8740275-07:00",
+                                                                                                         "docType":  "deployment",
+                                                                                                         "source":  "deployments/JOURNAL_2026-02-20_RAG_RESTORATION",
+                                                                                                         "hash":  "28C3D0CA23FC42523AE131057B535FA0"
+                                                                                                     },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602202330_unified_game_execution_engine.md":  {
+                                                                                                             "ingestedAt":  "2026-02-20T21:13:13.6797075-07:00",
+                                                                                                             "docType":  "speech",
+                                                                                                             "source":  "speech/202602202330_Unified_Game_Execution_Engine",
+                                                                                                             "hash":  "D25C88D8E6896C203551A67874F23043"
+                                                                                                         },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602182200_forge003_created.md":  {
+                                                                                                "ingestedAt":  "2026-02-20T21:13:13.1951107-07:00",
+                                                                                                "docType":  "speech",
+                                                                                                "source":  "speech/202602182200_FORGE003_Created",
+                                                                                                "hash":  "D1E563361A051E8D0BC34EAB61DDC948"
+                                                                                            },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602191500_openfixer_complete_rag001_phase1.md":  {
+                                                                                                                "ingestedAt":  "2026-02-20T21:13:13.2885694-07:00",
+                                                                                                                "docType":  "speech",
+                                                                                                                "source":  "speech/202602191500_OpenFixer_Complete_RAG001_Phase1",
+                                                                                                                "hash":  "6F944D8F5D9325B13F25C32EA7546836"
+                                                                                                            },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_041.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:13:10.4667401-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/041",
+                                                                                          "hash":  "B58BACC901B1ECDF1CA99A17A2D55152"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_assimilation_report.md":  {
+                                                                                                          "ingestedAt":  "2026-02-20T21:13:11.0087990-07:00",
+                                                                                                          "docType":  "decision",
+                                                                                                          "source":  "decisions/active/ASSIMILATION_REPORT",
+                                                                                                          "hash":  "34C20E96CC842CBA8C62146732E9A74E"
+                                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_063.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:16:19.6001440-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/063",
+                                                                                          "hash":  "0F2F12FECC244A4AF025CD8BE223293F"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t21-15-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:12.5911969-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T21-15-00",
+                                                                                      "hash":  "E2F8A274D523D69C7179A1535137A344"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_076.md":  {
+                                                                                          "ingestedAt":  "2026-02-21T00:28:40.1907153-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/076",
+                                                                                          "hash":  "96092DA275444DC96EB101D0BA443031"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260220t0610_oracle_designer_assimilated.md":  {
+                                                                                                            "ingestedAt":  "2026-02-20T21:13:14.0801594-07:00",
+                                                                                                            "docType":  "speech",
+                                                                                                            "source":  "speech/20260220T0610_Oracle_Designer_Assimilated",
+                                                                                                            "hash":  "876A1069AB4879B25695D0D6DC822084"
+                                                                                                        },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602180822_boots-down_logs.md":  {
+                                                                                               "ingestedAt":  "2026-02-20T21:13:12.8129058-07:00",
+                                                                                               "docType":  "speech",
+                                                                                               "source":  "speech/202602180822_Boots-Down_logs",
+                                                                                               "hash":  "FA8CD30CA8BAF80F59A4B99C396BDA1E"
+                                                                                           },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2025-02-17t21-00-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:11.5425483-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2025-02-17T21-00-00",
+                                                                                      "hash":  "6CA84322202730F6E02760CCED88AEC0"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\completed\\decision_034.md":  {
+                                                                                             "ingestedAt":  "2026-02-20T21:13:11.3721577-07:00",
+                                                                                             "docType":  "decision",
+                                                                                             "source":  "decisions/completed/034",
+                                                                                             "hash":  "5CD814DC1DEF688AA5F46418FFE965BA"
+                                                                                         },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_049.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:13:10.5730340-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/049",
+                                                                                          "hash":  "D90761DDA1698D012F44ACC0357966AB"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602210900_windfixer_completes_057_060.md":  {
+                                                                                                           "ingestedAt":  "2026-02-20T21:13:14.5314925-07:00",
+                                                                                                           "docType":  "speech",
+                                                                                                           "source":  "speech/202602210900_WINDFIXER_COMPLETES_057_060",
+                                                                                                           "hash":  "ED9C38F7271B803E1E7C89764BE6866A"
+                                                                                                       },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\journal_2026-02-20_decisions_and_strategy.md":  {
+                                                                                                                "ingestedAt":  "2026-02-20T21:13:14.8008521-07:00",
+                                                                                                                "docType":  "deployment",
+                                                                                                                "source":  "deployments/JOURNAL_2026-02-20_DECISIONS_AND_STRATEGY",
+                                                                                                                "hash":  "C78D9CFA9BDA13BD5435F42F01479578"
+                                                                                                            },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260220t0515_windfixer_honest_narrative.md":  {
+                                                                                                           "ingestedAt":  "2026-02-20T21:13:13.7999668-07:00",
+                                                                                                           "docType":  "speech",
+                                                                                                           "source":  "speech/20260220T0515_WindFixer_Honest_Narrative",
+                                                                                                           "hash":  "41721D6A289C88F1879028BFF6ABC206"
+                                                                                                       },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602182200_evening_synthesis.md":  {
+                                                                                                 "ingestedAt":  "2026-02-20T21:13:13.1695703-07:00",
+                                                                                                 "docType":  "speech",
+                                                                                                 "source":  "speech/202602182200_Evening_Synthesis",
+                                                                                                 "hash":  "B8B8A1DB2BE91A9412F934AE2929FC30"
+                                                                                             },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\journal_2026-02-20_decision_047_burn_in.md":  {
+                                                                                                              "ingestedAt":  "2026-02-20T21:49:46.5221970-07:00",
+                                                                                                              "docType":  "deployment",
+                                                                                                              "source":  "deployments/JOURNAL_2026-02-20_DECISION_047_BURN_IN",
+                                                                                                              "hash":  "B56833A79887948EF3496378EE2C71F3"
+                                                                                                          },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t18-00-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:12.1842543-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T18-00-00",
+                                                                                      "hash":  "65A434DAC8755A9B1B9671CB85AC7E32"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260221t1600_seven_bugs_synthesis.md":  {
+                                                                                                     "ingestedAt":  "2026-02-21T00:06:40.3238744-07:00",
+                                                                                                     "docType":  "speech",
+                                                                                                     "source":  "speech/20260221T1600_SEVEN_BUGS_SYNTHESIS",
+                                                                                                     "hash":  "1CE202BEFCCC3BF88254D67C8A872A76"
+                                                                                                 },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\journal_2026-02-21_rag_population.md":  {
+                                                                                                        "ingestedAt":  "2026-02-20T21:13:15.0703607-07:00",
+                                                                                                        "docType":  "deployment",
+                                                                                                        "source":  "deployments/JOURNAL_2026-02-21_RAG_Population",
+                                                                                                        "hash":  "D7D499A873DE3CD0CD8928DE030EEDA6"
+                                                                                                    },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602182100_rag001_approved.md":  {
+                                                                                               "ingestedAt":  "2026-02-20T21:13:13.1116993-07:00",
+                                                                                               "docType":  "speech",
+                                                                                               "source":  "speech/202602182100_RAG001_Approved",
+                                                                                               "hash":  "8801C5191F937A0E60F26776DB03E6C7"
+                                                                                           },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t21-00-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:12.5587475-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T21-00-00",
+                                                                                      "hash":  "4B76D2F2D1CAB13D756BDC00CEB8A811"
+                                                                                  },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\completion-report_decision-051.md":  {
+                                                                                                     "ingestedAt":  "2026-02-20T21:13:14.6257475-07:00",
+                                                                                                     "docType":  "deployment",
+                                                                                                     "source":  "deployments/COMPLETION-REPORT_DECISION-051",
+                                                                                                     "hash":  "97227A12CFBEDBC67B86F07C436BC8E7"
+                                                                                                 },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t22-00-00-forge-002-approved-deploy-fixers.md":  {
+                                                                                                                       "ingestedAt":  "2026-02-20T21:13:12.6771938-07:00",
+                                                                                                                       "docType":  "speech",
+                                                                                                                       "source":  "speech/2026-02-18T22-00-00-FORGE-002-APPROVED-Deploy-Fixers",
+                                                                                                                       "hash":  "8C6140742D19B53D382DACC1C84BCC51"
+                                                                                                                   },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_059.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:13:10.8790179-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/059",
+                                                                                          "hash":  "50926853D03DB1DC47623D7C5FCA6215"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_066.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:45:44.6359911-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/066",
+                                                                                          "hash":  "BAF3160A30BA3AFF02656DAF00002EB6"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602210930_the_agents_awaken.md":  {
+                                                                                                 "ingestedAt":  "2026-02-20T21:23:47.4525582-07:00",
+                                                                                                 "docType":  "speech",
+                                                                                                 "source":  "speech/202602210930_The_Agents_Awaken",
+                                                                                                 "hash":  "434FC34DD6D8511717C39432761EB400"
+                                                                                             },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602181945_designer_consultation_complete.md":  {
+                                                                                                              "ingestedAt":  "2026-02-20T21:13:12.9909064-07:00",
+                                                                                                              "docType":  "speech",
+                                                                                                              "source":  "speech/202602181945_Designer_Consultation_Complete",
+                                                                                                              "hash":  "F20B8D7C1B759F2E19A3FE343B32DCB9"
+                                                                                                          },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t20-15-00-forge-001-consultations-sent.md":  {
+                                                                                                                   "ingestedAt":  "2026-02-20T21:13:12.4113951-07:00",
+                                                                                                                   "docType":  "speech",
+                                                                                                                   "source":  "speech/2026-02-18T20-15-00-FORGE-001-Consultations-Sent",
+                                                                                                                   "hash":  "41CF55750198A47534FD902C611BD863"
+                                                                                                               },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602202300_first_spin_ready.md":  {
+                                                                                                "ingestedAt":  "2026-02-20T21:13:13.6481715-07:00",
+                                                                                                "docType":  "speech",
+                                                                                                "source":  "speech/202602202300_First_Spin_Ready",
+                                                                                                "hash":  "886DE8D70D8F66762394E5938971128A"
+                                                                                            },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_064.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:44:28.6741450-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/064",
+                                                                                          "hash":  "636C721E60BEFDDD19DED16ADFF7D95A"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t18-45-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:12.2392959-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T18-45-00",
+                                                                                      "hash":  "CC2A81A2D8940A990AD58785D87F0F4C"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\foureyes_codebase_reference.md":  {
+                                                                                                         "ingestedAt":  "2026-02-20T21:13:11.1110315-07:00",
+                                                                                                         "docType":  "decision",
+                                                                                                         "source":  null,
+                                                                                                         "hash":  "A43491E17C422A2AF0A8797B44A0F0DA"
+                                                                                                     },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\summary-three-decision-package-2026-02-20.md":  {
+                                                                                                                       "ingestedAt":  "2026-02-20T21:13:11.2050582-07:00",
+                                                                                                                       "docType":  "decision",
+                                                                                                                       "source":  null,
+                                                                                                                       "hash":  "7CBB8AC890583D5C693E2F54885F58F9"
+                                                                                                                   },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260220t0515_windfixer_session_results.md":  {
+                                                                                                          "ingestedAt":  "2026-02-20T21:13:13.8314489-07:00",
+                                                                                                          "docType":  "speech",
+                                                                                                          "source":  "speech/20260220T0515_WindFixer_Session_Results",
+                                                                                                          "hash":  "7AD5049A4C097D5D39DF90A19013800B"
+                                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t19-00-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:12.2653962-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T19-00-00",
+                                                                                      "hash":  "A20BB4DB68308D118D6916E0225AD81D"
+                                                                                  },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\burn_in_execution_prompt.md":  {
+                                                                                               "ingestedAt":  "2026-02-20T21:42:53.6686305-07:00",
+                                                                                               "docType":  "deployment",
+                                                                                               "source":  "deployments/BURN_IN_EXECUTION_PROMPT",
+                                                                                               "hash":  "4C26A5E3AE0FD2554186209A702ED487"
+                                                                                           },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t15-30-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:11.9936206-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T15-30-00",
+                                                                                      "hash":  "57F47F249D153D94803DCC1E6B4E91BD"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260220t0600_decision_validation_complete.md":  {
+                                                                                                             "ingestedAt":  "2026-02-20T21:13:14.0198259-07:00",
+                                                                                                             "docType":  "speech",
+                                                                                                             "source":  "speech/20260220T0600_Decision_Validation_Complete",
+                                                                                                             "hash":  "A4E6CAEF474A1A150C7C3E38B2F15D1A"
+                                                                                                         },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t17-00-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:12.1271268-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T17-00-00",
+                                                                                      "hash":  "B15E8207FD0AC98C9ECEB1DDDADAE5C5"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_068.md":  {
+                                                                                          "ingestedAt":  "2026-02-21T00:31:00.0739656-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/068",
+                                                                                          "hash":  "394357A6A406F713C59F1762A2309B37"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260220t1700_self_correction_and_hardening.md":  {
+                                                                                                              "ingestedAt":  "2026-02-20T21:13:14.2368070-07:00",
+                                                                                                              "docType":  "speech",
+                                                                                                              "source":  "speech/20260220T1700_Self_Correction_and_Hardening",
+                                                                                                              "hash":  "032F144F090B62E0F885BCDE6E25DE00"
+                                                                                                          },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_028.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:13:10.3313578-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/028",
+                                                                                          "hash":  "DC6751F7B85657AD0280C23E2172EB97"
+                                                                                      },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\journal_2026-02-20_decision_062.md":  {
+                                                                                                      "ingestedAt":  "2026-02-20T21:29:09.8536417-07:00",
+                                                                                                      "docType":  "deployment",
+                                                                                                      "source":  "deployments/JOURNAL_2026-02-20_DECISION_062",
+                                                                                                      "hash":  "DA65EE3AE2DC8B685AD52E2A4FAB8DF3"
+                                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t21-30-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:12.6534079-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T21-30-00",
+                                                                                      "hash":  "D453D0F2A0454303B7681FBE55128993"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602190500_windfixer_complete_openfixer_handoff.md":  {
+                                                                                                                    "ingestedAt":  "2026-02-20T21:13:13.2318252-07:00",
+                                                                                                                    "docType":  "speech",
+                                                                                                                    "source":  "speech/202602190500_WindFixer_Complete_OpenFixer_Handoff",
+                                                                                                                    "hash":  "76D8D204F5A0CBEC8742339A7E52CDEF"
+                                                                                                                },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\journal_2026-02-21_decision-055.md":  {
+                                                                                                      "ingestedAt":  "2026-02-20T21:13:15.0273010-07:00",
+                                                                                                      "docType":  "deployment",
+                                                                                                      "source":  "deployments/JOURNAL_2026-02-21_DECISION-055",
+                                                                                                      "hash":  "313A6B72A28DF952CBAD28F1476FC1A2"
+                                                                                                  },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\journal_2026-02-20_decision_068_four_eyes_vision.md":  {
+                                                                                                                       "ingestedAt":  "2026-02-20T22:14:24.5842390-07:00",
+                                                                                                                       "docType":  "deployment",
+                                                                                                                       "source":  "deployments/JOURNAL_2026-02-20_DECISION_068_FOUR_EYES_VISION",
+                                                                                                                       "hash":  "EAD0226CCD08ED644D171F1627E6D467"
+                                                                                                                   },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t14-00-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:11.8845472-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T14-00-00",
+                                                                                      "hash":  "41EE286B1163803B7BA4CB304BFDB736"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260220_session_synthesis.md":  {
+                                                                                             "ingestedAt":  "2026-02-20T21:13:14.3026046-07:00",
+                                                                                             "docType":  "speech",
+                                                                                             "source":  "speech/20260220_Session_Synthesis",
+                                                                                             "hash":  "E247FB63A1E571937B0D7CA5A1C31BA3"
+                                                                                         },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_074.md":  {
+                                                                                          "ingestedAt":  "2026-02-21T00:31:00.7971892-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/074",
+                                                                                          "hash":  "B35931E025D126928146A1F2926481F5"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_042.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:13:10.4861877-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/042",
+                                                                                          "hash":  "D46096125009BF252A5325EC15890B38"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\manifest\\manifest.json":  {
+                                                                               "ingestedAt":  "2026-02-21T04:05:59.9321439-07:00",
+                                                                               "docType":  "manifest",
+                                                                               "source":  "manifest/manifest",
+                                                                               "hash":  "F1103EA17F823C9519375FDB007A0525"
+                                                                           },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602181213_running_logs.md":  {
+                                                                                            "ingestedAt":  "2026-02-20T21:13:12.8511208-07:00",
+                                                                                            "docType":  "speech",
+                                                                                            "source":  "speech/202602181213_Running_logs",
+                                                                                            "hash":  "A72886164E302AC41D3BBED8910FA31B"
+                                                                                        },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t20-00-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:12.3787771-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T20-00-00",
+                                                                                      "hash":  "56BFB5C2E9865E308644ADBD5DAEEA2E"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\completed\\decision-forge-004.md":  {
+                                                                                                   "ingestedAt":  "2026-02-20T21:13:11.2670617-07:00",
+                                                                                                   "docType":  "decision",
+                                                                                                   "source":  null,
+                                                                                                   "hash":  "52BAEBCA3463EE896F4302EE8B0F05F2"
+                                                                                               },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\completed\\decision_026.md":  {
+                                                                                             "ingestedAt":  "2026-02-20T21:13:11.2936749-07:00",
+                                                                                             "docType":  "decision",
+                                                                                             "source":  "decisions/completed/026",
+                                                                                             "hash":  "0D748243476DFE44FE7B081F65EB117C"
+                                                                                         },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_047.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:49:16.7768094-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/047",
+                                                                                          "hash":  "FE02090593F67B84DAD0133BA5FAB065"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\deployment-package-2026-02-20.md":  {
+                                                                                                           "ingestedAt":  "2026-02-20T21:13:11.0342035-07:00",
+                                                                                                           "docType":  "decision",
+                                                                                                           "source":  null,
+                                                                                                           "hash":  "9E4AC2E97B9905768C00199DA2CFD008"
+                                                                                                       },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\journal_2026-02-20_toolhive_gateway.md":  {
+                                                                                                          "ingestedAt":  "2026-02-20T21:13:14.9040516-07:00",
+                                                                                                          "docType":  "deployment",
+                                                                                                          "source":  "deployments/JOURNAL_2026-02-20_TOOLHIVE_GATEWAY",
+                                                                                                          "hash":  "AB4B1079171AAA28E89C462B54034E3E"
+                                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t10-30-00.md":  {
+                                                                                      "ingestedAt":  "2026-02-20T21:13:11.5951746-07:00",
+                                                                                      "docType":  "speech",
+                                                                                      "source":  "speech/2026-02-18T10-30-00",
+                                                                                      "hash":  "AA20C9481385981CD6C2C0CA06D1CD37"
+                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t12-05-00-fixer-brief.md":  {
+                                                                                                  "ingestedAt":  "2026-02-20T21:13:11.7253500-07:00",
+                                                                                                  "docType":  "speech",
+                                                                                                  "source":  "speech/2026-02-18T12-05-00-FIXER-BRIEF",
+                                                                                                  "hash":  "81E854F17873FB270FA2066E1A57BC91"
+                                                                                              },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602181400_windsurf_assimilation.md":  {
+                                                                                                     "ingestedAt":  "2026-02-20T21:13:12.8799450-07:00",
+                                                                                                     "docType":  "speech",
+                                                                                                     "source":  "speech/202602181400_WindSurf_Assimilation",
+                                                                                                     "hash":  "D456F8602D2C855261DD5C593DEB2347"
+                                                                                                 },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602210400_the_climax.md":  {
+                                                                                          "ingestedAt":  "2026-02-20T21:13:14.3691683-07:00",
+                                                                                          "docType":  "speech",
+                                                                                          "source":  "speech/202602210400_THE_CLIMAX",
+                                                                                          "hash":  "59BAA4D9CC8009A7950F722A06F4F0B6"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_071.md":  {
+                                                                                          "ingestedAt":  "2026-02-21T00:31:00.4956736-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/071",
+                                                                                          "hash":  "5AB9D346BBA82B2BB10F9952207B2140"
+                                                                                      },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\journal_2026-02-20_toolhive_gateway_http_discovery.md":  {
+                                                                                                                         "ingestedAt":  "2026-02-20T21:13:14.9347088-07:00",
+                                                                                                                         "docType":  "deployment",
+                                                                                                                         "source":  "deployments/JOURNAL_2026-02-20_TOOLHIVE_GATEWAY_HTTP_DISCOVERY",
+                                                                                                                         "hash":  "811635433F4E06090CDEBCF591310AEC"
+                                                                                                                     },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_070.md":  {
+                                                                                          "ingestedAt":  "2026-02-21T00:31:00.2961659-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/070",
+                                                                                          "hash":  "E204AEFDA06BA0EDFDA68E583DDF5DED"
+                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\quick_ref_064-067.md":  {
+                                                                                               "ingestedAt":  "2026-02-20T23:30:15.4687171-07:00",
+                                                                                               "docType":  "decision",
+                                                                                               "source":  null,
+                                                                                               "hash":  "8AC3E51A8EC61FC78C11CDF7F08FFABB"
+                                                                                           }
+                 }
+}

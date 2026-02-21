@@ -204,3 +204,18 @@ Document in runbooks/POST_MORTEM.md
 
 **TECH-001/002/003: Technical Specifications**
 - Model versioning, hardware assessment, GPU benchmarks
+
+**New Documentation (2026-02-20)**
+- `vm-deployment/`: VM deployment documentation
+  - `architecture.md`: VM deployment architecture
+  - `network-setup.md`: Network configuration
+  - `chrome-cdp-config.md`: Chrome CDP configuration
+  - `troubleshooting.md`: VM troubleshooting
+- `components/H4ND/AGENT_MANIFEST.md`: H4ND agent manifest
+- `components/H0UND/AGENT_MANIFEST.md`: H0UND agent manifest
+- `vm/EXECUTOR_VM.md`: VM executor guide
+
+### Recent Modifications (2026-02-20)
+- **H0UND/H0UND.cs**: Version 0.8.6.3, AnalyticsIntervalSeconds = 10
+- **H4ND/H4ND.cs**: Added RunMode.GenerateSignals support, ARCH-055, TECH-H4ND-001, TECH-FE-015, TECH-JP-001, TECH-JP-002, OPS-JP-001 documentation
+- **H4ND/UnifiedEntryPoint.cs**: ParseMode support for different run modes

@@ -52,15 +52,15 @@ public class FixData
 					wasModified = true;
 				}
 
-			if (wasModified)
-			{
-				jackpotResetCount++;
-				Console.WriteLine($"Reset jackpots for {credential.Username} ({credential.House}/{credential.Game})");
-			}
+				if (wasModified)
+				{
+					jackpotResetCount++;
+					Console.WriteLine($"Reset jackpots for {credential.Username} ({credential.House}/{credential.Game})");
+				}
 
-			// DPD removed from Credential - data migrated to Jackpot collection via DpdMigration
+				// DPD removed from Credential - data migrated to Jackpot collection via DpdMigration
 
-			if (wasModified)
+				if (wasModified)
 				{
 					credentialsRepo.Upsert(credential);
 					updatedCount++;

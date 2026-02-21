@@ -1,0 +1,15 @@
+C:\P4NTH30N\T00L5ET\bin\Release\net10.0\T00L5ET.exe
+C:\P4NTH30N\T00L5ET\bin\Release\net10.0\T00L5ET.deps.json
+C:\P4NTH30N\T00L5ET\bin\Release\net10.0\T00L5ET.runtimeconfig.json
+C:\P4NTH30N\T00L5ET\bin\Release\net10.0\T00L5ET.dll
+C:\P4NTH30N\T00L5ET\bin\Release\net10.0\T00L5ET.pdb
+C:\P4NTH30N\T00L5ET\obj\Release\net10.0\T00L5ET.GeneratedMSBuildEditorConfig.editorconfig
+C:\P4NTH30N\T00L5ET\obj\Release\net10.0\T00L5ET.AssemblyInfoInputs.cache
+C:\P4NTH30N\T00L5ET\obj\Release\net10.0\T00L5ET.AssemblyInfo.cs
+C:\P4NTH30N\T00L5ET\obj\Release\net10.0\T00L5ET.csproj.CoreCompileInputs.cache
+C:\P4NTH30N\T00L5ET\obj\Release\net10.0\T00L5ET.sourcelink.json
+C:\P4NTH30N\T00L5ET\obj\Release\net10.0\T00L5ET.dll
+C:\P4NTH30N\T00L5ET\obj\Release\net10.0\refint\T00L5ET.dll
+C:\P4NTH30N\T00L5ET\obj\Release\net10.0\T00L5ET.pdb
+C:\P4NTH30N\T00L5ET\obj\Release\net10.0\T00L5ET.genruntimeconfig.cache
+C:\P4NTH30N\T00L5ET\obj\Release\net10.0\ref\T00L5ET.dll

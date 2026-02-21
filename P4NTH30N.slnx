@@ -2,7 +2,7 @@
 	<Project Path="C0MMON/C0MMON.csproj" />
 	<Project Path="DE51GN3R/DE51GN3R.csproj" Id="bdaa9782-49b7-4bd4-bfe9-ccd7750d60d0" />
 	<Project Path="EXPL0R3R/EXPL0R3R.csproj" Id="512ff9bf-89e0-40ad-95d0-b61c017a71fb" />
-	<Project Path="F0RG3WR1GH7/F0RG3WR1GH7.csproj" Id="e5e22b2f-0f8e-4cc1-9b98-6945bc90952b" />
+	<Project Path="F0RGE/F0RG3WR1GH7.csproj" Id="e5e22b2f-0f8e-4cc1-9b98-6945bc90952b" />
 	<Project Path="H0UND/H0UND.csproj" />
 	<Project Path="H4ND/H4ND.csproj" />
 	<Project Path="LIBRAR14N/LIBRAR14N.csproj" Id="5a7954be-1fb2-408d-95dc-848d561d5efb" />
@@ -12,7 +12,7 @@
 	<Project Path="src/RAG.McpHost/RAG.McpHost.csproj" />
 	<Project Path="src/RAG/RAG.csproj" />
 	<Project Path="T00L5ET/T00L5ET.csproj" Id="32444544-90e6-4b84-80b8-48c7f148d21a" />
-	<Project Path="T4CT1CS/STR4T3G15T.csproj" Id="3bc59fe5-d84c-46f8-aa28-d43ccc9ce465" />
+	<Project Path="STR4TEG15T/STR4TEG15T.csproj" Id="3bc59fe5-d84c-46f8-aa28-d43ccc9ce465" />
 	<Project Path="UNI7T35T/UNI7T35T.csproj" Id="08393a5c-c385-48bd-b897-46b573c55f67" />
 	<Project Path="W1NDF1XER/W1NDF1XER.csproj" Id="c8296872-ccbc-4525-bceb-fae25a425d56" />
 	<Project Path="W4TCHD0G/W4TCHD0G.csproj" />

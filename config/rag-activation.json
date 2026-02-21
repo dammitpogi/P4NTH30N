@@ -1,0 +1,50 @@
+{
+  "version": "1.0.0",
+  "description": "DECISION_033: RAG Activation Hub configuration",
+  "ragHost": {
+    "executable": "C:\\ProgramData\\P4NTH30N\\bin\\RAG.McpHost.exe",
+    "port": 5001,
+    "startupArgs": ["--port", "5001", "--mongo", "mongodb://192.168.56.1:27017/P4NTH30N"],
+    "healthCheckUrl": "http://localhost:5001/health"
+  },
+  "fileWatcher": {
+    "enabled": true,
+    "debounceMinutes": 5,
+    "watchPaths": [
+      "C:\\P4NTH30N\\docs",
+      "C:\\P4NTH30N\\STR4TEG15T\\decisions",
+      "C:\\P4NTH30N\\STR4TEG15T\\speech",
+      "C:\\P4NTH30N\\STR4TEG15T\\canon",
+      "C:\\P4NTH30N\\STR4TEG15T\\intel",
+      "C:\\P4NTH30N\\OP3NF1XER\\deployments",
+      "C:\\P4NTH30N\\OP3NF1XER\\knowledge",
+      "C:\\P4NTH30N\\W1NDF1XER\\deployments",
+      "C:\\P4NTH30N\\W1NDF1XER\\knowledge",
+      "C:\\P4NTH30N\\OR4CL3\\consultations",
+      "C:\\P4NTH30N\\DE51GN3R\\consultations",
+      "C:\\P4NTH30N\\DE51GN3R\\decisions"
+    ],
+    "filePatterns": ["*.md", "*.json"],
+    "excludeDirectories": ["bin", "obj", ".git", "node_modules", "Releases"]
+  },
+  "bulkIngestion": {
+    "directories": [
+      { "path": "C:\\P4NTH30N\\STR4TEG15T\\decisions\\active", "tag": "decision", "priority": "high" },
+      { "path": "C:\\P4NTH30N\\STR4TEG15T\\speech", "tag": "speech", "priority": "high" },
+      { "path": "C:\\P4NTH30N\\STR4TEG15T\\canon", "tag": "canon", "priority": "high" },
+      { "path": "C:\\P4NTH30N\\STR4TEG15T\\intel", "tag": "intel", "priority": "medium" },
+      { "path": "C:\\P4NTH30N\\OP3NF1XER\\deployments", "tag": "deployment", "priority": "medium" },
+      { "path": "C:\\P4NTH30N\\OP3NF1XER\\knowledge", "tag": "knowledge", "priority": "medium" },
+      { "path": "C:\\P4NTH30N\\docs", "tag": "documentation", "priority": "medium" },
+      { "path": "C:\\P4NTH30N\\docs\\architecture", "tag": "architecture", "priority": "high" }
+    ],
+    "rootDocuments": [
+      "C:\\P4NTH30N\\AGENTS.md",
+      "C:\\P4NTH30N\\C0MMON\\AGENTS.md",
+      "C:\\P4NTH30N\\H4ND\\AGENTS.md",
+      "C:\\P4NTH30N\\H0UND\\AGENTS.md",
+      "C:\\P4NTH30N\\W4TCHD0G\\Agents.md",
+      "C:\\P4NTH30N\\codemap.md"
+    ]
+  }
+}
