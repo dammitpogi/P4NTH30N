@@ -1,0 +1,97 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-02-18T22:00:00Z",
+  "description": "Master registry of all decisions in T4CT1CS",
+  "decisions": [
+    {
+      "id": "FORGE-001",
+      "filePath": "decisions/active/FORGE-001-Directory-Architecture.md",
+      "title": "T4CT1CS Directory Architecture Standardization",
+      "category": "FORGE",
+      "status": "Proposed",
+      "priority": "Critical",
+      "oracleApproval": 68,
+      "designerApproval": 74,
+      "createdAt": "2026-02-18T20:00:00Z",
+      "updatedAt": "2026-02-18T21:00:00Z",
+      "consultationIds": [
+        "2026-02-18T20-15-00-FORGE-001.md",
+        "2026-02-18T21-15-00-FORGE-001-Deep-Dive.md"
+      ],
+      "actionIds": [
+        "ACT-050", "ACT-051", "ACT-052", "ACT-053", "ACT-054", "ACT-055", "ACT-056", "ACT-057",
+        "ACT-058", "ACT-059", "ACT-060", "ACT-061", "ACT-062", "ACT-063", "ACT-064", "ACT-065",
+        "ACT-066", "ACT-067", "ACT-068", "ACT-069", "ACT-070", "ACT-071", "ACT-072", "ACT-073",
+        "ACT-074", "ACT-075", "ACT-076"
+      ],
+      "speechIds": [
+        "2026-02-18T20-15-00",
+        "2026-02-18T21-00-00"
+      ],
+      "dependencies": [],
+      "blocks": ["FORGE-002"]
+    },
+    {
+      "id": "FORGE-002",
+      "filePath": "decisions/active/FORGE-002-Decision-Making-Enhancement.md",
+      "title": "Decision-Making Process Enhancement Framework",
+      "category": "FORGE",
+      "status": "Approved",
+      "priority": "Critical",
+      "oracleApproval": 0,
+      "designerApproval": 92,
+      "strategistApproval": 95,
+      "aggregatedScore": 93.5,
+      "createdAt": "2026-02-18T21:30:00Z",
+      "updatedAt": "2026-02-18T22:00:00Z",
+      "consultationIds": [
+        "2026-02-18T21-30-00-FORGE-002.md"
+      ],
+      "actionIds": [
+        "FORGE-002-001", "FORGE-002-002", "FORGE-002-003", "FORGE-002-004",
+        "FORGE-002-005", "FORGE-002-006", "FORGE-002-007", "FORGE-002-008",
+        "FORGE-002-009", "FORGE-002-010", "FORGE-002-011", "FORGE-002-012",
+        "FORGE-002-013", "FORGE-002-014", "FORGE-002-015", "FORGE-002-016",
+        "FORGE-002-017", "FORGE-002-018", "FORGE-002-019", "FORGE-002-020"
+      ],
+      "speechIds": [
+        "2026-02-18T22-00-00"
+      ],
+      "dependencies": ["FORGE-001"],
+      "blocks": []
+    }
+  ],
+  "nextId": {
+    "INFRA": 11,
+    "CORE": 2,
+    "FEAT": 2,
+    "TECH": 3,
+    "RISK": 1,
+    "AUTO": 1,
+    "FORGE": 3,
+    "ARCH": 2,
+    "FOUREYES": 21,
+    "WIN": 9,
+    "ACT": 77,
+    "CLUSTER": 4
+  },
+  "schema": {
+    "decision": {
+      "id": "string - e.g., INFRA-009",
+      "filePath": "string - relative path from T4CT1CS/",
+      "title": "string - human-readable title",
+      "category": "string - one of INFRA,CORE,FEAT,TECH,RISK,AUTO,FORGE,ARCH,etc",
+      "status": "string - Proposed|InProgress|Completed|Rejected|Blocked",
+      "priority": "string - Critical|High|Medium|Low",
+      "oracleApproval": "number - 0-100, 0 if not consulted",
+      "designerApproval": "number - 0-100, 0 if not consulted",
+      "createdAt": "string - ISO8601 timestamp",
+      "updatedAt": "string - ISO8601 timestamp",
+      "consultationIds": ["array of consultation file names"],
+      "actionIds": ["array of action IDs"],
+      "speechIds": ["array of speech file names"],
+      "dependencies": ["array of decision IDs this depends on"],
+      "blocks": ["array of decision IDs blocked by this"]
+    }
+  }
+}

@@ -1,0 +1,299 @@
+{
+  "decisionId": "ARCH-003",
+  "title": "LLM-Powered Intelligent Deployment Analysis",
+  "category": "Platform-Architecture",
+  "status": "Proposed",
+  "description": "Implement local LLM-based deployment validation using Maincoder-1B (1B parameters) with confidence scoring and rule-based fallback",
+  
+  "approval": {
+    "percentage": 72,
+    "level": "Conditional",
+    "date": "2026-02-18T23:00:00Z",
+    "oracle": {
+      "feasibility": 8,
+      "risk": 6,
+      "complexity": 5,
+      "resources": 6,
+      "rationale": "Maincoder-1B properly sized at 1B params. Single-LLM reduces failure points. 72% is highest approval achieved across all iterations. Pre-validation required before full commitment."
+    }
+  },
+  
+  "conditions": {
+    "mustFix": [
+      {
+        "id": "COND-001",
+        "description": "Pre-commit validation: Download Maincoder-1B GGUF and run 5-sample test",
+        "status": "Pending",
+        "verification": "5 sample configs validated with >80% accuracy"
+      },
+      {
+        "id": "COND-002",
+        "description": "Prompt framing: Achieve reliable structured JSON output",
+        "status": "Pending",
+        "verification": "3 iterations max to get consistent JSON"
+      },
+      {
+        "id": "COND-003",
+        "description": "Expand benchmark: Include malformed JSON edge cases",
+        "status": "Pending",
+        "verification": "50-sample test set includes malformed JSON"
+      }
+    ],
+    "niceToHave": [
+      {
+        "id": "NICE-001",
+        "description": "Add latency optimization (Q4_K quantization)",
+        "status": "Pending"
+      }
+    ],
+    "preValidation": {
+      "required": true,
+      "steps": [
+        {
+          "step": 1,
+          "description": "Download Maincoder-1B GGUF Q4_K (0.8GB)",
+          "passCriteria": "Model loads successfully in llama.cpp",
+          "status": "Pending"
+        },
+        {
+          "step": 2,
+          "description": "Run 5-sample validation test",
+          "passCriteria": ">80% accuracy on 5 samples",
+          "status": "Pending"
+        },
+        {
+          "step": 3,
+          "description": "Verify JSON output consistency",
+          "passCriteria": "Valid JSON in 5/5 attempts",
+          "status": "Pending"
+        }
+      ]
+    }
+  },
+  
+  "technicalSpecification": {
+    "architecture": "Single-LLM pipeline with confidence scoring and rule-based fallback. Input config → Maincoder-1B → JSON parser → decision with confidence threshold.",
+    "components": [
+      {
+        "name": "Maincoder-1B Inference Engine",
+        "purpose": "Local LLM validation using 1B parameter model",
+        "specifications": "GGUF Q4_K quantization, llama.cpp backend, <2s latency",
+        "dependencies": ["llama.cpp", "GGUF model file"]
+      },
+      {
+        "name": "JSON Parser + Confidence Scorer",
+        "purpose": "Extract structured output and calculate confidence",
+        "specifications": "Parse {valid: bool, confidence: 0.0-1.0, failures: []}",
+        "dependencies": ["System.Text.Json"]
+      },
+      {
+        "name": "Rule-Based Fallback",
+        "purpose": "Validate using JSON Schema when confidence <50%",
+        "specifications": "Threshold order validation, range checks, required fields",
+        "dependencies": ["JSON Schema validator"]
+      }
+    ],
+    "model": {
+      "name": "Maincode/Maincoder-1B",
+      "parameters": "1B",
+      "platform": "llama.cpp (local)",
+      "quantization": "GGUF Q4_K",
+      "size": "0.8GB"
+    },
+    "dataFlow": "Input Config (JSON) → Maincoder-1B → JSON Output → Parse {valid, confidence, failures} → Decision (≥70% accept, 50-70% review, <50% fallback)",
+    "codeExamples": [
+      {
+        "language": "csharp",
+        "description": "Confidence-based decision logic",
+        "code": "public Decision MakeDecision(ValidationResult result)\n{\n    return result.Confidence switch\n    {\n        >= 0.70 => Decision.Accept(),\n        >= 0.50 => Decision.ReviewRequired(),\n        _ => Decision.FallbackToRuleBased()\n    };\n}"
+      },
+      {
+        "language": "json",
+        "description": "Expected LLM output format",
+        "code": "{\n  \"valid\": false,\n  \"confidence\": 0.85,\n  \"failures\": [\n    \"thresholds.Major (500) must be < thresholds.Grand (1785)\"\n  ]\n}"
+      }
+    ]
+  },
+  
+  "benchmarkRequirements": {
+    "required": true,
+    "testSetSize": 50,
+    "metrics": [
+      {
+        "name": "Accuracy",
+        "target": ">90%",
+        "actual": "TBD",
+        "status": "Pending"
+      },
+      {
+        "name": "Latency",
+        "target": "<2s average",
+        "actual": "TBD",
+        "status": "Pending"
+      },
+      {
+        "name": "Consistency",
+        "target": ">95%",
+        "actual": "TBD",
+        "status": "Pending"
+      },
+      {
+        "name": "False Positive Rate",
+        "target": "<5%",
+        "actual": "TBD",
+        "status": "Pending"
+      },
+      {
+        "name": "False Negative Rate",
+        "target": "<5%",
+        "actual": "TBD",
+        "status": "Pending"
+      }
+    ],
+    "categories": [
+      {
+        "name": "Valid configs",
+        "count": 20,
+        "description": "Standard structure, edge cases, complex nested"
+      },
+      {
+        "name": "Invalid configs",
+        "count": 15,
+        "description": "Missing fields, type errors, invalid values"
+      },
+      {
+        "name": "Edge cases",
+        "count": 15,
+        "description": "Empty values, special chars, unicode, malformed JSON"
+      }
+    ]
+  },
+  
+  "implementation": {
+    "estimatedEffort": "25 units (~12 days)",
+    "phases": [
+      {
+        "phase": 1,
+        "focus": "Model Setup",
+        "timeline": "2 days",
+        "deliverables": ["Download GGUF", "llama.cpp setup", "Basic inference test"],
+        "dependencies": []
+      },
+      {
+        "phase": 2,
+        "focus": "Prompt Engineering",
+        "timeline": "2 days",
+        "deliverables": ["Validation prompt template", "Output schema", "10-sample test"],
+        "dependencies": ["Phase 1"]
+      },
+      {
+        "phase": 3,
+        "focus": "Benchmarking",
+        "timeline": "3 days",
+        "deliverables": ["50-sample test set", "Full benchmark run", "Accuracy metrics"],
+        "dependencies": ["Phase 2"]
+      },
+      {
+        "phase": 4,
+        "focus": "Confidence System + Fallback",
+        "timeline": "2 days",
+        "deliverables": ["Confidence scoring", "Rule-based fallback", "Integration test"],
+        "dependencies": ["Phase 3"]
+      },
+      {
+        "phase": 5,
+        "focus": "Optimization + Deployment",
+        "timeline": "3 days",
+        "deliverables": ["Q4_K quantization", "Latency optimization", "Production deployment"],
+        "dependencies": ["Phase 4"]
+      }
+    ],
+    "targetFiles": [
+      "scripts/DeployLogAnalyzer/MaincoderClient.cs",
+      "scripts/DeployLogAnalyzer/ConfidenceScorer.cs",
+      "scripts/DeployLogAnalyzer/RuleBasedFallback.cs",
+      "scripts/deploy-agents.ps1 (modified)"
+    ],
+    "deliveredFiles": [],
+    "progress": "Oracle approval: 72% Conditional. Pre-validation required."
+  },
+  
+  "fallbackStrategy": {
+    "enabled": true,
+    "type": "Rule-based JSON Schema validation",
+    "description": "When LLM confidence <50%, use deterministic JSON Schema validator with threshold order checks, range validation, and required field verification",
+    "threshold": "Confidence < 0.50"
+  },
+  
+  "risks": [
+    {
+      "risk": "Model outputs malformed JSON",
+      "probability": "Medium",
+      "impact": "High",
+      "mitigation": "Pre-parse with try/catch, fallback to rule-based validator"
+    },
+    {
+      "risk": "Low confidence on valid configs",
+      "probability": "Medium",
+      "impact": "Medium",
+      "mitigation": "Tune threshold, expand prompt examples, use rule-based fallback"
+    },
+    {
+      "risk": "Latency exceeds 2s target",
+      "probability": "Low",
+      "impact": "Medium",
+      "mitigation": "Use Q4_K quantization, optimize prompt length, profile inference"
+    },
+    {
+      "risk": "Pre-validation shows <80% accuracy",
+      "probability": "Low",
+      "impact": "High",
+      "mitigation": "Halt implementation, revisit model selection or architecture"
+    }
+  ],
+  
+  "revisionHistory": [
+    {
+      "version": "1.0",
+      "date": "2026-02-18T20:00:00Z",
+      "changes": "Initial dual-LLM architecture with 0.5B model",
+      "approvalDelta": 0
+    },
+    {
+      "version": "2.0",
+      "date": "2026-02-18T21:00:00Z",
+      "changes": "Switched to single LLM with confidence scoring, added local model",
+      "approvalDelta": 0
+    },
+    {
+      "version": "3.0",
+      "date": "2026-02-18T22:00:00Z",
+      "changes": "Selected Maincoder-1B (1B params), added benchmark requirements, pre-validation gates",
+      "approvalDelta": 72
+    }
+  ],
+  
+  "consultationLog": [
+    {
+      "date": "2026-02-18T20:00:00Z",
+      "agent": "Oracle",
+      "approvalPercentage": 47,
+      "keyFindings": "Dual-LLM adds coordination complexity without proportional value",
+      "concerns": ["0.5B model too small", "Dual-LLM coordination risk", "Need circuit breaker"],
+      "recommendations": ["Use single LLM", "Add confidence scoring", "Benchmark before committing"]
+    },
+    {
+      "date": "2026-02-18T21:00:00Z",
+      "agent": "Oracle",
+      "approvalPercentage": 72,
+      "keyFindings": "Maincoder-1B (1B params) is properly sized, 76% HumanEval solid for code validation",
+      "concerns": ["Pre-validation required", "Prompt iteration needed", "Include malformed JSON in tests"],
+      "recommendations": ["Download GGUF first", "Run 5-sample test", "Expect 2-3 prompt iterations"]
+    }
+  ],
+  
+  "dependencies": ["STRATEGY-011", "LM Studio installation", "llama.cpp"],
+  
+  "timestamp": "2026-02-18T23:00:00Z",
+  "updatedAt": "2026-02-18T23:00:00Z"
+}

@@ -1,0 +1,15 @@
+C:\P4NTH30N\T4CT1CS\bin\Debug\net10.0\T4CT1CS.exe
+C:\P4NTH30N\T4CT1CS\bin\Debug\net10.0\T4CT1CS.deps.json
+C:\P4NTH30N\T4CT1CS\bin\Debug\net10.0\T4CT1CS.runtimeconfig.json
+C:\P4NTH30N\T4CT1CS\bin\Debug\net10.0\T4CT1CS.dll
+C:\P4NTH30N\T4CT1CS\bin\Debug\net10.0\T4CT1CS.pdb
+C:\P4NTH30N\T4CT1CS\obj\Debug\net10.0\T4CT1CS.GeneratedMSBuildEditorConfig.editorconfig
+C:\P4NTH30N\T4CT1CS\obj\Debug\net10.0\T4CT1CS.AssemblyInfoInputs.cache
+C:\P4NTH30N\T4CT1CS\obj\Debug\net10.0\T4CT1CS.AssemblyInfo.cs
+C:\P4NTH30N\T4CT1CS\obj\Debug\net10.0\T4CT1CS.csproj.CoreCompileInputs.cache
+C:\P4NTH30N\T4CT1CS\obj\Debug\net10.0\T4CT1CS.sourcelink.json
+C:\P4NTH30N\T4CT1CS\obj\Debug\net10.0\T4CT1CS.dll
+C:\P4NTH30N\T4CT1CS\obj\Debug\net10.0\refint\T4CT1CS.dll
+C:\P4NTH30N\T4CT1CS\obj\Debug\net10.0\T4CT1CS.pdb
+C:\P4NTH30N\T4CT1CS\obj\Debug\net10.0\T4CT1CS.genruntimeconfig.cache
+C:\P4NTH30N\T4CT1CS\obj\Debug\net10.0\ref\T4CT1CS.dll

@@ -1,0 +1,80 @@
+{
+  "agent": {
+    "name": "STR4TEG15T",
+    "standardName": "strategist",
+    "displayName": "Strategist",
+    "role": "Primary Decision Maker and Fixer Deployer",
+    "category": "Primary",
+    "version": "3.0.0",
+    "location": "C:\\P4NTH30N\\STR4TEG15T"
+  },
+  "seo": {
+    "title": "Strategist Agent - Decision Creation and Workflow Orchestration",
+    "description": "Primary agent responsible for creating decisions via Decision tool, consulting with Oracle/Designer/Librarian in parallel, and deploying Fixers. Manages 90%+ approval workflow and batch operations.",
+    "keywords": [
+      "strategist",
+      "decision creation",
+      "workflow orchestration",
+      "parallel consultation",
+      "fixer deployment",
+      "approval workflow",
+      "batch operations",
+      "decision tool",
+      "RAG integration",
+      "primary agent"
+    ],
+    "tags": [
+      "primary-agent",
+      "decision-architecture",
+      "workflow-orchestration",
+      "consultation-management"
+    ],
+    "semanticTopics": [
+      "decision creation",
+      "agent consultation",
+      "approval workflows",
+      "implementation deployment",
+      "batch processing"
+    ]
+  },
+  "rag": {
+    "ingestOnUpdate": true,
+    "indexPriority": "critical",
+    "searchable": true,
+    "embeddingModel": "text-embedding-3-large",
+    "chunkSize": 1000,
+    "chunkOverlap": 200,
+    "metadataFields": [
+      "agent",
+      "decisionId",
+      "approvalRating",
+      "consultationType",
+      "lastUpdated"
+    ]
+  },
+  "relationships": {
+    "consultsWith": ["oracle", "designer", "librarian"],
+    "deploys": ["windfixer", "openfixer"],
+    "reviewsWith": ["four_eyes"],
+    "discoversWith": ["explorer"],
+    "workflowTypes": [
+      "decision_creation",
+      "fixer_deployment",
+      "batch_operations"
+    ]
+  },
+  "workflows": {
+    "primary": [
+      "Decision Creation",
+      "Parallel Consultation",
+      "Fixer Deployment",
+      "Batch Operations"
+    ],
+    "triggers": ["Nexus Request", "Decision Approval Query", "Batch Request"]
+  },
+  "directories": {
+    "prompt": "prompt.md",
+    "consultations": "consultations/",
+    "decisions": "decisions/"
+  }
+}

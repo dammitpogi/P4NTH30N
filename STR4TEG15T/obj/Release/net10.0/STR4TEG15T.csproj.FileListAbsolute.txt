@@ -1,0 +1,15 @@
+C:\P4NTH30N\STR4TEG15T\bin\Release\net10.0\STR4TEG15T.exe
+C:\P4NTH30N\STR4TEG15T\bin\Release\net10.0\STR4TEG15T.deps.json
+C:\P4NTH30N\STR4TEG15T\bin\Release\net10.0\STR4TEG15T.runtimeconfig.json
+C:\P4NTH30N\STR4TEG15T\bin\Release\net10.0\STR4TEG15T.dll
+C:\P4NTH30N\STR4TEG15T\bin\Release\net10.0\STR4TEG15T.pdb
+C:\P4NTH30N\STR4TEG15T\obj\Release\net10.0\STR4TEG15T.GeneratedMSBuildEditorConfig.editorconfig
+C:\P4NTH30N\STR4TEG15T\obj\Release\net10.0\STR4TEG15T.AssemblyInfoInputs.cache
+C:\P4NTH30N\STR4TEG15T\obj\Release\net10.0\STR4TEG15T.AssemblyInfo.cs
+C:\P4NTH30N\STR4TEG15T\obj\Release\net10.0\STR4TEG15T.csproj.CoreCompileInputs.cache
+C:\P4NTH30N\STR4TEG15T\obj\Release\net10.0\STR4TEG15T.sourcelink.json
+C:\P4NTH30N\STR4TEG15T\obj\Release\net10.0\STR4TEG15T.dll
+C:\P4NTH30N\STR4TEG15T\obj\Release\net10.0\refint\STR4TEG15T.dll
+C:\P4NTH30N\STR4TEG15T\obj\Release\net10.0\STR4TEG15T.pdb
+C:\P4NTH30N\STR4TEG15T\obj\Release\net10.0\STR4TEG15T.genruntimeconfig.cache
+C:\P4NTH30N\STR4TEG15T\obj\Release\net10.0\ref\STR4TEG15T.dll

@@ -1,0 +1,29 @@
+{
+  "clusterId": "CLUSTER-[NNN]",
+  "category": "[Category]",
+  "priority": 1,
+  "sessionNumber": 1,
+  "estimatedTurns": 25,
+  "description": "[Brief description of this decision cluster]",
+  "decisions": [
+    {
+      "id": "[CATEGORY]-[NNN]",
+      "title": "[Decision Title]",
+      "estimatedTurns": 10,
+      "dependencies": [],
+      "status": "Proposed"
+    }
+  ],
+  "executionOrder": [
+    "[CATEGORY]-[NNN]",
+    "[CATEGORY]-[NNN+1]"
+  ],
+  "parallelTracks": [
+    {
+      "trackName": "[Track 1]",
+      "decisions": ["[CATEGORY]-[NNN]", "[CATEGORY]-[NNN+1]"]
+    }
+  ],
+  "createdAt": "2026-02-18T20:00:00Z",
+  "targetCompletion": "2026-02-25T20:00:00Z"
+}

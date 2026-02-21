@@ -1,0 +1,175 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Decision Rating Schema",
+  "description": "Granular rating system for decision quality assessment",
+  "type": "object",
+  "required": ["decisionId", "ratings", "overallScore", "rater", "ratedAt"],
+  "properties": {
+    "decisionId": {
+      "type": "string",
+      "description": "ID of the decision being rated (e.g., FORGE-001)"
+    },
+    "ratings": {
+      "type": "object",
+      "required": ["clarity", "completeness", "feasibility", "riskAssessment", "consultationQuality", "testability", "maintainability", "alignment", "actionability", "documentation"],
+      "properties": {
+        "clarity": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Is the problem statement clear and unambiguous?"
+        },
+        "completeness": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Are all necessary sections present and detailed?"
+        },
+        "feasibility": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Can this be implemented with available resources?"
+        },
+        "riskAssessment": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Are risks comprehensively identified and mitigated?"
+        },
+        "consultationQuality": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Were the right experts consulted and findings integrated?"
+        },
+        "testability": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Are success criteria testable with clear validation plan?"
+        },
+        "maintainability": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Will this decision remain relevant over time?"
+        },
+        "alignment": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Does this align with strategic goals and prior decisions?"
+        },
+        "actionability": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Are action items specific, assignable, and clear?"
+        },
+        "documentation": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Is the decision well-formatted with accurate references?"
+        }
+      }
+    },
+    "weights": {
+      "type": "object",
+      "description": "Weights applied to each dimension for overall score",
+      "default": {
+        "clarity": 0.15,
+        "completeness": 0.15,
+        "feasibility": 0.15,
+        "riskAssessment": 0.15,
+        "consultationQuality": 0.10,
+        "testability": 0.10,
+        "maintainability": 0.10,
+        "alignment": 0.05,
+        "actionability": 0.03,
+        "documentation": 0.02
+      },
+      "properties": {
+        "clarity": { "type": "number", "minimum": 0, "maximum": 1 },
+        "completeness": { "type": "number", "minimum": 0, "maximum": 1 },
+        "feasibility": { "type": "number", "minimum": 0, "maximum": 1 },
+        "riskAssessment": { "type": "number", "minimum": 0, "maximum": 1 },
+        "consultationQuality": { "type": "number", "minimum": 0, "maximum": 1 },
+        "testability": { "type": "number", "minimum": 0, "maximum": 1 },
+        "maintainability": { "type": "number", "minimum": 0, "maximum": 1 },
+        "alignment": { "type": "number", "minimum": 0, "maximum": 1 },
+        "actionability": { "type": "number", "minimum": 0, "maximum": 1 },
+        "documentation": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "overallScore": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Weighted overall score (0-100)"
+    },
+    "approvalStatus": {
+      "type": "string",
+      "enum": ["approve", "approve-with-revisions", "conditional", "reject"],
+      "description": "Approval recommendation based on score"
+    },
+    "scoreBreakdown": {
+      "type": "object",
+      "description": "Detailed score calculation",
+      "properties": {
+        "weightedClarity": { "type": "number" },
+        "weightedCompleteness": { "type": "number" },
+        "weightedFeasibility": { "type": "number" },
+        "weightedRisk": { "type": "number" },
+        "weightedConsultation": { "type": "number" },
+        "weightedTestability": { "type": "number" },
+        "weightedMaintainability": { "type": "number" },
+        "weightedAlignment": { "type": "number" },
+        "weightedActionability": { "type": "number" },
+        "weightedDocumentation": { "type": "number" }
+      }
+    },
+    "strengths": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "What was done well"
+    },
+    "improvements": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Specific areas for improvement"
+    },
+    "blockers": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Issues preventing approval"
+    },
+    "rater": {
+      "type": "string",
+      "enum": ["Oracle", "Designer", "Strategist", "Nexus"],
+      "description": "Who performed the rating"
+    },
+    "raterAgent": {
+      "type": "string",
+      "description": "Specific agent instance if applicable"
+    },
+    "ratedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO8601 timestamp of rating"
+    },
+    "consultationFile": {
+      "type": "string",
+      "description": "Path to full consultation response"
+    },
+    "revisionRequested": {
+      "type": "boolean",
+      "description": "Whether a revision is required"
+    },
+    "revisionNotes": {
+      "type": "string",
+      "description": "What needs to change for higher approval"
+    }
+  }
+}

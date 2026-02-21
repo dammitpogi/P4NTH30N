@@ -1,0 +1,38 @@
+{
+  "agent": "STR4TEG15T",
+  "standardName": "strategist",
+  "documents": [],
+  "ingestionRules": {
+    "autoIngest": true,
+    "watchPatterns": [
+      "*.md",
+      "*.json",
+      "consultations/**/*.md",
+      "decisions/**/*.md"
+    ],
+    "excludePatterns": ["*.tmp", "*.log"]
+  },
+  "embeddingConfig": {
+    "model": "text-embedding-3-large",
+    "chunkSize": 1000,
+    "chunkOverlap": 200,
+    "dimensions": 3072
+  },
+  "searchConfig": {
+    "defaultTopK": 5,
+    "minScore": 0.7,
+    "boostRecent": true,
+    "recencyWeight": 0.3
+  },
+  "metadataSchema": {
+    "required": ["agent", "source", "type"],
+    "optional": [
+      "decisionId",
+      "approvalRating",
+      "consultationType",
+      "version",
+      "tags"
+    ]
+  },
+  "lastUpdated": "2026-02-19T08:30:00Z"
+}
