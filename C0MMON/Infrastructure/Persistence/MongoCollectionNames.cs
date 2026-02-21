@@ -13,4 +13,8 @@ public static class MongoCollectionNames
 	public const string ViewNext = "N3XT";
 	public const string Locks = "L0CK";
 	public const string DeadLetters = "D34DL3TT3R";
+	public const string VisionDeadLetters = "V1S10N_DLQ";
+
+	// TEST-035: E2E test results
+	public const string TestResults = "T35T_R3SULT";
 }

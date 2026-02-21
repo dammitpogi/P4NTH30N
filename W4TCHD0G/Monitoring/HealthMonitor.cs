@@ -21,7 +21,6 @@ public sealed class HealthMonitor : IDisposable
 	private int _mismatchCount;
 	private bool _synergyConnected;
 	private bool _streamHealthy = true;
-	private bool _disposed;
 
 	/// <summary>Event raised when a subsystem health issue is detected.</summary>
 	public event Action<HealthIssue>? OnHealthIssue;
@@ -35,10 +34,7 @@ public sealed class HealthMonitor : IDisposable
 	/// <param name="streamTimeoutSeconds">Seconds without a frame before stream is considered down. Default: 5.</param>
 	/// <param name="freezeTimeoutSeconds">Seconds of unchanged frames before VM is considered frozen. Default: 30.</param>
 	/// <param name="maxMismatchRate">Maximum vision mismatch rate before alert. Default: 0.10 (10%).</param>
-	public HealthMonitor(
-		int streamTimeoutSeconds = 5,
-		int freezeTimeoutSeconds = 30,
-		double maxMismatchRate = 0.10)
+	public HealthMonitor(int streamTimeoutSeconds = 5, int freezeTimeoutSeconds = 30, double maxMismatchRate = 0.10)
 	{
 		_streamTimeout = TimeSpan.FromSeconds(streamTimeoutSeconds);
 		_freezeTimeout = TimeSpan.FromSeconds(freezeTimeoutSeconds);
@@ -87,7 +83,8 @@ public sealed class HealthMonitor : IDisposable
 	public void RecordAnalysisResult(bool matched)
 	{
 		_totalAnalyses++;
-		if (!matched) _mismatchCount++;
+		if (!matched)
+			_mismatchCount++;
 
 		if (_totalAnalyses >= 10)
 		{
@@ -160,18 +157,13 @@ public sealed class HealthMonitor : IDisposable
 
 	private void RaiseRecovery(RecoveryType type)
 	{
-		RecoveryAction action = new()
-		{
-			Type = type,
-			Timestamp = DateTime.UtcNow,
-		};
+		RecoveryAction action = new() { Type = type, Timestamp = DateTime.UtcNow };
 		Console.WriteLine($"[HealthMonitor] Recovery needed: {type}");
 		OnRecoveryNeeded?.Invoke(action);
 	}
 
 	public void Dispose()
 	{
-		_disposed = true;
 	}
 }
 
@@ -203,7 +195,19 @@ public sealed class RecoveryAction
 }
 
 /// <summary>Monitored subsystems.</summary>
-public enum SubSystem { Stream, VM, Synergy, Vision }
+public enum SubSystem
+{
+	Stream,
+	VM,
+	Synergy,
+	Vision,
+}
 
 /// <summary>Types of recovery actions.</summary>
-public enum RecoveryType { ReconnectStream, ReconnectSynergy, RestartChrome, RebootVM }
+public enum RecoveryType
+{
+	ReconnectStream,
+	ReconnectSynergy,
+	RestartChrome,
+	RebootVM,
+}

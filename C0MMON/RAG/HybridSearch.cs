@@ -31,10 +31,7 @@ public sealed class HybridSearch : IHybridSearch
 	/// <param name="vectorStore">FAISS-backed vector store for semantic search.</param>
 	/// <param name="embeddingService">Embedding generator for query vectorization.</param>
 	/// <param name="documentCollection">MongoDB collection for keyword search and metadata.</param>
-	public HybridSearch(
-		IVectorStore vectorStore,
-		IEmbeddingService embeddingService,
-		IMongoCollection<RagDocument> documentCollection)
+	public HybridSearch(IVectorStore vectorStore, IEmbeddingService embeddingService, IMongoCollection<RagDocument> documentCollection)
 	{
 		_vectorStore = vectorStore ?? throw new ArgumentNullException(nameof(vectorStore));
 		_embeddingService = embeddingService ?? throw new ArgumentNullException(nameof(embeddingService));
@@ -42,11 +39,7 @@ public sealed class HybridSearch : IHybridSearch
 	}
 
 	/// <inheritdoc />
-	public async Task<IReadOnlyList<SearchResult>> SearchAsync(
-		string query,
-		int topK = 5,
-		string? collection = null,
-		float vectorWeight = 0.6f)
+	public async Task<IReadOnlyList<SearchResult>> SearchAsync(string query, int topK = 5, string? collection = null, float vectorWeight = 0.6f)
 	{
 		if (string.IsNullOrWhiteSpace(query))
 			throw new ArgumentException("Query cannot be null or empty.", nameof(query));
@@ -68,19 +61,13 @@ public sealed class HybridSearch : IHybridSearch
 		IReadOnlyList<SearchResult> keywordResults = keywordTask.Result;
 
 		// Fuse results using Reciprocal Rank Fusion
-		List<SearchResult> fused = ReciprocalRankFusion(
-			vectorResults, keywordResults,
-			vectorWeight, keywordWeight, topK
-		);
+		List<SearchResult> fused = ReciprocalRankFusion(vectorResults, keywordResults, vectorWeight, keywordWeight, topK);
 
 		return fused;
 	}
 
 	/// <inheritdoc />
-	public async Task<IReadOnlyList<SearchResult>> KeywordSearchAsync(
-		string query,
-		int topK = 5,
-		string? collection = null)
+	public async Task<IReadOnlyList<SearchResult>> KeywordSearchAsync(string query, int topK = 5, string? collection = null)
 	{
 		if (string.IsNullOrWhiteSpace(query))
 			return Array.Empty<SearchResult>();
@@ -95,29 +82,24 @@ public sealed class HybridSearch : IHybridSearch
 				filter &= builder.Eq(d => d.Collection, collection);
 
 			// Project text score for ranking
-			ProjectionDefinition<RagDocument> projection = Builders<RagDocument>.Projection
-				.MetaTextScore("textScore");
+			ProjectionDefinition<RagDocument> projection = Builders<RagDocument>.Projection.MetaTextScore("textScore");
 
-			SortDefinition<RagDocument> sort = Builders<RagDocument>.Sort
-				.MetaTextScore("textScore");
+			SortDefinition<RagDocument> sort = Builders<RagDocument>.Sort.MetaTextScore("textScore");
 
-			List<RagDocument> documents = await _documentCollection
-				.Find(filter)
-				.Project<RagDocument>(projection)
-				.Sort(sort)
-				.Limit(topK)
-				.ToListAsync();
+			List<RagDocument> documents = await _documentCollection.Find(filter).Project<RagDocument>(projection).Sort(sort).Limit(topK).ToListAsync();
 
 			// Convert to SearchResult with BM25-style ranking
 			List<SearchResult> results = new(documents.Count);
 			for (int i = 0; i < documents.Count; i++)
 			{
-				results.Add(new SearchResult(
-					document: documents[i],
-					score: 1.0f / (i + 1), // Normalized rank score
-					rank: i + 1,
-					method: SearchMethod.Keyword
-				));
+				results.Add(
+					new SearchResult(
+						document: documents[i],
+						score: 1.0f / (i + 1), // Normalized rank score
+						rank: i + 1,
+						method: SearchMethod.Keyword
+					)
+				);
 			}
 
 			return results;
@@ -134,10 +116,7 @@ public sealed class HybridSearch : IHybridSearch
 	/// <summary>
 	/// Performs vector similarity search using FAISS via the embedding service.
 	/// </summary>
-	private async Task<IReadOnlyList<SearchResult>> VectorSearchAsync(
-		string query,
-		int topK,
-		string? collection)
+	private async Task<IReadOnlyList<SearchResult>> VectorSearchAsync(string query, int topK, string? collection)
 	{
 		try
 		{
@@ -176,7 +155,8 @@ public sealed class HybridSearch : IHybridSearch
 		IReadOnlyList<SearchResult> keywordResults,
 		float vectorWeight,
 		float keywordWeight,
-		int topK)
+		int topK
+	)
 	{
 		// Map document ID → accumulated RRF score + best document reference
 		Dictionary<string, (float score, RagDocument doc)> fusedScores = new();
@@ -209,12 +189,7 @@ public sealed class HybridSearch : IHybridSearch
 		List<SearchResult> fused = fusedScores
 			.OrderByDescending(kv => kv.Value.score)
 			.Take(topK)
-			.Select((kv, index) => new SearchResult(
-				document: kv.Value.doc,
-				score: kv.Value.score,
-				rank: index + 1,
-				method: SearchMethod.Hybrid
-			))
+			.Select((kv, index) => new SearchResult(document: kv.Value.doc, score: kv.Value.score, rank: index + 1, method: SearchMethod.Hybrid))
 			.ToList();
 
 		return fused;

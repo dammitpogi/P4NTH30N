@@ -108,11 +108,7 @@ public sealed class SynergyClient : ISynergyClient
 	}
 
 	/// <inheritdoc />
-	public async Task ConnectAsync(
-		string hostIp,
-		int port = 24800,
-		string clientName = "P4NTH30N",
-		CancellationToken cancellationToken = default)
+	public async Task ConnectAsync(string hostIp, int port = 24800, string clientName = "P4NTH30N", CancellationToken cancellationToken = default)
 	{
 		ObjectDisposedException.ThrowIf(_disposed, this);
 
@@ -135,8 +131,7 @@ public sealed class SynergyClient : ISynergyClient
 		{
 			// Connect with timeout
 			using CancellationTokenSource timeoutCts = new(5000);
-			using CancellationTokenSource linkedCts = CancellationTokenSource.CreateLinkedTokenSource(
-				cancellationToken, timeoutCts.Token);
+			using CancellationTokenSource linkedCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, timeoutCts.Token);
 
 			await _tcpClient.ConnectAsync(_hostIp, _port, linkedCts.Token);
 			_stream = _tcpClient.GetStream();
@@ -148,12 +143,7 @@ public sealed class SynergyClient : ISynergyClient
 
 			// Start keepalive timer (every 5 seconds)
 			_keepaliveTimer?.Dispose();
-			_keepaliveTimer = new Timer(
-				callback: _ => SendKeepaliveAsync().ConfigureAwait(false),
-				state: null,
-				dueTime: 5000,
-				period: 5000
-			);
+			_keepaliveTimer = new Timer(callback: _ => SendKeepaliveAsync().ConfigureAwait(false), state: null, dueTime: 5000, period: 5000);
 
 			Console.WriteLine($"[SynergyClient] Connected to {_hostIp}:{_port} as '{_clientName}'");
 		}
@@ -184,9 +174,7 @@ public sealed class SynergyClient : ISynergyClient
 			throw new InvalidOperationException("Server closed connection during handshake.");
 
 		// Parse banner — first 4 bytes are length, rest is the banner string
-		string banner = bytesRead > 4
-			? Encoding.ASCII.GetString(bannerBuffer, 4, bytesRead - 4)
-			: Encoding.ASCII.GetString(bannerBuffer, 0, bytesRead);
+		string banner = bytesRead > 4 ? Encoding.ASCII.GetString(bannerBuffer, 4, bytesRead - 4) : Encoding.ASCII.GetString(bannerBuffer, 0, bytesRead);
 
 		Console.WriteLine($"[SynergyClient] Server banner: {banner.Trim('\0')}");
 

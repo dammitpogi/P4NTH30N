@@ -14,4 +14,6 @@ public interface IRepoSignals
 	void Acknowledge(Signal signal);
 	void Upsert(Signal signal);
 	void Delete(Signal signal);
+	Signal? ClaimNext(string workerId);
+	void ReleaseClaim(Signal signal);
 }

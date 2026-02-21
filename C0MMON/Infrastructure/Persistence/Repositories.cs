@@ -270,6 +270,46 @@ internal sealed class Signals(IMongoDatabaseProvider provider) : IRepoSignals
 		FilterDefinition<Signal> filter = builder.Eq("House", signal.House) & builder.Eq("Game", signal.Game) & builder.Eq("Username", signal.Username);
 		_signals.DeleteOne(filter);
 	}
+
+	/// <summary>
+	/// ARCH-047: Atomically claims the next unacknowledged, unclaimed signal.
+	/// Uses FindOneAndUpdate to prevent double-processing.
+	/// Also reclaims signals with stale claims (>2 minutes).
+	/// </summary>
+	public Signal? ClaimNext(string workerId)
+	{
+		var filter = Builders<Signal>.Filter.And(
+			Builders<Signal>.Filter.Eq(s => s.Acknowledged, false),
+			Builders<Signal>.Filter.Or(
+				Builders<Signal>.Filter.Eq(s => s.ClaimedBy, null),
+				Builders<Signal>.Filter.Lt(s => s.ClaimedAt, DateTime.UtcNow.AddMinutes(-2))
+			)
+		);
+
+		var update = Builders<Signal>.Update
+			.Set(s => s.ClaimedBy, workerId)
+			.Set(s => s.ClaimedAt, DateTime.UtcNow);
+
+		var options = new FindOneAndUpdateOptions<Signal>
+		{
+			ReturnDocument = ReturnDocument.After,
+			Sort = Builders<Signal>.Sort.Descending(s => s.Priority),
+		};
+
+		return _signals.FindOneAndUpdate(filter, update, options);
+	}
+
+	/// <summary>
+	/// ARCH-047: Releases a claim on a signal so it can be picked up by another worker.
+	/// </summary>
+	public void ReleaseClaim(Signal signal)
+	{
+		var filter = Builders<Signal>.Filter.Eq(s => s._id, signal._id);
+		var update = Builders<Signal>.Update
+			.Set(s => s.ClaimedBy, (string?)null)
+			.Set(s => s.ClaimedAt, (DateTime?)null);
+		_signals.UpdateOne(filter, update);
+	}
 }
 
 internal sealed class RepoJackpots(IMongoDatabaseProvider provider) : IRepoJackpots
@@ -377,8 +417,6 @@ public sealed class ReceivedRepository(IMongoDatabaseProvider provider) : IRecei
 
 	public void Upsert(Received received)
 	{
-		if (received._id == null)
-			received._id = ObjectId.GenerateNewId();
 		_received.ReplaceOne(Builders<Received>.Filter.Eq("_id", received._id), received, new ReplaceOptions { IsUpsert = true });
 	}
 }
@@ -422,5 +460,44 @@ internal sealed class ErrorLogRepository(IMongoDatabaseProvider provider) : ISto
 		var filter = Builders<ErrorLog>.Filter.Eq("_id", id);
 		var update = Builders<ErrorLog>.Update.Set(e => e.Resolved, true).Set(e => e.ResolvedAt, DateTime.UtcNow);
 		_errors.UpdateOne(filter, update);
+	}
+}
+
+// TEST-035: TestResults repository for E2E test pipeline
+internal sealed class TestResultsRepository(IMongoDatabaseProvider provider) : IRepoTestResults
+{
+	private readonly IMongoCollection<P4NTH30N.C0MMON.Entities.TestResult> _testResults =
+		provider.Database.GetCollection<P4NTH30N.C0MMON.Entities.TestResult>(MongoCollectionNames.TestResults);
+
+	public void Insert(P4NTH30N.C0MMON.Entities.TestResult result)
+	{
+		_testResults.InsertOne(result);
+	}
+
+	public void Update(P4NTH30N.C0MMON.Entities.TestResult result)
+	{
+		var filter = Builders<P4NTH30N.C0MMON.Entities.TestResult>.Filter.Eq("_id", result._id);
+		_testResults.ReplaceOne(filter, result, new ReplaceOptions { IsUpsert = true });
+	}
+
+	public P4NTH30N.C0MMON.Entities.TestResult? GetByRunId(string testRunId)
+	{
+		return _testResults.Find(t => t.TestRunId == testRunId).FirstOrDefault();
+	}
+
+	public List<P4NTH30N.C0MMON.Entities.TestResult> GetByCategory(string category)
+	{
+		return _testResults.Find(t => t.Category == category).SortByDescending(t => t.StartedAt).ToList();
+	}
+
+	public List<P4NTH30N.C0MMON.Entities.TestResult> GetRecent(int count = 20)
+	{
+		return _testResults.Find(Builders<P4NTH30N.C0MMON.Entities.TestResult>.Filter.Empty)
+			.SortByDescending(t => t.StartedAt).Limit(count).ToList();
+	}
+
+	public long Count()
+	{
+		return _testResults.CountDocuments(Builders<P4NTH30N.C0MMON.Entities.TestResult>.Filter.Empty);
 	}
 }

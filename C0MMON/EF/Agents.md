@@ -34,6 +34,8 @@ High-level analytics operations:
 - Jackpot forecasting (`JackpotForecast`)
 - Credential health reporting (`CredentialHealthReport`, `HouseHealth`)
 - House summaries (`HouseSummary`)
+- **CDP Performance Analytics** (`CdpPerformanceReport`, `SpinSuccessMetrics`)
+- **Operational Monitoring** (`SpinExecutionAnalytics`, `CommandPipelineMetrics`)
 - Uses repositories for data access
 
 ### AnalyticsEntities.cs
@@ -106,3 +108,16 @@ Connection string in appsettings.json:
 - Use indexes on frequently queried fields
 - Limit result sets with Take()
 - Use compiled queries for hot paths
+
+## Recent Updates (2026-02-19)
+
+### CDP Analytics Integration
+- **Spin Performance Tracking**: Query spin success rates and latency metrics
+- **Command Pipeline Analytics**: Monitor middleware performance and circuit breaker status
+- **EventBus Metrics**: Track VisionCommand publishing and subscription patterns
+- **CDP Health Analytics**: Aggregate CDP connectivity and performance data
+
+### Enhanced Query Capabilities
+- **Operational Metrics**: Real-time spin execution analytics via EF projections
+- **Vision System Integration**: Query FourEyes decision patterns and confidence scores
+- **Resource Utilization**: Track CDP client pool usage and browser instance metrics

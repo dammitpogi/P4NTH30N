@@ -13,7 +13,8 @@ namespace P4NTH30N.W4TCHD0G;
 /// FOUREYES-016: Redundant vision system with multi-stream failover.
 /// Manages multiple OBS stream sources, monitors health, and performs automatic failover.
 /// </summary>
-public class RedundantVisionSystem : IRedundantVisionSystem {
+public class RedundantVisionSystem : IRedundantVisionSystem
+{
 	private readonly ConcurrentDictionary<string, StreamSource> _sources = new();
 	private readonly ConcurrentDictionary<string, StreamSourceHealth> _healthCache = new();
 	private string _activeSourceId = string.Empty;
@@ -23,20 +24,24 @@ public class RedundantVisionSystem : IRedundantVisionSystem {
 	/// <summary>
 	/// Adds a stream source to the redundant system.
 	/// </summary>
-	public void AddSource(StreamSource source) {
+	public void AddSource(StreamSource source)
+	{
 		_sources[source.Id] = source;
-		if (string.IsNullOrEmpty(_activeSourceId) || source.Priority < (_sources.TryGetValue(_activeSourceId, out StreamSource? active) ? active.Priority : int.MaxValue)) {
+		if (string.IsNullOrEmpty(_activeSourceId) || source.Priority < (_sources.TryGetValue(_activeSourceId, out StreamSource? active) ? active.Priority : int.MaxValue))
+		{
 			_activeSourceId = source.Id;
 			source.IsActive = true;
 		}
 		Console.WriteLine($"[RedundantVision] Added source '{source.Name}' (priority: {source.Priority})");
 	}
 
-	public IReadOnlyList<StreamSource> GetSources() {
+	public IReadOnlyList<StreamSource> GetSources()
+	{
 		return _sources.Values.OrderBy(s => s.Priority).ToList();
 	}
 
-	public async Task<bool> SwitchSourceAsync(string sourceId, CancellationToken cancellationToken = default) {
+	public async Task<bool> SwitchSourceAsync(string sourceId, CancellationToken cancellationToken = default)
+	{
 		if (!_sources.TryGetValue(sourceId, out StreamSource? target))
 			return false;
 
@@ -52,20 +57,23 @@ public class RedundantVisionSystem : IRedundantVisionSystem {
 		return await Task.FromResult(true);
 	}
 
-	public async Task<bool> FailoverAsync(CancellationToken cancellationToken = default) {
+	public async Task<bool> FailoverAsync(CancellationToken cancellationToken = default)
+	{
 		IReadOnlyList<StreamSourceHealth> healthResults = await CheckAllSourcesAsync(cancellationToken);
 
 		// Find the best available source that isn't the current one
 		StreamSourceHealth? bestAlternative = healthResults
 			.Where(h => h.IsAvailable && h.SourceId != _activeSourceId)
-			.OrderBy(h => {
+			.OrderBy(h =>
+			{
 				_sources.TryGetValue(h.SourceId, out StreamSource? src);
 				return src?.Priority ?? int.MaxValue;
 			})
 			.ThenBy(h => h.LatencyMs)
 			.FirstOrDefault();
 
-		if (bestAlternative == null) {
+		if (bestAlternative == null)
+		{
 			Console.WriteLine("[RedundantVision] No alternative sources available for failover");
 			return false;
 		}
@@ -74,15 +82,16 @@ public class RedundantVisionSystem : IRedundantVisionSystem {
 		return await SwitchSourceAsync(bestAlternative.SourceId, cancellationToken);
 	}
 
-	public async Task<IReadOnlyList<StreamSourceHealth>> CheckAllSourcesAsync(CancellationToken cancellationToken = default) {
+	public async Task<IReadOnlyList<StreamSourceHealth>> CheckAllSourcesAsync(CancellationToken cancellationToken = default)
+	{
 		List<StreamSourceHealth> results = new();
 
-		foreach (StreamSource source in _sources.Values) {
-			StreamSourceHealth health = new() {
-				SourceId = source.Id,
-			};
+		foreach (StreamSource source in _sources.Values)
+		{
+			StreamSourceHealth health = new() { SourceId = source.Id };
 
-			try {
+			try
+			{
 				Stopwatch sw = Stopwatch.StartNew();
 				// Simulate health check - in production this would ping the stream URL
 				await Task.Delay(10, cancellationToken);
@@ -92,7 +101,8 @@ public class RedundantVisionSystem : IRedundantVisionSystem {
 				health.LatencyMs = sw.ElapsedMilliseconds;
 				health.StatusMessage = "Available";
 			}
-			catch (Exception ex) {
+			catch (Exception ex)
+			{
 				health.IsAvailable = false;
 				health.StatusMessage = $"Unavailable: {ex.Message}";
 			}

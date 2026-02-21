@@ -84,24 +84,18 @@ public sealed class DeadLetterQueue : IDeadLetterQueue
 
 	public List<DeadLetterEntry> GetAll()
 	{
-		return _collection.Find(Builders<DeadLetterEntry>.Filter.Empty)
-			.SortByDescending(e => e.Timestamp)
-			.ToList();
+		return _collection.Find(Builders<DeadLetterEntry>.Filter.Empty).SortByDescending(e => e.Timestamp).ToList();
 	}
 
 	public List<DeadLetterEntry> GetUnprocessed()
 	{
-		return _collection.Find(Builders<DeadLetterEntry>.Filter.Eq(e => e.Reprocessed, false))
-			.SortByDescending(e => e.Timestamp)
-			.ToList();
+		return _collection.Find(Builders<DeadLetterEntry>.Filter.Eq(e => e.Reprocessed, false)).SortByDescending(e => e.Timestamp).ToList();
 	}
 
 	public void MarkReprocessed(ObjectId id)
 	{
 		FilterDefinition<DeadLetterEntry> filter = Builders<DeadLetterEntry>.Filter.Eq(e => e._id, id);
-		UpdateDefinition<DeadLetterEntry> update = Builders<DeadLetterEntry>.Update
-			.Set(e => e.Reprocessed, true)
-			.Set(e => e.ReprocessedAt, DateTime.UtcNow);
+		UpdateDefinition<DeadLetterEntry> update = Builders<DeadLetterEntry>.Update.Set(e => e.Reprocessed, true).Set(e => e.ReprocessedAt, DateTime.UtcNow);
 		_collection.UpdateOne(filter, update);
 	}
 }
@@ -113,26 +107,34 @@ public sealed class InMemoryDeadLetterQueue : IDeadLetterQueue
 
 	public long Count
 	{
-		get { lock (_lock) { return _entries.Count; } }
+		get
+		{
+			lock (_lock)
+			{
+				return _entries.Count;
+			}
+		}
 	}
 
 	public void Enqueue(Signal signal, string reason, Exception? exception = null, int retryCount = 0)
 	{
 		lock (_lock)
 		{
-			_entries.Add(new DeadLetterEntry
-			{
-				Source = "H0UND",
-				Reason = reason,
-				SignalKey = SignalDeduplicationCache.BuildKey(signal),
-				House = signal.House,
-				Game = signal.Game,
-				Username = signal.Username,
-				Priority = signal.Priority,
-				ErrorMessage = exception?.Message,
-				StackTrace = exception?.StackTrace,
-				RetryCount = retryCount,
-			});
+			_entries.Add(
+				new DeadLetterEntry
+				{
+					Source = "H0UND",
+					Reason = reason,
+					SignalKey = SignalDeduplicationCache.BuildKey(signal),
+					House = signal.House,
+					Game = signal.Game,
+					Username = signal.Username,
+					Priority = signal.Priority,
+					ErrorMessage = exception?.Message,
+					StackTrace = exception?.StackTrace,
+					RetryCount = retryCount,
+				}
+			);
 		}
 	}
 

@@ -11,25 +11,29 @@ namespace P4NTH30N.C0MMON.Services;
 /// FOUREYES-024: Exception interceptor middleware for automated bug detection.
 /// Captures unhandled exceptions, categorizes them, and routes to auto-triage.
 /// </summary>
-public class ExceptionInterceptorMiddleware {
+public class ExceptionInterceptorMiddleware
+{
 	private readonly ConcurrentQueue<BugReport> _bugQueue = new();
 	private readonly ConcurrentDictionary<string, int> _exceptionCounts = new();
 	private readonly int _maxQueueSize;
 
 	public event Action<BugReport>? OnBugDetected;
 
-	public ExceptionInterceptorMiddleware(int maxQueueSize = 1000) {
+	public ExceptionInterceptorMiddleware(int maxQueueSize = 1000)
+	{
 		_maxQueueSize = maxQueueSize;
 	}
 
 	/// <summary>
 	/// Intercepts and logs an exception as a bug report.
 	/// </summary>
-	public BugReport Intercept(Exception ex, string component, string context = "") {
+	public BugReport Intercept(Exception ex, string component, string context = "")
+	{
 		StackTrace trace = new(ex, true);
 		StackFrame? frame = trace.GetFrame(0);
 
-		BugReport report = new() {
+		BugReport report = new()
+		{
 			ExceptionType = ex.GetType().Name,
 			Message = ex.Message,
 			Component = component,
@@ -60,19 +64,23 @@ public class ExceptionInterceptorMiddleware {
 	/// <summary>
 	/// Gets all pending bug reports for triage.
 	/// </summary>
-	public IReadOnlyList<BugReport> GetPendingReports(int limit = 50) {
+	public IReadOnlyList<BugReport> GetPendingReports(int limit = 50)
+	{
 		return _bugQueue.Take(limit).ToList();
 	}
 
 	/// <summary>
 	/// Gets exception frequency stats.
 	/// </summary>
-	public IReadOnlyDictionary<string, int> GetExceptionStats() {
+	public IReadOnlyDictionary<string, int> GetExceptionStats()
+	{
 		return _exceptionCounts;
 	}
 
-	private static BugSeverity ClassifySeverity(Exception ex) {
-		return ex switch {
+	private static BugSeverity ClassifySeverity(Exception ex)
+	{
+		return ex switch
+		{
 			OutOfMemoryException => BugSeverity.Critical,
 			StackOverflowException => BugSeverity.Critical,
 			AccessViolationException => BugSeverity.Critical,
@@ -86,7 +94,8 @@ public class ExceptionInterceptorMiddleware {
 	}
 }
 
-public class BugReport {
+public class BugReport
+{
 	public string Id { get; set; } = Guid.NewGuid().ToString("N");
 	public DateTime Timestamp { get; set; } = DateTime.UtcNow;
 	public string ExceptionType { get; set; } = string.Empty;
@@ -101,14 +110,16 @@ public class BugReport {
 	public BugTriageStatus TriageStatus { get; set; } = BugTriageStatus.New;
 }
 
-public enum BugSeverity {
+public enum BugSeverity
+{
 	Low,
 	Medium,
 	High,
 	Critical,
 }
 
-public enum BugTriageStatus {
+public enum BugTriageStatus
+{
 	New,
 	Triaged,
 	InProgress,

@@ -15,9 +15,14 @@ Provides cross-cutting services and monitoring capabilities that support the ent
 ## Core Services
 
 - **Dashboard**: Real-time monitoring and visualization interface (Spectre.Console)
-- **Health Monitoring**: System health checks and error tracking
-- **Coordination Services**: Inter-agent communication and synchronization
+- **Health Monitoring**: CDP health checks, error tracking, and system metrics
+- **Coordination Services**: Inter-agent communication via EventBus
 - **AI/ModelRouting**: ModelRouter, ModelRoutingConfig for dynamic model selection
+- **SpinMetrics**: Operational monitoring for H4ND spin execution
+
+### New Services (2026-02-20)
+- **CdpLifecycleConfig**: CDP lifecycle configuration
+- **CdpLifecycleManager**: CDP lifecycle management (connection pooling, session reuse)
 
 ## Key Patterns
 

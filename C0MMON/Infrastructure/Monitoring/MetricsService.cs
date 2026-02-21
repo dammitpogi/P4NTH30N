@@ -38,7 +38,8 @@ public sealed class MetricsService
 	/// </summary>
 	public void RecordHistogram(string name, double value)
 	{
-		_histograms.AddOrUpdate(name,
+		_histograms.AddOrUpdate(
+			name,
 			_ =>
 			{
 				HistogramBucket bucket = new();
@@ -49,7 +50,8 @@ public sealed class MetricsService
 			{
 				existing.Record(value);
 				return existing;
-			});
+			}
+		);
 	}
 
 	/// <summary>

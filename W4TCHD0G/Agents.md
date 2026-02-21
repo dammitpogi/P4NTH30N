@@ -117,6 +117,25 @@ GetLatencyAsync() // Returns milliseconds
 - Anomaly detection via visual patterns
 - Integration with H4ND for vision-based automation
 
+## Recent Updates (2026-02-19)
+
+### FourEyes Integration
+- **FourEyesAgent.cs**: Vision decision engine with confidence scoring
+- **IFourEyesAgent.cs**: Interface for vision-based decision making
+- **DecisionEngine.cs**: Multi-factor decision analysis
+- Integration with H4ND VisionCommand processing
+
+### Enhanced Vision Pipeline
+- ModelAssignment for dynamic model routing
+- AnimationState detection for UI transitions
+- FrameTimestamp for precise timing analysis
+- Improved OBS WebSocket error handling
+
+### H4ND Vision Commands
+- VisionCommand entity for FourEyes-H4ND coordination
+- VisionCommandType enum (Spin, Stop, SwitchGame, etc.)
+- VisionCommandStatus tracking (Pending, InProgress, Completed, Failed)
+
 ## Dependencies
 
 - OBS WebSocket library

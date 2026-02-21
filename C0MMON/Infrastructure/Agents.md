@@ -2,11 +2,13 @@
 
 ## Responsibility
 
-Provides persistence, resilience, and cross-cutting infrastructure concerns. Implements repository patterns, database connectivity, and system resilience mechanisms.
+Provides persistence, resilience, browser automation, and cross-cutting infrastructure concerns. Implements repository patterns, database connectivity, Chrome DevTools Protocol, event bus, and system resilience mechanisms.
 
 ## When Working Here
 
 - **Repository pattern**: Implement IRepo* interfaces with MongoDB
+- **CDP architecture**: Chrome DevTools Protocol for browser automation
+- **Event-driven design**: In-memory event bus for decoupled communication
 - **Resilience patterns**: Circuit breakers, retry logic, degradation management
 - **Connection management**: Proper disposal and pooling
 - **Error handling**: Graceful failures with logging
@@ -25,6 +27,25 @@ MongoDB data access layer implementing repository pattern:
 - **MongoCollectionNames.cs**: Collection name constants
 - **MongoConnectionOptions.cs**: Connection string and timeout configuration
 - **Analytics/**: EF Core analytics repositories (AnalyticsRepository.cs, AnalyticsEntities.cs)
+
+### Cdp/
+
+Chrome DevTools Protocol infrastructure for browser automation:
+
+- **ICdpClient.cs**: Interface for CDP operations (Connect, Navigate, Click, Evaluate)
+- **CdpClient.cs**: WebSocket-based CDP implementation with HTTP handshake
+- **CdpConfig.cs**: Configuration (HostIp, Port, timeouts, retry settings)
+- Replaces Selenium WebDriver for reliable browser interaction
+- CSS selector-based element interaction (no hardcoded coordinates)
+
+### EventBus/
+
+In-memory event bus for decoupled component communication:
+
+- **IEventBus.cs**: Publish/Subscribe interface for event-driven architecture
+- **InMemoryEventBus.cs**: Thread-safe in-memory implementation
+- Used for VisionCommand publishing from H4ND to FourEyes integration
+- Supports generic event types with concurrent handler registration
 
 ### Resilience/
 

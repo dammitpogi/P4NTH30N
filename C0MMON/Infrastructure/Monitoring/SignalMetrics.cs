@@ -92,13 +92,7 @@ public sealed class SignalMetrics
 		}
 
 		Array.Sort(values);
-		return new LatencyStats(
-			Min: values[0],
-			Max: values[^1],
-			Mean: values.Average(),
-			P50: Percentile(values, 50),
-			P99: Percentile(values, 99)
-		);
+		return new LatencyStats(Min: values[0], Max: values[^1], Mean: values.Average(), P50: Percentile(values, 50), P99: Percentile(values, 99));
 	}
 
 	public SignalMetricsSnapshot GetSnapshot()
@@ -125,11 +119,11 @@ public sealed class SignalMetrics
 		LatencyStats latency = snapshot.Latency;
 
 		_logger?.Invoke(
-			$"[SignalMetrics] Generated={snapshot.SignalsGenerated} Deduped={snapshot.SignalsDeduplicated} " +
-			$"Locks={snapshot.LocksAcquired} Contention={snapshot.LockContentions} " +
-			$"DeadLetter={snapshot.DeadLettered} Retries={snapshot.Retries} " +
-			$"CBTrips={snapshot.CircuitBreakerTrips} " +
-			$"Latency(ms) P50={latency.P50:F1} P99={latency.P99:F1} Max={latency.Max:F1}"
+			$"[SignalMetrics] Generated={snapshot.SignalsGenerated} Deduped={snapshot.SignalsDeduplicated} "
+				+ $"Locks={snapshot.LocksAcquired} Contention={snapshot.LockContentions} "
+				+ $"DeadLetter={snapshot.DeadLettered} Retries={snapshot.Retries} "
+				+ $"CBTrips={snapshot.CircuitBreakerTrips} "
+				+ $"Latency(ms) P50={latency.P50:F1} P99={latency.P99:F1} Max={latency.Max:F1}"
 		);
 	}
 
@@ -140,11 +134,13 @@ public sealed class SignalMetrics
 
 	private static double Percentile(double[] sorted, int percentile)
 	{
-		if (sorted.Length == 0) return 0;
+		if (sorted.Length == 0)
+			return 0;
 		double index = (percentile / 100.0) * (sorted.Length - 1);
 		int lower = (int)Math.Floor(index);
 		int upper = (int)Math.Ceiling(index);
-		if (lower == upper) return sorted[lower];
+		if (lower == upper)
+			return sorted[lower];
 		double fraction = index - lower;
 		return sorted[lower] * (1 - fraction) + sorted[upper] * fraction;
 	}

@@ -92,8 +92,7 @@ public sealed class EncryptionService : IEncryptionService, IDisposable
 			if (!_keyManagement.IsKeyLoaded)
 			{
 				throw new InvalidOperationException(
-					"Cannot initialize EncryptionService: master key is not loaded. " +
-					"Call IKeyManagement.LoadMasterKey() or GenerateMasterKey() first."
+					"Cannot initialize EncryptionService: master key is not loaded. " + "Call IKeyManagement.LoadMasterKey() or GenerateMasterKey() first."
 				);
 			}
 

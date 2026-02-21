@@ -12,6 +12,14 @@
 		<PackageReference Include="Figgle" Version="0.6.5" />
 		<PackageReference Include="Figgle.Fonts" Version="0.6.5" />
 		<PackageReference Include="Figgle.Generator" Version="0.6.5" />
-		<PackageReference Include="Selenium.WebDriver" Version="4.40.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Update="..\appsettings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<Link>appsettings.json</Link>
+		</None>
 	</ItemGroup>
 </Project>

@@ -32,10 +32,7 @@ public sealed class SignalPoller
 	/// <param name="pollFunc">Async function that checks for pending signals in MongoDB.</param>
 	/// <param name="completeFunc">Async function that marks a signal as completed.</param>
 	/// <param name="pollIntervalSeconds">Seconds between polls. Default: 5.</param>
-	public SignalPoller(
-		Func<CancellationToken, Task<PendingSignal?>> pollFunc,
-		Func<string, CancellationToken, Task> completeFunc,
-		int pollIntervalSeconds = 5)
+	public SignalPoller(Func<CancellationToken, Task<PendingSignal?>> pollFunc, Func<string, CancellationToken, Task> completeFunc, int pollIntervalSeconds = 5)
 	{
 		_pollFunc = pollFunc;
 		_completeFunc = completeFunc;

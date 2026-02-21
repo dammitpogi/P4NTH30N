@@ -18,12 +18,7 @@ public sealed class RetryPolicy
 	public long TotalRetries => Interlocked.Read(ref _totalRetries);
 	public long TotalFailures => Interlocked.Read(ref _totalFailures);
 
-	public RetryPolicy(
-		int maxRetries = 3,
-		TimeSpan? baseDelay = null,
-		double backoffMultiplier = 2.0,
-		TimeSpan? maxDelay = null,
-		Action<string>? logger = null)
+	public RetryPolicy(int maxRetries = 3, TimeSpan? baseDelay = null, double backoffMultiplier = 2.0, TimeSpan? maxDelay = null, Action<string>? logger = null)
 	{
 		_maxRetries = maxRetries;
 		_baseDelay = baseDelay ?? TimeSpan.FromMilliseconds(100);
@@ -53,7 +48,9 @@ public sealed class RetryPolicy
 
 				Interlocked.Increment(ref _totalRetries);
 				TimeSpan delay = CalculateDelay(attempt);
-				_logger?.Invoke($"[RetryPolicy] '{operationName ?? "operation"}' attempt {attempt}/{_maxRetries} failed: {ex.Message}. Retrying in {delay.TotalMilliseconds}ms");
+				_logger?.Invoke(
+					$"[RetryPolicy] '{operationName ?? "operation"}' attempt {attempt}/{_maxRetries} failed: {ex.Message}. Retrying in {delay.TotalMilliseconds}ms"
+				);
 				Thread.Sleep(delay);
 			}
 		}
@@ -61,11 +58,14 @@ public sealed class RetryPolicy
 
 	public void Execute(Action operation, string? operationName = null)
 	{
-		Execute(() =>
-		{
-			operation();
-			return true;
-		}, operationName);
+		Execute(
+			() =>
+			{
+				operation();
+				return true;
+			},
+			operationName
+		);
 	}
 
 	public async Task<T> ExecuteAsync<T>(Func<Task<T>> operation, string? operationName = null)
@@ -89,7 +89,9 @@ public sealed class RetryPolicy
 
 				Interlocked.Increment(ref _totalRetries);
 				TimeSpan delay = CalculateDelay(attempt);
-				_logger?.Invoke($"[RetryPolicy] '{operationName ?? "operation"}' attempt {attempt}/{_maxRetries} failed: {ex.Message}. Retrying in {delay.TotalMilliseconds}ms");
+				_logger?.Invoke(
+					$"[RetryPolicy] '{operationName ?? "operation"}' attempt {attempt}/{_maxRetries} failed: {ex.Message}. Retrying in {delay.TotalMilliseconds}ms"
+				);
 				await Task.Delay(delay);
 			}
 		}
@@ -97,11 +99,14 @@ public sealed class RetryPolicy
 
 	public async Task ExecuteAsync(Func<Task> operation, string? operationName = null)
 	{
-		await ExecuteAsync(async () =>
-		{
-			await operation();
-			return true;
-		}, operationName);
+		await ExecuteAsync(
+			async () =>
+			{
+				await operation();
+				return true;
+			},
+			operationName
+		);
 	}
 
 	private TimeSpan CalculateDelay(int attempt)

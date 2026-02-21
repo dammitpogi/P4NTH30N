@@ -65,7 +65,8 @@ public sealed class SafetyMonitor : ISafetyMonitor
 		decimal dailyLossLimit = 100m,
 		int maxConsecutiveLosses = 10,
 		decimal balanceAlertThreshold = 0.20m,
-		string? overrideCode = null)
+		string? overrideCode = null
+	)
 	{
 		_dailySpendLimit = dailySpendLimit;
 		_dailyLossLimit = dailyLossLimit;
@@ -87,22 +88,22 @@ public sealed class SafetyMonitor : ISafetyMonitor
 			// Check daily spend limit
 			if (_dailySpend >= _dailySpendLimit)
 			{
-				RaiseAlert(AlertSeverity.Emergency, "DailySpend",
-					_dailySpend, _dailySpendLimit,
-					$"Daily spend limit reached: ${_dailySpend:F2} >= ${_dailySpendLimit:F2}");
+				RaiseAlert(
+					AlertSeverity.Emergency,
+					"DailySpend",
+					_dailySpend,
+					_dailySpendLimit,
+					$"Daily spend limit reached: ${_dailySpend:F2} >= ${_dailySpendLimit:F2}"
+				);
 				ActivateKillSwitch($"Daily spend limit exceeded: ${_dailySpend:F2}");
 			}
 			else if (_dailySpend >= _dailySpendLimit * 0.90m)
 			{
-				RaiseAlert(AlertSeverity.Critical, "DailySpend",
-					_dailySpend, _dailySpendLimit,
-					$"Daily spend at 90%: ${_dailySpend:F2} / ${_dailySpendLimit:F2}");
+				RaiseAlert(AlertSeverity.Critical, "DailySpend", _dailySpend, _dailySpendLimit, $"Daily spend at 90%: ${_dailySpend:F2} / ${_dailySpendLimit:F2}");
 			}
 			else if (_dailySpend >= _dailySpendLimit * 0.75m)
 			{
-				RaiseAlert(AlertSeverity.Warning, "DailySpend",
-					_dailySpend, _dailySpendLimit,
-					$"Daily spend at 75%: ${_dailySpend:F2} / ${_dailySpendLimit:F2}");
+				RaiseAlert(AlertSeverity.Warning, "DailySpend", _dailySpend, _dailySpendLimit, $"Daily spend at 75%: ${_dailySpend:F2} / ${_dailySpendLimit:F2}");
 			}
 		}
 	}
@@ -133,18 +134,26 @@ public sealed class SafetyMonitor : ISafetyMonitor
 				// Check consecutive losses
 				if (_consecutiveLosses >= _maxConsecutiveLosses)
 				{
-					RaiseAlert(AlertSeverity.Emergency, "ConsecutiveLosses",
-						_consecutiveLosses, _maxConsecutiveLosses,
-						$"Consecutive loss streak: {_consecutiveLosses} >= {_maxConsecutiveLosses}");
+					RaiseAlert(
+						AlertSeverity.Emergency,
+						"ConsecutiveLosses",
+						_consecutiveLosses,
+						_maxConsecutiveLosses,
+						$"Consecutive loss streak: {_consecutiveLosses} >= {_maxConsecutiveLosses}"
+					);
 					ActivateKillSwitch($"Consecutive loss limit exceeded: {_consecutiveLosses}");
 				}
 
 				// Check daily loss limit
 				if (_dailyNetLoss >= _dailyLossLimit)
 				{
-					RaiseAlert(AlertSeverity.Emergency, "DailyLoss",
-						_dailyNetLoss, _dailyLossLimit,
-						$"Daily loss limit reached: ${_dailyNetLoss:F2} >= ${_dailyLossLimit:F2}");
+					RaiseAlert(
+						AlertSeverity.Emergency,
+						"DailyLoss",
+						_dailyNetLoss,
+						_dailyLossLimit,
+						$"Daily loss limit reached: ${_dailyNetLoss:F2} >= ${_dailyLossLimit:F2}"
+					);
 					ActivateKillSwitch($"Daily loss limit exceeded: ${_dailyNetLoss:F2}");
 				}
 
@@ -154,9 +163,13 @@ public sealed class SafetyMonitor : ISafetyMonitor
 					decimal remainingFraction = currentBalance / _startingBalance;
 					if (remainingFraction <= _balanceAlertThreshold)
 					{
-						RaiseAlert(AlertSeverity.Critical, "BalanceDepletion",
-							currentBalance, _startingBalance * _balanceAlertThreshold,
-							$"Balance depleted to {remainingFraction:P0} of starting (${currentBalance:F2} / ${_startingBalance:F2})");
+						RaiseAlert(
+							AlertSeverity.Critical,
+							"BalanceDepletion",
+							currentBalance,
+							_startingBalance * _balanceAlertThreshold,
+							$"Balance depleted to {remainingFraction:P0} of starting (${currentBalance:F2} / ${_startingBalance:F2})"
+						);
 					}
 				}
 			}
@@ -195,10 +208,14 @@ public sealed class SafetyMonitor : ISafetyMonitor
 		lock (_lock)
 		{
 			List<string> alerts = new();
-			if (_killSwitchActive) alerts.Add($"KILL SWITCH: {_killSwitchReason}");
-			if (_dailySpend >= _dailySpendLimit * 0.75m) alerts.Add($"Spend at {_dailySpend / _dailySpendLimit:P0}");
-			if (_dailyNetLoss >= _dailyLossLimit * 0.75m) alerts.Add($"Loss at {_dailyNetLoss / _dailyLossLimit:P0}");
-			if (_consecutiveLosses >= _maxConsecutiveLosses / 2) alerts.Add($"Loss streak: {_consecutiveLosses}");
+			if (_killSwitchActive)
+				alerts.Add($"KILL SWITCH: {_killSwitchReason}");
+			if (_dailySpend >= _dailySpendLimit * 0.75m)
+				alerts.Add($"Spend at {_dailySpend / _dailySpendLimit:P0}");
+			if (_dailyNetLoss >= _dailyLossLimit * 0.75m)
+				alerts.Add($"Loss at {_dailyNetLoss / _dailyLossLimit:P0}");
+			if (_consecutiveLosses >= _maxConsecutiveLosses / 2)
+				alerts.Add($"Loss streak: {_consecutiveLosses}");
 
 			return new SafetyStatus
 			{

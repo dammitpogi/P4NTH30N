@@ -9,7 +9,7 @@ Core shared library providing enterprise-grade infrastructure, domain logic, and
 **Architecture**: Clean Architecture with SOLID and DDD principles
 - **Domain Layer**: Entities, value objects, and domain services (partially migrated to root)
 - **Interface Layer**: Contracts and abstractions (Repository pattern, Store interfaces)
-- **Infrastructure Layer**: MongoDB persistence, caching, configuration, monitoring, LLM, RAG, security
+- **Infrastructure Layer**: MongoDB persistence, CDP client, caching, configuration, monitoring, LLM, RAG, security
 - **Application Layer**: Actions, Games platform parsers, Services (Dashboard)
 
 ### Key Patterns
@@ -18,6 +18,7 @@ Core shared library providing enterprise-grade infrastructure, domain logic, and
 - **Validation**: `IsValid(IStoreErrors?)` pattern - validates but never auto-repairs
 - **Options Pattern**: `P4NTH30NOptions` for strongly-typed configuration
 - **Dependency Injection**: Service registration via `ConfigurationExtensions`
+- **CDP-First**: Chrome DevTools Protocol for browser automation (replaces Selenium)
 
 ### Project Structure
 
@@ -27,10 +28,11 @@ C0MMON/
 ├── DomainServices/       # Domain business logic services
 ├── EF/                   # Entity Framework analytics context
 ├── Entities/             # Domain entities (Credential, Jackpot, Signal, ErrorLog, etc.)
-├── Games/                # Platform parsers (FireKirin, OrionStars, Gold777)
+├── Games/                # Platform parsers (FireKirin, OrionStars, Gold777) - now CDP-based
 ├── Infrastructure/
 │   ├── Caching/          # CacheService for distributed caching
 │   ├── Configuration/    # P4NTH30NOptions, SecretsProvider, validation
+│   ├── Cdp/              # Chrome DevTools Protocol client (ICdpClient, CdpClient, CdpConfig)
 │   ├── Monitoring/       # HealthChecks, MetricsService
 │   └── Persistence/      # MongoDB implementation
 │       ├── MongoDatabaseProvider.cs
@@ -40,6 +42,7 @@ C0MMON/
 ├── Interfaces/           # Contracts - IRepo<Entity>, IStoreErrors, etc.
 ├── LLM/                  # LLM client for external AI APIs
 ├── Monitoring/           # Health monitoring infrastructure
+│   └── HealthChecks.cs   # CDP health validation
 ├── RAG/                  # Retrieval-Augmented Generation system
 ├── Security/             # Encryption and key management
 ├── Services/             # Dashboard UI service (Spectre.Console)
@@ -61,6 +64,21 @@ IRepoCredentials / IRepoSignals / IRepoJackpots
 ValidatedMongoRepository<T>
     ↓
 MongoDB.Driver (Collections: CRED3N7IAL, EV3NT, ERR0R, etc.)
+```
+
+### CDP Communication Flow
+```
+H4ND (VM: 192.168.56.10)
+    ↓
+CdpClient.ConnectAsync()
+    ↓
+HTTP GET http://192.168.56.1:9222/json/version
+    ↓
+WebSocket ws://192.168.56.1:9222/devtools/page/{id}
+    ↓
+CDP Commands (Runtime.evaluate, Input.dispatchMouseEvent, etc.)
+    ↓
+Chrome on Host (192.168.56.1:9222)
 ```
 
 ### RAG System Flow
@@ -107,6 +125,7 @@ P4NTH30NOptions (injected via IOptions<T>)
 ### Internal Dependencies
 - **Used by**: H4ND, H0UND, W4TCHD0G, T00L5ET, UNI7T35T, PROF3T
 - **Data Access**: All agents consume via IMongoUnitOfWork and repository interfaces
+- **CDP Infrastructure**: H4ND uses CdpClient for browser automation
 - **Configuration**: Centralized via P4NTH30NOptions
 - **Caching**: Distributed caching via CacheService
 - **Security**: Encryption via EncryptionService
@@ -117,7 +136,7 @@ P4NTH30NOptions (injected via IOptions<T>)
 - **Microsoft.Extensions.Caching**: Caching abstractions
 - **Microsoft.Extensions.Options**: Options pattern
 - **Spectre.Console** (0.54.0): Dashboard UI
-- **Selenium.WebDriver** (4.40.0): Browser automation (via Actions)
+- **Selenium.WebDriver** (4.40.0): Browser automation (deprecated, use CDP)
 - **H.InputSimulator** (1.5.0): Input simulation
 
 ### MongoDB Collections
@@ -144,11 +163,24 @@ global using P4NTH30N.C0MMON.Infrastructure.Persistence;
 
 ## Key Components
 
+### Infrastructure/Cdp/
+- **ICdpClient.cs**: Interface for Chrome DevTools Protocol client
+- **CdpClient.cs**: CDP implementation with WebSocket communication
+  - WebSocket URL rewriting (localhost→HostIp) for remote connections
+  - Command ID matching to handle event message interleaving
+  - CSS selector-based element interaction
+- **CdpConfig.cs**: Configuration for CDP connection (HostIp, Port, Timeout)
+
 ### Infrastructure/Persistence/
 - **MongoDatabaseProvider.cs**: Connection factory with environment-based configuration
+  - Supports mongodb.uri file override
+  - Environment variable fallback (P4NTH30N_MONGODB_URI)
 - **MongoUnitOfWork.cs**: Aggregates all repositories, implements Unit of Work pattern
 - **Repositories.cs**: Concrete implementations of IRepoCredentials, IRepoSignals, etc.
 - **ValidatedMongoRepository.cs**: Base repository with validation before write operations
+
+### Infrastructure/Persistence/Analytics/
+- **AnalyticsDbContext.cs**: EF Core context for analytics queries
 
 ### Infrastructure/Caching/
 - **CacheService.cs**: Distributed caching with TTL support
@@ -192,20 +224,62 @@ global using P4NTH30N.C0MMON.Infrastructure.Persistence;
 - **Thresholds.cs**: Jackpot threshold configuration
 
 ### Actions/
-- **Login.cs**: Platform authentication actions
-- **Launch.cs**: Browser/game launch automation
-- **Logout.cs**: Clean session termination
+- **Login.cs**: Platform authentication actions (now CDP-based)
+- **Launch.cs**: Browser/game launch automation (now CDP-based)
+- **Logout.cs**: Clean session termination (now CDP-based)
 - **Overwrite.cs**: Resource override management
 
 ### Games/
-- **FireKirin.cs**: FireKirin platform parser
-- **OrionStars.cs**: OrionStars platform parser
+- **FireKirin.cs**: FireKirin platform parser with CDP support
+  - WebSocket-based balance queries (unchanged)
+  - CDP-based login/logout/spin operations
+- **OrionStars.cs**: OrionStars platform parser with CDP support
+  - WebSocket-based balance queries (unchanged)
+  - CDP-based login/logout/spin operations
 - **Gold777.cs**: Gold777 platform support
 
 ### Services/
 - **Dashboard.cs**: Spectre.Console-based monitoring UI
 
 ## Critical Notes
+
+### VM Deployment Infrastructure (2026-02-19)
+
+**MongoDB Connection**:
+- Replica set configured with `replSetName: rs0`
+- Driver redirects to `localhost:27017` without `?directConnection=true`
+- **Fix**: Append `?directConnection=true` to connection string
+- **File override**: `mongodb.uri` file in app directory
+- **Env var**: `P4NTH30N_MONGODB_URI`
+
+**CDP Remote Debugging**:
+- Chrome `--remote-debugging-address=0.0.0.0` still binds to `127.0.0.1`
+- **Fix**: `netsh interface portproxy` to forward VM connections
+- **Command**: `netsh interface portproxy add v4tov4 listenaddress=192.168.56.1 listenport=9222 connectaddress=127.0.0.1 connectport=9222`
+
+**CDP WebSocket URL Rewriting**:
+- Chrome `/json/list` returns `ws://localhost:9222/` URLs
+- **Fix**: `CdpClient.FetchDebuggerUrlAsync()` rewrites localhost to configured HostIp
+- Required for VM→Host CDP connections
+
+**CDP Command ID Matching**:
+- Events interleave with command responses on WebSocket
+- **Fix**: Loop in `SendCommandAsync` until matching command `id` found
+- Prevents reading event notifications as command responses
+
+**Single-File Publish Issue**:
+- `AppContext.BaseDirectory` resolves to temp extraction dir for single-file
+- **Fix**: Use non-single-file publish for correct base directory
+- Required for `appsettings.json` loading
+
+### CDP Migration Notes (2026-02-19)
+- **Replaced**: Selenium WebDriver with Chrome DevTools Protocol
+- **New**: CSS selector-based element interaction (no hardcoded pixels)
+- **Improved**: WebSocket communication for reliable browser control
+- **Maintained**: Direct WebSocket balance queries (unchanged for performance)
+- **Files Modified**:
+  - `C0MMON/Infrastructure/Cdp/CdpClient.cs` - WebSocket URL rewriting, command ID matching
+  - `C0MMON/Infrastructure/Persistence/MongoConnectionOptions.cs` - mongodb.uri file override
 
 ### Validation Philosophy
 - Validate but do NOT mutate - invalid data is logged to ERR0R collection
@@ -235,3 +309,38 @@ global using P4NTH30N.C0MMON.Infrastructure.Persistence;
 - Configuration validation
 - SafeDateTime utility
 - Global usings for cleaner code
+- CDP Infrastructure (ICdpClient, CdpClient, CdpConfig)
+- MongoConnectionOptions with file/env var override
+
+### New Entities (2026-02-20)
+- **AnomalyEvent.cs**: Event data for anomaly detection patterns
+- **AutomationTrace.cs**: Trace logging for automation operations
+- **TestResult.cs**: Test execution results container
+
+### New Infrastructure (2026-02-20)
+- **Infrastructure/Cdp/GameSelectorConfig.cs**: CDP game selection configuration
+- **Infrastructure/EventBus/AgentRegistry.cs**: Agent registration for event coordination
+
+### New Interfaces (2026-02-20)
+- **Interfaces/IAgent.cs**: Base agent interface
+- **Interfaces/IRepoTestResults.cs**: Repository interface for test results
+
+### New Support Classes (2026-02-20)
+- **Support/AtypicalityScore.cs**: Atypicality scoring for pattern detection
+- **Support/WagerFeatures.cs**: Wager feature configuration and tracking
+
+### VM Deployment Configuration
+**Network**: H4ND-Switch (192.168.56.0/24) with NAT
+- VM: 192.168.56.10 (H4NDv2-Production)
+- Host: 192.168.56.1 (Chrome CDP + MongoDB)
+- Port Proxy: 192.168.56.1:9222 → 127.0.0.1:9222
+
+**Chrome on Host**:
+```bash
+chrome.exe --remote-debugging-port=9222 --remote-debugging-address=0.0.0.0 --incognito
+```
+
+**MongoDB Connection String (VM)**:
+```
+mongodb://192.168.56.1:27017/?directConnection=true
+```

@@ -20,6 +20,11 @@ public static class FireKirin
 
 	private sealed record FireKirinNetConfig(string BsIp, int WsPort, string WsProtocol, string GameProtocol, string Version);
 
+	// DECISION_073: Config cache to survive transient HTTP failures
+	private static FireKirinNetConfig? s_cachedConfig;
+	private static DateTime s_configCachedAt = DateTime.MinValue;
+	private static readonly TimeSpan s_configCacheTtl = TimeSpan.FromMinutes(10);
+
 	public static Signal? SpinSlots(ChromeDriver driver, Credential credential, Signal signal, IUnitOfWork uow)
 	{
 		Signal? overrideSignal = null;
@@ -126,6 +131,36 @@ public static class FireKirin
 
 	public static FireKirinBalances QueryBalances(string username, string password)
 	{
+		// DECISION_073: Retry with exponential backoff; return zeros after exhaustion
+		const int maxAttempts = 3;
+		Exception? lastEx = null;
+
+		for (int attempt = 0; attempt < maxAttempts; attempt++)
+		{
+			if (attempt > 0)
+				Thread.Sleep(500 * attempt); // 500ms, 1000ms
+
+			try
+			{
+				return QueryBalancesCore(username, password);
+			}
+			catch (InvalidOperationException)
+			{
+				throw; // Don't retry auth failures (wrong password, suspended account)
+			}
+			catch (Exception ex)
+			{
+				lastEx = ex;
+				Console.WriteLine($"[DECISION_073] FireKirin.QueryBalances attempt {attempt + 1}/{maxAttempts} failed for {username}: {ex.Message}");
+			}
+		}
+
+		Console.WriteLine($"[DECISION_073][ERROR] FireKirin.QueryBalances exhausted retries for {username}: {lastEx?.Message} — returning zeros");
+		return new FireKirinBalances(0, 0, 0, 0, 0);
+	}
+
+	private static FireKirinBalances QueryBalancesCore(string username, string password)
+	{
 		FireKirinNetConfig config = FetchNetConfig();
 		string wsUrl = $"{config.GameProtocol}{config.BsIp}:{config.WsPort}";
 		using var ws = new ClientWebSocket();
@@ -225,25 +260,38 @@ public static class FireKirin
 
 	private static FireKirinNetConfig FetchNetConfig()
 	{
+		// DECISION_073: Serve from cache if fresh
+		if (s_cachedConfig != null && (DateTime.UtcNow - s_configCachedAt) < s_configCacheTtl)
+			return s_cachedConfig;
+
 		const string configUrl = "http://play.firekirin.in/web_mobile/plat/config/hall/firekirin/config.json";
 
-		using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(10) };
-		string json = http.GetStringAsync(configUrl).GetAwaiter().GetResult();
-		using var doc = JsonDocument.Parse(json);
-		JsonElement root = doc.RootElement;
-
-		string bsIp = GetString(root, "bsIp") ?? string.Empty;
-		int wsPort = GetInt32(root, "wsPort", 8600);
-		string wsProtocol = GetString(root, "wsProtocol") ?? "wl";
-		string gameProtocol = GetString(root, "gameProtocol") ?? "ws://";
-		string version = GetString(root, "version") ?? "2.0.1";
-
-		if (string.IsNullOrWhiteSpace(bsIp))
+		try
 		{
-			throw new InvalidOperationException("Missing bsIp in FireKirin config.");
-		}
+			using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(10) };
+			string json = http.GetStringAsync(configUrl).GetAwaiter().GetResult();
+			using var doc = JsonDocument.Parse(json);
+			JsonElement root = doc.RootElement;
 
-		return new FireKirinNetConfig(bsIp, wsPort, wsProtocol, gameProtocol, version);
+			string bsIp = GetString(root, "bsIp") ?? string.Empty;
+			int wsPort = GetInt32(root, "wsPort", 8600);
+			string wsProtocol = GetString(root, "wsProtocol") ?? "wl";
+			string gameProtocol = GetString(root, "gameProtocol") ?? "ws://";
+			string version = GetString(root, "version") ?? "2.0.1";
+
+			if (string.IsNullOrWhiteSpace(bsIp))
+				throw new InvalidOperationException("Missing bsIp in FireKirin config.");
+
+			s_cachedConfig = new FireKirinNetConfig(bsIp, wsPort, wsProtocol, gameProtocol, version);
+			s_configCachedAt = DateTime.UtcNow;
+			return s_cachedConfig;
+		}
+		catch when (s_cachedConfig != null)
+		{
+			// DECISION_073: Use stale cache on fetch failure
+			Console.WriteLine("[DECISION_073] FireKirin config fetch failed — using cached config");
+			return s_cachedConfig;
+		}
 	}
 
 	private static void SendJson(ClientWebSocket ws, object payload, TimeSpan timeout)

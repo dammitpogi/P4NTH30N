@@ -15,4 +15,5 @@ public interface IUnitOfWork
 	IStoreErrors Errors { get; }
 	IReceiveSignals Received { get; }
 	IRepoHouses Houses { get; }
+	IRepoTestResults TestResults { get; }
 }

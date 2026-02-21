@@ -14,7 +14,14 @@ public interface IMetrics
 	/// <summary>
 	/// Records a metric data point.
 	/// </summary>
-	Task RecordAsync(string metricName, double value, MetricCategory category, string unit = "", Dictionary<string, string>? tags = null, CancellationToken cancellationToken = default);
+	Task RecordAsync(
+		string metricName,
+		double value,
+		MetricCategory category,
+		string unit = "",
+		Dictionary<string, string>? tags = null,
+		CancellationToken cancellationToken = default
+	);
 
 	/// <summary>
 	/// Queries metrics by name within a time window.

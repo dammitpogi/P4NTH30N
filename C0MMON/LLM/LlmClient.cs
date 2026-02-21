@@ -54,38 +54,24 @@ public sealed class LlmClient : ILlmClient
 	/// <param name="modelId">Model identifier. Default: "local-model".</param>
 	/// <param name="apiKey">API key (required for OpenAI, optional for local).</param>
 	/// <param name="timeoutSeconds">Request timeout. Default: 120 for CPU inference.</param>
-	public LlmClient(
-		string baseUrl = "http://localhost:1234",
-		string modelId = "local-model",
-		string? apiKey = null,
-		int timeoutSeconds = 120)
+	public LlmClient(string baseUrl = "http://localhost:1234", string modelId = "local-model", string? apiKey = null, int timeoutSeconds = 120)
 	{
 		_baseUrl = baseUrl.TrimEnd('/');
 		ModelId = modelId;
 		_ownsHttpClient = true;
 
-		_httpClient = new HttpClient
-		{
-			BaseAddress = new Uri(_baseUrl),
-			Timeout = TimeSpan.FromSeconds(timeoutSeconds),
-		};
+		_httpClient = new HttpClient { BaseAddress = new Uri(_baseUrl), Timeout = TimeSpan.FromSeconds(timeoutSeconds) };
 
-		_httpClient.DefaultRequestHeaders.Accept.Add(
-			new MediaTypeWithQualityHeaderValue("application/json"));
+		_httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
 		if (!string.IsNullOrWhiteSpace(apiKey))
 		{
-			_httpClient.DefaultRequestHeaders.Authorization =
-				new AuthenticationHeaderValue("Bearer", apiKey);
+			_httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
 		}
 	}
 
 	/// <inheritdoc />
-	public async Task<string> CompleteAsync(
-		string prompt,
-		int maxTokens = 512,
-		double temperature = 0.3,
-		CancellationToken cancellationToken = default)
+	public async Task<string> CompleteAsync(string prompt, int maxTokens = 512, double temperature = 0.3, CancellationToken cancellationToken = default)
 	{
 		return await ChatAsync("You are a helpful assistant.", prompt, maxTokens, temperature, cancellationToken);
 	}
@@ -96,18 +82,15 @@ public sealed class LlmClient : ILlmClient
 		string userMessage,
 		int maxTokens = 512,
 		double temperature = 0.3,
-		CancellationToken cancellationToken = default)
+		CancellationToken cancellationToken = default
+	)
 	{
 		ObjectDisposedException.ThrowIf(_disposed, this);
 
 		object requestBody = new
 		{
 			model = ModelId,
-			messages = new[]
-			{
-				new { role = "system", content = systemPrompt },
-				new { role = "user", content = userMessage },
-			},
+			messages = new[] { new { role = "system", content = systemPrompt }, new { role = "user", content = userMessage } },
 			max_tokens = maxTokens,
 			temperature,
 			stream = false,
@@ -120,8 +103,7 @@ public sealed class LlmClient : ILlmClient
 
 		try
 		{
-			HttpResponseMessage response = await _httpClient.PostAsync(
-				"/v1/chat/completions", content, cancellationToken);
+			HttpResponseMessage response = await _httpClient.PostAsync("/v1/chat/completions", content, cancellationToken);
 
 			sw.Stop();
 			string responseJson = await response.Content.ReadAsStringAsync(cancellationToken);
@@ -134,11 +116,7 @@ public sealed class LlmClient : ILlmClient
 
 			// Parse the chat completion response
 			using JsonDocument doc = JsonDocument.Parse(responseJson);
-			string? completionText = doc.RootElement
-				.GetProperty("choices")[0]
-				.GetProperty("message")
-				.GetProperty("content")
-				.GetString();
+			string? completionText = doc.RootElement.GetProperty("choices")[0].GetProperty("message").GetProperty("content").GetString();
 
 			Console.WriteLine($"[LlmClient] Completion in {sw.ElapsedMilliseconds}ms ({ModelId})");
 			return completionText ?? string.Empty;

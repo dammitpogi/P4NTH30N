@@ -9,11 +9,13 @@ namespace P4NTH30N.C0MMON.Services.BugHandling;
 /// FOUREYES-024-B: Triage dashboard for human review.
 /// Provides formatted views of the triage queue for operators.
 /// </summary>
-public class TriageDashboard {
+public class TriageDashboard
+{
 	private readonly TriageWorkflow _workflow;
 	private readonly AutoBugLogger _bugLogger;
 
-	public TriageDashboard(TriageWorkflow workflow, AutoBugLogger bugLogger) {
+	public TriageDashboard(TriageWorkflow workflow, AutoBugLogger bugLogger)
+	{
 		_workflow = workflow;
 		_bugLogger = bugLogger;
 	}
@@ -21,7 +23,8 @@ public class TriageDashboard {
 	/// <summary>
 	/// Gets a formatted summary of the triage queue.
 	/// </summary>
-	public string GetQueueSummary() {
+	public string GetQueueSummary()
+	{
 		TriageQueueStats stats = _workflow.GetStats();
 		StringBuilder sb = new();
 
@@ -31,18 +34,24 @@ public class TriageDashboard {
 		sb.AppendLine();
 
 		IReadOnlyList<TriageItem> queued = _workflow.GetByStage(TriageStage.Queued);
-		if (queued.Count > 0) {
+		if (queued.Count > 0)
+		{
 			sb.AppendLine("── QUEUED (Awaiting Assignment) ──");
-			foreach (TriageItem item in queued.Take(10)) {
-				sb.AppendLine($"  [{item.BugReport.Severity}] {item.BugReport.Id}: {item.BugReport.ExceptionType} in {item.BugReport.Component} (x{item.BugReport.OccurrenceCount})");
+			foreach (TriageItem item in queued.Take(10))
+			{
+				sb.AppendLine(
+					$"  [{item.BugReport.Severity}] {item.BugReport.Id}: {item.BugReport.ExceptionType} in {item.BugReport.Component} (x{item.BugReport.OccurrenceCount})"
+				);
 			}
 			sb.AppendLine();
 		}
 
 		IReadOnlyList<TriageItem> inReview = _workflow.GetByStage(TriageStage.InReview);
-		if (inReview.Count > 0) {
+		if (inReview.Count > 0)
+		{
 			sb.AppendLine("── IN REVIEW ──");
-			foreach (TriageItem item in inReview) {
+			foreach (TriageItem item in inReview)
+			{
 				TimeSpan elapsed = DateTime.UtcNow - (item.ReviewStartedAt ?? DateTime.UtcNow);
 				sb.AppendLine($"  [{item.BugReport.Severity}] {item.BugReport.Id}: {item.AssignedTo} reviewing ({elapsed.TotalMinutes:F0}m)");
 			}
@@ -55,10 +64,8 @@ public class TriageDashboard {
 	/// <summary>
 	/// Gets top bugs by severity and frequency for prioritization.
 	/// </summary>
-	public IReadOnlyList<BugReport> GetTopPriorityBugs(int count = 10) {
-		return _bugLogger.GetAllKnownBugs()
-			.Where(b => b.TriageStatus == BugTriageStatus.New || b.TriageStatus == BugTriageStatus.Triaged)
-			.Take(count)
-			.ToList();
+	public IReadOnlyList<BugReport> GetTopPriorityBugs(int count = 10)
+	{
+		return _bugLogger.GetAllKnownBugs().Where(b => b.TriageStatus == BugTriageStatus.New || b.TriageStatus == BugTriageStatus.Triaged).Take(count).ToList();
 	}
 }

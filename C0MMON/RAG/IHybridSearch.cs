@@ -20,12 +20,7 @@ public interface IHybridSearch
 	/// <param name="collection">Optional collection/namespace filter.</param>
 	/// <param name="vectorWeight">Weight for vector results in fusion (0.0–1.0). Default 0.6.</param>
 	/// <returns>Fused and re-ranked search results.</returns>
-	Task<IReadOnlyList<SearchResult>> SearchAsync(
-		string query,
-		int topK = 5,
-		string? collection = null,
-		float vectorWeight = 0.6f
-	);
+	Task<IReadOnlyList<SearchResult>> SearchAsync(string query, int topK = 5, string? collection = null, float vectorWeight = 0.6f);
 
 	/// <summary>
 	/// Performs keyword-only search using MongoDB text indexes.
@@ -35,9 +30,5 @@ public interface IHybridSearch
 	/// <param name="topK">Maximum number of results.</param>
 	/// <param name="collection">Optional collection filter.</param>
 	/// <returns>Keyword-matched results ranked by BM25 score.</returns>
-	Task<IReadOnlyList<SearchResult>> KeywordSearchAsync(
-		string query,
-		int topK = 5,
-		string? collection = null
-	);
+	Task<IReadOnlyList<SearchResult>> KeywordSearchAsync(string query, int topK = 5, string? collection = null);
 }

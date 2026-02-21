@@ -12,10 +12,34 @@ public sealed class MongoConnectionOptions
 		string? uri = Environment.GetEnvironmentVariable("P4NTH30N_MONGODB_URI");
 		string? db = Environment.GetEnvironmentVariable("P4NTH30N_MONGODB_DB");
 
-		return new MongoConnectionOptions
+		// VM deployment: check config file overrides in multiple locations
+		if (string.IsNullOrWhiteSpace(uri))
+		{
+			string[] searchPaths =
+			[
+				System.IO.Path.Combine(AppContext.BaseDirectory, "mongodb.uri"),
+				System.IO.Path.Combine(Environment.CurrentDirectory, "mongodb.uri"),
+				System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Environment.ProcessPath) ?? "", "mongodb.uri"),
+			];
+
+			foreach (string candidate in searchPaths)
+			{
+				if (System.IO.File.Exists(candidate))
+				{
+					uri = System.IO.File.ReadAllText(candidate).Trim();
+					Console.WriteLine($"[MongoConnectionOptions] Loaded URI from: {candidate}");
+					break;
+				}
+			}
+		}
+
+		MongoConnectionOptions options = new()
 		{
 			ConnectionString = string.IsNullOrWhiteSpace(uri) ? "mongodb://localhost:27017/" : uri,
 			DatabaseName = string.IsNullOrWhiteSpace(db) ? "P4NTH30N" : db,
 		};
+
+		Console.WriteLine($"[MongoConnectionOptions] Using: {options.ConnectionString} / {options.DatabaseName}");
+		return options;
 	}
 }

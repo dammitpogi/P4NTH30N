@@ -45,11 +45,7 @@ public sealed class CacheService
 		}
 
 		T value = factory();
-		_cache[key] = new CacheEntry
-		{
-			Value = value,
-			ExpiresAt = DateTime.UtcNow + (ttl ?? _defaultTtl),
-		};
+		_cache[key] = new CacheEntry { Value = value, ExpiresAt = DateTime.UtcNow + (ttl ?? _defaultTtl) };
 		return value;
 	}
 
@@ -67,11 +63,7 @@ public sealed class CacheService
 		}
 
 		T value = await factory();
-		_cache[key] = new CacheEntry
-		{
-			Value = value,
-			ExpiresAt = DateTime.UtcNow + (ttl ?? _defaultTtl),
-		};
+		_cache[key] = new CacheEntry { Value = value, ExpiresAt = DateTime.UtcNow + (ttl ?? _defaultTtl) };
 		return value;
 	}
 
@@ -80,11 +72,7 @@ public sealed class CacheService
 	/// </summary>
 	public void Set<T>(string key, T value, TimeSpan? ttl = null)
 	{
-		_cache[key] = new CacheEntry
-		{
-			Value = value,
-			ExpiresAt = DateTime.UtcNow + (ttl ?? _defaultTtl),
-		};
+		_cache[key] = new CacheEntry { Value = value, ExpiresAt = DateTime.UtcNow + (ttl ?? _defaultTtl) };
 	}
 
 	/// <summary>

@@ -36,10 +36,16 @@ public sealed class AnalyticsWorker
 			ProcessPredictionPhase(uow, dateLimit, groups);
 
 			List<Jackpot> upcomingJackpots = GetUpcomingJackpots(jackpots, groups, dateLimit);
-			List<Signal> qualifiedSignals = _idempotentGenerator != null
-				? _idempotentGenerator.GenerateSignals(uow, groups, upcomingJackpots, signals)
-				: SignalService.GenerateSignals(uow, groups, upcomingJackpots, signals);
-			SignalService.CleanupStaleSignals(uow, signals, qualifiedSignals);
+			List<Signal> qualifiedSignals =
+				_idempotentGenerator != null
+					? _idempotentGenerator.GenerateSignals(uow, groups, upcomingJackpots, signals)
+					: SignalService.GenerateSignals(uow, groups, upcomingJackpots, signals);
+			// DECISION_071: Only clean up stale signals when we have qualified signals
+			// Prevents wiping all signals when generation fails or returns empty
+			if (qualifiedSignals.Count > 0)
+			{
+				SignalService.CleanupStaleSignals(uow, signals, qualifiedSignals);
+			}
 
 			PrintSummary(activeCredentials, upcomingJackpots);
 		}
@@ -97,6 +103,8 @@ public sealed class AnalyticsWorker
 			foreach (Jackpot jackpot in existingJackpots)
 			{
 				DpdCalculator.UpdateDPD(jackpot, representative);
+				// DECISION_069: Persist DPD changes — without this, DPD.Data never accumulates
+				uow.Jackpots.Upsert(jackpot);
 			}
 
 			ForecastingService.GeneratePredictions(representative, uow, dateLimit);

@@ -28,7 +28,8 @@ public sealed class IdempotentSignalGenerator
 		RetryPolicy retryPolicy,
 		CircuitBreaker circuitBreaker,
 		SignalMetrics metrics,
-		Action<string>? logger = null)
+		Action<string>? logger = null
+	)
 	{
 		_lockService = lockService;
 		_dedupCache = dedupCache;
@@ -44,7 +45,8 @@ public sealed class IdempotentSignalGenerator
 		IUnitOfWork uow,
 		List<IGrouping<(string House, string Game), Credential>> groups,
 		List<Jackpot> jackpots,
-		List<Signal> existingSignals)
+		List<Signal> existingSignals
+	)
 	{
 		List<Signal> allQualified = new();
 
@@ -54,8 +56,7 @@ public sealed class IdempotentSignalGenerator
 
 			try
 			{
-				List<Signal> groupSignals = ProcessGroupWithProtection(
-					uow, group, jackpots, existingSignals, lockResource);
+				List<Signal> groupSignals = ProcessGroupWithProtection(uow, group, jackpots, existingSignals, lockResource);
 				allQualified.AddRange(groupSignals);
 			}
 			catch (CircuitBreakerOpenException)
@@ -67,12 +68,21 @@ public sealed class IdempotentSignalGenerator
 					uow,
 					new List<IGrouping<(string House, string Game), Credential>> { group },
 					jackpots.Where(j => j.House == group.Key.House && j.Game == group.Key.Game).ToList(),
-					existingSignals);
+					existingSignals
+				);
 				allQualified.AddRange(fallbackSignals);
 			}
 			catch (Exception ex)
 			{
-				_logger?.Invoke($"[IdempotentSignal] Unexpected error for {group.Key.House}/{group.Key.Game}: {ex.Message}");
+				_logger?.Invoke($"[DECISION_072][ERROR] Unexpected error for {group.Key.House}/{group.Key.Game}: {ex.Message} — falling back to unprotected generation");
+				// DECISION_072: Fallback instead of silent drop
+				List<Signal> fallbackSignals = SignalService.GenerateSignals(
+					uow,
+					new List<IGrouping<(string House, string Game), Credential>> { group },
+					jackpots.Where(j => j.House == group.Key.House && j.Game == group.Key.Game).ToList(),
+					existingSignals
+				);
+				allQualified.AddRange(fallbackSignals);
 			}
 		}
 
@@ -85,16 +95,20 @@ public sealed class IdempotentSignalGenerator
 		IGrouping<(string House, string Game), Credential> group,
 		List<Jackpot> jackpots,
 		List<Signal> existingSignals,
-		string lockResource)
+		string lockResource
+	)
 	{
 		// Phase 1: Try to acquire distributed lock
 		bool lockAcquired = false;
 		try
 		{
-			lockAcquired = _circuitBreaker.ExecuteAsync(async () =>
-			{
-				return _lockService.TryAcquire(lockResource, _instanceId, s_lockTtl);
-			}).GetAwaiter().GetResult();
+			lockAcquired = _circuitBreaker
+				.ExecuteAsync(async () =>
+				{
+					return _lockService.TryAcquire(lockResource, _instanceId, s_lockTtl);
+				})
+				.GetAwaiter()
+				.GetResult();
 		}
 		catch (CircuitBreakerOpenException)
 		{
@@ -103,16 +117,38 @@ public sealed class IdempotentSignalGenerator
 		catch (Exception ex)
 		{
 			_logger?.Invoke($"[IdempotentSignal] Lock acquire failed for {lockResource}: {ex.Message}");
-			// Cannot acquire lock — treat as contention
+			// Cannot acquire lock on first attempt — fall through to retry logic below
 			_metrics.RecordLockContention();
-			return new List<Signal>();
 		}
 
 		if (!lockAcquired)
 		{
-			_metrics.RecordLockContention();
-			_logger?.Invoke($"[IdempotentSignal] Lock contention on {lockResource} — skipping");
-			return new List<Signal>();
+			// DECISION_072: Retry with exponential backoff before falling back
+			const int maxRetries = 3;
+			for (int attempt = 0; attempt < maxRetries && !lockAcquired; attempt++)
+			{
+				Thread.Sleep(100 * (1 << attempt)); // 100ms, 200ms, 400ms
+				try
+				{
+					lockAcquired = _circuitBreaker
+						.ExecuteAsync(async () => _lockService.TryAcquire(lockResource, _instanceId, s_lockTtl))
+						.GetAwaiter()
+						.GetResult();
+				}
+				catch { break; }
+			}
+
+			if (!lockAcquired)
+			{
+				_metrics.RecordLockContention();
+				_logger?.Invoke($"[DECISION_072][ERROR] Lock contention on {lockResource} exhausted after {maxRetries} retries — falling back to unprotected generation");
+				return SignalService.GenerateSignals(
+					uow,
+					new List<IGrouping<(string House, string Game), Credential>> { group },
+					jackpots.Where(j => j.House == group.Key.House && j.Game == group.Key.Game).ToList(),
+					existingSignals
+				);
+			}
 		}
 
 		_metrics.RecordLockAcquired();
@@ -122,18 +158,15 @@ public sealed class IdempotentSignalGenerator
 			using IDisposable latencyScope = _metrics.MeasureLatency();
 
 			// Phase 2: Generate signals via existing SignalService
-			List<Jackpot> groupJackpots = jackpots
-				.Where(j => j.House == group.Key.House && j.Game == group.Key.Game)
-				.ToList();
+			List<Jackpot> groupJackpots = jackpots.Where(j => j.House == group.Key.House && j.Game == group.Key.Game).ToList();
 
-			List<Signal> qualified = _retryPolicy.Execute(() =>
-			{
-				return SignalService.GenerateSignals(
-					uow,
-					new List<IGrouping<(string House, string Game), Credential>> { group },
-					groupJackpots,
-					existingSignals);
-			}, $"GenerateSignals:{lockResource}");
+			List<Signal> qualified = _retryPolicy.Execute(
+				() =>
+				{
+					return SignalService.GenerateSignals(uow, new List<IGrouping<(string House, string Game), Credential>> { group }, groupJackpots, existingSignals);
+				},
+				$"GenerateSignals:{lockResource}"
+			);
 
 			// Phase 3: Deduplicate
 			List<Signal> deduplicated = new();

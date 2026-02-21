@@ -49,10 +49,12 @@ public sealed class DistributedLockService : IDistributedLockService
 
 	private void EnsureTtlIndex()
 	{
-		if (s_indexCreated) return;
+		if (s_indexCreated)
+			return;
 		lock (s_indexLock)
 		{
-			if (s_indexCreated) return;
+			if (s_indexCreated)
+				return;
 			try
 			{
 				CreateIndexModel<DistributedLock> indexModel = new(
@@ -89,9 +91,7 @@ public sealed class DistributedLockService : IDistributedLockService
 				if (existing.Owner == owner)
 				{
 					// Re-entrant: same owner, extend TTL
-					UpdateDefinition<DistributedLock> extend = Builders<DistributedLock>.Update
-						.Set(x => x.ExpiresAtUtc, expiresAt)
-						.Set(x => x.AcquiredAtUtc, now);
+					UpdateDefinition<DistributedLock> extend = Builders<DistributedLock>.Update.Set(x => x.ExpiresAtUtc, expiresAt).Set(x => x.AcquiredAtUtc, now);
 					_locks.UpdateOne(filter, extend);
 					_logger?.Invoke($"[DistributedLock] Re-acquired '{resource}' by {owner}");
 					return true;
@@ -110,17 +110,13 @@ public sealed class DistributedLockService : IDistributedLockService
 				)
 			);
 
-			UpdateDefinition<DistributedLock> update = Builders<DistributedLock>.Update
-				.Set(x => x.Owner, owner)
+			UpdateDefinition<DistributedLock> update = Builders<DistributedLock>
+				.Update.Set(x => x.Owner, owner)
 				.Set(x => x.AcquiredAtUtc, now)
 				.Set(x => x.ExpiresAtUtc, expiresAt)
 				.SetOnInsert(x => x.Resource, resource);
 
-			FindOneAndUpdateOptions<DistributedLock> options = new()
-			{
-				IsUpsert = true,
-				ReturnDocument = ReturnDocument.After,
-			};
+			FindOneAndUpdateOptions<DistributedLock> options = new() { IsUpsert = true, ReturnDocument = ReturnDocument.After };
 
 			DistributedLock? result = _locks.FindOneAndUpdate(insertFilter, update, options);
 			bool acquired = result != null && result.Owner == owner;
@@ -191,16 +187,18 @@ public sealed class InMemoryDistributedLockService : IDistributedLockService
 		DateTime now = DateTime.UtcNow;
 		DateTime expiresAt = now.Add(ttl);
 
-		return _locks.AddOrUpdate(
-			resource,
-			_ => (owner, expiresAt),
-			(_, existing) =>
-			{
-				if (existing.ExpiresUtc <= now || existing.Owner == owner)
-					return (owner, expiresAt);
-				return existing;
-			}
-		).Owner == owner;
+		return _locks
+				.AddOrUpdate(
+					resource,
+					_ => (owner, expiresAt),
+					(_, existing) =>
+					{
+						if (existing.ExpiresUtc <= now || existing.Owner == owner)
+							return (owner, expiresAt);
+						return existing;
+					}
+				)
+				.Owner == owner;
 	}
 
 	public void Release(string resource, string owner)

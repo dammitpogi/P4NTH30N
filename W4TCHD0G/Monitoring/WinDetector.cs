@@ -163,10 +163,7 @@ public sealed class WinDetector
 
 		// Update tracking state
 		_lastBalance = currentBalance;
-		_previousJackpots = analysis.ExtractedJackpots.ToDictionary(
-			kv => kv.Key,
-			kv => (decimal)kv.Value
-		);
+		_previousJackpots = analysis.ExtractedJackpots.ToDictionary(kv => kv.Key, kv => (decimal)kv.Value);
 
 		// Raise events if win detected
 		if (winEvent is not null)

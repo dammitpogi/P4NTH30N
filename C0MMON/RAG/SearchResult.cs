@@ -60,5 +60,5 @@ public enum SearchMethod
 	/// <summary>
 	/// Result from hybrid fusion of vector + keyword results.
 	/// </summary>
-	Hybrid
+	Hybrid,
 }

@@ -12,6 +12,7 @@ using P4NTH30N.H0UND.Application.Analytics;
 using P4NTH30N.H0UND.Application.Polling;
 using P4NTH30N.H0UND.Domain.Signals;
 using P4NTH30N.H0UND.Infrastructure.Polling;
+using P4NTH30N.H0UND.Services;
 using P4NTH30N.Services;
 
 namespace P4NTH30N;
@@ -48,6 +49,33 @@ internal class Program
 	private static readonly OperationTracker s_opTracker = new(TimeSpan.FromMinutes(5));
 	private static C0MMON.Monitoring.HealthCheckService? s_healthService;
 
+	// DECISION_025: Anomaly detection for jackpot patterns
+	private static readonly AnomalyDetector s_anomalyDetector = new(
+		windowSize: 50,
+		compressionThreshold: 1.3,
+		zScoreThreshold: 3.0,
+		onAnomaly: anomaly =>
+		{
+			Dashboard.AddLog(
+				$"ANOMALY: {anomaly.House}/{anomaly.Game}/{anomaly.Tier} = {anomaly.AnomalousValue:F2} " +
+				$"(ratio={anomaly.AtypicalityRatio:F2}, z={anomaly.ZScore:F2}, method={anomaly.DetectionMethod})",
+				"red"
+			);
+			try
+			{
+				s_uow.Errors.Insert(ErrorLog.Create(
+					ErrorType.DataCorruption,
+					"AnomalyDetector",
+					$"Anomalous jackpot: {anomaly.House}/{anomaly.Game}/{anomaly.Tier} = {anomaly.AnomalousValue:F2} " +
+					$"(ratio={anomaly.AtypicalityRatio:F2}, z={anomaly.ZScore:F2}, method={anomaly.DetectionMethod}, " +
+					$"mean={anomaly.WindowMean:F2}, stddev={anomaly.WindowStdDev:F2}, window={anomaly.WindowSize})",
+					ErrorSeverity.High
+				));
+			}
+			catch { /* don't let anomaly logging break the main loop */ }
+		}
+	);
+
 	static void Main(string[] args)
 	{
 		MongoUnitOfWork uow = s_uow;
@@ -60,22 +88,13 @@ internal class Program
 			DistributedLockService lockService = new(uow.DatabaseProvider, signalLogger);
 			SignalDeduplicationCache dedupCache = new();
 			InMemoryDeadLetterQueue deadLetterQueue = new();
-			RetryPolicy retryPolicy = new(
-				maxRetries: 3,
-				baseDelay: TimeSpan.FromMilliseconds(100),
-				logger: signalLogger);
+			RetryPolicy retryPolicy = new(maxRetries: 3, baseDelay: TimeSpan.FromMilliseconds(100), logger: signalLogger);
 			P4NTH30N.C0MMON.Infrastructure.Monitoring.SignalMetrics signalMetrics = new(
 				logger: msg => Dashboard.AddAnalyticsLog(msg, "cyan"),
-				reportInterval: TimeSpan.FromSeconds(60));
+				reportInterval: TimeSpan.FromSeconds(60)
+			);
 
-			IdempotentSignalGenerator idempotentGenerator = new(
-				lockService,
-				dedupCache,
-				deadLetterQueue,
-				retryPolicy,
-				s_mongoCircuit,
-				signalMetrics,
-				signalLogger);
+			IdempotentSignalGenerator idempotentGenerator = new(lockService, dedupCache, deadLetterQueue, retryPolicy, s_mongoCircuit, signalMetrics, signalLogger);
 
 			analyticsWorker = new AnalyticsWorker(idempotentGenerator);
 			Dashboard.AddLog("Idempotent signal generation ENABLED", "green");
@@ -221,6 +240,14 @@ internal class Program
 						Dashboard.ThresholdMinor = credential.Thresholds.Minor;
 						Dashboard.ThresholdMini = credential.Thresholds.Mini;
 
+						// DECISION_025: Run anomaly detection on all 4 jackpot tiers
+						string house = credential.House ?? "Unknown";
+						string game = credential.Game;
+						s_anomalyDetector.Process(house, game, "Grand", currentGrand);
+						s_anomalyDetector.Process(house, game, "Major", currentMajor);
+						s_anomalyDetector.Process(house, game, "Minor", currentMinor);
+						s_anomalyDetector.Process(house, game, "Mini", currentMini);
+
 						if (
 							(
 								lastRetrievedGrand.Equals(currentGrand)
@@ -231,19 +258,19 @@ internal class Program
 							Signal? gameSignal = uow.Signals.GetOne(credential.House ?? "Unknown", credential.Game);
 							if (currentGrand < credential.Jackpots.Grand && credential.Jackpots.Grand - currentGrand > 0.1)
 							{
-								var grandJackpot = uow.Jackpots.Get("Grand", credential.House, credential.Game);
-								if (grandJackpot != null && grandJackpot.DPD.Toggles.GrandPopped == true)
+								var grandJackpot = uow.Jackpots.Get("Grand", credential.House!, credential.Game!);
+								if (grandJackpot != null && grandJackpot.DPD!.Toggles.GrandPopped == true)
 								{
 									if (currentGrand >= 0 && currentGrand <= 10000)
 									{
 										credential.Jackpots.Grand = currentGrand;
 									}
-									grandJackpot.DPD.Toggles.GrandPopped = false;
+									grandJackpot.DPD!.Toggles.GrandPopped = false;
 									credential.Thresholds.NewGrand(credential.Jackpots.Grand);
 									if (gameSignal != null && gameSignal.Priority.Equals(4))
 										uow.Signals.DeleteAll(credential.House ?? "Unknown", credential.Game);
 								}
-								else
+								else if (grandJackpot?.DPD != null)
 									grandJackpot.DPD.Toggles.GrandPopped = true;
 							}
 							else
@@ -256,19 +283,19 @@ internal class Program
 
 							if (currentMajor < credential.Jackpots.Major && credential.Jackpots.Major - currentMajor > 0.1)
 							{
-								var majorJackpot = uow.Jackpots.Get("Major", credential.House, credential.Game);
-								if (majorJackpot != null && majorJackpot.DPD.Toggles.MajorPopped == true)
+								var majorJackpot = uow.Jackpots.Get("Major", credential.House!, credential.Game!);
+								if (majorJackpot != null && majorJackpot.DPD!.Toggles.MajorPopped == true)
 								{
 									if (currentMajor >= 0 && currentMajor <= 10000)
 									{
 										credential.Jackpots.Major = currentMajor;
 									}
-									majorJackpot.DPD.Toggles.MajorPopped = false;
+									majorJackpot.DPD!.Toggles.MajorPopped = false;
 									credential.Thresholds.NewMajor(credential.Jackpots.Major);
 									if (gameSignal != null && gameSignal.Priority.Equals(3))
 										uow.Signals.DeleteAll(credential.House ?? "Unknown", credential.Game);
 								}
-								else
+								else if (majorJackpot?.DPD != null)
 									majorJackpot.DPD.Toggles.MajorPopped = true;
 							}
 							else
@@ -281,19 +308,19 @@ internal class Program
 
 							if (currentMinor < credential.Jackpots.Minor && credential.Jackpots.Minor - currentMinor > 0.1)
 							{
-								var minorJackpot = uow.Jackpots.Get("Minor", credential.House, credential.Game);
-								if (minorJackpot != null && minorJackpot.DPD.Toggles.MinorPopped == true)
+								var minorJackpot = uow.Jackpots.Get("Minor", credential.House!, credential.Game!);
+								if (minorJackpot != null && minorJackpot.DPD!.Toggles.MinorPopped == true)
 								{
 									if (currentMinor >= 0 && currentMinor <= 10000)
 									{
 										credential.Jackpots.Minor = currentMinor;
 									}
-									minorJackpot.DPD.Toggles.MinorPopped = false;
+									minorJackpot.DPD!.Toggles.MinorPopped = false;
 									credential.Thresholds.NewMinor(credential.Jackpots.Minor);
 									if (gameSignal != null && gameSignal.Priority.Equals(2))
 										uow.Signals.DeleteAll(credential.House ?? "Unknown", credential.Game);
 								}
-								else
+								else if (minorJackpot?.DPD != null)
 									minorJackpot.DPD.Toggles.MinorPopped = true;
 							}
 							else
@@ -306,19 +333,19 @@ internal class Program
 
 							if (currentMini < credential.Jackpots.Mini && credential.Jackpots.Mini - currentMini > 0.1)
 							{
-								var miniJackpot = uow.Jackpots.Get("Mini", credential.House, credential.Game);
-								if (miniJackpot != null && miniJackpot.DPD.Toggles.MiniPopped == true)
+								var miniJackpot = uow.Jackpots.Get("Mini", credential.House!, credential.Game!);
+								if (miniJackpot != null && miniJackpot.DPD!.Toggles.MiniPopped == true)
 								{
 									if (currentMini >= 0 && currentMini <= 10000)
 									{
 										credential.Jackpots.Mini = currentMini;
 									}
-									miniJackpot.DPD.Toggles.MiniPopped = false;
+									miniJackpot.DPD!.Toggles.MiniPopped = false;
 									credential.Thresholds.NewMini(credential.Jackpots.Mini);
 									if (gameSignal != null && gameSignal.Priority.Equals(1))
 										uow.Signals.DeleteAll(credential.House ?? "Unknown", credential.Game);
 								}
-								else
+								else if (miniJackpot?.DPD != null)
 									miniJackpot.DPD.Toggles.MiniPopped = true;
 							}
 							else
@@ -391,6 +418,11 @@ internal class Program
 						Dashboard.IncrementPoll(false);
 						Dashboard.Render();
 						uow.Credentials.Unlock(credential);
+					}
+					finally
+					{
+						// DECISION_070: Safety net — credential must never stay permanently locked
+						try { uow.Credentials.Unlock(credential); } catch { }
 					}
 				}
 			}

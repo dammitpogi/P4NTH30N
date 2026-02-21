@@ -101,9 +101,7 @@ public sealed class ActionQueue
 	/// <param name="executor">Async function that executes a single InputAction.</param>
 	/// <param name="cancellationToken">Token to cancel mid-sequence.</param>
 	/// <returns>Number of actions successfully executed.</returns>
-	public async Task<int> ExecuteAllAsync(
-		Func<InputAction, CancellationToken, Task> executor,
-		CancellationToken cancellationToken = default)
+	public async Task<int> ExecuteAllAsync(Func<InputAction, CancellationToken, Task> executor, CancellationToken cancellationToken = default)
 	{
 		int executed = 0;
 
@@ -113,8 +111,7 @@ public sealed class ActionQueue
 			{
 				// Apply per-action timeout
 				using CancellationTokenSource timeoutCts = new(action.TimeoutMs);
-				using CancellationTokenSource linkedCts = CancellationTokenSource.CreateLinkedTokenSource(
-					cancellationToken, timeoutCts.Token);
+				using CancellationTokenSource linkedCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, timeoutCts.Token);
 
 				await executor(action, linkedCts.Token);
 				Interlocked.Increment(ref _totalExecuted);

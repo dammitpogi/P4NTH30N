@@ -15,6 +15,8 @@ public class Signal : ICloneable
 	public string Password { get; set; } = string.Empty;
 	public string Game { get; set; } = string.Empty;
 	public float Priority { get; set; }
+	public string? ClaimedBy { get; set; }
+	public DateTime? ClaimedAt { get; set; }
 
 	public Signal() { }
 
@@ -39,6 +41,8 @@ public class Signal : ICloneable
 			Acknowledged = this.Acknowledged,
 			CreateDate = this.CreateDate,
 			Timeout = this.Timeout,
+			ClaimedBy = this.ClaimedBy,
+			ClaimedAt = this.ClaimedAt,
 		};
 	}
 }

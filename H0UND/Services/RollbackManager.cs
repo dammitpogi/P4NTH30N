@@ -15,21 +15,25 @@ namespace P4NTH30N.H0UND.Services;
 /// FOUREYES-018: Rollback manager for automatic recovery.
 /// Captures system state snapshots and rolls back when health degrades.
 /// </summary>
-public class RollbackManager : IRollbackManager {
+public class RollbackManager : IRollbackManager
+{
 	private readonly IHealthCheckService _healthService;
 	private readonly ConcurrentBag<SystemState> _snapshots = new();
 	private volatile bool _isRollingBack;
 
 	public bool IsRollingBack => _isRollingBack;
 
-	public RollbackManager(IHealthCheckService healthService) {
+	public RollbackManager(IHealthCheckService healthService)
+	{
 		_healthService = healthService;
 	}
 
-	public async Task<SystemState> CaptureStateAsync(SystemStateType stateType, string notes = "", CancellationToken cancellationToken = default) {
+	public async Task<SystemState> CaptureStateAsync(SystemStateType stateType, string notes = "", CancellationToken cancellationToken = default)
+	{
 		SystemHealth health = await _healthService.GetSystemHealthAsync();
 
-		SystemState state = new() {
+		SystemState state = new()
+		{
 			StateType = stateType,
 			CapturedBy = "H0UND",
 			IsHealthy = health.OverallStatus == HealthStatus.Healthy,
@@ -42,9 +46,11 @@ public class RollbackManager : IRollbackManager {
 		return state;
 	}
 
-	public async Task<bool> RollbackToAsync(string stateId, CancellationToken cancellationToken = default) {
+	public async Task<bool> RollbackToAsync(string stateId, CancellationToken cancellationToken = default)
+	{
 		SystemState? target = _snapshots.FirstOrDefault(s => s.Id == stateId);
-		if (target == null) {
+		if (target == null)
+		{
 			Console.WriteLine($"[RollbackManager] State {stateId} not found");
 			return false;
 		}
@@ -52,13 +58,12 @@ public class RollbackManager : IRollbackManager {
 		return await ExecuteRollbackAsync(target, cancellationToken);
 	}
 
-	public async Task<bool> RollbackToLastHealthyAsync(CancellationToken cancellationToken = default) {
-		SystemState? target = _snapshots
-			.Where(s => s.IsHealthy)
-			.OrderByDescending(s => s.CapturedAt)
-			.FirstOrDefault();
+	public async Task<bool> RollbackToLastHealthyAsync(CancellationToken cancellationToken = default)
+	{
+		SystemState? target = _snapshots.Where(s => s.IsHealthy).OrderByDescending(s => s.CapturedAt).FirstOrDefault();
 
-		if (target == null) {
+		if (target == null)
+		{
 			Console.WriteLine("[RollbackManager] No healthy state snapshot available for rollback");
 			return false;
 		}
@@ -66,17 +71,21 @@ public class RollbackManager : IRollbackManager {
 		return await ExecuteRollbackAsync(target, cancellationToken);
 	}
 
-	public IReadOnlyList<SystemState> GetSnapshots() {
+	public IReadOnlyList<SystemState> GetSnapshots()
+	{
 		return _snapshots.OrderByDescending(s => s.CapturedAt).ToList();
 	}
 
-	private async Task<bool> ExecuteRollbackAsync(SystemState targetState, CancellationToken cancellationToken) {
-		if (_isRollingBack) {
+	private async Task<bool> ExecuteRollbackAsync(SystemState targetState, CancellationToken cancellationToken)
+	{
+		if (_isRollingBack)
+		{
 			Console.WriteLine("[RollbackManager] Rollback already in progress");
 			return false;
 		}
 
-		try {
+		try
+		{
 			_isRollingBack = true;
 
 			// Capture pre-rollback state
@@ -85,7 +94,8 @@ public class RollbackManager : IRollbackManager {
 			Console.WriteLine($"[RollbackManager] Rolling back to state {targetState.Id} (captured: {targetState.CapturedAt:u})");
 
 			// Apply configuration from target state
-			foreach (KeyValuePair<string, string> component in targetState.ComponentVersions) {
+			foreach (KeyValuePair<string, string> component in targetState.ComponentVersions)
+			{
 				Console.WriteLine($"[RollbackManager] Restoring {component.Key} to version {component.Value}");
 			}
 
@@ -100,19 +110,22 @@ public class RollbackManager : IRollbackManager {
 
 			return success;
 		}
-		catch (Exception ex) {
+		catch (Exception ex)
+		{
 			StackTrace trace = new(ex, true);
 			StackFrame? frame = trace.GetFrame(0);
 			int line = frame?.GetFileLineNumber() ?? 0;
 			Console.WriteLine($"[{line}] [RollbackManager] Rollback failed: {ex.Message}");
 			return false;
 		}
-		finally {
+		finally
+		{
 			_isRollingBack = false;
 		}
 	}
 
-	private static string GetCurrentVersion() {
+	private static string GetCurrentVersion()
+	{
 		return typeof(RollbackManager).Assembly.GetName().Version?.ToString() ?? "0.0.0";
 	}
 }

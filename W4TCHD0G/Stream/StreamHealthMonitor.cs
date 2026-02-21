@@ -113,12 +113,7 @@ public sealed class StreamHealthMonitor : IDisposable
 		_fpsStopwatch.Restart();
 		_fpsWindowStartFrames = _receiver.TotalFramesReceived;
 
-		_monitorTimer = new Timer(
-			callback: _ => CheckHealth(),
-			state: null,
-			dueTime: intervalMs,
-			period: intervalMs
-		);
+		_monitorTimer = new Timer(callback: _ => CheckHealth(), state: null, dueTime: intervalMs, period: intervalMs);
 
 		Console.WriteLine($"[StreamHealthMonitor] Started (interval: {intervalMs}ms)");
 	}
@@ -190,9 +185,7 @@ public sealed class StreamHealthMonitor : IDisposable
 		// ── Drop Rate Check ──────────────────────────────────────────
 		long totalReceived = _receiver.TotalFramesReceived;
 		long totalDropped = _receiver.TotalFramesDropped;
-		double dropRate = (totalReceived + totalDropped) == 0
-			? 0.0
-			: (totalDropped * 100.0) / (totalReceived + totalDropped);
+		double dropRate = (totalReceived + totalDropped) == 0 ? 0.0 : (totalDropped * 100.0) / (totalReceived + totalDropped);
 
 		if (dropRate > DropRateCriticalPct)
 		{
@@ -211,9 +204,7 @@ public sealed class StreamHealthMonitor : IDisposable
 			StreamHealth previousHealth = CurrentHealth;
 			CurrentHealth = worstHealth;
 
-			string summary = issues.Count > 0
-				? string.Join("; ", issues)
-				: "All metrics nominal";
+			string summary = issues.Count > 0 ? string.Join("; ", issues) : "All metrics nominal";
 
 			Console.WriteLine($"[StreamHealthMonitor] {previousHealth} → {worstHealth}: {summary}");
 			OnHealthChanged?.Invoke(worstHealth, summary);

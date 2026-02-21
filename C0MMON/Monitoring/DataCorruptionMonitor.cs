@@ -192,7 +192,7 @@ namespace P4NTH30N.C0MMON.Monitoring
 		public void TriggerImmediateCheck()
 		{
 			Console.WriteLine("🔍 Triggering immediate data corruption check...");
-			PerformHealthCheck(null!, null!);
+			PerformHealthCheck(null, null);
 		}
 	}
 

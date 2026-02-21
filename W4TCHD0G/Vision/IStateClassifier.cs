@@ -16,10 +16,7 @@ public interface IStateClassifier
 	/// <param name="buttons">Detected buttons from the button detector.</param>
 	/// <param name="jackpots">Detected jackpot values from the jackpot detector.</param>
 	/// <returns>The classified game state.</returns>
-	Task<GameState> ClassifyAsync(
-		VisionFrame frame,
-		List<DetectedButton> buttons,
-		Dictionary<string, decimal> jackpots);
+	Task<GameState> ClassifyAsync(VisionFrame frame, List<DetectedButton> buttons, Dictionary<string, decimal> jackpots);
 }
 
 /// <summary>

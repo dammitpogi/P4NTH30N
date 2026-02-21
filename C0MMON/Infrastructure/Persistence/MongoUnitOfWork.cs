@@ -18,6 +18,7 @@ public sealed class MongoUnitOfWork : IMongoUnitOfWork, IUnitOfWork
 	public IReceiveSignals Received { get; }
 	public IStoreEvents ProcessEvents { get; }
 	public IStoreErrors Errors { get; }
+	public IRepoTestResults TestResults { get; }
 
 	public MongoUnitOfWork(IMongoDatabaseProvider provider)
 	{
@@ -29,6 +30,7 @@ public sealed class MongoUnitOfWork : IMongoUnitOfWork, IUnitOfWork
 		Received = new ReceivedRepository(_provider);
 		ProcessEvents = new ProcessEventRepository(_provider);
 		Errors = new ErrorLogRepository(_provider);
+		TestResults = new TestResultsRepository(_provider);
 	}
 
 	public MongoUnitOfWork()

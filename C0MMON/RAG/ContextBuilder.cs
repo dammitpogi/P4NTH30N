@@ -82,11 +82,7 @@ public sealed class ContextBuilder : IContextBuilder
 	}
 
 	/// <inheritdoc />
-	public string BuildPrompt(
-		string systemPrompt,
-		string query,
-		IReadOnlyList<SearchResult> results,
-		int maxContextTokens = 2048)
+	public string BuildPrompt(string systemPrompt, string query, IReadOnlyList<SearchResult> results, int maxContextTokens = 2048)
 	{
 		string ragContext = BuildContext(query, results, maxContextTokens);
 
@@ -145,9 +141,7 @@ public sealed class ContextBuilder : IContextBuilder
 		}
 
 		// Content (truncated if too long)
-		string content = doc.Content.Length > MaxDocumentChars
-			? Truncate(doc.Content, MaxDocumentChars) + " [truncated]"
-			: doc.Content;
+		string content = doc.Content.Length > MaxDocumentChars ? Truncate(doc.Content, MaxDocumentChars) + " [truncated]" : doc.Content;
 		entry.AppendLine($"    {content}");
 
 		return entry.ToString();

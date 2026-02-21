@@ -16,8 +16,8 @@ Provides reusable automation operations for game platform interactions. These ac
 
 | Action | File | Description |
 |--------|------|-------------|
-| **Launch** | `Launch.cs` | Initializes ChromeDriver and loads RUL3S Chrome extension via Mouse/Keyboard input simulation |
-| **Login** | `Login.cs` | ChromeDriver extension method for platform authentication with retry logic |
+| **Launch** | `Launch.cs` | Initializes browser and loads RUL3S Chrome extension (now CDP-compatible) |
+| **Login** | `Login.cs` | Extension method for platform authentication (supports both Selenium and CDP) |
 | **Logout** | `Logout.cs` | Static method for session termination and resource cleanup |
 | **Overwrite** | `Overwrite.cs` | Contains Launch_v2() for alternate browser launch with DevTools |
 

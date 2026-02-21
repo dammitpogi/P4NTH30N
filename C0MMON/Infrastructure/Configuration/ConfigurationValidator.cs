@@ -93,9 +93,7 @@ public static class ConfigurationValidator
 			errors.Add("P4NTH30N:Database:MaxPoolSize must be between 1 and 1000.");
 
 		// Validate connection string format
-		if (!string.IsNullOrWhiteSpace(db.ConnectionString) &&
-			!db.ConnectionString.StartsWith("mongodb://") &&
-			!db.ConnectionString.StartsWith("mongodb+srv://"))
+		if (!string.IsNullOrWhiteSpace(db.ConnectionString) && !db.ConnectionString.StartsWith("mongodb://") && !db.ConnectionString.StartsWith("mongodb+srv://"))
 		{
 			errors.Add("P4NTH30N:Database:ConnectionString must start with 'mongodb://' or 'mongodb+srv://'.");
 		}

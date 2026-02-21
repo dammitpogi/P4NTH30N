@@ -18,12 +18,18 @@ Defines core domain models and data structures for the P4NTH30N system. These en
 |--------|------|-------------|
 | **Credential** | `Credential.cs` | User auth data, jackpot tracking, thresholds, DPD. Has `IsValid()` method. |
 | **Signal** | `Signal.cs` | Priority-based automation triggers (1=Mini, 2=Minor, 3=Major, 4=Grand). Implements `ICloneable`. |
+| **VisionCommand** | `VisionCommand.cs` | FourEyes integration commands with types (Spin, Stop, SwitchGame) and status tracking |
 | **Jackpot** | `Jackpot.cs` | 4-tier jackpot system with DPD calculations, thresholds, ETA forecasting. Has `IsValid()` method. |
 | **House** | `House.cs` | Physical location/grouping for credential organization |
 | **Received** | `Received.cs` | Signal acknowledgment and processing tracking. Includes `ReceivedExt` extension methods. |
 | **ErrorLog** | `ErrorLog.cs` | Validation failures and system errors. Has factory methods `Create()` and `FromException()`. |
 | **ProcessEvent** | `EventLog.cs` | System events and processing milestones (named ProcessEvent to avoid conflict) |
 | **NetworkAddress** | `NetworkAddress.cs` | IP/geolocation data with fallback services, includes `NetworkDiagnostics` |
+
+### New Entities (2026-02-20)
+- **AnomalyEvent.cs**: Event data for anomaly detection patterns
+- **AutomationTrace.cs**: Trace logging for automation operations
+- **TestResult.cs**: Test execution results container
 
 ## Entity Lifecycle
 

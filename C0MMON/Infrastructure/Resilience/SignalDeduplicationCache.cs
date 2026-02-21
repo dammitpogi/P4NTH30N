@@ -27,9 +27,19 @@ public sealed class SignalDeduplicationCache : ISignalDeduplicationCache
 	public int Count => _cache.Count;
 	public long DeduplicatedCount => Interlocked.Read(ref _deduplicatedCount);
 
+	// DECISION_074: Tier-based TTLs — higher tiers expire faster to allow rapid re-signaling
+	private static readonly Dictionary<int, TimeSpan> s_tierTtl = new()
+	{
+		[4] = TimeSpan.FromMinutes(1), // Grand
+		[3] = TimeSpan.FromMinutes(2), // Major
+		[2] = TimeSpan.FromMinutes(3), // Minor
+		[1] = TimeSpan.FromMinutes(5), // Mini
+	};
+
 	public SignalDeduplicationCache(TimeSpan? ttl = null, int maxEntries = 10_000)
 	{
-		_ttl = ttl ?? TimeSpan.FromMinutes(5);
+		// DECISION_074: Reduced default TTL from 5min to 2min
+		_ttl = ttl ?? TimeSpan.FromMinutes(2);
 		_maxEntries = maxEntries;
 	}
 
@@ -53,6 +63,14 @@ public sealed class SignalDeduplicationCache : ISignalDeduplicationCache
 	public void MarkProcessed(string signalKey)
 	{
 		_cache[signalKey] = DateTime.UtcNow.Add(_ttl);
+		EvictIfOverCapacity();
+	}
+
+	// DECISION_074: Overload that uses tier-based TTL
+	public void MarkProcessed(string signalKey, int priority)
+	{
+		TimeSpan ttl = s_tierTtl.TryGetValue(priority, out TimeSpan tierTtl) ? tierTtl : _ttl;
+		_cache[signalKey] = DateTime.UtcNow.Add(ttl);
 		EvictIfOverCapacity();
 	}
 
@@ -108,6 +126,7 @@ public sealed class SignalDeduplicationCache : ISignalDeduplicationCache
 
 	public static string BuildKey(Signal signal)
 	{
-		return $"{signal.House}:{signal.Game}:{signal.Username}";
+		// DECISION_074: Include Priority in key so different-tier signals are not conflated
+		return $"{signal.House}:{signal.Game}:{signal.Username}:{signal.Priority}";
 	}
 }

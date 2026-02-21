@@ -72,11 +72,7 @@ public sealed class FaissVectorStore : IVectorStore, IDisposable
 	/// <param name="indexDirectory">Directory for FAISS index persistence.</param>
 	/// <param name="dimensions">Vector dimensionality (384 for MiniLM).</param>
 	/// <param name="metadataCollection">MongoDB collection for RagDocument metadata.</param>
-	public FaissVectorStore(
-		string bridgeScriptPath,
-		string indexDirectory,
-		int dimensions,
-		IMongoCollection<RagDocument> metadataCollection)
+	public FaissVectorStore(string bridgeScriptPath, string indexDirectory, int dimensions, IMongoCollection<RagDocument> metadataCollection)
 	{
 		if (string.IsNullOrWhiteSpace(bridgeScriptPath))
 			throw new ArgumentException("Bridge script path required.", nameof(bridgeScriptPath));
@@ -105,11 +101,7 @@ public sealed class FaissVectorStore : IVectorStore, IDisposable
 
 		if (!File.Exists(_bridgeScriptPath))
 		{
-			throw new FileNotFoundException(
-				$"FAISS bridge script not found at: {_bridgeScriptPath}. " +
-				"Ensure scripts/rag/faiss-bridge.py exists.",
-				_bridgeScriptPath
-			);
+			throw new FileNotFoundException($"FAISS bridge script not found at: {_bridgeScriptPath}. " + "Ensure scripts/rag/faiss-bridge.py exists.", _bridgeScriptPath);
 		}
 
 		// Ensure index directory exists
@@ -132,18 +124,18 @@ public sealed class FaissVectorStore : IVectorStore, IDisposable
 		_bridgeProcess = Process.Start(startInfo);
 		if (_bridgeProcess is null || _bridgeProcess.HasExited)
 		{
-			throw new InvalidOperationException(
-				"Failed to start Python FAISS bridge. Ensure Python 3.8+ is installed and accessible."
-			);
+			throw new InvalidOperationException("Failed to start Python FAISS bridge. Ensure Python 3.8+ is installed and accessible.");
 		}
 
 		// Initialize the FAISS index via the bridge
-		JsonDocument response = await SendCommandAsync(new
-		{
-			command = "init",
-			dimensions = _dimensions,
-			index_path = Path.Combine(_indexDirectory, "vectors.faiss"),
-		});
+		JsonDocument response = await SendCommandAsync(
+			new
+			{
+				command = "init",
+				dimensions = _dimensions,
+				index_path = Path.Combine(_indexDirectory, "vectors.faiss"),
+			}
+		);
 
 		string status = response.RootElement.GetProperty("status").GetString() ?? "unknown";
 		if (status != "ok")
@@ -153,9 +145,7 @@ public sealed class FaissVectorStore : IVectorStore, IDisposable
 		}
 
 		// Get current index size to resume counter
-		_nextFaissIndex = response.RootElement.TryGetProperty("count", out JsonElement countEl)
-			? countEl.GetInt64()
-			: 0;
+		_nextFaissIndex = response.RootElement.TryGetProperty("count", out JsonElement countEl) ? countEl.GetInt64() : 0;
 
 		Console.WriteLine($"[FaissVectorStore] Bridge started. Index has {_nextFaissIndex} vectors.");
 	}
@@ -166,10 +156,7 @@ public sealed class FaissVectorStore : IVectorStore, IDisposable
 		ArgumentNullException.ThrowIfNull(document, nameof(document));
 		if (document.Embedding is null || document.Embedding.Length != _dimensions)
 		{
-			throw new ArgumentException(
-				$"Document embedding must be {_dimensions} dimensions, got {document.Embedding?.Length ?? 0}.",
-				nameof(document)
-			);
+			throw new ArgumentException($"Document embedding must be {_dimensions} dimensions, got {document.Embedding?.Length ?? 0}.", nameof(document));
 		}
 
 		EnsureBridgeRunning();
@@ -182,12 +169,14 @@ public sealed class FaissVectorStore : IVectorStore, IDisposable
 			document.FaissIndex = faissIdx;
 			document.EmbeddedAt = DateTime.UtcNow;
 
-			JsonDocument response = await SendCommandAsync(new
-			{
-				command = "add",
-				vectors = new[] { document.Embedding },
-				ids = new[] { faissIdx },
-			});
+			JsonDocument response = await SendCommandAsync(
+				new
+				{
+					command = "add",
+					vectors = new[] { document.Embedding },
+					ids = new[] { faissIdx },
+				}
+			);
 
 			ValidateResponse(response, "add");
 
@@ -222,10 +211,7 @@ public sealed class FaissVectorStore : IVectorStore, IDisposable
 				RagDocument doc = documents[i];
 				if (doc.Embedding is null || doc.Embedding.Length != _dimensions)
 				{
-					throw new ArgumentException(
-						$"Document at index {i} has invalid embedding dimensions.",
-						nameof(documents)
-					);
+					throw new ArgumentException($"Document at index {i} has invalid embedding dimensions.", nameof(documents));
 				}
 
 				long faissIdx = _nextFaissIndex++;
@@ -236,12 +222,14 @@ public sealed class FaissVectorStore : IVectorStore, IDisposable
 			}
 
 			// Batch add to FAISS
-			JsonDocument response = await SendCommandAsync(new
-			{
-				command = "add",
-				vectors,
-				ids,
-			});
+			JsonDocument response = await SendCommandAsync(
+				new
+				{
+					command = "add",
+					vectors,
+					ids,
+				}
+			);
 
 			ValidateResponse(response, "add batch");
 
@@ -262,10 +250,7 @@ public sealed class FaissVectorStore : IVectorStore, IDisposable
 		ArgumentNullException.ThrowIfNull(queryEmbedding, nameof(queryEmbedding));
 		if (queryEmbedding.Length != _dimensions)
 		{
-			throw new ArgumentException(
-				$"Query embedding must be {_dimensions} dimensions, got {queryEmbedding.Length}.",
-				nameof(queryEmbedding)
-			);
+			throw new ArgumentException($"Query embedding must be {_dimensions} dimensions, got {queryEmbedding.Length}.", nameof(queryEmbedding));
 		}
 
 		EnsureBridgeRunning();
@@ -274,12 +259,14 @@ public sealed class FaissVectorStore : IVectorStore, IDisposable
 		try
 		{
 			// Search FAISS for nearest neighbors
-			JsonDocument response = await SendCommandAsync(new
-			{
-				command = "search",
-				vector = queryEmbedding,
-				top_k = topK * 2, // Over-fetch to allow post-filtering by collection
-			});
+			JsonDocument response = await SendCommandAsync(
+				new
+				{
+					command = "search",
+					vector = queryEmbedding,
+					top_k = topK * 2, // Over-fetch to allow post-filtering by collection
+				}
+			);
 
 			ValidateResponse(response, "search");
 
@@ -340,9 +327,7 @@ public sealed class FaissVectorStore : IVectorStore, IDisposable
 	{
 		// FAISS doesn't natively support deletion. Mark as deleted in MongoDB
 		// and skip during search. Full cleanup happens during index rebuild.
-		DeleteResult result = await _metadataCollection.DeleteOneAsync(
-			Builders<RagDocument>.Filter.Eq(d => d.Id, documentId)
-		);
+		DeleteResult result = await _metadataCollection.DeleteOneAsync(Builders<RagDocument>.Filter.Eq(d => d.Id, documentId));
 		return result.DeletedCount > 0;
 	}
 
@@ -385,9 +370,7 @@ public sealed class FaissVectorStore : IVectorStore, IDisposable
 			JsonDocument response = await SendCommandAsync(new { command = "load" });
 			ValidateResponse(response, "load");
 
-			_nextFaissIndex = response.RootElement.TryGetProperty("count", out JsonElement countEl)
-				? countEl.GetInt64()
-				: 0;
+			_nextFaissIndex = response.RootElement.TryGetProperty("count", out JsonElement countEl) ? countEl.GetInt64() : 0;
 
 			Console.WriteLine($"[FaissVectorStore] Index loaded. {_nextFaissIndex} vectors.");
 		}
@@ -424,9 +407,7 @@ public sealed class FaissVectorStore : IVectorStore, IDisposable
 		string status = response.RootElement.GetProperty("status").GetString() ?? "unknown";
 		if (status != "ok")
 		{
-			string error = response.RootElement.TryGetProperty("error", out JsonElement errEl)
-				? errEl.GetString() ?? "unknown error"
-				: "unknown error";
+			string error = response.RootElement.TryGetProperty("error", out JsonElement errEl) ? errEl.GetString() ?? "unknown error" : "unknown error";
 			throw new InvalidOperationException($"FAISS bridge '{operation}' failed: {error}");
 		}
 	}
@@ -440,9 +421,7 @@ public sealed class FaissVectorStore : IVectorStore, IDisposable
 
 		if (_bridgeProcess is null || _bridgeProcess.HasExited)
 		{
-			throw new InvalidOperationException(
-				"FAISS bridge is not running. Call StartBridgeAsync() first."
-			);
+			throw new InvalidOperationException("FAISS bridge is not running. Call StartBridgeAsync() first.");
 		}
 	}
 

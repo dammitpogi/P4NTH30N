@@ -101,37 +101,40 @@ public sealed class ResilientOBSClient : IOBSClient, IDisposable
 		SetState(ConnectionState.Connecting);
 		_cts = new CancellationTokenSource();
 
-		bool success = await _reconnectionPolicy.ExecuteAsync(async () =>
-		{
-			try
+		bool success = await _reconnectionPolicy.ExecuteAsync(
+			async () =>
 			{
-				_webSocket?.Dispose();
-				_webSocket = new ClientWebSocket();
-
-				Console.WriteLine($"[ResilientOBS] Connecting to {_url}...");
-				await _webSocket.ConnectAsync(new Uri(_url), _cts.Token);
-
-				if (_webSocket.State == WebSocketState.Open)
+				try
 				{
-					Console.WriteLine("[ResilientOBS] WebSocket connected.");
+					_webSocket?.Dispose();
+					_webSocket = new ClientWebSocket();
 
-					// OBS WebSocket v5 handshake
-					await PerformHandshakeAsync(_cts.Token);
-					return true;
+					Console.WriteLine($"[ResilientOBS] Connecting to {_url}...");
+					await _webSocket.ConnectAsync(new Uri(_url), _cts.Token);
+
+					if (_webSocket.State == WebSocketState.Open)
+					{
+						Console.WriteLine("[ResilientOBS] WebSocket connected.");
+
+						// OBS WebSocket v5 handshake
+						await PerformHandshakeAsync(_cts.Token);
+						return true;
+					}
+
+					Console.WriteLine($"[ResilientOBS] WebSocket state: {_webSocket.State}");
+					return false;
 				}
-
-				Console.WriteLine($"[ResilientOBS] WebSocket state: {_webSocket.State}");
-				return false;
-			}
-			catch (Exception ex)
-			{
-				StackTrace trace = new(ex, true);
-				StackFrame? frame = trace.GetFrame(0);
-				int line = frame?.GetFileLineNumber() ?? 0;
-				Console.WriteLine($"[{line}] [ResilientOBS] Connection attempt failed: {ex.Message}");
-				return false;
-			}
-		}, _cts.Token);
+				catch (Exception ex)
+				{
+					StackTrace trace = new(ex, true);
+					StackFrame? frame = trace.GetFrame(0);
+					int line = frame?.GetFileLineNumber() ?? 0;
+					Console.WriteLine($"[{line}] [ResilientOBS] Connection attempt failed: {ex.Message}");
+					return false;
+				}
+			},
+			_cts.Token
+		);
 
 		if (success)
 		{
@@ -181,11 +184,7 @@ public sealed class ResilientOBSClient : IOBSClient, IDisposable
 		try
 		{
 			JsonDocument response = await SendRequestAsync("GetStreamStatus");
-			return response.RootElement
-				.GetProperty("d")
-				.GetProperty("responseData")
-				.GetProperty("outputActive")
-				.GetBoolean();
+			return response.RootElement.GetProperty("d").GetProperty("responseData").GetProperty("outputActive").GetBoolean();
 		}
 		catch (Exception ex)
 		{
@@ -224,19 +223,18 @@ public sealed class ResilientOBSClient : IOBSClient, IDisposable
 		try
 		{
 			// OBS WebSocket v5: GetSourceScreenshot
-			JsonDocument response = await SendRequestAsync("GetSourceScreenshot", new
-			{
-				sourceName,
-				imageFormat = "png",
-				imageWidth = 1280,
-				imageHeight = 720,
-			});
+			JsonDocument response = await SendRequestAsync(
+				"GetSourceScreenshot",
+				new
+				{
+					sourceName,
+					imageFormat = "png",
+					imageWidth = 1280,
+					imageHeight = 720,
+				}
+			);
 
-			string? imageData = response.RootElement
-				.GetProperty("d")
-				.GetProperty("responseData")
-				.GetProperty("imageData")
-				.GetString();
+			string? imageData = response.RootElement.GetProperty("d").GetProperty("responseData").GetProperty("imageData").GetString();
 
 			if (string.IsNullOrEmpty(imageData))
 			{
@@ -283,10 +281,7 @@ public sealed class ResilientOBSClient : IOBSClient, IDisposable
 		object identifyPayload = new
 		{
 			op = 1, // Identify
-			d = new
-			{
-				rpcVersion = 1,
-			}
+			d = new { rpcVersion = 1 },
 		};
 
 		await SendMessageAsync(JsonSerializer.Serialize(identifyPayload), cancellationToken);
@@ -311,7 +306,7 @@ public sealed class ResilientOBSClient : IOBSClient, IDisposable
 				requestType,
 				requestId = id.ToString(),
 				requestData,
-			}
+			},
 		};
 
 		await _wsLock.WaitAsync();
@@ -357,8 +352,7 @@ public sealed class ResilientOBSClient : IOBSClient, IDisposable
 		{
 			receiveResult = await _webSocket.ReceiveAsync(buffer, cancellationToken);
 			result.Append(Encoding.UTF8.GetString(buffer, 0, receiveResult.Count));
-		}
-		while (!receiveResult.EndOfMessage);
+		} while (!receiveResult.EndOfMessage);
 
 		return result.ToString();
 	}
@@ -379,26 +373,29 @@ public sealed class ResilientOBSClient : IOBSClient, IDisposable
 					Console.WriteLine("[ResilientOBS] Connection lost — initiating reconnection.");
 					SetState(ConnectionState.Reconnecting);
 
-					bool reconnected = await _reconnectionPolicy.ExecuteAsync(async () =>
-					{
-						try
+					bool reconnected = await _reconnectionPolicy.ExecuteAsync(
+						async () =>
 						{
-							_webSocket?.Dispose();
-							_webSocket = new ClientWebSocket();
-							await _webSocket.ConnectAsync(new Uri(_url), cancellationToken);
-
-							if (_webSocket.State == WebSocketState.Open)
+							try
 							{
-								await PerformHandshakeAsync(cancellationToken);
-								return true;
+								_webSocket?.Dispose();
+								_webSocket = new ClientWebSocket();
+								await _webSocket.ConnectAsync(new Uri(_url), cancellationToken);
+
+								if (_webSocket.State == WebSocketState.Open)
+								{
+									await PerformHandshakeAsync(cancellationToken);
+									return true;
+								}
+								return false;
 							}
-							return false;
-						}
-						catch
-						{
-							return false;
-						}
-					}, cancellationToken);
+							catch
+							{
+								return false;
+							}
+						},
+						cancellationToken
+					);
 
 					if (reconnected)
 					{

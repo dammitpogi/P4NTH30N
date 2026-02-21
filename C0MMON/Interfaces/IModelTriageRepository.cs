@@ -1,13 +1,12 @@
-
-using P4NTH30N.C0MMON.Infrastructure.Resilience;
 using System.Collections.Generic;
+using P4NTH30N.C0MMON.Infrastructure.Resilience;
 
 namespace P4NTH30N.C0MMON.Interfaces
 {
-    public interface IModelTriageRepository
-    {
-        ModelTriageInfo GetTriageInfo(string modelId);
-        void UpdateTriageInfo(ModelTriageInfo triageInfo);
-        IEnumerable<ModelTriageInfo> GetAllTriageInfo();
-    }
+	public interface IModelTriageRepository
+	{
+		ModelTriageInfo GetTriageInfo(string modelId);
+		void UpdateTriageInfo(ModelTriageInfo triageInfo);
+		IEnumerable<ModelTriageInfo> GetAllTriageInfo();
+	}
 }

@@ -48,11 +48,7 @@ public sealed class HealthCheckService
 				}
 				catch (Exception ex)
 				{
-					results[kv.Key] = new HealthCheckResult
-					{
-						Status = HealthStatus.Unhealthy,
-						Description = $"Check threw exception: {ex.Message}",
-					};
+					results[kv.Key] = new HealthCheckResult { Status = HealthStatus.Unhealthy, Description = $"Check threw exception: {ex.Message}" };
 					overall = HealthStatus.Unhealthy;
 				}
 			}

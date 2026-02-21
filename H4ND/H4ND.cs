@@ -1,18 +1,28 @@
-using System.Diagnostics;
-using System.Drawing;
 using System.Text.Json;
 using Figgle;
 using Figgle.Fonts;
-using OpenQA.Selenium.Chrome;
+using Microsoft.Extensions.Configuration;
 using P4NTH30N;
 using P4NTH30N.C0MMON;
+using P4NTH30N.C0MMON.Entities;
+using P4NTH30N.C0MMON.Infrastructure.Cdp;
+using P4NTH30N.C0MMON.Infrastructure.EventBus;
 using P4NTH30N.C0MMON.Infrastructure.Persistence;
+using P4NTH30N.C0MMON.Infrastructure.Resilience;
 using P4NTH30N.C0MMON.Versioning;
+using P4NTH30N.H4ND;
+using P4NTH30N.H4ND.Infrastructure;
+using P4NTH30N.H4ND.Services;
+using P4NTH30N.H4ND.EntryPoint;
+using P4NTH30N.H4ND.Parallel;
+using P4NTH30N.H4ND.Vision;
 using P4NTH30N.Services;
 
-// DECISION 0: Vision Architecture Approach - Replace browser automation with OBS video streams
-// Current: Selenium ChromeDriver for game interaction and balance queries
-// Target: OBS video stream + LM Studio + Hugging Face models for vision-based automation
+// TECH-H4ND-001: CDP replaces Selenium for browser UI interaction.
+// TECH-FE-015: Event bus + command pipeline for FourEyes integration.
+// TECH-JP-001: CDP connectivity validation at startup.
+// TECH-JP-002: Jackpot signal-to-spin pipeline via event bus.
+// OPS-JP-001: Jackpot operational monitoring.
 
 namespace P4NTH30N
 {
@@ -29,24 +39,187 @@ internal class Program
 	private static void Main(string[] args)
 	{
 		MongoUnitOfWork uow = s_uow;
-		string runMode = args.Length > 0 ? args[0] : "H4ND";
-		bool listenForSignals = true;
-		if (new[] { "H4ND", "H0UND" }.Contains(runMode).Equals(false))
+		RunMode mode = UnifiedEntryPoint.ParseMode(args);
+
+		// --- ARCH-055: generate-signals does NOT require CDP ---
+		if (mode == RunMode.GenerateSignals)
 		{
-			string errorMessage = $"RunMode Argument was invalid. ({runMode})";
+			Console.WriteLine(Header.Version);
+			UnifiedEntryPoint.RunGenerateSignals(uow, args);
+			return;
+		}
+
+		// --- ARCH-055: Validate mode ---
+		if (mode == RunMode.Unknown)
+		{
+			string runModeArg = args.Length > 0 ? args[0] : "(none)";
+			string errorMessage = $"RunMode Argument was invalid. ({runModeArg})\n" +
+				"Valid modes: H4ND, SPIN, H0UND, FIRSTSPIN, PARALLEL, GENERATE-SIGNALS, GEN, HEALTH, BURN-IN, BURNIN, MONITOR";
 			Console.WriteLine(errorMessage);
 			Console.ReadKey(true).KeyChar.ToString();
 			throw new Exception(errorMessage);
 		}
-		else if (runMode.Equals("H0UND"))
+
+		// --- MON-057: Monitor mode does not require CDP ---
+		if (mode == RunMode.Monitor)
 		{
-			listenForSignals = false;
+			Console.WriteLine(Header.Version);
+			IConfigurationRoot monConfig = new ConfigurationBuilder()
+				.SetBasePath(AppContext.BaseDirectory)
+				.AddJsonFile("appsettings.json", optional: true, reloadOnChange: false)
+				.Build();
+			UnifiedEntryPoint.RunMonitor(uow, monConfig);
+			return;
 		}
+
+		bool listenForSignals = mode != RunMode.Hound;
+
+		// --- Load CDP config from appsettings.json ---
+		IConfigurationRoot config = new ConfigurationBuilder()
+			.SetBasePath(AppContext.BaseDirectory)
+			.AddJsonFile("appsettings.json", optional: true, reloadOnChange: false)
+			.Build();
+
+		CdpConfig cdpConfig = new();
+		config.GetSection("P4NTH30N:H4ND:Cdp").Bind(cdpConfig);
+
+		// --- ARCH-055: Health mode skips CDP pre-flight (reports status instead) ---
+		if (mode == RunMode.Health)
+		{
+			Console.WriteLine(Header.Version);
+			UnifiedEntryPoint.RunHealth(uow, cdpConfig, config);
+			return;
+		}
+
+		// --- AUTO-056: CDP lifecycle management (auto-start Chrome if needed) ---
+		CdpLifecycleConfig lifecycleConfig = new();
+		config.GetSection("P4NTH30N:H4ND:CdpLifecycle").Bind(lifecycleConfig);
+		CdpLifecycleManager cdpLifecycle = new(lifecycleConfig);
+
+		bool cdpEnsured = cdpLifecycle.EnsureAvailableAsync().GetAwaiter().GetResult();
+		if (!cdpEnsured)
+		{
+			Console.WriteLine("[H4ND] CDP auto-start failed — falling back to manual check");
+		}
+
+		// AUTO-056-007: Graceful Chrome shutdown on process exit
+		AppDomain.CurrentDomain.ProcessExit += (_, _) =>
+		{
+			Console.WriteLine("[H4ND] Process exit — stopping Chrome CDP...");
+			cdpLifecycle.Dispose();
+		};
+
+		// --- TECH-JP-001: CDP connectivity pre-flight check ---
+		CdpHealthCheck cdpHealthCheck = new(cdpConfig);
+		CdpHealthStatus healthStatus = cdpHealthCheck.CheckHealthAsync().GetAwaiter().GetResult();
+
+		if (!healthStatus.IsHealthy)
+		{
+			Console.WriteLine($"[H4ND] CDP pre-flight FAILED: {healthStatus.Summary}");
+			foreach (string error in healthStatus.Errors)
+			{
+				Console.WriteLine($"[H4ND]   - {error}");
+			}
+			uow.Errors.Insert(
+				ErrorLog.Create(ErrorType.SystemError, "H4ND:CdpHealthCheck", $"CDP pre-flight failed: {string.Join("; ", healthStatus.Errors)}", ErrorSeverity.Critical)
+			);
+			Console.WriteLine("[H4ND] Halting — CDP connectivity is required. Fix Chrome/CDP and restart.");
+			cdpLifecycle.Dispose();
+			return;
+		}
+		Console.WriteLine($"[H4ND] CDP pre-flight OK: {healthStatus.Summary}");
+
+		// --- SPIN-044: First Spin run mode ---
+		if (mode == RunMode.FirstSpin)
+		{
+			FirstSpinConfig firstSpinConfig = new();
+			config.GetSection("P4NTH30N:H4ND:FirstSpin").Bind(firstSpinConfig);
+
+			SpinMetrics fsMetrics = new();
+			FirstSpinController firstSpinController = new(uow, firstSpinConfig, fsMetrics);
+
+			CdpClient fsCdp = new(cdpConfig);
+			if (!fsCdp.ConnectAsync().GetAwaiter().GetResult())
+			{
+				Console.WriteLine("[FIRSTSPIN] CDP connection failed — cannot proceed.");
+				return;
+			}
+
+			try
+			{
+				FirstSpinResult result = firstSpinController.ExecuteAsync(fsCdp).GetAwaiter().GetResult();
+				Console.WriteLine(result.ToString());
+			}
+			finally
+			{
+				fsCdp.Dispose();
+			}
+
+			return;
+		}
+
+		// --- ARCH-055: Burn-in execution run mode ---
+		if (mode == RunMode.BurnIn)
+		{
+			UnifiedEntryPoint.RunBurnIn(uow, cdpConfig, config);
+			return;
+		}
+
+		// --- ARCH-047/055: Parallel execution run mode ---
+		if (mode == RunMode.Parallel)
+		{
+			UnifiedEntryPoint.RunParallel(uow, cdpConfig, config);
+			return;
+		}
+
+		// --- OPS-JP-001: Initialize spin metrics + health endpoint ---
+		SpinMetrics spinMetrics = new();
+		SpinExecution spinExecution = new(uow, spinMetrics);
+		SpinHealthEndpoint spinHealthEndpoint = new(spinMetrics);
+		spinHealthEndpoint.Start();
+		DateTime lastMetricsLog = DateTime.MinValue;
+
+		// --- TECH-FE-015: Event bus + command pipeline ---
+		InMemoryEventBus eventBus = new();
+		OperationTracker operationTracker = new();
+		CircuitBreaker cdpCircuitBreaker = new(failureThreshold: 5, recoveryTimeout: TimeSpan.FromMinutes(2), logger: msg => Console.WriteLine(msg));
+
+		CommandPipeline commandPipeline = new CommandPipeline()
+			.AddMiddleware(new LoggingMiddleware())
+			.AddMiddleware(new ValidationMiddleware())
+			.AddMiddleware(new IdempotencyMiddleware(operationTracker))
+			.AddMiddleware(new CircuitBreakerMiddleware(cdpCircuitBreaker));
+
+		// --- TECH-FE-015: VisionCommandListener subscribes to event bus ---
+		VisionCommandListener visionListener = new();
+		eventBus
+			.SubscribeAsync<VisionCommand>(
+				async (VisionCommand cmd) =>
+				{
+					CommandResult pipelineResult = await commandPipeline.ExecuteAsync(cmd);
+					if (pipelineResult.IsSuccess)
+					{
+						visionListener.EnqueueCommand(cmd);
+					}
+					else
+					{
+						Console.WriteLine($"[H4ND] Vision command rejected by pipeline: {pipelineResult.ErrorMessage}");
+					}
+				}
+			)
+			.GetAwaiter()
+			.GetResult();
+
+		visionListener.StartAsync().GetAwaiter().GetResult();
+		Console.WriteLine("[H4ND] FourEyes event bus + command pipeline initialized");
+
+		// FEAT-036: Track whether VisionCommandHandler has been wired to avoid re-wiring
+		bool visionHandlerWired = false;
 
 		while (true)
 		{
 			Console.WriteLine(Header.Version);
-			ChromeDriver? driver = null;
+			CdpClient? cdp = null;
 
 			// Health monitoring for H4ND
 			List<(string tier, double value, double threshold)> recentJackpots = new();
@@ -60,8 +233,6 @@ internal class Program
 
 				while (true)
 				{
-					// Credential credential = Credential.GetBy("FireKirin", "MIDAS 2", "Stone1020");
-					// Signal signal = new Signal(4, credential);
 					Signal? signal = listenForSignals ? (overrideSignal ?? uow.Signals.GetNext()) : null;
 					Credential? credential = (signal == null) ? uow.Credentials.GetNext(false) : uow.Credentials.GetBy(signal.House, signal.Game, signal.Username);
 					overrideSignal = null;
@@ -78,35 +249,39 @@ internal class Program
 
 						if (signal != null)
 						{
-							if (driver == null)
+							if (cdp == null)
 							{
-								driver = Actions.Launch();
+								cdp = new CdpClient(cdpConfig);
+								if (!cdp.ConnectAsync().GetAwaiter().GetResult())
+								{
+									Console.WriteLine("[H4ND] CDP connection failed — retrying in 5s");
+									cdp.Dispose();
+									cdp = null;
+									Thread.Sleep(5000);
+									continue;
+								}
 							}
 
 							switch (credential.Game)
 							{
-								// TODO: FIX - Game switch handles OrionStars login but FireKirin case is empty (Decision 0)
-								// Current: FireKirin signals may not have proper login state
-								// Fix: Add FireKirin login flow similar to OrionStars case
 								case "FireKirin":
+									if (!CdpGameActions.LoginFireKirinAsync(cdp, credential.Username, credential.Password).GetAwaiter().GetResult())
+									{
+										Console.WriteLine($"{DateTime.Now} - {credential.House} login failed for {credential.Game}");
+										uow.Credentials.Lock(credential);
+										continue;
+									}
 									break;
 								case "OrionStars":
 									if (lastCredential == null || lastCredential.Game != credential.Game)
 									{
-										driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
-										if (Screen.WaitForColor(new Point(510, 110), Color.FromArgb(255, 2, 119, 2), 60) == false)
+										if (!CdpGameActions.LoginOrionStarsAsync(cdp, credential.Username, credential.Password).GetAwaiter().GetResult())
 										{
-											Console.WriteLine($"{DateTime.Now} - {credential.House} took too long to load for {credential.Game}");
-											uow.Credentials.Lock(credential); //throw new Exception("Took too long to load.");
+											Console.WriteLine($"{DateTime.Now} - {credential.House} login failed for {credential.Game}");
+											Console.WriteLine($"{DateTime.Now} - {credential.Username} : {credential.Password}");
+											uow.Credentials.Lock(credential);
+											continue;
 										}
-										Mouse.Click(535, 615);
-									}
-									if (OrionStars.Login(driver, credential.Username, credential.Password) == false)
-									{
-										Console.WriteLine($"{DateTime.Now} - {credential.House} login failed for {credential.Game}");
-										Console.WriteLine($"{DateTime.Now} - {credential.Username} : {credential.Password}");
-										uow.Credentials.Lock(credential);
-										continue;
 									}
 									break;
 								default:
@@ -114,27 +289,62 @@ internal class Program
 							}
 						}
 
-						int grandChecked = 0;
-						if (driver == null)
+						// OPS_009: Verify game page is loaded via CDP (extension-free).
+						// Jackpot values come from WebSocket API (QueryBalances), NOT the browser DOM.
+						if (cdp == null)
 						{
-							driver = Actions.Launch();
-						}
-
-						ChromeDriver activeDriver = driver;
-						double extensionGrand = Convert.ToDouble(activeDriver.ExecuteScript("return window.parent.Grand")) / 100;
-						while (extensionGrand.Equals(0))
-						{
-							Thread.Sleep(500);
-							if (grandChecked++ > 40)
+							cdp = new CdpClient(cdpConfig);
+							if (!cdp.ConnectAsync().GetAwaiter().GetResult())
 							{
-								ProcessEvent alert = ProcessEvent.Log("H4ND", $"Grand check signalled an Extension Failure for {credential.Game}");
-								Console.WriteLine($"Checking Grand on {credential.Game} failed at {grandChecked} attempts.");
-								uow.ProcessEvents.Insert(alert.Record(credential));
-								throw new Exception("Extension failure.");
+								Console.WriteLine("[H4ND] CDP connection failed — retrying in 5s");
+								cdp.Dispose();
+								cdp = null;
+								Thread.Sleep(5000);
+								continue;
 							}
-							extensionGrand = Convert.ToDouble(activeDriver.ExecuteScript("return window.parent.Grand")) / 100;
 						}
 
+						// FEAT-036: Wire VisionCommandHandler on first successful CDP connection
+						if (!visionHandlerWired && cdp != null)
+						{
+							VisionCommandHandler visionHandler = new(cdp);
+							visionListener.SetCommandHandler(visionHandler);
+							visionHandlerWired = true;
+							Console.WriteLine("[H4ND] FEAT-036: VisionCommandHandler wired to CDP — FourEyes commands active");
+
+							// DECISION_026: Enable NetworkInterceptor for API-based jackpot extraction
+							try
+							{
+								NetworkInterceptor interceptor = new(cdp);
+								interceptor.EnableAsync().GetAwaiter().GetResult();
+								Console.WriteLine("[H4ND] DECISION_026: NetworkInterceptor enabled — monitoring jackpot API traffic");
+							}
+							catch (Exception nex)
+							{
+								Console.WriteLine($"[H4ND] DECISION_026: NetworkInterceptor init failed (non-fatal): {nex.Message}");
+							}
+						}
+
+						// Page readiness gate: verify game page loaded (Canvas/DOM check)
+						int pageCheckAttempts = 0;
+						bool pageReady = false;
+						while (!pageReady)
+						{
+							pageReady = CdpGameActions.VerifyGamePageLoadedAsync(cdp!, credential.Game).GetAwaiter().GetResult();
+							if (!pageReady)
+							{
+								Thread.Sleep(500);
+								if (pageCheckAttempts++ > 20)
+								{
+									Console.WriteLine(
+										$"[H4ND] Page readiness check timed out for {credential.Game} after {pageCheckAttempts} attempts — proceeding with API query"
+									);
+									break;
+								}
+							}
+						}
+
+						// Primary jackpot source: WebSocket API (works without extension)
 						var balances = GetBalancesWithRetry(credential);
 
 						// Validate raw values before processing
@@ -210,31 +420,25 @@ internal class Program
 									break;
 							}
 
-							uow.Signals.Acknowledge(signal);
-							switch (credential.Game)
+							// TECH-JP-002: Map Signal → VisionCommand → EventBus → SpinExecution
+							VisionCommand spinCommand = new()
 							{
-								case "FireKirin":
-									Mouse.Click(80, 235);
-									Thread.Sleep(800); //Reset Hall Screen
-									FireKirin.SpinSlots(driver, credential, signal, uow);
-									break;
-								case "OrionStars":
-									Mouse.Click(80, 200);
-									Thread.Sleep(800);
-									// overrideSignal = Games.Gold777(driver, credential, signal);
-									bool FortunePiggyLoaded = Games.FortunePiggy.LoadSucessfully(driver, credential, signal, uow);
-									overrideSignal = FortunePiggyLoaded ? Games.FortunePiggy.Spin(driver, credential, signal, uow) : null;
+								CommandType = VisionCommandType.Spin,
+								TargetUsername = credential.Username,
+								TargetGame = credential.Game,
+								TargetHouse = credential.House,
+								Confidence = 1.0,
+								Reason = $"Signal P{(int)signal.Priority} for {credential.House}/{credential.Game}",
+							};
+							eventBus.PublishAsync(spinCommand).GetAwaiter().GetResult();
 
-									driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
-									P4NTH30N.C0MMON.Screen.WaitForColor(new Point(715, 128), Color.FromArgb(255, 254, 242, 181));
-									Thread.Sleep(2000);
-									Mouse.Click(80, 200);
-									Thread.Sleep(800);
-									break;
+							// Execute spin via SpinExecution (CDP + metrics)
+							bool spinOk = spinExecution.ExecuteSpinAsync(spinCommand, cdp!, signal, credential).GetAwaiter().GetResult();
+							if (!spinOk)
+							{
+								Console.WriteLine($"[H4ND] Spin failed for {credential.Username}@{credential.Game} — continuing");
 							}
-							Console.WriteLine($"({DateTime.Now}) {credential.House} - Completed Reel Spins...");
-							//ProcessEvent.Log("SignalReceived", $"Finished Spinning for {credential.House} - Username: {signal.Username}").Record(signal).Save();
-							// throw new Exception("Finished Spinning");
+
 							lastCredential = null;
 							balances = GetBalancesWithRetry(credential);
 							validatedBalance = balances.Balance;
@@ -258,7 +462,7 @@ internal class Program
 							if (currentGrand < credential.Jackpots.Grand && credential.Jackpots.Grand - currentGrand > 0.1)
 							{
 								var grandJackpot = uow.Jackpots.Get("Grand", credential.House, credential.Game);
-								if (grandJackpot != null && grandJackpot.DPD.Toggles.GrandPopped == true)
+								if (grandJackpot != null && grandJackpot.DPD != null && grandJackpot.DPD.Toggles.GrandPopped == true)
 								{
 									if (currentGrand >= 0 && currentGrand <= 10000)
 									{
@@ -269,7 +473,7 @@ internal class Program
 									if (gameSignal != null && gameSignal.Priority.Equals(4))
 										uow.Signals.DeleteAll(credential.House, credential.Game);
 								}
-								else
+								else if (grandJackpot?.DPD != null)
 									grandJackpot.DPD.Toggles.GrandPopped = true;
 							}
 							else
@@ -283,7 +487,7 @@ internal class Program
 							if (currentMajor < credential.Jackpots.Major && credential.Jackpots.Major - currentMajor > 0.1)
 							{
 								var majorJackpot = uow.Jackpots.Get("Major", credential.House, credential.Game);
-								if (majorJackpot != null && majorJackpot.DPD.Toggles.MajorPopped == true)
+								if (majorJackpot != null && majorJackpot.DPD != null && majorJackpot.DPD.Toggles.MajorPopped == true)
 								{
 									if (currentMajor >= 0 && currentMajor <= 10000)
 									{
@@ -294,7 +498,7 @@ internal class Program
 									if (gameSignal != null && gameSignal.Priority.Equals(3))
 										uow.Signals.DeleteAll(credential.House, credential.Game);
 								}
-								else
+								else if (majorJackpot?.DPD != null)
 									majorJackpot.DPD.Toggles.MajorPopped = true;
 							}
 							else
@@ -308,7 +512,7 @@ internal class Program
 							if (currentMinor < credential.Jackpots.Minor && credential.Jackpots.Minor - currentMinor > 0.1)
 							{
 								var minorJackpot = uow.Jackpots.Get("Minor", credential.House, credential.Game);
-								if (minorJackpot != null && minorJackpot.DPD.Toggles.MinorPopped == true)
+								if (minorJackpot != null && minorJackpot.DPD != null && minorJackpot.DPD.Toggles.MinorPopped == true)
 								{
 									if (currentMinor >= 0 && currentMinor <= 10000)
 									{
@@ -319,7 +523,7 @@ internal class Program
 									if (gameSignal != null && gameSignal.Priority.Equals(2))
 										uow.Signals.DeleteAll(credential.House, credential.Game);
 								}
-								else
+								else if (minorJackpot?.DPD != null)
 									minorJackpot.DPD.Toggles.MinorPopped = true;
 							}
 							else
@@ -333,7 +537,7 @@ internal class Program
 							if (currentMini < credential.Jackpots.Mini && credential.Jackpots.Mini - currentMini > 0.1)
 							{
 								var miniJackpot = uow.Jackpots.Get("Mini", credential.House, credential.Game);
-								if (miniJackpot != null && miniJackpot.DPD.Toggles.MiniPopped == true)
+								if (miniJackpot != null && miniJackpot.DPD != null && miniJackpot.DPD.Toggles.MiniPopped == true)
 								{
 									if (currentMini >= 0 && currentMini <= 10000)
 									{
@@ -344,7 +548,7 @@ internal class Program
 									if (gameSignal != null && gameSignal.Priority.Equals(1))
 										uow.Signals.DeleteAll(credential.House, credential.Game);
 								}
-								else
+								else if (miniJackpot?.DPD != null)
 									miniJackpot.DPD.Toggles.MiniPopped = true;
 							}
 							else
@@ -398,18 +602,26 @@ internal class Program
 							lastHealthCheck = DateTime.Now;
 						}
 
+						// OPS-JP-001: Periodic spin metrics summary to console
+						if ((DateTime.Now - lastMetricsLog).TotalMinutes >= 10)
+						{
+							spinHealthEndpoint.LogSummaryToConsole();
+							lastMetricsLog = DateTime.Now;
+						}
+
 						if (overrideSignal == null)
 						{
 							File.WriteAllText(Path.Combine(Path.GetTempPath(), "S1GNAL.json"), JsonSerializer.Serialize(false));
 						}
 
+						// Logout via CDP — no Mouse.Click, no Screen.WaitForColor
 						switch (credential.Game)
 						{
 							case "FireKirin":
-								FireKirin.Logout();
+								CdpGameActions.LogoutFireKirinAsync(cdp!).GetAwaiter().GetResult();
 								break;
 							case "OrionStars":
-								OrionStars.Logout(driver);
+								CdpGameActions.LogoutOrionStarsAsync(cdp!).GetAwaiter().GetResult();
 								break;
 						}
 					}
@@ -423,14 +635,16 @@ internal class Program
 			}
 			finally
 			{
-				if (driver != null)
+				if (cdp != null)
 				{
 					try
 					{
-						driver.Quit();
+						cdp.Dispose();
 					}
 					catch { }
-					driver = null;
+					cdp = null;
+					// FEAT-036: Reset so VisionCommandHandler re-wires on next CDP connection
+					visionHandlerWired = false;
 				}
 			}
 		}
@@ -573,22 +787,24 @@ internal class Program
 			}
 		}
 
+		// OPS_009: Grand=0 from WebSocket API is a transient state — retry briefly.
+		// The API is the authoritative source; no extension dependency.
 		int grandChecked = 0;
 		var balances = ExecuteQuery();
 		double currentGrand = balances.Grand;
 		while (currentGrand.Equals(0))
 		{
 			grandChecked++;
-			Dashboard.AddLog($"Grand jackpot is 0 for {credential.Game}, retrying attempt {grandChecked}/40", "yellow");
+			Dashboard.AddLog($"Grand jackpot is 0 for {credential.Game}, retrying attempt {grandChecked}/10", "yellow");
 			Dashboard.Render();
-			Thread.Sleep(500);
-			if (grandChecked > 40)
+			Thread.Sleep(1000);
+			if (grandChecked > 10)
 			{
-				ProcessEvent alert = ProcessEvent.Log("H4ND", $"Grand check signalled an Extension Failure for {credential.Game}");
-				Dashboard.AddLog($"Checking Grand on {credential.Game} failed at {grandChecked} attempts.", "red");
+				ProcessEvent alert = ProcessEvent.Log("H4ND", $"Grand jackpot returned 0 from API for {credential.Game} after {grandChecked} attempts");
+				Dashboard.AddLog($"Grand jackpot API returned 0 for {credential.Game} after {grandChecked} attempts — proceeding with available data.", "yellow");
 				Dashboard.Render();
 				s_uow.ProcessEvents.Insert(alert.Record(credential));
-				throw new Exception("Extension failure.");
+				break;
 			}
 			Dashboard.AddLog($"Retrying balance query for {credential.Game} (attempt {grandChecked})", "yellow");
 			Dashboard.Render();

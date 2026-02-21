@@ -22,6 +22,8 @@ Main repository implementations:
 - HouseRepository: House/location operations
 - ErrorRepository: Error logging
 - EventRepository: Event storage
+- **VisionCommandRepository**: FourEyes command tracking (new)
+- **ReceivedRepository**: Signal acknowledgment and processing (enhanced)
 
 ### ValidatedMongoRepository.cs
 Base repository with validation:
@@ -99,6 +101,8 @@ public class CredentialRepository : IRepoCredentials
 - **ERR0R**: Error logs
 - **H0U53**: House/location data
 - **J4CKP0T**: Jackpot forecasts
+- **VISIONCOMMAND**: FourEyes integration commands (new)
+- **SIGN4L**: Signal requests (enhanced)
 
 ## Dependencies
 
@@ -135,3 +139,21 @@ uow.Credentials.Upsert(credential);
 - Validation errors before persistence
 - Retry logic for transient failures
 - Graceful degradation
+
+## Recent Updates (2026-02-19)
+
+### VisionCommand Support
+- **VisionCommandRepository**: Track FourEyes commands with status and execution history
+- **Command Status Tracking**: Pending, InProgress, Completed, Failed states
+- **Confidence Scoring**: Store and query vision decision confidence levels
+- **Error Context**: Detailed error tracking for failed vision commands
+
+### Enhanced Signal Processing
+- **ReceivedRepository**: Improved signal acknowledgment tracking
+- **Signal-to-Command Mapping**: Store relationships between signals and VisionCommands
+- **Processing Metrics**: Track signal processing latency and success rates
+
+### CDP Integration
+- **Browser State Tracking**: Monitor CDP client connections and health
+- **Resource Pool Management**: Track CDP client allocation and cleanup
+- **Performance Metrics**: Query CDP operation latency and success rates

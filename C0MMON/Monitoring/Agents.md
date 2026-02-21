@@ -21,6 +21,7 @@ Main health monitoring service implementing `IHealthCheckService`:
 - `CheckExternalAPIHealth()` - Circuit breaker state monitoring
 - `CheckWorkerPoolHealth()` - Signal queue depth monitoring (depth >50 = degraded, >100 = unhealthy)
 - `CheckVisionStreamHealth()` - W4TCHD0G integration status (currently placeholder)
+- `CheckCdpHealth()` - Chrome DevTools Protocol connectivity (new for H4ND)
 - Uses `ICircuitBreaker` for external API resilience
 - Tracks system uptime via Stopwatch
 
@@ -34,6 +35,7 @@ public interface IHealthCheckService
     Task<HealthCheck> CheckExternalAPIHealth();
     Task<HealthCheck> CheckWorkerPoolHealth();
     Task<HealthCheck> CheckVisionStreamHealth();
+    Task<HealthCheck> CheckCdpHealth();
 }
 ```
 
@@ -86,12 +88,30 @@ Real-time data corruption detection service:
 ### Vision Stream
 - Healthy: "Not yet configured (W4TCHD0G pending)"
 
+### CDP (Chrome DevTools Protocol)
+- Healthy: HTTP version + WebSocket handshake + round-trip eval + login simulation
+- Degraded: Partial CDP functionality (e.g., WebSocket OK but login fails)
+- Unhealthy: CDP connection failed or timeout
+
 ## Key Patterns
 
 1. **Health Check Pattern**: Standardized component validation
 2. **Circuit Breaker**: Prevent cascade failures via `ICircuitBreaker`
 3. **Uptime Tracking**: Stopwatch-based system uptime
 4. **Alert Cooldown**: Prevent alert spam with time-based throttling
+
+## Recent Updates (2026-02-19)
+
+### CDP Health Monitoring
+- **CdpHealthCheck Integration**: Pre-flight validation for H4ND startup
+- **4-Check Validation**: HTTP version, WebSocket handshake, round-trip latency, login flow
+- **Operational Metrics**: Spin execution tracking via SpinMetrics
+- **HTTP Health Endpoint**: Port 9280 for real-time monitoring dashboard
+
+### Enhanced Monitoring
+- **SpinMetrics Collection**: Success rate, latency, balance change tracking
+- **EventBus Health**: Monitor VisionCommand publishing/subscription
+- **CommandPipeline Monitoring**: Middleware performance and circuit breaker status
 
 ## Usage
 

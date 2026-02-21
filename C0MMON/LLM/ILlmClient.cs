@@ -19,11 +19,7 @@ public interface ILlmClient : IDisposable
 	/// <param name="temperature">Sampling temperature (0.0 = deterministic, 1.0 = creative).</param>
 	/// <param name="cancellationToken">Cancellation token.</param>
 	/// <returns>The generated completion text.</returns>
-	Task<string> CompleteAsync(
-		string prompt,
-		int maxTokens = 512,
-		double temperature = 0.3,
-		CancellationToken cancellationToken = default);
+	Task<string> CompleteAsync(string prompt, int maxTokens = 512, double temperature = 0.3, CancellationToken cancellationToken = default);
 
 	/// <summary>
 	/// Sends a chat completion request with separate system and user messages.
@@ -34,12 +30,7 @@ public interface ILlmClient : IDisposable
 	/// <param name="temperature">Sampling temperature.</param>
 	/// <param name="cancellationToken">Cancellation token.</param>
 	/// <returns>The generated completion text.</returns>
-	Task<string> ChatAsync(
-		string systemPrompt,
-		string userMessage,
-		int maxTokens = 512,
-		double temperature = 0.3,
-		CancellationToken cancellationToken = default);
+	Task<string> ChatAsync(string systemPrompt, string userMessage, int maxTokens = 512, double temperature = 0.3, CancellationToken cancellationToken = default);
 
 	/// <summary>
 	/// Whether the LLM client is ready to accept requests.

@@ -73,8 +73,7 @@ public sealed class EmbeddingService : IEmbeddingService, IDisposable
 		if (!File.Exists(_bridgeScriptPath))
 		{
 			throw new FileNotFoundException(
-				$"Embedding bridge script not found at: {_bridgeScriptPath}. " +
-				"Ensure scripts/rag/embedding-bridge.py exists.",
+				$"Embedding bridge script not found at: {_bridgeScriptPath}. " + "Ensure scripts/rag/embedding-bridge.py exists.",
 				_bridgeScriptPath
 			);
 		}
@@ -95,31 +94,20 @@ public sealed class EmbeddingService : IEmbeddingService, IDisposable
 		_bridgeProcess = Process.Start(startInfo);
 		if (_bridgeProcess is null || _bridgeProcess.HasExited)
 		{
-			throw new InvalidOperationException(
-				"Failed to start Python embedding bridge. " +
-				"Ensure Python 3.8+ with sentence-transformers is installed."
-			);
+			throw new InvalidOperationException("Failed to start Python embedding bridge. " + "Ensure Python 3.8+ with sentence-transformers is installed.");
 		}
 
 		// Send init command and wait for model load
-		JsonDocument response = await SendCommandAsync(new
-		{
-			command = "init",
-			model = "all-MiniLM-L6-v2",
-		});
+		JsonDocument response = await SendCommandAsync(new { command = "init", model = "all-MiniLM-L6-v2" });
 
 		string status = response.RootElement.GetProperty("status").GetString() ?? "unknown";
 		if (status != "ok")
 		{
-			string error = response.RootElement.TryGetProperty("error", out JsonElement errEl)
-				? errEl.GetString() ?? "unknown"
-				: "unknown";
+			string error = response.RootElement.TryGetProperty("error", out JsonElement errEl) ? errEl.GetString() ?? "unknown" : "unknown";
 			throw new InvalidOperationException($"Embedding bridge init failed: {error}");
 		}
 
-		int dims = response.RootElement.TryGetProperty("dimensions", out JsonElement dimEl)
-			? dimEl.GetInt32()
-			: 0;
+		int dims = response.RootElement.TryGetProperty("dimensions", out JsonElement dimEl) ? dimEl.GetInt32() : 0;
 
 		Console.WriteLine($"[EmbeddingService] Model loaded. Dimensions: {dims}");
 	}
@@ -135,11 +123,7 @@ public sealed class EmbeddingService : IEmbeddingService, IDisposable
 		await _bridgeLock.WaitAsync();
 		try
 		{
-			JsonDocument response = await SendCommandAsync(new
-			{
-				command = "embed",
-				text,
-			});
+			JsonDocument response = await SendCommandAsync(new { command = "embed", text });
 
 			ValidateResponse(response, "embed");
 
@@ -170,11 +154,7 @@ public sealed class EmbeddingService : IEmbeddingService, IDisposable
 		await _bridgeLock.WaitAsync();
 		try
 		{
-			JsonDocument response = await SendCommandAsync(new
-			{
-				command = "embed_batch",
-				texts,
-			});
+			JsonDocument response = await SendCommandAsync(new { command = "embed_batch", texts });
 
 			ValidateResponse(response, "embed_batch");
 
@@ -226,9 +206,7 @@ public sealed class EmbeddingService : IEmbeddingService, IDisposable
 		string status = response.RootElement.GetProperty("status").GetString() ?? "unknown";
 		if (status != "ok")
 		{
-			string error = response.RootElement.TryGetProperty("error", out JsonElement errEl)
-				? errEl.GetString() ?? "unknown error"
-				: "unknown error";
+			string error = response.RootElement.TryGetProperty("error", out JsonElement errEl) ? errEl.GetString() ?? "unknown error" : "unknown error";
 			throw new InvalidOperationException($"Embedding bridge '{operation}' failed: {error}");
 		}
 	}
@@ -242,9 +220,7 @@ public sealed class EmbeddingService : IEmbeddingService, IDisposable
 
 		if (!IsReady)
 		{
-			throw new InvalidOperationException(
-				"Embedding service not ready. Call InitializeAsync() first."
-			);
+			throw new InvalidOperationException("Embedding service not ready. Call InitializeAsync() first.");
 		}
 	}
 

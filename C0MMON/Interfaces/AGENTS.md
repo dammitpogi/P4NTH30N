@@ -31,11 +31,27 @@ Defines contracts and abstractions that enable loose coupling between system com
 | **IStoreErrors** | `IStoreErrors.cs` | Error logging: Insert, GetAll, GetBySource, GetUnresolved, MarkResolved |
 | **IReceiveSignals** | `IReceiveSignals.cs` | Signal acknowledgment: GetAll, GetOpen, Upsert |
 
+### Event Bus & Communication
+
+| Interface | File | Description |
+|-----------|------|-------------|
+| **IEventBus** | `IEventBus.cs` | In-memory pub/sub: PublishAsync, SubscribeAsync for decoupled communication |
+
+### CDP Infrastructure
+
+| Interface | File | Description |
+|-----------|------|-------------|
+| **ICdpClient** | `ICdpClient.cs` | Chrome DevTools Protocol: Connect, Navigate, Click, Evaluate, SendCommand |
+
 ### Unit of Work
 
 | Interface | File | Description |
 |-----------|------|-------------|
 | **IUnitOfWork** | `IUnitOfWork.cs` | Unified access: Credentials, Signals, Jackpots, ProcessEvents, Errors, Received, Houses |
+
+### New Interfaces (2026-02-20)
+- **IAgent.cs**: Base agent interface
+- **IRepoTestResults.cs**: Repository interface for test results
 
 ### Legacy/Stage Interfaces
 

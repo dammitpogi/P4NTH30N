@@ -282,3 +282,18 @@ All 16 W4TCHD0G integration tests passing (27/27 total).
 **Intelligent Agent**
 - FourEyesAgent, DecisionEngine
 - ActionQueue, ScreenMapper
+
+### New Components (2026-02-20)
+- **Development/ConfirmationGate.cs**: Confirmation gate for development mode
+- **Development/DeveloperDashboard.cs**: Developer dashboard UI
+- **Development/FourEyesDevMode.cs**: FourEyes development mode
+- **Development/TrainingDataCapture.cs**: Training data capture utilities
+- **Stream/Alternatives/CDPScreenshotReceiver.cs**: CDP-based screenshot receiver
+- **Vision/Implementations/HeuristicStateClassifier.cs**: Heuristic-based state classifier
+- **Vision/Implementations/TemplateButtonDetector.cs**: Template matching button detector
+- **Vision/Implementations/TesseractJackpotDetector.cs**: Tesseract OCR jackpot detector
+- **Vision/Stubs/StubButtonDetector.cs**: Stub for button detection
+- **Vision/Stubs/StubJackpotDetector.cs**: Stub for jackpot detection
+- **Vision/Stubs/StubStateClassifier.cs**: Stub for state classification
+
+(End of file)

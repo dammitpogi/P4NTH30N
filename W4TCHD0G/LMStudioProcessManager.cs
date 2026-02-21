@@ -14,7 +14,8 @@ namespace P4NTH30N.W4TCHD0G;
 /// FOUREYES-025: LM Studio process manager implementation.
 /// Manages the local LM Studio server lifecycle, health checks, and model discovery.
 /// </summary>
-public class LMStudioProcessManager : ILMStudioProcessManager, IDisposable {
+public class LMStudioProcessManager : ILMStudioProcessManager, IDisposable
+{
 	private readonly string _lmStudioPath;
 	private readonly string _endpointUrl;
 	private readonly HttpClient _http;
@@ -24,27 +25,30 @@ public class LMStudioProcessManager : ILMStudioProcessManager, IDisposable {
 
 	public bool IsRunning => _process != null && !_process.HasExited;
 
-	public LMStudioProcessManager(
-		string? lmStudioPath = null,
-		string endpointUrl = "http://localhost:1234") {
+	public LMStudioProcessManager(string? lmStudioPath = null, string endpointUrl = "http://localhost:1234")
+	{
 		_lmStudioPath = lmStudioPath ?? FindLMStudioPath();
 		_endpointUrl = endpointUrl.TrimEnd('/');
 		_http = new HttpClient { Timeout = TimeSpan.FromSeconds(10) };
 	}
 
-	public async Task<bool> StartAsync(CancellationToken cancellationToken = default) {
+	public async Task<bool> StartAsync(CancellationToken cancellationToken = default)
+	{
 		if (IsRunning)
 			return true;
 
 		// Check if LM Studio is already running externally
-		if (await IsEndpointAvailableAsync(cancellationToken)) {
+		if (await IsEndpointAvailableAsync(cancellationToken))
+		{
 			Console.WriteLine("[LMStudioProcessManager] LM Studio already running externally");
 			_uptimeWatch.Restart();
 			return true;
 		}
 
-		try {
-			ProcessStartInfo psi = new() {
+		try
+		{
+			ProcessStartInfo psi = new()
+			{
 				FileName = _lmStudioPath,
 				Arguments = "--server",
 				UseShellExecute = false,
@@ -54,7 +58,8 @@ public class LMStudioProcessManager : ILMStudioProcessManager, IDisposable {
 			};
 
 			_process = Process.Start(psi);
-			if (_process == null) {
+			if (_process == null)
+			{
 				Console.WriteLine("[LMStudioProcessManager] Failed to start LM Studio process");
 				return false;
 			}
@@ -64,7 +69,8 @@ public class LMStudioProcessManager : ILMStudioProcessManager, IDisposable {
 
 			// Wait for endpoint to become available
 			int retries = 30;
-			while (retries > 0 && !cancellationToken.IsCancellationRequested) {
+			while (retries > 0 && !cancellationToken.IsCancellationRequested)
+			{
 				if (await IsEndpointAvailableAsync(cancellationToken))
 					return true;
 				await Task.Delay(1000, cancellationToken);
@@ -74,7 +80,8 @@ public class LMStudioProcessManager : ILMStudioProcessManager, IDisposable {
 			Console.WriteLine("[LMStudioProcessManager] LM Studio started but endpoint not responding");
 			return false;
 		}
-		catch (Exception ex) {
+		catch (Exception ex)
+		{
 			StackTrace trace = new(ex, true);
 			StackFrame? frame = trace.GetFrame(0);
 			int line = frame?.GetFileLineNumber() ?? 0;
@@ -83,56 +90,70 @@ public class LMStudioProcessManager : ILMStudioProcessManager, IDisposable {
 		}
 	}
 
-	public async Task StopAsync(CancellationToken cancellationToken = default) {
-		if (_process == null || _process.HasExited) {
+	public async Task StopAsync(CancellationToken cancellationToken = default)
+	{
+		if (_process == null || _process.HasExited)
+		{
 			_process = null;
 			_uptimeWatch.Stop();
 			return;
 		}
 
-		try {
+		try
+		{
 			_process.CloseMainWindow();
 			bool exited = await Task.Run(() => _process.WaitForExit(5000), cancellationToken);
-			if (!exited) {
+			if (!exited)
+			{
 				_process.Kill(entireProcessTree: true);
 				Console.WriteLine("[LMStudioProcessManager] Force killed LM Studio process");
 			}
 		}
-		catch (Exception ex) {
+		catch (Exception ex)
+		{
 			Console.WriteLine($"[LMStudioProcessManager] Stop error: {ex.Message}");
 		}
-		finally {
+		finally
+		{
 			_process?.Dispose();
 			_process = null;
 			_uptimeWatch.Stop();
 		}
 	}
 
-	public async Task<bool> RestartAsync(CancellationToken cancellationToken = default) {
+	public async Task<bool> RestartAsync(CancellationToken cancellationToken = default)
+	{
 		await StopAsync(cancellationToken);
 		await Task.Delay(2000, cancellationToken);
 		return await StartAsync(cancellationToken);
 	}
 
-	public async Task<ProcessHealthStatus> GetHealthAsync(CancellationToken cancellationToken = default) {
-		ProcessHealthStatus status = new() {
+	public async Task<ProcessHealthStatus> GetHealthAsync(CancellationToken cancellationToken = default)
+	{
+		ProcessHealthStatus status = new()
+		{
 			EndpointUrl = _endpointUrl,
 			IsRunning = IsRunning || await IsEndpointAvailableAsync(cancellationToken),
 			UptimeSeconds = (long)_uptimeWatch.Elapsed.TotalSeconds,
 		};
 
-		if (status.IsRunning) {
-			try {
+		if (status.IsRunning)
+		{
+			try
+			{
 				status.IsResponding = await IsEndpointAvailableAsync(cancellationToken);
 				IReadOnlyList<string> models = await GetLoadedModelsAsync(cancellationToken);
 				status.LoadedModelCount = models.Count;
 			}
-			catch {
+			catch
+			{
 				status.IsResponding = false;
 			}
 
-			if (_process != null && !_process.HasExited) {
-				try {
+			if (_process != null && !_process.HasExited)
+			{
+				try
+				{
 					_process.Refresh();
 					status.MemoryUsageBytes = _process.WorkingSet64;
 				}
@@ -143,8 +164,10 @@ public class LMStudioProcessManager : ILMStudioProcessManager, IDisposable {
 		return status;
 	}
 
-	public async Task<IReadOnlyList<string>> GetLoadedModelsAsync(CancellationToken cancellationToken = default) {
-		try {
+	public async Task<IReadOnlyList<string>> GetLoadedModelsAsync(CancellationToken cancellationToken = default)
+	{
+		try
+		{
 			HttpResponseMessage response = await _http.GetAsync($"{_endpointUrl}/v1/models", cancellationToken);
 			if (!response.IsSuccessStatusCode)
 				return Array.Empty<string>();
@@ -153,8 +176,10 @@ public class LMStudioProcessManager : ILMStudioProcessManager, IDisposable {
 			using JsonDocument doc = JsonDocument.Parse(json);
 
 			List<string> models = new();
-			if (doc.RootElement.TryGetProperty("data", out JsonElement data)) {
-				foreach (JsonElement model in data.EnumerateArray()) {
+			if (doc.RootElement.TryGetProperty("data", out JsonElement data))
+			{
+				foreach (JsonElement model in data.EnumerateArray())
+				{
 					if (model.TryGetProperty("id", out JsonElement id))
 						models.Add(id.GetString() ?? string.Empty);
 				}
@@ -162,23 +187,29 @@ public class LMStudioProcessManager : ILMStudioProcessManager, IDisposable {
 
 			return models;
 		}
-		catch {
+		catch
+		{
 			return Array.Empty<string>();
 		}
 	}
 
-	private async Task<bool> IsEndpointAvailableAsync(CancellationToken cancellationToken) {
-		try {
+	private async Task<bool> IsEndpointAvailableAsync(CancellationToken cancellationToken)
+	{
+		try
+		{
 			HttpResponseMessage response = await _http.GetAsync($"{_endpointUrl}/v1/models", cancellationToken);
 			return response.IsSuccessStatusCode;
 		}
-		catch {
+		catch
+		{
 			return false;
 		}
 	}
 
-	private static string FindLMStudioPath() {
-		string[] candidates = new[] {
+	private static string FindLMStudioPath()
+	{
+		string[] candidates = new[]
+		{
 			@"C:\Users\paulc\AppData\Local\Programs\LM Studio\LM Studio.exe",
 			@"C:\Program Files\LM Studio\LM Studio.exe",
 			@"C:\Program Files (x86)\LM Studio\LM Studio.exe",
@@ -187,8 +218,10 @@ public class LMStudioProcessManager : ILMStudioProcessManager, IDisposable {
 		return candidates.FirstOrDefault(System.IO.File.Exists) ?? "lmstudio";
 	}
 
-	public void Dispose() {
-		if (!_disposed) {
+	public void Dispose()
+	{
+		if (!_disposed)
+		{
 			_disposed = true;
 			_process?.Dispose();
 			_http.Dispose();

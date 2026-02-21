@@ -86,6 +86,29 @@ public sealed class FourEyesAgent : IFourEyesAgent
 	private bool _disposed;
 
 	/// <summary>
+	/// FEAT-036: Optional development mode callback for cycle interception.
+	/// When set, each cycle result passes through this function before completing.
+	/// Used by FourEyesDevMode for confirmation gates, dashboard, and training capture.
+	/// </summary>
+	private Func<CycleResult, Task<bool>>? _devModeInterceptor;
+
+	/// <summary>
+	/// FEAT-036: Whether development mode is active.
+	/// </summary>
+	public bool IsDevMode => _devModeInterceptor != null;
+
+	/// <summary>
+	/// FEAT-036: Enables development mode by setting a cycle interceptor.
+	/// The interceptor receives each CycleResult and returns true to continue or false to block.
+	/// </summary>
+	public void EnableDevMode(Func<CycleResult, Task<bool>> interceptor) => _devModeInterceptor = interceptor;
+
+	/// <summary>
+	/// FEAT-036: Disables development mode.
+	/// </summary>
+	public void DisableDevMode() => _devModeInterceptor = null;
+
+	/// <summary>
 	/// Total cycles executed.
 	/// </summary>
 	private long _totalCycles;
@@ -131,7 +154,8 @@ public sealed class FourEyesAgent : IFourEyesAgent
 		ISynergyClient synergyClient,
 		Func<Task<bool>> checkForSignal,
 		Func<Task<decimal>> getBalance,
-		int targetFps = 3)
+		int targetFps = 3
+	)
 	{
 		_streamReceiver = streamReceiver ?? throw new ArgumentNullException(nameof(streamReceiver));
 		_visionProcessor = visionProcessor ?? throw new ArgumentNullException(nameof(visionProcessor));
@@ -203,7 +227,11 @@ public sealed class FourEyesAgent : IFourEyesAgent
 
 		if (_loopTask is not null)
 		{
-			try { await _loopTask; } catch (OperationCanceledException) { }
+			try
+			{
+				await _loopTask;
+			}
+			catch (OperationCanceledException) { }
 		}
 
 		Status = AgentStatus.Stopped;

@@ -18,7 +18,13 @@ public class HealthCheckService : IHealthCheckService
 	private readonly IOBSClient? _obsClient;
 	private readonly Stopwatch _uptimeStopwatch = Stopwatch.StartNew();
 
-	public HealthCheckService(IMongoDatabaseProvider dbProvider, ICircuitBreaker? apiCircuit = null, ICircuitBreaker? mongoCircuit = null, IUnitOfWork? uow = null, IOBSClient? obsClient = null)
+	public HealthCheckService(
+		IMongoDatabaseProvider dbProvider,
+		ICircuitBreaker? apiCircuit = null,
+		ICircuitBreaker? mongoCircuit = null,
+		IUnitOfWork? uow = null,
+		IOBSClient? obsClient = null
+	)
 	{
 		_dbProvider = dbProvider;
 		_apiCircuit = apiCircuit;

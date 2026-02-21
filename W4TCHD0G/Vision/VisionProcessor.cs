@@ -96,11 +96,7 @@ public sealed class VisionProcessor : IVisionProcessor
 	/// <param name="buttonDetector">Button template detector.</param>
 	/// <param name="stateClassifier">Game state classifier.</param>
 	/// <param name="targetFps">Target analysis FPS. Default: 3.</param>
-	public VisionProcessor(
-		IJackpotDetector jackpotDetector,
-		IButtonDetector buttonDetector,
-		IStateClassifier stateClassifier,
-		int targetFps = 3)
+	public VisionProcessor(IJackpotDetector jackpotDetector, IButtonDetector buttonDetector, IStateClassifier stateClassifier, int targetFps = 3)
 	{
 		_jackpotDetector = jackpotDetector ?? throw new ArgumentNullException(nameof(jackpotDetector));
 		_buttonDetector = buttonDetector ?? throw new ArgumentNullException(nameof(buttonDetector));
@@ -115,10 +111,7 @@ public sealed class VisionProcessor : IVisionProcessor
 
 		Stopwatch sw = Stopwatch.StartNew();
 
-		VisionAnalysis analysis = new()
-		{
-			Timestamp = frame.Timestamp,
-		};
+		VisionAnalysis analysis = new() { Timestamp = frame.Timestamp };
 
 		try
 		{
@@ -132,10 +125,9 @@ public sealed class VisionProcessor : IVisionProcessor
 			List<DetectedButton> buttons = buttonTask.Result;
 
 			// Populate analysis with detection results
-			analysis.ExtractedJackpots = jackpots.ToDictionary(
-				kv => kv.Key,
-				kv => (double)kv.Value
-			);
+			analysis.ExtractedJackpots = jackpots.ToDictionary(kv => kv.Key, kv => (double)kv.Value);
+			// FEAT-036: Pass detected buttons through to DecisionEngine
+			analysis.DetectedButtons = buttons;
 
 			// Classify game state using all detection data
 			GameState gameState = await _stateClassifier.ClassifyAsync(frame, buttons, jackpots);
@@ -226,10 +218,7 @@ public sealed class VisionProcessor : IVisionProcessor
 	/// <summary>
 	/// Calculates overall analysis confidence based on detection results.
 	/// </summary>
-	private static double CalculateConfidence(
-		Dictionary<string, decimal> jackpots,
-		List<DetectedButton> buttons,
-		GameState gameState)
+	private static double CalculateConfidence(Dictionary<string, decimal> jackpots, List<DetectedButton> buttons, GameState gameState)
 	{
 		double confidence = 0.0;
 		int factors = 0;

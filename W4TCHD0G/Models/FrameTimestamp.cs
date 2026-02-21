@@ -59,8 +59,7 @@ public sealed class ActionCorrelation
 	public bool IsConfirmed => VisualConfirmationTime is not null;
 
 	/// <summary>Whether the action has timed out (>2s without confirmation).</summary>
-	public bool IsTimedOut(DateTime now) =>
-		!IsConfirmed && (now - ActionSentTime) > TimeSpan.FromSeconds(2);
+	public bool IsTimedOut(DateTime now) => !IsConfirmed && (now - ActionSentTime) > TimeSpan.FromSeconds(2);
 }
 
 /// <summary>
@@ -77,10 +76,7 @@ public sealed class TimestampCorrelationService
 	/// </summary>
 	public string RecordActionSent(long triggerFrameNumber)
 	{
-		ActionCorrelation correlation = new()
-		{
-			TriggerFrameNumber = triggerFrameNumber,
-		};
+		ActionCorrelation correlation = new() { TriggerFrameNumber = triggerFrameNumber };
 
 		lock (_lock)
 		{
@@ -155,15 +151,9 @@ public sealed class TimestampCorrelationService
 				TotalActions = _completed.Count + _pending.Count,
 				ConfirmedActions = confirmed.Count,
 				PendingActions = _pending.Count,
-				AverageActionLatencyMs = confirmed.Count > 0
-					? confirmed.Average(a => a.ActionLatency!.Value.TotalMilliseconds)
-					: 0,
-				MaxActionLatencyMs = confirmed.Count > 0
-					? confirmed.Max(a => a.ActionLatency!.Value.TotalMilliseconds)
-					: 0,
-				TimeoutRate = (_completed.Count + _pending.Count) > 0
-					? (double)_completed.Count(a => !a.IsConfirmed) / (_completed.Count + _pending.Count)
-					: 0,
+				AverageActionLatencyMs = confirmed.Count > 0 ? confirmed.Average(a => a.ActionLatency!.Value.TotalMilliseconds) : 0,
+				MaxActionLatencyMs = confirmed.Count > 0 ? confirmed.Max(a => a.ActionLatency!.Value.TotalMilliseconds) : 0,
+				TimeoutRate = (_completed.Count + _pending.Count) > 0 ? (double)_completed.Count(a => !a.IsConfirmed) / (_completed.Count + _pending.Count) : 0,
 			};
 		}
 	}

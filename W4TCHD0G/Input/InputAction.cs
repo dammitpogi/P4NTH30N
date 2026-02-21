@@ -56,7 +56,14 @@ public sealed class InputAction
 	/// </summary>
 	public static InputAction Click(int x, int y, MouseButton button = MouseButton.Left, int delayAfterMs = 100)
 	{
-		return new InputAction { Type = InputActionType.Click, X = x, Y = y, Button = button, DelayAfterMs = delayAfterMs };
+		return new InputAction
+		{
+			Type = InputActionType.Click,
+			X = x,
+			Y = y,
+			Button = button,
+			DelayAfterMs = delayAfterMs,
+		};
 	}
 
 	/// <summary>
@@ -64,7 +71,14 @@ public sealed class InputAction
 	/// </summary>
 	public static InputAction DoubleClick(int x, int y, MouseButton button = MouseButton.Left, int delayAfterMs = 100)
 	{
-		return new InputAction { Type = InputActionType.DoubleClick, X = x, Y = y, Button = button, DelayAfterMs = delayAfterMs };
+		return new InputAction
+		{
+			Type = InputActionType.DoubleClick,
+			X = x,
+			Y = y,
+			Button = button,
+			DelayAfterMs = delayAfterMs,
+		};
 	}
 
 	/// <summary>
@@ -72,7 +86,13 @@ public sealed class InputAction
 	/// </summary>
 	public static InputAction MoveMouse(int x, int y, int delayAfterMs = 50)
 	{
-		return new InputAction { Type = InputActionType.MouseMove, X = x, Y = y, DelayAfterMs = delayAfterMs };
+		return new InputAction
+		{
+			Type = InputActionType.MouseMove,
+			X = x,
+			Y = y,
+			DelayAfterMs = delayAfterMs,
+		};
 	}
 
 	/// <summary>
@@ -80,7 +100,13 @@ public sealed class InputAction
 	/// </summary>
 	public static InputAction KeyPress(SynergyKey key, KeyModifiers modifiers = KeyModifiers.None, int delayAfterMs = 50)
 	{
-		return new InputAction { Type = InputActionType.KeyPress, Key = key, Modifiers = modifiers, DelayAfterMs = delayAfterMs };
+		return new InputAction
+		{
+			Type = InputActionType.KeyPress,
+			Key = key,
+			Modifiers = modifiers,
+			DelayAfterMs = delayAfterMs,
+		};
 	}
 
 	/// <summary>
@@ -88,7 +114,12 @@ public sealed class InputAction
 	/// </summary>
 	public static InputAction TypeText(string text, int delayAfterMs = 100)
 	{
-		return new InputAction { Type = InputActionType.SendKeys, Text = text, DelayAfterMs = delayAfterMs };
+		return new InputAction
+		{
+			Type = InputActionType.SendKeys,
+			Text = text,
+			DelayAfterMs = delayAfterMs,
+		};
 	}
 
 	/// <summary>

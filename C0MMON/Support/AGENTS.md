@@ -18,6 +18,11 @@ Contains value objects, configuration structures, and utility types that support
 - **Jackpots**: 4-tier jackpot system (Grand/Major/Minor/Mini) with value tracking
 - **Thresholds**: Dynamic threshold calculations for jackpot reset detection
 - **GameSettings**: Platform-specific configuration for Gold777, FortunePiggy, Quintuple5X
+- **CdpConfig**: Chrome DevTools Protocol configuration (HostIp, Port, timeouts, retry settings)
+
+### New Support Types (2026-02-20)
+- **AtypicalityScore.cs**: Atypicality scoring for pattern detection
+- **WagerFeatures.cs**: Wager feature configuration and tracking
 
 ## Key Patterns
 

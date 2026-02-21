@@ -128,11 +128,7 @@ public sealed class RTMPStreamReceiver : IStreamReceiver
 	/// <param name="frameWidth">Output frame width. Default: 1280.</param>
 	/// <param name="frameHeight">Output frame height. Default: 720.</param>
 	/// <param name="bufferSize">Frame buffer capacity. Default: 30 (1 second at 30 FPS).</param>
-	public RTMPStreamReceiver(
-		string ffmpegPath = "ffmpeg",
-		int frameWidth = DefaultWidth,
-		int frameHeight = DefaultHeight,
-		int bufferSize = 30)
+	public RTMPStreamReceiver(string ffmpegPath = "ffmpeg", int frameWidth = DefaultWidth, int frameHeight = DefaultHeight, int bufferSize = 30)
 	{
 		_ffmpegPath = ffmpegPath;
 		_frameWidth = frameWidth;
@@ -162,7 +158,8 @@ public sealed class RTMPStreamReceiver : IStreamReceiver
 		// -sn                    - Disable subtitles
 		// -loglevel warning      - Reduce FFmpeg log noise
 		// pipe:1                 - Output to stdout
-		string arguments = string.Join(" ",
+		string arguments = string.Join(
+			" ",
 			$"-i \"{rtmpUrl}\"",
 			"-f rawvideo",
 			"-pix_fmt bgr24",
@@ -287,10 +284,7 @@ public sealed class RTMPStreamReceiver : IStreamReceiver
 				int totalRead = 0;
 				while (totalRead < frameSize)
 				{
-					int bytesRead = await stdout.ReadAsync(
-						frameData.AsMemory(totalRead, frameSize - totalRead),
-						token
-					);
+					int bytesRead = await stdout.ReadAsync(frameData.AsMemory(totalRead, frameSize - totalRead), token);
 
 					if (bytesRead == 0)
 					{
@@ -361,8 +355,7 @@ public sealed class RTMPStreamReceiver : IStreamReceiver
 					break;
 
 				// Log FFmpeg warnings/errors
-				if (line.Contains("error", StringComparison.OrdinalIgnoreCase) ||
-					line.Contains("fatal", StringComparison.OrdinalIgnoreCase))
+				if (line.Contains("error", StringComparison.OrdinalIgnoreCase) || line.Contains("fatal", StringComparison.OrdinalIgnoreCase))
 				{
 					Console.WriteLine($"[FFmpeg ERROR] {line}");
 					OnStreamError?.Invoke(line);
@@ -394,7 +387,11 @@ public sealed class RTMPStreamReceiver : IStreamReceiver
 
 			if (_ffmpegProcess is not null && !_ffmpegProcess.HasExited)
 			{
-				try { _ffmpegProcess.Kill(); } catch { }
+				try
+				{
+					_ffmpegProcess.Kill();
+				}
+				catch { }
 			}
 			_ffmpegProcess?.Dispose();
 			_frameBuffer.Dispose();

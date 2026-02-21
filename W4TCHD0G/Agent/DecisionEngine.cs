@@ -63,10 +63,7 @@ public sealed class DecisionEngine
 	/// <param name="minBalance">Minimum balance to continue playing.</param>
 	/// <param name="dailyLossLimit">Maximum daily loss before auto-pause.</param>
 	/// <param name="screenMapper">Coordinate mapper for action targeting.</param>
-	public DecisionEngine(
-		decimal minBalance = 5.0m,
-		decimal dailyLossLimit = 100.0m,
-		ScreenMapper? screenMapper = null)
+	public DecisionEngine(decimal minBalance = 5.0m, decimal dailyLossLimit = 100.0m, ScreenMapper? screenMapper = null)
 	{
 		_minBalance = minBalance;
 		_dailyLossLimit = dailyLossLimit;
@@ -120,6 +117,17 @@ public sealed class DecisionEngine
 		}
 
 		// Game is idle and we have a signal — execute spin
+		// FEAT-036: Use vision-detected button coordinates when available
+		if (analysis.DetectedButtons != null && analysis.DetectedButtons.Count > 0)
+		{
+			DetectedButton? spinButton = analysis.DetectedButtons.FirstOrDefault(b =>
+	b?.Label?.Contains("spin", StringComparison.OrdinalIgnoreCase) == true);
+			if (spinButton != null)
+			{
+				return DecisionResult.Act("Execute spin (vision-targeted)", GenerateButtonClickActions(spinButton));
+			}
+		}
+
 		return DecisionResult.Act("Execute spin", GenerateSpinActions());
 	}
 
@@ -131,11 +139,7 @@ public sealed class DecisionEngine
 	{
 		// Default spin button location (bottom-center of typical slot game)
 		// These should be overridden by button detection results
-		return new List<InputAction>
-		{
-			InputAction.Delay(200),
-			InputAction.Click(640, 650, MouseButton.Left, delayAfterMs: 500),
-		};
+		return new List<InputAction> { InputAction.Delay(200), InputAction.Click(640, 650, MouseButton.Left, delayAfterMs: 500) };
 	}
 
 	/// <summary>
@@ -195,7 +199,12 @@ public sealed class DecisionResult
 	/// </summary>
 	public static DecisionResult Act(string reason, List<InputAction> actions)
 	{
-		return new DecisionResult { Type = DecisionType.Act, Reason = reason, Actions = actions };
+		return new DecisionResult
+		{
+			Type = DecisionType.Act,
+			Reason = reason,
+			Actions = actions,
+		};
 	}
 
 	/// <summary>

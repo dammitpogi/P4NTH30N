@@ -86,9 +86,8 @@ public sealed class KeyManagement : IKeyManagement, IDisposable
 	/// <summary>
 	/// Creates a KeyManagement instance using the default key path.
 	/// </summary>
-	public KeyManagement() : this(Path.Combine(DefaultKeyDirectory, DefaultKeyFileName))
-	{
-	}
+	public KeyManagement()
+		: this(Path.Combine(DefaultKeyDirectory, DefaultKeyFileName)) { }
 
 	/// <summary>
 	/// Creates a KeyManagement instance with a custom key file path.
@@ -116,9 +115,9 @@ public sealed class KeyManagement : IKeyManagement, IDisposable
 			if (File.Exists(KeyFilePath) && !overwrite)
 			{
 				throw new InvalidOperationException(
-					$"Master key file already exists at '{KeyFilePath}'. " +
-					"Set overwrite=true to replace it. This is a destructive operation — " +
-					"all data encrypted with the old key will become unrecoverable without a backup."
+					$"Master key file already exists at '{KeyFilePath}'. "
+						+ "Set overwrite=true to replace it. This is a destructive operation — "
+						+ "all data encrypted with the old key will become unrecoverable without a backup."
 				);
 			}
 
@@ -177,8 +176,7 @@ public sealed class KeyManagement : IKeyManagement, IDisposable
 			{
 				CryptographicOperations.ZeroMemory(loadedKey);
 				throw new InvalidOperationException(
-					$"Master key file has invalid size: {loadedKey.Length} bytes (expected {MasterKeySize}). " +
-					"The key file may be corrupted."
+					$"Master key file has invalid size: {loadedKey.Length} bytes (expected {MasterKeySize}). " + "The key file may be corrupted."
 				);
 			}
 
@@ -200,22 +198,13 @@ public sealed class KeyManagement : IKeyManagement, IDisposable
 		{
 			if (_masterKey is null)
 			{
-				throw new InvalidOperationException(
-					"Master key is not loaded. Call LoadMasterKey() or GenerateMasterKey() first."
-				);
+				throw new InvalidOperationException("Master key is not loaded. Call LoadMasterKey() or GenerateMasterKey() first.");
 			}
 
 			// DECISION: Using PBKDF2-HMAC-SHA512 with 600k iterations.
 			// Argon2id would be preferable but requires a third-party NuGet package.
 			// PBKDF2 at 600k iterations meets OWASP 2025 minimums and is built-in.
-			using Rfc2898DeriveBytes kdf = new(
-				_masterKey,
-				salt,
-				Pbkdf2Iterations,
-				HashAlgorithmName.SHA512
-			);
-
-			return kdf.GetBytes(DerivedKeySize);
+			return Rfc2898DeriveBytes.Pbkdf2(_masterKey, salt, Pbkdf2Iterations, HashAlgorithmName.SHA512, DerivedKeySize);
 		}
 	}
 
@@ -229,9 +218,7 @@ public sealed class KeyManagement : IKeyManagement, IDisposable
 		{
 			if (_masterKey is null)
 			{
-				throw new InvalidOperationException(
-					"Cannot rotate: no master key is currently loaded."
-				);
+				throw new InvalidOperationException("Cannot rotate: no master key is currently loaded.");
 			}
 
 			// Step 1: Backup the current key file
@@ -306,9 +293,7 @@ public sealed class KeyManagement : IKeyManagement, IDisposable
 			// Remove all inherited ACL entries
 			security.SetAccessRuleProtection(isProtected: true, preserveInheritance: false);
 
-			AuthorizationRuleCollection existingRules = security.GetAccessRules(
-				includeExplicit: true, includeInherited: true, targetType: typeof(SecurityIdentifier)
-			);
+			AuthorizationRuleCollection existingRules = security.GetAccessRules(includeExplicit: true, includeInherited: true, targetType: typeof(SecurityIdentifier));
 			foreach (FileSystemAccessRule rule in existingRules)
 			{
 				security.RemoveAccessRule(rule);
@@ -316,11 +301,7 @@ public sealed class KeyManagement : IKeyManagement, IDisposable
 
 			// Grant full control to BUILTIN\Administrators only
 			SecurityIdentifier adminsSid = new(WellKnownSidType.BuiltinAdministratorsSid, null);
-			security.AddAccessRule(new FileSystemAccessRule(
-				adminsSid,
-				FileSystemRights.FullControl,
-				AccessControlType.Allow
-			));
+			security.AddAccessRule(new FileSystemAccessRule(adminsSid, FileSystemRights.FullControl, AccessControlType.Allow));
 
 			fileInfo.SetAccessControl(security);
 			Console.WriteLine($"[KeyManagement] Set restrictive ACL on: {filePath} (Administrators only)");
@@ -333,8 +314,8 @@ public sealed class KeyManagement : IKeyManagement, IDisposable
 			StackFrame? frame = trace.GetFrame(0);
 			int line = frame?.GetFileLineNumber() ?? 0;
 			Console.WriteLine(
-				$"[{line}] [KeyManagement] WARNING: Could not set restrictive permissions on '{filePath}': {ex.Message}. " +
-				"Ensure the key file is manually secured in production."
+				$"[{line}] [KeyManagement] WARNING: Could not set restrictive permissions on '{filePath}': {ex.Message}. "
+					+ "Ensure the key file is manually secured in production."
 			);
 		}
 	}

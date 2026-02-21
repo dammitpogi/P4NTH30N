@@ -62,7 +62,8 @@ public static class ConfigurationExtensions
 	/// </summary>
 	public static string ResolveEnvironment()
 	{
-		string? env = Environment.GetEnvironmentVariable("P4NTH30N_ENVIRONMENT")
+		string? env =
+			Environment.GetEnvironmentVariable("P4NTH30N_ENVIRONMENT")
 			?? Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT")
 			?? Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
@@ -77,11 +78,7 @@ public static class ConfigurationExtensions
 		try
 		{
 			string json = File.ReadAllText(filePath);
-			using JsonDocument doc = JsonDocument.Parse(json, new JsonDocumentOptions
-			{
-				CommentHandling = JsonCommentHandling.Skip,
-				AllowTrailingCommas = true,
-			});
+			using JsonDocument doc = JsonDocument.Parse(json, new JsonDocumentOptions { CommentHandling = JsonCommentHandling.Skip, AllowTrailingCommas = true });
 
 			if (doc.RootElement.TryGetProperty("P4NTH30N", out JsonElement p4Section))
 			{
@@ -111,13 +108,11 @@ public static class ConfigurationExtensions
 	private static void MergeOptions(P4NTH30NOptions target, P4NTH30NOptions source)
 	{
 		// Database overrides
-		if (!string.IsNullOrWhiteSpace(source.Database.ConnectionString) &&
-			source.Database.ConnectionString != new DatabaseOptions().ConnectionString)
+		if (!string.IsNullOrWhiteSpace(source.Database.ConnectionString) && source.Database.ConnectionString != new DatabaseOptions().ConnectionString)
 		{
 			target.Database.ConnectionString = source.Database.ConnectionString;
 		}
-		if (!string.IsNullOrWhiteSpace(source.Database.DatabaseName) &&
-			source.Database.DatabaseName != new DatabaseOptions().DatabaseName)
+		if (!string.IsNullOrWhiteSpace(source.Database.DatabaseName) && source.Database.DatabaseName != new DatabaseOptions().DatabaseName)
 		{
 			target.Database.DatabaseName = source.Database.DatabaseName;
 		}
@@ -140,13 +135,11 @@ public static class ConfigurationExtensions
 	private static void ApplyEnvironmentVariables(P4NTH30NOptions options)
 	{
 		// Database
-		string? connStr = Environment.GetEnvironmentVariable("P4NTH30N__Database__ConnectionString")
-			?? Environment.GetEnvironmentVariable("P4NTH30N_MONGODB_URI");
+		string? connStr = Environment.GetEnvironmentVariable("P4NTH30N__Database__ConnectionString") ?? Environment.GetEnvironmentVariable("P4NTH30N_MONGODB_URI");
 		if (!string.IsNullOrWhiteSpace(connStr))
 			options.Database.ConnectionString = connStr;
 
-		string? dbName = Environment.GetEnvironmentVariable("P4NTH30N__Database__DatabaseName")
-			?? Environment.GetEnvironmentVariable("P4NTH30N_MONGODB_DB");
+		string? dbName = Environment.GetEnvironmentVariable("P4NTH30N__Database__DatabaseName") ?? Environment.GetEnvironmentVariable("P4NTH30N_MONGODB_DB");
 		if (!string.IsNullOrWhiteSpace(dbName))
 			options.Database.DatabaseName = dbName;
 

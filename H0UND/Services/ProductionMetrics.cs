@@ -13,11 +13,13 @@ namespace P4NTH30N.H0UND.Services;
 /// FOUREYES-017: Production metrics collection service.
 /// In-memory metric storage with time-windowed queries for dashboards.
 /// </summary>
-public class ProductionMetrics : IMetrics {
+public class ProductionMetrics : IMetrics
+{
 	private readonly ConcurrentDictionary<string, ConcurrentQueue<MetricRecord>> _metrics = new();
 	private readonly int _maxRecordsPerMetric;
 
-	public ProductionMetrics(int maxRecordsPerMetric = 10_000) {
+	public ProductionMetrics(int maxRecordsPerMetric = 10_000)
+	{
 		_maxRecordsPerMetric = maxRecordsPerMetric;
 	}
 
@@ -27,8 +29,11 @@ public class ProductionMetrics : IMetrics {
 		MetricCategory category,
 		string unit = "",
 		Dictionary<string, string>? tags = null,
-		CancellationToken cancellationToken = default) {
-		MetricRecord record = new() {
+		CancellationToken cancellationToken = default
+	)
+	{
+		MetricRecord record = new()
+		{
 			MetricName = metricName,
 			Value = value,
 			Category = category,
@@ -46,7 +51,8 @@ public class ProductionMetrics : IMetrics {
 		return Task.CompletedTask;
 	}
 
-	public Task<IReadOnlyList<MetricRecord>> QueryAsync(string metricName, TimeSpan window, CancellationToken cancellationToken = default) {
+	public Task<IReadOnlyList<MetricRecord>> QueryAsync(string metricName, TimeSpan window, CancellationToken cancellationToken = default)
+	{
 		if (!_metrics.TryGetValue(metricName, out ConcurrentQueue<MetricRecord>? queue))
 			return Task.FromResult<IReadOnlyList<MetricRecord>>(Array.Empty<MetricRecord>());
 
@@ -55,7 +61,8 @@ public class ProductionMetrics : IMetrics {
 		return Task.FromResult<IReadOnlyList<MetricRecord>>(results);
 	}
 
-	public Task<MetricRecord?> GetLatestAsync(string metricName, CancellationToken cancellationToken = default) {
+	public Task<MetricRecord?> GetLatestAsync(string metricName, CancellationToken cancellationToken = default)
+	{
 		if (!_metrics.TryGetValue(metricName, out ConcurrentQueue<MetricRecord>? queue))
 			return Task.FromResult<MetricRecord?>(null);
 
@@ -63,14 +70,16 @@ public class ProductionMetrics : IMetrics {
 		return Task.FromResult(latest);
 	}
 
-	public IReadOnlyList<string> GetMetricNames() {
+	public IReadOnlyList<string> GetMetricNames()
+	{
 		return _metrics.Keys.ToList();
 	}
 
 	/// <summary>
 	/// Records standard system metrics snapshot.
 	/// </summary>
-	public async Task RecordSystemSnapshotAsync(CancellationToken cancellationToken = default) {
+	public async Task RecordSystemSnapshotAsync(CancellationToken cancellationToken = default)
+	{
 		long memoryBytes = GC.GetTotalMemory(forceFullCollection: false);
 		await RecordAsync("system.memory_bytes", memoryBytes, MetricCategory.System, "bytes", cancellationToken: cancellationToken);
 		await RecordAsync("system.gc_gen0", GC.CollectionCount(0), MetricCategory.System, "count", cancellationToken: cancellationToken);

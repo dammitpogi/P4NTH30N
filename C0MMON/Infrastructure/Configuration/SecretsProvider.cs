@@ -75,13 +75,8 @@ public sealed class SecretsProvider
 		try
 		{
 			string json = File.ReadAllText(_secretsFilePath);
-			JsonSerializerOptions jsonOptions = new()
-			{
-				PropertyNameCaseInsensitive = true,
-				ReadCommentHandling = JsonCommentHandling.Skip,
-			};
-			_encryptedValues = JsonSerializer.Deserialize<Dictionary<string, string>>(json, jsonOptions)
-				?? new Dictionary<string, string>();
+			JsonSerializerOptions jsonOptions = new() { PropertyNameCaseInsensitive = true, ReadCommentHandling = JsonCommentHandling.Skip };
+			_encryptedValues = JsonSerializer.Deserialize<Dictionary<string, string>>(json, jsonOptions) ?? new Dictionary<string, string>();
 			_decryptedCache = new Dictionary<string, string>();
 
 			Console.WriteLine($"[SecretsProvider] Loaded {_encryptedValues.Count} encrypted secrets.");
@@ -223,10 +218,7 @@ public sealed class SecretsProvider
 			if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
 				Directory.CreateDirectory(directory);
 
-			JsonSerializerOptions jsonOptions = new()
-			{
-				WriteIndented = true,
-			};
+			JsonSerializerOptions jsonOptions = new() { WriteIndented = true };
 			string json = JsonSerializer.Serialize(_encryptedValues, jsonOptions);
 			File.WriteAllText(_secretsFilePath, json);
 		}

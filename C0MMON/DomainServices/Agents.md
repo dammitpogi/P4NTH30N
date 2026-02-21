@@ -22,6 +22,20 @@ Manages credential processing priority:
 - Priority 7 = lowest (no jackpot data or distant projections)
 - ProcessBy deadlines: 4min (P1) to 1 day (P7)
 
+### VisionCommandService.cs (New)
+FourEyes integration service for vision-based decision making:
+- `CreateSpinCommand`: Generate VisionCommand for spin operations
+- `ValidateCommand`: Check command confidence and prerequisites
+- `MapSignalToCommand`: Convert H4ND signals to VisionCommands
+- `TrackExecution`: Monitor command status and results
+
+### CdpCoordinationService.cs (New)
+CDP coordination across multiple browser instances:
+- `ManageCdpClients`: Pool and reuse CDP connections
+- `CoordinateSpins`: Prevent concurrent spins on same credential
+- `HealthMonitoring`: Track CDP client health and performance
+- `ResourceCleanup`: Proper disposal of CDP resources
+
 ## Key Patterns
 
 1. **Domain Service**: Stateless business logic

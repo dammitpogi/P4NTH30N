@@ -66,18 +66,16 @@ public sealed class ScreenMapper
 	/// <param name="vmHeight">VM desktop height (e.g., 1080).</param>
 	/// <param name="offsetX">Synergy X offset for VM screen.</param>
 	/// <param name="offsetY">Synergy Y offset for VM screen.</param>
-	public ScreenMapper(
-		int frameWidth = 1280,
-		int frameHeight = 720,
-		int vmWidth = 1920,
-		int vmHeight = 1080,
-		int offsetX = 0,
-		int offsetY = 0)
+	public ScreenMapper(int frameWidth = 1280, int frameHeight = 720, int vmWidth = 1920, int vmHeight = 1080, int offsetX = 0, int offsetY = 0)
 	{
-		if (frameWidth <= 0) throw new ArgumentOutOfRangeException(nameof(frameWidth));
-		if (frameHeight <= 0) throw new ArgumentOutOfRangeException(nameof(frameHeight));
-		if (vmWidth <= 0) throw new ArgumentOutOfRangeException(nameof(vmWidth));
-		if (vmHeight <= 0) throw new ArgumentOutOfRangeException(nameof(vmHeight));
+		if (frameWidth <= 0)
+			throw new ArgumentOutOfRangeException(nameof(frameWidth));
+		if (frameHeight <= 0)
+			throw new ArgumentOutOfRangeException(nameof(frameHeight));
+		if (vmWidth <= 0)
+			throw new ArgumentOutOfRangeException(nameof(vmWidth));
+		if (vmHeight <= 0)
+			throw new ArgumentOutOfRangeException(nameof(vmHeight));
 
 		_frameWidth = frameWidth;
 		_frameHeight = frameHeight;
@@ -145,7 +143,6 @@ public sealed class ScreenMapper
 	/// </summary>
 	public override string ToString()
 	{
-		return $"ScreenMapper: Frame({_frameWidth}x{_frameHeight}) → VM({_vmWidth}x{_vmHeight}) " +
-			$"Scale({ScaleX:F2}x, {ScaleY:F2}y) Offset({_offsetX}, {_offsetY})";
+		return $"ScreenMapper: Frame({_frameWidth}x{_frameHeight}) → VM({_vmWidth}x{_vmHeight}) " + $"Scale({ScaleX:F2}x, {ScaleY:F2}y) Offset({_offsetX}, {_offsetY})";
 	}
 }

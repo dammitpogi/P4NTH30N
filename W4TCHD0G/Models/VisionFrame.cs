@@ -10,4 +10,9 @@ public class VisionFrame
 	public int Height { get; set; }
 	public string SourceName { get; set; } = string.Empty;
 	public int FrameNumber { get; set; }
+
+	/// <summary>
+	/// FEAT-036: Whether frame data is PNG-encoded (from CDP screenshot) vs raw BGR24 (from RTMP).
+	/// </summary>
+	public bool IsPng { get; set; }
 }

@@ -45,10 +45,7 @@ public sealed class JackpotAlertService : IDisposable
 	/// <param name="logFilePath">Path for win event log. Default: win-events.log in app directory.</param>
 	/// <param name="webhookUrl">Optional webhook URL for external alerts (Slack, Discord, etc.).</param>
 	/// <param name="screenshotDirectory">Directory for win screenshots. Default: screenshots/ in app directory.</param>
-	public JackpotAlertService(
-		string? logFilePath = null,
-		string? webhookUrl = null,
-		string? screenshotDirectory = null)
+	public JackpotAlertService(string? logFilePath = null, string? webhookUrl = null, string? screenshotDirectory = null)
 	{
 		_logFilePath = logFilePath ?? Path.Combine(AppContext.BaseDirectory, "win-events.log");
 		_webhookUrl = webhookUrl;
@@ -74,11 +71,7 @@ public sealed class JackpotAlertService : IDisposable
 		ObjectDisposedException.ThrowIf(_disposed, this);
 
 		// Fire all channels in parallel — one failure doesn't block others
-		List<Task> alertTasks = new()
-		{
-			Task.Run(() => AlertConsole(winEvent)),
-			Task.Run(() => AlertFileLog(winEvent)),
-		};
+		List<Task> alertTasks = new() { Task.Run(() => AlertConsole(winEvent)), Task.Run(() => AlertFileLog(winEvent)) };
 
 		if (_httpClient is not null && !string.IsNullOrWhiteSpace(_webhookUrl))
 		{
@@ -132,7 +125,8 @@ public sealed class JackpotAlertService : IDisposable
 	{
 		try
 		{
-			string logEntry = string.Join("\t",
+			string logEntry = string.Join(
+				"\t",
 				winEvent.Timestamp.ToString("o"),
 				winEvent.Type,
 				$"${winEvent.Amount:F2}",
@@ -168,13 +162,15 @@ public sealed class JackpotAlertService : IDisposable
 			string tierInfo = string.IsNullOrEmpty(winEvent.JackpotTier) ? "" : $" ({winEvent.JackpotTier})";
 
 			// Slack/Discord compatible payload
-			string payload = System.Text.Json.JsonSerializer.Serialize(new
-			{
-				text = $"{emoji} *{winEvent.Type}{tierInfo}* — ${winEvent.Amount:F2}\n" +
-					$"Balance: ${winEvent.PreviousBalance:F2} → ${winEvent.NewBalance:F2}\n" +
-					$"Detection: {winEvent.DetectionMethod} ({winEvent.Confidence:P0})\n" +
-					$"Time: {winEvent.Timestamp:yyyy-MM-dd HH:mm:ss} UTC"
-			});
+			string payload = System.Text.Json.JsonSerializer.Serialize(
+				new
+				{
+					text = $"{emoji} *{winEvent.Type}{tierInfo}* — ${winEvent.Amount:F2}\n"
+						+ $"Balance: ${winEvent.PreviousBalance:F2} → ${winEvent.NewBalance:F2}\n"
+						+ $"Detection: {winEvent.DetectionMethod} ({winEvent.Confidence:P0})\n"
+						+ $"Time: {winEvent.Timestamp:yyyy-MM-dd HH:mm:ss} UTC",
+				}
+			);
 
 			using StringContent content = new(payload, System.Text.Encoding.UTF8, "application/json");
 			HttpResponseMessage response = await _httpClient.PostAsync(_webhookUrl, content);
