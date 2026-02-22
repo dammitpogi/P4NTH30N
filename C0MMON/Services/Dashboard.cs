@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using System.Runtime.InteropServices;
 using P4NTH30N.C0MMON;
 using P4NTH30N.C0MMON.Services.Display;
 using Spectre.Console;
@@ -64,6 +65,9 @@ public static class Dashboard
 
 	public static void UpdateRecentWins(List<WonEntry> wins) =>
 		s_layoutDashboard?.UpdateRecentWins(wins);
+
+	public static void UpdateHealthStatus(string overallStatus, string checkSummary, string degradationLevel, TimeSpan uptime) =>
+		s_layoutDashboard?.UpdateHealthStatus(overallStatus, checkSummary, degradationLevel, uptime);
 
 	public static bool IsPaused { get; private set; } = false;
 	public static ViewMode CurrentView { get; private set; } = ViewMode.Overview;
@@ -165,7 +169,8 @@ public static class Dashboard
 
 	public static void HandleInput()
 	{
-		if (!Console.KeyAvailable)
+		// Only process keypresses if console window is focused
+		if (!IsConsoleFocused() || !Console.KeyAvailable)
 			return;
 
 		ConsoleKeyInfo key = Console.ReadKey(true);
@@ -578,5 +583,17 @@ public static class Dashboard
 			"CRITICAL" => $"[bold red]{HealthStatus}[/]",
 			_ => $"[bold cyan]{HealthStatus}[/]",
 		};
+	}
+
+	// Windows API for checking if console window is focused
+	[DllImport("kernel32.dll", ExactSpelling = true)]
+	private static extern IntPtr GetConsoleWindow();
+
+	[DllImport("user32.dll", ExactSpelling = true)]
+	private static extern IntPtr GetForegroundWindow();
+
+	private static bool IsConsoleFocused()
+	{
+		return GetForegroundWindow() == GetConsoleWindow();
 	}
 }

@@ -1,8 +1,8 @@
 {
 	"version": "1.0.0",
 	"description": "Narrative manifest tracking all decision changes for speech synthesis",
-	"lastUpdated": "2026-02-22T00:00:00Z",
-	"lastReconciled": "2026-02-22T00:00:00Z",
+	"lastUpdated": "2026-02-22T03:00:00Z",
+	"lastReconciled": "2026-02-22T03:00:00Z",
 	"lastSynthesized": "2026-02-22T00:00:00Z",
 	"rounds": [
 		{
@@ -1035,4 +1035,43 @@
 				"emotion": "The clarity of starting over. No corrupted data, no stale signals, just the clean burn-in period where truth can emerge."
 			},
 			"synthesized": false
+		},
+		{
+			"roundId": "R031",
+			"timestamp": "2026-02-22T03:00:00Z",
+			"sessionContext": "Dashboard and logging improvements - Activity log cleanup, health footer, console focus detection",
+			"agent": "OpenFixer",
+			"summary": "Dashboard improvements per Nexus requests: removed jackpot logs from Activity panel (now in dedicated Jackpot Schedule), added always-visible health status footer with compact format and color-coded status, fixed screen clearing to prevent text artifacts, added truncation for long messages, fixed console focus detection so keypresses only work when focused, added git permissions for Strategist agent.",
+			"decisions": {
+				"created": [
+					{
+						"id": "DECISION_089",
+						"title": "Dashboard & Logging Improvements",
+						"category": "UI/UX",
+						"priority": "Medium",
+						"status": "Approved",
+						"files": [
+							"H0UND/Application/Analytics/AnalyticsWorker.cs",
+							"C0MMON/Services/Display/LayoutDashboard.cs",
+							"C0MMON/Services/Dashboard.cs",
+							"H0UND/H0UND.cs",
+							"opencode.json"
+						]
+					}
+				],
+				"completed": []
+			},
+			"metrics": {
+				"filesModified": 5,
+				"buildStatus": "success"
+			},
+			"narrative": {
+				"tone": "pragmatic",
+				"theme": "Clean interfaces make clean operations. The dashboard serves the operator—not the other way around.",
+				"keyMoment": "When the health footer appeared always-visible at the bottom, never to be buried in log spam again.",
+				"emotion": "Satisfaction of a workspace finally arranged for productivity."
+			},
+			"synthesized": false
 		}
+	]
+}

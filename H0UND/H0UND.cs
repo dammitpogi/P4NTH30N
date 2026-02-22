@@ -419,9 +419,11 @@ internal class Program
 							{
 								C0MMON.Monitoring.SystemHealth health = s_healthService.GetSystemHealthAsync().GetAwaiter().GetResult();
 								string checksummary = string.Join(" | ", health.Checks.Select(c => $"{c.Component}:{c.Status}"));
-								Dashboard.AddLog(
-									$"H0UND Health: {health.OverallStatus} | {checksummary} | Degradation: {s_degradation.CurrentLevel} | Uptime: {health.Uptime:hh\\:mm\\:ss}",
-									health.OverallStatus == C0MMON.Monitoring.HealthStatus.Healthy ? "blue" : "red"
+								Dashboard.UpdateHealthStatus(
+									health.OverallStatus.ToString(),
+									checksummary,
+									s_degradation.CurrentLevel.ToString(),
+									health.Uptime
 								);
 							}
 							lastHealthCheck = DateTime.Now;

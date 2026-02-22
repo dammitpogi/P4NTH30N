@@ -42,12 +42,10 @@ public sealed class AnalyticsWorker
 					: SignalService.GenerateSignals(uow, groups, upcomingJackpots, signals);
 			// DECISION_071: Only clean up stale signals when we have qualified signals
 			// Prevents wiping all signals when generation fails or returns empty
-			if (qualifiedSignals.Count > 0)
-			{
-				SignalService.CleanupStaleSignals(uow, signals, qualifiedSignals);
-			}
-
-			PrintSummary(activeCredentials, upcomingJackpots);
+		if (qualifiedSignals.Count > 0)
+		{
+			SignalService.CleanupStaleSignals(uow, signals, qualifiedSignals);
+		}
 		}
 		catch (Exception ex)
 		{
@@ -153,42 +151,7 @@ public sealed class AnalyticsWorker
 		};
 	}
 
-	private static void PrintSummary(List<Credential> credentials, List<Jackpot> jackpots)
-	{
-		double totalBalance = credentials.Where(c => c.Enabled).Sum(c => c.Balance);
 
-		// DECISION_084: Only display jackpots with sufficient DPD data (4+ points minimum)
-		const int MinimumDpdDataPoints = 4;
-
-		IEnumerable<Jackpot> validJackpots = jackpots
-			.Where(j => !IsHiddenGame(credentials, j.House, j.Game))
-			.Where(j => j.Category != "Mini")
-			.Where(j => j.DPD.Data.Count >= MinimumDpdDataPoints)
-			.OrderByDescending(j => j.EstimatedDate);
-
-		int hiddenCount = jackpots.Count(j => !IsHiddenGame(credentials, j.House, j.Game)
-			&& j.Category != "Mini"
-			&& j.DPD.Data.Count < MinimumDpdDataPoints);
-
-		// Jackpot schedule display removed - now shown in dedicated Jackpot Schedule panel
-		// Keeping count info for reference
-		int totalJackpots = validJackpots.Count();
-		if (hiddenCount > 0 || totalJackpots > 0)
-		{
-			Dashboard.AddAnalyticsLog(
-				$"        | {totalJackpots} jackpots tracked ({hiddenCount} hidden)         |",
-				"grey"
-			);
-		}
-
-		DateTime oldest = credentials.Count > 0 ? credentials.Min(c => c.LastUpdated) : DateTime.UtcNow;
-		TimeSpan queueAge = DateTime.UtcNow - oldest;
-
-		Dashboard.AddAnalyticsLog(
-			$"------|-{DateTime.Now:ddd-MM/dd HH:mm:ss}-|-${totalBalance, 9:F2}-/$-{jackpots.Count, 11}-|-------------|-({credentials.Count})-H0UND:{queueAge.Hours:D2}:{queueAge.Minutes:D2}:{queueAge.Seconds:D2}----------",
-			"cyan"
-		);
-	}
 
 	private static double GetDPD(List<Jackpot> jackpots, string house, string game)
 	{

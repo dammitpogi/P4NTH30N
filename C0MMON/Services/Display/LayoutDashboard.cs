@@ -39,6 +39,11 @@ public sealed class LayoutDashboard
 	public string CurrentHouse { get; set; } = "Unknown";
 	public string HealthStatus { get; set; } = "INITIALIZING";
 
+	// Health check state
+	public string HealthCheckSummary { get; set; } = "";
+	public string DegradationLevel { get; set; } = "Normal";
+	public TimeSpan HealthUptime { get; set; } = TimeSpan.Zero;
+
 	public double CurrentGrand { get; set; }
 	public double CurrentMajor { get; set; }
 	public double CurrentMinor { get; set; }
@@ -121,6 +126,14 @@ public sealed class LayoutDashboard
 		}
 	}
 
+	public void UpdateHealthStatus(string overallStatus, string checkSummary, string degradationLevel, TimeSpan uptime)
+	{
+		HealthStatus = overallStatus;
+		HealthCheckSummary = checkSummary;
+		DegradationLevel = degradationLevel;
+		HealthUptime = uptime;
+	}
+
 	public void AddWin(WonEntry win)
 	{
 		lock (_dataLock)
@@ -167,7 +180,7 @@ public sealed class LayoutDashboard
 		try
 		{
 			HandleInput();
-			AnsiConsole.Cursor.SetPosition(0, 0);
+			AnsiConsole.Clear();
 			AnsiConsole.Write(BuildLayout());
 		}
 		catch (Exception ex)
@@ -255,11 +268,8 @@ public sealed class LayoutDashboard
 		if (_debugVisible)
 			root.AddRow(BuildDebugPanel());
 
-		// ── FOOTER ──
-		string debugInd = _debugVisible ? "[green]ON[/]" : "[grey]OFF[/]";
-		var footer = new Markup(
-			$" [grey]SPACE[/]=Pause  [grey]D[/]=Debug({debugInd})  [grey]Q[/]=Quit");
-		root.AddRow(footer);
+		// ── COMBINED FOOTER: Health (left) + Controls (right) ──
+		root.AddRow(BuildCombinedFooter());
 
 		return root;
 	}
@@ -474,16 +484,18 @@ public sealed class LayoutDashboard
 			{
 				actTable.AddRow("[grey]--:--:--[/]", "[grey]Waiting for events...[/]");
 			}
-			else
+		else
+		{
+			const int MaxMessageWidth = 60;
+			foreach (DisplayEvent evt in _mainEvents)
 			{
-				foreach (DisplayEvent evt in _mainEvents)
-				{
-					actTable.AddRow(
-						$"[grey]{evt.Timestamp.ToLocalTime():HH:mm:ss}[/]",
-						$"[{evt.Style}]{Markup.Escape(evt.Message)}[/]"
-					);
-				}
+				string truncatedMsg = TruncateMessage(evt.Message, MaxMessageWidth);
+				actTable.AddRow(
+					$"[grey]{evt.Timestamp.ToLocalTime():HH:mm:ss}[/]",
+					$"[{evt.Style}]{Markup.Escape(truncatedMsg)}[/]"
+				);
 			}
+		}
 		}
 
 		return new Panel(actTable)
@@ -540,6 +552,83 @@ public sealed class LayoutDashboard
 			.Expand();
 	}
 
+	/// <summary>
+	/// Abbreviates component names and color-codes status values for compact display.
+	/// </summary>
+	private static string CompactHealthChecks(string checkSummary)
+	{
+		if (string.IsNullOrEmpty(checkSummary))
+			return "";
+
+		var compactParts = new List<string>();
+		string[] checks = checkSummary.Split('|', StringSplitOptions.RemoveEmptyEntries);
+
+		foreach (string check in checks)
+		{
+			string[] parts = check.Trim().Split(':', 2);
+			if (parts.Length != 2) continue;
+
+			string component = parts[0].Trim();
+			string status = parts[1].Trim();
+
+			// Abbreviate component names
+			string abbr = component.ToUpperInvariant() switch
+			{
+				"MONGODB" => "DB",
+				"EXTERNALAPI" => "API",
+				"SIGNALQUEUE" => "SIG",
+				"VISIONSTREAM" => "VIS",
+				_ => component.Length > 3 ? component[..3].ToUpper() : component.ToUpper()
+			};
+
+			// Color-code status
+			string statusColor = status.ToUpperInvariant() switch
+			{
+				"HEALTHY" => "green",
+				"DEGRADED" => "yellow",
+				"UNHEALTHY" => "red",
+				"CRITICAL" => "red",
+				_ => "grey"
+			};
+
+			compactParts.Add($"[{statusColor}]{abbr}[/]");
+		}
+
+		return string.Join(" ", compactParts);
+	}
+
+	/// <summary>
+	/// Builds combined footer with health status on left and controls on right.
+	/// </summary>
+	private IRenderable BuildCombinedFooter()
+	{
+		string healthColor = HealthStatus.ToUpperInvariant() switch
+		{
+			"HEALTHY" => "green",
+			"DEGRADED" => "yellow",
+			"CRITICAL" => "red",
+			_ => "grey",
+		};
+
+		// Build compact health checks
+		string compactChecks = CompactHealthChecks(HealthCheckSummary);
+
+		// Build controls
+		string debugInd = _debugVisible ? "[green]ON[/]" : "[grey]OFF[/]";
+
+		// Single line: HEALTHY | DB API SIG VIS | D:Normal | U:00:00:14 | SPC=Pause D=Dbg(OFF) Q=Quit
+		string footerText =
+			$"[{healthColor}]{HealthStatus}[/] | " +
+			$"{compactChecks} | " +
+			$"[grey]D:[/]{DegradationLevel} | " +
+			$"[grey]U:[/]{HealthUptime:hh\\:mm\\:ss} | " +
+			$"[grey]SPC[/]=Pause [grey]D[/]=Dbg({debugInd}) [grey]Q[/]=Quit";
+
+		return new Panel(new Markup(footerText))
+			.Border(BoxBorder.None)
+			.Expand();
+	}
+
 	// ═══════════════════════════════════════════════════════════════════════
 	// HELPERS
 	// ═══════════════════════════════════════════════════════════════════════
@@ -555,5 +644,16 @@ public sealed class LayoutDashboard
 			"Error - Recovery" => "[bold red]Recovery[/]",
 			_ => $"[white]{Markup.Escape(CurrentTask)}[/]",
 		};
+	}
+
+	/// <summary>
+	/// Truncates a message to the specified width, adding ellipsis if truncated.
+	/// </summary>
+	private static string TruncateMessage(string message, int maxWidth)
+	{
+		if (string.IsNullOrEmpty(message) || message.Length <= maxWidth)
+			return message;
+
+		return message[..(maxWidth - 3)] + "...";
 	}
 }
