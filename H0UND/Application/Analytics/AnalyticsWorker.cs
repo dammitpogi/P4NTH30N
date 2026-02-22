@@ -170,19 +170,13 @@ public sealed class AnalyticsWorker
 			&& j.Category != "Mini"
 			&& j.DPD.Data.Count < MinimumDpdDataPoints);
 
-		foreach (Jackpot j in validJackpots)
-		{
-			int creds = credentials.Count(c => c.House == j.House && c.Game == j.Game);
-			Dashboard.AddAnalyticsLog(
-				$"{j.Category.ToUpper().PadRight(7)}| {j.EstimatedDate.ToLocalTime():ddd MM/dd HH:mm:ss} | {j.Game[..Math.Min(9, j.Game.Length)].PadRight(9)} | {GetDPD(jackpots, j.House, j.Game):F2}/day |{j.Current, 7:F2}/{j.Threshold, 4:F0}| ({creds, 2}) {j.House}",
-				"white"
-			);
-		}
-
-		if (hiddenCount > 0)
+		// Jackpot schedule display removed - now shown in dedicated Jackpot Schedule panel
+		// Keeping count info for reference
+		int totalJackpots = validJackpots.Count();
+		if (hiddenCount > 0 || totalJackpots > 0)
 		{
 			Dashboard.AddAnalyticsLog(
-				$"        | {hiddenCount,2} hidden (insufficient DPD data)         |",
+				$"        | {totalJackpots} jackpots tracked ({hiddenCount} hidden)         |",
 				"grey"
 			);
 		}
