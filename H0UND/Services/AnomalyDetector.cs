@@ -20,12 +20,14 @@ public sealed class AnomalyDetector
 	/// <summary>
 	/// Total anomalies detected since creation.
 	/// </summary>
-	public long TotalAnomalies { get; private set; }
+	private long _totalAnomalies;
+	public long TotalAnomalies => Interlocked.Read(ref _totalAnomalies);
 
 	/// <summary>
 	/// Total values processed since creation.
 	/// </summary>
-	public long TotalProcessed { get; private set; }
+	private long _totalProcessed;
+	public long TotalProcessed => Interlocked.Read(ref _totalProcessed);
 
 	/// <param name="windowSize">Sliding window size (default 50).</param>
 	/// <param name="compressionThreshold">Atypicality ratio threshold (default 1.3).</param>
@@ -49,7 +51,7 @@ public sealed class AnomalyDetector
 	/// <returns>AnomalyEvent if anomalous, null otherwise.</returns>
 	public AnomalyEvent? Process(string house, string game, string tier, double value)
 	{
-		TotalProcessed++;
+		Interlocked.Increment(ref _totalProcessed);
 		string key = $"{house}:{game}:{tier}";
 		SlidingWindow window = _windows.GetOrAdd(key, _ => new SlidingWindow(_windowSize));
 
@@ -97,7 +99,7 @@ public sealed class AnomalyDetector
 			DetectionMethod = method,
 		};
 
-		TotalAnomalies++;
+		Interlocked.Increment(ref _totalAnomalies);
 		_onAnomaly?.Invoke(anomaly);
 
 		return anomaly;

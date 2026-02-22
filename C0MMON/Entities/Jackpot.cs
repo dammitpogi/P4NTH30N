@@ -8,6 +8,9 @@ namespace P4NTH30N.C0MMON;
 
 public class Jackpot
 {
+	// DECISION_085: Default estimate horizon in minutes (7 days)
+	private const double DefaultEstimateMinutes = 10080;
+
 	public ObjectId _id { get; set; }
 	public DPD DPD { get; set; } = new DPD();
 
@@ -180,9 +183,21 @@ public class Jackpot
 		double estimatedGrowth = DateTime.UtcNow.Subtract(credential.LastUpdated).TotalMinutes * tierDPM;
 		double MinutesToJackpot = Math.Max((threshold - (current + estimatedGrowth)) / tierDPM, 0);
 
+		// DECISION_085: Ensure non-negative and valid minutes
+		if (double.IsNaN(MinutesToJackpot) || double.IsInfinity(MinutesToJackpot) || MinutesToJackpot < 0)
+		{
+			MinutesToJackpot = DefaultEstimateMinutes;
+		}
+
 		// Protect against DateTime overflow: cap minutes to safe maximum
 		MinutesToJackpot = CapMinutesToSafeRange(MinutesToJackpot);
 		EstimatedDate = DateTime.UtcNow.AddMinutes(MinutesToJackpot);
+
+		// DECISION_085: Final guard - never allow past dates (graceful degradation layer)
+		if (EstimatedDate < DateTime.UtcNow)
+		{
+			EstimatedDate = DateTime.UtcNow.AddMinutes(DefaultEstimateMinutes);
+		}
 
 		// Update Current with estimated growth
 		Current = current + estimatedGrowth;

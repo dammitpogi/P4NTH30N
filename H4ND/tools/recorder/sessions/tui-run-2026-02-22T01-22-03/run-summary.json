@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-02-22T01:35:04.122Z",
+  "totalSteps": 5,
+  "passed": 5,
+  "failed": 0,
+  "steps": [
+    {
+      "stepId": 1,
+      "action": "navigate",
+      "status": "passed",
+      "result": "Navigated to http://web.orionstars.org/hot_play/orionstars/",
+      "durationMs": 4198
+    },
+    {
+      "stepId": 2,
+      "action": "click",
+      "status": "passed",
+      "result": "Clicked relative (0.4984, 0.7896)",
+      "durationMs": 1027
+    },
+    {
+      "stepId": 3,
+      "action": "click",
+      "status": "passed",
+      "result": "Clicked relative (0.4984, 0.4682)",
+      "durationMs": 1552
+    },
+    {
+      "stepId": 4,
+      "action": "click",
+      "status": "passed",
+      "result": "Clicked relative (0.8321, 0.4809)",
+      "durationMs": 1544
+    },
+    {
+      "stepId": 5,
+      "action": "wait",
+      "status": "passed",
+      "result": "Waited 1000ms | 📸 saved",
+      "durationMs": 1584,
+      "screenshot": "C:\\P4NTH30N\\H4ND\\tools\\recorder\\sessions\\tui-run-2026-02-22T01-22-03\\001_step05_wait.png"
+    }
+  ]
+}

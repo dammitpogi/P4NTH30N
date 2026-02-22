@@ -1,0 +1,77 @@
+{
+  "platform": "firekirin",
+  "success": true,
+  "username": "JustinHu21",
+  "phases": [
+    {
+      "name": "Login",
+      "success": true,
+      "durationMs": 11720,
+      "screenshots": [],
+      "details": {
+        "wsFrames": 0,
+        "attempt": 1,
+        "url": "https://play.firekirin.in/web_mobile/firekirin/"
+      }
+    },
+    {
+      "name": "DismissModals",
+      "success": true,
+      "durationMs": 3715,
+      "screenshots": [],
+      "details": {
+        "dismissed": true
+      }
+    },
+    {
+      "name": "GameSelection",
+      "success": true,
+      "durationMs": 15341,
+      "screenshots": [],
+      "details": {
+        "game": "Fortune Piggy",
+        "page": 2
+      }
+    },
+    {
+      "name": "AutoSpin",
+      "success": true,
+      "durationMs": 8710,
+      "screenshots": [],
+      "details": {
+        "spins": 2
+      }
+    },
+    {
+      "name": "Logout",
+      "success": true,
+      "durationMs": 5538,
+      "screenshots": [],
+      "details": {
+        "url": "https://play.firekirin.in/web_mobile/firekirin/"
+      }
+    }
+  ],
+  "startTime": "2026-02-21T13:02:38.628Z",
+  "endTime": "2026-02-21T13:03:23.668Z",
+  "durationMs": 45040,
+  "screenshots": [
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T13-02-38\\001_A1_01_login_page.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T13-02-38\\002_A1_02_account_clicked.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T13-02-38\\003_A1_03_username_typed.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T13-02-38\\004_A1_04_password_clicked.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T13-02-38\\005_A1_05_password_typed.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T13-02-38\\006_A1_06_login_clicked.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T13-02-38\\007_A1_07_lobby_detected.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T13-02-38\\008_A1_08_post_login.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T13-02-38\\009_04_modals_dismissed.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T13-02-38\\010_05_slot_category.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T13-02-38\\011_06_page2_games.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T13-02-38\\012_07_game_loaded.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T13-02-38\\013_08_spin_1.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T13-02-38\\014_08_spin_2.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T13-02-38\\015_09_spins_complete.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T13-02-38\\016_10_logout_nav.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T13-02-38\\017_11_logged_out.png"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "timestamp": "2026-02-22T01:44:22.043Z",
+  "totalSteps": 2,
+  "passed": 2,
+  "failed": 0,
+  "steps": [
+    {
+      "stepId": 1,
+      "action": "navigate",
+      "status": "passed",
+      "result": "Navigated to https://web.orionstars.org/hot_play/orionstars/",
+      "durationMs": 2683
+    },
+    {
+      "stepId": 2,
+      "action": "click",
+      "status": "passed",
+      "result": "Clicked relative (0.4995, 0.7572) | 📸 saved",
+      "durationMs": 549,
+      "screenshot": "C:\\P4NTH30N\\H4ND\\tools\\recorder\\sessions\\tui-run-2026-02-22T01-42-52\\001_step02_click.png"
+    }
+  ]
+}

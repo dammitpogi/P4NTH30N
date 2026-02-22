@@ -1,0 +1,77 @@
+{
+  "platform": "orionstars",
+  "success": true,
+  "username": "JustinHU6os",
+  "phases": [
+    {
+      "name": "Login",
+      "success": true,
+      "durationMs": 23668,
+      "screenshots": [],
+      "details": {
+        "attempt": 1,
+        "url": "https://web.orionstars.org/hot_play/orionstars/"
+      }
+    },
+    {
+      "name": "DismissModals",
+      "success": true,
+      "durationMs": 5746,
+      "screenshots": [],
+      "details": {
+        "dismissed": true
+      }
+    },
+    {
+      "name": "GameSelection",
+      "success": true,
+      "durationMs": 11194,
+      "screenshots": [],
+      "details": {
+        "game": "first-slot",
+        "page": 1
+      }
+    },
+    {
+      "name": "AutoSpin",
+      "success": true,
+      "durationMs": 9757,
+      "screenshots": [],
+      "details": {
+        "spins": 2
+      }
+    },
+    {
+      "name": "Logout",
+      "success": true,
+      "durationMs": 11209,
+      "screenshots": [],
+      "details": {
+        "url": "https://web.orionstars.org/hot_play/orionstars/"
+      }
+    }
+  ],
+  "startTime": "2026-02-21T13:18:44.478Z",
+  "endTime": "2026-02-21T13:19:46.071Z",
+  "durationMs": 61593,
+  "screenshots": [
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\orionstars-run-2026-02-21T13-18-44\\001_A1_01_guest_lobby.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\orionstars-run-2026-02-21T13-18-44\\002_A1_02_login_form.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\orionstars-run-2026-02-21T13-18-44\\003_A1_03_acct_clicked.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\orionstars-run-2026-02-21T13-18-44\\004_A1_04_acct_confirmed.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\orionstars-run-2026-02-21T13-18-44\\005_A1_05_pwd_clicked.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\orionstars-run-2026-02-21T13-18-44\\006_A1_06_pwd_confirmed.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\orionstars-run-2026-02-21T13-18-44\\007_A1_07_login_clicked.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\orionstars-run-2026-02-21T13-18-44\\008_A1_06_lobby_detected.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\orionstars-run-2026-02-21T13-18-44\\009_A1_10_post_login.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\orionstars-run-2026-02-21T13-18-44\\010_04_modals_dismissed.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\orionstars-run-2026-02-21T13-18-44\\011_05_slot_category.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\orionstars-run-2026-02-21T13-18-44\\012_06_game_loaded.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\orionstars-run-2026-02-21T13-18-44\\013_07_spin_1.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\orionstars-run-2026-02-21T13-18-44\\014_07_spin_2.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\orionstars-run-2026-02-21T13-18-44\\015_08_spins_complete.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\orionstars-run-2026-02-21T13-18-44\\016_10_back_to_lobby.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\orionstars-run-2026-02-21T13-18-44\\017_11_settings_open.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\orionstars-run-2026-02-21T13-18-44\\018_12_logged_out.png"
+  ]
+}

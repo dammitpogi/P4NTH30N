@@ -1,0 +1,109 @@
+{
+  "platform": "firekirin",
+  "baseUrl": "http://play.firekirin.in/web_mobile/firekirin/",
+  "phases": {
+    "Login": {
+      "entryGate": {
+        "elements": ["account-field", "password-field", "login-button"],
+        "cdpChecks": [
+          "document.querySelector('canvas') !== null",
+          "document.readyState === 'complete'"
+        ]
+      },
+      "exitGate": {
+        "elements": ["game-grid", "user-balance"],
+        "cdpChecks": [
+          "document.body.innerText.includes('SLOT')",
+          "document.body.innerText.includes('FISH')",
+          "document.body.innerText.includes('ARCADE')"
+        ]
+      },
+      "actions": {
+        "accountField": { "x": 460, "y": 367 },
+        "passwordField": { "x": 460, "y": 437 },
+        "loginButton": { "x": 553, "y": 567 },
+        "guestButton": { "x": 370, "y": 567 }
+      },
+      "failureIndicators": [
+        "URL not loaded or redirected to blocked page",
+        "Account/password fields don't accept input (no caret, text invisible)",
+        "Login click yields no navigation, repeated login screen",
+        "Error toast: 'invalid credentials', 'connection error'"
+      ],
+      "successIndicators": [
+        "document.body.innerText contains SLOT, FISH, ARCADE",
+        "Game grid visible with category buttons",
+        "User balance displayed in header"
+      ]
+    },
+    "GameSelection": {
+      "entryGate": {
+        "elements": ["category-sidebar", "game-grid", "jackpot-display"],
+        "cdpChecks": [
+          "document.body.innerText.includes('SLOT')",
+          "document.querySelector('canvas') !== null"
+        ]
+      },
+      "exitGate": {
+        "elements": ["game-loaded", "spin-button", "bet-controls"],
+        "cdpChecks": [
+          "document.body.innerText.includes('SPIN') || document.body.innerText.includes('AUTO')",
+          "document.querySelector('canvas') !== null"
+        ]
+      },
+      "actions": {
+        "allCategory": { "x": 37, "y": 313 },
+        "favCategory": { "x": 37, "y": 380 },
+        "fishingCategory": { "x": 37, "y": 448 },
+        "slotCategory": { "x": 37, "y": 513 },
+        "otherCategory": { "x": 37, "y": 580 },
+        "pageLeft": { "x": 810, "y": 255 },
+        "pageRight": { "x": 845, "y": 255 },
+        "fortunePiggyPage1": { "x": 280, "y": 370 },
+        "fortunePiggyPage2": { "x": 80, "y": 510 },
+        "shareDialogClose": { "x": 750, "y": 240 }
+      },
+      "failureIndicators": [
+        "SLOT category click doesn't change highlight",
+        "Paging right has no effect",
+        "Fortune Piggy tile click doesn't open game",
+        "Loading spinner persists >30 seconds"
+      ],
+      "successIndicators": [
+        "Game loads with visible reels/slots",
+        "SPIN button visible and enabled",
+        "Bet amount controls visible"
+      ]
+    },
+    "Spin": {
+      "entryGate": {
+        "elements": ["spin-button", "bet-controls", "balance-display"],
+        "cdpChecks": [
+          "document.body.innerText.includes('SPIN') || document.body.innerText.includes('AUTO')",
+          "document.querySelector('canvas') !== null"
+        ]
+      },
+      "exitGate": {
+        "elements": ["spin-complete", "balance-updated"],
+        "cdpChecks": [
+          "document.body.innerText.includes('BALANCE') || document.body.innerText.includes('TOTAL PAY')"
+        ]
+      },
+      "actions": {
+        "spinButton": { "x": 860, "y": 655 },
+        "menuButton": { "x": 40, "y": 668 },
+        "homeButton": { "x": 40, "y": 200 }
+      },
+      "failureIndicators": [
+        "Long-press spin does nothing (no reel motion)",
+        "Auto-spin toggles but immediately stops",
+        "Spin button disabled or overlay blocks input"
+      ],
+      "successIndicators": [
+        "Reels animate and stop",
+        "Balance updates after spin",
+        "Win amount displayed (if applicable)"
+      ]
+    }
+  }
+}

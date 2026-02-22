@@ -93,10 +93,8 @@ public sealed class DistributedLockService : IDistributedLockService
 					// Re-entrant: same owner, extend TTL
 					UpdateDefinition<DistributedLock> extend = Builders<DistributedLock>.Update.Set(x => x.ExpiresAtUtc, expiresAt).Set(x => x.AcquiredAtUtc, now);
 					_locks.UpdateOne(filter, extend);
-					_logger?.Invoke($"[DistributedLock] Re-acquired '{resource}' by {owner}");
 					return true;
 				}
-				_logger?.Invoke($"[DistributedLock] Contention on '{resource}' — held by {existing.Owner}");
 				return false;
 			}
 
@@ -121,17 +119,11 @@ public sealed class DistributedLockService : IDistributedLockService
 			DistributedLock? result = _locks.FindOneAndUpdate(insertFilter, update, options);
 			bool acquired = result != null && result.Owner == owner;
 
-			if (acquired)
-			{
-				_logger?.Invoke($"[DistributedLock] Acquired '{resource}' by {owner} (TTL={ttl.TotalSeconds}s)");
-			}
-
 			return acquired;
 		}
 		catch (MongoCommandException ex) when (ex.Code == 11000)
 		{
 			// Duplicate key — another instance beat us to it
-			_logger?.Invoke($"[DistributedLock] Lost race on '{resource}' — duplicate key");
 			return false;
 		}
 		catch (Exception ex)
@@ -149,11 +141,7 @@ public sealed class DistributedLockService : IDistributedLockService
 				Builders<DistributedLock>.Filter.Eq(x => x.Resource, resource),
 				Builders<DistributedLock>.Filter.Eq(x => x.Owner, owner)
 			);
-			DeleteResult result = _locks.DeleteOne(filter);
-			if (result.DeletedCount > 0)
-			{
-				_logger?.Invoke($"[DistributedLock] Released '{resource}' by {owner}");
-			}
+			_locks.DeleteOne(filter);
 		}
 		catch (Exception ex)
 		{

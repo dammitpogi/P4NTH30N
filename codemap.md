@@ -22,6 +22,7 @@ Multi-agent automation platform for online casino game portals (FireKirin and Or
 | `H0UND/` | Polling + analytics agent with DPD forecasting, circuit breakers, and adaptive throttling. | [View Map](H0UND/codemap.md) |
 | `W4TCHD0G/` | Vision system with OBS integration, safety monitoring (spend/loss limits, kill switch), win detection (balance+OCR), and health monitoring. | [View Map](W4TCHD0G/codemap.md) |
 | `T00L5ET/` | Manual tools including MockFactory for test data, DPD migration utilities, and database operations. | [View Map](T00L5ET/codemap.md) |
+| `DECISION_077/` | Navigation Workflow session recordings for systematic Canvas typing investigation. | [View Map](DECISION_077/codemap.md) |
 | `UNI7T35T/` | Test suite with 27 passing tests including 16 integration tests for FrameBuffer, ScreenMapper, ActionQueue, DecisionEngine, SafetyMonitor, WinDetector, InputAction, and encryption/forecasting tests. | [View Map](UNI7T35T/codemap.md) |
 | `RUL3S/` | Resource override system with Chrome extension for JavaScript injection, header manipulation, and asset overrides. | [View Map](RUL3S/codemap.md) |
 | `docs/` | Comprehensive documentation: architecture specs, migration guides, modernization roadmap, runbooks, ADRs, and security documentation. | [View Map](docs/codemap.md) |
@@ -123,7 +124,20 @@ H4ND (Automation - "The Hands")
 ├── Consumes: SIGN4L records (read via Signals repository)
 ├── Produces: Event logs (written via IStoreEvents)
 ├── CDP Infrastructure: CdpClient, CdpHealthCheck, CdpGameActions
-└── VM Deployment: H4NDv2-Production VM (192.168.56.10) → Host Chrome (192.168.56.1:9222)
+├── VM Deployment: H4NDv2-Production VM (192.168.56.10) → Host Chrome (192.168.56.1:9222)
+├── Navigation Workflow (DECISION_077): Session recording and Canvas typing investigation
+│   ├── tools/recorder/ - TypeScript CLI for screenshot-guided navigation
+│   │   ├── recorder.ts - Main CLI with --init, --step, --diag, --login
+│   │   ├── session-manager.ts - Session initialization, dual logging (NDJSON + Markdown)
+│   │   ├── t00l5et-bridge.ts - T00L5ET execution and output parsing
+│   │   ├── screenshot-processor.ts - Phase analysis and coordinate lookup
+│   │   └── types.ts - TypeScript definitions for session recording
+│   └── config/firekirin/phase-definitions.json - UI element coordinates per platform
+└── Parallel Execution (DECISION_047): Worker pool for concurrent signal processing
+    ├── Parallel/SignalDistributor.cs - Atomic signal claiming from MongoDB
+    ├── Parallel/ParallelSpinWorker.cs - Per-worker signal lifecycle
+    ├── Parallel/WorkerPool.cs - Channel-based worker orchestration
+    └── Parallel/UnifiedEntryPoint.cs - Router for sequential/parallel modes
 
 W4TCHD0G (Vision + Safety System)
 ├── References: C0MMON
@@ -361,6 +375,39 @@ netsh interface portproxy add v4tov4 listenaddress=192.168.56.1 listenport=9222 
 - **Tests**: `dotnet test UNI7T35T/UNI7T35T.csproj` - **27/27 PASSING**
 - **Formatting**: `dotnet csharpier check` - **PASSES**
 - **Coverage**: 16 integration tests covering FrameBuffer, ScreenMapper, ActionQueue, DecisionEngine, SafetyMonitor, WinDetector, InputAction
+
+### DECISION_077: Navigation Workflow Architecture (2026-02-21)
+**Status**: In Progress - FireKirin navigation walkthrough active  
+**Purpose**: Systematic Canvas typing investigation via screenshot-guided navigation  
+**Platform Sequence**: FireKirin (Canvas works) → OrionStars (Canvas broken, investigate alternatives)
+
+**Infrastructure Created**:
+- `H4ND/tools/recorder/` - TypeScript CLI tool for session recording
+  - 6 TypeScript files: recorder.ts, session-manager.ts, t00l5et-bridge.ts, screenshot-processor.ts, types.ts
+  - Dual logging: NDJSON (machine-readable) + Markdown (human-readable)
+  - T00L5ET integration: diag, login, nav, credcheck tool invocation
+- `H4ND/config/firekirin/phase-definitions.json` - UI element coordinates
+  - Login phase: Account {460, 367}, Password {460, 437}, Login {553, 567}
+  - GameSelection phase: Category buttons, paging controls
+  - Spin phase: Spin button {860, 655}
+- `DECISION_077/sessions/` - Per-session data storage
+  - Session ID format: `{platform}-{timestamp}`
+  - Screenshots, NDJSON logs, Markdown reports
+
+**Execution Flow**:
+1. Initialize: `bun run recorder.ts --init --platform=firekirin`
+2. Record step: `bun run recorder.ts --step --phase=Login --screenshot=001.png --run-tool=diag`
+3. Nexus provides screenshots → WindFixer executes tools → Records results
+4. Output: Verified navigation map for FireKirin, then OrionStars investigation
+
+**Canvas Typing Investigation** (Oracle Priority Order):
+1. WebSocket Auth Bypass - Direct WebSocket authentication
+2. Cocos2d-x EditBox Direct Manipulation - JavaScript cc.EditBox access
+3. Popup Keyboard Dialog Navigation - OrionStars-specific approach
+4. Session Token Reuse - Manual auth + token capture
+5. Native OS Input (H.InputSimulator) - Windows-level simulation
+
+---
 
 ### Completed This Session (37/39 Decisions)
 **Phase 3 — WIN Decisions (8):**

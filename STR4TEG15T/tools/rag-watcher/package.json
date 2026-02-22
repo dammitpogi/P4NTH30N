@@ -1,0 +1,39 @@
+{
+  "name": "rag-watcher",
+  "version": "1.0.0",
+  "description": "File watcher and RAG ingestion system for Pantheon agent documentation",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "watch": "node dist/index.js --watch",
+    "ingest": "node dist/index.js --ingest",
+    "validate": "node dist/index.js --validate",
+    "test": "bun test"
+  },
+  "keywords": [
+    "rag",
+    "documentation",
+    "agent",
+    "pantheon",
+    "file-watcher"
+  ],
+  "author": "OpenFixer",
+  "license": "MIT",
+  "dependencies": {
+    "chokidar": "^3.6.0",
+    "simple-git": "^3.22.0",
+    "yaml": "^2.3.4",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "bun": ">=1.0.0"
+  }
+}

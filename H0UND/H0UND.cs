@@ -12,6 +12,7 @@ using P4NTH30N.H0UND.Application.Analytics;
 using P4NTH30N.H0UND.Application.Polling;
 using P4NTH30N.H0UND.Domain.Signals;
 using P4NTH30N.H0UND.Infrastructure.Polling;
+using P4NTH30N.C0MMON.Services.Display;
 using P4NTH30N.H0UND.Services;
 using P4NTH30N.Services;
 
@@ -33,6 +34,10 @@ internal class Program
 	// Analytics phase timing
 	private static DateTime s_lastAnalyticsRunUtc = DateTime.MinValue;
 	private const int AnalyticsIntervalSeconds = 10;
+
+	// DECISION_085: Schedule refresh timing
+	private static DateTime s_lastScheduleRefreshUtc = DateTime.MinValue;
+	private const int ScheduleRefreshIntervalSeconds = 30;
 
 	// Resilience infrastructure
 	private static readonly CircuitBreaker s_apiCircuit = new(
@@ -80,17 +85,25 @@ internal class Program
 	{
 		MongoUnitOfWork uow = s_uow;
 
+		// DECISION_085: Initialize display pipeline before anything else
+		DisplayEventBus displayBus = Dashboard.InitializeDisplayPipeline();
+
 		// Initialize idempotent signal generation infrastructure
 		AnalyticsWorker analyticsWorker;
 		if (UseIdempotentSignals)
 		{
-			Action<string> signalLogger = msg => Dashboard.AddAnalyticsLog(msg, "grey");
-			DistributedLockService lockService = new(uow.DatabaseProvider, signalLogger);
+			// DECISION_085: Route infrastructure loggers through display bus with proper levels
+			Action<string> lockLogger = displayBus.CreateLogger("DistributedLock", DisplayLogLevel.Silent);
+			Action<string> signalLogger = displayBus.CreateSmartLogger("IdempotentSignal", DisplayLogLevel.Debug);
+			Action<string> metricsLogger = displayBus.CreateLogger("SignalMetrics", DisplayLogLevel.Detail, "cyan");
+
+			DistributedLockService lockService = new(uow.DatabaseProvider, lockLogger);
 			SignalDeduplicationCache dedupCache = new();
 			InMemoryDeadLetterQueue deadLetterQueue = new();
-			RetryPolicy retryPolicy = new(maxRetries: 3, baseDelay: TimeSpan.FromMilliseconds(100), logger: signalLogger);
+			RetryPolicy retryPolicy = new(maxRetries: 3, baseDelay: TimeSpan.FromMilliseconds(100),
+				logger: displayBus.CreateSmartLogger("RetryPolicy", DisplayLogLevel.Debug));
 			P4NTH30N.C0MMON.Infrastructure.Monitoring.SignalMetrics signalMetrics = new(
-				logger: msg => Dashboard.AddAnalyticsLog(msg, "cyan"),
+				logger: metricsLogger,
 				reportInterval: TimeSpan.FromSeconds(60)
 			);
 
@@ -154,6 +167,13 @@ internal class Program
 						Dashboard.Render();
 						analyticsWorker.RunAnalytics(uow);
 						s_lastAnalyticsRunUtc = DateTime.UtcNow;
+					}
+
+					// DECISION_085: Periodic schedule/account data refresh
+					if ((DateTime.UtcNow - s_lastScheduleRefreshUtc).TotalSeconds >= ScheduleRefreshIntervalSeconds)
+					{
+						RefreshDashboardSchedule(uow);
+						s_lastScheduleRefreshUtc = DateTime.UtcNow;
 					}
 
 					Dashboard.CurrentTask = "Polling Queue";
@@ -269,6 +289,10 @@ internal class Program
 									credential.Thresholds.NewGrand(credential.Jackpots.Grand);
 									if (gameSignal != null && gameSignal.Priority.Equals(4))
 										uow.Signals.DeleteAll(credential.House ?? "Unknown", credential.Game);
+									// DECISION_085: Track won jackpot
+									Dashboard.AddWin(new WonEntry(
+										credential.House ?? "Unknown", credential.Game, "Grand",
+										grandJackpot.Threshold, DateTime.UtcNow));
 								}
 								else if (grandJackpot?.DPD != null)
 									grandJackpot.DPD.Toggles.GrandPopped = true;
@@ -294,6 +318,9 @@ internal class Program
 									credential.Thresholds.NewMajor(credential.Jackpots.Major);
 									if (gameSignal != null && gameSignal.Priority.Equals(3))
 										uow.Signals.DeleteAll(credential.House ?? "Unknown", credential.Game);
+									Dashboard.AddWin(new WonEntry(
+										credential.House ?? "Unknown", credential.Game, "Major",
+										majorJackpot.Threshold, DateTime.UtcNow));
 								}
 								else if (majorJackpot?.DPD != null)
 									majorJackpot.DPD.Toggles.MajorPopped = true;
@@ -319,6 +346,9 @@ internal class Program
 									credential.Thresholds.NewMinor(credential.Jackpots.Minor);
 									if (gameSignal != null && gameSignal.Priority.Equals(2))
 										uow.Signals.DeleteAll(credential.House ?? "Unknown", credential.Game);
+									Dashboard.AddWin(new WonEntry(
+										credential.House ?? "Unknown", credential.Game, "Minor",
+										minorJackpot.Threshold, DateTime.UtcNow));
 								}
 								else if (minorJackpot?.DPD != null)
 									minorJackpot.DPD.Toggles.MinorPopped = true;
@@ -344,6 +374,9 @@ internal class Program
 									credential.Thresholds.NewMini(credential.Jackpots.Mini);
 									if (gameSignal != null && gameSignal.Priority.Equals(1))
 										uow.Signals.DeleteAll(credential.House ?? "Unknown", credential.Game);
+									Dashboard.AddWin(new WonEntry(
+										credential.House ?? "Unknown", credential.Game, "Mini",
+										miniJackpot.Threshold, DateTime.UtcNow));
 								}
 								else if (miniJackpot?.DPD != null)
 									miniJackpot.DPD.Toggles.MiniPopped = true;
@@ -371,6 +404,9 @@ internal class Program
 						lastRetrievedGrand = currentGrand;
 						uow.Credentials.Upsert(credential);
 						lastCredential = credential;
+
+						// DECISION_085: Update jackpot entities with current values for accurate ETA calculations
+						UpdateJackpotValues(uow, credential.House!, credential.Game!, currentGrand, currentMajor, currentMinor, currentMini);
 
 						// Track successful poll
 						Dashboard.IncrementPoll(true);
@@ -445,6 +481,117 @@ internal class Program
 					Thread.Sleep(10000);
 				}
 			}
+		}
+	}
+
+	/// <summary>
+	/// DECISION_085: Refresh dashboard schedule, withdraw accounts, and deposit-needed data from UoW.
+	/// Called every 30s from the main loop.
+	/// </summary>
+	private static void RefreshDashboardSchedule(MongoUnitOfWork uow)
+	{
+		try
+		{
+			// Build jackpot schedule sorted by ETA (soonest first)
+			List<Jackpot> allJackpots = uow.Jackpots.GetAll();
+			var schedule = allJackpots
+				.Where(j => j.EstimatedDate > DateTime.UtcNow && j.EstimatedDate < DateTime.UtcNow.AddDays(14))
+				.OrderBy(j => j.EstimatedDate)
+				.Select(j => new ScheduleEntry(
+					j.House, j.Game, j.Category,
+					j.EstimatedDate, j.Current, j.Threshold, j.Priority))
+				.ToList();
+			Dashboard.UpdateSchedule(schedule);
+
+			// Build account lists from credentials
+			List<Credential> allCreds = uow.Credentials.GetAll();
+
+			// Withdraw: accounts with positive balance
+			var withdraw = allCreds
+				.Where(c => c.Balance > 0.01)
+				.OrderByDescending(c => c.Balance)
+				.Select(c => new AccountEntry(
+					c.Username, c.House, c.Game, c.Balance, c.CashedOut, c.LastDepositDate))
+				.ToList();
+			Dashboard.UpdateWithdrawAccounts(withdraw);
+
+			// Deposit needed: cashed-out accounts linked to upcoming jackpots (< 24h)
+			var upcomingGames = schedule
+				.Where(s => s.TimeUntil.TotalHours < 24)
+				.Select(s => (s.House, s.Game, s.TimeUntil, s.Tier))
+				.Distinct()
+				.ToList();
+
+			var deposits = new List<DepositEntry>();
+			foreach (var (house, game, timeUntil, tier) in upcomingGames)
+			{
+				var cashedOutCreds = allCreds
+					.Where(c => c.House == house && c.Game == game && c.CashedOut)
+					.ToList();
+				foreach (var cred in cashedOutCreds)
+				{
+					deposits.Add(new DepositEntry(
+						cred.Username, cred.House, cred.Game, tier, timeUntil));
+				}
+			}
+			Dashboard.UpdateDepositNeeded(
+				deposits.OrderBy(d => d.TimeUntilJackpot).ToList());
+		}
+		catch (Exception ex)
+		{
+			Dashboard.AddLog($"Schedule refresh error: {ex.Message}", "yellow");
+		}
+	}
+
+	/// <summary>
+	/// DECISION_085: Update jackpot entities with current polling values.
+	/// Ensures ETA calculations are based on latest data for all credentials, regardless of balance.
+	/// </summary>
+	private static void UpdateJackpotValues(MongoUnitOfWork uow, string house, string game, 
+		double currentGrand, double currentMajor, double currentMinor, double currentMini)
+	{
+		try
+		{
+			// Update Grand
+			var grand = uow.Jackpots.Get("Grand", house, game);
+			if (grand != null)
+			{
+				grand.Current = currentGrand;
+				grand.LastUpdated = DateTime.UtcNow;
+				uow.Jackpots.Upsert(grand);
+			}
+
+			// Update Major
+			var major = uow.Jackpots.Get("Major", house, game);
+			if (major != null)
+			{
+				major.Current = currentMajor;
+				major.LastUpdated = DateTime.UtcNow;
+				uow.Jackpots.Upsert(major);
+			}
+
+			// Update Minor
+			var minor = uow.Jackpots.Get("Minor", house, game);
+			if (minor != null)
+			{
+				minor.Current = currentMinor;
+				minor.LastUpdated = DateTime.UtcNow;
+				uow.Jackpots.Upsert(minor);
+			}
+
+			// Update Mini
+			var mini = uow.Jackpots.Get("Mini", house, game);
+			if (mini != null)
+			{
+				mini.Current = currentMini;
+				mini.LastUpdated = DateTime.UtcNow;
+				uow.Jackpots.Upsert(mini);
+			}
+		}
+		catch (Exception ex)
+		{
+			// Don't let jackpot update failures break the polling loop
+			Dashboard.AddLog($"Jackpot update error for {house}/{game}: {ex.Message}", "yellow");
 		}
 	}
 }

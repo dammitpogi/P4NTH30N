@@ -7,10 +7,19 @@ namespace P4NTH30N.C0MMON;
 [BsonIgnoreExtraElements]
 public class DPD
 {
+	// DECISION_085: Research-backed bounds constants (Hu et al. 2025, Klee & Xia 2025)
+	public const double MinReasonableDPD = 0.01;
+	public const double MaxReasonableDPD = 50000.0;
+	public const int MinimumDataPointsForForecast = 4;
+
 	public double Average { get; set; } = 0;
 	public List<DPD_Data> Data { get; set; } = [];
 	public List<DPD_History> History { get; set; } = [];
 	public DPD_Toggles Toggles { get; set; } = new();
+
+	// DECISION_085: Helper properties for forecast data quality checks
+	public bool HasSufficientDataForForecast => Data.Count >= MinimumDataPointsForForecast;
+	public bool IsWithinBounds => Average >= MinReasonableDPD && Average <= MaxReasonableDPD;
 
 	/// <summary>
 	/// Validates DPD - returns true if valid. Logs to ERR0R if invalid and errorLogger provided.

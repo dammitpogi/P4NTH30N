@@ -1,0 +1,140 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "agent-doc-schema-v1.0",
+  "title": "Agent Documentation Schema",
+  "description": "Schema for validating Pantheon agent documentation files",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["metadata", "content"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["agent", "type", "created", "status"],
+      "properties": {
+        "agent": {
+          "type": "string",
+          "enum": ["strategist", "oracle", "designer", "librarian", "fixer", "windfixer", "openfixer", "forgewright"],
+          "description": "The agent role that created this document"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["decision", "assessment", "consultation", "architecture", "research", "implementation", "handoff", "pattern", "bugfix", "discovery", "output", "plan", "brief", "reference"],
+          "description": "The type of document"
+        },
+        "decision": {
+          "type": "string",
+          "pattern": "^(DECISION|FORGE|INFRA|OPS|STRATEGY)-[0-9]+$",
+          "description": "Associated decision ID if applicable"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp when document was created"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp when document was last updated"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["draft", "active", "archived", "deleted", "canon"],
+          "description": "Document lifecycle status"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "description": "Tags for categorization"
+        },
+        "priority": {
+          "type": "string",
+          "enum": ["critical", "high", "medium", "low"],
+          "description": "Document priority"
+        },
+        "schemaVer": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+          "default": "1.0.0",
+          "description": "Schema version used"
+        },
+        "gitCommit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$",
+          "description": "Git commit hash when document was ingested"
+        },
+        "source": {
+          "type": "string",
+          "description": "File path relative to repository root"
+        },
+        "related": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Related document IDs or paths"
+        }
+      }
+    },
+    "content": {
+      "type": "object",
+      "required": ["title", "body"],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "description": "Document title"
+        },
+        "summary": {
+          "type": "string",
+          "maxLength": 500,
+          "description": "Brief summary of the document"
+        },
+        "body": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Main document content in markdown"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "handoffMetadata": {
+      "type": "object",
+      "required": ["from_agent", "to_agent"],
+      "properties": {
+        "from_agent": {
+          "type": "string",
+          "enum": ["strategist", "oracle", "designer", "librarian", "fixer", "windfixer", "openfixer", "forgewright"]
+        },
+        "to_agent": {
+          "type": "string",
+          "enum": ["strategist", "oracle", "designer", "librarian", "fixer", "windfixer", "openfixer", "forgewright"]
+        },
+        "handoff_id": {
+          "type": "string",
+          "pattern": "^HANDOFF-[0-9]{8}-[0-9]+$"
+        },
+        "context_summary": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "decisions_made": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "next_steps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

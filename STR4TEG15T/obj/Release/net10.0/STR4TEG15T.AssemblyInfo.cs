@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("STR4TEG15T")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("0.8.5.6")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.8.5.6+72e493979ee05c5406154b5e04b1a8e4bb6e00d1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.8.5.6+b13c7a88533eca073059eade3c15ae9a897e4690")]
 [assembly: System.Reflection.AssemblyProductAttribute("STR4TEG15T")]
 [assembly: System.Reflection.AssemblyTitleAttribute("STR4TEG15T")]
 [assembly: System.Reflection.AssemblyVersionAttribute("0.8.5.6")]

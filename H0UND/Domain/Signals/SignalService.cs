@@ -44,7 +44,7 @@ public static class SignalService
 
 			foreach (Credential cred in gameCreds)
 			{
-				Signal sig = new Signal(jackpot.Priority, cred) { Timeout = DateTime.UtcNow.AddSeconds(30), Acknowledged = false };
+				Signal sig = new Signal(jackpot.Priority, cred) { Timeout = DateTime.UtcNow.AddMinutes(10), Acknowledged = false };
 				qualified.Add(sig);
 				UpsertSignalIfHigherPriority(uow, existingSignals, sig, cred);
 			}

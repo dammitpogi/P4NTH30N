@@ -1,0 +1,106 @@
+{
+  "timestamp": "2026-02-21T20:32:26.098Z",
+  "totalSteps": 14,
+  "passed": 4,
+  "failed": 10,
+  "steps": [
+    {
+      "stepId": 1,
+      "action": "navigate",
+      "status": "failed",
+      "result": "CDP timeout: Page.navigate",
+      "durationMs": 30027
+    },
+    {
+      "stepId": 2,
+      "action": "click",
+      "status": "failed",
+      "result": "CDP timeout: Input.dispatchMouseEvent",
+      "durationMs": 30029
+    },
+    {
+      "stepId": 3,
+      "action": "type",
+      "status": "failed",
+      "result": "CDP timeout: Input.dispatchKeyEvent",
+      "durationMs": 30016
+    },
+    {
+      "stepId": 4,
+      "action": "click",
+      "status": "failed",
+      "result": "CDP timeout: Input.dispatchMouseEvent",
+      "durationMs": 30007
+    },
+    {
+      "stepId": 5,
+      "action": "type",
+      "status": "failed",
+      "result": "CDP timeout: Input.dispatchKeyEvent",
+      "durationMs": 30018
+    },
+    {
+      "stepId": 6,
+      "action": "click",
+      "status": "failed",
+      "result": "CDP timeout: Input.dispatchMouseEvent",
+      "durationMs": 30026
+    },
+    {
+      "stepId": 7,
+      "action": "wait",
+      "status": "passed",
+      "result": "Waited 3000ms | 📸 failed: CDP timeout: Page.captureScreenshot",
+      "durationMs": 33081
+    },
+    {
+      "stepId": 8,
+      "action": "click",
+      "status": "failed",
+      "result": "CDP timeout: Input.dispatchMouseEvent",
+      "durationMs": 30013
+    },
+    {
+      "stepId": 9,
+      "action": "click",
+      "status": "failed",
+      "result": "CDP timeout: Input.dispatchMouseEvent",
+      "durationMs": 30015
+    },
+    {
+      "stepId": 10,
+      "action": "wait",
+      "status": "passed",
+      "result": "Waited 2000ms | 📸 failed: CDP timeout: Page.captureScreenshot",
+      "durationMs": 32050
+    },
+    {
+      "stepId": 11,
+      "action": "click",
+      "status": "failed",
+      "result": "CDP timeout: Input.dispatchMouseEvent",
+      "durationMs": 30014
+    },
+    {
+      "stepId": 12,
+      "action": "click",
+      "status": "failed",
+      "result": "CDP timeout: Input.dispatchMouseEvent",
+      "durationMs": 30022
+    },
+    {
+      "stepId": 13,
+      "action": "navigate",
+      "status": "passed",
+      "result": "Navigate — no URL found in comment | 📸 failed: CDP timeout: Page.captureScreenshot",
+      "durationMs": 33079
+    },
+    {
+      "stepId": 14,
+      "action": "navigate",
+      "status": "passed",
+      "result": "Navigate — no URL found in comment | 📸 failed: CDP timeout: Page.captureScreenshot",
+      "durationMs": 32053
+    }
+  ]
+}

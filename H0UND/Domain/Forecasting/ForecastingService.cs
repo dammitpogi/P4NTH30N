@@ -1,11 +1,15 @@
 using System;
 using System.Collections.Generic;
 using P4NTH30N.C0MMON;
+using P4NTH30N.C0MMON.Interfaces;
 
 namespace P4NTH30N.H0UND.Domain.Forecasting;
 
 public static class ForecastingService
 {
+	// DECISION_085: Named constant for default estimate horizon (mathematical invariant)
+	private static readonly TimeSpan DefaultEstimateHorizon = TimeSpan.FromDays(7);
+
 	public static double CalculateMinutesToValue(double threshold, double currentValue, double dpd)
 	{
 		double remaining = threshold - currentValue;
@@ -57,9 +61,39 @@ public static class ForecastingService
 				continue;
 
 			Jackpot? existing = uow.Jackpots.Get(cat, cred.House, cred.Game);
+
+			// DECISION_085: Validate DPD data sufficiency and bounds before ETA calculation
 			double dpd = existing?.DPD.Average ?? 0;
-			double minutes = CalculateMinutesToValue(threshold, current, dpd);
-			Jackpot jackpot = new Jackpot(cred, cat, current, threshold, pri, DateTime.UtcNow.AddMinutes(minutes));
+			DateTime estimatedDate;
+
+			if (existing != null && existing.DPD.HasSufficientDataForForecast && ForecastPostProcessor.IsDpdWithinBounds(dpd))
+			{
+				double minutes = CalculateMinutesToValue(threshold, current, dpd);
+				estimatedDate = ForecastPostProcessor.PostProcessETA(minutes, uow.Errors);
+			}
+			else
+			{
+				// DECISION_085: Insufficient DPD data or out-of-bounds - use safe default
+				estimatedDate = DateTime.UtcNow.Add(DefaultEstimateHorizon);
+
+				if (existing != null && !existing.DPD.HasSufficientDataForForecast && existing.DPD.Data.Count > 0)
+				{
+					uow.Errors.Insert(ErrorLog.Create(ErrorType.ValidationError,
+						"ForecastingService",
+						$"Insufficient DPD data for {cat} {cred.House}/{cred.Game}: {existing.DPD.Data.Count} points (need {DPD.MinimumDataPointsForForecast})",
+						ErrorSeverity.Low));
+				}
+
+				if (existing != null && existing.DPD.HasSufficientDataForForecast && !ForecastPostProcessor.IsDpdWithinBounds(dpd))
+				{
+					uow.Errors.Insert(ErrorLog.Create(ErrorType.ValidationError,
+						"ForecastingService",
+						$"DPD out of bounds for {cat} {cred.House}/{cred.Game}: {dpd:F2} (range: {DPD.MinReasonableDPD}-{DPD.MaxReasonableDPD})",
+						ErrorSeverity.Medium));
+				}
+			}
+
+			Jackpot jackpot = new Jackpot(cred, cat, current, threshold, pri, estimatedDate);
 
 			if (existing != null)
 			{

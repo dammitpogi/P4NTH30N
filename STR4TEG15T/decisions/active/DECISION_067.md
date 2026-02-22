@@ -5,8 +5,8 @@
 **Status**: Approved  
 **Priority**: Medium  
 **Date**: 2026-02-20  
-**Oracle Approval**: 80%  
-**Designer Approval**: 90%  
+**Oracle Approval**: 80% (Models: Kimi K2.5 - validation workflow)  
+**Designer Approval**: 90% (Models: Claude 3.5 Sonnet - ADR framework)  
 **Average Approval**: 85%
 
 ---

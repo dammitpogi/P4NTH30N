@@ -1,0 +1,177 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DECISION_077 Step Configuration",
+  "description": "Schema for defining navigation recording steps",
+  "type": "object",
+  "properties": {
+    "steps": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Step"
+      }
+    }
+  },
+  "definitions": {
+    "Step": {
+      "type": "object",
+      "required": ["stepId", "phase", "takeScreenshot", "screenshotReason", "comment", "tool", "verification"],
+      "properties": {
+        "stepId": {
+          "type": "integer",
+          "description": "Sequential step identifier (1, 2, 3...)",
+          "minimum": 1
+        },
+        "phase": {
+          "type": "string",
+          "enum": ["Login", "GameSelection", "Spin", "Unknown"],
+          "description": "Navigation phase this step belongs to"
+        },
+        "takeScreenshot": {
+          "type": "boolean",
+          "description": "Whether to capture screenshot at this step"
+        },
+        "screenshotReason": {
+          "type": "string",
+          "minLength": 10,
+          "description": "Explanation of why this screenshot matters for the map"
+        },
+        "comment": {
+          "type": "string",
+          "minLength": 10,
+          "description": "Operator observation of what's happening at this step"
+        },
+        "tool": {
+          "type": "string",
+          "enum": ["diag", "login", "nav", "credcheck", "none"],
+          "description": "T00L5ET tool to execute (or none for manual actions)"
+        },
+        "action": {
+          "type": "string",
+          "enum": ["click", "type", "longpress", "navigate", "wait"],
+          "description": "Manual action to perform"
+        },
+        "coordinates": {
+          "$ref": "#/definitions/Coordinates"
+        },
+        "canvasBounds": {
+          "$ref": "#/definitions/CanvasBounds"
+        },
+        "designViewport": {
+          "$ref": "#/definitions/DesignViewport"
+        },
+        "input": {
+          "type": "string",
+          "description": "Text input for type actions"
+        },
+        "delayMs": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Delay after action before next step"
+        },
+        "retryCount": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5,
+          "description": "Number of retries if step fails"
+        },
+        "verification": {
+          "$ref": "#/definitions/Verification"
+        },
+        "platformSpecific": {
+          "type": "object",
+          "description": "Platform-specific settings"
+        }
+      }
+    },
+    "Coordinates": {
+      "type": "object",
+      "description": "ARCH-081: Supports both absolute and relative coordinates. Relative (rx/ry) are preferred; absolute (x/y) are fallbacks for the design viewport.",
+      "properties": {
+        "x": {
+          "type": "integer",
+          "description": "Absolute X coordinate (fallback for design viewport)"
+        },
+        "y": {
+          "type": "integer",
+          "description": "Absolute Y coordinate (fallback for design viewport)"
+        },
+        "rx": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Relative X within canvas (0.0=left, 1.0=right)"
+        },
+        "ry": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Relative Y within canvas (0.0=top, 1.0=bottom)"
+        }
+      },
+      "required": ["x", "y"]
+    },
+    "CanvasBounds": {
+      "type": "object",
+      "description": "ARCH-081: Canvas bounding rectangle from getBoundingClientRect()",
+      "properties": {
+        "x": {
+          "type": "number",
+          "description": "Canvas left offset in viewport"
+        },
+        "y": {
+          "type": "number",
+          "description": "Canvas top offset in viewport"
+        },
+        "width": {
+          "type": "number",
+          "description": "Canvas width in pixels"
+        },
+        "height": {
+          "type": "number",
+          "description": "Canvas height in pixels"
+        }
+      },
+      "required": ["x", "y", "width", "height"]
+    },
+    "DesignViewport": {
+      "type": "object",
+      "description": "ARCH-081: The viewport dimensions the absolute coordinates were calibrated against",
+      "properties": {
+        "width": {
+          "type": "integer",
+          "description": "Design viewport width in pixels"
+        },
+        "height": {
+          "type": "integer",
+          "description": "Design viewport height in pixels"
+        },
+        "calibratedDate": {
+          "type": "string",
+          "description": "Date the coordinates were calibrated (ISO format)"
+        }
+      },
+      "required": ["width", "height"]
+    },
+    "Verification": {
+      "type": "object",
+      "required": ["entryGate", "exitGate"],
+      "properties": {
+        "entryGate": {
+          "type": "string",
+          "description": "What must be true before this step executes"
+        },
+        "exitGate": {
+          "type": "string",
+          "description": "What must be true to proceed to next step"
+        },
+        "progressIndicators": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional intermediate checkpoints"
+        }
+      }
+    }
+  }
+}

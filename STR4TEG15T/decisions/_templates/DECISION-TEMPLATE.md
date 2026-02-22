@@ -5,8 +5,8 @@
 **Status**: Proposed  
 **Priority**: [Critical|High|Medium|Low]  
 **Date**: [YYYY-MM-DD]  
-**Oracle Approval**: [0-100 or Pending]  
-**Designer Approval**: [0-100 or Pending]
+**Oracle Approval**: [0-100 or Pending] (Models: [model1] - [contribution], [model2] - [contribution])  
+**Designer Approval**: [0-100 or Pending] (Models: [model1] - [contribution], [model2] - [contribution])
 
 ---
 
@@ -102,8 +102,8 @@
 
 | Agent | Can Create | Max Complexity | Approval Required |
 |-------|-----------|----------------|-------------------|
-| Oracle | Validation sub-decisions | Medium | No (Assimilated) |
-| Designer | Architecture sub-decisions | Medium | No (Assimilated) |
+| Oracle | Validation sub-decisions | Medium | No (Oracle uses models in consultation log) |
+| Designer | Architecture sub-decisions | Medium | No (Designer uses models in consultation log) |
 | WindFixer | Implementation sub-decisions | High | Yes (Strategist) |
 | OpenFixer | Config/tooling sub-decisions | High | Yes (Strategist) |
 | Forgewright | Bug-fix sub-decisions | Critical | Yes (Strategist) |
@@ -114,12 +114,14 @@
 
 ### Oracle Consultation
 - **Date**: [YYYY-MM-DD]
+- **Models**: [model1] ([contribution]), [model2] ([contribution])
 - **Approval**: [X]%
 - **Key Findings**: [Summary]
 - **File**: [consultations/oracle/...]
 
 ### Designer Consultation
 - **Date**: [YYYY-MM-DD]
+- **Models**: [model1] ([contribution]), [model2] ([contribution])
 - **Approval**: [X]%
 - **Key Findings**: [Summary]
 - **File**: [consultations/designer/...]

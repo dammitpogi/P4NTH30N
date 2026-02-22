@@ -1,0 +1,47 @@
+{
+  "platform": "firekirin",
+  "success": false,
+  "username": "PaulPP9fk",
+  "phases": [
+    {
+      "name": "Login",
+      "success": false,
+      "durationMs": 124756,
+      "screenshots": [],
+      "details": {
+        "error": "Login failed after 3 attempts — server did not respond"
+      }
+    }
+  ],
+  "startTime": "2026-02-21T12:54:18.048Z",
+  "endTime": "2026-02-21T12:56:23.119Z",
+  "durationMs": 125071,
+  "screenshots": [
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T12-54-18\\001_01_login_page_attempt1.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T12-54-18\\002_02_creds_attempt1.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T12-54-18\\003_03_waiting_5s.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T12-54-18\\004_03_waiting_10s.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T12-54-18\\005_03_waiting_15s.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T12-54-18\\006_03_waiting_20s.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T12-54-18\\007_03_waiting_25s.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T12-54-18\\008_03_post_login_attempt1.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T12-54-18\\009_01_login_page_attempt2.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T12-54-18\\010_02_creds_attempt2.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T12-54-18\\011_03_waiting_5s.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T12-54-18\\012_03_waiting_10s.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T12-54-18\\013_03_waiting_15s.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T12-54-18\\014_03_waiting_20s.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T12-54-18\\015_03_waiting_25s.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T12-54-18\\016_03_post_login_attempt2.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T12-54-18\\017_01_login_page_attempt3.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T12-54-18\\018_02_creds_attempt3.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T12-54-18\\019_03_waiting_5s.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T12-54-18\\020_03_waiting_10s.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T12-54-18\\021_03_waiting_15s.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T12-54-18\\022_03_waiting_20s.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T12-54-18\\023_03_waiting_25s.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T12-54-18\\024_03_post_login_attempt3.png",
+    "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-run-2026-02-21T12-54-18\\025_ERROR_final.png"
+  ],
+  "error": "Login phase failed"
+}

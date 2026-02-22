@@ -1,5 +1,6 @@
 using System.Collections.Concurrent;
 using P4NTH30N.C0MMON;
+using P4NTH30N.C0MMON.Services.Display;
 using Spectre.Console;
 using Spectre.Console.Rendering;
 using Color = Spectre.Console.Color;
@@ -24,6 +25,45 @@ public static class Dashboard
 
 	private static readonly int _maxEvents = 25;
 	private static readonly int _maxAnalyticsEvents = 50;
+
+	// DECISION_085: Display event bus integration
+	private static DisplayEventBus? s_displayBus;
+	private static LayoutDashboard? s_layoutDashboard;
+	private static bool s_useLayoutDashboard;
+
+	/// <summary>Display event bus instance. Null until InitializeDisplayPipeline is called.</summary>
+	public static DisplayEventBus? DisplayBus => s_displayBus;
+
+	/// <summary>Layout dashboard instance. Null until InitializeDisplayPipeline is called.</summary>
+	public static LayoutDashboard? Layout => s_layoutDashboard;
+
+	/// <summary>
+	/// DECISION_085: Initialize the display event pipeline.
+	/// Call once at startup before the main loop.
+	/// </summary>
+	public static DisplayEventBus InitializeDisplayPipeline()
+	{
+		s_displayBus = new DisplayEventBus();
+		s_layoutDashboard = new LayoutDashboard(s_displayBus);
+		s_useLayoutDashboard = true;
+		return s_displayBus;
+	}
+
+	// DECISION_085: Schedule/Account/Win data bridges
+	public static void UpdateSchedule(List<ScheduleEntry> entries) =>
+		s_layoutDashboard?.UpdateSchedule(entries);
+
+	public static void UpdateWithdrawAccounts(List<AccountEntry> accounts) =>
+		s_layoutDashboard?.UpdateWithdrawAccounts(accounts);
+
+	public static void UpdateDepositNeeded(List<DepositEntry> deposits) =>
+		s_layoutDashboard?.UpdateDepositNeeded(deposits);
+
+	public static void AddWin(WonEntry win) =>
+		s_layoutDashboard?.AddWin(win);
+
+	public static void UpdateRecentWins(List<WonEntry> wins) =>
+		s_layoutDashboard?.UpdateRecentWins(wins);
 
 	public static bool IsPaused { get; private set; } = false;
 	public static ViewMode CurrentView { get; private set; } = ViewMode.Overview;
@@ -68,6 +108,9 @@ public static class Dashboard
 				_events.RemoveAt(0);
 			}
 		}
+
+		// DECISION_085: Bridge to display event bus
+		s_displayBus?.Publish(DisplayEvent.Detail("H0UND", message, style));
 	}
 
 	public static void AddAnalyticsLog(string message, string style = "white")
@@ -80,6 +123,9 @@ public static class Dashboard
 				_analyticsEvents.RemoveAt(0);
 			}
 		}
+
+		// DECISION_085: Bridge to display event bus (analytics → Detail level)
+		s_displayBus?.Publish(DisplayEvent.Detail("Analytics", message, style));
 	}
 
 	public static void TrackError(string errorType)
@@ -188,6 +234,17 @@ public static class Dashboard
 			try
 			{
 				UpdateHealthStatus();
+
+				// DECISION_085: Use LayoutDashboard when initialized
+				if (s_useLayoutDashboard && s_layoutDashboard != null)
+				{
+					SyncToLayoutDashboard();
+					s_layoutDashboard.Render();
+					IsPaused = s_layoutDashboard.IsPaused;
+					return;
+				}
+
+				// Legacy fallback: original rendering
 				HandleInput();
 
 				AnsiConsole.Clear();
@@ -219,6 +276,32 @@ public static class Dashboard
 				Thread.Sleep(1000);
 			}
 		}
+	}
+
+	/// <summary>
+	/// DECISION_085: Sync static Dashboard properties to the LayoutDashboard instance.
+	/// </summary>
+	private static void SyncToLayoutDashboard()
+	{
+		if (s_layoutDashboard == null) return;
+		s_layoutDashboard.CurrentTask = CurrentTask;
+		s_layoutDashboard.CurrentUser = CurrentUser;
+		s_layoutDashboard.CurrentGame = CurrentGame;
+		s_layoutDashboard.CurrentHouse = CurrentHouse;
+		s_layoutDashboard.HealthStatus = HealthStatus;
+		s_layoutDashboard.CurrentGrand = CurrentGrand;
+		s_layoutDashboard.CurrentMajor = CurrentMajor;
+		s_layoutDashboard.CurrentMinor = CurrentMinor;
+		s_layoutDashboard.CurrentMini = CurrentMini;
+		s_layoutDashboard.CurrentBalance = CurrentBalance;
+		s_layoutDashboard.ThresholdGrand = ThresholdGrand;
+		s_layoutDashboard.ThresholdMajor = ThresholdMajor;
+		s_layoutDashboard.ThresholdMinor = ThresholdMinor;
+		s_layoutDashboard.ThresholdMini = ThresholdMini;
+		s_layoutDashboard.TotalPolls = TotalPolls;
+		s_layoutDashboard.SuccessfulPolls = SuccessfulPolls;
+		s_layoutDashboard.FailedPolls = FailedPolls;
+		s_layoutDashboard.TotalCredentials = TotalCredentials;
 	}
 
 	private static void RenderOverview()

@@ -15,11 +15,13 @@ public static class DpdCalculator
 			return;
 		}
 
-		double prevGrand = jackpot.DPD.Data[^1].Grand;
+		// Use the correct tier value based on the jackpot's category, not always Grand
+		double currentValue = GetTierValue(jackpot.Category, cred);
+		double prevValue = GetPrevTierValue(jackpot.Category, jackpot.DPD.Data[^1]);
 
-		if (cred.Jackpots.Grand != prevGrand && cred.Jackpots.Grand < 100000)
+		if (currentValue != prevValue && currentValue < 100000)
 		{
-			if (cred.Jackpots.Grand > prevGrand)
+			if (currentValue > prevValue)
 			{
 				AppendDpdDataPoint(jackpot, cred);
 				UpdateDpdAverage(jackpot);
@@ -30,6 +32,24 @@ public static class DpdCalculator
 			}
 		}
 	}
+
+	private static double GetTierValue(string category, Credential cred) => category switch
+	{
+		"Grand" => cred.Jackpots.Grand,
+		"Major" => cred.Jackpots.Major,
+		"Minor" => cred.Jackpots.Minor,
+		"Mini" => cred.Jackpots.Mini,
+		_ => cred.Jackpots.Grand,
+	};
+
+	private static double GetPrevTierValue(string category, DPD_Data data) => category switch
+	{
+		"Grand" => data.Grand,
+		"Major" => data.Major,
+		"Minor" => data.Minor,
+		"Mini" => data.Mini,
+		_ => data.Grand,
+	};
 
 	public static void AppendDpdDataPoint(Jackpot jackpot, Credential cred)
 	{
@@ -44,7 +64,8 @@ public static class DpdCalculator
 		}
 
 		double minutes = (jackpot.DPD.Data[^1].Timestamp - jackpot.DPD.Data[0].Timestamp).TotalMinutes;
-		double dollars = jackpot.DPD.Data[^1].Grand - jackpot.DPD.Data[0].Grand;
+		double dollars = GetPrevTierValue(jackpot.Category, jackpot.DPD.Data[^1])
+			- GetPrevTierValue(jackpot.Category, jackpot.DPD.Data[0]);
 		double days = minutes / TimeSpan.FromDays(1).TotalMinutes;
 		double dpd = dollars / days;
 

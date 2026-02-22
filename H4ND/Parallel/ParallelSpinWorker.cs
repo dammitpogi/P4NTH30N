@@ -9,21 +9,24 @@ using P4NTH30N.H4ND.Services;
 namespace P4NTH30N.H4ND.Parallel;
 
 /// <summary>
-/// ARCH-047/055: Consumer — reads SignalWorkItems from the channel and executes
+/// ARCH-047/055/081: Consumer — reads SignalWorkItems from the channel and executes
 /// the full signal lifecycle: lock credential → login → query balances → spin → update → logout → unlock.
 /// Each worker maintains its own CDP session.
 /// ARCH-055: Self-healing via SessionRenewalService on 403/401, config-driven selectors via GameSelectorConfig.
+/// ARCH-081: Chrome profile isolation via ChromeProfileManager, login verification via balance > 0.
 /// </summary>
 public sealed class ParallelSpinWorker
 {
 	private readonly string _workerId;
+	private readonly int _workerIndex;
 	private readonly ChannelReader<SignalWorkItem> _reader;
 	private readonly IUnitOfWork _uow;
 	private readonly SpinExecution _spinExecution;
-	private readonly CdpConfig _cdpConfig;
+	private CdpConfig _cdpConfig;
 	private readonly ParallelMetrics _metrics;
 	private readonly SessionRenewalService? _sessionRenewal;
 	private readonly GameSelectorConfig? _selectorConfig;
+	private readonly ChromeProfileManager? _profileManager;
 	private readonly int _maxSignalsBeforeRestart;
 	private int _signalsProcessed;
 
@@ -39,9 +42,11 @@ public sealed class ParallelSpinWorker
 		ParallelMetrics metrics,
 		SessionRenewalService? sessionRenewal = null,
 		GameSelectorConfig? selectorConfig = null,
+		ChromeProfileManager? profileManager = null,
 		int maxSignalsBeforeRestart = 100)
 	{
 		_workerId = workerId;
+		_workerIndex = int.TryParse(workerId, out int idx) ? idx : 0;
 		_reader = reader;
 		_uow = uow;
 		_spinExecution = spinExecution;
@@ -49,6 +54,7 @@ public sealed class ParallelSpinWorker
 		_metrics = metrics;
 		_sessionRenewal = sessionRenewal;
 		_selectorConfig = selectorConfig;
+		_profileManager = profileManager;
 		_maxSignalsBeforeRestart = maxSignalsBeforeRestart;
 	}
 
@@ -63,7 +69,8 @@ public sealed class ParallelSpinWorker
 		CdpClient? cdp = null;
 		try
 		{
-			cdp = await CreateCdpSessionAsync(ct);
+			// ARCH-081: Initialize Chrome with isolated profile if manager available
+			cdp = await InitializeCdpWithProfileAsync(ct);
 			if (cdp == null)
 			{
 				Console.WriteLine($"[Worker-{_workerId}] CDP connection failed — exiting");
@@ -77,6 +84,13 @@ public sealed class ParallelSpinWorker
 				{
 					Console.WriteLine($"[Worker-{_workerId}] Restart threshold reached ({_signalsProcessed} signals) — cycling CDP");
 					cdp.Dispose();
+
+					// ARCH-081: Restart Chrome with profile if manager available
+					if (_profileManager != null)
+					{
+						_cdpConfig = await _profileManager.RestartWorkerAsync(_workerIndex, ct);
+					}
+
 					cdp = await CreateCdpSessionAsync(ct);
 					if (cdp == null)
 					{
@@ -84,6 +98,15 @@ public sealed class ParallelSpinWorker
 						break;
 					}
 					_signalsProcessed = 0;
+				}
+
+				// ARCH-081: Health check before processing
+				if (!await EnsureChromeHealthyAsync(cdp, ct))
+				{
+					Console.WriteLine($"[Worker-{_workerId}] Chrome unhealthy — restarting");
+					cdp.Dispose();
+					cdp = await InitializeCdpWithProfileAsync(ct);
+					if (cdp == null) break;
 				}
 
 				await ProcessWorkItemAsync(workItem, cdp, ct);
@@ -260,6 +283,51 @@ public sealed class ParallelSpinWorker
 		_metrics.IncrementCriticalFailures();
 		Console.WriteLine($"[Worker-{_workerId}] ALL PLATFORMS FAILED — worker entering backoff");
 		return false;
+	}
+
+	/// <summary>
+	/// ARCH-081: Initialize CDP with Chrome profile isolation if manager is available.
+	/// Falls back to direct CDP connection if no profile manager.
+	/// </summary>
+	private async Task<CdpClient?> InitializeCdpWithProfileAsync(CancellationToken ct)
+	{
+		if (_profileManager != null)
+		{
+			try
+			{
+				Console.WriteLine($"[Worker-{_workerId}] Launching isolated Chrome profile...");
+				_cdpConfig = await _profileManager.LaunchWithProfileAsync(_workerIndex, ct);
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"[Worker-{_workerId}] Chrome profile launch failed: {ex.Message}");
+				_metrics.RecordWorkerError(_workerId, $"profile_launch_failed:{ex.Message}");
+				return null;
+			}
+		}
+
+		return await CreateCdpSessionAsync(ct);
+	}
+
+	/// <summary>
+	/// ARCH-081: Health check — verify Chrome is responsive and page is loaded.
+	/// </summary>
+	private async Task<bool> EnsureChromeHealthyAsync(CdpClient cdp, CancellationToken ct)
+	{
+		try
+		{
+			// Check if profile manager reports healthy
+			if (_profileManager != null && !await _profileManager.IsHealthyAsync(_workerIndex, ct))
+				return false;
+
+			// Check if CDP can evaluate a simple expression
+			string? readyState = await cdp.EvaluateAsync<string>("document.readyState", ct);
+			return readyState != null;
+		}
+		catch
+		{
+			return false;
+		}
 	}
 
 	private async Task<CdpClient?> CreateCdpSessionAsync(CancellationToken ct)

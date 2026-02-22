@@ -1,0 +1,578 @@
+{
+  "platform": "firekirin",
+  "decision": "DECISION_077",
+  "sessionNotes": "FireKirin workflow VERIFIED working. OrionStars workflow BLOCKED on Canvas login.",
+  "steps": [
+    {
+      "stepId": 1,
+      "phase": "Login",
+      "takeScreenshot": false,
+      "screenshotReason": "Initial state - login page before any interaction",
+      "comment": "Navigate to http://play.firekirin.in/web_mobile/firekirin/ - Login form visible",
+      "tool": "diag",
+      "action": "navigate",
+      "coordinates": {
+        "x": 0,
+        "y": 0
+      },
+      "delayMs": 3000,
+      "verification": {
+        "entryGate": "Chrome CDP running on port 9222",
+        "exitGate": "Page loaded, readyState complete, login form visible"
+      },
+      "breakpoint": false,
+      "url": "http://web.orionstars.org/hot_play/orionstars/"
+    },
+    {
+      "stepId": 2,
+      "phase": "Login",
+      "takeScreenshot": true,
+      "screenshotReason": "All buttons and fields are visible at this point for confirmation.",
+      "comment": "Click account field - cursor visible in field",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.4946,
+        "ry": 0.4243,
+        "x": 460,
+        "y": 367
+      },
+      "delayMs": 500,
+      "verification": {
+        "entryGate": "Login form visible",
+        "exitGate": "Account field has focus, cursor blinking"
+      },
+      "breakpoint": false
+    },
+    {
+      "stepId": 3,
+      "phase": "Login",
+      "takeScreenshot": false,
+      "screenshotReason": "Typing action - no visual change until complete",
+      "comment": "Type username via typeChars (40ms/char) - text accepted by Canvas",
+      "tool": "none",
+      "action": "type",
+      "coordinates": {
+        "x": 0,
+        "y": 0
+      },
+      "delayMs": 500,
+      "verification": {
+        "entryGate": "Account field focused",
+        "exitGate": "Username visible in field"
+      },
+      "breakpoint": false,
+      "input": "JustinHu21"
+    },
+    {
+      "stepId": 4,
+      "phase": "Login",
+      "takeScreenshot": false,
+      "screenshotReason": "Password field focused, username entered",
+      "comment": "Click password field - field focused",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.4946,
+        "ry": 0.5052,
+        "x": 460,
+        "y": 437
+      },
+      "delayMs": 500,
+      "verification": {
+        "entryGate": "Username entered in account field",
+        "exitGate": "Password field has focus"
+      },
+      "breakpoint": false
+    },
+    {
+      "stepId": 5,
+      "phase": "Login",
+      "takeScreenshot": false,
+      "screenshotReason": "Typing action - password masked",
+      "comment": "Type password via typeChars - masked dots appeared",
+      "tool": "none",
+      "action": "type",
+      "coordinates": {
+        "x": 0,
+        "y": 0
+      },
+      "delayMs": 500,
+      "verification": {
+        "entryGate": "Password field focused",
+        "exitGate": "Password dots visible (masked)"
+      },
+      "breakpoint": false,
+      "input": "abc123"
+    },
+    {
+      "stepId": 6,
+      "phase": "Login",
+      "takeScreenshot": false,
+      "screenshotReason": "Login button clicked, authentication in progressfdfdf",
+      "comment": "Click LOGIN button - loading spinner appeared",
+      "tool": "login",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.5946,
+        "ry": 0.6555,
+        "x": 553,
+        "y": 567
+      },
+      "delayMs": 2000,
+      "verification": {
+        "entryGate": "Credentials entered",
+        "exitGate": "Login request sent, waiting for response"
+      },
+      "breakpoint": false
+    },
+    {
+      "stepId": 7,
+      "phase": "Login",
+      "takeScreenshot": true,
+      "screenshotReason": "This is where Login errors will happen. They will appear in a red bar in the center of the screen. We should be polling the screen at after clicking login. We are watching for server errors: to retry, account issues: to know if we've been banned, login prompts: once sucessfully logged in - sometimes we get welcome prompts. Sometimes more than one. Sometimes none.",
+      "comment": "Lobby detection polling - WebSocket frames detected, Balance > 0",
+      "tool": "none",
+      "action": "wait",
+      "coordinates": {
+        "x": 0,
+        "y": 0
+      },
+      "delayMs": 3000,
+      "verification": {
+        "entryGate": "Login clicked",
+        "exitGate": "Balance > 0, iframe elements present, SLOT/FISH visible",
+        "progressIndicators": [
+          "WebSocket frames > 0",
+          "location.hash changed",
+          "Grand jackpot value loaded"
+        ]
+      },
+      "breakpoint": false
+    },
+    {
+      "stepId": 8,
+      "phase": "GameSelection",
+      "takeScreenshot": true,
+      "screenshotReason": "An Announcemnet window is normally present here. The button clicked closes it.",
+      "comment": "Button: (841,248) rx=0.9053 ry=0.2867 | capture-overlay 929x865",
+      "tool": "nav",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.9053,
+        "ry": 0.2867,
+        "x": 841,
+        "y": 248
+      },
+      "delayMs": 1000,
+      "verification": {
+        "entryGate": "Lobby visible with categories",
+        "exitGate": "SLOT games grid visible"
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    },
+    {
+      "stepId": 9,
+      "phase": "GameSelection",
+      "takeScreenshot": true,
+      "screenshotReason": "The game was not found on the first page. So we select the next button.",
+      "comment": "Button: (848,256) rx=0.9128 ry=0.2960 | capture-overlay 929x865",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.9128,
+        "ry": 0.296,
+        "x": 848,
+        "y": 256
+      },
+      "delayMs": 1000,
+      "verification": {
+        "entryGate": "SLOT games grid visible",
+        "exitGate": "Game loaded, SPIN button visible"
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    },
+    {
+      "stepId": 10,
+      "phase": "GameSelection",
+      "takeScreenshot": true,
+      "screenshotReason": "Game was found on this page. So the game button is clicked.",
+      "comment": "Button: (236,428) rx=0.2540 ry=0.4948 | capture-overlay 929x865",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.254,
+        "ry": 0.4948,
+        "x": 236,
+        "y": 428
+      },
+      "delayMs": 1000,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    },
+    {
+      "stepId": 11,
+      "phase": "GameSelection",
+      "takeScreenshot": false,
+      "screenshotReason": "If the game has been banned by the platform, clicking it will loop you back to the main menu. Wait for balance and jackpots to load in. If they dont after 1 minute then the game failed to load. go back to lobby and try again. Sometimes its a network thing.",
+      "comment": "Button: [describe location/appearance] | Context: [what this does]",
+      "tool": "none",
+      "action": "wait",
+      "coordinates": {
+        "rx": 0,
+        "ry": 0,
+        "x": 0,
+        "y": 0
+      },
+      "delayMs": 10000,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false
+    },
+    {
+      "stepId": 12,
+      "phase": "Spin",
+      "takeScreenshot": false,
+      "screenshotReason": "Holding Spin opens the Auto-Spin button.",
+      "comment": "Button: (854,655) rx=0.9193 ry=0.7572 | capture-overlay 929x865",
+      "tool": "none",
+      "action": "longpress",
+      "coordinates": {
+        "rx": 0.9193,
+        "ry": 0.7572,
+        "x": 854,
+        "y": 655
+      },
+      "delayMs": 500,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "holdMs": 2000,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    },
+    {
+      "stepId": 13,
+      "phase": "Spin",
+      "takeScreenshot": false,
+      "screenshotReason": "This button is for the Auto-Spin",
+      "comment": "Button: (859,355) rx=0.9247 ry=0.4104 | capture-overlay 929x865",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.9247,
+        "ry": 0.4104,
+        "x": 859,
+        "y": 355
+      },
+      "delayMs": 4000,
+      "verification": {
+        "entryGate": "First spin complete",
+        "exitGate": "Second spin complete, balance updated"
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    },
+    {
+      "stepId": 14,
+      "phase": "Spin",
+      "takeScreenshot": true,
+      "screenshotReason": "Check account balances, check jackpots.",
+      "comment": "This wait is where we would actually be spinning for the jackpot. Checking balances to see where we are. Checking Jackpots to see if it's popped.",
+      "tool": "none",
+      "action": "wait",
+      "coordinates": {
+        "rx": 0,
+        "ry": 0,
+        "x": 0,
+        "y": 0
+      },
+      "delayMs": 5000,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false
+    },
+    {
+      "stepId": 15,
+      "phase": "Spin",
+      "takeScreenshot": false,
+      "screenshotReason": "",
+      "comment": "Stop the spinning when done.",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.9171,
+        "ry": 0.7618,
+        "x": 852,
+        "y": 659
+      },
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    },
+    {
+      "stepId": 16,
+      "phase": "Logout",
+      "takeScreenshot": false,
+      "screenshotReason": "",
+      "comment": "Navigating to the main menu is the where Logout flow begins.",
+      "tool": "none",
+      "action": "navigate",
+      "coordinates": {
+        "rx": 0,
+        "ry": 0,
+        "x": 0,
+        "y": 0
+      },
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "url": "http://play.firekirin.in/web_mobile/firekirin/"
+    },
+    {
+      "stepId": 17,
+      "phase": "Logout",
+      "takeScreenshot": false,
+      "screenshotReason": "",
+      "comment": "Resets the game menu. So that it doesn't persist.",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.0409,
+        "ry": 0.3503,
+        "x": 38,
+        "y": 303
+      },
+      "delayMs": 500,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    },
+    {
+      "stepId": 18,
+      "phase": "Logout",
+      "takeScreenshot": true,
+      "screenshotReason": "The URL can take you to either the Login Screen or the Main Menu dependent on session state.",
+      "comment": "Ensure we are at the Main Menu with a visual check.",
+      "tool": "none",
+      "action": "wait",
+      "coordinates": {
+        "rx": 0,
+        "ry": 0,
+        "x": 0,
+        "y": 0
+      },
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false
+    },
+    {
+      "stepId": 19,
+      "phase": "Logout",
+      "takeScreenshot": false,
+      "screenshotReason": "",
+      "comment": "Opens the Settings menu.",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.9666,
+        "ry": 0.2936,
+        "x": 898,
+        "y": 254
+      },
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    },
+    {
+      "stepId": 20,
+      "phase": "Logout",
+      "takeScreenshot": false,
+      "screenshotReason": "",
+      "comment": "Clicks the logout button.",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.8278,
+        "ry": 0.6902,
+        "x": 769,
+        "y": 597
+      },
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    }
+  ],
+  "metadata": {
+    "created": "2026-02-21",
+    "modified": "2026-02-22",
+    "designViewport": {
+      "width": 930,
+      "height": 865,
+      "calibratedDate": "2026-02-21",
+      "note": "ARCH-081: All rx/ry values are relative to this viewport. Absolute x/y are fallbacks."
+    },
+    "coordinates": {
+      "firekirin": {
+        "account": {
+          "rx": 0.4946,
+          "ry": 0.4243,
+          "x": 460,
+          "y": 367
+        },
+        "password": {
+          "rx": 0.4946,
+          "ry": 0.5052,
+          "x": 460,
+          "y": 437
+        },
+        "login": {
+          "rx": 0.5946,
+          "ry": 0.6555,
+          "x": 553,
+          "y": 567
+        },
+        "slotCategory": {
+          "rx": 0.0398,
+          "ry": 0.5376,
+          "x": 37,
+          "y": 465
+        },
+        "firstGame": {
+          "rx": 0.1935,
+          "ry": 0.3468,
+          "x": 180,
+          "y": 300
+        },
+        "spinButton": {
+          "rx": 0.9247,
+          "ry": 0.7572,
+          "x": 860,
+          "y": 655
+        }
+      },
+      "orionstars": {
+        "guestLobbyLogin": {
+          "rx": 0.5,
+          "ry": 0.7977,
+          "x": 465,
+          "y": 690
+        },
+        "account": {
+          "rx": 0.5054,
+          "ry": 0.4682,
+          "x": 470,
+          "y": 405
+        },
+        "password": {
+          "rx": 0.5054,
+          "ry": 0.5526,
+          "x": 470,
+          "y": 478
+        },
+        "login": {
+          "rx": 0.4946,
+          "ry": 0.6936,
+          "x": 460,
+          "y": 600
+        },
+        "reelsCategory": {
+          "rx": 0.0398,
+          "ry": 0.5376,
+          "x": 37,
+          "y": 465
+        },
+        "spinButton": {
+          "rx": 0.9247,
+          "ry": 0.7572,
+          "x": 860,
+          "y": 655
+        }
+      }
+    },
+    "credentials": {
+      "firekirin": {
+        "username": "JustinHu21",
+        "password": "abc123",
+        "source": "MongoDB CRED3N7IAL collection"
+      },
+      "orionstars": {
+        "username": "JustinHU6os",
+        "password": "abc123",
+        "source": "MongoDB CRED3N7IAL collection"
+      }
+    }
+  }
+}

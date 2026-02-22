@@ -1,0 +1,305 @@
+{
+  "platform": "orionstars",
+  "decision": "DECISION_077",
+  "sessionNotes": "FireKirin workflow VERIFIED working. OrionStars workflow BLOCKED on Canvas login.",
+  "steps": [
+    {
+      "stepId": 1,
+      "phase": "Login",
+      "takeScreenshot": false,
+      "screenshotReason": "",
+      "comment": "Button: [describe location/appearance] | Context: [what this does]",
+      "tool": "none",
+      "action": "navigate",
+      "coordinates": {
+        "rx": 0,
+        "ry": 0,
+        "x": 0,
+        "y": 0
+      },
+      "delayMs": 2500,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "url": "https://web.orionstars.org/hot_play/orionstars/"
+    },
+    {
+      "stepId": 2,
+      "phase": "Login",
+      "takeScreenshot": false,
+      "screenshotReason": "",
+      "comment": "This is the Login button.",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.4995,
+        "ry": 0.7572,
+        "x": 464,
+        "y": 655
+      },
+      "delayMs": 1000,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    },
+    {
+      "stepId": 3,
+      "phase": "Login",
+      "takeScreenshot": false,
+      "screenshotReason": "",
+      "comment": "Username Field. Opens a Keyboard when clicked.",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.4209,
+        "ry": 0.4647,
+        "x": 391,
+        "y": 402
+      },
+      "delayMs": 1000,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    },
+    {
+      "stepId": 4,
+      "phase": "Login",
+      "takeScreenshot": false,
+      "screenshotReason": "",
+      "comment": "Bypass UI Keyboard by using the 'paste' button to inject clipboard.",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.8353,
+        "ry": 0.4798,
+        "x": 776,
+        "y": 415
+      },
+      "delayMs": 500,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    },
+    {
+      "stepId": 5,
+      "phase": "Login",
+      "takeScreenshot": true,
+      "screenshotReason": "Check for the Chrome permission pop-up.",
+      "comment": "There is sometimes a \"Share clipboard?\" permission prompt from Chrome here.",
+      "tool": "none",
+      "action": "wait",
+      "coordinates": {
+        "rx": 0,
+        "ry": 0,
+        "x": 0,
+        "y": 0
+      },
+      "delayMs": 5000,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false
+    },
+    {
+      "stepId": 6,
+      "phase": "Login",
+      "takeScreenshot": false,
+      "screenshotReason": "",
+      "comment": "Click out of UI Keyboard.",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.831,
+        "ry": 0.4405,
+        "x": 772,
+        "y": 381
+      },
+      "delayMs": 500,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    },
+    {
+      "stepId": 7,
+      "phase": "Login",
+      "takeScreenshot": true,
+      "screenshotReason": "",
+      "comment": "Button: [describe location/appearance] | Context: [what this does]",
+      "tool": "none",
+      "action": "type",
+      "coordinates": {
+        "rx": 0,
+        "ry": 0,
+        "x": 0,
+        "y": 0
+      },
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false
+    },
+    {
+      "stepId": 8,
+      "phase": "Login",
+      "takeScreenshot": false,
+      "screenshotReason": "",
+      "comment": "Password field. Opens a UI Keyboard on click.",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.422,
+        "ry": 0.5526,
+        "x": 392,
+        "y": 478
+      },
+      "delayMs": 1000,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    }
+  ],
+  "metadata": {
+    "created": "2026-02-21",
+    "modified": "2026-02-22",
+    "designViewport": {
+      "width": 930,
+      "height": 865,
+      "calibratedDate": "2026-02-21",
+      "note": "ARCH-081: All rx/ry values are relative to this viewport. Absolute x/y are fallbacks."
+    },
+    "coordinates": {
+      "firekirin": {
+        "account": {
+          "rx": 0.4946,
+          "ry": 0.4243,
+          "x": 460,
+          "y": 367
+        },
+        "password": {
+          "rx": 0.4946,
+          "ry": 0.5052,
+          "x": 460,
+          "y": 437
+        },
+        "login": {
+          "rx": 0.5946,
+          "ry": 0.6555,
+          "x": 553,
+          "y": 567
+        },
+        "slotCategory": {
+          "rx": 0.0398,
+          "ry": 0.5376,
+          "x": 37,
+          "y": 465
+        },
+        "firstGame": {
+          "rx": 0.1935,
+          "ry": 0.3468,
+          "x": 180,
+          "y": 300
+        },
+        "spinButton": {
+          "rx": 0.9247,
+          "ry": 0.7572,
+          "x": 860,
+          "y": 655
+        }
+      },
+      "orionstars": {
+        "guestLobbyLogin": {
+          "rx": 0.5,
+          "ry": 0.7977,
+          "x": 465,
+          "y": 690
+        },
+        "account": {
+          "rx": 0.5054,
+          "ry": 0.4682,
+          "x": 470,
+          "y": 405
+        },
+        "password": {
+          "rx": 0.5054,
+          "ry": 0.5526,
+          "x": 470,
+          "y": 478
+        },
+        "login": {
+          "rx": 0.4946,
+          "ry": 0.6936,
+          "x": 460,
+          "y": 600
+        },
+        "reelsCategory": {
+          "rx": 0.0398,
+          "ry": 0.5376,
+          "x": 37,
+          "y": 465
+        },
+        "spinButton": {
+          "rx": 0.9247,
+          "ry": 0.7572,
+          "x": 860,
+          "y": 655
+        }
+      }
+    },
+    "credentials": {
+      "firekirin": {
+        "username": "JustinHu21",
+        "password": "abc123",
+        "source": "MongoDB CRED3N7IAL collection"
+      },
+      "orionstars": {
+        "username": "JustinHU6os",
+        "password": "abc123",
+        "source": "MongoDB CRED3N7IAL collection"
+      }
+    }
+  }
+}

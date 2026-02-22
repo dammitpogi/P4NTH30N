@@ -1,0 +1,123 @@
+{
+  "timestamp": "2026-02-22T00:33:13.743Z",
+  "totalSteps": 15,
+  "passed": 15,
+  "failed": 0,
+  "steps": [
+    {
+      "stepId": 1,
+      "action": "navigate",
+      "status": "passed",
+      "result": "Navigated to http://play.firekirin.in/web_mobile/firekirin/",
+      "durationMs": 3266
+    },
+    {
+      "stepId": 2,
+      "action": "click",
+      "status": "passed",
+      "result": "Clicked relative (0.4946, 0.4243) | 📸 saved",
+      "durationMs": 1158,
+      "screenshot": "C:\\P4NTH30N\\H4ND\\tools\\recorder\\sessions\\tui-run-2026-02-22T00-32-20\\001_step02_click.png"
+    },
+    {
+      "stepId": 3,
+      "action": "type",
+      "status": "passed",
+      "result": "Typed \"JustinHu21\"",
+      "durationMs": 981
+    },
+    {
+      "stepId": 4,
+      "action": "click",
+      "status": "passed",
+      "result": "Clicked relative (0.4946, 0.5052)",
+      "durationMs": 516
+    },
+    {
+      "stepId": 5,
+      "action": "type",
+      "status": "passed",
+      "result": "Typed \"abc123\"",
+      "durationMs": 818
+    },
+    {
+      "stepId": 6,
+      "action": "click",
+      "status": "passed",
+      "result": "Clicked relative (0.5946, 0.6555)",
+      "durationMs": 2071
+    },
+    {
+      "stepId": 7,
+      "action": "wait",
+      "status": "passed",
+      "result": "Waited 3000ms | 📸 saved",
+      "durationMs": 3691,
+      "screenshot": "C:\\P4NTH30N\\H4ND\\tools\\recorder\\sessions\\tui-run-2026-02-22T00-32-20\\002_step07_wait.png"
+    },
+    {
+      "stepId": 8,
+      "action": "click",
+      "status": "passed",
+      "result": "Clicked relative (0.9053, 0.2867) | 📸 saved",
+      "durationMs": 1581,
+      "screenshot": "C:\\P4NTH30N\\H4ND\\tools\\recorder\\sessions\\tui-run-2026-02-22T00-32-20\\003_step08_click.png"
+    },
+    {
+      "stepId": 9,
+      "action": "click",
+      "status": "passed",
+      "result": "Clicked relative (0.9128, 0.2960) | 📸 saved",
+      "durationMs": 1530,
+      "screenshot": "C:\\P4NTH30N\\H4ND\\tools\\recorder\\sessions\\tui-run-2026-02-22T00-32-20\\004_step09_click.png"
+    },
+    {
+      "stepId": 10,
+      "action": "click",
+      "status": "passed",
+      "result": "Clicked relative (0.2540, 0.4948) | 📸 saved",
+      "durationMs": 1120,
+      "screenshot": "C:\\P4NTH30N\\H4ND\\tools\\recorder\\sessions\\tui-run-2026-02-22T00-32-20\\005_step10_click.png"
+    },
+    {
+      "stepId": 11,
+      "action": "wait",
+      "status": "passed",
+      "result": "Waited 10000ms | 📸 saved",
+      "durationMs": 10686,
+      "screenshot": "C:\\P4NTH30N\\H4ND\\tools\\recorder\\sessions\\tui-run-2026-02-22T00-32-20\\006_step11_wait.png"
+    },
+    {
+      "stepId": 12,
+      "action": "longpress",
+      "status": "passed",
+      "result": "Long-pressed relative (0.9193, 0.7572) for 8000ms | 📸 saved",
+      "durationMs": 10394,
+      "screenshot": "C:\\P4NTH30N\\H4ND\\tools\\recorder\\sessions\\tui-run-2026-02-22T00-32-20\\007_step12_longpress.png"
+    },
+    {
+      "stepId": 13,
+      "action": "click",
+      "status": "passed",
+      "result": "Clicked relative (0.9247, 0.4104) | 📸 saved",
+      "durationMs": 4971,
+      "screenshot": "C:\\P4NTH30N\\H4ND\\tools\\recorder\\sessions\\tui-run-2026-02-22T00-32-20\\008_step13_click.png"
+    },
+    {
+      "stepId": 14,
+      "action": "navigate",
+      "status": "passed",
+      "result": "Navigate — no URL found in comment | 📸 saved",
+      "durationMs": 3590,
+      "screenshot": "C:\\P4NTH30N\\H4ND\\tools\\recorder\\sessions\\tui-run-2026-02-22T00-32-20\\009_step14_navigate.png"
+    },
+    {
+      "stepId": 15,
+      "action": "navigate",
+      "status": "passed",
+      "result": "Navigate — no URL found in comment | 📸 saved",
+      "durationMs": 2799,
+      "screenshot": "C:\\P4NTH30N\\H4ND\\tools\\recorder\\sessions\\tui-run-2026-02-22T00-32-20\\010_step15_navigate.png"
+    }
+  ]
+}

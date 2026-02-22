@@ -1,83 +1,127 @@
-# RAG Index Rebuild Script
-# Nightly full rebuild at 3 AM or on-demand partial rebuild
-# Usage: .\scripts\rag\rebuild-index.ps1 [-Full] [-Sources @("docs","C0MMON")]
+# RAG Index Rebuild Script v2
+# Nightly full rebuild at 3 AM or on-demand incremental rebuild
+# Full mode: Resets watcher state, forcing complete re-ingestion
+# Incremental mode: Delegates to watcher for change-only ingestion
+#
+# Usage: .\scripts\rag\rebuild-index.ps1 [-Full] [-DryRun]
+# Scheduled: RAG-Nightly-Rebuild (daily 3AM -Full), RAG-Incremental-Rebuild (4h)
 
 param(
     [switch]$Full,
-    [string[]]$Sources = @(),
     [string]$RagRoot = "C:\P4NTH30N",
     [switch]$DryRun
 )
 
-$ErrorActionPreference = "Stop"
+$ErrorActionPreference = "Continue"
 $timestamp = Get-Date -Format "yyyy-MM-dd_HH-mm-ss"
+$LogFile = "$RagRoot\logs\rag-rebuild.log"
+$WatcherScript = "$RagRoot\STR4TEG15T\tools\rag-watcher\Watch-RagIngest.ps1"
+$StateFile = "$RagRoot\RAG-watcher-state.json"
+$RagUrl = "http://localhost:5001/mcp"
 
-Write-Host "=== RAG Index Rebuild ===" -ForegroundColor Cyan
-Write-Host "Timestamp: $timestamp"
-Write-Host "Mode: $(if ($Full) { 'FULL REBUILD' } else { 'INCREMENTAL' })"
-Write-Host "Dry Run: $DryRun"
-
-# Default source directories for full rebuild
-$defaultSources = @(
-    "$RagRoot\docs",
-    "$RagRoot\C0MMON",
-    "$RagRoot\H0UND",
-    "$RagRoot\H4ND",
-    "$RagRoot\W4TCHD0G",
-    "$RagRoot\T4CT1CS\intel"
-)
-
-if ($Sources.Count -eq 0) {
-    $Sources = $defaultSources
+function Write-Log {
+    param([string]$Message, [string]$Level = "INFO")
+    $line = "[$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')] [$Level] $Message"
+    Write-Host $line -ForegroundColor $(switch ($Level) {
+        "ERROR" { "Red" }; "WARN" { "Yellow" }; "OK" { "Green" }; default { "Cyan" }
+    })
+    try {
+        $logDir = Split-Path $LogFile -Parent
+        if (-not (Test-Path $logDir)) { New-Item -ItemType Directory -Path $logDir -Force | Out-Null }
+        Add-Content -Path $LogFile -Value $line -ErrorAction SilentlyContinue
+    } catch { }
 }
 
-# Verify sources exist
-$validSources = @()
-foreach ($source in $Sources) {
-    if (Test-Path $source) {
-        $validSources += $source
-        $fileCount = (Get-ChildItem -Path $source -Recurse -File -Include *.md,*.cs,*.json | Measure-Object).Count
-        Write-Host "  [OK] $source ($fileCount files)" -ForegroundColor Green
-    } else {
-        Write-Host "  [SKIP] $source (not found)" -ForegroundColor Yellow
-    }
+Write-Log "=== RAG Index Rebuild v2 ==="
+Write-Log "Timestamp: $timestamp"
+Write-Log "Mode: $(if ($Full) { 'FULL REBUILD' } else { 'INCREMENTAL' })"
+
+# Check RAG health first
+$statusBody = '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"rag_status","arguments":{}}}'
+$ragHealthy = $false
+try {
+    $response = Invoke-RestMethod -Uri $RagUrl -Method Post -ContentType "application/json" -Body $statusBody -TimeoutSec 15
+    $statusText = $response.result.content[0].text
+    $status = $statusText | ConvertFrom-Json
+    $ragHealthy = $status.health.isHealthy
+    Write-Log "RAG Status: vectors=$($status.vectorStore.vectorCount), docs=$($status.ingestion.totalDocuments), healthy=$ragHealthy"
+} catch {
+    Write-Log "RAG service unreachable: $_" "WARN"
 }
 
-if ($validSources.Count -eq 0) {
-    Write-Host "ERROR: No valid source directories found." -ForegroundColor Red
-    exit 1
-}
-
-# Count total files
-$totalFiles = 0
-foreach ($source in $validSources) {
-    $totalFiles += (Get-ChildItem -Path $source -Recurse -File -Include *.md,*.cs,*.json | Measure-Object).Count
-}
-
-Write-Host ""
-Write-Host "Total files to process: $totalFiles" -ForegroundColor Cyan
-
-if ($DryRun) {
-    Write-Host ""
-    Write-Host "DRY RUN - No changes made." -ForegroundColor Yellow
+if (-not $ragHealthy) {
+    Write-Log "RAG service not healthy. Skipping rebuild." "WARN"
     exit 0
 }
 
-# Ensure rag directory exists
-$ragDir = Join-Path $RagRoot "rag"
-if (-not (Test-Path $ragDir)) {
-    New-Item -ItemType Directory -Path $ragDir -Force | Out-Null
-    Write-Host "Created: $ragDir"
+if ($DryRun) {
+    Write-Log "DRY RUN - No changes made."
+    exit 0
 }
 
-# Backup existing index
-$indexPath = Join-Path $ragDir "faiss.index"
-if (Test-Path $indexPath) {
-    $backupPath = Join-Path $ragDir "faiss.index.$timestamp.bak"
-    Copy-Item $indexPath $backupPath
-    Write-Host "Backed up index to: $backupPath" -ForegroundColor Green
+if ($Full) {
+    Write-Log "FULL REBUILD: Resetting watcher state to force complete re-ingestion"
+    
+    # Backup existing state
+    if (Test-Path $StateFile) {
+        $backupState = "$StateFile.$timestamp.bak"
+        Copy-Item $StateFile $backupState
+        Write-Log "Backed up state to: $backupState"
+        
+        # Reset state file
+        Remove-Item $StateFile -Force
+        Write-Log "State file removed - watcher will re-ingest all files" "OK"
+    }
+    
+    # Backup FAISS index if it exists
+    $ragDir = Join-Path $RagRoot "rag"
+    $indexPath = Join-Path $ragDir "faiss.index"
+    if (Test-Path $indexPath) {
+        $backupPath = Join-Path $ragDir "faiss.index.$timestamp.bak"
+        Copy-Item $indexPath $backupPath
+        Write-Log "Backed up FAISS index to: $backupPath"
+    }
 }
 
-Write-Host ""
-Write-Host "Rebuild complete. Files ready for ingestion: $totalFiles" -ForegroundColor Green
-Write-Host "Next: Run RAG service to ingest files from configured sources."
+# Run the watcher in single-pass mode to ingest new/changed files
+Write-Log "Running watcher in single-pass mode..."
+
+if (Test-Path $WatcherScript) {
+    $watcherArgs = @(
+        "-NoProfile",
+        "-ExecutionPolicy", "Bypass",
+        "-File", $WatcherScript,
+        "-RunOnce"
+    )
+    if ($Full) {
+        $watcherArgs += "-ResetState"
+    }
+    
+    try {
+        $process = Start-Process -FilePath "powershell.exe" `
+            -ArgumentList $watcherArgs `
+            -Wait -NoNewWindow -PassThru
+        
+        if ($process.ExitCode -eq 0) {
+            Write-Log "Watcher single-pass completed successfully" "OK"
+        } else {
+            Write-Log "Watcher exited with code: $($process.ExitCode)" "WARN"
+        }
+    } catch {
+        Write-Log "Failed to run watcher: $_" "ERROR"
+    }
+} else {
+    Write-Log "Watcher script not found at: $WatcherScript" "ERROR"
+}
+
+# Final status
+try {
+    $response = Invoke-RestMethod -Uri $RagUrl -Method Post -ContentType "application/json" -Body $statusBody -TimeoutSec 15
+    $statusText = $response.result.content[0].text
+    $status = $statusText | ConvertFrom-Json
+    Write-Log "Final RAG Status: vectors=$($status.vectorStore.vectorCount), docs=$($status.ingestion.totalDocuments)" "OK"
+} catch {
+    Write-Log "Final status check failed" "WARN"
+}
+
+Write-Log "Rebuild complete."

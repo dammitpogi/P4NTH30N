@@ -1,0 +1,438 @@
+{
+  "timestamp": "2026-02-21T23:10:55.681Z",
+  "testDescription": "ARCH-081 Coordinate Relativity Live CDP Test",
+  "designViewport": {
+    "width": 930,
+    "height": 865
+  },
+  "testPoints": [
+    {
+      "name": "Center",
+      "rx": 0.5,
+      "ry": 0.5
+    },
+    {
+      "name": "Top-Left 25%",
+      "rx": 0.25,
+      "ry": 0.25
+    },
+    {
+      "name": "Top-Right",
+      "rx": 0.75,
+      "ry": 0.25
+    },
+    {
+      "name": "Bot-Left",
+      "rx": 0.25,
+      "ry": 0.75
+    },
+    {
+      "name": "Bot-Right",
+      "rx": 0.75,
+      "ry": 0.75
+    },
+    {
+      "name": "FK Account",
+      "rx": 0.4946,
+      "ry": 0.4243
+    },
+    {
+      "name": "FK Login Btn",
+      "rx": 0.5946,
+      "ry": 0.6555
+    },
+    {
+      "name": "FK Spin",
+      "rx": 0.9247,
+      "ry": 0.7572
+    }
+  ],
+  "results": [
+    {
+      "viewport": "Design (930x865)",
+      "dimensions": "930x865",
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 930,
+        "height": 865
+      },
+      "pointsInBounds": 8,
+      "totalPoints": 8,
+      "screenshot": "C:\\P4NTH30N\\H4ND\\tools\\recorder\\sessions\\relativity-test\\001_relativity-930x865.png",
+      "points": [
+        {
+          "name": "Center",
+          "rx": 0.5,
+          "ry": 0.5,
+          "expectedDesignX": 465,
+          "expectedDesignY": 432,
+          "actualX": 465,
+          "actualY": 433,
+          "withinCanvas": true
+        },
+        {
+          "name": "Top-Left 25%",
+          "rx": 0.25,
+          "ry": 0.25,
+          "expectedDesignX": 232,
+          "expectedDesignY": 216,
+          "actualX": 233,
+          "actualY": 216,
+          "withinCanvas": true
+        },
+        {
+          "name": "Top-Right",
+          "rx": 0.75,
+          "ry": 0.25,
+          "expectedDesignX": 697,
+          "expectedDesignY": 216,
+          "actualX": 698,
+          "actualY": 216,
+          "withinCanvas": true
+        },
+        {
+          "name": "Bot-Left",
+          "rx": 0.25,
+          "ry": 0.75,
+          "expectedDesignX": 232,
+          "expectedDesignY": 648,
+          "actualX": 233,
+          "actualY": 649,
+          "withinCanvas": true
+        },
+        {
+          "name": "Bot-Right",
+          "rx": 0.75,
+          "ry": 0.75,
+          "expectedDesignX": 697,
+          "expectedDesignY": 648,
+          "actualX": 698,
+          "actualY": 649,
+          "withinCanvas": true
+        },
+        {
+          "name": "FK Account",
+          "rx": 0.4946,
+          "ry": 0.4243,
+          "expectedDesignX": 460,
+          "expectedDesignY": 367,
+          "actualX": 460,
+          "actualY": 367,
+          "withinCanvas": true
+        },
+        {
+          "name": "FK Login Btn",
+          "rx": 0.5946,
+          "ry": 0.6555,
+          "expectedDesignX": 553,
+          "expectedDesignY": 567,
+          "actualX": 553,
+          "actualY": 567,
+          "withinCanvas": true
+        },
+        {
+          "name": "FK Spin",
+          "rx": 0.9247,
+          "ry": 0.7572,
+          "expectedDesignX": 860,
+          "expectedDesignY": 655,
+          "actualX": 860,
+          "actualY": 655,
+          "withinCanvas": true
+        }
+      ]
+    },
+    {
+      "viewport": "HD (1280x720)",
+      "dimensions": "1280x720",
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1280,
+        "height": 720
+      },
+      "pointsInBounds": 8,
+      "totalPoints": 8,
+      "screenshot": "C:\\P4NTH30N\\H4ND\\tools\\recorder\\sessions\\relativity-test\\002_relativity-1280x720.png",
+      "points": [
+        {
+          "name": "Center",
+          "rx": 0.5,
+          "ry": 0.5,
+          "expectedDesignX": 465,
+          "expectedDesignY": 432,
+          "actualX": 640,
+          "actualY": 360,
+          "withinCanvas": true
+        },
+        {
+          "name": "Top-Left 25%",
+          "rx": 0.25,
+          "ry": 0.25,
+          "expectedDesignX": 232,
+          "expectedDesignY": 216,
+          "actualX": 320,
+          "actualY": 180,
+          "withinCanvas": true
+        },
+        {
+          "name": "Top-Right",
+          "rx": 0.75,
+          "ry": 0.25,
+          "expectedDesignX": 697,
+          "expectedDesignY": 216,
+          "actualX": 960,
+          "actualY": 180,
+          "withinCanvas": true
+        },
+        {
+          "name": "Bot-Left",
+          "rx": 0.25,
+          "ry": 0.75,
+          "expectedDesignX": 232,
+          "expectedDesignY": 648,
+          "actualX": 320,
+          "actualY": 540,
+          "withinCanvas": true
+        },
+        {
+          "name": "Bot-Right",
+          "rx": 0.75,
+          "ry": 0.75,
+          "expectedDesignX": 697,
+          "expectedDesignY": 648,
+          "actualX": 960,
+          "actualY": 540,
+          "withinCanvas": true
+        },
+        {
+          "name": "FK Account",
+          "rx": 0.4946,
+          "ry": 0.4243,
+          "expectedDesignX": 460,
+          "expectedDesignY": 367,
+          "actualX": 633,
+          "actualY": 305,
+          "withinCanvas": true
+        },
+        {
+          "name": "FK Login Btn",
+          "rx": 0.5946,
+          "ry": 0.6555,
+          "expectedDesignX": 553,
+          "expectedDesignY": 567,
+          "actualX": 761,
+          "actualY": 472,
+          "withinCanvas": true
+        },
+        {
+          "name": "FK Spin",
+          "rx": 0.9247,
+          "ry": 0.7572,
+          "expectedDesignX": 860,
+          "expectedDesignY": 655,
+          "actualX": 1184,
+          "actualY": 545,
+          "withinCanvas": true
+        }
+      ]
+    },
+    {
+      "viewport": "FHD (1920x1080)",
+      "dimensions": "1920x1080",
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 1080
+      },
+      "pointsInBounds": 8,
+      "totalPoints": 8,
+      "screenshot": "C:\\P4NTH30N\\H4ND\\tools\\recorder\\sessions\\relativity-test\\003_relativity-1920x1080.png",
+      "points": [
+        {
+          "name": "Center",
+          "rx": 0.5,
+          "ry": 0.5,
+          "expectedDesignX": 465,
+          "expectedDesignY": 432,
+          "actualX": 960,
+          "actualY": 540,
+          "withinCanvas": true
+        },
+        {
+          "name": "Top-Left 25%",
+          "rx": 0.25,
+          "ry": 0.25,
+          "expectedDesignX": 232,
+          "expectedDesignY": 216,
+          "actualX": 480,
+          "actualY": 270,
+          "withinCanvas": true
+        },
+        {
+          "name": "Top-Right",
+          "rx": 0.75,
+          "ry": 0.25,
+          "expectedDesignX": 697,
+          "expectedDesignY": 216,
+          "actualX": 1440,
+          "actualY": 270,
+          "withinCanvas": true
+        },
+        {
+          "name": "Bot-Left",
+          "rx": 0.25,
+          "ry": 0.75,
+          "expectedDesignX": 232,
+          "expectedDesignY": 648,
+          "actualX": 480,
+          "actualY": 810,
+          "withinCanvas": true
+        },
+        {
+          "name": "Bot-Right",
+          "rx": 0.75,
+          "ry": 0.75,
+          "expectedDesignX": 697,
+          "expectedDesignY": 648,
+          "actualX": 1440,
+          "actualY": 810,
+          "withinCanvas": true
+        },
+        {
+          "name": "FK Account",
+          "rx": 0.4946,
+          "ry": 0.4243,
+          "expectedDesignX": 460,
+          "expectedDesignY": 367,
+          "actualX": 950,
+          "actualY": 458,
+          "withinCanvas": true
+        },
+        {
+          "name": "FK Login Btn",
+          "rx": 0.5946,
+          "ry": 0.6555,
+          "expectedDesignX": 553,
+          "expectedDesignY": 567,
+          "actualX": 1142,
+          "actualY": 708,
+          "withinCanvas": true
+        },
+        {
+          "name": "FK Spin",
+          "rx": 0.9247,
+          "ry": 0.7572,
+          "expectedDesignX": 860,
+          "expectedDesignY": 655,
+          "actualX": 1775,
+          "actualY": 818,
+          "withinCanvas": true
+        }
+      ]
+    },
+    {
+      "viewport": "Small (800x600)",
+      "dimensions": "800x600",
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 800,
+        "height": 600
+      },
+      "pointsInBounds": 8,
+      "totalPoints": 8,
+      "screenshot": "C:\\P4NTH30N\\H4ND\\tools\\recorder\\sessions\\relativity-test\\004_relativity-800x600.png",
+      "points": [
+        {
+          "name": "Center",
+          "rx": 0.5,
+          "ry": 0.5,
+          "expectedDesignX": 465,
+          "expectedDesignY": 432,
+          "actualX": 400,
+          "actualY": 300,
+          "withinCanvas": true
+        },
+        {
+          "name": "Top-Left 25%",
+          "rx": 0.25,
+          "ry": 0.25,
+          "expectedDesignX": 232,
+          "expectedDesignY": 216,
+          "actualX": 200,
+          "actualY": 150,
+          "withinCanvas": true
+        },
+        {
+          "name": "Top-Right",
+          "rx": 0.75,
+          "ry": 0.25,
+          "expectedDesignX": 697,
+          "expectedDesignY": 216,
+          "actualX": 600,
+          "actualY": 150,
+          "withinCanvas": true
+        },
+        {
+          "name": "Bot-Left",
+          "rx": 0.25,
+          "ry": 0.75,
+          "expectedDesignX": 232,
+          "expectedDesignY": 648,
+          "actualX": 200,
+          "actualY": 450,
+          "withinCanvas": true
+        },
+        {
+          "name": "Bot-Right",
+          "rx": 0.75,
+          "ry": 0.75,
+          "expectedDesignX": 697,
+          "expectedDesignY": 648,
+          "actualX": 600,
+          "actualY": 450,
+          "withinCanvas": true
+        },
+        {
+          "name": "FK Account",
+          "rx": 0.4946,
+          "ry": 0.4243,
+          "expectedDesignX": 460,
+          "expectedDesignY": 367,
+          "actualX": 396,
+          "actualY": 255,
+          "withinCanvas": true
+        },
+        {
+          "name": "FK Login Btn",
+          "rx": 0.5946,
+          "ry": 0.6555,
+          "expectedDesignX": 553,
+          "expectedDesignY": 567,
+          "actualX": 476,
+          "actualY": 393,
+          "withinCanvas": true
+        },
+        {
+          "name": "FK Spin",
+          "rx": 0.9247,
+          "ry": 0.7572,
+          "expectedDesignX": 860,
+          "expectedDesignY": 655,
+          "actualX": 740,
+          "actualY": 454,
+          "withinCanvas": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "totalPoints": 32,
+    "totalInBounds": 32,
+    "passRate": "100.0%",
+    "allPass": true
+  }
+}

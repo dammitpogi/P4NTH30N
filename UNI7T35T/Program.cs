@@ -1,4 +1,9 @@
 using P4NTH30N.UNI7T35T.Tests;
+using P4NTH30N.UNI7T35T.Stability;
+using P4NTH30N.UNI7T35T.Sampling;
+using P4NTH30N.UNI7T35T.PostProcessing;
+using P4NTH30N.UNI7T35T.Quality;
+using P4NTH30N.UNI7T35T.Integration;
 using UNI7T35T.Mocks;
 using UNI7T35T.Tests;
 using P4NTH35T.Tests;
@@ -310,6 +315,12 @@ class Program
 		totalTests += d075Passed + d075Failed;
 		passedTests += d075Passed;
 
+		// ── H0UND Weakpoint Audit Tests (AUDIT-076) ─────────────────────
+		Console.WriteLine("\nRunning H0UND Weakpoint Audit Tests (AUDIT-076)...\n");
+		(int wpPassed, int wpFailed) = H0UNDWeakpointAuditTests.RunAll();
+		totalTests += wpPassed + wpFailed;
+		passedTests += wpPassed;
+
 		// ── Canvas Login Tests (FireKirin Typing Fix) ─────────────────────
 		Console.WriteLine("\nRunning Canvas Login Tests (FireKirin Typing Fix)...\n");
 		try
@@ -324,6 +335,60 @@ class Program
 			totalTests++;
 			Console.WriteLine($"Canvas Login Test: EXCEPTION - {ex.Message}");
 		}
+
+		// ── DECISION_081: Canvas Typing Fix + Chrome Profile Isolation ────
+		Console.WriteLine("\nRunning DECISION_081 Tests (Canvas Typing + Chrome Profiles)...\n");
+		(int d081Passed, int d081Failed) = Decision081Tests.RunAll();
+		totalTests += d081Passed + d081Failed;
+		passedTests += d081Passed;
+
+		// ── DECISION_085/086: Vertical Stability Tests (Godahewa 2023) ──
+		Console.WriteLine("\nRunning Vertical Stability Tests (DECISION_085/086)...\n");
+		(int vsPassed, int vsFailed) = VerticalStabilityTests.RunAll();
+		totalTests += vsPassed + vsFailed;
+		passedTests += vsPassed;
+
+		// ── DECISION_085/086: Horizontal Stability Tests (Godahewa 2023) ─
+		Console.WriteLine("\nRunning Horizontal Stability Tests (DECISION_085/086)...\n");
+		(int hsPassed, int hsFailed) = HorizontalStabilityTests.RunAll();
+		totalTests += hsPassed + hsFailed;
+		passedTests += hsPassed;
+
+		// ── DECISION_085/086: Stochasticity Tests (Klee & Xia 2025) ─────
+		Console.WriteLine("\nRunning Stochasticity Tests (DECISION_085/086)...\n");
+		(int stPassed, int stFailed) = StochasticityTests.RunAll();
+		totalTests += stPassed + stFailed;
+		passedTests += stPassed;
+
+		// ── DECISION_086: Minimum Sampling Tests (Liu & Zhang 2019) ──────
+		Console.WriteLine("\nRunning Minimum Sampling Tests (DECISION_086)...\n");
+		(int msPassed, int msFailed) = MinimumSamplingTests.RunAll();
+		totalTests += msPassed + msFailed;
+		passedTests += msPassed;
+
+		// ── DECISION_086: Post-Processing Tests (Klee & Xia 2025) ────────
+		Console.WriteLine("\nRunning Post-Processing Tests (DECISION_086)...\n");
+		(int ppPassed, int ppFailed) = PostProcessingTests.RunAll();
+		totalTests += ppPassed + ppFailed;
+		passedTests += ppPassed;
+
+		// ── DECISION_086: Data Quality Tests (Hu et al. 2025) ────────────
+		Console.WriteLine("\nRunning Data Quality Tests (DECISION_086)...\n");
+		(int dqPassed, int dqFailed) = DataQualityTests.RunAll();
+		totalTests += dqPassed + dqFailed;
+		passedTests += dqPassed;
+
+		// ── DECISION_086: Burn-In Integration Scenario Tests ─────────────
+		Console.WriteLine("\nRunning Burn-In Scenario Tests (DECISION_086)...\n");
+		(int biPassed, int biFailed) = BurnInScenarioTests.RunAll();
+		totalTests += biPassed + biFailed;
+		passedTests += biPassed;
+
+		// ── DECISION_085: Display Pipeline Tests ───────────────────────────
+		Console.WriteLine("\nRunning Display Pipeline Tests (DECISION_085)...\n");
+		(int dpPassed, int dpFailed) = P4NTH30N.UNI7T35T.C0MMON.DisplayPipelineTests.RunAll();
+		totalTests += dpPassed + dpFailed;
+		passedTests += dpPassed;
 
 		// ── Summary ──────────────────────────────────────────────────────
 		Console.WriteLine("\n╔════════════════════════════════════════════════════════════════════╗");

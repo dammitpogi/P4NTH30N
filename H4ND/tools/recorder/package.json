@@ -1,0 +1,15 @@
+{
+  "name": "@p4nth30n/recorder",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "bun run recorder.ts",
+    "init": "bun run recorder.ts --init",
+    "step": "bun run recorder.ts --step",
+    "tui": "bun run recorder-tui.ts"
+  },
+  "dependencies": {
+    "@types/node": "^20.0.0",
+    "ws": "^8.19.0"
+  }
+}
