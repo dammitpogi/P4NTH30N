@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("P4NTH30N")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("0.8.5.6")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.8.5.6+72e493979ee05c5406154b5e04b1a8e4bb6e00d1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.8.5.6+e54621e4e068b8b043cca02ff5546ee68d5591cb")]
 [assembly: System.Reflection.AssemblyProductAttribute("P4NTH30N")]
 [assembly: System.Reflection.AssemblyTitleAttribute("P4NTH30N")]
 [assembly: System.Reflection.AssemblyVersionAttribute("0.8.5.6")]

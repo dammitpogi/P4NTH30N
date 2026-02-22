@@ -1,5 +1,5 @@
 ﻿{
-    "lastRun":  "2026-02-21T22:18:35.2209699-07:00",
+    "lastRun":  "2026-02-21T22:41:02.4869448-07:00",
     "ingested":  {
                      "c:\\p4nth30n\\str4teg15t\\speech\\20260221t2200_windfixer_activation_prompt.md":  {
                                                                                                             "ingestedAt":  "2026-02-21T19:55:43.0444474-07:00",
@@ -26,10 +26,10 @@
                                                                                                          "hash":  "E33E9E2585EF6DFE6853F71B8A52A3EA"
                                                                                                      },
                      "c:\\p4nth30n\\str4teg15t\\manifest\\manifest.json":  {
-                                                                               "ingestedAt":  "2026-02-21T22:02:02.8630831-07:00",
+                                                                               "ingestedAt":  "2026-02-21T22:41:02.4864417-07:00",
                                                                                "docType":  "manifest",
                                                                                "source":  "manifest/manifest.json",
-                                                                               "hash":  "4C4121EE997FE37456D56B0A82C1C457"
+                                                                               "hash":  "766044068B465327062B69D72E63718E"
                                                                            },
                      "c:\\p4nth30n\\str4teg15t\\speech\\20260220t0515windfixer_honest_report.md":  {
                                                                                                        "ingestedAt":  "2026-02-21T15:45:31.4428579-07:00",
@@ -205,12 +205,6 @@
                                                                                         "source":  "speech/20260217_Genesis_logs",
                                                                                         "hash":  "C7B498F78C1A110E3F9E76AB4E73C148"
                                                                                     },
-                     "c:\\p4nth30n\\op3nf1xer\\deployments\\journal_2026-02-21_rag_population.md":  {
-                                                                                                        "ingestedAt":  "2026-02-21T15:45:40.4586340-07:00",
-                                                                                                        "docType":  "deployment",
-                                                                                                        "source":  "deployments/JOURNAL_2026-02-21_RAG_Population.md",
-                                                                                                        "hash":  "F44641546B01AA16A4C5DC6DC28B72EB"
-                                                                                                    },
                      "c:\\p4nth30n\\str4teg15t\\decisions\\completed\\decision_084.md":  {
                                                                                              "ingestedAt":  "2026-02-21T19:12:57.5667076-07:00",
                                                                                              "docType":  "decision",
@@ -433,12 +427,12 @@
                                                                                           "source":  "decisions/active/DECISION_036.md",
                                                                                           "hash":  "E4F2A97E9DF6B260E444A37B5EE57E69"
                                                                                       },
-                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_053.md":  {
-                                                                                          "ingestedAt":  "2026-02-21T15:45:28.4681587-07:00",
-                                                                                          "docType":  "decision",
-                                                                                          "source":  "decisions/active/DECISION_053.md",
-                                                                                          "hash":  "1F0F36D8227D8705F60157E6EC6482B5"
-                                                                                      },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\journal_2026-02-21_mcp-infrastructure-status.md":  {
+                                                                                                                   "ingestedAt":  "2026-02-21T15:45:40.2000110-07:00",
+                                                                                                                   "docType":  "deployment",
+                                                                                                                   "source":  "deployments/JOURNAL_2026-02-21_MCP-INFRASTRUCTURE-STATUS.md",
+                                                                                                                   "hash":  "4404DD67417CEBFDA70206F6F569B6BA"
+                                                                                                               },
                      "c:\\p4nth30n\\str4teg15t\\decisions\\completed\\decision_086.md":  {
                                                                                              "ingestedAt":  "2026-02-21T20:23:52.8016898-07:00",
                                                                                              "docType":  "decision",
@@ -457,12 +451,12 @@
                                                                                                                "source":  "deployments/JOURNAL_2026-02-20_AGENT_WORKFLOW_UPDATE.md",
                                                                                                                "hash":  "09D9B4BB26A4133D3F5AF633F079E280"
                                                                                                            },
-                     "c:\\p4nth30n\\op3nf1xer\\deployments\\journal_2026-02-21_mcp-infrastructure-status.md":  {
-                                                                                                                   "ingestedAt":  "2026-02-21T15:45:40.2000110-07:00",
-                                                                                                                   "docType":  "deployment",
-                                                                                                                   "source":  "deployments/JOURNAL_2026-02-21_MCP-INFRASTRUCTURE-STATUS.md",
-                                                                                                                   "hash":  "4404DD67417CEBFDA70206F6F569B6BA"
-                                                                                                               },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\journal_2026-02-21_rag_population.md":  {
+                                                                                                        "ingestedAt":  "2026-02-21T15:45:40.4586340-07:00",
+                                                                                                        "docType":  "deployment",
+                                                                                                        "source":  "deployments/JOURNAL_2026-02-21_RAG_Population.md",
+                                                                                                        "hash":  "F44641546B01AA16A4C5DC6DC28B72EB"
+                                                                                                    },
                      "c:\\p4nth30n\\op3nf1xer\\deployments\\windfixer_research_package_064-067.md":  {
                                                                                                          "ingestedAt":  "2026-02-21T15:45:41.0530845-07:00",
                                                                                                          "docType":  "deployment",
@@ -481,6 +475,12 @@
                                                                                           "source":  "decisions/active/DECISION_063.md",
                                                                                           "hash":  "841FD32D39DF12547169225308872D62"
                                                                                       },
+                     "c:\\p4nth30n\\str4teg15t\\actions\\pending\\lm_studio_direction.md":  {
+                                                                                                "ingestedAt":  "2026-02-21T15:45:34.1535002-07:00",
+                                                                                                "docType":  "action",
+                                                                                                "source":  "actions/pending\\LM_STUDIO_DIRECTION.md",
+                                                                                                "hash":  "523D049B95241936ABE95081FA2B44BE"
+                                                                                            },
                      "c:\\p4nth30n\\c0mmon\\infrastructure\\persistence\\validatedmongorepository.cs":  {
                                                                                                             "ingestedAt":  "2026-02-21T15:45:43.5065830-07:00",
                                                                                                             "docType":  "pattern",
@@ -613,12 +613,12 @@
                                                                                                "source":  "decisions/active/QUICK_REF_064-067.md",
                                                                                                "hash":  "4F83BC6528DF665DAD80BCB5158C6455"
                                                                                            },
-                     "c:\\p4nth30n\\str4teg15t\\speech\\202602210800_the_completion.md":  {
-                                                                                              "ingestedAt":  "2026-02-20T21:13:14.4687867-07:00",
-                                                                                              "docType":  "speech",
-                                                                                              "source":  "speech/202602210800_THE_COMPLETION",
-                                                                                              "hash":  "671DF26386AE49B1AF7DFBC4B971BBC0"
-                                                                                          },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\20260221t1630_parallel_fixers_synthesis.md":  {
+                                                                                                          "ingestedAt":  "2026-02-21T00:20:45.8323955-07:00",
+                                                                                                          "docType":  "speech",
+                                                                                                          "source":  "speech/20260221T1630_PARALLEL_FIXERS_SYNTHESIS",
+                                                                                                          "hash":  "71155B01A5AB3978FCB8DC96FF000F66"
+                                                                                                      },
                      "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t15-00-00-oracle-final.md":  {
                                                                                                    "ingestedAt":  "2026-02-20T21:13:11.9114120-07:00",
                                                                                                    "docType":  "speech",
@@ -631,12 +631,6 @@
                                                                                              "source":  "speech/20260220_Session_Synthesis",
                                                                                              "hash":  "E247FB63A1E571937B0D7CA5A1C31BA3"
                                                                                          },
-                     "c:\\p4nth30n\\str4teg15t\\speech\\20260221t1630_parallel_fixers_synthesis.md":  {
-                                                                                                          "ingestedAt":  "2026-02-21T00:20:45.8323955-07:00",
-                                                                                                          "docType":  "speech",
-                                                                                                          "source":  "speech/20260221T1630_PARALLEL_FIXERS_SYNTHESIS",
-                                                                                                          "hash":  "71155B01A5AB3978FCB8DC96FF000F66"
-                                                                                                      },
                      "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_075.md":  {
                                                                                           "ingestedAt":  "2026-02-21T00:31:00.9117961-07:00",
                                                                                           "docType":  "decision",
@@ -1009,12 +1003,12 @@
                                                                                           "source":  "decisions/active/DECISION_069.md",
                                                                                           "hash":  "CD31192ECB5141F0BF55C79E79B807DC"
                                                                                       },
-                     "c:\\p4nth30n\\c0mmon\\infrastructure\\persistence\\analytics\\analyticsentities.cs":  {
-                                                                                                                "ingestedAt":  "2026-02-21T15:45:43.6566038-07:00",
-                                                                                                                "docType":  "pattern",
-                                                                                                                "source":  "codebase/Infrastructure/Persistence\\Analytics\\AnalyticsEntities.cs",
-                                                                                                                "hash":  "BF3E101A417AA8C5BA73A352173213BA"
-                                                                                                            },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_053.md":  {
+                                                                                          "ingestedAt":  "2026-02-21T15:45:28.4681587-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/DECISION_053.md",
+                                                                                          "hash":  "1F0F36D8227D8705F60157E6EC6482B5"
+                                                                                      },
                      "c:\\p4nth30n\\str4teg15t\\actions\\pending\\windfixer_canvas_typing_prompt.md":  {
                                                                                                            "ingestedAt":  "2026-02-21T15:45:36.0895461-07:00",
                                                                                                            "docType":  "action",
@@ -1075,6 +1069,12 @@
                                                                                       "source":  "speech/2026-02-18T13-00-00",
                                                                                       "hash":  "9B032062839ED3A664B0426359D5382C"
                                                                                   },
+                     "c:\\p4nth30n\\op3nf1xer\\deployments\\journal_2026-02-21_decision_088_dpd_fix.md":  {
+                                                                                                              "ingestedAt":  "2026-02-21T22:36:54.2325321-07:00",
+                                                                                                              "docType":  "deployment",
+                                                                                                              "source":  "deployments/JOURNAL_2026-02-21_DECISION_088_DPD_FIX.md",
+                                                                                                              "hash":  "80C644415BC9328B47B0A9CE7A5B9C3A"
+                                                                                                          },
                      "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_087.md":  {
                                                                                           "ingestedAt":  "2026-02-21T21:55:30.9991178-07:00",
                                                                                           "docType":  "decision",
@@ -1087,6 +1087,12 @@
                                                                                                   "source":  "speech/202602181930_Empirical_Findings",
                                                                                                   "hash":  "80BCC26BCCC6A0CF5B31B42B902B27BB"
                                                                                               },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602190500_windfixer_complete_openfixer_handoff.md":  {
+                                                                                                                    "ingestedAt":  "2026-02-20T21:13:13.2318252-07:00",
+                                                                                                                    "docType":  "speech",
+                                                                                                                    "source":  "speech/202602190500_WindFixer_Complete_OpenFixer_Handoff",
+                                                                                                                    "hash":  "76D8D204F5A0CBEC8742339A7E52CDEF"
+                                                                                                                },
                      "c:\\p4nth30n\\str4teg15t\\speech\\2026-02-18t22-15-00.md":  {
                                                                                       "ingestedAt":  "2026-02-20T21:13:12.7317566-07:00",
                                                                                       "docType":  "speech",
@@ -1465,12 +1471,12 @@
                                                                                                           "source":  "codebase/Infrastructure/Resilience\\ProactiveCircuitBreaker.cs",
                                                                                                           "hash":  "0921866154D06C5E2FB28618F3926A0E"
                                                                                                       },
-                     "c:\\p4nth30n\\str4teg15t\\actions\\pending\\lm_studio_direction.md":  {
-                                                                                                "ingestedAt":  "2026-02-21T15:45:34.1535002-07:00",
-                                                                                                "docType":  "action",
-                                                                                                "source":  "actions/pending\\LM_STUDIO_DIRECTION.md",
-                                                                                                "hash":  "523D049B95241936ABE95081FA2B44BE"
-                                                                                            },
+                     "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_088.md":  {
+                                                                                          "ingestedAt":  "2026-02-21T22:36:15.0264156-07:00",
+                                                                                          "docType":  "decision",
+                                                                                          "source":  "decisions/active/DECISION_088.md",
+                                                                                          "hash":  "A18CC29A0842305CD5FE9CF66CF443D6"
+                                                                                      },
                      "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_038.md":  {
                                                                                           "ingestedAt":  "2026-02-21T15:45:28.0411568-07:00",
                                                                                           "docType":  "decision",
@@ -1495,6 +1501,12 @@
                                                                             "source":  "config/AGENTS.md",
                                                                             "hash":  "FDC6796DFC872E88693ED4486AE1805F"
                                                                         },
+                     "c:\\p4nth30n\\c0mmon\\infrastructure\\persistence\\analytics\\analyticsentities.cs":  {
+                                                                                                                "ingestedAt":  "2026-02-21T15:45:43.6566038-07:00",
+                                                                                                                "docType":  "pattern",
+                                                                                                                "source":  "codebase/Infrastructure/Persistence\\Analytics\\AnalyticsEntities.cs",
+                                                                                                                "hash":  "BF3E101A417AA8C5BA73A352173213BA"
+                                                                                                            },
                      "c:\\p4nth30n\\c0mmon\\infrastructure\\eventbus\\ieventbus.cs":  {
                                                                                           "ingestedAt":  "2026-02-21T15:45:42.8941146-07:00",
                                                                                           "docType":  "pattern",
@@ -1657,6 +1669,12 @@
                                                                                                      "source":  "actions/pending\\WINDSURF_PROMPT_VARIANTS.md",
                                                                                                      "hash":  "F822CCC6BAAA2E08C6BD01D62BD5915F"
                                                                                                  },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602192500_commands_executed_complete.md":  {
+                                                                                                          "ingestedAt":  "2026-02-20T21:13:13.5626066-07:00",
+                                                                                                          "docType":  "speech",
+                                                                                                          "source":  "speech/202602192500_Commands_Executed_Complete",
+                                                                                                          "hash":  "985B48509DE6C00CA3F4B4ED1650726A"
+                                                                                                      },
                      "c:\\p4nth30n\\str4teg15t\\decisions\\active\\decision_072.md":  {
                                                                                           "ingestedAt":  "2026-02-21T15:45:29.2127838-07:00",
                                                                                           "docType":  "decision",
@@ -1843,12 +1861,12 @@
                                                                                           "source":  "decisions/active/DECISION_064.md",
                                                                                           "hash":  "E344B8FE88F2FBD39C87795D4F5916F7"
                                                                                       },
-                     "c:\\p4nth30n\\str4teg15t\\speech\\202602190500_windfixer_complete_openfixer_handoff.md":  {
-                                                                                                                    "ingestedAt":  "2026-02-20T21:13:13.2318252-07:00",
-                                                                                                                    "docType":  "speech",
-                                                                                                                    "source":  "speech/202602190500_WindFixer_Complete_OpenFixer_Handoff",
-                                                                                                                    "hash":  "76D8D204F5A0CBEC8742339A7E52CDEF"
-                                                                                                                },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602212330_decision_088_dpd_fix.md":  {
+                                                                                                    "ingestedAt":  "2026-02-21T22:41:01.9777672-07:00",
+                                                                                                    "docType":  "speech",
+                                                                                                    "source":  "speech/202602212330_DECISION_088_DPD_FIX.md",
+                                                                                                    "hash":  "1B48570AF5F0CCEC12C687230CC5A364"
+                                                                                                },
                      "c:\\p4nth30n\\str4teg15t\\speech\\20260220t0515_windfixer_session_results.md":  {
                                                                                                           "ingestedAt":  "2026-02-20T21:13:13.8314489-07:00",
                                                                                                           "docType":  "speech",
@@ -1939,12 +1957,12 @@
                                                                                                   "source":  "speech/202602210900_WINDFIXER_BUILDING",
                                                                                                   "hash":  "BE0D2B30D6AF435FA8BAFB0DBC3A2CE3"
                                                                                               },
-                     "c:\\p4nth30n\\str4teg15t\\speech\\202602192500_commands_executed_complete.md":  {
-                                                                                                          "ingestedAt":  "2026-02-20T21:13:13.5626066-07:00",
-                                                                                                          "docType":  "speech",
-                                                                                                          "source":  "speech/202602192500_Commands_Executed_Complete",
-                                                                                                          "hash":  "985B48509DE6C00CA3F4B4ED1650726A"
-                                                                                                      },
+                     "c:\\p4nth30n\\str4teg15t\\speech\\202602210800_the_completion.md":  {
+                                                                                              "ingestedAt":  "2026-02-20T21:13:14.4687867-07:00",
+                                                                                              "docType":  "speech",
+                                                                                              "source":  "speech/202602210800_THE_COMPLETION",
+                                                                                              "hash":  "671DF26386AE49B1AF7DFBC4B971BBC0"
+                                                                                          },
                      "c:\\p4nth30n\\op3nf1xer\\deployments\\ops-jp-002-status-report.md":  {
                                                                                                "ingestedAt":  "2026-02-21T15:45:40.5721079-07:00",
                                                                                                "docType":  "deployment",

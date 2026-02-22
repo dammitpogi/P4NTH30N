@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OP3NF1XER")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("0.8.5.6")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.8.5.6+b13c7a88533eca073059eade3c15ae9a897e4690")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.8.5.6+e54621e4e068b8b043cca02ff5546ee68d5591cb")]
 [assembly: System.Reflection.AssemblyProductAttribute("OP3NF1XER")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OP3NF1XER")]
 [assembly: System.Reflection.AssemblyVersionAttribute("0.8.5.6")]

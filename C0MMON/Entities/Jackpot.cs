@@ -134,16 +134,31 @@ public class Jackpot
 		Threshold = threshold;
 		_id = ObjectId.GenerateNewId();
 		LastUpdated = DateTime.UtcNow;
-		EstimatedDate = eta;
 
-		DPD.Data.Add(new DPD_Data(credential.Jackpots.Grand, credential.Jackpots.Major, credential.Jackpots.Minor, credential.Jackpots.Mini));
+		// FIX: Use the ETA provided by ForecastingService (calculated from real DPD data).
+		// Previously, the constructor overwrote this with its own DPM-based calculation that
+		// always failed because DPD is freshly initialized here with only 1 data point,
+		// causing every jackpot to get the same 7-day default estimate.
+		EstimatedDate = eta;
+	}
+
+	/// <summary>
+	/// Recalculates tier-specific DPM values and optionally refines EstimatedDate
+	/// using the populated DPD data. Call this AFTER assigning real DPD data
+	/// (e.g., jackpot.DPD = existing.DPD) so the calculation has sufficient data points.
+	/// </summary>
+	public void RecalculateFromDPD(DateTime credentialLastUpdated)
+	{
 		double fallbackDPM = DPD.Average > 0 ? DPD.Average / TimeSpan.FromDays(1).TotalMinutes : 0;
 
-		// Initialize tier DPMs
+		// Initialize tier DPMs from overall DPD average
 		GrandDPM = fallbackDPM;
 		MajorDPM = fallbackDPM;
 		MinorDPM = fallbackDPM;
 		MiniDPM = fallbackDPM;
+
+		if (DPD.Data.Count < 2)
+			return;
 
 		// Get tier-specific DPD data for last 24 hours
 		List<DPD_Data> dataZoom24h = DPD.Data.FindAll(x => x.Timestamp > DateTime.UtcNow.AddDays(-1)).OrderBy(x => x.Timestamp).ToList();
@@ -151,8 +166,8 @@ public class Jackpot
 		// Get tier-specific DPD data for last 8 hours
 		List<DPD_Data> dataZoom8h = DPD.Data.FindAll(x => x.Timestamp > DateTime.UtcNow.AddHours(-8)).OrderBy(x => x.Timestamp).ToList();
 
-		// Calculate per-tier DPM
-		if (dataZoom24h.Count >= 2 && eta < DateTime.UtcNow.AddDays(3))
+		// Calculate per-tier DPM from 24h window
+		if (dataZoom24h.Count >= 2 && EstimatedDate < DateTime.UtcNow.AddDays(3))
 		{
 			GrandDPM = CalculateTierDPM(dataZoom24h, "Grand", fallbackDPM);
 			MajorDPM = CalculateTierDPM(dataZoom24h, "Major", fallbackDPM);
@@ -160,8 +175,8 @@ public class Jackpot
 			MiniDPM = CalculateTierDPM(dataZoom24h, "Mini", fallbackDPM);
 		}
 
-		// Recalculate with 8-hour data if more recent and within time window
-		if (dataZoom8h.Count >= 2 && eta < DateTime.UtcNow.AddHours(4))
+		// Refine with 8-hour data if more recent and within time window
+		if (dataZoom8h.Count >= 2 && EstimatedDate < DateTime.UtcNow.AddHours(4))
 		{
 			GrandDPM = CalculateTierDPM(dataZoom8h, "Grand", GrandDPM);
 			MajorDPM = CalculateTierDPM(dataZoom8h, "Major", MajorDPM);
@@ -179,28 +194,24 @@ public class Jackpot
 			_ => fallbackDPM,
 		};
 
-		// Calculate estimated growth using tier-specific DPM
-		double estimatedGrowth = DateTime.UtcNow.Subtract(credential.LastUpdated).TotalMinutes * tierDPM;
-		double MinutesToJackpot = Math.Max((threshold - (current + estimatedGrowth)) / tierDPM, 0);
-
-		// DECISION_085: Ensure non-negative and valid minutes
-		if (double.IsNaN(MinutesToJackpot) || double.IsInfinity(MinutesToJackpot) || MinutesToJackpot < 0)
+		// Only refine ETA if we have a meaningful tier-specific DPM
+		if (tierDPM > 1e-9)
 		{
-			MinutesToJackpot = DefaultEstimateMinutes;
+			double estimatedGrowth = DateTime.UtcNow.Subtract(credentialLastUpdated).TotalMinutes * tierDPM;
+			double minutesToJackpot = Math.Max((Threshold - (Current + estimatedGrowth)) / tierDPM, 0);
+
+			if (!double.IsNaN(minutesToJackpot) && !double.IsInfinity(minutesToJackpot) && minutesToJackpot >= 0)
+			{
+				minutesToJackpot = CapMinutesToSafeRange(minutesToJackpot);
+				DateTime refined = DateTime.UtcNow.AddMinutes(minutesToJackpot);
+
+				// Only use the refined ETA if it's valid (not in the past)
+				if (refined >= DateTime.UtcNow)
+				{
+					EstimatedDate = refined;
+				}
+			}
 		}
-
-		// Protect against DateTime overflow: cap minutes to safe maximum
-		MinutesToJackpot = CapMinutesToSafeRange(MinutesToJackpot);
-		EstimatedDate = DateTime.UtcNow.AddMinutes(MinutesToJackpot);
-
-		// DECISION_085: Final guard - never allow past dates (graceful degradation layer)
-		if (EstimatedDate < DateTime.UtcNow)
-		{
-			EstimatedDate = DateTime.UtcNow.AddMinutes(DefaultEstimateMinutes);
-		}
-
-		// Update Current with estimated growth
-		Current = current + estimatedGrowth;
 	}
 
 	/// <summary>

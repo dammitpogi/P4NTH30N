@@ -99,6 +99,10 @@ public static class ForecastingService
 			{
 				jackpot._id = existing._id;
 				jackpot.DPD = existing.DPD;
+
+				// FIX: Recalculate tier-specific DPM values now that real DPD data is populated.
+				// Must happen AFTER DPD assignment so the calculation has sufficient data points.
+				jackpot.RecalculateFromDPD(cred.LastUpdated);
 			}
 
 			uow.Jackpots.Upsert(jackpot);

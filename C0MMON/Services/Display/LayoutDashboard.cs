@@ -310,7 +310,7 @@ public sealed class LayoutDashboard
 						$"[{style}]{Markup.Escape(e.Game)}[/]",
 						tierMk,
 						$"[{style}]{e.ETADisplay}[/]",
-						$"[white]{e.Current:N0}[/]",
+						$"[white]{e.Current:F2}[/]",
 						$"[grey]{e.Threshold:N0}[/]",
 						pct
 					);

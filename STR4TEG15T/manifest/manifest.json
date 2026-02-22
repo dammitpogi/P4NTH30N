@@ -760,9 +760,55 @@
 				"emotion": "The pride of orchestration. The fire of parallel purpose. The certainty that together we breach what alone we cannot."
 			},
 			"synthesized": false
+		},
+		{
+			"roundId": "R036",
+			"timestamp": "2026-02-21T23:30:00Z",
+			"sessionContext": "DECISION_088 critical DPD formula bug fix - OpenFixer execution",
+			"agent": "OpenFixer",
+			"summary": "Fixed critical DPD formula bug where Jackpot constructor overwrote ForecastingService ETA. Root cause: Constructor created fresh DPD with 1 data point (needs 2+), all DPM calculations failed, division by zero resulted in Infinity, caught by guard and defaulted to 10080 minutes (7 days). Every jackpot showed identical date regardless of actual DPD data. Fix: Simplified constructor to respect eta parameter, extracted RecalculateFromDPD() method called after real DPD assignment. Files modified: C0MMON/Entities/Jackpot.cs (constructor simplified, new method), H0UND/Domain/Forecasting/ForecastingService.cs (added RecalculateFromDPD call). Build: 0 errors, 0 warnings across all 3 projects.",
+			"decisions": {
+				"created": [
+					{
+						"id": "DECISION_088",
+						"title": "Fix DPD Formula: Jackpot Constructor Overwrites ForecastingService ETA",
+						"category": "Bug Fix",
+						"priority": "Critical",
+						"status": "Completed",
+						"approval": "Direct Nexus Request",
+						"files": ["Jackpot.cs", "ForecastingService.cs"]
+					}
+				],
+				"completed": [
+					{
+						"id": "DECISION_088",
+						"title": "Fix DPD Formula: Jackpot Constructor Overwrites ForecastingService ETA",
+						"status": "Completed",
+						"validation": "Build 0 errors 0 warnings, constructor fix verified"
+					}
+				]
+			},
+			"metrics": {
+				"anomaliesFound": 4,
+				"criticalBugsFixed": 1,
+				"filesModified": 2,
+				"linesChanged": 88,
+				"buildErrors": 0,
+				"buildWarnings": 0,
+				"projectsVerified": 3
+			},
+			"narrative": {
+				"tone": "triumphant",
+				"theme": "The smoking gun found and extinguished. The bug that made every jackpot lie about its date is dead.",
+				"keyMoment": "When OpenFixer traced the execution and found line 194: the constructor overwriting the good ETA with DateTime.UtcNow + 7 days every single time.",
+				"emotion": "The satisfaction of a root cause identified and eliminated. What was broken is now whole."
+			},
+			"synthesized": true
 		}
 	],
-	"lastSynthesized": "2026-02-21T20:00:00Z"
+	"lastUpdated": "2026-02-22T00:30:00Z",
+	"lastReconciled": "2026-02-22T00:30:00Z",
+	"lastSynthesized": "2026-02-22T00:30:00Z"
 }
 ,
 		{
