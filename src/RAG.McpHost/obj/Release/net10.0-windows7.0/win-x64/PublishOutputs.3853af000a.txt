@@ -1,5 +1,0 @@
-C:\ProgramData\P4NTH30N\bin-new\RAG.McpHost.pdb
-C:\ProgramData\P4NTH30N\bin-new\onnxruntime.lib
-C:\ProgramData\P4NTH30N\bin-new\onnxruntime_providers_shared.lib
-C:\ProgramData\P4NTH30N\bin-new\RAG.pdb
-C:\ProgramData\P4NTH30N\bin-new\RAG.McpHost.exe

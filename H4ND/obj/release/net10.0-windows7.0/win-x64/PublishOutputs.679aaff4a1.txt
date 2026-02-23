@@ -1,3 +1,0 @@
-c:\P4NTH30N\publish\h4nd-vm\H4ND.pdb
-c:\P4NTH30N\publish\h4nd-vm\C0MMON.pdb
-c:\P4NTH30N\publish\h4nd-vm\H4ND.exe
