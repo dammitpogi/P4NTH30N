@@ -104,6 +104,33 @@ public sealed class CdpHealthCheck
 			}
 		}
 
+		// Check 5: DOM validation - ensure renderer is actually producing content
+		// CRIT-103: Blank pages should fail health checks
+		if (cdp != null && status.WebSocketHandshakeOk)
+		{
+			try
+			{
+				// Check if document has a valid body with content
+				string? domCheck = await cdp.EvaluateAsync<string>(
+					"(document.body && document.body.innerHTML && document.body.innerHTML.length > 0) ? 'has-content' : 'empty'",
+					cancellationToken);
+
+				status.HasDomContent = domCheck == "has-content";
+				Console.WriteLine($"[CdpHealthCheck] DOM content check: {(status.HasDomContent ? "OK (has content)" : "FAIL (empty or no body)")}");
+
+				if (!status.HasDomContent)
+				{
+					status.Errors.Add("DOM validation failed: Page has no content (blank page detected)");
+				}
+			}
+			catch (Exception ex)
+			{
+				status.HasDomContent = false;
+				status.Errors.Add($"DOM validation failed: {ex.Message}");
+				LogException(ex, "DOM validation");
+			}
+		}
+
 		// Cleanup
 		if (cdp != null)
 		{
@@ -117,7 +144,12 @@ public sealed class CdpHealthCheck
 		sw.Stop();
 		status.TotalCheckDurationMs = sw.Elapsed.TotalMilliseconds;
 		status.CheckedAt = DateTime.UtcNow;
+		// CRIT-103: Include DOM content check in overall health (only if WebSocket is connected)
 		status.IsHealthy = status.HttpVersionOk && status.WebSocketHandshakeOk && status.RoundTripOk;
+		if (status.WebSocketHandshakeOk && !status.HasDomContent)
+		{
+			status.IsHealthy = false;
+		}
 
 		Console.WriteLine($"[CdpHealthCheck] Overall: {(status.IsHealthy ? "HEALTHY" : "UNHEALTHY")} ({status.TotalCheckDurationMs:F0}ms)");
 		return status;
@@ -142,11 +174,12 @@ public sealed class CdpHealthStatus
 	public bool WebSocketHandshakeOk { get; set; }
 	public bool RoundTripOk { get; set; }
 	public bool LoginFlowOk { get; set; }
+	public bool HasDomContent { get; set; }  // CRIT-103: DOM validation for blank page detection
 	public double RoundTripLatencyMs { get; set; }
 	public double TotalCheckDurationMs { get; set; }
 	public string? BrowserVersion { get; set; }
 	public DateTime CheckedAt { get; set; } = DateTime.UtcNow;
 	public List<string> Errors { get; set; } = new();
 
-	public string Summary => $"HTTP={HttpVersionOk}, WS={WebSocketHandshakeOk}, RT={RoundTripOk} ({RoundTripLatencyMs:F1}ms), Login={LoginFlowOk}";
+	public string Summary => $"HTTP={HttpVersionOk}, WS={WebSocketHandshakeOk}, RT={RoundTripOk} ({RoundTripLatencyMs:F1}ms), Login={LoginFlowOk}, DOM={HasDomContent}";
 }

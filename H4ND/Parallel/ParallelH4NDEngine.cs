@@ -2,6 +2,7 @@ using System.Threading.Channels;
 using P4NTH30N.C0MMON;
 using P4NTH30N.C0MMON.Infrastructure.Cdp;
 using P4NTH30N.H4ND.Infrastructure;
+using P4NTH30N.H4ND.Navigation;
 using P4NTH30N.H4ND.Services;
 
 namespace P4NTH30N.H4ND.Parallel;
@@ -22,9 +23,11 @@ public sealed class ParallelH4NDEngine : IDisposable
 	private readonly SessionRenewalService? _sessionRenewal;
 	private readonly GameSelectorConfig? _selectorConfig;
 	private readonly ICdpLifecycleManager? _cdpLifecycle;
+	private readonly ChromeProfileManager? _profileManager;
 	private CancellationTokenSource? _cts;
 	private Task? _distributorTask;
 	private WorkerPool? _workerPool;
+	private CdpResourceCoordinator? _resourceCoordinator;
 	private bool _disposed;
 
 	public ParallelMetrics Metrics => _metrics;
@@ -40,7 +43,8 @@ public sealed class ParallelH4NDEngine : IDisposable
 		ParallelConfig config,
 		SessionRenewalService? sessionRenewal = null,
 		GameSelectorConfig? selectorConfig = null,
-		ICdpLifecycleManager? cdpLifecycle = null)
+		ICdpLifecycleManager? cdpLifecycle = null,
+		ChromeProfileManager? profileManager = null)
 	{
 		_uow = uow;
 		_cdpConfig = cdpConfig;
@@ -48,6 +52,7 @@ public sealed class ParallelH4NDEngine : IDisposable
 		_sessionRenewal = sessionRenewal;
 		_selectorConfig = selectorConfig;
 		_cdpLifecycle = cdpLifecycle;
+		_profileManager = profileManager;
 		_metrics = new ParallelMetrics();
 		_spinMetrics = new SpinMetrics();
 	}
@@ -95,7 +100,12 @@ public sealed class ParallelH4NDEngine : IDisposable
 
 		_distributorTask = Task.Run(() => distributor.RunAsync(_cts.Token), _cts.Token);
 
+		_resourceCoordinator = new CdpResourceCoordinator(_config.MaxConcurrentCdpOperations);
+
 		// Start worker pool (consumers) — ARCH-055: inject self-healing deps
+		NavigationMapLoader mapLoader = new();
+		var stepExecutor = StepExecutor.CreateDefault();
+
 		_workerPool = new WorkerPool(
 			_config.WorkerCount,
 			channel.Reader,
@@ -105,7 +115,11 @@ public sealed class ParallelH4NDEngine : IDisposable
 			_metrics,
 			_sessionRenewal,
 			_selectorConfig,
-			_config.MaxSignalsPerWorker);
+			_config.MaxSignalsPerWorker,
+			_resourceCoordinator,
+			_profileManager,
+			mapLoader,
+			stepExecutor);
 
 		await _workerPool.StartAsync(_cts.Token);
 
@@ -158,6 +172,11 @@ public sealed class ParallelH4NDEngine : IDisposable
 				{
 					Console.WriteLine("[ParallelEngine] WARNING: Success rate below 50% — consider fallback to sequential mode");
 				}
+
+				if (_metrics.SpinsAttempted > 10 && _metrics.P95SpinLatencyMs > _config.TargetP95LatencyMs)
+				{
+					Console.WriteLine($"[ParallelEngine] WARNING: p95 latency {_metrics.P95SpinLatencyMs:F0}ms exceeds target {_config.TargetP95LatencyMs:F0}ms");
+				}
 			}
 			catch (OperationCanceledException)
 			{
@@ -172,7 +191,9 @@ public sealed class ParallelH4NDEngine : IDisposable
 		_disposed = true;
 		_cts?.Cancel();
 		_workerPool?.Dispose();
+		_resourceCoordinator?.Dispose();
 		_cts?.Dispose();
+		_profileManager?.Dispose();
 	}
 }
 
@@ -187,4 +208,7 @@ public sealed class ParallelConfig
 	public int MaxSignalsPerWorker { get; set; } = 100;
 	public double PollIntervalSeconds { get; set; } = 1.0;
 	public bool ShadowMode { get; set; } = false;
+	public int MaxConcurrentCdpOperations { get; set; } = 1;
+	public double TargetP95LatencyMs { get; set; } = 3500;
+	public double TargetThroughputPerMinute { get; set; } = 5.0;
 }

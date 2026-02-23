@@ -51,3 +51,12 @@ Releases/
 # Test results with screenshots
 test-results/
 verify-screenshot.png
+
+# Build artifacts
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo

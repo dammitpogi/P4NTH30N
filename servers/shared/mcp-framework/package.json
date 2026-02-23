@@ -1,0 +1,30 @@
+{
+  "name": "@p4nth30n/mcp-framework",
+  "version": "2.0.0",
+  "description": "Shared MCP server framework for P4NTH30N v2 servers",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@fastify/cors": "10.0.2",
+    "fastify": "5.2.1",
+    "fastify-plugin": "5.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "24.3.0",
+    "typescript": "5.9.2",
+    "vitest": "3.2.4"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

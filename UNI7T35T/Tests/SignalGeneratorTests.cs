@@ -242,7 +242,8 @@ public static class SignalGeneratorTests
 	static bool Test_SignalGenerationResult_Success()
 	{
 		SignalGenerationResult result = new() { Requested = 10, Inserted = 8, Skipped = 2 };
-		return result.IsSuccess && result.ToString().Contains("Inserted=8");
+		SignalGenerationResult full = new() { Requested = 10, Inserted = 10, Skipped = 0 };
+		return !result.IsSuccess && full.IsSuccess && result.ToString().Contains("Inserted=8");
 	}
 
 	// BurnInConfig defaults

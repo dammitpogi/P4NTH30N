@@ -21,6 +21,8 @@ public sealed record CanvasBounds(double X, double Y, double Width, double Heigh
 /// </summary>
 public static class CdpGameActions
 {
+	private readonly record struct ClickTarget(double Rx, double Ry, int X, int Y);
+
 	// --- FireKirin ---
 
 	// Canvas-RELATIVE coordinates for 930x865 design viewport (validated live 2026-02-20).
@@ -51,10 +53,17 @@ public static class CdpGameActions
 	private const int FK_SHARE_CLOSE_X = 750, FK_SHARE_CLOSE_Y = 240;
 	private const int FK_FORTUNE_PIGGY_X = 80, FK_FORTUNE_PIGGY_Y = 510;
 
+	private static readonly ClickTarget FkDefaultAccountTarget = new(FK_ACCOUNT_RX, FK_ACCOUNT_RY, FK_ACCOUNT_X, FK_ACCOUNT_Y);
+	private static readonly ClickTarget FkDefaultPasswordTarget = new(FK_PASSWORD_RX, FK_PASSWORD_RY, FK_PASSWORD_X, FK_PASSWORD_Y);
+	private static readonly ClickTarget FkDefaultLoginTarget = new(FK_LOGIN_RX, FK_LOGIN_RY, FK_LOGIN_X, FK_LOGIN_Y);
+
 	public static async Task<bool> LoginFireKirinAsync(ICdpClient cdp, string username, string password, CancellationToken ct = default)
 	{
 		try
 		{
+			var (accountTarget, passwordTarget, loginTarget, coordinateSource) = ResolveFireKirinLoginTargets();
+			Console.WriteLine($"[CDP:FireKirin] Login coordinates source: {coordinateSource}");
+
 			// ARCH-081: Inject MutationObserver BEFORE navigating so it catches ephemeral inputs
 			await InjectCanvasInputInterceptorAsync(cdp, ct);
 
@@ -70,6 +79,12 @@ public static class CdpGameActions
 				return true;
 			}
 
+			if (await VerifyLoginSuccessAsync(cdp, username, "FireKirin", ct))
+			{
+				Console.WriteLine($"[CDP:FireKirin] Login already active after WebSocket attempt; skipping Canvas fallback for {username}");
+				return true;
+			}
+
 			// Fallback to Canvas typing with ARCH-081 coordinate relativity
 			Console.WriteLine($"[CDP:FireKirin] WebSocket auth failed, trying Canvas typing for {username}");
 
@@ -77,21 +92,24 @@ public static class CdpGameActions
 			var bounds = await GetCanvasBoundsAsync(cdp, ct);
 
 			// Click ACCOUNT field, type username
-			var (accX, accY) = TransformRelativeCoordinates(FK_ACCOUNT_RX, FK_ACCOUNT_RY, bounds, FK_ACCOUNT_X, FK_ACCOUNT_Y);
+			var (accX, accY) = TransformRelativeCoordinates(accountTarget.Rx, accountTarget.Ry, bounds, accountTarget.X, accountTarget.Y);
+			Console.WriteLine($"[CDP:FireKirin] Canvas click ACCOUNT at ({accX},{accY})");
 			await cdp.ClickAtAsync(accX, accY, ct);
 			await Task.Delay(600, ct);
 			await TypeIntoCanvasAsync(cdp, username, ct);
 			await Task.Delay(300, ct);
 
 			// Click PASSWORD field, type password
-			var (pwdX, pwdY) = TransformRelativeCoordinates(FK_PASSWORD_RX, FK_PASSWORD_RY, bounds, FK_PASSWORD_X, FK_PASSWORD_Y);
+			var (pwdX, pwdY) = TransformRelativeCoordinates(passwordTarget.Rx, passwordTarget.Ry, bounds, passwordTarget.X, passwordTarget.Y);
+			Console.WriteLine($"[CDP:FireKirin] Canvas click PASSWORD at ({pwdX},{pwdY})");
 			await cdp.ClickAtAsync(pwdX, pwdY, ct);
 			await Task.Delay(600, ct);
 			await TypeIntoCanvasAsync(cdp, password, ct);
 			await Task.Delay(300, ct);
 
 			// Click LOGIN button
-			var (loginX, loginY) = TransformRelativeCoordinates(FK_LOGIN_RX, FK_LOGIN_RY, bounds, FK_LOGIN_X, FK_LOGIN_Y);
+			var (loginX, loginY) = TransformRelativeCoordinates(loginTarget.Rx, loginTarget.Ry, bounds, loginTarget.X, loginTarget.Y);
+			Console.WriteLine($"[CDP:FireKirin] Canvas click LOGIN at ({loginX},{loginY})");
 			await cdp.ClickAtAsync(loginX, loginY, ct);
 			await Task.Delay(8000, ct);
 
@@ -103,6 +121,108 @@ public static class CdpGameActions
 			Console.WriteLine($"[CDP:FireKirin] Login failed for {username}: {ex.Message}");
 			return false;
 		}
+	}
+
+	private static (ClickTarget Account, ClickTarget Password, ClickTarget Login, string Source) ResolveFireKirinLoginTargets()
+	{
+		try
+		{
+			P4NTH30N.H4ND.Navigation.NavigationMapLoader loader = new();
+			P4NTH30N.H4ND.Navigation.NavigationMap? map = loader.Load("FireKirin");
+			if (map == null)
+			{
+				return (FkDefaultAccountTarget, FkDefaultPasswordTarget, FkDefaultLoginTarget, "fallback-constants (no map)");
+			}
+
+			if (TryGetFireKirinCoordinate(map, "account", out ClickTarget account)
+				&& TryGetFireKirinCoordinate(map, "password", out ClickTarget password)
+				&& TryGetFireKirinCoordinate(map, "login", out ClickTarget login))
+			{
+				return (account, password, login, "metadata.coordinates.firekirin");
+			}
+
+			if (TryGetLoginPhaseClickTargets(map, out account, out password, out login))
+			{
+				return (account, password, login, "Login phase click steps");
+			}
+
+			return (FkDefaultAccountTarget, FkDefaultPasswordTarget, FkDefaultLoginTarget, "fallback-constants (map missing login coordinates)");
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine($"[CDP:FireKirin] Coordinate mapping error: {ex.Message}");
+			return (FkDefaultAccountTarget, FkDefaultPasswordTarget, FkDefaultLoginTarget, "fallback-constants (load error)");
+		}
+	}
+
+	private static bool TryGetFireKirinCoordinate(P4NTH30N.H4ND.Navigation.NavigationMap map, string key, out ClickTarget target)
+	{
+		target = default;
+		if (map.Metadata.Coordinates == null)
+		{
+			return false;
+		}
+
+		if (!map.Metadata.Coordinates.TryGetValue("firekirin", out Dictionary<string, P4NTH30N.H4ND.Navigation.PlatformCoordinates>? coords)
+			|| coords == null)
+		{
+			return false;
+		}
+
+		if (!coords.TryGetValue(key, out P4NTH30N.H4ND.Navigation.PlatformCoordinates? c) || c == null)
+		{
+			return false;
+		}
+
+		target = new ClickTarget(c.Rx, c.Ry, (int)Math.Round(c.X), (int)Math.Round(c.Y));
+		return true;
+	}
+
+	private static bool TryGetLoginPhaseClickTargets(
+		P4NTH30N.H4ND.Navigation.NavigationMap map,
+		out ClickTarget account,
+		out ClickTarget password,
+		out ClickTarget login)
+	{
+		account = FkDefaultAccountTarget;
+		password = FkDefaultPasswordTarget;
+		login = FkDefaultLoginTarget;
+
+		P4NTH30N.H4ND.Navigation.NavigationStep? accountStep = map.GetStepById(2);
+		P4NTH30N.H4ND.Navigation.NavigationStep? passwordStep = map.GetStepById(4);
+		P4NTH30N.H4ND.Navigation.NavigationStep? loginStep = map.GetStepById(6);
+
+		if (accountStep == null || passwordStep == null || loginStep == null)
+		{
+			return false;
+		}
+
+		if (!accountStep.Phase.Equals("Login", StringComparison.OrdinalIgnoreCase)
+			|| !passwordStep.Phase.Equals("Login", StringComparison.OrdinalIgnoreCase)
+			|| !loginStep.Phase.Equals("Login", StringComparison.OrdinalIgnoreCase))
+		{
+			return false;
+		}
+
+		account = new ClickTarget(
+			accountStep.Coordinates.Rx,
+			accountStep.Coordinates.Ry,
+			accountStep.Coordinates.X,
+			accountStep.Coordinates.Y);
+
+		password = new ClickTarget(
+			passwordStep.Coordinates.Rx,
+			passwordStep.Coordinates.Ry,
+			passwordStep.Coordinates.X,
+			passwordStep.Coordinates.Y);
+
+		login = new ClickTarget(
+			loginStep.Coordinates.Rx,
+			loginStep.Coordinates.Ry,
+			loginStep.Coordinates.X,
+			loginStep.Coordinates.Y);
+
+		return true;
 	}
 
 	public static async Task LogoutFireKirinAsync(ICdpClient cdp, CancellationToken ct = default)
@@ -129,7 +249,7 @@ public static class CdpGameActions
 	/// Auto-spin via long-press on SPIN button ("HOLD FOR AUTO").
 	/// Validated live on Fortune Piggy 2026-02-20.
 	/// </summary>
-	public static async Task SpinFireKirinAsync(ICdpClient cdp, CancellationToken ct = default)
+	public static async Task<bool> SpinFireKirinAsync(ICdpClient cdp, CancellationToken ct = default)
 	{
 		try
 		{
@@ -139,10 +259,12 @@ public static class CdpGameActions
 			await Task.Delay(3000, ct);
 
 			Console.WriteLine("[CDP:FireKirin] Auto-spin activated via long-press");
+			return true;
 		}
 		catch (Exception ex)
 		{
-			Console.WriteLine($"[CDP:FireKirin] Spin failed: {ex.Message}");
+			Console.WriteLine($"[CDP:FireKirin] Spin FAILED: {ex.Message}");
+			return false;
 		}
 	}
 
@@ -166,13 +288,14 @@ public static class CdpGameActions
 			await cdp.ClickAtAsync(slotX, slotY, ct);
 			await Task.Delay(2000, ct);
 
-			// Go to page 1 first
-			var (plX, plY) = TransformRelativeCoordinates(FK_PAGE_LEFT_RX, FK_PAGE_LEFT_RY, bounds, FK_PAGE_LEFT_X, FK_PAGE_LEFT_Y);
-			for (int i = 0; i < 5; i++)
-			{
-				await cdp.ClickAtAsync(plX, plY, ct);
-				await Task.Delay(400, ct);
-			}
+		// Go to page 1 first
+		var (plX, plY) = TransformRelativeCoordinates(FK_PAGE_LEFT_RX, FK_PAGE_LEFT_RY, bounds, FK_PAGE_LEFT_X, FK_PAGE_LEFT_Y);
+		await Task.Delay(300, ct);
+		for (int i = 0; i < 5; i++)
+		{
+			await cdp.ClickAtAsync(plX, plY, ct);
+			await Task.Delay(800, ct);
+		}
 			await Task.Delay(1000, ct);
 
 			// Page right once → Fortune Piggy at bottom-left of page 2
@@ -270,16 +393,16 @@ public static class CdpGameActions
 			await cdp.ClickAtAsync(loginX, loginY, ct);
 			await Task.Delay(8000, ct);
 
-			// Step 8: Dismiss notification dialogs (up to 5 attempts)
-			var (okX, okY) = TransformRelativeCoordinates(OS_DIALOG_OK_RX, OS_DIALOG_OK_RY, bounds, OS_DIALOG_OK_X, OS_DIALOG_OK_Y);
-			var (ncX, ncY) = TransformRelativeCoordinates(OS_NOTIFICATION_CLOSE_RX, OS_NOTIFICATION_CLOSE_RY, bounds, OS_NOTIFICATION_CLOSE_X, OS_NOTIFICATION_CLOSE_Y);
-			for (int i = 0; i < 5; i++)
-			{
-				await cdp.ClickAtAsync(okX, okY, ct);
-				await Task.Delay(500, ct);
-				await cdp.ClickAtAsync(ncX, ncY, ct);
-				await Task.Delay(500, ct);
-			}
+		// Step 8: Dismiss notification dialogs (up to 3 attempts)
+		var (okX, okY) = TransformRelativeCoordinates(OS_DIALOG_OK_RX, OS_DIALOG_OK_RY, bounds, OS_DIALOG_OK_X, OS_DIALOG_OK_Y);
+		var (ncX, ncY) = TransformRelativeCoordinates(OS_NOTIFICATION_CLOSE_RX, OS_NOTIFICATION_CLOSE_RY, bounds, OS_NOTIFICATION_CLOSE_X, OS_NOTIFICATION_CLOSE_Y);
+		for (int i = 0; i < 3; i++)
+		{
+			await cdp.ClickAtAsync(okX, okY, ct);
+			await Task.Delay(750, ct);
+			await cdp.ClickAtAsync(ncX, ncY, ct);
+			await Task.Delay(750, ct);
+		}
 
 			// ARCH-081: Verify login via balance query (not DOM state)
 			return await VerifyLoginSuccessAsync(cdp, username, "OrionStars", ct);
@@ -315,7 +438,7 @@ public static class CdpGameActions
 		}
 	}
 
-	public static async Task SpinOrionStarsAsync(ICdpClient cdp, CancellationToken ct = default)
+	public static async Task<bool> SpinOrionStarsAsync(ICdpClient cdp, CancellationToken ct = default)
 	{
 		try
 		{
@@ -325,10 +448,12 @@ public static class CdpGameActions
 			await Task.Delay(3000, ct);
 
 			Console.WriteLine("[CDP:OrionStars] Spin executed");
+			return true;
 		}
 		catch (Exception ex)
 		{
-			Console.WriteLine($"[CDP:OrionStars] Spin failed: {ex.Message}");
+			Console.WriteLine($"[CDP:OrionStars] Spin FAILED: {ex.Message}");
+			return false;
 		}
 	}
 
@@ -889,26 +1014,44 @@ public static class CdpGameActions
 	/// </summary>
 	public static async Task<bool> VerifyLoginSuccessAsync(ICdpClient cdp, string username, string platform, CancellationToken ct = default)
 	{
-		// Check window.parent.Balance (set by extension or WS interceptor)
-		double? balance = await cdp.EvaluateAsync<double>("Number(window.parent.Balance) || 0", ct);
-		if (balance > 0)
+		// CRIT-103: Retry up to 3 times with 1s delay — no optimistic lies
+		for (int attempt = 1; attempt <= 3; attempt++)
 		{
-			Console.WriteLine($"[CDP:{platform}] Login VERIFIED for {username} (balance: ${balance:F2})");
-			return true;
+			// Check window.parent.Balance (set by extension or WS interceptor)
+			try
+			{
+				double? balance = await cdp.EvaluateAsync<double>("Number(window.parent.Balance) || 0", ct);
+				if (balance > 0)
+				{
+					Console.WriteLine($"[CDP:{platform}] Login VERIFIED for {username} (balance: ${balance:F2})");
+					return true;
+				}
+			}
+			catch { /* CDP eval can fail during page transition */ }
+
+			// Check if interceptor captured a login response
+			try
+			{
+				string? intercepted = await cdp.EvaluateAsync<string>(
+					"window.__p4n_loginResult || 'none'", ct);
+				if (intercepted != null && intercepted != "none")
+				{
+					bool success = intercepted.Contains("success", StringComparison.OrdinalIgnoreCase);
+					Console.WriteLine($"[CDP:{platform}] Login {(success ? "VERIFIED" : "FAILED")} for {username}: {intercepted}");
+					return success;
+				}
+			}
+			catch { /* CDP eval can fail during page transition */ }
+
+			if (attempt < 3)
+			{
+				Console.WriteLine($"[CDP:{platform}] Login verification pending (attempt {attempt}/3) — retrying...");
+				await Task.Delay(1000, ct);
+			}
 		}
 
-		// Check if interceptor captured a login response
-		string? intercepted = await cdp.EvaluateAsync<string>(
-			"window.__p4n_loginResult || 'none'", ct);
-		if (intercepted != null && intercepted != "none")
-		{
-			Console.WriteLine($"[CDP:{platform}] Login intercepted for {username}: {intercepted}");
-			return intercepted.Contains("success", StringComparison.OrdinalIgnoreCase);
-		}
-
-		// Optimistic: login was submitted, server may still be responding
-		Console.WriteLine($"[CDP:{platform}] Login verification pending for {username} — balance not yet available");
-		return true;
+		Console.WriteLine($"[CDP:{platform}] Login verification FAILED for {username} — balance never became available");
+		return false;
 	}
 
 	// OPS-045: ReadExtensionGrandAsync REMOVED.

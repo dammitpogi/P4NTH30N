@@ -1,0 +1,662 @@
+WindFixer,
+
+The rot is everywhere. Every "safety" measure is a lie. Find it all. Fix it all. Nothing hides.
+
+**THE PATTERN TO KILL:**
+```csharp
+catch (Exception ex) {
+    _logger.LogError(ex, "Failed");
+    return true; // THIS IS THE LIE. KILL IT.
+}
+```
+
+Change to:
+```csharp
+catch (Exception ex) {
+    _logger.LogError(ex, "Failed");
+    throw new InvalidOperationException("Context here", ex);
+}
+```
+
+---
+
+## PHASE 1: STOP THE BLEEDING (CRITICAL - DO FIRST)
+
+### 1. ParallelSpinWorker.cs
+**File**: `H4ND/Parallel/ParallelSpinWorker.cs`  
+**Lines**: 41-56  
+**The Lie**: Worker IDs are "W00", "W01" format. `int.TryParse("W00")` returns false. All workers default to index 0. They collide. They kill each other.
+
+**Current Code** (around line 56):
+```csharp
+_workerIndex = int.TryParse(workerId, out int idx) ? idx : 0;
+```
+
+**The Truth**:
+```csharp
+// Replace line 56 with:
+_workerIndex = ParseWorkerIndex(workerId);
+
+// Add after line 68:
+private static int ParseWorkerIndex(string workerId)
+{
+    if (string.IsNullOrEmpty(workerId))
+        throw new ArgumentException("Worker ID cannot be null or empty", nameof(workerId));
+    
+    if (workerId.Length >= 2 && 
+        workerId[0] == 'W' && 
+        int.TryParse(workerId.Substring(1), out int index))
+    {
+        return index;
+    }
+    
+    throw new ArgumentException($"Invalid worker ID format: '{workerId}'. Expected format: 'W00', 'W01', etc.", nameof(workerId));
+}
+```
+
+**Validation**: Create 3 workers with IDs "W00", "W01", "W02". Verify `_workerIndex` is 0, 1, 2. Not all 0.
+
+---
+
+### 2. SessionPool.cs
+**File**: `H4ND/Services/SessionPool.cs`  
+**Lines**: 159-178  
+**The Lie**: `EvictOldestSession()` removes session from dictionary but never calls `CloseSessionAsync()`. Chrome processes leak forever.
+
+**Current Code** (lines 159-167):
+```csharp
+private void EvictOldestSession()
+{
+    var oldest = _sessions.OrderBy(s => s.Value.LastUsed).FirstOrDefault();
+    if (oldest.Key != null)
+    {
+        _sessions.Remove(oldest.Key);
+        Console.WriteLine($"[SessionPool] Evicted session: {oldest.Key}");
+    }
+}
+```
+
+**The Truth**:
+```csharp
+private async Task EvictOldestSessionAsync(CancellationToken ct = default)
+{
+    var oldest = _sessions.OrderBy(s => s.Value.LastUsed).FirstOrDefault();
+    if (oldest.Key != null)
+    {
+        // CLOSE THE SESSION BEFORE REMOVING
+        await CloseSessionAsync(oldest.Key, ct);
+        _sessions.Remove(oldest.Key);
+        Console.WriteLine($"[SessionPool] Evicted and closed session: {oldest.Key}");
+    }
+}
+```
+
+**Also fix line 64**: Change `EvictOldestSession()` to `await EvictOldestSessionAsync(ct)`
+
+**Validation**: Monitor `chrome.exe` process count during session churn. Count should remain stable, not grow indefinitely.
+
+---
+
+### 3. ChromeProfileManager.cs
+**File**: `H4ND/Parallel/ChromeProfileManager.cs`  
+**Lines**: 62-103  
+**The Lie**: Redirects stdout/stderr but never reads them. Buffers fill. Chrome deadlocks on launch.
+
+**Current Code** (lines 68-69):
+```csharp
+RedirectStandardOutput = true,
+RedirectStandardError = true,
+```
+
+**The Truth** (Option A - Read the buffers):
+```csharp
+// After process.Start() (around line 73):
+process.OutputDataReceived += (sender, e) => { /* Discard or log at Debug level */ };
+process.ErrorDataReceived += (sender, e) => { 
+    if (!string.IsNullOrEmpty(e.Data))
+        Console.WriteLine($"[Chrome:{workerId}] {e.Data}");
+};
+process.BeginOutputReadLine();
+process.BeginErrorReadLine();
+```
+
+**The Truth** (Option B - Don't redirect if not needed):
+```csharp
+// Lines 68-69: Set to false
+RedirectStandardOutput = false,
+RedirectStandardError = false,
+```
+
+**Validation**: Launch 10 Chrome instances sequentially. Each should start within 5 seconds. No hangs.
+
+---
+
+## PHASE 2: STOP FALSE SUCCESS
+
+### 4. StepExecutor.cs
+**File**: `H4ND/Navigation/StepExecutor.cs`  
+**Lines**: 36-71  
+**The Lie**: Entry and exit gate failures log but don't stop execution. Downstream steps execute on wrong pages.
+
+**Current Code** (lines 38-44):
+```csharp
+bool entryOk = await _verification.VerifyAsync(step.Verification.EntryGate, context, ct);
+if (!entryOk && !string.IsNullOrWhiteSpace(step.Verification.EntryGate))
+{
+    Console.WriteLine($"[Nav:Worker-{context.WorkerId}] Step {step.StepId} entry gate not satisfied: {step.Verification.EntryGate}");
+    // BUG: Continues anyway!
+}
+```
+
+**The Truth** (lines 38-44):
+```csharp
+bool entryOk = await _verification.VerifyAsync(step.Verification.EntryGate, context, ct);
+if (!entryOk && !string.IsNullOrWhiteSpace(step.Verification.EntryGate))
+{
+    sw.Stop();
+    var error = $"Step {step.StepId} entry gate FAILED: {step.Verification.EntryGate}";
+    Console.WriteLine($"[Nav:Worker-{context.WorkerId}] {error}");
+    throw new InvalidOperationException(error);
+}
+```
+
+**Current Code** (lines 65-71):
+```csharp
+bool exitOk = await _verification.VerifyAsync(step.Verification.ExitGate, context, ct);
+if (!exitOk && !string.IsNullOrWhiteSpace(step.Verification.ExitGate))
+{
+    Console.WriteLine($"[Nav:Worker-{context.WorkerId}] Step {step.StepId} exit gate not satisfied: {step.Verification.ExitGate}");
+    // BUG: Returns success anyway!
+}
+```
+
+**The Truth** (lines 65-71):
+```csharp
+bool exitOk = await _verification.VerifyAsync(step.Verification.ExitGate, context, ct);
+if (!exitOk && !string.IsNullOrWhiteSpace(step.Verification.ExitGate))
+{
+    sw.Stop();
+    var error = $"Step {step.StepId} exit gate FAILED: {step.Verification.ExitGate}";
+    Console.WriteLine($"[Nav:Worker-{context.WorkerId}] {error}");
+    throw new InvalidOperationException(error);
+}
+```
+
+**Validation**: Create test with failing gate. Verify exception is thrown, not logged and continued.
+
+---
+
+### 5. TypeStepStrategy.cs
+**File**: `H4ND/Navigation/Strategies/TypeStepStrategy.cs`  
+**The Lie**: Empty credential bindings log "skipping" and return success. Login forms never get filled.
+
+**Current Code** (around lines 16-20):
+```csharp
+if (string.IsNullOrEmpty(text))
+{
+    Console.WriteLine($"[Nav:Type] Step {step.StepId}: Empty input, skipping");
+    return StepExecutionResult.Success(step.StepId, TimeSpan.Zero);
+}
+```
+
+**The Truth**:
+```csharp
+if (string.IsNullOrEmpty(text))
+{
+    throw new InvalidOperationException(
+        $"Step {step.StepId}: Type action has empty input and no credential binding. " +
+        $"Check that step configuration includes valid input or context has username/password."
+    );
+}
+```
+
+**Validation**: Test with empty credentials. Should throw, not skip.
+
+---
+
+### 6. NavigateStepStrategy.cs
+**File**: `H4ND/Navigation/Strategies/NavigateStepStrategy.cs`  
+**The Lie**: Missing URLs log and skip. Phases stay on wrong pages marked "successful".
+
+**Current Code** (around lines 14-18):
+```csharp
+if (string.IsNullOrEmpty(url))
+{
+    Console.WriteLine($"[Nav:Navigate] Step {step.StepId}: No URL provided, skipping");
+    return StepExecutionResult.Success(step.StepId, TimeSpan.Zero);
+}
+```
+
+**The Truth**:
+```csharp
+if (string.IsNullOrEmpty(url))
+{
+    throw new ArgumentException(
+        $"Step {step.StepId}: Navigate action requires a URL. Check step configuration."
+    );
+}
+```
+
+**Validation**: Test with missing URL. Should throw, not skip.
+
+---
+
+### 7. JavaScriptVerificationStrategy.cs
+**File**: `H4ND/Navigation/Verification/JavaScriptVerificationStrategy.cs`  
+**The Lie**: Unknown gates return true (fail open). Custom verifications are no-ops.
+
+**Current Code** (around lines 46-49):
+```csharp
+// Unknown gate - assume pass
+Console.WriteLine($"[Nav:Verification] Unknown gate '{gate}' - assuming pass");
+return true;
+```
+
+**The Truth**:
+```csharp
+// Unknown gate - fail closed for safety
+Console.WriteLine($"[Nav:Verification] Unknown gate '{gate}' - FAILING CLOSED");
+return false;
+```
+
+**Note**: If there are known informational gates that should pass, add explicit handling:
+```csharp
+// Add before the fail-closed:
+var informationalGates = new[] { "N/A", "none", "any", "always", "true" };
+if (informationalGates.Any(g => gate.Equals(g, StringComparison.OrdinalIgnoreCase)))
+    return true;
+```
+
+**Validation**: Test with unknown gate. Should return false (fail), not true.
+
+---
+
+### 8. VerifyLoginSuccessAsync
+**File**: `H4ND/CdpGameActions.cs` (method location)  
+**The Lie**: Returns true when verification is "pending". Login marked complete while still on login screen.
+
+**Current Code** (around lines 909-911):
+```csharp
+// Login verification pending - optimistically succeed
+Console.WriteLine($"[CDP:{platform}] Login verification pending for {username} - marking success");
+return true;
+```
+
+**The Truth**:
+```csharp
+// Lines 890-912: Replace entire method
+public static async Task<bool> VerifyLoginSuccessAsync(
+    ICdpClient cdp, 
+    string username, 
+    string platform, 
+    CancellationToken ct = default)
+{
+    // Retry up to 3 times with 1s delay
+    for (int attempt = 1; attempt <= 3; attempt++)
+    {
+        // Check window.parent.Balance
+        double? balance = await cdp.EvaluateAsync<double>("Number(window.parent.Balance) || 0", ct);
+        if (balance > 0)
+        {
+            Console.WriteLine($"[CDP:{platform}] Login VERIFIED for {username} (balance: ${balance:F2})");
+            return true;
+        }
+
+        // Check interceptor result
+        string? intercepted = await cdp.EvaluateAsync<string>("window.__p4n_loginResult || 'none'", ct);
+        if (intercepted != null && intercepted != "none")
+        {
+            bool success = intercepted.Contains("success", StringComparison.OrdinalIgnoreCase);
+            Console.WriteLine($"[CDP:{platform}] Login {(success ? "VERIFIED" : "FAILED")} for {username}: {intercepted}");
+            return success;
+        }
+
+        if (attempt < 3)
+        {
+            Console.WriteLine($"[CDP:{platform}] Login verification pending (attempt {attempt}/3) - retrying...");
+            await Task.Delay(1000, ct);
+        }
+    }
+
+    Console.WriteLine($"[CDP:{platform}] Login verification FAILED for {username} - balance never became available");
+    return false;
+}
+```
+
+**Validation**: Test login that stays on login screen. Should return false after 3 attempts, not true immediately.
+
+---
+
+## PHASE 3: STOP DATA LOSS
+
+### 9. JackpotReader.cs
+**File**: `H4ND/Services/JackpotReader.cs`  
+**Lines**: 32-51  
+**The Lie**: Returns 0 for both "no jackpot" and "failed to read". Can't distinguish Canvas games from broken selectors.
+
+**Current Code** (method signature and return):
+```csharp
+public async Task<double> ReadJackpotAsync(...) // Returns double
+// ...
+return 0; // At line 51
+```
+
+**The Truth**:
+```csharp
+// Change method signature to return nullable
+public async Task<double?> ReadJackpotAsync(
+    ICdpClient cdp,
+    string platform,
+    string jackpotType,
+    CancellationToken ct = default)
+{
+    // ... existing code ...
+    
+    // Line 51: Return null on total failure
+    Console.WriteLine($"[JackpotReader:{platform}] {jackpotType} = null (all {expressions.Count} selectors failed)");
+    return null;
+}
+```
+
+**Also update ReadAllJackpotsAsync** to handle nulls:
+```csharp
+public async Task<(double? Grand, double? Major, double? Minor, double? Mini)> ReadAllJackpotsAsync(...)
+```
+
+**Validation**: Test on Canvas game (no readable jackpot). Should return null, not 0.
+
+---
+
+### 10. NetworkInterceptor.cs
+**File**: `H4ND/Network/NetworkInterceptor.cs`  
+**Lines**: 155-201  
+**The Lie**: JSON parse failures silently dropped. Jackpot data vanishes without trace.
+
+**Current Code** (lines 198-201):
+```csharp
+catch (Exception ex)
+{
+    // Silently ignore parse errors
+    Console.WriteLine($"[NetworkInterceptor] Failed to parse: {ex.Message}");
+    // BUG: Exception swallowed, data lost
+}
+```
+
+**The Truth**:
+```csharp
+catch (Exception ex)
+{
+    Console.WriteLine($"[NetworkInterceptor] CRITICAL: Failed to parse jackpot response: {ex.Message}");
+    Console.WriteLine($"[NetworkInterceptor] Response content: {responseBody}");
+    throw new InvalidOperationException("Failed to parse jackpot response from network", ex);
+}
+```
+
+**Validation**: Corrupt JSON in test. Should throw, not swallow.
+
+---
+
+### 11. SignalGenerator.cs
+**File**: `H4ND/Services/SignalGenerator.cs`  
+**Lines**: 64-105  
+**The Lie**: Duplicate signals cause under-fill. Returns success with fewer signals than requested.
+
+**Current Code** (method signature):
+```csharp
+public void Generate(int count, ...) // Returns void
+```
+
+**The Truth**:
+```csharp
+// Line 31: Change signature to return actual count
+public int Generate(int count, string? filterGame = null, string? filterHouse = null, int? fixedPriority = null)
+{
+    // ... existing code ...
+    
+    // Line 117: Return actual inserted count
+    return result.Inserted;
+}
+```
+
+**Validation**: Request 100 signals with duplicates. Verify returned count < 100.
+
+---
+
+## PHASE 4: INFRASTRUCTURE HARDENING
+
+### 12. CdpLifecycleManager.cs
+**File**: `H4ND/Services/CdpLifecycleManager.cs`  
+**Lines**: 358-386  
+**The Lie**: Health check timer swallows all exceptions. CDP drops go undetected.
+
+**Current Code** (lines 382-385):
+```csharp
+catch (Exception ex)
+{
+    Console.WriteLine($"[CdpLifecycle] Health check error: {ex.Message}");
+    // BUG: Exception swallowed, no restart triggered
+}
+```
+
+**The Truth**:
+```csharp
+catch (Exception ex)
+{
+    Console.WriteLine($"[CdpLifecycle] Health check FAILED: {ex.Message}");
+    _status = CdpLifecycleStatus.Error;
+    // Trigger restart
+    _ = Task.Run(async () => {
+        try {
+            if (_restartAttempts < _config.MaxAutoRestarts)
+            {
+                Console.WriteLine("[CdpLifecycle] Attempting auto-restart...");
+                await RestartChromeAsync();
+            }
+        }
+        catch (Exception restartEx) {
+            Console.WriteLine($"[CdpLifecycle] Auto-restart failed: {restartEx.Message}");
+        }
+    });
+}
+```
+
+**Validation**: Kill Chrome during health check. Verify auto-restart is triggered.
+
+---
+
+### 13. VisionCommandListener.cs
+**File**: `H4ND/Vision/VisionCommandListener.cs`  
+**Lines**: 108-125  
+**The Lie**: Ignores handler result. Failed commands marked completed.
+
+**Current Code** (lines 116-125):
+```csharp
+if (_commandHandler != null)
+{
+    await _commandHandler.ExecuteAsync(command, cancellationToken);
+    // BUG: Result ignored!
+}
+command.Status = VisionCommandStatus.Completed;
+```
+
+**The Truth**:
+```csharp
+if (_commandHandler != null)
+{
+    bool success = await _commandHandler.ExecuteAsync(command, cancellationToken);
+    if (!success)
+    {
+        command.Status = VisionCommandStatus.Failed;
+        command.ErrorMessage = "Command handler returned failure";
+        Console.WriteLine($"[Vision] Command {command.Id} FAILED: Handler returned false");
+        return false;
+    }
+}
+command.Status = VisionCommandStatus.Completed;
+```
+
+**Validation**: Return false from handler. Verify command status is Failed, not Completed.
+
+---
+
+### 14. CdpGameActions Spin Methods
+**File**: `H4ND/CdpGameActions.cs`  
+**The Lie**: Return void, swallow exceptions. Spins that fail completely report success.
+
+**Current Code**:
+```csharp
+public static async Task SpinFireKirinAsync(ICdpClient cdp, CancellationToken ct = default)
+{
+    // ... code that can throw ...
+}
+```
+
+**The Truth** (example for SpinFireKirinAsync):
+```csharp
+public static async Task<bool> SpinFireKirinAsync(ICdpClient cdp, CancellationToken ct = default)
+{
+    try
+    {
+        // ... existing spin code ...
+        Console.WriteLine("[CDP:FireKirin] Spin executed successfully");
+        return true;
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"[CDP:FireKirin] Spin FAILED: {ex.Message}");
+        return false;
+    }
+}
+```
+
+**Do this for ALL spin methods**: SpinOrionStarsAsync, SpinMilkyWayAsync, etc.
+
+**Validation**: Test spin that fails. Verify method returns false, not void.
+
+---
+
+### 15. ParallelMetrics.cs
+**File**: `H4ND/Parallel/ParallelMetrics.cs`  
+**Lines**: 63-104  
+**The Lie**: Race conditions on WorkerStats fields. Lost updates. Torn reads.
+
+**Current Code** (WorkerStats class around lines 146-154):
+```csharp
+public class WorkerStats
+{
+    public long TotalSpins { get; set; } // NOT thread-safe
+    public long SuccessfulSpins { get; set; } // NOT thread-safe
+    // ...
+}
+```
+
+**The Truth**:
+```csharp
+public sealed class WorkerStats
+{
+    private long _totalSpins;
+    private long _successfulSpins;
+    
+    public long TotalSpins => Interlocked.Read(ref _totalSpins);
+    public long SuccessfulSpins => Interlocked.Read(ref _successfulSpins);
+    public int Errors { get; set; }
+    public int Restarts { get; set; }
+    public DateTime? LastSpinAt { get; set; }
+    public string? LastError { get; set; }
+    
+    public void IncrementTotalSpins() => Interlocked.Increment(ref _totalSpins);
+    public void IncrementSuccessfulSpins() => Interlocked.Increment(ref _successfulSpins);
+}
+```
+
+**Also update lines 72-73**:
+```csharp
+// Change from:
+stats.TotalSpins++;
+if (success) stats.SuccessfulSpins++;
+
+// To:
+stats.IncrementTotalSpins();
+if (success) stats.IncrementSuccessfulSpins();
+```
+
+**Validation**: Run parallel load test. Verify WorkerStats counters are accurate (no lost updates).
+
+---
+
+## VALIDATION REQUIREMENTS
+
+### Build Validation
+```bash
+dotnet build H4ND/
+dotnet build UNI7T35T/
+```
+Must be 0 errors.
+
+### Unit Test Validation
+```bash
+dotnet test UNI7T35T/ --filter "Navigation"
+```
+All tests must pass.
+
+### Chaos Test Validation
+For each fix, write a test that **forces the failure**:
+
+```csharp
+[Fact]
+public async Task WorkerId_InvalidFormat_Throws()
+{
+    Assert.Throws<ArgumentException>(() => new ParallelSpinWorker("invalid", ...));
+}
+
+[Fact]
+public async Task GateVerification_Failure_Throws()
+{
+    var executor = CreateExecutor();
+    var failingStep = new Step { 
+        Verification = new Verification { EntryGate = "false" } 
+    };
+    
+    await Assert.ThrowsAsync<InvalidOperationException>(
+        () => executor.ExecuteAsync(failingStep)
+    );
+}
+```
+
+### Live Validation
+Run against actual FireKirin/OrionStars:
+1. 3 parallel workers - verify unique profiles
+2. Login with bad credentials - verify throws immediately
+3. Navigate with missing URL - verify throws
+4. Kill Chrome mid-session - verify restart
+
+---
+
+## REPORT FORMAT
+
+After each phase, report:
+```
+PHASE X COMPLETE
+Files Modified: [list]
+Lines Changed: [count]
+Build: [PASS/FAIL]
+Unit Tests: [PASS/FAIL - X/Y passed]
+Chaos Tests: [PASS/FAIL]
+Live Validation: [what you verified]
+```
+
+---
+
+## THE OATH
+
+You are not adding safety. You are removing lies.
+
+Every `return true` on failure is a lie.
+Every swallowed exception is a lie.
+Every "graceful" continuation is a lie.
+
+**Make it truth. Make it crash. Make it visible.**
+
+Tychon watches. The rot ends now.
+
+Fist to the chest.

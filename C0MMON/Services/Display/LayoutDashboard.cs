@@ -48,7 +48,8 @@ public sealed class LayoutDashboard
 	public double CurrentMajor { get; set; }
 	public double CurrentMinor { get; set; }
 	public double CurrentMini { get; set; }
-	public double CurrentBalance { get; set; }
+	public double CurrentBalance { get; set; } // Single credential being polled
+	public double TotalEnabledBalance { get; set; } // Combined balance of all enabled, non-banned credentials
 
 	public double ThresholdGrand { get; set; }
 	public double ThresholdMajor { get; set; }
@@ -221,8 +222,7 @@ public sealed class LayoutDashboard
 		string headerText =
 			$"{healthMk} [bold teal]H0UND[/]{pauseTag}  |  {uptime:hh\\:mm\\:ss}  |  "
 			+ $"Polls [green]{SuccessfulPolls}[/]/[red]{FailedPolls}[/]/[white]{TotalPolls}[/]  |  "
-			+ $"{TotalCredentials} creds  |  Bal [white]{CurrentBalance:C2}[/]  |  "
-			+ $"[cyan]{Markup.Escape(CurrentUser)}[/] @ [white]{Markup.Escape(CurrentGame)}[/] ({Markup.Escape(CurrentHouse)})  |  "
+			+ $"{TotalCredentials} creds  |  Bal [white]{TotalEnabledBalance:C2}[/]  |  "
 			+ $"{GetColoredTask()}  |  Suppressed: [grey]{counts.GetValueOrDefault(DisplayLogLevel.Silent) + counts.GetValueOrDefault(DisplayLogLevel.Debug)}[/]";
 
 		var header = new Panel(new Markup(headerText))
@@ -478,25 +478,29 @@ public sealed class LayoutDashboard
 		actTable.AddColumn(new TableColumn("[bold]Time[/]"));
 		actTable.AddColumn(new TableColumn("[bold]Event[/]"));
 
-		lock (_eventLock)
+	lock (_eventLock)
+	{
+		if (_mainEvents.Count == 0)
 		{
-			if (_mainEvents.Count == 0)
-			{
-				actTable.AddRow("[grey]--:--:--[/]", "[grey]Waiting for events...[/]");
-			}
+			actTable.AddRow("[grey]--:--:--[/]", "[grey]Waiting for events...[/]");
+		}
 		else
 		{
-			const int MaxMessageWidth = 60;
+			// Calculate dynamic width based on console size
+			int consoleWidth = Console.WindowWidth > 0 ? Console.WindowWidth : 80;
+			// Account for: timestamp (8) + 2 spaces + panel border/padding (~10)
+			int maxMessageWidth = Math.Max(20, consoleWidth - 20);
+
 			foreach (DisplayEvent evt in _mainEvents)
 			{
-				string truncatedMsg = TruncateMessage(evt.Message, MaxMessageWidth);
+				string truncatedMsg = TruncateMessage(evt.Message, maxMessageWidth);
 				actTable.AddRow(
 					$"[grey]{evt.Timestamp.ToLocalTime():HH:mm:ss}[/]",
 					$"[{evt.Style}]{Markup.Escape(truncatedMsg)}[/]"
 				);
 			}
 		}
-		}
+	}
 
 		return new Panel(actTable)
 			.Border(BoxBorder.Rounded)
@@ -525,6 +529,10 @@ public sealed class LayoutDashboard
 			}
 			else
 			{
+				// Calculate dynamic width: Time(9) + Lvl(4) + Src(18) + 2 spaces + borders
+				int consoleWidth = Console.WindowWidth > 0 ? Console.WindowWidth : 80;
+				int maxMessageWidth = Math.Max(20, consoleWidth - 35);
+
 				foreach (DisplayEvent evt in recentDebug)
 				{
 					string lvl = evt.Level switch
@@ -535,11 +543,12 @@ public sealed class LayoutDashboard
 						DisplayLogLevel.Error => "[red]ERR[/]",
 						_ => $"[grey]{evt.Level}[/]",
 					};
+					string truncatedMsg = TruncateMessage(evt.Message, maxMessageWidth);
 					debugTable.AddRow(
 						$"[grey]{evt.Timestamp.ToLocalTime():HH:mm:ss}[/]",
 						lvl,
 						$"[grey]{Markup.Escape(evt.Source)}[/]",
-						$"[{evt.Style}]{Markup.Escape(evt.Message)}[/]"
+						$"[{evt.Style}]{Markup.Escape(truncatedMsg)}[/]"
 					);
 				}
 			}

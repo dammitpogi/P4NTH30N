@@ -1,0 +1,346 @@
+{
+  "_schema": "https://opencode.ai/skills/update-agent-models/benchmark-manual-accepted.json",
+  "_description": "User-accepted benchmark entries from manual/web research",
+  "models": {
+    "opencode/big-pickle": {
+      "name": "OpenCode Big Pickle (mapped to GLM-4.6 Reasoning)",
+      "benchmarks": {
+        "gpqa": 0.78,
+        "mmlu_pro": 0.829,
+        "intelligence_index": 32.5,
+        "ifbench": 0.434,
+        "tau2": 0.705,
+        "math_index": 86,
+        "hle": 0.133,
+        "terminalbench_hard": 0.25,
+        "coding_index": 29.5,
+        "livecodebench": 0.695,
+        "scicode": 0.384,
+        "context_length": 200000,
+        "SWE_bench_Verified": 68
+      },
+      "sources": [
+        {
+          "type": "user-approved-stealth-mapping",
+          "mapped_to": "GLM-4.6 (Reasoning)",
+          "slug": "glm-4-6-reasoning",
+          "provider": "zai",
+          "evidence": [
+            "https://artificialanalysis.ai/api/v2/data/llms/models",
+            "C:/Users/paulc/.config/opencode/models_1_updated.md:688"
+          ]
+        }
+      ],
+      "acceptedByUser": true,
+      "acceptedAt": "2026-02-14T12:54:00.000Z",
+      "acceptedFromProposal": "skills/update-agent-models/proposals/benchmark-research.2026-02-14T12-49-08-338Z.json",
+      "acceptanceNote": "User approved mapping: go with GLM-4.6 Reasoning"
+    },
+    "groq/meta-llama/llama-4-maverick-17b-128e-instruct": {
+      "name": "Llama 4 Maverick",
+      "benchmarks": {
+        "gpqa": 0.671,
+        "mmlu_pro": 0.809,
+        "intelligence_index": 18.3,
+        "ifbench": 0.43,
+        "tau2": 0.178,
+        "aime": 0.39,
+        "math_index": 19.3,
+        "hle": 0.048,
+        "terminalbench_hard": 0.068,
+        "coding_index": 15.6,
+        "livecodebench": 0.397,
+        "scicode": 0.331
+      },
+      "sources": [
+        {
+          "type": "artificial-analysis-api",
+          "endpoint": "https://artificialanalysis.ai/api/v2/data/llms/models",
+          "model_reference": "922c69c7-9037-43c6-8bcf-a1c555e7f3eb"
+        }
+      ],
+      "acceptedByUser": true,
+      "acceptedAt": "2026-02-14T16:01:58.000Z",
+      "acceptedFromProposal": "skills/update-agent-models/proposals/benchmark-research.2026-02-14T16-01-58-665Z.json",
+      "acceptanceNote": "Auto-accepted from Artificial Analysis API with confidence 0.661"
+    },
+    "groq/meta-llama/llama-4-scout-17b-16e-instruct": {
+      "name": "Llama 4 Scout",
+      "benchmarks": {
+        "gpqa": 0.587,
+        "mmlu_pro": 0.752,
+        "intelligence_index": 13.5,
+        "ifbench": 0.395,
+        "tau2": 0.155,
+        "aime": 0.283,
+        "math_index": 14,
+        "hle": 0.043,
+        "terminalbench_hard": 0.015,
+        "coding_index": 6.7,
+        "livecodebench": 0.299,
+        "scicode": 0.17
+      },
+      "sources": [
+        {
+          "type": "artificial-analysis-api",
+          "endpoint": "https://artificialanalysis.ai/api/v2/data/llms/models",
+          "model_reference": "adf9a85e-abc3-4f28-937b-db6655cc5238"
+        }
+      ],
+      "acceptedByUser": true,
+      "acceptedAt": "2026-02-14T16:01:58.000Z",
+      "acceptedFromProposal": "skills/update-agent-models/proposals/benchmark-research.2026-02-14T16-01-58-665Z.json",
+      "acceptanceNote": "Auto-accepted from Artificial Analysis API with confidence 0.661"
+    },
+    "openrouter/google/gemma-3-12b-it:free": {
+      "name": "Gemma 3 12B Instruct",
+      "benchmarks": {
+        "gpqa": 0.349,
+        "mmlu_pro": 0.595,
+        "intelligence_index": 8.8,
+        "ifbench": 0.367,
+        "tau2": 0.108,
+        "aime": 0.22,
+        "math_index": 18.3,
+        "hle": 0.048,
+        "terminalbench_hard": 0.008,
+        "coding_index": 6.3,
+        "livecodebench": 0.137,
+        "scicode": 0.174
+      },
+      "sources": [
+        {
+          "type": "artificial-analysis-api",
+          "endpoint": "https://artificialanalysis.ai/api/v2/data/llms/models",
+          "model_reference": "2e6400f5-85ca-4ebc-ba8f-c2811a631138"
+        }
+      ],
+      "acceptedByUser": true,
+      "acceptedAt": "2026-02-14T16:01:58.000Z",
+      "acceptedFromProposal": "skills/update-agent-models/proposals/benchmark-research.2026-02-14T16-01-58-665Z.json",
+      "acceptanceNote": "Auto-accepted from Artificial Analysis API with confidence 0.81"
+    },
+    "openrouter/google/gemma-3-27b-it:free": {
+      "name": "Gemma 3 27B Instruct",
+      "benchmarks": {
+        "gpqa": 0.428,
+        "mmlu_pro": 0.669,
+        "intelligence_index": 10.2,
+        "ifbench": 0.318,
+        "tau2": 0.105,
+        "aime": 0.253,
+        "math_index": 20.7,
+        "hle": 0.047,
+        "terminalbench_hard": 0.038,
+        "coding_index": 9.6,
+        "livecodebench": 0.137,
+        "scicode": 0.212
+      },
+      "sources": [
+        {
+          "type": "artificial-analysis-api",
+          "endpoint": "https://artificialanalysis.ai/api/v2/data/llms/models",
+          "model_reference": "2bfdd17a-e027-4068-a54e-b0e90a6df118"
+        }
+      ],
+      "acceptedByUser": true,
+      "acceptedAt": "2026-02-14T16:01:58.000Z",
+      "acceptedFromProposal": "skills/update-agent-models/proposals/benchmark-research.2026-02-14T16-01-58-665Z.json",
+      "acceptanceNote": "Auto-accepted from Artificial Analysis API with confidence 0.81"
+    },
+    "openrouter/google/gemma-3-4b-it:free": {
+      "name": "Gemma 3 4B Instruct",
+      "benchmarks": {
+        "gpqa": 0.291,
+        "mmlu_pro": 0.417,
+        "intelligence_index": 6.3,
+        "ifbench": 0.283,
+        "tau2": 0.05,
+        "aime": 0.063,
+        "math_index": 12.7,
+        "hle": 0.052,
+        "terminalbench_hard": 0.008,
+        "coding_index": 2.9,
+        "livecodebench": 0.112,
+        "scicode": 0.073
+      },
+      "sources": [
+        {
+          "type": "artificial-analysis-api",
+          "endpoint": "https://artificialanalysis.ai/api/v2/data/llms/models",
+          "model_reference": "222fb320-6e55-4672-846a-b6d5a24a45f4"
+        }
+      ],
+      "acceptedByUser": true,
+      "acceptedAt": "2026-02-14T16:01:58.000Z",
+      "acceptedFromProposal": "skills/update-agent-models/proposals/benchmark-research.2026-02-14T16-01-58-665Z.json",
+      "acceptanceNote": "Auto-accepted from Artificial Analysis API with confidence 0.78"
+    },
+    "openrouter/google/gemma-3n-e2b-it:free": {
+      "name": "Gemma 3n E2B Instruct",
+      "benchmarks": {
+        "gpqa": 0.229,
+        "mmlu_pro": 0.378,
+        "intelligence_index": 4.7,
+        "ifbench": 0.22,
+        "tau2": 0,
+        "aime": 0.09,
+        "math_index": 10.3,
+        "hle": 0.04,
+        "terminalbench_hard": 0.008,
+        "coding_index": 2.2,
+        "livecodebench": 0.095,
+        "scicode": 0.052
+      },
+      "sources": [
+        {
+          "type": "artificial-analysis-api",
+          "endpoint": "https://artificialanalysis.ai/api/v2/data/llms/models",
+          "model_reference": "a8c67863-9d66-44dd-8d27-f58654ecde03"
+        }
+      ],
+      "acceptedByUser": true,
+      "acceptedAt": "2026-02-14T16:01:58.000Z",
+      "acceptedFromProposal": "skills/update-agent-models/proposals/benchmark-research.2026-02-14T16-01-58-665Z.json",
+      "acceptanceNote": "Auto-accepted from Artificial Analysis API with confidence 0.81"
+    },
+    "openrouter/google/gemma-3n-e4b-it:free": {
+      "name": "Gemma 3n E4B Instruct",
+      "benchmarks": {
+        "gpqa": 0.296,
+        "mmlu_pro": 0.488,
+        "intelligence_index": 6.3,
+        "ifbench": 0.279,
+        "tau2": 0.05,
+        "aime": 0.137,
+        "math_index": 14.3,
+        "hle": 0.044,
+        "terminalbench_hard": 0.023,
+        "coding_index": 4.2,
+        "livecodebench": 0.146,
+        "scicode": 0.081
+      },
+      "sources": [
+        {
+          "type": "artificial-analysis-api",
+          "endpoint": "https://artificialanalysis.ai/api/v2/data/llms/models",
+          "model_reference": "a797eaf3-6d75-4f29-86a8-e1243ce52d43"
+        }
+      ],
+      "acceptedByUser": true,
+      "acceptedAt": "2026-02-14T16:01:58.000Z",
+      "acceptedFromProposal": "skills/update-agent-models/proposals/benchmark-research.2026-02-14T16-01-58-665Z.json",
+      "acceptanceNote": "Auto-accepted from Artificial Analysis API with confidence 0.81"
+    },
+    "zai-coding-plan/glm-4.5-flash": {
+      "name": "GLM-4.7-Flash (Reasoning)",
+      "benchmarks": {
+        "gpqa": 0.581,
+        "mmlu_pro": 0,
+        "intelligence_index": 30.1,
+        "ifbench": 0.608,
+        "tau2": 0.988,
+        "aime": 0,
+        "math_index": 0,
+        "hle": 0.071,
+        "terminalbench_hard": 0.22,
+        "coding_index": 25.9,
+        "livecodebench": 0,
+        "scicode": 0.337
+      },
+      "sources": [
+        {
+          "type": "artificial-analysis-api",
+          "endpoint": "https://artificialanalysis.ai/api/v2/data/llms/models",
+          "model_reference": "2c4394a2-b443-470a-908e-5c4a271b780c"
+        }
+      ],
+      "acceptedByUser": true,
+      "acceptedAt": "2026-02-14T16:01:58.000Z",
+      "acceptedFromProposal": "skills/update-agent-models/proposals/benchmark-research.2026-02-14T16-01-58-665Z.json",
+      "acceptanceNote": "Auto-accepted from Artificial Analysis API with confidence 0.81"
+    },
+    "zai-coding-plan/glm-5": {
+      "name": "GLM-5 (Reasoning)",
+      "benchmarks": {
+        "gpqa": 0.82,
+        "mmlu_pro": 0,
+        "intelligence_index": 49.6,
+        "ifbench": 0.723,
+        "tau2": 0.982,
+        "aime": 0,
+        "math_index": 0,
+        "hle": 0.272,
+        "terminalbench_hard": 0.432,
+        "coding_index": 44.2,
+        "livecodebench": 0,
+        "scicode": 0.462
+      },
+      "sources": [
+        {
+          "type": "artificial-analysis-api",
+          "endpoint": "https://artificialanalysis.ai/api/v2/data/llms/models",
+          "model_reference": "40663ad2-b218-471e-bdd4-a1e0c2360e2b"
+        }
+      ],
+      "acceptedByUser": true,
+      "acceptedAt": "2026-02-14T16:01:58.000Z",
+      "acceptedFromProposal": "skills/update-agent-models/proposals/benchmark-research.2026-02-14T16-01-58-665Z.json",
+      "acceptanceNote": "Auto-accepted from Artificial Analysis API with confidence 1.0"
+    },
+    "google-ai-studio/gemini-2.5-flash-native-audio-preview-09-2025": {
+      "name": "Gemini 2.5 Flash-Lite Preview (Sep '25) (Reasoning)",
+      "benchmarks": {
+        "gpqa": 0.709,
+        "mmlu_pro": 0.808,
+        "intelligence_index": 21.6,
+        "ifbench": 0.526,
+        "tau2": 0.307,
+        "aime": 0,
+        "math_index": 68.7,
+        "hle": 0.066,
+        "terminalbench_hard": 0.129,
+        "coding_index": 18.1,
+        "livecodebench": 0.688,
+        "scicode": 0.287
+      },
+      "source": "auto-accepted-research",
+      "sources": [
+        {
+          "type": "auto-accepted-research",
+          "note": "Auto-accepted from Artificial Analysis API"
+        }
+      ],
+      "acceptedAt": "2026-02-15T11:55:18.011Z",
+      "confidence": 0.898,
+      "acceptedByUser": true
+    },
+    "google-ai-studio/gemini-2.5-flash-native-audio-preview-12-2025": {
+      "name": "Gemini 2.5 Flash-Lite Preview (Sep '25) (Reasoning)",
+      "benchmarks": {
+        "gpqa": 0.709,
+        "mmlu_pro": 0.808,
+        "intelligence_index": 21.6,
+        "ifbench": 0.526,
+        "tau2": 0.307,
+        "aime": 0,
+        "math_index": 68.7,
+        "hle": 0.066,
+        "terminalbench_hard": 0.129,
+        "coding_index": 18.1,
+        "livecodebench": 0.688,
+        "scicode": 0.287
+      },
+      "source": "auto-accepted-research",
+      "sources": [
+        {
+          "type": "auto-accepted-research",
+          "note": "Auto-accepted from Artificial Analysis API"
+        }
+      ],
+      "acceptedAt": "2026-02-15T11:55:18.012Z",
+      "confidence": 0.787,
+      "acceptedByUser": true
+    }
+  }
+}

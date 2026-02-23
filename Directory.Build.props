@@ -5,4 +5,57 @@
 		<FileVersion>$(VersionPrefix)</FileVersion>
 		<AssemblyInformationalVersion>$(VersionPrefix)</AssemblyInformationalVersion>
 	</PropertyGroup>
+
+	<PropertyGroup>
+		<BuildArtifactsRoot>C:\Users\paulc\OneDrive\Desktop\build\</BuildArtifactsRoot>
+		<BaseOutputPath>$(BuildArtifactsRoot)$(MSBuildProjectName)\bin\</BaseOutputPath>
+		<BaseIntermediateOutputPath>$(BuildArtifactsRoot)$(MSBuildProjectName)\obj\</BaseIntermediateOutputPath>
+		<DefaultItemExcludes>$(DefaultItemExcludes);$(MSBuildProjectDirectory)\obj\**;$(MSBuildProjectDirectory)\bin\**</DefaultItemExcludes>
+	</PropertyGroup>
+
+	<!-- Build lock prevention - use unique output paths per project -->
+	<PropertyGroup>
+		<!-- Use project-specific output directories to reduce file locking -->
+		<UseCommonOutputDirectory>false</UseCommonOutputDirectory>
+		<!-- Disable fast up-to-date check to avoid stale lock detection -->
+		<DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
+		<!-- Use hard links for copies when possible (reduces actual file copies) -->
+		<CreateHardLinksForAdditionalFilesIfPossible>true</CreateHardLinksForAdditionalFilesIfPossible>
+		<CreateHardLinksForCopyAdditionalFilesIfPossible>true</CreateHardLinksForCopyAdditionalFilesIfPossible>
+		<CreateHardLinksForCopyLocalIfPossible>true</CreateHardLinksForCopyLocalIfPossible>
+		<CreateHardLinksForPublishFilesIfPossible>true</CreateHardLinksForPublishFilesIfPossible>
+		<!-- Reduce copy retry count but add delay (allows processes to release locks) -->
+		<CopyRetryCount>5</CopyRetryCount>
+		<CopyRetryDelayMilliseconds>500</CopyRetryDelayMilliseconds>
+	</PropertyGroup>
+
+	<!-- Suppress specific copy warnings that can occur when files are locked -->
+	<PropertyGroup>
+		<!-- Don't error on duplicate publish outputs -->
+		<ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+		<!-- Allow copying of locked files to fail gracefully where possible -->
+		<SkipCopyUnchangedFiles>true</SkipCopyUnchangedFiles>
+	</PropertyGroup>
+
+	<!-- Settings for always-on systems to prevent file locking -->
+	<PropertyGroup>
+		<!-- Produce reference assemblies - smaller files that don't lock the main assembly -->
+		<ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+		<!-- Disable shared compilation to prevent VBCSCompiler from holding locks -->
+		<UseSharedCompilation>false</UseSharedCompilation>
+		<!-- Don't copy local assemblies if they're already present (reduces locking) -->
+		<CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+		<!-- Use deterministic builds to ensure consistent output -->
+		<Deterministic>true</Deterministic>
+		<!-- Disable copying of debug symbols to reduce file operations -->
+		<CopyDebugSymbolFilesFromPackages>false</CopyDebugSymbolFilesFromPackages>
+	</PropertyGroup>
+
+	<!-- Target for handling copy failures gracefully -->
+	<Target Name="HandleCopyFailure" BeforeTargets="CopyFilesToOutputDirectory">
+		<PropertyGroup>
+			<!-- Suppress errors on locked files - convert to warning -->
+			<ContinueOnError>WarnAndContinue</ContinueOnError>
+		</PropertyGroup>
+	</Target>
 </Project>

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "lastUpdated": "2026-02-21T00:21:00.656Z",
+  "lastUpdated": "2026-02-22T19:36:00.000Z",
   "sourceDirectory": "C:/Users/paulc/AppData/Local/ToolHive/runconfigs",
   "servers": [
     {
@@ -74,22 +74,22 @@
       "enabled": true
     },
     {
-      "id": "toolhive-decisions-server",
+      "id": "toolhive-decisions-server-v2",
       "name": "decisions-server",
       "transport": "http",
       "connection": {
-        "url": "http://127.0.0.1:46818/mcp",
-        "port": 46818
+        "url": "http://127.0.0.1:3000/sse",
+        "port": 3000
       },
       "tags": [
         "toolhive-desktop",
         "p4nth30n"
       ],
-      "description": "Decision management and workflow",
+      "description": "Decision management and workflow (v2 SSE)",
       "source": "decisions-server.json",
-      "image": "decisions-server:v1.2.0",
+      "image": "servers-decisions-server-v2",
       "envVars": {
-        "MCP_TRANSPORT": "stdio",
+        "MCP_TRANSPORT": "sse",
         "MONGODB_URI": "mongodb://host.docker.internal:27017/P4NTH30N"
       },
       "enabled": true
@@ -204,25 +204,27 @@
       "enabled": true
     },
     {
-      "id": "toolhive-mongodb-p4nth30n",
+      "id": "toolhive-mongodb-p4nth30n-v2",
       "name": "mongodb-p4nth30n",
       "transport": "http",
       "connection": {
-        "url": "http://127.0.0.1:59767/mcp",
-        "port": 59767
+        "url": "http://127.0.0.1:3001/sse",
+        "port": 3001
       },
       "tags": [
         "toolhive-desktop",
         "database",
         "storage",
-        "p4nth30n"
+        "p4nth30n",
+        "mongodb",
+        "crud"
       ],
-      "description": "MongoDB database access for P4NTH30N",
+      "description": "P4NTH30N MongoDB database with CRUD operations for decisions (v2 SSE)",
       "source": "mongodb-p4nth30n.json",
-      "image": "mongodb-server:v1.1.0",
       "envVars": {
-        "MCP_TRANSPORT": "stdio",
-        "MONGODB_URI": "mongodb://host.docker.internal:27017/P4NTH30N"
+        "MCP_TRANSPORT": "sse",
+        "MONGODB_URI": "mongodb://localhost:27017",
+        "DATABASE_NAME": "P4NTH30N"
       },
       "enabled": true
     },
@@ -249,25 +251,24 @@
       "enabled": true
     },
     {
-      "id": "toolhive-rag-server",
+      "id": "toolhive-rag-server-v2",
       "name": "rag-server",
       "transport": "http",
       "connection": {
-        "url": "http://127.0.0.1:5001/mcp",
-        "port": 5001
+        "url": "http://127.0.0.1:3002/sse",
+        "port": 3002
       },
       "tags": [
         "toolhive-desktop",
         "search",
-        "p4nth30n"
+        "p4nth30n",
+        "rag"
       ],
-      "description": "Retrieval-Augmented Generation server",
+      "description": "P4NTH30N RAG server with semantic search (v2 SSE)",
       "source": "rag-server.json",
-      "image": "http://127.0.0.1:5300/mcp",
+      "image": "servers-rag-server-v2",
       "envVars": {
-        "FASTMCP_PORT": "34599",
-        "MCP_PORT": "34599",
-        "MCP_TRANSPORT": "streamable-http"
+        "MCP_TRANSPORT": "sse"
       },
       "enabled": true
     },

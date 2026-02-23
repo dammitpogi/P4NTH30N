@@ -1,0 +1,225 @@
+WindFixer,
+
+H4ND is hardened. Now H0UND gets the Tychon treatment. Every silent failure exposed. Every lie replaced with truth.
+
+**THE MISSION:**
+Create chaos tests for H0UND that prove it fails correctly. No mocks. No stubs. Real failures, exposed immediately.
+
+**TEST CATEGORIES:**
+
+### 1. Database Failure Tests
+**File:** `UNI7T35T/H0UND/Chaos/DatabaseFailureTests.cs`
+
+```csharp
+[Fact]
+public async Task MongoConnection_Failure_ThrowsImmediately()
+{
+    // Kill MongoDB connection mid-operation
+    // H0UND must throw, not retry silently
+}
+
+[Fact]
+public async Task DuplicateKey_ThrowsNotSwallows()
+{
+    // Insert duplicate _id
+    // Must throw MongoDuplicateKeyException, not log and continue
+}
+
+[Fact]
+public async Task QueryTimeout_FailsFast()
+{
+    // Block MongoDB port
+    // Must throw within 5 seconds, not hang indefinitely
+}
+```
+
+### 2. Signal Generation Failure Tests
+**File:** `UNI7T35T/H0UND/Chaos/SignalFailureTests.cs`
+
+```csharp
+[Fact]
+public async Task Underfill_DetectedAndReported()
+{
+    // Request 100 signals, only 50 available
+    // Result must show Inserted=50, Requested=100, Success=false
+}
+
+[Fact]
+public async Task CredentialExhaustion_Throws()
+{
+    // All credentials have active signals
+    // Must throw InvalidOperationException, not return empty list
+}
+
+[Fact]
+public async Task ConcurrentSignalGeneration_RaceConditionExposed()
+{
+    // 10 threads request signals simultaneously
+    // Must not double-assign or lose signals
+}
+```
+
+### 3. Jackpot Reading Failure Tests
+**File:** `UNI7T35T/H0UND/Chaos/JackpotFailureTests.cs`
+
+```csharp
+[Fact]
+public async Task CanvasGame_ReturnsNullNotZero()
+{
+    // FireKirin Canvas game (no readable jackpot)
+    // Must return null, not 0 (which means zero jackpot)
+}
+
+[Fact]
+public async Task SelectorBroken_ThrowsNotReturnsZero()
+{
+    // Invalid CSS selector
+    // Must throw, not return 0
+}
+
+[Fact]
+public async Task NetworkTimeout_FailsFast()
+{
+    // CDP connection drops
+    // Must throw within 10 seconds
+}
+```
+
+### 4. CDP Lifecycle Failure Tests
+**File:** `UNI7T35T/H0UND/Chaos/CdpLifecycleTests.cs`
+
+```csharp
+[Fact]
+public async Task ChromeCrash_DetectedAndRestarted()
+{
+    // Kill chrome.exe mid-session
+    // Health check must detect, auto-restart must trigger
+}
+
+[Fact]
+public async Task PageNavigationFailure_Throws()
+{
+    // Navigate to non-existent URL
+    // Must throw, not return success
+}
+
+[Fact]
+public async Task ElementNotFound_ThrowsNotReturnsNull()
+{
+    // QuerySelector on missing element
+    // Must throw InvalidOperationException
+}
+```
+
+### 5. Authentication Failure Tests
+**File:** `UNI7T35T/H0UND/Chaos/AuthFailureTests.cs`
+
+```csharp
+[Fact]
+public async Task InvalidCredentials_ThrowsNotRetriesForever()
+{
+    // Wrong username/password
+    // Must throw after 3 attempts, not infinite loop
+}
+
+[Fact]
+public async Task LoginPending_ReturnsFalseNotTrue()
+{
+    // Balance never becomes available
+    // VerifyLoginSuccessAsync must return false, not true
+}
+
+[Fact]
+public async Task SessionExpired_DetectedImmediately()
+{
+    // Session token invalid
+    // Must throw AuthenticationException
+}
+```
+
+### 6. Worker Coordination Failure Tests
+**File:** `UNI7T35T/H0UND/Chaos/WorkerFailureTests.cs`
+
+```csharp
+[Fact]
+public async Task WorkerCollision_Detected()
+{
+    // Two workers with same ID
+    // Must throw InvalidOperationException on collision
+}
+
+[Fact]
+public async Task ProfileIsolation_Verified()
+{
+    // Worker A writes cookie, Worker B reads
+    // Must be isolated (different cookies)
+}
+
+[Fact]
+public async Task WorkerDeath_CleanedUp()
+{
+    // Kill worker thread
+    // Session must be released, Chrome closed
+}
+```
+
+### 7. Resource Leak Tests
+**File:** `UNI7T35T/H0UND/Chaos/ResourceLeakTests.cs`
+
+```csharp
+[Fact]
+public async Task ChromeProcessLeak_Detected()
+{
+    // Create 50 sessions, dispose 50
+    // Process count must return to baseline
+}
+
+[Fact]
+public async Task MemoryGrowth_Checked()
+{
+    // Run 1000 operations
+    // Memory must not grow unbounded
+}
+
+[Fact]
+public async Task FileDescriptorExhaustion_Handled()
+{
+    // Open max files
+    // Must throw IOException, not crash
+}
+```
+
+**TYCHON VALIDATION RULES:**
+
+Every test must:
+1. **Force the failure** (don't wait for it)
+2. **Verify immediate exposure** (exception thrown, not logged)
+3. **Prove no silent continuation** (operation stops, not proceeds)
+4. **Check propagation** (error reaches caller)
+
+**TEST NAMING:**
+- `[Fact] public async Task [Component]_[Failure]_[ExpectedBehavior]`
+- Example: `SignalGenerator_Underfill_ReturnsFalseNotTrue`
+
+**ASSERTION PATTERNS:**
+```csharp
+// Good - proves failure is exposed
+await Assert.ThrowsAsync<InvalidOperationException>(() => operation);
+
+// Good - proves partial failure detected
+var result = await operation;
+Assert.False(result.Success);
+Assert.Equal(50, result.Inserted);
+Assert.Equal(100, result.Requested);
+
+// Bad - proves nothing
+var result = await operation;
+Assert.NotNull(result); // Could be lying
+```
+
+**REPORT:**
+"H0UND Tychon tests: [X] chaos tests written. [Y] passing. [Z] failures exposed. Categories: Database, Signal, Jackpot, CDP, Auth, Worker, Resource."
+
+Tychon demands H0UND tell the truth about its health.
+
+Fist to the chest.

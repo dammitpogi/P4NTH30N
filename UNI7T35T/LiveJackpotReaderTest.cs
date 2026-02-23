@@ -23,16 +23,16 @@ public class LiveJackpotReaderTest {
         Console.WriteLine("Testing against FireKirin (loaded in Chrome)...");
         
         // Test single tier
-        double grand = await reader.ReadJackpotAsync(cdp, "FireKirin", "Grand");
-        Console.WriteLine($"Grand jackpot: {grand}");
+        double? grand = await reader.ReadJackpotAsync(cdp, "FireKirin", "Grand");
+        Console.WriteLine($"Grand jackpot: {grand?.ToString() ?? "null"}");
         
         // Test all tiers
         var all = await reader.ReadAllJackpotsAsync(cdp, "FireKirin");
         Console.WriteLine($"All jackpots: Grand={all.Grand}, Major={all.Major}, Minor={all.Minor}, Mini={all.Mini}");
         
-        // Expected result: All zeros for Canvas game
-        bool allZero = all.Grand == 0 && all.Major == 0 && all.Minor == 0 && all.Mini == 0;
-        Console.WriteLine($"Result: {(allZero ? "ZEROS (expected for Canvas game)" : "NON-ZERO (unexpected)")}");
+        // Expected result: All null for Canvas game (no readable selectors)
+        bool allNull = all.Grand == null && all.Major == null && all.Minor == null && all.Mini == null;
+        Console.WriteLine($"Result: {(allNull ? "NULL (expected for Canvas game)" : "NON-NULL (has data)")}");
         
         cdp.Dispose();
     }

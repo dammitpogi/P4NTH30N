@@ -1,0 +1,31 @@
+name: servers-v2-ci
+
+on:
+  push:
+    paths:
+      - 'servers/**'
+      - '.github/workflows/servers-v2-ci.yml'
+  pull_request:
+    paths:
+      - 'servers/**'
+      - '.github/workflows/servers-v2-ci.yml'
+
+jobs:
+  framework-security-tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: servers/shared/mcp-framework
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: servers/shared/mcp-framework/package.json
+      - name: Install dependencies
+        run: npm install
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Security test suite
+        run: npm test

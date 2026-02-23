@@ -1,0 +1,16 @@
+{
+  "name": "@p4nth30n/mcp-integration-tests",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test:decisions": "vitest run integration/decisions-client.test.ts --reporter=verbose",
+    "test:mongodb": "vitest run integration/mongodb-client.test.ts --reporter=verbose",
+    "test:rag": "vitest run integration/rag-client.test.ts --reporter=verbose",
+    "test:all": "vitest run --reporter=verbose"
+  },
+  "devDependencies": {
+    "@types/node": "24.3.0",
+    "typescript": "5.9.2",
+    "vitest": "3.2.4"
+  }
+}

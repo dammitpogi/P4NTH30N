@@ -290,14 +290,14 @@ export async function runOrionStarsWorkflow(opts: {
     // OrionStars has notification dialogs after login (up to 5 attempts)
     // ══════════════════════════════════════════════
     const modalPhase = await runPhase('DismissModals', async () => {
-      log('Modals', 'Dismissing notification dialogs (up to 5 attempts)');
+      log('Modals', 'Dismissing notification dialogs (up to 3 attempts)');
       // ARCH-081: Get fresh canvas bounds for modal dismissal
       const modalBounds = await cdp.getCanvasBounds();
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 3; i++) {
         await cdp.clickRelative(OS.DIALOG_OK, modalBounds);
-        await sleep(500);
+        await sleep(750);
         await cdp.clickRelative(OS.NOTIF_CLOSE, modalBounds);
-        await sleep(500);
+        await sleep(750);
       }
       allScreenshots.push(await cdp.screenshot('04_modals_dismissed'));
       return { dismissed: true };

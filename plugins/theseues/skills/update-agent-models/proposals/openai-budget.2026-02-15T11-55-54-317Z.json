@@ -1,0 +1,39 @@
+{
+  "timestamp": "2026-02-15T11:55:54.316Z",
+  "source": "codex-rate-limits",
+  "monthly_allowance_usd": 200,
+  "spent_usd": null,
+  "remaining_usd": null,
+  "monetary_remaining_ratio": null,
+  "remaining_ratio": 0.07,
+  "five_hour_remaining_ratio": 0.13,
+  "weekly_remaining_ratio": 0.07,
+  "budget_stage": "critical",
+  "usage_limits": {
+    "five_hour_remaining_pct": 13,
+    "weekly_remaining_pct": 7,
+    "codex_rate_limits": {
+      "limitId": "codex",
+      "limitName": null,
+      "primary": {
+        "usedPercent": 87,
+        "windowDurationMins": 300,
+        "resetsAt": 1771163319
+      },
+      "secondary": {
+        "usedPercent": 93,
+        "windowDurationMins": 10080,
+        "resetsAt": 1771639745
+      },
+      "credits": {
+        "hasCredits": false,
+        "unlimited": false,
+        "balance": "0"
+      },
+      "planType": "plus"
+    },
+    "source_file": "c:\\Users\\paulc\\.config\\opencode\\skills\\update-agent-models\\openai_limits_manual.json"
+  },
+  "model_costs_usd": {},
+  "api_error": null
+}

@@ -73,6 +73,31 @@ export interface StepRecord {
     nextPhase?: string;
   };
   nextAction?: string;
+  // Conditional logic for error handling
+  conditional?: ConditionalLogic;
+  // Goto target for error recovery
+  gotoStep?: number;
+}
+
+export interface ConditionalLogic {
+  condition: ConditionCheck;
+  onTrue: ConditionalBranch;
+  onFalse: ConditionalBranch;
+}
+
+export interface ConditionCheck {
+  type: 'element-exists' | 'element-missing' | 'text-contains' | 'cdp-check' | 'tool-success' | 'tool-failure' | 'custom-js';
+  target?: string; // Element selector, text to search, or JS expression
+  cdpCommand?: string; // CDP command for cdp-check type
+  description: string; // Human-readable condition description
+}
+
+export interface ConditionalBranch {
+  action: 'continue' | 'goto' | 'retry' | 'abort';
+  gotoStep?: number; // Step number to jump to
+  retryCount?: number; // Number of retries
+  retryDelayMs?: number; // Delay between retries
+  comment?: string; // Explanation of this branch
 }
 
 export interface T00L5ETResult {

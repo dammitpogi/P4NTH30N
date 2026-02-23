@@ -1,0 +1,127 @@
+OpenFixer,
+
+**DECISION_105 IMPLEMENTATION - Automated Silent-Failure Detection**
+
+The Nexus has institutionalized 5 silent-failure patterns. DECISION_105 is canon. Designer approved at 95%. Now we build the tools to detect them automatically.
+
+**THE FIVE PATTERNS TO DETECT:**
+
+1. **Empty catches or ignored exceptions**
+   - Search: `catch(Exception)` with no `throw`
+   
+2. **Default-success returns**
+   - Search: `return true` inside catch blocks
+   
+3. **Async void handlers**
+   - Search: `async void` method signatures
+   
+4. **Logging without failing**
+   - Search: `LogWarning`/`LogError` followed by `return`
+   
+5. **Skipped actions leaving invalid state**
+   - Search: Conditional blocks that log then return success
+
+**YOUR MISSION:**
+
+### 1. AST-grep Rules (Immediate)
+**File**: `STR4TEG15T/tools/ast-grep-rules/silent-failures.yml`
+
+Create rules for each pattern:
+```yaml
+rules:
+  - id: empty-catch
+    pattern: |
+      catch ($$EX: Exception) {
+        $$BODY
+      }
+    condition: $$BODY not contains "throw"
+    
+  - id: default-success-return
+    pattern: |
+      catch ($$EX) {
+        $$LOG
+        return true;
+      }
+    
+  - id: async-void
+    pattern: |
+      async void $$METHOD
+```
+
+### 2. Pre-commit Hook
+**File**: `STR4TEG15T/tools/pre-commit/tychon-guard.sh`
+
+Run AST-grep on commit:
+```bash
+#!/bin/bash
+ast-grep scan --config silent-failures.yml
+if [ $? -ne 0 ]; then
+    echo "TYCHON GUARD: Silent failure patterns detected. Commit blocked."
+    exit 1
+fi
+```
+
+### 3. Tychon Audit Tool
+**File**: `STR4TEG15T/tools/tychon-audit/Program.cs`
+
+Console tool that scans codebase and reports:
+```
+TYCHON AUDIT REPORT
+===================
+Files Scanned: 142
+Patterns Found:
+  - Empty catches: 3 (H4ND/Navigation/StepExecutor.cs:89, ...)
+  - Default-success returns: 7 (H4ND/Services/SignalGenerator.cs:45, ...)
+  - Async void: 2 (H4ND/Events/Handlers.cs:12, ...)
+  - Logging without failing: 5
+  - Skipped actions: 4
+
+Truth Score: 87/100
+Recommendation: Fix 21 violations to reach 100/100
+```
+
+### 4. IDE Extension Manifest
+**File**: `STR4TEG15T/tools/vscode-tychon/package.json`
+
+VS Code extension that:
+- Highlights violations in real-time
+- Shows quick fixes on hover
+- Displays Truth Score in status bar
+
+**Build Requirements:**
+```bash
+# AST-grep
+npm install -g @ast-grep/cli
+
+# Pre-commit hook
+chmod +x tychon-guard.sh
+cp tychon-guard.sh .git/hooks/pre-commit
+
+# Tychon Audit
+dotnet build STR4TEG15T/tools/tychon-audit/
+```
+
+**Validation:**
+```bash
+# Test on H4ND
+ast-grep scan --config silent-failures.yml H4ND/
+
+# Should find 0 violations after DECISION_103 fixes
+# If violations found, report them
+```
+
+**Report Format:**
+```
+DECISION_105 Tools Complete
+AST-grep rules: 5 patterns
+Pre-commit hook: Installed
+Tychon audit: Console tool
+IDE extension: Manifest ready
+Files created: [list]
+Build status: [pass/fail]
+Test scan: [violations found]
+```
+
+Tychon demands we catch the lies before they enter the codebase.
+
+Fist to the chest.

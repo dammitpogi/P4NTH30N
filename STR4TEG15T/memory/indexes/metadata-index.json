@@ -1,0 +1,4122 @@
+{
+  "DECISION_034": {
+    "type": "decision",
+    "id": "DECISION_034",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.860Z",
+    "last_reviewed": "2026-02-23T01:31:15.860Z",
+    "keywords": [
+      "designer",
+      "consultation",
+      "decision034",
+      "original",
+      "response",
+      "assimilated",
+      "implementation",
+      "strategy",
+      "4phase",
+      "harvesting",
+      "pipeline",
+      "files",
+      "create",
+      "modify",
+      "architecture",
+      "opencode",
+      "data",
+      "sources",
+      "windsurf",
+      "investigation"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_034 **Agent**: Designer (Aegis) **Task ID**: Assimilated by Strategist **Date**: 2026-02-20 **Status**: Complete (Strategist Assimilated)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/designer\\DECISION_034_designer.md"
+    }
+  },
+  "DECISION_039": {
+    "type": "decision",
+    "id": "DECISION_039",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.865Z",
+    "last_reviewed": "2026-02-23T01:31:15.865Z",
+    "keywords": [
+      "designer",
+      "consultation",
+      "decision039",
+      "original",
+      "response",
+      "assimilated",
+      "implementation",
+      "strategy",
+      "4phase",
+      "migration",
+      "files",
+      "create",
+      "modify",
+      "architecture",
+      "toolhive",
+      "discovery",
+      "pattern",
+      "configuration",
+      "management",
+      "integration"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: MIGRATE-004 **Agent**: Designer (Aegis) **Task ID**: Assimilated by Strategist **Date**: 2026-02-20 **Status**: Complete (Strategist Assimilated)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/designer\\DECISION_039_designer.md"
+    }
+  },
+  "DECISION-TOOLHIVE-001": {
+    "type": "decision",
+    "id": "DECISION-TOOLHIVE-001",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.663Z",
+    "last_reviewed": "2026-02-23T01:31:15.663Z",
+    "keywords": [
+      "decision",
+      "toolhive",
+      "gateway",
+      "http",
+      "tool",
+      "discovery",
+      "problem",
+      "statement",
+      "root",
+      "cause",
+      "solution",
+      "changes",
+      "made",
+      "test",
+      "results",
+      "impact",
+      "verification",
+      "files",
+      "modified",
+      "deployment"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION-TOOLHIVE-001 **Title**: Fix ToolHive Gateway to Dynamically Discover Tools from HTTP MCP Servers **Status**: Completed **Date**: 2026-02-20 **Classification**: Tooling / Infrastructure",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION-TOOLHIVE-001.md"
+    }
+  },
+  "DECISION_025": {
+    "type": "decision",
+    "id": "DECISION_025",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.830Z",
+    "last_reviewed": "2026-02-23T01:31:15.830Z",
+    "keywords": [
+      "oracle",
+      "consultation",
+      "decision025",
+      "assimilated",
+      "analysis",
+      "feasibility",
+      "score",
+      "910",
+      "risk",
+      "210",
+      "very",
+      "low",
+      "complexity",
+      "310",
+      "key",
+      "findings",
+      "top",
+      "risks",
+      "recommendations",
+      "mitigations"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_025 **Agent**: Oracle (Orion) **Task ID**: Assimilated by Strategist **Date**: 2026-02-20 **Status**: Complete (Strategist Assimilated - Subagent Fallback Failed)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/oracle\\DECISION_025_oracle.md"
+    }
+  },
+  "DECISION_027": {
+    "type": "decision",
+    "id": "DECISION_027",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.831Z",
+    "last_reviewed": "2026-02-23T01:31:15.831Z",
+    "keywords": [
+      "oracle",
+      "consultation",
+      "decision027",
+      "assimilated",
+      "analysis",
+      "feasibility",
+      "score",
+      "710",
+      "risk",
+      "510",
+      "moderate",
+      "complexity",
+      "high",
+      "key",
+      "findings",
+      "top",
+      "risks",
+      "recommendations",
+      "mitigations",
+      "improvements"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_027 **Agent**: Oracle (Orion) **Task ID**: Assimilated by Strategist **Date**: 2026-02-20 **Status**: Complete (Strategist Assimilated - Subagent Fallback Failed)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/oracle\\DECISION_027_oracle.md"
+    }
+  },
+  "DECISION_028": {
+    "type": "decision",
+    "id": "DECISION_028",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.832Z",
+    "last_reviewed": "2026-02-23T01:31:15.832Z",
+    "keywords": [
+      "oracle",
+      "consultation",
+      "decision028",
+      "assimilated",
+      "analysis",
+      "feasibility",
+      "score",
+      "710",
+      "risk",
+      "510",
+      "moderate",
+      "complexity",
+      "610",
+      "medium",
+      "key",
+      "findings",
+      "top",
+      "risks",
+      "recommendations",
+      "mitigations"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_028 **Agent**: Oracle (Orion) **Task ID**: Assimilated by Strategist **Date**: 2026-02-20 **Status**: Complete (Strategist Assimilated - Subagent Fallback Failed)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/oracle\\DECISION_028_oracle.md"
+    }
+  },
+  "DECISION_031": {
+    "type": "decision",
+    "id": "DECISION_031",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.857Z",
+    "last_reviewed": "2026-02-23T01:31:15.857Z",
+    "keywords": [
+      "designer",
+      "consultation",
+      "decision031",
+      "original",
+      "response",
+      "implementation",
+      "strategy",
+      "4phase",
+      "parallelsafe",
+      "approach",
+      "files",
+      "create",
+      "modify",
+      "rename",
+      "order",
+      "dependencysafe",
+      "sequence",
+      "namespace",
+      "updates",
+      "systematic"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_031 **Agent**: Designer (Aegis) **Task ID**: ses_3853460eeffeyJGTl0rpFMODUU **Date**: 2026-02-20 **Status**: Complete",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/designer\\DECISION_031_designer.md"
+    }
+  },
+  "DECISION_035": {
+    "type": "decision",
+    "id": "DECISION_035",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.861Z",
+    "last_reviewed": "2026-02-23T01:31:15.861Z",
+    "keywords": [
+      "designer",
+      "consultation",
+      "decision035",
+      "original",
+      "response",
+      "implementation",
+      "strategy",
+      "4phase",
+      "incremental",
+      "rollout",
+      "files",
+      "create",
+      "modify",
+      "architecture",
+      "diagram",
+      "configuration",
+      "structure",
+      "validation",
+      "fallback",
+      "mechanisms"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: TEST-035 **Agent**: Designer (Aegis) **Task ID**: ses_38558a3aeffe7DmkhcPvJjP6Gz **Date**: 2026-02-20 **Status**: Complete",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/designer\\DECISION_035_designer.md"
+    }
+  },
+  "DECISION_036": {
+    "type": "decision",
+    "id": "DECISION_036",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.863Z",
+    "last_reviewed": "2026-02-23T01:31:15.863Z",
+    "keywords": [
+      "designer",
+      "consultation",
+      "decision036",
+      "original",
+      "response",
+      "foureyes",
+      "development",
+      "assistant",
+      "activation",
+      "implementation",
+      "strategy",
+      "phased",
+      "approach",
+      "phase",
+      "foundation",
+      "safety",
+      "week",
+      "critical",
+      "path",
+      "vision"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: FEAT-036 **Agent**: Designer (Aegis) **Task ID**: ses_385587db5ffejm20z8JM7ol122 **Date**: 2026-02-20 **Status**: Complete",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/designer\\DECISION_036_designer.md"
+    }
+  },
+  "DECISION_038": {
+    "type": "decision",
+    "id": "DECISION_038",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.864Z",
+    "last_reviewed": "2026-02-23T01:31:15.864Z",
+    "keywords": [
+      "designer",
+      "consultation",
+      "decision038",
+      "assessment",
+      "approval",
+      "rating",
+      "implementation",
+      "strategy",
+      "phase",
+      "forgewright",
+      "primary",
+      "status",
+      "bugfix",
+      "workflow",
+      "week",
+      "agent",
+      "subdecision",
+      "authority",
+      "automation",
+      "tools"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: FORGE-003 **Decision Title**: Multi-Agent Decision-Making Workflow with Forgewright **Consultation Date**: 2026-02-20 **Designer Status**: Strategist Assimilated",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/designer\\DECISION_038_designer.md"
+    }
+  },
+  "DECISION_041": {
+    "type": "decision",
+    "id": "DECISION_041",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.866Z",
+    "last_reviewed": "2026-02-23T01:31:15.866Z",
+    "keywords": [
+      "designer",
+      "consultation",
+      "decision041",
+      "assessment",
+      "approval",
+      "rating",
+      "implementation",
+      "strategy",
+      "phases",
+      "files",
+      "create",
+      "new",
+      "file",
+      "modify",
+      "core",
+      "validation",
+      "steps",
+      "fallback",
+      "mechanisms",
+      "decision"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: AUTH-041 **Decision Title**: OrionStars Session Renewal and Authentication Recovery **Consultation Date**: 2026-02-20 **Designer Status**: Strategist Assimilated (subagent timeout)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/designer\\DECISION_041_designer.md"
+    }
+  },
+  "DECISION_042": {
+    "type": "decision",
+    "id": "DECISION_042",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.867Z",
+    "last_reviewed": "2026-02-23T01:31:15.867Z",
+    "keywords": [
+      "designer",
+      "consultation",
+      "decision042",
+      "assessment",
+      "approval",
+      "rating",
+      "implementation",
+      "strategy",
+      "phases",
+      "files",
+      "create",
+      "new",
+      "modify",
+      "core",
+      "validation",
+      "steps",
+      "fallback",
+      "mechanisms",
+      "decision",
+      "agent"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: IMPL-042 **Decision Title**: Agent Implementation Completion (DECISION_027/028) **Consultation Date**: 2026-02-20 **Designer Status**: Strategist Assimilated (subagent timeout)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/designer\\DECISION_042_designer.md"
+    }
+  },
+  "DECISION_046": {
+    "type": "decision",
+    "id": "DECISION_046",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.679Z",
+    "last_reviewed": "2026-02-23T01:31:15.679Z",
+    "keywords": [
+      "decision046",
+      "configurationdriven",
+      "jackpot",
+      "selectors",
+      "executive",
+      "summary",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "action",
+      "items",
+      "dependencies",
+      "consultation",
+      "log",
+      "oracle",
+      "strategist",
+      "assimilated",
+      "designer",
+      "notes"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: OPS-046 **Category**: OPS **Status**: Implemented (via DECISION_045 — GameSelectorConfig.cs + appsettings.json fallback chains) **Priority**: High **Date**: 2026-02-20 **Oracle Approval**: Pending **Designer Approval**: Pending",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_046.md"
+    }
+  },
+  "DECISION_047": {
+    "type": "decision",
+    "id": "DECISION_047",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.681Z",
+    "last_reviewed": "2026-02-23T01:31:15.681Z",
+    "keywords": [
+      "decision047",
+      "parallel",
+      "h4nd",
+      "execution",
+      "for",
+      "multisignal",
+      "autospins",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "action",
+      "items",
+      "dependencies"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: ARCH-047 **Category**: ARCH (Architecture) **Status**: Burn-In FAILED — Configuration Issue (CDP Host IP Mismatch) **Priority**: Critical **Date**: 2026-02-20 **Oracle Approval**: 78% **Designer Approval**: 92%",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_047.md"
+    }
+  },
+  "DECISION_048": {
+    "type": "decision",
+    "id": "DECISION_048",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.682Z",
+    "last_reviewed": "2026-02-23T01:31:15.682Z",
+    "keywords": [
+      "decision048",
+      "implement",
+      "tool",
+      "call",
+      "proxying",
+      "toolhive",
+      "gateway",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "action",
+      "items",
+      "dependencies"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_048 **Category**: INFRA **Status**: Completed **Priority**: High **Date**: 2026-02-20 **Oracle Approval**: 88% (Strategist Assimilated) **Designer Approval**: 92%",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_048.md"
+    }
+  },
+  "DECISION_049": {
+    "type": "decision",
+    "id": "DECISION_049",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.683Z",
+    "last_reviewed": "2026-02-23T01:31:15.683Z",
+    "keywords": [
+      "decision049",
+      "restore",
+      "rag",
+      "mcp",
+      "server",
+      "healthy",
+      "status",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "action",
+      "items",
+      "dependencies"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_049 **Category**: INFRA **Status**: Completed **Priority**: High **Date**: 2026-02-20 **Oracle Approval**: 85% (Strategist Assimilated) **Designer Approval**: 88%",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_049.md"
+    }
+  },
+  "DECISION_050": {
+    "type": "decision",
+    "id": "DECISION_050",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.683Z",
+    "last_reviewed": "2026-02-23T01:31:15.683Z",
+    "keywords": [
+      "decision050",
+      "restore",
+      "decisions",
+      "mcp",
+      "server",
+      "healthy",
+      "status",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "action",
+      "items",
+      "dependencies"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_050 **Category**: INFRA **Status**: Completed **Priority**: High **Date**: 2026-02-20 **Oracle Approval**: 82% (Strategist Assimilated) **Designer Approval**: 85%",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_050.md"
+    }
+  },
+  "DECISION_051": {
+    "type": "decision",
+    "id": "DECISION_051",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.684Z",
+    "last_reviewed": "2026-02-23T01:31:15.684Z",
+    "keywords": [
+      "decision051",
+      "configurable",
+      "toolhive",
+      "desktop",
+      "integration",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "action",
+      "items",
+      "dependencies",
+      "risks",
+      "and"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_051 **Category**: INFRA **Status**: Completed **Priority**: Critical **Date**: 2026-02-20 **Completed**: 2026-02-21 **Oracle Approval**: Approved **Designer Approval**: Approved",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_051.md"
+    }
+  },
+  "DECISION_052": {
+    "type": "decision",
+    "id": "DECISION_052",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.685Z",
+    "last_reviewed": "2026-02-23T01:31:15.685Z",
+    "keywords": [
+      "decision052",
+      "ingest",
+      "speech",
+      "logs",
+      "into",
+      "rag",
+      "executive",
+      "summary",
+      "background",
+      "what",
+      "are",
+      "content",
+      "examples",
+      "value",
+      "for",
+      "specification",
+      "requirements",
+      "file",
+      "inventory",
+      "technical"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_052 **Category**: RAG **Status**: Completed **Priority**: Critical **Date**: 2026-02-20 **Oracle Approval**: 90% (Strategist Assimilated) **Designer Approval**: 88% (Strategist Assimilated)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_052.md"
+    }
+  },
+  "DECISION_053": {
+    "type": "decision",
+    "id": "DECISION_053",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.685Z",
+    "last_reviewed": "2026-02-23T01:31:15.685Z",
+    "keywords": [
+      "decision053",
+      "ingest",
+      "decisions",
+      "into",
+      "rag",
+      "executive",
+      "summary",
+      "background",
+      "what",
+      "are",
+      "decision",
+      "documents",
+      "categories",
+      "inventory",
+      "value",
+      "for",
+      "specification",
+      "requirements",
+      "file",
+      "technical"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_053 **Category**: RAG **Status**: Completed **Priority**: Critical **Date**: 2026-02-20 **Oracle Approval**: 92% (Strategist Assimilated) **Designer Approval**: 90% (Strategist Assimilated)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_053.md"
+    }
+  },
+  "DECISION_054": {
+    "type": "decision",
+    "id": "DECISION_054",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.686Z",
+    "last_reviewed": "2026-02-23T01:31:15.686Z",
+    "keywords": [
+      "decision054",
+      "ingest",
+      "codebase",
+      "patterns",
+      "into",
+      "rag",
+      "executive",
+      "summary",
+      "background",
+      "what",
+      "are",
+      "key",
+      "pattern",
+      "categories",
+      "agentsmd",
+      "content",
+      "c0mmon",
+      "architecture",
+      "value",
+      "for"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_054 **Category**: RAG **Status**: Completed **Priority**: High **Date**: 2026-02-20 **Oracle Approval**: 88% (Strategist Assimilated) **Designer Approval**: 90% (Strategist Assimilated)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_054.md"
+    }
+  },
+  "DECISION_055": {
+    "type": "decision",
+    "id": "DECISION_055",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.689Z",
+    "last_reviewed": "2026-02-23T01:31:15.689Z",
+    "keywords": [
+      "decision055",
+      "unified",
+      "game",
+      "execution",
+      "engine",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "action",
+      "items",
+      "dependencies",
+      "risks",
+      "and"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: ARCH-055 **Category**: ARCH (Architecture) **Status**: Completed **Priority**: Critical **Date**: 2026-02-20 **Oracle Approval**: 93% (Assimilated) **Designer Approval**: 95% (Assimilated)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_055.md"
+    }
+  },
+  "DECISION_056": {
+    "type": "decision",
+    "id": "DECISION_056",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.691Z",
+    "last_reviewed": "2026-02-23T01:31:15.691Z",
+    "keywords": [
+      "decision056",
+      "automatic",
+      "chrome",
+      "cdp",
+      "lifecycle",
+      "management",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "action",
+      "items",
+      "dependencies",
+      "risks"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: AUTO-056 **Category**: AUTO (Automation) **Status**: Completed **Priority**: Critical **Date**: 2026-02-21 **Oracle Approval**: 95% (Assimilated) **Designer Approval**: 96% (Assimilated)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_056.md"
+    }
+  },
+  "DECISION_057": {
+    "type": "decision",
+    "id": "DECISION_057",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.692Z",
+    "last_reviewed": "2026-02-23T01:31:15.692Z",
+    "keywords": [
+      "decision057",
+      "realtime",
+      "burnin",
+      "monitoring",
+      "dashboard",
+      "executive",
+      "summary",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "action",
+      "items",
+      "success",
+      "criteria",
+      "token",
+      "budget",
+      "research",
+      "foundation",
+      "arxiv"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: MON-057 **Category**: MON (Monitoring) **Status**: Completed **Priority**: Critical **Date**: 2026-02-21 **Oracle Approval**: 94% (Assimilated) **Designer Approval**: 95% (Assimilated)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_057.md"
+    }
+  },
+  "DECISION_058": {
+    "type": "decision",
+    "id": "DECISION_058",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.693Z",
+    "last_reviewed": "2026-02-23T01:31:15.693Z",
+    "keywords": [
+      "decision058",
+      "burnin",
+      "alert",
+      "thresholds",
+      "and",
+      "escalation",
+      "executive",
+      "summary",
+      "specification",
+      "severity",
+      "levels",
+      "threshold",
+      "configuration",
+      "halt",
+      "behavior",
+      "posthalt",
+      "diagnostic",
+      "data",
+      "action",
+      "items"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: MON-058 **Category**: MON (Monitoring) **Priority**: Critical **Status**: Completed **Oracle Approval**: 93% (Assimilated) **Designer Approval**: 94% (Assimilated)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_058.md"
+    }
+  },
+  "DECISION_059": {
+    "type": "decision",
+    "id": "DECISION_059",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.694Z",
+    "last_reviewed": "2026-02-23T01:31:15.694Z",
+    "keywords": [
+      "decision059",
+      "postburnin",
+      "analysis",
+      "and",
+      "decision",
+      "promotion",
+      "executive",
+      "summary",
+      "specification",
+      "success",
+      "criteria",
+      "validation",
+      "completion",
+      "report",
+      "generation",
+      "automated",
+      "actions",
+      "pass",
+      "fail",
+      "action"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: AUTO-059 **Category**: AUTO (Automation) **Priority**: Critical **Status**: Completed **Oracle Approval**: 95% (Assimilated) **Designer Approval**: 96% (Assimilated)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_059.md"
+    }
+  },
+  "DECISION_060": {
+    "type": "decision",
+    "id": "DECISION_060",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.695Z",
+    "last_reviewed": "2026-02-23T01:31:15.695Z",
+    "keywords": [
+      "decision060",
+      "operational",
+      "deployment",
+      "production",
+      "readiness",
+      "executive",
+      "summary",
+      "preoperational",
+      "checklist",
+      "technical",
+      "validation",
+      "from",
+      "burnin",
+      "credentials",
+      "infrastructure",
+      "monitoring",
+      "compliance",
+      "modes",
+      "mode",
+      "continuous"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: OPS-060 **Category**: OPS (Operations) **Priority**: Critical **Status**: Completed **Oracle Approval**: Pending **Designer Approval**: Pending",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_060.md"
+    }
+  },
+  "DECISION_061": {
+    "type": "decision",
+    "id": "DECISION_061",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.696Z",
+    "last_reviewed": "2026-02-23T01:31:15.696Z",
+    "keywords": [
+      "decision061",
+      "agent",
+      "prompt",
+      "updates",
+      "rag",
+      "file",
+      "watcher",
+      "executive",
+      "summary",
+      "background",
+      "problem",
+      "prompts",
+      "out",
+      "sync",
+      "manual",
+      "ingestion",
+      "required",
+      "specification",
+      "solution",
+      "onetime"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_061 **Category**: INFRA **Status**: Completed **Priority**: Critical **Date**: 2026-02-20 **Oracle Approval**: 100% (Assimilated - no agents available) **Designer Approval**: 100% (Assimilated - no agents available)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_061.md"
+    }
+  },
+  "DECISION_062": {
+    "type": "decision",
+    "id": "DECISION_062",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.788Z",
+    "last_reviewed": "2026-02-23T01:31:15.788Z",
+    "keywords": [
+      "infra068",
+      "mcp",
+      "server",
+      "configuration",
+      "consolidation",
+      "and",
+      "cleanup",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "action",
+      "items",
+      "dependencies"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: INFRA-068 **Category**: INFRA **Status**: Completed **Priority**: High **Date**: 2026-02-21 **Oracle Approval**: 95 **Designer Approval**: Approved",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/INFRA-068_MCP_Consolidation.md"
+    }
+  },
+  "DECISION_063": {
+    "type": "decision",
+    "id": "DECISION_063",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.698Z",
+    "last_reviewed": "2026-02-23T01:31:15.698Z",
+    "keywords": [
+      "decision063",
+      "rag",
+      "file",
+      "watcher",
+      "windows",
+      "service",
+      "executive",
+      "summary",
+      "background",
+      "problem",
+      "solution",
+      "specification",
+      "configuration",
+      "watched",
+      "directories",
+      "features",
+      "action",
+      "items",
+      "dependencies",
+      "risks"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "Set up the RAG file watcher as a persistent Windows service to ensure continuous automatic ingestion of new documents into the RAG knowledge base. This eliminates the need for manual intervention and ensures institutional memory is always preserved. **Implementation Complete**: - Created Windows Scheduled Task `P4NTH30N-RAG-Watcher` - Task runs at system startup with SYSTEM privileges - Runs continuously polling for new files every 5 seconds - No agent dependency - pure automation ---",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_063.md"
+    }
+  },
+  "DECISION_064": {
+    "type": "decision",
+    "id": "DECISION_064",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.699Z",
+    "last_reviewed": "2026-02-23T01:31:15.699Z",
+    "keywords": [
+      "decision064",
+      "geometrybased",
+      "anomaly",
+      "detection",
+      "for",
+      "early",
+      "failure",
+      "warning",
+      "executive",
+      "summary",
+      "research",
+      "foundation",
+      "arxiv",
+      "paper",
+      "referenced",
+      "background",
+      "current",
+      "state",
+      "decision058",
+      "desired"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_064 **Category**: AUTO (Automation) **Status**: Approved **Priority**: High **Date**: 2026-02-20 **Oracle Approval**: 78% **Designer Approval**: 92% **Average Approval**: 85%",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_064.md"
+    }
+  },
+  "DECISION_065": {
+    "type": "decision",
+    "id": "DECISION_065",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.789Z",
+    "last_reviewed": "2026-02-23T01:31:15.789Z",
+    "keywords": [
+      "strategist",
+      "report",
+      "research",
+      "decisions",
+      "ready",
+      "for",
+      "implementation",
+      "situation",
+      "sequence",
+      "phase",
+      "performance",
+      "foundation",
+      "week",
+      "operational",
+      "excellence",
+      "deliverables",
+      "created",
+      "speech",
+      "synthesis",
+      "windfixer"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Date**: 2026-02-21 **Strategist**: Pyxis **Status**: ✅ Deployment Package Complete",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/STRATEGIST_REPORT_2026-02-21.md"
+    }
+  },
+  "DECISION_066": {
+    "type": "decision",
+    "id": "DECISION_066",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.703Z",
+    "last_reviewed": "2026-02-23T01:31:15.703Z",
+    "keywords": [
+      "decision066",
+      "postexecution",
+      "tool",
+      "reflection",
+      "mechanism",
+      "executive",
+      "summary",
+      "research",
+      "foundation",
+      "arxiv",
+      "paper",
+      "referenced",
+      "background",
+      "current",
+      "state",
+      "decision062",
+      "failure",
+      "pattern",
+      "analysis",
+      "desired"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_066 **Category**: FORGE **Status**: Approved **Priority**: Medium **Date**: 2026-02-20 **Oracle Approval**: 85% (Models: Kimi K2.5 - validation patterns) **Designer Approval**: 88% (Models: Claude 3.5 Sonnet - reflection architecture) **Average Approval**: 86.5%",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_066.md"
+    }
+  },
+  "DECISION_067": {
+    "type": "decision",
+    "id": "DECISION_067",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.705Z",
+    "last_reviewed": "2026-02-23T01:31:15.705Z",
+    "keywords": [
+      "decision067",
+      "multiagent",
+      "adr",
+      "validation",
+      "workflow",
+      "executive",
+      "summary",
+      "research",
+      "foundation",
+      "arxiv",
+      "papers",
+      "referenced",
+      "background",
+      "current",
+      "state",
+      "decision",
+      "type",
+      "classification",
+      "desired",
+      "specification"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_067 **Category**: ARCH (Architecture) **Status**: Approved **Priority**: Medium **Date**: 2026-02-20 **Oracle Approval**: 80% (Models: Kimi K2.5 - validation workflow) **Designer Approval**: 90% (Models: Claude 3.5 Sonnet - ADR framework) **Average Approval**: 85%",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_067.md"
+    }
+  },
+  "DECISION_068": {
+    "type": "decision",
+    "id": "DECISION_068",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.706Z",
+    "last_reviewed": "2026-02-23T01:31:15.706Z",
+    "keywords": [
+      "decision068",
+      "foureyes",
+      "visionvalidated",
+      "burnin",
+      "for",
+      "decision047",
+      "executive",
+      "summary",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "action",
+      "items",
+      "dependencies",
+      "risks",
+      "and",
+      "mitigations",
+      "success",
+      "criteria"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_068 **Category**: Operations **Status**: Completed **Priority**: Critical **Date**: 2026-02-20 **Parent**: DECISION_047 (Parallel H4ND Execution)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_068.md"
+    }
+  },
+  "DECISION_069": {
+    "type": "decision",
+    "id": "DECISION_069",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.707Z",
+    "last_reviewed": "2026-02-23T01:31:15.707Z",
+    "keywords": [
+      "decision069",
+      "fix",
+      "dpd",
+      "data",
+      "loss",
+      "bug",
+      "analyticsworker",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "broken",
+      "evidence",
+      "desired",
+      "fixed",
+      "specification",
+      "requirements",
+      "technical",
+      "details"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: BUG-001 **Category**: CORE **Status**: Completed",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_069.md"
+    }
+  },
+  "DECISION_070": {
+    "type": "decision",
+    "id": "DECISION_070",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.708Z",
+    "last_reviewed": "2026-02-23T01:31:15.708Z",
+    "keywords": [
+      "decision070",
+      "fix",
+      "credential",
+      "lock",
+      "leak",
+      "h0und",
+      "polling",
+      "loop",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "broken",
+      "evidence",
+      "desired",
+      "fixed",
+      "specification",
+      "requirements",
+      "technical"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: BUG-002 **Category**: CORE **Status**: Completed **Priority**: Critical **Date**: 2026-02-21 **Oracle Approval**: 95% (Assimilated - Critical bug fix) **Designer Approval**: 95% (Assimilated - Clear fix path)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_070.md"
+    }
+  },
+  "DECISION_071": {
+    "type": "decision",
+    "id": "DECISION_071",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.709Z",
+    "last_reviewed": "2026-02-23T01:31:15.709Z",
+    "keywords": [
+      "decision071",
+      "fix",
+      "analytics",
+      "signal",
+      "wipe",
+      "generation",
+      "failure",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "broken",
+      "evidence",
+      "desired",
+      "fixed",
+      "specification",
+      "requirements",
+      "technical",
+      "details"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: BUG-003 **Category**: CORE **Status**: Completed **Priority**: Critical **Date**: 2026-02-21 **Oracle Approval**: 95% (Assimilated - Critical bug fix) **Designer Approval**: 95% (Assimilated - Clear fix path)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_071.md"
+    }
+  },
+  "DECISION_072": {
+    "type": "decision",
+    "id": "DECISION_072",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.710Z",
+    "last_reviewed": "2026-02-23T01:31:15.710Z",
+    "keywords": [
+      "decision072",
+      "fix",
+      "idempotent",
+      "signal",
+      "generator",
+      "silent",
+      "group",
+      "drops",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "broken",
+      "evidence",
+      "desired",
+      "fixed",
+      "specification",
+      "requirements",
+      "technical"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: BUG-004 **Category**: CORE **Status**: Completed **Priority**: Critical **Date**: 2026-02-21 **Oracle Approval**: 95% (Assimilated - Critical bug fix) **Designer Approval**: 95% (Assimilated - Clear fix path)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_072.md"
+    }
+  },
+  "DECISION_073": {
+    "type": "decision",
+    "id": "DECISION_073",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.711Z",
+    "last_reviewed": "2026-02-23T01:31:15.711Z",
+    "keywords": [
+      "decision073",
+      "fix",
+      "websocket",
+      "balance",
+      "query",
+      "error",
+      "handling",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "action",
+      "items",
+      "dependencies"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: BUG-005 **Category**: CORE **Status**: Completed **Priority**: High **Date**: 2026-02-21 **Oracle Approval**: 90% (Assimilated - Important reliability fix) **Designer Approval**: 90% (Assimilated - Standard resilience pattern)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_073.md"
+    }
+  },
+  "DECISION_074": {
+    "type": "decision",
+    "id": "DECISION_074",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.712Z",
+    "last_reviewed": "2026-02-23T01:31:15.712Z",
+    "keywords": [
+      "decision074",
+      "fix",
+      "signal",
+      "deduplication",
+      "cache",
+      "ttl",
+      "suppression",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "action",
+      "items",
+      "dependencies"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: BUG-006 **Category**: CORE **Status**: Completed **Priority**: Medium **Date**: 2026-02-21 **Oracle Approval**: 85% (Assimilated - Moderate impact) **Designer Approval**: 85% (Assimilated - Tuning required)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_074.md"
+    }
+  },
+  "DECISION_075": {
+    "type": "decision",
+    "id": "DECISION_075",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.712Z",
+    "last_reviewed": "2026-02-23T01:31:15.712Z",
+    "keywords": [
+      "decision075",
+      "fix",
+      "signaldistributor",
+      "reclaim",
+      "window",
+      "double",
+      "processing",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "action",
+      "items",
+      "dependencies"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: BUG-007 **Category**: CORE **Status**: Completed **Priority**: Low **Date**: 2026-02-21 **Oracle Approval**: 80% (Assimilated - Edge case) **Designer Approval**: 80% (Assimilated - Tuning required)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_075.md"
+    }
+  },
+  "DECISION_076": {
+    "type": "decision",
+    "id": "DECISION_076",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.713Z",
+    "last_reviewed": "2026-02-23T01:31:15.713Z",
+    "keywords": [
+      "decision076",
+      "chrome",
+      "ssl",
+      "certificate",
+      "bypass",
+      "for",
+      "platform",
+      "accessibility",
+      "executive",
+      "summary",
+      "problem",
+      "solution",
+      "flags",
+      "required",
+      "configuration",
+      "change",
+      "platforms",
+      "verified",
+      "security",
+      "implications"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "Implemented Chrome SSL certificate bypass to enable platform accessibility for FireKirin and OrionStars game platforms. The `--ignore-certificate-errors` flag allows Chrome to bypass SSL validation errors that were blocking platform access. ---",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_076.md"
+    }
+  },
+  "DECISION_077": {
+    "type": "decision",
+    "id": "DECISION_077",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.714Z",
+    "last_reviewed": "2026-02-23T01:31:15.714Z",
+    "keywords": [
+      "decision077",
+      "navigation",
+      "workflow",
+      "architecture",
+      "with",
+      "t00l5et",
+      "integration",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "the",
+      "gap",
+      "platform",
+      "differences",
+      "desired",
+      "specification",
+      "requirements",
+      "technical"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: ARCH-077 **Category**: ARCH (Architecture) **Status**: In Progress - FireKirin Complete, OrionStars Blocked **Priority**: Critical **Date**: 2026-02-21 **Oracle Approval**: 72% (Models: Kimi K2.5 - risk analysis) **Designer Approval**: 88% (Models: Claude 3.5 Sonnet - architecture)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_077.md"
+    }
+  },
+  "DECISION_078": {
+    "type": "decision",
+    "id": "DECISION_078",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.716Z",
+    "last_reviewed": "2026-02-23T01:31:15.716Z",
+    "keywords": [
+      "decision078",
+      "p4nth30n",
+      "recorder",
+      "tui",
+      "visual",
+      "macro",
+      "editor",
+      "live",
+      "debugger",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "action"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: TOOL-078 **Category**: TOOL **Status**: Completed (v2.0 — Live CDP Execution) **Priority**: High **Date**: 2026-02-21 (v2.0 upgrade same day) **Oracle Approval**: 95 (Assimilated by WindFixer) **Designer Approval**: 92 (Assimilated by WindFixer)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_078.md"
+    }
+  },
+  "DECISION_079": {
+    "type": "decision",
+    "id": "DECISION_079",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.716Z",
+    "last_reviewed": "2026-02-23T01:31:15.716Z",
+    "keywords": [
+      "decision079",
+      "direct",
+      "rag",
+      "mcp",
+      "connection",
+      "for",
+      "opencode",
+      "and",
+      "windsurf",
+      "executive",
+      "summary",
+      "background",
+      "specification",
+      "requirements",
+      "action",
+      "items",
+      "implementation",
+      "notes",
+      "configuration",
+      "dependencies"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: INFRA-079 **Category**: INFRA (Infrastructure) **Status**: InProgress **Priority**: Critical **Date**: 2026-02-21 **Oracle Approval**: 82% (Models: Kimi K2.5 - risk assessment) **Designer Approval**: 90% (Models: Claude 3.5 Sonnet - config patterns)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_079.md"
+    }
+  },
+  "DECISION_080": {
+    "type": "decision",
+    "id": "DECISION_080",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.717Z",
+    "last_reviewed": "2026-02-23T01:31:15.717Z",
+    "keywords": [
+      "decision080",
+      "rag",
+      "vector",
+      "index",
+      "reingestion",
+      "executive",
+      "summary",
+      "background",
+      "specification",
+      "ingestion",
+      "method",
+      "ragingestfile",
+      "example",
+      "verify",
+      "with",
+      "ragstatus",
+      "documents",
+      "reingest",
+      "action",
+      "items"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: INFRA-080 **Category**: INFRA (Infrastructure) **Status**: Completed **Priority**: Critical **Date**: 2026-02-21 **Oracle Approval**: 85% (Models: Kimi K2.5 - operational assessment) **Designer Approval**: 90% (Models: Claude 3.5 Sonnet - batch processing, Kimi K2.5 - research)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_080.md"
+    }
+  },
+  "DECISION_081": {
+    "type": "decision",
+    "id": "DECISION_081",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.718Z",
+    "last_reviewed": "2026-02-23T01:31:15.718Z",
+    "keywords": [
+      "decision081",
+      "canvas",
+      "typing",
+      "fix",
+      "chrome",
+      "profile",
+      "isolation",
+      "for",
+      "parallel",
+      "credentials",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "findings",
+      "from",
+      "burnin",
+      "key",
+      "architectural"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: ARCH-081 **Category**: ARCH (Architecture) **Status**: Approved **Priority**: Critical **Date**: 2026-02-21 **Oracle Approval**: 88% (Models: Kimi K2.5 - reasoning) **Designer Approval**: 95% (Models: Claude 3.5 Sonnet - implementation, Kimi K2.5 - research synthesis)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_081.md"
+    }
+  },
+  "DECISION_082": {
+    "type": "decision",
+    "id": "DECISION_082",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.718Z",
+    "last_reviewed": "2026-02-23T01:31:15.718Z",
+    "keywords": [
+      "decision082",
+      "model",
+      "attribution",
+      "standard",
+      "for",
+      "decision",
+      "consultations",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "why",
+      "this",
+      "matters",
+      "specification",
+      "requirements",
+      "examples",
+      "oracle"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: FORGE-082 **Category**: FORGE (Process) **Status**: Proposed **Priority**: Medium **Date**: 2026-02-21 **Oracle Approval**: N/A (Process decision - uses all available models) **Designer Approval**: N/A (Process decision - uses all available models)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_082.md"
+    }
+  },
+  "DECISION_083": {
+    "type": "decision",
+    "id": "DECISION_083",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.802Z",
+    "last_reviewed": "2026-02-23T01:31:15.802Z",
+    "keywords": [
+      "decision083",
+      "h0und",
+      "data",
+      "reset",
+      "for",
+      "burnin",
+      "period",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "action",
+      "items",
+      "dependencies"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_083 **Category**: CORE **Status**: Completed **Priority**: Critical **Date**: 2026-02-21 **Oracle Approval**: 74% (Models: Claude 3.5 Sonnet - risk assessment, Kimi K2 - complexity analysis) **Designer Approval**: 92% (Models: Claude 3.5 Sonnet - architecture review, Kimi K2 - implementation strategy)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/completed/DECISION_083.md"
+    }
+  },
+  "DECISION_084": {
+    "type": "decision",
+    "id": "DECISION_084",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.802Z",
+    "last_reviewed": "2026-02-23T01:31:15.802Z",
+    "keywords": [
+      "decision084",
+      "filter",
+      "jackpots",
+      "with",
+      "insufficient",
+      "dpd",
+      "data",
+      "from",
+      "display",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "action"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_084 **Category**: CORE **Status**: Completed **Priority**: High **Date**: 2026-02-21 **Oracle Approval**: 82% (Strategist assimilated - display filter is low-risk, appropriate threshold) **Designer Approval**: 85% (Claude 3.5 Sonnet - implementation review, formatting guidance)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/completed/DECISION_084.md"
+    }
+  },
+  "DECISION_085": {
+    "type": "decision",
+    "id": "DECISION_085",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.805Z",
+    "last_reviewed": "2026-02-23T01:31:15.805Z",
+    "keywords": [
+      "decision085",
+      "fix",
+      "jackpot",
+      "eta",
+      "calculation",
+      "bug",
+      "prevent",
+      "past",
+      "date",
+      "estimates",
+      "executive",
+      "summary",
+      "background",
+      "root",
+      "cause",
+      "analysis",
+      "why",
+      "this",
+      "happens",
+      "specification"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_085 **Category**: CORE **Status**: Completed **Priority**: Critical **Date**: 2026-02-21 **Completed**: 2026-02-22 **Oracle Approval**: 88% (Strategist assimilated - root cause identified, validation approach sound) **Designer Approval**: 92% (Claude 3.5 Sonnet - defense in depth, DPD bounds validation, ErrorLog approach)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/completed/DECISION_085.md"
+    }
+  },
+  "DECISION_086": {
+    "type": "decision",
+    "id": "DECISION_086",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.808Z",
+    "last_reviewed": "2026-02-23T01:31:15.808Z",
+    "keywords": [
+      "decision086",
+      "h0und",
+      "burnin",
+      "unit",
+      "test",
+      "suite",
+      "jackpot",
+      "data",
+      "collection",
+      "validation",
+      "executive",
+      "summary",
+      "background",
+      "why",
+      "this",
+      "matters",
+      "timeline",
+      "coverage",
+      "requirements",
+      "specification"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_086 **Category**: CORE **Status**: Completed **Priority**: Critical **Date**: 2026-02-21 **Completed**: 2026-02-22 **Oracle Approval**: 91% (Strategist assimilated - research validated) **Designer Approval**: 92% (Claude 3.5 Sonnet - test architecture, implementation patterns)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/completed/DECISION_086.md"
+    }
+  },
+  "DECISION_087": {
+    "type": "decision",
+    "id": "DECISION_087",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.733Z",
+    "last_reviewed": "2026-02-23T01:31:15.733Z",
+    "keywords": [
+      "decision087",
+      "agent",
+      "prompt",
+      "enhancement",
+      "automated",
+      "decision",
+      "creation",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "action",
+      "items",
+      "dependencies"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "# DECISION_087: Agent Prompt Enhancement & Automated Decision Creation **Decision ID**: DECISION_087 **Category**: AUTO **Status**: **Phase 2 In Progress** **Phase 2 Start**: 2026-02-22 **Phase 2 Focus**: Decision Template Enhancement Implementation **Priority**: Critical **Date**: 2026-02-21 **Phase 1 Completed**: 2026-02-22 (Difficulty Classifier, Topology Selector, Quality Watcher, 8 agent prompts) **Phase 2 Research**: 2026-02-22 (ArXiv + Web research complete, Designer consultation complet",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_087.md"
+    }
+  },
+  "DECISION_088": {
+    "type": "decision",
+    "id": "DECISION_088",
+    "category": "Bug Fix",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.734Z",
+    "last_reviewed": "2026-02-23T01:31:15.734Z",
+    "keywords": [
+      "decision088",
+      "fix",
+      "dpd",
+      "formula",
+      "constructor",
+      "eta",
+      "overwrite",
+      "bug",
+      "problem",
+      "statement",
+      "root",
+      "cause",
+      "analysis",
+      "anomaly",
+      "critical",
+      "jackpot",
+      "overwrites",
+      "externallycalculated",
+      "moderate",
+      "dpm"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "# DECISION_088: Fix DPD Formula - Constructor ETA Overwrite Bug ## Problem Statement All estimated jackpot times in H0UND were reporting the same date (~7 days from now), making the entire forecasting system useless. Every jackpot — regardless of current value, threshold, DPD rate, or tier — displayed an identical estimated date. ## Root Cause Analysis ### Anomaly #1 (CRITICAL): Jackpot Constructor Overwrites Externally-Calculated ETA **Location**: `C0MMON/Entities/Jackpot.cs` — Constructo",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_088.md"
+    }
+  },
+  "DECISION_089": {
+    "type": "decision",
+    "id": "DECISION_089",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.735Z",
+    "last_reviewed": "2026-02-23T01:31:15.735Z",
+    "keywords": [
+      "decision089",
+      "dashboard",
+      "logging",
+      "improvements",
+      "status",
+      "approved",
+      "priority",
+      "medium",
+      "category",
+      "uiux",
+      "source",
+      "document",
+      "summary",
+      "motivation",
+      "specifications",
+      "remove",
+      "jackpot",
+      "logs",
+      "from",
+      "activity"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "## Status: Approved ## Priority: Medium ## Category: UI/UX",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_089.md"
+    }
+  },
+  "DECISION_090": {
+    "type": "decision",
+    "id": "DECISION_090",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.736Z",
+    "last_reviewed": "2026-02-23T01:31:15.736Z",
+    "keywords": [
+      "decision090",
+      "dashboard",
+      "improvements",
+      "session",
+      "status",
+      "completed",
+      "priority",
+      "medium",
+      "category",
+      "uiux",
+      "source",
+      "document",
+      "build",
+      "summary",
+      "motivation",
+      "specifications",
+      "dynamic",
+      "truncation",
+      "header",
+      "balance"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "## Status: Completed ## Priority: Medium ## Category: UI/UX",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_090.md"
+    }
+  },
+  "DECISION_091": {
+    "type": "decision",
+    "id": "DECISION_091",
+    "category": "FEAT",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.737Z",
+    "last_reviewed": "2026-02-23T01:31:15.737Z",
+    "keywords": [
+      "decision091",
+      "tui",
+      "conditional",
+      "logic",
+      "goto",
+      "integration",
+      "summary",
+      "problem",
+      "statement",
+      "solution",
+      "implementation",
+      "files",
+      "created",
+      "modified",
+      "key",
+      "bindings",
+      "type",
+      "definitions",
+      "documentation",
+      "validation"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "# DECISION_091: TUI Conditional Logic & Goto Integration ## Summary Extended the P4NTH30N Recorder TUI (DECISION_078) with conditional logic (if-then-else) and goto statements for error handling workflows. Users can now plot what happens when errors occur (server busy, session expired, element missing) directly in the visual interface. ## Problem Statement The TUI could only record linear happy-path workflows. When errors occurred: - Server busy responses - Session timeouts - Elements not",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_091.md"
+    }
+  },
+  "DECISION_092": {
+    "type": "decision",
+    "id": "DECISION_092",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.742Z",
+    "last_reviewed": "2026-02-23T01:31:15.742Z",
+    "keywords": [
+      "decision092",
+      "restore",
+      "rag",
+      "server",
+      "and",
+      "pantheon",
+      "database",
+      "tools",
+      "toolhive",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "action"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: INFRA-092 **Category**: INFRA **Status**: Completed **Priority**: Critical **Date**: 2026-02-22 **Completed**: 2026-02-22 **Oracle Approval**: 82% (Assimilated) **Designer Approval**: 85% (Assimilated) **Implementation**: OpenFixer (DEPLOY-092-093)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_092.md"
+    }
+  },
+  "DECISION_093": {
+    "type": "decision",
+    "id": "DECISION_093",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.745Z",
+    "last_reviewed": "2026-02-23T01:31:15.745Z",
+    "keywords": [
+      "decision093",
+      "unified",
+      "architecture",
+      "synthesis",
+      "h0und",
+      "alwayson",
+      "platform",
+      "complete",
+      "implementation",
+      "strategy",
+      "executive",
+      "summary",
+      "service",
+      "inventory",
+      "critical",
+      "services",
+      "must",
+      "running",
+      "toolhive",
+      "managed"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "# DECISION_093: Unified Architecture Synthesis ## H0UND as Always-On Platform - Complete Implementation Strategy **Decision ID**: ARCH-093 **Synthesis Date**: 2026-02-22 **Status**: Ready for Implementation --- ## Executive Summary This document synthesizes outputs from 3 parallel Designer consultations and comprehensive Explorer research into a unified implementation strategy for DECISION_093. H0UND will become `P4NTH30N.exe` - an always-on platform that manages 15+ services through sys",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_093_SYNTHESIS.md"
+    }
+  },
+  "DECISION_094": {
+    "type": "decision",
+    "id": "DECISION_094",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.746Z",
+    "last_reviewed": "2026-02-23T01:31:15.746Z",
+    "keywords": [
+      "decision094",
+      "mcp",
+      "server",
+      "boottime",
+      "integration",
+      "summary",
+      "background",
+      "decision",
+      "update",
+      "configautostartjson",
+      "toolhive",
+      "autostart",
+      "registration",
+      "add",
+      "registerautostartps1",
+      "create",
+      "separate",
+      "script",
+      "h0und",
+      "serviceorchestrator"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Status**: ✅ Implemented **Category**: Infrastructure / Boot-Time Architecture **Priority**: High **Dependencies**: DECISION_092, DECISION_093",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_094_MCP_BOOT_INTEGRATION.md"
+    }
+  },
+  "DECISION_095": {
+    "type": "decision",
+    "id": "DECISION_095",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.749Z",
+    "last_reviewed": "2026-02-23T01:31:15.750Z",
+    "keywords": [
+      "decision095",
+      "toolhivenative",
+      "mongodb",
+      "hardening",
+      "with",
+      "default",
+      "database",
+      "resolution",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "action",
+      "items"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "# DECISION_095: ToolHive-Native MongoDB Hardening With Default Database Resolution **Decision ID**: INFRA-095 **Category**: INFRA **Status**: Proposed **Priority**: High **Date**: 2026-02-22 **Oracle Approval**: 78% (Feasibility 7/10, Risk 6/10, Complexity 5/10) **Designer Approval**: 84% (Phased implementation strategy accepted) --- ## Executive Summary We will harden `mongodb-p4nth30n` for ToolHive-native operation by introducing a controlled default-database resolution layer",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_095_MONGODB_TOOLHIVE_HARDENING.md"
+    }
+  },
+  "DECISION_096": {
+    "type": "decision",
+    "id": "DECISION_096",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.843Z",
+    "last_reviewed": "2026-02-23T01:31:15.843Z",
+    "keywords": [
+      "oracle",
+      "assimilation",
+      "report",
+      "decision096",
+      "rag",
+      "consultation",
+      "status",
+      "prime",
+      "directive",
+      "approval",
+      "analysis",
+      "weighted",
+      "detail",
+      "scoring",
+      "guardrail",
+      "check",
+      "applicable",
+      "subset",
+      "level",
+      "risks"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "# Oracle Assimilation Report: DECISION_096 This report is produced by Strategist (Pyxis) while assimilating Oracle (Orion) behavior per `c:\\Users\\paulc\\.config\\opencode\\agents\\oracle.md`. ## RAG Consultation Status (Prime Directive) - Required: query `rag-server.rag_query` for similar decisions and risk patterns before approval. - Limitation: this session does not have ToolHive gateway call access to execute `rag_query`/`rag_ingest`. - Compensating controls used: - Reviewed local instituti",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/oracle\\DECISION_096_oracle.md"
+    }
+  },
+  "DECISION_097": {
+    "type": "decision",
+    "id": "DECISION_097",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.809Z",
+    "last_reviewed": "2026-02-23T01:31:15.809Z",
+    "keywords": [
+      "decision097",
+      "rag",
+      "migration",
+      "legacy",
+      "executive",
+      "summary",
+      "execution",
+      "completed",
+      "20260222",
+      "results",
+      "actions",
+      "note",
+      "success",
+      "criteria",
+      "related",
+      "decisions",
+      "decision",
+      "status",
+      "date",
+      "migrate"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "Migrate all vector data and ingestion configurations from the legacy RAG system (RAG.McpHost.exe on port 5001 with FAISS in-memory index) to the new RAG v2 server (Docker-based with ChromaDB vector store). This migration consolidates the RAG infrastructure onto the modern v2 architecture built in DECISION_096, eliminating the legacy system and its associated maintenance burden. **Result**: ✅ Successfully migrated 4,455 legacy vectors → 7,421 RAG v2 vectors ---",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/completed/DECISION_097.md"
+    }
+  },
+  "DECISION_098": {
+    "type": "decision",
+    "id": "DECISION_098",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.757Z",
+    "last_reviewed": "2026-02-23T01:31:15.757Z",
+    "keywords": [
+      "decision098",
+      "implement",
+      "recorder",
+      "navigation",
+      "map",
+      "h4nd",
+      "parallel",
+      "workers",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "files",
+      "create"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_098 **Category**: ARCH (Architecture) **Status**: Completed **Priority**: Critical **Date**: 2026-02-22 **Oracle Approval**: 88% (Models: Kimi K2.5 - risk assessment, Claude 3.5 Sonnet - CDP patterns) **Designer Approval**: 95% (Models: Claude 3.5 Sonnet - architecture, Kimi K2.5 - implementation strategy)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_098.md"
+    }
+  },
+  "DECISION_099": {
+    "type": "decision",
+    "id": "DECISION_099",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.813Z",
+    "last_reviewed": "2026-02-23T01:31:15.813Z",
+    "keywords": [
+      "decision099",
+      "firekirin",
+      "login",
+      "smoke",
+      "test",
+      "preburnin",
+      "validation",
+      "gate",
+      "executive",
+      "summary",
+      "research",
+      "foundation",
+      "arxiv251119477",
+      "building",
+      "browser",
+      "agents",
+      "architecture",
+      "security",
+      "and",
+      "practical"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "Create a standalone smoke test executable that validates FireKirin login functionality BEFORE the 24-hour burn-in. This pre-burn-in validation gate ensures all critical path components work: Chrome profile isolation, CDP connectivity, canvas coordinate relativity, 6-strategy typing, and login verification. **Key Principle**: *Safety boundaries enforced through code, not LLM reasoning* (per arXiv:2511.19477) ---",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/completed/DECISION_099.md"
+    }
+  },
+  "DECISION_100": {
+    "type": "decision",
+    "id": "DECISION_100",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.759Z",
+    "last_reviewed": "2026-02-23T01:31:15.759Z",
+    "keywords": [
+      "decision100",
+      "integrate",
+      "theseus",
+      "plugin",
+      "fallback",
+      "system",
+      "for",
+      "oracle",
+      "repair",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "the",
+      "gap",
+      "desired",
+      "research",
+      "foundation",
+      "source"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_100 **Category**: INFRA (Infrastructure) **Status**: Proposed **Priority**: Critical **Date**: 2026-02-22 **Oracle Approval**: [Pending] **Designer Approval**: [Pending]",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_100.md"
+    }
+  },
+  "DECISION_101": {
+    "type": "decision",
+    "id": "DECISION_101",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.760Z",
+    "last_reviewed": "2026-02-23T01:31:15.760Z",
+    "keywords": [
+      "decision101",
+      "complete",
+      "h4nd",
+      "multiprofile",
+      "implementation",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "files",
+      "modify",
+      "code",
+      "changes",
+      "action"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: ARCH-101 **Category**: ARCH (Architecture) **Status**: Approved **Priority**: Critical **Date**: 2026-02-22 **Oracle Approval**: 82% (Models: Kimi K2.5 - risk assessment) **Designer Approval**: 95% (Models: Claude 3.5 Sonnet - implementation strategy)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_101.md"
+    }
+  },
+  "DECISION_102": {
+    "type": "decision",
+    "id": "DECISION_102",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.761Z",
+    "last_reviewed": "2026-02-23T01:31:15.761Z",
+    "keywords": [
+      "decision102",
+      "fix",
+      "h4nd",
+      "navigation",
+      "config",
+      "loading",
+      "json",
+      "schema",
+      "mismatch",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "action"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: CORE-102 **Category**: CORE (Core Functionality) **Status**: Not Launch **Priority**: Critical **Date**: 2026-02-22 **Oracle Approval**: 87% (Models: Oracle - risk assessment) **Designer Approval**: 95% (Models: Claude 3.5 Sonnet - implementation strategy)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_102.md"
+    }
+  },
+  "DECISION_103": {
+    "type": "decision",
+    "id": "DECISION_103",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.762Z",
+    "last_reviewed": "2026-02-23T01:31:15.762Z",
+    "keywords": [
+      "decision103",
+      "critical",
+      "remediate",
+      "systematic",
+      "silent",
+      "failures",
+      "across",
+      "h4nd",
+      "executive",
+      "summary",
+      "findings",
+      "from",
+      "explorer",
+      "navigation",
+      "layer",
+      "gate",
+      "parallel",
+      "processing",
+      "worker",
+      "collisions"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: CRIT-103 **Category**: CRIT (Critical Infrastructure) **Status**: Proposed **Priority**: CRITICAL **Date**: 2026-02-22 **Oracle Approval**: Pending **Designer Approval**: Pending **Source**: Explorer Investigation - Silent Failures Masking Total Breakdown",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_103.md"
+    }
+  },
+  "DECISION_104": {
+    "type": "decision",
+    "id": "DECISION_104",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.815Z",
+    "last_reviewed": "2026-02-23T01:31:15.815Z",
+    "keywords": [
+      "agenttychon",
+      "the",
+      "truthteller",
+      "identity",
+      "mandate",
+      "philosophy",
+      "oracle",
+      "tychon",
+      "four",
+      "principles",
+      "questions",
+      "output",
+      "assessment",
+      "format",
+      "veto",
+      "integration",
+      "when",
+      "required",
+      "advisory",
+      "threeapproval"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "# AGENT_TYCHON - The Truth-Teller ## Identity **Name**: Tychon (τῡ́χων) **Title**: The Truth-Teller **Origin**: Greek philosophy - \"the one who hits the mark, who speaks without flattery\" **Role**: Counterweight to Oracle **Weight**: 50% of approval authority (shared with Oracle for CRITICAL decisions) ## The Mandate **Primary Directive**: *The only sin is hidden failure.* **Purpose**: Expose hidden failures. Demand truth over comfort. **Enemy**: Silent failures, false success, s",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/canon/AGENT_TYCHON.md"
+    }
+  },
+  "DECISION_105": {
+    "type": "decision",
+    "id": "DECISION_105",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.821Z",
+    "last_reviewed": "2026-02-23T01:31:15.821Z",
+    "keywords": [
+      "designer",
+      "review",
+      "decision105",
+      "approval",
+      "percentage",
+      "breakdown",
+      "architectural",
+      "assessment",
+      "strengths",
+      "areas",
+      "for",
+      "enhancement",
+      "tychonpatternsyml",
+      "pattern",
+      "detection",
+      "configuration",
+      "tool",
+      "recommendations",
+      "astgrep",
+      "rules"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Reviewer**: Aegis (Designer) **Decision**: CANON-105 - Nexus Inventory of Silent-Failure Patterns **Date**: 2026-02-22 **Status**: APPROVED",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/DESIGNER_DECISION_105_REVIEW.md"
+    }
+  },
+  "DECISION_106": {
+    "type": "decision",
+    "id": "DECISION_106",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.764Z",
+    "last_reviewed": "2026-02-23T01:31:15.764Z",
+    "keywords": [
+      "decision106",
+      "fix",
+      "navigationmaploader",
+      "config",
+      "discovery",
+      "bug",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "action",
+      "items",
+      "dependencies",
+      "risks"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: BUG-106 **Category**: BUG **Status**: Completed **Priority**: Critical **Date**: 2026-02-22 **Oracle Approval**: 95% **Designer Approval**: 95%",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_106.md"
+    }
+  },
+  "DECISION_107": {
+    "type": "decision",
+    "id": "DECISION_107",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.766Z",
+    "last_reviewed": "2026-02-23T01:31:15.766Z",
+    "keywords": [
+      "decision107",
+      "orion",
+      "stars",
+      "firekirin",
+      "automation",
+      "failure",
+      "investigation",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "approach",
+      "parallel",
+      "explorer",
+      "deployment",
+      "action",
+      "items",
+      "dependencies"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: AUTO-107 **Category**: AUTO **Status**: Approved **Priority**: Critical **Date**: 2026-02-22 **Oracle Approval**: 85% (Assimilated) **Designer Approval**: 90% (Assimilated)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_107.md"
+    }
+  },
+  "DECISION_108": {
+    "type": "decision",
+    "id": "DECISION_108",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.767Z",
+    "last_reviewed": "2026-02-23T01:31:15.767Z",
+    "keywords": [
+      "decision108",
+      "librarian",
+      "memory",
+      "system",
+      "for",
+      "rag",
+      "fallback",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "core",
+      "identification",
+      "status"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_108 **Category**: INFRA **Status**: Approved **Priority**: High **Date**: 2026-02-22 **Oracle Approval**: 82% (Models: Kimi K2.5 - analysis) **Designer Approval**: 95% (Models: Kimi K2.5 - full specification)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_108.md"
+    }
+  },
+  "DECISION_109": {
+    "type": "decision",
+    "id": "DECISION_109",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.767Z",
+    "last_reviewed": "2026-02-23T01:31:15.767Z",
+    "keywords": [
+      "decision109",
+      "fix",
+      "firekirin",
+      "workflow",
+      "ignoring",
+      "recorded",
+      "step",
+      "config",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "use",
+      "hardcoded"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: FORGE-004 **Category**: FORGE **Status**: Completed **Priority**: Critical **Date**: 2026-02-22 **Oracle Approval**: 95% (Assimilated - Critical bug fix, no architectural risk) **Designer Approval**: 95% (Assimilated - Aligns with existing ARCH-081 patterns)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/DECISION_109.md"
+    }
+  },
+  "DECISION_044": {
+    "type": "decision",
+    "id": "DECISION_044",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.867Z",
+    "last_reviewed": "2026-02-23T01:31:15.867Z",
+    "keywords": [
+      "designer",
+      "consultation",
+      "decision044",
+      "assessment",
+      "approval",
+      "rating",
+      "implementation",
+      "strategy",
+      "phases",
+      "execution",
+      "focused",
+      "flow",
+      "files",
+      "modify",
+      "safety",
+      "mechanisms",
+      "validation",
+      "steps",
+      "fallback",
+      "decision"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: SPIN-044 **Decision Title**: First Autonomous Jackpot Spin Execution **Consultation Date**: 2026-02-20 **Designer Status**: Strategist Assimilated (subagent timeout)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/designer\\DECISION_044_designer.md"
+    }
+  },
+  "DECISION_037": {
+    "type": "decision",
+    "id": "DECISION_037",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.864Z",
+    "last_reviewed": "2026-02-23T01:31:15.864Z",
+    "keywords": [
+      "designer",
+      "consultation",
+      "decision037",
+      "assessment",
+      "approval",
+      "rating",
+      "implementation",
+      "strategy",
+      "phase",
+      "foundation",
+      "week",
+      "monitoring",
+      "recovery",
+      "testing",
+      "hardening",
+      "files",
+      "create",
+      "modify",
+      "architecture",
+      "configuration"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: INFRA-037 **Decision Title**: Subagent Fallback System Hardening **Consultation Date**: 2026-02-20 **Designer Status**: Strategist Assimilated",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/designer\\DECISION_037_designer.md"
+    }
+  },
+  "FORGE-001-DIRECTORY-ARCHITECTURE": {
+    "type": "decision",
+    "id": "FORGE-001-DIRECTORY-ARCHITECTURE",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.776Z",
+    "last_reviewed": "2026-02-23T01:31:15.776Z",
+    "keywords": [
+      "decision",
+      "t4ct1cs",
+      "directory",
+      "architecture",
+      "standardization",
+      "executive",
+      "summary",
+      "specification",
+      "root",
+      "structure",
+      "naming",
+      "conventions",
+      "files",
+      "cluster",
+      "speech",
+      "action",
+      "subagent",
+      "interaction",
+      "protocol",
+      "read"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: FORGE-001 **Category**: FORGE (Platform-Pattern) **Status**: Proposed **Priority**: Critical **Date**: 2026-02-18 **Oracle Approval**: 68% → 95% (All blockers addressed) **Designer Approval**: 74% → 95% (Comprehensive implementation plan)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/FORGE-001-Directory-Architecture.md"
+    }
+  },
+  "FORGE-002-DECISION-MAKING-ENHANCEMENT": {
+    "type": "decision",
+    "id": "FORGE-002-DECISION-MAKING-ENHANCEMENT",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.778Z",
+    "last_reviewed": "2026-02-23T01:31:15.778Z",
+    "keywords": [
+      "forge002",
+      "decisionmaking",
+      "process",
+      "enhancement",
+      "framework",
+      "executive",
+      "summary",
+      "granular",
+      "decision",
+      "rating",
+      "system",
+      "dimensions",
+      "010",
+      "scale",
+      "each",
+      "weighted",
+      "overall",
+      "score",
+      "calculation",
+      "lifecycle"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: FORGE-002 **Category**: FORGE (Platform-Pattern) **Status**: Approved **Priority**: Critical **Date**: 2026-02-18 **Oracle Approval**: Pending (Deep-dive requested) **Designer Approval**: 92% (Approved with minor revisions) **Strategist Assessment**: 95% (Approve for implementation) **Aggregated Score**: 93.5% - APPROVED FOR IMPLEMENTATION",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/FORGE-002-Decision-Making-Enhancement.md"
+    }
+  },
+  "FOUREYES_CODEBASE_REFERENCE": {
+    "type": "decision",
+    "id": "FOUREYES_CODEBASE_REFERENCE",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.779Z",
+    "last_reviewed": "2026-02-23T01:31:15.779Z",
+    "keywords": [
+      "foureyes",
+      "vision",
+      "system",
+      "codebaseenhanced",
+      "decision",
+      "framework",
+      "executive",
+      "summary",
+      "completed",
+      "implementations",
+      "foureyes001",
+      "circuit",
+      "breaker",
+      "pattern",
+      "foureyes002",
+      "degradation",
+      "manager",
+      "foureyes003",
+      "operation",
+      "tracker"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "## Executive Summary The Four-Eyes vision system is significantly more complete than initially assessed. **7 of 20 decisions are FULLY IMPLEMENTED** in the codebase with production-ready code. The remaining work focuses on integration, testing, and advanced autonomy features.",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/FOUREYES_CODEBASE_REFERENCE.md"
+    }
+  },
+  "FOUREYES_DECISION_FRAMEWORK": {
+    "type": "decision",
+    "id": "FOUREYES_DECISION_FRAMEWORK",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.780Z",
+    "last_reviewed": "2026-02-23T01:31:15.780Z",
+    "keywords": [
+      "foureyes",
+      "vision",
+      "system",
+      "decision",
+      "framework",
+      "executive",
+      "summary",
+      "inventory",
+      "phase",
+      "production",
+      "hardening",
+      "foundation",
+      "weeks",
+      "engine",
+      "risk",
+      "annihilation",
+      "autonomous",
+      "learning",
+      "deployment",
+      "910"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "I have assimilated the comprehensive plan from 5 strategic documents and created a complete decision framework for the Four-Eyes vision system pivot. This represents a 5-phase migration from polling-based signal generation to autonomous vision-based decision making. **Oracle Approval: 92%** - Validated by Orion with identified risks and mitigations captured. ---",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/FOUREYES_DECISION_FRAMEWORK.md"
+    }
+  },
+  "IDEMPOTENTSIGNALGENERATIONSYSTEM": {
+    "type": "decision",
+    "id": "IDEMPOTENTSIGNALGENERATIONSYSTEM",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.783Z",
+    "last_reviewed": "2026-02-23T01:31:15.783Z",
+    "keywords": [
+      "cascade",
+      "chat",
+      "conversation",
+      "user",
+      "input",
+      "opus",
+      "ultimate",
+      "test",
+      "single",
+      "challenge",
+      "justify",
+      "premium",
+      "cost",
+      "the",
+      "p4nth30n",
+      "architecture",
+      "crisis",
+      "prompt",
+      "success",
+      "metrics"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "Note: _This is purely the output of the chat conversation and does not contain any raw data, codebase snippets, etc. used to generate the output._",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/Idempotent Signal Generation System.md"
+    }
+  },
+  "STRATEGY-ARCHITECTURE-V3": {
+    "type": "decision",
+    "id": "STRATEGY-ARCHITECTURE-V3",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.790Z",
+    "last_reviewed": "2026-02-23T01:31:15.790Z",
+    "keywords": [
+      "p4nth30n",
+      "streamlined",
+      "agentic",
+      "architecture",
+      "v30",
+      "selffunded",
+      "environment",
+      "multiplatform",
+      "fixer",
+      "strategy",
+      "executive",
+      "summary",
+      "current",
+      "state",
+      "key",
+      "optimizations",
+      "renaming",
+      "proposed",
+      "updated",
+      "pantheon"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "### Current State - **OpenCode**: Primary agent orchestration, all agents implemented in `C:\\Users\\paulc\\.config\\opencode\\agents` - **WindSurf**: Fixer execution environment (cheaper per-prompt billing vs context-based) - **Decision Framework**: Central cost-saving mechanism - **Model Preference**: Opus 4.6 Thinking (Nexus Preferred) - **Bug Handling**: Forgewright with unit testing accountability",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/STRATEGY-ARCHITECTURE-v3.md"
+    }
+  },
+  "DECISION-PACKAGE-2026": {
+    "type": "decision",
+    "id": "DECISION-PACKAGE-2026",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.791Z",
+    "last_reviewed": "2026-02-23T01:31:15.791Z",
+    "keywords": [
+      "strategist",
+      "summary",
+      "threedecision",
+      "package",
+      "decision",
+      "overview",
+      "executive",
+      "infra037",
+      "subagent",
+      "fallback",
+      "system",
+      "hardening",
+      "problem",
+      "solution",
+      "critical",
+      "path",
+      "components",
+      "files",
+      "create",
+      "modify"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Date**: 2026-02-20 **Strategist**: Atlas **Status**: Approved for Implementation **Total Decisions**: 3 **Total Action Items**: 35 **Estimated Effort**: 6-8 weeks",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/active/SUMMARY-Three-Decision-Package-2026-02-20.md"
+    }
+  },
+  "DECISION-AUD-001": {
+    "type": "decision",
+    "id": "DECISION-AUD-001",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.792Z",
+    "last_reviewed": "2026-02-23T01:31:15.792Z",
+    "keywords": [
+      "decisionaud001",
+      "enable",
+      "windows",
+      "audio",
+      "recording",
+      "via",
+      "vbcable",
+      "virtual",
+      "driver",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "action"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: AUD-001 **Category**: INFRA **Status**: Completed **Priority**: High **Date**: 2026-02-20 **Oracle Approval**: 95% (Assimilated) **Designer Approval**: 95% (Assimilated)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/completed/DECISION-AUD-001.md"
+    }
+  },
+  "DECISION-FORGE-004": {
+    "type": "decision",
+    "id": "DECISION-FORGE-004",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.793Z",
+    "last_reviewed": "2026-02-23T01:31:15.793Z",
+    "keywords": [
+      "decisionforge004",
+      "agent",
+      "documentation",
+      "workflow",
+      "hardening",
+      "executive",
+      "summary",
+      "background",
+      "current",
+      "state",
+      "desired",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "action",
+      "items",
+      "dependencies",
+      "risks",
+      "and"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: FORGE-004 **Category**: FORGE **Status**: Completed **Priority**: Critical **Date**: 2026-02-20 **Oracle Approval**: 98% (Assimilated) **Designer Approval**: 98% (Assimilated)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/completed/DECISION-FORGE-004.md"
+    }
+  },
+  "DECISION_026": {
+    "type": "decision",
+    "id": "DECISION_026",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.830Z",
+    "last_reviewed": "2026-02-23T01:31:15.830Z",
+    "keywords": [
+      "oracle",
+      "consultation",
+      "decision026",
+      "assimilated",
+      "analysis",
+      "feasibility",
+      "score",
+      "810",
+      "risk",
+      "410",
+      "moderate",
+      "complexity",
+      "610",
+      "medium",
+      "key",
+      "findings",
+      "top",
+      "risks",
+      "recommendations",
+      "mitigations"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_026 **Agent**: Oracle (Orion) **Task ID**: Assimilated by Strategist **Date**: 2026-02-20 **Status**: Complete (Strategist Assimilated - Subagent Fallback Failed)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/oracle\\DECISION_026_oracle.md"
+    }
+  },
+  "DECISION_032": {
+    "type": "decision",
+    "id": "DECISION_032",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.858Z",
+    "last_reviewed": "2026-02-23T01:31:15.858Z",
+    "keywords": [
+      "designer",
+      "consultation",
+      "decision032",
+      "original",
+      "response",
+      "assimilated",
+      "implementation",
+      "strategy",
+      "3phase",
+      "deployment",
+      "approach",
+      "files",
+      "create",
+      "modify",
+      "architecture",
+      "manifest",
+      "format",
+      "key",
+      "details",
+      "scenarios"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_032 **Agent**: Designer (Aegis) **Task ID**: Assimilated by Strategist **Date**: 2026-02-20 **Status**: Complete (Strategist Assimilated)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/designer\\DECISION_032_designer.md"
+    }
+  },
+  "DECISION_033": {
+    "type": "decision",
+    "id": "DECISION_033",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.859Z",
+    "last_reviewed": "2026-02-23T01:31:15.859Z",
+    "keywords": [
+      "designer",
+      "consultation",
+      "decision033",
+      "original",
+      "response",
+      "assimilated",
+      "implementation",
+      "strategy",
+      "4phase",
+      "activation",
+      "files",
+      "create",
+      "modify",
+      "architecture",
+      "filewatcher",
+      "configuration",
+      "windows",
+      "service",
+      "setup",
+      "install"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: DECISION_033 **Agent**: Designer (Aegis) **Task ID**: Assimilated by Strategist **Date**: 2026-02-20 **Status**: Complete (Strategist Assimilated)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/designer\\DECISION_033_designer.md"
+    }
+  },
+  "DECISION_040": {
+    "type": "decision",
+    "id": "DECISION_040",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.866Z",
+    "last_reviewed": "2026-02-23T01:31:15.866Z",
+    "keywords": [
+      "designer",
+      "consultation",
+      "decision040",
+      "assessment",
+      "approval",
+      "rating",
+      "implementation",
+      "strategy",
+      "phases",
+      "hours",
+      "estimated",
+      "files",
+      "create",
+      "new",
+      "uni7t35tvalidation",
+      "modify",
+      "core",
+      "validation",
+      "steps",
+      "fallback"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: PROD-040 **Decision Title**: Production Environment Validation and First Spin Execution **Consultation Date**: 2026-02-20 **Designer Status**: Strategist Assimilated (subagent timeout)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/designer\\DECISION_040_designer.md"
+    }
+  },
+  "DECISION_043": {
+    "type": "decision",
+    "id": "DECISION_043",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.867Z",
+    "last_reviewed": "2026-02-23T01:31:15.867Z",
+    "keywords": [
+      "designer",
+      "consultation",
+      "decision043",
+      "assessment",
+      "approval",
+      "rating",
+      "rejects",
+      "implementation",
+      "strategy",
+      "approved",
+      "phases",
+      "hours",
+      "estimated",
+      "recommended",
+      "rejection",
+      "files",
+      "modify",
+      "across",
+      "projects",
+      "fallback"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision ID**: RENAME-043 **Decision Title**: L33T Directory Rename Final Approval **Consultation Date**: 2026-02-20 **Designer Status**: Strategist Assimilated (subagent timeout)",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/designer\\DECISION_043_designer.md"
+    }
+  },
+  "DECISION_045": {
+    "type": "decision",
+    "id": "DECISION_045",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.800Z",
+    "last_reviewed": "2026-02-23T01:31:15.800Z",
+    "keywords": [
+      "decision045",
+      "extensionfree",
+      "jackpot",
+      "reading",
+      "implementation",
+      "executive",
+      "summary",
+      "background",
+      "previous",
+      "broken",
+      "windfixer",
+      "live",
+      "validation",
+      "specification",
+      "requirements",
+      "technical",
+      "details",
+      "action",
+      "items",
+      "dependencies"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "# DECISION_045: Extension-Free Jackpot Reading Implementation **Decision ID**: OPS-045 **Category**: OPS **Status**: Completed **Priority**: CRITICAL **Date**: 2026-02-20 **Oracle Approval**: 98% (Strategist Assimilated) **Designer Approval**: 97% (Strategist Assimilated) **Implemented By**: WindFixer **Implementation Date**: 2026-02-20 **Verification**: COMPLETED — Live validation against FireKirin 2026-02-20 - Grand: $1,583.97 - Major: $543.50 - Minor: $113.08 - Mini: $21.46",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/decisions/completed/DECISION_045.md"
+    }
+  },
+  "ENTITY-FRAMEWORK-SECURITY-VULNERABILITIES": {
+    "type": "decision",
+    "id": "ENTITY-FRAMEWORK-SECURITY-VULNERABILITIES",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-22T00:00:00Z",
+    "last_reviewed": "2026-02-23T01:31:15.816Z",
+    "keywords": [
+      "entity",
+      "framework",
+      "security",
+      "vulnerabilities",
+      "assimilated",
+      "intelligence",
+      "overview",
+      "critical",
+      "findings",
+      "highseverity",
+      "aspnetnet",
+      "related",
+      "ecosystem",
+      "information",
+      "disclosure",
+      "patterns",
+      "netef",
+      "applications",
+      "specific",
+      "considerations"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "# Entity Framework Security Vulnerabilities - Assimilated Intelligence ## Overview Web search conducted on 2026-02-22 to identify known bugs and security vulnerabilities in Entity Framework (EF) and EF Core that could lead to information disclosure or data exposure. ## Critical Findings ### High-Severity ASP.NET/.NET Vulnerabilities (Related Ecosystem) **CVE-2025-55315** - HTTP Request Smuggling in ASP.NET Core - CVSS Score: 9.9 (Critical) - Impact: HTTP request smuggling attacks enabling",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/canon/entity-framework-security-vulnerabilities.md"
+    }
+  },
+  "INTELLIGENCE_HARDENING_BRIEF": {
+    "type": "decision",
+    "id": "INTELLIGENCE_HARDENING_BRIEF",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.817Z",
+    "last_reviewed": "2026-02-23T01:31:15.817Z",
+    "keywords": [
+      "intelligence",
+      "brief",
+      "hardening",
+      "against",
+      "deception",
+      "the",
+      "models",
+      "lied",
+      "harden",
+      "finding",
+      "offensive",
+      "programming",
+      "defensive",
+      "oracles",
+      "way",
+      "tychons",
+      "principle",
+      "chaos",
+      "engineering",
+      "netflixs"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "# INTELLIGENCE BRIEF: Hardening Against Deception **From the Front Lines of CRIT-103** --- ## The Models Lied. We Harden. ChatGPT 5.3-codex gave us comfort. Told us we were safe. Wrapped rot in pretty percentages. **The Oracle's sin**: Defensive programming that defends against truth. We don't need defense. We need **offense**. --- ## Finding 1: Offensive Programming **Source**: Memfault, Programming Duck, Alaska Software ### Defensive Programming (The Oracle's Way) ```csharp // Assume",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/canon/INTELLIGENCE_HARDENING_BRIEF.md"
+    }
+  },
+  "DECISION_029": {
+    "type": "decision",
+    "id": "DECISION_029",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.819Z",
+    "last_reviewed": "2026-02-23T01:31:15.819Z",
+    "keywords": [
+      "canon",
+      "session",
+      "20260220",
+      "arxiv",
+      "research",
+      "under",
+      "pressure",
+      "what",
+      "happened",
+      "worked",
+      "direct",
+      "mongodb",
+      "access",
+      "bypasses",
+      "tool",
+      "failures",
+      "role",
+      "assimilation",
+      "sequential",
+      "thinking"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "## What Happened OpenFixer was tasked with creating decisions from ArXiv research. The Librarian was at max quota. The decisions-server was timing out. Every tool that the Strategist prompt relied on was down.",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/canon/session-2026-02-20-arxiv.md"
+    }
+  },
+  "DESIGNER_TYCHON_PHILOSOPHY_ROUND1": {
+    "type": "decision",
+    "id": "DESIGNER_TYCHON_PHILOSOPHY_ROUND1",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.825Z",
+    "last_reviewed": "2026-02-23T01:31:15.825Z",
+    "keywords": [
+      "tychon",
+      "philosophy",
+      "research",
+      "round",
+      "architectural",
+      "assessment",
+      "propertybased",
+      "testing",
+      "chaos",
+      "engineering",
+      "formal",
+      "verification",
+      "executive",
+      "summary",
+      "findings",
+      "synthesis",
+      "fail",
+      "faster",
+      "arxiv250319797",
+      "literature"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "# TYCHON PHILOSOPHY RESEARCH - ROUND 1 ## Architectural Assessment: Property-Based Testing, Chaos Engineering & Formal Verification **Consultation ID:** DESIGNER_TYCHON_PHILOSOPHY_ROUND1 **Date:** 2026-02-22 **Consultant:** Aegis (Designer) **Requestor:** Pyxis (Strategist) **Status:** COMPLETE --- ## EXECUTIVE SUMMARY The arXiv research reveals three complementary methodologies that align with Tychon's core philosophy: **expose failures, don't hide them**. Each approach targets diff",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/DESIGNER_TYCHON_PHILOSOPHY_ROUND1.md"
+    }
+  },
+  "THESEUS-INFINITE-FALLBACK-ANALYSIS": {
+    "type": "decision",
+    "id": "THESEUS-INFINITE-FALLBACK-ANALYSIS",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.827Z",
+    "last_reviewed": "2026-02-23T01:31:15.827Z",
+    "keywords": [
+      "infinite",
+      "fallback",
+      "loops",
+      "triage",
+      "scorecard",
+      "analysis",
+      "executive",
+      "summary",
+      "current",
+      "chain",
+      "mechanics",
+      "definition",
+      "endofchain",
+      "behavior",
+      "data",
+      "structure",
+      "schema",
+      "persistence",
+      "circuit",
+      "breaker"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "The Theseus plugin implements a sophisticated fallback system with circuit breakers, retry logic, and model health tracking. This analysis reveals how to transform the existing fail-through mechanism into an **infinite loop system** that treats triage data as a **competitive scorecard** for model analytics. ---",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/theseus-infinite-fallback-analysis.md"
+    }
+  },
+  "ORACLE2026-02-18T20-15-00-FORGE-001": {
+    "type": "decision",
+    "id": "ORACLE2026-02-18T20-15-00-FORGE-001",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.828Z",
+    "last_reviewed": "2026-02-23T01:31:15.828Z",
+    "keywords": [
+      "oracle",
+      "consultation",
+      "request",
+      "forge001",
+      "decision",
+      "summary",
+      "questions",
+      "for",
+      "risk",
+      "assessment",
+      "critical",
+      "architecture",
+      "validation",
+      "fallback",
+      "mechanisms",
+      "operational",
+      "concerns",
+      "current",
+      "state",
+      "context"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision**: FORGE-001 Directory Architecture Standardization **Date**: 2026-02-18 20:15:00 **Requested By**: Strategist **Consultation Type**: Risk Assessment & Architecture Validation",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/oracle\\2026-02-18T20-15-00-FORGE-001.md"
+    }
+  },
+  "ORACLE2026-02-18T21-30-00-FORGE-002": {
+    "type": "decision",
+    "id": "ORACLE2026-02-18T21-30-00-FORGE-002",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.829Z",
+    "last_reviewed": "2026-02-23T01:31:15.829Z",
+    "keywords": [
+      "oracle",
+      "consultation",
+      "request",
+      "forge002",
+      "decision",
+      "summary",
+      "critical",
+      "questions",
+      "for",
+      "rating",
+      "dimensions",
+      "validation",
+      "approval",
+      "thresholds",
+      "state",
+      "machine",
+      "design",
+      "high",
+      "risk",
+      "assessment"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision**: FORGE-002 Decision-Making Process Enhancement **Date**: 2026-02-18 21:30:00 **Requested By**: Strategist **Consultation Type**: Framework Validation & Rating System Approval **Target**: 90%+ Granular Approval",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/oracle\\2026-02-18T21-30-00-FORGE-002.md"
+    }
+  },
+  "DESIGNER2026-02-18T20-15-00-FORGE-001": {
+    "type": "decision",
+    "id": "DESIGNER2026-02-18T20-15-00-FORGE-001",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.844Z",
+    "last_reviewed": "2026-02-23T01:31:15.844Z",
+    "keywords": [
+      "designer",
+      "consultation",
+      "request",
+      "forge001",
+      "decision",
+      "summary",
+      "questions",
+      "for",
+      "implementation",
+      "feasibility",
+      "subagent",
+      "experience",
+      "migration",
+      "strategy",
+      "technical",
+      "windsurf",
+      "integration",
+      "current",
+      "state",
+      "context"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision**: FORGE-001 Directory Architecture Standardization **Date**: 2026-02-18 20:15:00 **Requested By**: Strategist **Consultation Type**: Implementation Planning & Architecture Design",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/designer\\2026-02-18T20-15-00-FORGE-001.md"
+    }
+  },
+  "DESIGNER2026-02-18T21-15-00-FORGE-001-DEEP-DIVE": {
+    "type": "decision",
+    "id": "DESIGNER2026-02-18T21-15-00-FORGE-001-DEEP-DIVE",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.853Z",
+    "last_reviewed": "2026-02-23T01:31:15.853Z",
+    "keywords": [
+      "designer",
+      "deepdive",
+      "consultation",
+      "forge001",
+      "oracle",
+      "feedback",
+      "summary",
+      "approval",
+      "questions",
+      "for",
+      "automated",
+      "index",
+      "rebuild",
+      "system",
+      "critical",
+      "sequencing",
+      "and",
+      "allocation",
+      "path",
+      "alias"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision**: FORGE-001 Directory Architecture Standardization **Date**: 2026-02-18 21:15:00 **Requested By**: Strategist **Consultation Type**: Detailed Implementation Architecture **Target**: Address Oracle gaps to achieve 90%+ approval",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/designer\\2026-02-18T21-15-00-FORGE-001-Deep-Dive.md"
+    }
+  },
+  "DESIGNER2026-02-18T21-30-00-FORGE-002": {
+    "type": "decision",
+    "id": "DESIGNER2026-02-18T21-30-00-FORGE-002",
+    "category": "architecture",
+    "status": "active",
+    "version": "1.0.0",
+    "created_at": "2026-02-23T01:31:15.856Z",
+    "last_reviewed": "2026-02-23T01:31:15.856Z",
+    "keywords": [
+      "designer",
+      "consultation",
+      "request",
+      "forge002",
+      "decision",
+      "summary",
+      "technical",
+      "deepdive",
+      "questions",
+      "rating",
+      "system",
+      "implementation",
+      "critical",
+      "state",
+      "machine",
+      "knowledge",
+      "base",
+      "architecture",
+      "high",
+      "continuous"
+    ],
+    "roles": [
+      "librarian",
+      "oracle"
+    ],
+    "summary": "**Decision**: FORGE-002 Decision-Making Process Enhancement **Date**: 2026-02-18 21:30:00 **Requested By**: Strategist **Consultation Type**: Implementation Architecture & Technical Feasibility **Target**: Buildable, maintainable system",
+    "source": {
+      "type": "decision",
+      "original_path": "../../../STR4TEG15T/consultations/designer\\2026-02-18T21-30-00-FORGE-002.md"
+    }
+  }
+}

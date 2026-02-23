@@ -4,16 +4,19 @@ using P4NTH30N.C0MMON;
 using P4NTH30N.C0MMON.Entities;
 using P4NTH30N.C0MMON.Infrastructure.Cdp;
 using P4NTH30N.H4ND.Infrastructure;
+using P4NTH30N.H4ND.Navigation;
+using P4NTH30N.H4ND.Navigation.Retry;
 using P4NTH30N.H4ND.Services;
 
 namespace P4NTH30N.H4ND.Parallel;
 
 /// <summary>
-/// ARCH-047/055/081: Consumer — reads SignalWorkItems from the channel and executes
+/// ARCH-047/055/081/098: Consumer — reads SignalWorkItems from the channel and executes
 /// the full signal lifecycle: lock credential → login → query balances → spin → update → logout → unlock.
 /// Each worker maintains its own CDP session.
 /// ARCH-055: Self-healing via SessionRenewalService on 403/401, config-driven selectors via GameSelectorConfig.
 /// ARCH-081: Chrome profile isolation via ChromeProfileManager, login verification via balance > 0.
+/// ARCH-098: Navigation map integration — loads recorder step-config for login/logout/spin automation.
 /// </summary>
 public sealed class ParallelSpinWorker
 {
@@ -26,7 +29,10 @@ public sealed class ParallelSpinWorker
 	private readonly ParallelMetrics _metrics;
 	private readonly SessionRenewalService? _sessionRenewal;
 	private readonly GameSelectorConfig? _selectorConfig;
+	private readonly CdpResourceCoordinator _resourceCoordinator;
 	private readonly ChromeProfileManager? _profileManager;
+	private readonly NavigationMapLoader? _mapLoader;
+	private readonly IStepExecutor? _stepExecutor;
 	private readonly int _maxSignalsBeforeRestart;
 	private int _signalsProcessed;
 
@@ -42,11 +48,14 @@ public sealed class ParallelSpinWorker
 		ParallelMetrics metrics,
 		SessionRenewalService? sessionRenewal = null,
 		GameSelectorConfig? selectorConfig = null,
+		CdpResourceCoordinator? resourceCoordinator = null,
 		ChromeProfileManager? profileManager = null,
+		NavigationMapLoader? mapLoader = null,
+		IStepExecutor? stepExecutor = null,
 		int maxSignalsBeforeRestart = 100)
 	{
-		_workerId = workerId;
-		_workerIndex = int.TryParse(workerId, out int idx) ? idx : 0;
+		_workerId = workerId ?? throw new ArgumentException("Worker ID cannot be null or empty", nameof(workerId));
+		_workerIndex = ParseWorkerIndex(workerId);
 		_reader = reader;
 		_uow = uow;
 		_spinExecution = spinExecution;
@@ -54,7 +63,10 @@ public sealed class ParallelSpinWorker
 		_metrics = metrics;
 		_sessionRenewal = sessionRenewal;
 		_selectorConfig = selectorConfig;
+		_resourceCoordinator = resourceCoordinator ?? new CdpResourceCoordinator(1);
 		_profileManager = profileManager;
+		_mapLoader = mapLoader;
+		_stepExecutor = stepExecutor;
 		_maxSignalsBeforeRestart = maxSignalsBeforeRestart;
 	}
 
@@ -147,62 +159,51 @@ public sealed class ParallelSpinWorker
 
 		try
 		{
-			// Lock credential
-			_uow.Credentials.Lock(credential);
-
-			// Login via CDP
-			bool loginOk = credential.Game switch
-			{
-				"FireKirin" => await CdpGameActions.LoginFireKirinAsync(cdp, credential.Username, credential.Password),
-				"OrionStars" => await CdpGameActions.LoginOrionStarsAsync(cdp, credential.Username, credential.Password),
-				_ => throw new Exception($"Unrecognized game: '{credential.Game}'"),
-			};
-
-			if (!loginOk)
-			{
-				Console.WriteLine($"[Worker-{_workerId}] Login failed for {credential.Username}@{credential.Game}");
-				_metrics.RecordSpinResult(_workerId, false, sw.Elapsed, "login_failed");
-
-				// ARCH-055: Attempt self-healing on login failure
-				if (_sessionRenewal != null && SessionRenewalService.IsSessionFailure(new Exception("login failed")))
+			var credentialKey = $"{credential.House}/{credential.Game}/{credential.Username}";
+			await _resourceCoordinator.ExecuteForCredentialAsync(
+				credentialKey,
+				async innerCt =>
 				{
-					await AttemptSelfHealingAsync(credential.Game, ct);
-				}
-				return;
-			}
+					_uow.Credentials.Lock(credential);
 
-			// Acknowledge signal
-			_uow.Signals.Acknowledge(signal);
+					bool loginOk = await _resourceCoordinator.ExecuteCdpAsync(loginCt => ExecuteLoginAsync(cdp, credential, loginCt), innerCt);
 
-			// Execute spin
-			VisionCommand spinCommand = new()
-			{
-				CommandType = VisionCommandType.Spin,
-				TargetUsername = credential.Username,
-				TargetGame = credential.Game,
-				TargetHouse = credential.House,
-				Confidence = 1.0,
-				Reason = $"Parallel P{(int)signal.Priority} for {credential.House}/{credential.Game}",
-			};
+					if (!loginOk)
+					{
+						Console.WriteLine($"[Worker-{_workerId}] Login failed for {credential.Username}@{credential.Game}");
+						_metrics.RecordSpinResult(_workerId, false, sw.Elapsed, "login_failed");
 
-			bool spinOk = await _spinExecution.ExecuteSpinAsync(spinCommand, cdp, signal, credential, ct);
+						if (_sessionRenewal != null && SessionRenewalService.IsSessionFailure(new Exception("login failed")))
+						{
+							await AttemptSelfHealingAsync(credential.Game, innerCt);
+						}
+						return true;
+					}
 
-			sw.Stop();
-			_metrics.RecordSpinResult(_workerId, spinOk, sw.Elapsed, spinOk ? null : "spin_failed");
-			_signalsProcessed++;
+					_uow.Signals.Acknowledge(signal);
 
-			Console.WriteLine($"[Worker-{_workerId}] Completed {credential.Username}@{credential.Game} in {sw.ElapsedMilliseconds}ms (spin={spinOk})");
+					VisionCommand spinCommand = new()
+					{
+						CommandType = VisionCommandType.Spin,
+						TargetUsername = credential.Username,
+						TargetGame = credential.Game,
+						TargetHouse = credential.House,
+						Confidence = 1.0,
+						Reason = $"Parallel P{(int)signal.Priority} for {credential.House}/{credential.Game}",
+					};
 
-			// Logout
-			switch (credential.Game)
-			{
-				case "FireKirin":
-					await CdpGameActions.LogoutFireKirinAsync(cdp);
-					break;
-				case "OrionStars":
-					await CdpGameActions.LogoutOrionStarsAsync(cdp);
-					break;
-			}
+					bool spinOk = await _resourceCoordinator.ExecuteCdpAsync(spinCt => _spinExecution.ExecuteSpinAsync(spinCommand, cdp, signal, credential, spinCt), innerCt);
+
+					sw.Stop();
+					_metrics.RecordSpinResult(_workerId, spinOk, sw.Elapsed, spinOk ? null : "spin_failed");
+					_signalsProcessed++;
+
+					Console.WriteLine($"[Worker-{_workerId}] Completed {credential.Username}@{credential.Game} in {sw.ElapsedMilliseconds}ms (spin={spinOk})");
+
+					await _resourceCoordinator.ExecuteCdpAsync(logoutCt => ExecuteLogoutAsync(cdp, credential, logoutCt), innerCt);
+					return true;
+				},
+				ct);
 		}
 		catch (Exception ex) when (_sessionRenewal != null && SessionRenewalService.IsSessionFailure(ex))
 		{
@@ -326,8 +327,133 @@ public sealed class ParallelSpinWorker
 		}
 		catch
 		{
+			_metrics.RecordWorkerError(_workerId, "chrome_health_check_failed");
+			Console.WriteLine($"[Worker-{_workerId}] Chrome health check failed");
 			return false;
 		}
+	}
+
+	/// <summary>
+	/// ARCH-098: Execute login using NavigationMap if available, with fallback to hardcoded CdpGameActions.
+	/// Navigation map is loaded from step-config-{platform}.json via NavigationMapLoader.
+	/// </summary>
+	private async Task<bool> ExecuteLoginAsync(CdpClient cdp, Credential credential, CancellationToken ct)
+	{
+		// Try navigation map first
+		if (_mapLoader != null && _stepExecutor != null)
+		{
+			try
+			{
+				var map = await _mapLoader.LoadAsync(credential.Game, ct);
+				if (map != null && map.GetStepsForPhase("Login").Any())
+				{
+					var context = new StepExecutionContext
+					{
+						CdpClient = cdp,
+						Platform = credential.Game,
+						Username = credential.Username,
+						Password = credential.Password,
+						WorkerId = _workerId,
+						Variables = new() { ["username"] = credential.Username, ["password"] = credential.Password },
+					};
+
+					var loginResult = await _stepExecutor.ExecutePhaseAsync(map, "Login", context, ct);
+					if (loginResult.Success)
+					{
+						Console.WriteLine($"[Worker-{_workerId}] ARCH-098 NavigationMap login completed for {credential.Username}@{credential.Game}");
+						return await CdpGameActions.VerifyLoginSuccessAsync(cdp, credential.Username, credential.Game, ct);
+					}
+
+					Console.WriteLine($"[Worker-{_workerId}] NavigationMap login failed: {loginResult.ErrorMessage} — not falling back to hardcoded to avoid duplicate click paths");
+					return false;
+				}
+
+				if (map != null)
+				{
+					Console.WriteLine($"[Worker-{_workerId}] NavigationMap loaded but no Login phase; using hardcoded fallback");
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"[Worker-{_workerId}] NavigationMap login error, falling back: {ex.Message}");
+			}
+		}
+
+		// Fallback to hardcoded CdpGameActions
+		return credential.Game switch
+		{
+			"FireKirin" => await CdpGameActions.LoginFireKirinAsync(cdp, credential.Username, credential.Password),
+			"OrionStars" => await CdpGameActions.LoginOrionStarsAsync(cdp, credential.Username, credential.Password),
+			_ => throw new Exception($"Unrecognized game: '{credential.Game}'"),
+		};
+	}
+
+	/// <summary>
+	/// ARCH-098: Execute logout using NavigationMap if available, with fallback to hardcoded CdpGameActions.
+	/// </summary>
+	private async Task ExecuteLogoutAsync(CdpClient cdp, Credential credential, CancellationToken ct)
+	{
+		// Try navigation map first
+		if (_mapLoader != null && _stepExecutor != null)
+		{
+			try
+			{
+				var map = await _mapLoader.LoadAsync(credential.Game, ct);
+				if (map != null && map.GetStepsForPhase("Logout").Any())
+				{
+					var context = new StepExecutionContext
+					{
+						CdpClient = cdp,
+						Platform = credential.Game,
+						Username = credential.Username,
+						WorkerId = _workerId,
+					};
+
+					var result = await _stepExecutor.ExecutePhaseAsync(map, "Logout", context, ct);
+					if (result.Success)
+					{
+						Console.WriteLine($"[Worker-{_workerId}] ARCH-098 NavigationMap logout completed");
+						return;
+					}
+
+					Console.WriteLine($"[Worker-{_workerId}] NavigationMap logout failed, falling back: {result.ErrorMessage}");
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"[Worker-{_workerId}] NavigationMap logout error, falling back: {ex.Message}");
+			}
+		}
+
+		// Fallback to hardcoded CdpGameActions
+		switch (credential.Game)
+		{
+			case "FireKirin":
+				await CdpGameActions.LogoutFireKirinAsync(cdp);
+				break;
+			case "OrionStars":
+				await CdpGameActions.LogoutOrionStarsAsync(cdp);
+				break;
+		}
+	}
+
+	/// <summary>
+	/// Parses worker ID format "W00", "W01", etc. into numeric index.
+	/// Throws ArgumentException on invalid format — fail fast, no silent defaults.
+	/// </summary>
+	private static int ParseWorkerIndex(string workerId)
+	{
+		if (string.IsNullOrEmpty(workerId))
+			throw new ArgumentException("Worker ID cannot be null or empty", nameof(workerId));
+
+		if (workerId.Length >= 2 &&
+			workerId[0] == 'W' &&
+			int.TryParse(workerId.Substring(1), out int index))
+		{
+			return index;
+		}
+
+		throw new ArgumentException($"Invalid worker ID format: '{workerId}'. Expected format: 'W00', 'W01', etc.", nameof(workerId));
 	}
 
 	private async Task<CdpClient?> CreateCdpSessionAsync(CancellationToken ct)

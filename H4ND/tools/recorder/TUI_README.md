@@ -1,7 +1,8 @@
 # P4NTH30N Recorder TUI — Comprehensive Operation Guide
 
-**Version**: 1.0  
+**Version**: 1.1  
 **Created**: 2026-02-21  
+**Updated**: 2026-02-22  
 **Decision**: DECISION_078  
 **Author**: WindFixer  
 **Status**: Operational
@@ -20,16 +21,19 @@
 8. [Edit Mode](#edit-mode)
 9. [Run Mode (Macro Playback)](#run-mode-macro-playback)
 10. [Breakpoints](#breakpoints)
-11. [Screenshot Integration](#screenshot-integration)
-12. [Workflow: Recording a New Macro](#workflow-recording-a-new-macro)
-13. [Workflow: Editing Existing Steps](#workflow-editing-existing-steps)
-14. [Workflow: Testing with Breakpoints](#workflow-testing-with-breakpoints)
-15. [File Format](#file-format)
-16. [Keyboard Reference](#keyboard-reference)
-17. [Troubleshooting](#troubleshooting)
-18. [Advanced Usage](#advanced-usage)
-19. [Integration with T00L5ET](#integration-with-t00l5et)
-20. [Future Enhancements](#future-enhancements)
+11. [Conditional Logic (If-Then-Else)](#conditional-logic-if-then-else)
+12. [Goto Statements](#goto-statements)
+13. [Screenshot Integration](#screenshot-integration)
+14. [Workflow: Recording a New Macro](#workflow-recording-a-new-macro)
+15. [Workflow: Editing Existing Steps](#workflow-editing-existing-steps)
+16. [Workflow: Testing with Breakpoints](#workflow-testing-with-breakpoints)
+17. [Workflow: Error Handling with Conditionals](#workflow-error-handling-with-conditionals)
+18. [File Format](#file-format)
+19. [Keyboard Reference](#keyboard-reference)
+20. [Troubleshooting](#troubleshooting)
+21. [Advanced Usage](#advanced-usage)
+22. [Integration with T00L5ET](#integration-with-t00l5et)
+23. [Future Enhancements](#future-enhancements)
 
 ---
 
@@ -568,6 +572,278 @@ When you run this:
 
 ---
 
+## Conditional Logic (If-Then-Else)
+
+**New in v1.1** — The TUI now supports **conditional logic** for error handling workflows. Define what happens when errors occur during navigation.
+
+### What Is Conditional Logic?
+
+Conditional logic lets you define **if-then-else** branches in your workflow:
+
+```
+IF error message appears
+  THEN restart from step 1
+  ELSE continue to next step
+```
+
+This allows you to:
+- ✅ Handle server busy errors automatically
+- ✅ Retry when elements don't load
+- ✅ Restart login when session expires
+- ✅ Abort on fatal errors (account banned)
+
+### Visual Indicators
+
+Steps with conditional logic show `[IF]` in the step list:
+
+```
+  ▸  5 [Login] type "abc123"
+  🔴 6 [Login] click (553,567) 📸 [IF] (login)
+     7 [Login] wait 3000ms 📸
+```
+
+### Adding Conditional Logic
+
+**From Step List:**
+1. Navigate to the step
+2. Press `C` (Edit Conditional)
+3. Conditional editor opens
+
+**From Edit Mode:**
+1. Navigate to "conditional" field
+2. Press `Enter`
+3. Conditional editor opens
+
+### The Conditional Editor
+
+The editor has three sections:
+
+#### 1. CONDITION Section (What to Check)
+
+```
+▶ CONDITION (what to check)
+→ Type        : element-exists
+  Target      : .error-message
+  CDP Cmd     : (empty)
+  Description : Check if error message appeared
+```
+
+**Condition Types:**
+- `element-exists` — Check if DOM element exists
+- `element-missing` — Check if element is absent
+- `text-contains` — Check if page contains text
+- `cdp-check` — Run CDP command
+- `tool-success` — Check if tool passed
+- `tool-failure` — Check if tool failed
+- `custom-js` — Run custom JavaScript
+
+**Fields:**
+- **Type**: Cycle through condition types with `Enter`
+- **Target**: Element selector, text, or JS expression
+- **CDP Cmd**: CDP command JSON (for cdp-check type)
+- **Description**: Human-readable explanation
+
+#### 2. ON TRUE Section (What to Do If True)
+
+```
+▶ ON TRUE (what to do)
+→ Action      : goto
+  Goto Step   : 1
+  Retry Count : (empty)
+  Retry Delay : (empty)
+  Comment     : Error detected - restart
+```
+
+**Branch Actions:**
+- `continue` — Proceed to next step
+- `goto` — Jump to specific step number
+- `retry` — Retry current step N times
+- `abort` — Stop workflow immediately
+
+**Fields:**
+- **Action**: What to do (cycle with `Enter`)
+- **Goto Step**: Step number (required for goto)
+- **Retry Count**: Number of retries (required for retry)
+- **Retry Delay**: Milliseconds between retries
+- **Comment**: Explanation of this branch
+
+#### 3. ON FALSE Section (What to Do If False)
+
+Same fields as ON TRUE section.
+
+#### 4. Preview Section
+
+Shows formatted preview:
+
+```
+Preview:
+  IF Check if error message appeared
+    THEN goto step 1 (Error detected - restart)
+    ELSE continue to next step (No error - proceed)
+```
+
+### Conditional Editor Controls
+
+| Key | Action |
+|-----|--------|
+| `↑/↓` | Navigate fields |
+| `Tab` | Switch sections (Condition → OnTrue → OnFalse) |
+| `Enter` | Edit selected field |
+| `Esc` | Cancel field edit or exit editor |
+| `Ctrl+S` | Save conditional logic |
+| `Ctrl+D` | Delete conditional logic |
+| `Ctrl+C` | Cancel and exit without saving |
+
+### Example: Handle Server Busy Error
+
+**Step 6: Click LOGIN button**
+
+Conditional:
+```
+IF text-contains "server is busy"
+  THEN retry 5 times with 5000ms delay
+  ELSE continue
+```
+
+**What happens:**
+1. Step 6 executes (click LOGIN)
+2. Condition checks if "server is busy" appears
+3. If TRUE: Retry step 6 up to 5 times with 5-second delays
+4. If FALSE: Continue to step 7
+
+### Example: Restart on Session Expired
+
+**Step 10: Navigate to game**
+
+Conditional:
+```
+IF text-contains "Session expired"
+  THEN goto step 1
+  ELSE continue
+```
+
+**What happens:**
+1. Step 10 executes
+2. Condition checks for "Session expired" message
+3. If TRUE: Jump back to step 1 (restart login)
+4. If FALSE: Continue to step 11
+
+### Example: Abort on Fatal Error
+
+**Step 2: Enter credentials**
+
+Conditional:
+```
+IF element-exists ".account-banned"
+  THEN abort
+  ELSE continue
+```
+
+**What happens:**
+1. Step 2 executes
+2. Condition checks for account banned message
+3. If TRUE: Abort entire workflow
+4. If FALSE: Continue to step 3
+
+### Best Practices
+
+1. **Use descriptive descriptions** — "Check if login error appears" not "Check error"
+2. **Add comments to branches** — Explain why each path is taken
+3. **Prefer retry for transient errors** — Network issues, loading delays
+4. **Use goto for recoverable errors** — Session expired, need re-login
+5. **Reserve abort for fatal errors** — Account banned, system down
+6. **Limit retry counts** — Max 10 to avoid infinite loops
+7. **Use appropriate delays** — 2-5 seconds between retries
+
+---
+
+## Goto Statements
+
+**New in v1.1** — Simple goto statements for error recovery without complex conditionals.
+
+### What Is a Goto Statement?
+
+A goto statement tells the workflow: **"If this step fails, jump to step N"**.
+
+It's simpler than conditional logic — no if-then-else, just a fallback step number.
+
+### Visual Indicators
+
+Steps with goto show `[→N]` in the step list:
+
+```
+  ▸  5 [Login] type "abc123"
+     6 [Login] click (553,567) 📸 [→1] (login)
+     7 [Login] wait 3000ms 📸
+```
+
+This means: "If step 6 fails, jump to step 1".
+
+### Setting a Goto Target
+
+**From Step List:**
+1. Navigate to the step
+2. Press `G` (Set Goto)
+3. Enter step number
+4. Press `Enter`
+
+**From Edit Mode:**
+1. Navigate to "gotoStep" field
+2. Press `Enter`
+3. Type step number
+4. Press `Enter`
+
+### Example: Simple Error Recovery
+
+**Step 6: Click LOGIN button**
+
+Goto: `1`
+
+**What happens:**
+- If step 6 succeeds → Continue to step 7
+- If step 6 fails → Jump to step 1 (restart login)
+
+### Goto vs. Conditional Logic
+
+**Use Goto when:**
+- ✅ Simple failure recovery ("if fails, restart")
+- ✅ No need to check specific conditions
+- ✅ One fallback path is sufficient
+
+**Use Conditional Logic when:**
+- ✅ Need to check specific error messages
+- ✅ Different actions for different errors
+- ✅ Need retry with delay
+- ✅ Need to abort on fatal errors
+
+### Combining Goto and Conditional
+
+You can use both on the same step:
+
+```
+Step 6: Click LOGIN button
+  Goto: 1 (fallback if step fails)
+  Conditional:
+    IF text-contains "server is busy"
+      THEN retry 5 times with 5000ms delay
+      ELSE continue
+```
+
+**Execution order:**
+1. Step 6 executes
+2. Conditional is evaluated first
+3. If conditional doesn't trigger, goto is used on failure
+
+### Visual Indicators for Both
+
+Steps with both show `[IF→N]`:
+
+```
+  🔴 6 [Login] click (553,567) 📸 [IF→1] (login)
+```
+
+---
+
 ## Screenshot Integration
 
 The TUI integrates with Chrome DevTools Protocol (CDP) for screenshot capture.
@@ -738,6 +1014,86 @@ Mark step 3 with a breakpoint permanently so you remember it's a known issue.
 
 ---
 
+## Workflow: Error Handling with Conditionals
+
+### Scenario: FireKirin login fails with "server is busy" error
+
+**Problem:** Login sometimes fails with a server busy message that requires waiting and retrying.
+
+**Solution with Conditional Logic:**
+
+**Step 1: Navigate to step 6 (LOGIN button click)**
+```bash
+bun run recorder-tui.ts
+# Navigate to step 6
+```
+
+**Step 2: Add conditional logic**
+1. Press `C` to open conditional editor
+2. Navigate to "Type" → press `Enter` until "text-contains"
+3. Navigate to "Target" → press `Enter` → type "server is busy"
+4. Navigate to "Description" → type "Check for server busy message"
+5. Press `Tab` to switch to ON TRUE section
+
+**Step 3: Configure retry on error**
+1. Navigate to "Action" → press `Enter` until "retry"
+2. Navigate to "Retry Count" → press `Enter` → type "5"
+3. Navigate to "Retry Delay" → press `Enter` → type "5000"
+4. Navigate to "Comment" → type "Server busy - wait 5s and retry"
+5. Press `Tab` to switch to ON FALSE section
+
+**Step 4: Configure success path**
+1. Navigate to "Action" → ensure it shows "continue"
+2. Navigate to "Comment" → type "Server ready - proceed"
+3. Press `Ctrl+S` to save
+
+**Step 5: Test the workflow**
+1. Press `Esc` to return to step list
+2. Set breakpoint on step 6 with `B`
+3. Press `R` to run from step 1
+4. When step 6 executes:
+   - If "server is busy" appears → Automatically retries 5 times
+   - If no error → Continues to step 7
+
+**Result:** Workflow now handles server busy errors automatically without manual intervention.
+
+### Scenario: Session expires during game selection
+
+**Problem:** Session sometimes expires after login, requiring restart.
+
+**Solution with Goto Statement:**
+
+**Step 1: Navigate to step 9 (game selection)**
+
+**Step 2: Set goto target**
+1. Press `G` (Set Goto)
+2. Type "1" (restart from login)
+3. Press `Enter`
+
+**Step 3: Add conditional for session check**
+1. Press `C` to open conditional editor
+2. Configure condition:
+   - Type: `text-contains`
+   - Target: `Session expired`
+   - Description: `Check if session expired during navigation`
+3. Configure ON TRUE:
+   - Action: `goto`
+   - Goto Step: `1`
+   - Comment: `Session expired - restart login`
+4. Configure ON FALSE:
+   - Action: `continue`
+   - Comment: `Session valid - continue`
+5. Press `Ctrl+S` to save
+
+**Step 4: Test**
+1. Run workflow
+2. If session expires at step 9 → Jumps to step 1
+3. If session valid → Continues to step 10
+
+**Result:** Workflow automatically recovers from session expiration.
+
+---
+
 ## File Format
 
 The TUI reads and writes `step-config.json` in this format:
@@ -816,6 +1172,19 @@ The TUI reads and writes `step-config.json` in this format:
 | `input` | string | Text to type (for type actions) |
 | `delayMs` | number | Milliseconds to wait after action |
 | `breakpoint` | boolean | Pause execution here |
+| `gotoStep` | number | Step to jump to on failure (optional) |
+| `conditional` | object | If-then-else logic (optional) |
+| `conditional.condition` | object | Condition to check |
+| `conditional.condition.type` | string | element-exists, element-missing, text-contains, cdp-check, tool-success, tool-failure, custom-js |
+| `conditional.condition.target` | string | Element selector, text, or JS expression |
+| `conditional.condition.description` | string | Human-readable condition explanation |
+| `conditional.onTrue` | object | Branch to execute if condition is true |
+| `conditional.onTrue.action` | string | continue, goto, retry, abort |
+| `conditional.onTrue.gotoStep` | number | Step number (for goto action) |
+| `conditional.onTrue.retryCount` | number | Number of retries (for retry action) |
+| `conditional.onTrue.retryDelayMs` | number | Delay between retries in ms |
+| `conditional.onTrue.comment` | string | Explanation of this branch |
+| `conditional.onFalse` | object | Branch to execute if condition is false |
 | `verification.entryGate` | string | Precondition |
 | `verification.exitGate` | string | Expected result |
 
@@ -842,6 +1211,10 @@ The TUI reads and writes `step-config.json` in this format:
 | `D` | Delete current step |
 | `C` | Clone current step |
 | `B` | Toggle breakpoint |
+| `C` | Edit conditional logic |
+| `G` | Set goto target |
+| `V` | View conditional (if present) |
+| `X` | Clear conditional |
 | `U` | Move step up |
 | `J` | Move step down |
 | `R` | Run from cursor |
@@ -862,9 +1235,21 @@ The TUI reads and writes `step-config.json` in this format:
 | Key | Action |
 |-----|--------|
 | `↑/↓` | Navigate fields |
-| `Enter` | Edit text field / Cycle option |
+| `Enter` | Edit text field / Cycle option / Open conditional editor |
 | `Tab` | Next field |
 | `Esc` or `Q` | Save and back to list |
+
+### Conditional Editor
+
+| Key | Action |
+|-----|--------|
+| `↑/↓` | Navigate fields |
+| `Tab` | Switch sections (Condition → OnTrue → OnFalse) |
+| `Enter` | Edit selected field |
+| `Esc` | Cancel field edit or exit editor |
+| `Ctrl+S` | Save conditional logic |
+| `Ctrl+D` | Delete conditional logic |
+| `Ctrl+C` | Cancel without saving |
 
 **While Editing Text:**
 | Key | Action |
@@ -1113,6 +1498,8 @@ The P4NTH30N Recorder TUI transforms workflow recording from a tedious, error-pr
 ✅ **Zero dependencies** — pure TypeScript + ANSI  
 ✅ **Full CRUD** — add, edit, delete, clone, reorder steps  
 ✅ **Breakpoints** — pause execution to verify state  
+✅ **Conditional logic** — if-then-else error handling (v1.1)  
+✅ **Goto statements** — simple error recovery (v1.1)  
 ✅ **Live preview** — run mode shows execution in real-time  
 ✅ **Auto-save** — never lose your work  
 ✅ **Coordinate precision** — edit X/Y values with arrow keys  
@@ -1139,4 +1526,4 @@ The P4NTH30N Recorder TUI transforms workflow recording from a tedious, error-pr
 
 **Built by WindFixer for Nexus**  
 **DECISION_078 — P4NTH30N Recorder TUI**  
-**2026-02-21**
+**v1.0: 2026-02-21 | v1.1: 2026-02-22**

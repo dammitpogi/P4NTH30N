@@ -10,6 +10,36 @@ import {
   drawBox, drawSep, writeAt, pad, flush, getTermSize, progressBar,
 } from './screen';
 import { TuiRunner } from './runner';
+import {
+  type ConditionalEditorState,
+  loadConditionalState,
+  buildConditionalLogic,
+  renderConditionalEditor,
+} from './conditional-editor';
+import {
+  extractPrintableChar,
+  isBackspace,
+  isEnter,
+  isEscape,
+} from './input-filter';
+import {
+  renderFlowChart,
+  renderMiniFlowChart,
+  type FlowChartOptions,
+} from './flow-chart';
+import {
+  type TimelineEntry,
+  type RunStats,
+  createRunStats,
+  updateRunStats,
+  renderStatsPanel,
+  renderBreakpointPanel,
+  renderStepResultDetail,
+  renderExecutionLog,
+} from './run-dashboard';
+
+const MAX_FLOW_JUMPS = 200;
+const MAX_RETRY_COUNT = 10;
 
 // ─── Default Config ──────────────────────────────────────────────
 function defaultConfig(): MacroConfig {
@@ -30,6 +60,7 @@ function defaultConfig(): MacroConfig {
 function defaultStep(id: number): MacroStep {
   return {
     stepId: id,
+    enabled: true,
     phase: 'Login',
     takeScreenshot: true,
     screenshotReason: '',
@@ -48,6 +79,10 @@ export class RecorderTUI {
   private state: AppState;
   private running = true;
   private runner: TuiRunner;
+  private readonly configRedirectWarning: string | null = null;
+  private conditionalState: ConditionalEditorState | null = null;
+  private timeline: TimelineEntry[] = [];
+  private runStats: RunStats | null = null;
 
   constructor(configPath: string) {
     const { rows, cols } = getTermSize();
@@ -56,6 +91,13 @@ export class RecorderTUI {
     // step-config-firekirin.json exists, load the platform-specific file instead
     const resolvedPath = this.resolveConfigPath(configPath);
     const config = this.loadConfig(resolvedPath);
+    const requestedConfigName = configPath.split(/[\\/]/).pop() || configPath;
+    const resolvedConfigName = resolvedPath.split(/[\\/]/).pop() || resolvedPath;
+
+    if (resolvedPath !== configPath) {
+      this.configRedirectWarning =
+        `CONFIG REDIRECT: requested ${requestedConfigName} -> using ${resolvedConfigName}`;
+    }
 
     this.runner = new TuiRunner();
 
@@ -76,7 +118,11 @@ export class RecorderTUI {
       cdpBrowser: '',
       sessionDir: '',
       dirty: false,
-      statusMessage: `Loaded ${config.steps.length} steps from ${configPath}`,
+      statusMessage: this.configRedirectWarning
+        || `Loaded ${config.steps.length} steps from ${resolvedConfigName}`,
+      conditionalCursor: 0,
+      conditionalEditing: false,
+      conditionalEditBuffer: '',
       screenRows: rows,
       screenCols: cols,
     };
@@ -91,6 +137,7 @@ export class RecorderTUI {
         const steps = (parsed.steps || []).map((s: any, i: number) => ({
           ...defaultStep(i + 1),
           ...s,
+          enabled: s.enabled ?? true,
           breakpoint: s.breakpoint ?? false,
           _status: undefined,
         }));
@@ -154,6 +201,23 @@ export class RecorderTUI {
       console.error('Run directly: bun run recorder-tui.ts');
       process.exit(1);
     }
+
+    // Global error handler
+    process.on('uncaughtException', (err) => {
+      this.cleanup();
+      console.error('\n\n' + c.red + c.bold + '=== CRASH DETECTED ===' + c.reset);
+      console.error(c.red + 'Error: ' + err.message + c.reset);
+      console.error(c.gray + err.stack + c.reset);
+      process.exit(1);
+    });
+
+    process.on('unhandledRejection', (reason) => {
+      this.cleanup();
+      console.error('\n\n' + c.red + c.bold + '=== UNHANDLED PROMISE REJECTION ===' + c.reset);
+      console.error(c.red + 'Reason: ' + reason + c.reset);
+      process.exit(1);
+    });
+
     process.stdin.setRawMode(true);
     process.stdin.resume();
     process.stdin.setEncoding('utf8');
@@ -175,6 +239,16 @@ export class RecorderTUI {
     });
   }
 
+  private cleanup(): void {
+    try {
+      process.stdin.setRawMode(false);
+      flush(showCursor());
+      flush(clearScreen());
+    } catch (e) {
+      // Ignore cleanup errors
+    }
+  }
+
   private async handleKey(key: string): Promise<void> {
     // Global keys
     if (key === '\x03') { // Ctrl+C
@@ -182,7 +256,11 @@ export class RecorderTUI {
       return;
     }
     if (key === '\x13') { // Ctrl+S
-      this.saveConfig();
+      if (this.state.view === 'conditional-edit') {
+        this.saveConditionalEditor();
+      } else {
+        this.saveConfig();
+      }
       return;
     }
     if (key === '\x1b[15~') { // F4
@@ -195,6 +273,7 @@ export class RecorderTUI {
       case 'step-detail': this.handleStepDetailKey(key); break;
       case 'step-edit':   await this.handleStepEditKey(key); break;
       case 'step-add':    await this.handleStepEditKey(key); break;
+      case 'conditional-edit': this.handleConditionalEditKey(key); break;
       case 'run-mode':    await this.handleRunModeKey(key); break;
       case 'help':        this.handleHelpKey(key); break;
     }
@@ -241,8 +320,23 @@ export class RecorderTUI {
       case 's': case 'S': // Screenshot
         await this.takeScreenshot();
         break;
-      case 'c': case 'C': // Clone step
+      case 'c': case 'C': // Edit conditional logic
+        this.openConditionalEditor();
+        break;
+      case 'g': case 'G':
+        this.promptGotoStep();
+        break;
+      case 'x': case 'X':
+        this.clearStepFlow();
+        break;
+      case 'k': case 'K':
+        this.toggleStepEnabled();
+        break;
+      case 'l': case 'L': // Clone step
         this.cloneStep();
+        break;
+      case 'v': case 'V':
+        this.showConditionalPreview();
         break;
       case 'u': case 'U': // Move step up
         this.moveStep(-1);
@@ -301,6 +395,18 @@ export class RecorderTUI {
           !this.state.config.steps[this.state.cursor].breakpoint;
         this.state.dirty = true;
         break;
+      case 'c': case 'C':
+        this.openConditionalEditor();
+        break;
+      case 'g': case 'G':
+        this.promptGotoStep();
+        break;
+      case 'k': case 'K':
+        this.toggleStepEnabled();
+        break;
+      case 'x': case 'X':
+        this.clearStepFlow();
+        break;
     }
   }
 
@@ -310,33 +416,25 @@ export class RecorderTUI {
     if (!step) return;
 
     if (this.state.editingField) {
-      // Text input mode
-      if (key === '\r') { // Enter - commit field
+      // Text input mode - use input filter to prevent escape sequences
+      if (isEnter(key)) {
         this.commitField(step);
         this.state.editingField = false;
         return;
       }
-      if (key === '\x1b') { // Esc - cancel edit
+      if (isEscape(key)) {
         this.state.editingField = false;
         this.state.editBuffer = '';
         return;
       }
-      if (key === '\x7f' || key === '\b') { // Backspace
+      if (isBackspace(key)) {
         this.state.editBuffer = this.state.editBuffer.slice(0, -1);
         return;
       }
-      // Multi-character input = paste (Shift+Right Click or Ctrl+V in terminal)
-      if (key.length > 1) {
-        // Filter to printable chars only
-        const printable = key.split('').filter(c => c >= ' ' && c <= '~').join('');
-        if (printable.length > 0) {
-          this.state.editBuffer += printable;
-        }
-        return;
-      }
-      if (key.length === 1 && key >= ' ') { // Single printable char
-        this.state.editBuffer += key;
-        return;
+      // Extract only printable characters (filters out arrow keys, etc.)
+      const char = extractPrintableChar(key);
+      if (char !== null) {
+        this.state.editBuffer += char;
       }
       return;
     }
@@ -385,7 +483,21 @@ export class RecorderTUI {
         case ' ': // Space - single step only
           this.state.runPaused = false;
           this.state.runAuto = false;
-          await this.runNextStep(true); // skip breakpoint re-check
+          await this.runNextStep(true); // skip breakpoint re-check on current step
+          // After executing, check if we should pause again
+          if (this.state.view === 'run-mode' && this.state.runCursor < this.state.config.steps.length) {
+            const nextStep = this.state.config.steps[this.state.runCursor];
+            if (nextStep && (nextStep.enabled ?? true)) {
+              // Always pause after single-step for manual control
+              this.state.runPaused = true;
+              nextStep._status = 'running';
+              if (nextStep.breakpoint) {
+                this.setStatus(`Breakpoint at step ${nextStep.stepId} — Space to continue, A to auto-run`, c.red);
+              } else {
+                this.setStatus(`Paused at step ${nextStep.stepId} — Space to continue, A to auto-run`, c.yellow);
+              }
+            }
+          }
           break;
         case 'a': case 'A': // Resume auto-run
           this.state.runPaused = false;
@@ -420,6 +532,197 @@ export class RecorderTUI {
     if (key === '\x1b' || key === 'q' || key === 'Q' || key === '?' || key === '\r') {
       this.state.view = 'step-list';
     }
+  }
+
+  private handleConditionalEditKey(key: string): void {
+    if (!this.conditionalState) {
+      this.state.view = 'step-list';
+      return;
+    }
+    if (this.state.conditionalEditing) {
+      // Text input mode - use input filter to prevent escape sequences
+      if (isEnter(key)) {
+        this.commitConditionalField();
+        this.state.conditionalEditing = false;
+        return;
+      }
+      if (isEscape(key)) {
+        this.state.conditionalEditing = false;
+        this.state.conditionalEditBuffer = '';
+        return;
+      }
+      if (isBackspace(key)) {
+        this.state.conditionalEditBuffer = this.state.conditionalEditBuffer.slice(0, -1);
+        return;
+      }
+      // Extract only printable characters (filters out arrow keys, etc.)
+      const char = extractPrintableChar(key);
+      if (char !== null) {
+        this.state.conditionalEditBuffer += char;
+      }
+      return;
+    }
+
+    switch (key) {
+      case '\x1b[A':
+        this.state.conditionalCursor = Math.max(0, this.state.conditionalCursor - 1);
+        break;
+      case '\x1b[B':
+        this.state.conditionalCursor = Math.min(13, this.state.conditionalCursor + 1);
+        break;
+      case '\r': {
+        const current = this.getConditionalFieldValue();
+        if (this.isConditionalCycleField(this.state.conditionalCursor)) {
+          this.cycleConditionalField();
+          this.state.dirty = true;
+        } else {
+          this.state.conditionalEditing = true;
+          this.state.conditionalEditBuffer = current;
+        }
+        break;
+      }
+      case '\t':
+        this.state.conditionalCursor = (this.state.conditionalCursor + 1) % 14;
+        break;
+      case '\x13':
+      case 's':
+      case 'S':
+        this.saveConditionalEditor();
+        break;
+      case '\x04':
+      case 'x':
+      case 'X':
+        this.clearStepConditionalOnly();
+        break;
+      case '\x1b':
+      case 'q':
+      case 'Q':
+        this.closeConditionalEditor(false);
+        break;
+    }
+  }
+
+  private openConditionalEditor(): void {
+    const step = this.state.config.steps[this.state.cursor];
+    if (!step) return;
+    this.conditionalState = loadConditionalState(step.conditional);
+    this.state.conditionalCursor = 0;
+    this.state.conditionalEditing = false;
+    this.state.conditionalEditBuffer = '';
+    this.state.view = 'conditional-edit';
+  }
+
+  private saveConditionalEditor(): void {
+    if (!this.conditionalState) return;
+    const step = this.state.config.steps[this.state.cursor];
+    if (!step) return;
+    step.conditional = buildConditionalLogic(this.conditionalState);
+    this.state.dirty = true;
+    this.closeConditionalEditor(true);
+    this.setStatus(`Conditional saved for step ${step.stepId}`, c.green);
+  }
+
+  private closeConditionalEditor(saved: boolean): void {
+    this.conditionalState = null;
+    this.state.conditionalEditing = false;
+    this.state.conditionalEditBuffer = '';
+    this.state.conditionalCursor = 0;
+    this.state.view = 'step-list';
+    if (!saved) {
+      this.setStatus('Conditional edit cancelled', c.yellow);
+    }
+  }
+
+  private clearStepConditionalOnly(): void {
+    const step = this.state.config.steps[this.state.cursor];
+    if (!step) return;
+    step.conditional = undefined;
+    this.state.dirty = true;
+    this.closeConditionalEditor(true);
+    this.setStatus(`Conditional cleared for step ${step.stepId}`, c.yellow);
+  }
+
+  private isConditionalCycleField(cursor: number): boolean {
+    return cursor === 0 || cursor === 4 || cursor === 9;
+  }
+
+  private cycleConditionalField(): void {
+    if (!this.conditionalState) return;
+    if (this.state.conditionalCursor === 0) {
+      const types: Array<ConditionalEditorState['conditionType']> = [
+        'element-exists',
+        'element-missing',
+        'text-contains',
+        'cdp-check',
+        'tool-success',
+        'tool-failure',
+        'custom-js',
+      ];
+      const idx = types.indexOf(this.conditionalState.conditionType);
+      this.conditionalState.conditionType = types[(idx + 1) % types.length];
+      return;
+    }
+    if (this.state.conditionalCursor === 4 || this.state.conditionalCursor === 9) {
+      const actions: Array<ConditionalEditorState['onTrueAction']> = [
+        'continue',
+        'goto',
+        'retry',
+        'abort',
+      ];
+      if (this.state.conditionalCursor === 4) {
+        const idx = actions.indexOf(this.conditionalState.onTrueAction);
+        this.conditionalState.onTrueAction = actions[(idx + 1) % actions.length];
+      } else {
+        const idx = actions.indexOf(this.conditionalState.onFalseAction);
+        this.conditionalState.onFalseAction = actions[(idx + 1) % actions.length];
+      }
+    }
+  }
+
+  private getConditionalFieldValue(): string {
+    if (!this.conditionalState) return '';
+    const s = this.conditionalState;
+    switch (this.state.conditionalCursor) {
+      case 0: return s.conditionType;
+      case 1: return s.conditionTarget;
+      case 2: return s.cdpCommand;
+      case 3: return s.conditionDescription;
+      case 4: return s.onTrueAction;
+      case 5: return s.onTrueGotoStep ? String(s.onTrueGotoStep) : '';
+      case 6: return s.onTrueRetryCount ? String(s.onTrueRetryCount) : '';
+      case 7: return s.onTrueRetryDelayMs ? String(s.onTrueRetryDelayMs) : '';
+      case 8: return s.onTrueComment;
+      case 9: return s.onFalseAction;
+      case 10: return s.onFalseGotoStep ? String(s.onFalseGotoStep) : '';
+      case 11: return s.onFalseRetryCount ? String(s.onFalseRetryCount) : '';
+      case 12: return s.onFalseRetryDelayMs ? String(s.onFalseRetryDelayMs) : '';
+      case 13: return s.onFalseComment;
+      default: return '';
+    }
+  }
+
+  private commitConditionalField(): void {
+    if (!this.conditionalState) return;
+    const val = this.state.conditionalEditBuffer;
+    const toInt = (input: string): number | undefined => {
+      const parsed = parseInt(input);
+      return Number.isFinite(parsed) && parsed > 0 ? parsed : undefined;
+    };
+    switch (this.state.conditionalCursor) {
+      case 1: this.conditionalState.conditionTarget = val; break;
+      case 2: this.conditionalState.cdpCommand = val; break;
+      case 3: this.conditionalState.conditionDescription = val; break;
+      case 5: this.conditionalState.onTrueGotoStep = toInt(val); break;
+      case 6: this.conditionalState.onTrueRetryCount = toInt(val); break;
+      case 7: this.conditionalState.onTrueRetryDelayMs = toInt(val); break;
+      case 8: this.conditionalState.onTrueComment = val; break;
+      case 10: this.conditionalState.onFalseGotoStep = toInt(val); break;
+      case 11: this.conditionalState.onFalseRetryCount = toInt(val); break;
+      case 12: this.conditionalState.onFalseRetryDelayMs = toInt(val); break;
+      case 13: this.conditionalState.onFalseComment = val; break;
+    }
+    this.state.conditionalEditBuffer = '';
+    this.state.dirty = true;
   }
 
   // ─── Capture Click Context ──────────────────────────────────
@@ -510,6 +813,46 @@ export class RecorderTUI {
     this.setStatus('Step cloned', c.cyan);
   }
 
+  private promptGotoStep(): void {
+    const step = this.state.config.steps[this.state.cursor];
+    if (!step) return;
+    this.state.view = 'step-edit';
+    this.state.editCursor = EDIT_FIELDS.indexOf('gotoStep');
+    this.state.editingField = true;
+    this.state.editBuffer = step.gotoStep ? String(step.gotoStep) : '';
+  }
+
+  private clearStepFlow(): void {
+    const step = this.state.config.steps[this.state.cursor];
+    if (!step) return;
+    step.gotoStep = undefined;
+    step.conditional = undefined;
+    this.state.dirty = true;
+    this.setStatus(`Cleared flow controls on step ${step.stepId}`, c.yellow);
+  }
+
+  private toggleStepEnabled(): void {
+    const step = this.state.config.steps[this.state.cursor];
+    if (!step) return;
+    step.enabled = !(step.enabled ?? true);
+    this.state.dirty = true;
+    this.setStatus(
+      `Step ${step.stepId} ${step.enabled ? 'enabled' : 'disabled'}`,
+      step.enabled ? c.green : c.yellow
+    );
+  }
+
+  private showConditionalPreview(): void {
+    const step = this.state.config.steps[this.state.cursor];
+    if (!step) return;
+    if (!step.conditional) {
+      this.setStatus(`Step ${step.stepId} has no conditional`, c.yellow);
+      return;
+    }
+    const desc = step.conditional.condition.description || step.conditional.condition.type;
+    this.setStatus(`IF ${desc}`, c.cyan);
+  }
+
   private moveStep(dir: -1 | 1): void {
     const steps = this.state.config.steps;
     const idx = this.state.cursor;
@@ -554,6 +897,10 @@ export class RecorderTUI {
       this.state.dirty = true;
       return;
     }
+    if (field === 'conditional') {
+      this.openConditionalEditor();
+      return;
+    }
 
     // Text input fields
     this.state.editingField = true;
@@ -578,6 +925,8 @@ export class RecorderTUI {
       case 'comment': return step.comment;
       case 'entryGate': return step.verification.entryGate;
       case 'exitGate': return step.verification.exitGate;
+      case 'gotoStep': return step.gotoStep ? String(step.gotoStep) : '';
+      case 'conditional': return step.conditional ? 'Configured (Enter to edit)' : 'Not set (Enter to add)';
     }
   }
 
@@ -609,6 +958,11 @@ export class RecorderTUI {
       case 'comment': step.comment = val; break;
       case 'entryGate': step.verification.entryGate = val; break;
       case 'exitGate': step.verification.exitGate = val; break;
+      case 'gotoStep':
+        step.gotoStep = parseInt(val) > 0 ? parseInt(val) : undefined;
+        break;
+      case 'conditional':
+        break;
     }
     this.state.editBuffer = '';
     this.state.dirty = true;
@@ -655,7 +1009,7 @@ export class RecorderTUI {
     }
 
     this.state.view = 'run-mode';
-    this.state.runCursor = 0; // Always start from beginning
+    this.state.runCursor = this.state.cursor;
     this.state.runPaused = false;
     this.state.runAuto = true; // Auto-run by default
     this.state.runExecuting = false;
@@ -666,11 +1020,14 @@ export class RecorderTUI {
       s._screenshotPath = undefined;
       s._durationMs = undefined;
     });
+    // Initialize dashboard state
+    this.timeline = [];
+    this.runStats = createRunStats(this.state.config.steps);
     // Bring Chrome to front so user can see actions, then refocus TUI for input
     await this.runner.bringChromeToFront();
     await this.runner.focusTui();
 
-    this.setStatus('Auto-run started — Esc to abort', c.green);
+    this.setStatus(`Auto-run started at step ${this.state.runCursor + 1} — Esc to abort`, c.green);
     this.render();
     // Start auto-run loop immediately
     await this.autoRunLoop();
@@ -688,6 +1045,12 @@ export class RecorderTUI {
     }
 
     const step = steps[this.state.runCursor];
+    if ((step.enabled ?? true) === false) {
+      step._status = 'skipped';
+      step._lastResult = 'Skipped (disabled)';
+      this.state.runCursor++;
+      return;
+    }
 
     // Check breakpoint
     if (step.breakpoint && !skipBreakpoint) {
@@ -711,17 +1074,112 @@ export class RecorderTUI {
     step._durationMs = result.durationMs;
     step._screenshotPath = result.screenshotPath;
 
+    let branchAction: 'continue' | 'goto' | 'retry' | 'abort' = 'continue';
+    let branchGoto: number | undefined;
+    let branchRetries = 0;
+    let branchRetryDelayMs = 0;
+    let branchNote = '';
+    let condBranch: 'true' | 'false' | 'none' = 'none';
+
     if (result.success) {
       step._status = 'passed';
       step._lastResult = result.message;
     } else {
       step._status = 'failed';
       step._lastResult = result.message;
-      if (!this.state.runAuto) {
+      if (step.gotoStep) {
+        branchAction = 'goto';
+        branchGoto = step.gotoStep;
+        branchNote = `failure goto step ${step.gotoStep}`;
+      }
+      if (!this.state.runAuto && !step.gotoStep) {
+        this.recordTimeline(step, result.message, branchNote, condBranch, branchGoto);
         this.setStatus(`Step ${step.stepId} failed: ${result.message}`, c.red);
         this.render();
         return;
       }
+    }
+
+    if (step.conditional) {
+      const conditional = step.conditional;
+      const conditionalResult =
+        conditional.condition.type === 'tool-success' || conditional.condition.type === 'tool-failure'
+          ? this.runner.evaluateToolConditional(conditional, result.success)
+          : await this.runner.evaluateConditional(conditional);
+
+      branchAction = conditionalResult.branch.action;
+      branchGoto = conditionalResult.branch.gotoStep;
+      branchRetries = Math.min(
+        MAX_RETRY_COUNT,
+        Math.max(0, conditionalResult.branch.retryCount || 0)
+      );
+      branchRetryDelayMs = Math.max(0, conditionalResult.branch.retryDelayMs || 0);
+      branchNote = `conditional ${conditionalResult.conditionMet ? 'TRUE' : 'FALSE'}: ${conditionalResult.details}`;
+      condBranch = conditionalResult.conditionMet ? 'true' : 'false';
+      step._lastResult = `${step._lastResult || ''} | ${branchNote}`;
+    }
+
+    // Record timeline entry for dashboard
+    this.recordTimeline(step, result.message, branchNote, condBranch, branchGoto);
+
+    if (branchAction === 'retry') {
+      if (branchRetries <= 0) {
+        this.setStatus(`Retry requested with invalid retryCount on step ${step.stepId}`, c.red);
+        this.state.runAuto = false;
+        this.state.view = 'step-list';
+        return;
+      }
+      for (let attempt = 1; attempt <= branchRetries; attempt++) {
+        if (branchRetryDelayMs > 0) {
+          await this.waitWithAbort(branchRetryDelayMs);
+          if (this.state.view !== 'run-mode') return;
+        }
+        this.setStatus(`Retry ${attempt}/${branchRetries} for step ${step.stepId}`, c.yellow);
+        this.render();
+        const retryResult = await this.runner.executeStep(step);
+        step._durationMs = retryResult.durationMs;
+        step._screenshotPath = retryResult.screenshotPath;
+        step._lastResult = `retry ${attempt}: ${retryResult.message}`;
+        if (retryResult.success) {
+          step._status = 'passed';
+          branchAction = 'continue';
+          break;
+        }
+        step._status = 'failed';
+      }
+      if (step._status === 'failed') {
+        branchAction = branchGoto ? 'goto' : 'abort';
+      }
+    }
+
+    if (branchAction === 'abort') {
+      this.state.runAuto = false;
+      this.state.view = 'step-list';
+      this.setStatus(`Run aborted by flow control at step ${step.stepId}`, c.red);
+      this.render();
+      return;
+    }
+
+    if (branchAction === 'goto' && branchGoto) {
+      const targetIdx = steps.findIndex(s => s.stepId === branchGoto);
+      if (targetIdx >= 0) {
+        const jumpCount = steps.filter(s => (s._lastResult || '').includes('[jump]')).length;
+        if (jumpCount >= MAX_FLOW_JUMPS) {
+          this.state.runAuto = false;
+          this.state.view = 'step-list';
+          this.setStatus('Flow jump guard triggered (possible infinite loop)', c.red);
+          return;
+        }
+        step._lastResult = `${step._lastResult || ''} [jump]`;
+        this.state.runCursor = targetIdx;
+        this.setStatus(`Flow jump to step ${branchGoto}`, c.cyan);
+        this.render();
+        return;
+      }
+      this.setStatus(`Invalid goto target ${branchGoto} on step ${step.stepId}`, c.red);
+      this.state.runAuto = false;
+      this.state.view = 'step-list';
+      return;
     }
 
     // Advance
@@ -743,6 +1201,45 @@ export class RecorderTUI {
       if (this.state.runPaused) return; // breakpoint hit, user must resume
       if (this.state.runCursor >= this.state.config.steps.length) return;
       await this.runNextStep();
+    }
+  }
+
+  private async waitWithAbort(ms: number): Promise<void> {
+    const until = Date.now() + ms;
+    while (Date.now() < until) {
+      await new Promise(resolve => setTimeout(resolve, 100));
+      if (!this.state.runAuto || this.state.view !== 'run-mode') return;
+    }
+  }
+
+  // ─── Timeline Recording ────────────────────────────────────────
+  private recordTimeline(
+    step: MacroStep,
+    message: string,
+    conditionalResult: string,
+    branchTaken: 'true' | 'false' | 'none',
+    jumpedTo?: number,
+    retryAttempt?: number
+  ): void {
+    this.timeline.push({
+      stepId: step.stepId,
+      action: step.action || step.tool || '—',
+      status: step._status === 'passed' ? 'passed'
+        : step._status === 'failed' ? 'failed'
+        : step._status === 'skipped' ? 'skipped'
+        : retryAttempt ? 'retrying'
+        : 'passed',
+      message,
+      durationMs: step._durationMs || 0,
+      timestamp: Date.now(),
+      retryAttempt,
+      conditionalResult: conditionalResult || undefined,
+      branchTaken: branchTaken !== 'none' ? branchTaken : undefined,
+      jumpedTo,
+    });
+    // Update stats
+    if (this.runStats) {
+      updateRunStats(this.runStats, this.state.config.steps);
     }
   }
 
@@ -790,6 +1287,7 @@ export class RecorderTUI {
       case 'step-list':   out += this.renderStepList(rows, cols); break;
       case 'step-detail': out += this.renderStepDetail(rows, cols); break;
       case 'step-edit':   out += this.renderStepEdit(rows, cols); break;
+      case 'conditional-edit': out += this.renderConditionalEdit(rows, cols); break;
       case 'run-mode':    out += this.renderRunMode(rows, cols); break;
       case 'help':        out += this.renderHelp(rows, cols); break;
     }
@@ -803,7 +1301,7 @@ export class RecorderTUI {
   // ─── Header ────────────────────────────────────────────────────
   private renderHeader(cols: number): string {
     let out = '';
-    const title = ` P4NTH30N RECORDER ${c.gray}v2.0${c.reset} `;
+    const title = ` P4NTH30N RECORDER ${c.gray}v3.0${c.reset} `;
     const platform = this.state.config.platform === 'firekirin'
       ? `${c.brightRed}FireKirin${c.reset}`
       : `${c.brightBlue}OrionStars${c.reset}`;
@@ -845,6 +1343,11 @@ export class RecorderTUI {
         line += isCurrent ? `${c.brightCyan}${icon.cursor} ` : '  ';
         // Breakpoint
         line += step.breakpoint ? `${c.red}${icon.dot}${c.reset}` : ' ';
+        if ((step.enabled ?? true) === false) {
+          line += `${c.gray}⏸${c.reset}`;
+        } else {
+          line += ' ';
+        }
         // Step number
         line += `${c.gray}${String(step.stepId).padStart(2)}${c.reset} `;
         // Phase badge
@@ -869,6 +1372,8 @@ export class RecorderTUI {
         line += this.statusIcon(step._status);
         // Screenshot indicator
         if (step.takeScreenshot) line += ` ${c.gray}${icon.camera}${c.reset}`;
+        if (step.conditional) line += ` ${c.brightYellow}[IF]${c.reset}`;
+        if (step.gotoStep) line += ` ${c.brightMagenta}[→${step.gotoStep}]${c.reset}`;
 
         // Highlight current line
         if (isCurrent) {
@@ -897,6 +1402,7 @@ export class RecorderTUI {
       out += writeAt(r++, dc, `${c.cyan}Phase:${c.reset}  ${step.phase}`);
       out += writeAt(r++, dc, `${c.cyan}Action:${c.reset} ${step.action || '—'}`);
       out += writeAt(r++, dc, `${c.cyan}Tool:${c.reset}   ${step.tool}`);
+      out += writeAt(r++, dc, `${c.cyan}Enabled:${c.reset} ${step.enabled ?? true ? `${c.green}Yes${c.reset}` : `${c.yellow}No${c.reset}`}`);
       if (step.coordinates) {
         const coord = step.coordinates;
         if ('rx' in coord) {
@@ -912,6 +1418,11 @@ export class RecorderTUI {
       out += writeAt(r++, dc, `${c.cyan}Delay:${c.reset}  ${step.delayMs || 0}ms`);
       out += writeAt(r++, dc, `${c.cyan}Screenshot:${c.reset} ${step.takeScreenshot ? 'Yes' : 'No'}`);
       out += writeAt(r++, dc, `${c.cyan}Breakpoint:${c.reset} ${step.breakpoint ? `${c.red}Yes${c.reset}` : 'No'}`);
+      out += writeAt(r++, dc, `${c.cyan}Goto:${c.reset} ${step.gotoStep || '—'}`);
+      out += writeAt(r++, dc, `${c.cyan}Conditional:${c.reset} ${step.conditional ? `${c.brightYellow}Configured${c.reset}` : '—'}`);
+      if (step.conditional?.condition.description) {
+        out += writeAt(r++, dc, `${c.gray}IF ${step.conditional.condition.description.slice(0, dw - 3)}${c.reset}`);
+      }
       r++;
       if (step.comment) {
         out += writeAt(r++, dc, `${c.gray}${step.comment.slice(0, dw)}${c.reset}`);
@@ -937,7 +1448,11 @@ export class RecorderTUI {
       `${c.bold}F${c.reset}${c.bgGray}Connect  ` +
       `${c.bold}R${c.reset}${c.bgGray}un  ` +
       `${c.bold}S${c.reset}${c.bgGray}creenshot  ` +
-      `${c.bold}C${c.reset}${c.bgGray}lone  ` +
+      `${c.bold}C${c.reset}${c.bgGray}onditional  ` +
+      `${c.bold}G${c.reset}${c.bgGray}oto  ` +
+      `${c.bold}X${c.reset}${c.bgGray}ClearFlow  ` +
+      `${c.bold}K${c.reset}${c.bgGray}Enable  ` +
+      `${c.bold}L${c.reset}${c.bgGray}Clone  ` +
       `${c.bold}U${c.reset}${c.bgGray}p  ` +
       `${c.bold}J${c.reset}${c.bgGray}Down  ` +
       `${c.bold}P${c.reset}${c.bgGray}latform  ` +
@@ -967,6 +1482,7 @@ export class RecorderTUI {
     out += writeAt(r++, lc, `${c.cyan}Phase:${c.reset}           ${this.phaseBadge(step.phase)}`);
     out += writeAt(r++, lc, `${c.cyan}Action:${c.reset}          ${step.action || '—'}`);
     out += writeAt(r++, lc, `${c.cyan}Tool:${c.reset}            ${step.tool}`);
+    out += writeAt(r++, lc, `${c.cyan}Enabled:${c.reset}         ${step.enabled ?? true ? 'Yes' : 'No'}`);
     if (step.coordinates && 'rx' in step.coordinates) {
       out += writeAt(r++, lc, `${c.cyan}Coordinates:${c.reset}     rx=${(step.coordinates as any).rx.toFixed(4)} ry=${(step.coordinates as any).ry.toFixed(4)} | abs(${step.coordinates.x}, ${step.coordinates.y})`);
     } else {
@@ -977,6 +1493,11 @@ export class RecorderTUI {
     out += writeAt(r++, lc, `${c.cyan}Screenshot:${c.reset}      ${step.takeScreenshot ? 'Yes' : 'No'}`);
     out += writeAt(r++, lc, `${c.cyan}Screenshot Why:${c.reset}  ${step.screenshotReason.slice(0, w - 20) || '—'}`);
     out += writeAt(r++, lc, `${c.cyan}Breakpoint:${c.reset}      ${step.breakpoint ? `${c.red}${icon.breakpoint} Yes${c.reset}` : 'No'}`);
+    out += writeAt(r++, lc, `${c.cyan}Goto Step:${c.reset}       ${step.gotoStep || '—'}`);
+    out += writeAt(r++, lc, `${c.cyan}Conditional:${c.reset}     ${step.conditional ? 'Configured' : '—'}`);
+    if (step.conditional?.condition.description) {
+      out += writeAt(r++, lc, `${c.cyan}If Condition:${c.reset}   ${step.conditional.condition.description.slice(0, w - 24)}`);
+    }
     r++;
     out += writeAt(r++, lc, `${c.bold}Comment:${c.reset}`);
     out += writeAt(r++, lc, `${c.gray}${step.comment.slice(0, w - 6) || '(none)'}${c.reset}`);
@@ -991,6 +1512,9 @@ export class RecorderTUI {
     out += pad(
       ` ${c.bold}E${c.reset}${c.bgGray}dit  ` +
       `${c.bold}B${c.reset}${c.bgGray}reakpoint  ` +
+      `${c.bold}C${c.reset}${c.bgGray}onditional  ` +
+      `${c.bold}G${c.reset}${c.bgGray}oto  ` +
+      `${c.bold}K${c.reset}${c.bgGray}Enable  ` +
       `${c.bold}Esc${c.reset}${c.bgGray}/Q Back`,
       cols
     );
@@ -1035,9 +1559,9 @@ export class RecorderTUI {
           ? '…' + this.state.editBuffer.slice(-(maxValueWidth - 4))
           : this.state.editBuffer;
         valDisplay = `${c.bgBlue}${c.white} ${bufferDisplay}${c.inverse} ${c.reset}`;
-      } else if (field === 'phase' || field === 'action' || field === 'tool' || field === 'takeScreenshot') {
+      } else if (field === 'phase' || field === 'action' || field === 'tool' || field === 'takeScreenshot' || field === 'conditional') {
         // Cycleable fields
-        const hint = '(Enter to cycle)';
+        const hint = field === 'conditional' ? '(Enter to open)' : '(Enter to cycle)';
         const availWidth = maxValueWidth - hint.length - 1;
         const truncVal = val.length > availWidth ? val.slice(0, availWidth - 1) + '…' : val;
         valDisplay = `${c.brightCyan}${truncVal}${c.reset} ${c.gray}${hint}${c.reset}`;
@@ -1071,112 +1595,140 @@ export class RecorderTUI {
     return out;
   }
 
-  // ─── Run Mode View ──────────────────────────────────────────
+  private renderConditionalEdit(rows: number, cols: number): string {
+    if (!this.conditionalState) {
+      return '';
+    }
+    this.conditionalState.cursor = this.state.conditionalCursor;
+    return renderConditionalEditor(
+      this.conditionalState,
+      rows,
+      cols,
+      this.state.conditionalEditing,
+      this.state.conditionalEditBuffer
+    );
+  }
+
+  // ─── Run Mode View (Enhanced Dashboard) ────────────────────
   private renderRunMode(rows: number, cols: number): string {
     let out = '';
     const steps = this.state.config.steps;
-    const listW = Math.min(cols - 2, 55);
-    const detailW = cols - listW - 3;
+    const curStep = steps[this.state.runCursor] || steps[Math.max(0, this.state.runCursor - 1)];
+
+    // ━━━ BREAKPOINT MODE: Full-screen verbose panel ━━━━━━━━━
+    if (this.state.runPaused && curStep) {
+      // Two-column breakpoint layout
+      const leftW = Math.min(Math.floor(cols * 0.55), 65);
+      const rightW = cols - leftW - 3;
+      const h = rows - 4;
+
+      // Left: Verbose breakpoint panel
+      out += drawBox(2, 1, leftW, h, `${icon.breakpoint} BREAKPOINT`, c.red);
+      out += renderBreakpointPanel(
+        curStep, steps, this.state.runCursor,
+        this.runStats || createRunStats(steps),
+        this.timeline,
+        3, 3, leftW - 4, h - 2
+      );
+
+      // Right: Subway flow chart context
+      out += drawBox(2, leftW + 1, rightW, h, 'Flow Map', c.brightYellow);
+      out += renderMiniFlowChart(
+        steps, this.state.runCursor,
+        3, leftW + 3, rightW - 4, h - 2
+      );
+
+      // Bottom bar
+      out += moveTo(rows - 2, 1);
+      out += `${c.bgRed}${c.white}${c.bold}`;
+      out += pad(
+        ` ${icon.breakpoint} PAUSED at step ${curStep.stepId}  ` +
+        `${c.reset}${c.bgRed}${c.white}` +
+        `Space=step  A=auto  Esc=abort  ` +
+        `${c.reset}${c.bgRed}${c.gray}` +
+        `Session: ${(this.state.sessionDir || '').slice(-30)}`,
+        cols
+      );
+      out += c.reset;
+
+      return out;
+    }
+
+    // ━━━ NORMAL RUN MODE: 3-panel layout ━━━━━━━━━━━━━━━━━━━━
+    // Layout: [Subway Flow Chart] [Step Detail + Result] [Stats + Log]
+    const flowW = Math.min(Math.floor(cols * 0.38), 50);
+    const detailW = Math.min(Math.floor(cols * 0.32), 45);
+    const statsW = cols - flowW - detailW - 4;
     const h = rows - 5;
 
-    // Left panel: step list with status
-    const runTitle = this.state.runAuto ? 'Run Mode [AUTO]' : this.state.runExecuting ? 'Run Mode [EXEC]' : 'Run Mode';
-    out += drawBox(2, 1, listW, h, runTitle, c.green);
+    // ─── Panel 1: Subway Flow Chart ─────────────────────────
+    const runTitle = this.state.runAuto ? 'Flow [AUTO]' : this.state.runExecuting ? 'Flow [EXEC]' : 'Flow [MANUAL]';
+    out += drawBox(2, 1, flowW, h, runTitle, c.green);
 
-    // Progress
+    // Progress bar at top of flow panel
     const done = steps.filter(s => s._status === 'passed').length;
     const failed = steps.filter(s => s._status === 'failed').length;
-    out += writeAt(3, 3, `${c.bold}Progress:${c.reset} ${progressBar(done + failed, steps.length, 20)} ${done}${c.green}\u2713${c.reset} ${failed}${c.red}\u2717${c.reset} / ${steps.length}`);
+    const barW = Math.min(flowW - 12, 18);
+    out += writeAt(3, 3, `${progressBar(done + failed, steps.length, barW)} ${done}${c.green}${icon.check}${c.reset}${failed}${c.red}${icon.cross}${c.reset}/${steps.length}`);
 
-    let r = 5;
-    const maxVisible = h - 5;
-    const scrollStart = Math.max(0, this.state.runCursor - Math.floor(maxVisible / 2));
+    // Subway flow chart
+    const flowScrollStart = Math.max(0, this.state.runCursor - Math.floor((h - 7) / 3));
+    out += renderFlowChart(steps, {
+      startRow: 5,
+      startCol: 2,
+      width: flowW - 2,
+      maxRows: h - 5,
+      scrollOffset: flowScrollStart,
+      runCursor: this.state.runCursor,
+      showBranches: true,
+    });
 
-    for (let i = 0; i < maxVisible && (i + scrollStart) < steps.length; i++) {
-      const si = i + scrollStart;
-      const step = steps[si];
-      const isRunning = si === this.state.runCursor;
+    // ─── Panel 2: Step Detail + Result ──────────────────────
+    const detailCol = flowW + 1;
+    out += drawBox(2, detailCol, detailW, h, 'Execution', c.cyan);
 
-      let line = ' ';
-      line += this.statusIcon(step._status) + ' ';
-      line += step.breakpoint ? `${c.red}${icon.dot}${c.reset}` : ' ';
-      line += ` ${c.gray}${String(step.stepId).padStart(2)}${c.reset} `;
-      line += this.phaseBadge(step.phase) + ' ';
-      line += `${c.white}${step.action || step.tool || '\u2014'}${c.reset}`;
-
-      if (step.coordinates && (step.action === 'click' || step.action === 'longpress')) {
-        const coord = step.coordinates;
-        if ('rx' in coord) {
-          line += ` ${c.gray}(${(coord as any).rx.toFixed(2)},${(coord as any).ry.toFixed(2)})${c.reset}`;
-        } else {
-          line += ` ${c.gray}(${coord.x},${coord.y})${c.reset}`;
-        }
-      }
-      if (step._durationMs !== undefined) {
-        line += ` ${c.gray}${step._durationMs}ms${c.reset}`;
-      }
-
-      if (isRunning) {
-        line = `${c.inverse}${line}${c.reset}`;
-      }
-
-      out += writeAt(r++, 2, pad(line, listW - 3));
-    }
-
-    // Right panel: current step result detail
-    out += drawBox(2, listW + 1, detailW, h, 'Execution', c.gray);
-    const curStep = steps[this.state.runCursor] || steps[Math.max(0, this.state.runCursor - 1)];
     if (curStep) {
-      let dr = 3;
-      const dc = listW + 3;
-      const dw = detailW - 4;
-      out += writeAt(dr++, dc, `${c.bold}Step ${curStep.stepId}${c.reset}: ${curStep.action || curStep.tool}`);
-      dr++;
-      if (curStep.coordinates) {
-        const coord = curStep.coordinates;
-        if ('rx' in coord) {
-          out += writeAt(dr++, dc, `${c.cyan}Coords:${c.reset} rx=${(coord as any).rx.toFixed(4)} ry=${(coord as any).ry.toFixed(4)}`);
-          out += writeAt(dr++, dc, `${c.cyan}  Abs:${c.reset}  (${coord.x}, ${coord.y})`);
-        } else {
-          out += writeAt(dr++, dc, `${c.cyan}Coords:${c.reset} (${coord.x}, ${coord.y})`);
+      if (this.state.runExecuting) {
+        // Currently executing - show spinner
+        out += writeAt(3, detailCol + 2, `${c.bgBlue}${c.white}${c.bold} EXECUTING ${c.reset}`);
+        out += writeAt(4, detailCol + 2, `${c.yellow}${icon.running} Step ${curStep.stepId}: ${curStep.action || curStep.tool}${c.reset}`);
+        if (curStep.comment) {
+          out += writeAt(6, detailCol + 2, `${c.gray}${curStep.comment.slice(0, detailW - 6)}${c.reset}`);
         }
-      }
-      if (curStep.input) {
-        out += writeAt(dr++, dc, `${c.cyan}Input:${c.reset}  "${curStep.input.slice(0, dw - 10)}"`);
-      }
-      out += writeAt(dr++, dc, `${c.cyan}Delay:${c.reset}  ${curStep.delayMs || 0}ms`);
-      dr++;
-
-      // Result
-      if (curStep._status === 'running' && this.state.runExecuting) {
-        out += writeAt(dr++, dc, `${c.yellow}${icon.running} Executing...${c.reset}`);
-      } else if (curStep._lastResult) {
-        const resultColor = curStep._status === 'passed' ? c.green : c.red;
-        const resultIcon = curStep._status === 'passed' ? icon.check : icon.cross;
-        out += writeAt(dr++, dc, `${resultColor}${resultIcon} ${curStep._lastResult.slice(0, dw)}${c.reset}`);
-        if (curStep._durationMs !== undefined) {
-          out += writeAt(dr++, dc, `${c.gray}Duration: ${curStep._durationMs}ms${c.reset}`);
+        if (curStep.coordinates) {
+          const coord = curStep.coordinates;
+          if ('rx' in coord) {
+            out += writeAt(7, detailCol + 2, `${c.cyan}Target:${c.reset} (${(coord as any).rx.toFixed(4)}, ${(coord as any).ry.toFixed(4)})`);
+          }
         }
-        if (curStep._screenshotPath) {
-          out += writeAt(dr++, dc, `${c.cyan}${icon.camera} ${curStep._screenshotPath.slice(-dw + 4)}${c.reset}`);
-        }
-      } else if (curStep._status === 'pending') {
-        out += writeAt(dr++, dc, `${c.gray}Waiting...${c.reset}`);
+      } else {
+        // Show verbose result detail
+        out += renderStepResultDetail(
+          curStep,
+          3, detailCol + 2, detailW - 4, Math.floor(h / 2) - 1
+        );
       }
 
-      // Comment
-      if (curStep.comment) {
-        dr++;
-        out += writeAt(dr++, dc, `${c.gray}${curStep.comment.slice(0, dw)}${c.reset}`);
-      }
+      // Execution log in bottom half of panel 2
+      const logStartRow = Math.floor(h / 2) + 3;
+      out += drawSep(logStartRow - 1, detailCol, detailW, c.cyan);
+      out += renderExecutionLog(
+        this.timeline,
+        logStartRow, detailCol + 2, detailW - 4,
+        h - Math.floor(h / 2) - 2
+      );
     }
 
-    // Paused indicator
-    if (this.state.runPaused) {
-      out += writeAt(rows - 5, 3, `${c.bgRed}${c.white}${c.bold} BREAKPOINT at step ${curStep?.stepId} — Space=single-step  A=resume auto-run  Esc=abort ${c.reset}`);
-    }
-    if (this.state.runExecuting) {
-      out += writeAt(rows - 5, 3, `${c.bgBlue}${c.white}${c.bold} EXECUTING — Esc to abort ${c.reset}`);
+    // ─── Panel 3: Stats + Mini Flow Context ─────────────────
+    const statsCol = flowW + detailW + 2;
+    out += drawBox(2, statsCol, statsW, h, 'Dashboard', c.magenta);
+
+    if (this.runStats) {
+      updateRunStats(this.runStats, steps);
+      out += renderStatsPanel(
+        this.runStats,
+        3, statsCol + 2, statsW - 4
+      );
     }
 
     // Session dir
@@ -1184,18 +1736,28 @@ export class RecorderTUI {
       out += writeAt(rows - 4, 3, `${c.gray}Session: ${this.state.sessionDir}${c.reset}`);
     }
 
-    // Keys
+    // Bottom hotkey bar
     out += moveTo(rows - 3, 1);
     out += `${c.bgGray}${c.brightWhite}`;
-    const mode = this.state.runAuto ? 'AUTO-RUN' : 'MANUAL';
+    const mode = this.state.runAuto ? 'AUTO-RUN' : this.state.runExecuting ? 'EXECUTING' : 'MANUAL';
     out += pad(
       ` ${c.bold}[${mode}]${c.reset}${c.bgGray}  ` +
-      `${c.bold}Esc${c.reset}${c.bgGray}/Q Abort`,
+      `${c.bold}Esc${c.reset}${c.bgGray}/Q Abort  ` +
+      `${c.gray}Steps: ${done + failed}/${steps.length}  ` +
+      `Elapsed: ${this.runStats ? this.fmtElapsed(this.runStats.totalDurationMs) : '—'}${c.reset}`,
       cols
     );
     out += c.reset;
 
     return out;
+  }
+
+  private fmtElapsed(ms: number): string {
+    if (ms < 1000) return ms + 'ms';
+    if (ms < 60000) return (ms / 1000).toFixed(1) + 's';
+    const min = Math.floor(ms / 60000);
+    const sec = Math.round((ms % 60000) / 1000);
+    return min + 'm' + sec + 's';
   }
 
   // ─── Help View ───────────────────────────────────────────────
@@ -1213,11 +1775,15 @@ export class RecorderTUI {
       `  ${c.bold}A${c.reset}        Add new step after cursor`,
       `  ${c.bold}E${c.reset}        Edit current step`,
       `  ${c.bold}D${c.reset}        Delete current step`,
-      `  ${c.bold}C${c.reset}        Clone current step`,
+      `  ${c.bold}C${c.reset}        Edit conditional logic (if/then/else)`,
+      `  ${c.bold}G${c.reset}        Set goto step for flow jump`,
+      `  ${c.bold}X${c.reset}        Clear step conditional + goto`,
+      `  ${c.bold}K${c.reset}        Enable/disable step`,
+      `  ${c.bold}L${c.reset}        Clone current step`,
       `  ${c.bold}B${c.reset}        Toggle breakpoint`,
       `  ${c.bold}U/J${c.reset}      Move step up/down`,
       `  ${c.bold}F${c.reset}        Connect to Chrome (CDP)`,
-      `  ${c.bold}R${c.reset}        Run from current step (live CDP)`,
+      `  ${c.bold}R${c.reset}        Run from selected step (live CDP)`,
       `  ${c.bold}S${c.reset}        Take screenshot (CDP)`,
       `  ${c.bold}P${c.reset}        Toggle platform (FK/OS)`,
       '',
@@ -1229,11 +1795,12 @@ export class RecorderTUI {
       `  ${c.bold}Esc${c.reset}      Save & back to list`,
       '',
       `${c.bold}${c.brightCyan}Run Mode (Auto-Run by Default)${c.reset}`,
-      `  ${c.bold}R${c.reset}        Start auto-run from beginning`,
+      `  Starts from selected step and follows flow controls`,
       `  At breakpoint:`,
       `    ${c.bold}Space${c.reset}  Single-step (manual mode)`,
       `    ${c.bold}A${c.reset}      Resume auto-run`,
       `    ${c.bold}Esc${c.reset}    Abort and return to list`,
+      `  Conditional actions: continue / goto / retry / abort`,
       '',
       `${c.bold}${c.brightCyan}Global${c.reset}`,
       `  ${c.bold}Ctrl+S${c.reset}   Save config`,
@@ -1258,9 +1825,14 @@ export class RecorderTUI {
     let out = moveTo(rows, 1);
     const steps = this.state.config.steps;
     const cdpTag = this.state.cdpConnected ? `${c.green}CDP:ON${c.reset}` : `${c.red}CDP:OFF${c.reset}`;
+    const redirectWarning = this.configRedirectWarning
+      ? ` | ${c.brightRed}CONFIG_REDIRECT_ACTIVE${c.reset}`
+      : '';
     const info = `${c.gray}Steps: ${steps.length} | ` +
       `Breakpoints: ${steps.filter(s => s.breakpoint).length} | ` +
-      `Platform: ${this.state.config.platform} | ${c.reset}${cdpTag}`;
+      `Disabled: ${steps.filter(s => (s.enabled ?? true) === false).length} | ` +
+      `Conditionals: ${steps.filter(s => !!s.conditional).length} | ` +
+      `Platform: ${this.state.config.platform} | ${c.reset}${cdpTag}${redirectWarning}`;
 
     out += `${c.bgBlack}${c.white}`;
     out += pad(` ${this.state.statusMessage || info}`, cols);
@@ -1308,6 +1880,8 @@ export class RecorderTUI {
       comment: 'Comment',
       entryGate: 'Entry Gate',
       exitGate: 'Exit Gate',
+      gotoStep: 'Goto Step',
+      conditional: 'Conditional',
     };
     return pad(labels[field] || field, 18);
   }

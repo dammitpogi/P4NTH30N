@@ -1,0 +1,18 @@
+Launch a new agent to handle complex, multistep tasks autonomously.
+
+Available agent types:
+{agents}
+
+When to use:
+- For complex tasks requiring specialized agents.
+- For custom slash commands (e.g., Task(description="Check file", prompt="/check-file path/to/file.py")).
+
+When NOT to use:
+- For simple file reads, searches, or code exploration (use Read, Glob, Grep instead).
+
+Usage:
+1. Parallelism: Launch multiple agents concurrently for performance.
+2. Context: Provide a detailed task description and specify expected output.
+3. Resume: Use `task_id` to continue a previous session.
+4. Trust: Agent outputs are generally trusted.
+5. Proactive: Use agents proactively when appropriate.

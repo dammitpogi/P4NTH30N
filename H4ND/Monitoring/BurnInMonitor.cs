@@ -174,6 +174,16 @@ public sealed class BurnInMonitor : IDisposable
 		return JsonSerializer.Serialize(status, new JsonSerializerOptions { WriteIndented = true });
 	}
 
+	public ProductionReadinessReport GetReadinessReport(ParallelConfig config)
+	{
+		if (_metrics == null)
+		{
+			throw new InvalidOperationException("Parallel metrics are not attached. Call AttachEngine before readiness evaluation.");
+		}
+
+		return ProductionReadinessEvaluator.Evaluate(_metrics, config, TimeSpan.FromHours(_progress.ElapsedHours));
+	}
+
 	/// <summary>
 	/// MON-057-005: Renders a CLI-friendly dashboard to console.
 	/// </summary>

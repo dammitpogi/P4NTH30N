@@ -1,0 +1,11 @@
+{
+  "name": "@p4nth30n/mcp-framework",
+  "version": "2.0.0",
+  "type": "module",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "dependencies": {
+    "@fastify/cors": "10.0.2",
+    "fastify-plugin": "5.0.1"
+  }
+}

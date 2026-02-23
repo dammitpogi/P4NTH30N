@@ -11,8 +11,11 @@
  */
 import { CdpClient, sleep, log } from './cdp-client';
 import { writeFile, mkdir } from 'fs/promises';
+import { readFileSync } from 'fs';
 import { join } from 'path';
 import type { RelativeCoordinate, CanvasBounds } from './types';
+import type { MacroStep } from './tui/types';
+import { TuiRunner } from './tui/runner';
 
 // ARCH-081: Design viewport these coordinates were calibrated against
 const DESIGN_VIEWPORT = { width: 930, height: 865, calibratedDate: '2026-02-21' };
@@ -69,6 +72,7 @@ export async function runFireKirinWorkflow(opts: {
   screenshotDir?: string;
   cdpHost?: string;
   cdpPort?: number;
+  useConfig?: boolean;
 }): Promise<WorkflowResult> {
   const startTime = new Date();
   const ssDir = opts.screenshotDir || join('C:\\P4NTH30N\\DECISION_077\\sessions', `firekirin-run-${startTime.toISOString().replace(/[:.]/g, '-').slice(0, -5)}`);
@@ -87,6 +91,43 @@ export async function runFireKirinWorkflow(opts: {
     durationMs: 0,
     screenshots: allScreenshots,
   };
+
+  // ══════════════════════════════════════════════
+  // CONFIG PATH: Load and execute from step-config-firekirin.json
+  // ══════════════════════════════════════════════
+  if (opts.useConfig) {
+    log('Config', 'Loading steps from step-config-firekirin.json...');
+    const steps = loadStepConfig();
+    if (steps.length > 0) {
+      log('Config', `Loaded ${steps.length} steps from config`);
+      try {
+        await cdp.connect();
+        await cdp.injectAllInterceptors();
+        const configPhases = await executeStepsFromConfig(cdp, steps, ssDir, allScreenshots);
+        phases.push(...configPhases);
+        result.success = configPhases.every(p => p.success);
+        if (!result.success) {
+          const failedPhase = configPhases.find(p => !p.success);
+          result.error = failedPhase?.details?.error || 'Config execution failed';
+        }
+      } catch (err: any) {
+        result.error = err.message;
+        log('Error', `❌ Config execution failed: ${err.message}`);
+      } finally {
+        const endTime = new Date();
+        result.endTime = endTime.toISOString();
+        result.durationMs = endTime.getTime() - startTime.getTime();
+        const resultPath = join(ssDir, 'workflow-result.json');
+        await mkdir(ssDir, { recursive: true });
+        await writeFile(resultPath, JSON.stringify(result, null, 2));
+        log('Done', `Result saved to ${resultPath}`);
+        cdp.close();
+      }
+      return result;
+    } else {
+      log('Config', '⚠️ Config file empty or failed to load, falling back to hardcoded workflow');
+    }
+  }
 
   try {
     await cdp.connect();
@@ -257,9 +298,10 @@ export async function runFireKirinWorkflow(opts: {
 
       // Reset to page 1 by clicking left 5 times
       log('Nav', 'Resetting to page 1');
+      await sleep(300);
       for (let i = 0; i < 5; i++) {
         await cdp.clickRelative(FK.PAGE_LEFT, navBounds);
-        await sleep(400);
+        await sleep(800);
       }
       await sleep(1000);
 
@@ -359,6 +401,172 @@ async function runPhase(name: string, fn: () => Promise<Record<string, any>>): P
   }
 }
 
+/**
+ * Load step configuration from step-config-firekirin.json
+ * Returns empty array if file not found or invalid
+ */
+function loadStepConfig(): MacroStep[] {
+  try {
+    const configPath = join(process.cwd(), 'step-config-firekirin.json');
+    const content = readFileSync(configPath, 'utf-8');
+    const config = JSON.parse(content);
+    
+    if (!config.steps || !Array.isArray(config.steps)) {
+      log('Config', '❌ Config file missing steps array');
+      return [];
+    }
+    
+    // Validate each step has required fields
+    const validSteps = config.steps.filter((step: MacroStep) => {
+      const hasStepId = typeof step.stepId === 'number';
+      const hasPhase = typeof step.phase === 'string';
+      const hasAction = typeof step.action === 'string';
+      
+      if (!hasStepId || !hasPhase || !hasAction) {
+        log('Config', `⚠️ Skipping invalid step: ${JSON.stringify(step)}`);
+        return false;
+      }
+      return true;
+    });
+    
+    log('Config', `Validated ${validSteps.length}/${config.steps.length} steps`);
+    return validSteps;
+  } catch (err: any) {
+    log('Config', `❌ Failed to load config: ${err.message}`);
+    return [];
+  }
+}
+
+/**
+ * Execute steps from configuration using TuiRunner
+ * Returns phase results compatible with existing output
+ */
+async function executeStepsFromConfig(
+  cdp: CdpClient,
+  steps: MacroStep[],
+  ssDir: string,
+  allScreenshots: string[]
+): Promise<PhaseResult[]> {
+  const phases: PhaseResult[] = [];
+  const runner = new TuiRunner(ssDir);
+  
+  // Connect runner to existing CDP connection
+  // Note: TuiRunner manages its own CDP, but we already have one connected
+  // We'll use the cdp directly for screenshots to maintain consistency
+  
+  // Group steps by phase for result organization
+  const phaseGroups = new Map<string, MacroStep[]>();
+  for (const step of steps) {
+    if (step.enabled === false) continue;
+    const phaseName = step.phase || 'Unknown';
+    if (!phaseGroups.has(phaseName)) {
+      phaseGroups.set(phaseName, []);
+    }
+    phaseGroups.get(phaseName)!.push(step);
+  }
+  
+  // Execute each phase
+  for (const [phaseName, phaseSteps] of phaseGroups) {
+    const phaseResult = await runPhase(phaseName, async () => {
+      const stepResults = [];
+      
+      for (const step of phaseSteps) {
+        log('Config', `Executing step ${step.stepId}: ${step.action} (${step.comment || 'no comment'})`);
+        
+        // Handle different action types
+        switch (step.action) {
+          case 'navigate': {
+            if (step.url) {
+              await cdp.navigate(step.url);
+              log('Config', `Navigated to ${step.url}`);
+            }
+            break;
+          }
+          
+          case 'click': {
+            const coord = step.coordinates;
+            if (coord && 'rx' in coord && 'ry' in coord) {
+              const bounds = await cdp.getCanvasBounds();
+              await cdp.clickRelative(coord as RelativeCoordinate, bounds);
+              log('Config', `Clicked relative (${coord.rx}, ${coord.ry})`);
+            } else if (coord) {
+              await cdp.clickAt(coord.x || 0, coord.y || 0);
+              log('Config', `Clicked (${coord.x}, ${coord.y})`);
+            }
+            break;
+          }
+          
+          case 'type': {
+            if (step.input) {
+              await cdp.typeChars(step.input);
+              log('Config', `Typed input (masked)`);
+            }
+            break;
+          }
+          
+          case 'wait': {
+            const waitMs = step.delayMs || 1000;
+            await sleep(waitMs);
+            log('Config', `Waited ${waitMs}ms`);
+            break;
+          }
+          
+          case 'longpress': {
+            const coord = step.coordinates;
+            const holdMs = step.holdMs || 2000;
+            if (coord && 'rx' in coord && 'ry' in coord) {
+              const bounds = await cdp.getCanvasBounds();
+              const abs = CdpClient.transformRelativeCoords(coord as RelativeCoordinate, bounds);
+              await cdp.longPress(abs.x, abs.y, holdMs);
+              log('Config', `Long-pressed relative (${coord.rx}, ${coord.ry}) for ${holdMs}ms`);
+            } else if (coord) {
+              await cdp.longPress(coord.x || 0, coord.y || 0, holdMs);
+              log('Config', `Long-pressed (${coord.x}, ${coord.y}) for ${holdMs}ms`);
+            }
+            break;
+          }
+        }
+        
+        // Handle delay after action
+        if (step.delayMs && step.action !== 'wait') {
+          await sleep(step.delayMs);
+        }
+        
+        // Take screenshot if requested
+        if (step.takeScreenshot) {
+          try {
+            const label = `step${String(step.stepId).padStart(2, '0')}_${step.action || 'action'}`;
+            const ssPath = await cdp.screenshot(label);
+            allScreenshots.push(ssPath);
+            step._screenshotPath = ssPath;
+            log('Config', `Screenshot saved: ${ssPath}`);
+          } catch (ssErr: any) {
+            log('Config', `Screenshot failed: ${ssErr.message}`);
+          }
+        }
+        
+        stepResults.push({
+          stepId: step.stepId,
+          action: step.action,
+          success: true,
+        });
+      }
+      
+      return { stepsExecuted: stepResults.length, steps: stepResults };
+    });
+    
+    phases.push(phaseResult);
+    
+    // Stop execution if phase failed
+    if (!phaseResult.success) {
+      log('Config', `❌ Phase ${phaseName} failed, stopping execution`);
+      break;
+    }
+  }
+  
+  return phases;
+}
+
 // ── CLI Entry Point ──
 if (import.meta.main) {
   const args = process.argv.slice(2);
@@ -370,14 +578,20 @@ if (import.meta.main) {
   const username = getArg('username');
   const password = getArg('password');
   const spins = parseInt(getArg('spins', '3')!, 10);
+  const useConfig = args.includes('--use-config');
 
   if (!username || !password) {
-    console.log('Usage: bun run firekirin-workflow.ts --username=X --password=X [--spins=3]');
+    console.log('Usage: bun run firekirin-workflow.ts --username=X --password=X [--spins=3] [--use-config]');
+    console.log('\nOptions:');
+    console.log('  --username   Account username');
+    console.log('  --password   Account password');
+    console.log('  --spins      Number of spins (default: 3)');
+    console.log('  --use-config Load and execute from step-config-firekirin.json');
     console.log('\nCredentials from MongoDB: run T00L5ET.exe credcheck to list available accounts');
     process.exit(1);
   }
 
-  const result = await runFireKirinWorkflow({ username, password, spins });
+  const result = await runFireKirinWorkflow({ username, password, spins, useConfig });
   console.log(`\n${'═'.repeat(60)}`);
   console.log(`FireKirin Workflow: ${result.success ? '✅ SUCCESS' : '❌ FAILED'}`);
   console.log(`Duration: ${(result.durationMs / 1000).toFixed(1)}s`);

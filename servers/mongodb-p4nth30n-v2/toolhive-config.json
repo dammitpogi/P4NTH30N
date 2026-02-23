@@ -1,0 +1,187 @@
+{
+  "id": "mongodb-p4nth30n-v2",
+  "name": "MongoDB P4NTH30N Server v2",
+  "description": "MCP server for MongoDB operations on P4NTH30N database",
+  "transport": "http",
+  "connection": {
+    "url": "http://localhost:3001",
+    "healthEndpoint": "/health",
+    "readyEndpoint": "/ready"
+  },
+  "tools": [
+    {
+      "name": "mongodb_find",
+      "description": "Find documents in MongoDB",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "database": {
+            "type": "string",
+            "default": "P4NTH30N"
+          },
+          "collection": {
+            "type": "string"
+          },
+          "filter": {
+            "type": "object"
+          },
+          "limit": {
+            "type": "number",
+            "default": 10
+          },
+          "skip": {
+            "type": "number",
+            "default": 0
+          }
+        },
+        "required": [
+          "collection"
+        ]
+      }
+    },
+    {
+      "name": "mongodb_find_one",
+      "description": "Find a single document",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "database": {
+            "type": "string"
+          },
+          "collection": {
+            "type": "string"
+          },
+          "filter": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "collection",
+          "filter"
+        ]
+      }
+    },
+    {
+      "name": "mongodb_insert_one",
+      "description": "Insert a document",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "database": {
+            "type": "string"
+          },
+          "collection": {
+            "type": "string"
+          },
+          "document": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "collection",
+          "document"
+        ]
+      }
+    },
+    {
+      "name": "mongodb_update_one",
+      "description": "Update a document",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "database": {
+            "type": "string"
+          },
+          "collection": {
+            "type": "string"
+          },
+          "filter": {
+            "type": "object"
+          },
+          "update": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "collection",
+          "filter",
+          "update"
+        ]
+      }
+    },
+    {
+      "name": "mongodb_delete_one",
+      "description": "Delete a document",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "database": {
+            "type": "string"
+          },
+          "collection": {
+            "type": "string"
+          },
+          "filter": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "collection",
+          "filter"
+        ]
+      }
+    },
+    {
+      "name": "mongodb_count",
+      "description": "Count documents",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "database": {
+            "type": "string"
+          },
+          "collection": {
+            "type": "string"
+          },
+          "filter": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "collection"
+        ]
+      }
+    },
+    {
+      "name": "mongodb_aggregate",
+      "description": "Run aggregation pipeline",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "database": {
+            "type": "string"
+          },
+          "collection": {
+            "type": "string"
+          },
+          "pipeline": {
+            "type": "array"
+          }
+        },
+        "required": [
+          "collection",
+          "pipeline"
+        ]
+      }
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "envVar": "MCP_AUTH_TOKEN"
+  },
+  "tags": [
+    "mongodb",
+    "database",
+    "mcp"
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "timestamp": "2026-02-15T11:55:17.967Z",
+  "type": "benchmark-research",
+  "one_at_a_time": false,
+  "requires_user_acceptance": true,
+  "acceptance_rule": "User must approve researched entries before they can be added to benchmark_manual_accepted.json. If not approved and no benchmark is available, continue research and request explicit user decision. Ignore-list updates require explicit user approval and must never be auto-applied.",
+  "pulled_models": 94,
+  "missing_before": 10,
+  "researched_scope": 10,
+  "remaining_after_scope": 0,
+  "next_missing_candidate": null,
+  "researched": 2,
+  "unresolved_count": 8,
+  "unresolved": [
+    "lmstudio-local/Qwen2.5-0.5B-Instruct",
+    "lmstudio-local/SmolLM2-1.7B-Instruct",
+    "openrouter/arcee-ai/trinity-large-preview:free",
+    "openrouter/arcee-ai/trinity-mini:free",
+    "openrouter/liquid/lfm-2.5-1.2b-instruct:free",
+    "openrouter/liquid/lfm-2.5-1.2b-thinking:free",
+    "openrouter/openrouter/aurora-alpha",
+    "openrouter/stepfun/step-3.5-flash:free"
+  ],
+  "manual_research_tasks": [
+    {
+      "model": "lmstudio-local/Qwen2.5-0.5B-Instruct",
+      "search_queries": [
+        "lmstudio-local/Qwen2.5-0.5B-Instruct benchmark gpqa mmlu_pro ifbench",
+        "lmstudio-local/Qwen2.5-0.5B-Instruct real backend model alias rumor"
+      ],
+      "note": "If model is stealth/cloaked, identify likely backing model via credible sources. User must approve mapped benchmark data before acceptance. Ignore-list updates require explicit user approval and must never be auto-applied."
+    },
+    {
+      "model": "lmstudio-local/SmolLM2-1.7B-Instruct",
+      "search_queries": [
+        "lmstudio-local/SmolLM2-1.7B-Instruct benchmark gpqa mmlu_pro ifbench",
+        "lmstudio-local/SmolLM2-1.7B-Instruct real backend model alias rumor"
+      ],
+      "note": "If model is stealth/cloaked, identify likely backing model via credible sources. User must approve mapped benchmark data before acceptance. Ignore-list updates require explicit user approval and must never be auto-applied."
+    },
+    {
+      "model": "openrouter/arcee-ai/trinity-large-preview:free",
+      "search_queries": [
+        "openrouter/arcee-ai/trinity-large-preview:free benchmark gpqa mmlu_pro ifbench",
+        "openrouter/arcee-ai/trinity-large-preview:free real backend model alias rumor"
+      ],
+      "note": "If model is stealth/cloaked, identify likely backing model via credible sources. User must approve mapped benchmark data before acceptance. Ignore-list updates require explicit user approval and must never be auto-applied."
+    },
+    {
+      "model": "openrouter/arcee-ai/trinity-mini:free",
+      "search_queries": [
+        "openrouter/arcee-ai/trinity-mini:free benchmark gpqa mmlu_pro ifbench",
+        "openrouter/arcee-ai/trinity-mini:free real backend model alias rumor"
+      ],
+      "note": "If model is stealth/cloaked, identify likely backing model via credible sources. User must approve mapped benchmark data before acceptance. Ignore-list updates require explicit user approval and must never be auto-applied."
+    },
+    {
+      "model": "openrouter/liquid/lfm-2.5-1.2b-instruct:free",
+      "search_queries": [
+        "openrouter/liquid/lfm-2.5-1.2b-instruct:free benchmark gpqa mmlu_pro ifbench",
+        "openrouter/liquid/lfm-2.5-1.2b-instruct:free real backend model alias rumor"
+      ],
+      "note": "If model is stealth/cloaked, identify likely backing model via credible sources. User must approve mapped benchmark data before acceptance. Ignore-list updates require explicit user approval and must never be auto-applied."
+    },
+    {
+      "model": "openrouter/liquid/lfm-2.5-1.2b-thinking:free",
+      "search_queries": [
+        "openrouter/liquid/lfm-2.5-1.2b-thinking:free benchmark gpqa mmlu_pro ifbench",
+        "openrouter/liquid/lfm-2.5-1.2b-thinking:free real backend model alias rumor"
+      ],
+      "note": "If model is stealth/cloaked, identify likely backing model via credible sources. User must approve mapped benchmark data before acceptance. Ignore-list updates require explicit user approval and must never be auto-applied."
+    },
+    {
+      "model": "openrouter/openrouter/aurora-alpha",
+      "search_queries": [
+        "openrouter/openrouter/aurora-alpha benchmark gpqa mmlu_pro ifbench",
+        "openrouter/openrouter/aurora-alpha real backend model alias rumor"
+      ],
+      "note": "If model is stealth/cloaked, identify likely backing model via credible sources. User must approve mapped benchmark data before acceptance. Ignore-list updates require explicit user approval and must never be auto-applied."
+    },
+    {
+      "model": "openrouter/stepfun/step-3.5-flash:free",
+      "search_queries": [
+        "openrouter/stepfun/step-3.5-flash:free benchmark gpqa mmlu_pro ifbench",
+        "openrouter/stepfun/step-3.5-flash:free real backend model alias rumor"
+      ],
+      "note": "If model is stealth/cloaked, identify likely backing model via credible sources. User must approve mapped benchmark data before acceptance. Ignore-list updates require explicit user approval and must never be auto-applied."
+    }
+  ],
+  "model_benchmark_patch": {
+    "google-ai-studio/gemini-2.5-flash-native-audio-preview-09-2025": {
+      "name": "Gemini 2.5 Flash-Lite Preview (Sep '25) (Reasoning)",
+      "sources": [
+        {
+          "type": "artificial-analysis-api",
+          "endpoint": "https://artificialanalysis.ai/api/v2/data/llms/models",
+          "model_reference": "84922739-425f-46e1-87ac-bb4268dcacbb"
+        }
+      ],
+      "confidence": 0.898,
+      "autoAccepted": true,
+      "requiresUserAcceptance": false,
+      "benchmarks": {
+        "gpqa": 0.709,
+        "mmlu_pro": 0.808,
+        "intelligence_index": 21.6,
+        "ifbench": 0.526,
+        "tau2": 0.307,
+        "aime": 0,
+        "math_index": 68.7,
+        "hle": 0.066,
+        "terminalbench_hard": 0.129,
+        "coding_index": 18.1,
+        "livecodebench": 0.688,
+        "scicode": 0.287
+      }
+    },
+    "google-ai-studio/gemini-2.5-flash-native-audio-preview-12-2025": {
+      "name": "Gemini 2.5 Flash-Lite Preview (Sep '25) (Reasoning)",
+      "sources": [
+        {
+          "type": "artificial-analysis-api",
+          "endpoint": "https://artificialanalysis.ai/api/v2/data/llms/models",
+          "model_reference": "84922739-425f-46e1-87ac-bb4268dcacbb"
+        }
+      ],
+      "confidence": 0.787,
+      "autoAccepted": true,
+      "requiresUserAcceptance": false,
+      "benchmarks": {
+        "gpqa": 0.709,
+        "mmlu_pro": 0.808,
+        "intelligence_index": 21.6,
+        "ifbench": 0.526,
+        "tau2": 0.307,
+        "aime": 0,
+        "math_index": 68.7,
+        "hle": 0.066,
+        "terminalbench_hard": 0.129,
+        "coding_index": 18.1,
+        "livecodebench": 0.688,
+        "scicode": 0.287
+      }
+    }
+  }
+}

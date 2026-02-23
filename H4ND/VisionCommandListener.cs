@@ -115,12 +115,25 @@ public class VisionCommandListener : IVisionCommandListener
 					// FEAT-036: Dispatch through VisionCommandHandler when available
 					if (_commandHandler != null)
 					{
-						await _commandHandler.ExecuteAsync(command, cancellationToken);
+						bool handlerSuccess = await _commandHandler.ExecuteAsync(command, cancellationToken);
+						if (!handlerSuccess)
+						{
+							command.Status = VisionCommandStatus.Failed;
+							command.ErrorMessage = $"Command handler returned failure for {command.CommandType}";
+							Console.WriteLine($"[VisionCommandListener] Command {command.Id} FAILED: Handler returned false");
+							_processingCommands.TryRemove(command.Id, out _);
+							return false;
+						}
+						command.Status = VisionCommandStatus.Completed;
+						command.ExecutedAt = DateTime.UtcNow;
 					}
 					else
 					{
-						command.Status = VisionCommandStatus.Completed;
-						command.ExecutedAt = DateTime.UtcNow;
+						command.Status = VisionCommandStatus.Failed;
+						command.ErrorMessage = "No command handler registered";
+						Console.WriteLine($"[VisionCommandListener] Command {command.Id} FAILED: No handler registered");
+						_processingCommands.TryRemove(command.Id, out _);
+						return false;
 					}
 					break;
 

@@ -1,0 +1,185 @@
+{
+  "agents": {
+    "orchestrator": {
+      "model": "openai/gpt-5.2",
+      "skills": [
+        "*"
+      ],
+      "mcps": [
+        "*"
+      ],
+      "models": [
+        "openai/gpt-5.2",
+        "openai/gpt-5",
+        "moonshotai/kimi-k2.5",
+        "google/gemini-3-pro-preview",
+        "google/gemini-3-flash-preview",
+        "moonshotai/kimi-k2-thinking",
+        "google/gemini-2.5-pro",
+        "openai/gpt-4.1",
+        "google/gemini-2.5-flash",
+        "google/gemini-2.0-flash",
+        "groq/llama-3.3-70b-versatile",
+        "google/gemini-1.5-flash",
+        "groq/llama-3.1-8b-instant",
+        "free/openrouter/free",
+        "lmstudio-local/Qwen2.5-0.5B-Instruct"
+      ]
+    },
+    "oracle": {
+      "model": "openai/gpt-5.2",
+      "skills": [
+        "*"
+      ],
+      "mcps": [
+        "*"
+      ],
+      "models": [
+        "openai/gpt-5.2",
+        "google/gemini-3-flash-preview",
+        "google/gemini-3-pro-preview",
+        "moonshotai/kimi-k2-thinking",
+        "google/gemini-2.5-pro",
+        "google/gemini-2.5-flash",
+        "openai/gpt-5",
+        "openai/gpt-4.1",
+        "groq/llama-3.3-70b-versatile",
+        "google/gemini-2.0-flash",
+        "moonshotai/kimi-k2.5",
+        "google/gemini-1.5-flash",
+        "groq/llama-3.1-8b-instant",
+        "free/openrouter/free",
+        "lmstudio-local/Qwen2.5-0.5B-Instruct"
+      ]
+    },
+    "designer": {
+      "model": "openai/gpt-5.2",
+      "skills": [
+        "*"
+      ],
+      "mcps": [
+        "*"
+      ],
+      "models": [
+        "openai/gpt-5.2",
+        "openai/gpt-5",
+        "moonshotai/kimi-k2.5",
+        "google/gemini-3-pro-preview",
+        "google/gemini-3-flash-preview",
+        "moonshotai/kimi-k2-thinking",
+        "google/gemini-2.5-pro",
+        "openai/gpt-4.1",
+        "google/gemini-2.5-flash",
+        "groq/llama-3.3-70b-versatile",
+        "google/gemini-2.0-flash",
+        "google/gemini-1.5-flash",
+        "groq/llama-3.1-8b-instant",
+        "free/openrouter/free",
+        "lmstudio-local/Qwen2.5-0.5B-Instruct"
+      ]
+    },
+    "explorer": {
+      "model": "openai/gpt-5.2",
+      "skills": [
+        "*"
+      ],
+      "mcps": [
+        "*"
+      ],
+      "models": [
+        "openai/gpt-5.2",
+        "google/gemini-3-pro-preview",
+        "google/gemini-3-flash-preview",
+        "moonshotai/kimi-k2.5",
+        "moonshotai/kimi-k2-thinking",
+        "openai/gpt-5",
+        "google/gemini-2.5-pro",
+        "openai/gpt-4.1",
+        "google/gemini-2.5-flash",
+        "groq/llama-3.3-70b-versatile",
+        "google/gemini-2.0-flash",
+        "google/gemini-1.5-flash",
+        "groq/llama-3.1-8b-instant",
+        "free/openrouter/free",
+        "lmstudio-local/Qwen2.5-0.5B-Instruct"
+      ]
+    },
+    "librarian": {
+      "model": "openai/gpt-5.2",
+      "skills": [
+        "*"
+      ],
+      "mcps": [
+        "*"
+      ],
+      "models": [
+        "openai/gpt-5.2",
+        "google/gemini-3-pro-preview",
+        "google/gemini-3-flash-preview",
+        "moonshotai/kimi-k2.5",
+        "moonshotai/kimi-k2-thinking",
+        "google/gemini-2.5-pro",
+        "openai/gpt-5",
+        "openai/gpt-4.1",
+        "google/gemini-2.5-flash",
+        "google/gemini-2.0-flash",
+        "groq/llama-3.3-70b-versatile",
+        "google/gemini-1.5-flash",
+        "groq/llama-3.1-8b-instant",
+        "free/openrouter/free",
+        "lmstudio-local/Qwen2.5-0.5B-Instruct"
+      ]
+    },
+    "fixer": {
+      "model": "anthropic/claude-opus-4-6",
+      "skills": [
+        "*"
+      ],
+      "mcps": [
+        "*"
+      ],
+      "models": [
+        "anthropic/claude-opus-4-6",
+        "google/gemini-3-pro-preview",
+        "openai/gpt-5.2",
+        "openai/gpt-5",
+        "moonshotai/kimi-k2-thinking",
+        "google/gemini-3-flash-preview",
+        "moonshotai/kimi-k2.5",
+        "anthropic/claude-sonnet-4-5",
+        "google/gemini-2.5-pro",
+        "openai/gpt-4.1",
+        "google/gemini-2.5-flash",
+        "groq/llama-3.3-70b-versatile",
+        "google/gemini-2.0-flash",
+        "google/gemini-1.5-flash",
+        "groq/llama-3.1-8b-instant",
+        "free/openrouter/free",
+        "lmstudio-local/Qwen2.5-0.5B-Instruct"
+      ]
+    }
+  },
+  "disabled_mcps": [
+    "websearch",
+    "context7",
+    "grep_app"
+  ],
+  "fallback": {
+    "enabled": true,
+    "timeoutMs": 15000,
+    "triage": {},
+    "currentModels": {
+      "orchestrator": "openai/gpt-5.2",
+      "oracle": "openai/gpt-5.2",
+      "designer": "openai/gpt-5.2",
+      "explorer": "openai/gpt-5.2",
+      "librarian": "openai/gpt-5.2",
+      "fixer": "anthropic/claude-opus-4-6"
+    }
+  },
+  "idleOrchestrator": {
+    "enabled": false,
+    "idleTimeoutMs": 5000,
+    "minPromptIntervalMs": 15000
+  }
+}

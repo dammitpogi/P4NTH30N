@@ -1,0 +1,34 @@
+{
+  "name": "P4NTH30N Universal Configuration",
+  "version": "1.0.0",
+  "description": "Source of truth for all P4NTH30N configurations",
+  "lastUpdated": "2026-02-22",
+  "environments": {
+    "development": {
+      "configPath": "C:\\P4NTH30N\\.config",
+      "deployTarget": "~/.config/opencode/"
+    },
+    "production": {
+      "configPath": "C:\\P4NTH30N\\.config",
+      "deployTarget": "~/.config/opencode/"
+    }
+  },
+  "configs": {
+    "opencode": {
+      "path": ".config/opencode/oh-my-opencode.json",
+      "description": "OpenCode provider configurations"
+    },
+    "theseus": {
+      "path": ".config/opencode/oh-my-opencode-theseus.json",
+      "description": "Theseus plugin with Oracle resilience and extended fallback chains"
+    },
+    "agents": {
+      "path": ".config/opencode/agents/",
+      "description": "Agent prompt overrides"
+    },
+    "skills": {
+      "path": ".config/opencode/skills/",
+      "description": "Skill configurations"
+    }
+  }
+}

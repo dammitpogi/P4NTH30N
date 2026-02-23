@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-02-15T12:30:00Z",
+  "one_time": true,
+  "algorithm": "ifbench_proxy_v0",
+  "source": "framework-gate-smoke-test",
+  "models": {
+    "openrouter/arcee-ai/trinity-large-preview:free": {
+      "name": "Trinity Large Preview (free)",
+      "algorithm": "ifbench_proxy_v0",
+      "benchmarks": {
+        "ifbench": 0.5
+      }
+    }
+  }
+}

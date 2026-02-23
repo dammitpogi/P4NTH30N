@@ -22,6 +22,7 @@ public sealed class ParallelMetrics
 	private long _staleClaims;
 	private long _criticalFailures;
 	private long _selectorFallbacks;
+	private readonly ConcurrentDictionary<string, long> _failureMatrix = new(StringComparer.OrdinalIgnoreCase);
 	private readonly ConcurrentDictionary<string, WorkerStats> _workerStats = new();
 	private readonly ConcurrentQueue<SpinTimingRecord> _recentSpins = new();
 	private readonly DateTime _startedAt = DateTime.UtcNow;
@@ -48,6 +49,22 @@ public sealed class ParallelMetrics
 	public double SpinsPerMinute =>
 		Uptime.TotalMinutes > 0 ? SpinsSucceeded / Uptime.TotalMinutes : 0;
 
+	public double P95SpinLatencyMs
+	{
+		get
+		{
+			var values = _recentSpins.ToArray().Select(x => x.ElapsedMs).OrderBy(x => x).ToArray();
+			if (values.Length == 0)
+			{
+				return 0;
+			}
+
+			var index = (int)Math.Ceiling(values.Length * 0.95) - 1;
+			index = Math.Clamp(index, 0, values.Length - 1);
+			return values[index];
+		}
+	}
+
 	public void RecordClaimSuccess() => Interlocked.Increment(ref _claimsSucceeded);
 
 	public void RecordClaimFailure(string reason)
@@ -69,10 +86,13 @@ public sealed class ParallelMetrics
 			Interlocked.Increment(ref _spinsFailed);
 
 		var stats = _workerStats.GetOrAdd(workerId, _ => new WorkerStats());
-		stats.TotalSpins++;
-		if (success) stats.SuccessfulSpins++;
-		stats.LastSpinAt = DateTime.UtcNow;
-		stats.LastError = error;
+		stats.RecordSpin(success, DateTime.UtcNow, error);
+
+		if (!success)
+		{
+			var reason = ClassifyFailure(error);
+			_failureMatrix.AddOrUpdate(reason, 1, (_, current) => current + 1);
+		}
 
 		_recentSpins.Enqueue(new SpinTimingRecord
 		{
@@ -90,15 +110,14 @@ public sealed class ParallelMetrics
 	public void RecordWorkerError(string workerId, string message)
 	{
 		var stats = _workerStats.GetOrAdd(workerId, _ => new WorkerStats());
-		stats.Errors++;
-		stats.LastError = message;
+		stats.RecordError(message);
 	}
 
 	public void RecordWorkerRestart(string workerId)
 	{
 		Interlocked.Increment(ref _workerRestarts);
 		var stats = _workerStats.GetOrAdd(workerId, _ => new WorkerStats());
-		stats.Restarts++;
+		stats.RecordRestart();
 	}
 
 	// ARCH-055: Self-healing metric recording
@@ -111,6 +130,9 @@ public sealed class ParallelMetrics
 
 	public IReadOnlyDictionary<string, WorkerStats> GetWorkerStats() =>
 		new Dictionary<string, WorkerStats>(_workerStats);
+
+	public IReadOnlyDictionary<string, long> GetFailureMatrix() =>
+		new Dictionary<string, long>(_failureMatrix);
 
 	/// <summary>
 	/// Average spin latency from last 100 spins (ms).
@@ -136,21 +158,77 @@ public sealed class ParallelMetrics
 			$"Claims={ClaimsSucceeded}/{ClaimsSucceeded + ClaimsFailed} " +
 			$"Spins={SpinsSucceeded}/{SpinsAttempted} ({SuccessRate:F1}%) " +
 			$"Rate={SpinsPerMinute:F1}/min " +
-			$"AvgLatency={AverageSpinLatencyMs:F0}ms " +
+			$"AvgLatency={AverageSpinLatencyMs:F0}ms P95={P95SpinLatencyMs:F0}ms " +
 			$"Restarts={WorkerRestarts} DistErrors={DistributorErrors} " +
 			$"Renewals={RenewalSuccesses}/{RenewalAttempts} " +
 			$"StaleClaims={StaleClaims} Critical={CriticalFailures}";
+	}
+
+	private static string ClassifyFailure(string? error)
+	{
+		if (string.IsNullOrWhiteSpace(error))
+		{
+			return "unknown";
+		}
+
+		var normalized = error.Trim().ToLowerInvariant();
+		if (normalized.Contains("login")) return "login_failed";
+		if (normalized.Contains("auth") || normalized.Contains("401") || normalized.Contains("403")) return "auth_failure";
+		if (normalized.Contains("timeout")) return "timeout";
+		if (normalized.Contains("spin")) return "spin_failed";
+		if (normalized.Contains("cdp")) return "cdp_failure";
+		return "other";
 	}
 }
 
 public sealed class WorkerStats
 {
-	public int TotalSpins { get; set; }
-	public int SuccessfulSpins { get; set; }
-	public int Errors { get; set; }
-	public int Restarts { get; set; }
-	public DateTime? LastSpinAt { get; set; }
-	public string? LastError { get; set; }
+	private int _totalSpins;
+	private int _successfulSpins;
+	private int _errors;
+	private int _restarts;
+	private long _lastSpinAtTicks;
+	private string? _lastError;
+
+	public int TotalSpins => Interlocked.CompareExchange(ref _totalSpins, 0, 0);
+	public int SuccessfulSpins => Interlocked.CompareExchange(ref _successfulSpins, 0, 0);
+	public int Errors => Interlocked.CompareExchange(ref _errors, 0, 0);
+	public int Restarts => Interlocked.CompareExchange(ref _restarts, 0, 0);
+	public DateTime? LastSpinAt
+	{
+		get
+		{
+			long ticks = Interlocked.Read(ref _lastSpinAtTicks);
+			return ticks == 0 ? null : new DateTime(ticks, DateTimeKind.Utc);
+		}
+	}
+	public string? LastError => Volatile.Read(ref _lastError);
+
+	public void IncrementTotalSpins() => Interlocked.Increment(ref _totalSpins);
+	public void IncrementSuccessfulSpins() => Interlocked.Increment(ref _successfulSpins);
+
+	public void RecordSpin(bool success, DateTime spinAtUtc, string? error)
+	{
+		Interlocked.Increment(ref _totalSpins);
+		if (success)
+		{
+			Interlocked.Increment(ref _successfulSpins);
+		}
+
+		Interlocked.Exchange(ref _lastSpinAtTicks, spinAtUtc.Ticks);
+		Volatile.Write(ref _lastError, error);
+	}
+
+	public void RecordError(string message)
+	{
+		Interlocked.Increment(ref _errors);
+		Volatile.Write(ref _lastError, message);
+	}
+
+	public void RecordRestart()
+	{
+		Interlocked.Increment(ref _restarts);
+	}
 }
 
 public sealed class SpinTimingRecord

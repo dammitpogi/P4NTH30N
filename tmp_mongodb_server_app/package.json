@@ -1,0 +1,36 @@
+{
+  "name": "mongodb-mcp-server",
+  "version": "1.0.0",
+  "description": "MongoDB MCP server for P4NTH30N database operations",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "test": "node --test dist/tests/**/*.test.js",
+    "lint": "eslint src/ --ext .ts",
+    "docker:build": "docker build -f ../../deployment/docker/Dockerfile.mongodb -t mongodb-server:latest .",
+    "docker:run": "docker run -p 3000:3000 --env-file .env mongodb-server:latest"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.25.1",
+    "mongodb": "^6.3.0",
+    "zod": "^4.1.8"
+  },
+  "devDependencies": {
+    "@types/mongodb": "^4.0.6",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "mcp",
+    "mongodb",
+    "database",
+    "p4nth30n"
+  ],
+  "license": "MIT"
+}

@@ -1,0 +1,16 @@
+Executes a given bash command in a persistent shell session with optional timeout.
+
+All commands run in ${directory} by default. Use `workdir` for other directories. AVOID `cd <dir> && <cmd>`.
+
+IMPORTANT: Use for terminal operations (git, npm, docker). DO NOT use for file operations (read, write, edit, search) - use specialized tools instead.
+
+Safety Protocol:
+1. Directory Verification: Use `ls` before creating files/dirs.
+2. Quoting: Always quote paths with spaces.
+3. Git: Only commit when requested. NEVER force push to main. Avoid `git commit --amend` unless specific conditions met.
+4. No Interactive: Avoid commands requiring input (e.g., `git rebase -i`).
+
+Usage:
+- `timeout`: Optional (default 2m).
+- Truncation: Large output is saved to a file. Use Read/Grep to explore.
+- Parallelism: Run independent commands in parallel tool calls. Chain dependent commands with `&&`.

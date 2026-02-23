@@ -2,6 +2,8 @@ using System.Threading.Channels;
 using P4NTH30N.C0MMON;
 using P4NTH30N.C0MMON.Infrastructure.Cdp;
 using P4NTH30N.H4ND.Infrastructure;
+using P4NTH30N.H4ND.Navigation;
+using P4NTH30N.H4ND.Navigation.Retry;
 using P4NTH30N.H4ND.Services;
 
 namespace P4NTH30N.H4ND.Parallel;
@@ -22,6 +24,11 @@ public sealed class WorkerPool : IDisposable
 	private readonly SessionRenewalService? _sessionRenewal;
 	private readonly GameSelectorConfig? _selectorConfig;
 	private readonly int _maxSignalsPerWorker;
+	private readonly CdpResourceCoordinator _resourceCoordinator;
+	private readonly bool _ownsResourceCoordinator;
+	private readonly ChromeProfileManager? _profileManager;
+	private readonly NavigationMapLoader? _mapLoader;
+	private readonly IStepExecutor? _stepExecutor;
 	private readonly List<Task> _workerTasks = [];
 	private readonly List<ParallelSpinWorker> _workers = [];
 	private CancellationTokenSource? _cts;
@@ -40,7 +47,11 @@ public sealed class WorkerPool : IDisposable
 		ParallelMetrics metrics,
 		SessionRenewalService? sessionRenewal = null,
 		GameSelectorConfig? selectorConfig = null,
-		int maxSignalsPerWorker = 100)
+		int maxSignalsPerWorker = 100,
+		CdpResourceCoordinator? resourceCoordinator = null,
+		ChromeProfileManager? profileManager = null,
+		NavigationMapLoader? mapLoader = null,
+		IStepExecutor? stepExecutor = null)
 	{
 		_workerCount = Math.Max(1, workerCount);
 		_reader = reader;
@@ -51,6 +62,19 @@ public sealed class WorkerPool : IDisposable
 		_sessionRenewal = sessionRenewal;
 		_selectorConfig = selectorConfig;
 		_maxSignalsPerWorker = maxSignalsPerWorker;
+		if (resourceCoordinator == null)
+		{
+			_resourceCoordinator = new CdpResourceCoordinator(1);
+			_ownsResourceCoordinator = true;
+		}
+		else
+		{
+			_resourceCoordinator = resourceCoordinator;
+			_ownsResourceCoordinator = false;
+		}
+		_profileManager = profileManager;
+		_mapLoader = mapLoader;
+		_stepExecutor = stepExecutor;
 	}
 
 	/// <summary>
@@ -73,13 +97,17 @@ public sealed class WorkerPool : IDisposable
 				metrics: _metrics,
 				sessionRenewal: _sessionRenewal,
 				selectorConfig: _selectorConfig,
-				maxSignalsBeforeRestart: _maxSignalsPerWorker);
+				maxSignalsBeforeRestart: _maxSignalsPerWorker,
+				resourceCoordinator: _resourceCoordinator,
+				profileManager: _profileManager,
+				mapLoader: _mapLoader,
+				stepExecutor: _stepExecutor);
 
 			_workers.Add(worker);
 			_workerTasks.Add(RunWorkerWithRestartAsync(worker, _cts.Token));
 		}
 
-		Console.WriteLine($"[WorkerPool] Started {_workerCount} workers (self-healing={_sessionRenewal != null}, selectors={_selectorConfig != null})");
+		Console.WriteLine($"[WorkerPool] Started {_workerCount} workers (self-healing={_sessionRenewal != null}, selectors={_selectorConfig != null}, recorder-map={_mapLoader != null && _stepExecutor != null})");
 		return Task.CompletedTask;
 	}
 
@@ -183,5 +211,9 @@ public sealed class WorkerPool : IDisposable
 		_disposed = true;
 		_cts?.Cancel();
 		_cts?.Dispose();
+		if (_ownsResourceCoordinator)
+		{
+			_resourceCoordinator.Dispose();
+		}
 	}
 }

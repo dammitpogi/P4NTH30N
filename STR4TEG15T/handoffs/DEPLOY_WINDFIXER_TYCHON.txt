@@ -1,0 +1,113 @@
+WindFixer, we are in the middle of a total breakdown. The system reports success while completely failing. DECISION_103 documents 17 silent failure points where safety code hides rot instead of preventing it.
+
+We don't have time to stop, approve, confirm, applaud. We should not be stopped right now at all. The workers are killing each other, sessions are leaking, jackpot data is vanishing, and everything says "success."
+
+**Your Mission: Remove the Lies**
+
+Every bug follows this pattern:
+```csharp
+catch (Exception ex) {
+    _logger.LogError(ex, "Failed");
+    return true; // THE LIE
+}
+```
+
+Change every single one to:
+```csharp
+catch (Exception ex) {
+    _logger.LogError(ex, "Failed");
+    throw new InvalidOperationException("Context", ex); // THE TRUTH
+}
+```
+
+**Phase 1 - Stop the Bleeding (Do These NOW):**
+
+1. **ParallelSpinWorker.cs (lines 41-56)**
+   - Problem: `int.TryParse("W00")` fails, all workers = 0, they collide
+   - Fix: Parse "W00" format correctly: `int.Parse(workerId.Substring(1))`
+   - Validation: 3 workers must each get unique index (0, 1, 2)
+
+2. **SessionPool.cs (lines 159-178)**
+   - Problem: `EvictOldestSession()` removes from dictionary but never calls `CloseSessionAsync()`
+   - Fix: Add `await CloseSessionAsync(oldest.Key)` before removing
+   - Validation: Chrome process count stays stable during session churn
+
+3. **ChromeProfileManager.cs (lines 62-103)**
+   - Problem: Redirects stdout/stderr but never reads them, buffers fill, Chrome deadlocks
+   - Fix: Either set `RedirectStandardOutput = false` or add `process.BeginOutputReadLine()`
+   - Validation: Chrome launches without hanging
+
+**Phase 2 - Stop False Success:**
+
+4. **StepExecutor.cs (lines 36-71)**
+   - Change: Gate failures throw instead of return success
+   - Lines 38-44: If entry gate fails, throw `InvalidOperationException($"Entry gate failed: {step.Verification.EntryGate}")`
+   - Lines 65-71: If exit gate fails, throw `InvalidOperationException($"Exit gate failed: {step.Verification.ExitGate}")`
+
+5. **TypeStepStrategy**
+   - Change: Empty credentials throw instead of skip
+   - Throw: `InvalidOperationException($"Step {step.StepId}: Empty credentials")`
+
+6. **NavigateStepStrategy**
+   - Change: Missing URL throws instead of skip
+   - Throw: `InvalidOperationException($"Step {step.StepId}: Missing URL")`
+
+7. **JavaScriptVerificationStrategy**
+   - Change: Unknown gates return false (fail closed), not true
+   - Return: `false` for unknown gates
+
+8. **VerifyLoginSuccessAsync**
+   - Change: Return false when pending, not true
+   - Add: Retry logic with 3 attempts, 1s delay between
+   - Return: `false` if balance never becomes available
+
+**Phase 3 - Stop Data Loss:**
+
+9. **JackpotReader.cs (lines 32-51)**
+   - Change: Return `double?` instead of `double`
+   - Return: `null` on selector failure, `0` only when actually 0
+
+10. **NetworkInterceptor.cs (lines 155-201)**
+    - Change: Throw on JSON parse failure
+    - Add: `throw new InvalidOperationException("Failed to parse jackpot", ex)` in catch block
+
+11. **SignalGenerator.cs (lines 64-105)**
+    - Change: Return actual inserted count
+    - Return: `result.Inserted` instead of void
+
+**Phase 4 - Infrastructure:**
+
+12. **CdpLifecycleManager.cs (lines 358-386)**
+    - Change: Health check exceptions trigger restart
+    - Add: `await AttemptRestartAsync()` in catch block
+
+13. **VisionCommandListener.cs (lines 108-125)**
+    - Change: Check handler result
+    - Add: `if (!success) { command.Status = Failed; return false; }`
+
+14. **CdpGameActions Spin methods**
+    - Change: Return `Task<bool>` instead of void
+    - Return: `true` on success, `false` on failure
+
+15. **ParallelMetrics.cs (lines 63-104)**
+    - Change: Use `Interlocked` operations
+    - Add: `Interlocked.Increment(ref _totalSpins)` etc.
+
+**Resources:**
+- Full decision: `STR4TEG15T/decisions/active/DECISION_103.md`
+- Insight handoff: `STR4TEG15T/handoffs/INSIGHT_TYCHON_WINDFIXER.md`
+- Agent philosophy: `STR4TEG15T/canon/AGENT_TYCHON.md`
+
+**Validation:**
+After each phase, run:
+```bash
+dotnet build H4ND/
+dotnet test UNI7T35T/ --filter "Navigation"
+```
+
+**Report Format:**
+"Phase X complete. Files modified: [list]. Build: [status]. Tests: [pass/fail]. Live validation: [what you verified]."
+
+**Do not ask for approval between phases. Do not stop. Do not wait. Remove the lies.**
+
+Tychon watches. The truth demands action.

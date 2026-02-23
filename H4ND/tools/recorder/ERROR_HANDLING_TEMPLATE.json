@@ -1,0 +1,184 @@
+{
+  "$schema": "./STEP_SCHEMA.json",
+  "description": "Template for error handling workflows with conditional logic and goto statements",
+  "steps": [
+    {
+      "stepId": 1,
+      "phase": "Login",
+      "takeScreenshot": true,
+      "screenshotReason": "Initial state before any action",
+      "comment": "Starting point - can be jumped back to via goto",
+      "tool": "none",
+      "verification": {
+        "entryGate": "Browser open and ready",
+        "exitGate": "Ready to proceed"
+      }
+    },
+    {
+      "stepId": 2,
+      "phase": "Login",
+      "takeScreenshot": true,
+      "screenshotReason": "Before critical action",
+      "comment": "Example: Click login button",
+      "tool": "none",
+      "action": "click",
+      "coordinates": { "x": 460, "y": 367, "rx": 0.5, "ry": 0.42 },
+      "verification": {
+        "entryGate": "Login page visible",
+        "exitGate": "Login button clicked"
+      }
+    },
+    {
+      "stepId": 3,
+      "phase": "Login",
+      "takeScreenshot": true,
+      "screenshotReason": "Check for errors after action",
+      "comment": "Verify action succeeded or handle errors",
+      "tool": "none",
+      "verification": {
+        "entryGate": "Action completed",
+        "exitGate": "Result verified"
+      },
+      "conditional": {
+        "condition": {
+          "type": "element-exists",
+          "target": ".error-message",
+          "description": "Check if error message appeared"
+        },
+        "onTrue": {
+          "action": "goto",
+          "gotoStep": 1,
+          "comment": "Error detected - restart from beginning"
+        },
+        "onFalse": {
+          "action": "continue",
+          "comment": "No error - proceed to next step"
+        }
+      }
+    },
+    {
+      "stepId": 4,
+      "phase": "Login",
+      "takeScreenshot": true,
+      "screenshotReason": "Before retry-able action",
+      "comment": "Example: Wait for element to load",
+      "tool": "none",
+      "verification": {
+        "entryGate": "Previous step succeeded",
+        "exitGate": "Element loaded or retry exhausted"
+      },
+      "conditional": {
+        "condition": {
+          "type": "element-missing",
+          "target": "#expected-element",
+          "description": "Check if expected element is still missing"
+        },
+        "onTrue": {
+          "action": "retry",
+          "retryCount": 5,
+          "retryDelayMs": 2000,
+          "comment": "Element not loaded yet - retry with delay"
+        },
+        "onFalse": {
+          "action": "continue",
+          "comment": "Element loaded - continue"
+        }
+      }
+    },
+    {
+      "stepId": 5,
+      "phase": "Login",
+      "takeScreenshot": true,
+      "screenshotReason": "Before tool execution",
+      "comment": "Example: Run T00L5ET diagnostic",
+      "tool": "diag",
+      "verification": {
+        "entryGate": "Ready to run tool",
+        "exitGate": "Tool execution completed"
+      },
+      "conditional": {
+        "condition": {
+          "type": "tool-failure",
+          "description": "Check if diagnostic tool failed"
+        },
+        "onTrue": {
+          "action": "abort",
+          "comment": "Diagnostic failed - cannot proceed safely"
+        },
+        "onFalse": {
+          "action": "continue",
+          "comment": "Diagnostic passed - safe to continue"
+        }
+      }
+    },
+    {
+      "stepId": 6,
+      "phase": "GameSelection",
+      "takeScreenshot": true,
+      "screenshotReason": "Phase transition verification",
+      "comment": "Verify phase transition succeeded",
+      "tool": "none",
+      "verification": {
+        "entryGate": "Login phase completed",
+        "exitGate": "Game selection phase started"
+      },
+      "conditional": {
+        "condition": {
+          "type": "text-contains",
+          "target": "SLOT",
+          "description": "Check if lobby loaded (SLOT category visible)"
+        },
+        "onTrue": {
+          "action": "continue",
+          "comment": "Lobby loaded - proceed with game selection"
+        },
+        "onFalse": {
+          "action": "goto",
+          "gotoStep": 1,
+          "comment": "Lobby not loaded - restart login sequence"
+        }
+      }
+    },
+    {
+      "stepId": 7,
+      "phase": "GameSelection",
+      "takeScreenshot": true,
+      "screenshotReason": "Custom JS check example",
+      "comment": "Example: Check page state with custom JavaScript",
+      "tool": "none",
+      "verification": {
+        "entryGate": "Lobby visible",
+        "exitGate": "Page fully loaded"
+      },
+      "conditional": {
+        "condition": {
+          "type": "custom-js",
+          "target": "document.readyState === 'complete' && document.querySelector('canvas') !== null",
+          "description": "Check if page is fully loaded and canvas exists"
+        },
+        "onTrue": {
+          "action": "continue",
+          "comment": "Page ready - proceed"
+        },
+        "onFalse": {
+          "action": "retry",
+          "retryCount": 3,
+          "retryDelayMs": 1000,
+          "comment": "Page not ready - wait and retry"
+        }
+      }
+    },
+    {
+      "stepId": 8,
+      "phase": "GameSelection",
+      "takeScreenshot": true,
+      "screenshotReason": "Final verification",
+      "comment": "Workflow completion check",
+      "tool": "none",
+      "verification": {
+        "entryGate": "All previous steps succeeded",
+        "exitGate": "Workflow complete"
+      }
+    }
+  ]
+}

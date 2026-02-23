@@ -1,10 +1,11 @@
-version: '3.8'
-
 services:
   decisions-server:
     image: decisions-server:v1.2.0
     container_name: decisions-server
     restart: unless-stopped
+    # MCP servers with stdio transport need interactive terminal
+    stdin_open: true
+    tty: true
     environment:
       # MongoDB connection using host.docker.internal which maps to host
       - MONGODB_URI=mongodb://host.docker.internal:27017/P4NTH30N

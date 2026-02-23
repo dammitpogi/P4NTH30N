@@ -95,7 +95,7 @@ public sealed class StdioMcpTransport
 				properties = new Dictionary<string, object>
 				{
 					["fullRebuild"] = new { type = "boolean", description = "Full rebuild (default false)" },
-					["sources"] = new { type = "array", description = "Specific sources to rebuild" },
+					["sources"] = new { type = "array", items = new { type = "string" }, description = "Specific sources to rebuild" },
 				},
 			},
 		},

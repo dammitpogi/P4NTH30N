@@ -1,11 +1,16 @@
 {
   "version": "1.0.0",
-  "description": "DECISION_033: RAG Activation Hub configuration",
+  "description": "DECISION_097: Legacy RAG deprecated; migration to ToolHive rag-server v2 completed",
   "ragHost": {
-    "executable": "C:\\ProgramData\\P4NTH30N\\bin\\RAG.McpHost.exe",
-    "port": 5001,
-    "startupArgs": ["--port", "5001", "--mongo", "mongodb://192.168.56.1:27017/P4NTH30N"],
-    "healthCheckUrl": "http://localhost:5001/health"
+    "deprecated": true,
+    "legacyExecutable": "C:\\ProgramData\\P4NTH30N\\bin\\RAG.McpHost.exe",
+    "legacyPort": 5001,
+    "replacement": {
+      "name": "rag-server",
+      "transport": "sse",
+      "toolhiveEndpoint": "http://127.0.0.1:3002/sse",
+      "healthCheckUrl": "http://127.0.0.1:3002/health"
+    }
   },
   "fileWatcher": {
     "enabled": true,
@@ -28,6 +33,7 @@
     "excludeDirectories": ["bin", "obj", ".git", "node_modules", "Releases"]
   },
   "bulkIngestion": {
+    "enabled": true,
     "directories": [
       { "path": "C:\\P4NTH30N\\STR4TEG15T\\decisions\\active", "tag": "decision", "priority": "high" },
       { "path": "C:\\P4NTH30N\\STR4TEG15T\\speech", "tag": "speech", "priority": "high" },

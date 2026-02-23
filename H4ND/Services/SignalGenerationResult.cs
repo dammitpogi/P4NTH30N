@@ -14,7 +14,7 @@ public sealed class SignalGenerationResult
 	public DateTime GeneratedAt { get; init; } = DateTime.UtcNow;
 	public TimeSpan Elapsed { get; set; }
 
-	public bool IsSuccess => Failed == 0 && Inserted > 0;
+	public bool IsSuccess => Failed == 0 && Inserted == Requested && Requested > 0;
 
 	public override string ToString() =>
 		$"[SignalGeneration] Requested={Requested} Inserted={Inserted} Skipped={Skipped} Failed={Failed} Elapsed={Elapsed.TotalMilliseconds:F0}ms";

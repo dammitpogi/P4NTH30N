@@ -16,4 +16,5 @@
 	<Project Path="UNI7T35T/UNI7T35T.csproj" Id="08393a5c-c385-48bd-b897-46b573c55f67" />
 	<Project Path="W1NDF1XER/W1NDF1XER.csproj" Id="c8296872-ccbc-4525-bceb-fae25a425d56" />
 	<Project Path="W4TCHD0G/W4TCHD0G.csproj" />
+	<Project Path="H4ND/SmokeTest/SmokeTest.csproj" />
 </Solution>

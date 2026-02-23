@@ -264,6 +264,64 @@ Tools stored in `STR4TEG15T/tools/`:
 
 ---
 
+## Build Workflow
+
+**Standard Build Method**: Bun executable compilation for TypeScript/JavaScript tools
+
+All agents creating or modifying TypeScript/JavaScript tools must follow the standard build workflow:
+
+### Required Files
+1. **`package.json`** with build scripts:
+   - `"build": "pwsh -File build.ps1"`
+   - `"build:exe": "bun build <entry>.ts --compile --outfile dist/<tool>.exe"`
+
+2. **`build.ps1`** - PowerShell build script with:
+   - Bun version check
+   - dist/ directory creation
+   - Compilation with error handling
+   - File size reporting
+   - Usage instructions
+
+3. **`BUILD.md`** - Build documentation with:
+   - Prerequisites (Bun installation)
+   - Quick build commands
+   - Output description
+   - Distribution notes
+   - Troubleshooting guide
+
+4. **`.gitignore`** - Exclude build artifacts:
+   - `dist/`
+   - `*.exe`
+   - `node_modules/`
+
+### Build Command
+```powershell
+cd <tool-directory>
+bun run build
+```
+
+### Output
+- Standalone `.exe` in root directory (~40-50 MB)
+- No runtime dependencies (Bun embedded)
+- Single-file distribution
+
+### Reference Implementation
+- **Location**: `C:\P4NTH30N\H4ND\tools\recorder`
+- **Documentation**: `W1NDF1XER\deployments\BUILD_WORKFLOW.md`
+- **Example**: Recorder TUI build system
+
+### Agent Responsibilities
+
+**WindFixer**: Implement build system for P4NTH30N tools in `H4ND/tools/`
+
+**OpenFixer**: Implement build system for external tools and plugins
+
+**Forgewright**: Create automation tools with build capability
+
+All agents must include build instructions in deployment decisions and verify executables work on clean machines.
+
+---
+
 ## Decision Template Updates
 
 All new decisions must include:

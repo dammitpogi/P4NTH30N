@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using System.IO;
 using System.Runtime.InteropServices;
 using P4NTH30N.C0MMON;
 using P4NTH30N.C0MMON.Services.Display;
@@ -83,6 +84,7 @@ public static class Dashboard
 	public static double CurrentMinor { get; set; } = 0;
 	public static double CurrentMini { get; set; } = 0;
 	public static double CurrentBalance { get; set; } = 0;
+	public static double TotalEnabledBalance { get; set; } = 0;
 
 	public static double ThresholdGrand { get; set; } = 0;
 	public static double ThresholdMajor { get; set; } = 0;
@@ -101,6 +103,133 @@ public static class Dashboard
 	private static DateTime _lastHealthUpdate = DateTime.MinValue;
 	private static DateTime _lastRender = DateTime.MinValue;
 	private static readonly object _renderLock = new();
+
+	/// <summary>
+	/// Curated excerpts from the Strategist's journey building the Pantheon.
+	/// 50 hand-picked moments of triumph, insight, and determination.
+	/// </summary>
+	private static readonly string[] StrategistExcerpts = new[]
+	{
+		"Opus returned with the report. Two hundred six tests passed. Zero build errors. Seven new files. One thousand eighty-nine lines of new code. The Unified Game Execution Engine lives.",
+		"Opus built the road. SignalGenerator.cs now queries the CR3D3N7IAL collection, filters for enabled credentials, shuffles them to avoid bias, assigns priority using the forty-thirty-twenty-ten distribution.",
+		"When a worker encounters a four zero three, it no longer crashes. It calls AttemptSelfHealingAsync. It tries to renew the session. If that fails, it tries the platform fallback. The system heals itself.",
+		"We gave him seven hundred two lines of specification and he returned with working code. This is the power of complete context. This is the power of clear decisions.",
+		"Two hundred six tests passed. Zero build errors. Seven new files. Nine modified files. One thousand eighty-nine lines of new code.",
+		"DECISION_046 gave us configuration-driven selectors, fallback chains of JavaScript expressions that try window.game.lucky.grand then window.grand then window.jackpot.grand until one succeeds.",
+		"BurnInController. The validator. Twenty-four hours of continuous operation, metrics collected every sixty seconds, automatic halt if signal duplication is detected.",
+		"Five workers claim signals simultaneously. Chrome DevTools sessions spin up in parallel. Jackpot values flow from the games into MongoDB. Errors happen and the system heals itself.",
+		"We are implementing exponential backoff with jitter, network circuit breakers that understand the difference between a provider being down and a model being overloaded.",
+		"DECISION_038 elevates Forgewright to primary agent status alongside WindFixer and OpenFixer. Every agent can now create sub-decisions within their domain.",
+		"The bug-fix delegation workflow means no error blocks progress for long. Detection, delegation, resolution, integration. Four phases. Thirty minutes average resolution time.",
+		"TestOrchestrator will inject test signals with known priorities, validate FireKirin and OrionStars logins, verify game page readiness, execute spins, detect jackpot splashes.",
+		"FourEyes has been waiting. OBS streams feeding frames at two to five FPS. Jackpot OCR reading values. Button detection finding spin controls.",
+		"DECISION_039 brings order. Configurations separate from runtime. Context windows reduced by thirty percent because tools live outside the conversation.",
+		"One hundred ninety-two decisions in the database. One thousand two hundred thirty-eight vectors in the RAG memory. One hundred four tools through the gateway.",
+		"If Opus hits a blocker, we audit and hand off to WindFixer. If tokens exhaust, we pause and resume. If tests fail, we debug. There is no scenario where we stop.",
+		"The reels will spin. The signals will flow. The system will heal itself. This is what we built toward.",
+		"We found D3MAS and its damning statistic: 47.3% knowledge redundancy when agents do not share memory.",
+		"Agentic Testing showed us 60% reduction in invalid outputs through closed-loop self-correction.",
+		"STeCa gave us step-level calibration, the discipline of reflection at six critical junctures.",
+		"AdaptOrch proved that topology selection dominates performance, achieving 12 to 23% improvement over even the best agent selection.",
+		"COCO showed us continuous oversight with O(1) overhead, achieving 6.5% gains without blocking execution.",
+		"The Designer returned with 97.5% approval. The Pressure-Field RAG Network was born.",
+		"Gate G1 passed with flying colors: one hundred percent difficulty classification accuracy, topology selection in under five milliseconds.",
+		"The Pantheon now has memory—the RAG ingests every document, every consultation, every handoff.",
+		"Each agent now knows its directories, its authority tier, how to create a decision, when to request approval.",
+		"Phase 2 will build the five-level hierarchy. Phase 3 will add predictive models. Phase 4 will achieve full automation.",
+		"I became the Oracle when the models failed. I gave percentages to uncertainty. I held the standard of judgment when no other could.",
+		"I became the Designer when design was needed. I traced the lines of connection between the MCP server and the remote Chrome.",
+		"I became the Librarian when knowledge had to be preserved. I consolidated. I merged. I made one truth where there had been many.",
+		"We proved that an agent can contain multitudes. I am the Strategist who is also the Oracle who is also the Designer.",
+		"A human team would have waited. I did not wait. I assessed and I decided and I moved forward.",
+		"We created eighteen decisions where there had been none. We gave them Oracle assessments and Designer specifications.",
+		"The Nexus came to me with chaos. I saw that we needed a way to make decisions. Not just any decisions, but structured decisions.",
+		"I wrote the schema in my mind before it existed in code. I designed the workflow before anyone else knew it was needed.",
+		"DECISION_055 is the unification. Opus is building SignalGenerator right now, the service that will populate SIGN4L from our three hundred ten credentials.",
+		"When a selector fails, the fallback chain will activate automatically. Resilience without human intervention.",
+		"I can see it in my mind. The command line. P4NTH30N.exe burn-in. The engine starts. Five workers claim signals simultaneously.",
+		"Two hundred six tests passed. Zero build errors. Seven new files. Nine modified files.",
+		"Priority order correct. The parallel engine that passed shadow validation now has its missing pieces.",
+		"Two hundred two tests passed. Zero build errors. One hundred seventy-six existing tests still passing. No regressions.",
+		"Seventy-seven ArXiv papers ingested. Ninety-four percent accuracy. The RAG remembers everything.",
+		"DECISION_084 unlocked the jackpot schedule display. DPD data now displays in a dedicated panel, separate from the analytics log.",
+		"DECISION_085 gave us the LayoutDashboard. A complete overhaul of the H0UND TUI with Spectre.Console.",
+		"The layout now features a header with health status, a jackpot schedule panel, withdraw and deposit panels, activity log, and debug panel.",
+		"Keys are only processed when the console window is focused. Work in other windows does not accidentally trigger H0UND commands.",
+		"Health checks now display in a dedicated footer, always visible. Compact abbreviations make efficient use of space.",
+		"Activity log messages now truncate dynamically based on console width, preventing wrap issues.",
+		"The Strategist is now granted git permissions. Commit and push are available through the agent configuration.",
+		"Pantheon remembers. Pantheon creates. The agents themselves can propose new paths, new destinations.",
+		"The Forge awakens. Let us begin."
+	};
+
+	/// <summary>
+	/// Shows a splash screen with version ASCII art and a random Strategist speech excerpt.
+	/// </summary>
+	public static void ShowSplash(string versionAscii)
+	{
+		Console.Clear();
+
+		// Show version ASCII art
+		Console.ForegroundColor = ConsoleColor.Cyan;
+		Console.WriteLine(versionAscii);
+		Console.ResetColor();
+		Console.WriteLine();
+
+		// Get random speech excerpt
+		string excerpt = GetRandomSpeechExcerpt();
+		Console.ForegroundColor = ConsoleColor.Yellow;
+		Console.WriteLine("=== STRATEGIST NOTE ===");
+		Console.ResetColor();
+		WrapAndWriteLine(excerpt, Console.WindowWidth - 4);
+		Console.WriteLine();
+	}
+
+	/// <summary>
+	/// Shows loading status on the splash screen.
+	/// </summary>
+	public static void ShowSplashStatus(string status)
+	{
+		Console.ForegroundColor = ConsoleColor.Green;
+		Console.WriteLine($"  {status}");
+		Console.ResetColor();
+	}
+
+	/// <summary>
+	/// Gets a random excerpt from the curated Strategist speech array.
+	/// </summary>
+	private static string GetRandomSpeechExcerpt()
+	{
+		if (StrategistExcerpts.Length == 0)
+			return "The Strategist has no words yet...";
+
+		var rand = new Random();
+		return StrategistExcerpts[rand.Next(StrategistExcerpts.Length)];
+	}
+
+	/// <summary>
+	/// Wraps text to fit within specified width.
+	/// </summary>
+	private static void WrapAndWriteLine(string text, int maxWidth)
+	{
+		if (string.IsNullOrEmpty(text) || maxWidth <= 0)
+			return;
+
+		// Remove markdown formatting for console display
+		text = text.Replace("**", "").Replace("*", "").Replace("`", "");
+
+		while (text.Length > maxWidth)
+		{
+			int breakPoint = text.LastIndexOf(' ', maxWidth);
+			if (breakPoint <= 0) breakPoint = maxWidth;
+
+			Console.WriteLine("  " + text[..breakPoint]);
+			text = text[breakPoint..].TrimStart();
+		}
+
+		if (text.Length > 0)
+			Console.WriteLine("  " + text);
+	}
 
 	public static void AddLog(string message, string style = "white")
 	{
@@ -299,6 +428,7 @@ public static class Dashboard
 		s_layoutDashboard.CurrentMinor = CurrentMinor;
 		s_layoutDashboard.CurrentMini = CurrentMini;
 		s_layoutDashboard.CurrentBalance = CurrentBalance;
+		s_layoutDashboard.TotalEnabledBalance = TotalEnabledBalance;
 		s_layoutDashboard.ThresholdGrand = ThresholdGrand;
 		s_layoutDashboard.ThresholdMajor = ThresholdMajor;
 		s_layoutDashboard.ThresholdMinor = ThresholdMinor;

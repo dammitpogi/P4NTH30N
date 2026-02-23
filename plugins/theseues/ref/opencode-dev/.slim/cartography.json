@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "last_run": "2026-02-14T04:31:52.673387Z",
+    "root": "C:\\Users\\paulc\\.config\\opencode\\dev\\ref\\opencode-dev",
+    "include_patterns": [
+      "src/**/*.ts"
+    ],
+    "exclude_patterns": [
+      "**/*.test.ts",
+      "dist/**",
+      "node_modules/**",
+      "**/*.md",
+      "docs/**",
+      "assets/**",
+      "bin/**",
+      "packages/**",
+      "uvscripts/**",
+      ".github/**",
+      ".sisyphus/**",
+      ".opencode/**",
+      "signatures/**",
+      "script/**"
+    ],
+    "exceptions": []
+  },
+  "file_hashes": {
+    "sdks\\vscode\\src\\extension.ts": "b5512b59465bde2d361ebad8c44ea257"
+  },
+  "folder_hashes": {
+    "sdks": "",
+    "sdks/vscode/src": "",
+    "sdks/vscode": "",
+    ".": "b902b3c2e92d2975c76c4241c1463145"
+  }
+}

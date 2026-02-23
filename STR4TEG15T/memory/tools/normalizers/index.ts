@@ -1,0 +1,1 @@
+export { normalizeDecision } from './decision';

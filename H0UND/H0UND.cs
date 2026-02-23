@@ -11,10 +11,14 @@ using P4NTH30N.C0MMON.Versioning;
 using P4NTH30N.H0UND.Application.Analytics;
 using P4NTH30N.H0UND.Application.Polling;
 using P4NTH30N.H0UND.Domain.Signals;
+using H0UND.Infrastructure.Tray;
+using H0UND.Infrastructure.BootTime;
+using H0UND.Services.Orchestration;
 using P4NTH30N.H0UND.Infrastructure.Polling;
 using P4NTH30N.C0MMON.Services.Display;
 using P4NTH30N.H0UND.Services;
 using P4NTH30N.Services;
+using System.Windows.Forms;
 
 namespace P4NTH30N;
 
@@ -53,6 +57,10 @@ internal class Program
 	private static readonly SystemDegradationManager s_degradation = new(logger: msg => Dashboard.AddLog(msg, "yellow"));
 	private static readonly OperationTracker s_opTracker = new(TimeSpan.FromMinutes(5));
 	private static C0MMON.Monitoring.HealthCheckService? s_healthService;
+	private static ConsoleWindowManager? s_consoleWindowManager;
+	private static ServiceOrchestrator? s_serviceOrchestrator;
+	private static TrayHost? s_trayHost;
+	private static volatile bool s_exitRequested;
 
 	// DECISION_025: Anomaly detection for jackpot patterns
 	private static readonly AnomalyDetector s_anomalyDetector = new(
@@ -83,9 +91,22 @@ internal class Program
 
 	static void Main(string[] args)
 	{
+		bool backgroundMode = args.Any(a => a.Equals("--background", StringComparison.OrdinalIgnoreCase));
+		s_consoleWindowManager = new ConsoleWindowManager();
+		StartTrayHost();
+		InitializeServiceOrchestrator();
+
+		if (backgroundMode)
+		{
+			s_consoleWindowManager.Hide();
+		}
+
 		MongoUnitOfWork uow = s_uow;
 
-		// DECISION_085: Initialize display pipeline before anything else
+		// Show splash screen with version and random Strategist excerpt
+		Dashboard.ShowSplash(Header.Version);
+
+		// DECISION_085: Initialize display pipeline after splash
 		DisplayEventBus displayBus = Dashboard.InitializeDisplayPipeline();
 
 		// Initialize idempotent signal generation infrastructure
@@ -122,26 +143,39 @@ internal class Program
 		PollingWorker pollingWorker = new PollingWorker(balanceProviderFactory);
 		s_healthService = new C0MMON.Monitoring.HealthCheckService(uow.DatabaseProvider, s_apiCircuit, s_mongoCircuit, uow);
 
-		// Initialize dashboard with startup info
-		Dashboard.AddLog($"{Header.Version}", "blue");
-		Dashboard.AddLog("H0UND Started", "blue");
-		Dashboard.AddLog($"Priority: {(UsePriorityCalculation ? "ON" : "OFF (Full Sweep)")}", "blue");
-		Dashboard.AddAnalyticsLog("Analytics engine initialized", "cyan");
-		Dashboard.AddAnalyticsLog("Awaiting telemetry...", "grey");
+		// Show loading status on splash
+		Dashboard.ShowSplashStatus("Initializing signal generation...");
 
-		// Set total credentials count
+		// Load credentials and show status on splash
+		Dashboard.ShowSplashStatus("Loading credentials...");
 		try
 		{
 			var allCreds = uow.Credentials.GetAll();
 			Dashboard.TotalCredentials = allCreds.Count();
-			Dashboard.AddLog($"Loaded {Dashboard.TotalCredentials} credentials", "green");
+			Dashboard.TotalEnabledBalance = allCreds.Where(c => c.Enabled && !c.Banned).Sum(c => c.Balance);
+			Dashboard.ShowSplashStatus($"Loaded {Dashboard.TotalCredentials} credentials");
 		}
 		catch (Exception ex)
 		{
-			Dashboard.AddLog($"Warning: Could not load credential count: {ex.Message}", "yellow");
+			Dashboard.ShowSplashStatus($"Warning: Could not load credentials: {ex.Message}");
 		}
 
-		while (true)
+		// Load schedule, withdraw accounts, and deposit data before showing UI
+		Dashboard.ShowSplashStatus("Loading jackpot schedule...");
+		RefreshDashboardSchedule(uow);
+		Dashboard.ShowSplashStatus("Schedule loaded");
+
+		// Initialize dashboard with startup info
+		Dashboard.AddLog("H0UND Started", "blue");
+		Dashboard.AddLog($"Priority: {(UsePriorityCalculation ? "ON" : "OFF (Full Sweep)")}", "blue");
+		Dashboard.AddAnalyticsLog("Analytics engine initialized", "cyan");
+		Dashboard.AddAnalyticsLog("Awaiting telemetry...", "grey");
+		Dashboard.AddLog($"Loaded {Dashboard.TotalCredentials} credentials", "green");
+
+		// Wait a moment for user to read splash, then clear for UI
+		Thread.Sleep(1500);
+
+		while (!s_exitRequested)
 		{
 			DateTime lastHealthCheck = DateTime.MinValue;
 
@@ -150,7 +184,7 @@ internal class Program
 				double lastRetrievedGrand = 0;
 				Credential? lastCredential = null;
 
-				while (true)
+				while (!s_exitRequested)
 				{
 					// Handle pause state
 					if (Dashboard.IsPaused)
@@ -484,6 +518,155 @@ internal class Program
 				}
 			}
 		}
+
+		s_serviceOrchestrator?.StopAllAsync().GetAwaiter().GetResult();
+		s_serviceOrchestrator?.Dispose();
+		s_trayHost?.Dispose();
+		s_consoleWindowManager?.Dispose();
+	}
+
+	private static void StartTrayHost()
+	{
+		Thread trayThread = new(() =>
+		{
+			Application.EnableVisualStyles();
+			s_trayHost = new TrayHost(
+				new TrayCallback(
+					onShowRequested: () => s_consoleWindowManager?.Show(),
+					onHideRequested: () => s_consoleWindowManager?.Hide(),
+					onExitRequested: () => s_exitRequested = true
+				)
+			);
+			Application.Run();
+		});
+
+		trayThread.IsBackground = true;
+		trayThread.Name = "TrayHostThread";
+		trayThread.SetApartmentState(ApartmentState.STA);
+		trayThread.Start();
+	}
+
+	private static void InitializeServiceOrchestrator()
+	{
+		var autostartConfigPath = ResolveAutostartConfigPath();
+		var autostartConfig = AutostartConfig.LoadOrDefault(autostartConfigPath);
+
+		// Pass startup config for delay/staggering support
+		s_serviceOrchestrator = new ServiceOrchestrator(
+			TimeSpan.FromSeconds(30),
+			autostartConfig.Startup);
+
+		s_serviceOrchestrator.OrchestratorEvent += (_, e) =>
+			Dashboard.AddLog($"[Services] {e.ServiceName}: {e.EventType} - {e.Message}", "grey");
+
+		if (autostartConfig.Services.Count == 0)
+		{
+			Dashboard.AddLog(
+				$"No services found in autostart config: {autostartConfigPath}",
+				"yellow");
+		}
+
+		foreach (var service in autostartConfig.Services)
+		{
+			// Use NodeManagedService for Node.js services with extended configuration
+			bool hasNodeConfig = !string.IsNullOrWhiteSpace(service.WorkingDirectory)
+				|| service.Environment.Count > 0
+				|| service.StartupDelay > 0
+				|| service.Type.Equals("node", StringComparison.OrdinalIgnoreCase);
+
+			if (hasNodeConfig)
+			{
+				s_serviceOrchestrator.RegisterService(new NodeManagedService(
+					service.Name,
+					service.Executable,
+					service.Arguments,
+					service.HealthCheckUrl,
+					service.WorkingDirectory,
+					service.Environment,
+					service.StartupDelay));
+				continue;
+			}
+
+			if (service.Type.Equals("http", StringComparison.OrdinalIgnoreCase)
+				&& !string.IsNullOrWhiteSpace(service.HealthCheckUrl))
+			{
+				s_serviceOrchestrator.RegisterService(new HttpManagedService(
+					service.Name,
+					service.Executable,
+					service.Arguments,
+					service.HealthCheckUrl));
+				continue;
+			}
+
+			s_serviceOrchestrator.RegisterService(new StdioManagedService(
+				service.Name,
+				service.Executable,
+				service.Arguments));
+		}
+
+		// Initialize ToolHive workloads if enabled
+		if (autostartConfig.ToolHive.Enabled && autostartConfig.ToolHive.AutoStartWorkloads.Count > 0)
+		{
+			var toolHiveService = new ToolHiveWorkloadService(autostartConfig.ToolHive);
+			toolHiveService.LogMessage += (_, msg) => Dashboard.AddLog(msg, "grey");
+
+			// Start ToolHive workloads after a brief delay to let desktop initialize
+			_ = Task.Run(async () =>
+			{
+				await Task.Delay(5000); // Wait for ToolHive desktop to initialize
+				var started = await toolHiveService.StartWorkloadsAsync();
+				Dashboard.AddLog($"[ToolHive] Started {started.Count}/{autostartConfig.ToolHive.AutoStartWorkloads.Count} workloads", "green");
+			});
+		}
+
+		// Start all services (with stagger/delay from StartupConfig)
+		_ = s_serviceOrchestrator.StartAllAsync();
+	}
+
+	private static string ResolveAutostartConfigPath()
+	{
+		var envPath = Environment.GetEnvironmentVariable("P4NTH30N_AUTOSTART_CONFIG");
+		if (!string.IsNullOrWhiteSpace(envPath) && File.Exists(envPath))
+		{
+			return envPath;
+		}
+
+		var candidates = new[]
+		{
+			@"C:\P4NTH30N\config\autostart.json",
+			Path.Combine(AppContext.BaseDirectory, "config", "autostart.json"),
+			Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "config", "autostart.json")),
+		};
+
+		foreach (var candidate in candidates)
+		{
+			if (File.Exists(candidate))
+			{
+				return candidate;
+			}
+		}
+
+		return candidates[0];
+	}
+
+	private sealed class TrayCallback : ITrayCallback
+	{
+		private readonly Action _onShowRequested;
+		private readonly Action _onHideRequested;
+		private readonly Action _onExitRequested;
+
+		public TrayCallback(Action onShowRequested, Action onHideRequested, Action onExitRequested)
+		{
+			_onShowRequested = onShowRequested;
+			_onHideRequested = onHideRequested;
+			_onExitRequested = onExitRequested;
+		}
+
+		public void OnShowRequested() => _onShowRequested();
+
+		public void OnHideRequested() => _onHideRequested();
+
+		public void OnExitRequested() => _onExitRequested();
 	}
 
 	/// <summary>

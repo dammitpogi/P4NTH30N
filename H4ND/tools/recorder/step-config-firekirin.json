@@ -5,6 +5,7 @@
   "steps": [
     {
       "stepId": 1,
+      "enabled": true,
       "phase": "Login",
       "takeScreenshot": false,
       "screenshotReason": "Initial state - login page before any interaction",
@@ -20,15 +21,16 @@
         "entryGate": "Chrome CDP running on port 9222",
         "exitGate": "Page loaded, readyState complete, login form visible"
       },
-      "breakpoint": false,
-      "url": "http://web.orionstars.org/hot_play/orionstars/"
+      "breakpoint": true,
+      "url": "http://play.firekirin.in/web_mobile/firekirin/"
     },
     {
       "stepId": 2,
+      "enabled": true,
       "phase": "Login",
       "takeScreenshot": true,
       "screenshotReason": "All buttons and fields are visible at this point for confirmation.",
-      "comment": "Click account field - cursor visible in field",
+      "comment": "Username Field",
       "tool": "none",
       "action": "click",
       "coordinates": {
@@ -46,10 +48,11 @@
     },
     {
       "stepId": 3,
+      "enabled": true,
       "phase": "Login",
       "takeScreenshot": false,
       "screenshotReason": "Typing action - no visual change until complete",
-      "comment": "Type username via typeChars (40ms/char) - text accepted by Canvas",
+      "comment": "Username Field",
       "tool": "none",
       "action": "type",
       "coordinates": {
@@ -66,6 +69,7 @@
     },
     {
       "stepId": 4,
+      "enabled": true,
       "phase": "Login",
       "takeScreenshot": false,
       "screenshotReason": "Password field focused, username entered",
@@ -87,6 +91,7 @@
     },
     {
       "stepId": 5,
+      "enabled": true,
       "phase": "Login",
       "takeScreenshot": false,
       "screenshotReason": "Typing action - password masked",
@@ -107,6 +112,7 @@
     },
     {
       "stepId": 6,
+      "enabled": true,
       "phase": "Login",
       "takeScreenshot": false,
       "screenshotReason": "Login button clicked, authentication in progressfdfdf",
@@ -128,6 +134,7 @@
     },
     {
       "stepId": 7,
+      "enabled": true,
       "phase": "Login",
       "takeScreenshot": true,
       "screenshotReason": "This is where Login errors will happen. They will appear in a red bar in the center of the screen. We should be polling the screen at after clicking login. We are watching for server errors: to retry, account issues: to know if we've been banned, login prompts: once sucessfully logged in - sometimes we get welcome prompts. Sometimes more than one. Sometimes none.",
@@ -148,10 +155,25 @@
           "Grand jackpot value loaded"
         ]
       },
-      "breakpoint": false
+      "breakpoint": false,
+      "conditional": {
+        "condition": {
+          "type": "text-contains",
+          "description": "a red banner with text containing Server Timed Out or similar appears center screen."
+        },
+        "onTrue": {
+          "action": "goto",
+          "gotoStep": 1,
+          "comment": "5x) then push UnlockTimeout 5 minutes for the credential. (Unlocked: false"
+        },
+        "onFalse": {
+          "action": "continue"
+        }
+      }
     },
     {
       "stepId": 8,
+      "enabled": true,
       "phase": "GameSelection",
       "takeScreenshot": true,
       "screenshotReason": "An Announcemnet window is normally present here. The button clicked closes it.",
@@ -179,6 +201,7 @@
     },
     {
       "stepId": 9,
+      "enabled": true,
       "phase": "GameSelection",
       "takeScreenshot": true,
       "screenshotReason": "The game was not found on the first page. So we select the next button.",
@@ -206,6 +229,7 @@
     },
     {
       "stepId": 10,
+      "enabled": true,
       "phase": "GameSelection",
       "takeScreenshot": true,
       "screenshotReason": "Game was found on this page. So the game button is clicked.",
@@ -233,6 +257,7 @@
     },
     {
       "stepId": 11,
+      "enabled": true,
       "phase": "GameSelection",
       "takeScreenshot": false,
       "screenshotReason": "If the game has been banned by the platform, clicking it will loop you back to the main menu. Wait for balance and jackpots to load in. If they dont after 1 minute then the game failed to load. go back to lobby and try again. Sometimes its a network thing.",
@@ -254,6 +279,7 @@
     },
     {
       "stepId": 12,
+      "enabled": true,
       "phase": "Spin",
       "takeScreenshot": false,
       "screenshotReason": "Holding Spin opens the Auto-Spin button.",
@@ -282,6 +308,7 @@
     },
     {
       "stepId": 13,
+      "enabled": true,
       "phase": "Spin",
       "takeScreenshot": false,
       "screenshotReason": "This button is for the Auto-Spin",
@@ -309,6 +336,7 @@
     },
     {
       "stepId": 14,
+      "enabled": true,
       "phase": "Spin",
       "takeScreenshot": true,
       "screenshotReason": "Check account balances, check jackpots.",
@@ -330,6 +358,7 @@
     },
     {
       "stepId": 15,
+      "enabled": true,
       "phase": "Spin",
       "takeScreenshot": false,
       "screenshotReason": "",
@@ -356,6 +385,7 @@
     },
     {
       "stepId": 16,
+      "enabled": true,
       "phase": "Logout",
       "takeScreenshot": false,
       "screenshotReason": "",
@@ -377,6 +407,7 @@
     },
     {
       "stepId": 17,
+      "enabled": true,
       "phase": "Logout",
       "takeScreenshot": false,
       "screenshotReason": "",
@@ -404,6 +435,7 @@
     },
     {
       "stepId": 18,
+      "enabled": true,
       "phase": "Logout",
       "takeScreenshot": true,
       "screenshotReason": "The URL can take you to either the Login Screen or the Main Menu dependent on session state.",
@@ -424,6 +456,7 @@
     },
     {
       "stepId": 19,
+      "enabled": true,
       "phase": "Logout",
       "takeScreenshot": false,
       "screenshotReason": "",
@@ -450,6 +483,7 @@
     },
     {
       "stepId": 20,
+      "enabled": true,
       "phase": "Logout",
       "takeScreenshot": false,
       "screenshotReason": "",

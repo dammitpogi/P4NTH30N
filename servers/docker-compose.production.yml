@@ -1,0 +1,90 @@
+services:
+  mongodb:
+    image: mongo:7
+    container_name: mongodb-v2-local
+    restart: unless-stopped
+    networks:
+      - mcp-network
+    volumes:
+      - mongodb-data:/data/db
+
+  decisions-server-v2:
+    build:
+      context: ./decisions-server-v2
+      dockerfile: Dockerfile
+    container_name: decisions-server-v2
+    ports:
+      - '127.0.0.1:3000:3000'
+    environment:
+      PORT: '3000'
+      BIND_ADDRESS: '0.0.0.0'
+      MCP_AUTH_TOKEN: ${MCP_AUTH_TOKEN}
+      NODE_ENV: production
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'wget', "--header=Origin: http://localhost:5173", '--no-verbose', '--tries=1', '--spider', 'http://localhost:3000/health']
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    networks:
+      - mcp-network
+
+  mongodb-p4nth30n-v2:
+    build:
+      context: ./mongodb-p4nth30n-v2
+      dockerfile: Dockerfile
+    container_name: mongodb-p4nth30n-v2
+    ports:
+      - '127.0.0.1:3001:3001'
+    environment:
+      PORT: '3001'
+      BIND_ADDRESS: '0.0.0.0'
+      MCP_AUTH_TOKEN: ${MCP_AUTH_TOKEN}
+      MONGODB_URI: ${MONGODB_URI}
+      NODE_ENV: production
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'wget', "--header=Origin: http://localhost:5173", '--no-verbose', '--tries=1', '--spider', 'http://localhost:3001/ready']
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    networks:
+      - mcp-network
+    depends_on:
+      - mongodb
+
+  rag-server-v2:
+    build:
+      context: ./rag-server-v2
+      dockerfile: Dockerfile
+    container_name: rag-server-v2
+    ports:
+      - '127.0.0.1:3002:3002'
+    environment:
+      PORT: '3002'
+      BIND_ADDRESS: '0.0.0.0'
+      MCP_AUTH_TOKEN: ${MCP_AUTH_TOKEN}
+      VECTOR_STORE_PATH: ${VECTOR_STORE_PATH}
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL}
+      NODE_ENV: production
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'wget', "--header=Origin: http://localhost:5173", '--no-verbose', '--tries=1', '--spider', 'http://localhost:3002/health']
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    networks:
+      - mcp-network
+    volumes:
+      - rag-data:/data/vector-store
+
+networks:
+  mcp-network:
+    driver: bridge
+
+volumes:
+  rag-data:
+  mongodb-data:

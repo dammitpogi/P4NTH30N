@@ -60,6 +60,7 @@ Options:
   --password    Account password
   --spins       Number of spins (default: 3)
   --from-mongo  Pull credentials from MongoDB (requires T00L5ET)
+  --use-config  Load and execute steps from step-config-firekirin.json
 
 Examples:
   bun run run.ts firekirin --username=PaulPP9fk --password=mypass --spins=5
@@ -72,6 +73,7 @@ let username = getArg('username');
 let password = getArg('password');
 const spins = parseInt(getArg('spins', '3')!, 10);
 const fromMongo = args.includes('--from-mongo');
+const useConfig = args.includes('--use-config');
 
 if (fromMongo && (!username || !password)) {
   const game = platform === 'firekirin' ? 'FireKirin' : 'OrionStars';
@@ -99,7 +101,7 @@ console.log(`${'='.repeat(60)}\n`);
 
 let result: any;
 if (platform === 'firekirin') {
-  result = await runFireKirinWorkflow({ username, password, spins });
+  result = await runFireKirinWorkflow({ username, password, spins, useConfig });
 } else {
   result = await runOrionStarsWorkflow({ username, password, spins });
 }

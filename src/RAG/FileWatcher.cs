@@ -33,6 +33,36 @@ public sealed class FileWatcher : IDisposable
 	}
 
 	/// <summary>
+	/// Creates a FileWatcher from RagActivationConfig.FileWatcher options.
+	/// </summary>
+	public static FileWatcher? FromRagConfig(IngestionPipeline ingestion, RagActivationConfig config)
+	{
+		if (!config.FileWatcher.Enabled)
+		{
+			Console.WriteLine("[FileWatcher] Disabled in configuration");
+			return null;
+		}
+
+		var fwConfig = new FileWatcherConfig
+		{
+			WatchPaths = config.FileWatcher.WatchPaths,
+			FilePatterns = config.FileWatcher.FilePatterns,
+			DebounceMinutes = config.FileWatcher.DebounceMinutes,
+			ExcludeDirectories = new HashSet<string>(config.FileWatcher.ExcludeDirectories, StringComparer.OrdinalIgnoreCase),
+		};
+		return new FileWatcher(ingestion, fwConfig);
+	}
+
+	/// <summary>
+	/// Checks if file watching is enabled in the config.
+	/// </summary>
+	public static bool IsEnabled()
+	{
+		var config = RagActivationConfig.LoadOrDefault();
+		return config.FileWatcher.Enabled;
+	}
+
+	/// <summary>
 	/// Starts watching all configured directories.
 	/// </summary>
 	public void Start()

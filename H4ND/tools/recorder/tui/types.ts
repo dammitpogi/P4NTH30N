@@ -1,8 +1,9 @@
 // TUI Types for Recorder Macro Editor
-import type { CanvasBounds, RelativeCoordinate } from '../types';
+import type { CanvasBounds, RelativeCoordinate, ConditionalLogic } from '../types';
 
 export interface MacroStep {
   stepId: number;
+  enabled?: boolean;
   platform?: 'firekirin' | 'orionstars';  // Optional: filter steps by platform
   phase: 'Login' | 'GameSelection' | 'Spin' | 'Logout' | 'DismissModals';
   takeScreenshot: boolean;
@@ -25,6 +26,10 @@ export interface MacroStep {
     progressIndicators?: string[];
   };
   breakpoint: boolean;
+  // Conditional logic for error handling
+  conditional?: ConditionalLogic;
+  // Goto target for error recovery
+  gotoStep?: number;
   // Runtime state (not persisted)
   _status?: 'pending' | 'running' | 'passed' | 'failed' | 'skipped';
   _lastResult?: string;
@@ -55,6 +60,7 @@ export type ViewMode =
   | 'run-mode'
   | 'screenshot-preview'
   | 'session-select'
+  | 'conditional-edit'
   | 'help';
 
 export type EditField =
@@ -73,7 +79,9 @@ export type EditField =
   | 'screenshotReason'
   | 'comment'
   | 'entryGate'
-  | 'exitGate';
+  | 'exitGate'
+  | 'gotoStep'
+  | 'conditional';
 
 export const EDIT_FIELDS: EditField[] = [
   'phase', 'action', 'tool',
@@ -82,6 +90,7 @@ export const EDIT_FIELDS: EditField[] = [
   'input', 'url', 'holdMs', 'delayMs',
   'takeScreenshot', 'screenshotReason',
   'comment', 'entryGate', 'exitGate',
+  'gotoStep', 'conditional',
 ];
 
 export const PHASES = ['Login', 'GameSelection', 'Spin', 'Logout', 'DismissModals'] as const;
@@ -106,6 +115,9 @@ export interface AppState {
   sessionDir: string;    // Screenshot session directory
   dirty: boolean;        // Unsaved changes
   statusMessage: string; // Bottom status bar message
+  conditionalCursor: number;
+  conditionalEditing: boolean;
+  conditionalEditBuffer: string;
   statusTimeout?: ReturnType<typeof setTimeout>;
   screenRows: number;
   screenCols: number;

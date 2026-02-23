@@ -1,0 +1,45 @@
+{
+  "services": [
+    {
+      "name": "FourEyes MCP",
+      "type": "http",
+      "executable": "node",
+      "workingDirectory": "C:\\P4NTH30N\\tools\\mcp-foureyes",
+      "arguments": "server.js --http",
+      "environment": {
+        "CDP_HOST": "127.0.0.1",
+        "CDP_PORT": "9222",
+        "LMSTUDIO_URL": "http://localhost:1234",
+        "MCP_PORT": "5302"
+      },
+      "healthCheckUrl": "http://127.0.0.1:5302/mcp",
+      "startupDelay": 5
+    },
+    {
+      "name": "Honeybelt MCP",
+      "type": "http",
+      "executable": "node",
+      "workingDirectory": "C:\\P4NTH30N\\tools\\mcp-development\\servers\\honeybelt-server",
+      "arguments": "dist/index.js --http",
+      "environment": {
+        "MCP_PORT": "5303"
+      },
+      "healthCheckUrl": "http://127.0.0.1:5303/mcp",
+      "startupDelay": 5
+    }
+  ],
+  "toolhive": {
+    "enabled": true,
+    "autoStartWorkloads": [
+      "mongodb-p4nth30n",
+      "decisions-server",
+      "foureyes-mcp",
+      "honeybelt-server",
+      "rag-server"
+    ]
+  },
+  "startup": {
+    "delaySeconds": 30,
+    "serviceStartInterval": 5
+  }
+}

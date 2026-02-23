@@ -157,3 +157,42 @@ export function getTermSize(): { rows: number; cols: number } {
 export function flush(content: string): void {
   process.stdout.write(content);
 }
+
+// Word-wrap text to fit within a given width
+export function wordWrap(text: string, width: number): string[] {
+  if (!text || width <= 0) return [];
+  
+  const words = text.split(' ');
+  const lines: string[] = [];
+  let currentLine = '';
+  
+  for (const word of words) {
+    // If word itself is longer than width, break it up
+    if (word.length > width) {
+      if (currentLine.length > 0) {
+        lines.push(currentLine);
+        currentLine = '';
+      }
+      // Break long word into chunks
+      for (let i = 0; i < word.length; i += width) {
+        lines.push(word.slice(i, i + width));
+      }
+      continue;
+    }
+    
+    if (currentLine.length === 0) {
+      currentLine = word;
+    } else if (currentLine.length + 1 + word.length <= width) {
+      currentLine += ' ' + word;
+    } else {
+      lines.push(currentLine);
+      currentLine = word;
+    }
+  }
+  
+  if (currentLine.length > 0) {
+    lines.push(currentLine);
+  }
+  
+  return lines;
+}

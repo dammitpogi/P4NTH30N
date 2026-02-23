@@ -1,13 +1,11 @@
 #!/usr/bin/env bun
 import { RecorderTUI } from './tui/app';
-import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { join } from 'path';
 
-const __dir = dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
 
-// Parse --config=path argument, default to step-config.json in recorder dir
-let configPath = join(__dir, 'step-config.json');
+// Parse --config=path argument, default to step-config.json in current directory
+let configPath = join(process.cwd(), 'step-config.json');
 for (const arg of args) {
   if (arg.startsWith('--config=')) {
     configPath = arg.split('=')[1];

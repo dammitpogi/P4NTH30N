@@ -1,0 +1,125 @@
+{
+  "id": "decisions-server-v2",
+  "name": "P4NTH30N Decisions Server v2",
+  "description": "MCP server for decision management and querying",
+  "transport": "http",
+  "connection": {
+    "url": "http://localhost:3000",
+    "healthEndpoint": "/health",
+    "readyEndpoint": "/ready"
+  },
+  "tools": [
+    {
+      "name": "find_decision_by_id",
+      "description": "Find a decision by its ID",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "decisionId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "decisionId"
+        ]
+      }
+    },
+    {
+      "name": "find_decisions_by_status",
+      "description": "Find decisions by status",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "Proposed",
+              "Approved",
+              "InProgress",
+              "Completed",
+              "Rejected"
+            ]
+          },
+          "limit": {
+            "type": "number",
+            "default": 10
+          }
+        },
+        "required": [
+          "status"
+        ]
+      }
+    },
+    {
+      "name": "create_decision",
+      "description": "Create a new decision",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "decisionId": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "string",
+            "enum": [
+              "Low",
+              "Medium",
+              "High",
+              "Critical"
+            ]
+          },
+          "content": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "decisionId",
+          "title",
+          "category",
+          "priority"
+        ]
+      }
+    },
+    {
+      "name": "update_decision_status",
+      "description": "Update a decision status",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "decisionId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "Proposed",
+              "Approved",
+              "InProgress",
+              "Completed",
+              "Rejected"
+            ]
+          }
+        },
+        "required": [
+          "decisionId",
+          "status"
+        ]
+      }
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "envVar": "MCP_AUTH_TOKEN"
+  },
+  "tags": [
+    "decisions",
+    "database",
+    "mcp"
+  ]
+}

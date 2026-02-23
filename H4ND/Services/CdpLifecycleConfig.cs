@@ -18,7 +18,8 @@ public sealed class CdpLifecycleConfig
 	public int MaxAutoRestarts { get; set; } = 3;
 	public int[] RestartBackoffSeconds { get; set; } = [5, 10, 30];
 	public int GracefulShutdownTimeoutSeconds { get; set; } = 10;
-	public string[] AdditionalArgs { get; set; } = ["--no-sandbox", "--disable-gpu", "--ignore-certificate-errors", "--mute-audio"];
+	// CRIT-103: Removed --disable-gpu to enable GPU acceleration for canvas games
+	public string[] AdditionalArgs { get; set; } = ["--no-sandbox", "--ignore-certificate-errors", "--mute-audio"];
 }
 
 /// <summary>

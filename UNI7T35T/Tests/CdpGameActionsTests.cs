@@ -117,7 +117,7 @@ public static class CdpGameActionsTests
 			cdp.SetEvaluateResponse("window.parent.Grand", 0.0);
 			cdp.SetEvaluateResponse("window.Grand", 18000.0);
 			JackpotReader reader = new();
-			double grand = reader.ReadJackpotAsync(cdp, "FireKirin", "Grand").GetAwaiter().GetResult();
+			double? grand = reader.ReadJackpotAsync(cdp, "FireKirin", "Grand").GetAwaiter().GetResult();
 			Assert(grand == 180.0, $"JackpotReader: Fallback to window.Grand = {grand} (expected 180.0)");
 		}
 
@@ -125,8 +125,8 @@ public static class CdpGameActionsTests
 		{
 			MockCdpClient cdp = new();
 			JackpotReader reader = new();
-			double grand = reader.ReadJackpotAsync(cdp, "FireKirin", "Grand").GetAwaiter().GetResult();
-			Assert(grand == 0, "JackpotReader: All selectors fail returns 0");
+			double? grand = reader.ReadJackpotAsync(cdp, "FireKirin", "Grand").GetAwaiter().GetResult();
+			Assert(grand == null, "JackpotReader: All selectors fail returns null");
 		}
 
 		// Test 10: JackpotReader reads all four tiers

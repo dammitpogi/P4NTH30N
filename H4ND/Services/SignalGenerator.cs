@@ -57,27 +57,50 @@ public sealed class SignalGenerator
 
 			Console.WriteLine($"[SignalGenerator] Found {eligible.Count} eligible credentials");
 
-			// 2. Shuffle to avoid bias
-			Random rng = new();
-			List<Credential> shuffled = eligible.OrderBy(_ => rng.Next()).ToList();
-
-			// 3. Generate signals with round-robin over credentials
-			int credIndex = 0;
-			for (int i = 0; i < count; i++)
+			// 2. Exclude credentials that already have an active signal
+			List<Credential> available = [];
+			foreach (Credential cred in eligible)
 			{
-				Credential cred = shuffled[credIndex % shuffled.Count];
-				credIndex++;
-
-				// 4. Check for existing unacknowledged signal (no duplicates)
-				bool exists = _uow.Signals.Exists(new Signal { House = cred.House, Game = cred.Game, Username = cred.Username });
-				if (exists)
+				bool exists = _uow.Signals.Exists(new Signal
 				{
-					result.Skipped++;
-					Console.WriteLine($"[SignalGenerator] Skipped duplicate: {cred.Username}@{cred.Game}");
-					continue;
-				}
+					House = cred.House,
+					Game = cred.Game,
+					Username = cred.Username,
+				});
 
-				// 5. Assign priority
+				if (!exists)
+				{
+					available.Add(cred);
+				}
+			}
+
+			if (available.Count == 0)
+			{
+				result.Skipped = count;
+				result.Errors.Add("All eligible credentials already have active signals");
+				Console.WriteLine("[SignalGenerator] No available credentials without active signals");
+				sw.Stop();
+				result.Elapsed = sw.Elapsed;
+				return result;
+			}
+
+			int targetCount = Math.Min(count, available.Count);
+			result.Skipped = count - targetCount;
+			if (targetCount < count)
+			{
+				result.Errors.Add($"Requested {count} signals but only {targetCount} unique credentials were available");
+				Console.WriteLine($"[SignalGenerator] Underfill prevented: requested={count}, available={targetCount}");
+			}
+
+			// 3. Shuffle to avoid bias, then emit up to target count
+			Random rng = new();
+			List<Credential> shuffled = available.OrderBy(_ => rng.Next()).ToList();
+
+			for (int i = 0; i < targetCount; i++)
+			{
+				Credential cred = shuffled[i];
+
+				// 4. Assign priority
 				float priority;
 				if (fixedPriority.HasValue && fixedPriority.Value >= 1 && fixedPriority.Value <= 4)
 				{
@@ -88,7 +111,7 @@ public sealed class SignalGenerator
 					priority = AssignPriority(rng);
 				}
 
-				// 6. Create and insert signal
+				// 5. Create and insert signal
 				try
 				{
 					Signal signal = new(priority, cred);

@@ -1,0 +1,28 @@
+services:
+  decisions-server:
+    image: p4nth30n/decisions-server-v2:dev
+    ports:
+      - '127.0.0.1:3000:3000'
+    environment:
+      BIND_ADDRESS: '127.0.0.1'
+      ENFORCE_ORIGIN: 'true'
+      ENFORCE_HOST_VALIDATION: 'true'
+      REQUIRE_BEARER_TOKEN: 'false'
+
+  mongodb-p4nth30n:
+    image: p4nth30n/mongodb-p4nth30n-v2:dev
+    ports:
+      - '127.0.0.1:3001:3001'
+    environment:
+      BIND_ADDRESS: '127.0.0.1'
+      ENFORCE_ORIGIN: 'true'
+      ENFORCE_HOST_VALIDATION: 'true'
+
+  rag-server:
+    image: p4nth30n/rag-server-v2:dev
+    ports:
+      - '127.0.0.1:3002:3002'
+    environment:
+      BIND_ADDRESS: '127.0.0.1'
+      ENFORCE_ORIGIN: 'true'
+      ENFORCE_HOST_VALIDATION: 'true'

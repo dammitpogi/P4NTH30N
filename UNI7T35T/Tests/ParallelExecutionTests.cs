@@ -49,6 +49,8 @@ public static class ParallelExecutionTests
 		Run("Test_SignalClaimResult_Factories", Test_SignalClaimResult_Factories);
 		Run("Test_ParallelMetrics_RecordsCorrectly", Test_ParallelMetrics_RecordsCorrectly);
 		Run("Test_ParallelMetrics_SuccessRate", Test_ParallelMetrics_SuccessRate);
+		Run("Test_ParallelMetrics_P95Latency", Test_ParallelMetrics_P95Latency);
+		Run("Test_ParallelMetrics_FailureMatrix", Test_ParallelMetrics_FailureMatrix);
 		Run("Test_ParallelConfig_Defaults", Test_ParallelConfig_Defaults);
 		Run("Test_UnifiedEntryPoint_ParseMode", Test_UnifiedEntryPoint_ParseMode);
 		Run("Test_SignalClone_IncludesClaimFields", Test_SignalClone_IncludesClaimFields);
@@ -225,6 +227,34 @@ public static class ParallelExecutionTests
 		return m.SuccessRate > 66 && m.SuccessRate < 67;
 	}
 
+	static bool Test_ParallelMetrics_P95Latency()
+	{
+		var m = new ParallelMetrics();
+		for (int i = 1; i <= 20; i++)
+		{
+			m.RecordSpinResult("W00", true, TimeSpan.FromMilliseconds(i * 100));
+		}
+
+		// 95th percentile of 100..2000 should be near high end, >= 1800
+		return m.P95SpinLatencyMs >= 1800 && m.P95SpinLatencyMs <= 2000;
+	}
+
+	static bool Test_ParallelMetrics_FailureMatrix()
+	{
+		var m = new ParallelMetrics();
+		m.RecordSpinResult("W00", false, TimeSpan.FromMilliseconds(100), "login_failed");
+		m.RecordSpinResult("W00", false, TimeSpan.FromMilliseconds(120), "auth failure 403");
+		m.RecordSpinResult("W00", false, TimeSpan.FromMilliseconds(140), "cdp timeout");
+
+		var matrix = m.GetFailureMatrix();
+		return matrix.TryGetValue("login_failed", out var login)
+			&& matrix.TryGetValue("auth_failure", out var auth)
+			&& matrix.TryGetValue("timeout", out var timeout)
+			&& login == 1
+			&& auth == 1
+			&& timeout == 1;
+	}
+
 	// --- Config Tests ---
 
 	static bool Test_ParallelConfig_Defaults()
@@ -234,7 +264,10 @@ public static class ParallelExecutionTests
 			&& config.ChannelCapacity == 10
 			&& config.MaxSignalsPerWorker == 100
 			&& config.PollIntervalSeconds == 1.0
-			&& config.ShadowMode == false;
+			&& config.ShadowMode == false
+			&& config.MaxConcurrentCdpOperations == 1
+			&& config.TargetP95LatencyMs > 0
+			&& config.TargetThroughputPerMinute > 0;
 	}
 
 	static bool Test_UnifiedEntryPoint_ParseMode()

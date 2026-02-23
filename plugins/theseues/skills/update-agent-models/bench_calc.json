@@ -1,0 +1,100 @@
+{
+  "constants": {
+    "MAX_CONTEXT_LENGTH": 2000000,
+    "MAX_GDPVAL_AA_ELO": 2000,
+    "MAX_INDEX_SCORE": 100,
+    "MAX_PERCENT_SCORE": 100
+  },
+  "model_selection_benchmarks": {
+    "Orchestrator": {
+      "description": "The central and highly important model responsible for strategic coordination, parallel delegation, problem-solving, and ensuring adherence to instructions across the entire workflow. Requires exceptional context handling for assimilating and managing extensive information.",
+      "benchmarks": {
+        "GDPval-AA ELO": {"weight": 0.25, "description": "Measures strategic decision-making, planning, and workflow orchestration, from Artificial Analysis GDPval-AA."},
+        "gpqa": {"weight": 0.2, "description": "Evaluates advanced reasoning and complex problem-solving abilities, crucial for overcoming workflow challenges, from Artificial Analysis API."},
+        "mmlu_pro": {"weight": 0.15, "description": "Assesses general knowledge and multi-task language understanding, vital for comprehending diverse tasks, from Artificial Analysis API."},
+        "intelligence_index": {"weight": 0.05, "description": "Overall intelligence index, reflecting the model's capacity for autonomous problem-solving, from Artificial Analysis API."},
+        "ifbench": {"weight": 0.15, "description": "Measures precise instruction following, critical for adhering to workflow directives, from Artificial Analysis API."},
+        "tau2": {"weight": 0.05, "description": "General efficiency and speed proxy, important for parallel delegation, from Artificial Analysis API and Tau²-Bench."},
+        "context_length": {"weight": 0.15, "description": "Indicates capacity to handle and manage large amounts of information across multiple agents and tasks, from OpenRouter API."}
+      },
+      "scoring_algorithm": "((GDPval_AA_ELO / MAX_GDPVAL_AA_ELO) * 0.22) + (gpqa * 0.2) + (mmlu_pro * 0.14) + ((intelligence_index / MAX_INDEX_SCORE) * 0.08) + (ifbench * 0.14) + (tau2 * 0.07) + ((context_length / MAX_CONTEXT_LENGTH) * 0.15)"
+    },
+    "Oracle": {
+      "description": "Architectural guidance and complex debugging. Requires advanced reasoning and problem-solving.",
+      "benchmarks": {
+        "gpqa": {"weight": 0.5, "description": "Evaluates advanced reasoning and complex problem-solving abilities, from Artificial Analysis API."},
+        "aime": {"weight": 0.2, "description": "Assesses mathematical reasoning and problem-solving, from Artificial Analysis API."},
+        "math_index": {"weight": 0.15, "description": "Overall mathematical capability index, from Artificial Analysis API."},
+        "mmlu_pro": {"weight": 0.1, "description": "Assesses general knowledge for broader architectural advice, from Artificial Analysis API."},
+        "hle": {"weight": 0.05, "description": "Measures comprehensive knowledge for debugging and understanding complex systems, from Artificial Analysis API and Humanity's Last Exam."}
+      },
+      "scoring_algorithm": "(gpqa * 0.45) + (aime * 0.2) + ((math_index / MAX_INDEX_SCORE) * 0.2) + (mmlu_pro * 0.1) + (hle * 0.05)"
+    },
+    "Explorer": {
+      "description": "Codebase discovery and pattern matching. Requires high speed and effective computer interaction.",
+      "benchmarks": {
+        "terminalbench_hard": {"weight": 0.4, "description": "Measures efficiency in terminal interaction and tool use, from Artificial Analysis API and Terminal-Bench."},
+        "tau2": {"weight": 0.25, "description": "General efficiency and speed proxy, from Artificial Analysis API and Tau²-Bench."},
+        "context_length": {"weight": 0.15, "description": "Indicates capacity to handle large inputs and codebases, from OpenRouter API."},
+        "mmlu_pro": {"weight": 0.1, "description": "Assesses general knowledge for understanding search queries and context, from Artificial Analysis API."},
+        "hle": {"weight": 0.05, "description": "Measures comprehensive knowledge for better discovery and contextual understanding, from Artificial Analysis API and Humanity's Last Exam."},
+        "coding_index": {"weight": 0.05, "description": "Overall coding capability index, for understanding code structures during discovery, from Artificial Analysis API."}
+      },
+      "scoring_algorithm": "(terminalbench_hard * 0.35) + (tau2 * 0.3) + ((context_length / MAX_CONTEXT_LENGTH) * 0.15) + (mmlu_pro * 0.05) + (hle * 0.05) + ((coding_index / MAX_INDEX_SCORE) * 0.1)"
+    },
+    "Librarian": {
+      "description": "Responsible for gathering context, inferring needs, synthesizing multiple sources into concise packets for context compression, and handling all writing tasks.",
+      "benchmarks": {
+        "hle": {"weight": 0.3, "description": "Measures comprehensive knowledge retrieval and understanding, crucial for inferring needs and synthesizing information, from Artificial Analysis API and Humanity's Last Exam."},
+        "context_length": {"weight": 0.25, "description": "Indicates capacity to handle and compress large documents and conversations, from OpenRouter API."},
+        "mmlu_pro": {"weight": 0.15, "description": "Assesses general language understanding and coherence, vital for effective writing and synthesis, from Artificial Analysis API."},
+        "intelligence_index": {"weight": 0.1, "description": "Reflects the model's ability to infer complex needs and generate insightful summaries, from Artificial Analysis API."},
+        "ifbench": {"weight": 0.1, "description": "Measures precise instruction following, for accurate synthesis and writing instructions, from Artificial Analysis API."},
+        "tau2": {"weight": 0.1, "description": "General efficiency and speed proxy, for efficient processing and synthesizing, from Artificial Analysis API and Tau²-Bench."}
+      },
+      "scoring_algorithm": "(hle * 0.25) + ((context_length / MAX_CONTEXT_LENGTH) * 0.3) + (mmlu_pro * 0.15) + ((intelligence_index / MAX_INDEX_SCORE) * 0.15) + (ifbench * 0.05) + (tau2 * 0.1)"
+    },
+    "Designer": {
+      "description": "Creates implementation plans for problems, researches code, and designs architectural solutions. Focuses on planning and research, not UI/UX creation.",
+      "benchmarks": {
+        "GDPval-AA ELO": {"weight": 0.3, "description": "Measures strategic planning and architectural design capabilities, from Artificial Analysis GDPval-AA."},
+        "gpqa": {"weight": 0.25, "description": "Evaluates advanced reasoning for complex problem decomposition and solution design, from Artificial Analysis API."},
+        "mmlu_pro": {"weight": 0.15, "description": "Assesses general knowledge and understanding for diverse problem domains, from Artificial Analysis API."},
+        "hle": {"weight": 0.1, "description": "Measures comprehensive knowledge retrieval for thorough research and planning, from Artificial Analysis API and Humanity's Last Exam."},
+        "ifbench": {"weight": 0.1, "description": "Measures precise instruction following, for adhering to planning constraints, from Artificial Analysis API."},
+        "coding_index": {"weight": 0.05, "description": "Overall coding capability index, for understanding code structure in plans, from Artificial Analysis API."},
+        "context_length": {"weight": 0.05, "description": "Indicates capacity to handle large design documents, from OpenRouter API."}
+      },
+      "scoring_algorithm": "((GDPval_AA_ELO / MAX_GDPVAL_AA_ELO) * 0.22) + (gpqa * 0.25) + (mmlu_pro * 0.17) + (hle * 0.1) + (ifbench * 0.1) + ((coding_index / MAX_INDEX_SCORE) * 0.11) + ((context_length / MAX_CONTEXT_LENGTH) * 0.05)"
+    },
+    "Fixer": {
+      "description": "The most critical and powerful model in the workflow, responsible for all development, implementation, and ensuring the entire workflow's success. Requires exceptional reasoning, instruction following, and comprehensive coding excellence, including live coding performance and efficient tool interaction.",
+      "benchmarks": {
+        "gpqa": {"weight": 0.07, "description": "Evaluates advanced reasoning and complex problem-solving abilities, crucial for development challenges, from Artificial Analysis API."},
+        "SWE-bench Pro": {"weight": 0.22, "description": "Evaluates performance on complex software engineering tasks, reflecting real-world development capability, from Scale SEAL."},
+        "SWE-bench Verified": {"weight": 0.18, "description": "Measures ability to verify and debug code, essential for robust development, from Live-SWE-agent."},
+        "livecodebench": {"weight": 0.15, "description": "Measures live coding performance, critical for dynamic development and rapid iteration, from Artificial Analysis API."},
+        "terminalbench_hard": {"weight": 0.1, "description": "Measures efficiency in terminal interaction and tool use, vital for navigating development environments, from Artificial Analysis API and Terminal-Bench."},
+        "mmlu_pro": {"weight": 0.05, "description": "Assesses general language understanding, crucial for comprehending diverse requirements and generating clear code, from Artificial Analysis API."},
+        "ifbench": {"weight": 0.08, "description": "Measures precise instruction following, critical for accurate implementation, from Artificial Analysis API."},
+        "coding_index": {"weight": 0.1, "description": "Overall coding capability index, providing a holistic view of development prowess, from Artificial Analysis API."},
+        "scicode": {"weight": 0.03, "description": "Measures scientific code generation, useful for specialized development tasks, from Artificial Analysis API."},
+        "tau2": {"weight": 0.02, "description": "General efficiency and speed proxy, contributing to overall development speed, from Artificial Analysis API and Tau²-Bench."}
+      },
+      "scoring_algorithm": "(gpqa * 0.07) + ((SWE_bench_Pro / MAX_PERCENT_SCORE) * 0.22) + ((SWE_bench_Verified / MAX_PERCENT_SCORE) * 0.18) + (livecodebench * 0.15) + (terminalbench_hard * 0.1) + (mmlu_pro * 0.05) + (ifbench * 0.08) + ((coding_index / MAX_INDEX_SCORE) * 0.1) + (scicode * 0.03) + (tau2 * 0.02)"
+    },
+    "Builder": {
+      "description": "An agent for code generation and verification, used when bypassing the full workflow. Shares similar development needs with Fixer but is invoked directly for specific code tasks.",
+      "benchmarks": {
+        "SWE-bench Pro": {"weight": 0.3, "description": "Evaluates performance on complex software engineering tasks, from Scale SEAL."},
+        "SWE-bench Verified": {"weight": 0.25, "description": "Measures ability to verify and debug code, from Live-SWE-agent."},
+        "livecodebench": {"weight": 0.15, "description": "Measures live coding performance, from Artificial Analysis API."},
+        "coding_index": {"weight": 0.1, "description": "Overall coding capability index, from Artificial Analysis API."},
+        "gpqa": {"weight": 0.1, "description": "Evaluates advanced reasoning for complex code generation, from Artificial Analysis API."},
+        "ifbench": {"weight": 0.05, "description": "Measures precise instruction following, for accurate code generation, from Artificial Analysis API."},
+        "mmlu_pro": {"weight": 0.05, "description": "Assesses general knowledge for understanding diverse requirements, from Artificial Analysis API."}
+      },
+      "scoring_algorithm": "((SWE_bench_Pro / MAX_PERCENT_SCORE) * 0.3) + ((SWE_bench_Verified / MAX_PERCENT_SCORE) * 0.25) + (livecodebench * 0.15) + ((coding_index / MAX_INDEX_SCORE) * 0.1) + (gpqa * 0.1) + (ifbench * 0.05) + (mmlu_pro * 0.05)"
+    }
+  }
+}

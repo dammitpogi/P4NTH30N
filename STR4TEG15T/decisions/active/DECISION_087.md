@@ -2,9 +2,13 @@
 
 **Decision ID**: DECISION_087
 **Category**: AUTO
-**Status**: Approved
+**Status**: **Phase 2 In Progress**
+**Phase 2 Start**: 2026-02-22
+**Phase 2 Focus**: Decision Template Enhancement Implementation
 **Priority**: Critical
 **Date**: 2026-02-21
+**Phase 1 Completed**: 2026-02-22 (Difficulty Classifier, Topology Selector, Quality Watcher, 8 agent prompts)
+**Phase 2 Research**: 2026-02-22 (ArXiv + Web research complete, Designer consultation complete)
 **Oracle Approval**: 98% (Assimilated - Research foundation strong)
 **Designer Approval**: 99% (Final - GO)
 
@@ -38,8 +42,35 @@ Per DECISION_086, the following directory structure is now implemented:
 - **Designer (Aegis)**: `D351GN3R/` - architectures/, consultations/, plans/, canon/
 - **Librarian (Provenance)**: `L1BR4R14N/` - research/, briefs/, references/, canon/
 - **Fixer (Vigil)**: `C0D3F1X/` - implementations/, bugfixes/, discoveries/, canon/
+- **OpenFixer**: `OP3NF1XER/` - deployments/, configs/, tools/, canon/
+- **Forgewright**: `F0RG3WR1GHT/` - triage/, fixes/, platforms/, canon/
 
-However, agent prompts at `C:\Users\paulc\.config\opencode\agents` do not reference these directories. Agents are unaware they can create documentation in their designated spaces.
+However, agent prompts have inconsistent coverage of the three critical requirements:
+1. **Directory Structure**: Reference to designated output directories
+2. **Documentation Creation**: Requirements to write artifacts to directories
+3. **RAG Ingestion**: Instructions to ingest all outputs into RAG
+
+**Status of Agent Prompts (as of 2026-02-22, FINAL):**
+| Agent | Location | Directories | Docs | RAG | Tool Examples | Status |
+|-------|----------|-------------|------|-----|---------------|--------|
+| Strategist | ~/.config/opencode/agents/ | Yes | Yes | Yes | Yes | Complete |
+| Oracle | ~/.config/opencode/agents/ | Yes | Yes | Yes | Yes | Complete |
+| Designer | ~/.config/opencode/agents/ | Yes | Yes | Yes | Yes | Complete |
+| Librarian | ~/.config/opencode/agents/ | Yes | Yes | Yes | Yes | Complete |
+| Explorer | ~/.config/opencode/agents/ | Yes | Yes | Yes | Yes | Complete |
+| Orchestrator | P4NTH30N/agents/ | Yes | Yes | Yes | Yes | Complete |
+| WindFixer | P4NTH30N/agents/ | Yes | Yes | Yes | Yes | Complete |
+| OpenFixer | P4NTH30N/agents/ | Yes | Yes | Yes | Yes | Complete |
+| Forgewright | P4NTH30N/agents/ | Yes | Yes | Yes | Yes | Complete |
+| Fixer (base) | P4NTH30N/agents/ | **DEPRECATED** | — | — | — | Replaced by OpenFixer |
+
+**Critical Gap**: CLOSED. All P4NTH30N/agents/ prompts now include:
+- Directory references with specific paths
+- Documentation requirements with file formats
+- RAG integration with ToolHive call examples
+- Proper tool syntax for rag_query and rag_ingest
+
+**RAG Server Configuration**: Added to `opencode.json` with SSE endpoint at `http://localhost:3002/mcp` and Bearer token authentication.
 
 ### Desired State
 A self-improving Pantheon where:
@@ -55,23 +86,48 @@ A self-improving Pantheon where:
 
 ### Requirements
 
-1. **REQ-001**: Agent Prompt Updates
-   - **Priority**: Must
-   - **Acceptance Criteria**: All 7 agent prompts updated with directory references and documentation requirements
+#### Phase 1 Complete (2026-02-22)
+
+1. **REQ-001**: Agent Prompt Updates - ~/.config/opencode/agents/ Directory
+   - **Status**: Complete
+   - **Acceptance Criteria**: All 5 agent prompts (Strategist, Oracle, Designer, Librarian, Explorer) updated with directory references, documentation requirements, and RAG ingestion
 
 2. **REQ-002**: Sub-Decision Authority Expansion
-   - **Priority**: Must
-   - **Acceptance Criteria**: Clear matrix of which agents can create which decision types; approval workflows defined
+   - **Status**: Complete
+   - **Acceptance Criteria**: Clear matrix defined; approval workflows established
 
-3. **REQ-003**: Automated Decision Scaffolding
+3. **REQ-003**: Foundation Tools
+   - **Status**: Complete
+   - **Acceptance Criteria**: Difficulty Classifier, Topology Selector, Quality Watcher implemented and tested
+
+#### Phase 2 In Progress (Critical Requirements)
+
+4. **REQ-004**: The Three Critical Elements (MANDATORY)
+   - **Priority**: **CRITICAL**
+   - **Status**: **IN PROGRESS**
+   - **Acceptance Criteria**: Every agent prompt MUST contain:
+     1. **Directory Structure**: Reference to designated output directories per DECISION_086
+     2. **Documentation Creation**: Explicit requirement to write artifacts to directories
+     3. **RAG Ingestion**: Instructions to ingest all outputs into RAG system
+   - **Target Prompts**: Orchestrator, WindFixer, OpenFixer, Forgewright
+
+5. **REQ-005**: Fixer Consolidation
+   - **Priority**: **CRITICAL**
+   - **Status**: **IN PROGRESS**
+   - **Acceptance Criteria**: 
+     - Base `fixer.md` deprecated and marked as obsolete
+     - Orchestrator updated to use `@openfixer` exclusively
+     - All `@fixer` references in workflows updated to `@openfixer`
+
+6. **REQ-006**: Automated Decision Scaffolding
    - **Priority**: Should
    - **Acceptance Criteria**: Agents can trigger decision creation via standardized format; templates in RAG
 
-4. **REQ-004**: Workflow Improvement Detection
+7. **REQ-007**: Workflow Improvement Detection
    - **Priority**: Should
    - **Acceptance Criteria**: Agents identify repetitive tasks, bottlenecks, and propose automation via decisions
 
-5. **REQ-005**: Decision Template Accessibility
+8. **REQ-008**: Decision Template Accessibility
    - **Priority**: Must
    - **Acceptance Criteria**: All agents can query RAG for decision templates; templates include metadata schema
 
@@ -127,9 +183,12 @@ Approval → Active Decision
 | ACT-005 | Update Designer prompt with directory refs | OpenFixer | **Completed** | High |
 | ACT-006 | Update Librarian prompt with directory refs | OpenFixer | **Completed** | High |
 | ACT-007 | Update Fixer prompts with directory refs | OpenFixer | **Completed** | High |
-| ACT-008 | Create decision templates for RAG | Strategist | Pending | Medium |
-| ACT-009 | Implement automated decision scaffolding | Forgewright | Pending | Medium |
-| ACT-010 | Test agent-initiated decision creation | Strategist | Pending | Medium |
+| ACT-008a | Ingest decision template into RAG | OpenFixer | Pending | High |
+| ACT-008b | Create revised template with new sections | Strategist | Pending | High |
+| ACT-009a | Update Create-Decision.ps1 with YAML frontmatter | OpenFixer | Pending | High |
+| ACT-009b | Add auto-numbering and index updates | OpenFixer | Pending | Medium |
+| ACT-009c | Integrate difficulty classifier for complexity tier | OpenFixer | Pending | Medium |
+| ACT-010 | Test full agent-initiated decision workflow | Strategist | Pending | Medium |
 | ACT-011 | Implement difficulty classifier (Phase 1) | OpenFixer | **Completed** | High |
 | ACT-012 | Implement topology selector (Phase 1) | OpenFixer | **Completed** | High |
 | ACT-013 | Implement quality watcher (Phase 1) | OpenFixer | **Completed** | High |
@@ -409,6 +468,121 @@ Approval → Active Decision
 
 ---
 
+---
+
+## Phase 2 Research: Decision Template Enhancement
+
+### Research Completed: 2026-02-22
+
+#### ArXiv Research Summary
+
+**Librarian deployed** to search for automated decision creation patterns. Found 6 highly relevant papers:
+
+| Paper | Key Finding | Application to DECISION_087 |
+|-------|-------------|------------------------------|
+| **AutoAgent** (arXiv:2502.05957) | Zero-code Agent OS with RAG-enabled pipelines, self-play customization for quality control | Template validation via RAG, self-improving decision quality |
+| **AgentCDM** (arXiv:2508.11995) | ACH-inspired scaffolding with two-stage training (structured → autonomous) | Five-Gate validation system for agent-initiated decisions |
+| **PathWise** (arXiv:2601.20539) | Decision graphs with policy/world-model/critic agents | Validation workflow with critic agents for decision approval |
+| **Safety Cases** (arXiv:2601.22773) | Reusable templates with claims/arguments/evidence taxonomy | Structured decision rationale with evidence types |
+| **WebArbiter** (arXiv:2601.21872) | Principle-guided justifications with verdict + action recommendation | Agent reasoning chain with explicit verdicts |
+| **AutoHealth** (arXiv:2602.01078) | Five-agent closed loop with uncertainty estimation | Uncertainty flags for decisions needing human review |
+
+**Key Insight**: All papers emphasize **structured templates + validation gates + traceability** as essential for autonomous decision creation.
+
+#### Web Research Summary
+
+**ADR (Architecture Decision Records) Patterns**:
+- MADR, Nygard, Y-Statements, ISO/IEC/IEEE 42010 schemas
+- Emphasis on: status lifecycle, decision makers, options + trade-offs, consequences
+- Tools: adr-tools, dotnet-adr, ADR Manager, Log4brains - all auto-number, generate front matter, update indexes
+
+**Validation Practices**:
+- Amazon's layered evaluation: trace → metrics → dashboards + HITL
+- Galileo's 5-step validation: objectives → validation sets → metrics → experiments → monitoring
+- Component metrics: tool selection accuracy, grounding, topic adherence, safety
+
+### Designer Consultation: Template Improvements
+
+**Designer Approval**: Provided comprehensive template enhancement recommendations
+
+**Priority Ranking**:
+
+| Priority | Improvement | Rationale |
+|----------|-------------|-----------|
+| **P1** | Decision Lifecycle | Status management (Proposed → Accepted → Deprecated → Superseded), prevents stale decisions |
+| **P1** | Validation & Quality Gates | DECISION_087 Five-Gate system implementation |
+| **P2** | Decision Context | MADR-style traceability (Options Considered, Consequences) |
+| **P2** | Agent Metadata | Reasoning chain, confidence, traceability for agent-initiated decisions |
+| **P3** | Index Integration | Auto-generated relationships, category tagging |
+
+**Recommended Template Changes**:
+
+1. **Add YAML Frontmatter** for machine parsing:
+   ```yaml
+   ---
+   decision_id: "[CATEGORY]-[NNN]"
+   status: "[Proposed|Accepted|Deprecated|Superseded]"
+   quality_score: [0-100]
+   complexity: "[Routine|Complex|Critical]"
+   automated: [true|false]
+   created_by: "[AgentName]"
+   ---
+   ```
+
+2. **Add Decision Context Section** (MADR pattern):
+   - Forces (constraints driving decision)
+   - Options Considered (table with pros/cons/verdict)
+   - Explicit Decision statement
+   - Consequences (positive/negative/neutral)
+
+3. **Add Validation & Quality Gates Section**:
+   - Automated scores (Quality Score, Golden Reference Match, Complexity Tier)
+   - Five-Gate Checklist (Schema, Dependency, Authority, Semantic, Prediction)
+   - Uncertainty Flags (requires human review, novel approach, cross-domain impact)
+
+4. **Add Agent Metadata Section** (for agent-initiated decisions):
+   - Creation Trace (initiated by, reason, timestamp)
+   - Reasoning Chain (trigger → hypothesis → validation → confidence)
+   - Verdict (recommendation + confidence + rationale)
+
+5. **Add Decision Lifecycle Section**:
+   - Status timeline (Proposed → Accepted dates)
+   - Relationships (Amends, Superseded By, Related)
+   - Change Log
+
+**Template Structure Decision**: **Single flexible template** with tiered sections:
+- Core sections: Always present
+- Auto-populated: Filled by tooling
+- Optional: Added based on complexity/category
+
+**Automation Strategy**:
+
+| Field | Source |
+|-------|--------|
+| Decision ID, Category, Date | Auto |
+| Quality Score, Complexity Tier | Auto (from tools) |
+| Gate Status | Mixed (auto + manual) |
+| Agent Metadata | Auto (populated by creating agent) |
+| Relationships | Mixed (auto-detect + manual confirm) |
+
+**Success Metrics for Template**:
+- Maintain <200 lines (current 139 → target 180)
+- Auto-filled fields reduce authoring time by 40%
+- Five-Gate validation catches 90% of issues before Strategist review
+
+### Updated Action Items
+
+| ID | Action | Assigned To | Status | Priority |
+|----|--------|-------------|--------|----------|
+| ACT-008a | Ingest decision template into RAG | OpenFixer | Ready | High |
+| ACT-008b | Create revised template with new sections | Strategist | Ready | High |
+| ACT-009a | Update Create-Decision.ps1 with YAML frontmatter | OpenFixer | Ready | High |
+| ACT-009b | Add auto-numbering and index updates | OpenFixer | Ready | Medium |
+| ACT-009c | Integrate difficulty classifier for complexity tier | OpenFixer | Ready | Medium |
+| ACT-010 | Test full agent-initiated decision workflow | Strategist | Ready | Medium |
+
+---
+
 ## Phase 1 Implementation Record
 
 ### Completed: 2026-02-22
@@ -458,6 +632,347 @@ Approval → Active Decision
 
 ---
 
-*Decision DECISION_087*  
-*Agent Prompt Enhancement & Automated Decision Creation*  
-*2026-02-21 (Phase 1 completed 2026-02-22)*
+---
+
+## Phase 2 Implementation: Decision Template Enhancement
+
+**Status**: In Progress  
+**Started**: 2026-02-22  
+**Goal**: Implement revised decision template with YAML frontmatter, validation gates, and agent metadata
+
+### Implementation Checklist
+
+| Task | Status | Notes |
+|------|--------|-------|
+| ACT-008a: Ingest decision template into RAG | Pending | RAG ingestion of current template |
+| ACT-008b: Create revised template with new sections | Pending | Add YAML frontmatter, validation gates, agent metadata |
+| ACT-009a: Update Create-Decision.ps1 with YAML frontmatter | Pending | Auto-generate frontmatter fields |
+| ACT-009b: Add auto-numbering and index updates | Pending | Automatic decision ID assignment |
+| ACT-009c: Integrate difficulty classifier for complexity tier | Pending | Auto-populate complexity field |
+| ACT-010: Test full agent-initiated decision workflow | Pending | End-to-end validation |
+
+### New Template Structure (Per Phase 2 Research)
+
+```yaml
+---
+decision_id: "[CATEGORY]-[NNN]"
+status: "[Proposed|Accepted|Deprecated|Superseded]"
+quality_score: [0-100]
+complexity: "[Routine|Complex|Critical]"
+automated: [true|false]
+created_by: "[AgentName]"
+created_date: "[ISO8601]"
+---
+```
+
+### Sections to Add
+
+1. **Decision Context** (MADR Pattern)
+   - Forces (constraints driving decision)
+   - Options Considered (table with pros/cons/verdict)
+   - Explicit Decision statement
+   - Consequences (positive/negative/neutral)
+
+2. **Validation & Quality Gates** (Five-Gate System)
+   - Automated scores (Quality Score, Golden Reference Match, Complexity Tier)
+   - Five-Gate Checklist (Schema, Dependency, Authority, Semantic, Prediction)
+   - Uncertainty Flags (requires human review, novel approach, cross-domain impact)
+
+3. **Agent Metadata** (for agent-initiated decisions)
+   - Creation Trace (initiated by, reason, timestamp)
+   - Reasoning Chain (trigger → hypothesis → validation → confidence)
+   - Verdict (recommendation + confidence + rationale)
+
+4. **Decision Lifecycle**
+   - Status timeline (Proposed → Accepted dates)
+   - Relationships (Amends, Superseded By, Related)
+   - Change Log
+
+---
+
+## Phase 2 Research: Prompt Writing for Tool-Using Agents
+
+**Research Date**: 2026-02-22  
+**Focus**: ArXiv papers on system prompt design for agents with tool use
+
+### Key Findings
+
+#### 1. Function Calling & System Prompts (2412.01130)
+
+**Two strategies for incorporating tool descriptions:**
+1. **Dedicated 'tools' role**: Represent function descriptions in JSON format
+2. **Embedded in system role** (preferred): Both instruction-following and function-calling guided by system prompt
+
+**Key Results:**
+- Instruction-following data improves both function-calling accuracy AND relevance detection
+- Decision Token + synthetic non-function-call data reduces hallucinated calls
+- Chain-of-Thought reasoning significantly enhances multi-step tool selection
+
+#### 2. Hard-Enforced Function Calling (HEF) (2509.00482)
+
+**Pattern for preventing over-calling:**
+```markdown
+## Hard-Enforced Function Calling (HEF) Prompt
+
+You are [ROLE]. You MUST follow these rules:
+- Call ONLY ONE tool per turn when necessary
+- Match the function schema EXACTLY  
+- DO NOT call tools when you can answer directly
+- If uncertain, explain reasoning BEFORE calling
+```
+
+**Principles:**
+- Brevity + uppercase emphasis on key constraints
+- Framed as NPC role instruction
+- Reduces hallucinated or redundant tool invocations
+- Maintains one-call-per-turn policy
+
+#### 3. Conversation Routines (CR) (2501.11613)
+
+**System Prompt as Software Requirements Document:**
+
+The system prompt serves as comprehensive specification with:
+- **Persona Definition**: Who the agent is
+- **Functions Integration Protocol**: Tool names, descriptions, parameters, return values, when to use
+- **Business Logic**: Decision-making flow embedded in natural language
+- **State Management**: How to track conversation state across interactions
+
+**Example Tool Integration:**
+```markdown
+### Functions Integration Protocol
+
+**Station Search**: Use `search_railway_station()` to search for departure 
+and arrival stations.
+- Support pagination (next, previous, specific page selection)
+- Allow users to refine search queries if needed
+- Users must explicitly select a station from available options
+
+**Booking**: Use `book_train_ticket()` to finalize booking.
+- Requires essential parameters: stations, dates, passenger info
+- Confirm details with user before calling
+```
+
+#### 4. Prompt Engineering as Software Engineering (2503.02400)
+
+**Prompt Artifact Components:**
+- **Prompt template**: Natural language instructions
+- **Exemplars**: Few-shot examples
+- **Runtime configurations**: Model version, decoding parameters
+- **Interaction context**: Conversation history, intermediate tool outputs
+
+**Lifecycle Management:**
+- Versioned, replayable execution boundary
+- Controlled re-execution despite LLM black-box nature
+- Systematic application of SE principles across prompt lifecycle
+
+#### 5. Natural Language Tool Calling (NLT) (2510.14453)
+
+**Five-Component Selector Prompt Template:**
+1. **Role Definition**: Clear agent identity
+2. **Task Description**: What the agent should accomplish
+3. **Available Tools**: Complete tool inventory with descriptions
+4. **Output Format**: Structured response format
+5. **Constraints**: Rules and limitations
+
+**Limitation:** Tools defined within system prompt means changes require prompt redesign (more coupling than structured approaches).
+
+### Synthesized Best Practices
+
+| Practice | Evidence | Implementation |
+|----------|----------|----------------|
+| Embed tool specs in system prompt | 2412.01130 | Improves accuracy + relevance detection |
+| Use strict constraint language | 2509.00482 | UPPERCASE, explicit rules prevent hallucinations |
+| Treat prompt as requirements doc | 2501.11613 | Complete specification in natural language |
+| Include "when to use" guidance | 2501.11613 | Contextual appropriateness for each tool |
+| Dynamic tool shortlisting | 2509.11626 | Filter top-k relevant tools to reduce complexity |
+| Decision Token pattern | 2412.01130 | Distinguish call vs no-call scenarios |
+| Version control prompts | 2503.02400 | Treat as software artifacts with lifecycle |
+
+### Application to DECISION_087
+
+**For Agent Prompt Updates:**
+
+1. **Three Critical Elements Must Include:**
+   - **Directory Structure**: Explicit paths to designated output directories
+   - **Tool Integration Protocol**: Complete function descriptions with "when to use"
+   - **RAG Ingestion**: Post-completion steps for knowledge preservation
+
+2. **HEF Pattern for Agent Constraints:**
+   ```markdown
+   You MUST follow these rules:
+   - Create documentation artifacts in your designated directory
+   - Ingest ALL findings into RAG before reporting completion
+   - Use your tools via ToolHive Gateway (NEVER skip RAG)
+   ```
+
+3. **System Prompt Structure:**
+   ```yaml
+   ---
+   description: Clear role description
+   tools:
+     rag_query: true
+     rag_ingest: true
+   mode: primary|subagent
+   ---
+   
+   # Persona Definition
+   # Tool Integration Protocol  
+   # Directory Structure Reference
+   # Workflow Rules (HEF pattern)
+   # Output Requirements
+   ```
+
+---
+
+## Phase 2 Research: Directory Structure & Documentation Patterns
+
+**Research Date**: 2026-02-22  
+**Focus**: ArXiv papers on agent context files, directory organization, and documentation patterns
+
+### Key Findings
+
+#### 1. Agent Context Files (AGENTS.md / CLAUDE.md)
+
+**Purpose**: Function as operational configurations for AI coding agents - "READMEs for agents" rather than human documentation.
+
+**Key Papers**:
+- **2602.11988**: Repository-level context files significantly improve agent performance
+- **2511.12884**: Context files behave as dynamic configurations, not static documentation
+- **2602.14690**: Standardized configuration mechanisms across major tools
+
+**Tool-Specific Configuration Artifacts**:
+
+| Tool | Context File | Settings | Skills | Subagents |
+|------|-------------|----------|--------|-----------|
+| **Claude** | CLAUDE.md | .claude/settings.json | .claude/skills/ | .claude/agents/ |
+| **Copilot** | copilot-instructions.md | - | .github/skills/ | .github/agents/ |
+| **Codex** | AGENTS.md | .codex/config.toml | .codex/skills/ | - |
+| **Cursor** | AGENTS.md, .cursorrules | .cursor/cli.json | .cursor/skills/ | .cursor/agents/ |
+| **Gemini** | GEMINI.md | .gemini/settings.json | .gemini/skills/ | - |
+
+#### 2. Configuration-as-Code Mindset (2511.12884)
+
+> "Adopt a configuration-as-code mindset for agent context files. Treat files like CLAUDE.md or AGENTS.md with the same rigor applied to Dockerfile or CI/CD workflows."
+
+**Critical Principles**:
+1. **Active Maintenance**: Context files evolve alongside code (unlike traditional docs)
+2. **Version Control**: Must be in version control for team consistency
+3. **Code Review Integration**: Include context file updates in PR review checklists
+4. **Living Artifacts**: Update when build system or core modules change
+
+**Anti-Pattern Warning**: Context files can accumulate "context debt" - instructions meant to clarify become unmaintainable and opaque (FRE scores comparable to legal contracts).
+
+#### 3. Directory Organization Patterns
+
+**Filesystem-First Memory Pattern** (Medium Article):
+```
+semantic/knowledge_base/     # Persistent knowledge storage
+episodic/conversations/      # Transcripts (one file per run)
+episodic/summaries/          # Compact summaries
+```
+
+**Multi-Agent Directory Structure** (2511.07257):
+- Architecture Agent → outputs Architecture Design Records (ADRs)
+- Structure Agent → constructs directory-based file system
+- Tools: write_file, read_file, list_directory, fetch_code
+
+**Nested AGENTS.md for Monorepos** (Medium Article):
+```
+AGENTS.md                    # Global, cross-repo rules
+packages/
+  web/
+    AGENTS.md               # Frontend-specific context
+  api/
+    AGENTS.md               # Backend-specific context
+```
+
+**Progressive Disclosure Principle**:
+- Root AGENTS.md → universal rules
+- Package AGENTS.md → local rules
+- Docs → detailed instructions
+- Agents apply closest AGENTS.md in directory tree
+
+#### 4. Multi-Agent Context Isolation (2508.08322)
+
+**Hub-and-Spoke Pattern**:
+```
+Manager (Orchestrator)
+    ├── backend-architect agent
+    ├── frontend-specialist agent
+    ├── devops-engineer agent
+    └── code-reviewer agent
+```
+
+**Design Principles**:
+- Each subagent has **isolated context window**
+- Common background via **persistent context file** (CLAUDE.md)
+- Preloaded architectural overviews, coding conventions
+- No cross-contamination between workflow phases
+
+#### 5. Symbolic Links for Tool Compatibility (Medium Article)
+
+```bash
+# Keep AGENTS.md as single source of truth
+ln -s AGENTS.md CLAUDE.md
+ln -s AGENTS.md GEMINI.md
+```
+
+This avoids duplication and keeps future migration trivial.
+
+### Synthesized Best Practices for DECISION_087
+
+| Practice | Evidence | Implementation |
+|----------|----------|----------------|
+| Configuration-as-code | 2511.12884 | Treat agent prompts as versioned software artifacts |
+| Directory-per-agent | 2511.07257 | Each agent has designated output directory |
+| Nested context files | Medium | AGENTS.md at each level with progressive disclosure |
+| Symbolic links | Medium | Single source of truth, multiple tool compatibility |
+| Context isolation | 2508.08322 | Hub-and-spoke with persistent shared context |
+| Active maintenance | 2511.12884 | Include in PR review checklists |
+| RAG integration | Filesystem-First | All outputs ingested into knowledge base |
+
+### Recommended Directory Structure Update
+
+```
+P4NTH30N/
+├── AGENTS.md                    # Tool-agnostic root context
+├── CLAUDE.md → AGENTS.md        # Symbolic link
+├── STR4TEG15T/
+│   ├── AGENTS.md               # Strategist-specific context
+│   ├── decisions/
+│   ├── consultations/
+│   ├── handoffs/
+│   └── canon/
+├── 0R4CL3/
+│   ├── AGENTS.md               # Oracle-specific context
+│   └── assessments/
+├── D351GN3R/
+│   ├── AGENTS.md               # Designer-specific context
+│   └── architectures/
+├── L1BR4R14N/
+│   ├── AGENTS.md               # Librarian-specific context
+│   └── research/
+├── OP3NF1X3R/
+│   ├── AGENTS.md               # OpenFixer-specific context
+│   └── deployments/
+└── F0RG3WR1GHT/
+    ├── AGENTS.md               # Forgewright-specific context
+    └── triage/
+```
+
+### Updated Agent Prompt Requirements
+
+Based on this research, every agent prompt MUST include:
+
+1. **Directory Reference**: Explicit path to designated output directory
+2. **Documentation Mandate**: Must write artifacts to their directory
+3. **RAG Integration**: Ingest all outputs into institutional memory
+4. **Configuration-as-Code**: Version control and active maintenance
+5. **Tool Integration Protocol**: When and how to use available tools
+6. **HEF Constraints**: Hard-enforced rules for tool usage
+
+---
+
+*Decision DECISION_087*
+*Agent Prompt Enhancement & Automated Decision Creation*
+*2026-02-21 (Phase 1 completed 2026-02-22, Phase 2 in progress)*

@@ -1,0 +1,17 @@
+services:
+  rag-server-v2:
+    build: .
+    ports:
+      - '127.0.0.1:3002:3002'
+    environment:
+      PORT: '3002'
+      BIND_ADDRESS: '127.0.0.1'
+      MCP_AUTH_TOKEN: ${MCP_AUTH_TOKEN}
+      VECTOR_STORE_PATH: ${VECTOR_STORE_PATH}
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL}
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'wget', '--no-verbose', '--tries=1', '--spider', 'http://localhost:3002/health']
+      interval: 30s
+      timeout: 3s
+      retries: 3

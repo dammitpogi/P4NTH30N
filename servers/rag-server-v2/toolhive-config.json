@@ -1,0 +1,87 @@
+{
+  "id": "rag-server-v2",
+  "name": "RAG Server v2",
+  "description": "MCP server for vector search and RAG operations",
+  "transport": "http",
+  "connection": {
+    "url": "http://localhost:3002",
+    "healthEndpoint": "/health",
+    "readyEndpoint": "/ready"
+  },
+  "tools": [
+    {
+      "name": "rag_ingest",
+      "description": "Ingest a document into vector store",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "metadata": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "id",
+          "content"
+        ]
+      }
+    },
+    {
+      "name": "rag_search",
+      "description": "Search for similar documents",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string"
+          },
+          "topK": {
+            "type": "number",
+            "default": 5
+          }
+        },
+        "required": [
+          "query"
+        ]
+      }
+    },
+    {
+      "name": "rag_delete",
+      "description": "Delete a document from vector store",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      }
+    },
+    {
+      "name": "rag_list",
+      "description": "List all documents in vector store",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "envVar": "MCP_AUTH_TOKEN"
+  },
+  "tags": [
+    "rag",
+    "vector",
+    "search",
+    "mcp"
+  ]
+}

@@ -73,6 +73,16 @@ public sealed class ChromeProfileManager : IDisposable
 			if (process == null)
 				throw new InvalidOperationException($"Failed to start Chrome for worker {workerId}");
 
+			// CRIT-103: Drain stdout/stderr to prevent buffer deadlock
+			process.OutputDataReceived += (_, _) => { };
+			process.ErrorDataReceived += (_, e) =>
+			{
+				if (!string.IsNullOrEmpty(e.Data))
+					Console.WriteLine($"[Chrome:W{workerId}] {e.Data}");
+			};
+			process.BeginOutputReadLine();
+			process.BeginErrorReadLine();
+
 			// Wait for CDP to become available
 			bool ready = await WaitForCdpReadyAsync(port, ct);
 			if (!ready)

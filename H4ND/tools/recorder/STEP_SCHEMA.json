@@ -80,6 +80,14 @@
         "platformSpecific": {
           "type": "object",
           "description": "Platform-specific settings"
+        },
+        "conditional": {
+          "$ref": "#/definitions/ConditionalLogic"
+        },
+        "gotoStep": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Step number to jump to (for error recovery)"
         }
       }
     },
@@ -170,6 +178,77 @@
             "type": "string"
           },
           "description": "Optional intermediate checkpoints"
+        }
+      }
+    },
+    "ConditionalLogic": {
+      "type": "object",
+      "required": ["condition", "onTrue", "onFalse"],
+      "description": "If-then-else logic for error handling",
+      "properties": {
+        "condition": {
+          "$ref": "#/definitions/ConditionCheck"
+        },
+        "onTrue": {
+          "$ref": "#/definitions/ConditionalBranch"
+        },
+        "onFalse": {
+          "$ref": "#/definitions/ConditionalBranch"
+        }
+      }
+    },
+    "ConditionCheck": {
+      "type": "object",
+      "required": ["type", "description"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["element-exists", "element-missing", "text-contains", "cdp-check", "tool-success", "tool-failure", "custom-js"],
+          "description": "Type of condition to check"
+        },
+        "target": {
+          "type": "string",
+          "description": "Element selector, text to search, or JS expression"
+        },
+        "cdpCommand": {
+          "type": "string",
+          "description": "CDP command for cdp-check type"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 10,
+          "description": "Human-readable condition description"
+        }
+      }
+    },
+    "ConditionalBranch": {
+      "type": "object",
+      "required": ["action"],
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": ["continue", "goto", "retry", "abort"],
+          "description": "Action to take when branch is selected"
+        },
+        "gotoStep": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Step number to jump to (required for goto action)"
+        },
+        "retryCount": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10,
+          "description": "Number of retries (for retry action)"
+        },
+        "retryDelayMs": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Delay between retries in milliseconds"
+        },
+        "comment": {
+          "type": "string",
+          "description": "Explanation of this branch"
         }
       }
     }

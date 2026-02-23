@@ -1,0 +1,1472 @@
+/**
+ * Background Task Manager
+ *
+ * Manages long-running AI agent tasks that execute in separate sessions.
+ * Background tasks run independently from the main conversation flow, allowing
+ * the user to continue working while tasks complete asynchronously.
+ *
+ * Key features:
+ * - Fire-and-forget launch (returns task_id immediately)
+ * - Creates isolated sessions for background work
+ * - Event-driven completion detection via session.status
+ * - Start queue with configurable concurrency limit
+ * - Supports task cancellation and result retrieval
+ */
+
+import type { PluginInput } from '@opencode-ai/plugin';
+import type { BackgroundTaskConfig, PluginConfig } from '../config';
+import {
+  FALLBACK_FAILOVER_TIMEOUT_MS,
+  SUBAGENT_DELEGATION_RULES,
+} from '../config';
+
+// Hardcoded default models - source of truth when config doesn't provide them
+const HARDCODED_DEFAULTS: Record<string, string> = {
+  orchestrator: 'openrouter-free/openrouter/free',
+  oracle: 'openrouter-free/openrouter/free',
+  librarian: 'openrouter-free/openrouter/free',
+  explorer: 'openrouter-free/openrouter/free',
+  designer: 'openrouter-free/openrouter/free',
+  fixer: 'openrouter-free/openrouter/free',
+};
+import type { TmuxConfig } from '../config/schema';
+import { applyAgentVariant, resolveAgentVariant } from '../utils';
+import { log } from '../utils/logger';
+
+function detectProviderError(errorMessage: string): boolean {
+  const providerErrorPatterns = [
+    /rate.limit/i,
+    /context.length/i,
+    /token.limit/i,
+    /max.token/i,
+    /more.credit/i,
+    /fewer.max_token/i,
+    /model.unavailable/i,
+    /credit.exceeded/i,
+    /insufficient.quota/i,
+    /api.usage/i,
+    /429/, // HTTP status code for rate limit
+    /503/, // HTTP status code for service unavailable
+    /504/, // HTTP status code for gateway timeout
+    // Invalid model errors should trigger fallback
+    /invalid.*model/i,
+    /model.*not.*found/i,
+    /unknown.*model/i,
+    /model.*not.*available/i,
+    // Generic unknown errors should trigger fallback
+    /unknown.*error/i,
+    /unknown.*failure/i,
+    // Auth and key errors should trigger fallback
+    /api.*key/i,
+    /authentication/i,
+    /unauthorized/i,
+    /invalid.*api/i,
+    // Network and connection errors
+    /network.*error/i,
+    /connection.*error/i,
+    /timeout/i,
+    /econnrefused/i,
+    /econnreset/i,
+    /enotfound/i,
+    // Agent-specific errors that should trigger fallback
+    /agent.*not.*found/i,
+    /agent.*not.*available/i,
+    /subagent.*error/i,
+    // General provider failures
+    /provider.*error/i,
+    /upstream.*error/i,
+    /server.*error/i,
+    /internal.*error/i,
+  ];
+
+  return providerErrorPatterns.some((pattern) => pattern.test(errorMessage));
+}
+
+type PromptBody = {
+  messageID?: string;
+  model?: { providerID: string; modelID: string };
+  agent?: string;
+  noReply?: boolean;
+  system?: string;
+  tools?: { [key: string]: boolean };
+  parts: Array<{ type: 'text'; text: string }>;
+  variant?: string;
+};
+
+type OpencodeClient = PluginInput['client'];
+
+function parseModelReference(model: string): {
+  providerID: string;
+  modelID: string;
+} | null {
+  const slashIndex = model.indexOf('/');
+  if (slashIndex <= 0 || slashIndex >= model.length - 1) {
+    return null;
+  }
+
+  return {
+    providerID: model.slice(0, slashIndex),
+    modelID: model.slice(slashIndex + 1),
+  };
+}
+
+/**
+ * Represents a fallback attempt during task execution.
+ */
+export interface FallbackAttempt {
+  model: string;
+  success: boolean;
+  error?: string;
+  timestamp: number;
+}
+
+/**
+ * Tracks fallback events for a background task.
+ */
+export interface FallbackInfo {
+  occurred: boolean;
+  attempts: FallbackAttempt[];
+  successfulModel?: string;
+  totalAttempts: number;
+}
+
+/**
+ * Represents a background task running in an isolated session.
+ * Tasks are tracked from creation through completion or failure.
+ */
+export interface BackgroundTask {
+  id: string; // Unique task identifier (e.g., "bg_abc123")
+  sessionId?: string; // OpenCode session ID (set when starting)
+  description: string; // Human-readable task description
+  agent: string; // Agent name handling the task
+  status:
+    | 'pending'
+    | 'starting'
+    | 'running'
+    | 'completed'
+    | 'failed'
+    | 'cancelled';
+  result?: string; // Final output from the agent (when completed)
+  error?: string; // Error message (when failed)
+  config: BackgroundTaskConfig; // Task configuration
+  parentSessionId: string; // Parent session ID for notifications
+  startedAt: Date; // Task creation timestamp
+  completedAt?: Date; // Task completion/failure timestamp
+  prompt: string; // Initial prompt
+  fallbackInfo?: FallbackInfo; // Fallback tracking info
+}
+
+/**
+ * Options for launching a new background task.
+ */
+export interface LaunchOptions {
+  agent: string; // Agent to handle the task
+  prompt: string; // Initial prompt to send to the agent
+  description: string; // Human-readable task description
+  parentSessionId: string; // Parent session ID for task hierarchy
+}
+
+function generateTaskId(): string {
+  return `bg_${Math.random().toString(36).substring(2, 10)}`;
+}
+
+export class BackgroundTaskManager {
+  private tasks = new Map<string, BackgroundTask>();
+  private tasksBySessionId = new Map<string, string>();
+  // Track which agent type owns each session for delegation permission checks
+  private agentBySessionId = new Map<string, string>();
+  private client: OpencodeClient;
+  private directory: string;
+  private tmuxEnabled: boolean;
+  private config?: PluginConfig;
+  private backgroundConfig: BackgroundTaskConfig;
+  // Guaranteed fallback config with all required fields
+  private fallbackConfig!: {
+    enabled: boolean;
+    timeoutMs: number;
+    triage: Record<string, { lastFailure?: number; failureCount: number; lastSuccess?: number; disabled?: boolean }>;
+    currentModels: Record<string, string>;
+  };
+
+  // Start queue
+  private startQueue: BackgroundTask[] = [];
+  private activeStarts = 0;
+  private maxConcurrentStarts: number;
+
+  // Completion waiting
+  private completionResolvers = new Map<
+    string,
+    (task: BackgroundTask) => void
+  >();
+
+  // Circuit breaker configuration
+  private readonly CIRCUIT_BREAKER_THRESHOLD = 3; // Number of consecutive failures before opening circuit
+  private readonly CIRCUIT_BREAKER_COOLDOWN_MS = 3600000; // 1 hour cooldown before retrying failed models
+
+  constructor(
+    ctx: PluginInput,
+    tmuxConfig?: TmuxConfig,
+    config?: PluginConfig,
+  ) {
+    this.client = ctx.client;
+    this.directory = ctx.directory;
+    this.tmuxEnabled = tmuxConfig?.enabled ?? false;
+    this.config = config ?? {};
+    
+    // Debug: log config received
+    log('[background-manager] Constructor received config:', {
+      hasConfig: !!config,
+      hasAgents: !!config?.agents,
+      hasFallback: !!config?.fallback,
+    });
+    
+    this.backgroundConfig = config?.background ?? {
+      maxConcurrentStarts: 10,
+    };
+    this.maxConcurrentStarts = this.backgroundConfig.maxConcurrentStarts;
+
+    // Initialize fallback config if not present
+    if (!this.config.fallback) {
+      this.config.fallback = {
+        enabled: true,
+        timeoutMs: 15000,
+        triage: {},
+        currentModels: {},
+      };
+    } else {
+      // Ensure triage exists
+      if (!this.config.fallback.triage) {
+        this.config.fallback.triage = {};
+      }
+      // Ensure currentModels exists
+      if (!this.config.fallback.currentModels) {
+        this.config.fallback.currentModels = {};
+      }
+    }
+
+    // Store reference to guaranteed fallback config
+    this.fallbackConfig = this.config.fallback;
+
+    // Initialize current models from config (set default model for each agent on load)
+    this.initializeCurrentModels();
+  }
+
+  /**
+   * Initialize current model tracking for each agent from config.
+   * Sets the current model to the default model for each agent if not already set.
+   */
+  private initializeCurrentModels(): void {
+    const agents = this.config?.agents;
+    if (!agents) return;
+
+    for (const [agentName, agentConfig] of Object.entries(agents)) {
+      const modelOrModels = agentConfig as Record<string, unknown> | undefined;
+      if (!modelOrModels) continue;
+
+      // Get the default model (first in models array, or single model)
+      const models = modelOrModels.models as string[] | undefined;
+      const singleModel = modelOrModels.model as string | undefined;
+      const defaultModel = models?.[0] ?? singleModel;
+
+      if (defaultModel) {
+        const currentModels = this.fallbackConfig.currentModels;
+        if (!currentModels[agentName]) {
+          // Set current model for this agent
+          currentModels[agentName] = defaultModel;
+          log(`[fallback] Initialized current model for ${agentName}: ${defaultModel}`);
+        }
+      }
+    }
+  }
+
+  /**
+   * Set the current model for an agent (used when starting a task with a specific model)
+   */
+  private setCurrentModel(agentName: string, model: string): void {
+    this.fallbackConfig.currentModels[agentName] = model;
+  }
+
+  /**
+   * Get the current model for an agent
+   */
+  private getCurrentModel(agentName: string): string | undefined {
+    return this.fallbackConfig.currentModels[agentName];
+  }
+
+  /**
+   * Persist the current config state (including model health) back to file
+    */
+  private async persistConfig(): Promise<void> {
+    if (!this.config) return;
+    
+    try {
+      // Import fs dynamically to avoid issues
+      const fs = await import('node:fs/promises');
+      const path = await import('node:path');
+      const os = await import('node:os');
+      
+      // Look for config file in user config directory (NOT project directory)
+      // The plugin config is in ~/.config/opencode/
+      const userConfigDir = path.join(os.homedir(), '.config', 'opencode');
+      const configPaths = [
+        path.join(userConfigDir, 'oh-my-opencode-slim.json'),
+        path.join(this.directory, 'oh-my-opencode-slim.json'),
+        path.join(this.directory, '.opencode', 'oh-my-opencode-slim.json'),
+      ];
+      
+      let configPath: string | null = null;
+      for (const p of configPaths) {
+        try {
+          await fs.access(p);
+          configPath = p;
+          log('[config] Found config file at:', p);
+          break;
+        } catch {
+          // File doesn't exist, try next
+        }
+      }
+      
+      if (!configPath) {
+        log('[config] ERROR: Could not find config file to persist model health');
+        return;
+      }
+      
+      // Write updated config
+      await fs.writeFile(configPath, JSON.stringify(this.config, null, 2), 'utf-8');
+      log('[config] Persisted model health state to config file');
+    } catch (error) {
+      const msg = error instanceof Error ? error.message : String(error);
+      log('[config] ERROR: Failed to persist config', { error: msg });
+    }
+  }
+
+  /**
+   * Look up the delegation rules for an agent type.
+   * Unknown agent types default to explorer-only access, making it easy
+   * to add new background agent types without updating SUBAGENT_DELEGATION_RULES.
+   */
+  private getSubagentRules(agentName: string): readonly string[] {
+    return (
+      SUBAGENT_DELEGATION_RULES[
+        agentName as keyof typeof SUBAGENT_DELEGATION_RULES
+      ] ?? ['explorer']
+    );
+  }
+
+  /**
+   * Check if a parent session is allowed to delegate to a specific agent type.
+   * @param parentSessionId - The session ID of the parent
+   * @param requestedAgent - The agent type being requested
+   * @returns true if allowed, false if not
+   */
+  isAgentAllowed(parentSessionId: string, requestedAgent: string): boolean {
+    // Untracked sessions are the root orchestrator (created by OpenCode, not by us)
+    const parentAgentName =
+      this.agentBySessionId.get(parentSessionId) ?? 'orchestrator';
+
+    const allowedSubagents = this.getSubagentRules(parentAgentName);
+
+    if (allowedSubagents.length === 0) return false;
+
+    return allowedSubagents.includes(requestedAgent);
+  }
+
+  /**
+   * Get the list of allowed subagents for a parent session.
+   * @param parentSessionId - The session ID of the parent
+   * @returns Array of allowed agent names, empty if none
+   */
+  getAllowedSubagents(parentSessionId: string): readonly string[] {
+    // Untracked sessions are the root orchestrator (created by OpenCode, not by us)
+    const parentAgentName =
+      this.agentBySessionId.get(parentSessionId) ?? 'orchestrator';
+
+    return this.getSubagentRules(parentAgentName);
+  }
+
+  /**
+   * Launch a new background task (fire-and-forget).
+   *
+   * Phase A (sync): Creates task record and returns immediately.
+   * Phase B (async): Session creation and prompt sending happen in background.
+   *
+   * @param opts - Task configuration options
+   * @returns The created background task with pending status
+   */
+  launch(opts: LaunchOptions): BackgroundTask {
+    const task: BackgroundTask = {
+      id: generateTaskId(),
+      sessionId: undefined,
+      description: opts.description,
+      agent: opts.agent,
+      status: 'pending',
+      startedAt: new Date(),
+      config: {
+        maxConcurrentStarts: this.maxConcurrentStarts,
+      },
+      parentSessionId: opts.parentSessionId,
+      prompt: opts.prompt,
+    };
+
+    this.tasks.set(task.id, task);
+
+    // Queue task for background start
+    this.enqueueStart(task);
+
+    log(`[background-manager] task launched: ${task.id}`, {
+      agent: opts.agent,
+      description: opts.description,
+    });
+
+    return task;
+  }
+
+  /**
+   * Enqueue task for background start.
+   */
+  private enqueueStart(task: BackgroundTask): void {
+    this.startQueue.push(task);
+    this.processQueue();
+  }
+
+  /**
+   * Process start queue with concurrency limit.
+   */
+  private processQueue(): void {
+    while (
+      this.activeStarts < this.maxConcurrentStarts &&
+      this.startQueue.length > 0
+    ) {
+      const task = this.startQueue.shift();
+      if (!task) break;
+      this.startTask(task);
+    }
+  }
+
+  /**
+   * Get the model chain for an agent.
+   * First checks config.agents[agentName].models (full chain), then model (single), then HARDCODED_DEFAULTS.
+   */
+  private getFullModelChain(agentName: string): string[] {
+    const agents = this.config?.agents;
+    let chain: string[] = [];
+    
+    if (agents && agents[agentName]) {
+      const agentConfig = agents[agentName] as Record<string, unknown> | undefined;
+      if (agentConfig && typeof agentConfig === 'object') {
+        // First check for models array (full chain)
+        const models = agentConfig.models as string[] | undefined;
+        if (models && Array.isArray(models) && models.length > 0) {
+          chain = models;
+        } else if (agentConfig.model) {
+          // Fall back to single model
+          chain = [agentConfig.model as string];
+        }
+      }
+    }
+    
+    // Fall back to HARDCODED_DEFAULTS if nothing in config
+    if (chain.length === 0) {
+      const defaultModel = HARDCODED_DEFAULTS[agentName];
+      if (defaultModel) {
+        chain = [defaultModel];
+      }
+    }
+
+    return chain;
+  }
+
+  private resolveFallbackChain(agentName: string): string[] {
+    const fallback = this.config?.fallback;
+    const now = Date.now();
+
+    // Get the full chain
+    const chain = this.getFullModelChain(agentName);
+
+    if (chain.length === 0) {
+      log(`[fallback] WARNING: No model chain for ${agentName}`);
+      return [];
+    }
+
+    // Get model health from triage in config
+    const triage = fallback?.triage ?? {};
+
+    // Filter out models that have tripped the circuit breaker
+    const availableChain = chain.filter((m) => {
+      const health = triage[m];
+      if (!health || !health.lastFailure) return true;
+      
+      const failureCount = (health.failureCount as number) ?? 0;
+      const lastFailure = (health.lastFailure as number) ?? 0;
+      
+      if (failureCount >= this.CIRCUIT_BREAKER_THRESHOLD) {
+        if (now - lastFailure < this.CIRCUIT_BREAKER_COOLDOWN_MS) {
+          log(`[circuit-breaker] Skipping model ${m} (circuit open: ${failureCount} failures)`);
+          return false;
+        }
+        log(`[circuit-breaker] Model ${m} cooldown complete, allowing retry`);
+      }
+      
+      return true;
+    });
+
+    log(`[fallback] Resolved fallback chain for ${agentName}:`, {
+      originalChainLength: chain.length,
+      availableChainLength: availableChain.length,
+      availableChain: availableChain.slice(0, 3),
+      triageKeys: Object.keys(triage),
+    });
+
+    return availableChain;
+  }
+
+  private async recordModelFailure(model: string): Promise<void> {
+    if (!this.config?.fallback) {
+      log('[circuit-breaker] ERROR: No fallback config found');
+      return;
+    }
+    
+    // Ensure triage exists (it's now the health record itself)
+    if (!this.config.fallback.triage) {
+      this.config.fallback.triage = {};
+    }
+    
+    const triage = this.config.fallback.triage;
+    const now = Date.now();
+    const existingHealth = triage[model] ?? { failureCount: 0 };
+    const failureCount = (existingHealth.failureCount ?? 0) + 1;
+    
+    triage[model] = {
+      ...existingHealth,
+      failureCount,
+      lastFailure: now,
+    };
+
+    log(`[circuit-breaker] Recorded failure for ${model}`, {
+      failureCount,
+      threshold: this.CIRCUIT_BREAKER_THRESHOLD,
+      willTrip: failureCount >= this.CIRCUIT_BREAKER_THRESHOLD,
+      triageList: Object.keys(triage),
+    });
+
+    // Persist updated health state
+    await this.persistConfig();
+  }
+
+  private async recordModelSuccess(model: string): Promise<void> {
+    if (!this.config?.fallback) return;
+    
+    // Ensure triage exists (it's now the health record itself)
+    if (!this.config.fallback.triage) {
+      this.config.fallback.triage = {};
+    }
+    
+    const triage = this.config.fallback.triage;
+    const existingHealth = triage[model];
+    
+    // Reset failure count on success
+    if (existingHealth) {
+      log(`[circuit-breaker] Resetting failure count for ${model} (success)`);
+      triage[model] = {
+        ...existingHealth,
+        failureCount: 0,
+        lastSuccess: Date.now(),
+      };
+      
+      // Persist updated health state
+      await this.persistConfig();
+    }
+  }
+
+  /**
+   * Detect if an error is a context length error that can be resolved with compaction
+   */
+  private isContextLengthError(error: unknown): boolean {
+    const msg = error instanceof Error ? error.message : String(error);
+    return (
+      msg.includes('maximum context length') ||
+      msg.includes('context limit') ||
+      msg.includes('too many tokens') ||
+      msg.includes('4096') || // Various context error codes
+      msg.includes('400')
+    );
+  }
+
+  /**
+   * Compact the session to reduce context length and retry the prompt
+   */
+  private async compactAndRetry(
+    sessionId: string,
+    promptFn: () => Promise<void>,
+  ): Promise<void> {
+    try {
+      log('[compact] Invoking /compact command to reduce context');
+      await this.client.session.command({
+        path: { id: sessionId },
+        body: { command: 'compact', arguments: '' },
+      });
+      log('[compact] Compaction complete, retrying prompt');
+      await promptFn();
+    } catch (compactError) {
+      log('[compact] Compaction failed:', compactError);
+      throw compactError;
+    }
+  }
+
+  private async promptWithTimeout(
+    args: Parameters<OpencodeClient['session']['promptAsync']>[0],
+    timeoutMs: number,
+  ): Promise<void> {
+    await Promise.race([
+      this.client.session.promptAsync(args),
+      new Promise<never>((_, reject) => {
+        setTimeout(() => {
+          reject(new Error(`Prompt timed out after ${timeoutMs}ms`));
+        }, timeoutMs);
+      }),
+    ]);
+  }
+
+  /**
+   * Calculate tool permissions for a spawned agent based on its own delegation rules.
+   * Agents that cannot delegate (leaf nodes) get delegation tools disabled entirely,
+   * preventing models from even seeing tools they can never use.
+   *
+   * @param agentName - The agent type being spawned
+   * @returns Tool permissions object with background_task and task enabled/disabled
+   */
+  private calculateToolPermissions(agentName: string): {
+    background_task: boolean;
+    task: boolean;
+  } {
+    const allowedSubagents = this.getSubagentRules(agentName);
+
+    // Leaf agents (no delegation rules) get tools hidden entirely
+    if (allowedSubagents.length === 0) {
+      return { background_task: false, task: false };
+    }
+
+    // Agent can delegate - enable the delegation tools
+    // The restriction of WHICH specific subagents are allowed is enforced
+    // by the background_task tool via isAgentAllowed()
+    return { background_task: true, task: true };
+  }
+
+  /**
+   * Start a task in the background (Phase B).
+   */
+  private async startTask(task: BackgroundTask): Promise<void> {
+    log(`[background-manager] Starting task ${task.id}`, {
+      agent: task.agent,
+      parentSession: task.parentSessionId,
+      directory: this.directory,
+      fallbackEnabled: this.config?.fallback?.enabled,
+    });
+    
+    task.status = 'starting';
+    this.activeStarts++;
+
+    // Check if cancelled after incrementing activeStarts (to catch race)
+    // Use type assertion since cancel() can change status during race condition
+    if ((task as BackgroundTask & { status: string }).status === 'cancelled') {
+      this.completeTask(task, 'cancelled', 'Task cancelled before start');
+      return;
+    }
+
+    try {
+      // Create session
+      log(`[background-manager] Creating session for task ${task.id}`, {
+        parentID: task.parentSessionId,
+        directory: this.directory,
+      });
+      
+      const session = await this.client.session.create({
+        body: {
+          parentID: task.parentSessionId,
+          title: `Background: ${task.description}`,
+        },
+        query: { directory: this.directory },
+      });
+
+      if (!session.data?.id) {
+        throw new Error('Failed to create background session');
+      }
+      
+      log(`[background-manager] Session created: ${session.data.id}`);
+
+      task.sessionId = session.data.id;
+      this.tasksBySessionId.set(session.data.id, task.id);
+      // Track the agent type for this session for delegation checks
+      this.agentBySessionId.set(session.data.id, task.agent);
+      task.status = 'running';
+
+      // Give TmuxSessionManager time to spawn the pane
+      if (this.tmuxEnabled) {
+        await new Promise((r) => setTimeout(r, 500));
+      }
+
+      // Calculate tool permissions based on the spawned agent's own delegation rules
+      const toolPermissions = this.calculateToolPermissions(task.agent);
+
+      // Send prompt
+      const promptQuery: Record<string, string> = { directory: this.directory };
+      const resolvedVariant = resolveAgentVariant(this.config, task.agent);
+      const basePromptBody = applyAgentVariant(resolvedVariant, {
+        agent: task.agent,
+        tools: toolPermissions,
+        parts: [{ type: 'text' as const, text: task.prompt }],
+      } as PromptBody) as unknown as PromptBody;
+
+      const timeoutMs =
+        this.config?.fallback?.timeoutMs ?? FALLBACK_FAILOVER_TIMEOUT_MS;
+      const fallbackEnabled = this.config?.fallback?.enabled ?? true;
+      
+      // Get the full chain (without circuit breaker filtering)
+      const fullChain = this.getFullModelChain(task.agent);
+      // Get filtered chain (with circuit breaker)
+      const filteredChain = fallbackEnabled
+        ? this.resolveFallbackChain(task.agent)
+        : [];
+      
+      // Use filtered chain if available, otherwise use full chain (circuit breaker bypassed)
+      const chain = filteredChain.length > 0 ? filteredChain : fullChain;
+      const attemptModels = chain.length > 0 ? chain : [undefined];
+
+      log(`[fallback] Model chain for ${task.agent}:`, {
+        fullChainLength: fullChain.length,
+        filteredChainLength: filteredChain.length,
+        finalChainLength: attemptModels.length,
+        chain: attemptModels,
+      });
+
+      // Log circuit breaker status
+      if (filteredChain.length === 0 && fullChain.length > 0) {
+        log(`[fallback] WARNING: All models filtered by circuit breaker, bypassing for task ${task.id}`, {
+          agent: task.agent,
+          fullChainLength: fullChain.length,
+        });
+      }
+
+      // Initialize fallback tracking
+      task.fallbackInfo = {
+        occurred: false,
+        attempts: [],
+        totalAttempts: 0,
+      };
+
+      const errors: string[] = [];
+      let succeeded = false;
+      let attemptCount = 0;
+
+      log(`[fallback] Model chain for ${task.agent}:`, attemptModels);
+      log(`[fallback] Starting fallback sequence for task ${task.id}`, {
+        agent: task.agent,
+        attemptCount: attemptModels.length,
+        timeoutMs,
+        usingFilteredChain: filteredChain.length > 0,
+        modelChain: attemptModels,
+      });
+
+      for (const model of attemptModels) {
+        attemptCount++;
+        const modelLabel = model ?? 'default-model';
+
+      log(` Trying model: ${modelLabel}, attempt: ${attemptCount}/${attemptModels.length}`);
+
+        // Track the current model being used for this agent
+        if (model) {
+          this.setCurrentModel(task.agent, model);
+        }
+
+        // Build the prompt body outside try-catch so it's accessible in catch block
+        const body: PromptBody = {
+          ...basePromptBody,
+          model: undefined,
+        };
+
+        if (model) {
+          const ref = parseModelReference(model);
+          if (!ref) {
+            log(` Invalid model format: ${model}, skipping to next`);
+            continue;
+          }
+          body.model = ref;
+          console.log(`[oh-my-opencode-slim] Task ${task.id} using model: ${modelLabel}`);
+        }
+
+        try {
+          log(`[fallback] Attempt ${attemptCount}/${attemptModels.length} with model: ${modelLabel}`, {
+            taskId: task.id,
+            agent: task.agent,
+          });
+
+          await this.promptWithTimeout(
+            {
+              path: { id: session.data.id },
+              body,
+              query: promptQuery,
+            },
+            timeoutMs,
+          );
+
+          // promptAsync returns immediately - completion detected via session.status events
+
+          log(`[fallback] SUCCESS: Attempt ${attemptCount} with ${modelLabel}`, {
+            taskId: task.id,
+            agent: task.agent,
+            attempts: attemptCount,
+          });
+
+          // Record success to reset circuit breaker
+          if (model) {
+            await this.recordModelSuccess(model);
+          }
+
+          // Track fallback attempt
+          if (task.fallbackInfo && model) {
+            task.fallbackInfo.attempts.push({
+              model: modelLabel,
+              success: true,
+              timestamp: Date.now(),
+            });
+            task.fallbackInfo.successfulModel = modelLabel;
+            task.fallbackInfo.totalAttempts = attemptCount;
+            task.fallbackInfo.occurred = attemptCount > 1;
+          }
+
+          succeeded = true;
+          break;
+        } catch (error) {
+          const msg = error instanceof Error ? error.message : String(error);
+          const errorDetail = `${modelLabel}: ${msg}`;
+          errors.push(errorDetail);
+          
+          log(` ERROR with ${modelLabel}: ${msg}`);
+          
+          log(`[fallback] ERROR caught in fallback loop:`, {
+            taskId: task.id,
+            model: modelLabel,
+            error: msg,
+            attemptCount,
+            totalInChain: attemptModels.length,
+          });
+
+          // Check if this is a context length error
+          if (this.isContextLengthError(error)) {
+            log('[fallback] Context length error detected, attempting compaction');
+            try {
+              // Try to compact and retry once
+              await this.compactAndRetry(session.data.id, async () => {
+                await this.promptWithTimeout(
+                  {
+                    path: { id: session.data.id },
+                    body,
+                    query: promptQuery,
+                  },
+                  timeoutMs,
+                );
+              });
+              // If compaction worked, continue to next iteration
+              succeeded = true;
+              continue;
+            } catch {
+              // If compaction also fails, log and continue to fallback
+              log('[fallback] Compaction failed, trying next model');
+            }
+          }
+
+          // EVERY error triggers fallback - try next model
+          // Record failure for circuit breaker
+          if (model) {
+            await this.recordModelFailure(model);
+          }
+
+          // Track fallback attempt
+          if (task.fallbackInfo && model) {
+            task.fallbackInfo.attempts.push({
+              model: modelLabel,
+              success: false,
+              error: msg,
+              timestamp: Date.now(),
+            });
+            task.fallbackInfo.totalAttempts = attemptCount;
+          }
+
+          log(`[fallback] FAILED: Attempt ${attemptCount} with ${modelLabel}`, {
+            taskId: task.id,
+            agent: task.agent,
+            error: msg,
+          });
+
+          // Try next model in chain
+          if (attemptCount < attemptModels.length) {
+            log(`[fallback] Retrying with next model in chain...`, {
+              taskId: task.id,
+              agent: task.agent,
+              nextAttempt: attemptCount + 1,
+            });
+          }
+        }
+      }
+
+      if (!succeeded) {
+        const finalError = `All fallback models failed after ${attemptCount} attempts. ${errors.join(' | ')}`;
+        log(`[fallback] COMPLETE FAILURE: ${finalError}`, {
+          taskId: task.id,
+          agent: task.agent,
+          totalAttempts: attemptCount,
+        });
+        throw new Error(finalError);
+      }
+
+      log(`[background-manager] task started: ${task.id}`, {
+        sessionId: session.data.id,
+      });
+    } catch (error) {
+      log(` Caught error in startTask:`);
+      const errorMessage =
+        error instanceof Error ? error.message : String(error);
+      log(` Error message: ${errorMessage}`);
+      this.completeTask(task, 'failed', errorMessage);
+    } finally {
+      this.activeStarts--;
+      this.processQueue();
+    }
+  }
+
+  /**
+   * Handle session.status events for completion detection.
+   * Uses session.status instead of deprecated session.idle.
+   */
+  async handleSessionStatus(event: {
+    type: string;
+    properties?: { sessionID?: string; status?: { type: string } };
+  }): Promise<void> {
+    if (event.type !== 'session.status') return;
+
+    const sessionId = event.properties?.sessionID;
+    if (!sessionId) return;
+
+    const taskId = this.tasksBySessionId.get(sessionId);
+    if (!taskId) return;
+
+    const task = this.tasks.get(taskId);
+    if (!task || task.status !== 'running') return;
+
+    log(` Session ${sessionId} status: ${event.properties?.status?.type}`);
+
+    // Check if session is idle (completed) or any terminal status
+    const statusType = event.properties?.status?.type;
+    
+    if (statusType === 'idle' || statusType === 'error' || statusType === 'failed' || statusType === 'completed') {
+      log(` Calling extractAndCompleteTask for ${task.id}`);
+      await this.extractAndCompleteTask(task);
+    }
+  }
+
+  /**
+   * Check if a session has actual assistant content (not just error messages).
+   */
+  private async checkSessionHasContent(sessionId: string): Promise<boolean> {
+    try {
+      const messagesResult = await this.client.session.messages({
+        path: { id: sessionId },
+      });
+      const messages = (messagesResult.data ?? []) as Array<{
+        info?: { role: string };
+        parts?: Array<{ type: string; text?: string }>;
+      }>;
+      
+      // Check for assistant messages with actual content
+      const hasAssistantContent = messages.some((m) => {
+        if (m.info?.role !== 'assistant') return false;
+        return m.parts?.some(
+          (p) => (p.type === 'text' || p.type === 'reasoning') && p.text && p.text.length > 0,
+        );
+      });
+      
+      return hasAssistantContent;
+    } catch {
+      // If we can't check, assume there's content
+      return true;
+    }
+  }
+
+  /**
+   * Extract task result and mark complete.
+   * If the session contains a provider error (credit, rate limit, etc.) and
+   * there are remaining models in the fallback chain, retry with the next model.
+   */
+  private async extractAndCompleteTask(task: BackgroundTask): Promise<void> {
+    if (!task.sessionId) return;
+
+    log(` Starting for task ${task.id}, session ${task.sessionId}`);
+
+    try {
+      const messagesResult = await this.client.session.messages({
+        path: { id: task.sessionId },
+      });
+      const messages = (messagesResult.data ?? []) as Array<{
+        info?: { role: string; error?: { data?: { message?: string } } };
+        parts?: Array<{ type: string; text?: string }>;
+      }>;
+      
+      log(` Session ${task.sessionId} has ${messages.length} messages`);
+      
+      // Log first few messages for debugging
+      for (let i = 0; i < Math.min(3, messages.length); i++) {
+        const m = messages[i];
+        log(` Message ${i}: role=${m.info?.role}, parts=${m.parts?.length}`);
+        for (const p of m.parts ?? []) {
+          log(`   Part type=${p.type}, textLen=${p.text?.length ?? 0}`);
+        }
+      }
+
+      // First, try to extract assistant messages
+      const assistantMessages = messages.filter(
+        (m) => m.info?.role === 'assistant',
+      );
+
+      const extractedContent: string[] = [];
+      for (const message of assistantMessages) {
+        for (const part of message.parts ?? []) {
+          // Accept text, reasoning, or any part with text content
+          if (part.text && (part.type === 'text' || part.type === 'reasoning')) {
+            extractedContent.push(part.text);
+          }
+          // Also check for content field (some models use this)
+          if ((part as any).content && typeof (part as any).content === 'string') {
+            extractedContent.push((part as any).content);
+          }
+        }
+      }
+
+      const responseText = extractedContent
+        .filter((t) => t.length > 0)
+        .join('\n\n');
+
+      // If no content extracted, check for error messages in the session
+      if (!responseText) {
+        // Check for error in message info (e.g., info.error from APIError)
+        const errorMessages = messages.filter((m) => {
+          // Check info.error for API errors
+          const info = m as any;
+          if (info.info?.error) {
+            return true;
+          }
+          // Also check parts for error text
+          return m.parts?.some(
+            (p) => p.text && (p.text.includes('error') || p.text.includes('Error') || p.text.includes('credit') || p.text.includes('rate limit')),
+          );
+        });
+        
+        if (errorMessages.length > 0) {
+          // Extract error message from info.error if available
+          const firstErrorMsg = errorMessages[0];
+          const info = firstErrorMsg as any;
+          let errorText = 'API Error';
+          if (info.info?.error?.data?.message) {
+            errorText = info.info.error.data.message;
+          } else {
+            errorText = firstErrorMsg.parts?.map((p) => p.text).join(' ') || 'Unknown error';
+          }
+
+          // Check if this is a provider error that should trigger fallback
+          if (detectProviderError(errorText)) {
+            log(`[fallback] Provider error detected in session messages: ${errorText}`);
+            const retried = await this.retryWithNextModel(task, errorText);
+            if (retried) return; // Retry in progress, don't complete yet
+          }
+
+          this.completeTask(task, 'failed', `Model error: ${errorText}`);
+          return;
+        }
+      }
+
+      // If no content extracted, check if there's a successful model
+      log(` responseText length: ${responseText?.length || 0}, fallbackInfo:`, task.fallbackInfo);
+      if (!responseText && task.fallbackInfo) {
+        log(` Checking fallback - successfulModel: ${task.fallbackInfo.successfulModel}, totalAttempts: ${task.fallbackInfo.totalAttempts}, occurred: ${task.fallbackInfo.occurred}`);
+        if (task.fallbackInfo.successfulModel) {
+          // Model succeeded but produced no output - complete successfully
+          log(` Model succeeded, completing with no output`);
+          this.completeTask(task, 'completed', '(No output)');
+          return;
+        } else if (task.fallbackInfo.totalAttempts > 0) {
+          // Fallback was used but all models failed - mark as failed
+          log(` All models failed, completing with error`);
+          const errorMsg = task.fallbackInfo.attempts
+            .map((a) => `${a.model}: ${a.error || 'unknown error'}`)
+            .join('; ');
+          this.completeTask(task, 'failed', `All models failed: ${errorMsg}`);
+          return;
+        }
+      }
+
+      if (responseText) {
+        this.completeTask(task, 'completed', responseText);
+      } else {
+        this.completeTask(task, 'completed', '(No output)');
+      }
+    } catch (error) {
+      this.completeTask(
+        task,
+        'failed',
+        error instanceof Error ? error.message : String(error),
+      );
+    }
+  }
+
+  /**
+   * Retry a failed task with the next model in the fallback chain.
+   * Called when a provider error is detected in session messages (post-promptAsync).
+   *
+   * @returns true if a retry was initiated, false if no more models available
+   */
+  private async retryWithNextModel(
+    task: BackgroundTask,
+    errorText: string,
+  ): Promise<boolean> {
+    const fallbackEnabled = this.config?.fallback?.enabled ?? true;
+    if (!fallbackEnabled) return false;
+
+    const chain = this.resolveFallbackChain(task.agent);
+    const attemptsSoFar = task.fallbackInfo?.totalAttempts ?? 1;
+
+    // Find the next model in the chain (skip models already tried)
+    if (attemptsSoFar >= chain.length) {
+      log(`[fallback] No more models in chain for ${task.agent} (tried ${attemptsSoFar}/${chain.length})`);
+      return false;
+    }
+
+    const nextModel = chain[attemptsSoFar];
+    if (!nextModel) return false;
+
+    const ref = parseModelReference(nextModel);
+    if (!ref) {
+      log(`[fallback] Invalid model format for retry: ${nextModel}`);
+      return false;
+    }
+
+    // Record failure for the model that just failed (using current model tracking)
+    const failedModel = this.getCurrentModel(task.agent) ?? chain[attemptsSoFar - 1];
+    if (failedModel) {
+      await this.recordModelFailure(failedModel);
+    }
+
+    // Track the failed attempt
+    if (task.fallbackInfo) {
+      if (failedModel) {
+        task.fallbackInfo.attempts.push({
+          model: failedModel,
+          success: false,
+          error: errorText,
+          timestamp: Date.now(),
+        });
+      }
+      task.fallbackInfo.totalAttempts = attemptsSoFar + 1;
+      task.fallbackInfo.occurred = true;
+    }
+
+    log(`[fallback] Retrying task ${task.id} with next model: ${nextModel} (attempt ${attemptsSoFar + 1}/${chain.length})`);
+    console.log(`[oh-my-opencode-slim] Task ${task.id} retrying with model: ${nextModel}`);
+
+    // Track the current model for this retry
+    this.setCurrentModel(task.agent, nextModel);
+
+    // Reset task status to running for the retry
+    task.status = 'running';
+
+    // Create a new session for the retry
+    try {
+      // Clean up old session tracking
+      if (task.sessionId) {
+        this.tasksBySessionId.delete(task.sessionId);
+        this.agentBySessionId.delete(task.sessionId);
+      }
+
+      const session = await this.client.session.create({
+        body: {
+          parentID: task.parentSessionId,
+          title: `Background: ${task.description} (retry ${attemptsSoFar + 1})`,
+        },
+        query: { directory: this.directory },
+      });
+
+      if (!session.data?.id) {
+        log(`[fallback] Failed to create retry session for task ${task.id}`);
+        return false;
+      }
+
+      task.sessionId = session.data.id;
+      this.tasksBySessionId.set(session.data.id, task.id);
+      this.agentBySessionId.set(session.data.id, task.agent);
+
+      const toolPermissions = this.calculateToolPermissions(task.agent);
+      const promptQuery: Record<string, string> = { directory: this.directory };
+      const resolvedVariant = resolveAgentVariant(this.config, task.agent);
+      const basePromptBody = applyAgentVariant(resolvedVariant, {
+        agent: task.agent,
+        tools: toolPermissions,
+        parts: [{ type: 'text' as const, text: task.prompt }],
+      } as PromptBody) as unknown as PromptBody;
+
+      const body: PromptBody = {
+        ...basePromptBody,
+        model: ref,
+      };
+
+      const timeoutMs =
+        this.config?.fallback?.timeoutMs ?? FALLBACK_FAILOVER_TIMEOUT_MS;
+
+      await this.promptWithTimeout(
+        {
+          path: { id: session.data.id },
+          body,
+          query: promptQuery,
+        },
+        timeoutMs,
+      );
+
+      // Track success attempt (will be confirmed when session completes)
+      if (task.fallbackInfo) {
+        task.fallbackInfo.attempts.push({
+          model: nextModel,
+          success: true,
+          timestamp: Date.now(),
+        });
+        task.fallbackInfo.successfulModel = nextModel;
+      }
+
+      await this.recordModelSuccess(nextModel);
+      return true;
+    } catch (retryError) {
+      const msg = retryError instanceof Error ? retryError.message : String(retryError);
+      log(`[fallback] Retry with ${nextModel} also failed: ${msg}`);
+
+      if (task.fallbackInfo) {
+        task.fallbackInfo.attempts.push({
+          model: nextModel,
+          success: false,
+          error: msg,
+          timestamp: Date.now(),
+        });
+      }
+
+      await this.recordModelFailure(nextModel);
+
+      // Recursively try the next model
+      return this.retryWithNextModel(task, msg);
+    }
+  }
+
+  /**
+   * Complete a task and notify waiting callers.
+   */
+  private completeTask(
+    task: BackgroundTask,
+    status: 'completed' | 'failed' | 'cancelled',
+    resultOrError: string,
+  ): void {
+    log(` completeTask: ${task.id}, status: ${status}, error: ${resultOrError}`);
+    // Don't check for 'cancelled' here - cancel() may set status before calling
+    if (task.status === 'completed' || task.status === 'failed') {
+      log(` Task already completed/failed, returning early`);
+      return; // Already completed
+    }
+
+    task.status = status;
+    task.completedAt = new Date();
+
+    if (status === 'completed') {
+      task.result = resultOrError;
+    } else {
+      task.error = resultOrError;
+    }
+
+    // Clean up session tracking maps to prevent memory leak
+    if (task.sessionId) {
+      this.tasksBySessionId.delete(task.sessionId);
+      this.agentBySessionId.delete(task.sessionId);
+    }
+
+    // Send notification to parent session
+    if (task.parentSessionId) {
+      this.sendCompletionNotification(task).catch((err) => {
+        log(`[background-manager] notification failed: ${err}`);
+      });
+    }
+
+    // Resolve waiting callers
+    const resolver = this.completionResolvers.get(task.id);
+    if (resolver) {
+      resolver(task);
+      this.completionResolvers.delete(task.id);
+    }
+
+    log(`[background-manager] task ${status}: ${task.id}`, {
+      description: task.description,
+    });
+  }
+
+  /**
+   * Send completion notification to parent session.
+   */
+  private async sendCompletionNotification(
+    task: BackgroundTask,
+  ): Promise<void> {
+    let message: string;
+
+    if (task.status === 'completed') {
+      message = `[Background task "${task.description}" completed]\n\n${task.result || '(No output)'}`;
+      
+      // Add fallback notice if fallback occurred
+      if (task.fallbackInfo?.occurred && task.fallbackInfo.successfulModel) {
+        message += `\n\nSubagent ${task.agent} required model fallback, but succeeded on ${task.fallbackInfo.successfulModel}. Minor inconvenience, continuing normally.`;
+      }
+    } else {
+      message = `[Background task "${task.description}" failed: ${task.error}]`;
+      
+      // Add fallback details if task failed during fallback
+      if (task.fallbackInfo?.totalAttempts && task.fallbackInfo.totalAttempts > 1) {
+        message += ` (tried ${task.fallbackInfo.totalAttempts} model${task.fallbackInfo.totalAttempts > 1 ? 's' : ''})`;
+      }
+    }
+
+    // Send via promptAsync - fires message to parent session
+    // Message will be processed when session is next free (between turns)
+    await this.client.session.promptAsync({
+      path: { id: task.parentSessionId },
+      body: {
+        parts: [{ type: 'text' as const, text: message }],
+      },
+    });
+  }
+
+  /**
+   * Retrieve the current state of a background task.
+   *
+   * @param taskId - The task ID to retrieve
+   * @returns The task object, or null if not found
+   */
+  getResult(taskId: string): BackgroundTask | null {
+    return this.tasks.get(taskId) ?? null;
+  }
+
+  /**
+   * Wait for a task to complete.
+   *
+   * @param taskId - The task ID to wait for
+   * @param timeout - Maximum time to wait in milliseconds (0 = no timeout)
+   * @returns The completed task, or null if not found/timeout
+   */
+  async waitForCompletion(
+    taskId: string,
+    timeout = 0,
+  ): Promise<BackgroundTask | null> {
+    const task = this.tasks.get(taskId);
+    if (!task) return null;
+
+    if (
+      task.status === 'completed' ||
+      task.status === 'failed' ||
+      task.status === 'cancelled'
+    ) {
+      return task;
+    }
+
+    return new Promise((resolve) => {
+      const resolver = (t: BackgroundTask) => resolve(t);
+      this.completionResolvers.set(taskId, resolver);
+
+      if (timeout > 0) {
+        setTimeout(() => {
+          this.completionResolvers.delete(taskId);
+          resolve(this.tasks.get(taskId) ?? null);
+        }, timeout);
+      }
+    });
+  }
+
+  /**
+   * Cancel one or all running background tasks.
+   *
+   * @param taskId - Optional task ID to cancel. If omitted, cancels all pending/running tasks.
+   * @returns Number of tasks cancelled
+   */
+  cancel(taskId?: string): number {
+    if (taskId) {
+      const task = this.tasks.get(taskId);
+      if (
+        task &&
+        (task.status === 'pending' ||
+          task.status === 'starting' ||
+          task.status === 'running')
+      ) {
+        // Clean up any waiting resolver
+        this.completionResolvers.delete(taskId);
+
+        // Check if in start queue (must check before marking cancelled)
+        const inStartQueue = task.status === 'pending';
+
+        // Mark as cancelled FIRST to prevent race with startTask
+        // Use type assertion since we're deliberately changing status before completeTask
+        (task as BackgroundTask & { status: string }).status = 'cancelled';
+
+        // Remove from start queue if pending
+        if (inStartQueue) {
+          const idx = this.startQueue.findIndex((t) => t.id === taskId);
+          if (idx >= 0) {
+            this.startQueue.splice(idx, 1);
+          }
+        }
+
+        this.completeTask(task, 'cancelled', 'Cancelled by user');
+        return 1;
+      }
+      return 0;
+    }
+
+    let count = 0;
+    for (const task of this.tasks.values()) {
+      if (
+        task.status === 'pending' ||
+        task.status === 'starting' ||
+        task.status === 'running'
+      ) {
+        // Clean up any waiting resolver
+        this.completionResolvers.delete(task.id);
+
+        // Check if in start queue (must check before marking cancelled)
+        const inStartQueue = task.status === 'pending';
+
+        // Mark as cancelled FIRST to prevent race with startTask
+        // Use type assertion since we're deliberately changing status before completeTask
+        (task as BackgroundTask & { status: string }).status = 'cancelled';
+
+        // Remove from start queue if pending
+        if (inStartQueue) {
+          const idx = this.startQueue.findIndex((t) => t.id === task.id);
+          if (idx >= 0) {
+            this.startQueue.splice(idx, 1);
+          }
+        }
+
+        this.completeTask(task, 'cancelled', 'Cancelled by user');
+        count++;
+      }
+    }
+    return count;
+  }
+
+  /**
+   * Clean up all tasks.
+   */
+  cleanup(): void {
+    this.startQueue = [];
+    this.completionResolvers.clear();
+    this.tasks.clear();
+    this.tasksBySessionId.clear();
+    this.agentBySessionId.clear();
+  }
+}

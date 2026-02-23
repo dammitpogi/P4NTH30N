@@ -1,0 +1,27 @@
+{
+  "id": "toolhive-rag-server",
+  "name": "rag-server",
+  "transport": "http",
+  "connection": {
+    "url": "http://127.0.0.1:5001/mcp",
+    "port": 5001
+  },
+  "tags": ["toolhive-desktop", "search", "p4nth30n", "rag"],
+  "description": "P4NTH30N RAG server with semantic search",
+  "source": "rag-server.json",
+  "image": "",
+  "process": {
+    "executable": "C:/ProgramData/P4NTH30N/bin/RAG.McpHost.exe",
+    "args": [
+      "--port",
+      "5001",
+      "--transport",
+      "http",
+      "--bridge",
+      "http://127.0.0.1:5000"
+    ],
+    "autoStart": true,
+    "restartOnFailure": true
+  },
+  "enabled": true
+}

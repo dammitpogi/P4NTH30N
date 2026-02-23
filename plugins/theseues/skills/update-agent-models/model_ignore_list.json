@@ -1,0 +1,27 @@
+{
+  "_schema": "https://opencode.ai/skills/update-agent-models/model-ignore-list.json",
+  "_warning": "⚠️ USER DECISION REQUIRED ⚠️ Ignore-list changes require explicit user approval after research -> approval workflow. Agents/scripts must never auto-add entries.",
+  "_description": "Models intentionally excluded from optimization when benchmarks are unavailable or unapproved",
+  "ignored_models": {
+    "lmstudio-local/Qwen2.5-0.5B-Instruct": {
+      "reason": "Local runtime model; no authoritative benchmark coverage for this pulled local ID",
+      "addedByUser": true,
+      "addedAt": "2026-02-14T16:30:00Z"
+    },
+    "lmstudio-local/SmolLM2-1.7B-Instruct": {
+      "reason": "Local runtime model; no authoritative benchmark coverage for this pulled local ID",
+      "addedByUser": true,
+      "addedAt": "2026-02-14T16:30:00Z"
+    },
+    "openrouter/arcee-ai/trinity-large-preview:free": {
+      "reason": "Free tier preview model with unresolved benchmark coverage in current research sources",
+      "addedByUser": true,
+      "addedAt": "2026-02-14T16:30:00Z"
+    },
+    "openrouter/stepfun/step-3.5-flash:free": {
+      "reason": "Free tier model with unresolved benchmark coverage in current research sources",
+      "addedByUser": true,
+      "addedAt": "2026-02-14T16:30:00Z"
+    }
+  }
+}

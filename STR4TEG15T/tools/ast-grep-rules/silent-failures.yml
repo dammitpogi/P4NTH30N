@@ -1,0 +1,70 @@
+rules:
+  - id: empty-catch
+    language: CSharp
+    rule:
+      all:
+        - pattern: |
+            catch (Exception $EX) {
+              $$$BODY
+            }
+        - not:
+            has:
+              kind: throw_statement
+    severity: error
+    message: Exception is swallowed without a throw.
+
+  - id: default-success-return
+    language: CSharp
+    rule:
+      pattern: |
+        catch ($EX) {
+          $$$LOG
+          return true;
+        }
+    severity: error
+    message: Catch block returns success after handling an exception.
+
+  - id: async-void
+    language: CSharp
+    rule:
+      pattern: |
+        async void $METHOD($$$PARAMS) {
+          $$$BODY
+        }
+    severity: warning
+    message: async void hides exceptions from normal async callers.
+
+  - id: log-without-failing
+    language: CSharp
+    rule:
+      pattern: |
+        {
+          $$$PRE
+          $LOGGER($$$ARGS);
+          $$$MID
+          return $RET;
+          $$$POST
+        }
+    constraints:
+      LOGGER:
+        regex: ^(LogWarning|LogError)$
+    severity: warning
+    message: Logs an error/warning and returns instead of failing fast.
+
+  - id: skipped-action-invalid-state
+    language: CSharp
+    rule:
+      pattern: |
+        if ($COND) {
+          $$$PRE
+          $LOGGER($$$ARGS);
+          $$$MID
+          return $RET;
+        }
+    constraints:
+      LOGGER:
+        regex: ^(LogWarning|LogError)$
+      RET:
+        regex: ^(true|.*Success.*)$
+    severity: warning
+    message: Conditional path logs and exits with a success-like result.

@@ -1,0 +1,416 @@
+{
+  "_schema": "https://opencode.ai/skills/update-agent-models/benchmarks.json",
+  "_description": "Benchmark data for model selection. Scores 0-100 where applicable.",
+  "_lastUpdated": "2026-02-13",
+  "benchmarks": {
+    "openrouter-free/meta-llama/llama-3.3-70b-instruct:free": {
+      "mmlu": 86.4,
+      "gpqa": 54.0,
+      "humaneval": 48.2,
+      "math": 73.5,
+      "swebench": 28.0,
+      "context": 128000,
+      "latency_ttft_ms": 4200,
+      "source": "meta official"
+    },
+    "openrouter-free/z-ai/glm-4.5-air:free": {
+      "mmlu": 78.0,
+      "gpqa": 42.0,
+      "humaneval": 72.0,
+      "math": 62.0,
+      "swebench": 35.0,
+      "context": 128000,
+      "latency_ttft_ms": 2800,
+      "source": "z-ai official"
+    },
+    "openrouter-free/nvidia/nemotron-3-nano-30b-a3b:free": {
+      "mmlu": 72.0,
+      "gpqa": 38.0,
+      "humaneval": 45.0,
+      "math": 58.0,
+      "swebench": 22.0,
+      "context": 128000,
+      "latency_ttft_ms": 3100,
+      "source": "nvidia official"
+    },
+    "openrouter-free/arcee-ai/trinity-large-preview:free": {
+      "mmlu": 68.0,
+      "gpqa": 35.0,
+      "humaneval": 52.0,
+      "math": 55.0,
+      "swebench": 30.0,
+      "context": 100000,
+      "latency_ttft_ms": 4500,
+      "source": "arcee ai"
+    },
+    "openrouter-free/upstage/solar-pro-3:free": {
+      "mmlu": 82.0,
+      "gpqa": 48.0,
+      "humaneval": 58.0,
+      "math": 68.0,
+      "swebench": 32.0,
+      "context": 128000,
+      "latency_ttft_ms": 3800,
+      "source": "upstage official"
+    },
+    "openrouter-free/openai/gpt-oss-120b:free": {
+      "mmlu": 70.0,
+      "gpqa": 40.0,
+      "humaneval": 55.0,
+      "math": 60.0,
+      "swebench": 28.0,
+      "context": 32000,
+      "latency_ttft_ms": 5200,
+      "source": "openai compatible"
+    },
+    "openrouter-free/stepfun/step-3.5-flash:free": {
+      "mmlu": 75.0,
+      "gpqa": 41.0,
+      "humaneval": 50.0,
+      "math": 58.0,
+      "swebench": 25.0,
+      "context": 128000,
+      "latency_ttft_ms": 2200,
+      "source": "stepfun official"
+    },
+    "openrouter-free/nvidia/nemotron-nano-12b-v2-vl:free": {
+      "mmlu": 62.0,
+      "gpqa": 32.0,
+      "humaneval": 38.0,
+      "math": 48.0,
+      "swebench": 18.0,
+      "context": 128000,
+      "latency_ttft_ms": 1600,
+      "source": "nvidia official"
+    },
+    "openrouter-free/nvidia/nemotron-nano-9b-v2:free": {
+      "mmlu": 60.0,
+      "gpqa": 30.0,
+      "humaneval": 35.0,
+      "math": 45.0,
+      "swebench": 15.0,
+      "context": 128000,
+      "latency_ttft_ms": 1400,
+      "source": "nvidia official"
+    },
+    "openrouter-free/arcee-ai/trinity-mini:free": {
+      "mmlu": 55.0,
+      "gpqa": 28.0,
+      "humaneval": 32.0,
+      "math": 40.0,
+      "swebench": 12.0,
+      "context": 64000,
+      "latency_ttft_ms": 1200,
+      "source": "arcee ai"
+    },
+    "groq-free/llama-3.1-8b-instant": {
+      "mmlu": 68.0,
+      "gpqa": 35.0,
+      "humaneval": 40.0,
+      "math": 52.0,
+      "swebench": 15.0,
+      "context": 128000,
+      "latency_ttft_ms": 800,
+      "source": "groq/lmeta"
+    },
+    "google-free/gemini-1.5-flash": {
+      "mmlu": 85.5,
+      "gpqa": 56.0,
+      "humaneval": 75.0,
+      "math": 86.0,
+      "swebench": 42.0,
+      "context": 1000000,
+      "latency_ttft_ms": 600,
+      "source": "google official"
+    },
+    "google-free/gemini-2.0-flash": {
+      "mmlu": 88.0,
+      "gpqa": 62.0,
+      "humaneval": 78.0,
+      "math": 88.0,
+      "swebench": 48.0,
+      "context": 1000000,
+      "latency_ttft_ms": 450,
+      "source": "google official"
+    },
+    "google-free/gemini-2.5-flash": {
+      "mmlu": 89.0,
+      "gpqa": 65.0,
+      "humaneval": 80.0,
+      "math": 90.0,
+      "swebench": 52.0,
+      "context": 1000000,
+      "latency_ttft_ms": 400,
+      "source": "google official"
+    },
+    "google-free/gemini-2.5-flash-lite": {
+      "mmlu": 82.0,
+      "gpqa": 50.0,
+      "humaneval": 70.0,
+      "math": 78.0,
+      "swebench": 35.0,
+      "context": 1000000,
+      "latency_ttft_ms": 300,
+      "source": "google official"
+    },
+    "moonshotai/kimi-k2-thinking": {
+      "mmlu": 82.0,
+      "gpqa": 55.0,
+      "humaneval": 68.0,
+      "math": 75.0,
+      "swebench": 38.0,
+      "context": 2000000,
+      "latency_ttft_ms": 3500,
+      "source": "moonshotai official",
+      "note": "Best free long-context model"
+    },
+    "moonshotai/kimi-k2.5": {
+      "mmlu": 85.0,
+      "gpqa": 58.0,
+      "humaneval": 72.0,
+      "math": 78.0,
+      "swebench": 40.0,
+      "context": 2000000,
+      "latency_ttft_ms": 3000,
+      "source": "moonshotai official"
+    },
+    "anthropic-paid/claude-sonnet-4-5-20250514": {
+      "mmlu": 89.0,
+      "gpqa": 84.8,
+      "humaneval": 94.0,
+      "math": 96.2,
+      "swebench": 77.2,
+      "context": 200000,
+      "latency_ttft_ms": 1200,
+      "cost_input": 3.0,
+      "cost_output": 15.0,
+      "source": "anthropic official",
+      "note": "Best value paid - balanced performance"
+    },
+    "anthropic-paid/claude-haiku-4-5-20250514": {
+      "mmlu": 84.0,
+      "gpqa": 52.0,
+      "humaneval": 88.0,
+      "math": 75.0,
+      "swebench": 73.0,
+      "context": 200000,
+      "latency_ttft_ms": 300,
+      "cost_input": 1.0,
+      "cost_output": 5.0,
+      "source": "anthropic official",
+      "note": "Fastest paid option - best for speed"
+    },
+    "anthropic-paid/claude-opus-4-6-20250514": {
+      "mmlu": 91.0,
+      "gpqa": 91.0,
+      "humaneval": 95.0,
+      "math": 93.0,
+      "swebench": 81.0,
+      "context": 200000,
+      "latency_ttft_ms": 1800,
+      "cost_input": 5.0,
+      "cost_output": 25.0,
+      "source": "anthropic official",
+      "note": "BEST for coding - industry leading SWE-Bench"
+    },
+    "openai-paid/gpt-4o": {
+      "mmlu": 90.2,
+      "gpqa": 46.5,
+      "humaneval": 90.2,
+      "math": 78.0,
+      "swebench": 21.6,
+      "context": 128000,
+      "latency_ttft_ms": 800,
+      "cost_input": 2.5,
+      "cost_output": 10.0,
+      "source": "openai official"
+    },
+    "openai-paid/gpt-4o-mini": {
+      "mmlu": 88.7,
+      "gpqa": 46.0,
+      "humaneval": 90.2,
+      "math": 75.0,
+      "swebench": 21.6,
+      "context": 128000,
+      "latency_ttft_ms": 200,
+      "cost_input": 0.15,
+      "cost_output": 0.6,
+      "source": "openai official",
+      "note": "Best cost-efficiency - use for simple tasks"
+    },
+    "openai-paid/o1-mini": {
+      "mmlu": 92.0,
+      "gpqa": 75.0,
+      "humaneval": 85.0,
+      "math": 95.0,
+      "swebench": 45.0,
+      "context": 128000,
+      "latency_ttft_ms": 3000,
+      "cost_input": 3.0,
+      "cost_output": 12.0,
+      "source": "openai official",
+      "note": "Great for reasoning tasks"
+    },
+    "openai-paid/o3-mini": {
+      "mmlu": 94.0,
+      "gpqa": 85.0,
+      "humaneval": 90.0,
+      "math": 98.0,
+      "swebench": 55.0,
+      "context": 128000,
+      "latency_ttft_ms": 2500,
+      "cost_input": 1.75,
+      "cost_output": 14.0,
+      "source": "openai official",
+      "note": "Best reasoning - excellent math/science"
+    },
+    "lmstudio-local/lmstudio/Qwen2.5-0.5B-Instruct": {
+      "mmlu": 45.0,
+      "humaneval": 25.0,
+      "math": 30.0,
+      "swebench": 5.0,
+      "context": 32768,
+      "latency_ttft_ms": 500,
+      "params": "0.5B",
+      "source": "lmstudio",
+      "note": "Fastest local - ultimate fallback"
+    },
+    "lmstudio-local/lmstudio/SmolLM2-1.7B-Instruct": {
+      "mmlu": 55.0,
+      "humaneval": 35.0,
+      "math": 40.0,
+      "swebench": 10.0,
+      "context": 32768,
+      "latency_ttft_ms": 800,
+      "params": "1.7B",
+      "source": "lmstudio",
+      "note": "Best quality under 1B"
+    },
+    "lmstudio-local/lmstudio/Llama-3.2-1B-Instruct": {
+      "mmlu": 50.0,
+      "humaneval": 30.0,
+      "math": 35.0,
+      "swebench": 8.0,
+      "context": 32768,
+      "latency_ttft_ms": 600,
+      "params": "1B",
+      "source": "lmstudio",
+      "note": "Meta small model"
+    }
+  },
+  "agent_requirements": {
+    "orchestrator": {
+      "primary_metric": "mmlu",
+      "secondary": ["gpqa", "reasoning"],
+      "weight_mmlu": 2.0,
+      "weight_gpqa": 1.5,
+      "weight_latency": 0.5,
+      "ideal_latency_ms": 5000
+    },
+    "oracle": {
+      "primary_metric": "gpqa",
+      "secondary": ["mmlu", "reasoning"],
+      "weight_mmlu": 1.5,
+      "weight_gpqa": 2.0,
+      "weight_latency": 0.3,
+      "ideal_latency_ms": 8000
+    },
+    "designer": {
+      "primary_metric": "mmlu",
+      "secondary": ["humaneval", "creative"],
+      "weight_mmlu": 1.5,
+      "weight_humaneval": 1.0,
+      "weight_latency": 0.8,
+      "ideal_latency_ms": 5000
+    },
+    "explorer": {
+      "primary_metric": "latency",
+      "secondary": ["mmlu"],
+      "weight_mmlu": 1.0,
+      "weight_latency": 2.5,
+      "ideal_latency_ms": 1500,
+      "note": "Needs fast response for web search tasks"
+    },
+    "librarian": {
+      "primary_metric": "context",
+      "secondary": ["mmlu", "recall"],
+      "weight_mmlu": 1.0,
+      "weight_context": 2.0,
+      "weight_latency": 0.5,
+      "ideal_latency_ms": 6000,
+      "note": "Long context critical for research"
+    },
+    "fixer": {
+      "primary_metric": "swebench",
+      "secondary": ["humaneval", "coding"],
+      "weight_mmlu": 0.8,
+      "weight_swebench": 2.5,
+      "weight_humaneval": 1.5,
+      "weight_latency": 0.4,
+      "ideal_latency_ms": 6000,
+      "note": "Coding capability is critical"
+    }
+  },
+  "provider_reliability": {
+    "anthropic-paid": {
+      "rank": 0,
+      "reliability": 0.99,
+      "avg_latency_ms": 600,
+      "notes": "Premium - use for complex tasks"
+    },
+    "openai-paid": {
+      "rank": 1,
+      "reliability": 0.99,
+      "avg_latency_ms": 500,
+      "notes": "Premium - use for reasoning tasks"
+    },
+    "google-free": {
+      "rank": 2,
+      "reliability": 0.99,
+      "avg_latency_ms": 450,
+      "notes": "Most reliable free - best quality/free"
+    },
+    "groq-free": {
+      "rank": 3,
+      "reliability": 0.95,
+      "avg_latency_ms": 800,
+      "notes": "High throughput free"
+    },
+    "moonshotai-free": {
+      "rank": 4,
+      "reliability": 0.90,
+      "avg_latency_ms": 3200,
+      "notes": "Excellent long context free"
+    },
+    "openrouter-free": {
+      "rank": 5,
+      "reliability": 0.75,
+      "avg_latency_ms": 3500,
+      "notes": "Mixed quality - fallback only"
+    },
+    "lmstudio-local": {
+      "rank": 6,
+      "reliability": 1.0,
+      "avg_latency_ms": 500,
+      "notes": "Local - ultimate fallback when all APIs fail",
+      "requires": "lms load <model> + lms server start"
+    }
+  },
+  "budget_allocation": {
+    "monthly_budget_usd": 80,
+    "anthropic_allocation": 20,
+    "openai_allocation": 60,
+    "hard_limits": {
+      "claude_opus_only_fixer": true,
+      "note": "Claude Opus 4.6 reserved exclusively for fixer agent - all other agents use OpenAI + free providers"
+    },
+    "strategy": {
+      "fixer": "claude-opus-4-6 - best coding (80.9% SWE-Bench) - ONLY Anthropic model used",
+      "orchestrator": "gpt-4o - OpenAI primary",
+      "oracle": "o3-mini - best reasoning for analysis",
+      "explorer": "gpt-4o-mini - fast & cheap for web tasks",
+      "librarian": "gpt-4o - OpenAI primary",
+      "designer": "gpt-4o - OpenAI primary"
+    }
+  }
+}

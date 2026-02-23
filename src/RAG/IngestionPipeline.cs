@@ -339,6 +339,110 @@ public sealed class IngestionPipeline
 	}
 
 	/// <summary>
+	/// Performs bulk ingestion from RagActivationConfig.BulkIngestion configuration.
+	/// Ingests all configured directories and root documents.
+	/// </summary>
+	public async Task<BulkIngestionResult> IngestFromConfigAsync(
+		RagActivationConfig config,
+		CancellationToken cancellationToken = default
+	)
+	{
+		if (!config.BulkIngestion.Enabled)
+		{
+			Console.WriteLine("[IngestionPipeline] Bulk ingestion disabled in config");
+			return new BulkIngestionResult { TotalFiles = 0, Ingested = 0 };
+		}
+
+		Console.WriteLine($"[IngestionPipeline] Starting bulk ingestion from {config.BulkIngestion.Directories.Count} directories");
+
+		var allResults = new List<BatchIngestionResult>();
+		int rootDocsIngested = 0;
+
+		// Ingest each configured directory
+		foreach (var dir in config.BulkIngestion.Directories)
+		{
+			if (string.IsNullOrWhiteSpace(dir.Path) || !Directory.Exists(dir.Path))
+			{
+				Console.WriteLine($"[IngestionPipeline] Skipping non-existent directory: {dir.Path}");
+				continue;
+			}
+
+			Console.WriteLine($"[IngestionPipeline] Ingesting directory: {dir.Path} (tag: {dir.Tag}, priority: {dir.Priority})");
+
+			var metadata = new Dictionary<string, object>
+			{
+				{ "agent", "bulk-ingestion" },
+				{ "type", "bulk" },
+				{ "category", dir.Tag },
+			};
+
+			BatchIngestionResult dirResult = await IngestDirectoryBatchAsync(
+				dir.Path,
+				"*.*",
+				metadata,
+				4,
+				cancellationToken
+			);
+
+			allResults.Add(dirResult);
+			Console.WriteLine($"[IngestionPipeline] Ingested {dirResult.Ingested}/{dirResult.TotalFiles} from {dir.Path}");
+		}
+
+		// Ingest individual root documents
+		foreach (var docPath in config.BulkIngestion.RootDocuments)
+		{
+			if (!File.Exists(docPath))
+			{
+				Console.WriteLine($"[IngestionPipeline] Skipping non-existent root document: {docPath}");
+				continue;
+			}
+
+			Console.WriteLine($"[IngestionPipeline] Ingesting root document: {docPath}");
+
+			var metadata = new Dictionary<string, object>
+			{
+				{ "agent", "bulk-ingestion" },
+				{ "type", "root-document" },
+			};
+
+			IngestionResult docResult = await IngestFileAsync(docPath, metadata, cancellationToken);
+			rootDocsIngested++;
+
+			if (docResult.Status == IngestionStatus.Ingested)
+			{
+				Console.WriteLine($"[IngestionPipeline] Ingested root document: {Path.GetFileName(docPath)} ({docResult.ChunkCount} chunks)");
+			}
+			else
+			{
+				Console.WriteLine($"[IngestionPipeline] Failed to ingest {Path.GetFileName(docPath)}: {docResult.Reason}");
+			}
+		}
+
+		// Aggregate results
+		int totalFiles = allResults.Sum(r => r.TotalFiles);
+		int ingested = allResults.Sum(r => r.Ingested);
+		int rejected = allResults.Sum(r => r.Rejected);
+		int errors = allResults.Sum(r => r.Errors);
+		int totalChunks = allResults.Sum(r => r.TotalChunks);
+		long durationMs = allResults.Sum(r => r.DurationMs);
+
+		var result = new BulkIngestionResult
+		{
+			TotalFiles = totalFiles,
+			Ingested = ingested,
+			Rejected = rejected,
+			Errors = errors,
+			TotalChunks = totalChunks,
+			RootDocumentsIngested = rootDocsIngested,
+			DurationMs = durationMs,
+		};
+
+		Console.WriteLine($"[IngestionPipeline] Bulk ingestion complete: {result.Ingested}/{result.TotalFiles} files ingested");
+
+		return result;
+	}
+
+	/// <summary>
 	/// Gets the chunk count for a document.
 	/// </summary>
 	public int GetChunkCount(string documentId)
@@ -625,4 +729,22 @@ public sealed class IngestionConfig
 	/// Directories to exclude from ingestion.
 	/// </summary>
 	public HashSet<string> ExcludeDirectories { get; init; } = new(StringComparer.OrdinalIgnoreCase) { "bin", "obj", ".git", "node_modules", "Releases" };
+}
+
+/// <summary>
+/// Result of a bulk ingestion operation from RagActivationConfig.
+/// </summary>
+public sealed class BulkIngestionResult
+{
+	public int TotalFiles { get; init; }
+	public int Ingested { get; init; }
+	public int Rejected { get; init; }
+	public int Errors { get; init; }
+	public int TotalChunks { get; init; }
+	public int RootDocumentsIngested { get; init; }
+	public long DurationMs { get; init; }
+
+	public override string ToString() =>
+		$"Bulk: {Ingested}/{TotalFiles} files, {Rejected} rejected, {Errors} errors, " +
+		$"{TotalChunks} chunks, {RootDocumentsIngested} root docs, {DurationMs}ms";
 }

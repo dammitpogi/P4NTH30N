@@ -1,0 +1,70 @@
+{
+  "name": "vscode-tychon",
+  "displayName": "Tychon Truth Guard",
+  "description": "Real-time detection of silent-failure patterns with Truth Score status.",
+  "version": "0.1.0",
+  "publisher": "pantheon",
+  "license": "UNLICENSED",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Linters",
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:csharp",
+    "onCommand:tychon.auditWorkspace"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "tychon.auditWorkspace",
+        "title": "Tychon: Audit Workspace"
+      }
+    ],
+    "configuration": {
+      "title": "Tychon Truth Guard",
+      "properties": {
+        "tychon.rulesPath": {
+          "type": "string",
+          "default": "STR4TEG15T/tools/ast-grep-rules/silent-failures.yml",
+          "description": "Path to ast-grep rules used for silent-failure detection."
+        },
+        "tychon.showTruthScoreInStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Display current Truth Score in the VS Code status bar."
+        },
+        "tychon.enableQuickFixHints": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show hover hints with suggested remediations."
+        }
+      }
+    },
+    "problemMatchers": [
+      {
+        "name": "tychon",
+        "owner": "tychon",
+        "fileLocation": [
+          "relative",
+          "${workspaceFolder}"
+        ],
+        "pattern": {
+          "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error)\\s+(TYCHON\\d+):\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "severity": 4,
+          "code": 5,
+          "message": 6
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "build": "echo \"Build extension implementation in src/ then bundle to dist/\""
+  }
+}

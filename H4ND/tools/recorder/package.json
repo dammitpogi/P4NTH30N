@@ -6,7 +6,9 @@
     "start": "bun run recorder.ts",
     "init": "bun run recorder.ts --init",
     "step": "bun run recorder.ts --step",
-    "tui": "bun run recorder-tui.ts"
+    "tui": "bun run recorder-tui.ts",
+    "build": "pwsh -File build.ps1",
+    "build:tui": "bun build recorder-tui.ts --compile --outfile recorder-tui.exe"
   },
   "dependencies": {
     "@types/node": "^20.0.0",

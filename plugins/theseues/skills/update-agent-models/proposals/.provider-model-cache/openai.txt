@@ -1,0 +1,9 @@
+openai/codex-mini-latest
+openai/gpt-5-codex
+openai/gpt-5.1-codex
+openai/gpt-5.1-codex-max
+openai/gpt-5.1-codex-mini
+openai/gpt-5.2
+openai/gpt-5.2-codex
+openai/gpt-5.3-codex
+openai/gpt-5.3-codex-spark

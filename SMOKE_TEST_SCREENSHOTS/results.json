@@ -1,0 +1,48 @@
+{
+  "startTime": "2026-02-22T21:34:19.664Z",
+  "steps": [
+    {
+      "step": "Connect to Chrome",
+      "status": "START",
+      "timestamp": "2026-02-22T21:34:19.665Z"
+    },
+    {
+      "step": "Connect to Chrome",
+      "status": "SUCCESS",
+      "timestamp": "2026-02-22T21:34:19.705Z",
+      "port": 9222
+    },
+    {
+      "step": "Navigate to FireKirin",
+      "status": "START",
+      "timestamp": "2026-02-22T21:34:19.705Z",
+      "url": "http://web.orionstars.org/hot_play/orionstars/"
+    },
+    {
+      "step": "Navigate to FireKirin",
+      "status": "SUCCESS",
+      "timestamp": "2026-02-22T21:34:24.978Z"
+    },
+    {
+      "step": "Get Canvas Bounds",
+      "status": "START",
+      "timestamp": "2026-02-22T21:34:24.979Z"
+    }
+  ],
+  "errors": [
+    {
+      "step": "Screenshot",
+      "message": "WebSocket is not open: readyState 3 (CLOSED)",
+      "stack": "Error: WebSocket is not open: readyState 3 (CLOSED)\n    at sendAfterClose (C:\\P4NTH30N\\node_modules\\ws\\lib\\websocket.js:990:17)\n    at WebSocket.send (C:\\P4NTH30N\\node_modules\\ws\\lib\\websocket.js:405:7)\n    at Chrome._enqueueCommand (C:\\P4NTH30N\\node_modules\\chrome-remote-interface\\lib\\chrome.js:289:18)\n    at C:\\P4NTH30N\\node_modules\\chrome-remote-interface\\lib\\chrome.js:76:22\n    at new Promise (<anonymous>)\n    at Chrome.send (C:\\P4NTH30N\\node_modules\\chrome-remote-interface\\lib\\chrome.js:75:20)\n    at Object.handler [as captureScreenshot] (C:\\P4NTH30N\\node_modules\\chrome-remote-interface\\lib\\api.js:33:23)\n    at takeScreenshot (C:\\P4NTH30N\\smoke_test_firekirin.js:47:39)\n    at smokeTest (C:\\P4NTH30N\\smoke_test_firekirin.js:169:15)",
+      "timestamp": "2026-02-22T21:34:24.979Z"
+    },
+    {
+      "step": "Smoke Test",
+      "message": "WebSocket is not open: readyState 3 (CLOSED)",
+      "stack": "Error: WebSocket is not open: readyState 3 (CLOSED)\n    at sendAfterClose (C:\\P4NTH30N\\node_modules\\ws\\lib\\websocket.js:990:17)\n    at WebSocket.send (C:\\P4NTH30N\\node_modules\\ws\\lib\\websocket.js:405:7)\n    at Chrome._enqueueCommand (C:\\P4NTH30N\\node_modules\\chrome-remote-interface\\lib\\chrome.js:289:18)\n    at C:\\P4NTH30N\\node_modules\\chrome-remote-interface\\lib\\chrome.js:76:22\n    at new Promise (<anonymous>)\n    at Chrome.send (C:\\P4NTH30N\\node_modules\\chrome-remote-interface\\lib\\chrome.js:75:20)\n    at Object.handler [as evaluate] (C:\\P4NTH30N\\node_modules\\chrome-remote-interface\\lib\\api.js:33:23)\n    at smokeTest (C:\\P4NTH30N\\smoke_test_firekirin.js:173:44)",
+      "timestamp": "2026-02-22T21:34:24.979Z"
+    }
+  ],
+  "success": false,
+  "endTime": "2026-02-22T21:34:24.979Z"
+}

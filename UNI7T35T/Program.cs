@@ -4,6 +4,8 @@ using P4NTH30N.UNI7T35T.Sampling;
 using P4NTH30N.UNI7T35T.PostProcessing;
 using P4NTH30N.UNI7T35T.Quality;
 using P4NTH30N.UNI7T35T.Integration;
+using P4NTH30N.UNI7T35T.Navigation;
+using P4NTH30N.UNI7T35T.H4ND.Decision110;
 using UNI7T35T.Mocks;
 using UNI7T35T.Tests;
 using P4NTH35T.Tests;
@@ -237,6 +239,12 @@ class Program
 		totalTests += parPassed + parFailed;
 		passedTests += parPassed;
 
+		// ── Production Readiness Evaluator Tests (DECISION_110) ──────────
+		Console.WriteLine("\nRunning Production Readiness Evaluator Tests (DECISION_110)...\n");
+		(int prepPassed, int prepFailed) = ProductionReadinessEvaluatorTests.RunAll();
+		totalTests += prepPassed + prepFailed;
+		passedTests += prepPassed;
+
 		// ── Session Renewal Tests (AUTH-041) ───────────────────────────────
 		Console.WriteLine("\nRunning Session Renewal Tests (AUTH-041)...\n");
 		(int srPassed, int srFailed) = SessionRenewalTests.RunAll();
@@ -389,6 +397,48 @@ class Program
 		(int dpPassed, int dpFailed) = P4NTH30N.UNI7T35T.C0MMON.DisplayPipelineTests.RunAll();
 		totalTests += dpPassed + dpFailed;
 		passedTests += dpPassed;
+
+		// ── DECISION_098: Navigation Map Tests ──────────────────────────
+		Console.WriteLine("\nRunning Navigation Map Tests (DECISION_098)...\n");
+		(int navPassed, int navFailed) = NavigationMapTests.RunAll();
+		totalTests += navPassed + navFailed;
+		passedTests += navPassed;
+
+		// ── CRIT-103: Tychon Chaos Tests ────────────────────────────────
+		Console.WriteLine("\nRunning Tychon Chaos Tests (CRIT-103)...\n");
+		(int tychonPassed, int tychonFailed) = TychonChaosTests.RunAll();
+		totalTests += tychonPassed + tychonFailed;
+		passedTests += tychonPassed;
+
+		// ── DECISION_110: Guard Tests ───────────────────────────────────
+		Console.WriteLine("\nRunning Guard Tests (DECISION_110)...\n");
+		(int guardPassed, int guardFailed) = GuardTests.RunAll();
+		totalTests += guardPassed + guardFailed;
+		passedTests += guardPassed;
+
+		// ── DECISION_110: Value Object Tests ────────────────────────────
+		Console.WriteLine("\nRunning Value Object Tests (DECISION_110)...\n");
+		(int voPassed, int voFailed) = ValueObjectTests.RunAll();
+		totalTests += voPassed + voFailed;
+		passedTests += voPassed;
+
+		// ── DECISION_110: Structured Logging Tests ──────────────────────
+		Console.WriteLine("\nRunning Structured Logging Tests (DECISION_110)...\n");
+		(int logPassed, int logFailed) = StructuredLoggingTests.RunAll();
+		totalTests += logPassed + logFailed;
+		passedTests += logPassed;
+
+		// ── DECISION_110: Domain Aggregate Tests ───────────────────────
+		Console.WriteLine("\nRunning Domain Aggregate Tests (DECISION_110 Phase 3)...\n");
+		(int domainPassed, int domainFailed) = DomainAggregateTests.RunAll();
+		totalTests += domainPassed + domainFailed;
+		passedTests += domainPassed;
+
+		// ── DECISION_110: Persistence Repository Tests ──────────────────
+		Console.WriteLine("\nRunning Persistence Repository Tests (DECISION_110 Phase 4)...\n");
+		(int persistencePassed, int persistenceFailed) = PersistenceRepositoryTests.RunAll();
+		totalTests += persistencePassed + persistenceFailed;
+		passedTests += persistencePassed;
 
 		// ── Summary ──────────────────────────────────────────────────────
 		Console.WriteLine("\n╔════════════════════════════════════════════════════════════════════╗");

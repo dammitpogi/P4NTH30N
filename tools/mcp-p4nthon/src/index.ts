@@ -91,6 +91,105 @@ const TOOLS = [
 			properties: {},
 		},
 	},
+	{
+		name: "mongo_insertOne",
+		description: "Insert a single document into any MongoDB collection",
+		inputSchema: {
+			type: "object" as const,
+			properties: {
+				collection: {
+					type: "string",
+					description: "Collection name",
+				},
+				document: {
+					type: "object",
+					description: "Document to insert",
+				},
+			},
+			required: ["collection", "document"],
+		},
+	},
+	{
+		name: "mongo_find",
+		description: "Query documents from any MongoDB collection",
+		inputSchema: {
+			type: "object" as const,
+			properties: {
+				collection: {
+					type: "string",
+					description: "Collection name",
+				},
+				filter: {
+					type: "object",
+					description: "MongoDB filter query",
+					default: {},
+				},
+				limit: {
+					type: "number",
+					default: 10,
+				},
+			},
+			required: ["collection"],
+		},
+	},
+	{
+		name: "mongo_updateOne",
+		description: "Update a single document matching the filter",
+		inputSchema: {
+			type: "object" as const,
+			properties: {
+				collection: {
+					type: "string",
+				},
+				filter: {
+					type: "object",
+				},
+				update: {
+					type: "object",
+					description: "Update operations ($set, etc.)",
+				},
+			},
+			required: ["collection", "filter", "update"],
+		},
+	},
+	{
+		name: "mongo_insertMany",
+		description: "Insert multiple documents into a collection",
+		inputSchema: {
+			type: "object" as const,
+			properties: {
+				collection: {
+					type: "string",
+				},
+				documents: {
+					type: "array",
+					items: {
+						type: "object",
+					},
+				},
+			},
+			required: ["collection", "documents"],
+		},
+	},
+	{
+		name: "mongo_updateMany",
+		description: "Update all documents matching the filter",
+		inputSchema: {
+			type: "object" as const,
+			properties: {
+				collection: {
+					type: "string",
+				},
+				filter: {
+					type: "object",
+				},
+				update: {
+					type: "object",
+				},
+			},
+			required: ["collection", "filter", "update"],
+		},
+	},
 ];
 
 // Server implementation
@@ -192,6 +291,104 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 						{
 							type: "text",
 							text: JSON.stringify(status, null, 2),
+						},
+					],
+				};
+			}
+
+			case "mongo_insertOne": {
+				const collection = db.collection((args as any).collection);
+				const result = await collection.insertOne((args as any).document);
+				return {
+					content: [
+						{
+							type: "text",
+							text: JSON.stringify(
+								{ insertedId: result.insertedId },
+								null,
+								2
+							),
+						},
+					],
+				};
+			}
+
+			case "mongo_find": {
+				const collection = db.collection((args as any).collection);
+				const filter = (args as any).filter || {};
+				const limit = (args as any).limit || 10;
+				const results = await collection.find(filter).limit(limit).toArray();
+				return {
+					content: [
+						{
+							type: "text",
+							text: JSON.stringify(results, null, 2),
+						},
+					],
+				};
+			}
+
+			case "mongo_updateOne": {
+				const collection = db.collection((args as any).collection);
+				const result = await collection.updateOne(
+					(args as any).filter,
+					(args as any).update
+				);
+				return {
+					content: [
+						{
+							type: "text",
+							text: JSON.stringify(
+								{
+									matched: result.matchedCount,
+									modified: result.modifiedCount,
+								},
+								null,
+								2
+							),
+						},
+					],
+				};
+			}
+
+			case "mongo_insertMany": {
+				const collection = db.collection((args as any).collection);
+				const result = await collection.insertMany((args as any).documents);
+				return {
+					content: [
+						{
+							type: "text",
+							text: JSON.stringify(
+								{
+									insertedCount: result.insertedCount,
+									ids: result.insertedIds,
+								},
+								null,
+								2
+							),
+						},
+					],
+				};
+			}
+
+			case "mongo_updateMany": {
+				const collection = db.collection((args as any).collection);
+				const result = await collection.updateMany(
+					(args as any).filter,
+					(args as any).update
+				);
+				return {
+					content: [
+						{
+							type: "text",
+							text: JSON.stringify(
+								{
+									matched: result.matchedCount,
+									modified: result.modifiedCount,
+								},
+								null,
+								2
+							),
 						},
 					],
 				};

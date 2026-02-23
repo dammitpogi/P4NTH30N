@@ -382,6 +382,17 @@ public async Task<HealthCheck> CheckHealthAsync()
 3. Review calculation formula
 4. Validate timestamp accuracy
 
+## Autostart/Boot-Time
+
+H0UND supports automatic startup via Windows Task Scheduler:
+
+```powershell
+# Register to start on boot (Admin PowerShell)
+.\scripts\Register-AutoStart.ps1
+```
+
+See [Autostart Guide](AUTOSTART.md) for full setup and troubleshooting.
+
 ## Integration Points
 
 ### Consumes

@@ -1,0 +1,350 @@
+{
+  "timestamp": "2026-02-15T11:55:55.959Z",
+  "options": {
+    "dryRun": false,
+    "strict": true,
+    "explain": true,
+    "noReport": false,
+    "openaiOnly": false,
+    "googleOnly": false,
+    "useProxy": false,
+    "keepProxy": false,
+    "deniedModels": {}
+  },
+  "workingModelsSource": "c:\\Users\\paulc\\.config\\opencode\\skills\\update-agent-models\\working_models.json",
+  "acceptedBenchmarksCount": 12,
+  "autoAcceptedResearchCount": 0,
+  "ignoredModelsCount": 4,
+  "deniedModelsCount": 8,
+  "proxy": {
+    "enabled": false,
+    "source": null,
+    "modelsCount": 0,
+    "algorithm": null,
+    "oneTime": false
+  },
+  "openaiBudget": {
+    "latestProposal": "c:\\Users\\paulc\\.config\\opencode\\skills\\update-agent-models\\proposals\\openai-budget.2026-02-15T11-55-54-317Z.json",
+    "stage": "critical",
+    "remainingRatio": 0.07
+  },
+  "googleHealth": {
+    "latestProposal": null,
+    "stage": "healthy",
+    "unhealthyCount": 0
+  },
+  "updates": {
+    "orchestrator": {
+      "primary": "google/gemini-3-pro-preview",
+      "scoredCount": 80,
+      "unscoredCount": 0,
+      "chainLength": 51,
+      "topScores": [
+        {
+          "modelId": "google/gemini-3-pro-preview",
+          "score": 0.63768,
+          "rawScore": 0.63768,
+          "isVerified": true,
+          "synthetic": false
+        },
+        {
+          "modelId": "anthropic/claude-opus-4-0",
+          "score": 0.6361100000000001,
+          "rawScore": 0.6361100000000001,
+          "isVerified": true,
+          "synthetic": false
+        },
+        {
+          "modelId": "anthropic/claude-opus-4-20250514",
+          "score": 0.6361100000000001,
+          "rawScore": 0.6361100000000001,
+          "isVerified": true,
+          "synthetic": false
+        },
+        {
+          "modelId": "anthropic/claude-opus-4-5",
+          "score": 0.6361100000000001,
+          "rawScore": 0.6361100000000001,
+          "isVerified": true,
+          "synthetic": false
+        },
+        {
+          "modelId": "anthropic/claude-opus-4-5-20251101",
+          "score": 0.6361100000000001,
+          "rawScore": 0.6361100000000001,
+          "isVerified": true,
+          "synthetic": false
+        }
+      ],
+      "unmatched": [],
+      "exemptUnscored": [
+        {
+          "modelId": "free/openrouter/free",
+          "reason": "reserved-bridge",
+          "isVerified": true
+        }
+      ],
+      "selectedOpenAI": "openai/gpt-5.2"
+    },
+    "oracle": {
+      "primary": "google/gemini-2.5-pro",
+      "scoredCount": 79,
+      "unscoredCount": 0,
+      "chainLength": 50,
+      "topScores": [
+        {
+          "modelId": "google/gemini-2.5-pro",
+          "score": 0.8293499999999999,
+          "rawScore": 0.8293499999999999,
+          "isVerified": true,
+          "synthetic": false
+        },
+        {
+          "modelId": "cerebras/qwen-3-235b-a22b-instruct-2507",
+          "score": 0.71375,
+          "rawScore": 0.71375,
+          "isVerified": true,
+          "synthetic": false
+        },
+        {
+          "modelId": "openrouter/z-ai/glm-4.5-air:free",
+          "score": 0.71075,
+          "rawScore": 0.71075,
+          "isVerified": true,
+          "synthetic": false
+        },
+        {
+          "modelId": "google/gemini-3-pro-preview",
+          "score": 0.7084,
+          "rawScore": 0.7084,
+          "isVerified": true,
+          "synthetic": false
+        },
+        {
+          "modelId": "google/gemini-3-flash-preview",
+          "score": 0.70445,
+          "rawScore": 0.70445,
+          "isVerified": true,
+          "synthetic": false
+        }
+      ],
+      "unmatched": [],
+      "exemptUnscored": [
+        {
+          "modelId": "free/openrouter/free",
+          "reason": "reserved-bridge",
+          "isVerified": true
+        }
+      ],
+      "selectedOpenAI": "openai/gpt-5.2"
+    },
+    "explorer": {
+      "primary": "google/gemini-3-pro-preview",
+      "scoredCount": 80,
+      "unscoredCount": 0,
+      "chainLength": 51,
+      "topScores": [
+        {
+          "modelId": "anthropic/claude-opus-4-0",
+          "score": 0.53975,
+          "rawScore": 0.53975,
+          "isVerified": true,
+          "synthetic": false
+        },
+        {
+          "modelId": "anthropic/claude-opus-4-20250514",
+          "score": 0.53975,
+          "rawScore": 0.53975,
+          "isVerified": true,
+          "synthetic": false
+        },
+        {
+          "modelId": "anthropic/claude-opus-4-5",
+          "score": 0.53975,
+          "rawScore": 0.53975,
+          "isVerified": true,
+          "synthetic": false
+        },
+        {
+          "modelId": "anthropic/claude-opus-4-5-20251101",
+          "score": 0.53975,
+          "rawScore": 0.53975,
+          "isVerified": true,
+          "synthetic": false
+        },
+        {
+          "modelId": "google/gemini-3-pro-preview",
+          "score": 0.51725,
+          "rawScore": 0.51725,
+          "isVerified": true,
+          "synthetic": false
+        }
+      ],
+      "unmatched": [],
+      "exemptUnscored": [
+        {
+          "modelId": "free/openrouter/free",
+          "reason": "reserved-bridge",
+          "isVerified": true
+        }
+      ],
+      "selectedOpenAI": "openai/gpt-5.2"
+    },
+    "librarian": {
+      "primary": "google/gemini-3-pro-preview",
+      "scoredCount": 80,
+      "unscoredCount": 0,
+      "chainLength": 51,
+      "topScores": [
+        {
+          "modelId": "google/gemini-3-pro-preview",
+          "score": 0.42260000000000003,
+          "rawScore": 0.42260000000000003,
+          "isVerified": true,
+          "synthetic": false
+        },
+        {
+          "modelId": "google/gemini-3-flash-preview",
+          "score": 0.40925,
+          "rawScore": 0.40925,
+          "isVerified": true,
+          "synthetic": false
+        },
+        {
+          "modelId": "anthropic/claude-opus-4-0",
+          "score": 0.3983,
+          "rawScore": 0.3983,
+          "isVerified": true,
+          "synthetic": false
+        },
+        {
+          "modelId": "anthropic/claude-opus-4-20250514",
+          "score": 0.3983,
+          "rawScore": 0.3983,
+          "isVerified": true,
+          "synthetic": false
+        },
+        {
+          "modelId": "anthropic/claude-opus-4-5",
+          "score": 0.3983,
+          "rawScore": 0.3983,
+          "isVerified": true,
+          "synthetic": false
+        }
+      ],
+      "unmatched": [],
+      "exemptUnscored": [
+        {
+          "modelId": "free/openrouter/free",
+          "reason": "reserved-bridge",
+          "isVerified": true
+        }
+      ],
+      "selectedOpenAI": "openai/gpt-5.2"
+    },
+    "designer": {
+      "primary": "google/gemini-3-pro-preview",
+      "scoredCount": 79,
+      "unscoredCount": 0,
+      "chainLength": 50,
+      "topScores": [
+        {
+          "modelId": "google/gemini-3-pro-preview",
+          "score": 0.6705200000000001,
+          "rawScore": 0.6705200000000001,
+          "isVerified": true,
+          "synthetic": false
+        },
+        {
+          "modelId": "anthropic/claude-opus-4-0",
+          "score": 0.66163,
+          "rawScore": 0.66163,
+          "isVerified": true,
+          "synthetic": false
+        },
+        {
+          "modelId": "anthropic/claude-opus-4-20250514",
+          "score": 0.66163,
+          "rawScore": 0.66163,
+          "isVerified": true,
+          "synthetic": false
+        },
+        {
+          "modelId": "anthropic/claude-opus-4-5",
+          "score": 0.66163,
+          "rawScore": 0.66163,
+          "isVerified": true,
+          "synthetic": false
+        },
+        {
+          "modelId": "anthropic/claude-opus-4-5-20251101",
+          "score": 0.66163,
+          "rawScore": 0.66163,
+          "isVerified": true,
+          "synthetic": false
+        }
+      ],
+      "unmatched": [],
+      "exemptUnscored": [
+        {
+          "modelId": "free/openrouter/free",
+          "reason": "reserved-bridge",
+          "isVerified": true
+        }
+      ],
+      "selectedOpenAI": "openai/gpt-5.2"
+    },
+    "fixer": {
+      "primary": "anthropic/claude-opus-4-6",
+      "scoredCount": 80,
+      "unscoredCount": 0,
+      "chainLength": 52,
+      "topScores": [
+        {
+          "modelId": "google/gemini-3-pro-preview",
+          "score": 0.6593600000000001,
+          "rawScore": 0.6593600000000001,
+          "isVerified": true,
+          "synthetic": false
+        },
+        {
+          "modelId": "anthropic/claude-opus-4-0",
+          "score": 0.653488,
+          "rawScore": 0.653488,
+          "isVerified": true,
+          "synthetic": false
+        },
+        {
+          "modelId": "anthropic/claude-opus-4-20250514",
+          "score": 0.653488,
+          "rawScore": 0.653488,
+          "isVerified": true,
+          "synthetic": false
+        },
+        {
+          "modelId": "anthropic/claude-opus-4-5",
+          "score": 0.653488,
+          "rawScore": 0.653488,
+          "isVerified": true,
+          "synthetic": false
+        },
+        {
+          "modelId": "anthropic/claude-opus-4-5-20251101",
+          "score": 0.653488,
+          "rawScore": 0.653488,
+          "isVerified": true,
+          "synthetic": false
+        }
+      ],
+      "unmatched": [],
+      "exemptUnscored": [
+        {
+          "modelId": "free/openrouter/free",
+          "reason": "reserved-bridge",
+          "isVerified": true
+        }
+      ],
+      "selectedOpenAI": "openai/gpt-5.2"
+    }
+  }
+}

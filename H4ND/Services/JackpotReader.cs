@@ -18,9 +18,9 @@ public sealed class JackpotReader
 
 	/// <summary>
 	/// Reads a single jackpot tier via CDP using the fallback chain for the given platform.
-	/// Returns 0 if all selectors fail (expected for Canvas/Cocos2d-x games).
+	/// Returns null if all selectors fail (distinguishes "no data" from "actual zero").
 	/// </summary>
-	public async Task<double> ReadJackpotAsync(
+	public async Task<double?> ReadJackpotAsync(
 		ICdpClient cdp,
 		string platform,
 		string jackpotType,
@@ -47,23 +47,23 @@ public sealed class JackpotReader
 			}
 		}
 
-		Console.WriteLine($"[JackpotReader:{platform}] {jackpotType} = 0 (all {expressions.Count} selectors returned 0 — expected for Canvas games)");
-		return 0;
+		Console.WriteLine($"[JackpotReader:{platform}] {jackpotType} = null (all {expressions.Count} selectors failed)");
+		return null;
 	}
 
 	/// <summary>
 	/// Reads all four jackpot tiers via CDP for the given platform.
-	/// Returns (Grand, Major, Minor, Mini) — all may be 0 for Canvas games.
+	/// Returns nullable values — null means selector failure, not zero jackpot.
 	/// </summary>
-	public async Task<(double Grand, double Major, double Minor, double Mini)> ReadAllJackpotsAsync(
+	public async Task<(double? Grand, double? Major, double? Minor, double? Mini)> ReadAllJackpotsAsync(
 		ICdpClient cdp,
 		string platform,
 		CancellationToken ct = default)
 	{
-		double grand = await ReadJackpotAsync(cdp, platform, "Grand", ct);
-		double major = await ReadJackpotAsync(cdp, platform, "Major", ct);
-		double minor = await ReadJackpotAsync(cdp, platform, "Minor", ct);
-		double mini = await ReadJackpotAsync(cdp, platform, "Mini", ct);
+		double? grand = await ReadJackpotAsync(cdp, platform, "Grand", ct);
+		double? major = await ReadJackpotAsync(cdp, platform, "Major", ct);
+		double? minor = await ReadJackpotAsync(cdp, platform, "Minor", ct);
+		double? mini = await ReadJackpotAsync(cdp, platform, "Mini", ct);
 		return (grand, major, minor, mini);
 	}
 
@@ -73,10 +73,10 @@ public sealed class JackpotReader
 	/// </summary>
 	public void CrossValidate(
 		string platform,
-		(double Grand, double Major, double Minor, double Mini) cdpValues,
+		(double? Grand, double? Major, double? Minor, double? Mini) cdpValues,
 		(double Grand, double Major, double Minor, double Mini) apiValues)
 	{
-		bool cdpHasData = cdpValues.Grand > 0 || cdpValues.Major > 0 || cdpValues.Minor > 0 || cdpValues.Mini > 0;
+		bool cdpHasData = (cdpValues.Grand ?? 0) > 0 || (cdpValues.Major ?? 0) > 0 || (cdpValues.Minor ?? 0) > 0 || (cdpValues.Mini ?? 0) > 0;
 
 		if (!cdpHasData)
 		{
@@ -84,10 +84,10 @@ public sealed class JackpotReader
 			return;
 		}
 
-		ValidateTier(platform, "Grand", cdpValues.Grand, apiValues.Grand);
-		ValidateTier(platform, "Major", cdpValues.Major, apiValues.Major);
-		ValidateTier(platform, "Minor", cdpValues.Minor, apiValues.Minor);
-		ValidateTier(platform, "Mini", cdpValues.Mini, apiValues.Mini);
+		ValidateTier(platform, "Grand", cdpValues.Grand ?? 0, apiValues.Grand);
+		ValidateTier(platform, "Major", cdpValues.Major ?? 0, apiValues.Major);
+		ValidateTier(platform, "Minor", cdpValues.Minor ?? 0, apiValues.Minor);
+		ValidateTier(platform, "Mini", cdpValues.Mini ?? 0, apiValues.Mini);
 	}
 
 	private static void ValidateTier(string platform, string tier, double cdpValue, double apiValue)

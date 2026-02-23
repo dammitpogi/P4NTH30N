@@ -195,9 +195,11 @@ public sealed class NetworkInterceptor : IDisposable
 				Console.WriteLine($"[NetworkInterceptor] Jackpot API: {game} G={result.Grand:F2} Ma={result.Major:F2} Mi={result.Minor:F2} Mn={result.Mini:F2}");
 			}
 		}
-		catch
+		catch (Exception ex)
 		{
-			// Silently ignore parse failures — not all responses contain jackpot data
+			// CRIT-103: Log parse failures with context — don't silently lose data
+			Console.WriteLine($"[NetworkInterceptor] PARSE FAILURE for {url}: {ex.Message}");
+			Console.WriteLine($"[NetworkInterceptor] Response body (first 500 chars): {body[..Math.Min(500, body.Length)]}");
 		}
 	}
 

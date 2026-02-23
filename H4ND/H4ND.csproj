@@ -6,6 +6,10 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
+		<Compile Remove="SmokeTest\**" />
+		<None Remove="SmokeTest\**" />
+	</ItemGroup>
+	<ItemGroup>
 		<ProjectReference Include="..\C0MMON\C0MMON.csproj" />
 	</ItemGroup>
 	<ItemGroup>
@@ -21,5 +25,11 @@
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 			<Link>appsettings.json</Link>
 		</None>
+	</ItemGroup>
+	<!-- Fix C: Copy step-config JSON files to build output -->
+	<ItemGroup>
+		<Content Include="tools\recorder\step-config-*.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
 	</ItemGroup>
 </Project>

@@ -1,0 +1,18 @@
+{
+  "id": "toolhive-mongodb-p4nth30n-v2",
+  "name": "mongodb-p4nth30n",
+  "transport": "http",
+  "connection": {
+    "url": "http://127.0.0.1:3001/sse",
+    "port": 3001
+  },
+  "envVars": {
+    "MCP_TRANSPORT": "sse",
+    "MONGODB_URI": "mongodb://localhost:27017/P4NTH30N",
+    "DATABASE_NAME": "P4NTH30N",
+    "MCP_AUTH_TOKEN": "${MCP_AUTH_TOKEN}"
+  },
+  "tags": ["p4nth30n", "database", "mongodb", "crud"],
+  "description": "P4NTH30N MongoDB database with full CRUD operations (v2 SSE)",
+  "enabled": true
+}

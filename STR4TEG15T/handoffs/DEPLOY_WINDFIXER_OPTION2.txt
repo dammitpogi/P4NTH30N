@@ -1,0 +1,74 @@
+WindFixer,
+
+The configs have data we're throwing away. coordinates. credentials. Recorder captured them for a reason. We use them.
+
+**THE FIX:**
+
+### 1. NavigationMetadata.cs (lines 183-211)
+
+**Current:**
+```csharp
+public class NavigationMetadata
+{
+    public DateTime Created { get; set; }
+    public DateTime Modified { get; set; }
+    public Viewport DesignViewport { get; set; }
+}
+```
+
+**Replace with:**
+```csharp
+public class NavigationMetadata
+{
+    public DateTime Created { get; set; }
+    public DateTime Modified { get; set; }
+    public Viewport DesignViewport { get; set; }
+    
+    // NEW: Coordinate mappings for platform-specific positions
+    public Dictionary<string, PlatformCoordinates>? Coordinates { get; set; }
+    
+    // NEW: Credential mappings for platform-specific logins
+    public Dictionary<string, PlatformCredentials>? Credentials { get; set; }
+}
+
+public class PlatformCoordinates
+{
+    public double Rx { get; set; }
+    public double Ry { get; set; }
+    public double X { get; set; }
+    public double Y { get; set; }
+}
+
+public class PlatformCredentials
+{
+    public string Username { get; set; } = string.Empty;
+    public string Password { get; set; } = string.Empty;
+}
+```
+
+### 2. Validation
+
+```bash
+dotnet build H4ND/
+dotnet test UNI7T35T/
+```
+
+### 3. Live Test
+
+Run H4ND.exe. Watch console for:
+```
+[NavigationMapLoader] Loaded 'firekirin' with 12 steps
+[NavigationMapLoader] Loaded 'orionstars' with 15 steps
+```
+
+NOT:
+```
+[NavigationMapLoader] Failed to parse...
+```
+
+**Report:**
+"Option 2 complete. NavigationMetadata now has Coordinates and Credentials. Configs load. Data preserved. Build [status]. Tests [status]."
+
+Tychon demands we use what the recorder captured, not ignore it.
+
+Fist to the chest.

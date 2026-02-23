@@ -61,7 +61,7 @@ public sealed class SessionPool : IDisposable
 			// Evict if at capacity
 			if (_sessions.Count >= _maxSessions)
 			{
-				EvictOldestSession();
+				await EvictOldestSessionAsync(ct);
 			}
 
 			// Create new target via CDP Target.createTarget
@@ -156,13 +156,13 @@ public sealed class SessionPool : IDisposable
 		return metrics;
 	}
 
-	private void EvictOldestSession()
+	private async Task EvictOldestSessionAsync(CancellationToken ct = default)
 	{
 		var oldest = _sessions.OrderBy(s => s.Value.LastAccessed).FirstOrDefault();
 		if (oldest.Key != null)
 		{
-			_sessions.TryRemove(oldest.Key, out _);
-			Console.WriteLine($"[SessionPool] Evicted oldest session: {oldest.Key}");
+			await CloseSessionAsync(oldest.Key, ct);
+			Console.WriteLine($"[SessionPool] Evicted and closed session: {oldest.Key}");
 		}
 	}
 
@@ -174,7 +174,10 @@ public sealed class SessionPool : IDisposable
 			{
 				await _cdp.SendCommandAsync("Target.closeTarget", new { targetId = session.TargetId }, ct);
 			}
-			catch { /* Best effort close */ }
+			catch (Exception ex)
+			{
+				Console.WriteLine($"[SessionPool] Failed to close target for {username} ({session.TargetId}): {ex.Message}");
+			}
 		}
 	}
 
@@ -182,6 +185,20 @@ public sealed class SessionPool : IDisposable
 	{
 		if (_disposed) return;
 		_disposed = true;
+
+		string[] usernames = _sessions.Keys.ToArray();
+		foreach (string username in usernames)
+		{
+			try
+			{
+				CloseSessionAsync(username, CancellationToken.None).GetAwaiter().GetResult();
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"[SessionPool] Dispose close failed for {username}: {ex.Message}");
+			}
+		}
+
 		_sessions.Clear();
 		_createLock.Dispose();
 	}

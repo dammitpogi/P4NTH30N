@@ -74,18 +74,12 @@ public sealed class VisionCommandHandler
 		string game = command.TargetGame;
 		Console.WriteLine($"[VisionCommandHandler] Executing spin for {command.TargetUsername}@{game}");
 
-		switch (game)
+		return game switch
 		{
-			case "FireKirin":
-				await CdpGameActions.SpinFireKirinAsync(_cdp, ct);
-				return true;
-			case "OrionStars":
-				await CdpGameActions.SpinOrionStarsAsync(_cdp, ct);
-				return true;
-			default:
-				Console.WriteLine($"[VisionCommandHandler] Unknown game for spin: {game}");
-				return false;
-		}
+			"FireKirin" => await CdpGameActions.SpinFireKirinAsync(_cdp, ct),
+			"OrionStars" => await CdpGameActions.SpinOrionStarsAsync(_cdp, ct),
+			_ => throw new InvalidOperationException($"Unknown game for spin: {game}"),
+		};
 	}
 
 	private async Task<bool> ExecuteScreenshotAsync(VisionCommand command, CancellationToken ct)

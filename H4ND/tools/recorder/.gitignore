@@ -1,0 +1,29 @@
+# Build outputs
+dist/
+*.exe
+recorder-tui.exe
+
+# Dependencies
+node_modules/
+bun.lock
+
+# Session data
+sessions/
+
+# Logs
+*.log
+tui_stderr.txt
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp

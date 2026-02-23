@@ -8,6 +8,40 @@
 - [ ] MongoDB backup taken: `.\scripts\backup\mongodb-backup.ps1`
 - [ ] Environment validation: `.\scripts\setup\validate-environment.ps1`
 
+## Post-Deployment: Enable Autostart (Optional)
+
+### Register H0UND Background Service
+
+**Run in Administrator PowerShell**:
+```powershell
+.\scripts\Register-AutoStart.ps1
+```
+
+**Verify**:
+```powershell
+Get-ScheduledTask -TaskName "P4NTH30N-AutoStart"
+```
+
+**Note**: Do not use `sudo` on Windows. Use "Run as Administrator" instead.
+
+### Register ToolHive Autostart
+
+**Run in Administrator PowerShell**:
+```powershell
+.\scripts\Register-ToolHive-AutoStart.ps1
+```
+
+See [H0UND Autostart Guide](../components/H0UND/AUTOSTART.md) for full details.
+
+## Troubleshooting Autostart
+
+### "%1 is not a valid Win32 application"
+**Cause**: Using `sudo` on Windows  
+**Fix**: Run PowerShell as Administrator instead
+
+### "Execution of scripts is disabled"
+**Fix**: `Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process`
+
 ## Standard Deployment
 
 ### 1. Stop Running Agents

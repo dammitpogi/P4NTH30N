@@ -1,0 +1,13 @@
+Use this tool to create and manage a structured task list for your current coding session. This helps you track progress, organize complex tasks, and demonstrate thoroughness to the user.
+
+## When to Use This Tool
+Use this tool proactively for complex multistep tasks (3+ steps), non-trivial operations requiring planning, or when the user provides multiple tasks. Capture requirements as todos immediately after receiving instructions.
+
+## When NOT to Use This Tool
+Skip for single, straightforward, or trivial tasks that provide no organizational benefit.
+
+## Task States and Management
+1. **Task States**: pending, in_progress (limit to ONE), completed, cancelled.
+2. **Management**: Update status in real-time. Mark complete IMMEDIATELY after finishing. Complete current tasks before starting new ones.
+3. **Breakdown**: Create specific, actionable items. Break complex tasks into smaller steps.
+

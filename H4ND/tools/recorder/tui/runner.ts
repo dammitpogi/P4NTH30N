@@ -4,7 +4,12 @@ import type { MacroStep } from './types';
 
 // Single source of truth for default longpress duration
 const DEFAULT_LONGPRESS_MS = 3000;
-import type { CanvasBounds, RelativeCoordinate } from '../types';
+import type {
+  CanvasBounds,
+  RelativeCoordinate,
+  ConditionalLogic,
+  ConditionalBranch,
+} from '../types';
 import { join } from 'path';
 import { mkdirSync, existsSync, writeFileSync } from 'fs';
 import { spawn } from 'child_process';
@@ -25,6 +30,12 @@ export interface ClickCaptureResult {
   ry: number;
   context: string;
   canvasBounds: CanvasBounds;
+}
+
+export interface ConditionResult {
+  conditionMet: boolean;
+  branch: ConditionalBranch;
+  details: string;
 }
 
 export class TuiRunner {
@@ -216,6 +227,86 @@ export class TuiRunner {
     }
   }
 
+  async evaluateConditional(conditional: ConditionalLogic): Promise<ConditionResult> {
+    const { condition, onTrue, onFalse } = conditional;
+    let conditionMet = false;
+    let details = '';
+
+    try {
+      switch (condition.type) {
+        case 'element-exists': {
+          const target = condition.target || '';
+          conditionMet = await this.checkElementExists(target);
+          details = conditionMet
+            ? `element exists: ${target}`
+            : `element missing: ${target}`;
+          break;
+        }
+        case 'element-missing': {
+          const target = condition.target || '';
+          conditionMet = !(await this.checkElementExists(target));
+          details = conditionMet
+            ? `element missing as expected: ${target}`
+            : `element still present: ${target}`;
+          break;
+        }
+        case 'text-contains': {
+          const target = condition.target || '';
+          conditionMet = await this.checkTextContains(target);
+          details = conditionMet
+            ? `text found: ${target}`
+            : `text not found: ${target}`;
+          break;
+        }
+        case 'cdp-check': {
+          const command = condition.cdpCommand || '';
+          conditionMet = await this.checkCdpCommand(command);
+          details = conditionMet ? 'cdp-check passed' : 'cdp-check failed';
+          break;
+        }
+        case 'custom-js': {
+          const expr = condition.target || '';
+          conditionMet = await this.evaluateCustomJs(expr);
+          details = conditionMet
+            ? 'custom-js returned true'
+            : 'custom-js returned false';
+          break;
+        }
+        default:
+          conditionMet = false;
+          details = `${condition.type} must be evaluated from run result`;
+          break;
+      }
+    } catch (err: any) {
+      conditionMet = false;
+      details = err?.message || 'conditional evaluation failed';
+    }
+
+    return {
+      conditionMet,
+      branch: conditionMet ? onTrue : onFalse,
+      details,
+    };
+  }
+
+  evaluateToolConditional(
+    conditional: ConditionalLogic,
+    stepSuccess: boolean
+  ): ConditionResult {
+    const { condition, onTrue, onFalse } = conditional;
+    const conditionMet =
+      condition.type === 'tool-success'
+        ? stepSuccess
+        : condition.type === 'tool-failure'
+          ? !stepSuccess
+          : false;
+    return {
+      conditionMet,
+      branch: conditionMet ? onTrue : onFalse,
+      details: `step ${stepSuccess ? 'passed' : 'failed'} (${condition.type})`,
+    };
+  }
+
   // ─── Take standalone screenshot ────────────────────────────
   async takeScreenshot(label: string): Promise<{ ok: boolean; path?: string; message: string }> {
     if (!this.cdp || !this.connected) {
@@ -399,5 +490,48 @@ export class TuiRunner {
     this.cdp?.close();
     this.cdp = null;
     this.connected = false;
+  }
+
+  private async checkElementExists(selector: string): Promise<boolean> {
+    if (!selector || !this.cdp) return false;
+    try {
+      return await this.cdp.evaluate<boolean>(
+        `(() => document.querySelector(${JSON.stringify(selector)}) !== null)()`
+      );
+    } catch {
+      return false;
+    }
+  }
+
+  private async checkTextContains(text: string): Promise<boolean> {
+    if (!text || !this.cdp) return false;
+    try {
+      return await this.cdp.evaluate<boolean>(
+        `(() => { const body = document.body; const value = body ? (body.innerText || body.textContent || '') : ''; return value.includes(${JSON.stringify(text)}); })()`
+      );
+    } catch {
+      return false;
+    }
+  }
+
+  private async checkCdpCommand(command: string): Promise<boolean> {
+    if (!command || !this.cdp) return false;
+    try {
+      const parsed = JSON.parse(command) as { method?: string; params?: Record<string, unknown> };
+      if (!parsed.method) return false;
+      await this.cdp.send(parsed.method, parsed.params || {});
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  private async evaluateCustomJs(expression: string): Promise<boolean> {
+    if (!expression || !this.cdp) return false;
+    try {
+      return await this.cdp.evaluate<boolean>(`(() => !!(${expression}))()`);
+    } catch {
+      return false;
+    }
   }
 }

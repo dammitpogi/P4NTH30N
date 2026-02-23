@@ -40,7 +40,7 @@ public static class Decision081Tests
 			("JS-081-15: InjectCanvasInputInterceptorAsync sends commands", TestInjectInterceptorSendsCommands),
 			("JS-081-16: TypeIntoCanvasAsync uses interceptor when armed", TestTypeUsesInterceptor),
 			("JS-081-17: VerifyLoginSuccessAsync with positive balance", TestVerifyLoginPositiveBalance),
-			("JS-081-18: VerifyLoginSuccessAsync with zero balance returns optimistic", TestVerifyLoginZeroBalanceOptimistic),
+			("JS-081-18: VerifyLoginSuccessAsync with zero balance returns false (CRIT-103)", TestVerifyLoginZeroBalanceReturnsFalse),
 
 			// Phase 4: Parallel Integration
 			("PARALLEL-081-19: ParallelSpinWorker accepts ChromeProfileManager", TestWorkerAcceptsProfileManager),
@@ -283,14 +283,14 @@ public static class Decision081Tests
 		return result;
 	}
 
-	private static bool TestVerifyLoginZeroBalanceOptimistic()
+	private static bool TestVerifyLoginZeroBalanceReturnsFalse()
 	{
 		var mock = new MockCdpClient();
 		mock.SetEvaluateResponse("Balance", 0.0);
 		mock.SetEvaluateResponse("__p4n_loginResult", "none");
-		// With zero balance and no interceptor result, should return true (optimistic)
+		// CRIT-103: With zero balance and no interceptor result, must return false (no optimistic lies)
 		bool result = CdpGameActions.VerifyLoginSuccessAsync(mock, "testuser", "OrionStars").GetAwaiter().GetResult();
-		return result;
+		return !result; // Expect false — the old optimistic true was the bug
 	}
 
 	// --- Phase 4: Parallel Integration ---

@@ -1,6 +1,6 @@
 # KIMI Signal Plan: A Comprehensive Guide to Jackpot Signal Generation
 
-**From:** Gemini → Kimi → MiniMax → GLM-4.7 → **GLM-5**  
+**From:** Kimi → Gemini → MiniMax → GLM-4.7 → **GLM-5**  
 **Status:** Expanded with Deployment Environment & System Architecture - Complete Blueprint
 
 ---

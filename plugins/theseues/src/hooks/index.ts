@@ -1,0 +1,10 @@
+export type { AutoUpdateCheckerOptions } from './auto-update-checker';
+export { createAutoUpdateCheckerHook } from './auto-update-checker';
+export { createPhaseReminderHook } from './phase-reminder';
+export { createPostReadNudgeHook } from './post-read-nudge';
+export { createContextCompressorHook, detectProviderError } from './context-compressor';
+export { createIdleOrchestratorHook, type IdleOrchestratorConfig } from './idle-orchestrator';
+export { createChangelogCartographyHook } from './changelog-cartography';
+export { createDirectoryCodemapInjectorHook } from './directory-codemap-injector';
+export { ensureLmStudioModelLoaded } from './directory-codemap-injector';
+export { createBackgroundFollowupHook } from './background-followup';

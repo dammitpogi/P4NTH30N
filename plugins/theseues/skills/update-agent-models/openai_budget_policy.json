@@ -1,0 +1,86 @@
+{
+  "monthly_allowance_usd": 200,
+  "thresholds": {
+    "medium": 0.75,
+    "low": 0.5,
+    "critical": 0.25
+  },
+  "health_thresholds_pct": {
+    "critical": {
+      "five_hour": 10,
+      "weekly": 10
+    },
+    "low": {
+      "five_hour": 25,
+      "weekly": 20
+    },
+    "medium": {
+      "five_hour": 50,
+      "weekly": 30
+    }
+  },
+  "high_cost_input_per_1m_usd": 10,
+  "high_cost_output_per_1m_usd": 30,
+  "agent_budget_weight": {
+    "fixer": 1,
+    "orchestrator": 0.9,
+    "oracle": 0.85,
+    "designer": 0.7,
+    "explorer": 0.6,
+    "librarian": 0.55
+  },
+  "stage_multipliers": {
+    "healthy": {
+      "default": 1,
+      "high_cost": 1
+    },
+    "medium": {
+      "default": 0.95,
+      "high_cost": 0.85
+    },
+    "low": {
+      "default": 0.7,
+      "high_cost": 0.45
+    },
+    "critical": {
+      "default": 0.35,
+      "high_cost": 0.08
+    }
+  },
+  "openai_stage_caps": {
+    "healthy": {
+      "max_input_per_1m_usd": 999,
+      "max_output_per_1m_usd": 999
+    },
+    "medium": {
+      "max_input_per_1m_usd": 10,
+      "max_output_per_1m_usd": 40
+    },
+    "low": {
+      "max_input_per_1m_usd": 8,
+      "max_output_per_1m_usd": 32
+    },
+    "critical": {
+      "max_input_per_1m_usd": 2,
+      "max_output_per_1m_usd": 8
+    }
+  },
+  "model_pricing": {
+    "openai/gpt-5.3-codex": {
+      "input_per_1m_usd": 15,
+      "output_per_1m_usd": 60
+    },
+    "openai/gpt-5.2": {
+      "input_per_1m_usd": 10,
+      "output_per_1m_usd": 40
+    },
+    "openai/gpt-5": {
+      "input_per_1m_usd": 8,
+      "output_per_1m_usd": 32
+    },
+    "openai/gpt-4.1": {
+      "input_per_1m_usd": 2,
+      "output_per_1m_usd": 8
+    }
+  }
+}

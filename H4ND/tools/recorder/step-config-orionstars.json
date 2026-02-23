@@ -84,6 +84,27 @@
       "phase": "Login",
       "takeScreenshot": false,
       "screenshotReason": "",
+      "comment": "Username to Clipboard",
+      "tool": "none",
+      "action": "clip",
+      "coordinates": {
+        "rx": 0,
+        "ry": 0,
+        "x": 0,
+        "y": 0
+      },
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "input": "MelodySN6os"
+    },
+    {
+      "stepId": 5,
+      "phase": "Login",
+      "takeScreenshot": false,
+      "screenshotReason": "",
       "comment": "Bypass UI Keyboard by using the 'paste' button to inject clipboard.",
       "tool": "none",
       "action": "click",
@@ -107,7 +128,7 @@
       }
     },
     {
-      "stepId": 5,
+      "stepId": 6,
       "phase": "Login",
       "takeScreenshot": true,
       "screenshotReason": "Check for the Chrome permission pop-up.",
@@ -128,7 +149,7 @@
       "breakpoint": false
     },
     {
-      "stepId": 6,
+      "stepId": 7,
       "phase": "Login",
       "takeScreenshot": false,
       "screenshotReason": "",
@@ -155,26 +176,6 @@
       }
     },
     {
-      "stepId": 7,
-      "phase": "Login",
-      "takeScreenshot": true,
-      "screenshotReason": "",
-      "comment": "Button: [describe location/appearance] | Context: [what this does]",
-      "tool": "none",
-      "action": "type",
-      "coordinates": {
-        "rx": 0,
-        "ry": 0,
-        "x": 0,
-        "y": 0
-      },
-      "verification": {
-        "entryGate": "",
-        "exitGate": ""
-      },
-      "breakpoint": false
-    },
-    {
       "stepId": 8,
       "phase": "Login",
       "takeScreenshot": false,
@@ -187,6 +188,485 @@
         "ry": 0.5526,
         "x": 392,
         "y": 478
+      },
+      "delayMs": 1000,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    },
+    {
+      "stepId": 9,
+      "phase": "Login",
+      "takeScreenshot": false,
+      "screenshotReason": "",
+      "comment": "Password to Clipboard",
+      "tool": "none",
+      "action": "clip",
+      "coordinates": {
+        "rx": 0,
+        "ry": 0,
+        "x": 0,
+        "y": 0
+      },
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "input": "abc123"
+    },
+    {
+      "stepId": 10,
+      "phase": "Login",
+      "takeScreenshot": false,
+      "screenshotReason": "",
+      "comment": "Bypass the Keyboard by using the 'paste' feature.",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.8342,
+        "ry": 0.4798,
+        "x": 775,
+        "y": 415
+      },
+      "delayMs": 1000,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    },
+    {
+      "stepId": 11,
+      "phase": "Login",
+      "takeScreenshot": false,
+      "screenshotReason": "",
+      "comment": "Click out of the UI Keyboard.",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.8299,
+        "ry": 0.4254,
+        "x": 771,
+        "y": 368
+      },
+      "delayMs": 1000,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    },
+    {
+      "stepId": 12,
+      "phase": "Login",
+      "takeScreenshot": false,
+      "screenshotReason": "",
+      "comment": "Confirm Login button.",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.4962,
+        "ry": 0.6983,
+        "x": 461,
+        "y": 604
+      },
+      "delayMs": 1000,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    },
+    {
+      "stepId": 13,
+      "phase": "Login",
+      "takeScreenshot": true,
+      "screenshotReason": "",
+      "comment": "Any login Errors will appear now.",
+      "tool": "none",
+      "action": "wait",
+      "coordinates": {
+        "rx": 0,
+        "ry": 0,
+        "x": 0,
+        "y": 0
+      },
+      "delayMs": 3000,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false
+    },
+    {
+      "stepId": 14,
+      "phase": "GameSelection",
+      "takeScreenshot": true,
+      "screenshotReason": "",
+      "comment": "Close the Rocket Ramp notice.",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.4295,
+        "ry": 0.5896,
+        "x": 399,
+        "y": 510
+      },
+      "delayMs": 500,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    },
+    {
+      "stepId": 15,
+      "phase": "GameSelection",
+      "takeScreenshot": true,
+      "screenshotReason": "",
+      "comment": "Button: (846,257) rx=0.9107 ry=0.2971 | capture-overlay 929x865",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.9107,
+        "ry": 0.2971,
+        "x": 846,
+        "y": 257
+      },
+      "delayMs": 1000,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    },
+    {
+      "stepId": 16,
+      "phase": "GameSelection",
+      "takeScreenshot": false,
+      "screenshotReason": "",
+      "comment": "Next Page",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.9656,
+        "ry": 0.4994,
+        "x": 897,
+        "y": 432
+      },
+      "delayMs": 1000,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    },
+    {
+      "stepId": 17,
+      "phase": "GameSelection",
+      "takeScreenshot": false,
+      "screenshotReason": "",
+      "comment": "Next Page",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.9656,
+        "ry": 0.4994,
+        "x": 897,
+        "y": 432
+      },
+      "delayMs": 1000,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    },
+    {
+      "stepId": 18,
+      "phase": "GameSelection",
+      "takeScreenshot": false,
+      "screenshotReason": "",
+      "comment": "Forune Piggy",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.1733,
+        "ry": 0.5954,
+        "x": 161,
+        "y": 515
+      },
+      "delayMs": 1000,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    },
+    {
+      "stepId": 19,
+      "phase": "GameSelection",
+      "takeScreenshot": true,
+      "screenshotReason": "",
+      "comment": "Button: [describe location/appearance] | Context: [what this does]",
+      "tool": "none",
+      "action": "wait",
+      "coordinates": {
+        "rx": 0,
+        "ry": 0,
+        "x": 0,
+        "y": 0
+      },
+      "delayMs": 4000,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false
+    },
+    {
+      "stepId": 20,
+      "phase": "Spin",
+      "takeScreenshot": false,
+      "screenshotReason": "",
+      "comment": "Button: (856,661) rx=0.9214 ry=0.7642 | capture-overlay 929x865",
+      "tool": "none",
+      "action": "longpress",
+      "coordinates": {
+        "rx": 0.9214,
+        "ry": 0.7642,
+        "x": 856,
+        "y": 661
+      },
+      "delayMs": 1000,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      },
+      "holdMs": 3000
+    },
+    {
+      "stepId": 21,
+      "phase": "Spin",
+      "takeScreenshot": false,
+      "screenshotReason": "",
+      "comment": "Infinite: no iteration limit",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.9236,
+        "ry": 0.4092,
+        "x": 858,
+        "y": 354
+      },
+      "delayMs": 1000,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    },
+    {
+      "stepId": 22,
+      "phase": "Spin",
+      "takeScreenshot": true,
+      "screenshotReason": "",
+      "comment": "Button: [describe location/appearance] | Context: [what this does]",
+      "tool": "none",
+      "action": "wait",
+      "coordinates": {
+        "rx": 0,
+        "ry": 0,
+        "x": 0,
+        "y": 0
+      },
+      "delayMs": 5000,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false
+    },
+    {
+      "stepId": 23,
+      "phase": "Spin",
+      "takeScreenshot": false,
+      "screenshotReason": "",
+      "comment": "Stop Spinning",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.9203,
+        "ry": 0.7607,
+        "x": 855,
+        "y": 658
+      },
+      "delayMs": 1000,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    },
+    {
+      "stepId": 24,
+      "phase": "Logout",
+      "takeScreenshot": false,
+      "screenshotReason": "",
+      "comment": "Button: [describe location/appearance] | Context: [what this does]",
+      "tool": "none",
+      "action": "navigate",
+      "coordinates": {
+        "rx": 0,
+        "ry": 0,
+        "x": 0,
+        "y": 0
+      },
+      "delayMs": 500,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "url": "https://web.orionstars.org/hot_play/orionstars/"
+    },
+    {
+      "stepId": 25,
+      "phase": "Logout",
+      "takeScreenshot": true,
+      "screenshotReason": "",
+      "comment": "Button: [describe location/appearance] | Context: [what this does]",
+      "tool": "none",
+      "action": "wait",
+      "coordinates": {
+        "rx": 0,
+        "ry": 0,
+        "x": 0,
+        "y": 0
+      },
+      "delayMs": 3000,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false
+    },
+    {
+      "stepId": 26,
+      "phase": "Logout",
+      "takeScreenshot": false,
+      "screenshotReason": "",
+      "comment": "Quit Button",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.9473,
+        "ry": 0.7746,
+        "x": 880,
+        "y": 670
+      },
+      "delayMs": 1000,
+      "verification": {
+        "entryGate": "",
+        "exitGate": ""
+      },
+      "breakpoint": false,
+      "canvasBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 929,
+        "height": 865
+      }
+    },
+    {
+      "stepId": 27,
+      "phase": "Logout",
+      "takeScreenshot": false,
+      "screenshotReason": "",
+      "comment": "Confirm Logout",
+      "tool": "none",
+      "action": "click",
+      "coordinates": {
+        "rx": 0.4973,
+        "ry": 0.6913,
+        "x": 462,
+        "y": 598
       },
       "delayMs": 1000,
       "verification": {
