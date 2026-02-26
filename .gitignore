@@ -60,3 +60,7 @@ obj/
 .vs/
 *.user
 *.suo
+
+# NUL files that cause git issues
+nul
+**/nul

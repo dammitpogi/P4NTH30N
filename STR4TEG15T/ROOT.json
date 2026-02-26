@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "canonicalRoot": "C:\\P4NTH30N\\STR4TEG15T\\memory",
+  "effectiveDate": "2026-02-24T20:30:00Z",
+  "description": "Canonical root declaration for strategist decision domain",
+  "schema": {
+    "decisions": "memory/decisions/*.md",
+    "decisionEngine": "memory/decision-engine/*",
+    "manifest": "memory/manifest/manifest.json"
+  },
+  "migration": {
+    "legacySources": [
+      "STR4TEG15T/decisions",
+      "STR4TEG15T/consultations",
+      "STR4TEG15T/handoffs",
+      "STR4TEG15T/canon"
+    ],
+    "status": "in-progress",
+    "artifactsPending": 282,
+    "artifactsCanonical": 108
+  },
+  "controls": {
+    "pointer": "implemented",
+    "manifest": "pending",
+    "dualRead": "pending",
+    "validationGate": "pending",
+    "accessPolicy": "pending"
+  },
+  "verification": {
+    "lastValidated": null,
+    "validationReportPath": null
+  }
+}
