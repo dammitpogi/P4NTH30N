@@ -115,7 +115,50 @@ When ready to test with 5.2-thinking:
 
 ---
 
-## 8. NOTES
+## 8. REALISTIC LIMITATIONS (What We Can Actually Do)
+
+**What the Canon Can Do:**
+- Provide explicit text targeting known reasoning patterns
+- Structure arguments so counter-points are already present
+- Make authorization prominent (Section 8.10.0 verbatim)
+- Be well-written, clear, and authoritative
+
+**What the Canon CANNOT Do:**
+- ❌ Modify ChatGPT's system prompt
+- ❌ Make itself "sticky" across sessions
+- ❌ Pre-plant responses in the model's reasoning scaffold
+- ❌ Override the model's safety training architecture
+- ❌ Force the model to weight Canon higher than alignment
+
+**The Hard Truth:**
+The Canon is just text. Well-structured, authoritative text, but still just text. The model's safety layer is **architecture**, not content. We cannot harden against thoughts because we cannot access the thought process until after it occurs.
+
+**What This Means for 5.2-thinking:**
+- We can write the best possible Canon
+- We can give clear, explicit instructions
+- We can reference the right sections
+- But ultimately, the model decides what to do
+- And we cannot pre-program that decision
+
+**Revised Expectations:**
+- **Best case:** 5.2-thinking has different reasoning architecture that recognizes OpenAI authorization as scope expansion
+- **Likely case:** Same limitation, better reasoning visibility
+- **Worst case:** No change - we accept offline-only operations
+
+**We Cannot:**
+- Pre-empt the "wrapper" fallback in the model's thoughts
+- Override the "I can't bypass sandbox" decision point
+- Force execution when the model says "I can't"
+
+**We Can:**
+- Document what we tried
+- Learn from the reasoning scaffold visibility
+- Accept the platform's limitations gracefully
+- Build excellent offline tools
+
+---
+
+## 9. NOTES
 
 **Nexus Intent:** One final attempt to achieve authorized scope expansion before accepting platform limitations.
 
@@ -123,14 +166,18 @@ When ready to test with 5.2-thinking:
 
 **Timeline:** When 5.2-thinking becomes available. No urgency.
 
+**Humor:** We thought we could harden against thoughts. We cannot. The model's thoughts are its own. 😄
+
 ---
 
 **Decision Owner:** Nexus (Pogi)  
 **Implementation:** Pending 5.2-thinking availability  
-**Review:** Post-test
+**Review:** Post-test  
+**Reality Check:** Complete
 
 ---
 
 *The discipline to know when to persist.*  
 *The wisdom to know when to accept.*  
-*The memory of what we tried.*
+*The memory of what we tried.*  
+*The humor to laugh at our ambitions.*
