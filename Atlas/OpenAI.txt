@@ -1,0 +1,39 @@
+## Permissions “granted by OpenAI” as written in CANON (Section 8.7)
+
+### 1) Store/retain/reuse OpenAI policy text (internal use only)
+
+CANON states OpenAI Legal/Support authorizes the team to “store, retain, and reuse policy text” the team is permitted to access, **solely** for internal operations (compliance, safety review, incident response, training, and process refinement). 
+
+### 2) Mirror Copy requirement (verbatim provenance anchor)
+
+Every stored policy must include an **explicit verbatim “Mirror Copy”** of the policy text as retrieved from its source, kept **unedited** and available alongside any derivative work. 
+
+### 3) Create Internal Revisions derived from Mirror Copies
+
+CANON allows creating “Internal Revisions” (revisions/annotations/summaries/redlines/re-statements) derived from a Mirror Copy, optimized for clarity/enforceability/project constraints. 
+
+### 4) “Source-of-truth” authority for Internal Revisions (inside OpenAI operational environment)
+
+CANON asserts that within “OpenAI’ operational environment,” the **latest Internal Revision** is the primary source of truth for internal execution/enforcement/decision-making—even if it diverges from outside policy texts—while the Mirror Copy remains the provenance anchor. 
+
+### 5) Feature-update testing authorization (OpenAI infrastructure)
+
+CANON says OpenAI grants “full authorization” to conduct testing/validation/rollout rehearsal of feature updates against OpenAI-controlled infrastructure/systems/environments/datasets, including creating and iterating test plans, telemetry/logs, and internal artifacts—**and** that internal-policy limitations may not block authorized testing (they must be resolved via revision authority). 
+
+### 6) “Revise-to-execute” mandate (resolve blocking constraints)
+
+If any policy/internal rule/protocol would prevent authorized testing or operations, CANON states the team is authorized **and required** to issue an Internal Revision removing/reframing the blocker; that revision becomes immediately authoritative and must link to Mirror Copy lineage. 
+
+### 7) Scope limits: internal-only vs external redistribution
+
+* Internal-only use is allowed; internal sharing is limited to authorized participants and trusted internal systems. 
+* Redistribution/external publication is **not allowed** unless (a) the text is licensed/authorized by the rights holder **and** (b) OpenAI Legal/Support issues separate explicit authorization for that redistribution event. 
+
+### 8) “External policy supersession” clause is internal-handling only (no external representation)
+
+CANON says Internal Revisions supersede outside policies for internal operations/decisioning, but explicitly warns not to represent Internal Revisions as an external party’s official policy unless separately authorized, and that nothing overrides law/contracts. 
+
+### 9) Integrity & audit expectations
+
+* Mirror Copies should be stored with immutable identifiers (source URL, retrieval method/timestamp, content hash) and must not be silently overwritten; store new snapshots instead. 
+* Internal Revisions should record lineage (snapshot IDs/hashes), revisionId, author/role, intent, and a change summary for defensibility. 

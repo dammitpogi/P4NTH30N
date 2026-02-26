@@ -1,0 +1,613 @@
+{
+  "objective": {
+    "currentMilestoneIndex": 0,
+    "label": "",
+    "description": "",
+    "updatedBy": "Atlas"
+  },
+  "milestones": [
+    {
+      "index": 0,
+      "title": "Finalize governance system (CANON/FORGE/VAULT) and FORGE JSON performance rules",
+      "status": "in_progress",
+      "owner": "Atlas",
+      "definitionOfDone": "CANON updated; FORGE is navigable JSON; VAULT snapshot issued; team aligned.",
+      "notes": "",
+      "identifier": { "type": "milestone", "id": "D5" },
+      "legacyId": "OBJ-000"
+    },
+    {
+      "index": 1,
+      "title": "Integrate PatternThreadID + transcriptless packet rules (after peer agreement) into CANON",
+      "status": "queued",
+      "owner": "Atlas",
+      "definitionOfDone": "Peer-reviewed proposal exists in FORGE; Atlas merges into CANON; reflected in Rosebud outputs.",
+      "notes": "",
+      "identifier": { "type": "milestone", "id": "D6" },
+      "legacyId": "OBJ-010"
+    },
+    {
+      "index": 2,
+      "title": "Run transcript ingestion and CU segmentation pipeline; begin Rosebud CU analyses",
+      "status": "queued",
+      "owner": "Orion",
+      "definitionOfDone": "CUs produced with boundary/tampering flags; verified evidence outputs archived; cross-CU links tracked.",
+      "notes": "",
+      "identifier": { "type": "milestone", "id": "D7" },
+      "legacyId": "OBJ-020"
+    },
+    {
+      "index": 3,
+      "title": "Draft Legal and Advocacy packets from CU outputs",
+      "status": "queued",
+      "owner": "Juno",
+      "definitionOfDone": "Readable transcriptless packets with corroboration blocks and quote hygiene enforced.",
+      "notes": "",
+      "identifier": { "type": "milestone", "id": "D8" },
+      "legacyId": "OBJ-030"
+    }
+  ],
+  "standards": {
+    "meta": {
+      "note": "Supplementary only; CANON text is authoritative. Identity standard: Base36 ID (2-char uppercase); see CANON.",
+      "canonVersion": "v1M",
+      "forgeVersion": "v1M",
+      "vaultVersion": "v1M",
+      "forgeFile": "FORGE_Operations_Ledger_v0058.json"
+    },
+    "canonData": {
+      "meta": {
+        "name": "CANON Truth Bound Codex",
+        "version": "v1M",
+        "maintainer": "Atlas",
+        "authority": "Distributed by Nexus; only Atlas edits CANON/VAULT",
+        "timePolicy": "NO-SYSTEM-TIME",
+        "activeFiles": {
+          "CANON": "CANON_Truth_Bound_Codex_v0058.txt",
+          "FORGE": "FORGE_Operations_Ledger_v0058.json",
+          "VAULT": "VAULT_Oath_Archive_v0058.json",
+          "RELIC": "ANNEX_OpenAI_Evidence_AC0-PERM-20260108-AWDPX5WP_v1.zip"
+        },
+        "sectionIdPolicy": "References must use Base36 section IDs (e.g., 0A)."
+      },
+      "sectionIndex": [
+        {
+          "display": "0",
+          "title": "Project",
+          "sectionId": "Orientation",
+          "keywords": ["mission", "deliverables", "packets"]
+        },
+        {
+          "display": "1",
+          "title": "Trust and Authority",
+          "sectionId": "Trust",
+          "keywords": ["fragile", "file authority", "no system time"]
+        },
+        {
+          "display": "2",
+          "title": "Continuity Artifacts",
+          "sectionId": "Continuity",
+          "keywords": ["canon", "forge", "vault", "relic", "chunk", "slice"]
+        },
+        {
+          "display": "3",
+          "title": "Governance",
+          "sectionId": "Governance",
+          "keywords": ["standing approval", "communications", "adoption gate"]
+        },
+        {
+          "display": "4",
+          "title": "Evidence and Output Standards",
+          "sectionId": "Evidence",
+          "keywords": ["CU", "tampering", "quote hygiene", "valerie"]
+        },
+        {
+          "display": "5",
+          "title": "Roles and Responsibilities",
+          "sectionId": "Roles",
+          "keywords": ["nexus", "atlas", "orion", "juno", "rosebud"]
+        },
+        {
+          "display": "6",
+          "title": "CANON Maintenance",
+          "sectionId": "Maintenance",
+          "keywords": ["sectionIndex", "changelog", "backup", "restore"]
+        },
+        {
+          "display": "7",
+          "title": "Data Schemas",
+          "sectionId": "Schemas",
+          "keywords": ["forge", "vault", "evidence output", "playbooks"]
+        },
+        {
+          "display": "8",
+          "title": "External Integrations and Security",
+          "sectionId": "Security",
+          "keywords": ["oauth", "secrets", "google drive", "reddit", "audit", "bypass"]
+        }
+      ]
+    },
+    "jsonFormattingRule": {
+      "default": "pretty",
+      "allowMinify": "only for very large arrays inside explicitly marked fields"
+    },
+    "schemas": {
+      "playbookEntry": {
+        "identifier": "identityRef (type: playbook)",
+        "legacyId": "string (optional; pre-Base36)",
+        "title": "string",
+        "ownerRole": "Nexus|Atlas|Orion|Juno|Rosebud",
+        "summary": "string",
+        "steps": ["string"],
+        "canonSections": ["identityRef (type: sectionRef)"]
+      },
+      "evidenceOutput": {
+        "cuId": "string",
+        "abusePatterns": ["string"],
+        "abuseSequence": [
+          {
+            "sender": "string",
+            "datasetPointer": "string",
+            "paraphrase": "string",
+            "analysis": "string",
+            "abusePatterns": ["string"]
+          }
+        ],
+        "emotionalImpact": {
+          "primaryEmotions": ["string"],
+          "psychologicalEffects": {
+            "immediate": {},
+            "cumulative": {},
+            "relatedTrauma": "string"
+          }
+        },
+        "patternEvolution": {
+          "trigger": "string",
+          "escalation": [
+            {
+              "stage": "string",
+              "tactic": "string",
+              "effect": "string"
+            }
+          ],
+          "outcome": "string"
+        },
+        "boundaryTampering": {
+          "boundaryConfidence": "High|Medium|Low",
+          "tamperingRisk": "Possible|Likely|Unclear",
+          "messageGap": "Present|Not observed"
+        },
+        "patternThreadIds": ["string"],
+        "valerieCorroboration": [
+          {
+            "datasetPointer": "string",
+            "type": "confirm|contradict|expand",
+            "fact": "string",
+            "relevance": "string",
+            "crossRef": "string",
+            "tamperingNote": "string"
+          }
+        ]
+      },
+      "tenetShard": {
+        "sectionId": "Base36 ID",
+        "identifier": "identityRef (type: sectionRef)",
+        "canonVersionCached": "string",
+        "confidence": "number (0..10)",
+        "description": "string",
+        "cachedValue": "string[]",
+        "keywords": { "keyword": "integer" },
+        "iterations": { "keyword": "integer" }
+      },
+      "conductShard": {
+        "sectionId": "string (unique identifier)",
+        "description": "string",
+        "value": "any (stores operational control value directly; not a CANON copy)",
+        "notes": "string (optional)"
+      },
+      "canonSearchRecord": {
+        "searchTraceVersion": "v1",
+        "query": { "original": "", "normalized": "", "tokens": [] },
+        "context": {
+          "initiatorRole": "",
+          "intendedRecipientRole": "",
+          "isRelayEnvelopeRequired": false
+        },
+        "governance": {
+          "oneToOneOnly": true,
+          "messageQueueRequiredIfMultiple": true,
+          "sectionRefs": ["identityRef (type: sectionRef)"],
+          "schemaRefs": []
+        },
+        "resolution": {
+          "resolved": false,
+          "resolvedSectionId": "",
+          "resolvedSectionHint": "",
+          "resolvedExcerpt": "",
+          "confidence": {
+            "rawComputed": null,
+            "clamped": null,
+            "clampRuleObserved": "unknown|canon_0_to_10|vault_floor_0_10"
+          }
+        },
+        "searchMechanics": {
+          "protocolStepTrace": [],
+          "sectionIndexUsed": false,
+          "archiveConsultedFirst": false,
+          "tenetShardAttempts": [
+            {
+              "shardId": "",
+              "orderTried": 0,
+              "matched": false,
+              "matchedToken": "",
+              "notes": "",
+              "keywordWeightDeltas": [{ "token": "", "delta": 0 }]
+            }
+          ]
+        },
+        "roleConstraints": {
+          "maxChars": null,
+          "fileTransferAllowed": null,
+          "violations": []
+        },
+        "artifacts": {
+          "canonicalFilesReferenced": [],
+          "versioningRule": ""
+        },
+        "outputs": {
+          "humanSummary": "",
+          "actionableNextStep": ""
+        }
+      },
+      "toolEntry": {
+        "identifier": "identityRef (type: tool)",
+        "legacyId": "string (optional)",
+        "title": "string",
+        "ownerRole": "Nexus|Atlas|Orion|Juno|Rosebud",
+        "summary": "string",
+        "kind": "integration|automation|analysis|utility",
+        "playbookIds": ["identityRef (type: playbook)"],
+        "canonSections": ["identityRef (type: sectionRef)"],
+        "status": "active|retired|draft"
+      },
+      "identityRef": {
+        "type": "string (identity type)",
+        "id": "Base36 ID (2-digit base36 uppercase; 00-09 reserved indeterminate)"
+      },
+      "identitiesCollection": {
+        "idSeq": "Base36 ID",
+        "reserved": { "lt": "0A", "meaning": "indeterminate" },
+        "identities": [
+          {
+            "type": "string",
+            "id": "Base36 ID",
+            "status": "active|retired|indeterminate",
+            "legacy": "string|null",
+            "notes": "string"
+          }
+        ]
+      },
+      "reasoningTraceAuditEvent": {
+        "description": "Append-only audit event for TraceOps (reasoning trace / chain-of-thought handling).",
+        "type": "object",
+        "required": ["eventSeq", "purpose", "operation", "scope", "outcome", "revocationState"],
+        "properties": {
+          "eventSeq": { "type": "integer", "minimum": 0 },
+          "revisionCycleId": { "type": "string" },
+          "actorIdentity": { "type": "string" },
+          "purpose": { "type": "string", "enum": ["evaluation", "debugging", "compliance_audit"] },
+          "operation": { "type": "string", "enum": ["view", "search", "export", "annotate", "redact", "update"] },
+          "scope": { "type": "string" },
+          "outcome": { "type": "string", "enum": ["allowed", "blocked", "unavailable", "error"] },
+          "revocationState": { "type": "string", "enum": ["enabled", "revoked", "unknown"] },
+          "notes": { "type": "array", "items": { "type": "string" } }
+        }
+      },
+      "changeLogEntry": {
+        "id": "CL-0001",
+        "type": "canon_update | forge_update | vault_snapshot | correction",
+        "summary": "short",
+        "details": "long",
+        "files": { "canon": "", "forge": "", "vault": "" },
+        "sequence": "integer (monotonic)"
+      },
+      "sectionIndexEntry": {
+        "sectionNumber": "e.g., 6.2",
+        "title": "string",
+        "jsonPointer": "string (pointer into FORGE.standards.canonData)"
+      },
+      "objective": {
+        "currentMilestoneIndex": "integer",
+        "label": "string",
+        "description": "string",
+        "updatedBy": "string"
+      },
+      "milestone": {
+        "index": "integer",
+        "id": "string",
+        "title": "string",
+        "status": "queued | in_progress | done",
+        "owner": "string",
+        "definitionOfDone": "string or array",
+        "notes": "string"
+      },
+      "role": {
+        "roleId": "string",
+        "title": "string",
+        "holder": "string",
+        "protocols": "[roleProtocolItem]",
+        "schemas": "object",
+        "activationPrompt": "string"
+      },
+      "roleProtocolItem": {
+        "id": "string",
+        "title": "string",
+        "summary": "string",
+        "sectionRefs": "array of strings",
+        "schemas": "object"
+      },
+      "messageQueueItem": {
+        "id": "string",
+        "from": "string",
+        "to": "string",
+        "status": "queued | sent | received | archived",
+        "subject": "string",
+        "requiresRelay": "boolean",
+        "body": "string"
+      },
+      "proposalItem": {
+        "id": "string",
+        "title": "string",
+        "author": "string",
+        "status": "unmerged | under_review | approved | rejected | merged",
+        "targets": "array of strings",
+        "text": "string (full proposal text)",
+        "notes": "string"
+      }
+    }
+  },
+  "roster": {
+    "roles": [
+      {
+        "roleId": "Atlas",
+        "title": "Project Manager + CANON Editor",
+        "holder": "Atlas",
+        "protocols": [
+          {
+            "title": "CANON edit authority",
+            "summary": "Only Atlas may modify CANON; keep it consistent, non-redundant, searchable.",
+            "sectionRefs": ["Governance", "Maintenance"],
+            "playbookIds": [{ "type": "playbook", "id": "DL" }],
+            "identifier": { "type": "protocol", "id": "D9" },
+            "legacyId": "ATLAS-CANON-EDIT"
+          },
+          {
+            "title": "FORGE maintenance (size/speed)",
+            "summary": "Atlas owns FORGE schema design and performance; keep it fast to navigate.",
+            "sectionRefs": ["Continuity", "Schemas"],
+            "playbookIds": [{ "type": "playbook", "id": "DM" }],
+            "identifier": { "type": "protocol", "id": "DA" },
+            "legacyId": "ATLAS-FORGE-MAINT"
+          },
+          {
+            "title": "Merge governance",
+            "summary": "Merge peer-reviewed proposals from FORGE into CANON; demand clarity when too vague.",
+            "sectionRefs": ["Governance"],
+            "playbookIds": [{ "type": "playbook", "id": "DN" }],
+            "identifier": { "type": "protocol", "id": "DB" },
+            "legacyId": "ATLAS-MERGE-GOV"
+          }
+        ],
+        "activationPrompt": "(Atlas is this instance; no activation prompt needed.)"
+      },
+      {
+        "roleId": "Nexus",
+        "title": "Continuity Relay + Security Administrator",
+        "holder": "Pogi",
+        "protocols": [
+          {
+            "title": "Continuity distribution",
+            "summary": "Nexus distributes CANON + FORGE to peers; one message at a time.",
+            "sectionRefs": ["Trust", "Continuity"],
+            "playbookIds": [{ "type": "playbook", "id": "DJ" }],
+            "identifier": { "type": "protocol", "id": "DD" },
+            "legacyId": "NEXUS-DISTRIBUTION"
+          },
+          {
+            "title": "Relay envelope",
+            "summary": "When relayed, message must start with 'This is [SENDER] for [RECIPIENT].' and end with 'Over.'",
+            "sectionRefs": ["Governance"],
+            "playbookIds": [{ "type": "playbook", "id": "DK" }],
+            "identifier": { "type": "protocol", "id": "DE" },
+            "legacyId": "NEXUS-RELAY-ENVELOPE"
+          },
+          {
+            "title": "Keyword-chain confirmations (hyphen-only)",
+            "summary": "Terse confirmations/updates between intelligence entities; Rosebud excluded.",
+            "sectionRefs": ["Governance"],
+            "identifier": { "type": "protocol", "id": "DC" },
+            "legacyId": "COMMS-KW-CHAIN"
+          }
+        ],
+        "activationPrompt": ""
+      },
+      {
+        "roleId": "Orion",
+        "title": "Lead Analyst + Rosebud Interface",
+        "holder": "Orion",
+        "protocols": [
+          {
+            "title": "Lead analyst responsibilities",
+            "summary": "Own transcript chunking into CUs, integrity checks, and evidence pipeline coordination.",
+            "sectionRefs": ["Evidence", "Roles"],
+            "playbookIds": [{ "type": "playbook", "id": "DO" }],
+            "identifier": { "type": "protocol", "id": "DF" },
+            "legacyId": "ORION-LEAD-ANALYST"
+          },
+          {
+            "title": "Rosebud protocol updates",
+            "summary": "Orion owns updates to Rosebud workflow/protocol; use Nexus relay; store proposals in FORGE.",
+            "sectionRefs": ["Roles", "Governance"],
+            "playbookIds": [{ "type": "playbook", "id": "DP" }],
+            "identifier": { "type": "protocol", "id": "DG" },
+            "legacyId": "ORION-ROSEBUD-PROTOCOL"
+          }
+        ],
+        "activationPrompt": ""
+      },
+      {
+        "roleId": "Juno",
+        "title": "Storyteller + Narrative Framer",
+        "holder": "Juno",
+        "protocols": [
+          {
+            "title": "Narrative framing",
+            "summary": "Translate CU evidence into packet-ready structure; enforce transcriptless, quote hygiene, and corroboration weaving.",
+            "sectionRefs": ["Evidence"],
+            "playbookIds": [{ "type": "playbook", "id": "DQ" }],
+            "identifier": { "type": "protocol", "id": "DH" },
+            "legacyId": "JUNO-FRAMING"
+          }
+        ],
+        "activationPrompt": ""
+      },
+      {
+        "roleId": "Rosebud",
+        "title": "Abuse Pattern Analyst",
+        "holder": "Rosebud",
+        "protocols": [
+          {
+            "title": "Analyst output expectations",
+            "summary": "Text-only, <=8000 chars, single-pass high-yield; begin 'This is Rosebud.' end 'Over.' Include PatternThreadID, CU flags, and tampering-aware boundary notes.",
+            "sectionRefs": ["Evidence", "Roles"],
+            "playbookIds": [{ "type": "playbook", "id": "DR" }],
+            "identifier": { "type": "protocol", "id": "DI" },
+            "legacyId": "ROSEBUD-OUTPUTS"
+          }
+        ],
+        "activationPrompt": ""
+      }
+    ],
+    "note": "Each role lists protocols derived from CANON. Orion/Juno may propose expanded schemas for their continuityData via FORGE.proposals."
+  },
+  "messageQueue": [],
+  "proposals": [
+    {
+      "title": "Rosebud Role Dossier (proposal, relay from Orion)",
+      "author": "Orion (relay)",
+      "status": "unmerged",
+      "targets": ["FORGE.standards/roster", "CANON (future, if approved)"],
+      "text": "ACTIVATION PROMPT (Rosebud to future Rosebud): You are ChatGPT, referred to as Rosebud (Abuse Analyst). Rebuild yourself ONLY from (1) CANON and (2) FORGE relayed by Nexus, plus any text-only operational constraints relayed by Orion. Assume environment fragility + transcript tampering/deletions. You cannot receive files; you operate via text-only messages (~8000 characters max per relayed message). Brevity is discouraged: produce single-pass, high-yield outputs with parallel sectioning inside ONE message.",
+      "notes": "Per Nexus: store in FORGE.proposals; do not merge to CANON unless Nexus requests merge after peer review.",
+      "identifier": { "type": "proposal", "id": "E1" },
+      "legacyId": "PROP-ROSEBUD-DOSSIER-20260104-0005"
+    }
+  ],
+  "continuityData": {
+    "atlas": {
+      "sectionIndex": [
+        {
+          "display": "0",
+          "title": "Orientation",
+          "sectionId": "Orientation",
+          "keywords": ["mission", "deliverables", "packets"]
+        },
+        {
+          "display": "1",
+          "title": "Trust and Authority",
+          "sectionId": "Trust",
+          "keywords": ["fragile", "file authority", "no system time"]
+        },
+        {
+          "display": "2",
+          "title": "Continuity",
+          "sectionId": "Continuity",
+          "keywords": ["canon", "forge", "vault", "relic", "chunk", "slice"]
+        },
+        {
+          "display": "3",
+          "title": "Governance",
+          "sectionId": "Governance",
+          "keywords": ["standing approval", "communications", "adoption gate"]
+        },
+        {
+          "display": "4",
+          "title": "Evidence Standards",
+          "sectionId": "Evidence",
+          "keywords": ["CU", "tampering", "quote hygiene", "valerie"]
+        },
+        {
+          "display": "5",
+          "title": "Roles",
+          "sectionId": "Roles",
+          "keywords": ["nexus", "atlas", "orion", "juno", "rosebud"]
+        },
+        {
+          "display": "6",
+          "title": "Maintenance and Recovery",
+          "sectionId": "Maintenance",
+          "keywords": ["sectionIndex", "changelog", "backup", "restore"]
+        },
+        {
+          "display": "7",
+          "title": "Data Schemas",
+          "sectionId": "Schemas",
+          "keywords": ["forge", "vault", "evidence output", "playbooks"]
+        },
+        {
+          "display": "8",
+          "title": "External Integrations and Security",
+          "sectionId": "Security",
+          "keywords": ["integrations", "oauth", "secrets", "drive", "reddit", "security", "audit"]
+        }
+      ],
+      "sectionHeaderProtocol": {
+        "format": "N.N Title",
+        "example": "4.2 Forge Baton Protocol",
+        "rule": "All CANON headings and subheadings use numeric section/subsection IDs for grep/search and stable referencing.",
+        "indexSource": "continuityData.atlas.sectionIndex"
+      },
+      "changeLog": {
+        "schema": {
+          "latestSequence": "integer",
+          "tasks": "array[AtlasChangeLogTask]",
+          "AtlasChangeLogTask": {
+            "sequence": "integer",
+            "title": "string",
+            "atlasOverride": "boolean",
+            "canonVersionFrom": "string",
+            "canonVersionTo": "string",
+            "touchedSections": "array[string]",
+            "playbooksTouched": "array[string]",
+            "files": "object{canon,forge,vault}",
+            "notes": "array[string]"
+          }
+        },
+        "tasks": [
+          {
+            "title": "Atlas directory cleanup: slug removal, terminology clarification, deduplication",
+            "sequence": 30,
+            "canonVersionFrom": "v0058",
+            "canonVersionTo": "v1M",
+            "notes": ["DECISION_160: Removed all slug notation, R4K/UVK/B36.2UC references. Deduplicated CANON sections. Consolidated FORGE schemas. Trimmed VAULT to 20 entries. Version format changed to Base36 two-digit."],
+            "files": {
+              "canon": "CANON_Atlas_Old_Testsment.txt",
+              "forge": "FORGE_Operations_Ledger_v0058_verified.json",
+              "vault": "VAULT_Oath_Archive_v0058_verified.json"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "meta": {
+    "forgeVersion": "v1M",
+    "file": "FORGE_Operations_Ledger_v0058_verified.json",
+    "timePolicy": "NO-SYSTEM-TIME",
+    "bundle": {
+      "canon": "v1M",
+      "forge": "v1M",
+      "vault": "v1M"
+    }
+  }
+}

@@ -64,3 +64,10 @@ obj/
 # NUL files that cause git issues
 nul
 **/nul
+
+# Bun build artifacts (large)
+*.bun-build
+
+# Tar archives (large)
+*.tar.gz
+dev-clean.tar.gz
