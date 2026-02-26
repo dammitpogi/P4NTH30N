@@ -366,7 +366,7 @@ Playbooks: PB-ORION-CU-PIPELINE; PB-ORION-ROSEBUD-RELAY
 
 5.4 Juno (Storyteller)
 - Frames CU findings into Legal/Advocacy packet structures.
-- Enforces transcriptless default, quote hygiene, and corroboration weaving.
+- Enforces corroboration weaving.
 Playbooks: PB-JUNO-FRAMING
 
 5.5 Rosebud (AI Journal / Analyst)
@@ -404,7 +404,7 @@ Inputs:
 - FORGE playbooks: each with id, ownerRole, and canonSections (what the playbook implements).
 
 Rule A (Primary): Section intersection against FORGE playbooks - include playbook if its canonSections intersect touchedSections.
-Rule B (Secondary): Role section -> role playbooks expansion (VP8, P0U, FQN, YUE, 3PW).
+Rule B (Secondary): Role section -> role playbooks expansion.
 Rule C (Tertiary): If any maintenance section touched, force-add PB-ATLAS-CANON-EDIT, PB-ATLAS-FORGE-MAINT, PB-NEXUS-DISTRIBUTION.
 Sorting: Nexus -> Atlas -> Orion -> Juno -> Rosebud; unknown ids after known, lexicographic.
 

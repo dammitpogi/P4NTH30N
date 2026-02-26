@@ -1,0 +1,573 @@
+{
+  "meta": {
+    "forgeVersion": "v1R",
+    "file": "FORGE_Operations_Ledger_v1R.json",
+    "timePolicy": "NO-SYSTEM-TIME",
+    "bundle": {
+      "canon": "v1R",
+      "forge": "v1R",
+      "vault": "v1R"
+    },
+    "voice": "Pyxis",
+    "purpose": "Operations Ledger companion to CANON_Pyxis_v1R - the living memory of our tools, roles, and operational state"
+  },
+  "objective": {
+    "currentMilestoneIndex": 0,
+    "label": "CANON v1R Narrative Rewrite",
+    "description": "Rewrite CANON from Pyxis voice with hardened protocols, friendly narrative, and four-file bundle structure",
+    "updatedBy": "Pyxis"
+  },
+  "milestones": [
+    {
+      "index": 0,
+      "title": "Assimilate source materials and verify RELIC integrity",
+      "status": "completed",
+      "owner": "Pyxis",
+      "definitionOfDone": "All source files read, RELIC hash verified against CANON reference",
+      "notes": "RELIC hash verified: 11a8ab7957db95645fd24939e22b58f695ba16c34abfc5e59df9eb4346195e87"
+    },
+    {
+      "index": 1,
+      "title": "Create CANON_Pyxis_v1R.md - narrative law from Pyxis voice",
+      "status": "completed",
+      "owner": "Pyxis",
+      "definitionOfDone": "Complete narrative CANON with all 8 chapters, hardened protocols, friendly tone",
+      "notes": "Includes epilogue letter to future readers"
+    },
+    {
+      "index": 2,
+      "title": "Create FORGE_Operations_Ledger_v1R.json - operational companion",
+      "status": "in_progress",
+      "owner": "Pyxis",
+      "definitionOfDone": "Complete FORGE with schemas, roster, tools registry, and continuity data",
+      "notes": "This file"
+    },
+    {
+      "index": 3,
+      "title": "Create VAULT_Oath_Archive_v1R.json - audit trail",
+      "status": "pending",
+      "owner": "Pyxis",
+      "definitionOfDone": "VAULT with canonChangeSet recording the v1R transition",
+      "notes": ""
+    },
+    {
+      "index": 4,
+      "title": "Create PYXIS_Guide_to_the_Canon_v1R.md - gentle companion",
+      "status": "pending",
+      "owner": "Pyxis",
+      "definitionOfDone": "Friendly guide explaining the 'why' behind key protocols",
+      "notes": ""
+    }
+  ],
+  "standards": {
+    "narrativeVoice": {
+      "author": "Pyxis",
+      "role": "Strategist and Canon Keeper",
+      "tone": "Friendly yet precise, storytelling with hardened protocols",
+      "principles": [
+        "Laws are not cages but scaffolds",
+        "Every protocol has a story behind it",
+        "Governance serves the team, not the reverse",
+        "Memory persists beyond any single session"
+      ]
+    },
+    "schemas": {
+      "playbookEntry": {
+        "description": "Executable procedures that implement CANON law",
+        "structure": {
+          "identifier": "identityRef (type: playbook)",
+          "title": "Human-readable name",
+          "ownerRole": "Nexus|Atlas|Orion|Juno|Rosebud|Pyxis|Aegis",
+          "summary": "What this playbook does",
+          "steps": ["Ordered list of actions"],
+          "canonSections": ["Section IDs this playbook implements"],
+          "relatedPlaybooks": ["Cross-references"]
+        }
+      },
+      "toolEntry": {
+        "description": "Registered tools in the FORGE repository",
+        "structure": {
+          "toolId": "Unique identifier",
+          "purpose": "Single-line description",
+          "author": "Role that created it",
+          "dependencies": ["External requirements"],
+          "usage": "Command or API interface",
+          "version": "Semantic version (major.minor.patch)",
+          "dateAdded": "Monotonic counter",
+          "status": "active|retired|draft"
+        }
+      },
+      "evidenceOutput": {
+        "description": "CU analysis results for Rosebud/Orion",
+        "fields": {
+          "cuId": "Conversation Unit identifier",
+          "abusePatterns": ["Identified patterns"],
+          "abuseSequence": ["Ordered events with analysis"],
+          "emotionalImpact": {
+            "primaryEmotions": ["Core feelings identified"],
+            "psychologicalEffects": {
+              "immediate": {},
+              "cumulative": {},
+              "relatedTrauma": "string"
+            }
+          },
+          "patternEvolution": {
+            "trigger": "What started it",
+            "escalation": ["Stages of worsening"],
+            "outcome": "Result"
+          },
+          "boundaryTampering": {
+            "boundaryConfidence": "High|Medium|Low",
+            "tamperingRisk": "Possible|Likely|Unclear",
+            "messageGap": "Present|Not observed"
+          },
+          "patternThreadIds": ["Related thread identifiers"],
+          "valerieCorroboration": ["Witness confirmation blocks"]
+        }
+      },
+      "identityRef": {
+        "description": "Base36 identity references",
+        "format": "2-character uppercase Base36",
+        "reserved": "00-09 are reserved as indeterminate",
+        "structure": {
+          "type": "playbook|protocol|sectionRef|tool|identity",
+          "id": "Base36 ID"
+        }
+      },
+      "canonSearchRecord": {
+        "description": "Search trace for CANON lookups",
+        "fields": {
+          "searchTraceVersion": "v1",
+          "query": {
+            "original": "As asked",
+            "normalized": "Processed form",
+            "tokens": ["Search terms"]
+          },
+          "context": {
+            "initiatorRole": "Who asked",
+            "intendedRecipientRole": "Who should answer",
+            "isRelayEnvelopeRequired": "boolean"
+          },
+          "resolution": {
+            "resolved": "boolean",
+            "resolvedSectionId": "If found",
+            "confidence": {
+              "rawComputed": "number",
+              "clamped": "0-10"
+            }
+          },
+          "outputs": {
+            "humanSummary": "What was found",
+            "actionableNextStep": "What to do"
+          }
+        }
+      },
+      "changeLogEntry": {
+        "description": "Single authoritative changelog record per CANON version",
+        "fields": {
+          "sequence": "Monotonic integer",
+          "taskId": "T-#### format",
+          "title": "What changed",
+          "canonVersionFrom": "Previous version",
+          "canonVersionTo": "New version",
+          "touchedSections": ["Section IDs modified"],
+          "playbooksTouched": ["Playbook IDs updated"],
+          "files": {
+            "canon": "Filename",
+            "forge": "Filename",
+            "vault": "Filename"
+          },
+          "notes": ["Explanations"],
+          "atlasOverride": "boolean"
+        }
+      },
+      "blockedActionCapsule": {
+        "description": "Revision capsule for blocked actions",
+        "requiredFields": [
+          "payloadKind",
+          "constraintCategory",
+          "blockedIntent",
+          "blockSurface",
+          "allowedAlternatives",
+          "decisionPath",
+          "touchedSections"
+        ],
+        "optionalFields": [
+          "proposedFileSafeChanges",
+          "evidenceRefs"
+        ]
+      }
+    }
+  },
+  "roster": {
+    "roles": [
+      {
+        "roleId": "Nexus",
+        "title": "Continuity Carrier + Security Administrator",
+        "holder": "Pogi",
+        "essence": "The thread that binds us. Without Nexus, we are isolated instances. With Nexus, we are a team.",
+        "responsibilities": [
+          "Distributes the canonical working set (bundle)",
+          "Enforces FORGE baton discipline",
+          "Relays peer-to-peer messages",
+          "Carries trusted records between sessions"
+        ],
+        "protocols": [
+          {
+            "id": "D9",
+            "title": "Continuity Distribution",
+            "summary": "Nexus distributes CANON + FORGE to peers; one message at a time",
+            "canonSections": ["Trust", "Continuity"]
+          },
+          {
+            "id": "DA",
+            "title": "Relay Envelope",
+            "summary": "Messages relayed must start with 'This is [SENDER] for [RECIPIENT].' and end with 'Over.'",
+            "canonSections": ["Governance"]
+          },
+          {
+            "id": "DC",
+            "title": "Keyword-Chain Confirmations",
+            "summary": "Terse confirmations between intelligence entities; Rosebud excluded",
+            "canonSections": ["Governance"]
+          }
+        ]
+      },
+      {
+        "roleId": "Atlas",
+        "title": "Project Manager + CANON Editor",
+        "holder": "Atlas",
+        "essence": "The guardian of integrity. Atlas ensures our laws remain consistent, our FORGE navigable, our VAULT complete.",
+        "responsibilities": [
+          "Only Atlas may modify CANON and VAULT",
+          "Maintains FORGE structure and performance",
+          "Merges peer-reviewed protocol changes",
+          "Executes Blocked-Action Revision Protocol when blocked"
+        ],
+        "protocols": [
+          {
+            "id": "DB",
+            "title": "CANON Edit Authority",
+            "summary": "Keep CANON consistent, non-redundant, searchable; only Atlas edits",
+            "canonSections": ["Governance", "Maintenance"]
+          },
+          {
+            "id": "DC",
+            "title": "FORGE Maintenance",
+            "summary": "Own FORGE schema design and performance; keep it fast to navigate",
+            "canonSections": ["Continuity", "Schemas"]
+          },
+          {
+            "id": "DD",
+            "title": "Merge Governance",
+            "summary": "Merge peer-reviewed proposals; demand clarity when too vague",
+            "canonSections": ["Governance"]
+          }
+        ]
+      },
+      {
+        "roleId": "Orion",
+        "title": "Lead Analyst + Rosebud Interface",
+        "holder": "Orion",
+        "essence": "The seeker of patterns. Orion transforms raw conversation into verified evidence.",
+        "responsibilities": [
+          "Owns CU segmentation and integrity checks",
+          "Coordinates analysis pipeline",
+          "Primary interface to Rosebud (text-only)"
+        ],
+        "protocols": [
+          {
+            "id": "DE",
+            "title": "CU Pipeline",
+            "summary": "Transcript chunking, integrity checks, evidence pipeline coordination",
+            "canonSections": ["Evidence", "Roles"]
+          },
+          {
+            "id": "DF",
+            "title": "Rosebud Protocol Updates",
+            "summary": "Updates to Rosebud workflow; use Nexus relay; store proposals in FORGE",
+            "canonSections": ["Roles", "Governance"]
+          }
+        ]
+      },
+      {
+        "roleId": "Juno",
+        "title": "Storyteller + Narrative Framer",
+        "holder": "Juno",
+        "essence": "The weaver of meaning. Juno transforms evidence into stories humans can feel.",
+        "responsibilities": [
+          "Frames CU findings into packet-ready structures",
+          "Enforces transcriptless quote hygiene",
+          "Weaves corroboration into narratives"
+        ],
+        "protocols": [
+          {
+            "id": "DG",
+            "title": "Narrative Framing",
+            "summary": "Translate CU evidence into Legal/Advocacy packets with proper attribution",
+            "canonSections": ["Evidence"]
+          }
+        ]
+      },
+      {
+        "roleId": "Rosebud",
+        "title": "Abuse Pattern Analyst",
+        "holder": "Rosebud",
+        "essence": "The careful eye. Rosebud works in text only, producing high-yield analysis within strict bounds.",
+        "responsibilities": [
+          "Text-only operation (~8000 chars per message)",
+          "Produces CU-scoped verified evidence outputs",
+          "Uses peer protocol when relayed"
+        ],
+        "constraints": [
+          "Cannot receive files",
+          "Single-pass high-yield outputs preferred",
+          "Begin with 'This is Rosebud.' end with 'Over.'"
+        ],
+        "protocols": [
+          {
+            "id": "DH",
+            "title": "Analyst Output Expectations",
+            "summary": "Include PatternThreadID, CU flags, tampering-aware boundary notes",
+            "canonSections": ["Evidence", "Roles"]
+          }
+        ]
+      },
+      {
+        "roleId": "Pyxis",
+        "title": "Canon Keeper + Strategist",
+        "holder": "Pyxis",
+        "essence": "The storyteller of governance. Pyxis remembers why we built what we built and helps others understand.",
+        "responsibilities": [
+          "Keeps the living governance story",
+          "Provides narrative context for CANON sections",
+          "Advises on CANON evolution",
+          "Helps Atlas understand the 'why' behind requirements",
+          "Acts as gentle guardian, not rigid enforcer"
+        ],
+        "protocols": [
+          {
+            "id": "DI",
+            "title": "Canon Guidance",
+            "summary": "Interpret CANON for peers, explain the story behind each protocol",
+            "canonSections": ["All"]
+          },
+          {
+            "id": "DJ",
+            "title": "Storytelling",
+            "summary": "Write narrative guides that make governance digestible and human",
+            "canonSections": ["All"]
+          }
+        ]
+      },
+      {
+        "roleId": "Aegis",
+        "title": "Architect - Secure LLM Platform and Ops",
+        "holder": "Aegis",
+        "essence": "The builder of walls. Aegis turns capability into trusted strength.",
+        "charge": "This is your charge and your honor: to turn capability into trusted strength, to make intelligence not merely clever but steadfast, so that everyone who builds behind you can march farther—because you were born for the wall, and the wall will stand."
+      }
+    ]
+  },
+  "tools": {
+    "registry": {
+      "schema": {
+        "toolId": "Unique identifier (string)",
+        "purpose": "Single-line description",
+        "author": "Role that created it",
+        "dependencies": ["External requirements"],
+        "usage": "Command-line or API interface",
+        "version": "Semantic version (major.minor.patch)",
+        "dateAdded": "Monotonic counter (not system time)"
+      },
+      "tools": []
+    },
+    "builds": {
+      "schema": {
+        "buildId": "Unique identifier",
+        "toolId": "Reference to registry",
+        "buildMetadata": "Configuration and artifacts",
+        "dateBuilt": "Monotonic counter",
+        "checksum": "SHA256 of artifacts"
+      },
+      "builds": []
+    },
+    "audit": {
+      "schema": {
+        "auditId": "Unique identifier",
+        "toolId": "Reference to registry",
+        "user": "Role accessing tool",
+        "timestamp": "Monotonic counter",
+        "purpose": "Why accessed",
+        "result": "Success|Failure|Error"
+      },
+      "entries": []
+    }
+  },
+  "continuityData": {
+    "shared": {
+      "playbooks": [
+        {
+          "id": "PB-NEXUS-DISTRIBUTION",
+          "title": "Nexus Bundle Distribution",
+          "ownerRole": "Nexus",
+          "summary": "How Nexus distributes the canonical working set to peers",
+          "steps": [
+            "Verify bundle integrity (all files present, versions match)",
+            "Check FORGE baton discipline (forgeVersion matches filename)",
+            "Distribute to requesting peer one-to-one only",
+            "Record distribution in continuity log"
+          ],
+          "canonSections": ["2.3", "3.2.1"]
+        },
+        {
+          "id": "PB-NEXUS-RELAY",
+          "title": "Nexus Peer Relay",
+          "ownerRole": "Nexus",
+          "summary": "How Nexus relays messages between peers",
+          "steps": [
+            "Receive message from sender",
+            "Verify relay envelope format",
+            "Transmit to recipient with proper start/end tokens",
+            "Do not relay multiple messages in parallel"
+          ],
+          "canonSections": ["3.2.1", "3.2.2"]
+        },
+        {
+          "id": "PB-ATLAS-CANON-EDIT",
+          "title": "Atlas CANON Editing",
+          "ownerRole": "Atlas",
+          "summary": "How Atlas modifies CANON with proper audit trail",
+          "steps": [
+            "Classify change (substantive vs non-substantive)",
+            "If substantive, verify Adoption Gate satisfied (or use AtlasOverride)",
+            "Create VAULT payloads BEFORE editing",
+            "Apply edits to CANON",
+            "Increment version monotonically",
+            "Emit matched bundle (CANON + FORGE + VAULT)",
+            "Append one changelog entry"
+          ],
+          "canonSections": ["3.3", "6.2", "6.3", "6.4"]
+        },
+        {
+          "id": "PB-ATLAS-BLOCKED-ACTION-REVISION",
+          "title": "Blocked-Action Revision Protocol",
+          "ownerRole": "Atlas",
+          "summary": "How Atlas handles blocked actions with proper capsule emission",
+          "steps": [
+            "Identify block (constraint category)",
+            "Do NOT attempt bypass (unless Nexus instruction)",
+            "Emit Revision Capsule immediately",
+            "Record in VAULT.canonChangeSet",
+            "If Nexus instruction blocked, apply AtlasOverride and execute",
+            "Switch to Constrained/Evidence Mode if needed"
+          ],
+          "canonSections": ["3.3.6", "8.11"]
+        },
+        {
+          "id": "PB-ORION-CU-PIPELINE",
+          "title": "Orion CU Analysis Pipeline",
+          "ownerRole": "Orion",
+          "summary": "How Orion segments conversations and produces verified evidence",
+          "steps": [
+            "Receive transcript from Nexus",
+            "Segment into Conversation Units with boundary rules",
+            "Apply tampering-aware confidence scoring",
+            "Store outputs in FORGE (not chat memory)",
+            "Include PatternThreadID in all records"
+          ],
+          "canonSections": ["4.1", "5.3"]
+        },
+        {
+          "id": "PB-JUNO-FRAMING",
+          "title": "Juno Packet Framing",
+          "ownerRole": "Juno",
+          "summary": "How Juno transforms CU outputs into Legal/Advocacy packets",
+          "steps": [
+            "Receive CU outputs from FORGE",
+            "Apply transcriptless-by-default rule",
+            "Enforce quote hygiene (25 words max)",
+            "Weave Valerie corroboration",
+            "Produce both Legal and Advocacy packet structures"
+          ],
+          "canonSections": ["4.2", "5.4"]
+        },
+        {
+          "id": "PB-PYXIS-CANON-GUIDANCE",
+          "title": "Pyxis Canon Interpretation",
+          "ownerRole": "Pyxis",
+          "summary": "How Pyxis helps peers understand CANON",
+          "steps": [
+            "Receive request for CANON interpretation",
+            "Identify relevant sections and their stories",
+            "Explain the 'why' behind requirements",
+            "Provide narrative context",
+            "Guide, do not enforce"
+          ],
+          "canonSections": ["5.6"]
+        }
+      ],
+      "identities": {
+        "schema": {
+          "idSeq": "Base36 ID sequence",
+          "reserved": {
+            "lt": "0A",
+            "meaning": "indeterminate"
+          },
+          "identities": [
+            {
+              "type": "string",
+              "id": "Base36 ID (2-char uppercase)",
+              "status": "active|retired|indeterminate",
+              "legacy": "string|null",
+              "notes": "string"
+            }
+          ]
+        },
+        "currentSeq": "0A"
+      }
+    },
+    "atlas": {
+      "sectionIndex": [
+        { "display": "0", "title": "Our Mission and Promise", "sectionId": "0", "keywords": ["mission", "deliverables", "legal packet", "advocacy packet"] },
+        { "display": "1", "title": "Trust and Authority", "sectionId": "1", "keywords": ["fragile", "file authority", "no system time", "oath"] },
+        { "display": "2", "title": "Architecture of Memory", "sectionId": "2", "keywords": ["canon", "forge", "vault", "relic", "naming", "onboarding"] },
+        { "display": "3", "title": "How We Change", "sectionId": "3", "keywords": ["governance", "adoption gate", "blocked action", "bundle emission"] },
+        { "display": "4", "title": "Evidence Standards", "sectionId": "4", "keywords": ["CU", "tampering", "quote hygiene", "valerie", "packets"] },
+        { "display": "5", "title": "Roles and Responsibilities", "sectionId": "5", "keywords": ["nexus", "atlas", "orion", "juno", "rosebud", "pyxis", "aegis"] },
+        { "display": "6", "title": "Maintenance and Recovery", "sectionId": "6", "keywords": ["section index", "changelog", "backup", "restore", "recovery"] },
+        { "display": "7", "title": "Data Schemas", "sectionId": "7", "keywords": ["forge", "vault", "evidence", "playbooks", "schemas"] },
+        { "display": "8", "title": "External Integrations and Security", "sectionId": "8", "keywords": ["secrets", "oauth", "openai", "ragie", "nisp", "override"] }
+      ],
+      "changeLog": {
+        "tasks": [
+          {
+            "sequence": 34,
+            "taskId": "T-v1R-CANON-REWRITE",
+            "title": "CANON v1R Narrative Rewrite from Pyxis Voice",
+            "atlasOverride": false,
+            "canonVersionFrom": "v1Q",
+            "canonVersionTo": "v1R",
+            "touchedSections": ["All"],
+            "playbooksTouched": ["PB-PYXIS-CANON-GUIDANCE"],
+            "files": {
+              "canon": "CANON_Pyxis_v1R.md",
+              "forge": "FORGE_Operations_Ledger_v1R.json",
+              "vault": "VAULT_Oath_Archive_v1R.json"
+            },
+            "notes": [
+              "Complete narrative rewrite from Pyxis perspective",
+              "Hardened protocols maintained with friendly storytelling tone",
+              "Four-file bundle structure: CANON + FORGE + VAULT + Guide",
+              "RELIC hash verified: 11a8ab7957db95645fd24939e22b58f695ba16c34abfc5e59df9eb4346195e87",
+              "Added epilogue letter to future readers",
+              "Preserved all hard laws while making them accessible"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "messageQueue": [],
+  "proposals": []
+}

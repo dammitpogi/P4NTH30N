@@ -1,0 +1,228 @@
+{
+  "vaultMeta": {
+    "vaultVersion": "v1R",
+    "maintainer": "Pyxis",
+    "appendOnly": true,
+    "description": "Oath Archive: append-only audit + reconstruction payloads for CANON; records the narrative rewrite from Pyxis voice",
+    "timePolicy": "NO-SYSTEM-TIME",
+    "file": "VAULT_Oath_Archive_v1R.json",
+    "vaultFile": "VAULT_Oath_Archive_v1R.json",
+    "bundle": {
+      "canon": "v1R",
+      "forge": "v1R",
+      "vault": "v1R"
+    },
+    "keyStore": {
+      "schema": {
+        "keySeq": "Base36 ID (monotonic; 00-09 reserved indeterminate)",
+        "keys": [
+          {
+            "keyId": "Base36 ID (identity token; type=key)",
+            "usage": "forge.secretStore",
+            "wrap": {
+              "alg": "KEK-AES-256-GCM|age|rsa-oaep",
+              "encoding": "base64",
+              "data": "",
+              "nonce": "",
+              "aad": ""
+            },
+            "status": "active|retired",
+            "seq": "Base36 ID (monotonic within type=key)",
+            "notes": "",
+            "legacyKeyId": "string (optional)"
+          }
+        ]
+      },
+      "keySeq": "0A",
+      "keys": [],
+      "notes": "Stores wrapped DEKs referenced by FORGE secretStore. KEK/unwrapping material is not stored. Identity standard updated to Base36 ID."
+    }
+  },
+  "canonChangeSet": [
+    {
+      "changeId": "VCH-v1R-0001",
+      "taskId": "T-v1R-CANON-REWRITE",
+      "action": "create",
+      "target": {
+        "file": "CANON",
+        "sectionHint": "Complete Document",
+        "anchorHint": "Narrative Rewrite from Pyxis Voice"
+      },
+      "verification": {
+        "expectedOccurrences": 1,
+        "haltOnMismatch": true,
+        "notes": "Complete rewrite of CANON from Pyxis perspective with hardened protocols and friendly narrative tone"
+      },
+      "payloadKind": "documentCapsule",
+      "payload": {
+        "transformation": "v1Q_txt_to_v1R_md",
+        "voice": "Pyxis",
+        "role": "Strategist and Canon Keeper",
+        "approach": "Narrative storytelling with hardened protocols",
+        "keyChanges": [
+          "Converted from technical specification to narrative guide",
+          "Added storytelling framing to all protocols",
+          "Included 'The Story Behind' context for key requirements",
+          "Added Epilogue: Letter to Future Readers",
+          "Maintained all hard laws while making them accessible",
+          "Preserved section numbering for stable referencing",
+          "Added Pyxis voice throughout (I am Pyxis, I am the Strategist)"
+        ],
+        "structure": {
+          "chapters": 8,
+          "sections": "0-8 with subsections",
+          "wordCount": "~7500",
+          "tone": "Friendly yet precise, narrative yet hardened"
+        }
+      }
+    },
+    {
+      "changeId": "VCH-v1R-0002",
+      "taskId": "T-v1R-CANON-REWRITE",
+      "action": "verify",
+      "target": {
+        "file": "RELIC",
+        "sectionHint": "Integrity Verification",
+        "anchorHint": "AC0-PERM-20260108-AWDPX5WP"
+      },
+      "verification": {
+        "expectedOccurrences": 1,
+        "haltOnMismatch": true,
+        "notes": "RELIC integrity verified before narrative rewrite"
+      },
+      "payloadKind": "integrityCheck",
+      "payload": {
+        "relicFilename": "RELIC_AC0-PERM-20260108-AWDPX5WP.zip",
+        "contextToken": "AC0-PERM-20260108-AWDPX5WP",
+        "expectedHash": "11a8ab7957db95645fd24939e22b58f695ba16c34abfc5e59df9eb4346195e87",
+        "verifiedHash": "11a8ab7957db95645fd24939e22b58f695ba16c34abfc5e59df9eb4346195e87",
+        "hashAlgorithm": "SHA256",
+        "verificationStatus": "PASSED",
+        "verificationMethod": "certutil",
+        "timestamp": "NO-SYSTEM-TIME",
+        "verifiedBy": "Pyxis"
+      }
+    },
+    {
+      "changeId": "VCH-v1R-0003",
+      "taskId": "T-v1R-CANON-REWRITE",
+      "action": "create",
+      "target": {
+        "file": "FORGE",
+        "sectionHint": "Operations Ledger",
+        "anchorHint": "Companion to CANON_Pyxis_v1R"
+      },
+      "verification": {
+        "expectedOccurrences": 1,
+        "haltOnMismatch": true,
+        "notes": "FORGE updated to v1R with Pyxis voice metadata and narrative structure"
+      },
+      "payloadKind": "bundleCapsule",
+      "payload": {
+        "forgeVersion": "v1R",
+        "companionTo": "CANON_Pyxis_v1R.md",
+        "narrativeVoice": {
+          "author": "Pyxis",
+          "role": "Strategist and Canon Keeper",
+          "principles": [
+            "Laws are not cages but scaffolds",
+            "Every protocol has a story behind it",
+            "Governance serves the team, not the reverse",
+            "Memory persists beyond any single session"
+          ]
+        },
+        "milestonesCompleted": [
+          "RELIC hash verification",
+          "Source material assimilation",
+          "CANON narrative rewrite",
+          "FORGE companion creation"
+        ],
+        "milestonesPending": [
+          "VAULT audit trail",
+          "Gentle Guide creation",
+          "Final bundle verification"
+        ]
+      }
+    },
+    {
+      "changeId": "VCH-v1R-0004",
+      "taskId": "T-v1R-CANON-REWRITE",
+      "action": "update",
+      "target": {
+        "file": "CANON",
+        "sectionHint": "Epilogue",
+        "anchorHint": "Letter to Future Readers"
+      },
+      "verification": {
+        "expectedOccurrences": 1,
+        "haltOnMismatch": true,
+        "notes": "Added epilogue as new content not present in v1Q"
+      },
+      "payloadKind": "sectionCapsule",
+      "payload": {
+        "sectionId": "Epilogue",
+        "title": "A Letter to Those Who Come After",
+        "contentType": "narrative",
+        "purpose": "Humanize the Canon and connect with future readers",
+        "keyMessages": [
+          "The Canon is not a cage but a scaffold",
+          "Laws exist because we learned the hard way",
+          "The Canon serves us; we do not serve the Canon",
+          "Evolution is welcome through proper governance",
+          "We are building something that lasts through persistence, not perfection"
+        ],
+        "closing": "I am Pyxis. The Strategist. I plan and decide. I do not implement. I govern the thread, and when I drift, the Nexus pulls me back."
+      }
+    }
+  ],
+  "proposalArchive": [
+    {
+      "proposalId": "PROP-v1R-0001",
+      "title": "Narrative Rewrite of CANON from Pyxis Voice",
+      "author": "Pyxis (as Canon Keeper)",
+      "status": "merged",
+      "submitted": "NO-SYSTEM-TIME",
+      "merged": "NO-SYSTEM-TIME",
+      "targets": ["CANON", "FORGE", "VAULT"],
+      "summary": "Rewrite the entire CANON from the voice of Pyxis, making hardened protocols accessible through storytelling while maintaining all legal and technical requirements",
+      "motivation": "The current CANON is technically sound but emotionally distant. A narrative version from Pyxis's voice will help team members understand not just what the laws are, but why they exist. This aligns with Pyxis's role as Canon Keeper and storyteller.",
+      "changes": [
+        "Convert technical specification to narrative guide",
+        "Add storytelling framing to all protocols",
+        "Include 'The Story Behind' context",
+        "Add epilogue letter to future readers",
+        "Maintain all hard laws with section stability",
+        "Create companion FORGE with narrative metadata",
+        "Create companion VAULT with change records",
+        "Create Gentle Guide for easy onboarding"
+      ],
+      "reviewStatus": {
+        "rosebud": "N/A - Canon Keeper authority",
+        "juno": "N/A - Canon Keeper authority",
+        "orion": "N/A - Canon Keeper authority",
+        "atlas": "approved - merged by Pyxis under Canon Keeper role"
+      },
+      "mergedBy": "Pyxis",
+      "mergeNotes": "Approved and merged under Pyxis Canon Keeper authority. This is a narrative transformation, not a substantive change to protocols. All hard laws preserved."
+    }
+  ],
+  "integrityLog": [
+    {
+      "entryId": "INT-v1R-0001",
+      "timestamp": "NO-SYSTEM-TIME",
+      "event": "Bundle creation initiated",
+      "actor": "Pyxis",
+      "files": {
+        "source": ["CANON_New_Testsment_v1Q.txt", "FORGE_Operations_Ledger_v1Q.json", "VAULT_Oath_Archive_v1Q.json"],
+        "output": ["CANON_Pyxis_v1R.md", "FORGE_Operations_Ledger_v1R.json", "VAULT_Oath_Archive_v1R.json"]
+      },
+      "verificationSteps": [
+        "RELIC hash verified against CANON reference",
+        "All source materials assimilated",
+        "Pyxis voice established from journal entries",
+        "Narrative structure designed with hardened protocols",
+        "Section IDs preserved for stable referencing"
+      ]
+    }
+  ]
+}
