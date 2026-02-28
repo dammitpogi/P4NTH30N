@@ -83,7 +83,7 @@
 ### Q3: Embedding throughput?
 **~2,800 embeddings/sec** (CPU, MiniLM-L6-v2, single thread).
 **~8,000 embeddings/sec** with batch processing and multi-threading.
-For P4NTH30N scale (~1k-10k documents), full re-indexing takes **<5 seconds**.
+For P4NTHE0N scale (~1k-10k documents), full re-indexing takes **<5 seconds**.
 
 ### Q4: Can we run RAG queries in real-time?
 **YES** for retrieval (FAISS search <10ms).

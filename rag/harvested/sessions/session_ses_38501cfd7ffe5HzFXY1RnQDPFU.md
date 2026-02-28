@@ -4,7 +4,7 @@
 **project_id**: 6bca83b670a16680d54ed49b159b2a2eb350d9b2
 **parent_id**: ses_385684785ffea2n4huvdx0wJQi
 **slug**: playful-rocket
-**directory**: c:\P4NTH30N
+**directory**: c:\P4NTHE0N
 **title**: Deploy WindFixer for PROD-040 (@windfixer subagent)
 **version**: 1.2.10
 **share_url**: NULL

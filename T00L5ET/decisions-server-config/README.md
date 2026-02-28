@@ -22,7 +22,7 @@ Use the `host-gateway` Docker feature to map host.docker.internal properly, or u
 ### Option 1: Using Docker Compose (Recommended)
 
 ```powershell
-cd C:\P4NTH30N\T00L5ET\decisions-server-config
+cd C:\P4NTHE0N\T00L5ET\decisions-server-config
 docker-compose up -d
 ```
 
@@ -41,7 +41,7 @@ The ToolHive run config has been updated to use the correct MongoDB connection s
 The decisions-server connects to MongoDB at:
 - Host: `host.docker.internal` (Windows) or `172.18.0.1` (Linux bridge)
 - Port: `27017`
-- Database: `P4NTH30N`
+- Database: `P4NTHE0N`
 
 ## Verification
 

@@ -18,7 +18,7 @@
       "priority": "Medium",
       "implementation": {
         "targetFiles": [
-          "C:\\P4NTH30N\\docs\\Explorer-Librarian-Workarounds.md"
+          "C:\\P4NTHE0N\\docs\\Explorer-Librarian-Workarounds.md"
         ]
       },
       "timestamp": {
@@ -49,8 +49,8 @@
       "priority": "High",
       "implementation": {
         "targetFiles": [
-          "C:\\P4NTH30N\\PROF3T\\AutomationEngine.cs",
-          "C:\\P4NTH30N\\C0MMON\\Services\\CostOptimizer.cs"
+          "C:\\P4NTHE0N\\PROF3T\\AutomationEngine.cs",
+          "C:\\P4NTHE0N\\C0MMON\\Services\\CostOptimizer.cs"
         ]
       },
       "timestamp": {
@@ -82,7 +82,7 @@
       "implementation": {
         "targetFiles": [
           "C:\\Users\\paulc\\.config\\opencode\\agents\\windfixer.md",
-          "C:\\P4NTH30N\\C0MMON\\Services\\WindSurfBridge.cs"
+          "C:\\P4NTHE0N\\C0MMON\\Services\\WindSurfBridge.cs"
         ]
       },
       "timestamp": {
@@ -113,10 +113,10 @@
       "priority": "High",
       "implementation": {
         "targetFiles": [
-          "C:\\P4NTH30N\\W4TCHD0G\\→H0UND",
-          "C:\\P4NTH30N\\H0UND\\→HUN7ER",
+          "C:\\P4NTHE0N\\W4TCHD0G\\→H0UND",
+          "C:\\P4NTHE0N\\H0UND\\→HUN7ER",
           "C:\\Users\\paulc\\.config\\opencode\\agents\\windfixer.md",
-          "C:\\P4NTH30N\\docs\\PANTHEON.md"
+          "C:\\P4NTHE0N\\docs\\PANTHEON.md"
         ]
       },
       "timestamp": {

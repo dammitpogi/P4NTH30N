@@ -65,7 +65,7 @@ STR4TEG15T/
 
 ```
 Create File -> decisions/active/DECISION_XXX.md
-            -> Insert into MongoDB P4NTH30N.decisions collection
+            -> Insert into MongoDB P4NTHE0N.decisions collection
 Oracle Review -> Update file with oracle consultation section
              -> Update MongoDB with oracle_analysis
 Designer Review -> Update file with designer strategy section
@@ -84,7 +84,7 @@ Complete -> Move file to decisions/completed/
 3. Insert into MongoDB:
 ```
 mongodb-p4nth30n insertOne
-  database: P4NTH30N
+  database: P4NTHE0N
   collection: decisions
   document: {decisionId, title, category, status, priority, ...}
 ```
@@ -93,7 +93,7 @@ mongodb-p4nth30n insertOne
 
 ```
 mongodb-p4nth30n find
-  database: P4NTH30N
+  database: P4NTHE0N
   collection: decisions
   filter: {status: "Approved"}
 ```
@@ -103,7 +103,7 @@ mongodb-p4nth30n find
 Update both the file AND MongoDB. Always.
 ```
 mongodb-p4nth30n updateOne
-  database: P4NTH30N
+  database: P4NTHE0N
   collection: decisions
   filter: {decisionId: "DECISION_XXX"}
   update: {$set: {status: "Approved", ...}}
@@ -214,7 +214,7 @@ Example tone (from THE_LONG_NIGHT):
    - Prefix queries with site:arxiv.org for focused results
 2. Scrape top papers with scrape_batch (max 5 URLs)
 3. Use ToolHive sequential thinking to synthesize findings
-4. Map findings to P4NTH30N architecture
+4. Map findings to P4NTHE0N architecture
 5. Create decisions with research sources cited
 6. Each decision references the specific ArXiv paper ID
 
@@ -232,7 +232,7 @@ Conduct research yourself using BrightData. Document that Librarian was unavaila
 
 | Target | Fixer | Has CLI |
 |--------|-------|---------|
-| C:\P4NTH30N source files | @windfixer | No |
+| C:\P4NTHE0N source files | @windfixer | No |
 | External configs, CLI ops | @openfixer | Yes |
 | Both | Both in parallel | Mixed |
 
@@ -261,7 +261,7 @@ These are patterns that have been proven in production sessions:
 
 ### Direct MongoDB When Tools Fail
 When decisions-server times out, use mongodb-p4nth30n directly.
-Collection: decisions. Database: P4NTH30N.
+Collection: decisions. Database: P4NTHE0N.
 insertMany for batch creates. updateMany for batch status changes.
 
 ### Role Assimilation Is Valid

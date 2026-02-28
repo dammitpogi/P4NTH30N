@@ -1,8 +1,8 @@
 using MongoDB.Driver;
-using P4NTH30N.C0MMON.Infrastructure.Persistence;
-using P4NTH30N.C0MMON.Monitoring;
+using P4NTHE0N.C0MMON.Infrastructure.Persistence;
+using P4NTHE0N.C0MMON.Monitoring;
 
-namespace P4NTH30N.MONITOR
+namespace P4NTHE0N.MONITOR
 {
 	/// <summary>
 	/// Standalone monitoring service for data corruption detection
@@ -13,7 +13,7 @@ namespace P4NTH30N.MONITOR
 		private readonly DataCorruptionMonitor _monitor;
 		private readonly ValidatedMongoRepository _validatedRepo;
 
-		public MonitoringService(string connectionString = "mongodb://localhost:27017", string databaseName = "P4NTH30N")
+		public MonitoringService(string connectionString = "mongodb://localhost:27017", string databaseName = "P4NTHE0N")
 		{
 			var client = new MongoClient(connectionString);
 			var database = client.GetDatabase(databaseName);
@@ -24,7 +24,7 @@ namespace P4NTH30N.MONITOR
 
 		public void Start()
 		{
-			Console.WriteLine("🚀 Starting P4NTH30N Monitoring Service...");
+			Console.WriteLine("🚀 Starting P4NTHE0N Monitoring Service...");
 			Console.WriteLine("📊 Monitoring for data corruption and extreme values...");
 
 			// Run initial health check

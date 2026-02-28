@@ -1,9 +1,9 @@
 using System.Text.Json;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using P4NTH30N.C0MMON.Infrastructure.Cdp;
+using P4NTHE0N.C0MMON.Infrastructure.Cdp;
 
-namespace P4NTH30N.T00L5ET;
+namespace P4NTHE0N.T00L5ET;
 
 /// <summary>
 /// FireKirin Canvas login via CDP + WebSocket interception for jackpot values.
@@ -182,7 +182,7 @@ public static class FireKirinLogin
 
 	private static void LogFailures(List<(string Username, string Reason, DateTime Time)> failures)
 	{
-		string logPath = Path.Combine("C:\\P4NTH30N", "test-results", "login_failures.log");
+		string logPath = Path.Combine("C:\\P4NTHE0N", "test-results", "login_failures.log");
 		Directory.CreateDirectory(Path.GetDirectoryName(logPath)!);
 		var lines = failures.Select(f => $"{f.Time:yyyy-MM-dd HH:mm:ss} | {f.Username} | {f.Reason}");
 		File.AppendAllLines(logPath, lines);
@@ -221,7 +221,7 @@ public static class FireKirinLogin
 			if (ssResult.TryGetProperty("result", out var res) && res.TryGetProperty("data", out var data))
 			{
 				byte[] bytes = Convert.FromBase64String(data.GetString() ?? "");
-				string path = Path.Combine("C:\\P4NTH30N", "test-results", $"fk_{label}_{DateTime.UtcNow:yyyyMMdd_HHmmss}.png");
+				string path = Path.Combine("C:\\P4NTHE0N", "test-results", $"fk_{label}_{DateTime.UtcNow:yyyyMMdd_HHmmss}.png");
 				Directory.CreateDirectory(Path.GetDirectoryName(path)!);
 				await File.WriteAllBytesAsync(path, bytes);
 				Console.WriteLine($"  Screenshot: {path} ({bytes.Length:N0} bytes)");

@@ -285,7 +285,7 @@ for ($i = 1; $i -le $VMCount; $i++) {
 # scripts/vm/Provision-H4NDv2.ps1
 param(
     [string]$VMName = "H4NDv2-Production",
-    [string]$RepoUrl = "https://github.com/yourusername/P4NTH30N.git",
+    [string]$RepoUrl = "https://github.com/yourusername/P4NTHE0N.git",
     [string]$Branch = "main"
 )
 
@@ -323,10 +323,10 @@ choco install -y selenium-chrome-driver
 choco install -y rancher-desktop
 
 # Clone repository
-git clone -b $Branch $RepoUrl C:\P4NTH30N
+git clone -b $Branch $RepoUrl C:\P4NTHE0N
 
 # Build solution
-cd C:\P4NTH30N
+cd C:\P4NTHE0N
 dotnet restore
 dotnet build
 
@@ -405,7 +405,7 @@ public class H4NDv2Endpoint {
 Enter-PSSession -VMName "H4NDv2-Production"
 
 # Copy files to/from VM
-Copy-Item -ToSession (New-PSSession -VMName "H4NDv2-Production") -Path "C:\Config\*" -Destination "C:\P4NTH30N\Config"
+Copy-Item -ToSession (New-PSSession -VMName "H4NDv2-Production") -Path "C:\Config\*" -Destination "C:\P4NTHE0N\Config"
 
 # Invoke commands on VM
 Invoke-Command -VMName "H4NDv2-Production" -ScriptBlock {
@@ -484,7 +484,7 @@ net:
 
 | ID | Action | Owner | Status | Priority |
 |----|--------|-------|--------|----------|
-| VM-012 | Clone P4NTH30N repository | WindFixer | Ready | Critical |
+| VM-012 | Clone P4NTHE0N repository | WindFixer | Ready | Critical |
 | VM-013 | Build solution and verify | WindFixer | Ready | Critical |
 | VM-014 | Deploy Qdrant to Kubernetes | OpenFixer | Ready | High |
 | VM-015 | Configure LM Studio with vision models | OpenFixer | Ready | Critical |
@@ -528,7 +528,7 @@ net:
 - [ ] Desktop OBS capturing browser correctly
 
 **VM**:
-- [ ] P4NTH30N solution builds without errors
+- [ ] P4NTHE0N solution builds without errors
 - [ ] Qdrant pods running in Kubernetes
 - [ ] Port forwarding working from host
 
@@ -566,7 +566,7 @@ net:
 2. **Configuration rollback**: Revert to git commit
    ```powershell
    Invoke-Command -VMName "H4NDv2-Production" -ScriptBlock {
-       cd C:\P4NTH30N
+       cd C:\P4NTHE0N
        git reset --hard HEAD~1
        dotnet build
    }

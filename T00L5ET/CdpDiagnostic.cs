@@ -1,7 +1,7 @@
 using System.Text.Json;
-using P4NTH30N.C0MMON.Infrastructure.Cdp;
+using P4NTHE0N.C0MMON.Infrastructure.Cdp;
 
-namespace P4NTH30N.T00L5ET;
+namespace P4NTHE0N.T00L5ET;
 
 /// <summary>
 /// Diagnose why FireKirin login gets "server busy" on every credential.

@@ -65,7 +65,7 @@ All implemented code validated against production services with:
 **Priority**: Must  
 **Acceptance Criteria**:
 - Connect to mongodb://192.168.56.1:27017
-- Insert test document to P4NTH30N.TEST collection
+- Insert test document to P4NTHE0N.TEST collection
 - Retrieve and verify test document
 - Measure connection latency (<100ms target)
 - Clean up test document
@@ -148,7 +148,7 @@ Phase 4: First Spin (with confirmation)
   "ProductionValidation": {
     "MongoDB": {
       "ConnectionString": "mongodb://192.168.56.1:27017",
-      "Database": "P4NTH30N",
+      "Database": "P4NTHE0N",
       "TestCollection": "TEST"
     },
     "ChromeCDP": {

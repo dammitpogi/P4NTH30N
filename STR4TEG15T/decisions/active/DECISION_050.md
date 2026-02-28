@@ -122,13 +122,13 @@ The Decisions MCP Server Docker container uses `StdioServerTransport`, which com
      },
      tools: [...],
      tags: ['decisions', 'workflow', 'strategist'],
-     description: 'Decision management server for P4NTH30N workflow',
+     description: 'Decision management server for P4NTHE0N workflow',
    });
    ```
 
 2. **Fix MongoDB Connection** (if needed):
-   - Current: `mongodb://localhost:27017/P4NTH30N`
-   - Windows Docker fix: `mongodb://192.168.56.1:27017/P4NTH30N`
+   - Current: `mongodb://localhost:27017/P4NTHE0N`
+   - Windows Docker fix: `mongodb://192.168.56.1:27017/P4NTHE0N`
    - Or use bridge networking with port mapping
 
 **Alternative Options Considered**:

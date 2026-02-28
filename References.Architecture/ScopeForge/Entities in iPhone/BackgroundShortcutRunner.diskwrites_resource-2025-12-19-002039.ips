@@ -1,0 +1,176 @@
+{"app_name":"BackgroundShortcutRunner","timestamp":"2025-12-19 00:20:39.00 -0700","app_version":"7.0","slice_uuid":"F39F5925-6D3A-38AE-8627-365672B91AA5","build_version":"3612.0.1.2","bundleID":"com.apple.WorkflowKit.BackgroundShortcutRunner","duration_ms":"22626747","share_with_app_devs":0,"is_first_party":0,"bug_type":"145","os_version":"iPhone OS 18.7.2 (22H123)","roots_installed":0,"name":"BackgroundShortcutRunner","incident_id":"1FBB69A0-D968-4540-8D83-FADD01D0F0C9"}
+Date/Time:        2025-12-18 18:03:27.149 -0700
+End time:         2025-12-19 00:20:33.895 -0700
+OS Version:       iPhone OS 18.7.2 (Build 22H123)
+Architecture:     arm64e
+Report Version:   60
+Incident Identifier: 1FBB69A0-D968-4540-8D83-FADD01D0F0C9
+
+Data Source:      Microstackshots
+Shared Cache:     3E5E734D-2CA6-3F63-83F5-0E84C720CBA0 slid base address 0x18d2e4000, slide 0xd2e4000
+
+Command:          BackgroundShortcutRunner
+Path:             /System/Library/PrivateFrameworks/WorkflowKit.framework/XPCServices/BackgroundShortcutRunner.xpc/BackgroundShortcutRunner
+Identifier:       com.apple.WorkflowKit.BackgroundShortcutRunner
+Version:          7.0 (3612.0.1.2)
+Resource Coalition: "com.apple.siriactionsd"(227)
+On Behalf Of:     1 sample UNKNOWN [2762] (1 sample originated by UNKNOWN [2762])
+Architecture:     arm64
+PID:              2783
+
+Event:            disk writes
+Action taken:     none
+Writes:           1073.75 MB of file backed memory dirtied over 22627 seconds (47.46 KB per second average), exceeding limit of 12.43 KB per second over 86400 seconds
+Writes limit:     1073.74 MB
+Limit duration:   86400s
+Writes caused:    1073.75 MB
+Writes duration:  22627s
+Duration:         22626.75s
+Duration Sampled: 0.00s (event starts 22626.74s before samples)
+Steps:            1 (10.49 MB/step)
+
+Hardware model:   iPhone14,4
+Active cpus:      6
+Memory size:      3.59 GB
+HW page size:     16384
+VM page size:     16384
+Shared cache residency: 5.68% (277.98 MB / 4890.48 MB)
+
+Time Since Boot:  32007s
+Time Awake Since Boot: 23140s
+Time Since Wake:  108s
+
+Advisory levels:  Battery -> 2, User -> 3, ThermalPressure -> 0, Combined -> 2
+Free disk space:  97.71 GB/119.09 GB, low space threshold 150 MB
+Vnodes Available: 62.91% (12582/20000, 10000 allocated, 10000 soft limit)
+Models:           none
+
+Preferred User Language: en-US
+Country Code:     US
+Keyboards:        en_US QWERTY
+OS Cryptex File Extents: 5976
+
+Heaviest stack for the target process:
+  1  ??? (libswift_Concurrency.dylib + 414272) [0x19b8d5240]
+  1  ??? (BackgroundShortcutRunner + 58424) [0x104196438]
+  1  ??? (BackgroundShortcutRunner + 406408) [0x1041eb388]
+  1  ??? (BackgroundShortcutRunner + 66124) [0x10419824c]
+  1  ??? (BackgroundShortcutRunner + 58424) [0x104196438]
+  1  ??? (BackgroundShortcutRunner + 66124) [0x10419824c]
+  1  ??? (BackgroundShortcutRunner + 66124) [0x10419824c]
+  1  ??? (BackgroundShortcutRunner + 58424) [0x104196438]
+  1  ??? (BackgroundShortcutRunner + 144464) [0x1041ab450]
+  1  ??? (BackgroundShortcutRunner + 106100) [0x1041a1e74]
+  1  ??? (ToolKit + 528132) [0x26b8e4f04]
+  1  ??? (libswiftDispatch.dylib + 7268) [0x1994ebc64]
+  1  ??? (libswiftDispatch.dylib + 5624) [0x1994eb5f8]
+  1  ??? (libswiftDispatch.dylib + 5176) [0x1994eb438]
+  1  ??? (libswiftDispatch.dylib + 7676) [0x1994ebdfc]
+  1  ??? (libswiftDispatch.dylib + 7512) [0x1994ebd58]
+  1  ??? (libdispatch.dylib + 71464) [0x197e1b728]
+  1  ??? (libdispatch.dylib + 112004) [0x197e25584]
+  1  ??? (libswiftDispatch.dylib + 7308) [0x1994ebc8c]
+  1  ??? (libswiftDispatch.dylib + 7728) [0x1994ebe30]
+  1  ??? (libswiftDispatch.dylib + 7972) [0x1994ebf24]
+  1  ??? (libswiftDispatch.dylib + 8124) [0x1994ebfbc]
+  1  ??? (libswiftDispatch.dylib + 7768) [0x1994ebe58]
+  1  ??? (ToolKit + 529324) [0x26b8e53ac]
+  1  ??? (ToolKit + 528224) [0x26b8e4f60]
+  1  ??? (GRDBInternal + 805376) [0x25a503a00]
+  1  ??? (GRDBInternal + 5584) [0x25a4405d0]
+  1  ??? (libswiftDispatch.dylib + 7268) [0x1994ebc64]
+  1  ??? (libswiftDispatch.dylib + 5624) [0x1994eb5f8]
+  1  ??? (libswiftDispatch.dylib + 5176) [0x1994eb438]
+  1  ??? (libswiftDispatch.dylib + 7676) [0x1994ebdfc]
+  1  ??? (libswiftDispatch.dylib + 7512) [0x1994ebd58]
+  1  ??? (libdispatch.dylib + 71464) [0x197e1b728]
+  1  ??? (libdispatch.dylib + 112004) [0x197e25584]
+  1  ??? (libswiftDispatch.dylib + 7308) [0x1994ebc8c]
+  1  ??? (libswiftDispatch.dylib + 7728) [0x1994ebe30]
+  1  ??? (libswiftDispatch.dylib + 7972) [0x1994ebf24]
+  1  ??? (libswiftDispatch.dylib + 8124) [0x1994ebfbc]
+  1  ??? (libswiftDispatch.dylib + 7768) [0x1994ebe58]
+  1  ??? (GRDBInternal + 9948) [0x25a4416dc]
+  1  ??? (GRDBInternal + 9764) [0x25a441624]
+  1  ??? (ToolKit + 528580) [0x26b8e50c4]
+  1  ??? (libsqlite3.dylib + 521032) [0x1be3d2348]
+  1  ??? (libsqlite3.dylib + 1067048) [0x1be457828]
+  1  ??? (libsqlite3.dylib + 382056) [0x1be3b0468]
+  1  ??? (libsqlite3.dylib + 309376) [0x1be39e880]
+  1  ??? (libsystem_kernel.dylib + 27292) [0x1e0d1fa9c]
+
+
+Powerstats for:   BackgroundShortcutRunner [2783]
+UUID:             F39F5925-6D3A-38AE-8627-365672B91AA5
+Path:             /System/Library/PrivateFrameworks/WorkflowKit.framework/XPCServices/BackgroundShortcutRunner.xpc/BackgroundShortcutRunner
+Identifier:       com.apple.WorkflowKit.BackgroundShortcutRunner
+Version:          7.0 (3612.0.1.2)
+Resource Coalition: 1 sample "com.apple.siriactionsd"(227)
+On Behalf Of:     1 sample UNKNOWN [2762] (1 sample originated by UNKNOWN [2762])
+Architecture:     arm64
+Footprint:        6208 KB
+Start time:       2025-12-19 00:20:33.887 -0700
+End time:         2025-12-19 00:20:33.887 -0700
+Num samples:      1 (100%)
+Num threads:      1
+Primary state:    1 samples Non-Frontmost App, Non-Suppressed, Kernel mode, Effective Thread QoS User Initiated, Requested Thread QoS User Initiated, Override Thread QoS Unspecified, e-core
+User Activity:    0 samples Idle, 1 samples Active
+Power Source:     1 samples on Battery, 0 samples on AC
+  1  ??? (libswift_Concurrency.dylib + 414272) [0x19b8d5240]
+    1  ??? (BackgroundShortcutRunner + 58424) [0x104196438]
+      1  ??? (BackgroundShortcutRunner + 406408) [0x1041eb388]
+        1  ??? (BackgroundShortcutRunner + 66124) [0x10419824c]
+          1  ??? (BackgroundShortcutRunner + 58424) [0x104196438]
+            1  ??? (BackgroundShortcutRunner + 66124) [0x10419824c]
+              1  ??? (BackgroundShortcutRunner + 66124) [0x10419824c]
+                1  ??? (BackgroundShortcutRunner + 58424) [0x104196438]
+                  1  ??? (BackgroundShortcutRunner + 144464) [0x1041ab450]
+                    1  ??? (BackgroundShortcutRunner + 106100) [0x1041a1e74]
+                      1  ??? (ToolKit + 528132) [0x26b8e4f04]
+                        1  ??? (libswiftDispatch.dylib + 7268) [0x1994ebc64]
+                          1  ??? (libswiftDispatch.dylib + 5624) [0x1994eb5f8]
+                            1  ??? (libswiftDispatch.dylib + 5176) [0x1994eb438]
+                              1  ??? (libswiftDispatch.dylib + 7676) [0x1994ebdfc]
+                                1  ??? (libswiftDispatch.dylib + 7512) [0x1994ebd58]
+                                  1  ??? (libdispatch.dylib + 71464) [0x197e1b728]
+                                    1  ??? (libdispatch.dylib + 112004) [0x197e25584]
+                                      1  ??? (libswiftDispatch.dylib + 7308) [0x1994ebc8c]
+                                        1  ??? (libswiftDispatch.dylib + 7728) [0x1994ebe30]
+                                          1  ??? (libswiftDispatch.dylib + 7972) [0x1994ebf24]
+                                            1  ??? (libswiftDispatch.dylib + 8124) [0x1994ebfbc]
+                                              1  ??? (libswiftDispatch.dylib + 7768) [0x1994ebe58]
+                                                1  ??? (ToolKit + 529324) [0x26b8e53ac]
+                                                  1  ??? (ToolKit + 528224) [0x26b8e4f60]
+                                                    1  ??? (GRDBInternal + 805376) [0x25a503a00]
+                                                      1  ??? (GRDBInternal + 5584) [0x25a4405d0]
+                                                        1  ??? (libswiftDispatch.dylib + 7268) [0x1994ebc64]
+                                                          1  ??? (libswiftDispatch.dylib + 5624) [0x1994eb5f8]
+                                                            1  ??? (libswiftDispatch.dylib + 5176) [0x1994eb438]
+                                                              1  ??? (libswiftDispatch.dylib + 7676) [0x1994ebdfc]
+                                                                1  ??? (libswiftDispatch.dylib + 7512) [0x1994ebd58]
+                                                                  1  ??? (libdispatch.dylib + 71464) [0x197e1b728]
+                                                                    1  ??? (libdispatch.dylib + 112004) [0x197e25584]
+                                                                      1  ??? (libswiftDispatch.dylib + 7308) [0x1994ebc8c]
+                                                                        1  ??? (libswiftDispatch.dylib + 7728) [0x1994ebe30]
+                                                                          1  ??? (libswiftDispatch.dylib + 7972) [0x1994ebf24]
+                                                                            1  ??? (libswiftDispatch.dylib + 8124) [0x1994ebfbc]
+                                                                              1  ??? (libswiftDispatch.dylib + 7768) [0x1994ebe58]
+                                                                                1  ??? (GRDBInternal + 9948) [0x25a4416dc]
+                                                                                  1  ??? (GRDBInternal + 9764) [0x25a441624]
+                                                                                    1  ??? (ToolKit + 528580) [0x26b8e50c4]
+                                                                                      1  ??? (libsqlite3.dylib + 521032) [0x1be3d2348]
+                                                                                        1  ??? (libsqlite3.dylib + 1067048) [0x1be457828]
+                                                                                          1  ??? (libsqlite3.dylib + 382056) [0x1be3b0468]
+                                                                                            1  ??? (libsqlite3.dylib + 309376) [0x1be39e880]
+                                                                                              1  ??? (libsystem_kernel.dylib + 27292) [0x1e0d1fa9c]
+                                                                                                1  <on behalf of UNKNOWN [2762] (originated by UNKNOWN [2762])>
+
+  Binary Images:
+           0x104188000 -                ???  com.apple.WorkflowKit.BackgroundShortcutRunner 7.0 (3612.0.1.2) <F39F5925-6D3A-38AE-8627-365672B91AA5>  /System/Library/PrivateFrameworks/WorkflowKit.framework/XPCServices/BackgroundShortcutRunner.xpc/BackgroundShortcutRunner
+           0x197e0a000 -        0x197e4fb3f  libdispatch.dylib                                               <C19E1CAE-FEE0-3E31-844D-A31BF2C39BD7>  /usr/lib/system/libdispatch.dylib
+           0x1994ea000 -        0x199500560  libswiftDispatch.dylib                                          <FCF41129-5D5A-3F0A-9CD8-F17CD3A97E62>  /usr/lib/swift/libswiftDispatch.dylib
+           0x19b870000 -        0x19b8effff  libswift_Concurrency.dylib                                      <FF1A3379-DE83-3D23-8A8E-27A18BA5648F>  /usr/lib/swift/libswift_Concurrency.dylib
+           0x1be353000 -        0x1be4d3683  libsqlite3.dylib                                                <8D0C8FA0-26F0-3ABA-8D4C-87FC8A96C964>  /usr/lib/libsqlite3.dylib
+           0x1e0d19000 -        0x1e0d52ecf  libsystem_kernel.dylib                                          <7C679990-215A-33E6-89E8-15ACBBA81BA2>  /usr/lib/system/libsystem_kernel.dylib
+           0x25a43f000 -        0x25a5d10ea  GRDBInternal                                                    <70E0DB3A-2A4F-3A00-AF8D-A4ECFEACFB7C>  /System/Library/PrivateFrameworks/GRDBInternal.framework/GRDBInternal
+           0x26b864000 -        0x26bc4f35f  ToolKit                                                         <06BC9326-D89B-3F91-B0DF-A6615D756A4F>  /System/Library/PrivateFrameworks/ToolKit.framework/ToolKit

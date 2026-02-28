@@ -39,7 +39,7 @@
       "task": "Create unified configuration provider hierarchy supporting JSON files, environment variables, and Azure Key Vault",
       "priority": 10,
       "files": [
-        "C0MMON/Infrastructure/Configuration/P4NTH30NConfigurationProvider.cs",
+        "C0MMON/Infrastructure/Configuration/P4NTHE0NConfigurationProvider.cs",
         "C0MMON/Infrastructure/Configuration/ConfigurationExtensions.cs"
       ],
       "createdAt": "2026-02-18T03:18:28.256Z"

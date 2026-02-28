@@ -10,9 +10,9 @@
 
 ## YOUR MISSION
 
-Execute 4 primary decisions in the OpenCode environment. You have access to OpenCode directories that WindFixer cannot reach. Additionally, resolve any constraints reported by WindFixer from the P4NTH30N codebase.
+Execute 4 primary decisions in the OpenCode environment. You have access to OpenCode directories that WindFixer cannot reach. Additionally, resolve any constraints reported by WindFixer from the P4NTHE0N codebase.
 
-**CRITICAL**: This is OpenCode-only work. Do not attempt to modify P4NTH30N codebase files - that's WindFixer's domain.
+**CRITICAL**: This is OpenCode-only work. Do not attempt to modify P4NTHE0N codebase files - that's WindFixer's domain.
 
 ---
 
@@ -76,14 +76,14 @@ Execute 4 primary decisions in the OpenCode environment. You have access to Open
 ### 3. ARCH-002: Config Deployment Pipeline
 **Priority**: CRITICAL | **Status**: Ready | **Estimated Time**: 2-3 hours
 
-**Objective**: Create automated deployment pipeline from P4NTH30N to OpenCode
+**Objective**: Create automated deployment pipeline from P4NTHE0N to OpenCode
 
 **Problem**: WindSurf cannot access OpenCode directories directly. Need sync mechanism.
 
 **Steps**:
-1. Create P4NTH30N/agents/ directory structure
+1. Create P4NTHE0N/agents/ directory structure
    ```
-   C:\P4NTH30N\agents\
+   C:\P4NTHE0N\agents\
    ├── strategist.md
    ├── oracle.md
    ├── designer.md
@@ -92,17 +92,17 @@ Execute 4 primary decisions in the OpenCode environment. You have access to Open
    └── templates/
    ```
 
-2. Copy current agent definitions from OpenCode to P4NTH30N/agents/
+2. Copy current agent definitions from OpenCode to P4NTHE0N/agents/
    - Source: C:\Users\paulc\.config\opencode\agents\
-   - Target: C:\P4NTH30N\agents\
+   - Target: C:\P4NTHE0N\agents\
 
 3. Create deploy-agents.ps1 script
    ```powershell
    # deploy-agents.ps1
-   # Syncs agents from P4NTH30N to OpenCode
+   # Syncs agents from P4NTHE0N to OpenCode
    
    param(
-       [string]$SourceDir = "C:\P4NTH30N\agents",
+       [string]$SourceDir = "C:\P4NTHE0N\agents",
        [string]$TargetDir = "C:\Users\paulc\.config\opencode\agents",
        [switch]$WhatIf
    )
@@ -121,19 +121,19 @@ Execute 4 primary decisions in the OpenCode environment. You have access to Open
    - Rollback capability
 
 **Deliverables**:
-- C:\P4NTH30N\agents\ directory with all agent definitions
-- C:\P4NTH30N\scripts\deploy-agents.ps1
-- C:\P4NTH30N\scripts\agent-versions.json (version tracking)
+- C:\P4NTHE0N\agents\ directory with all agent definitions
+- C:\P4NTHE0N\scripts\deploy-agents.ps1
+- C:\P4NTHE0N\scripts\agent-versions.json (version tracking)
 - Deployment documentation
 
 **Success Criteria**:
-- [ ] All agents copied to P4NTH30N/agents/
+- [ ] All agents copied to P4NTHE0N/agents/
 - [ ] deploy-agents.ps1 functional
 - [ ] Version tracking operational
 - [ ] Test deployment successful
 
 **Integration with WindFixer**:
-- WindFixer will update agent files in P4NTH30N/agents/
+- WindFixer will update agent files in P4NTHE0N/agents/
 - deploy-agents.ps1 will sync to OpenCode
 - You execute the deployment script
 
@@ -181,7 +181,7 @@ Execute 4 primary decisions in the OpenCode environment. You have access to Open
 
 ## CONSTRAINT RESOLUTIONS (Execute as Reported)
 
-WindFixer will report constraints from P4NTH30N execution. Resolve them here.
+WindFixer will report constraints from P4NTHE0N execution. Resolve them here.
 
 ### Constraint Resolution Template
 
@@ -204,7 +204,7 @@ When WindFixer reports a constraint:
 # Add token to environment and retry
 
 # Option B: Implement API-based validation fallback
-# Create C:\P4NTH30N\scripts\validation-api-fallback.ps1
+# Create C:\P4NTHE0N\scripts\validation-api-fallback.ps1
 # Use OpenAI/Anthropic API for validation (if available)
 
 # Option C: Document manual download process
@@ -249,7 +249,7 @@ When WindFixer reports a constraint:
 **Your Action**:
 ```powershell
 # Create wrapper scripts
-# C:\P4NTH30N\scripts\deploy-agent-wrapper.ps1
+# C:\P4NTHE0N\scripts\deploy-agent-wrapper.ps1
 # Handle errors, logging, retries
 ```
 
@@ -270,7 +270,7 @@ When WindFixer reports a constraint:
 **Your Action**:
 ```powershell
 # Implement sequential fallback
-# Create C:\P4NTH30N\src\workflows\SequentialFallback.cs
+# Create C:\P4NTHE0N\src\workflows\SequentialFallback.cs
 # Document when to use fallback
 ```
 
@@ -280,7 +280,7 @@ When WindFixer reports a constraint:
 **Your Action**:
 ```powershell
 # Create file queue system
-# C:\P4NTH30N\src\workflows\FileQueue.cs
+# C:\P4NTHE0N\src\workflows\FileQueue.cs
 # Implement locking mechanism
 ```
 
@@ -399,6 +399,6 @@ WINDFIXER ACTION: [What WindFixer should do next]
 
 **Begin execution with Phase 1: AUDIT-004**
 
-**Remember**: You are the bridge between WindFixer and OpenCode. Clear constraints enable WindFixer to focus on P4NTH30N implementation while you handle OpenCode environment issues.
+**Remember**: You are the bridge between WindFixer and OpenCode. Clear constraints enable WindFixer to focus on P4NTHE0N implementation while you handle OpenCode environment issues.
 
 **Ready? Execute.**

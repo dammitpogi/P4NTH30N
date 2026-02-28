@@ -40,10 +40,10 @@ dotnet publish src/RAG/McpHost/McpHost.csproj `
   -c Release -r win-x64 --self-contained true `
   -p:PublishSingleFile=true `
   -p:IncludeNativeLibrariesForSelfExtract=true `
-  -o C:/ProgramData/P4NTH30N/bin/
+  -o C:/ProgramData/P4NTHE0N/bin/
 
 # Verify
-C:/ProgramData/P4NTH30N/bin/RAG.McpHost.exe --help
+C:/ProgramData/P4NTHE0N/bin/RAG.McpHost.exe --help
 ```
 
 **Task 2.2: QueryPipeline Enhancement**
@@ -69,7 +69,7 @@ C:/ProgramData/P4NTH30N/bin/RAG.McpHost.exe --help
 **Task 3.1: FileSystemWatcher**
 ```csharp
 // Create: src/RAG/FileSystemWatcherService.cs
-// Monitor: C:\P4NTH30N\docs\
+// Monitor: C:\P4NTHE0N\docs\
 // Filters: *.md, *.json
 // Debounce: 5 minutes
 ```

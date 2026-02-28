@@ -2,7 +2,7 @@
 # Captures screenshots from Chrome via CDP WebSocket
 
 param(
-    [string]$OutputDir = "C:\P4NTH30N\SMOKE_TEST_SCREENSHOTS",
+    [string]$OutputDir = "C:\P4NTHE0N\SMOKE_TEST_SCREENSHOTS",
     [int]$IntervalMs = 500,  # 2 FPS
     [int]$Port = 9222
 )

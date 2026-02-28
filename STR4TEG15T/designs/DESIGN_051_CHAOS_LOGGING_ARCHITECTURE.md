@@ -117,7 +117,7 @@ Ranked by blast radius and likelihood (shared-entity mutation + ordering hazards
 
 ```csharp
 // ── Core Interfaces ──────────────────────────────────────────────────────
-namespace P4NTH30N.ChaosLogging;
+namespace P4NTHE0N.ChaosLogging;
 
 /// <summary>
 /// Main chaos logging interface for all event types
@@ -2237,7 +2237,7 @@ This comprehensive design provides a universal event logging and sanity test dat
 3. **Complexity**: Mitigated by comprehensive documentation and training
 4. **Configuration Errors**: Mitigated by validation and default fallbacks
 
-This design provides a robust, scalable foundation for chaos point monitoring and sanity testing across the entire P4NTH30N ecosystem, enabling comprehensive diagnostics and proactive issue detection.
+This design provides a robust, scalable foundation for chaos point monitoring and sanity testing across the entire P4NTHE0N ecosystem, enabling comprehensive diagnostics and proactive issue detection.
 
 ---
 

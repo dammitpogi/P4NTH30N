@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using P4NTH30N.C0MMON.Services;
+using P4NTHE0N.C0MMON.Services;
 
-namespace P4NTH30N.PROF3T;
+namespace P4NTHE0N.PROF3T;
 
 /// <summary>
 /// FOUREYES-024: Forgewright auto-triage trigger service.

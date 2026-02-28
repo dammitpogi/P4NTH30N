@@ -87,7 +87,7 @@
 │  └── EmbeddingService.cs (ONNX all-MiniLM-L6-v2)            │
 │                                                              │
 │  Port: 5001                                                  │
-│  Data: C:\ProgramData\P4NTH30N\rag\                         │
+│  Data: C:\ProgramData\P4NTHE0N\rag\                         │
 │                                                              │
 └──────────────────────────┬──────────────────────────────────┘
                            │
@@ -108,25 +108,25 @@
 {
   "watchPaths": [
     {
-      "path": "C:/P4NTH30N/STR4TEG15T/decisions",
+      "path": "C:/P4NTHE0N/STR4TEG15T/decisions",
       "pattern": "*.md",
       "recursive": true,
       "debounceMs": 5000
     },
     {
-      "path": "C:/P4NTH30N/STR4TEG15T/speech",
+      "path": "C:/P4NTHE0N/STR4TEG15T/speech",
       "pattern": "*.md",
       "recursive": true,
       "debounceMs": 5000
     },
     {
-      "path": "C:/P4NTH30N/STR4TEG15T/canon",
+      "path": "C:/P4NTHE0N/STR4TEG15T/canon",
       "pattern": "*.md",
       "recursive": true,
       "debounceMs": 5000
     },
     {
-      "path": "C:/P4NTH30N/STR4TEG15T/decisions/active",
+      "path": "C:/P4NTHE0N/STR4TEG15T/decisions/active",
       "pattern": "DEPLOYMENT-*.md",
       "recursive": false,
       "debounceMs": 1000
@@ -168,7 +168,7 @@ public class RagService : BackgroundService
 **Installation**:
 ```powershell
 # Install as Windows service
-sc create RAG.McpHost binPath= "C:\ProgramData\P4NTH30N\bin\RAG.McpHost.exe"
+sc create RAG.McpHost binPath= "C:\ProgramData\P4NTHE0N\bin\RAG.McpHost.exe"
 sc config RAG.McpHost start= auto
 sc start RAG.McpHost
 ```

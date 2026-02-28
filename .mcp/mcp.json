@@ -1,0 +1,73 @@
+﻿{
+  "$schema": "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\Common7\\IDE\\Extensions\\Microsoft\\Copilot\\mcp.schema.json",
+  "inputs": [
+    {
+      "id": "solution_path",
+      "type": "promptString",
+      "description": "Path to the P4NTHE0N solution",
+      "default": "C:\\P4NTH30N"
+    },
+    {
+      "id": "rag_enabled",
+      "type": "pickString",
+      "description": "Enable RAG (Retrieval-Augmented Generation) for P4NTHE0N knowledge",
+      "options": [
+        {"label": "Enabled", "value": "true"},
+        {"label": "Disabled", "value": "false"}
+      ],
+      "default": "true"
+    },
+    {
+      "id": "chrome_cdp_port",
+      "type": "promptString",
+      "description": "Chrome CDP port for browser automation",
+      "default": "9222"
+    },
+    {
+      "id": "mongodb_host",
+      "type": "promptString",
+      "description": "MongoDB host for P4NTHE0N data",
+      "default": "192.168.56.1:27017"
+    }
+  ],
+  "servers": {
+    "p4ntheon-rag": {
+      "type": "stdio",
+      "command": "C:\\P4NTH30N\\src\\RAG.McpHost\\bin\\Release\\net8.0\\win-x64\\publish\\RAG.McpHost.exe",
+      "args": [
+        "--port", "5100",
+        "--index", "p4ntheon",
+        "--model", "C:\\ProgramData\\P4NTH30N\\rag\\models\\all-MiniLM-L6-v2.onnx",
+        "--mongo", "localhost:27017",
+        "--workspace", "${input:solution_path}"
+      ],
+      "env": {
+        "RAG_ENABLED": "${input:rag_enabled}",
+        "CHROME_CDP_PORT": "${input:chrome_cdp_port}"
+      },
+      "disabled": false
+    },
+    "chrome-devtools": {
+      "type": "http",
+      "url": "http://localhost:5301",
+      "disabled": false
+    },
+    "p4ntheon-tools": {
+      "type": "stdio",
+      "command": "C:\\P4NTH30N\\T00L5ET\\bin\\Release\\net8.0\\win-x64\\publish\\T00L5ET.exe",
+      "args": [
+        "--mcp",
+        "--workspace", "${input:solution_path}"
+      ],
+      "env": {
+        "MONGODB_HOST": "${input:mongodb_host}",
+        "CHROME_CDP_PORT": "${input:chrome_cdp_port}"
+      },
+      "disabled": false
+    },
+    "Microsoft Learn": {
+      "url": "https://learn.microsoft.com/api/mcp",
+      "disabled": false
+    }
+  }
+}

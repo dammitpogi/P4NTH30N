@@ -4,7 +4,7 @@
 **project_id**: 6bca83b670a16680d54ed49b159b2a2eb350d9b2
 **parent_id**: ses_385684785ffea2n4huvdx0wJQi
 **slug**: stellar-panda
-**directory**: c:\P4NTH30N
+**directory**: c:\P4NTHE0N
 **title**: Background: Oracle consultations batch
 **version**: 1.2.10
 **share_url**: NULL

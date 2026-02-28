@@ -12,7 +12,7 @@
 
 ## Executive Summary
 
-Ingest all decision documents from STR4TEG15T/decisions/ into the RAG knowledge base. Decisions represent the codified institutional knowledge of P4NTH30N: approved strategies, architectural choices, operational procedures, and design patterns that govern how the system operates.
+Ingest all decision documents from STR4TEG15T/decisions/ into the RAG knowledge base. Decisions represent the codified institutional knowledge of P4NTHE0N: approved strategies, architectural choices, operational procedures, and design patterns that govern how the system operates.
 
 **Current State**:
 - ~50+ decision files across active/ and completed/ directories
@@ -32,7 +32,7 @@ Ingest all decision documents from STR4TEG15T/decisions/ into the RAG knowledge 
 
 ### What Are Decision Documents?
 
-Decision documents are formal records of strategic choices made during P4NTH30N's operation. Each decision includes:
+Decision documents are formal records of strategic choices made during P4NTHE0N's operation. Each decision includes:
 
 - **Executive Summary**: The what, why, and how
 - **Background**: Context and rationale
@@ -129,8 +129,8 @@ Decisions provide:
 ### File Inventory
 
 **Source Directories**:
-- `c:\P4NTH30N\STR4TEG15T\decisions\active\` (~30 files)
-- `c:\P4NTH30N\STR4TEG15T\decisions\completed\` (~10 files)
+- `c:\P4NTHE0N\STR4TEG15T\decisions\active\` (~30 files)
+- `c:\P4NTHE0N\STR4TEG15T\decisions\completed\` (~10 files)
 
 **Priority Decisions to Ingest First**:
 | Decision | Category | Why Priority |

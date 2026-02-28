@@ -1,47 +1,59 @@
-﻿// DECISION_032 + 034: P4NTH30N Config Deployer & Session Harvester
-// Usage: dotnet run --project T00L5ET -- [--dry-run] [--agents-only] [--rag] [--rag-binary]
+﻿// DECISION_032 + 034: P4NTHE0N Config Deployer & Session Harvester
+// Usage: dotnet run --project T00L5ET -- [--dry-run] [--agents-only] [--rag] [--rag-binary] [--mcp-server]
 //        dotnet run --project T00L5ET -- harvest [--dry-run] [--since 2026-02-20]
+//        dotnet run --project T00L5ET -- mcp-server
 
 using System.Security.Cryptography;
 using System.Text.Json;
-using P4NTH30N.T00L5ET;
+using P4NTHE0N.T00L5ET;
 
 // LIVE VALIDATION: Route to LiveValidator if "validate" command
 if (args.Length > 0 && args[0].Equals("validate", StringComparison.OrdinalIgnoreCase))
 {
-	return await P4NTH30N.T00L5ET.LiveValidator.RunAsync(args);
+	return await P4NTHE0N.T00L5ET.LiveValidator.RunAsync(args);
 }
 
 // FIREKIRIN LOGIN: Route to login if "login" command
 if (args.Length > 0 && args[0].Equals("login", StringComparison.OrdinalIgnoreCase))
 {
-	var cdpCfg = new P4NTH30N.C0MMON.Infrastructure.Cdp.CdpConfig { HostIp = "127.0.0.1", Port = 9222 };
-	using var cdpClient = new P4NTH30N.C0MMON.Infrastructure.Cdp.CdpClient(cdpCfg);
+	var cdpCfg = new P4NTHE0N.C0MMON.Infrastructure.Cdp.CdpConfig { HostIp = "127.0.0.1", Port = 9222 };
+	using var cdpClient = new P4NTHE0N.C0MMON.Infrastructure.Cdp.CdpClient(cdpCfg);
 	if (!await cdpClient.ConnectAsync()) { Console.WriteLine("[FAIL] CDP connect failed"); return 1; }
 	var mongoClient = new MongoDB.Driver.MongoClient("mongodb://192.168.56.1:27017");
-	var database = mongoClient.GetDatabase("P4NTH30N");
-	bool ok = await P4NTH30N.T00L5ET.FireKirinLogin.LoginAsync(cdpClient, database);
+	var database = mongoClient.GetDatabase("P4NTHE0N");
+	bool ok = await P4NTHE0N.T00L5ET.FireKirinLogin.LoginAsync(cdpClient, database);
 	return ok ? 0 : 1;
 }
 
 // GAME NAVIGATOR: Navigate to correct game after login
 if (args.Length > 0 && args[0].Equals("nav", StringComparison.OrdinalIgnoreCase))
 {
-	await P4NTH30N.T00L5ET.GameNavigator.RunAsync();
+	await P4NTHE0N.T00L5ET.GameNavigator.RunAsync();
 	return 0;
 }
 
 // CDP DIAGNOSTIC: Check cookies, WS, security state
 if (args.Length > 0 && args[0].Equals("diag", StringComparison.OrdinalIgnoreCase))
 {
-	await P4NTH30N.T00L5ET.CdpDiagnostic.RunAsync();
+	await P4NTHE0N.T00L5ET.CdpDiagnostic.RunAsync();
 	return 0;
 }
 
 // CREDENTIAL CHECK: Debug MongoDB credential structure
 if (args.Length > 0 && args[0].Equals("credcheck", StringComparison.OrdinalIgnoreCase))
 {
-	await P4NTH30N.T00L5ET.CredCheck.RunAsync();
+	await P4NTHE0N.T00L5ET.CredCheck.RunAsync();
+	return 0;
+}
+
+// MCP SERVER: Run P4NTHE0N Tools as MCP server
+if (args.Length > 0 && args[0].Equals("mcp-server", StringComparison.OrdinalIgnoreCase))
+{
+	using var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+	var logger = loggerFactory.CreateLogger<P4NTHE0N.T00L5ET.McpServer.McpServer>();
+	
+	var mcpServer = new P4NTHE0N.T00L5ET.McpServer.McpServer(logger);
+	await mcpServer.RunAsync();
 	return 0;
 }
 
@@ -71,7 +83,7 @@ bool ragIngest = args.Contains("--rag");
 bool ragBinary = args.Contains("--rag-binary");
 
 Console.WriteLine("╔══════════════════════════════════════════════╗");
-Console.WriteLine("║  P4NTH30N Config Deployer (DECISION_032)    ║");
+Console.WriteLine("║  P4NTHE0N Config Deployer (DECISION_032)    ║");
 Console.WriteLine("╚══════════════════════════════════════════════╝");
 Console.WriteLine($"  Repo Root: {repoRoot}");
 Console.WriteLine($"  User Home: {userHome}");

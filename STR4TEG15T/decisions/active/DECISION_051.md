@@ -13,11 +13,11 @@
 
 ## Executive Summary
 
-Integrate the 15 MCP servers running in ToolHive Desktop (C:\Users\paulc\AppData\Local\ToolHive) into the P4NTH30N ToolHive Gateway with a configurable deployment system. This enables dynamic server registration, configuration management, and easy addition/removal of servers without code changes.
+Integrate the 15 MCP servers running in ToolHive Desktop (C:\Users\paulc\AppData\Local\ToolHive) into the P4NTHE0N ToolHive Gateway with a configurable deployment system. This enables dynamic server registration, configuration management, and easy addition/removal of servers without code changes.
 
 **Current Problem**:
 - ToolHive Desktop has 15 MCP servers running on various ports
-- ToolHive Gateway only knows about 5 P4NTH30N servers
+- ToolHive Gateway only knows about 5 P4NTHE0N servers
 - No way to dynamically configure which servers to include
 - Manual configuration requires code changes and rebuilds
 
@@ -131,7 +131,7 @@ Integrate the 15 MCP servers running in ToolHive Desktop (C:\Users\paulc\AppData
 - Load `config/servers.json` on startup
 - Register all enabled servers from config
 - Watch file for changes (hot-reload)
-- Merge with built-in P4NTH30N servers
+- Merge with built-in P4NTHE0N servers
 
 ---
 

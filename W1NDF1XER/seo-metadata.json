@@ -3,18 +3,18 @@
     "name": "W1NDF1XER",
     "standardName": "windfixer",
     "displayName": "WindFixer",
-    "role": "P4NTH30N Implementation Agent",
+    "role": "P4NTHE0N Implementation Agent",
     "category": "Implementation",
     "version": "3.0.0",
-    "location": "C:\\P4NTH30N\\W1NDF1XER"
+    "location": "C:\\P4NTHE0N\\W1NDF1XER"
   },
   "seo": {
-    "title": "WindFixer Agent - P4NTH30N Directory Implementation",
-    "description": "Implementation agent for C:\\P4NTH30N directory only. Handles bulk operations, multiple file changes, and routine maintenance. No CLI tools. Cost-efficient for P4NTH30N work.",
+    "title": "WindFixer Agent - P4NTHE0N Directory Implementation",
+    "description": "Implementation agent for C:\\P4NTHE0N directory only. Handles bulk operations, multiple file changes, and routine maintenance. No CLI tools. Cost-efficient for P4NTHE0N work.",
     "keywords": [
       "windfixer",
       "implementation",
-      "P4NTH30N",
+      "P4NTHE0N",
       "bulk operations",
       "file changes",
       "code modification",
@@ -24,14 +24,14 @@
     ],
     "tags": [
       "implementation-agent",
-      "P4NTH30N-fixer",
+      "P4NTHE0N-fixer",
       "bulk-operations",
       "cost-optimized"
     ],
     "semanticTopics": [
       "code implementation",
       "bulk file editing",
-      "P4NTH30N maintenance",
+      "P4NTHE0N maintenance",
       "surgical edits",
       "deployment validation"
     ]
@@ -54,13 +54,13 @@
   "relationships": {
     "reportsTo": ["strategist"],
     "receivesFrom": ["designer", "oracle"],
-    "scope": "P4NTH30N_only",
+    "scope": "P4NTHE0N_only",
     "cliAllowed": false,
     "deploymentTypes": [
       "bulk_operations",
       "file_modifications",
       "routine_maintenance",
-      "P4NTH30N_changes"
+      "P4NTHE0N_changes"
     ]
   },
   "workflows": {
@@ -70,7 +70,7 @@
       "Status Update",
       "RAG Preservation"
     ],
-    "triggers": ["Strategist Deployment", "P4NTH30N Change Request"]
+    "triggers": ["Strategist Deployment", "P4NTHE0N Change Request"]
   },
   "directories": {
     "prompt": "prompt.md",

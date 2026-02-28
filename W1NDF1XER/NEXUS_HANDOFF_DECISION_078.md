@@ -3,14 +3,14 @@
 **From**: WindFixer  
 **To**: Nexus (for transfer to Strategist)  
 **Date**: 2026-02-21  
-**Decision**: DECISION_078 (P4NTH30N Recorder TUI)  
+**Decision**: DECISION_078 (P4NTHE0N Recorder TUI)  
 **Status**: Completed and Operational
 
 ---
 
 ## Executive Summary for Strategist
 
-WindFixer has completed DECISION_078: P4NTH30N Recorder TUI — a zero-dependency terminal-based visual macro editor for FireKirin and OrionStars workflow mapping. The TUI removes the JSON editing bottleneck from DECISION_077, enabling Nexus to take forward command of workflow development with visual feedback, breakpoints, and precise coordinate control.
+WindFixer has completed DECISION_078: P4NTHE0N Recorder TUI — a zero-dependency terminal-based visual macro editor for FireKirin and OrionStars workflow mapping. The TUI removes the JSON editing bottleneck from DECISION_077, enabling Nexus to take forward command of workflow development with visual feedback, breakpoints, and precise coordinate control.
 
 **Nexus has assumed development responsibility** for mapping the path forward on OrionStars Canvas input research. Work is moving forward with comprehensive recording software now operational.
 
@@ -151,7 +151,7 @@ WindFixer has completed DECISION_078: P4NTH30N Recorder TUI — a zero-dependenc
 
 ### For Nexus (Operational Use)
 
-**Primary**: `C:\P4NTH30N\H4ND\tools\recorder\TUI_README.md`
+**Primary**: `C:\P4NTHE0N\H4ND\tools\recorder\TUI_README.md`
 - 20 sections covering all TUI operations
 - Keyboard reference (40+ shortcuts)
 - Workflow examples (recording, editing, testing)
@@ -160,13 +160,13 @@ WindFixer has completed DECISION_078: P4NTH30N Recorder TUI — a zero-dependenc
 
 **Quick Start**: Launch TUI
 ```bash
-cd C:\P4NTH30N\H4ND\tools\recorder
+cd C:\P4NTHE0N\H4ND\tools\recorder
 bun run tui
 ```
 
 ### For Strategist (Decision Tracking)
 
-**Primary**: `C:\P4NTH30N\STR4TEG15T\decisions\active\DECISION_078.md`
+**Primary**: `C:\P4NTHE0N\STR4TEG15T\decisions\active\DECISION_078.md`
 - Executive summary
 - Background and specification
 - Oracle/Designer consultation (assimilated by WindFixer)
@@ -176,7 +176,7 @@ bun run tui
 - Success criteria (all met)
 - Token budget and sub-decision authority
 
-**Deployment**: `C:\P4NTH30N\W1NDF1XER\deployments\DEPLOYMENT_078_TUI.md`
+**Deployment**: `C:\P4NTHE0N\W1NDF1XER\deployments\DEPLOYMENT_078_TUI.md`
 - Files created/modified
 - Architecture overview
 - Build verification
@@ -193,7 +193,7 @@ bun run tui
 ```javascript
 // mongodb-p4nth30n updateOne
 {
-  database: "P4NTH30N",
+  database: "P4NTHE0N",
   collection: "decisions",
   filter: { decisionId: "DECISION_078" },
   update: {
@@ -224,7 +224,7 @@ Append to `STR4TEG15T/manifest/manifest.json`:
     "created": [
       {
         "decisionId": "DECISION_078",
-        "title": "P4NTH30N Recorder TUI — Visual Macro Editor",
+        "title": "P4NTHE0N Recorder TUI — Visual Macro Editor",
         "category": "TOOL",
         "status": "Completed",
         "priority": "High",
@@ -257,8 +257,8 @@ Append to `STR4TEG15T/manifest/manifest.json`:
 
 ```bash
 # Move from active to completed
-mv C:\P4NTH30N\STR4TEG15T\decisions\active\DECISION_078.md \
-   C:\P4NTH30N\STR4TEG15T\decisions\completed\DECISION_078.md
+mv C:\P4NTHE0N\STR4TEG15T\decisions\active\DECISION_078.md \
+   C:\P4NTHE0N\STR4TEG15T\decisions\completed\DECISION_078.md
 ```
 
 ### 4. Update DECISION_077 Dependencies
@@ -279,7 +279,7 @@ Add to `DECISION_077.md`:
 
 ### Immediate Next Steps
 
-1. **Launch TUI**: `cd C:\P4NTH30N\H4ND\tools\recorder && bun run tui`
+1. **Launch TUI**: `cd C:\P4NTHE0N\H4ND\tools\recorder && bun run tui`
 2. **Review FireKirin workflow**: 14 steps, 2 breakpoints (steps 6 and 9)
 3. **Test run mode**: Press `R`, step through with `Space`, verify breakpoints work
 4. **Add OrionStars steps**: Press `A` to add steps for OrionStars workflow
@@ -316,7 +316,7 @@ Add to `DECISION_077.md`:
 
 **Nexus to Strategist:**
 
-> Pyxis, DECISION_078 is complete. WindFixer has delivered the P4NTH30N Recorder TUI — a zero-dependency visual macro editor for workflow mapping. The TUI removes the JSON editing bottleneck from DECISION_077.
+> Pyxis, DECISION_078 is complete. WindFixer has delivered the P4NTHE0N Recorder TUI — a zero-dependency visual macro editor for workflow mapping. The TUI removes the JSON editing bottleneck from DECISION_077.
 >
 > **Obstacles faced**: JSON editing friction, OrionStars Canvas login blocking, terminal compatibility, coordinate precision, workflow testing.
 >
@@ -327,9 +327,9 @@ Add to `DECISION_077.md`:
 > **Comprehensive recording software built**: Full CRUD on steps, breakpoints, visual field editor, run mode with status icons, auto-save, 1,100+ line operation guide.
 >
 > **Documentation reference**:
-> - Operational: `C:\P4NTH30N\H4ND\tools\recorder\TUI_README.md` (20 sections)
-> - Decision: `C:\P4NTH30N\STR4TEG15T\decisions\active\DECISION_078.md`
-> - Deployment: `C:\P4NTH30N\W1NDF1XER\deployments\DEPLOYMENT_078_TUI.md`
+> - Operational: `C:\P4NTHE0N\H4ND\tools\recorder\TUI_README.md` (20 sections)
+> - Decision: `C:\P4NTHE0N\STR4TEG15T\decisions\active\DECISION_078.md`
+> - Deployment: `C:\P4NTHE0N\W1NDF1XER\deployments\DEPLOYMENT_078_TUI.md`
 >
 > **Action items for Strategist**:
 > 1. Update MongoDB decision record (status: Completed)
@@ -344,5 +344,5 @@ Add to `DECISION_077.md`:
 ---
 
 **WindFixer**  
-**DECISION_078 — P4NTH30N Recorder TUI**  
+**DECISION_078 — P4NTHE0N Recorder TUI**  
 **2026-02-21**

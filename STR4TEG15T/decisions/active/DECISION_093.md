@@ -14,7 +14,7 @@
 
 ## Executive Summary
 
-H0UND is currently in Burn-In phase and will become the unified, always-on platform for P4NTH30N. This decision establishes H0UND as the central orchestrator that manages all platform services, including the RAG Server and Pantheon Database tools from DECISION_092. H0UND will build to `P4NTH30N.exe` (output name change only, not a refactor) and minimize to the system tray to prevent accidental shutdown. The actual namespace and project name will remain `H0UND` to avoid refactoring; only the build output changes.
+H0UND is currently in Burn-In phase and will become the unified, always-on platform for P4NTHE0N. This decision establishes H0UND as the central orchestrator that manages all platform services, including the RAG Server and Pantheon Database tools from DECISION_092. H0UND will build to `P4NTHE0N.exe` (output name change only, not a refactor) and minimize to the system tray to prevent accidental shutdown. The actual namespace and project name will remain `H0UND` to avoid refactoring; only the build output changes.
 
 **Current Problem**:
 - H0UND currently runs as a console application that can be accidentally closed
@@ -23,7 +23,7 @@ H0UND is currently in Burn-In phase and will become the unified, always-on platf
 - Services from DECISION_092 need a parent process to manage their lifecycle
 
 **Proposed Solution**:
-- Change H0UND build output to `P4NTH30N.exe` while keeping `H0UND` namespace
+- Change H0UND build output to `P4NTHE0N.exe` while keeping `H0UND` namespace
 - Add system tray integration with NotifyIcon for minimize-to-tray behavior
 - Implement service orchestration to manage RAG Server and MongoDB MCP server
 - Add boot-time auto-start via Windows Task Scheduler or Registry
@@ -56,9 +56,9 @@ H0UND is currently in Burn-In phase and will become the unified, always-on platf
 
 ### Desired State
 
-**H0UND as P4NTH30N.exe**:
-- Build output: `P4NTH30N.exe` (changed from `H0UND.exe`)
-- Namespace: Still `P4NTH30N.H0UND` (no refactoring)
+**H0UND as P4NTHE0N.exe**:
+- Build output: `P4NTHE0N.exe` (changed from `H0UND.exe`)
+- Namespace: Still `P4NTHE0N.H0UND` (no refactoring)
 - Behavior: Minimize to system tray instead of closing
 - Services: Manages RAG Server and MongoDB MCP server lifecycle
 - Auto-start: Runs at Windows boot via Task Scheduler
@@ -76,9 +76,9 @@ H0UND is currently in Burn-In phase and will become the unified, always-on platf
 
 ### Requirements
 
-1. **BUILD-093-001**: Change build output to P4NTH30N.exe
+1. **BUILD-093-001**: Change build output to P4NTHE0N.exe
    - **Priority**: Must
-   - **Acceptance Criteria**: Build produces `P4NTH30N.exe` in output directory
+   - **Acceptance Criteria**: Build produces `P4NTHE0N.exe` in output directory
 
 2. **TRAY-093-001**: Add system tray integration
    - **Priority**: Must
@@ -134,7 +134,7 @@ H0UND is currently in Burn-In phase and will become the unified, always-on platf
 
 **Boot-time Auto-start**:
 - Create PowerShell script for Task Scheduler registration
-- Task runs `P4NTH30N.exe --background`
+- Task runs `P4NTHE0N.exe --background`
 - Delayed start to allow system services to initialize
 
 ---
@@ -147,7 +147,7 @@ H0UND is currently in Burn-In phase and will become the unified, always-on platf
 | ACT-093-002 | Web research: System tray patterns | Strategist | ✅ Complete | Critical |
 | ACT-093-003 | Web research: Boot-time loading | Strategist | ✅ Complete | Critical |
 | ACT-093-004 | Designer consultation: Architecture strategy | @designer | ✅ Complete | Critical |
-| ACT-093-005 | Modify H0UND.csproj for P4NTH30N.exe output | @windfixer | ✅ Complete | Critical |
+| ACT-093-005 | Modify H0UND.csproj for P4NTHE0N.exe output | @windfixer | ✅ Complete | Critical |
 | ACT-093-006 | Add System.Windows.Forms reference | @windfixer | ✅ Complete | Critical |
 | ACT-093-007 | Implement NotifyIcon system tray host | @windfixer | ✅ Complete | Critical |
 | ACT-093-008 | Implement service orchestration (RAG + MCP) | @windfixer | ✅ Complete | Critical |
@@ -180,7 +180,7 @@ H0UND is currently in Burn-In phase and will become the unified, always-on platf
 
 ## Success Criteria
 
-1. Build produces `P4NTH30N.exe` instead of `H0UND.exe`
+1. Build produces `P4NTHE0N.exe` instead of `H0UND.exe`
 2. Running application shows icon in system tray
 3. Close button minimizes to tray (not exit)
 4. Double-click tray icon shows/hides dashboard
@@ -307,7 +307,7 @@ H0UND is currently in Burn-In phase and will become the unified, always-on platf
    ```xml
    <PropertyGroup>
      <OutputType>Exe</OutputType>
-     <AssemblyName>P4NTH30N</AssemblyName>
+     <AssemblyName>P4NTHE0N</AssemblyName>
      <TargetFramework>net10.0-windows7.0</TargetFramework>
      <UseWindowsForms>true</UseWindowsForms>
    </PropertyGroup>
@@ -342,14 +342,14 @@ H0UND is currently in Burn-In phase and will become the unified, always-on platf
    {
      new ManagedService {
        Name = "RAG Server",
-       Executable = @"C:\ProgramData\P4NTH30N\bin\RAG.McpHost.exe",
+       Executable = @"C:\ProgramData\P4NTHE0N\bin\RAG.McpHost.exe",
        Arguments = "--port 5001 --transport http ...",
        HealthCheckUrl = "http://127.0.0.1:5001/health"
      },
      new ManagedService {
        Name = "MongoDB MCP",
        Executable = "node",
-       Arguments = @"C:\P4NTH30N\tools\mcp-p4nthon\dist\index.js",
+       Arguments = @"C:\P4NTHE0N\tools\mcp-p4nthon\dist\index.js",
        HealthCheckMethod = HealthCheckMethod.StdioPing
      }
    };
@@ -359,7 +359,7 @@ H0UND is currently in Burn-In phase and will become the unified, always-on platf
 
 1. **Create Register-AutoStart.ps1**:
    - Creates Task Scheduler task
-   - Runs `P4NTH30N.exe --background`
+   - Runs `P4NTHE0N.exe --background`
    - Delayed start (30 seconds)
    - Run whether user logged in or not
 
@@ -367,7 +367,7 @@ H0UND is currently in Burn-In phase and will become the unified, always-on platf
 
 | File | Action | Purpose |
 |------|--------|---------|
-| `H0UND/H0UND.csproj` | MODIFY | Change AssemblyName to P4NTH30N, add UseWindowsForms |
+| `H0UND/H0UND.csproj` | MODIFY | Change AssemblyName to P4NTHE0N, add UseWindowsForms |
 | `H0UND/H0UND.cs` | MODIFY | Integrate tray host, service orchestration |
 | `H0UND/TrayHost.cs` | CREATE | System tray NotifyIcon host |
 | `H0UND/ServiceOrchestrator.cs` | CREATE | Manages RAG and MCP subprocesses |
@@ -378,7 +378,7 @@ H0UND is currently in Burn-In phase and will become the unified, always-on platf
 
 ## Notes
 
-**Naming Decision**: The project and namespace remain `H0UND` to avoid refactoring. Only the build output changes to `P4NTH30N.exe`. This provides the unified branding while maintaining code continuity.
+**Naming Decision**: The project and namespace remain `H0UND` to avoid refactoring. Only the build output changes to `P4NTHE0N.exe`. This provides the unified branding while maintaining code continuity.
 
 **H4ND Merger**: This decision explicitly does NOT include merging H4ND functionality. H4ND remains separate until its Burn-In is complete. DECISION_093 only makes H0UND the always-on platform manager.
 
@@ -391,7 +391,7 @@ H0UND is currently in Burn-In phase and will become the unified, always-on platf
 - Service registration moved to `config/autostart.json` so service targets are centrally managed and not hardcoded in runtime.
 - `ServiceOrchestrator` now performs periodic health checks and automatic restart with exponential backoff after repeated failures.
 - `Check-PlatformStatus.ps1` now validates Decision 092 and 093 operational contracts together.
-- Scheduled task `P4NTH30N-AutoStart` starts platform services at boot and can be re-run manually for immediate recovery.
+- Scheduled task `P4NTHE0N-AutoStart` starts platform services at boot and can be re-run manually for immediate recovery.
 
 ---
 

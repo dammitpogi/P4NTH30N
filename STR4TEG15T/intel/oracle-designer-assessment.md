@@ -148,7 +148,7 @@ Ubuntu 24.04 LTS (Noble)
 {
   "MongoDB": {
     "ConnectionString": "mongodb://localhost:27017",
-    "DatabaseName": "P4NTH30N",
+    "DatabaseName": "P4NTHE0N",
     "MaxConnectionPoolSize": 100,
     "MinConnectionPoolSize": 10,
     "ConnectTimeoutSeconds": 10,

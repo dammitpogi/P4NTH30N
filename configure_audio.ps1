@@ -5,17 +5,17 @@ Write-Host ''
 
 # Step 1: Set CABLE Input as default playback device
 Write-Host 'Step 1: Setting CABLE Input as default playback device...'
-& 'C:\P4NTH30N\SoundVolumeView\SoundVolumeView.exe' /SetDefault 'CABLE Input\Device\CABLE Input\Render' all
+& 'C:\P4NTHE0N\SoundVolumeView\SoundVolumeView.exe' /SetDefault 'CABLE Input\Device\CABLE Input\Render' all
 Start-Sleep -Seconds 1
 
 # Step 2: Enable listening on CABLE Output so you can hear it
 Write-Host 'Step 2: Enabling monitoring on CABLE Output...'
-& 'C:\P4NTH30N\SoundVolumeView\SoundVolumeView.exe' /SetListenToThisDevice 'CABLE Output\Device\CABLE Output\Capture' 1
+& 'C:\P4NTHE0N\SoundVolumeView\SoundVolumeView.exe' /SetListenToThisDevice 'CABLE Output\Device\CABLE Output\Capture' 1
 Start-Sleep -Seconds 1
 
 # Step 3: Route CABLE Output monitoring to your speakers
 Write-Host 'Step 3: Routing to your speakers...'
-& 'C:\P4NTH30N\SoundVolumeView\SoundVolumeView.exe' /SetPlaybackThroughDevice 'CABLE Output\Device\CABLE Output\Capture' 'Beats Pill\Device\Speakers\Render'
+& 'C:\P4NTHE0N\SoundVolumeView\SoundVolumeView.exe' /SetPlaybackThroughDevice 'CABLE Output\Device\CABLE Output\Capture' 'Beats Pill\Device\Speakers\Render'
 Start-Sleep -Seconds 1
 
 Write-Host ''

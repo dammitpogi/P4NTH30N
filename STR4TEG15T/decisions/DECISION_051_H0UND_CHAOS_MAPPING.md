@@ -85,7 +85,7 @@ OrionStarsBalanceProvider.GetBalances() [line 9]
 
 **Note**: FireKirinBalanceProvider has identical chaos points at same line numbers.
 
-**Dependencies**: P4NTH30N.Services.OrionStars/FireKirin (WebSocket APIs)
+**Dependencies**: P4NTHE0N.Services.OrionStars/FireKirin (WebSocket APIs)
 
 ---
 
@@ -443,7 +443,7 @@ Per DECISION_050 standards:
 | Agent | Scope | Authority |
 |-------|-------|-----------|
 | @forgewright | Implement sanity tests at identified lines | High — direct implementation |
-| @windfixer | H0UND/H4ND C# modifications | High — P4NTH30N specialist |
+| @windfixer | H0UND/H4ND C# modifications | High — P4NTHE0N specialist |
 | @oracle | Validate chaos point analysis | Medium — risk assessment |
 
 ---

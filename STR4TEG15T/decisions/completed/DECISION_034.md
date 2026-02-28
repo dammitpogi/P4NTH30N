@@ -51,7 +51,7 @@ Build a harvester that extracts session history, tool outputs, and chat transcri
 | Session Storage/ | LevelDB | Cascade session data |
 | User/globalStorage/state.vscdb | SQLite | Extension state |
 
-### P4NTH30N Agent Directories
+### P4NTHE0N Agent Directories
 
 | Source | Format | Content |
 |--------|--------|---------|
@@ -133,7 +133,7 @@ dotnet run --project CONFIGDEPLOY -- harvest --stats
   "source": "opencode/session/abc123",
   "type": "session-transcript",
   "agent": "openfixer",
-  "project": "P4NTH30N",
+  "project": "P4NTHE0N",
   "timestamp": "2026-02-20T23:00:00Z",
   "sessionId": "abc123",
   "tags": ["decision-025", "anomaly-detection", "implementation"],

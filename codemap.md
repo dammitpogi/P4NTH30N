@@ -1,4 +1,4 @@
-# Repository Atlas: P4NTH30N Platform
+# Repository Atlas: P4NTHE0N Platform
 UpdateOn: 2026-02-23T12:02 AM
 
 ## Project Responsibility
@@ -11,7 +11,7 @@ Multi-agent automation platform for online casino game portals (FireKirin and Or
 - `T00L5ET/`: Manual utilities for database operations and one-off tasks
 - `UNI7T35T/`: Testing platform with 27 passing tests, including 16 integration tests
 - `C0MMON/`: Shared library for all components with LLM, RAG, caching, and security
-- `P4NTH30N.slnx`: .NET solution file
+- `P4NTHE0N.slnx`: .NET solution file
 - `HunterConfig.json`: Configuration for prize tiers, rate limits, watchdog
 
 ## Repository Directory Map
@@ -85,7 +85,7 @@ C0MMON (Shared Library)
 │   │   ├── Repositories.cs - Collection repositories
 │   │   └── ValidatedMongoRepository.cs - Base repository with validation
 │   ├── Caching/ - CacheService for distributed caching
-│   ├── Configuration/ - P4NTH30NOptions, SecretsProvider, validation
+│   ├── Configuration/ - P4NTHE0NOptions, SecretsProvider, validation
 │   ├── Monitoring/ - HealthChecks, MetricsService
 │   └── LLM/ - ILlmClient, LlmClient for external LLM APIs
 ├── RAG/ - Retrieval-Augmented Generation system
@@ -158,7 +158,7 @@ W4TCHD0G (Vision + Safety System)
 4. **CLEANUP**, **MONITOR** (specialized maintenance tools)
 
 ### External Dependencies
-- **MongoDB**: Primary data store (database: `P4NTH30N`)
+- **MongoDB**: Primary data store (database: `P4NTHE0N`)
 - **Collections**: `CRED3N7IAL`, `EV3NT`, `ERR0R`, `JACKPOTS`, `H0U53`
 - **NuGet Packages**:
   - `MongoDB.Driver` (3.6.0) - Direct MongoDB access
@@ -169,14 +169,14 @@ W4TCHD0G (Vision + Safety System)
   - `H.InputSimulator` (1.5.0) - Input simulation
 - **Environment Variables**:
   - `MONGODB_CONNECTION_STRING` (required)
-  - `MONGODB_DATABASE_NAME` (optional, default: P4NTH30N)
-  - `P4NTH30N_MONGODB_URI` (optional, overrides connection string)
+  - `MONGODB_DATABASE_NAME` (optional, default: P4NTHE0N)
+  - `P4NTHE0N_MONGODB_URI` (optional, overrides connection string)
 - **Browser**: Chrome with CDP remote debugging (incognito, no extension)
 
 ### Data Flow and MongoDB Collections
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                      MongoDB Database (P4NTH30N)            │
+│                      MongoDB Database (P4NTHE0N)            │
 ├─────────────────┬─────────────────┬─────────────────────────┤
 │ CRED3N7IAL      │ EV3NT           │ ERR0R                   │
 │ - username      │ - agent         │ - entity                │
@@ -268,7 +268,7 @@ HealthMonitor
 
 **Environment Variables**:
 - `MONGODB_CONNECTION_STRING`: MongoDB connection
-- `MONGODB_DATABASE_NAME`: Database name (default: P4NTH30N)
+- `MONGODB_DATABASE_NAME`: Database name (default: P4NTHE0N)
 
 **Key Configuration Files**:
 - `HunterConfig.json`: Prize tiers, rate limits, watchdog settings
@@ -287,7 +287,7 @@ HealthMonitor
 ### Build Commands
 ```bash
 # Build entire solution (Debug - currently clean)
-dotnet build P4NTH30N.slnx
+dotnet build P4NTHE0N.slnx
 
 # Run H0UND polling+analytics agent
 dotnet run --project ./H0UND/H0UND.csproj
@@ -326,7 +326,7 @@ Requires multiple terminals:
 ## Critical Notes
 
 ### Data Validation
-Entities use `IsValid(IStoreErrors?)` pattern - validates but does NOT mutate. Invalid data is logged to ERR0R MongoDB collection for monitoring. P4NTH30NSanityChecker (auto-repair) has been removed. All services must check `IsValid()` before processing.
+Entities use `IsValid(IStoreErrors?)` pattern - validates but does NOT mutate. Invalid data is logged to ERR0R MongoDB collection for monitoring. P4NTHE0NSanityChecker (auto-repair) has been removed. All services must check `IsValid()` before processing.
 
 ### DPD System
 Dollars-Per-Day analysis requires minimum 25 data points for statistical reliability when DPD > 10. Thresholds are stored in CRED3N7IAL collection per user.
@@ -372,7 +372,7 @@ netsh interface portproxy add v4tov4 listenaddress=192.168.56.1 listenport=9222 
 - Future hardening: Full credential encryption, credential vault, access controls
 
 ### Build Status (Current - Post Session)
-- **Build**: `dotnet build P4NTH30N.slnx` - **CLEAN**
+- **Build**: `dotnet build P4NTHE0N.slnx` - **CLEAN**
 - **Tests**: `dotnet test UNI7T35T/UNI7T35T.csproj` - **27/27 PASSING**
 - **Formatting**: `dotnet csharpier check` - **PASSES**
 - **Coverage**: 16 integration tests covering FrameBuffer, ScreenMapper, ActionQueue, DecisionEngine, SafetyMonitor, WinDetector, InputAction
@@ -434,10 +434,10 @@ netsh interface portproxy add v4tov4 listenaddress=192.168.56.1 listenport=9222 
 - H4ND.cs: Added RunMode.GenerateSignals, ARCH-055, TECH-H4ND-001, TECH-FE-015, TECH-JP-001, TECH-JP-002, OPS-JP-001
 
 **Remaining (2 — Deferred):**
-- TECH-005/TECH-006: OpenCode plugin fallback system (outside P4NTH30N workspace)
+- TECH-005/TECH-006: OpenCode plugin fallback system (outside P4NTHE0N workspace)
 
 ### Verification Steps
-1. **Build**: `dotnet build P4NTH30N.slnx` - Clean build expected
+1. **Build**: `dotnet build P4NTHE0N.slnx` - Clean build expected
 2. **Tests**: `dotnet test UNI7T35T/UNI7T35T.csproj` - 27 tests passing
 3. **Formatting**: `dotnet csharpier check` - Should pass
 4. **Runtime**: Requires MongoDB connection for full initialization

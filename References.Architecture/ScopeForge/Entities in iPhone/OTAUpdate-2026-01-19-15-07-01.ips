@@ -1,0 +1,1997 @@
+{"restore_payload_version":"Unknown","restore_type":"OTAUpdate","os_version":"22H123","itunes_version":"22H123","bug_type":"183","restore_error":"5","name":"iPhoneRestore"}
+16be37000 : waiting for child to exit
+
+16be37000 : child exited
+
+16be37000 : exit status: 0
+
+16be37000 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16be37000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16be37000 : entering _partition_probe_media_should_retry.
+16be37000 : APFS Container 'Container' /dev/disk0s1
+
+16be37000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16be37000 : found system volume not at disk0s1s1: System
+
+16be37000 : unexpected partition 'Hardware' - skipping
+16be37000 : reverting system volume to snapshot com.apple.os.updateXXXX>>>>><<<<<<<<<<<<<<<<<<UDID>>>>>>>>>>>>>>>>>><<<<<MEID>>>>>59 succeeded. remounting...
+16be37000 : file system at /private/var/MobileSoftwareUpdate/mnt1 successfully unmounted
+16be37000 : entering ramrod_execute_command_with_config: /sbin/mount
+
+16be37000 : executing /sbin/mount
+16be37000 :  -t
+16be37000 :  apfs
+16be37000 :  -o
+16be37000 :  nobrowse
+16be37000 :  /dev/disk1s1
+16be37000 :  /private/var/MobileSoftwareUpdate/mnt1
+16be37000 : 
+
+16be37000 : waiting for child to exit
+
+16be37000 : child exited
+
+16be37000 : exit status: 0
+
+16be37000 : mounting system volume read/write at /private/var/MobileSoftwareUpdate/mnt1 succeeded.
+16be37000 : Skipping snapshot com.apple.os.updateXXXX>>>>><<<<<<<<<<<<<<<<<<UDID>>>>>>>>>>>>>>>>>><<<<<MEID>>>>>59
+16d6d3000 : Running event handler at QoS 0x11
+16d6d3000 : initializing new event recorder with options: (null)
+16d6d3000 : start
+16d6d3000 : Using NVRAM dictionary from IODeviceTree since there is no key for ota-uuid in there
+
+16d6d3000 : Permanent update volume present..supportDir will be placed there
+16d6d3000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16d6d3000 : <UMEventRecorder: 0xad60ac460>: initializing event recorder with systemMountPoint: (null)
+16d6d3000 : <UMEventRecorder: 0xad60ac460>: initializing event recorder with dataMountPoint: (null)
+16d6d3000 : <UMEventRecorder: 0xad60ac460>: initializing event recorder with updateMountPoint: (null)
+16d6d3000 : <UMEventRecorder: 0xad60ac460>: initializing event recorder with nvramPath: (null)
+16d6d3000 : <UMEventRecorder: 0xad60ac460>: initializing event recorder with targetOSVersion: (null)
+16d6d3000 : <UMEventRecorder: 0xad60ac460>: initializing event recorder with context: (null)
+16d6d3000 : <UMEventRecorder: 0xad60ac460>: initializing event recorder with baseServerURL: (null)
+16d6d3000 : <UMEventRecorder: 0xad60ac460>: initializing event recorder with uuid: (null)
+16d6d3000 : calling startRecordingInstall from handle_MSUPreflightUpdate
+16d6d3000 : Permanent update volume present..supportDir will be placed there
+16d6d3000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16d6d3000 : setting uuid in startRecordingInstall to 9E96F52F-EC34-41C2-8F27XXXX>>>>>4A39
+16d6d3000 : Permanent update volume present..supportDir will be placed there
+16d6d3000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16d6d3000 : Permanent update volume present..supportDir will be placed there
+16d6d3000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16bd1f000 : msu_delete_nvram_variable_if_exists: NVRAM update-volume not found..Nothing to do
+
+16bd1f000 : msu_delete_nvram_variable_if_exists: NVRAM target-uuid not found..Nothing to do
+
+16bd1f000 : Purging any suspended/pended update...
+16bd1f000 : MSU running in normal env
+16bd1f000 : currentOSType indicated as nil. Overriding it to be BootedOSReleaseTypeUnknown
+16bd1f000 : Pallas is enabled
+16bd1f000 : SU configuration:
+ Asset Audience XXXX>>>>>>-6e8f-4908-b724XXXX>>>>>5e5c
+ SU Asset URL: https://mesu.apple.com/assets/
+ Brain URL: https://mesu.apple.com/assets/
+ Documentation URL: https://mesu.apple.com/assets/
+ WatchDocumentation URL: https://mesu.apple.com/assets/
+16bd1f000 : Dictionary is {
+    BootedOSAssetAudience = "01c1d682-6e8f-4908-b724XXXX>>>>>5e5c";
+    BootedOSBrainURL = "https://mesu.apple.com/assets/";
+    BootedOSDocumentationURL = "https://mesu.apple.com/assets/";
+    BootedOSLanguage = en;
+    BootedOSProductVersion = "18.7.2";
+    BootedOSSUAssetURL = "https://mesu.apple.com/assets/";
+    BootedOSType = BootedOSReleaseTypeUnknown;
+    BootedOSVersion = 22H123;
+    BootedOSWatchDocumentationURL = "https://mesu.apple.com/assets/";
+}
+16bd1f000 : Saving env data to /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+16bd1f000 : Updating file permissions
+16bd1f000 : fixup_permissions_for_bootedos_state_file: Successfully fixed up permissions for /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+16bd1f000 : entering ramrod_execute_command_with_config: /sbin/mount
+
+16bd1f000 : executing /sbin/mount
+16bd1f000 :  -u
+16bd1f000 :  -w
+16bd1f000 :  /dev/disk1s6
+16bd1f000 :  /private/preboot
+16bd1f000 : 
+
+16bd1f000 : waiting for child to exit
+
+16bd1f000 : child exited
+
+16bd1f000 : exit status: 0
+
+16bd1f000 : Changed permissions on /dev/disk1s6 mounted at /private/preboot to readwrite
+
+16bd1f000 : ramrod_splat_cleanup: Cleaning up proposed directory in preboot
+
+16bd1f000 : Cleaning up unused prepared updates
+16bd1f000 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16bd1f000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16bd1f000 : entering _partition_probe_media_should_retry.
+16bd1f000 : APFS Container 'Container' /dev/disk0s1
+
+16bd1f000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16bd1f000 : found system volume not at disk0s1s1: System
+
+16bd1f000 : unexpected partition 'Hardware' - skipping
+16bd1f000 : not deleting existing update filesystem
+16bd1f000 : create_update_partition_folder_hierarchy: Creating folder hierarchy for update partition
+16bd1f000 : Creating hardware folder hierarchy
+
+16bd1f000 : Creating root folder
+16bd1f000 : Successfully created root Hardware folder. Proceeding to create the rest of the folder hierarchy
+16bd1f000 : Successfully created Battery under /private/var/MobileSoftwareUpdate//Hardware with permissions 0700 for user root
+16bd1f000 : create_update_partition_folder_hierarchy: Done creating folder hierarchy for update partition
+16bd1f000 : msu_delete_nvram_variable_if_exists: NVRAM target-uuid not found..Nothing to do
+
+16bd1f000 : entering mount_update_partition_if_exists
+
+16bd1f000 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16bd1f000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16bd1f000 : entering _partition_probe_media_should_retry.
+16bd1f000 : APFS Container 'Container' /dev/disk0s1
+
+16bd1f000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16bd1f000 : found system volume not at disk0s1s1: System
+
+16bd1f000 : unexpected partition 'Hardware' - skipping
+16bd1f000 : Update partition is already mounted
+
+16bd1f000 : _migrate_ramdisk_logs: No ramdisk created CrashReporter dir found
+16bd1f000 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16bd1f000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16bd1f000 : entering _partition_probe_media_should_retry.
+16bd1f000 : APFS Container 'Container' /dev/disk0s1
+
+16bd1f000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16bd1f000 : found system volume not at disk0s1s1: System
+
+16bd1f000 : unexpected partition 'Hardware' - skipping
+16bd1f000 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16bd1f000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16bd1f000 : entering _partition_probe_media_should_retry.
+16bd1f000 : APFS Container 'Container' /dev/disk0s1
+
+16bd1f000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16bd1f000 : found system volume not at disk0s1s1: System
+
+16bd1f000 : unexpected partition 'Hardware' - skipping
+16bd1f000 : entering ramrod_execute_command_with_config: /sbin/mount
+
+16bd1f000 : executing /sbin/mount
+16bd1f000 :  -t
+16bd1f000 :  apfs
+16bd1f000 :  -o
+16bd1f000 :  nobrowse
+16bd1f000 :  /dev/disk1s1
+16bd1f000 :  /private/var/MobileSoftwareUpdate/mnt1
+16bd1f000 : 
+
+16bd1f000 : waiting for child to exit
+
+16bd1f000 : child exited
+
+16bd1f000 : exit status: 0
+
+16bd1f000 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16bd1f000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16bd1f000 : entering _partition_probe_media_should_retry.
+16bd1f000 : APFS Container 'Container' /dev/disk0s1
+
+16bd1f000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16bd1f000 : found system volume not at disk0s1s1: System
+
+16bd1f000 : unexpected partition 'Hardware' - skipping
+16bd1f000 : reverting system volume to snapshot com.apple.os.updateXXXX>>>>><<<<<<<<<<<<<<<<<<UDID>>>>>>>>>>>>>>>>>><<<<<MEID>>>>>59 succeeded. remounting...
+16bd1f000 : file system at /private/var/MobileSoftwareUpdate/mnt1 successfully unmounted
+16bd1f000 : entering ramrod_execute_command_with_config: /sbin/mount
+
+16bd1f000 : executing /sbin/mount
+16bd1f000 :  -t
+16bd1f000 :  apfs
+16bd1f000 :  -o
+16bd1f000 :  nobrowse
+16bd1f000 :  /dev/disk1s1
+16bd1f000 :  /private/var/MobileSoftwareUpdate/mnt1
+16bd1f000 : 
+
+16bd1f000 : waiting for child to exit
+
+16bd1f000 : child exited
+
+16bd1f000 : exit status: 0
+
+16bd1f000 : mounting system volume read/write at /private/var/MobileSoftwareUpdate/mnt1 succeeded.
+16bd1f000 : Skipping snapshot com.apple.os.updateXXXX>>>>><<<<<<<<<<<<<<<<<<UDID>>>>>>>>>>>>>>>>>><<<<<MEID>>>>>59
+16d6d3000 : entering ramrod_execute_command_with_config: /sbin/mount
+
+16d6d3000 : executing /sbin/mount
+16d6d3000 :  -u
+16d6d3000 :  -w
+16d6d3000 :  /dev/disk1s6
+16d6d3000 :  /private/preboot
+16d6d3000 : 
+
+16d6d3000 : waiting for child to exit
+
+16d6d3000 : child exited
+
+16d6d3000 : exit status: 0
+
+16d6d3000 : Changed permissions on /dev/disk1s6 mounted at /private/preboot to readwrite
+
+16d6d3000 : ramrod_splat_cleanup: Cleaning up proposed directory in preboot
+
+16d6d3000 : Did not find supports-recoveryos property for product
+16d6d3000 : Coordinated RecoveryOS updates are not supported in edt.
+16d6d3000 : InstallationSize not present in update attributes
+16d6d3000 : MobileSoftwareUpdateErrorDomain error 9 - Invalid update attributes: missing InstallationSize
+16d6d3000 : Failed to get nonSnapshotPrepareSize: Error Domain=MobileSoftwareUpdateErrorDomain Code=9 "Invalid update attributes: missing InstallationSize" UserInfo={NSLocalizedDescription=Invalid update attributes: missing InstallationSize}
+16d6d3000 : No padding dictionary specified, returning default padding value 0
+
+16d6d3000 : cryptex size requirement: 0 (0 MB)
+16d6d3000 : 
+cryptex_size_requirement_for_update_type(msu_update_type_legacy):
+---
+  0 MB
+16d6d3000 : Couldn't find ActualMinimumSystemPartition or MinimumSystemPartition in the asset properties
+16d6d3000 : Minimum system partition is 2621440000 (2500 MB)
+16d6d3000 : System partition padding is 0 (0 MB)
+16d6d3000 : System partition firmware is 126877696 (121 MB)
+16d6d3000 : APFS system volume is using 7086489600 (6758 MB)
+16d6d3000 : Checking for overprovisioning volume
+16d6d3000 : Failed to get container path. Unable to check for overprovisioning volume
+16d6d3000 : Checking for overprovisioning file
+16d6d3000 : nand is not overprovisioned
+16d6d3000 : 
+get_nonsnapshot_apply_and_reserve_sizes():
+requiredFreeSpace:
+    300 MB UPDATE_PARTITION_SIZE * 2
+    100 MB UPDATE_APFS_RESERVE
+      0 MB systemPartitionPadding = get_system_partition_padding()
+      0 MB cryptex_size_requirement_for_update_type(msu_update_type_legacy)
+    121 MB RCGetSystemPartitionExtrasSizeForDevice()
+   2500 MB defaultMinimumSystemPartitionInMB
+  -6758 MB -currentSystemPartitionSize (getattrlist)
+  -4076 MB -/private/preboot/cryptex1/current/os.dmg (Cryptex1,SystemOS)
++   -16 MB -/private/preboot/cryptex1/current/app.dmg (Cryptex1,AppOS)
+-------
+  -7829 MB
+16d6d3000 : 400 MB minimum free space required for personalization and Update volume
+16d6d3000 : 
+get_nonsnapshot_apply_and_reserve_sizes():
+  400 MB 2*UPDATE_PARTITION_SIZE + UPDATE_APFS_RESERVE
++   0 MB MAX(requiredFreeSpace + systemPartitionSealingOverhead, 0) == MAX(-7829 + 0, 0) == MAX(-7829, 0)
+-----
+  400 MB
+16d6d3000 : InstallationSize-Snapshot not present in update attributes
+16d6d3000 : ActualMinimumSystemPartition not present in update attributes
+16d6d3000 : MinimumSystemPartition not present in update attributes. Using the default.
+16d6d3000 : *** Warning *** This is not a normal path *** Users shouldn't get here *** Engineers can
+16d6d3000 : cryptex size requirement: 0 (0 MB)
+16d6d3000 : 
+cryptex_size_requirement_for_update_type(msu_update_type_snapshot):
+---
+  0 MB
+16d6d3000 : snapshot preparation size (worst case) XXXX>>>>>>80 (2905 MB)
+16d6d3000 : Use of APFSIOC_GET_PREALLOCATE_MIN_SPACE is not expressly disallowed by asset attributes
+16d6d3000 : snapshot application size XXXX>>>>>>0 (400 MB)
+16d6d3000 : 
+get_snapshot_apply_and_reserve_sizes():
++ 400 MB 2*UPDATE_PARTITION_SIZE + UPDATE_APFS_RESERVE
+-----
+  400 MB
+16d6d3000 : Permanent update volume present..supportDir will be placed there
+16d6d3000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16d6d3000 : Permanent update volume present..supportDir will be placed there
+16d6d3000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16d6d3000 : Permanent update volume present..supportDir will be placed there
+16d6d3000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16d6d3000 : stored size requirement: snapshotPrepareSize=2905
+16d6d3000 : Permanent update volume present..supportDir will be placed there
+16d6d3000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16d6d3000 : Permanent update volume present..supportDir will be placed there
+16d6d3000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16d6d3000 : Permanent update volume present..supportDir will be placed there
+16d6d3000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16d6d3000 : stored size requirement: nonSnapshotApplySize=400
+16d6d3000 : Permanent update volume present..supportDir will be placed there
+16d6d3000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16d6d3000 : Permanent update volume present..supportDir will be placed there
+16d6d3000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16d6d3000 : Permanent update volume present..supportDir will be placed there
+16d6d3000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16d6d3000 : stored size requirement: snapshotApplySize=400
+16d6d3000 : Attempting to gather analytics data for phase : Preflight
+16d6d3000 : Successfully allocd SUManager client for determining preflight event info
+16d647000 : No update downloaded
+16d6d3000 : Unable to determine AutoUpdate status
+16d6d3000 : Default not found. AutoDownload is enabled
+16d6d3000 : Attempting to determine purgable space on system
+16d6d3000 : CacheDeleteCopyPurgeableSpaceWithInfo() => {
+    "CACHE_DELETE_AMOUNT" = 20022378023;
+    "CACHE_DELETE_FREESPACE" = 55831687168;
+    "CACHE_DELETE_NONPURGEABLE_AMOUNT" = 871035240;
+    "CACHE_DELETE_VOLUME" = "/private/var/mobile";
+}
+16d6d3000 : Directory enumerator error while sizing MobileAsset usage: Error Domain=NSCocoaErrorDomain Code=260 "The file ...Assets... couldn...t be opened because there is no such file." UserInfo={NSURL=/private/var/MobileSoftwareUpdate/MobileAsset/Assets/, NSFilePath=/private/var/MobileSoftwareUpdate/MobileAsset/Assets, NSUnderlyingError=0xad6068ea0 {Error Domain=NSPOSIXErrorDomain Code=2 "No such file or directory"}}
+16d6d3000 : Directory enumerator error while sizing MobileAsset usage: Error Domain=NSCocoaErrorDomain Code=260 "The file ...Assets... couldn...t be opened because there is no such file." UserInfo={NSURL=/private/var/MobileAsset/Assets/, NSFilePath=/private/var/MobileAsset/Assets, NSUnderlyingError=0xad6069080 {Error Domain=NSPOSIXErrorDomain Code=2 "No such file or directory"}}
+16d6d3000 : Total Size taken by MobileAssets is 1491MB
+16d6d3000 : add_persistent_target_volume_metrics: nothing to do.
+16d6d3000 : UsageInfoForPreflight is {
+    AutoDownload = ON;
+    AutoUpdate = UNKNOWN;
+    mobileAssetsSpaceMB = 1491;
+    purgeableSpaceMB = 19094;
+    updateDownloaded = NO;
+}
+16d6d3000 : Unable to determine asset audience from defaults. Assuming default audience for build in use
+16d6d3000 : [-[UMEventRecorder _recordEvent:getPowerLog:information:callback:]] (preflightWakeup) - {
+    AutoDownload = ON;
+    AutoUpdate = UNKNOWN;
+    MobileAssetAssetAudience = DefaultAssetAudienceForReleaseTypeuser;
+    UUID = "9E96F52F-EC34-41C2-8F27XXXX>>>>>4A39";
+    batteryIsCharging = 1;
+    batteryLevel = 13;
+    brainVersion = 23C55;
+    context = "SUS-2.0";
+    controllerVersion = "SUS-2.0";
+    currentBaseOSVersion = 22H123;
+    currentOSType = user;
+    currentOSVersion = 22H123;
+    currentProductVersionExtra = unknown;
+    dataFsCapacity = 115185;
+    dataFsFree = 93821;
+    deviceClass = iPhone;
+    deviceModel = D16AP;
+    eapfsMode = YES;
+    event = preflightWakeup;
+    eventTime = 1768856270461;
+    installTonight = "[LEGACY]false,autoOff,disabled,fg,toggleAIOn,toggleADOn,toggleAISDFOn,toggleAIRSROn";
+    mobileAssetsSpaceMB = 1491;
+    nonSnapshotApplySize = 400;
+    purgeableSpaceMB = 19094;
+    rapidSecurityResponseCombo = 0;
+    rapidSecurityResponseInstalled = false;
+    rapidSecurityResponseRollback = 0;
+    rapidSecurityResponseUpdate = 0;
+    reportVersion = 1;
+    result = success;
+    snapshotApplySize = 400;
+    snapshotPrepareSize = 2905;
+    storageCapacity = 122070;
+    systemFsCapacity = 6758;
+    systemFsFree = 0;
+    targetOSVersion = 23C55;
+    type = ota;
+    updateDownloaded = NO;
+    uptime = 215;
+}
+
+16d6d3000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16d6d3000 : Sending event to PowerLog: {
+    AutoDownload = ON;
+    AutoUpdate = UNKNOWN;
+    MobileAssetAssetAudience = DefaultAssetAudienceForReleaseTypeuser;
+    RequestUUID = "5AD244AF-B1AC-4817-B847XXXX>>>>>7279";
+    UUID = "9E96F52F-EC34-41C2-8F27XXXX>>>>>4A39";
+    batteryIsCharging = 1;
+    batteryLevel = 13;
+    brainVersion = 23C55;
+    context = "SUS-2.0";
+    controllerVersion = "SUS-2.0";
+    currentBaseOSVersion = 22H123;
+    currentOSType = user;
+    currentOSVersion = 22H123;
+    currentProductVersionExtra = unknown;
+    dataFsCapacity = 115185;
+    dataFsFree = 93821;
+    deviceClass = iPhone;
+    deviceModel = D16AP;
+    eapfsMode = YES;
+    event = 5;
+    eventTime = 1768856270461;
+    installTonight = "[LEGACY]false,autoOff,disabled,fg,toggleAIOn,toggleADOn,toggleAISDFOn,toggleAIRSROn";
+    mobileAssetsSpaceMB = 1491;
+    nonSnapshotApplySize = 400;
+    purgeableSpaceMB = 19094;
+    rapidSecurityResponseCombo = 0;
+    rapidSecurityResponseInstalled = false;
+    rapidSecurityResponseRollback = 0;
+    rapidSecurityResponseUpdate = 0;
+    reportVersion = 1;
+    result = success;
+    snapshotApplySize = 400;
+    snapshotPrepareSize = 2905;
+    storageCapacity = 122070;
+    systemFsCapacity = 6758;
+    systemFsFree = 0;
+    targetOSVersion = 23C55;
+    type = ota;
+    updateDownloaded = NO;
+    uptime = 215;
+}
+16d6d3000 : Running event handler at QoS 0x11
+16d6d3000 : XPC error: Connection invalid
+16d647000 : Running event handler at QoS 0x11
+16d647000 : callback replies expected
+16d647000 : Pre-SoftwareUpdate Asset Staging attempting to purge staged assets
+16d6d3000 : MSUAssetStager: Pre-SoftwareUpdate Asset Staging is supported in SUCore
+16d6d3000 : MSUAssetStager: Pre-SoftwareUpdate Asset Staging is disabled for the brain
+16d6d3000 : MSUAssetStager: Pre-SoftwareUpdate Asset Staging is not enabled for purging
+16d6d3000 : MSUAssetStager: Pre-SoftwareUpdate Asset Purging is disabled
+16d6d3000 : Pre-SoftwareUpdate Asset Staging done purging staged assets
+16d647000 : Pre-SoftwareUpdate Asset purge block retured in the expected time
+16d647000 : CacheDeleteCopyPurgeableSpaceWithInfo() => {
+    "CACHE_DELETE_AMOUNT" = 19986262483;
+    "CACHE_DELETE_FREESPACE" = 47841906688;
+    "CACHE_DELETE_NONPURGEABLE_AMOUNT" = 871035240;
+    "CACHE_DELETE_VOLUME" = "/private/var/mobile";
+}
+16d647000 : 'Primary' update in progress
+16d647000 : Legacy update path is allowed
+
+16d647000 : System is rooted from snapshot "com.apple.os.updateXXXX>>>>><<<<<<<<<<<<<<<<<<UDID>>>>>>>>>>>>>>>>>><<<<<MEID>>>>>59".
+16d647000 : cryptex size requirementXXXX>>>>>>64 (5704 MB)
+16d647000 : 
+cryptex_size_requirement_for_update_type(msu_update_type_snapshot):
+    16 MB update_attributes["CryptexSizeInfo"][0(cryptex-app)]["CryptexSize"] * 1.2
++ 5688 MB update_attributes["CryptexSizeInfo"][1(cryptex-system-arm64e)]["CryptexSize"] * 1.2
+------
+  5704 MB
+16d647000 : snapshot preparation size (mastered) XXXX>>>>>>63 (8928 MB)
+16d647000 : 
+get_snapshot_preparation_size():
+  3223 MB update_attributes["InstallationSize-Snapshot"] (string)
++ 5704 MB cryptex_size_requirement_for_update_type(msu_update_type_snapshot)
+------
+  8927 MB
+16d647000 : Sealing requires 221 MiB overhead
+16d647000 : Use of APFSIOC_GET_PREALLOCATE_MIN_SPACE is not expressly disallowed by asset attributes
+16d647000 : 221 MB reserve file will be needed (snapshot)
+16d647000 : preallocating a 221 MB reserve file will require an additional 140 MB of free space
+16d647000 : snapshot application size XXXX>>>>>>2 (761 MB)
+16d647000 : 
+get_snapshot_apply_and_reserve_sizes():
+  400 MB 2*UPDATE_PARTITION_SIZE + UPDATE_APFS_RESERVE
+  221 MB update_attributes["SystemVolumeSealingOverhead"]
++ 140 MB get_apfs_preallocate_min(221 MB)
+-----
+  761 MB
+16d647000 XXXX>>>>>>>>>>>>>>>>=10160268935 (9689 MB) freeSpace=47841906688 (45625 MB)
+16d647000 XXXX>>>>>>>>>>>>>>>>=10160268935 (9689 MB) freeSpace=47841906688 (45625 MB)
+16d647000 XXXX>>>>>>>>>>>>>>>>=10160268935 (9689 MB) freeSpace=47841906688 (45625 MB)
+16d647000 : CacheDeleteCopyPurgeableSpaceWithInfo() => {
+    "CACHE_DELETE_AMOUNT" = 19990105555;
+    "CACHE_DELETE_FREESPACE" = 47841902592;
+    "CACHE_DELETE_NONPURGEABLE_AMOUNT" = 871035240;
+    "CACHE_DELETE_VOLUME" = "/private/var/mobile";
+}
+16d647000 : purgeable bytes XXXX>>>>>>555 (19064 MB)
+16d647000 : available bytes XXXX>>>>>>592 (45625 MB)
+16d647000 : System should have enough space for snapshot preparation.
+16d647000 : Permanent update volume present..supportDir will be placed there
+16d647000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16d647000 : Permanent update volume present..supportDir will be placed there
+16d647000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16d647000 : Permanent update volume present..supportDir will be placed there
+16d647000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16d647000 : Device volumes usage stats (before any attempt to free space)
+16d647000 : System volume usage stats: / (Filesystem Type: apfs, Mount Point: com.apple.os.updateXXXX>>>>><<<<<<<<<<<<<<<<<<UDID>>>>>>>>>>>>>>>>>><<<<<MEID>>>>>59@/dev/disk1s1)
+16d647000 : - System volume sizeXXXX>>>>>>5792 (128 GB)
+16d647000 : - System volume used spaceXXXX>>>>>>592 (47.8 GB)
+16d647000 : - System volume free spaceXXXX>>>>>>592 (47.8 GB)
+16d647000 : - System volume available spaceXXXX>>>>>>00 (7.09 GB)
+16d647000 : Data volume usage stats: /private/var (Filesystem Type: apfs, Mount Point: /dev/disk1s2)
+16d647000 : - Data volume sizeXXXX>>>>>>5792 (128 GB)
+16d647000 : - Data volume used spaceXXXX>>>>>>592 (47.8 GB)
+16d647000 : - Data volume free spaceXXXX>>>>>>592 (47.8 GB)
+16d647000 : - Data volume available spaceXXXX>>>>>>848 (22.4 GB)
+16d647000 : Attempting to prepare with snapshot.
+16d647000 : Permanent update volume present..supportDir will be placed there
+16d647000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16d647000 : Permanent update volume present..supportDir will be placed there
+16d647000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16d647000 : Permanent update volume present..supportDir will be placed there
+16d647000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16d647000 : Permanent update volume present..supportDir will be placed there
+16d647000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16d647000 : Permanent update volume present..supportDir will be placed there
+16d647000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16d647000 : Attempting to gather analytics data for phase : Prepare
+16d647000 : add_persistent_target_volume_metrics: nothing to do.
+16d647000 : Additional analytics data is {
+}
+16d647000 : Pre-SoftwareUpdate Asset Staging: Scheduling Pre-SoftwareUpdate Asset staging for 30.000000 minutes
+16d647000 : MSUAssetStager: Pre-SoftwareUpdate Asset Staging is supported in SUCore
+16d647000 : MSUAssetStager: Pre-SoftwareUpdate Asset Staging is disabled for the brain
+16d647000 : MSUAssetStager: Pre-SoftwareUpdate Asset Staging is not enabled for downloads and staging
+16d647000 : Pre-SoftwareUpdate Asset Staging is not currently enabled
+16d647000 : Coordinated RecoveryOS updates are not supported in edt.
+16d647000 : Coordinated RecoveryOS updates are not supported.
+16d647000 : Unable to determine asset audience from defaults. Assuming default audience for build in use
+16d647000 : [-[UMEventRecorder _recordEvent:getPowerLog:information:callback:]] (prepareStarted) - {
+    MobileAssetAssetAudience = DefaultAssetAudienceForReleaseTypeuser;
+    UUID = "9E96F52F-EC34-41C2-8F27XXXX>>>>>4A39";
+    batteryIsCharging = 1;
+    batteryLevel = 22;
+    brainVersion = 23C55;
+    context = "SUS-2.0";
+    controllerVersion = "SUS-2.0";
+    currentBaseOSVersion = 22H123;
+    currentOSType = user;
+    currentOSVersion = 22H123;
+    currentProductVersionExtra = unknown;
+    dataFsCapacity = 115185;
+    dataFsFree = 93788;
+    deviceClass = iPhone;
+    deviceModel = D16AP;
+    eapfsMode = YES;
+    event = prepareStarted;
+    eventTime = 1768857377063;
+    installTonight = "[LEGACY]false,autoOff,disabled,fg,toggleAIOn,toggleADOn,toggleAISDFOn,toggleAIRSROn";
+    nonSnapshotApplySize = 400;
+    purgeableSpace = 19986;
+    rapidSecurityResponseCombo = 0;
+    rapidSecurityResponseInstalled = false;
+    rapidSecurityResponseRollback = 0;
+    rapidSecurityResponseUpdate = 0;
+    reportVersion = 1;
+    snapshotApplySize = 400;
+    snapshotPrepareSize = 2905;
+    snapshotUpdate = true;
+    storageCapacity = 122070;
+    systemFsCapacity = 6758;
+    systemFsFree = 0;
+    targetOSVersion = 23C55;
+    type = ota;
+    uptime = 1322;
+}
+
+16d647000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16d647000 : Sending event to PowerLog: {
+    MobileAssetAssetAudience = DefaultAssetAudienceForReleaseTypeuser;
+    RequestUUID = "CFE3DA7C-E58B-40A1-9917XXXX>>>>>4F98";
+    UUID = "9E96F52F-EC34-41C2-8F27XXXX>>>>>4A39";
+    batteryIsCharging = 1;
+    batteryLevel = 22;
+    brainVersion = 23C55;
+    context = "SUS-2.0";
+    controllerVersion = "SUS-2.0";
+    currentBaseOSVersion = 22H123;
+    currentOSType = user;
+    currentOSVersion = 22H123;
+    currentProductVersionExtra = unknown;
+    dataFsCapacity = 115185;
+    dataFsFree = 93788;
+    deviceClass = iPhone;
+    deviceModel = D16AP;
+    eapfsMode = YES;
+    event = 7;
+    eventTime = 1768857377063;
+    installTonight = "[LEGACY]false,autoOff,disabled,fg,toggleAIOn,toggleADOn,toggleAISDFOn,toggleAIRSROn";
+    nonSnapshotApplySize = 400;
+    purgeableSpace = 19986;
+    rapidSecurityResponseCombo = 0;
+    rapidSecurityResponseInstalled = false;
+    rapidSecurityResponseRollback = 0;
+    rapidSecurityResponseUpdate = 0;
+    reportVersion = 1;
+    snapshotApplySize = 400;
+    snapshotPrepareSize = 2905;
+    snapshotUpdate = true;
+    storageCapacity = 122070;
+    systemFsCapacity = 6758;
+    systemFsFree = 0;
+    targetOSVersion = 23C55;
+    type = ota;
+    uptime = 1322;
+}
+16d647000 : initializing new submission queue
+16d647000 : submitEventsInBackground running
+16d647000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16d647000 : -[UMEventRecorder submitEventsInBackground:withOptions:]_block_invoke: Previously submitted events will NOT BE resubmitted
+
+16d647000 : Found 2 unsubmitted events in update volume
+16d647000 : posting to https://xp.apple.com/report/2/psr_ota length = 2209
+16d647000 : data = {"clientId":"9E96F52F-EC34-41C2-8F27XXXX>>>>>4A39","events":[{"installTonight":"[LEGACY]false,autoOff,disabled,fg,toggleAIOn,toggleADOn,toggleAISDFOn,toggleAIRSROn","deviceModel":"D16AP","rapidSecurityResponseUpdate":false,"snapshotPrepareSize":2905,"batteryLevel":22,"batteryIsCharging":true,"context":"SUS-2.0","snapshotUpdate":"true","nonSnapshotApplySize":400,"eapfsMode":"YES","reportVersion":1,"eventTime":"1768857377063","currentBaseOSVersion":"22H123","MobileAssetAssetAudience":"DefaultAssetAudienceForReleaseTypeuser","currentOSVersion":"22H123","uptime":1322,"controllerVersion":"SUS-2.0","type":"ota","purgeableSpace":19986,"rapidSecurityResponseInstalled":"false","systemFsCapacity":6758,"storageCapacity":122070,"rapidSecurityResponseRollback":false,"snapshotApplySize":400,"UUID":"9E96F52F-EC34-41C2-8F27XXXX>>>>>4A39","systemFsFree":0,"currentProductVersionExtra":"unknown","targetOSVersion":"23C55","rapidSecurityResponseCombo":false,"brainVersion":"23C55","event":"prepareStarted","dataFsFree":93788,"currentOSType":"user","deviceClass":"iPhone","dataFsCapacity":115185},{"installTonight":"[LEGACY]false,autoOff,disabled,fg,toggleAIOn,toggleADOn,toggleAISDFOn,toggleAIRSROn","deviceModel":"D16AP","rapidSecurityResponseUpdate":false,"snapshotPrepareSize":2905,"batteryLevel":13,"batteryIsCharging":true,"context":"SUS-2.0","AutoUpdate":"UNKNOWN","nonSnapshotApplySize":400,"eventTime":"1768856270461","reportVersion":1,"currentBaseOSVersion":"22H123","eapfsMode":"YES","MobileAssetAssetAudience":"DefaultAssetAudienceForReleaseTypeuser","currentOSVersion":"22H123","uptime":215,"controllerVersion":"SUS-2.0","type":"ota","purgeableSpaceMB":19094,"mobileAssetsSpaceMB":1491,"rapidSecurityResponseInstalled":"false","systemFsCapacity":6758,"storageCapacity":122070,"rapidSecurityResponseRollback":false,"snapshotApplySize":400,"UUID":"9E96F52F-EC34-41C2-8F27XXXX>>>>>4A39","systemFsFree":0,"currentProductVersionExtra":"unknown","result":"success","targetOSVersion":"23C55","rapidSecurityResponseCombo":false,"brainVersion":"23C55","event":"preflightWakeup","dataFsFree":93821,"updateDownloaded":"NO","currentOSType":"user","AutoDownload":"ON","deviceClass":"iPhone","dataFsCapacity":115185}]}
+16d75f000 : session (null) didReceiveChallenge
+16d6d3000 : 2 events successfully submitted
+16d75f000 : session (null) became invalid: (null)
+16d647000 : MSU running in normal env
+16d647000 : MSUPrepareUpdate_server: [RebootBlock]: Setting up xpc activity to block mantainence reboots
+16d647000 : [RebootBlock]: Attempting to Block mantainence reboots
+16d647000 : Waiting for mantainenceReboot activity to get created
+16d647000 : MantainenceReboot activity was successfully created and stashed
+16d647000 : Preparing Update volume
+16d647000 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16d6d3000 : [RebootBlock]: Got XPC_ACTIVITY_STATE_CHECK_IN request for activity com.apple.MobileSoftwareUpdate.UpdateBrainService.MantainenceRebootBlockActivity and shouldBlock is YES
+16d6d3000 : [RebootBlock]: Successfully set criteria for activity com.apple.MobileSoftwareUpdate.UpdateBrainService.MantainenceRebootBlockActivity
+16d647000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16d647000 : entering _partition_probe_media_should_retry.
+16d647000 : APFS Container 'Container' /dev/disk0s1
+
+16d647000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16d647000 : found system volume not at disk0s1s1: System
+
+16d647000 : unexpected partition 'Hardware' - skipping
+16d647000 : not deleting existing update filesystem
+16d647000 : create_update_partition_folder_hierarchy: Creating folder hierarchy for update partition
+16d647000 : Creating hardware folder hierarchy
+
+16d647000 : Creating root folder
+16d647000 : Successfully created root Hardware folder. Proceeding to create the rest of the folder hierarchy
+16d647000 : Successfully created Battery under /private/var/MobileSoftwareUpdate//Hardware with permissions 0700 for user root
+16d647000 : create_update_partition_folder_hierarchy: Done creating folder hierarchy for update partition
+16d647000 : Forcibly purging any other updates before proceeding.
+16bd1f000 : msu_delete_nvram_variable_if_exists: NVRAM update-volume not found..Nothing to do
+
+16bd1f000 : msu_delete_nvram_variable_if_exists: NVRAM target-uuid not found..Nothing to do
+
+16bd1f000 : Purging any suspended/pended update...
+16bd1f000 : MSU running in normal env
+16bd1f000 : currentOSType indicated as nil. Overriding it to be BootedOSReleaseTypeUnknown
+16bd1f000 : Pallas is enabled
+16bd1f000 : SU configuration:
+ Asset Audience XXXX>>>>>>-6e8f-4908-b724XXXX>>>>>5e5c
+ SU Asset URL: https://mesu.apple.com/assets/
+ Brain URL: https://mesu.apple.com/assets/
+ Documentation URL: https://mesu.apple.com/assets/
+ WatchDocumentation URL: https://mesu.apple.com/assets/
+16bd1f000 : Dictionary is {
+    BootedOSAssetAudience = "01c1d682-6e8f-4908-b724XXXX>>>>>5e5c";
+    BootedOSBrainURL = "https://mesu.apple.com/assets/";
+    BootedOSDocumentationURL = "https://mesu.apple.com/assets/";
+    BootedOSLanguage = en;
+    BootedOSProductVersion = "18.7.2";
+    BootedOSSUAssetURL = "https://mesu.apple.com/assets/";
+    BootedOSType = BootedOSReleaseTypeUnknown;
+    BootedOSVersion = 22H123;
+    BootedOSWatchDocumentationURL = "https://mesu.apple.com/assets/";
+}
+16bd1f000 : Saving env data to /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+16bd1f000 : Updating file permissions
+16bd1f000 : fixup_permissions_for_bootedos_state_file: Successfully fixed up permissions for /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+16bd1f000 : entering ramrod_execute_command_with_config: /sbin/mount
+
+16bd1f000 : executing /sbin/mount
+16bd1f000 :  -u
+16bd1f000 :  -w
+16bd1f000 :  /dev/disk1s6
+16bd1f000 :  /private/preboot
+16bd1f000 : 
+
+16bd1f000 : waiting for child to exit
+
+16bd1f000 : child exited
+
+16bd1f000 : exit status: 0
+
+16bd1f000 : Changed permissions on /dev/disk1s6 mounted at /private/preboot to readwrite
+
+16bd1f000 : ramrod_splat_cleanup: Cleaning up proposed directory in preboot
+
+16bd1f000 : Not resetting APFS free blocks threshold
+16bd1f000 : Cleaning up unused prepared updates
+16bd1f000 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16bd1f000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16bd1f000 : entering _partition_probe_media_should_retry.
+16bd1f000 : APFS Container 'Container' /dev/disk0s1
+
+16bd1f000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16bd1f000 : found system volume not at disk0s1s1: System
+
+16bd1f000 : unexpected partition 'Hardware' - skipping
+16bd1f000 : not deleting existing update filesystem
+16bd1f000 : create_update_partition_folder_hierarchy: Creating folder hierarchy for update partition
+16bd1f000 : Creating hardware folder hierarchy
+
+16bd1f000 : Creating root folder
+16bd1f000 : Successfully created root Hardware folder. Proceeding to create the rest of the folder hierarchy
+16bd1f000 : Successfully created Battery under /private/var/MobileSoftwareUpdate//Hardware with permissions 0700 for user root
+16bd1f000 : create_update_partition_folder_hierarchy: Done creating folder hierarchy for update partition
+16bd1f000 : msu_delete_nvram_variable_if_exists: NVRAM target-uuid not found..Nothing to do
+
+16bd1f000 : entering mount_update_partition_if_exists
+
+16bd1f000 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16bd1f000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16bd1f000 : entering _partition_probe_media_should_retry.
+16bd1f000 : APFS Container 'Container' /dev/disk0s1
+
+16bd1f000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16bd1f000 : found system volume not at disk0s1s1: System
+
+16bd1f000 : unexpected partition 'Hardware' - skipping
+16bd1f000 : Update partition is already mounted
+
+16bd1f000 : _migrate_ramdisk_logs: No ramdisk created CrashReporter dir found
+16bd1f000 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16bd1f000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16bd1f000 : entering _partition_probe_media_should_retry.
+16bd1f000 : APFS Container 'Container' /dev/disk0s1
+
+16bd1f000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16bd1f000 : found system volume not at disk0s1s1: System
+
+16bd1f000 : unexpected partition 'Hardware' - skipping
+16bd1f000 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16bd1f000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16bd1f000 : entering _partition_probe_media_should_retry.
+16bd1f000 : APFS Container 'Container' /dev/disk0s1
+
+16bd1f000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16bd1f000 : found system volume not at disk0s1s1: System
+
+16bd1f000 : unexpected partition 'Hardware' - skipping
+16bd1f000 : entering ramrod_execute_command_with_config: /sbin/mount
+
+16bd1f000 : executing /sbin/mount
+16bd1f000 :  -t
+16bd1f000 :  apfs
+16bd1f000 :  -o
+16bd1f000 :  nobrowse
+16bd1f000 :  /dev/disk1s1
+16bd1f000 :  /private/var/MobileSoftwareUpdate/mnt1
+16bd1f000 : 
+
+16bd1f000 : waiting for child to exit
+
+16bd1f000 : child exited
+
+16bd1f000 : exit status: 0
+
+16bd1f000 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16bd1f000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16bd1f000 : entering _partition_probe_media_should_retry.
+16bd1f000 : APFS Container 'Container' /dev/disk0s1
+
+16bd1f000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16bd1f000 : found system volume not at disk0s1s1: System
+
+16bd1f000 : unexpected partition 'Hardware' - skipping
+16bd1f000 : reverting system volume to snapshot com.apple.os.updateXXXX>>>>><<<<<<<<<<<<<<<<<<UDID>>>>>>>>>>>>>>>>>><<<<<MEID>>>>>59 succeeded. remounting...
+16bd1f000 : file system at /private/var/MobileSoftwareUpdate/mnt1 successfully unmounted
+16bd1f000 : entering ramrod_execute_command_with_config: /sbin/mount
+
+16bd1f000 : executing /sbin/mount
+16bd1f000 :  -t
+16bd1f000 :  apfs
+16bd1f000 :  -o
+16bd1f000 :  nobrowse
+16bd1f000 :  /dev/disk1s1
+16bd1f000 :  /private/var/MobileSoftwareUpdate/mnt1
+16bd1f000 : 
+
+16bd1f000 : waiting for child to exit
+
+16bd1f000 : child exited
+
+16bd1f000 : exit status: 0
+
+16bd1f000 : mounting system volume read/write at /private/var/MobileSoftwareUpdate/mnt1 succeeded.
+16bd1f000 : Skipping snapshot com.apple.os.updateXXXX>>>>><<<<<<<<<<<<<<<<<<UDID>>>>>>>>>>>>>>>>>><<<<<MEID>>>>>59
+16d647000 : Creating new SoftwareUpdate context.
+16d647000 : Skip sealing flag is set. System may not boot after update.
+16d647000 : Using bootedOS version for context: 22H123
+16d647000 : built Nov 18 2025 21:39:56.
+16d647000 : Checking the paths provided to the update tool
+16d647000 : Package version "3.0"
+16d647000 : Preparation will patch to a snapshot
+16d647000 : Package updates (ANY)->23C55
+16d647000 : ctx->original_package_path=/private/var/MobileSoftwareUpdate/MobileAsset/AssetsV2/com_apple_MobileAsset_SoftwareUpdate/<<<<<<<<<<<<<<<<<<UDID>>>>>>>>>>>>>>>>>>.asset/AssetData
+16d647000 : ctx->package_path=/private/var/MobileSoftwareUpdate/softwareupdate.462.c9ZhlN/source/
+16d647000 : ctx->boot_path=/private/var/MobileSoftwareUpdate/softwareupdate.462.c9ZhlN/target/boot/
+16d647000 : ctx->splat_original_package_path=
+16d647000 : ctx->splat_package_path=/private/var/MobileSoftwareUpdate/softwareupdate.462.c9ZhlN/source/
+16d647000 : ctx->splat_preflight_bundle_path=
+16d647000 : ctx->splat_preflight_boot_path=
+16d647000 : ctx->splat_boot_path=/private/var/MobileSoftwareUpdate/softwareupdate.462.c9ZhlN/target/boot/
+16d647000 : Unable to determine userID
+16d647000 : MSU running in normal env
+16d647000 : entering ramrod_probe_media_internal
+
+16d647000 : entering wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16d647000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16d647000 : device partitioning scheme is GPT
+
+16d647000 : APFS Container 'Container' /dev/disk0s1
+
+16d647000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16d647000 : device is APFS formatted
+
+16d647000 : found system volume not at /dev/disk0s1s1: System
+
+16d647000 : Captured preboot partition on main OS container 2
+
+16d647000 : entering ramrod_execute_command_with_config: /sbin/mount
+
+16d647000 : executing /sbin/mount
+16d647000 :  -u
+16d647000 :  -w
+16d647000 :  /dev/disk1s6
+16d647000 :  /private/preboot
+16d647000 : 
+
+16d647000 : waiting for child to exit
+
+16d647000 : child exited
+
+16d647000 : exit status: 0
+
+16d647000 : Changed permissions on /dev/disk1s6 mounted at /private/preboot to readwrite
+
+16d647000 : Set ctx->personalized_on_preboot = 1
+16d647000 : MSUDiskUsageMonitor: Start monitoring
+16d647000 : Current OS version: 22H123
+16d647000 : Verifying package signature: /private/var/MobileSoftwareUpdate/softwareupdate.462.c9ZhlN/source/
+16d647000 : Could not verify trust (5) using MobileSoftwareUpdate policy. Will try basic X509.
+16d647000 : (Calculating) Verifying the package contents: /private/var/MobileSoftwareUpdate/softwareupdate.462.c9ZhlN/source/
+16d647000 : (Calculating) Verifying with the post.bom
+16d647000 : VERIFY_START
+16d647000 : Verifying the package contents: /private/var/MobileSoftwareUpdate/softwareupdate.462.c9ZhlN/source/
+16d647000 : checked variant for D16AP: Customer Software Update (selected)
+16d647000 : selected variant for D16AP: Customer Software Update
+16d647000 : Unarchiving prepare files in parallel...
+16d647000 : rootB_path=/private/var/MobileSoftwareUpdate/softwareupdate.462.c9ZhlN/target/root/
+16d647000 : payload_path=/private/var/MobileSoftwareUpdate/softwareupdate.462.c9ZhlN/source/payloadv2/
+16d647000 : .rejectedPatches = (
+)
+16d647000 : Entering _stage_splat_boot_objects_in_preboot (keepAssets = 0, splatCombo = 0)
+16d647000 : _copy_device_identity_static_info: Attempting to read device identity info
+
+16d647000 : _copy_device_identity_static_info: image4CryptoHashMethod: sha2-384
+16d647000 : Need to entangle the nonce with UID 1. Aborting because we don't know how to do that yet.
+16d647000 : Retrieved APNonce (without regeneration) was NULL.
+16d647000 : ApNonce (retrieved): (null)
+16d647000 : Successfully copied device Identity
+
+16d647000 : DeviceInfo:
+BoardID: 8
+ChipID: 33040
+
+16d647000 : DeviceInfo:
+BoardID: 8
+ChipID: 33040
+APSecurityMode:1
+
+16d647000 : [Info]      amai: AMAuthInstallBundleCopyBuildIdentityForVariant: searching for variant Customer Software Update (0 recovery)
+16d647000 : [Warning]   amai: AMAuthInstallBundleCopyBuildIdentityForVariant: AMAuthInstallBundleCopyBuildIdentityForVariant: Found variant: Customer Software Update
+16d647000 : Set ctx->splat_enabled: true
+16d647000 : entering ramrod_execute_command_with_config: /sbin/mount
+
+16d647000 : executing /sbin/mount
+16d647000 :  -u
+16d647000 :  -w
+16d647000 :  /dev/disk1s6
+16d647000 :  /private/preboot
+16d647000 : 
+
+16d647000 : waiting for child to exit
+
+16d647000 : child exited
+
+16d647000 : exit status: 0
+
+16d647000 : Changed permissions on /dev/disk1s6 mounted at /private/preboot to readwrite
+
+16d647000 : Creating directory at /private/preboot/cryptex1/proposed
+
+16d647000 : ramrod_splat_install: Installing Cryptex1,SystemOS -> /private/preboot/cryptex1/proposed/os.dmg
+
+16d647000 : Assets directory: /private/var/MobileSoftwareUpdate/softwareupdate.462.c9ZhlN/source/payloadv2/
+16d647000 : Patching (forward) cryptex-system-arm64e: (null) -> /private/preboot/cryptex1/proposed/os.dmg (keep: 0)
+16d647000 : Cryptex patch progress: 0%
+16d647000 : Cryptex patch progress: 1%
+16d647000 : Cryptex patch progress: 2%
+16d647000 : Cryptex patch progress: 3%
+16d647000 : Cryptex patch progress: 4%
+16d647000 : Cryptex patch progress: 5%
+16d647000 : Cryptex patch progress: 6%
+16d647000 : Cryptex patch progress: 7%
+16d647000 : Cryptex patch progress: 8%
+16d647000 : Cryptex patch progress: 9%
+16d647000 : Cryptex patch progress: 10%
+16d647000 : Cryptex patch progress: 11%
+16d647000 : Cryptex patch progress: 12%
+16d647000 : Cryptex patch progress: 13%
+16d647000 : Cryptex patch progress: 14%
+16d647000 : Cryptex patch progress: 15%
+16d647000 : Cryptex patch progress: 16%
+16d647000 : Cryptex patch progress: 17%
+16d647000 : Cryptex patch progress: 18%
+16d647000 : Cryptex patch progress: 19%
+16d647000 : Cryptex patch progress: 20%
+16d647000 : Cryptex patch progress: 21%
+16d647000 : Cryptex patch progress: 22%
+16d647000 : Cryptex patch progress: 23%
+16d647000 : Cryptex patch progress: 24%
+16d647000 : Cryptex patch progress: 25%
+16d647000 : Cryptex patch progress: 26%
+16d647000 : Cryptex patch progress: 27%
+16d647000 : Cryptex patch progress: 28%
+16d647000 : Cryptex patch progress: 29%
+16d647000 : Cryptex patch progress: 30%
+16d647000 : Cryptex patch progress: 31%
+16d647000 : Cryptex patch progress: 32%
+16d647000 : Cryptex patch progress: 33%
+16d647000 : Cryptex patch progress: 34%
+16d647000 : Cryptex patch progress: 35%
+16d647000 : Cryptex patch progress: 36%
+16d647000 : Cryptex patch progress: 37%
+16d647000 : Cryptex patch progress: 38%
+16d647000 : Cryptex patch progress: 39%
+16d647000 : Cryptex patch progress: 40%
+16d647000 : Cryptex patch progress: 41%
+16d647000 : Cryptex patch progress: 42%
+16d647000 : Cryptex patch progress: 43%
+16d647000 : Cryptex patch progress: 44%
+16d647000 : Cryptex patch progress: 45%
+16d647000 : Cryptex patch progress: 46%
+16d647000 : Cryptex patch progress: 47%
+16d647000 : Cryptex patch progress: 48%
+16d647000 : Cryptex patch progress: 49%
+16d647000 : Cryptex patch progress: 50%
+16d647000 : Cryptex patch progress: 51%
+16d647000 : Cryptex patch progress: 52%
+16d647000 : Cryptex patch progress: 53%
+16d647000 : Cryptex patch progress: 54%
+16d647000 : Cryptex patch progress: 55%
+16d647000 : Cryptex patch progress: 56%
+16d647000 : Cryptex patch progress: 57%
+16d647000 : Cryptex patch progress: 58%
+16d647000 : Cryptex patch progress: 59%
+16d647000 : Cryptex patch progress: 60%
+16d647000 : Cryptex patch progress: 61%
+16d647000 : Cryptex patch progress: 62%
+16d647000 : Cryptex patch progress: 63%
+16d647000 : Cryptex patch progress: 64%
+16d647000 : Cryptex patch progress: 65%
+16d647000 : Cryptex patch progress: 66%
+16d647000 : Cryptex patch progress: 67%
+16d647000 : Cryptex patch progress: 68%
+16d647000 : Cryptex patch progress: 69%
+16d647000 : Cryptex patch progress: 70%
+16d647000 : Cryptex patch progress: 71%
+16d647000 : Cryptex patch progress: 72%
+16d647000 : Cryptex patch progress: 73%
+16d647000 : Cryptex patch progress: 74%
+16d647000 : Cryptex patch progress: 75%
+16d647000 : Cryptex patch progress: 76%
+16d647000 : Cryptex patch progress: 77%
+16d647000 : Cryptex patch progress: 78%
+16d647000 : Cryptex patch progress: 79%
+16d647000 : Cryptex patch progress: 80%
+16d647000 : Cryptex patch progress: 81%
+16d647000 : Cryptex patch progress: 82%
+16d647000 : Cryptex patch progress: 83%
+16d647000 : Cryptex patch progress: 84%
+16d647000 : Cryptex patch progress: 85%
+16d647000 : Cryptex patch progress: 86%
+16d647000 : Cryptex patch progress: 87%
+16d647000 : Cryptex patch progress: 88%
+16d647000 : Cryptex patch progress: 89%
+16d647000 : Cryptex patch progress: 90%
+16d647000 : Cryptex patch progress: 91%
+16d647000 : Cryptex patch progress: 92%
+16d647000 : Cryptex patch progress: 93%
+16d647000 : Cryptex patch progress: 94%
+16d647000 : Cryptex patch progress: 95%
+16d647000 : Cryptex patch progress: 96%
+16d647000 : Cryptex patch progress: 97%
+16d647000 : Cryptex patch progress: 98%
+16d647000 : Cryptex patch progress: 99%
+16d647000 : Cryptex patch progress: 100%
+16d647000 : ramrod_splat_install: Installing Cryptex1,SystemVolume -> /private/preboot/cryptex1/proposed/os.dmg.root_hash
+
+16d647000 : Copying /private/var/MobileSoftwareUpdate/softwareupdate.462.c9ZhlN/source/boot/Firmware/043-88212-072.dmg.root_hash
+16d647000 : ramrod_splat_install: Installing Cryptex1,SystemTrustCache -> /private/preboot/cryptex1/proposed/os.dmg.trustcache
+
+16d647000 : Copying /private/var/MobileSoftwareUpdate/softwareupdate.462.c9ZhlN/source/boot/Firmware/043-88212-072.dmg.trustcache
+16d647000 : ramrod_splat_install: Installing Cryptex1,AppOS -> /private/preboot/cryptex1/proposed/app.dmg
+
+16d647000 : Assets directory: /private/var/MobileSoftwareUpdate/softwareupdate.462.c9ZhlN/source/payloadv2/
+16d647000 : Patching (forward) cryptex-app: (null) -> /private/preboot/cryptex1/proposed/app.dmg (keep: 0)
+16d647000 : Cryptex patch progress: 0%
+16d647000 : Cryptex patch progress: 1%
+16d647000 : Cryptex patch progress: 2%
+16d647000 : Cryptex patch progress: 3%
+16d647000 : Cryptex patch progress: 5%
+16d647000 : Cryptex patch progress: 6%
+16d647000 : Cryptex patch progress: 7%
+16d647000 : Cryptex patch progress: 8%
+16d647000 : Cryptex patch progress: 9%
+16d647000 : Cryptex patch progress: 10%
+16d647000 : Cryptex patch progress: 11%
+16d647000 : Cryptex patch progress: 13%
+16d647000 : Cryptex patch progress: 14%
+16d647000 : Cryptex patch progress: 15%
+16d647000 : Cryptex patch progress: 16%
+16d647000 : Cryptex patch progress: 17%
+16d647000 : Cryptex patch progress: 18%
+16d647000 : Cryptex patch progress: 20%
+16d647000 : Cryptex patch progress: 21%
+16d647000 : Cryptex patch progress: 22%
+16d647000 : Cryptex patch progress: 23%
+16d647000 : Cryptex patch progress: 24%
+16d647000 : Cryptex patch progress: 25%
+16d647000 : Cryptex patch progress: 26%
+16d647000 : Cryptex patch progress: 28%
+16d647000 : Cryptex patch progress: 29%
+16d647000 : Cryptex patch progress: 30%
+16d647000 : Cryptex patch progress: 31%
+16d647000 : Cryptex patch progress: 32%
+16d647000 : Cryptex patch progress: 33%
+16d647000 : Cryptex patch progress: 35%
+16d647000 : Cryptex patch progress: 36%
+16d647000 : Cryptex patch progress: 37%
+16d647000 : Cryptex patch progress: 38%
+16d647000 : Cryptex patch progress: 39%
+16d647000 : Cryptex patch progress: 40%
+16d647000 : Cryptex patch progress: 41%
+16d647000 : Cryptex patch progress: 43%
+16d647000 : Cryptex patch progress: 44%
+16d647000 : Cryptex patch progress: 45%
+16d647000 : Cryptex patch progress: 46%
+16d647000 : Cryptex patch progress: 47%
+16d647000 : Cryptex patch progress: 48%
+16d647000 : Cryptex patch progress: 50%
+16d647000 : Cryptex patch progress: 51%
+16d647000 : Cryptex patch progress: 52%
+16d647000 : Cryptex patch progress: 53%
+16d647000 : Cryptex patch progress: 54%
+16d647000 : Cryptex patch progress: 55%
+16d647000 : Cryptex patch progress: 56%
+16d647000 : Cryptex patch progress: 58%
+16d647000 : Cryptex patch progress: 59%
+16d647000 : Cryptex patch progress: 60%
+16d647000 : Cryptex patch progress: 61%
+16d647000 : Cryptex patch progress: 62%
+16d647000 : Cryptex patch progress: 63%
+16d647000 : Cryptex patch progress: 65%
+16d647000 : Cryptex patch progress: 66%
+16d647000 : Cryptex patch progress: 67%
+16d647000 : Cryptex patch progress: 68%
+16d647000 : Cryptex patch progress: 69%
+16d647000 : Cryptex patch progress: 70%
+16d647000 : Cryptex patch progress: 71%
+16d647000 : Cryptex patch progress: 73%
+16d647000 : Cryptex patch progress: 74%
+16d647000 : Cryptex patch progress: 75%
+16d647000 : Cryptex patch progress: 76%
+16d647000 : Cryptex patch progress: 77%
+16d647000 : Cryptex patch progress: 78%
+16d647000 : Cryptex patch progress: 80%
+16d647000 : Cryptex patch progress: 81%
+16d647000 : Cryptex patch progress: 82%
+16d647000 : Cryptex patch progress: 83%
+16d647000 : Cryptex patch progress: 84%
+16d647000 : Cryptex patch progress: 85%
+16d647000 : Cryptex patch progress: 86%
+16d647000 : Cryptex patch progress: 88%
+16d647000 : Cryptex patch progress: 89%
+16d647000 : Cryptex patch progress: 90%
+16d647000 : Cryptex patch progress: 91%
+16d647000 : Cryptex patch progress: 92%
+16d647000 : Cryptex patch progress: 93%
+16d647000 : Cryptex patch progress: 95%
+16d647000 : Cryptex patch progress: 96%
+16d647000 : Cryptex patch progress: 97%
+16d647000 : Cryptex patch progress: 98%
+16d647000 : Cryptex patch progress: 99%
+16d647000 : Cryptex patch progress: 100%
+16d647000 : ramrod_splat_install: Installing Cryptex1,AppVolume -> /private/preboot/cryptex1/proposed/app.dmg.root_hash
+
+16d647000 : Copying /private/var/MobileSoftwareUpdate/softwareupdate.462.c9ZhlN/source/boot/Firmware/043-87832-076.dmg.root_hash
+16d647000 : ramrod_splat_install: Installing Cryptex1,AppTrustCache -> /private/preboot/cryptex1/proposed/app.dmg.trustcache
+
+16d647000 : Copying /private/var/MobileSoftwareUpdate/softwareupdate.462.c9ZhlN/source/boot/Firmware/043-87832-076.dmg.trustcache
+16d647000 : ramrod_splat_install: Installing restore version plist -> /private/preboot/cryptex1/proposed/RestoreVersion.plist
+
+16d647000 : Copying /private/var/MobileSoftwareUpdate/softwareupdate.462.c9ZhlN/source/boot/RestoreVersion.plist
+16d647000 : ramrod_splat_install: Installing system version plist -> /private/preboot/cryptex1/proposed/SystemVersion.plist
+
+16d647000 : Copying /private/var/MobileSoftwareUpdate/softwareupdate.462.c9ZhlN/source/boot/SystemVersion.plist
+16d647000 : ramrod_splat_install: Installing build manifest plist -> /private/preboot/cryptex1/proposed/BuildManifest.plist
+
+16d647000 : Copying /private/var/MobileSoftwareUpdate/softwareupdate.462.c9ZhlN/source/boot/BuildManifest.plist
+16d647000 : No personalized manifests to install.
+16d647000 : Waiting for RecoveryOS update
+16d647000 : RecoveryOS updates are not supported, not waiting
+16d647000 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16d647000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16d647000 : entering _partition_probe_media_should_retry.
+16d647000 : APFS Container 'Container' /dev/disk0s1
+
+16d647000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16d647000 : found system volume not at disk0s1s1: System
+
+16d647000 : unexpected partition 'Hardware' - skipping
+16d647000 : entering ramrod_execute_command_with_config: /sbin/mount
+
+16d647000 : executing /sbin/mount
+16d647000 :  -t
+16d647000 :  apfs
+16d647000 :  -o
+16d647000 :  nobrowse
+16d647000 :  /dev/disk1s1
+16d647000 :  /private/var/MobileSoftwareUpdate/mnt1
+16d647000 : 
+
+16d647000 : waiting for child to exit
+
+16d647000 : child exited
+
+16d647000 : exit status: 0
+
+16d647000 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16d647000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16d647000 : entering _partition_probe_media_should_retry.
+16d647000 : APFS Container 'Container' /dev/disk0s1
+
+16d647000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16d647000 : found system volume not at disk0s1s1: System
+
+16d647000 : unexpected partition 'Hardware' - skipping
+16d647000 : mounting system volume read/write at /private/var/MobileSoftwareUpdate/mnt1 succeeded.
+16d647000 : [prepare_system_for_writing] waiting for snapshot deletion before deleting unused snapshots
+16d647000 : [prepare_system_for_writing][pre-delete] done with wait for snapshot deletion
+16d647000 : Skipping un-deleteable snapshot com.apple.os.updateXXXX>>>>><<<<<<<<<<<<<<<<<<UDID>>>>>>>>>>>>>>>>>><<<<<MEID>>>>>59: Resource busy
+16d647000 : [prepare_system_for_writing] waiting for snapshot deletion after deleting unused snapshots
+16d647000 : [prepare_system_for_writing] done with snapshot deletion
+16d647000 : Adding relative path to prepared set: ./usr/standalone/update/all_flash/batterycharging1@2340~iphone.im4p
+16d647000 : Adding relative path to prepared set: ./usr/standalone/update/all_flash/applelogo@2340~iphone.im4p
+16d647000 : Adding relative path to prepared set: ./usr/standalone/update/ramdisk/arm64eSURamDisk.dmg
+16d647000 : Adding relative path to prepared set: ./usr/standalone/update/all_flash/batterycharging0@2340~iphone.im4p
+16d647000 : Adding relative path to prepared set: ./usr/standalone/update/Mav21.Release.bbfw
+16d647000 : Adding relative path to prepared set: ./usr/standalone/update/all_flash/batterylow1@2340~iphone.im4p
+16d647000 : Adding relative path to prepared set: ./usr/standalone/update/all_flash/batteryfull@2340~iphone.im4p
+16d647000 : Adding relative path to prepared set: ./usr/standalone/update/all_flash/glyphplugin@2340~iphone-lightning.im4p
+16d647000 : Adding relative path to prepared set: ./usr/standalone/update/all_flash/batterylow0@2340~iphone.im4p
+16d647000 : Adding relative path to prepared set: ./usr/standalone/update/all_flash/recoverymode@2340~iphone-lightning.im4p
+16d647000 : Deleting contents of /private/var/MobileSoftwareUpdate/mnt1...
+16d647000 : Deleting contents of /private/var/MobileSoftwareUpdate/mnt1 succeeded (result: 0).
+16d647000 : Unarchiving files in parallel...
+16d647000 : Progress starting...
+16d647000 : percent 0%
+16d647000 : percent 1%
+16d647000 : percent 2%
+16d647000 : percent 3%
+16d647000 : percent 4%
+16d647000 : percent 5%
+16d647000 : percent 6%
+16d647000 : percent 7%
+16d647000 : percent 8%
+16d647000 : percent 9%
+16d647000 : percent 10%
+16d647000 : percent 11%
+16d647000 : percent 12%
+16d647000 : percent 13%
+16d647000 : percent 14%
+16d647000 : percent 15%
+16d647000 : percent 16%
+16d647000 : percent 17%
+16d647000 : percent 18%
+16d647000 : percent 19%
+16d647000 : percent 20%
+16d647000 : percent 21%
+16d647000 : percent 22%
+16d647000 : percent 23%
+16d647000 : percent 24%
+16d647000 : percent 25%
+16d647000 : percent 26%
+16d647000 : percent 27%
+16d647000 : percent 28%
+16d647000 : percent 29%
+16d647000 : percent 30%
+16d647000 : percent 31%
+16d647000 : percent 32%
+16d647000 : percent 33%
+16d647000 : percent 34%
+16d647000 : percent 35%
+16d647000 : percent 36%
+16d647000 : percent 37%
+16d647000 : percent 38%
+16d647000 : percent 39%
+16d647000 : percent 40%
+16d647000 : percent 41%
+16d647000 : percent 42%
+16d647000 : percent 43%
+16d647000 : percent 44%
+16d647000 : percent 45%
+16d647000 : percent 46%
+16d647000 : percent 47%
+16d647000 : percent 48%
+16d647000 : percent 49%
+16d647000 : percent 50%
+16d647000 : percent 51%
+16d647000 : percent 52%
+16d647000 : percent 53%
+16d647000 : percent 54%
+16d647000 : percent 55%
+16d647000 : percent 56%
+16d647000 : percent 57%
+16d647000 : percent 58%
+16d647000 : percent 59%
+16d647000 : percent 60%
+16d647000 : percent 61%
+16d647000 : percent 62%
+16d647000 : percent 63%
+16d647000 : percent 64%
+16d647000 : percent 65%
+16d647000 : percent 66%
+16d647000 : percent 67%
+16d647000 : percent 68%
+16d647000 : percent 69%
+16d647000 : percent 70%
+16d647000 : percent 71%
+16d647000 : percent 72%
+16d647000 : percent 73%
+16d647000 : percent 74%
+16d647000 : percent 75%
+16d647000 : percent 76%
+16d647000 : percent 77%
+16d647000 : percent 78%
+16d647000 : percent 79%
+16d647000 : percent 80%
+16d647000 : percent 81%
+16d647000 : percent 82%
+16d647000 : percent 83%
+16d647000 : percent 84%
+16d647000 : percent 85%
+16d647000 : percent 86%
+16d647000 : percent 87%
+16d647000 : percent 88%
+16d647000 : percent 89%
+16d647000 : percent 90%
+16d647000 : percent 91%
+16d647000 : percent 92%
+16d647000 : percent 93%
+16d647000 : percent 94%
+16d647000 : percent 95%
+16d647000 : percent 96%
+16d647000 : percent 97%
+16d647000 : percent 98%
+16d6d3000 : Purge update service connection handler: <dictionary: 0x2851166b0> { count = 1, transaction: 0, voucher = 0x0, contents =
+	"XPCErrorDescription" => <string: 0x285116830> { length = 22, contents = "Connection interrupted" }
+}
+1f4af0200 XXXX>>>>>>>>>>>>>>>> main() started
+1f4af0200 : Enabling vnode rapid aging
+1f4af0200 : Successfully enabled rapid vnode aging
+
+1f4af0200 : process_update_result_state: Boot UUID is different - 1st run after reboot
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-uuid not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-result not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-failure-reason not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-breadcrumbs not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-submission-url not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-os-version not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-context not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-original-os-version not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-install-tonight not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-brain-version not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-initial-forced-reset-uptime not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-forced-reset-uptime not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-original-base-os-version not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-controllerVersion not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ramrod-nvram-sequence not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ramrod-nvram-session not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ramrod-nvram-shadow-path not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-pre-conversion not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-post-conversion not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-conv-panic-indicator not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-fsck-metrics not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-sealvolume-metrics not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-migrator-metrics not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-converter-metrics not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-enabled not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-snapshot-update not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM pre-recovery-ota-failure-uuid not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM recoveryos-initiated-update not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM upgrade-fallback-boot-command not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM boot-fail-count not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM restore-step-names not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-outcome not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-step-external-power not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM restore-retry-warnings not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-child-failures not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-step-names not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-step-user-progress not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-user-progress not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-reboot-retry-zone not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-failure-reason not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM restore-retry-codes not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-step-error not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-ids not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-domains not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-warnings not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-results not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-step-battery-level not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM restore-perform-shutdown not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-monitor not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM restore-child-failures not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-perform-shutdown not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM restore-step-results not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM restore-step-error not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-battery-level not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM restore-step-monitor not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM restore-anomalies not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM restore-reboot-retry-enabled not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM restore-outcome not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM restore-retry-error not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-step-uptime not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM restore-step-domains not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM restore-reboot-retry-zone not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM restore-retry-domains not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-breadcrumbs not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM restore-retry-names not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-codes not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM restore-step-warnings not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-step-domains not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-initial-failure-reason not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-step-results not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-names not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM restore-step-codes not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-reboot-retry-enabled not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM restore-retry-ids not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM restore-step-ids not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-step-monitor not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-error not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-step-codes not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-external-power not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-result not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM restore-retry-monitor not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-uptime not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-initial-result not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-initial-breadcrumbs not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-step-warnings not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-anomalies not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM restore-retry-results not found..Nothing to do
+
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM ota-step-ids not found..Nothing to do
+
+16f8b3000 : Cleaning up unused prepared updates
+16f8b3000 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16f8b3000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16f8b3000 : entering _partition_probe_media_should_retry.
+16f8b3000 : APFS Container 'Container' /dev/disk0s1
+
+16f8b3000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16f8b3000 : found system volume not at disk0s1s1: System
+
+16f8b3000 : unexpected partition 'Hardware' - skipping
+16f8b3000 : not deleting existing update filesystem
+16f8b3000 : create_update_partition_folder_hierarchy: Creating folder hierarchy for update partition
+16f8b3000 : Creating hardware folder hierarchy
+
+16f8b3000 : Creating root folder
+16f8b3000 : Successfully created root Hardware folder. Proceeding to create the rest of the folder hierarchy
+16f8b3000 : Successfully created Battery under /private/var/MobileSoftwareUpdate//Hardware with permissions 0700 for user root
+16f8b3000 : create_update_partition_folder_hierarchy: Done creating folder hierarchy for update partition
+16f8b3000 : entering ramrod_probe_media_internal
+
+16f8b3000 : entering wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16f8b3000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16f8b3000 : device partitioning scheme is GPT
+
+16f8b3000 : APFS Container 'Container' /dev/disk0s1
+
+16f8b3000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16f8b3000 : device is APFS formatted
+
+16f8b3000 : found system volume not at /dev/disk0s1s1: System
+
+16f8b3000 : Captured preboot partition on main OS container 2
+
+16f8b3000 : Removing update at /private/var/MobileSoftwareUpdate/softwareupdate.462.c9ZhlN
+16f8b3000 : msu_delete_nvram_variable_if_exists: NVRAM target-uuid not found..Nothing to do
+
+16f8b3000 : entering mount_update_partition_if_exists
+
+16f8b3000 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16f8b3000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16f8b3000 : entering _partition_probe_media_should_retry.
+16f8b3000 : APFS Container 'Container' /dev/disk0s1
+
+16f8b3000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16f8b3000 : found system volume not at disk0s1s1: System
+
+16f8b3000 : unexpected partition 'Hardware' - skipping
+16f8b3000 : Update partition is already mounted
+
+16f8b3000 : _migrate_ramdisk_logs: No ramdisk created CrashReporter dir found
+16f8b3000 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16f8b3000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16f8b3000 : entering _partition_probe_media_should_retry.
+16f8b3000 : APFS Container 'Container' /dev/disk0s1
+
+16f8b3000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16f8b3000 : found system volume not at disk0s1s1: System
+
+16f8b3000 : unexpected partition 'Hardware' - skipping
+16f8b3000 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16f8b3000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16f8b3000 : entering _partition_probe_media_should_retry.
+16f8b3000 : APFS Container 'Container' /dev/disk0s1
+
+16f8b3000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16f8b3000 : found system volume not at disk0s1s1: System
+
+16f8b3000 : unexpected partition 'Hardware' - skipping
+16f8b3000 : entering ramrod_execute_command_with_config: /sbin/mount
+
+16f8b3000 : executing /sbin/mount
+16f8b3000 :  -t
+16f8b3000 :  apfs
+16f8b3000 :  -o
+16f8b3000 :  nobrowse
+16f8b3000 :  /dev/disk1s1
+16f8b3000 :  /private/var/MobileSoftwareUpdate/mnt1
+16f8b3000 : 
+
+16f8b3000 : waiting for child to exit
+
+16f8b3000 : child exited
+
+16f8b3000 : exit status: 0
+
+16f8b3000 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16f8b3000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16f8b3000 : entering _partition_probe_media_should_retry.
+16f8b3000 : APFS Container 'Container' /dev/disk0s1
+
+16f8b3000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16f8b3000 : found system volume not at disk0s1s1: System
+
+16f8b3000 : unexpected partition 'Hardware' - skipping
+16f8b3000 : reverting system volume to snapshot com.apple.os.updateXXXX>>>>><<<<<<<<<<<<<<<<<<UDID>>>>>>>>>>>>>>>>>><<<<<MEID>>>>>59 succeeded. remounting...
+16f8b3000 : file system at /private/var/MobileSoftwareUpdate/mnt1 successfully unmounted
+16f8b3000 : entering ramrod_execute_command_with_config: /sbin/mount
+
+16f8b3000 : executing /sbin/mount
+16f8b3000 :  -t
+16f8b3000 :  apfs
+16f8b3000 :  -o
+16f8b3000 :  nobrowse
+16f8b3000 :  /dev/disk1s1
+16f8b3000 :  /private/var/MobileSoftwareUpdate/mnt1
+16f8b3000 : 
+
+16f8b3000 : waiting for child to exit
+
+16f8b3000 : child exited
+
+16f8b3000 : exit status: 0
+
+16f8b3000 : mounting system volume read/write at /private/var/MobileSoftwareUpdate/mnt1 succeeded.
+16f8b3000 : Skipping snapshot com.apple.os.updateXXXX>>>>><<<<<<<<<<<<<<<<<<UDID>>>>>>>>>>>>>>>>>><<<<<MEID>>>>>59
+16f8b3000 : Attempting to cleanup saved RecoveryOS state.
+16f8b3000 : RecoveryOS status file not present(not an error)
+16f8b3000 : RecoveryOS connectivity data file not present
+16f8b3000 : Clearing out RecoveryOS logarchives
+16f8b3000 : Deleting RecoveryOS logarchive files
+16f8b3000 : Using default RecoveryOS logarchive preservation timeout
+1f4af0200 XXXX>>>>>>>>>>>>>>>> main() started
+1f4af0200 : Enabling vnode rapid aging
+1f4af0200 : Successfully enabled rapid vnode aging
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-uuid not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-result not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-failure-reason not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-breadcrumbs not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-submission-url not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-os-version not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-context not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-original-os-version not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-install-tonight not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-brain-version not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-initial-forced-reset-uptime not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-forced-reset-uptime not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-original-base-os-version not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-controllerVersion not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ramrod-nvram-sequence not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ramrod-nvram-session not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ramrod-nvram-shadow-path not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-pre-conversion not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-post-conversion not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-conv-panic-indicator not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-fsck-metrics not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-sealvolume-metrics not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-migrator-metrics not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-converter-metrics not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-enabled not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-snapshot-update not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM pre-recovery-ota-failure-uuid not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM recoveryos-initiated-update not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM upgrade-fallback-boot-command not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM boot-fail-count not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM restore-step-names not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-outcome not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-step-external-power not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM restore-retry-warnings not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-child-failures not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-step-names not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-step-user-progress not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-user-progress not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-reboot-retry-zone not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-failure-reason not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM restore-retry-codes not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-step-error not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-ids not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-domains not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-warnings not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-results not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-step-battery-level not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM restore-perform-shutdown not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-monitor not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM restore-child-failures not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-perform-shutdown not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM restore-step-results not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM restore-step-error not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-battery-level not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM restore-step-monitor not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM restore-anomalies not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM restore-reboot-retry-enabled not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM restore-outcome not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM restore-retry-error not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-step-uptime not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM restore-step-domains not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM restore-reboot-retry-zone not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM restore-retry-domains not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-breadcrumbs not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM restore-retry-names not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-codes not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM restore-step-warnings not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-step-domains not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-initial-failure-reason not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-step-results not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-names not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM restore-step-codes not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-reboot-retry-enabled not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM restore-retry-ids not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM restore-step-ids not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-step-monitor not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-error not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-step-codes not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-external-power not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-result not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM restore-retry-monitor not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-retry-uptime not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-initial-result not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-initial-breadcrumbs not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-step-warnings not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-anomalies not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM restore-retry-results not found..Nothing to do
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM ota-step-ids not found..Nothing to do
+
+16efe7000 : Cleaning up unused prepared updates
+16efe7000 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16efe7000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16efe7000 : entering _partition_probe_media_should_retry.
+16efe7000 : APFS Container 'Container' /dev/disk0s1
+
+16efe7000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16efe7000 : found system volume not at disk0s1s1: System
+
+16efe7000 : unexpected partition 'Hardware' - skipping
+16efe7000 : not deleting existing update filesystem
+16efe7000 : create_update_partition_folder_hierarchy: Creating folder hierarchy for update partition
+16efe7000 : Creating hardware folder hierarchy
+
+16efe7000 : Creating root folder
+16efe7000 : Successfully created root Hardware folder. Proceeding to create the rest of the folder hierarchy
+16efe7000 : Successfully created Battery under /private/var/MobileSoftwareUpdate//Hardware with permissions 0700 for user root
+16efe7000 : create_update_partition_folder_hierarchy: Done creating folder hierarchy for update partition
+16efe7000 : entering ramrod_probe_media_internal
+
+16efe7000 : entering wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16efe7000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16efe7000 : device partitioning scheme is GPT
+
+16efe7000 : APFS Container 'Container' /dev/disk0s1
+
+16efe7000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16efe7000 : device is APFS formatted
+
+16efe7000 : found system volume not at /dev/disk0s1s1: System
+
+16efe7000 : Captured preboot partition on main OS container 2
+
+16efe7000 : msu_delete_nvram_variable_if_exists: NVRAM target-uuid not found..Nothing to do
+
+16efe7000 : entering mount_update_partition_if_exists
+
+16efe7000 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16efe7000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16efe7000 : entering _partition_probe_media_should_retry.
+16efe7000 : APFS Container 'Container' /dev/disk0s1
+
+16efe7000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16efe7000 : found system volume not at disk0s1s1: System
+
+16efe7000 : unexpected partition 'Hardware' - skipping
+16efe7000 : Update partition is already mounted
+
+16efe7000 : _migrate_ramdisk_logs: No ramdisk created CrashReporter dir found
+16efe7000 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16efe7000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16efe7000 : entering _partition_probe_media_should_retry.
+16efe7000 : APFS Container 'Container' /dev/disk0s1
+
+16efe7000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16efe7000 : found system volume not at disk0s1s1: System
+
+16efe7000 : unexpected partition 'Hardware' - skipping
+16efe7000 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16efe7000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16efe7000 : entering _partition_probe_media_should_retry.
+16efe7000 : APFS Container 'Container' /dev/disk0s1
+
+16efe7000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16efe7000 : found system volume not at disk0s1s1: System
+
+16efe7000 : unexpected partition 'Hardware' - skipping
+16efe7000 : entering ramrod_execute_command_with_config: /sbin/mount
+
+16efe7000 : executing /sbin/mount
+16efe7000 :  -t
+16efe7000 :  apfs
+16efe7000 :  -o
+16efe7000 :  nobrowse
+16efe7000 :  /dev/disk1s1
+16efe7000 :  /private/var/MobileSoftwareUpdate/mnt1
+16efe7000 : 
+
+16efe7000 : waiting for child to exit
+
+16efe7000 : child exited
+
+16efe7000 : exit status: 0
+
+16efe7000 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16efe7000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16efe7000 : entering _partition_probe_media_should_retry.
+16efe7000 : APFS Container 'Container' /dev/disk0s1
+
+16efe7000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16efe7000 : found system volume not at disk0s1s1: System
+
+16efe7000 : unexpected partition 'Hardware' - skipping
+16efe7000 : reverting system volume to snapshot com.apple.os.updateXXXX>>>>><<<<<<<<<<<<<<<<<<UDID>>>>>>>>>>>>>>>>>><<<<<MEID>>>>>59 succeeded. remounting...
+16efe7000 : file system at /private/var/MobileSoftwareUpdate/mnt1 successfully unmounted
+16efe7000 : entering ramrod_execute_command_with_config: /sbin/mount
+
+16efe7000 : executing /sbin/mount
+16efe7000 :  -t
+16efe7000 :  apfs
+16efe7000 :  -o
+16efe7000 :  nobrowse
+16efe7000 :  /dev/disk1s1
+16efe7000 :  /private/var/MobileSoftwareUpdate/mnt1
+16efe7000 : 
+
+16efe7000 : waiting for child to exit
+
+16efe7000 : child exited
+
+16efe7000 : exit status: 0
+
+16efe7000 : mounting system volume read/write at /private/var/MobileSoftwareUpdate/mnt1 succeeded.
+16efe7000 : Skipping snapshot com.apple.os.updateXXXX>>>>><<<<<<<<<<<<<<<<<<UDID>>>>>>>>>>>>>>>>>><<<<<MEID>>>>>59
+16efe7000 : Attempting to cleanup saved RecoveryOS state.
+16efe7000 : RecoveryOS status file not present(not an error)
+16efe7000 : RecoveryOS connectivity data file not present
+16efe7000 : Clearing out RecoveryOS logarchives
+16efe7000 : Deleting RecoveryOS logarchive files
+16efe7000 : Using default RecoveryOS logarchive preservation timeout
+1f4af0200 : Brain operations will run at their default (UTILITY) QOS
+1f4af0200 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+1f4af0200 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+1f4af0200 : entering _partition_probe_media_should_retry.
+1f4af0200 : APFS Container 'Container' /dev/disk0s1
+
+1f4af0200 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+1f4af0200 : found system volume not at disk0s1s1: System
+
+1f4af0200 : unexpected partition 'Hardware' - skipping
+1f4af0200 : entering ramrod_probe_media_internal
+
+1f4af0200 : entering wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+1f4af0200 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+1f4af0200 : device partitioning scheme is GPT
+
+1f4af0200 : APFS Container 'Container' /dev/disk0s1
+
+1f4af0200 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+1f4af0200 : device is APFS formatted
+
+1f4af0200 : found system volume not at /dev/disk0s1s1: System
+
+1f4af0200 : Captured preboot partition on main OS container 2
+
+16bb13000 : Running event handler at QoS 0x11
+16bb13000 : Running event handler at QoS 0x11
+16bb13000 : Preparing Update volume
+16bb13000 : entering _partition_wait_for_device: 'EmbeddedDeviceTypeRoot'
+
+16bb13000 : Using device path /dev/disk0 for EmbeddedDeviceTypeRoot
+
+16bb13000 : entering _partition_probe_media_should_retry.
+16bb13000 : APFS Container 'Container' /dev/disk0s1
+
+16bb13000 : Found synthesized APFS container. Using disk1 instead of /dev/disk0s1
+
+16bb13000 : found system volume not at disk0s1s1: System
+
+16bb13000 : unexpected partition 'Hardware' - skipping
+16bb13000 : not deleting existing update filesystem
+16bb13000 : create_update_partition_folder_hierarchy: Creating folder hierarchy for update partition
+16bb13000 : Creating hardware folder hierarchy
+
+16bb13000 : Creating root folder
+16bb13000 : Successfully created root Hardware folder. Proceeding to create the rest of the folder hierarchy
+16bb13000 : Successfully created Battery under /private/var/MobileSoftwareUpdate//Hardware with permissions 0700 for user root
+16bb13000 : create_update_partition_folder_hierarchy: Done creating folder hierarchy for update partition
+16bb13000 : MobileSoftwareUpdateErrorDomain error 5 - Could not load patchd options from '/private/var/MobileSoftwareUpdate/Update.plist'. errno=2.
+16bb13000 : MobileSoftwareUpdateErrorDomain error 5 - Update could not be resumed from: /private/var/MobileSoftwareUpdate/Update.plist

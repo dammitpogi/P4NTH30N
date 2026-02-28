@@ -52,7 +52,7 @@ Target: <$0.50 per Decision
 ```
 Save after each Decision completion
 Resume from last successful on crash
-File: P4NTH30N/.windfixer-checkpoint.json
+File: P4NTHE0N/.windfixer-checkpoint.json
 ```
 
 ### Failure Thresholds
@@ -86,7 +86,7 @@ File: P4NTH30N/.windfixer-checkpoint.json
 
 #### 4. WIND-004: WindFixerCheckpointManager
 **Priority**: Critical
-**Files**: C0MMON/Checkpoint/WindFixerCheckpointManager.cs, P4NTH30N/.windfixer/
+**Files**: C0MMON/Checkpoint/WindFixerCheckpointManager.cs, P4NTHE0N/.windfixer/
 **Task**: Hybrid storage. File: .windfixer/checkpoints/{sessionId}.json. MongoDB: WINDFIXER_CHECKPOINT. 6 triggers, TTL, concurrent sessions.
 
 ### PHASE 2: FALLBACK RESOLUTION
@@ -100,17 +100,17 @@ File: P4NTH30N/.windfixer-checkpoint.json
 
 #### 6. STRATEGY-003: Agentic Workflow Automation
 **Priority**: High
-**Files**: C:\P4NTH30N\PROF3T\AutomationEngine.cs, C0MMON/Services/CostOptimizer.cs
+**Files**: C:\P4NTHE0N\PROF3T\AutomationEngine.cs, C0MMON/Services/CostOptimizer.cs
 **Task**: Bulk Decision execution to WindSurf. Auto-analyze results. Target <$0.50/Decision.
 
 #### 7. STRATEGY-005: Explorer/Librarian Mitigation
 **Priority**: Medium
-**Files**: C:\P4NTH30N\docs\Explorer-Librarian-Workarounds.md
+**Files**: C:\P4NTHE0N\docs\Explorer-Librarian-Workarounds.md
 **Task**: Workarounds for model fallback failures. Disable subagent delegation, use direct tools.
 
 #### 8. TOOL-001: ToolHive Framework
 **Priority**: High
-**Files**: P4NTH30N/tools/, P4NTH30N/docs/tool-development-guide.md
+**Files**: P4NTHE0N/tools/, P4NTHE0N/docs/tool-development-guide.md
 **Task**: Establish tool development standards. Use HoneyBelt at ~/.config/opencode/tools/
 
 ---
@@ -225,7 +225,7 @@ Before marking ANY Decision complete:
 
 ```bash
 # Build verification
-dotnet build P4NTH30N.slnx --no-restore
+dotnet build P4NTHE0N.slnx --no-restore
 
 # Format check
 dotnet csharpier check

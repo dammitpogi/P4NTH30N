@@ -3,7 +3,7 @@
   "description": "DECISION_097: Legacy RAG deprecated; migration to ToolHive rag-server v2 completed",
   "ragHost": {
     "deprecated": true,
-    "legacyExecutable": "C:\\ProgramData\\P4NTH30N\\bin\\RAG.McpHost.exe",
+    "legacyExecutable": "C:\\ProgramData\\P4NTHE0N\\bin\\RAG.McpHost.exe",
     "legacyPort": 5001,
     "replacement": {
       "name": "rag-server",
@@ -16,18 +16,18 @@
     "enabled": true,
     "debounceMinutes": 5,
     "watchPaths": [
-      "C:\\P4NTH30N\\docs",
-      "C:\\P4NTH30N\\STR4TEG15T\\decisions",
-      "C:\\P4NTH30N\\STR4TEG15T\\speech",
-      "C:\\P4NTH30N\\STR4TEG15T\\canon",
-      "C:\\P4NTH30N\\STR4TEG15T\\intel",
-      "C:\\P4NTH30N\\OP3NF1XER\\deployments",
-      "C:\\P4NTH30N\\OP3NF1XER\\knowledge",
-      "C:\\P4NTH30N\\W1NDF1XER\\deployments",
-      "C:\\P4NTH30N\\W1NDF1XER\\knowledge",
-      "C:\\P4NTH30N\\OR4CL3\\consultations",
-      "C:\\P4NTH30N\\DE51GN3R\\consultations",
-      "C:\\P4NTH30N\\DE51GN3R\\decisions"
+      "C:\\P4NTHE0N\\docs",
+      "C:\\P4NTHE0N\\STR4TEG15T\\decisions",
+      "C:\\P4NTHE0N\\STR4TEG15T\\speech",
+      "C:\\P4NTHE0N\\STR4TEG15T\\canon",
+      "C:\\P4NTHE0N\\STR4TEG15T\\intel",
+      "C:\\P4NTHE0N\\OP3NF1XER\\deployments",
+      "C:\\P4NTHE0N\\OP3NF1XER\\knowledge",
+      "C:\\P4NTHE0N\\W1NDF1XER\\deployments",
+      "C:\\P4NTHE0N\\W1NDF1XER\\knowledge",
+      "C:\\P4NTHE0N\\OR4CL3\\consultations",
+      "C:\\P4NTHE0N\\DE51GN3R\\consultations",
+      "C:\\P4NTHE0N\\DE51GN3R\\decisions"
     ],
     "filePatterns": ["*.md", "*.json"],
     "excludeDirectories": ["bin", "obj", ".git", "node_modules", "Releases"]
@@ -35,22 +35,22 @@
   "bulkIngestion": {
     "enabled": true,
     "directories": [
-      { "path": "C:\\P4NTH30N\\STR4TEG15T\\decisions\\active", "tag": "decision", "priority": "high" },
-      { "path": "C:\\P4NTH30N\\STR4TEG15T\\speech", "tag": "speech", "priority": "high" },
-      { "path": "C:\\P4NTH30N\\STR4TEG15T\\canon", "tag": "canon", "priority": "high" },
-      { "path": "C:\\P4NTH30N\\STR4TEG15T\\intel", "tag": "intel", "priority": "medium" },
-      { "path": "C:\\P4NTH30N\\OP3NF1XER\\deployments", "tag": "deployment", "priority": "medium" },
-      { "path": "C:\\P4NTH30N\\OP3NF1XER\\knowledge", "tag": "knowledge", "priority": "medium" },
-      { "path": "C:\\P4NTH30N\\docs", "tag": "documentation", "priority": "medium" },
-      { "path": "C:\\P4NTH30N\\docs\\architecture", "tag": "architecture", "priority": "high" }
+      { "path": "C:\\P4NTHE0N\\STR4TEG15T\\decisions\\active", "tag": "decision", "priority": "high" },
+      { "path": "C:\\P4NTHE0N\\STR4TEG15T\\speech", "tag": "speech", "priority": "high" },
+      { "path": "C:\\P4NTHE0N\\STR4TEG15T\\canon", "tag": "canon", "priority": "high" },
+      { "path": "C:\\P4NTHE0N\\STR4TEG15T\\intel", "tag": "intel", "priority": "medium" },
+      { "path": "C:\\P4NTHE0N\\OP3NF1XER\\deployments", "tag": "deployment", "priority": "medium" },
+      { "path": "C:\\P4NTHE0N\\OP3NF1XER\\knowledge", "tag": "knowledge", "priority": "medium" },
+      { "path": "C:\\P4NTHE0N\\docs", "tag": "documentation", "priority": "medium" },
+      { "path": "C:\\P4NTHE0N\\docs\\architecture", "tag": "architecture", "priority": "high" }
     ],
     "rootDocuments": [
-      "C:\\P4NTH30N\\AGENTS.md",
-      "C:\\P4NTH30N\\C0MMON\\AGENTS.md",
-      "C:\\P4NTH30N\\H4ND\\AGENTS.md",
-      "C:\\P4NTH30N\\H0UND\\AGENTS.md",
-      "C:\\P4NTH30N\\W4TCHD0G\\Agents.md",
-      "C:\\P4NTH30N\\codemap.md"
+      "C:\\P4NTHE0N\\AGENTS.md",
+      "C:\\P4NTHE0N\\C0MMON\\AGENTS.md",
+      "C:\\P4NTHE0N\\H4ND\\AGENTS.md",
+      "C:\\P4NTHE0N\\H0UND\\AGENTS.md",
+      "C:\\P4NTHE0N\\W4TCHD0G\\Agents.md",
+      "C:\\P4NTHE0N\\codemap.md"
     ]
   }
 }

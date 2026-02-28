@@ -1,0 +1,161 @@
+{"app_name":"DASDelegateService","timestamp":"2025-12-31 05:13:23.00 -0700","app_version":"1.0","slice_uuid":"ADEF1784-BDFD-3E68-B87F-1C3756147A7C","build_version":"1","bundleID":"com.apple.DASDelegateService","duration_ms":"110202","share_with_app_devs":0,"is_first_party":0,"bug_type":"202","os_version":"iPhone OS 18.7.2 (22H123)","roots_installed":0,"name":"DASDelegateService","incident_id":"50E5346C-C6DD-4C8F-99E7-A984778CEF3E"}
+Date/Time:        2025-12-31 05:11:29.439 -0700
+End time:         2025-12-31 05:13:19.641 -0700
+OS Version:       iPhone OS 18.7.2 (Build 22H123)
+Architecture:     arm64e
+Report Version:   60
+Incident Identifier: 50E5346C-C6DD-4C8F-99E7-A984778CEF3E
+
+Data Source:      Microstackshots
+Shared Cache:     3E5E734D-2CA6-3F63-83F5-0E84C720CBA0 slid base address 0x1940e4000, slide 0x140e4000
+
+Command:          DASDelegateService
+Path:             /System/Library/PrivateFrameworks/DASDelegate.framework/XPCServices/DASDelegateService.xpc/DASDelegateService
+Identifier:       com.apple.DASDelegateService
+Version:          1.0 (1)
+Resource Coalition: "com.apple.DASDelegateService"(1494)
+On Behalf Of:     6 samples UNKNOWN [80] (6 samples originated by UNKNOWN [80])
+Architecture:     arm64e
+Parent:           UNKNOWN [1]
+PID:              3947
+
+Event:            cpu usage
+Action taken:     none
+CPU:              90 seconds cpu time over 110 seconds (82% cpu average), exceeding limit of 50% cpu over 180 seconds
+CPU limit:        90s
+Limit duration:   180s
+CPU used:         90s
+CPU duration:     110s
+Duration:         110.20s
+Duration Sampled: 91.80s (event starts 13.09s before samples, event ends 5.31s after samples)
+Steps:            6
+
+Hardware model:   iPhone14,4
+Active cpus:      6
+Memory size:      3.59 GB
+HW page size:     16384
+VM page size:     16384
+Shared cache residency: 10.34% (505.78 MB / 4890.48 MB)
+
+Time Since Boot:  44807s
+Time Awake Since Boot: 41725s
+Time Since Wake:  15s
+
+Total CPU Time:   78.059s
+Advisory levels:  Battery -> 3, User -> 3, ThermalPressure -> 0, Combined -> 3
+Free disk space:  66.45 GB/119.09 GB, low space threshold 150 MB
+Vnodes Available: 65.58% (13116/20000, 10000 allocated, 10000 soft limit)
+Models:           none
+
+Preferred User Language: en-US
+Country Code:     US
+Keyboards:        en_US QWERTY
+OS Cryptex File Extents: 5976
+
+Heaviest stack for the target process:
+  6  ??? (libsystem_pthread.dylib + 2732) [0x221148aac]
+  6  ??? (libsystem_pthread.dylib + 2572) [0x221148a0c]
+  6  ??? (libdispatch.dylib + 84576) [0x19ec1ea60]
+  6  ??? (libdispatch.dylib + 86492) [0x19ec1f1dc]
+  6  ??? (libdispatch.dylib + 44460) [0x19ec14dac]
+  6  ??? (libdispatch.dylib + 41680) [0x19ec142d0]
+  6  ??? (libdispatch.dylib + 112004) [0x19ec25584]
+  6  ??? (libdispatch.dylib + 6828) [0x19ec0baac]
+  6  ??? (LoggingSupport + 35960) [0x1b59dcc78]
+  6  ??? (LoggingSupport + 36588) [0x1b59dceec]
+  6  ??? (LoggingSupport + 37564) [0x1b59dd2bc]
+  6  ??? (LoggingSupport + 48284) [0x1b59dfc9c]
+  6  ??? (LoggingSupport + 50228) [0x1b59e0434]
+  6  ??? (LoggingSupport + 50408) [0x1b59e04e8]
+  3  ??? (LoggingSupport + 42832) [0x1b59de750]
+  3  ??? (LoggingSupport + 55640) [0x1b59e1958]
+  3  ??? (Foundation + 357148) [0x19593a31c]
+  3  ??? (Foundation + 357492) [0x19593a474]
+  2  ??? (Foundation + 357148) [0x19593a31c]
+  2  ??? (Foundation + 357640) [0x19593a508]
+  2  ??? (Foundation + 357148) [0x19593a31c]
+  2  ??? (Foundation + 357492) [0x19593a474]
+  2  ??? (Foundation + 363524) [0x19593bc04]
+  2  ??? (Foundation + 358076) [0x19593a6bc]
+  1  ??? (Foundation + 359616) [0x19593acc0]
+  1  ??? (libsystem_platform.dylib + 2656) [0x22109da60]
+
+
+Powerstats for:   DASDelegateService [3947]
+UUID:             ADEF1784-BDFD-3E68-B87F-1C3756147A7C
+Path:             /System/Library/PrivateFrameworks/DASDelegate.framework/XPCServices/DASDelegateService.xpc/DASDelegateService
+Identifier:       com.apple.DASDelegateService
+Version:          1.0 (1)
+Resource Coalition: 6 samples "com.apple.DASDelegateService"(1494)
+On Behalf Of:     6 samples UNKNOWN [80] (6 samples originated by UNKNOWN [80])
+Architecture:     arm64e
+Parent:           UNKNOWN [1]
+UID:              0
+Sudden Term:      Tracked (allows idle exit)
+Footprint:        4000 KB -> 4688 KB (+688 KB) (max 5072 KB )
+Pageins:          1866 pages
+Start time:       2025-12-31 05:11:42.531 -0700
+End time:         2025-12-31 05:13:14.327 -0700
+Num samples:      6 (100%)
+Num threads:      1
+Primary state:    6 samples Non-Frontmost App, Non-Suppressed, User mode, Effective Thread QoS Background, Requested Thread QoS Background, Override Thread QoS Unspecified, e-core
+User Activity:    6 samples Idle, 0 samples Active
+Power Source:     0 samples on Battery, 6 samples on AC
+  6  ??? (libsystem_pthread.dylib + 2732) [0x221148aac]
+    6  ??? (libsystem_pthread.dylib + 2572) [0x221148a0c]
+      6  ??? (libdispatch.dylib + 84576) [0x19ec1ea60]
+        6  ??? (libdispatch.dylib + 86492) [0x19ec1f1dc]
+          6  ??? (libdispatch.dylib + 44460) [0x19ec14dac]
+            6  ??? (libdispatch.dylib + 41680) [0x19ec142d0]
+              6  ??? (libdispatch.dylib + 112004) [0x19ec25584]
+                6  ??? (libdispatch.dylib + 6828) [0x19ec0baac]
+                  6  ??? (LoggingSupport + 35960) [0x1b59dcc78]
+                    6  ??? (LoggingSupport + 36588) [0x1b59dceec]
+                      6  ??? (LoggingSupport + 37564) [0x1b59dd2bc]
+                        6  ??? (LoggingSupport + 48284) [0x1b59dfc9c]
+                          6  ??? (LoggingSupport + 50228) [0x1b59e0434]
+                            6  ??? (LoggingSupport + 50408) [0x1b59e04e8]
+                              3  ??? (LoggingSupport + 42832) [0x1b59de750]
+                                3  ??? (LoggingSupport + 55640) [0x1b59e1958]
+                                  3  ??? (Foundation + 357148) [0x19593a31c]
+                                    3  ??? (Foundation + 357492) [0x19593a474]
+                                      2  ??? (Foundation + 357148) [0x19593a31c]
+                                        2  ??? (Foundation + 357640) [0x19593a508]
+                                          2  ??? (Foundation + 357148) [0x19593a31c]
+                                            2  ??? (Foundation + 357492) [0x19593a474]
+                                              2  ??? (Foundation + 363524) [0x19593bc04]
+                                                2  ??? (Foundation + 358076) [0x19593a6bc]
+                                                  1  ??? (Foundation + 359616) [0x19593acc0]
+                                                    1  ??? (libsystem_platform.dylib + 2656) [0x22109da60]
+                                                      1  <on behalf of UNKNOWN [80] (originated by UNKNOWN [80])>
+                                                  1  ??? (Foundation + 358996) [0x19593aa54]
+                                                    1  ??? (Foundation + 362968) [0x19593b9d8]
+                                                      1  ??? (libobjc.A.dylib + 7208) [0x1941edc28]
+                                                        1  <on behalf of UNKNOWN [80] (originated by UNKNOWN [80])>
+                                      1  ??? (libobjc.A.dylib + 7236) [0x1941edc44]
+                                        1  <on behalf of UNKNOWN [80] (originated by UNKNOWN [80])>
+                              3  ??? (LoggingSupport + 42548) [0x1b59de634]
+                                3  ??? (LoggingSupport + 50564) [0x1b59e0584]
+                                  3  ??? (Foundation + 8852) [0x1958e5294]
+                                    3  ??? (CoreFoundation + 12248) [0x196c6dfd8]
+                                      2  ??? (CoreFoundation + 10660) [0x196c6d9a4]
+                                        2  ??? (CoreFoundation + 32648) [0x196c72f88]
+                                          1  ??? (CoreFoundation + 117148) [0x196c8799c]
+                                            1  <on behalf of UNKNOWN [80] (originated by UNKNOWN [80])>
+                                          1  ??? (CoreFoundation + 117096) [0x196c87968]
+                                            1  <on behalf of UNKNOWN [80] (originated by UNKNOWN [80])>
+                                      1  ??? (CoreFoundation + 10644) [0x196c6d994]
+                                        1  ??? (CoreFoundation + 16564) [0x196c6f0b4]
+                                          1  ??? (dyld + 4864) [0x1bd710300]
+                                            1  <on behalf of UNKNOWN [80] (originated by UNKNOWN [80])>
+
+  Binary Images:
+           0x102708000 -                ???  com.apple.DASDelegateService 1.0 (1) <ADEF1784-BDFD-3E68-B87F-1C3756147A7C>  /System/Library/PrivateFrameworks/DASDelegate.framework/XPCServices/DASDelegateService.xpc/DASDelegateService
+           0x1941ec000 -        0x19423dbb3  libobjc.A.dylib                      <A79BB6C8-1243-3B49-9DB1-500C3DA8E2A0>  /usr/lib/libobjc.A.dylib
+           0x1958e3000 -        0x19655705f  Foundation                           <A8DD2B13-903D-39E3-8D0C-5EBF50F75929>  /System/Library/Frameworks/Foundation.framework/Foundation
+           0x196c6b000 -        0x1971e7fff  CoreFoundation                       <E89D821C-A544-315C-8903-39CA54D7FAF4>  /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+           0x19ec0a000 -        0x19ec4fb3f  libdispatch.dylib                    <C19E1CAE-FEE0-3E31-844D-A31BF2C39BD7>  /usr/lib/system/libdispatch.dylib
+           0x1b59d4000 -        0x1b5a5583f  LoggingSupport                       <2154637E-C9AF-3D4A-A669-5475A65644BA>  /System/Library/PrivateFrameworks/LoggingSupport.framework/LoggingSupport
+           0x1bd70f000 -        0x1bd7a987b  dyld                                 <F523E318-E33C-31DD-9DC7-7509A7C8963F>  /usr/lib/dyld
+           0x22109d000 -        0x2210a48cf  libsystem_platform.dylib             <6079E486-F642-3100-AE63-B58DF5F5C343>  /usr/lib/system/libsystem_platform.dylib
+           0x221148000 -        0x221154413  libsystem_pthread.dylib              <985A66D7-1DC0-3F52-A897-D7AE7CAB5D36>  /usr/lib/system/libsystem_pthread.dylib

@@ -1,7 +1,7 @@
 {
   "name": "mongodb-mcp-server",
   "version": "1.0.0",
-  "description": "MongoDB MCP server for P4NTH30N database operations",
+  "description": "MongoDB MCP server for P4NTHE0N database operations",
   "type": "module",
   "main": "dist/index.js",
   "scripts": {

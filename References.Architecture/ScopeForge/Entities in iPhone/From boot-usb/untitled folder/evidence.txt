@@ -1,0 +1,1671 @@
+ Volume in drive D is CCCOMA_X64F
+ Volume Serial Number is 1305-3635
+
+ Directory of D:\
+
+01/23/2026  12:00 PM    <DIR>          \Everyone              support
+01/23/2026  11:28 AM    <DIR>          \Everyone              sources
+01/23/2026  11:28 AM            99,896 \Everyone              setup.exe
+01/23/2026  11:28 AM    <DIR>          \Everyone              efi
+01/23/2026  11:28 AM         2,837,416 \Everyone              bootmgr.efi
+01/23/2026  11:28 AM           473,364 \Everyone              bootmgr
+01/23/2026  11:27 AM               128 \Everyone              autorun.inf
+01/23/2026  11:27 AM    <DIR>          \Everyone              boot
+01/23/2026  10:28 AM    <DIR>          \Everyone              System Volume Information
+01/23/2026  09:26 AM                 0 \Everyone              Recovery.txt
+01/23/2026  09:26 AM    <DIR>          \Everyone              Recovery
+               5 File(s)      3,410,804 bytes
+
+ Directory of D:\boot
+
+01/23/2026  11:28 AM         1,161,024 \Everyone              memtest.exe
+01/23/2026  11:28 AM    <DIR>          \Everyone              resources
+01/23/2026  11:27 AM    <DIR>          \Everyone              fonts
+01/23/2026  11:27 AM         3,170,304 \Everyone              boot.sdi
+01/23/2026  11:27 AM             1,024 \Everyone              bootfix.bin
+01/23/2026  11:27 AM           112,048 \Everyone              bootsect.exe
+01/23/2026  11:27 AM    <DIR>          \Everyone              en-us
+01/23/2026  11:27 AM             4,096 \Everyone              etfsboot.com
+01/23/2026  11:27 AM    <DIR>          \Everyone              ..
+01/23/2026  11:27 AM    <DIR>          \Everyone              .
+01/23/2026  11:27 AM            16,384 \Everyone              bcd
+               6 File(s)      4,464,880 bytes
+
+ Directory of D:\boot\en-us
+
+01/23/2026  11:27 AM    <DIR>          \Everyone              ..
+01/23/2026  11:27 AM            16,384 \Everyone              bootsect.exe.mui
+01/23/2026  11:27 AM    <DIR>          \Everyone              .
+               1 File(s)         16,384 bytes
+
+ Directory of D:\boot\fonts
+
+01/23/2026  11:28 AM           102,640 \Everyone              segoen_slboot.ttf
+01/23/2026  11:28 AM            50,124 \Everyone              wgl4_boot.ttf
+01/23/2026  11:27 AM           103,024 \Everyone              segoe_slboot.ttf
+01/23/2026  11:27 AM         3,879,448 \Everyone              cht_boot.ttf
+01/23/2026  11:27 AM         1,986,904 \Everyone              jpn_boot.ttf
+01/23/2026  11:27 AM         2,374,036 \Everyone              kor_boot.ttf
+01/23/2026  11:27 AM           201,992 \Everyone              malgun_boot.ttf
+01/23/2026  11:27 AM            83,368 \Everyone              malgun_console.ttf
+01/23/2026  11:27 AM           199,444 \Everyone              malgunn_boot.ttf
+01/23/2026  11:27 AM           176,020 \Everyone              meiryo_boot.ttf
+01/23/2026  11:27 AM            92,556 \Everyone              meiryo_console.ttf
+01/23/2026  11:27 AM           174,080 \Everyone              meiryon_boot.ttf
+01/23/2026  11:27 AM           201,260 \Everyone              msjh_boot.ttf
+01/23/2026  11:27 AM           204,872 \Everyone              msjh_console.ttf
+01/23/2026  11:27 AM           199,204 \Everyone              msjhn_boot.ttf
+01/23/2026  11:27 AM           189,856 \Everyone              msyh_boot.ttf
+01/23/2026  11:27 AM            98,568 \Everyone              msyh_console.ttf
+01/23/2026  11:27 AM           187,956 \Everyone              msyhn_boot.ttf
+01/23/2026  11:27 AM            45,896 \Everyone              segmono_boot.ttf
+01/23/2026  11:27 AM    <DIR>          \Everyone              ..
+01/23/2026  11:27 AM    <DIR>          \Everyone              .
+01/23/2026  11:27 AM         3,696,752 \Everyone              chs_boot.ttf
+              20 File(s)     14,248,000 bytes
+
+ Directory of D:\boot\resources
+
+01/23/2026  11:28 AM    <DIR>          \Everyone              ..
+01/23/2026  11:28 AM           169,264 \Everyone              bootres.dll
+01/23/2026  11:28 AM           111,920 \Everyone              bootres_hci.dll
+01/23/2026  11:28 AM    <DIR>          \Everyone              .
+               2 File(s)        281,184 bytes
+
+ Directory of D:\efi
+
+01/23/2026  11:28 AM    <DIR>          \Everyone              ..
+01/23/2026  11:28 AM    <DIR>          \Everyone              boot
+01/23/2026  11:28 AM    <DIR>          \Everyone              microsoft
+01/23/2026  11:28 AM    <DIR>          \Everyone              .
+               0 File(s)              0 bytes
+
+ Directory of D:\efi\boot
+
+01/23/2026  11:28 AM    <DIR>          \Everyone              ..
+01/23/2026  11:28 AM         2,855,368 \Everyone              bootx64.efi
+01/23/2026  11:28 AM    <DIR>          \Everyone              .
+               1 File(s)      2,855,368 bytes
+
+ Directory of D:\efi\microsoft
+
+01/23/2026  11:28 AM    <DIR>          \Everyone              ..
+01/23/2026  11:28 AM    <DIR>          \Everyone              boot
+01/23/2026  11:28 AM    <DIR>          \Everyone              .
+               0 File(s)              0 bytes
+
+ Directory of D:\efi\microsoft\boot
+
+01/23/2026  11:28 AM            10,341 \Everyone              winsipolicy.p7b
+01/23/2026  11:28 AM         2,506,656 \Everyone              memtest.efi
+01/23/2026  11:28 AM    <DIR>          \Everyone              resources
+01/23/2026  11:28 AM    <DIR>          \Everyone              fonts
+01/23/2026  11:28 AM         1,474,560 \Everyone              efisys_noprompt.bin
+01/23/2026  11:28 AM         1,474,560 \Everyone              efisys.bin
+01/23/2026  11:28 AM            11,030 \Everyone              boot.stl
+01/23/2026  11:28 AM            16,384 \Everyone              bcd
+01/23/2026  11:28 AM         1,037,216 \Everyone              cdboot_noprompt.efi
+01/23/2026  11:28 AM         1,037,120 \Everyone              cdboot.efi
+01/23/2026  11:28 AM    <DIR>          \Everyone              ..
+01/23/2026  11:28 AM    <DIR>          \Everyone              cipolicies
+01/23/2026  11:28 AM    <DIR>          \Everyone              .
+               8 File(s)      7,567,867 bytes
+
+ Directory of D:\efi\microsoft\boot\cipolicies
+
+01/23/2026  11:28 AM    <DIR>          \Everyone              ..
+01/23/2026  11:28 AM    <DIR>          \Everyone              active
+01/23/2026  11:28 AM    <DIR>          \Everyone              .
+               0 File(s)              0 bytes
+
+ Directory of D:\efi\microsoft\boot\cipolicies\active
+
+01/23/2026  11:28 AM            31,409 \Everyone              {82443e1e-8a39-4b4a-96a8-f40ddc00b9f3}.cip
+01/23/2026  11:28 AM            10,564 \Everyone              {5dac656c-21ad-4a02-ab49-649917162e70}.cip
+01/23/2026  11:28 AM            10,972 \Everyone              {cdd5cb55-db68-4d71-aa38-3df2b6473a52}.cip
+01/23/2026  11:28 AM    <DIR>          \Everyone              ..
+01/23/2026  11:28 AM    <DIR>          \Everyone              .
+               3 File(s)         52,945 bytes
+
+ Directory of D:\efi\microsoft\boot\fonts
+
+01/23/2026  11:28 AM           174,080 \Everyone              meiryon_boot.ttf
+01/23/2026  11:28 AM           102,640 \Everyone              segoen_slboot.ttf
+01/23/2026  11:28 AM           103,024 \Everyone              segoe_slboot.ttf
+01/23/2026  11:28 AM         3,879,448 \Everyone              cht_boot.ttf
+01/23/2026  11:28 AM         1,986,904 \Everyone              jpn_boot.ttf
+01/23/2026  11:28 AM         2,374,036 \Everyone              kor_boot.ttf
+01/23/2026  11:28 AM           201,992 \Everyone              malgun_boot.ttf
+01/23/2026  11:28 AM            83,368 \Everyone              malgun_console.ttf
+01/23/2026  11:28 AM           199,444 \Everyone              malgunn_boot.ttf
+01/23/2026  11:28 AM           176,020 \Everyone              meiryo_boot.ttf
+01/23/2026  11:28 AM            92,556 \Everyone              meiryo_console.ttf
+01/23/2026  11:28 AM            50,124 \Everyone              wgl4_boot.ttf
+01/23/2026  11:28 AM           201,260 \Everyone              msjh_boot.ttf
+01/23/2026  11:28 AM           204,872 \Everyone              msjh_console.ttf
+01/23/2026  11:28 AM           199,204 \Everyone              msjhn_boot.ttf
+01/23/2026  11:28 AM           189,856 \Everyone              msyh_boot.ttf
+01/23/2026  11:28 AM            98,568 \Everyone              msyh_console.ttf
+01/23/2026  11:28 AM           187,956 \Everyone              msyhn_boot.ttf
+01/23/2026  11:28 AM            45,896 \Everyone              segmono_boot.ttf
+01/23/2026  11:28 AM    <DIR>          \Everyone              ..
+01/23/2026  11:28 AM    <DIR>          \Everyone              .
+01/23/2026  11:28 AM         3,696,752 \Everyone              chs_boot.ttf
+              20 File(s)     14,248,000 bytes
+
+ Directory of D:\efi\microsoft\boot\resources
+
+01/23/2026  11:28 AM    <DIR>          \Everyone              ..
+01/23/2026  11:28 AM           169,376 \Everyone              bootres.dll
+01/23/2026  11:28 AM           111,920 \Everyone              bootres_hci.dll
+01/23/2026  11:28 AM    <DIR>          \Everyone              .
+               2 File(s)        281,296 bytes
+
+ Directory of D:\sources
+
+01/23/2026  12:00 PM       594,915,770 \Everyone              boot.wim
+01/23/2026  12:00 PM           169,376 \Everyone              winsetupmon.sys
+01/23/2026  12:00 PM         1,422,752 \Everyone              wpx.dll
+01/23/2026  12:00 PM           112,040 \Everyone              winsetupboot.sys
+01/23/2026  12:00 PM             8,192 \Everyone              winsetupboot.hiv
+01/23/2026  12:00 PM         2,950,448 \Everyone              winsetup.dll
+01/23/2026  12:00 PM         1,557,936 \Everyone              windlp.dll
+01/23/2026  12:00 PM           722,240 \Everyone              win32ui.dll
+01/23/2026  12:00 PM           697,664 \Everyone              wimprovider.dll
+01/23/2026  12:00 PM           910,640 \Everyone              wimgapi.dll
+01/23/2026  12:00 PM           353,600 \Everyone              wdsutil.dll
+01/23/2026  12:00 PM            46,632 \Everyone              wdsupgcompl.dll
+01/23/2026  12:00 PM             8,192 \Everyone              winsetupmon.hiv
+01/23/2026  12:00 PM           218,664 \Everyone              wdstptc.dll
+01/23/2026  12:00 PM           112,048 \Everyone              wdscsl.dll
+01/23/2026  12:00 PM           279,872 \Everyone              wdscore.dll
+01/23/2026  12:00 PM           341,408 \Everyone              wdscommonlib.dll
+01/23/2026  12:00 PM           267,816 \Everyone              wdsclientapi.dll
+01/23/2026  12:00 PM           484,904 \Everyone              wdsclient.dll
+01/23/2026  12:00 PM               597 \Everyone              warning.gif
+01/23/2026  12:00 PM           222,512 \Everyone              w32uires.dll
+01/23/2026  12:00 PM           312,624 \Everyone              w32uiimg.dll
+01/23/2026  12:00 PM    <DIR>          \Everyone              vi-vn
+01/23/2026  12:00 PM           599,360 \Everyone              vhdprovider.dll
+01/23/2026  12:00 PM            21,824 \Everyone              uxlibres.dll
+01/23/2026  12:00 PM           185,648 \Everyone              uxlib.dll
+01/23/2026  12:00 PM           128,568 \Everyone              wdsimage.dll
+01/23/2026  12:00 PM            66,864 \Everyone              utcapi.dll
+01/23/2026  12:00 PM           114,707 \Everyone              upgwow_bulk.xml
+01/23/2026  12:00 PM    <DIR>          \Everyone              uup
+01/23/2026  12:00 PM            70,907 \Everyone              upgradeagent.xml
+01/23/2026  12:00 PM         3,302,704 \Everyone              upgradeagent.dll
+01/23/2026  12:00 PM            19,157 \Everyone              upgrade_frmwrk.xml
+01/23/2026  12:00 PM            41,750 \Everyone              upgrade_data.xml
+01/23/2026  12:00 PM             6,054 \Everyone              upgrade_comp.xml
+01/23/2026  12:00 PM           211,949 \Everyone              upgrade_bulk.xml
+01/23/2026  12:00 PM           136,608 \Everyone              upgloader.dll
+01/23/2026  12:00 PM           542,128 \Everyone              updatecompression.dll
+01/23/2026  12:00 PM         3,974,448 \Everyone              updateagent.dll
+01/23/2026  12:00 PM             4,639 \Everyone              uninstall.xml
+01/23/2026  12:00 PM         1,090,864 \Everyone              unbcl.dll
+01/23/2026  12:00 PM           390,560 \Everyone              unattendmgr.dll
+01/23/2026  12:00 PM           275,872 \Everyone              unattend.dll
+01/23/2026  12:00 PM            75,320 \Everyone              uddicomp.dll
+01/23/2026  12:00 PM            11,122 \Everyone              uninstall_data.xml
+01/23/2026  12:00 PM    <DIR>          \Everyone              sxs
+01/23/2026  12:00 PM            75,856 \Everyone              sqmapi.dll
+01/23/2026  12:00 PM            25,920 \Everyone              spwizres.dll
+01/23/2026  12:00 PM            95,544 \Everyone              spwizimg.dll
+01/23/2026  12:00 PM           570,672 \Everyone              spwizeng.dll
+01/23/2026  12:00 PM            83,272 \Everyone              spprgrss.dll
+01/23/2026  12:00 PM            58,800 \Everyone              spflvrnt.dll
+01/23/2026  12:00 PM           927,024 \Everyone              smiengine.dll
+01/23/2026  12:00 PM           165,729 \Everyone              sfpatwt.inf
+01/23/2026  12:00 PM            91,635 \Everyone              sfpatwb.inf
+01/23/2026  12:00 PM            79,818 \Everyone              sfpatw8.inf
+01/23/2026  12:00 PM            17,396 \Everyone              sfpatw7.inf
+01/23/2026  12:00 PM           169,730 \Everyone              sfpatrs1.inf
+01/23/2026  12:00 PM            11,602 \Everyone              sfpat.inf
+01/23/2026  12:00 PM         4,935,402 \Everyone              sflistwt.dat
+01/23/2026  12:00 PM         2,608,858 \Everyone              sflistw8.dat
+01/23/2026  12:00 PM         1,703,368 \Everyone              sflistw7.dat
+01/23/2026  12:00 PM         5,593,182 \Everyone              sflistrs1.dat
+01/23/2026  12:00 PM         3,172,904 \Everyone              sflistwb.dat
+01/23/2026  12:00 PM             1,644 \Everyone              sflcid.dat
+01/23/2026  12:00 PM             1,824 \Everyone              sfcn.dat
+01/23/2026  12:00 PM         1,340,832 \Everyone              setupprep.exe
+01/23/2026  12:00 PM           255,376 \Everyone              setupplatform.exe
+01/23/2026  12:00 PM         9,721,272 \Everyone              setupplatform.dll
+01/23/2026  12:00 PM            23,023 \Everyone              setupplatform.cfg
+01/23/2026  12:00 PM         1,222,032 \Everyone              setupmgr.dll
+01/23/2026  12:00 PM           906,664 \Everyone              setuphost.exe
+01/23/2026  12:00 PM            74,544 \Everyone              setuperror.exe
+01/23/2026  12:00 PM           805,856 \Everyone              setupdiag.exe
+01/23/2026  12:00 PM         2,917,776 \Everyone              setupcore.dll
+01/23/2026  12:00 PM           370,088 \Everyone              setupcompat.dll
+01/23/2026  12:00 PM           333,216 \Everyone              setup.exe
+01/23/2026  12:00 PM           980,960 \Everyone              segoeui.ttf
+01/23/2026  12:00 PM           423,344 \Everyone              sdbapiu.dll
+01/23/2026  12:00 PM           110,592 \Everyone              schema.dat
+01/23/2026  12:00 PM           161,200 \Everyone              rollback.exe
+01/23/2026  12:00 PM            95,664 \Everyone              rmsupg.dll
+01/23/2026  12:00 PM           341,408 \Everyone              reservemanager.dll
+01/23/2026  12:00 PM            75,168 \Everyone              reportgen.dll
+01/23/2026  12:00 PM         1,026,112 \Everyone              servicingcommon.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              replacementmanifests
+01/23/2026  11:58 AM               837 \Everyone              reagent.xml
+01/23/2026  11:58 AM           742,816 \Everyone              reagent.dll
+01/23/2026  11:58 AM             1,240 \Everyone              reagent.admx
+01/23/2026  11:58 AM            50,608 \Everyone              rdsupgcheck.dll
+01/23/2026  11:58 AM           107,952 \Everyone              pnppropmig.dll
+01/23/2026  11:58 AM            99,648 \Everyone              pnpibs.dll
+01/23/2026  11:58 AM             4,780 \Everyone              outofbox_windows_db.bin
+01/23/2026  11:58 AM           324,912 \Everyone              osimageprovider.dll
+01/23/2026  11:58 AM            21,299 \Everyone              osfilter.inf
+01/23/2026  11:58 AM           449,323 \Everyone              oscomps.xml
+01/23/2026  11:58 AM            26,016 \Everyone              migres.dll
+01/23/2026  11:58 AM         1,303,984 \Everyone              migstore.dll
+01/23/2026  11:58 AM           464,304 \Everyone              migsys.dll
+01/23/2026  11:58 AM            75,320 \Everyone              migtestplugin.dll
+01/23/2026  11:58 AM           337,208 \Everyone              mitigation.dll
+01/23/2026  11:58 AM           386,480 \Everyone              mxeagent.dll
+01/23/2026  11:58 AM           103,728 \Everyone              nlsbres.dll
+01/23/2026  11:58 AM            54,824 \Everyone              ntdsupg.dll
+01/23/2026  11:58 AM            75,320 \Everyone              ntfrsupg.dll
+01/23/2026  11:58 AM             1,475 \Everyone              nxquery.inf
+01/23/2026  11:58 AM            54,728 \Everyone              nxquery.sys
+01/23/2026  11:58 AM            44,544 \Everyone              offline.xml
+01/23/2026  11:58 AM           243,120 \Everyone              offlineprofileutils.dll
+01/23/2026  11:58 AM           148,800 \Everyone              migisol.dll
+01/23/2026  11:58 AM           288,064 \Everyone              mighost.exe
+01/23/2026  11:58 AM         9,266,480 \Everyone              migcore.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              migration
+01/23/2026  11:58 AM           654,548 \Everyone              migapp.xml
+01/23/2026  11:58 AM           329,120 \Everyone              migapp.dll
+01/23/2026  11:58 AM           221,248 \Everyone              microsoft.media.playready.appraiser.dll
+01/23/2026  11:58 AM         1,738,128 \Everyone              mediasetupuimgr.dll
+01/23/2026  11:58 AM           189,856 \Everyone              logprovider.dll
+01/23/2026  11:58 AM           861,992 \Everyone              locale.nls
+01/23/2026  11:58 AM                78 \Everyone              lang.ini
+01/23/2026  11:58 AM           116,264 \Everyone              itgtupg.dll
+01/23/2026  11:58 AM     2,622,497,580 \Everyone              install2.swm
+01/23/2026  11:44 AM     4,186,194,716 \Everyone              install.swm
+01/23/2026  11:30 AM           382,368 \Everyone              input.dll
+01/23/2026  11:30 AM    <DIR>          \Everyone              inf
+01/23/2026  11:30 AM           247,104 \Everyone              imagingprovider.dll
+01/23/2026  11:30 AM         1,013,168 \Everyone              imagelib.dll
+01/23/2026  11:30 AM            50,744 \Everyone              iiscomp.dll
+01/23/2026  11:30 AM               122 \Everyone              idwbinfo.txt
+01/23/2026  11:30 AM    <DIR>          \Everyone              id-id
+01/23/2026  11:30 AM             7,222 \Everyone              icbexclusion.inf
+01/23/2026  11:30 AM           783,680 \Everyone              iasmigplugin.dll
+01/23/2026  11:30 AM           251,448 \Everyone              hypervcomplcheck.dll
+01/23/2026  11:30 AM           423,344 \Everyone              hwreqchk.dll
+01/23/2026  11:30 AM                15 \Everyone              hwexcludePE.txt
+01/23/2026  11:30 AM                51 \Everyone              hwexclude.txt
+01/23/2026  11:30 AM               257 \Everyone              hwcompatPE.txt
+01/23/2026  11:30 AM           963,297 \Everyone              hwcompat.txt
+01/23/2026  11:30 AM           243,000 \Everyone              hwcompat.dll
+01/23/2026  11:30 AM    <DIR>          \Everyone              gl-es
+01/23/2026  11:30 AM            95,552 \Everyone              folderprovider.dll
+01/23/2026  11:30 AM         1,119,632 \Everyone              facilitator.dll
+01/23/2026  11:30 AM    <DIR>          \Everyone              eu-es
+01/23/2026  11:29 AM    <DIR>          \Everyone              etwproviders
+01/23/2026  11:29 AM           210,352 \Everyone              du.dll
+01/23/2026  11:29 AM    <DIR>          \Everyone              en-us
+01/23/2026  11:29 AM           300,352 \Everyone              dismprov.dll
+01/23/2026  11:29 AM           230,816 \Everyone              dismcoreps.dll
+01/23/2026  11:29 AM           476,464 \Everyone              dismcore.dll
+01/23/2026  11:29 AM         1,250,720 \Everyone              dismapi.dll
+01/23/2026  11:29 AM    <DIR>          \Everyone              dlmanifests
+01/23/2026  11:29 AM           329,120 \Everyone              dism.exe
+01/23/2026  11:29 AM            88,256 \Everyone              diagtrackrunner.exe
+01/23/2026  11:29 AM         1,365,856 \Everyone              diagtrack.dll
+01/23/2026  11:29 AM           218,416 \Everyone              diagnostic.dll
+01/23/2026  11:29 AM            99,632 \Everyone              diager.dll
+01/23/2026  11:29 AM           861,488 \Everyone              devinv.dll
+01/23/2026  11:29 AM           640,416 \Everyone              deployprovider.dll
+01/23/2026  11:29 AM             1,499 \Everyone              db_msftproductionwindowssigningca.cer
+01/23/2026  11:29 AM                49 \Everyone              cversion.ini
+01/23/2026  11:29 AM           718,144 \Everyone              csiagent.dll
+01/23/2026  11:29 AM            50,728 \Everyone              cryptosetup.dll
+01/23/2026  11:29 AM            50,728 \Everyone              compres.dll
+01/23/2026  11:29 AM               780 \Everyone              compliance.ini
+01/23/2026  11:29 AM         2,393,408 \Everyone              compatresources.dll
+01/23/2026  11:29 AM            75,184 \Everyone              compatplugin.dll
+01/23/2026  11:29 AM           234,880 \Everyone              compatctrl.dll
+01/23/2026  11:29 AM           177,472 \Everyone              cmisetup.dll
+01/23/2026  11:29 AM           226,608 \Everyone              cmi2migxml.dll
+01/23/2026  11:29 AM            50,728 \Everyone              clustercompliance.dll
+01/23/2026  11:29 AM               571 \Everyone              cdplibuninstall.mof
+01/23/2026  11:29 AM             1,976 \Everyone              cdplib.mof
+01/23/2026  11:29 AM    <DIR>          \Everyone              ca-es
+01/23/2026  11:29 AM           303,072 \Everyone              bootsvc.dll
+01/23/2026  11:29 AM           230,816 \Everyone              compatappraiserresources.dll
+01/23/2026  11:28 AM           162,520 \Everyone              bcd.dll
+01/23/2026  11:28 AM             4,841 \Everyone              background_cli.bmp
+01/23/2026  11:28 AM           214,448 \Everyone              autorun.dll
+01/23/2026  11:28 AM    <DIR>          \Everyone              asz
+01/23/2026  11:28 AM            25,904 \Everyone              arunres.dll
+01/23/2026  11:28 AM           152,896 \Everyone              arunimg.dll
+01/23/2026  11:28 AM                90 \Everyone              appraisersdblatestoshash.txt
+01/23/2026  11:28 AM           161,152 \Everyone              appraiserres.dll
+01/23/2026  11:28 AM            10,699 \Everyone              appraiserdatasha1.cat
+01/23/2026  11:28 AM         2,807,375 \Everyone              appraiser.sdb
+01/23/2026  11:28 AM         2,663,808 \Everyone              appraiser.dll
+01/23/2026  11:28 AM           488,880 \Everyone              appextagent.dll
+01/23/2026  11:28 AM            95,648 \Everyone              appcompatservicing.dll
+01/23/2026  11:28 AM            13,326 \Everyone              appcompat_detailed_txt.xsl
+01/23/2026  11:28 AM            13,371 \Everyone              appcompat_detailed_bidi_txt.xsl
+01/23/2026  11:28 AM            13,732 \Everyone              appcompat_detailed_bidi.xsl
+01/23/2026  11:28 AM            13,608 \Everyone              appcompat_detailed.xsl
+01/23/2026  11:28 AM            12,498 \Everyone              appcompat_bidi.xsl
+01/23/2026  11:28 AM            11,673 \Everyone              appcompat.xsl
+01/23/2026  11:28 AM             1,046 \Everyone              alert.gif
+01/23/2026  11:28 AM         1,131,952 \Everyone              aeinv.dll
+01/23/2026  11:28 AM           103,976 \Everyone              admtv3check.dll
+01/23/2026  11:28 AM            75,168 \Everyone              adfscomp.dll
+01/23/2026  11:28 AM           267,584 \Everyone              actionqueue.dll
+01/23/2026  11:28 AM           353,664 \Everyone              acres.dll
+01/23/2026  11:28 AM           628,128 \Everyone              acmigration.dll
+01/23/2026  11:28 AM    <DIR>          \Everyone              _manifest
+01/23/2026  11:28 AM    <DIR>          \Everyone              ..
+01/23/2026  11:28 AM    <DIR>          \Everyone              .
+             187 File(s)  7,512,041,149 bytes
+
+ Directory of D:\sources\_manifest
+
+01/23/2026  11:28 AM    <DIR>          \Everyone              ..
+01/23/2026  11:28 AM    <DIR>          \Everyone              spdx_2.2
+01/23/2026  11:28 AM    <DIR>          \Everyone              .
+               0 File(s)              0 bytes
+
+ Directory of D:\sources\_manifest\spdx_2.2
+
+01/23/2026  11:28 AM    <DIR>          \Everyone              ..
+01/23/2026  11:28 AM             5,350 \Everyone              manifest.spdx.cose
+01/23/2026  11:28 AM           619,136 \Everyone              manifest.spdx.json
+01/23/2026  11:28 AM                64 \Everyone              manifest.spdx.json.sha256
+01/23/2026  11:28 AM    <DIR>          \Everyone              .
+               3 File(s)        624,550 bytes
+
+ Directory of D:\sources\asz
+
+01/23/2026  11:28 AM    <DIR>          \Everyone              .
+01/23/2026  11:28 AM    <DIR>          \Everyone              ..
+01/23/2026  11:28 AM           152,992 \Everyone              arunimg.dll
+01/23/2026  11:28 AM            26,032 \Everyone              arunres.dll
+01/23/2026  11:28 AM             4,940 \Everyone              background_asz.bmp
+01/23/2026  11:28 AM    <DIR>          \Everyone              en-us
+01/23/2026  11:28 AM                25 \Everyone              setupmedia.cfg
+01/23/2026  11:28 AM            95,536 \Everyone              spwizimg.dll
+01/23/2026  11:28 AM            26,032 \Everyone              spwizres.dll
+01/23/2026  11:28 AM           222,624 \Everyone              w32uires.dll
+               7 File(s)        528,181 bytes
+
+ Directory of D:\sources\asz\en-us
+
+01/23/2026  11:28 AM    <DIR>          \Everyone              ..
+01/23/2026  11:28 AM             6,144 \Everyone              arunres.dll.mui
+01/23/2026  11:28 AM             8,704 \Everyone              spwizres.dll.mui
+01/23/2026  11:28 AM           205,824 \Everyone              w32uires.dll.mui
+01/23/2026  11:28 AM    <DIR>          \Everyone              .
+               3 File(s)        220,672 bytes
+
+ Directory of D:\sources\ca-es
+
+01/23/2026  11:29 AM    <DIR>          \Everyone              ..
+01/23/2026  11:29 AM            80,896 \Everyone              MediaSetupUIMgr.dll.mui
+01/23/2026  11:29 AM            14,248 \Everyone              SetupPlatform.exe.mui
+01/23/2026  11:29 AM    <DIR>          \Everyone              .
+               2 File(s)         95,144 bytes
+
+ Directory of D:\sources\dlmanifests
+
+01/23/2026  11:29 AM             1,811 \Everyone              workstationservice-dl.man
+01/23/2026  11:29 AM             2,372 \Everyone              wmi-core-dl.man
+01/23/2026  11:29 AM             2,887 \Everyone              winlogon-dl.man
+01/23/2026  11:29 AM             5,855 \Everyone              windowssearchengine-dl.man
+01/23/2026  11:29 AM            12,503 \Everyone              win32k-settings-dl.man
+01/23/2026  11:29 AM             1,676 \Everyone              webenroll-dl.man
+01/23/2026  11:29 AM             1,914 \Everyone              web-services-for-management-core-dl.man
+01/23/2026  11:29 AM             1,523 \Everyone              wcf-nonhttp-activation-dl.man
+01/23/2026  11:29 AM             1,572 \Everyone              wcf-http-activation-postapply-dl.man
+01/23/2026  11:29 AM             2,018 \Everyone              wcf-http-activation-dl.man
+01/23/2026  11:29 AM             1,043 \Everyone              volsnap-dl.man
+01/23/2026  11:29 AM             2,038 \Everyone              video-tvvideocontrol-dl.man
+01/23/2026  11:29 AM             2,841 \Everyone              textservicesframework-migration-dl.man
+01/23/2026  11:29 AM             1,919 \Everyone              terminalservices-terminalservicesclient-dl.man
+01/23/2026  11:29 AM             2,453 \Everyone              terminalservices-sessiondirectory-server-dl.man
+01/23/2026  11:29 AM             2,240 \Everyone              terminalservices-sessiondirectory-client-dl.man
+01/23/2026  11:29 AM             1,438 \Everyone              terminalservices-remoteconnectionmanager-dl.man
+01/23/2026  11:29 AM            20,861 \Everyone              terminalservices-rdp-winstationextensions-dl.man
+01/23/2026  11:29 AM             1,438 \Everyone              terminalservices-localsessionmanager-dl.man
+01/23/2026  11:29 AM             2,253 \Everyone              terminalservices-licenseserver-dl.man
+01/23/2026  11:29 AM             1,141 \Everyone              terminalservices-drivers-dl.man
+01/23/2026  11:29 AM             1,305 \Everyone              terminalservices-appserver-licensing-dl.man
+01/23/2026  11:29 AM             1,573 \Everyone              terminalservices-appserver-dl.man
+01/23/2026  11:29 AM             1,127 \Everyone              tabletpcplatforminput-core-dl.man
+01/23/2026  11:29 AM             8,752 \Everyone              tabletpcjournal-dl.man
+01/23/2026  11:29 AM             1,429 \Everyone              tabletpcinputpanel-dl.man
+01/23/2026  11:29 AM             1,737 \Everyone              tabletpc-tabbtn-dl.man
+01/23/2026  11:29 AM             2,858 \Everyone              speechcommon-dl.man
+01/23/2026  11:29 AM             1,180 \Everyone              smtpsvc-service-dl.man
+01/23/2026  11:29 AM             1,164 \Everyone              smtpsvc-admin-dl.man
+01/23/2026  11:29 AM             1,694 \Everyone              smss-dl.man
+01/23/2026  11:29 AM            13,993 \Everyone              smbserver-dl.man
+01/23/2026  11:29 AM             3,757 \Everyone              smartcardsubsystem-dl.man
+01/23/2026  11:29 AM             1,288 \Everyone              shutdown-event-tracker-dl.man
+01/23/2026  11:29 AM             1,079 \Everyone              security-ntlm-lmc.man
+01/23/2026  11:29 AM             1,458 \Everyone              security-ntlm-dl.man
+01/23/2026  11:29 AM               803 \Everyone              security-kerberos-dl.man
+01/23/2026  11:29 AM               803 \Everyone              security-digest-dl.man
+01/23/2026  11:29 AM             1,923 \Everyone              schedsvc-dl.man
+01/23/2026  11:29 AM             1,461 \Everyone              schannel-dl.man
+01/23/2026  11:29 AM             1,973 \Everyone              rpc-remote-dl.man
+01/23/2026  11:29 AM             1,859 \Everyone              rpc-local-dl.man
+01/23/2026  11:29 AM             1,429 \Everyone              rpc-http_proxy-dl.man
+01/23/2026  11:29 AM             1,682 \Everyone              rpc-http-dl.man
+01/23/2026  11:29 AM             3,265 \Everyone              rights-management-services-server-dl.man
+01/23/2026  11:29 AM             3,288 \Everyone              rights-management-client-v1-api-dl.man
+01/23/2026  11:29 AM             2,290 \Everyone              printing-spooler-networkclient-dl.man
+01/23/2026  11:29 AM             2,598 \Everyone              printing-spooler-core-dl.man
+01/23/2026  11:29 AM             1,045 \Everyone              partmgr-dl.man
+01/23/2026  11:29 AM             4,814 \Everyone              odbc32dll-dl.man
+01/23/2026  11:29 AM             8,035 \Everyone              ntoskrnl-dl.man
+01/23/2026  11:29 AM             4,052 \Everyone              ntfs-dl.man
+01/23/2026  11:29 AM    <DIR>          \Everyone              networking-mpssvc-svc
+01/23/2026  11:29 AM             2,053 \Everyone              netlogon-dl.man
+01/23/2026  11:29 AM            15,846 \Everyone              netfx4clientcorecomp-dl.man
+01/23/2026  11:29 AM             1,466 \Everyone              netfx4-wcf-extended-dl.man
+01/23/2026  11:29 AM             1,550 \Everyone              netfx4-wcf-client-dl.man
+01/23/2026  11:29 AM             1,576 \Everyone              netfx3-dl.man
+01/23/2026  11:29 AM             1,151 \Everyone              netfx-wcf-tcpportsharing-dl.man
+01/23/2026  11:29 AM             1,615 \Everyone              netfx-wcf-tcpactivation-registration-dl.man
+01/23/2026  11:29 AM             1,621 \Everyone              netfx-wcf-pipeactivation-registration-dl.man
+01/23/2026  11:29 AM             1,621 \Everyone              netfx-wcf-msmqactivation-registration-dl.man
+01/23/2026  11:29 AM             1,215 \Everyone              netfx-wcf-http-activation-dl.man
+01/23/2026  11:29 AM             1,533 \Everyone              mup-dl.man
+01/23/2026  11:29 AM             1,749 \Everyone              msmq-triggers-dl.man
+01/23/2026  11:29 AM             1,451 \Everyone              msmq-routing-dl.man
+01/23/2026  11:29 AM             1,544 \Everyone              msmq-multicast-dl.man
+01/23/2026  11:29 AM             6,789 \Everyone              msmq-messagingcoreservice-dl.man
+01/23/2026  11:29 AM             2,282 \Everyone              msmq-http-dl.man
+01/23/2026  11:29 AM             1,546 \Everyone              msmq-domain-ic-dl.man
+01/23/2026  11:29 AM             1,697 \Everyone              msmq-dcom-dl.man
+01/23/2026  11:29 AM             2,383 \Everyone              microsoft.windows.com.complus.setup.dl.man
+01/23/2026  11:29 AM             1,806 \Everyone              microsoft.windows.com.base-dl.man
+01/23/2026  11:29 AM    <DIR>          \Everyone              microsoft-windows-winsock-core-infrastructure-upgrade
+01/23/2026  11:29 AM             4,869 \Everyone              microsoft-windows-wcfcorecomp-dl.man
+01/23/2026  11:29 AM             2,591 \Everyone              microsoft-windows-wab-dl.man
+01/23/2026  11:29 AM    <DIR>          \Everyone              microsoft-windows-wmi-core
+01/23/2026  11:29 AM             2,587 \Everyone              microsoft-windows-tapisetup-dl.man
+01/23/2026  11:29 AM             1,320 \Everyone              microsoft-windows-terminalservices-clientactivexcore-dl.man
+01/23/2026  11:29 AM    <DIR>          \Everyone              microsoft-windows-terminalservices-licenseserver
+01/23/2026  11:29 AM    <DIR>          \Everyone              microsoft-windows-textservicesframework-migration-dl
+01/23/2026  11:29 AM    <DIR>          \Everyone              microsoft-windows-unimodem-config
+01/23/2026  11:29 AM             8,158 \Everyone              microsoft-windows-storagemigration-dl.man
+01/23/2026  11:29 AM    <DIR>          \Everyone              microsoft-windows-rasserver-migplugin
+01/23/2026  11:29 AM    <DIR>          \Everyone              microsoft-windows-rasconnectionmanager
+01/23/2026  11:29 AM    <DIR>          \Everyone              microsoft-windows-tapisetup
+01/23/2026  11:29 AM    <DIR>          \Everyone              microsoft-windows-networkloadbalancing-core
+01/23/2026  11:29 AM    <DIR>          \Everyone              microsoft-windows-networkbridge
+01/23/2026  11:29 AM            45,175 \Everyone              microsoft-windows-netfxcorecomp-dl.man
+01/23/2026  11:29 AM             1,273 \Everyone              microsoft-windows-netfx35cdfcomp-dl.man
+01/23/2026  11:29 AM             9,028 \Everyone              microsoft-windows-netfx35-dl.man
+01/23/2026  11:29 AM    <DIR>          \Everyone              microsoft-windows-msmq-messagingcoreservice
+01/23/2026  11:29 AM    <DIR>          \Everyone              microsoft-windows-internet-naming-service-runtime
+01/23/2026  11:29 AM             1,461 \Everyone              microsoft-windows-iis-corewebengine-deployment-dl.man
+01/23/2026  11:29 AM            13,460 \Everyone              microsoft-windows-ie-internetexplorer-dl.man
+01/23/2026  11:29 AM             2,339 \Everyone              microsoft-windows-ie-feeds-platform-dl.man
+01/23/2026  11:29 AM             2,091 \Everyone              microsoft-windows-ie-esc-dl.man
+01/23/2026  11:29 AM    <DIR>          \Everyone              microsoft-windows-ie-clientnetworkprotocolimplementation-migration
+01/23/2026  11:29 AM    <DIR>          \Everyone              microsoft-windows-iasserver-migplugin
+01/23/2026  11:29 AM             1,789 \Everyone              microsoft-windows-htmlhelp-dl.man
+01/23/2026  11:29 AM             7,636 \Everyone              microsoft-windows-fax-service-dl.man
+01/23/2026  11:29 AM             1,855 \Everyone              microsoft-windows-fax-server-dl.man
+01/23/2026  11:29 AM             4,829 \Everyone              microsoft-windows-fax-common-dl.man
+01/23/2026  11:29 AM             1,831 \Everyone              microsoft-windows-fax-client-proenterprise-dl.man
+01/23/2026  11:29 AM             3,761 \Everyone              microsoft-windows-fax-client-applications-dl.man
+01/23/2026  11:29 AM             1,298 \Everyone              microsoft-windows-errorreportingfaults-dl.man
+01/23/2026  11:29 AM             1,938 \Everyone              microsoft-windows-errorreportingcore-dl.man
+01/23/2026  11:29 AM    <DIR>          \Everyone              microsoft-windows-directoryservices-adam-dl
+01/23/2026  11:29 AM    <DIR>          \Everyone              microsoft-windows-dhcpservermigplugin-dl
+01/23/2026  11:29 AM    <DIR>          \Everyone              microsoft-windows-com-dtc-setup-dl
+01/23/2026  11:29 AM    <DIR>          \Everyone              microsoft-windows-com-complus-setup-dl
+01/23/2026  11:29 AM             1,721 \Everyone              microsoft-windows-certificateservices-mscep-dl.man
+01/23/2026  11:29 AM             1,439 \Everyone              microsoft-windows-certificateservices-camanagement-dl.man
+01/23/2026  11:29 AM             1,865 \Everyone              microsoft-windows-certificateservices-ca-dl.man
+01/23/2026  11:29 AM             1,614 \Everyone              microsoft-windows-bits-client-dl.man
+01/23/2026  11:29 AM    <DIR>          \Everyone              microsoft-activedirectory-webservices-dl
+01/23/2026  11:29 AM             1,510 \Everyone              ldap-client-dl.man
+01/23/2026  11:29 AM             2,062 \Everyone              kerberos-key-distribution-center-dl.man
+01/23/2026  11:29 AM             1,534 \Everyone              ime-traditional-chinese-migration-dl.man
+01/23/2026  11:29 AM             1,085 \Everyone              ieframe-dl.man
+01/23/2026  11:29 AM             1,734 \Everyone              grouppolicy-serveradmintools-gpmc-dl.man
+01/23/2026  11:29 AM             1,923 \Everyone              grouppolicy-cse-softwareinstallation-dl.man
+01/23/2026  11:29 AM             1,454 \Everyone              grouppolicy-admin-gpedit-snapin-dl.man
+01/23/2026  11:29 AM             1,444 \Everyone              grouppolicy-admin-gpedit-dl.man
+01/23/2026  11:29 AM             1,509 \Everyone              gpmgmt-dl.man
+01/23/2026  11:29 AM             1,383 \Everyone              gpmc-dl.man
+01/23/2026  11:29 AM             7,121 \Everyone              gpbase-dl.man
+01/23/2026  11:29 AM             4,453 \Everyone              frs-core-dl.man
+01/23/2026  11:29 AM               794 \Everyone              fonts-type1-dl.man
+01/23/2026  11:29 AM             1,613 \Everyone              feclient-dl.man
+01/23/2026  11:29 AM             2,571 \Everyone              explorer-dl.man
+01/23/2026  11:29 AM             1,759 \Everyone              eventlog-dl.man
+01/23/2026  11:29 AM             6,028 \Everyone              etwtracing.man
+01/23/2026  11:29 AM             1,459 \Everyone              etw-core-dl.man
+01/23/2026  11:29 AM             4,533 \Everyone              dpapi_keys-dl.man
+01/23/2026  11:29 AM             2,305 \Everyone              dns-server-service-dl.man
+01/23/2026  11:29 AM             3,754 \Everyone              dns-client-dl.man
+01/23/2026  11:29 AM             1,837 \Everyone              directoryservices-ism-smtp-dl.man
+01/23/2026  11:29 AM             2,054 \Everyone              directoryservices-domain-dl.man
+01/23/2026  11:29 AM             2,199 \Everyone              directoryservices-adam-dl.man
+01/23/2026  11:29 AM             1,514 \Everyone              dhcpclient-dl.man
+01/23/2026  11:29 AM             2,062 \Everyone              dfsmgmt-dl.man
+01/23/2026  11:29 AM             1,685 \Everyone              dfsclient-dl.man
+01/23/2026  11:29 AM             1,468 \Everyone              cryptoconfig-dl.man
+01/23/2026  11:29 AM             2,947 \Everyone              crypto_keys-dl.man
+01/23/2026  11:29 AM             2,224 \Everyone              credential-manager-dl.man
+01/23/2026  11:29 AM             1,643 \Everyone              coreos-dl.man
+01/23/2026  11:29 AM             2,879 \Everyone              commandprompt-dl.man
+01/23/2026  11:29 AM             7,079 \Everyone              capi2_certs-dl.man
+01/23/2026  11:29 AM             3,193 \Everyone              browserservice-dl.man
+01/23/2026  11:29 AM             1,655 \Everyone              adsi-winnt-provider-dl.man
+01/23/2026  11:29 AM             1,962 \Everyone              adsi-router-dl.man
+01/23/2026  11:29 AM             1,676 \Everyone              adsi-ldap-provider-dl.man
+01/23/2026  11:29 AM             3,725 \Everyone              adsi-ldap-extensions-dl.man
+01/23/2026  11:29 AM             1,164 \Everyone              activedirectory-wmireplicationprovider-dl.man
+01/23/2026  11:29 AM               670 \Everyone              activedirectory-webservices-dl.man
+01/23/2026  11:29 AM             4,705 \Everyone              accessibilitycpl-dl.man
+01/23/2026  11:29 AM    <DIR>          \Everyone              ..
+01/23/2026  11:29 AM    <DIR>          \Everyone              .
+             137 File(s)        438,301 bytes
+
+ Directory of D:\sources\dlmanifests\microsoft-activedirectory-webservices-dl
+
+01/23/2026  11:29 AM    <DIR>          \Everyone              ..
+01/23/2026  11:29 AM           124,320 \Everyone              adwsmigrate.dll
+01/23/2026  11:29 AM    <DIR>          \Everyone              .
+               1 File(s)        124,320 bytes
+
+ Directory of D:\sources\dlmanifests\microsoft-windows-com-complus-setup-dl
+
+01/23/2026  11:29 AM    <DIR>          \Everyone              ..
+01/23/2026  11:29 AM           198,064 \Everyone              commig.dll
+01/23/2026  11:29 AM    <DIR>          \Everyone              .
+               1 File(s)        198,064 bytes
+
+ Directory of D:\sources\dlmanifests\microsoft-windows-com-dtc-setup-dl
+
+01/23/2026  11:29 AM           107,824 \Everyone              msdtcstp.dll
+01/23/2026  11:29 AM    <DIR>          \Everyone              ..
+01/23/2026  11:29 AM    <DIR>          \Everyone              .
+               1 File(s)        107,824 bytes
+
+ Directory of D:\sources\dlmanifests\microsoft-windows-dhcpservermigplugin-dl
+
+01/23/2026  11:29 AM    <DIR>          \Everyone              ..
+01/23/2026  11:29 AM           128,416 \Everyone              dhcpsrvmigplugin.dll
+01/23/2026  11:29 AM    <DIR>          \Everyone              .
+               1 File(s)        128,416 bytes
+
+ Directory of D:\sources\dlmanifests\microsoft-windows-directoryservices-adam-dl
+
+01/23/2026  11:29 AM    <DIR>          \Everyone              ..
+01/23/2026  11:29 AM           156,976 \Everyone              adammigrate.dll
+01/23/2026  11:29 AM    <DIR>          \Everyone              .
+               1 File(s)        156,976 bytes
+
+ Directory of D:\sources\dlmanifests\microsoft-windows-iasserver-migplugin
+
+01/23/2026  11:29 AM    <DIR>          \Everyone              ..
+01/23/2026  11:29 AM           783,680 \Everyone              iasmigplugin.dll
+01/23/2026  11:29 AM           511,792 \Everyone              iasmigreader.exe
+01/23/2026  11:29 AM    <DIR>          \Everyone              .
+               2 File(s)      1,295,472 bytes
+
+ Directory of D:\sources\dlmanifests\microsoft-windows-ie-clientnetworkprotocolimplementation-migration
+
+01/23/2026  11:29 AM            38,192 \Everyone              wininetplugin.dll
+01/23/2026  11:29 AM    <DIR>          \Everyone              ..
+01/23/2026  11:29 AM    <DIR>          \Everyone              .
+               1 File(s)         38,192 bytes
+
+ Directory of D:\sources\dlmanifests\microsoft-windows-internet-naming-service-runtime
+
+01/23/2026  11:29 AM    <DIR>          \Everyone              ..
+01/23/2026  11:29 AM            83,360 \Everyone              winsplgn.dll
+01/23/2026  11:29 AM    <DIR>          \Everyone              .
+               1 File(s)         83,360 bytes
+
+ Directory of D:\sources\dlmanifests\microsoft-windows-msmq-messagingcoreservice
+
+01/23/2026  11:29 AM    <DIR>          \Everyone              ..
+01/23/2026  11:29 AM           189,872 \Everyone              mqmigplugin.dll
+01/23/2026  11:29 AM    <DIR>          \Everyone              .
+               1 File(s)        189,872 bytes
+
+ Directory of D:\sources\dlmanifests\microsoft-windows-networkbridge
+
+01/23/2026  11:29 AM    <DIR>          \Everyone              ..
+01/23/2026  11:29 AM           136,496 \Everyone              bridgemigplugin.dll
+01/23/2026  11:29 AM    <DIR>          \Everyone              .
+               1 File(s)        136,496 bytes
+
+ Directory of D:\sources\dlmanifests\microsoft-windows-networkloadbalancing-core
+
+01/23/2026  11:29 AM           144,800 \Everyone              nlbmigplugin.dll
+01/23/2026  11:29 AM    <DIR>          \Everyone              ..
+01/23/2026  11:29 AM    <DIR>          \Everyone              .
+               1 File(s)        144,800 bytes
+
+ Directory of D:\sources\dlmanifests\microsoft-windows-rasconnectionmanager
+
+01/23/2026  11:29 AM    <DIR>          \Everyone              ..
+01/23/2026  11:29 AM            99,632 \Everyone              cmmigr.dll
+01/23/2026  11:29 AM    <DIR>          \Everyone              .
+               1 File(s)         99,632 bytes
+
+ Directory of D:\sources\dlmanifests\microsoft-windows-rasserver-migplugin
+
+01/23/2026  11:29 AM    <DIR>          \Everyone              ..
+01/23/2026  11:29 AM           419,248 \Everyone              rasmigplugin.dll
+01/23/2026  11:29 AM    <DIR>          \Everyone              .
+               1 File(s)        419,248 bytes
+
+ Directory of D:\sources\dlmanifests\microsoft-windows-tapisetup
+
+01/23/2026  11:29 AM    <DIR>          \Everyone              ..
+01/23/2026  11:29 AM            99,760 \Everyone              tapimigplugin.dll
+01/23/2026  11:29 AM    <DIR>          \Everyone              .
+               1 File(s)         99,760 bytes
+
+ Directory of D:\sources\dlmanifests\microsoft-windows-terminalservices-licenseserver
+
+01/23/2026  11:29 AM    <DIR>          \Everyone              ..
+01/23/2026  11:29 AM           140,720 \Everyone              tlsmigplugin.dll
+01/23/2026  11:29 AM    <DIR>          \Everyone              .
+               1 File(s)        140,720 bytes
+
+ Directory of D:\sources\dlmanifests\microsoft-windows-textservicesframework-migration-dl
+
+01/23/2026  11:29 AM    <DIR>          \Everyone              ..
+01/23/2026  11:29 AM           169,392 \Everyone              chxmig.dll
+01/23/2026  11:29 AM           214,448 \Everyone              imjpmig.dll
+01/23/2026  11:29 AM           140,704 \Everyone              imkrmig.dll
+01/23/2026  11:29 AM           173,376 \Everyone              msctfmig.dll
+01/23/2026  11:29 AM           112,048 \Everyone              tabletextservicemig.dll
+01/23/2026  11:29 AM    <DIR>          \Everyone              .
+               5 File(s)        809,968 bytes
+
+ Directory of D:\sources\dlmanifests\microsoft-windows-unimodem-config
+
+01/23/2026  11:29 AM           124,224 \Everyone              modemmigplugin.dll
+01/23/2026  11:29 AM    <DIR>          \Everyone              ..
+01/23/2026  11:29 AM    <DIR>          \Everyone              .
+               1 File(s)        124,224 bytes
+
+ Directory of D:\sources\dlmanifests\microsoft-windows-winsock-core-infrastructure-upgrade
+
+01/23/2026  11:29 AM    <DIR>          \Everyone              ..
+01/23/2026  11:29 AM           255,304 \Everyone              wsupgrade.dll
+01/23/2026  11:29 AM    <DIR>          \Everyone              .
+               1 File(s)        255,304 bytes
+
+ Directory of D:\sources\dlmanifests\microsoft-windows-wmi-core
+
+01/23/2026  11:29 AM    <DIR>          \Everyone              ..
+01/23/2026  11:29 AM           714,032 \Everyone              wmimigrationplugin.dll
+01/23/2026  11:29 AM    <DIR>          \Everyone              .
+               1 File(s)        714,032 bytes
+
+ Directory of D:\sources\dlmanifests\networking-mpssvc-svc
+
+01/23/2026  11:29 AM    <DIR>          \Everyone              ..
+01/23/2026  11:29 AM           169,376 \Everyone              icfupgd.dll
+01/23/2026  11:29 AM    <DIR>          \Everyone              .
+               1 File(s)        169,376 bytes
+
+ Directory of D:\sources\en-us
+
+01/23/2026  11:29 AM            53,760 \Everyone              winsetup.dll.mui
+01/23/2026  11:29 AM             5,632 \Everyone              windlp.dll.mui
+01/23/2026  11:29 AM            28,160 \Everyone              wimprovider.dll.mui
+01/23/2026  11:29 AM            16,384 \Everyone              wimgapi.dll.mui
+01/23/2026  11:29 AM             6,144 \Everyone              wdsimage.dll.mui
+01/23/2026  11:29 AM             7,680 \Everyone              wdsclient.dll.mui
+01/23/2026  11:29 AM           205,824 \Everyone              w32uires.dll.mui
+01/23/2026  11:29 AM               769 \Everyone              vofflps.rtf
+01/23/2026  11:29 AM             7,680 \Everyone              vhdprovider.dll.mui
+01/23/2026  11:29 AM             3,072 \Everyone              uxlibres.dll.mui
+01/23/2026  11:29 AM             4,608 \Everyone              upgloader.dll.mui
+01/23/2026  11:29 AM             8,192 \Everyone              spwizres.dll.mui
+01/23/2026  11:29 AM            26,624 \Everyone              setupprep.exe.mui
+01/23/2026  11:29 AM            14,248 \Everyone              setupplatform.exe.mui
+01/23/2026  11:29 AM             2,560 \Everyone              setupmgr.dll.mui
+01/23/2026  11:29 AM             3,584 \Everyone              setuperror.exe.mui
+01/23/2026  11:29 AM            18,944 \Everyone              setupcore.dll.mui
+01/23/2026  11:29 AM             3,072 \Everyone              setupcompat.dll.mui
+01/23/2026  11:29 AM            18,432 \Everyone              setup.exe.mui
+01/23/2026  11:29 AM             4,608 \Everyone              rollback.exe.mui
+01/23/2026  11:29 AM            12,288 \Everyone              smiengine.dll.mui
+01/23/2026  11:29 AM            10,752 \Everyone              reagent.dll.mui
+01/23/2026  11:29 AM             1,817 \Everyone              reagent.adml
+01/23/2026  11:29 AM            80,896 \Everyone              mediasetupuimgr.dll.mui
+01/23/2026  11:29 AM             7,680 \Everyone              migres.dll.mui
+01/23/2026  11:29 AM            66,560 \Everyone              nlsbres.dll.mui
+01/23/2026  11:29 AM           111,188 \Everyone              oobe_help_opt_in_details.rtf
+01/23/2026  11:29 AM             3,072 \Everyone              osimageprovider.dll.mui
+01/23/2026  11:29 AM             5,120 \Everyone              pnpibs.dll.mui
+01/23/2026  11:29 AM               771 \Everyone              privacy.rtf
+01/23/2026  11:29 AM             6,144 \Everyone              logprovider.dll.mui
+01/23/2026  11:29 AM            25,600 \Everyone              input.dll.mui
+01/23/2026  11:29 AM             2,560 \Everyone              folderprovider.dll.mui
+01/23/2026  11:29 AM               276 \Everyone              erofflps.txt
+01/23/2026  11:29 AM             2,560 \Everyone              dismprov.dll.mui
+01/23/2026  11:29 AM             7,680 \Everyone              dismcore.dll.mui
+01/23/2026  11:29 AM             5,120 \Everyone              dismapi.dll.mui
+01/23/2026  11:29 AM            30,208 \Everyone              dism.exe.mui
+01/23/2026  11:29 AM             2,560 \Everyone              deployprovider.dll.mui
+01/23/2026  11:29 AM        10,654,768 \Everyone              credits.txt
+01/23/2026  11:29 AM            18,944 \Everyone              imagingprovider.dll.mui
+01/23/2026  11:29 AM            30,720 \Everyone              compres.dll.mui
+01/23/2026  11:29 AM            23,552 \Everyone              compatresources.dll.mui
+01/23/2026  11:29 AM             4,608 \Everyone              compatctrl.dll.mui
+01/23/2026  11:29 AM         7,235,573 \Everyone              credits.htm
+01/23/2026  11:29 AM             7,168 \Everyone              compatappraiserresources.dll.mui
+01/23/2026  11:29 AM             4,608 \Everyone              cmisetup.dll.mui
+01/23/2026  11:29 AM             5,632 \Everyone              arunres.dll.mui
+01/23/2026  11:29 AM             3,584 \Everyone              appraiser.dll.mui
+01/23/2026  11:29 AM             3,584 \Everyone              actionqueue.dll.mui
+01/23/2026  11:29 AM           333,824 \Everyone              acres.dll.mui
+01/23/2026  11:29 AM    <DIR>          \Everyone              ..
+01/23/2026  11:29 AM    <DIR>          \Everyone              .
+              51 File(s)     19,149,394 bytes
+
+ Directory of D:\sources\etwproviders
+
+01/23/2026  11:30 AM            26,040 \Everyone              oobeldretw.dll
+01/23/2026  11:30 AM            26,152 \Everyone              windeployetw.dll
+01/23/2026  11:30 AM            30,136 \Everyone              sysprepetw.dll
+01/23/2026  11:30 AM            26,056 \Everyone              setupugcetw.dll
+01/23/2026  11:30 AM            30,112 \Everyone              setupetw.dll
+01/23/2026  11:30 AM            30,248 \Everyone              setupcletw.dll
+01/23/2026  11:30 AM             6,868 \Everyone              etwproviderinstall.vbs
+01/23/2026  11:30 AM            75,320 \Everyone              winsetupetw.dll
+01/23/2026  11:29 AM            26,168 \Everyone              cmisetupetw.dll
+01/23/2026  11:29 AM            26,168 \Everyone              auditetw.dll
+01/23/2026  11:29 AM            21,944 \Everyone              actionqueueetw.dll
+01/23/2026  11:29 AM    <DIR>          \Everyone              ..
+01/23/2026  11:29 AM    <DIR>          \Everyone              .
+01/23/2026  11:29 AM    <DIR>          \Everyone              en-us
+              11 File(s)        325,212 bytes
+
+ Directory of D:\sources\etwproviders\en-us
+
+01/23/2026  11:30 AM             3,584 \Everyone              actionqueueetw.dll.mui
+01/23/2026  11:29 AM    <DIR>          \Everyone              ..
+01/23/2026  11:29 AM    <DIR>          \Everyone              .
+               1 File(s)          3,584 bytes
+
+ Directory of D:\sources\eu-es
+
+01/23/2026  11:30 AM    <DIR>          \Everyone              ..
+01/23/2026  11:30 AM            80,896 \Everyone              MediaSetupUIMgr.dll.mui
+01/23/2026  11:30 AM            14,232 \Everyone              SetupPlatform.exe.mui
+01/23/2026  11:30 AM    <DIR>          \Everyone              .
+               2 File(s)         95,128 bytes
+
+ Directory of D:\sources\gl-es
+
+01/23/2026  11:30 AM    <DIR>          \Everyone              ..
+01/23/2026  11:30 AM            80,896 \Everyone              MediaSetupUIMgr.dll.mui
+01/23/2026  11:30 AM            14,208 \Everyone              SetupPlatform.exe.mui
+01/23/2026  11:30 AM    <DIR>          \Everyone              .
+               2 File(s)         95,104 bytes
+
+ Directory of D:\sources\id-id
+
+01/23/2026  11:30 AM    <DIR>          \Everyone              ..
+01/23/2026  11:30 AM            80,896 \Everyone              MediaSetupUIMgr.dll.mui
+01/23/2026  11:30 AM            14,248 \Everyone              SetupPlatform.exe.mui
+01/23/2026  11:30 AM    <DIR>          \Everyone              .
+               2 File(s)         95,144 bytes
+
+ Directory of D:\sources\inf
+
+01/23/2026  11:30 AM    <DIR>          \Everyone              ..
+01/23/2026  11:30 AM             3,616 \Everyone              setup.cfg
+01/23/2026  11:30 AM    <DIR>          \Everyone              .
+               1 File(s)          3,616 bytes
+
+ Directory of D:\sources\migration
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM    <DIR>          \Everyone              wtr
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               0 File(s)              0 bytes
+
+ Directory of D:\sources\migration\wtr
+
+01/23/2026  11:58 AM             1,265 \Everyone              webdav_7.5_loc.inf
+01/23/2026  11:58 AM               724 \Everyone              webdav_7.0.inf
+01/23/2026  11:58 AM            10,086 \Everyone              unpmig.inf
+01/23/2026  11:58 AM               961 \Everyone              webdav_7.5_en-us_noloc.inf
+01/23/2026  11:58 AM            17,201 \Everyone              appmanwtr.inf
+01/23/2026  11:58 AM             7,194 \Everyone              browserchoice_win7.inf
+01/23/2026  11:58 AM             1,589 \Everyone              browserchoice_win8.inf
+01/23/2026  11:58 AM             1,619 \Everyone              compattelemetry.inf
+01/23/2026  11:58 AM               414 \Everyone              adminpack_en-us_noloc.inf
+01/23/2026  11:58 AM             2,108 \Everyone              ftp_7.5_en-us_noloc.inf
+01/23/2026  11:58 AM             2,773 \Everyone              ftp_7.5_loc.inf
+01/23/2026  11:58 AM             1,078 \Everyone              gwxmig.inf
+01/23/2026  11:58 AM             1,002 \Everyone              powershell_en-us_noloc.inf
+01/23/2026  11:58 AM             2,551 \Everyone              powershell_loc.inf
+01/23/2026  11:58 AM               651 \Everyone              adminpack_en-us.inf
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM             1,643 \Everyone              ftp_7.0.inf
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+              16 File(s)         52,859 bytes
+
+ Directory of D:\sources\replacementmanifests
+
+01/23/2026  12:00 PM             1,552 \Everyone              wsinfra-upgrade-replacement.man
+01/23/2026  12:00 PM             1,042 \Everyone              wwansvc-servercfg-repl.man
+01/23/2026  12:00 PM             2,824 \Everyone              wmpplayer-migration-replacement.man
+01/23/2026  12:00 PM             1,758 \Everyone              wmpnsservice-migration-replacement.man
+01/23/2026  12:00 PM             1,128 \Everyone              wmiacpi-replacement.man
+01/23/2026  12:00 PM             2,738 \Everyone              wmi-core-replacement.man
+01/23/2026  12:00 PM             4,165 \Everyone              wmdmigration-replacement.man
+01/23/2026  12:00 PM             1,174 \Everyone              wsinfra-other-mw-replacement.man
+01/23/2026  12:00 PM             4,190 \Everyone              wlidsvc.vista-win7.man
+01/23/2026  12:00 PM             4,918 \Everyone              wlidsvc-replacement.man
+01/23/2026  12:00 PM               937 \Everyone              winsat-cmi-replacement.man
+01/23/2026  12:00 PM             1,160 \Everyone              winnat-replacement.man
+01/23/2026  12:00 PM             1,016 \Everyone              winmde-migration-replacement.man
+01/23/2026  12:00 PM            12,599 \Everyone              winlogon-replacement.man
+01/23/2026  12:00 PM             1,769 \Everyone              windowsupdate-replacement.man
+01/23/2026  12:00 PM             1,175 \Everyone              windowsstoreapi-replacement.man
+01/23/2026  12:00 PM             1,137 \Everyone              windowswebapphost-replacement.man
+01/23/2026  12:00 PM    <DIR>          \Everyone              windowssearchengine
+01/23/2026  12:00 PM             1,272 \Everyone              windowspushnotifications-platform-library-replacement.man
+01/23/2026  12:00 PM             2,074 \Everyone              windows.ui.shell-repl.man
+01/23/2026  12:00 PM             6,327 \Everyone              windowssearchengine-replacement.man
+01/23/2026  12:00 PM             2,054 \Everyone              windows.storage-replacement.man
+01/23/2026  12:00 PM             1,422 \Everyone              windows.sharedpc.accountmanager-repl.man
+01/23/2026  12:00 PM               993 \Everyone              windows.media-migration-replacement.man
+01/23/2026  12:00 PM             1,532 \Everyone              windows.cortana.desktop-repl.man
+01/23/2026  12:00 PM             2,008 \Everyone              windows-senseclient-service-rep.man
+01/23/2026  12:00 PM             2,608 \Everyone              windows.holographic.displaythrottling-replacement.man
+01/23/2026  12:00 PM             1,134 \Everyone              windows-secdriver-rep.man
+01/23/2026  12:00 PM            20,369 \Everyone              win32k-settings-repl.man
+01/23/2026  12:00 PM             1,029 \Everyone              wid8-migration.man
+01/23/2026  12:00 PM             9,786 \Everyone              wicamigrationav-rl.man
+01/23/2026  12:00 PM             1,137 \Everyone              windows-secwfpdriver-rep.man
+01/23/2026  11:59 AM               969 \Everyone              wia-coreservices-replacement.man
+01/23/2026  11:59 AM             2,138 \Everyone              webdavredir-serveronly-replacement.man
+01/23/2026  11:59 AM             2,138 \Everyone              webdavredir-clientonly-replacement.man
+01/23/2026  11:59 AM            13,907 \Everyone              web-services-for-management-core-replacement.man
+01/23/2026  11:59 AM               833 \Everyone              wcf-nonhttp-activation-replacement.man
+01/23/2026  11:59 AM               823 \Everyone              wcf-http-activation-replacement.man
+01/23/2026  11:59 AM             4,120 \Everyone              vssservice-repl.man
+01/23/2026  11:59 AM             4,048 \Everyone              volumecontrol.replacement.man
+01/23/2026  11:59 AM             2,954 \Everyone              volsnap-repl.man
+01/23/2026  11:59 AM             1,785 \Everyone              virtualdiskservice-repl.man
+01/23/2026  11:59 AM               928 \Everyone              video-tvvideocontrol-replacement.man
+01/23/2026  11:59 AM             2,188 \Everyone              vault-replacement.man
+01/23/2026  11:59 AM             1,385 \Everyone              wbiosrvc-replacement.man
+01/23/2026  11:59 AM             1,318 \Everyone              userchoiceprotection-replacement.man
+01/23/2026  11:59 AM             1,685 \Everyone              usbmigration-replacement.man
+01/23/2026  11:59 AM             2,330 \Everyone              upnpssdp-server-replacement.man
+01/23/2026  11:59 AM             2,323 \Everyone              upnpssdp-replacement.man
+01/23/2026  11:59 AM             2,467 \Everyone              upnpdevicehost-server-replacement.man
+01/23/2026  11:59 AM             2,460 \Everyone              upnpdevicehost-replacement.man
+01/23/2026  11:59 AM               879 \Everyone              updateservices-common-replacement.man
+01/23/2026  11:59 AM             1,125 \Everyone              updateagent-replacement.man
+01/23/2026  11:59 AM             1,561 \Everyone              udfs-replacement.man
+01/23/2026  11:59 AM             1,614 \Everyone              twinui.pcshell-replacement.man
+01/23/2026  11:59 AM             2,854 \Everyone              updateservices-services-replacement.man
+01/23/2026  11:59 AM            12,467 \Everyone              twinui-replacement.man
+01/23/2026  11:59 AM               916 \Everyone              tpmvsc-repl.man
+01/23/2026  11:59 AM             2,599 \Everyone              tpmdriverwmi-replacement.man
+01/23/2026  11:59 AM             1,194 \Everyone              time-service-replacement.man
+01/23/2026  11:59 AM             6,471 \Everyone              textservicesframework-migration-replacement.man
+01/23/2026  11:59 AM             1,065 \Everyone              tetheringservice-repl.man
+01/23/2026  11:59 AM             1,298 \Everyone              terminalservices-tsv-vmhostagent-replacement.man
+01/23/2026  11:59 AM             4,206 \Everyone              terminalservices-sessiondirectory-server-replacement.man
+01/23/2026  11:59 AM             2,743 \Everyone              terminalservices-sessiondirectory-client-replacement.man
+01/23/2026  11:59 AM             1,053 \Everyone              terminalservices-role-package-r-replacement.man
+01/23/2026  11:59 AM             5,441 \Everyone              terminalservices-remoteconnectionmanager-replacement.man
+01/23/2026  11:59 AM             1,053 \Everyone              terminalservices-role-package-replacement.man
+01/23/2026  11:59 AM             1,086 \Everyone              terminalservices-rapwebpart-replacement.man
+01/23/2026  11:59 AM               863 \Everyone              terminalservices-rapweb-replacement.man
+01/23/2026  11:59 AM             3,390 \Everyone              terminalservices-rdp-winstationextensions-replacement.man
+01/23/2026  11:59 AM             1,377 \Everyone              terminalservices-localsessionmanager-replacement.man
+01/23/2026  11:59 AM               905 \Everyone              terminalservices-publishing-wmiprovider-replacement.man
+01/23/2026  11:59 AM             1,744 \Everyone              terminalservices-licenseserver-replacement.man
+01/23/2026  11:59 AM             1,061 \Everyone              terminalservices-gateway-ui-package-replacement.man
+01/23/2026  11:59 AM             1,061 \Everyone              terminalservices-gateway-ui-package-r-replacement.man
+01/23/2026  11:59 AM             1,048 \Everyone              terminalservices-gateway-package-replacement.man
+01/23/2026  11:59 AM             1,141 \Everyone              terminalservices-appserver-licensing-replacement.man
+01/23/2026  11:59 AM            17,158 \Everyone              tcpip-replacement.man
+01/23/2026  11:59 AM             1,935 \Everyone              tcblaunch-replacement.man
+01/23/2026  11:59 AM            15,619 \Everyone              tabletpcplatforminput-core-replacement.man
+01/23/2026  11:59 AM             1,026 \Everyone              systemsettingsthreshold-replacement.man
+01/23/2026  11:59 AM             1,048 \Everyone              terminalservices-gateway-package-r-replacement.man
+01/23/2026  11:59 AM               992 \Everyone              systemsettings_handlers_cortana-replacement.man
+01/23/2026  11:59 AM             1,823 \Everyone              sysmain-replacement.man
+01/23/2026  11:59 AM             2,694 \Everyone              sysdm-replacement.man
+01/23/2026  11:59 AM             2,541 \Everyone              storsvc-replacement.man
+01/23/2026  11:59 AM             4,540 \Everyone              starttiledata-replacement.man
+01/23/2026  11:59 AM             1,307 \Everyone              srumon-replacement.man
+01/23/2026  11:59 AM             2,410 \Everyone              srm-ui-repl.man
+01/23/2026  11:59 AM             2,827 \Everyone              srm-service-reports-repl.man
+01/23/2026  11:59 AM             2,590 \Everyone              srm-quotadriver-repl.man
+01/23/2026  11:59 AM               639 \Everyone              srm-management-repl.man
+01/23/2026  11:59 AM               713 \Everyone              srm-infrastructure-repl.man
+01/23/2026  11:59 AM             2,621 \Everyone              srm-datascrndriver-repl.man
+01/23/2026  11:59 AM             2,610 \Everyone              srm-cbadriver-repl.man
+01/23/2026  11:59 AM             4,084 \Everyone              srm-service-repl.man
+01/23/2026  11:59 AM    <DIR>          \Everyone              sppmig
+01/23/2026  11:59 AM               858 \Everyone              spectrum-replacement.man
+01/23/2026  11:59 AM             2,423 \Everyone              sounds-migration-replacement.man
+01/23/2026  11:59 AM               652 \Everyone              snmp-gui-tools-replacement.man
+01/23/2026  11:59 AM               880 \Everyone              snippingtoolsettingsmigration-replacement.man
+01/23/2026  11:59 AM             2,053 \Everyone              smsroutersvc-replacement.man
+01/23/2026  11:59 AM             2,416 \Everyone              smartcardsubsystem-repl.man
+01/23/2026  11:59 AM             1,036 \Everyone              signalmanager-replacement.man
+01/23/2026  11:59 AM             1,170 \Everyone              shutdown-event-tracker-repl.man
+01/23/2026  11:59 AM             2,843 \Everyone              shmig-replacement.man
+01/23/2026  11:59 AM            19,767 \Everyone              shell32-replacement.man
+01/23/2026  11:59 AM               643 \Everyone              sharemgmt-rsatclient-tools-replacement.man
+01/23/2026  11:59 AM             1,283 \Everyone              sharedpccsp-repl.man
+01/23/2026  11:59 AM             2,906 \Everyone              signature-replacement.man
+01/23/2026  11:59 AM               983 \Everyone              settingshandlers_accessibility-replacement.man
+01/23/2026  11:59 AM               766 \Everyone              servercore-wow64-rm.man
+01/23/2026  11:59 AM               970 \Everyone              securitycenter-core-replacement.man
+01/23/2026  11:59 AM             2,848 \Everyone              security-spp-migration-replacement.man
+01/23/2026  11:59 AM             2,609 \Everyone              security-malware-windows-defender-repl.man
+01/23/2026  11:59 AM             2,317 \Everyone              schedsvc-replacement.man
+01/23/2026  11:59 AM             1,060 \Everyone              rights-management-services-management-tools-replacement.man
+01/23/2026  11:59 AM             1,051 \Everyone              rights-management-services-admin-tools-replacement.man
+01/23/2026  11:59 AM             4,465 \Everyone              rights-management-client-v1-api-replacement.man
+01/23/2026  11:59 AM             1,134 \Everyone              retaildemo.deployment.replacement.man
+01/23/2026  11:59 AM               457 \Everyone              refs-v1-replacement.man
+01/23/2026  11:59 AM             1,159 \Everyone              refs-replacement.man
+01/23/2026  11:59 AM             1,038 \Everyone              rights-management-services-role-replacement.man
+01/23/2026  11:59 AM               660 \Everyone              rasserveradmintools-replacement.man
+01/23/2026  11:59 AM            27,475 \Everyone              rasserver-repl.man
+01/23/2026  11:59 AM             1,815 \Everyone              rasrqs-repl.man
+01/23/2026  11:59 AM             2,976 \Everyone              rasppp-repl.man
+01/23/2026  11:59 AM             2,805 \Everyone              rasmanservice-replv3.man
+01/23/2026  11:59 AM             2,701 \Everyone              rasmanservice-replv2.man
+01/23/2026  11:59 AM             2,272 \Everyone              rasmanservice-repl.man
+01/23/2026  11:59 AM             5,956 \Everyone              rasbase-repl.man
+01/23/2026  11:59 AM             6,129 \Everyone              rasbase-rassstp-repl.man
+01/23/2026  11:59 AM             3,203 \Everyone              rasapi-repl.man
+01/23/2026  11:59 AM             1,767 \Everyone              quickactions-windows-replacement.man
+01/23/2026  11:59 AM             2,282 \Everyone              propsys-replacement.man
+01/23/2026  11:59 AM             1,054 \Everyone              profsvcreplacement.man
+01/23/2026  11:59 AM             1,870 \Everyone              processmodel-cpt-rm.man
+01/23/2026  11:59 AM             2,526 \Everyone              rasddm-repl.man
+01/23/2026  11:59 AM               933 \Everyone              printing-spooler-core-replacement.man
+01/23/2026  11:59 AM               933 \Everyone              printing-servercore-wow64-rm.man
+01/23/2026  11:59 AM             1,400 \Everyone              printing-server-foundation-features-upgrade.man
+01/23/2026  11:59 AM             3,623 \Everyone              printing-localprinting-replacement.man
+01/23/2026  11:59 AM               654 \Everyone              powermanagement-powerpolicy-migration-replacement.man
+01/23/2026  11:59 AM            27,151 \Everyone              powermanagement-powerpolicy-definitions-replacement-win8.man
+01/23/2026  11:59 AM             2,618 \Everyone              powermanagement-powerpolicy-definitions-replacement-win7.man
+01/23/2026  11:59 AM    <DIR>          \Everyone              printing-localprinting-replacement
+01/23/2026  11:59 AM             1,897 \Everyone              powermanagement-powerpolicy-definitions-replacement-vista.man
+01/23/2026  11:59 AM             6,273 \Everyone              powermanagement-powerpolicy-definitions-replacement-v9rs5.man
+01/23/2026  11:59 AM             6,154 \Everyone              powermanagement-powerpolicy-definitions-replacement-v8rs4.man
+01/23/2026  11:59 AM             3,373 \Everyone              powermanagement-powerpolicy-definitions-replacement-win10.man
+01/23/2026  11:59 AM             5,654 \Everyone              powermanagement-powerpolicy-definitions-replacement-v7rs2.man
+01/23/2026  11:59 AM             4,384 \Everyone              powermanagement-powerpolicy-definitions-replacement-v6rs2.man
+01/23/2026  11:59 AM             4,384 \Everyone              powermanagement-powerpolicy-definitions-replacement-v5rs1.man
+01/23/2026  11:59 AM             7,036 \Everyone              powermanagement-powerpolicy-definitions-replacement-v16sv1sv2.man
+01/23/2026  11:59 AM             6,414 \Everyone              powermanagement-powerpolicy-definitions-replacement-v13vb.man
+01/23/2026  11:59 AM             5,939 \Everyone              powermanagement-powerpolicy-definitions-replacement-v12vb.man
+01/23/2026  11:59 AM             4,384 \Everyone              powermanagement-powerpolicy-definitions-replacement-v4rs1.man
+01/23/2026  11:59 AM             5,934 \Everyone              powermanagement-powerpolicy-definitions-replacement-v1119h1.man
+01/23/2026  11:59 AM             6,423 \Everyone              powermanagement-powerpolicy-definitions-replacement-v1019h1.man
+01/23/2026  11:59 AM             2,577 \Everyone              powercpl-replacement.man
+01/23/2026  11:59 AM             6,431 \Everyone              power-energyestimationengine-replacement.man
+01/23/2026  11:59 AM             1,303 \Everyone              posproviders-replacement.man
+01/23/2026  11:59 AM               896 \Everyone              pnpmigration-replacement.man
+01/23/2026  11:59 AM             1,669 \Everyone              performancecounterinfrastructurenonexecutable-replacement.man
+01/23/2026  11:59 AM             3,261 \Everyone              peerdist-upgrade-replacement.man
+01/23/2026  11:59 AM             6,363 \Everyone              peerdist-server-migration-replacement.man
+01/23/2026  11:59 AM             6,356 \Everyone              peerdist-client-migration-replacement.man
+01/23/2026  11:59 AM             3,628 \Everyone              pcpksp_dll-repl.man
+01/23/2026  11:59 AM               905 \Everyone              openssh-server-components-onecore-replacement.man
+01/23/2026  11:59 AM             1,389 \Everyone              personalizationcsp-repl.man
+01/23/2026  11:59 AM               910 \Everyone              openssh-common-components-onecore-replacement.man
+01/23/2026  11:59 AM            11,188 \Everyone              onecore_speechcommon-rep.man
+01/23/2026  11:59 AM            13,893 \Everyone              odbc32dll-repl.man
+01/23/2026  11:59 AM               651 \Everyone              npsui-replacement.man
+01/23/2026  11:59 AM               771 \Everyone              npas-role-replacement.man
+01/23/2026  11:59 AM             1,041 \Everyone              notepad-repl.man
+01/23/2026  11:59 AM               943 \Everyone              nlasvc-replace.man
+01/23/2026  11:59 AM               907 \Everyone              ngcpopkeysrv_dll-repl.man
+01/23/2026  11:59 AM             1,336 \Everyone              ngclocalaccountmigplugin-replacement.man
+01/23/2026  11:59 AM             1,087 \Everyone              nfs-servercoreupg-clientcore-repl.man
+01/23/2026  11:59 AM             1,192 \Everyone              nfs-servercore-repl.man
+01/23/2026  11:59 AM             1,198 \Everyone              nfs-clientcore-repl.man
+01/23/2026  11:59 AM             1,276 \Everyone              nfs-admincore-repl.man
+01/23/2026  11:59 AM            10,566 \Everyone              networksecurity.replacement.man
+01/23/2026  11:59 AM             2,117 \Everyone              networkprofile-replacement.man
+01/23/2026  11:59 AM             1,086 \Everyone              nfs-servercoreupg-servercore-repl.man
+01/23/2026  11:59 AM               691 \Everyone              networkloadbalancingmanagementheadlessserver-replacement.man
+01/23/2026  11:59 AM               692 \Everyone              networkloadbalancingmanagementclient-replacement.man
+01/23/2026  11:59 AM             1,727 \Everyone              networking-mpssvc-svc.replacement.man
+01/23/2026  11:59 AM    <DIR>          \Everyone              networking-mpssvc-svc
+01/23/2026  11:59 AM    <DIR>          \Everyone              networkbridge
+01/23/2026  11:59 AM            17,499 \Everyone              netfx4clientcorecomp-replacement.man
+01/23/2026  11:59 AM             1,436 \Everyone              netfx4-wcf-extended-replacement.man
+01/23/2026  11:59 AM               668 \Everyone              netfx4-replacement.man
+01/23/2026  11:59 AM               851 \Everyone              netfx4-policy-replacement.man
+01/23/2026  11:59 AM               601 \Everyone              netfx3-replacement.man
+01/23/2026  11:59 AM             1,041 \Everyone              netfx-wcf-tcpactivation-registration-replacement.man
+01/23/2026  11:59 AM             1,043 \Everyone              netfx-wcf-pipeactivation-registration-replacement.man
+01/23/2026  11:59 AM             1,043 \Everyone              netfx-wcf-msmqactivation-registration-replacement.man
+01/23/2026  11:59 AM             1,520 \Everyone              netfx4-wcf-client-replacement.man
+01/23/2026  11:58 AM             1,853 \Everyone              netfx-wcf-http-activation-replacement.man
+01/23/2026  11:58 AM             3,381 \Everyone              ndis-repl.man
+01/23/2026  11:58 AM             3,131 \Everyone              nchostagent-replacement.man
+01/23/2026  11:58 AM             2,520 \Everyone              mup-replacement.man
+01/23/2026  11:58 AM             3,710 \Everyone              mmdeviceapi-migration-replacement.man
+01/23/2026  11:58 AM             1,375 \Everyone              mmsys-migration-replacement.man
+01/23/2026  11:58 AM               770 \Everyone              mpr-replacement.man
+01/23/2026  11:58 AM             1,210 \Everyone              msmpeg2vdec-migration-replacement.man
+01/23/2026  11:58 AM             1,678 \Everyone              muisettings-replacement.man
+01/23/2026  11:58 AM             4,467 \Everyone              microsoft.windows.com.dtc.setup-replacement.man
+01/23/2026  11:58 AM             1,943 \Everyone              microsoft.windows.com.complus.setup-replacement.man
+01/23/2026  11:58 AM             1,290 \Everyone              microsoft-windows-workstationservice-replacement.man
+01/23/2026  11:58 AM               837 \Everyone              microsoft-windows-wcfcorecomp-replacement.man
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-windows-vsmkey
+01/23/2026  11:58 AM             1,534 \Everyone              microsoftwindowsdefragcore-replacement.man
+01/23/2026  11:58 AM             1,956 \Everyone              microsoft-windows-virtualization-vmswitch-migration-replacement.man
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-windows-virtualization-vmswitch
+01/23/2026  11:58 AM             3,573 \Everyone              microsoft-windows-unified-telemetry-client-replacement.man
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-windows-textservicesframework-migration
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-windows-terminalservices-licenseserver
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-windows-terminalservices-appserver-licensing
+01/23/2026  11:58 AM             1,489 \Everyone              microsoft-windows-sxs-replacement.man
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-windows-sxs
+01/23/2026  11:58 AM             6,368 \Everyone              microsoft-windows-storagemigration-replacement.man
+01/23/2026  11:58 AM             1,059 \Everyone              microsoft-windows-softwareinventorylogging-scheduledtasks-replacement.man
+01/23/2026  11:58 AM               936 \Everyone              microsoft-windows-smb1-replacement.man
+01/23/2026  11:58 AM             1,927 \Everyone              microsoft-windows-slb-mux-replacement.man
+01/23/2026  11:58 AM             1,535 \Everyone              microsoft-windows-storagemigration-od-replacement.man
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-windows-shmig
+01/23/2026  11:58 AM               793 \Everyone              microsoft-windows-services-targetedcontent-replacement.man
+01/23/2026  11:58 AM               747 \Everyone              microsoft-windows-servermanager-shell-replacement.man
+01/23/2026  11:58 AM               698 \Everyone              microsoft-windows-servermanager-rsat-roletools-replacement.man
+01/23/2026  11:58 AM               677 \Everyone              microsoft-windows-servermanager-rsat-replacement.man
+01/23/2026  11:58 AM               704 \Everyone              microsoft-windows-servermanager-rsat-featuretools-replacement.man
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-windows-security-ngc-localaccountmigplugin
+01/23/2026  11:58 AM             1,297 \Everyone              microsoft-windows-security-ngc-ctnrsvc-repl.man
+01/23/2026  11:58 AM             1,766 \Everyone              microsoft-windows-security-ngc-credprov-replacement.man
+01/23/2026  11:58 AM             4,203 \Everyone              microsoft-windows-securestartup-filterdriver-replacement.man
+01/23/2026  11:58 AM             1,708 \Everyone              microsoft-windows-rmapi-replacement.man
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-windows-rasserver-migplugin
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-windows-rasapi-mig
+01/23/2026  11:58 AM               876 \Everyone              microsoft-windows-powershellwebaccess-commands-powershell-migration-replacement.man
+01/23/2026  11:58 AM             3,476 \Everyone              microsoft-windows-powershell-replacement.man
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-windows-pnpmigration
+01/23/2026  11:58 AM             8,092 \Everyone              microsoft-windows-offlinefiles-replacement.man
+01/23/2026  11:58 AM             1,148 \Everyone              microsoft-windows-powershell-ws08-replacement.man
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-windows-offlinefiles-core
+01/23/2026  11:58 AM               959 \Everyone              microsoft-windows-networkcontroller-framework-replacement.man
+01/23/2026  11:58 AM               707 \Everyone              microsoft-windows-networkbridge-replacement.man
+01/23/2026  11:58 AM               895 \Everyone              microsoft-windows-network-setup-replacement.man
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-windows-network-setup
+01/23/2026  11:58 AM               869 \Everyone              microsoft-windows-netfx35cdfcomp-replacement.man
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-windows-mup
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-windows-mapscontrol-migration
+01/23/2026  11:58 AM             9,200 \Everyone              microsoft-windows-ime-traditional-chinese-core-replacement.man
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-windows-iis-rm
+01/23/2026  11:58 AM            45,739 \Everyone              microsoft-windows-netfxcorecomp-repl.man
+01/23/2026  11:58 AM             2,837 \Everyone              microsoft-windows-ie-pdm-replacement.man
+01/23/2026  11:58 AM            16,882 \Everyone              microsoft-windows-ie-internetexplorer-repl.man
+01/23/2026  11:58 AM            19,973 \Everyone              microsoft-windows-ie-internetexplorer-repl-2.man
+01/23/2026  11:58 AM            19,519 \Everyone              microsoft-windows-ie-clientnetworkprotocolimplementation-repl.man
+01/23/2026  11:58 AM             4,225 \Everyone              microsoft-windows-ie-adminkitbranding-repl.man
+01/23/2026  11:58 AM             2,107 \Everyone              microsoft-windows-identity-foundation-migration-replacement.man
+01/23/2026  11:58 AM             1,884 \Everyone              microsoft-windows-geolocation-replacement.man
+01/23/2026  11:58 AM             1,436 \Everyone              microsoft-windows-feedback-service-replacement.man
+01/23/2026  11:58 AM             3,998 \Everyone              microsoft-windows-fax-service-replacement.man
+01/23/2026  11:58 AM             2,038 \Everyone              microsoft-windows-familysafety-refreshtask-replacement.man
+01/23/2026  11:58 AM               657 \Everyone              microsoft-windows-failovercluster-adminpak-replacement.man
+01/23/2026  11:58 AM             1,291 \Everyone              microsoft-windows-errorreportingfaults-replacement.man
+01/23/2026  11:58 AM            18,143 \Everyone              microsoft-windows-errorreportingcore-replacement.man
+01/23/2026  11:58 AM             4,915 \Everyone              microsoft-windows-flighting-settings.replacement.man
+01/23/2026  11:58 AM             1,266 \Everyone              microsoft-windows-enterprisemgmt-replacement.man
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-windows-diskmonitor
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-windows-directoryservices-adam-client
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-windows-deviceassociationframeworkmigration
+01/23/2026  11:58 AM             1,446 \Everyone              microsoft-windows-deviceaccess-replacement.man
+01/23/2026  11:58 AM               690 \Everyone              microsoft-windows-deployment-services-admin-pack-replacement.man
+01/23/2026  11:58 AM             1,331 \Everyone              microsoft-windows-credentialmanagementrole-tools-replacement.man
+01/23/2026  11:58 AM               898 \Everyone              microsoft-windows-coresystem-initmachineconfig-replacement.man
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-windows-com-complus-setup
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-windows-clusterupgradeplugin
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-windows-audio-mmecore-other
+01/23/2026  11:58 AM             1,962 \Everyone              microsoft-windows-credentialmanagementrole-replacement.man
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-windows-appx-deployment-server
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-windows-appmanagement-migration
+01/23/2026  11:58 AM             1,242 \Everyone              microsoft-windows-advertisingid-replacement.man
+01/23/2026  11:58 AM               933 \Everyone              microsoft-onecore-tiledatarepository-replacement.man
+01/23/2026  11:58 AM             6,082 \Everyone              microsoft-hyper-v-migration-replacement.man
+01/23/2026  11:58 AM               634 \Everyone              microsoft-hyper-v-drivers-migration-replacement.man
+01/23/2026  11:58 AM             1,335 \Everyone              microsoft-hyper-v-client-migration-replacement.man
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-edge-migration-plugin
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-client-license-platform-service-migration
+01/23/2026  11:58 AM             2,057 \Everyone              microsoft-certificateservices-webenrollment-serverupgrade-replacement.man
+01/23/2026  11:58 AM             1,936 \Everyone              microsoft-certificateservices-policy-serverupgrade-replacement.man
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-onecore-tiledatarepository
+01/23/2026  11:58 AM             1,959 \Everyone              microsoft-certificateservices-ocsp-serverupgrade-replacement.man
+01/23/2026  11:58 AM             2,018 \Everyone              microsoft-certificateservices-mscep-serverupgrade-replacement.man
+01/23/2026  11:58 AM             2,088 \Everyone              microsoft-certificateservices-ca-serverupgrade-replacement.man
+01/23/2026  11:58 AM             1,941 \Everyone              microsoft-certificateauthority-enrollment-serverupgrade-replacement.man
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-azurestack-hci-plugin
+01/23/2026  11:58 AM    <DIR>          \Everyone              microsoft-activedirectory-webservices
+01/23/2026  11:58 AM               721 \Everyone              microsoft-activedirectory-powershell-replacement.man
+01/23/2026  11:58 AM             1,164 \Everyone              mfsrcsnk-migration-replacement.man
+01/23/2026  11:58 AM             2,859 \Everyone              mfplat-migration-replacement.man
+01/23/2026  11:58 AM             1,030 \Everyone              mfmpeg2srcsnk-migration-replacement.man
+01/23/2026  11:58 AM             1,975 \Everyone              memextdriver-replacement.man
+01/23/2026  11:58 AM               993 \Everyone              media-settings-migration-replacement.man
+01/23/2026  11:58 AM            25,564 \Everyone              mdm_migration-replacement.man
+01/23/2026  11:58 AM             4,791 \Everyone              legacy-sapi-repl.man
+01/23/2026  11:58 AM             1,431 \Everyone              ldap-client-replacement.man
+01/23/2026  11:58 AM             1,095 \Everyone              keyboardfilter-replacement.man
+01/23/2026  11:58 AM               657 \Everyone              kernel32-server-replacement.man
+01/23/2026  11:58 AM               896 \Everyone              kernel32-replacement.man
+01/23/2026  11:58 AM             1,340 \Everyone              kernel-server-replacement.man
+01/23/2026  11:58 AM             1,338 \Everyone              kernel-pnp-repl.man
+01/23/2026  11:58 AM             3,805 \Everyone              ipv4ipv6coexistencemigration-net-replacement.man
+01/23/2026  11:58 AM               917 \Everyone              ioschedfilter-replacement.man
+01/23/2026  11:58 AM               660 \Everyone              internet-naming-tools-replacement.man
+01/23/2026  11:58 AM             4,643 \Everyone              internet-naming-service-runtime-rep.man
+01/23/2026  11:58 AM             3,606 \Everyone              international-timezones-replacement.man
+01/23/2026  11:58 AM             4,905 \Everyone              international-core-replacement.man
+01/23/2026  11:58 AM             1,553 \Everyone              ime-eashared-migration-replacement.man
+01/23/2026  11:58 AM             1,294 \Everyone              iis-w3svc-rm.man
+01/23/2026  11:58 AM             1,308 \Everyone              iis-w3logsvc-rm.man
+01/23/2026  11:58 AM             1,887 \Everyone              iis-sharedlibraries-rm.man
+01/23/2026  11:58 AM               751 \Everyone              iis-managementconsole-rm.man
+01/23/2026  11:58 AM               975 \Everyone              iis-ftpsvc-rm.man
+01/23/2026  11:58 AM             1,051 \Everyone              iis-appwarmup-rm.man
+01/23/2026  11:58 AM               978 \Everyone              iis-adminservice-rm.man
+01/23/2026  11:58 AM             1,233 \Everyone              identitystore-replacement.man
+01/23/2026  11:58 AM             1,981 \Everyone              identityserver-proxymigration-replacement.man
+01/23/2026  11:58 AM             1,481 \Everyone              identityserver-migration-replacement.man
+01/23/2026  11:58 AM             6,438 \Everyone              iasruntime-repl.man
+01/23/2026  11:58 AM             1,879 \Everyone              hyperv-compute-host-service-replacement.man
+01/23/2026  11:58 AM             1,070 \Everyone              hwvid-migration-replacement-2.man
+01/23/2026  11:58 AM    <DIR>          \Everyone              hwvid-migration-2
+01/23/2026  11:58 AM               948 \Everyone              http-replacement.man
+01/23/2026  11:58 AM             1,033 \Everyone              helpandsupport-replacement.man
+01/23/2026  11:58 AM             1,211 \Everyone              hal-repl.man
+01/23/2026  11:58 AM             1,216 \Everyone              gpiobuttons-replacement.man
+01/23/2026  11:58 AM            10,121 \Everyone              gpbase-replacement.man
+01/23/2026  11:58 AM             1,735 \Everyone              gatewayservice-replacement.man
+01/23/2026  11:58 AM             1,101 \Everyone              fveapi-replacement.man
+01/23/2026  11:58 AM             1,392 \Everyone              fundisc-replacement.man
+01/23/2026  11:58 AM               916 \Everyone              fsdepends-replacement.man
+01/23/2026  11:58 AM             1,380 \Everyone              fonts-type1-replacement.man
+01/23/2026  11:58 AM           101,661 \Everyone              font-truetype-fontsregistrysettingsmigration-replacement.man
+01/23/2026  11:58 AM             1,290 \Everyone              fileserver-replacement.man
+01/23/2026  11:58 AM             1,585 \Everyone              fidocredprov_dll_repl.man
+01/23/2026  11:58 AM             1,017 \Everyone              feclient-replacement-th.man
+01/23/2026  11:58 AM             2,731 \Everyone              failovercluster-updating-powershellcore-replacement.man
+01/23/2026  11:58 AM               932 \Everyone              failovercluster-core-wow64-rm.man
+01/23/2026  11:58 AM             3,019 \Everyone              extensibleauthenticationprotocolhostservice-rep.man
+01/23/2026  11:58 AM             4,870 \Everyone              explorer-repl.man
+01/23/2026  11:58 AM             2,153 \Everyone              eudcedit-replacement.man
+01/23/2026  11:58 AM             1,377 \Everyone              etw-core-replacement.man
+01/23/2026  11:58 AM             1,016 \Everyone              elam-replacement.man
+01/23/2026  11:58 AM               830 \Everyone              edpnotify-replacement.man
+01/23/2026  11:58 AM               923 \Everyone              edgemigrationplugin.man
+01/23/2026  11:58 AM             1,589 \Everyone              dsreg-replacement.man
+01/23/2026  11:58 AM             4,308 \Everyone              dpapi_keys-repl.man
+01/23/2026  11:58 AM               652 \Everyone              dns-server-tools-replacement.man
+01/23/2026  11:58 AM               820 \Everyone              dns-server-role-replacement.man
+01/23/2026  11:58 AM             2,300 \Everyone              dns-client-replacement.man
+01/23/2026  11:58 AM             7,700 \Everyone              dns-client-mw-replacement.man
+01/23/2026  11:58 AM             2,845 \Everyone              dmrcwin7replacement.man
+01/23/2026  11:58 AM             2,206 \Everyone              displayconfigsettings_win7update.man
+01/23/2026  11:58 AM             1,676 \Everyone              directoryservices-sm-plugin.registration-replacement.man
+01/23/2026  11:58 AM               700 \Everyone              directoryservices-domaincontroller-tools-replacement.man
+01/23/2026  11:58 AM             1,170 \Everyone              directoryservices-domaincontroller-servercoreupg-replacement.man
+01/23/2026  11:58 AM               684 \Everyone              directoryservices-administrativecenter-replacement.man
+01/23/2026  11:58 AM               682 \Everyone              directoryservices-adam-tools-replacement.man
+01/23/2026  11:58 AM             1,064 \Everyone              directoryservices-adam-client-replacement.man
+01/23/2026  11:58 AM             1,228 \Everyone              directaccessservermanagement-repl.man
+01/23/2026  11:58 AM             6,093 \Everyone              dhcpservermigpluginwin8-replacement.man
+01/23/2026  11:58 AM            12,795 \Everyone              dhcpservermigplugin-rep.man
+01/23/2026  11:58 AM               654 \Everyone              dhcpserver-tools-replacement.man
+01/23/2026  11:58 AM             4,144 \Everyone              dhcpclientdll-repl.man
+01/23/2026  11:58 AM             1,053 \Everyone              deviceregistration-replacement.man
+01/23/2026  11:58 AM             1,222 \Everyone              devicedirectory-devicedirectoryclient-desktop-replacement.man
+01/23/2026  11:58 AM             1,543 \Everyone              deviceassociationframework-replacement.man
+01/23/2026  11:58 AM             5,314 \Everyone              desktopux-replacement.man
+01/23/2026  11:58 AM               734 \Everyone              dcb-repl.man
+01/23/2026  11:58 AM             1,225 \Everyone              dataintegrityscan-replacement.man
+01/23/2026  11:58 AM             2,834 \Everyone              crypto_keys-repl.man
+01/23/2026  11:58 AM             5,419 \Everyone              credential-manager-replacement.man
+01/23/2026  11:58 AM             1,644 \Everyone              coreos-repl.man
+01/23/2026  11:58 AM             1,147 \Everyone              coremmres-replacement.man
+01/23/2026  11:58 AM             7,419 \Everyone              contentdeliverymanager.utilities-replacement.man
+01/23/2026  11:58 AM            11,675 \Everyone              commandprompt-win8-replacement.man
+01/23/2026  11:58 AM             2,781 \Everyone              commandprompt-win7-replacement.man
+01/23/2026  11:58 AM             3,266 \Everyone              codeintegrity-repl.man
+01/23/2026  11:58 AM               972 \Everyone              cloudexperiencehostonecore-replacement.man
+01/23/2026  11:58 AM             1,724 \Everyone              cloudapreplacement.man
+01/23/2026  11:58 AM             4,021 \Everyone              cliplicensemigration-replacement.man
+01/23/2026  11:58 AM               976 \Everyone              certificateenrollment-replacement.man
+01/23/2026  11:58 AM            13,032 \Everyone              capi2_certs-repl.man
+01/23/2026  11:58 AM             1,511 \Everyone              bisrv-replacement.man
+01/23/2026  11:58 AM               869 \Everyone              azshci-service-migration-replacement.man
+01/23/2026  11:58 AM            11,555 \Everyone              authui-migration-win8-replacement.man
+01/23/2026  11:58 AM             8,193 \Everyone              authui-migration-replacement.man
+01/23/2026  11:58 AM             1,285 \Everyone              audiommecore-mm-other-migration-replacement.man
+01/23/2026  11:58 AM             3,300 \Everyone              audio-audiocore-client-replacement.man
+01/23/2026  11:58 AM            10,650 \Everyone              appxdeploymentserver-replacement.man
+01/23/2026  11:58 AM             2,057 \Everyone              appxalluserstore-replacement.man
+01/23/2026  11:58 AM             2,097 \Everyone              appmanmigration-replacement.man
+01/23/2026  11:58 AM            12,020 \Everyone              application-experience-program-compatibility-assistant-replacement.man
+01/23/2026  11:58 AM             1,995 \Everyone              adsi-router-replacement.man
+01/23/2026  11:58 AM             1,702 \Everyone              activedirectory-webservices-replacement.man
+01/23/2026  11:58 AM             1,552 \Everyone              Windows-Internal-Shell-AIX-Config-Replacement.man
+01/23/2026  11:58 AM             2,481 \Everyone              FailoverCluster-ClusSvc-Replacement.man
+01/23/2026  11:58 AM             4,021 \Everyone              Content-Indexing-Common-Replacement.man
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+             378 File(s)      1,307,953 bytes
+
+ Directory of D:\sources\replacementmanifests\hwvid-migration-2
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM           103,856 \Everyone              hwvidmigplugin.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)        103,856 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-activedirectory-webservices
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM           124,336 \Everyone              adwsmigrate.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)        124,336 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-azurestack-hci-plugin
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM           112,032 \Everyone              azshcimigplugin.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)        112,032 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-client-license-platform-service-migration
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM           271,680 \Everyone              clipmigplugin.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)        271,680 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-edge-migration-plugin
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM           161,184 \Everyone              edgemigrationplugin.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)        161,184 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-onecore-tiledatarepository
+
+01/23/2026  11:58 AM           161,184 \Everyone              tilestoremigrationplugin.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)        161,184 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-appmanagement-migration
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM         1,181,000 \Everyone              appmanmigrationplugin.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)      1,181,000 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-appx-deployment-server
+
+01/23/2026  11:58 AM             1,692 \Everyone              microsoft.windows.secondarytileexperience_10.0.0.0_neutral__cw5n1h2txyewy.xml
+01/23/2026  11:58 AM             1,498 \Everyone              windows.miracastview_6.3.0.0_neutral_neutral_cw5n1h2txyewy.xml
+01/23/2026  11:58 AM           599,424 \Everyone              appxupgrademigrationplugin.dll
+01/23/2026  11:58 AM            22,771 \Everyone              appxprovisioning.xml
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               4 File(s)        625,385 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-audio-mmecore-other
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM           124,336 \Everyone              audmigplugin.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)        124,336 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-clusterupgradeplugin
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM           112,040 \Everyone              ClusterUpgradePlugin.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)        112,040 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-com-complus-setup
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM           198,064 \Everyone              commig.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)        198,064 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-deviceassociationframeworkmigration
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM           333,216 \Everyone              dafmigplugin.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)        333,216 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-directoryservices-adam-client
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM           157,088 \Everyone              adammigrate.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)        157,088 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-diskmonitor
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM           176,128 \Everyone              diskmonmigplugin.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)        176,128 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-iis-rm
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM           398,768 \Everyone              iismig.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)        398,768 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-mapscontrol-migration
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM           128,320 \Everyone              mapsmigplugin.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)        128,320 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-mup
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM           148,896 \Everyone              mupmigplugin.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)        148,896 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-network-setup
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM           181,664 \Everyone              netsetupapi.dll
+01/23/2026  11:58 AM           910,768 \Everyone              netsetupengine.dll
+01/23/2026  11:58 AM           382,256 \Everyone              networkbindingenginemigplugin.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               3 File(s)      1,474,688 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-offlinefiles-core
+
+01/23/2026  11:58 AM           169,280 \Everyone              cscmig.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              en-us
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)        169,280 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-offlinefiles-core\en-us
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM             3,072 \Everyone              cscmig.dll.mui
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)          3,072 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-pnpmigration
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM           427,440 \Everyone              pnpmig.dll
+01/23/2026  11:58 AM            25,391 \Everyone              pnpmig.inf
+01/23/2026  11:58 AM         1,026,200 \Everyone              servicingcommon.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               3 File(s)      1,479,031 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-rasapi-mig
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM           107,936 \Everyone              pbkmigr.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)        107,936 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-rasserver-migplugin
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM           419,248 \Everyone              rasmigplugin.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)        419,248 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-security-ngc-localaccountmigplugin
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM           120,128 \Everyone              ngclocalaccountmigplugin.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)        120,128 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-shmig
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              en-us
+01/23/2026  11:58 AM           308,656 \Everyone              shmig.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)        308,656 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-shmig\en-us
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM             4,096 \Everyone              shmig.dll.mui
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)          4,096 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-sxs
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM    <DIR>          \Everyone              en-us
+01/23/2026  11:58 AM         1,026,096 \Everyone              servicingcommon.dll
+01/23/2026  11:58 AM           148,912 \Everyone              sxsmigplugin.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               2 File(s)      1,175,008 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-sxs\en-us
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM             2,560 \Everyone              sxsmigplugin.dll.mui
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)          2,560 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-terminalservices-appserver-licensing
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM           124,208 \Everyone              tsmigplugin.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)        124,208 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-terminalservices-licenseserver
+
+01/23/2026  11:58 AM           140,608 \Everyone              tlsrepplugin.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)        140,608 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-textservicesframework-migration
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM           169,376 \Everyone              chxmig.dll
+01/23/2026  11:58 AM           214,320 \Everyone              imjpmig.dll
+01/23/2026  11:58 AM           140,704 \Everyone              imkrmig.dll
+01/23/2026  11:58 AM           173,376 \Everyone              msctfmig.dll
+01/23/2026  11:58 AM           112,032 \Everyone              tabletextservicemig.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               5 File(s)        809,808 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-virtualization-vmswitch
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM           308,544 \Everyone              vmswitchmigrationplugin.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)        308,544 bytes
+
+ Directory of D:\sources\replacementmanifests\microsoft-windows-vsmkey
+
+01/23/2026  11:58 AM    <DIR>          \Everyone              ..
+01/23/2026  11:58 AM           112,032 \Everyone              VsmKeyMigPlugin.dll
+01/23/2026  11:58 AM    <DIR>          \Everyone              .
+               1 File(s)        112,032 bytes
+
+ Directory of D:\sources\replacementmanifests\networkbridge
+
+01/23/2026  11:59 AM    <DIR>          \Everyone              ..
+01/23/2026  11:59 AM           136,624 \Everyone              bridgemigplugin.dll
+01/23/2026  11:59 AM    <DIR>          \Everyone              .
+               1 File(s)        136,624 bytes
+
+ Directory of D:\sources\replacementmanifests\networking-mpssvc-svc
+
+01/23/2026  11:59 AM    <DIR>          \Everyone              ..
+01/23/2026  11:59 AM           169,376 \Everyone              icfupgd.dll
+01/23/2026  11:59 AM    <DIR>          \Everyone              .
+               1 File(s)        169,376 bytes
+
+ Directory of D:\sources\replacementmanifests\printing-localprinting-replacement
+
+01/23/2026  11:59 AM           161,088 \Everyone              apmonportmig.dll
+01/23/2026  11:59 AM           156,992 \Everyone              usbportmig.dll
+01/23/2026  11:59 AM    <DIR>          \Everyone              ..
+01/23/2026  11:59 AM    <DIR>          \Everyone              .
+               2 File(s)        318,080 bytes
+
+ Directory of D:\sources\replacementmanifests\sppmig
+
+01/23/2026  11:59 AM    <DIR>          \Everyone              ..
+01/23/2026  11:59 AM            71,072 \Everyone              sppmig.dll
+01/23/2026  11:59 AM    <DIR>          \Everyone              .
+               1 File(s)         71,072 bytes
+
+ Directory of D:\sources\replacementmanifests\windowssearchengine
+
+01/23/2026  12:00 PM    <DIR>          \Everyone              ..
+01/23/2026  12:00 PM           165,184 \Everyone              wsearchmigplugin.dll
+01/23/2026  12:00 PM    <DIR>          \Everyone              .
+               1 File(s)        165,184 bytes
+
+ Directory of D:\sources\sxs
+
+01/23/2026  12:00 PM        71,321,276 \Everyone              microsoft-windows-netfx3-ondemand-package~31bf3856ad364e35~amd64~~.cab
+01/23/2026  12:00 PM            30,781 \Everyone              Microsoft-Windows-InternetExplorer-Optional-Package~31bf3856ad364e35~amd64~en-US~.cab
+01/23/2026  12:00 PM           304,859 \Everyone              microsoft-windows-internetexplorer-optional-package~31bf3856ad364e35~amd64~~.cab
+01/23/2026  12:00 PM    <DIR>          \Everyone              ..
+01/23/2026  12:00 PM    <DIR>          \Everyone              .
+               3 File(s)     71,656,916 bytes
+
+ Directory of D:\sources\uup
+
+01/23/2026  12:00 PM    <DIR>          \Everyone              ..
+01/23/2026  12:00 PM    <DIR>          \Everyone              metadata
+01/23/2026  12:00 PM    <DIR>          \Everyone              .
+               0 File(s)              0 bytes
+
+ Directory of D:\sources\uup\metadata
+
+01/23/2026  12:00 PM            47,682 \Everyone              desktoptargetcompdb_fod_neutral.xml.cab
+01/23/2026  12:00 PM            18,873 \Everyone              desktoptargetcompdb_conditions.xml.cab
+01/23/2026  12:00 PM            12,406 \Everyone              desktoptargetcompdb_neutral.xml.cab
+01/23/2026  12:00 PM    <DIR>          \Everyone              ..
+01/23/2026  12:00 PM    <DIR>          \Everyone              .
+               3 File(s)         78,961 bytes
+
+ Directory of D:\sources\vi-vn
+
+01/23/2026  12:00 PM    <DIR>          \Everyone              ..
+01/23/2026  12:00 PM            80,896 \Everyone              MediaSetupUIMgr.dll.mui
+01/23/2026  12:00 PM            14,248 \Everyone              SetupPlatform.exe.mui
+01/23/2026  12:00 PM    <DIR>          \Everyone              .
+               2 File(s)         95,144 bytes
+
+ Directory of D:\support
+
+01/23/2026  12:00 PM    <DIR>          \Everyone              ..
+01/23/2026  12:00 PM    <DIR>          \Everyone              logging
+01/23/2026  12:00 PM    <DIR>          \Everyone              .
+               0 File(s)              0 bytes
+
+ Directory of D:\support\logging
+
+01/23/2026  12:00 PM    <DIR>          \Everyone              .
+01/23/2026  12:00 PM    <DIR>          \Everyone              ..
+01/23/2026  12:00 PM            22,072 \Everyone              actionqueueetw.dll
+01/23/2026  12:00 PM            26,168 \Everyone              auditetw.dll
+01/23/2026  12:00 PM            26,040 \Everyone              cmisetupetw.dll
+01/23/2026  12:00 PM    <DIR>          \Everyone              en-us
+01/23/2026  12:00 PM             6,868 \Everyone              etwproviderinstall.vbs
+01/23/2026  12:00 PM             6,348 \Everyone              microsoft-windows-actionqueue-instrumentation.man
+01/23/2026  12:00 PM             6,729 \Everyone              microsoft-windows-audit-instrumentation.man
+01/23/2026  12:00 PM             7,231 \Everyone              microsoft-windows-cmisetup-instrumentation.man
+01/23/2026  12:00 PM             8,649 \Everyone              microsoft-windows-oobeldr-instrumentation.man
+01/23/2026  12:00 PM            20,392 \Everyone              microsoft-windows-setup-events.man
+01/23/2026  12:00 PM             9,186 \Everyone              microsoft-windows-setup-instrumentation.man
+01/23/2026  12:00 PM            15,365 \Everyone              microsoft-windows-setupcl-instrumentation.man
+01/23/2026  12:00 PM             7,222 \Everyone              microsoft-windows-setupugc-instrumentation.man
+01/23/2026  12:00 PM            13,873 \Everyone              microsoft-windows-sysprep-instrumentation.man
+01/23/2026  12:00 PM             9,233 \Everyone              microsoft-windows-windeploy-instrumentation.man
+01/23/2026  12:00 PM            26,056 \Everyone              oobeldretw.dll
+01/23/2026  12:00 PM            30,248 \Everyone              setupcletw.dll
+01/23/2026  12:00 PM            30,128 \Everyone              setupetw.dll
+01/23/2026  12:00 PM            26,056 \Everyone              setupugcetw.dll
+01/23/2026  12:00 PM            30,152 \Everyone              sysprepetw.dll
+01/23/2026  12:00 PM            26,152 \Everyone              windeployetw.dll
+01/23/2026  12:00 PM            75,304 \Everyone              winsetupetw.dll
+              21 File(s)        429,472 bytes
+
+ Directory of D:\support\logging\en-us
+
+01/23/2026  12:00 PM    <DIR>          \Everyone              ..
+01/23/2026  12:00 PM             3,584 \Everyone              actionqueueetw.dll.mui
+01/23/2026  12:00 PM    <DIR>          \Everyone              .
+               1 File(s)          3,584 bytes
+
+ Directory of D:\Recovery
+
+01/23/2026  09:26 AM    <DIR>          \Everyone              ..
+01/23/2026  09:26 AM    <DIR>          \Everyone              Logs
+01/23/2026  09:26 AM    <DIR>          \Everyone              .
+               0 File(s)              0 bytes
+
+ Directory of D:\Recovery\Logs
+
+01/23/2026  09:26 AM    <DIR>          \Everyone              ..
+01/23/2026  09:26 AM    <DIR>          \Everyone              .
+01/23/2026  08:09 AM                96 \Everyone              BootUX (2).sqml
+01/23/2026  08:09 AM                72 \Everyone              BootUX (1).sqml
+01/23/2026  08:09 AM             1,285 \Everyone              Reload.xml
+               3 File(s)          1,453 bytes
+
+ Directory of D:\System Volume Information
+
+01/23/2026  10:29 AM                76 \Everyone              IndexerVolumeGuid
+01/23/2026  10:28 AM                12 \Everyone              WPSettings.dat
+01/23/2026  10:28 AM    <DIR>          \Everyone              ..
+01/23/2026  10:28 AM    <DIR>          \Everyone              .
+               2 File(s)             88 bytes
+
+     Total Files Listed:
+             982 File(s)  7,672,341,145 bytes
+             291 Dir(s)  23,075,684,352 bytes free

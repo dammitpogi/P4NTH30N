@@ -23,7 +23,7 @@ Standalone monitoring service for data corruption detection and system health mo
 
 #### MonitoringService.cs
 Main monitoring orchestrator:
-- Connects to MongoDB (default: `mongodb://localhost:27017`, database: `P4NTH30N`)
+- Connects to MongoDB (default: `mongodb://localhost:27017`, database: `P4NTHE0N`)
 - Runs initial health check on startup
 - Performs initial data cleaning via `ValidatedMongoRepository.CleanCorruptedData()`
 - Starts continuous DataCorruptionMonitor (2-minute intervals)
@@ -122,7 +122,7 @@ Continue Monitoring
 
 ### Data Access
 - MongoDB connection via connection string
-- Database: `P4NTH30N` (configurable)
+- Database: `P4NTHE0N` (configurable)
 - Collections monitored: `CRED3N7IAL`, `JACKPOTS`, `DPD` data
 
 ### Consumed By
@@ -141,7 +141,7 @@ Continue Monitoring
 ```csharp
 var monitoringService = new MonitoringService(
     connectionString: "mongodb://localhost:27017",
-    databaseName: "P4NTH30N"
+    databaseName: "P4NTHE0N"
 );
 
 monitoringService.Start();
@@ -177,7 +177,7 @@ public class Program
 ```csharp
 // Default connection
 connectionString: "mongodb://localhost:27017"
-databaseName: "P4NTH30N"
+databaseName: "P4NTHE0N"
 
 // Custom connection
 var service = new MonitoringService(

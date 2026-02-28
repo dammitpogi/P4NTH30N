@@ -30,7 +30,7 @@
 **Root Cause**: MCP servers with `stdio` transport require an interactive terminal. When run as detached Docker containers, they receive EOF on stdin and exit immediately.
 
 **Files Modified**:
-- `c:\P4NTH30N\T00L5ET\decisions-server-config\docker-compose.yml`
+- `c:\P4NTHE0N\T00L5ET\decisions-server-config\docker-compose.yml`
   - Added `stdin_open: true` (keeps stdin open)
   - Added `tty: true` (allocates pseudo-TTY)
   - Removed obsolete `version: '3.8'` directive

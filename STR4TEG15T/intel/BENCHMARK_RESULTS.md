@@ -19,7 +19,7 @@ Result: Cannot execute (build failed)
 ```
 
 ### Baseline Assessment
-The P4NTH30N codebase has pre-existing build failures in the W4TCHD0G integration. This is the reality models must work with.
+The P4NTHE0N codebase has pre-existing build failures in the W4TCHD0G integration. This is the reality models must work with.
 
 **Benchmark Adjustment:**
 - Models will be evaluated on their ability to work around or fix existing errors

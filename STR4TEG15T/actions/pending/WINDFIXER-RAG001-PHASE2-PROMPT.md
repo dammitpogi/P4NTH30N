@@ -21,7 +21,7 @@ OpenFixer has completed Oracle condition #3 (Python bridge). All 4 Oracle condit
 
 ## PHASE 1 DELIVERABLES (Already Complete)
 
-**Source files in C:\P4NTH30N\src\RAG\:**
+**Source files in C:\P4NTHE0N\src\RAG\:**
 ```
 McpServer.cs              ✅ MCP server with 6 tools
 EmbeddingService.cs       ✅ ONNX + sentence-transformers
@@ -74,7 +74,7 @@ dotnet publish src/RAG/McpHost/McpHost.csproj `
   --self-contained true `
   -p:PublishSingleFile=true `
   -p:IncludeNativeLibrariesForSelfExtract=true `
-  -o C:/ProgramData/P4NTH30N/bin/
+  -o C:/ProgramData/P4NTHE0N/bin/
 ```
 
 **2.2 QueryPipeline Refinement**
@@ -134,7 +134,7 @@ public async Task<IngestionResult> IngestBatchAsync(
 
 public class FileSystemWatcherService : BackgroundService
 {
-    // Monitor C:\P4NTH30N\docs\ for changes
+    // Monitor C:\P4NTHE0N\docs\ for changes
     // Debounce: 1-5 minutes (configurable)
     // File types: *.md, *.json, *.cs (optional)
     // On change: Queue for ingestion (don't block)
@@ -145,7 +145,7 @@ public class FileSystemWatcherService : BackgroundService
 ```json
 {
   "FileSystemWatcher": {
-    "Paths": ["C:\\P4NTH30N\\docs"],
+    "Paths": ["C:\\P4NTHE0N\\docs"],
     "FileFilters": ["*.md", "*.json"],
     "DebounceSeconds": 300,
     "Enabled": true
@@ -176,14 +176,14 @@ public class MongoChangeStreamService : BackgroundService
 Register-ScheduledTask `
   -TaskName "RAG-Incremental-Rebuild" `
   -Trigger (New-ScheduledTaskTrigger -Once -At (Get-Date).AddHours(4) -RepetitionInterval (New-TimeSpan -Hours 4)) `
-  -Action (New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-File C:\P4NTH30N\scripts\rag\rebuild-index.ps1 -Incremental") `
+  -Action (New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-File C:\P4NTHE0N\scripts\rag\rebuild-index.ps1 -Incremental") `
   -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries)
 
 # Nightly 3AM full rebuild
 Register-ScheduledTask `
   -TaskName "RAG-Nightly-Rebuild" `
   -Trigger (New-ScheduledTaskTrigger -Daily -At "03:00") `
-  -Action (New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-File C:\P4NTH30N\scripts\rag\rebuild-index.ps1 -Full") `
+  -Action (New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-File C:\P4NTHE0N\scripts\rag\rebuild-index.ps1 -Full") `
   -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries)
 ```
 
@@ -359,8 +359,8 @@ Include:
 
 - OpenFixer Report: T4CT1CS/handoffs/completed/OPENFIXER-RAG001-20260219.md
 - RAG-001 Final Decision: T4CT1CS/intel/RAG-001_FINAL_DECISION.md
-- Phase 1 Code: C:\P4NTH30N\src\RAG\
-- Python Bridge: C:\P4NTH30N\src\RAG\PythonBridge\
+- Phase 1 Code: C:\P4NTHE0N\src\RAG\
+- Python Bridge: C:\P4NTHE0N\src\RAG\PythonBridge\
 
 ---
 
@@ -389,7 +389,7 @@ dotnet add reference ../RAG.csproj
 dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true
 
 # 6. Test
-C:/ProgramData/P4NTH30N/bin/RAG.McpHost.exe --help
+C:/ProgramData/P4NTHE0N/bin/RAG.McpHost.exe --help
 ```
 
 **Begin execution upon acknowledgment.**

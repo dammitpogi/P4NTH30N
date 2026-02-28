@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "description": "P4NTH30N Config Deployer manifest - maps repo sources to runtime destinations",
+  "description": "P4NTHE0N Config Deployer manifest - maps repo sources to runtime destinations",
   "mappings": {
     "agents": [
       { "source": "STR4TEG15T/prompt.md", "destination": "~/.config/opencode/agents/strategist.md" },
@@ -22,7 +22,7 @@
     "binaries": [
       {
         "source": "src/RAG.McpHost/RAG.McpHost.csproj",
-        "destination": "C:\\ProgramData\\P4NTH30N\\bin\\",
+        "destination": "C:\\ProgramData\\P4NTHE0N\\bin\\",
         "type": "publish",
         "runtime": "win-x64",
         "configuration": "Release"

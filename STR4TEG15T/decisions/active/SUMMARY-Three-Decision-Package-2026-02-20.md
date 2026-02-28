@@ -222,23 +222,23 @@ Week 1-2:
 │
 Week 2:
 ├── TEST-035 Phase 1-2: Test Harness Foundation + CDP Integration
-│   └── Fixer: @windfixer (P4NTH30N code)
+│   └── Fixer: @windfixer (P4NTHE0N code)
 ├── FEAT-036 Phase 1: FourEyes Foundation & Safety
-│   └── Fixer: @windfixer (P4NTH30N code)
+│   └── Fixer: @windfixer (P4NTHE0N code)
 │
 Week 3:
 ├── TEST-035 Phase 3-4: Execution + Vision & Reporting
-│   └── Fixer: @windfixer (P4NTH30N code)
+│   └── Fixer: @windfixer (P4NTHE0N code)
 ├── FEAT-036 Phase 2-3: Vision Stubs + H4ND Integration
-│   └── Fixer: @windfixer (P4NTH30N code)
+│   └── Fixer: @windfixer (P4NTHE0N code)
 │
 Week 4:
 ├── FEAT-036 Phase 4: Developer Dashboard
-│   └── Fixer: @windfixer (P4NTH30N code)
+│   └── Fixer: @windfixer (P4NTHE0N code)
 │
 Week 5-6:
 ├── FEAT-036 Phase 5-6: Real Vision Models + Training Data
-│   └── Fixer: @windfixer (P4NTH30N code)
+│   └── Fixer: @windfixer (P4NTHE0N code)
 ```
 
 ### Fixer Selection Matrix
@@ -246,8 +246,8 @@ Week 5-6:
 | Decision | Target | Fixer | CLI Needed |
 |----------|--------|-------|------------|
 | INFRA-037 | Plugin (`~/.config/opencode/dev`) | @openfixer | Yes (bun build) |
-| TEST-035 | P4NTH30N source | @windfixer | No |
-| FEAT-036 | P4NTH30N source | @windfixer | No |
+| TEST-035 | P4NTHE0N source | @windfixer | No |
+| FEAT-036 | P4NTHE0N source | @windfixer | No |
 
 ### Validation Commands
 
@@ -260,8 +260,8 @@ bun test
 
 **For TEST-035 and FEAT-036**:
 ```bash
-cd /c/P4NTH30N
-dotnet build P4NTH30N.slnx
+cd /c/P4NTHE0N
+dotnet build P4NTHE0N.slnx
 dotnet test UNI7T35T/UNI7T35T.csproj
 ```
 

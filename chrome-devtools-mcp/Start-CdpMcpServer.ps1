@@ -1,5 +1,5 @@
 # Start-CdpMcpServer.ps1
-# Starts the P4NTH30N CDP MCP Server in HTTP mode for programmatic consumers.
+# Starts the P4NTHE0N CDP MCP Server in HTTP mode for programmatic consumers.
 # Default: http://127.0.0.1:5301/mcp targeting Chrome at 192.168.56.1:9222
 #
 # Usage:

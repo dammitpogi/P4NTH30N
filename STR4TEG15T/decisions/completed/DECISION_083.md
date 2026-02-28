@@ -129,7 +129,7 @@ db.Jackpots.find({ "DPD.Data": { $exists: true, $not: { $size: 0 } } }).count()
 ```
 
 **H0UND Collections to Modify**:
-- Database: `P4NTH30N` (or configured database name)
+- Database: `P4NTHE0N` (or configured database name)
 - Collections: `Jackpots`, `Signals`
 
 **Collections to Preserve**:

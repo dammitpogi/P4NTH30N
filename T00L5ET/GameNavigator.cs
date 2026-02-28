@@ -1,7 +1,7 @@
 using System.Text.Json;
-using P4NTH30N.C0MMON.Infrastructure.Cdp;
+using P4NTHE0N.C0MMON.Infrastructure.Cdp;
 
-namespace P4NTH30N.T00L5ET;
+namespace P4NTHE0N.T00L5ET;
 
 /// <summary>
 /// Navigate to the correct game after login: Fortune Piggy (primary) → Gold777 (fallback).
@@ -77,7 +77,7 @@ public static class GameNavigator
 			if (ssResult.TryGetProperty("result", out var res) && res.TryGetProperty("data", out var data))
 			{
 				byte[] bytes = Convert.FromBase64String(data.GetString() ?? "");
-				string path = Path.Combine("C:\\P4NTH30N", "test-results", $"nav_{label}_{DateTime.UtcNow:HHmmss}.png");
+				string path = Path.Combine("C:\\P4NTHE0N", "test-results", $"nav_{label}_{DateTime.UtcNow:HHmmss}.png");
 				Directory.CreateDirectory(Path.GetDirectoryName(path)!);
 				await File.WriteAllBytesAsync(path, bytes);
 				Console.WriteLine($"  Screenshot: {path} ({bytes.Length:N0} bytes)");

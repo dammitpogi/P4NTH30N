@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using P4NTH30N.PROF3T.Configuration;
+using P4NTHE0N.PROF3T.Configuration;
 
-namespace P4NTH30N.PROF3T;
+namespace P4NTHE0N.PROF3T;
 
 public class ModelManager : IModelManager, IModelRegistry
 {

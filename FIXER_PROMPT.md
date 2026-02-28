@@ -215,7 +215,7 @@ toolhive-mcp-optimizer_call_tool({
 ### Security (INFRA-009):
 - **AES-256-GCM**: Use AesGcm class (not Aes.Create)
 - **PBKDF2**: 600,000 iterations
-- **Master key**: `C:\ProgramData\P4NTH30N\master.key`
+- **Master key**: `C:\ProgramData\P4NTHE0N\master.key`
 - **Permissions**: 600 (Administrators only)
 
 ---

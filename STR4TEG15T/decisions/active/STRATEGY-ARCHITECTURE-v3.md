@@ -1,4 +1,4 @@
-# P4NTH30N: Streamlined Agentic Architecture v3.0
+# P4NTHE0N: Streamlined Agentic Architecture v3.0
 ## Self-Funded Agentic Environment | Multi-Platform Fixer Strategy
 
 **Date**: 2026-02-18  
@@ -112,7 +112,7 @@ Decisions created and tracked
 ```
 
 ### WindSurf Environment
-**Location**: P4NTH30N project workspace
+**Location**: P4NTHE0N project workspace
 **Purpose**: Bulk Fixer execution, Opus 4.6 access
 **Agent**: WindFixer (Opus 4.6 Thinking preferred)
 **Billing**: Per-prompt (cheaper for bulk work)
@@ -261,7 +261,7 @@ Future executions improved
 ---
 
 ### WindFixer (WindSurf Agent)
-**Location**: WindSurf P4NTH30N workspace
+**Location**: WindSurf P4NTHE0N workspace
 **Model**: Opus 4.6 Thinking (preferred)
 **Billing**: Per-prompt (cost-effective)
 
@@ -383,7 +383,7 @@ public class WindFixerBridge
 
 **Files to Update**:
 ```
-C:\P4NTH30N\
+C:\P4NTHE0N\
 ├── W4TCHD0G\ → H0UND\                    (rename)
 ├── H0UND\ → HUN7ER\                      (rename)
 └── docs\PANTHEON.md                     (update naming)
@@ -487,7 +487,7 @@ C:\Users\paulc\.config\opencode\agents\
 - [ ] Zero Explorer/Librarian delegation (until fixed)
 - [ ] Opus 4.6 Thinking validated by Oracle/Designer
 
-### P4NTH30N Evolution
+### P4NTHE0N Evolution
 
 - [ ] Casino program operational
 - [ ] Vision system (H0UND) active
@@ -520,7 +520,7 @@ C:\Users\paulc\.config\opencode\agents\
 ## Documents to Create
 
 ```
-C:\P4NTH30N\T4CT1CS\decisions\active\
+C:\P4NTHE0N\T4CT1CS\decisions\active\
 ├── STRATEGY-001-Rename-Pantheon.md
 ├── STRATEGY-002-WindSurf-Integration.md
 ├── STRATEGY-003-Workflow-Automation.md
@@ -531,7 +531,7 @@ C:\Users\paulc\.config\opencode\agents\
 ├── windfixer.md                        (NEW)
 └── [update existing with new names]
 
-C:\P4NTH30N\docs\
+C:\P4NTHE0N\docs\
 └── PANTHEON-v3.md                      (updated naming)
 ```
 
@@ -539,7 +539,7 @@ C:\P4NTH30N\docs\
 
 ## Conclusion
 
-**P4NTH30N is evolving into a self-funded agentic environment**:
+**P4NTHE0N is evolving into a self-funded agentic environment**:
 - ✅ Multi-platform strategy (OpenCode + WindSurf)
 - ✅ Cost-optimized through Decision framework
 - ✅ Renamed agents for clarity (OpenFixer, WindFixer, H0UND, HUN7ER)

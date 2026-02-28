@@ -5,7 +5,7 @@
 ```
 SWE-1.5 Model Discovery - Round 1: Core Capabilities & Limitations
 
-I am evaluating SWE-1.5 for the P4NTH30N platform, a production C# automation system with 122 tracked decisions. This is the first of multiple discovery rounds.
+I am evaluating SWE-1.5 for the P4NTHE0N platform, a production C# automation system with 122 tracked decisions. This is the first of multiple discovery rounds.
 
 Please provide specific, technical answers to these questions:
 
@@ -82,7 +82,7 @@ Please provide specific, technical answers to these questions:
 ## RESPONSE FORMAT
 Provide numbered answers with specific numbers, technical details, and concrete examples. Avoid general statements. If you don't know exact specs, state your observed behavior.
 
-This intelligence will directly impact P4NTH30N development workflow design.
+This intelligence will directly impact P4NTHE0N development workflow design.
 ```
 
 ---
@@ -92,7 +92,7 @@ This intelligence will directly impact P4NTH30N development workflow design.
 After receiving the response, extract and document:
 
 ### Critical Numbers to Capture
-| Metric | SWE-1.5 Response | Impact on P4NTH30N |
+| Metric | SWE-1.5 Response | Impact on P4NTHE0N |
 |--------|-----------------|-------------------|
 | Context Window (tokens) | | |
 | Output Limit (tokens) | | |

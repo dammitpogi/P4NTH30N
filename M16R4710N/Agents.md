@@ -16,7 +16,7 @@ Migration utility for transitioning between data formats or system versions. Han
 
 - **Program.cs**: Migration orchestration and entry point
   - Connects to MongoDB at mongodb://localhost:27017
-  - Database: P4NTH30N
+  - Database: P4NTHE0N
   - Current migration: DPD values from Credential to Jackpot documents
 
 ## Recent Updates (2026-02-19)

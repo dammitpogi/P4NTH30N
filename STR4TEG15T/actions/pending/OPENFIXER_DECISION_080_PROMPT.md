@@ -25,7 +25,7 @@ Execute DECISION_080 in three phases:
    ```bash
    curl -s http://127.0.0.1:5001/mcp -X POST \
      -H "Content-Type: application/json" \
-     -d "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/call\",\"params\":{\"name\":\"rag_ingest_file\",\"arguments\":{\"filePath\":\"C:\\\\P4NTH30N\\\\STR4TEG15T\\\\speech\\\\FILENAME.md\",\"metadata\":{\"agent\":\"strategist\",\"type\":\"speech\",\"source\":\"speech/FILENAME.md\"}}}}"
+     -d "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/call\",\"params\":{\"name\":\"rag_ingest_file\",\"arguments\":{\"filePath\":\"C:\\\\P4NTHE0N\\\\STR4TEG15T\\\\speech\\\\FILENAME.md\",\"metadata\":{\"agent\":\"strategist\",\"type\":\"speech\",\"source\":\"speech/FILENAME.md\"}}}}"
    ```
 4. After each batch, verify:
    ```bash
@@ -48,8 +48,8 @@ Execute DECISION_080 in three phases:
 **PHASE 3: Re-ingest Codebase Patterns (~10 files, 30 minutes)**
 1. Files to ingest:
    - `C:\Users\paulc\.config\opencode\AGENTS.md`
-   - `C:\P4NTH30N\C0MMON\RAG\*.cs` (5 files)
-   - `C:\P4NTH30N\C0MMON\Infrastructure\*.cs` (core interfaces)
+   - `C:\P4NTHE0N\C0MMON\RAG\*.cs` (5 files)
+   - `C:\P4NTHE0N\C0MMON\Infrastructure\*.cs` (core interfaces)
 2. Metadata: `{"agent": "strategist", "type": "pattern", "source": "codebase/FILENAME"}`
 3. Target: vectorCount increases by ~10
 

@@ -45,10 +45,10 @@ dotnet publish src/RAG.McpHost/RAG.McpHost.csproj `
   --self-contained true `
   -p:PublishSingleFile=true `
   -p:IncludeNativeLibrariesForSelfExtract=true `
-  -o C:/ProgramData/P4NTH30N/bin/
+  -o C:/ProgramData/P4NTHE0N/bin/
 
 # Verify executable exists and runs
-C:/ProgramData/P4NTH30N/bin/RAG.McpHost.exe --help
+C:/ProgramData/P4NTHE0N/bin/RAG.McpHost.exe --help
 
 # Expected output:
 # Usage: RAG.McpHost [options]
@@ -69,13 +69,13 @@ C:/ProgramData/P4NTH30N/bin/RAG.McpHost.exe --help
 {
   "mcpServers": {
     "rag-server": {
-      "command": "C:/ProgramData/P4NTH30N/bin/RAG.McpHost.exe",
+      "command": "C:/ProgramData/P4NTHE0N/bin/RAG.McpHost.exe",
       "args": [
         "--port", "5001",
-        "--index", "C:/ProgramData/P4NTH30N/rag-index",
-        "--model", "C:/ProgramData/P4NTH30N/models/all-MiniLM-L6-v2.onnx",
+        "--index", "C:/ProgramData/P4NTHE0N/rag-index",
+        "--model", "C:/ProgramData/P4NTHE0N/models/all-MiniLM-L6-v2.onnx",
         "--bridge", "http://127.0.0.1:5000",
-        "--mongo", "mongodb://localhost:27017/P4NTH30N"
+        "--mongo", "mongodb://localhost:27017/P4NTHE0N"
       ],
       "env": {
         "DOTNET_ENVIRONMENT": "Production"
@@ -103,7 +103,7 @@ toolhive list-tools | findstr rag_
 
 ```powershell
 # Run WindFixer's script
-cd C:\P4NTH30N
+cd C:\P4NTHE0N
 .\scripts\rag\register-scheduled-tasks.ps1
 
 # Verify tasks created
@@ -118,7 +118,7 @@ Get-ScheduledTask | Where-Object { $_.TaskName -like "RAG-*" }
 ```powershell
 # 4-hour incremental rebuild
 $incrementalAction = New-ScheduledTaskAction `
-  -Execute "C:/ProgramData/P4NTH30N/bin/RAG.McpHost.exe" `
+  -Execute "C:/ProgramData/P4NTHE0N/bin/RAG.McpHost.exe" `
   -Argument "--rebuild incremental"
 
 $incrementalTrigger = New-ScheduledTaskTrigger `
@@ -134,7 +134,7 @@ Register-ScheduledTask `
 
 # Nightly 3AM full rebuild
 $nightlyAction = New-ScheduledTaskAction `
-  -Execute "C:/ProgramData/P4NTH30N/bin/RAG.McpHost.exe" `
+  -Execute "C:/ProgramData/P4NTHE0N/bin/RAG.McpHost.exe" `
   -Argument "--rebuild full"
 
 $nightlyTrigger = New-ScheduledTaskTrigger -Daily -At "03:00"
@@ -170,7 +170,7 @@ mongo --eval "rs.status().myState"
 
 Check these before reporting completion:
 
-- [ ] `RAG.McpHost.exe` exists at `C:/ProgramData/P4NTH30N/bin/`
+- [ ] `RAG.McpHost.exe` exists at `C:/ProgramData/P4NTHE0N/bin/`
 - [ ] `RAG.McpHost.exe --help` shows CLI options
 - [ ] `toolhive list-tools | findstr rag_` shows 6 tools
 - [ ] Scheduled tasks "RAG-Incremental-Rebuild" and "RAG-Nightly-Rebuild" exist

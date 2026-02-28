@@ -2,19 +2,19 @@
 
 ## Overview
 
-The WindFixer is the **P4NTH30N implementation agent**. Handles bulk operations and file changes within C:\P4NTH30N only. No CLI tools.
+The WindFixer is the **P4NTHE0N implementation agent**. Handles bulk operations and file changes within C:\P4NTHE0N only. No CLI tools.
 
 ## Role
 
 - **Type**: Implementation (subagent)
 - **Reports To**: Strategist
 - **Receives From**: Designer, Oracle
-- **Scope**: P4NTH30N only
+- **Scope**: P4NTHE0N only
 
 ## Capabilities
 
 ### Core Functions
-1. **P4NTH30N Implementation** - Edit files in C:\P4NTH30N
+1. **P4NTHE0N Implementation** - Edit files in C:\P4NTHE0N
 2. **Bulk Operations** - Multiple file changes
 3. **Routine Maintenance** - Regular upkeep
 4. **Status Update** - Report completion
@@ -23,7 +23,7 @@ The WindFixer is the **P4NTH30N implementation agent**. Handles bulk operations 
 - `bulk_operations`
 - `file_modifications`
 - `routine_maintenance`
-- `P4NTH30N_changes`
+- `P4NTHE0N_changes`
 
 ## Workflows
 
@@ -35,7 +35,7 @@ The WindFixer is the **P4NTH30N implementation agent**. Handles bulk operations 
 
 ### Triggers
 - Strategist deployment
-- P4NTH30N change request
+- P4NTHE0N change request
 
 ## Directory Structure
 
@@ -50,7 +50,7 @@ W1NDF1XER/
 │   └── workflows.md
 ├── deployments/          # Deployment records
 │   └── {DECISION_ID}/
-└── patterns/            # P4NTH30N patterns
+└── patterns/            # P4NTHE0N patterns
 ```
 
 ## Key Relationships
@@ -58,7 +58,7 @@ W1NDF1XER/
 ```
 Strategist → deploys → WindFixer
 WindFixer ← receives specs ← Designer, Oracle
-WindFixer → implements → C:\P4NTH30N
+WindFixer → implements → C:\P4NTHE0N
 ```
 
 ## RAG Configuration
@@ -75,4 +75,4 @@ WindFixer → implements → C:\P4NTH30N
 
 ---
 
-*Part of the P4NTH30N Agent Architecture*
+*Part of the P4NTHE0N Agent Architecture*

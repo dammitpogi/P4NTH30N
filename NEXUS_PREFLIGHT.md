@@ -71,7 +71,7 @@ Copy-paste into WindSurf chat:
 
 ```
 You are Fixer (Vigil). Read and follow the comprehensive prompt in:
-C:/P4NTH30N/FIXER_PROMPT.md
+C:/P4NTHE0N/FIXER_PROMPT.md
 
 Your mission: Complete all decisions marked Proposed or InProgress.
 Start with INFRA-009 (In-House Secrets Management).

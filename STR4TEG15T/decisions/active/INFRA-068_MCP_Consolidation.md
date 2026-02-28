@@ -35,7 +35,7 @@ Consolidated and cleaned up the MCP (Model Context Protocol) server configuratio
 ### Current State
 The OpenCode MCP configuration had grown organically with overlapping and redundant entries:
 
-1. **Custom `toolhive-gateway`** - Node.js aggregator at `C:/P4NTH30N/tools/mcp-development/servers/toolhive-gateway/dist/index.js` that manually aggregated 5 MCP servers
+1. **Custom `toolhive-gateway`** - Node.js aggregator at `C:/P4NTHE0N/tools/mcp-development/servers/toolhive-gateway/dist/index.js` that manually aggregated 5 MCP servers
 2. **ToolHive Desktop** - Native containerized MCP management with 15 servers
 3. **Mixed local entries** - Some with missing files, some duplicating ToolHive functionality
 4. **Incorrect format** - Some entries used `"type": "http"` (wrong) instead of `"type": "remote"` (correct)
@@ -177,10 +177,10 @@ This auto-writes all ToolHive-managed MCPs to opencode.json with correct `"type"
 ### Local MCP Entry Point Verification
 | MCP | File Path | Exists? | Size | Modified |
 |-----|-----------|---------|------|----------|
-| foureyes-mcp | `C:/P4NTH30N/tools/mcp-foureyes/server.js` | ✅ Yes | 17KB | Feb 20 21:57 |
-| honeybelt-server | `C:/P4NTH30N/tools/mcp-development/servers/honeybelt-server/dist/index.js` | ✅ Yes | 6KB | Feb 20 16:27 |
+| foureyes-mcp | `C:/P4NTHE0N/tools/mcp-foureyes/server.js` | ✅ Yes | 17KB | Feb 20 21:57 |
+| honeybelt-server | `C:/P4NTHE0N/tools/mcp-development/servers/honeybelt-server/dist/index.js` | ✅ Yes | 6KB | Feb 20 16:27 |
 | json-query-mcp | `C:/Users/paulc/AppData/Local/json-query-mcp/dist/index.js` | ✅ Yes | 3KB | Feb 12 13:45 |
-| mcp-p4nthon | `C:/P4NTH30N/tools/mcp-p4nthon/dist/index.js` | ✅ Yes (removed - redundant) | 7KB | Feb 20 16:27 |
+| mcp-p4nthon | `C:/P4NTHE0N/tools/mcp-p4nthon/dist/index.js` | ✅ Yes (removed - redundant) | 7KB | Feb 20 16:27 |
 | kimi-mcp-server | `C:/Users/paulc/.vscode/extensions/undefined_publisher.windsurf-cartography-1.1.0/mcp/dist/index.js` | ❌ No (removed - dead) | N/A | N/A |
 
 ### ToolHive Server Health (13 servers)

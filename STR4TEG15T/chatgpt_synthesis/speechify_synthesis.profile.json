@@ -1,0 +1,37 @@
+{
+  "profile": "speechify_synthesis_default",
+  "rules": {
+    "preserve_all_sentences": true,
+    "remove_markdown_headers": true,
+    "remove_parentheses_characters": true,
+    "no_headers_in_output": true,
+    "final_markup": {
+      "one_sentence_per_line": true,
+      "strip_terminal_periods": true,
+      "prefer_commas_over_periods": true,
+      "use_hyphens_for_emphasis": true,
+      "allow_double_newline_for_major_breaks": true
+    }
+  },
+  "token_detection": {
+    "extensions": ["exe", "ps1", "bat", "cmd", "cs", "dll", "json", "md", "yaml", "yml"],
+    "treat_multi_dot_tokens_as_identifiers": true,
+    "treat_paths_as_identifiers": true
+  },
+  "default_context_map": {
+    "P4NTHE0N.exe": "the desktop app",
+    "P4NTHE0N dot exe": "the desktop app",
+    "RAG.McpHost": "the RAG host service",
+    "RAG dot McpHost": "the RAG host service",
+    "ToolHive": "the tools registry",
+    "mcp p4nthon": "the database tool set",
+    "mongod": "the database service",
+    "localhost": "local host"
+  },
+  "pacing": {
+    "neutral": { "comma_density": "medium", "hyphen_emphasis": "low" },
+    "calm": { "comma_density": "high", "hyphen_emphasis": "low" },
+    "intense": { "comma_density": "low", "hyphen_emphasis": "high" },
+    "cinematic": { "comma_density": "medium", "hyphen_emphasis": "medium" }
+  }
+}

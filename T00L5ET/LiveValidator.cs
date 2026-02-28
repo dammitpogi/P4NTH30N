@@ -1,12 +1,12 @@
 using System.Text.Json;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Infrastructure.Cdp;
-using P4NTH30N.H4ND.Infrastructure;
-using P4NTH30N.H4ND.Services;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.C0MMON.Infrastructure.Cdp;
+using P4NTHE0N.H4ND.Infrastructure;
+using P4NTHE0N.H4ND.Services;
 
-namespace P4NTH30N.T00L5ET;
+namespace P4NTHE0N.T00L5ET;
 
 /// <summary>
 /// Live validation runner for DECISION_045, DECISION_044, and DECISION_041.
@@ -29,7 +29,7 @@ public static class LiveValidator
 		try
 		{
 			mongo = new MongoClient("mongodb://192.168.56.1:27017");
-			db = mongo.GetDatabase("P4NTH30N");
+			db = mongo.GetDatabase("P4NTHE0N");
 			var creds = db.GetCollection<BsonDocument>("CRED3N7IAL");
 			var filter = Builders<BsonDocument>.Filter.And(
 				Builders<BsonDocument>.Filter.Eq("Game", "FireKirin"),
@@ -175,7 +175,7 @@ public static class LiveValidator
 				if (ssResult.TryGetProperty("result", out var res) && res.TryGetProperty("data", out var data))
 				{
 					byte[] pngBytes = Convert.FromBase64String(data.GetString() ?? "");
-					string ssPath = Path.Combine("C:\\P4NTH30N", "test-results", $"validation_{DateTime.UtcNow:yyyyMMdd_HHmmss}.png");
+					string ssPath = Path.Combine("C:\\P4NTHE0N", "test-results", $"validation_{DateTime.UtcNow:yyyyMMdd_HHmmss}.png");
 					Directory.CreateDirectory(Path.GetDirectoryName(ssPath)!);
 					await File.WriteAllBytesAsync(ssPath, pngBytes);
 					Console.WriteLine($"  Screenshot: {ssPath} ({pngBytes.Length:N0} bytes)");

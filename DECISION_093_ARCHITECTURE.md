@@ -2,14 +2,14 @@
 
 ## Scope
 
-This architecture defines how `P4NTH30N.exe` (H0UND build output) manages always-on platform services with health checks, restart policy, and tray-controlled lifecycle.
+This architecture defines how `P4NTHE0N.exe` (H0UND build output) manages always-on platform services with health checks, restart policy, and tray-controlled lifecycle.
 
 ## Managed Services
 
 1. `RAG Server` (`RAG.McpHost.exe`)
    - Launch mode: process child
    - Health check: `GET http://127.0.0.1:5001/health`
-2. `MongoDB MCP` (`node C:/P4NTH30N/tools/mcp-p4nthon/dist/index.js`)
+2. `MongoDB MCP` (`node C:/P4NTHE0N/tools/mcp-p4nthon/dist/index.js`)
    - Launch mode: stdio child process
    - Health check: process liveness
 

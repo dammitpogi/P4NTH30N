@@ -1,0 +1,17 @@
+[package]
+name = "fltr"
+description = "Like grep but for natural language questions. Based on Mistral 7B or 8x7B."
+version = "0.1.2"
+edition = "2021"
+
+[dependencies]
+tokenizers = "0.15.0"
+memmap2 = "0.9.0"
+rayon = "1.8"
+clap = { version = "4.4.11", features = ["derive"] }
+
+[build-dependencies]
+cc = "1.0.83"
+
+[features]
+cuda = []

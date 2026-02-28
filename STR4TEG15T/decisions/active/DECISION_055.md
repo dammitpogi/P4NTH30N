@@ -12,7 +12,7 @@
 
 ## Executive Summary
 
-P4NTH30N has three critical subsystems that work independently but have never been unified into a single, coherent execution surface: parallel signal processing (DECISION_047), config-driven selectors (DECISION_046), and session renewal with self-healing (DECISION_041). This decision creates a Unified Game Execution Engine — a single `P4NTH30N.exe` with subcommands that brings all three together, adds a signal generator for test/burn-in scenarios, and establishes a health dashboard for operational monitoring.
+P4NTHE0N has three critical subsystems that work independently but have never been unified into a single, coherent execution surface: parallel signal processing (DECISION_047), config-driven selectors (DECISION_046), and session renewal with self-healing (DECISION_041). This decision creates a Unified Game Execution Engine — a single `P4NTHE0N.exe` with subcommands that brings all three together, adds a signal generator for test/burn-in scenarios, and establishes a health dashboard for operational monitoring.
 
 The gap is clear: DECISION_047's parallel engine passed shadow validation but is blocked waiting for live signals in the SIGN4L collection. There is no way to generate test signals. The config-driven selectors from DECISION_046 are implemented in `GameSelectorConfig` but not wired into the parallel workers. The `SessionRenewalService` from DECISION_041 exists but is not invoked automatically when parallel workers encounter 403 responses. This decision eliminates all three gaps.
 
@@ -63,13 +63,13 @@ The gap is clear: DECISION_047's parallel engine passed shadow validation but is
 Single executable with complete operational surface:
 
 ```
-P4NTH30N.exe spin              → Execute one spin cycle (sequential, existing H4ND mode)
-P4NTH30N.exe parallel          → Execute parallel spins (DECISION_047 engine)
-P4NTH30N.exe generate-signals  → Populate SIGN4L from CR3D3N7IAL credentials
-P4NTH30N.exe health            → Show system health (CDP, MongoDB, platforms, workers)
-P4NTH30N.exe burn-in           → 24-hour automated validation with metrics
-P4NTH30N.exe h0und             → Existing H0UND analytics mode
-P4NTH30N.exe firstspin         → Existing first spin mode (DECISION_044)
+P4NTHE0N.exe spin              → Execute one spin cycle (sequential, existing H4ND mode)
+P4NTHE0N.exe parallel          → Execute parallel spins (DECISION_047 engine)
+P4NTHE0N.exe generate-signals  → Populate SIGN4L from CR3D3N7IAL credentials
+P4NTHE0N.exe health            → Show system health (CDP, MongoDB, platforms, workers)
+P4NTHE0N.exe burn-in           → 24-hour automated validation with metrics
+P4NTHE0N.exe h0und             → Existing H0UND analytics mode
+P4NTHE0N.exe firstspin         → Existing first spin mode (DECISION_044)
 ```
 
 Self-healing parallel execution:
@@ -188,7 +188,7 @@ public class SignalGenerator
 
 **CLI Arguments for generate-signals:**
 ```
-P4NTH30N.exe generate-signals [count] [--game FireKirin|OrionStars] [--house HouseName] [--priority 1-4]
+P4NTHE0N.exe generate-signals [count] [--game FireKirin|OrionStars] [--house HouseName] [--priority 1-4]
 ```
 - `count`: Number of signals to generate (default: 10)
 - `--game`: Filter credentials by game platform
@@ -288,7 +288,7 @@ Start
 **Burn-In Configuration (appsettings.json):**
 ```json
 {
-    "P4NTH30N": {
+    "P4NTHE0N": {
         "H4ND": {
             "BurnIn": {
                 "DurationHours": 24,
@@ -381,7 +381,7 @@ appsettings.json                  (MODIFY: add BurnIn configuration section)
 
 ## Success Criteria
 
-1. **Single Executable**: `P4NTH30N.exe` runs all 7 subcommands (spin, parallel, generate-signals, health, burn-in, h0und, firstspin)
+1. **Single Executable**: `P4NTHE0N.exe` runs all 7 subcommands (spin, parallel, generate-signals, health, burn-in, h0und, firstspin)
 2. **Signal Generation**: `generate-signals 50` creates 50 valid SIGN4L entries from CR3D3N7IAL with correct priority distribution
 3. **Self-Healing**: Parallel worker encountering 403 auto-recovers via SessionRenewalService within 30 seconds
 4. **Config Selectors**: Parallel workers resolve selectors via GameSelectorConfig.GetSelectors() with fallback chain execution
@@ -483,7 +483,7 @@ Negative Factors:
 3. Create `H4ND/Services/SignalGenerationResult.cs` (DTO)
 4. Create `H4ND/Services/SignalGenerator.cs` with credential query, priority distribution, duplicate check, upsert
 5. Update `H4ND/H4ND.cs` Program.Main to route new subcommands
-6. Validation: `P4NTH30N.exe generate-signals 10` creates 10 signals in SIGN4L
+6. Validation: `P4NTHE0N.exe generate-signals 10` creates 10 signals in SIGN4L
 
 **Phase 2: Self-Healing Integration (Complexity: Medium, 6-8 hours)**
 1. Modify `H4ND/Parallel/ParallelSpinWorker.cs`:
@@ -519,7 +519,7 @@ Negative Factors:
    - Final summary report
 4. Update `appsettings.json` with BurnIn section
 5. Wire health and burn-in routes in Program.Main
-6. Validation: `P4NTH30N.exe health` outputs valid JSON; `burn-in` starts and collects metrics
+6. Validation: `P4NTHE0N.exe health` outputs valid JSON; `burn-in` starts and collects metrics
 
 **Phase 4: Testing + Hardening (Complexity: Medium, 4-6 hours)**
 1. Create `UNI7T35T/Tests/SignalGeneratorTests.cs` (8-10 tests)
@@ -627,10 +627,10 @@ WindFixer is authorized for:
 
 WindFixer bootstrap successful when:
 - [ ] `dotnet build` succeeds
-- [ ] `P4NTH30N.exe generate-signals 5` creates 5 signals in MongoDB SIGN4L
-- [ ] `P4NTH30N.exe health` outputs JSON to console
-- [ ] `P4NTH30N.exe parallel` starts workers and processes at least 1 signal
-- [ ] `P4NTH30N.exe burn-in` starts and collects at least 1 metrics snapshot
+- [ ] `P4NTHE0N.exe generate-signals 5` creates 5 signals in MongoDB SIGN4L
+- [ ] `P4NTHE0N.exe health` outputs JSON to console
+- [ ] `P4NTHE0N.exe parallel` starts workers and processes at least 1 signal
+- [ ] `P4NTHE0N.exe burn-in` starts and collects at least 1 metrics snapshot
 
 **DO NOT declare completion until live validation confirms signals are generated and processed.**
 
@@ -643,7 +643,7 @@ WindFixer bootstrap successful when:
 2. SignalGenerator.cs (signal creation from credentials)
 3. Extend RunMode enum + ParseMode in UnifiedEntryPoint.cs
 4. Wire generate-signals route in H4ND.cs Program.Main
-5. Test: `P4NTH30N.exe generate-signals 10` → verify 10 signals in SIGN4L
+5. Test: `P4NTHE0N.exe generate-signals 10` → verify 10 signals in SIGN4L
 
 **Priority 2 (Critical Path — Self-Healing):**
 6. Add renewal/selector metrics to ParallelMetrics.cs

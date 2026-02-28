@@ -4,7 +4,7 @@
 **project_id**: 6bca83b670a16680d54ed49b159b2a2eb350d9b2
 **parent_id**: ses_38aded663ffeBpK8B2D52pAWY0
 **slug**: curious-panda
-**directory**: c:\P4NTH30N
+**directory**: c:\P4NTHE0N
 **title**: Oracle review jackpot decisions (@oracle subagent)
 **version**: 1.2.6
 **share_url**: NULL

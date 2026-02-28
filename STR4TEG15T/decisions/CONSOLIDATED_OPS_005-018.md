@@ -102,7 +102,7 @@ OPS_008 (Production Readiness)
 
 ### @windfixer (C# Code Implementation)
 
-**Primary Responsibility**: C# code changes within the P4NTH30N solution
+**Primary Responsibility**: C# code changes within the P4NTHE0N solution
 
 **Assigned Decisions**:
 1. **OPS_017** - Discover Jackpot DOM/JS Selectors
@@ -151,17 +151,17 @@ OPS_008 (Production Readiness)
 
 **Implementation**:
 ```javascript
-// Custom MCP server at C:\P4NTH30N\chrome-devtools-mcp\server.js
+// Custom MCP server at C:\P4NTHE0N\chrome-devtools-mcp\server.js
 // Tools: get_version, list_targets, navigate, evaluate_script
 // All tools accept optional { host, port } parameters
 // Default: host=192.168.56.1, port=9222
 ```
 
 **Files Created**:
-- `C:\P4NTH30N\chrome-devtools-mcp\server.js` - MCP server with dual transport (stdio + HTTP)
-- `C:\P4NTH30N\chrome-devtools-mcp\package.json` - Dependencies: ws, @modelcontextprotocol/sdk
-- `C:\P4NTH30N\chrome-devtools-mcp\Start-CdpMcpServer.ps1` - HTTP server launcher
-- `C:\P4NTH30N\chrome-devtools-mcp\README.md` - Full documentation
+- `C:\P4NTHE0N\chrome-devtools-mcp\server.js` - MCP server with dual transport (stdio + HTTP)
+- `C:\P4NTHE0N\chrome-devtools-mcp\package.json` - Dependencies: ws, @modelcontextprotocol/sdk
+- `C:\P4NTHE0N\chrome-devtools-mcp\Start-CdpMcpServer.ps1` - HTTP server launcher
+- `C:\P4NTHE0N\chrome-devtools-mcp\README.md` - Full documentation
 
 **Verification**:
 ✅ Server starts successfully on stdio transport
@@ -344,7 +344,7 @@ OPS_008 (Production Readiness)
 - `OP3NF1XER/knowledge/DECISION_REPORTS_OPS_012-016.md`
 
 ### MongoDB Sources
-- Collection: `P4NTH30N.DECISIONS`
+- Collection: `P4NTHE0N.DECISIONS`
 - Count: 14 documents
 - Last Updated: 2026-02-19
 

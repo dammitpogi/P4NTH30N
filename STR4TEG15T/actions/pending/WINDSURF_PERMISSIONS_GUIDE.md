@@ -46,7 +46,7 @@ After configuration, verify by running test commands without prompts:
 
 ```bash
 # Test 1: Execute build without prompt
-dotnet build P4NTH30N.slnx --no-restore
+dotnet build P4NTHE0N.slnx --no-restore
 
 # Test 2: Execute tests without prompt  
 dotnet test UNI7T35T/UNI7T35T.csproj

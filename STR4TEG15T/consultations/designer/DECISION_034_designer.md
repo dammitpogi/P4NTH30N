@@ -65,7 +65,7 @@
 
 | File | Changes |
 |------|---------|
-| `P4NTH30N.slnx` | Add SessionHarvester project |
+| `P4NTHE0N.slnx` | Add SessionHarvester project |
 | `RAG/IngestionPipeline.cs` | Add batch ingestion endpoint |
 | `STR4TEG15T/canon/SESSION-HARVESTING.md` | Document the process |
 
@@ -365,7 +365,7 @@ public class DeduplicationService
 # harvest-scheduled-task.ps1
 $action = New-ScheduledTaskAction `
     -Execute "dotnet" `
-    -Argument "run --project C:/P4NTH30N/TOOLSET/SessionHarvester"
+    -Argument "run --project C:/P4NTHE0N/TOOLSET/SessionHarvester"
 
 $trigger = New-ScheduledTaskTrigger `
     -Daily `
@@ -377,7 +377,7 @@ $settings = New-ScheduledTaskSettingsSet `
     -StartWhenAvailable
 
 Register-ScheduledTask `
-    -TaskName "P4NTH30N-Session-Harvester" `
+    -TaskName "P4NTHE0N-Session-Harvester" `
     -Action $action `
     -Trigger $trigger `
     -Settings $settings `
@@ -392,7 +392,7 @@ param(
     [switch]$Force
 )
 
-dotnet run --project C:/P4NTH30N/TOOLSET/SessionHarvester `
+dotnet run --project C:/P4NTHE0N/TOOLSET/SessionHarvester `
     -- $(if ($DryRun) { "--dry-run" }) `
     $(if ($Force) { "--force" })
 ```

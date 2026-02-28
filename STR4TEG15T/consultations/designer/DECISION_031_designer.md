@@ -28,7 +28,7 @@ Now I have a comprehensive understanding of the codebase. Let me provide the imp
 **Phase 2: Directory & Project Structure** (Est. 1 hour)
 - Rename directories using `git mv` (preserves history)
 - Rename `.csproj` files to match new directory names
-- Update solution file (`P4NTH30N.slnx`) with new paths
+- Update solution file (`P4NTHE0N.slnx`) with new paths
 - Update project reference paths in all `.csproj` files
 
 **Phase 3: Code-Level Updates** (Est. 2 hours)
@@ -62,7 +62,7 @@ Now I have a comprehensive understanding of the codebase. Let me provide the imp
 #### Core Solution & Build Files
 | File | Changes |
 |------|---------|
-| `P4NTH30N.slnx` | Update all 18 `<Project Path="..."/>` entries |
+| `P4NTHE0N.slnx` | Update all 18 `<Project Path="..."/>` entries |
 | `Directory.Build.props` | Update any path references if present |
 | `C0MMON/C0MMON.csproj` | Rename to `COMMON/COMMON.csproj` |
 
@@ -89,14 +89,14 @@ Now I have a comprehensive understanding of the codebase. Let me provide the imp
 #### C# Source Files (~334 files)
 | Change Type | Pattern | Example |
 |-------------|---------|---------|
-| Namespace declarations | `namespace P4NTH30N.Xxx` | `P4NTH30N.H0UND` → `P4NTH30N.HOUND` |
+| Namespace declarations | `namespace P4NTHE0N.Xxx` | `P4NTHE0N.H0UND` → `P4NTHE0N.HOUND` |
 | Using directives | `using Xxx` | `using UNI7T35T.Mocks` → `using UNITTEST.Mocks` |
 | File-scoped namespaces | `namespace Xxx;` | `namespace H4ND;` → `namespace HAND;` |
 
 #### Configuration Files
 | File | Changes |
 |------|---------|
-| `appsettings.json` | Update `P4NTH30N.H0UND` → `P4NTH30N.HOUND`, `P4NTH30N.H4ND` → `P4NTH30N.HAND` |
+| `appsettings.json` | Update `P4NTHE0N.H0UND` → `P4NTHE0N.HOUND`, `P4NTHE0N.H4ND` → `P4NTHE0N.HAND` |
 | `appsettings.Development.json` | Same as above |
 | `appsettings.vm.json` | Same as above |
 | `publish/**/appsettings.json` | Same updates in all publish configs |
@@ -173,28 +173,28 @@ Now I have a comprehensive understanding of the codebase. Let me provide the imp
 **Step 1: Generate Namespace Mapping**
 ```json
 {
-  "P4NTH30N.C0MMON": "P4NTH30N.COMMON",
-  "P4NTH30N.H0UND": "P4NTH30N.HOUND",
-  "P4NTH30N.H4ND": "P4NTH30N.HAND",
-  "P4NTH30N.W4TCHD0G": "P4NTH30N.WATCHDOG",
-  "P4NTH30N.UNI7T35T": "P4NTH30N.UNITTEST",
-  "P4NTH30N.STR4TEG15T": "P4NTH30N.STRATEGIST",
-  "P4NTH30N.OR4CL3": "P4NTH30N.ORACLE",
-  "P4NTH30N.DE51GN3R": "P4NTH30N.DESIGNER",
-  "P4NTH30N.LIBRAR14N": "P4NTH30N.LIBRARIAN",
-  "P4NTH30N.EXPL0R3R": "P4NTH30N.EXPLORER",
-  "P4NTH30N.OP3NF1XER": "P4NTH30N.OPENFIXER",
-  "P4NTH30N.W1NDF1XER": "P4NTH30N.WINDFIXER",
-  "P4NTH30N.PROF3T": "P4NTH30N.PROPHET",
-  "P4NTH30N.T00L5ET": "P4NTH30N.TOOLSET",
-  "P4NTH30N.M16R4710N": "P4NTH30N.MIGRATION",
-  "P4NTH30N.F0RGE": "P4NTH30N.FORGE"
+  "P4NTHE0N.C0MMON": "P4NTHE0N.COMMON",
+  "P4NTHE0N.H0UND": "P4NTHE0N.HOUND",
+  "P4NTHE0N.H4ND": "P4NTHE0N.HAND",
+  "P4NTHE0N.W4TCHD0G": "P4NTHE0N.WATCHDOG",
+  "P4NTHE0N.UNI7T35T": "P4NTHE0N.UNITTEST",
+  "P4NTHE0N.STR4TEG15T": "P4NTHE0N.STRATEGIST",
+  "P4NTHE0N.OR4CL3": "P4NTHE0N.ORACLE",
+  "P4NTHE0N.DE51GN3R": "P4NTHE0N.DESIGNER",
+  "P4NTHE0N.LIBRAR14N": "P4NTHE0N.LIBRARIAN",
+  "P4NTHE0N.EXPL0R3R": "P4NTHE0N.EXPLORER",
+  "P4NTHE0N.OP3NF1XER": "P4NTHE0N.OPENFIXER",
+  "P4NTHE0N.W1NDF1XER": "P4NTHE0N.WINDFIXER",
+  "P4NTHE0N.PROF3T": "P4NTHE0N.PROPHET",
+  "P4NTHE0N.T00L5ET": "P4NTHE0N.TOOLSET",
+  "P4NTHE0N.M16R4710N": "P4NTHE0N.MIGRATION",
+  "P4NTHE0N.F0RGE": "P4NTHE0N.FORGE"
 }
 ```
 
 **Step 2: Batch Update Strategy**
 1. Use `ast-grep` or PowerShell regex to find/replace namespaces
-2. Pattern: `namespace\s+(P4NTH30N\.)?([A-Z0-9]+)` → replace with mapped value
+2. Pattern: `namespace\s+(P4NTHE0N\.)?([A-Z0-9]+)` → replace with mapped value
 3. Update `using` statements with same mapping
 4. Handle file-scoped namespaces (semicolon-terminated)
 
@@ -242,7 +242,7 @@ $L33T_MAP = @{
 | File Type | Search Pattern | Replace Pattern |
 |-----------|---------------|-----------------|
 | `.csproj` | `..\Xxx\Xxx.csproj` | `..\NewName\NewName.csproj` |
-| `.cs` | `namespace P4NTH30N.Xxx` | `namespace P4NTH30N.NewName` |
+| `.cs` | `namespace P4NTHE0N.Xxx` | `namespace P4NTHE0N.NewName` |
 | `.cs` | `using Xxx` | `using NewName` |
 | `.slnx` | `Xxx/Xxx.csproj` | `NewName/NewName.csproj` |
 | `.md` | `` `Xxx/` `` | `` `NewName/` `` |

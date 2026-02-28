@@ -28,15 +28,15 @@ The following Decision could not be completed by WindFixer and requires OpenCode
 
 ## Implementation Context
 
-**Project**: P4NTH30N
-**Solution**: P4NTH30N.slnx
+**Project**: P4NTHE0N
+**Solution**: P4NTHE0N.slnx
 **Test Project**: UNI7T35T
 
 ## Verification Commands
 
 ```bash
 # Build
-dotnet build P4NTH30N.slnx --no-restore
+dotnet build P4NTHE0N.slnx --no-restore
 
 # Format check
 dotnet csharpier check

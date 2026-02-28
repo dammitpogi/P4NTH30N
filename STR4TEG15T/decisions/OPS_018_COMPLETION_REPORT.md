@@ -15,7 +15,7 @@ Successfully built a custom MCP server (`p4nth30n-cdp-mcp`) that enables remote 
 
 ### 1. Custom MCP Server
 
-**Location**: `C:\P4NTH30N\chrome-devtools-mcp\`
+**Location**: `C:\P4NTHE0N\chrome-devtools-mcp\`
 
 **Architecture**:
 - Raw JSON-RPC MCP server (no SDK wrapper)

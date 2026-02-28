@@ -1,0 +1,65 @@
+{
+  "tool_name": "synthesize",
+  "description": "Convert input documents into Speechify friendly speech synthesis text. Preserves every sentence. Removes headers and parentheses. Replaces long filenames with contextual references. Final output uses commas, hyphens, and new lines as pause markup.",
+  "inputs": {
+    "text": {
+      "type": "string",
+      "required": false,
+      "description": "Raw text to synthesize. Provide either text or files."
+    },
+    "files": {
+      "type": "array",
+      "required": false,
+      "items": { "type": "string" },
+      "description": "Optional list of file paths or URLs to read and synthesize."
+    },
+    "filename_context_map": {
+      "type": "object",
+      "required": false,
+      "additionalProperties": { "type": "string" },
+      "description": "Optional mapping from raw token to contextual reference, for example P4NTHE0N.exe to the desktop app."
+    },
+    "voice_style": {
+      "type": "string",
+      "required": false,
+      "enum": ["neutral", "calm", "intense", "cinematic"],
+      "description": "Controls pacing choices like comma density and hyphen emphasis."
+    },
+    "strict": {
+      "type": "boolean",
+      "required": false,
+      "default": true,
+      "description": "If true, enforce hard constraints. Sentence count must remain identical."
+    }
+  },
+  "outputs": {
+    "synthesized_text": {
+      "type": "string",
+      "description": "Final speech synthesis markup text."
+    },
+    "sentence_count_in": {
+      "type": "integer",
+      "description": "Number of sentences detected in input."
+    },
+    "sentence_count_out": {
+      "type": "integer",
+      "description": "Number of sentences emitted in output."
+    },
+    "detected_tokens": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Optional list of tokens that were treated as filenames or identifiers."
+    },
+    "applied_rewrites": {
+      "type": "object",
+      "additionalProperties": { "type": "string" },
+      "description": "Optional map of token to replacement that was applied."
+    }
+  },
+  "behavior_contract": {
+    "must_not_delete_sentences": true,
+    "no_headers_in_output": true,
+    "no_parentheses_in_output": true,
+    "pause_markup": "commas hyphens newlines"
+  }
+}

@@ -60,7 +60,7 @@
 
 | File | Changes |
 |------|---------|
-| `P4NTH30N.slnx` | Add CONFIGDEPLOY project reference |
+| `P4NTHE0N.slnx` | Add CONFIGDEPLOY project reference |
 | `.github/workflows/deploy.yml` | Add CONFIGDEPLOY step (if exists) |
 | `README.md` | Document CONFIGDEPLOY usage |
 
@@ -90,7 +90,7 @@ CONFIGDEPLOY.exe
 ```json
 {
   "version": "1.0",
-  "description": "P4NTH30N Configuration Deployment",
+  "description": "P4NTHE0N Configuration Deployment",
   "mappings": [
     {
       "name": "Strategist Agent Prompt",
@@ -102,14 +102,14 @@ CONFIGDEPLOY.exe
     {
       "name": "WindSurf Rules",
       "source": ".windsurf/rules.md",
-      "destination": "C:/P4NTH30N/.windsurf/rules.md",
+      "destination": "C:/P4NTHE0N/.windsurf/rules.md",
       "validateHash": true,
       "backupExisting": true
     },
     {
       "name": "RAG Binary",
       "source": "RAG/bin/",
-      "destination": "C:/ProgramData/P4NTH30N/bin/",
+      "destination": "C:/ProgramData/P4NTHE0N/bin/",
       "validateHash": true,
       "recursive": true,
       "triggerRagRestart": true

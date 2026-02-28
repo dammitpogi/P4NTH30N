@@ -1,0 +1,1121 @@
+{
+  "BomFormat": "CBOM",
+  "SpecVersion": "1.0",
+  "Metadata": {
+    "Timestamp": "2026-01-25T02:12:27Z",
+    "Host": {
+      "Machine": "SCOPEFORGE",
+      "OsVersion": "Microsoft Windows 10.0.26200",
+      "Architecture": "X64",
+      "IsFIPSPolicyEnabled": false
+    },
+    "Tool": {
+      "Name": "Harden System Security Application",
+      "Website": "https://github.com/HotCakeX/Harden-Windows-Security",
+      "Version": "1.0.38.0"
+    }
+  },
+  "Algorithms": [
+    {
+      "Name": "AES",
+      "OperationClass": 1,
+      "Flags": 0,
+      "AlgorithmType": "Cipher",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "3DES",
+      "OperationClass": 1,
+      "Flags": 0,
+      "AlgorithmType": "Cipher",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "3DES_112",
+      "OperationClass": 1,
+      "Flags": 0,
+      "AlgorithmType": "Cipher",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "XTS-AES",
+      "OperationClass": 1,
+      "Flags": 0,
+      "AlgorithmType": "Cipher",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "DESX",
+      "OperationClass": 1,
+      "Flags": 0,
+      "AlgorithmType": "Cipher",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "DES",
+      "OperationClass": 1,
+      "Flags": 0,
+      "AlgorithmType": "Cipher",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "RC2",
+      "OperationClass": 1,
+      "Flags": 0,
+      "AlgorithmType": "Cipher",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "RC4",
+      "OperationClass": 1,
+      "Flags": 0,
+      "AlgorithmType": "Cipher",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "CHACHA20_POLY1305",
+      "OperationClass": 1,
+      "Flags": 0,
+      "AlgorithmType": "Cipher",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "SHA256",
+      "OperationClass": 2,
+      "Flags": 0,
+      "AlgorithmType": "Hash",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "SHA384",
+      "OperationClass": 2,
+      "Flags": 0,
+      "AlgorithmType": "Hash",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "SHA512",
+      "OperationClass": 2,
+      "Flags": 0,
+      "AlgorithmType": "Hash",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "SHA3-256",
+      "OperationClass": 2,
+      "Flags": 0,
+      "AlgorithmType": "Hash",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "SHA3-384",
+      "OperationClass": 2,
+      "Flags": 0,
+      "AlgorithmType": "Hash",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "SHA3-512",
+      "OperationClass": 2,
+      "Flags": 0,
+      "AlgorithmType": "Hash",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "CSHAKE128",
+      "OperationClass": 2,
+      "Flags": 0,
+      "AlgorithmType": "Hash",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "CSHAKE256",
+      "OperationClass": 2,
+      "Flags": 0,
+      "AlgorithmType": "Hash",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "KMAC128",
+      "OperationClass": 2,
+      "Flags": 0,
+      "AlgorithmType": "Hash",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "KMAC256",
+      "OperationClass": 2,
+      "Flags": 0,
+      "AlgorithmType": "Hash",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "SHAKE128",
+      "OperationClass": 2,
+      "Flags": 0,
+      "AlgorithmType": "Hash",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "SHAKE256",
+      "OperationClass": 2,
+      "Flags": 0,
+      "AlgorithmType": "Hash",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "SHA1",
+      "OperationClass": 2,
+      "Flags": 0,
+      "AlgorithmType": "Hash",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "MD5",
+      "OperationClass": 2,
+      "Flags": 0,
+      "AlgorithmType": "Hash",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "MD4",
+      "OperationClass": 2,
+      "Flags": 0,
+      "AlgorithmType": "Hash",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "MD2",
+      "OperationClass": 2,
+      "Flags": 0,
+      "AlgorithmType": "Hash",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "AES-GMAC",
+      "OperationClass": 2,
+      "Flags": 0,
+      "AlgorithmType": "Hash",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "AES-CMAC",
+      "OperationClass": 2,
+      "Flags": 0,
+      "AlgorithmType": "Hash",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "RSA",
+      "OperationClass": 3,
+      "Flags": 0,
+      "AlgorithmType": "Cipher, Hash",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "DH",
+      "OperationClass": 4,
+      "Flags": 0,
+      "AlgorithmType": "Asymmetric Encryption",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "ECDH_P256",
+      "OperationClass": 4,
+      "Flags": 0,
+      "AlgorithmType": "Asymmetric Encryption",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "ECDH_P384",
+      "OperationClass": 4,
+      "Flags": 0,
+      "AlgorithmType": "Asymmetric Encryption",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "ECDH_P521",
+      "OperationClass": 4,
+      "Flags": 0,
+      "AlgorithmType": "Asymmetric Encryption",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "ECDH",
+      "OperationClass": 4,
+      "Flags": 0,
+      "AlgorithmType": "Asymmetric Encryption",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "RSA_SIGN",
+      "OperationClass": 5,
+      "Flags": 0,
+      "AlgorithmType": "Cipher, Asymmetric Encryption",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "ECDSA_P256",
+      "OperationClass": 5,
+      "Flags": 0,
+      "AlgorithmType": "Cipher, Asymmetric Encryption",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "ECDSA_P384",
+      "OperationClass": 5,
+      "Flags": 0,
+      "AlgorithmType": "Cipher, Asymmetric Encryption",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "ECDSA_P521",
+      "OperationClass": 5,
+      "Flags": 0,
+      "AlgorithmType": "Cipher, Asymmetric Encryption",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "ECDSA",
+      "OperationClass": 5,
+      "Flags": 0,
+      "AlgorithmType": "Cipher, Asymmetric Encryption",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "DSA",
+      "OperationClass": 5,
+      "Flags": 0,
+      "AlgorithmType": "Cipher, Asymmetric Encryption",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "ML-DSA",
+      "OperationClass": 5,
+      "Flags": 0,
+      "AlgorithmType": "Cipher, Asymmetric Encryption",
+      "IsOpenable": true,
+      "IsPostQuantum": true,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "RNG",
+      "OperationClass": 6,
+      "Flags": 0,
+      "AlgorithmType": "Hash, Asymmetric Encryption",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "FIPS186DSARNG",
+      "OperationClass": 6,
+      "Flags": 0,
+      "AlgorithmType": "Hash, Asymmetric Encryption",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "DUALECRNG",
+      "OperationClass": 6,
+      "Flags": 0,
+      "AlgorithmType": "Hash, Asymmetric Encryption",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "SP800_108_CTR_HMAC",
+      "OperationClass": 7,
+      "Flags": 0,
+      "AlgorithmType": "Cipher, Hash, Asymmetric Encryption",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "SP800_56A_CONCAT",
+      "OperationClass": 7,
+      "Flags": 0,
+      "AlgorithmType": "Cipher, Hash, Asymmetric Encryption",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "PBKDF2",
+      "OperationClass": 7,
+      "Flags": 0,
+      "AlgorithmType": "Cipher, Hash, Asymmetric Encryption",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "CAPI_KDF",
+      "OperationClass": 7,
+      "Flags": 0,
+      "AlgorithmType": "Cipher, Hash, Asymmetric Encryption",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "TLS1_1_KDF",
+      "OperationClass": 7,
+      "Flags": 0,
+      "AlgorithmType": "Cipher, Hash, Asymmetric Encryption",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "TLS1_2_KDF",
+      "OperationClass": 7,
+      "Flags": 0,
+      "AlgorithmType": "Cipher, Hash, Asymmetric Encryption",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    },
+    {
+      "Name": "HKDF",
+      "OperationClass": 7,
+      "Flags": 0,
+      "AlgorithmType": "Cipher, Hash, Asymmetric Encryption",
+      "IsOpenable": true,
+      "IsPostQuantum": false,
+      "SupportsKeyGeneration": false,
+      "SupportedParameterSets": []
+    }
+  ],
+  "CngCurves": [
+    {
+      "Name": "brainpoolP160r1",
+      "Oid": "1.3.36.3.3.2.8.1.1.1",
+      "PublicKeyLengthBits": 160
+    },
+    {
+      "Name": "brainpoolP160t1",
+      "Oid": "1.3.36.3.3.2.8.1.1.2",
+      "PublicKeyLengthBits": 160
+    },
+    {
+      "Name": "brainpoolP192r1",
+      "Oid": "1.3.36.3.3.2.8.1.1.3",
+      "PublicKeyLengthBits": 192
+    },
+    {
+      "Name": "brainpoolP192t1",
+      "Oid": "1.3.36.3.3.2.8.1.1.4",
+      "PublicKeyLengthBits": 192
+    },
+    {
+      "Name": "brainpoolP224r1",
+      "Oid": "1.3.36.3.3.2.8.1.1.5",
+      "PublicKeyLengthBits": 224
+    },
+    {
+      "Name": "brainpoolP224t1",
+      "Oid": "1.3.36.3.3.2.8.1.1.6",
+      "PublicKeyLengthBits": 224
+    },
+    {
+      "Name": "brainpoolP256r1",
+      "Oid": "1.3.36.3.3.2.8.1.1.7",
+      "PublicKeyLengthBits": 256
+    },
+    {
+      "Name": "brainpoolP256t1",
+      "Oid": "1.3.36.3.3.2.8.1.1.8",
+      "PublicKeyLengthBits": 256
+    },
+    {
+      "Name": "brainpoolP320r1",
+      "Oid": "1.3.36.3.3.2.8.1.1.9",
+      "PublicKeyLengthBits": 320
+    },
+    {
+      "Name": "brainpoolP320t1",
+      "Oid": "1.3.36.3.3.2.8.1.1.10",
+      "PublicKeyLengthBits": 320
+    },
+    {
+      "Name": "brainpoolP384r1",
+      "Oid": "1.3.36.3.3.2.8.1.1.11",
+      "PublicKeyLengthBits": 384
+    },
+    {
+      "Name": "brainpoolP384t1",
+      "Oid": "1.3.36.3.3.2.8.1.1.12",
+      "PublicKeyLengthBits": 384
+    },
+    {
+      "Name": "brainpoolP512r1",
+      "Oid": "1.3.36.3.3.2.8.1.1.13",
+      "PublicKeyLengthBits": 512
+    },
+    {
+      "Name": "brainpoolP512t1",
+      "Oid": "1.3.36.3.3.2.8.1.1.14",
+      "PublicKeyLengthBits": 512
+    },
+    {
+      "Name": "curve25519",
+      "Oid": "",
+      "PublicKeyLengthBits": 255
+    },
+    {
+      "Name": "ec192wapi",
+      "Oid": "1.2.156.11235.1.1.2.1",
+      "PublicKeyLengthBits": 192
+    },
+    {
+      "Name": "nistP192",
+      "Oid": "1.2.840.10045.3.1.1",
+      "PublicKeyLengthBits": 192
+    },
+    {
+      "Name": "nistP224",
+      "Oid": "1.3.132.0.33",
+      "PublicKeyLengthBits": 224
+    },
+    {
+      "Name": "nistP256",
+      "Oid": "1.2.840.10045.3.1.7",
+      "PublicKeyLengthBits": 256
+    },
+    {
+      "Name": "nistP384",
+      "Oid": "1.3.132.0.34",
+      "PublicKeyLengthBits": 384
+    },
+    {
+      "Name": "nistP521",
+      "Oid": "1.3.132.0.35",
+      "PublicKeyLengthBits": 521
+    },
+    {
+      "Name": "numsP256t1",
+      "Oid": "",
+      "PublicKeyLengthBits": 256
+    },
+    {
+      "Name": "numsP384t1",
+      "Oid": "",
+      "PublicKeyLengthBits": 384
+    },
+    {
+      "Name": "numsP512t1",
+      "Oid": "",
+      "PublicKeyLengthBits": 512
+    },
+    {
+      "Name": "secP160k1",
+      "Oid": "1.3.132.0.9",
+      "PublicKeyLengthBits": 160
+    },
+    {
+      "Name": "secP160r1",
+      "Oid": "1.3.132.0.8",
+      "PublicKeyLengthBits": 160
+    },
+    {
+      "Name": "secP160r2",
+      "Oid": "1.3.132.0.30",
+      "PublicKeyLengthBits": 160
+    },
+    {
+      "Name": "secP192k1",
+      "Oid": "1.3.132.0.31",
+      "PublicKeyLengthBits": 192
+    },
+    {
+      "Name": "secP192r1",
+      "Oid": "1.2.840.10045.3.1.1",
+      "PublicKeyLengthBits": 192
+    },
+    {
+      "Name": "secP224k1",
+      "Oid": "1.3.132.0.32",
+      "PublicKeyLengthBits": 224
+    },
+    {
+      "Name": "secP224r1",
+      "Oid": "1.3.132.0.33",
+      "PublicKeyLengthBits": 224
+    },
+    {
+      "Name": "secP256k1",
+      "Oid": "1.3.132.0.10",
+      "PublicKeyLengthBits": 256
+    },
+    {
+      "Name": "secP256r1",
+      "Oid": "1.2.840.10045.3.1.7",
+      "PublicKeyLengthBits": 256
+    },
+    {
+      "Name": "secP384r1",
+      "Oid": "1.3.132.0.34",
+      "PublicKeyLengthBits": 384
+    },
+    {
+      "Name": "secP521r1",
+      "Oid": "1.3.132.0.35",
+      "PublicKeyLengthBits": 521
+    },
+    {
+      "Name": "wtls12",
+      "Oid": "1.3.132.0.33",
+      "PublicKeyLengthBits": 224
+    },
+    {
+      "Name": "wtls7",
+      "Oid": "1.3.132.0.30",
+      "PublicKeyLengthBits": 160
+    },
+    {
+      "Name": "wtls9",
+      "Oid": "2.23.43.1.4.9",
+      "PublicKeyLengthBits": 160
+    },
+    {
+      "Name": "x962P192v1",
+      "Oid": "1.2.840.10045.3.1.1",
+      "PublicKeyLengthBits": 192
+    },
+    {
+      "Name": "x962P192v2",
+      "Oid": "1.2.840.10045.3.1.2",
+      "PublicKeyLengthBits": 192
+    },
+    {
+      "Name": "x962P192v3",
+      "Oid": "1.2.840.10045.3.1.3",
+      "PublicKeyLengthBits": 192
+    },
+    {
+      "Name": "x962P239v1",
+      "Oid": "1.2.840.10045.3.1.4",
+      "PublicKeyLengthBits": 239
+    },
+    {
+      "Name": "x962P239v2",
+      "Oid": "1.2.840.10045.3.1.5",
+      "PublicKeyLengthBits": 239
+    },
+    {
+      "Name": "x962P239v3",
+      "Oid": "1.2.840.10045.3.1.6",
+      "PublicKeyLengthBits": 239
+    },
+    {
+      "Name": "x962P256v1",
+      "Oid": "1.2.840.10045.3.1.7",
+      "PublicKeyLengthBits": 256
+    }
+  ],
+  "SslProviderCurves": [
+    {
+      "Name": "curve25519",
+      "Oid": "",
+      "PublicKeyLengthBits": 255,
+      "CurveType": 29,
+      "Flags": 10
+    },
+    {
+      "Name": "nistP256",
+      "Oid": "1.2.840.10045.3.1.7",
+      "PublicKeyLengthBits": 256,
+      "CurveType": 23,
+      "Flags": 7
+    },
+    {
+      "Name": "nistP384",
+      "Oid": "1.3.132.0.34",
+      "PublicKeyLengthBits": 384,
+      "CurveType": 24,
+      "Flags": 7
+    },
+    {
+      "Name": "brainpoolP256r1",
+      "Oid": "1.3.36.3.3.2.8.1.1.7",
+      "PublicKeyLengthBits": 256,
+      "CurveType": 26,
+      "Flags": 7
+    },
+    {
+      "Name": "brainpoolP384r1",
+      "Oid": "1.3.36.3.3.2.8.1.1.11",
+      "PublicKeyLengthBits": 384,
+      "CurveType": 27,
+      "Flags": 7
+    },
+    {
+      "Name": "brainpoolP512r1",
+      "Oid": "1.3.36.3.3.2.8.1.1.13",
+      "PublicKeyLengthBits": 512,
+      "CurveType": 28,
+      "Flags": 7
+    },
+    {
+      "Name": "nistP192",
+      "Oid": "1.2.840.10045.3.1.1",
+      "PublicKeyLengthBits": 192,
+      "CurveType": 19,
+      "Flags": 7
+    },
+    {
+      "Name": "nistP224",
+      "Oid": "1.3.132.0.33",
+      "PublicKeyLengthBits": 224,
+      "CurveType": 21,
+      "Flags": 7
+    },
+    {
+      "Name": "nistP521",
+      "Oid": "1.3.132.0.35",
+      "PublicKeyLengthBits": 521,
+      "CurveType": 25,
+      "Flags": 7
+    },
+    {
+      "Name": "secP160k1",
+      "Oid": "1.3.132.0.9",
+      "PublicKeyLengthBits": 160,
+      "CurveType": 15,
+      "Flags": 7
+    },
+    {
+      "Name": "secP160r1",
+      "Oid": "1.3.132.0.8",
+      "PublicKeyLengthBits": 160,
+      "CurveType": 16,
+      "Flags": 7
+    },
+    {
+      "Name": "secP160r2",
+      "Oid": "1.3.132.0.30",
+      "PublicKeyLengthBits": 160,
+      "CurveType": 17,
+      "Flags": 7
+    },
+    {
+      "Name": "secP192k1",
+      "Oid": "1.3.132.0.31",
+      "PublicKeyLengthBits": 192,
+      "CurveType": 18,
+      "Flags": 7
+    },
+    {
+      "Name": "secP192r1",
+      "Oid": "1.2.840.10045.3.1.1",
+      "PublicKeyLengthBits": 192,
+      "CurveType": 19,
+      "Flags": 7
+    },
+    {
+      "Name": "secP224k1",
+      "Oid": "1.3.132.0.32",
+      "PublicKeyLengthBits": 224,
+      "CurveType": 20,
+      "Flags": 7
+    },
+    {
+      "Name": "secP224r1",
+      "Oid": "1.3.132.0.33",
+      "PublicKeyLengthBits": 224,
+      "CurveType": 21,
+      "Flags": 7
+    },
+    {
+      "Name": "secP256k1",
+      "Oid": "1.3.132.0.10",
+      "PublicKeyLengthBits": 256,
+      "CurveType": 22,
+      "Flags": 7
+    },
+    {
+      "Name": "secP256r1",
+      "Oid": "1.2.840.10045.3.1.7",
+      "PublicKeyLengthBits": 256,
+      "CurveType": 23,
+      "Flags": 7
+    },
+    {
+      "Name": "secP384r1",
+      "Oid": "1.3.132.0.34",
+      "PublicKeyLengthBits": 384,
+      "CurveType": 24,
+      "Flags": 7
+    },
+    {
+      "Name": "secP521r1",
+      "Oid": "1.3.132.0.35",
+      "PublicKeyLengthBits": 521,
+      "CurveType": 25,
+      "Flags": 7
+    }
+  ],
+  "TlsCipherSuites": [
+    {
+      "Name": "TLS_CHACHA20_POLY1305_SHA256",
+      "Protocols": [
+        772
+      ],
+      "ProtocolNames": [
+        "TLS 1.3"
+      ],
+      "Cipher": "CHACHA20_POLY1305",
+      "CipherSuite": 4867,
+      "CipherSuiteHex": "0x1303",
+      "BaseCipherSuite": 4867,
+      "BaseCipherSuiteHex": "0x1303",
+      "CipherLength": 256,
+      "CipherBlockLength": 1,
+      "Hash": "",
+      "HashLength": 0,
+      "Exchange": "",
+      "MinimumExchangeLength": 0,
+      "MaximumExchangeLength": 0,
+      "Certificate": "",
+      "KeyType": 0
+    },
+    {
+      "Name": "TLS_AES_256_GCM_SHA384",
+      "Protocols": [
+        772
+      ],
+      "ProtocolNames": [
+        "TLS 1.3"
+      ],
+      "Cipher": "AES",
+      "CipherSuite": 4866,
+      "CipherSuiteHex": "0x1302",
+      "BaseCipherSuite": 4866,
+      "BaseCipherSuiteHex": "0x1302",
+      "CipherLength": 256,
+      "CipherBlockLength": 16,
+      "Hash": "",
+      "HashLength": 0,
+      "Exchange": "",
+      "MinimumExchangeLength": 0,
+      "MaximumExchangeLength": 0,
+      "Certificate": "",
+      "KeyType": 0
+    },
+    {
+      "Name": "TLS_AES_128_GCM_SHA256",
+      "Protocols": [
+        772
+      ],
+      "ProtocolNames": [
+        "TLS 1.3"
+      ],
+      "Cipher": "AES",
+      "CipherSuite": 4865,
+      "CipherSuiteHex": "0x1301",
+      "BaseCipherSuite": 4865,
+      "BaseCipherSuiteHex": "0x1301",
+      "CipherLength": 128,
+      "CipherBlockLength": 16,
+      "Hash": "",
+      "HashLength": 0,
+      "Exchange": "",
+      "MinimumExchangeLength": 0,
+      "MaximumExchangeLength": 0,
+      "Certificate": "",
+      "KeyType": 0
+    },
+    {
+      "Name": "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+      "Protocols": [
+        771,
+        65277
+      ],
+      "ProtocolNames": [
+        "TLS 1.2",
+        "DTLS 1.2"
+      ],
+      "Cipher": "AES",
+      "CipherSuite": 49196,
+      "CipherSuiteHex": "0xC02C",
+      "BaseCipherSuite": 49196,
+      "BaseCipherSuiteHex": "0xC02C",
+      "CipherLength": 256,
+      "CipherBlockLength": 16,
+      "Hash": "",
+      "HashLength": 0,
+      "Exchange": "ECDH",
+      "MinimumExchangeLength": 0,
+      "MaximumExchangeLength": 65536,
+      "Certificate": "ECDSA",
+      "KeyType": 0
+    },
+    {
+      "Name": "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
+      "Protocols": [
+        771,
+        65277
+      ],
+      "ProtocolNames": [
+        "TLS 1.2",
+        "DTLS 1.2"
+      ],
+      "Cipher": "AES",
+      "CipherSuite": 49195,
+      "CipherSuiteHex": "0xC02B",
+      "BaseCipherSuite": 49195,
+      "BaseCipherSuiteHex": "0xC02B",
+      "CipherLength": 128,
+      "CipherBlockLength": 16,
+      "Hash": "",
+      "HashLength": 0,
+      "Exchange": "ECDH",
+      "MinimumExchangeLength": 0,
+      "MaximumExchangeLength": 65536,
+      "Certificate": "ECDSA",
+      "KeyType": 0
+    },
+    {
+      "Name": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+      "Protocols": [
+        771,
+        65277
+      ],
+      "ProtocolNames": [
+        "TLS 1.2",
+        "DTLS 1.2"
+      ],
+      "Cipher": "AES",
+      "CipherSuite": 49200,
+      "CipherSuiteHex": "0xC030",
+      "BaseCipherSuite": 49200,
+      "BaseCipherSuiteHex": "0xC030",
+      "CipherLength": 256,
+      "CipherBlockLength": 16,
+      "Hash": "",
+      "HashLength": 0,
+      "Exchange": "ECDH",
+      "MinimumExchangeLength": 0,
+      "MaximumExchangeLength": 65536,
+      "Certificate": "RSA",
+      "KeyType": 0
+    },
+    {
+      "Name": "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+      "Protocols": [
+        771,
+        65277
+      ],
+      "ProtocolNames": [
+        "TLS 1.2",
+        "DTLS 1.2"
+      ],
+      "Cipher": "AES",
+      "CipherSuite": 49199,
+      "CipherSuiteHex": "0xC02F",
+      "BaseCipherSuite": 49199,
+      "BaseCipherSuiteHex": "0xC02F",
+      "CipherLength": 128,
+      "CipherBlockLength": 16,
+      "Hash": "",
+      "HashLength": 0,
+      "Exchange": "ECDH",
+      "MinimumExchangeLength": 0,
+      "MaximumExchangeLength": 65536,
+      "Certificate": "RSA",
+      "KeyType": 0
+    },
+    {
+      "Name": "TLS_DHE_RSA_WITH_AES_256_GCM_SHA384",
+      "Protocols": [
+        771,
+        65277
+      ],
+      "ProtocolNames": [
+        "TLS 1.2",
+        "DTLS 1.2"
+      ],
+      "Cipher": "AES",
+      "CipherSuite": 159,
+      "CipherSuiteHex": "0x009F",
+      "BaseCipherSuite": 159,
+      "BaseCipherSuiteHex": "0x009F",
+      "CipherLength": 256,
+      "CipherBlockLength": 16,
+      "Hash": "",
+      "HashLength": 0,
+      "Exchange": "DH",
+      "MinimumExchangeLength": 1024,
+      "MaximumExchangeLength": 1024,
+      "Certificate": "RSA",
+      "KeyType": 0
+    },
+    {
+      "Name": "TLS_DHE_RSA_WITH_AES_128_GCM_SHA256",
+      "Protocols": [
+        771,
+        65277
+      ],
+      "ProtocolNames": [
+        "TLS 1.2",
+        "DTLS 1.2"
+      ],
+      "Cipher": "AES",
+      "CipherSuite": 158,
+      "CipherSuiteHex": "0x009E",
+      "BaseCipherSuite": 158,
+      "BaseCipherSuiteHex": "0x009E",
+      "CipherLength": 128,
+      "CipherBlockLength": 16,
+      "Hash": "",
+      "HashLength": 0,
+      "Exchange": "DH",
+      "MinimumExchangeLength": 1024,
+      "MaximumExchangeLength": 1024,
+      "Certificate": "RSA",
+      "KeyType": 0
+    }
+  ],
+  "RegisteredProviders": [
+    "Microsoft Key Protection Provider",
+    "Microsoft Passport Key Storage Provider",
+    "Microsoft Platform Crypto Provider",
+    "Microsoft Pluton Cryptographic Provider",
+    "Microsoft Primitive Provider",
+    "Microsoft Smart Card Key Storage Provider",
+    "Microsoft Software Key Storage Provider",
+    "Microsoft SSL Protocol Provider",
+    "Windows Client Key Protection Provider"
+  ]
+}

@@ -316,7 +316,7 @@ class OBSVisionBridge {
         
         // Set up streaming
         await this.ws.send('SetRecordingFolder', {
-            path: 'C:/P4NTH30N/Vision/Streams'
+            path: 'C:/P4NTHE0N/Vision/Streams'
         });
         
         this.startStreamCapture();

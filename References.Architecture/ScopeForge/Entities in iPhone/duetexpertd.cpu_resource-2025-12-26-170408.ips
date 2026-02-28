@@ -1,0 +1,302 @@
+{"duration_ms":"131514","share_with_app_devs":0,"roots_installed":0,"bug_type":"202","os_version":"iPhone OS 18.7.2 (22H123)","slice_uuid":"646902A8-39F5-3DD9-AF0B-5E1E16A80F67","is_first_party":0,"incident_id":"ECCEC5F9-3CA5-4CEB-BE0B-7C5CE48E3299","timestamp":"2025-12-26 17:04:08.00 -0700","app_name":"duetexpertd","name":"duetexpertd"}
+Date/Time:        2025-12-26 17:01:53.488 -0700
+End time:         2025-12-26 17:04:05.001 -0700
+OS Version:       iPhone OS 18.7.2 (Build 22H123)
+Architecture:     arm64e
+Report Version:   60
+Incident Identifier: ECCEC5F9-3CA5-4CEB-BE0B-7C5CE48E3299
+
+Data Source:      Microstackshots
+Shared Cache:     3E5E734D-2CA6-3F63-83F5-0E84C720CBA0 slid base address 0x18cd1c000, slide 0xcd1c000
+
+Command:          duetexpertd
+Path:             /usr/libexec/duetexpertd
+Resource Coalition: "com.apple.duetexpertd"(364)
+On Behalf Of:     7 samples UNKNOWN [31] (7 samples originated by UNKNOWN [31])
+Architecture:     arm64e
+Parent:           UNKNOWN [1]
+PID:              476
+
+Event:            cpu usage
+Action taken:     none
+CPU:              90 seconds cpu time over 132 seconds (68% cpu average), exceeding limit of 50% cpu over 180 seconds
+CPU limit:        90s
+Limit duration:   180s
+CPU used:         90s
+CPU duration:     132s
+Duration:         131.51s
+Duration Sampled: 81.38s (event starts 41.18s before samples, event ends 8.95s after samples)
+Steps:            7
+
+Hardware model:   iPhone14,4
+Active cpus:      6
+Memory size:      3.59 GB
+HW page size:     16384
+VM page size:     16384
+Shared cache residency: 13.70% (669.81 MB / 4890.48 MB)
+
+Time Since Boot:  6891s
+Time Awake Since Boot: 5770s
+Time Since Wake:  13s
+
+Total CPU Time:   77.596s
+Advisory levels:  Battery -> 3, User -> 3, ThermalPressure -> 0, Combined -> 3
+Free disk space:  78.09 GB/119.09 GB, low space threshold 150 MB
+Vnodes Available: 67.88% (13576/20000, 10000 allocated, 10000 soft limit)
+Models:           none
+
+Preferred User Language: en-US
+Country Code:     US
+Keyboards:        en_US QWERTY, emoji Emoji
+OS Cryptex File Extents: 5976
+
+Heaviest stack for the target process:
+  7  ??? (libsystem_pthread.dylib + 2732) [0x219d80aac]
+  7  ??? (libsystem_pthread.dylib + 2572) [0x219d80a0c]
+  7  ??? (libdispatch.dylib + 84576) [0x197856a60]
+  7  ??? (libdispatch.dylib + 86492) [0x1978571dc]
+  7  ??? (libdispatch.dylib + 44460) [0x19784cdac]
+  7  ??? (libdispatch.dylib + 41272) [0x19784c138]
+  7  ??? (libdispatch.dylib + 128404) [0x197861594]
+  7  ??? (libdispatch.dylib + 112052) [0x19785d5b4]
+  7  ??? (libxpc.dylib + 74240) [0x219ddd200]
+  7  ??? (libxpc.dylib + 129804) [0x219deab0c]
+  7  ??? (libxpc.dylib + 219316) [0x219e008b4]
+  7  ??? (libxpc.dylib + 219660) [0x219e00a0c]
+  7  ??? (libxpc.dylib + 218236) [0x219e0047c]
+  7  ??? (AppPredictionInternal + 3506012) [0x1ddc82f5c]
+  7  ??? (AppPredictionInternal + 3506656) [0x1ddc831e0]
+  7  ??? (AppPredictionInternal + 1991824) [0x1ddb11490]
+  3  ??? (AppPredictionInternal + 937448) [0x1dda0fde8]
+  3  ??? (AppPredictionInternal + 2960720) [0x1ddbfdd50]
+  2  ??? (AppPredictionInternal + 3200852) [0x1ddc38754]
+  2  ??? (BiomePubSub + 13060) [0x1ba243304]
+  2  ??? (BiomePubSub + 11548) [0x1ba242d1c]
+  1  ??? (BiomePubSub + 8180) [0x1ba241ff4]
+  1  ??? (libobjc.A.dylib + 48364) [0x18ce2fcec]
+  1  ??? (libobjc.A.dylib + 24332) [0x18ce29f0c]
+  1  ??? (libobjc.A.dylib + 56340) [0x18ce31c14]
+  1  ??? (libobjc.A.dylib + 48364) [0x18ce2fcec]
+  1  ??? (libobjc.A.dylib + 24332) [0x18ce29f0c]
+  1  ??? (libobjc.A.dylib + 56340) [0x18ce31c14]
+  1  ??? (AppPredictionClient + 1309860) [0x1b4fc1ca4]
+  1  ??? (libobjc.A.dylib + 48364) [0x18ce2fcec]
+  1  ??? (libobjc.A.dylib + 24332) [0x18ce29f0c]
+  1  ??? (libobjc.A.dylib + 46392) [0x18ce2f538]
+
+
+Powerstats for:   duetexpertd [476]
+UUID:             646902A8-39F5-3DD9-AF0B-5E1E16A80F67
+Path:             /usr/libexec/duetexpertd
+Resource Coalition: 7 samples "com.apple.duetexpertd"(364)
+On Behalf Of:     7 samples UNKNOWN [31] (7 samples originated by UNKNOWN [31])
+Architecture:     arm64e
+Parent:           UNKNOWN [1]
+UID:              501
+Sudden Term:      Tracked (allows idle exit)
+Footprint:        12.20 MB -> 12.45 MB (+256 KB) (max 13.30 MB )
+Pageins:          52 pages
+Start time:       2025-12-26 17:02:34.665 -0700
+End time:         2025-12-26 17:03:56.047 -0700
+Num samples:      7 (100%)
+Num threads:      1
+Primary state:    7 samples Non-Frontmost App, Non-Suppressed, User mode, Effective Thread QoS Background, Requested Thread QoS Background, Override Thread QoS Unspecified, e-core
+User Activity:    7 samples Idle, 0 samples Active
+Power Source:     0 samples on Battery, 7 samples on AC
+  7  ??? (libsystem_pthread.dylib + 2732) [0x219d80aac]
+    7  ??? (libsystem_pthread.dylib + 2572) [0x219d80a0c]
+      7  ??? (libdispatch.dylib + 84576) [0x197856a60]
+        7  ??? (libdispatch.dylib + 86492) [0x1978571dc]
+          7  ??? (libdispatch.dylib + 44460) [0x19784cdac]
+            7  ??? (libdispatch.dylib + 41272) [0x19784c138]
+              7  ??? (libdispatch.dylib + 128404) [0x197861594]
+                7  ??? (libdispatch.dylib + 112052) [0x19785d5b4]
+                  7  ??? (libxpc.dylib + 74240) [0x219ddd200]
+                    7  ??? (libxpc.dylib + 129804) [0x219deab0c]
+                      7  ??? (libxpc.dylib + 219316) [0x219e008b4]
+                        7  ??? (libxpc.dylib + 219660) [0x219e00a0c]
+                          7  ??? (libxpc.dylib + 218236) [0x219e0047c]
+                            7  ??? (AppPredictionInternal + 3506012) [0x1ddc82f5c]
+                              7  ??? (AppPredictionInternal + 3506656) [0x1ddc831e0]
+                                7  ??? (AppPredictionInternal + 1991824) [0x1ddb11490]
+                                  3  ??? (AppPredictionInternal + 937448) [0x1dda0fde8]
+                                    3  ??? (AppPredictionInternal + 2960720) [0x1ddbfdd50]
+                                      2  ??? (AppPredictionInternal + 3200852) [0x1ddc38754]
+                                        2  ??? (BiomePubSub + 13060) [0x1ba243304]
+                                          2  ??? (BiomePubSub + 11548) [0x1ba242d1c]
+                                            1  ??? (BiomePubSub + 8180) [0x1ba241ff4]
+                                              1  ??? (libobjc.A.dylib + 48364) [0x18ce2fcec]
+                                                1  ??? (libobjc.A.dylib + 24332) [0x18ce29f0c]
+                                                  1  ??? (libobjc.A.dylib + 56340) [0x18ce31c14]
+                                                    1  ??? (libobjc.A.dylib + 48364) [0x18ce2fcec]
+                                                      1  ??? (libobjc.A.dylib + 24332) [0x18ce29f0c]
+                                                        1  ??? (libobjc.A.dylib + 56340) [0x18ce31c14]
+                                                          1  ??? (AppPredictionClient + 1309860) [0x1b4fc1ca4]
+                                                            1  ??? (libobjc.A.dylib + 48364) [0x18ce2fcec]
+                                                              1  ??? (libobjc.A.dylib + 24332) [0x18ce29f0c]
+                                                                1  ??? (libobjc.A.dylib + 46392) [0x18ce2f538]
+                                                                  1  <on behalf of UNKNOWN [31] (originated by UNKNOWN [31])>
+                                            1  ??? (BiomePubSub + 8168) [0x1ba241fe8]
+                                              1  ??? (BiomePubSub + 19188) [0x1ba244af4]
+                                                1  ??? (CoreFoundation + 394548) [0x18f903534]
+                                                  1  ??? (CoreFoundation + 122988) [0x18f8c106c]
+                                                    1  ??? (BiomePubSub + 19780) [0x1ba244d44]
+                                                      1  ??? (BiomePubSub + 23832) [0x1ba245d18]
+                                                        1  ??? (BiomePubSub + 12576) [0x1ba243120]
+                                                          1  ??? (AppPredictionInternal + 3774284) [0x1ddcc474c]
+                                                            1  ??? (BiomeStorage + 41404) [0x1ba2a31bc]
+                                                              1  ??? (AppPredictionClient + 296404) [0x1b4eca5d4]
+                                                                1  ??? (AppPredictionClient + 295448) [0x1b4eca218]
+                                                                  1  ??? (AppPredictionClient + 296120) [0x1b4eca4b8]
+                                                                    1  ??? (AppPredictionClient + 294204) [0x1b4ec9d3c]
+                                                                      1  ??? (AppPredictionClient + 1306064) [0x1b4fc0dd0]
+                                                                        1  ??? (AppPredictionClient + 1301528) [0x1b4fbfc18]
+                                                                          1  <on behalf of UNKNOWN [31] (originated by UNKNOWN [31])>
+                                      1  ??? (AppPredictionInternal + 3200396) [0x1ddc3858c]
+                                        1  ??? (AppPredictionInternal + 3773260) [0x1ddcc434c]
+                                          1  ??? (AppPredictionInternal + 2652980) [0x1ddbb2b34]
+                                            1  ??? (AppPredictionInternal + 2660248) [0x1ddbb4798]
+                                              1  ??? (AppPredictionInternal + 50240) [0x1dd937440]
+                                                1  ??? (AppPredictionInternal + 51352) [0x1dd937898]
+                                                  1  ??? (AppPredictionInternal + 51668) [0x1dd9379d4]
+                                                    1  ??? (libdispatch.dylib + 71464) [0x197853728]
+                                                      1  ??? (libdispatch.dylib + 112004) [0x19785d584]
+                                                        1  ??? (AppPredictionInternal + 182648) [0x1dd957978]
+                                                          1  ??? (AppPredictionInternal + 68636) [0x1dd93bc1c]
+                                                            1  ??? (CoreDuet + 64724) [0x19baa8cd4]
+                                                              1  ??? (CoreDuet + 68964) [0x19baa9d64]
+                                                                1  ??? (libdispatch.dylib + 71464) [0x197853728]
+                                                                  1  ??? (libdispatch.dylib + 112004) [0x19785d584]
+                                                                    1  ??? (CoreDuet + 71924) [0x19baaa8f4]
+                                                                      1  ??? (CoreDuet + 69452) [0x19baa9f4c]
+                                                                        1  ??? (CoreDuet + 72496) [0x19baaab30]
+                                                                          1  ??? (CoreDuet + 88064) [0x19baae800]
+                                                                            1  ??? (CoreData + 230072) [0x197abd2b8]
+                                                                              1  ??? (libdispatch.dylib + 71464) [0x197853728]
+                                                                                1  ??? (libdispatch.dylib + 112004) [0x19785d584]
+                                                                                  1  ??? (CoreData + 18904) [0x197a899d8]
+                                                                                    1  ??? (CoreDuet + 1097804) [0x19bba504c]
+                                                                                      1  ??? (CoreData + 20476) [0x197a89ffc]
+                                                                                        1  ??? (CoreData + 27636) [0x197a8bbf4]
+                                                                                          1  ??? (CoreData + 33860) [0x197a8d444]
+                                                                                            1  ??? (CoreData + 1804652) [0x197c3d96c]
+                                                                                              1  ??? (CoreData + 40936) [0x197a8efe8]
+                                                                                                1  ??? (CoreData + 62180) [0x197a942e4]
+                                                                                                  1  ??? (CoreData + 62972) [0x197a945fc]
+                                                                                                    1  ??? (CoreData + 51100) [0x197a9179c]
+                                                                                                      1  ??? (CoreData + 50424) [0x197a914f8]
+                                                                                                        1  ??? (libdispatch.dylib + 71464) [0x197853728]
+                                                                                                          1  ??? (libdispatch.dylib + 112004) [0x19785d584]
+                                                                                                            1  ??? (CoreData + 50704) [0x197a91610]
+                                                                                                              1  ??? (CoreData + 49060) [0x197a90fa4]
+                                                                                                                1  ??? (CoreData + 51464) [0x197a91908]
+                                                                                                                  1  ??? (CoreData + 64532) [0x197a94c14]
+                                                                                                                    1  ??? (CoreData + 225580) [0x197abc12c]
+                                                                                                                      1  ??? (CoreData + 195272) [0x197ab4ac8]
+                                                                                                                        1  ??? (CoreData + 191420) [0x197ab3bbc]
+                                                                                                                          1  ??? (CoreData + 192228) [0x197ab3ee4]
+                                                                                                                            1  ??? (libsqlite3.dylib + 176792) [0x1bddb6298]
+                                                                                                                              1  ??? (libsqlite3.dylib + 215280) [0x1bddbf8f0]
+                                                                                                                                1  ??? (libsqlite3.dylib + 673500) [0x1bde2f6dc]
+                                                                                                                                  1  ??? (libsqlite3.dylib + 677748) [0x1bde30774]
+                                                                                                                                    1  <on behalf of UNKNOWN [31] (originated by UNKNOWN [31])>
+                                  2  ??? (AppPredictionInternal + 937556) [0x1dda0fe54]
+                                    1  ??? (AppPredictionInternal + 3887116) [0x1ddce000c]
+                                      1  ??? (AppPredictionInternal + 3566152) [0x1ddc91a48]
+                                        1  ??? (BiomePubSub + 13060) [0x1ba243304]
+                                          1  ??? (BiomePubSub + 11548) [0x1ba242d1c]
+                                            1  ??? (BiomePubSub + 8144) [0x1ba241fd0]
+                                              1  ??? (AppPredictionInternal + 3566372) [0x1ddc91b24]
+                                                1  ??? (AppPredictionInternal + 1131416) [0x1dda3f398]
+                                                  1  ??? (AppPredictionInternal + 1131932) [0x1dda3f59c]
+                                                    1  ??? (AppPredictionInternal + 1132884) [0x1dda3f954]
+                                                      1  ??? (AppPredictionInternal + 1137548) [0x1dda40b8c]
+                                                        1  ??? (AppPredictionInternal + 1136816) [0x1dda408b0]
+                                                          1  ??? (AppPredictionInternal + 1136612) [0x1dda407e4]
+                                                            1  ??? (PeopleSuggester + 411108) [0x1b06d45e4]
+                                                              1  ??? (PeopleSuggester + 408676) [0x1b06d3c64]
+                                                                1  ??? (Contacts + 137524) [0x19d7f9934]
+                                                                  1  ??? (Contacts + 36492) [0x19d7e0e8c]
+                                                                    1  ??? (Contacts + 33828) [0x19d7e0424]
+                                                                      1  ??? (Contacts + 36180) [0x19d7e0d54]
+                                                                        1  ??? (Contacts + 137804) [0x19d7f9a4c]
+                                                                          1  ??? (Contacts + 138556) [0x19d7f9d3c]
+                                                                            1  ??? (Contacts + 235812) [0x19d811924]
+                                                                              1  ??? (libsystem_trace.dylib + 47044) [0x1ab3597c4]
+                                                                                1  ??? (Contacts + 39276) [0x19d7e196c]
+                                                                                  1  ??? (Contacts + 139124) [0x19d7f9f74]
+                                                                                    1  ??? (Contacts + 111104) [0x19d7f3200]
+                                                                                      1  ??? (Contacts + 113816) [0x19d7f3c98]
+                                                                                        1  ??? (ContactsFoundation + 74808) [0x19d724438]
+                                                                                          1  ??? (ContactsFoundation + 52892) [0x19d71ee9c]
+                                                                                            1  ??? (CoreFoundation + 127808) [0x18f8c2340]
+                                                                                              1  <on behalf of UNKNOWN [31] (originated by UNKNOWN [31])>
+                                    1  ??? (AppPredictionInternal + 3887076) [0x1ddcdffe4]
+                                      1  ??? (AppPredictionInternal + 3725688) [0x1ddcb8978]
+                                        1  ??? (BiomePubSub + 13060) [0x1ba243304]
+                                          1  ??? (BiomePubSub + 11548) [0x1ba242d1c]
+                                            1  ??? (BiomePubSub + 8168) [0x1ba241fe8]
+                                              1  ??? (BiomePubSub + 19188) [0x1ba244af4]
+                                                1  ??? (CoreFoundation + 497928) [0x18f91c908]
+                                                  1  ??? (CoreFoundation + 122988) [0x18f8c106c]
+                                                    1  ??? (libobjc.A.dylib + 7352) [0x18ce25cb8]
+                                                      1  <on behalf of UNKNOWN [31] (originated by UNKNOWN [31])>
+                                  1  ??? (AppPredictionInternal + 938288) [0x1dda10130]
+                                    1  ??? (AppPredictionInternal + 429080) [0x1dd993c18]
+                                      1  ??? (AppPredictionInternal + 3568516) [0x1ddc92384]
+                                        1  ??? (BiomePubSub + 13060) [0x1ba243304]
+                                          1  ??? (BiomePubSub + 11548) [0x1ba242d1c]
+                                            1  ??? (BiomePubSub + 8088) [0x1ba241f98]
+                                              1  ??? (BiomePubSub + 12608) [0x1ba243140]
+                                                1  ??? (BiomePubSub + 12608) [0x1ba243140]
+                                                  1  ??? (BiomePubSub + 23832) [0x1ba245d18]
+                                                    1  ??? (BiomePubSub + 12528) [0x1ba2430f0]
+                                                      1  ??? (BiomePubSub + 29952) [0x1ba247500]
+                                                        1  ??? (BiomePubSub + 24488) [0x1ba245fa8]
+                                                          1  ??? (BiomePubSub + 12576) [0x1ba243120]
+                                                            1  ??? (AppPredictionInternal + 924012) [0x1dda0c96c]
+                                                              1  ??? (AppPredictionInternal + 923136) [0x1dda0c600]
+                                                                1  ??? (libobjc.A.dylib + 7296) [0x18ce25c80]
+                                                                  1  <on behalf of UNKNOWN [31] (originated by UNKNOWN [31])>
+                                  1  ??? (AppPredictionInternal + 938072) [0x1dda10058]
+                                    1  ??? (AppPredictionInternal + 3462172) [0x1ddc7841c]
+                                      1  ??? (AppPredictionInternal + 3566032) [0x1ddc919d0]
+                                        1  ??? (AppPredictionInternal + 3573048) [0x1ddc93538]
+                                          1  ??? (AppPredictionInternal + 3723284) [0x1ddcb8014]
+                                            1  ??? (AppPredictionInternal + 2886252) [0x1ddbeba6c]
+                                              1  ??? (AppPredictionInternal + 2885320) [0x1ddbeb6c8]
+                                                1  ??? (AppPredictionInternal + 3147940) [0x1ddc2b8a4]
+                                                  1  ??? (AppPredictionInternal + 3149080) [0x1ddc2bd18]
+                                                    1  ??? (AppPredictionInternal + 3148436) [0x1ddc2ba94]
+                                                      1  ??? (Foundation + 3258848) [0x18e8369e0]
+                                                        1  ??? (Foundation + 3258684) [0x18e83693c]
+                                                          1  ??? (Foundation + 2420144) [0x18e769db0]
+                                                            1  ??? (Foundation + 1887300) [0x18e6e7c44]
+                                                              1  ??? (Foundation + 1887100) [0x18e6e7b7c]
+                                                                1  ??? (Foundation + 1887600) [0x18e6e7d70]
+                                                                  1  ??? (Foundation + 1864712) [0x18e6e2408]
+                                                                    1  ??? (Foundation + 1866040) [0x18e6e2938]
+                                                                      1  ??? (Foundation + 1877476) [0x18e6e55e4]
+                                                                        1  ??? (libswiftCore.dylib + 4173256) [0x18e34fdc8]
+                                                                          1  <on behalf of UNKNOWN [31] (originated by UNKNOWN [31])>
+
+  Binary Images:
+           0x1024f4000 -                ???  duetexpertd             <646902A8-39F5-3DD9-AF0B-5E1E16A80F67>  /usr/libexec/duetexpertd
+           0x18ce24000 -        0x18ce75bb3  libobjc.A.dylib         <A79BB6C8-1243-3B49-9DB1-500C3DA8E2A0>  /usr/lib/libobjc.A.dylib
+           0x18df55000 -        0x18e4be29f  libswiftCore.dylib      <1F9D2800-7DA2-34CC-B8A5-FD490BAB7D09>  /usr/lib/swift/libswiftCore.dylib
+           0x18e51b000 -        0x18f18f05f  Foundation              <A8DD2B13-903D-39E3-8D0C-5EBF50F75929>  /System/Library/Frameworks/Foundation.framework/Foundation
+           0x18f8a3000 -        0x18fe1ffff  CoreFoundation          <E89D821C-A544-315C-8903-39CA54D7FAF4>  /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+           0x197842000 -        0x197887b3f  libdispatch.dylib       <C19E1CAE-FEE0-3E31-844D-A31BF2C39BD7>  /usr/lib/system/libdispatch.dylib
+           0x197a85000 -        0x197e7d97f  CoreData                <27604DD2-5D7F-364B-9601-28D050FFB5A9>  /System/Library/Frameworks/CoreData.framework/CoreData
+           0x19ba99000 -        0x19bcc631f  CoreDuet                <A5EAD19D-13F6-3D53-82A0-0F4D50A8F247>  /System/Library/PrivateFrameworks/CoreDuet.framework/CoreDuet
+           0x19d712000 -        0x19d7d7c5f  ContactsFoundation      <19FEE293-5715-381E-A153-CBADA8CD0275>  /System/Library/PrivateFrameworks/ContactsFoundation.framework/ContactsFoundation
+           0x19d7d8000 -        0x19d9f687f  Contacts                <60D4CDDD-9D1D-3752-9C8A-16AA5DE0EEC3>  /System/Library/Frameworks/Contacts.framework/Contacts
+           0x1ab34e000 -        0x1ab36915f  libsystem_trace.dylib   <AA4D4E05-ECD3-340D-995E-6C49F8AA5F57>  /usr/lib/system/libsystem_trace.dylib
+           0x1b0670000 -        0x1b07efa9f  PeopleSuggester         <F3E31CD7-9443-34AB-897F-F8A72A47EB6D>  /System/Library/PrivateFrameworks/PeopleSuggester.framework/PeopleSuggester
+           0x1b4e82000 -        0x1b50a4d3f  AppPredictionClient     <7C24EB5A-8743-3478-8631-CD3CDE6D0771>  /System/Library/PrivateFrameworks/AppPredictionClient.framework/AppPredictionClient
+           0x1ba240000 -        0x1ba29841f  BiomePubSub             <4DB903E3-30E6-37DF-987E-5B35333E0B47>  /System/Library/PrivateFrameworks/BiomePubSub.framework/BiomePubSub
+           0x1ba299000 -        0x1ba2d763f  BiomeStorage            <6C0E1856-CEB9-3001-A2F3-2EFBDFDDF423>  /System/Library/PrivateFrameworks/BiomeStorage.framework/BiomeStorage
+           0x1bdd8b000 -        0x1bdf0b683  libsqlite3.dylib        <8D0C8FA0-26F0-3ABA-8D4C-87FC8A96C964>  /usr/lib/libsqlite3.dylib
+           0x1dd92b000 -        0x1ddf7885f  AppPredictionInternal   <EA03E36F-4A0E-37D1-BE0F-1B1928E444BF>  /System/Library/PrivateFrameworks/AppPredictionInternal.framework/AppPredictionInternal
+           0x219d80000 -        0x219d8c413  libsystem_pthread.dylib <985A66D7-1DC0-3F52-A897-D7AE7CAB5D36>  /usr/lib/system/libsystem_pthread.dylib
+           0x219dcb000 -        0x219e12dbf  libxpc.dylib            <FB5BA8E0-1E70-3E46-BEB9-2D8617C4AA1F>  /usr/lib/system/libxpc.dylib

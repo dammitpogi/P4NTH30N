@@ -54,7 +54,7 @@ The legacy RAG system was established in DECISION_033 and enhanced through multi
 
 | Attribute | Value |
 |----------|-------|
-| Executable | `RAG.McpHost.exe` at `C:\ProgramData\P4NTH30N\bin\` |
+| Executable | `RAG.McpHost.exe` at `C:\ProgramData\P4NTHE0N\bin\` |
 | Port | 5001 |
 | Transport | HTTP |
 | Vector Store | FAISS (in-memory, lost on restart) |

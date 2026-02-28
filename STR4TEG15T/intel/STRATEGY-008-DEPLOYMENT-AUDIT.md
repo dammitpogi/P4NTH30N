@@ -14,7 +14,7 @@
 
 | Constraint | Reality |
 |------------|---------|
-| WindSurf scope | C:\P4NTH30N only |
+| WindSurf scope | C:\P4NTHE0N only |
 | OpenCode agents location | C:\Users\paulc\.config\opencode\agents\ |
 | WindSurf can access OpenCode agents? | ❌ NO |
 | Automated deployment exists? | ❌ NO |
@@ -39,7 +39,7 @@ But it **cannot execute** agent updates without:
 ## Corrected Architecture
 
 ```
-P4NTH30N/agents/              ← Source of truth (WindSurf can edit)
+P4NTHE0N/agents/              ← Source of truth (WindSurf can edit)
     ├── librarian.md          ← Updated by WindSurf
     ├── explorer.md           ← Updated by WindSurf
     └── ...
@@ -57,13 +57,13 @@ C:\Users\paulc\.config\opencode\agents\  ← OpenCode (WindSurf cannot access)
 ## Required Actions
 
 ### Immediate (ARCH-002)
-1. Create P4NTH30N/agents/ directory
+1. Create P4NTHE0N/agents/ directory
 2. Create deploy-agents.ps1 script
 3. OpenFixer executes deployment
 4. Test and verify
 
 ### Then (STRATEGY-008 Execution)
-1. Update agent definitions in P4NTH30N/agents/
+1. Update agent definitions in P4NTHE0N/agents/
 2. Run deploy-agents.ps1 via OpenFixer
 3. Verify in OpenCode
 

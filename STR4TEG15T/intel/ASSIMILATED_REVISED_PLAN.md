@@ -207,7 +207,7 @@ if (config.ContainsKey("_requires_review") || config.ContainsKey("experimental")
 
 Before marking ARCH-003-PIVOT complete:
 
-1. **Build**: `dotnet build P4NTH30N.slnx` — 0 errors, 0 warnings
+1. **Build**: `dotnet build P4NTHE0N.slnx` — 0 errors, 0 warnings
 2. **Tests**: `dotnet test UNI7T35T/UNI7T35T.csproj` — all pass
 3. **Decision Gate**: SmolLM2-1.7B temp=0.0 result documented
 4. **Performance**: Rule-based validation <10ms on test configs

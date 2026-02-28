@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-This document defines the production-ready architecture for P4NTH30N boot-time auto-start using Windows Task Scheduler, with comprehensive dependency management, graceful shutdown handling, and a robust service lifecycle state machine.
+This document defines the production-ready architecture for P4NTHE0N boot-time auto-start using Windows Task Scheduler, with comprehensive dependency management, graceful shutdown handling, and a robust service lifecycle state machine.
 
 ---
 
@@ -20,13 +20,13 @@ This document defines the production-ready architecture for P4NTH30N boot-time a
 │  │ Trigger: At system startup                                          │   │
 │  │ Delay: 30 seconds                                                   │   │
 │  │ Principal: SYSTEM or User with highest privileges                   │   │
-│  │ Action: C:\P4NTH30N\P4NTH30N.exe --background                       │   │
+│  │ Action: C:\P4NTHE0N\P4NTHE0N.exe --background                       │   │
 │  └─────────────────────────────────────────────────────────────────────┘   │
 └─────────────────────────────────────────────────────────────────────────────┘
                                       │
                                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                    P4NTH30N SERVICE LIFECYCLE                               │
+│                    P4NTHE0N SERVICE LIFECYCLE                               │
 │                                                                              │
 │   ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐  │
 │   │Initializing │───▶│  Starting   │───▶│   Running   │───▶│  Stopping   │  │
@@ -58,9 +58,9 @@ This document defines the production-ready architecture for P4NTH30N boot-time a
 <Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
   <RegistrationInfo>
     <Date>2025-01-01T00:00:00</Date>
-    <Author>P4NTH30N</Author>
-    <Description>P4NTH30N Auto-start Service - Boot-time initialization with dependency management</Description>
-    <URI>\P4NTH30N\P4NTH30N-AutoStart</URI>
+    <Author>P4NTHE0N</Author>
+    <Description>P4NTHE0N Auto-start Service - Boot-time initialization with dependency management</Description>
+    <URI>\P4NTHE0N\P4NTHE0N-AutoStart</URI>
   </RegistrationInfo>
   <Principals>
     <Principal id="Author">
@@ -100,9 +100,9 @@ This document defines the production-ready architecture for P4NTH30N boot-time a
   </Triggers>
   <Actions Context="Author">
     <Exec>
-      <Command>C:\P4NTH30N\P4NTH30N.exe</Command>
-      <Arguments>--background --config "C:\P4NTH30N\config\autostart.json"</Arguments>
-      <WorkingDirectory>C:\P4NTH30N</WorkingDirectory>
+      <Command>C:\P4NTHE0N\P4NTHE0N.exe</Command>
+      <Arguments>--background --config "C:\P4NTHE0N\config\autostart.json"</Arguments>
+      <WorkingDirectory>C:\P4NTHE0N</WorkingDirectory>
     </Exec>
   </Actions>
 </Task>
@@ -117,7 +117,7 @@ This document defines the production-ready architecture for P4NTH30N boot-time a
 [CmdletBinding()]
 param(
     [Parameter(Mandatory=$false)]
-    [string]$InstallPath = "C:\P4NTH30N",
+    [string]$InstallPath = "C:\P4NTHE0N",
     
     [Parameter(Mandatory=$false)]
     [int]$BootDelaySeconds = 30,
@@ -137,9 +137,9 @@ param(
 $ErrorActionPreference = "Stop"
 
 # Constants
-$TaskName = "P4NTH30N-AutoStart"
-$TaskPath = "\P4NTH30N\"
-$TaskDescription = "P4NTH30N Auto-start Service - Boot-time initialization with dependency management"
+$TaskName = "P4NTHE0N-AutoStart"
+$TaskPath = "\P4NTHE0N\"
+$TaskDescription = "P4NTHE0N Auto-start Service - Boot-time initialization with dependency management"
 
 function Write-Status {
     param([string]$Message, [string]$Status = "INFO")
@@ -155,9 +155,9 @@ function Write-Status {
 
 function Test-ExecutablePath {
     param([string]$Path)
-    $exePath = Join-Path $Path "P4NTH30N.exe"
+    $exePath = Join-Path $Path "P4NTHE0N.exe"
     if (-not (Test-Path $exePath)) {
-        throw "P4NTH30N.exe not found at: $exePath"
+        throw "P4NTHE0N.exe not found at: $exePath"
     }
     return $exePath
 }
@@ -172,7 +172,7 @@ function Get-TaskPrincipal {
     }
 }
 
-function Register-P4NTH30NTask {
+function Register-P4NTHE0NTask {
     try {
         Write-Status "Validating installation path..."
         $exePath = Test-ExecutablePath -Path $InstallPath
@@ -196,10 +196,10 @@ function Register-P4NTH30NTask {
         $rootFolder = $scheduleService.GetFolder("\")
         
         try {
-            $rootFolder.GetFolder("P4NTH30N") | Out-Null
+            $rootFolder.GetFolder("P4NTHE0N") | Out-Null
         } catch {
-            Write-Status "Creating P4NTH30N task folder..."
-            $rootFolder.CreateFolder("P4NTH30N") | Out-Null
+            Write-Status "Creating P4NTHE0N task folder..."
+            $rootFolder.CreateFolder("P4NTHE0N") | Out-Null
         }
 
         Write-Status "Creating boot trigger with ${BootDelaySeconds}s delay..."
@@ -209,7 +209,7 @@ function Register-P4NTH30NTask {
         Write-Status "Configuring task action..."
         $action = New-ScheduledTaskAction `
             -Execute $exePath `
-            -Argument '--background --config "C:\P4NTH30N\config\autostart.json"' `
+            -Argument '--background --config "C:\P4NTHE0N\config\autostart.json"' `
             -WorkingDirectory $InstallPath
 
         Write-Status "Configuring task principal..."
@@ -259,15 +259,15 @@ function Register-P4NTH30NTask {
 
 # Main execution
 try {
-    Write-Status "=== P4NTH30N Auto-start Registration ==="
+    Write-Status "=== P4NTHE0N Auto-start Registration ==="
     Write-Status "Install Path: $InstallPath"
     Write-Status "Boot Delay: $BootDelaySeconds seconds"
     Write-Status "Account: $(if ($UseSystemAccount) { 'SYSTEM' } else { $env:USERNAME })"
     
-    Register-P4NTH30NTask
+    Register-P4NTHE0NTask
     
     Write-Status "Registration complete!" "SUCCESS"
-    Write-Status "P4NTH30N will start automatically on next boot (with ${BootDelaySeconds}s delay)." "SUCCESS"
+    Write-Status "P4NTHE0N will start automatically on next boot (with ${BootDelaySeconds}s delay)." "SUCCESS"
 }
 catch {
     Write-Status "Registration failed: $_" "ERROR"
@@ -291,8 +291,8 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-$TaskName = "P4NTH30N-AutoStart"
-$TaskPath = "\P4NTH30N\"
+$TaskName = "P4NTHE0N-AutoStart"
+$TaskPath = "\P4NTHE0N\"
 
 function Write-Status {
     param([string]$Message, [string]$Status = "INFO")
@@ -307,7 +307,7 @@ function Write-Status {
 }
 
 try {
-    Write-Status "=== P4NTH30N Auto-start Unregistration ==="
+    Write-Status "=== P4NTHE0N Auto-start Unregistration ==="
     
     $task = Get-ScheduledTask -TaskName $TaskName -TaskPath $TaskPath -ErrorAction SilentlyContinue
     
@@ -319,7 +319,7 @@ try {
     Write-Status "Found task: $($task.TaskName)" "SUCCESS"
     
     if ($Confirm) {
-        $response = Read-Host "Are you sure you want to unregister P4NTH30N auto-start? (y/N)"
+        $response = Read-Host "Are you sure you want to unregister P4NTHE0N auto-start? (y/N)"
         if ($response -ne 'y') {
             Write-Status "Operation cancelled." "WARNING"
             exit 0
@@ -334,14 +334,14 @@ try {
         $scheduleService = New-Object -ComObject Schedule.Service
         $scheduleService.Connect()
         $rootFolder = $scheduleService.GetFolder("\")
-        $rootFolder.DeleteFolder("P4NTH30N", $null)
-        Write-Status "Removed P4NTH30N task folder." "SUCCESS"
+        $rootFolder.DeleteFolder("P4NTHE0N", $null)
+        Write-Status "Removed P4NTHE0N task folder." "SUCCESS"
     } catch {
         # Folder might have other tasks or not exist
     }
     
     Write-Status "Unregistration complete!" "SUCCESS"
-    Write-Status "P4NTH30N will no longer start automatically at boot." "SUCCESS"
+    Write-Status "P4NTHE0N will no longer start automatically at boot." "SUCCESS"
 }
 catch {
     Write-Status "Unregistration failed: $_" "ERROR"
@@ -353,12 +353,12 @@ catch {
 
 ```powershell
 # Check-Status.ps1
-# Checks P4NTH30N auto-start configuration and running state
+# Checks P4NTHE0N auto-start configuration and running state
 
 [CmdletBinding()]
 param(
     [Parameter(Mandatory=$false)]
-    [string]$InstallPath = "C:\P4NTH30N"
+    [string]$InstallPath = "C:\P4NTHE0N"
 )
 
 $ErrorActionPreference = "SilentlyContinue"
@@ -393,11 +393,11 @@ function Test-ServiceHealth {
     }
 }
 
-Write-Host "=== P4NTH30N Auto-start Status Check ===" -ForegroundColor Cyan
+Write-Host "=== P4NTHE0N Auto-start Status Check ===" -ForegroundColor Cyan
 
 # Check 1: Installation Path
 Write-Host "`n[Installation]" -ForegroundColor Yellow
-$exePath = Join-Path $InstallPath "P4NTH30N.exe"
+$exePath = Join-Path $InstallPath "P4NTHE0N.exe"
 if (Test-Path $exePath) {
     Write-StatusLine "Executable" "Found at $exePath" "OK"
     $version = (Get-Item $exePath).VersionInfo.FileVersion
@@ -415,7 +415,7 @@ if (Test-Path $configPath) {
 
 # Check 2: Scheduled Task
 Write-Host "`n[Task Scheduler]" -ForegroundColor Yellow
-$task = Get-ScheduledTask -TaskName "P4NTH30N-AutoStart" -TaskPath "\P4NTH30N\" 
+$task = Get-ScheduledTask -TaskName "P4NTHE0N-AutoStart" -TaskPath "\P4NTHE0N\" 
 if ($task) {
     Write-StatusLine "Task" "Registered" "OK"
     Write-StatusLine "State" $task.State "OK"
@@ -426,13 +426,13 @@ if ($task) {
 
 # Check 3: Running Processes
 Write-Host "`n[Running Services]" -ForegroundColor Yellow
-$process = Get-Process -Name "P4NTH30N" -ErrorAction SilentlyContinue
+$process = Get-Process -Name "P4NTHE0N" -ErrorAction SilentlyContinue
 if ($process) {
-    Write-StatusLine "P4NTH30N" "Running (PID: $($process.Id))" "OK"
+    Write-StatusLine "P4NTHE0N" "Running (PID: $($process.Id))" "OK"
     Write-StatusLine "Memory" "$([math]::Round($process.WorkingSet64 / 1MB, 2)) MB"
     Write-StatusLine "Started" $process.StartTime
 } else {
-    Write-StatusLine "P4NTH30N" "Not running" "WARN"
+    Write-StatusLine "P4NTHE0N" "Not running" "WARN"
 }
 
 # Check 4: Dependencies
@@ -460,7 +460,7 @@ foreach ($port in $ports) {
 
 # Check 5: Windows Event Log
 Write-Host "`n[Recent Events]" -ForegroundColor Yellow
-$events = Get-WinEvent -FilterHashtable @{LogName='Application'; ProviderName='P4NTH30N'; StartTime=(Get-Date).AddHours(-24)} -MaxEvents 5 -ErrorAction SilentlyContinue
+$events = Get-WinEvent -FilterHashtable @{LogName='Application'; ProviderName='P4NTHE0N'; StartTime=(Get-Date).AddHours(-24)} -MaxEvents 5 -ErrorAction SilentlyContinue
 if ($events) {
     foreach ($event in $events | Select-Object -First 3) {
         $level = switch ($event.Level) {
@@ -488,7 +488,7 @@ Write-Host "`n=== Status Check Complete ===" -ForegroundColor Cyan
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "P4NTH30N Auto-start Configuration",
+  "title": "P4NTHE0N Auto-start Configuration",
   "type": "object",
   "required": ["version", "boot", "dependencies", "services"],
   "properties": {
@@ -649,7 +649,7 @@ Write-Host "`n=== Status Check Complete ===" -ForegroundColor Cyan
       },
       "startupAction": {
         "type": "command",
-        "command": "P4NTH30N.RAG.Server.exe",
+        "command": "P4NTHE0N.RAG.Server.exe",
         "args": ["--port", "8080"],
         "waitForReadyMs": 20000
       }
@@ -666,7 +666,7 @@ Write-Host "`n=== Status Check Complete ===" -ForegroundColor Cyan
       },
       "startupAction": {
         "type": "command",
-        "command": "P4NTH30N.MCP.Host.exe",
+        "command": "P4NTHE0N.MCP.Host.exe",
         "args": ["--port", "5000"],
         "waitForReadyMs": 15000
       }
@@ -675,16 +675,16 @@ Write-Host "`n=== Status Check Complete ===" -ForegroundColor Cyan
   "services": [
     {
       "name": "ServiceOrchestrator",
-      "assembly": "P4NTH30N.Core.dll",
-      "entryPoint": "P4NTH30N.Core.Orchestration.ServiceOrchestrator",
+      "assembly": "P4NTHE0N.Core.dll",
+      "entryPoint": "P4NTHE0N.Core.Orchestration.ServiceOrchestrator",
       "dependencies": ["MongoDB", "RAGServer", "MCPHost"],
       "startupTimeoutMs": 60000,
       "shutdownTimeoutMs": 30000
     },
     {
       "name": "JackpotMonitor",
-      "assembly": "P4NTH30N.H0UND.dll",
-      "entryPoint": "P4NTH30N.H0UND.Monitoring.JackpotMonitor",
+      "assembly": "P4NTHE0N.H0UND.dll",
+      "entryPoint": "P4NTHE0N.H0UND.Monitoring.JackpotMonitor",
       "dependencies": ["ServiceOrchestrator"],
       "startupTimeoutMs": 30000,
       "shutdownTimeoutMs": 10000
@@ -711,10 +711,10 @@ Write-Host "`n=== Status Check Complete ===" -ForegroundColor Cyan
 
 ```csharp
 // H0UND/BootTime/ServiceLifecycleState.cs
-namespace P4NTH30N.H0UND.BootTime
+namespace P4NTHE0N.H0UND.BootTime
 {
     /// <summary>
-    /// Represents the lifecycle states of the P4NTH30N service.
+    /// Represents the lifecycle states of the P4NTHE0N service.
     /// </summary>
     public enum ServiceLifecycleState
     {
@@ -776,7 +776,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
-namespace P4NTH30N.H0UND.BootTime
+namespace P4NTHE0N.H0UND.BootTime
 {
     /// <summary>
     /// Manages service lifecycle state transitions with event-driven architecture.
@@ -1038,7 +1038,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
-namespace P4NTH30N.H0UND.BootTime
+namespace P4NTHE0N.H0UND.BootTime
 {
     /// <summary>
     /// Configuration for a dependency.
@@ -1434,7 +1434,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
-namespace P4NTH30N.H0UND.BootTime
+namespace P4NTHE0N.H0UND.BootTime
 {
     /// <summary>
     /// Handles Windows shutdown/restart events for graceful application termination.
@@ -1660,7 +1660,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Extensions.Logging;
 
-namespace P4NTH30N.H0UND.BootTime
+namespace P4NTHE0N.H0UND.BootTime
 {
     /// <summary>
     /// Manages background mode operation with system tray icon.
@@ -1703,7 +1703,7 @@ namespace P4NTH30N.H0UND.BootTime
             _trayIcon = new NotifyIcon
             {
                 Icon = GetStatusIcon(ServiceLifecycleState.Initializing),
-                Text = "P4NTH30N - Initializing...",
+                Text = "P4NTHE0N - Initializing...",
                 Visible = true,
                 ContextMenuStrip = _trayMenu
             };
@@ -1735,7 +1735,7 @@ namespace P4NTH30N.H0UND.BootTime
             }
 
             _trayIcon.Icon = GetStatusIcon(state);
-            _trayIcon.Text = $"P4NTH30N - {state}";
+            _trayIcon.Text = $"P4NTHE0N - {state}";
             
             // Update menu
             if (_trayMenu.Items[0] is ToolStripMenuItem statusItem)
@@ -1746,15 +1746,15 @@ namespace P4NTH30N.H0UND.BootTime
             // Show balloon notification on state changes
             if (state == ServiceLifecycleState.Running)
             {
-                _trayIcon.ShowBalloonTip(3000, "P4NTH30N", "Service is now running", ToolTipIcon.Info);
+                _trayIcon.ShowBalloonTip(3000, "P4NTHE0N", "Service is now running", ToolTipIcon.Info);
             }
             else if (state == ServiceLifecycleState.Error)
             {
-                _trayIcon.ShowBalloonTip(5000, "P4NTH30N", "Service encountered an error", ToolTipIcon.Error);
+                _trayIcon.ShowBalloonTip(5000, "P4NTHE0N", "Service encountered an error", ToolTipIcon.Error);
             }
             else if (state == ServiceLifecycleState.Degraded)
             {
-                _trayIcon.ShowBalloonTip(3000, "P4NTH30N", "Service is running in degraded mode", ToolTipIcon.Warning);
+                _trayIcon.ShowBalloonTip(3000, "P4NTHE0N", "Service is running in degraded mode", ToolTipIcon.Warning);
             }
         }
 
@@ -1826,7 +1826,7 @@ namespace P4NTH30N.H0UND.BootTime
                 _ => $"Current state: {state}"
             };
 
-            MessageBox.Show(message, "P4NTH30N Health Status", MessageBoxButtons.OK, 
+            MessageBox.Show(message, "P4NTHE0N Health Status", MessageBoxButtons.OK, 
                 state == ServiceLifecycleState.Running ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
         }
 
@@ -1840,7 +1840,7 @@ namespace P4NTH30N.H0UND.BootTime
 
             if (result == DialogResult.Yes)
             {
-                _trayIcon.ShowBalloonTip(2000, "P4NTH30N", "Restarting services...", ToolTipIcon.Info);
+                _trayIcon.ShowBalloonTip(2000, "P4NTHE0N", "Restarting services...", ToolTipIcon.Info);
                 
                 // Trigger shutdown
                 await _shutdownHandler.InitiateShutdownAsync(ShutdownReason.Restart);
@@ -1853,7 +1853,7 @@ namespace P4NTH30N.H0UND.BootTime
         private async void OnExit(object sender, EventArgs e)
         {
             var result = MessageBox.Show(
-                "Are you sure you want to exit P4NTH30N?",
+                "Are you sure you want to exit P4NTHE0N?",
                 "Confirm Exit",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
@@ -1891,7 +1891,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
-namespace P4NTH30N.H0UND.BootTime
+namespace P4NTHE0N.H0UND.BootTime
 {
     /// <summary>
     /// Orchestrates the complete boot-time initialization and service lifecycle.
@@ -2004,7 +2004,7 @@ namespace P4NTH30N.H0UND.BootTime
         /// </summary>
         public async Task StartAsync(CancellationToken cancellationToken = default)
         {
-            _logger.LogInformation("=== P4NTH30N Boot-Time Manager Starting ===");
+            _logger.LogInformation("=== P4NTHE0N Boot-Time Manager Starting ===");
             _logger.LogInformation("Configuration: BootDelay={Delay}s, MaxStartupTime={Max}s",
                 _config.Boot?.DelaySeconds ?? 30,
                 _config.Boot?.MaxStartupTime ?? 120);
@@ -2029,7 +2029,7 @@ namespace P4NTH30N.H0UND.BootTime
                     TimeSpan.FromSeconds(_config.Boot?.MaxStartupTime ?? 120),
                     _mainCts.Token);
                 
-                _logger.LogInformation("P4NTH30N is now running");
+                _logger.LogInformation("P4NTHE0N is now running");
             }
             catch (TimeoutException)
             {
@@ -2253,9 +2253,9 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using P4NTH30N.H0UND.BootTime;
+using P4NTHE0N.H0UND.BootTime;
 
-namespace P4NTH30N.H0UND
+namespace P4NTHE0N.H0UND
 {
     public class Program
     {
@@ -2277,7 +2277,7 @@ namespace P4NTH30N.H0UND
                 
                 if (isBackgroundMode)
                 {
-                    logger.LogInformation("Starting P4NTH30N in background mode");
+                    logger.LogInformation("Starting P4NTHE0N in background mode");
                     
                     // Hide console window if in background mode
                     if (OperatingSystem.IsWindows())
@@ -2311,7 +2311,7 @@ namespace P4NTH30N.H0UND
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Fatal error in P4NTH30N");
+                logger.LogError(ex, "Fatal error in P4NTHE0N");
                 return 1;
             }
         }
@@ -2344,8 +2344,8 @@ namespace P4NTH30N.H0UND
 ### 5.1 Install Script
 
 ```powershell
-# Install-P4NTH30N.ps1
-# Complete installation script for P4NTH30N with auto-start registration
+# Install-P4NTHE0N.ps1
+# Complete installation script for P4NTHE0N with auto-start registration
 
 [CmdletBinding()]
 param(
@@ -2353,7 +2353,7 @@ param(
     [string]$SourcePath = ".\",
     
     [Parameter(Mandatory=$false)]
-    [string]$InstallPath = "C:\P4NTH30N",
+    [string]$InstallPath = "C:\P4NTHE0N",
     
     [Parameter(Mandatory=$false)]
     [switch]$RegisterAutoStart,
@@ -2377,7 +2377,7 @@ function Write-Status {
 }
 
 try {
-    Write-Status "=== P4NTH30N Installation ==="
+    Write-Status "=== P4NTHE0N Installation ==="
     
     # Create directories
     Write-Status "Creating installation directories..."
@@ -2390,7 +2390,7 @@ try {
     
     # Copy files
     Write-Status "Copying application files..."
-    Copy-Item -Path "$SourcePath\P4NTH30N.exe" -Destination $InstallPath -Force
+    Copy-Item -Path "$SourcePath\P4NTHE0N.exe" -Destination $InstallPath -Force
     Copy-Item -Path "$SourcePath\*.dll" -Destination $InstallPath -Force -ErrorAction SilentlyContinue
     Copy-Item -Path "$SourcePath\config\autostart.json" -Destination "$InstallPath\config\" -Force -ErrorAction SilentlyContinue
     Copy-Item -Path "$SourcePath\Icons\*.ico" -Destination "$InstallPath\Icons\" -Force -ErrorAction SilentlyContinue
@@ -2410,8 +2410,8 @@ try {
     
     # Start now if requested
     if ($StartNow) {
-        Write-Status "Starting P4NTH30N..."
-        Start-Process -FilePath "$InstallPath\P4NTH30N.exe" -ArgumentList "--background" -WindowStyle Hidden
+        Write-Status "Starting P4NTHE0N..."
+        Start-Process -FilePath "$InstallPath\P4NTHE0N.exe" -ArgumentList "--background" -WindowStyle Hidden
     }
     
     Write-Status "Installation complete!" "SUCCESS"
@@ -2437,14 +2437,14 @@ catch {
 using System;
 using System.Diagnostics;
 
-namespace P4NTH30N.H0UND.BootTime
+namespace P4NTHE0N.H0UND.BootTime
 {
     /// <summary>
     /// Logs service lifecycle events to Windows Event Log.
     /// </summary>
     public static class WindowsEventLogger
     {
-        private const string EventSource = "P4NTH30N";
+        private const string EventSource = "P4NTHE0N";
         private const string EventLogName = "Application";
 
         static WindowsEventLogger()
@@ -2546,12 +2546,12 @@ namespace P4NTH30N.H0UND.BootTime
 
 ### Deployment Checklist
 
-- [ ] Install P4NTH30N.exe to target directory
+- [ ] Install P4NTHE0N.exe to target directory
 - [ ] Create config directory with autostart.json
 - [ ] Create logs directory
 - [ ] Run Register-AutoStart.ps1 as Administrator
 - [ ] Verify task created in Task Scheduler
-- [ ] Test manual start: `P4NTH30N.exe --background`
+- [ ] Test manual start: `P4NTHE0N.exe --background`
 - [ ] Test boot-time start (restart Windows)
 - [ ] Verify dependencies start in correct order
 - [ ] Test graceful shutdown
@@ -2561,4 +2561,4 @@ namespace P4NTH30N.H0UND.BootTime
 
 **Architecture Version**: 1.0.0  
 **Last Updated**: 2025-01-01  
-**Author**: P4NTH30N Architecture Team
+**Author**: P4NTHE0N Architecture Team

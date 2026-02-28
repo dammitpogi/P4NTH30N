@@ -2,11 +2,11 @@
 Start-Sleep -Seconds 3
 
 # Export audio devices
-& 'C:\P4NTH30N\SoundVolumeView\SoundVolumeView.exe' /scomma 'C:\P4NTH30N\after_vbcable.csv'
+& 'C:\P4NTHE0N\SoundVolumeView\SoundVolumeView.exe' /scomma 'C:\P4NTHE0N\after_vbcable.csv'
 Start-Sleep -Seconds 1
 
 # Look for CABLE devices
-$lines = Get-Content 'C:\P4NTH30N\after_vbcable.csv'
+$lines = Get-Content 'C:\P4NTHE0N\after_vbcable.csv'
 Write-Host 'Audio devices after VB-Cable installation:'
 Write-Host '==========================================='
 

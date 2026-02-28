@@ -45,7 +45,7 @@ webSocketDebuggerUrl: ws://127.0.0.1:9222/devtools/browser/...
 
 ### T00L5ET Login Command
 ```powershell
-cd C:\P4NTH30N
+cd C:\P4NTHE0N
 .\T00L5ET\bin\Debug\net10.0-windows7.0\T00L5ET.exe login
 ```
 
@@ -98,7 +98,7 @@ Number(window.parent.Grand) || 0
 
 ### Login Result: Credential 1 (PaulPP9fk)
 
-**Screenshot**: `C:\P4NTH30N\test-results\fk_cred_1_PaulPP9fk_20260221_123536.png`
+**Screenshot**: `C:\P4NTHE0N\test-results\fk_cred_1_PaulPP9fk_20260221_123536.png`
 
 **Status**: ✅ **LOGIN SUCCESSFUL**
 
@@ -300,7 +300,7 @@ Start-Process chrome.exe -ArgumentList "--remote-debugging-port=9222",...
 .\T00L5ET\bin\Debug\net10.0-windows7.0\T00L5ET.exe login
 
 # 3. Manual navigation (via recorder)
-cd C:\P4NTH30N\H4ND\tools\recorder
+cd C:\P4NTHE0N\H4ND\tools\recorder
 bun run recorder.ts --step --phase=GameSelection --screenshot=004.png --session-dir="..." --run-tool=nav
 
 # 4. Manual spin (via recorder)
@@ -325,7 +325,7 @@ bun run recorder.ts --step --phase=Spin --screenshot=005.png --session-dir="..."
 ### Logs
 - `session.ndjson` — Machine-readable step log
 - `session.md` — Human-readable report
-- `C:\P4NTH30N\test-results\login_failures.log` — Failed credential log (credentials 2-10)
+- `C:\P4NTHE0N\test-results\login_failures.log` — Failed credential log (credentials 2-10)
 
 ### Code
 - `H4ND/tools/recorder/` — 6 TypeScript files (recorder infrastructure)

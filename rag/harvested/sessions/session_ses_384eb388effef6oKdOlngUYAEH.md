@@ -4,7 +4,7 @@
 **project_id**: 6bca83b670a16680d54ed49b159b2a2eb350d9b2
 **parent_id**: ses_384eb5532ffeRHdkG0S9fmvsCp
 **slug**: neon-squid
-**directory**: c:\P4NTH30N
+**directory**: c:\P4NTHE0N
 **title**: Implement OrionStars Session Renewal and Authentication Recovery (@windfixer subagent)
 **version**: 1.2.10
 **share_url**: NULL

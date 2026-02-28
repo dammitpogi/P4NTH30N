@@ -75,4 +75,4 @@ Designer → provides specs → WindFixer, OpenFixer
 
 ---
 
-*Part of the P4NTH30N Agent Architecture*
+*Part of the P4NTHE0N Agent Architecture*

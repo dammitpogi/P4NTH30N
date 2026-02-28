@@ -15,7 +15,7 @@
 Set up the RAG file watcher as a persistent Windows service to ensure continuous automatic ingestion of new documents into the RAG knowledge base. This eliminates the need for manual intervention and ensures institutional memory is always preserved.
 
 **Implementation Complete**:
-- Created Windows Scheduled Task `P4NTH30N-RAG-Watcher`
+- Created Windows Scheduled Task `P4NTHE0N-RAG-Watcher`
 - Task runs at system startup with SYSTEM privileges
 - Runs continuously polling for new files every 5 seconds
 - No agent dependency - pure automation
@@ -41,16 +41,16 @@ Convert the script into a Windows service using Scheduled Tasks (NSSM not availa
 
 ### Service Configuration
 
-**Task Name**: `P4NTH30N-RAG-Watcher`  
+**Task Name**: `P4NTHE0N-RAG-Watcher`  
 **Trigger**: At system startup  
 **User**: SYSTEM (highest privileges)  
 **Window Style**: Hidden (no UI)  
 **Execution Policy**: Bypass  
-**Script**: `C:\P4NTH30N\STR4TEG15T\tools\rag-watcher\Watch-RagIngest.ps1`
+**Script**: `C:\P4NTHE0N\STR4TEG15T\tools\rag-watcher\Watch-RagIngest.ps1`
 
 **PowerShell Command**:
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\P4NTH30N\STR4TEG15T\tools\rag-watcher\Watch-RagIngest.ps1
+powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\P4NTHE0N\STR4TEG15T\tools\rag-watcher\Watch-RagIngest.ps1
 ```
 
 **Task Settings**:
@@ -114,7 +114,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\P
 
 ## Success Criteria
 
-1. ✅ Scheduled Task `P4NTH30N-RAG-Watcher` created
+1. ✅ Scheduled Task `P4NTHE0N-RAG-Watcher` created
 2. ✅ Task configured to run at startup
 3. ✅ Task running with SYSTEM privileges
 4. ✅ Task currently in `Running` state
@@ -127,17 +127,17 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\P
 
 ### Check Status
 ```powershell
-Get-ScheduledTask -TaskName "P4NTH30N-RAG-Watcher" | Get-ScheduledTaskInfo
+Get-ScheduledTask -TaskName "P4NTHE0N-RAG-Watcher" | Get-ScheduledTaskInfo
 ```
 
 ### Start Service
 ```powershell
-Start-ScheduledTask -TaskName "P4NTH30N-RAG-Watcher"
+Start-ScheduledTask -TaskName "P4NTHE0N-RAG-Watcher"
 ```
 
 ### Stop Service
 ```powershell
-Stop-ScheduledTask -TaskName "P4NTH30N-RAG-Watcher"
+Stop-ScheduledTask -TaskName "P4NTHE0N-RAG-Watcher"
 ```
 
 ### View Logs
@@ -169,7 +169,7 @@ The watcher outputs to console (captured by Task Scheduler). Check Task Schedule
 **Monitoring:**
 The service can be monitored via:
 - Task Scheduler GUI (`taskschd.msc`)
-- PowerShell: `Get-ScheduledTask -TaskName "P4NTH30N-RAG-Watcher"`
+- PowerShell: `Get-ScheduledTask -TaskName "P4NTHE0N-RAG-Watcher"`
 - RAG status: Query `rag_status` to see vector count growth
 
 **Future Enhancements:**

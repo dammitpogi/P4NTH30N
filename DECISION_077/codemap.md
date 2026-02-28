@@ -29,7 +29,7 @@ DECISION_077/
   "platform": "firekirin",
   "decisionId": "DECISION_077",
   "startTime": "2026-02-21T12:22:45Z",
-  "workingDir": "C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-2026-02-21T12-22-45"
+  "workingDir": "C:\\P4NTHE0N\\DECISION_077\\sessions\\firekirin-2026-02-21T12-22-45"
 }
 ```
 
@@ -53,7 +53,7 @@ Markdown narrative with screenshots and analysis.
 
 ### Initialize New Session
 ```bash
-cd C:\P4NTH30N\H4ND\tools\recorder
+cd C:\P4NTHE0N\H4ND\tools\recorder
 bun run recorder.ts --init --platform=firekirin --decision=DECISION_077
 ```
 
@@ -62,7 +62,7 @@ bun run recorder.ts --init --platform=firekirin --decision=DECISION_077
 bun run recorder.ts --step \
   --phase=Login \
   --screenshot=001.png \
-  --session-dir="C:\P4NTH30N\DECISION_077\sessions\firekirin-{timestamp}" \
+  --session-dir="C:\P4NTHE0N\DECISION_077\sessions\firekirin-{timestamp}" \
   --run-tool=diag
 ```
 

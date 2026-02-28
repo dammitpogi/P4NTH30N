@@ -22,7 +22,7 @@ All 17 active decisions have been:
 ## DECISION ASSIGNMENTS
 
 ### WindFixer (WindSurf) - 11 Decisions
-**Location**: P4NTH30N codebase (C:\P4NTH30N)  
+**Location**: P4NTHE0N codebase (C:\P4NTHE0N)  
 **Model**: Opus 4.6 Thinking  
 **Billing**: Per-prompt (cost-effective)
 
@@ -75,7 +75,7 @@ All 17 active decisions have been:
 ## EXECUTION PROMPTS
 
 ### WindFixer Prompt
-**Location**: `C:\P4NTH30N\T4CT1CS\actions\pending\WINDFIXER_PROMPT.md`
+**Location**: `C:\P4NTHE0N\T4CT1CS\actions\pending\WINDFIXER_PROMPT.md`
 
 **Contents**:
 - Complete execution guide for 11 decisions
@@ -91,7 +91,7 @@ All 17 active decisions have been:
 - Constraint escalation procedures
 
 ### OpenFixer Prompt
-**Location**: `C:\P4NTH30N\T4CT1CS\actions\pending\OPENFIXER_PROMPT.md`
+**Location**: `C:\P4NTHE0N\T4CT1CS\actions\pending\OPENFIXER_PROMPT.md`
 
 **Contents**:
 - Execution guide for 4 primary decisions

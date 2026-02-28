@@ -1,6 +1,6 @@
 # Task Specification for STR4TEG15T\toFixer\
 
-**Place this file in:** `C:\P4NTH30N\STR4TEG15T\toFixer\`
+**Place this file in:** `C:\P4NTHE0N\STR4TEG15T\toFixer\`
 
 ---
 
@@ -106,7 +106,7 @@ Implement Windows service manager that can start, stop, and query status of Wind
 ### Two-Folder System
 
 ```
-C:\P4NTH30N\
+C:\P4NTHE0N\
 ├── STR4TEG15T\toFixer\          ← STRATEGIST WRITES HERE
 └── W1NDF1X3R\fromFixer\         ← WINDFIXER MOVES HERE
 ```

@@ -1,0 +1,15 @@
+tree 1f021adbd75ffd9381759bdf152ed03de070bf35
+parent 72e493979ee05c5406154b5e04b1a8e4bb6e00d1
+author dammitpogi <paul.celebrado@gmail.com> 1771674619 -0700
+committer dammitpogi <paul.celebrado@gmail.com> 1771674619 -0700
+
+Add .gitignore for large binary files
+
+Exclude directories and files that caused push failures:
+- DE51GN3R/references/ (contains deskflow-master with binaries)
+- MongoDB data files (*.wt, journal/, etc.)
+- Node modules
+- VM ISO files
+- Audio driver packages
+- Release packages
+- Test result screenshots

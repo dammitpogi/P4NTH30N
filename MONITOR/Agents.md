@@ -16,7 +16,7 @@ Standalone monitoring service for data corruption detection and system health. C
 
 ### MonitoringService.cs
 Main monitoring orchestrator that wraps DataCorruptionMonitor:
-- Connects to MongoDB (default: `mongodb://localhost:27017`, database: `P4NTH30N`)
+- Connects to MongoDB (default: `mongodb://localhost:27017`, database: `P4NTHE0N`)
 - Runs initial health check on startup
 - Performs initial data cleaning via `ValidatedMongoRepository.CleanCorruptedData()`
 - Starts continuous DataCorruptionMonitor (2-minute intervals)
@@ -66,7 +66,7 @@ MONITOR
 // Create monitoring service
 var monitoringService = new MonitoringService(
     connectionString: "mongodb://localhost:27017",
-    databaseName: "P4NTH30N"
+    databaseName: "P4NTHE0N"
 );
 
 // Start monitoring

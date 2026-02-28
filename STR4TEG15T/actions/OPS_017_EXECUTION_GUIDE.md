@@ -8,7 +8,7 @@ OPS_018 (Enable Remote CDP Execution) is **COMPLETE**. The custom MCP server has
 
 ### Custom MCP Server: `p4nth30n-cdp-mcp`
 
-Location: `C:\P4NTH30N\chrome-devtools-mcp\`
+Location: `C:\P4NTHE0N\chrome-devtools-mcp\`
 
 **Tools Available:**
 1. `get_version` - Get Chrome version and protocol info
@@ -116,6 +116,6 @@ Once selectors are discovered:
 
 ## Files
 
-- Discovery script: `C:\P4NTH30N\STR4TEG15T\actions\ops017-discover-selectors.js`
-- MCP server: `C:\P4NTH30N\chrome-devtools-mcp\server.js`
-- Output location: `C:\P4NTH30N\STR4TEG15T\knowledge\jackpot_selectors.md`
+- Discovery script: `C:\P4NTHE0N\STR4TEG15T\actions\ops017-discover-selectors.js`
+- MCP server: `C:\P4NTHE0N\chrome-devtools-mcp\server.js`
+- Output location: `C:\P4NTHE0N\STR4TEG15T\knowledge\jackpot_selectors.md`

@@ -42,7 +42,7 @@ Nexus (User)
       ├── Designer (Strategy)
       ├── Librarian (Research)
       ├── Explorer (Discovery)
-      ├── WindFixer (P4NTH30N code - no CLI)
+      ├── WindFixer (P4NTHE0N code - no CLI)
       ├── OpenFixer (External configs - has CLI)
       └── Forgewright (Manual delegation only)
 ```
@@ -64,7 +64,7 @@ Nexus (User)
       ├── Designer (Strategy + Sub-decisions for architecture)
       ├── Librarian (Research + Sub-decisions for knowledge gaps)
       ├── Explorer (Discovery + Sub-decisions for patterns)
-      ├── WindFixer (P4NTH30N code + Bug-fix sub-decisions)
+      ├── WindFixer (P4NTHE0N code + Bug-fix sub-decisions)
       ├── OpenFixer (External configs + Tooling sub-decisions)
       └── Forgewright (Complex implementation + Decision-fix sub-decisions)
 ```
@@ -191,7 +191,7 @@ Phase 4: Integration
 | Designer | Architecture, File Structure | Medium | No (assimilated) |
 | Librarian | Research Gaps, Documentation | Low | No |
 | Explorer | Pattern Discovery, Code Search | Low | No |
-| WindFixer | P4NTH30N Implementation | High | Yes |
+| WindFixer | P4NTHE0N Implementation | High | Yes |
 | OpenFixer | External Config, CLI Tools | High | Yes |
 | Forgewright | Complex Implementation, Bug Fixes | Critical | Yes |
 

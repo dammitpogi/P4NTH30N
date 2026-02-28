@@ -32,18 +32,18 @@ curl http://localhost:1234/v1/models
 ### Step 4: Download Maincoder-1B
 ```bash
 # Create models directory if not exists
-mkdir -p "C:\P4NTH30N\models"
+mkdir -p "C:\P4NTHE0N\models"
 
 # Download from Hugging Face
 # URL: https://huggingface.co/Maincode/Maincoder-1B
 # File: maincoder-1b-q4_k.gguf (~0.8GB)
-# Place in: C:\P4NTH30N\models\
+# Place in: C:\P4NTHE0N\models\
 ```
 
 ### Step 5: Load Model in LM Studio
 1. Open LM Studio
 2. Click "Load Model"
-3. Navigate to C:\P4NTH30N\models\maincoder-1b-q4_k.gguf
+3. Navigate to C:\P4NTHE0N\models\maincoder-1b-q4_k.gguf
 4. Select Q4_K quantization
 5. Wait for model to load (monitor progress bar)
 6. Verify "Server Running" status shows localhost:1234
@@ -51,7 +51,7 @@ mkdir -p "C:\P4NTH30N\models"
 ### Step 6: Re-run Validation Tests
 ```bash
 # Navigate to test directory
-cd "C:\P4NTH30N\tests\pre-validation"
+cd "C:\P4NTHE0N\tests\pre-validation"
 
 # Run validation script (PowerShell)
 .\run-validation.ps1

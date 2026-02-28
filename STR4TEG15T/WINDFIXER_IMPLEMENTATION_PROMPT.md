@@ -10,7 +10,7 @@
 
 ## The Big Picture
 
-You are implementing the most significant infrastructure upgrade in P4NTH30N history. Five decisions, fifty-seven action items, one cohesive transformation. This isn't maintenance. This is evolution.
+You are implementing the most significant infrastructure upgrade in P4NTHE0N history. Five decisions, fifty-seven action items, one cohesive transformation. This isn't maintenance. This is evolution.
 
 **What We're Building**:
 1. **Unbreakable Subagents** - Network errors become retries, not failures
@@ -22,7 +22,7 @@ You are implementing the most significant infrastructure upgrade in P4NTH30N his
 **Why This Matters**:
 The subagents have been failing. Network hiccups kill tasks. There's no human to retry when you're not watching. We're fixing that permanently. Then we're building testing infrastructure that proves our system works. Then we're activating vision capabilities that change how we develop. Then we're organizing our tools so they never pollute context windows again.
 
-This is the sprint where P4NTH30N becomes self-healing, self-testing, and self-improving.
+This is the sprint where P4NTHE0N becomes self-healing, self-testing, and self-improving.
 
 ---
 
@@ -277,7 +277,7 @@ STR4TEG15T/canon/
 ## What You Have Access To
 
 **Codebases**:
-- P4NTH30N: `/c/P4NTH30N/` (H0UND, H4ND, C0MMON, W4TCHD0G, UNI7T35T)
+- P4NTHE0N: `/c/P4NTHE0N/` (H0UND, H4ND, C0MMON, W4TCHD0G, UNI7T35T)
 - Plugin: `~/.config/opencode/dev/` (oh-my-opencode-theseus)
 - Tools: `~/.config/opencode/tools/` (to be migrated)
 
@@ -316,7 +316,7 @@ STR4TEG15T/canon/
 **To OpenFixer**:
 - CLI commands needed (bun, npm, dotnet)
 - Configuration file updates
-- Plugin work outside P4NTH30N source
+- Plugin work outside P4NTHE0N source
 - Tool migration tasks
 
 **To Strategist**:
@@ -341,9 +341,9 @@ STR4TEG15T/canon/
 
 ## Validation Commands
 
-**P4NTH30N**:
+**P4NTHE0N**:
 ```bash
-dotnet build P4NTH30N.slnx
+dotnet build P4NTHE0N.slnx
 dotnet test UNI7T35T/UNI7T35T.csproj
 ```
 
@@ -366,7 +366,7 @@ npm test
 
 ## The Bottom Line
 
-You are not just implementing features. You are building the infrastructure that makes P4NTH30N self-healing, self-testing, and capable of learning. The subagents will stop failing. The tests will prove correctness. FourEyes will see. The tools will organize. And through it all, the system will get stronger.
+You are not just implementing features. You are building the infrastructure that makes P4NTHE0N self-healing, self-testing, and capable of learning. The subagents will stop failing. The tests will prove correctness. FourEyes will see. The tools will organize. And through it all, the system will get stronger.
 
 The Nexus believes in you. The Strategist has prepared the path. The decisions are approved. The Forge awaits your fire.
 

@@ -9,20 +9,20 @@
 
 ### Directory Structure
 
-**Source:** `C:\P4NTH30N\agents\`
+**Source:** `C:\P4NTHE0N\agents\`
 - Contains: `windfixer.md` (1 file only)
 
 **Target:** `C:\Users\paulc\.config\opencode\agents\`
 - Contains: 10 agent files (explorer.md, fixer.md, designer.md, oracle.md, librarian.md, orchestrator.md, strategist.md, forgewright.md, openfixer.md, windfixer.md)
 
 ### Critical Finding: NO EXISTING DEPLOYMENT MECHANISM
-- No script currently deploys from P4NTH30N/agents/ to OpenCode
+- No script currently deploys from P4NTHE0N/agents/ to OpenCode
 - Agent prompts are stored directly in target location
 - Manual copying is the only current method
 
 ### Existing Deployment Infrastructure
-- WindSurf workflows: `deploy.md` (for P4NTH30N app, not agents)
-- WindSurf skills: `deployment/SKILL.md` (for P4NTH30N app)
+- WindSurf workflows: `deploy.md` (for P4NTHE0N app, not agents)
+- WindSurf skills: `deployment/SKILL.md` (for P4NTHE0N app)
 - Scripts: Various setup scripts, none for agent deployment
 
 ---
@@ -105,7 +105,7 @@ Requirements:
 
 ### Phase 1: Core Script (Immediate)
 
-**File:** `C:\P4NTH30N\scripts\deploy-agents.ps1`
+**File:** `C:\P4NTHE0N\scripts\deploy-agents.ps1`
 
 **Features:**
 ```powershell
@@ -144,7 +144,7 @@ Requirements:
 
 **Trigger Options:**
 1. **Manual** (recommended initially) - OpenFixer executes on request
-2. **Git hook** (future) - post-commit hook for P4NTH30N repo
+2. **Git hook** (future) - post-commit hook for P4NTHE0N repo
 3. **CI/CD** (future) - GitHub Actions workflow
 
 **Execution:**
@@ -167,7 +167,7 @@ Requirements:
 
 **Manual trigger (Phase 1):**
 - After ARCH-002 completes
-- When agent definitions are updated in P4NTH30N/agents/
+- When agent definitions are updated in P4NTHE0N/agents/
 - When Oracle approves agent changes
 
 **Automated trigger (Phase 2):**

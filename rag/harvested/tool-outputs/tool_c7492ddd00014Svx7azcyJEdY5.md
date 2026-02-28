@@ -11,9 +11,9 @@
         "$oid": "69967dc2585d7a13e61ec79d"
       },
       "decisionId": "RAG-001",
-      "title": "RAG Layer Architecture for P4NTH30N Knowledge Retrieval",
+      "title": "RAG Layer Architecture for P4NTHE0N Knowledge Retrieval",
       "category": "Platform-Architecture",
-      "description": "Implement Retrieval-Augmented Generation (RAG) layer for P4NTH30N to enable intelligent knowledge retrieval from documentation, error history, decision logs, and casino platform knowledge. Based on WindFixer RAG Discovery findings (6 discovery documents).",
+      "description": "Implement Retrieval-Augmented Generation (RAG) layer for P4NTHE0N to enable intelligent knowledge retrieval from documentation, error history, decision logs, and casino platform knowledge. Based on WindFixer RAG Discovery findings (6 discovery documents).",
       "status": "Proposed",
       "priority": "High",
       "dependencies": [
@@ -118,7 +118,7 @@
       "decisionId": "RAG-001",
       "title": "RAG Context Layer Implementation",
       "category": "Architecture",
-      "description": "Implement a Retrieval-Augmented Generation (RAG) Context layer for the P4NTH30N platform to provide comprehensive access to chat sessions, decisions, and code documentation. The system will use ToolHive for MCP exposure, LM Studio for local embeddings with a small/fast model, and Qdrant vector database deployed on Rancher Desktop Kubernetes.",
+      "description": "Implement a Retrieval-Augmented Generation (RAG) Context layer for the P4NTHE0N platform to provide comprehensive access to chat sessions, decisions, and code documentation. The system will use ToolHive for MCP exposure, LM Studio for local embeddings with a small/fast model, and Qdrant vector database deployed on Rancher Desktop Kubernetes.",
       "status": "Completed",
       "priority": "High",
       "source": "docs/decisions/RAG-001-rag-context-layer.md",
@@ -723,7 +723,7 @@
         "discoveryFindings": {
           "CONTEXT_WINDOW_LIMITS": "SmolLM2-1.7B has 8k context; config validation uses <500 tokens",
           "EMBEDDING_BENCHMARK": "all-MiniLM-L6-v2 good; bge-small-en-v1.5 upgrade path",
-          "FAISS_ANALYSIS": "IndexFlatL2 suitable for <100k vectors; P4NTH30N needs ~1k-50k",
+          "FAISS_ANALYSIS": "IndexFlatL2 suitable for <100k vectors; P4NTHE0N needs ~1k-50k",
           "HARDWARE_ASSESSMENT": "128GB RAM = no constraint; CPU-only fine for RAG",
           "INFRASTRUCTURE_AUDIT": "Python bridges exist, C# integration layer needed",
           "USE_CASES": "Error Analysis (#1), Platform Knowledge (#2), Config Context (#3)"
@@ -1063,7 +1063,7 @@
           "SWE-001",
           "PROD-002"
         ],
-        "executionPath": "P4NTH30N codebase via WindSurf",
+        "executionPath": "P4NTHE0N codebase via WindSurf",
         "progress": "Ready for WindFixer execution"
       },
       "timestamp": {
@@ -1199,7 +1199,7 @@
           "INFRA-010",
           "FOUREYES-004"
         ],
-        "executionPath": "P4NTH30N codebase via WindSurf",
+        "executionPath": "P4NTHE0N codebase via WindSurf",
         "note": "ORACLE APPROVAL: 78% Conditional. Extend existing IMetrics (not parallel). Reuse MONITOR alerting. <10% false positive rate. 5-minute sustained thresholds. Tunable threshold config file."
       },
       "timestamp": {

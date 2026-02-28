@@ -4,7 +4,7 @@
       "name": "FourEyes MCP",
       "type": "http",
       "executable": "node",
-      "workingDirectory": "C:\\P4NTH30N\\tools\\mcp-foureyes",
+      "workingDirectory": "C:\\P4NTHE0N\\tools\\mcp-foureyes",
       "arguments": "server.js --http",
       "environment": {
         "CDP_HOST": "127.0.0.1",
@@ -19,7 +19,7 @@
       "name": "Honeybelt MCP",
       "type": "http",
       "executable": "node",
-      "workingDirectory": "C:\\P4NTH30N\\tools\\mcp-development\\servers\\honeybelt-server",
+      "workingDirectory": "C:\\P4NTHE0N\\tools\\mcp-development\\servers\\honeybelt-server",
       "arguments": "dist/index.js --http",
       "environment": {
         "MCP_PORT": "5303"

@@ -11,7 +11,7 @@
 #### AGENTS.md Updates
 - **Fixed merge conflict**: Removed HEAD/ORIGIN/MAIN conflict markers in C0MMON Project Structure section
 - **Updated build commands**:
-  - Added explicit solution file reference (`P4NTH30N.slnx`) for all build commands
+  - Added explicit solution file reference (`P4NTHE0N.slnx`) for all build commands
   - Added build with full paths option (VS Code default)
   - Added clean/rebuild commands
   - Added project-specific build commands (C0MMON, H4ND, H0UND)
@@ -61,7 +61,7 @@
 ## Key Findings
 
 ### Build System Discovery
-- **Solution file**: `P4NTH30N.slnx` (XML format) - must be used for solution-wide builds
+- **Solution file**: `P4NTHE0N.slnx` (XML format) - must be used for solution-wide builds
 - **Project count**: 9 active projects identified via glob:
   - CLEANUP, PROF3T, H4ND, C0MMON, T00L5ET, UNI7T35T, H0UND, W4TCHD0G
 - **No .sln files**: Only .slnx exists; .sln is not present
@@ -93,7 +93,7 @@
 ## Migration Status
 
 ### Recent Refactor (From AGENTS.md)
-- **Removed**: P4NTH30NSanityChecker and auto-repair sanity checkers
+- **Removed**: P4NTHE0NSanityChecker and auto-repair sanity checkers
 - **Added**: Validation errors logged to `ERR0R` MongoDB collection
 - **Updated**: All entities use `IsValid(IStoreErrors?)` pattern (Credential, Jackpot, DPD)
 - **Health Monitoring**: Now uses ERR0R collection queries instead of internal counters
@@ -113,7 +113,7 @@
 - `RUL3S/resource_override_rules.json`: 9.2MB Chrome extension rules
 - Environment variables:
   - `MONGODB_CONNECTION_STRING`
-  - `MONGODB_DATABASE_NAME` (default: P4NTH30N)
+  - `MONGODB_DATABASE_NAME` (default: P4NTHE0N)
 
 ### Database Collections
 - `CRED3N7IAL`: Player accounts and game data

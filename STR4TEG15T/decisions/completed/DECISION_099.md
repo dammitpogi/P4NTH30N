@@ -372,7 +372,7 @@ After OpenFixer completes:
 | File | Change |
 |------|--------|
 | `H4ND.csproj` | Added `<Compile Remove="SmokeTest\**" />` to exclude SmokeTest subdirectory |
-| `P4NTH30N.slnx` | Added SmokeTest project to solution |
+| `P4NTHE0N.slnx` | Added SmokeTest project to solution |
 
 ### Key Implementation Details
 - **Circuit breaker**: Bootstrap → Navigation → Login → Verification, halts on first failure

@@ -13,7 +13,7 @@
 
 ## Executive Summary
 
-The Nexus has submitted a comprehensive inventory of silent-failure patterns observed throughout P4NTH30N. This document serves as institutional canon - the definitive reference for identifying, analyzing, and remediating silent failures across all future development.
+The Nexus has submitted a comprehensive inventory of silent-failure patterns observed throughout P4NTHE0N. This document serves as institutional canon - the definitive reference for identifying, analyzing, and remediating silent failures across all future development.
 
 **The Five Silent-Failure Patterns:**
 1. Empty catches or ignored exceptions

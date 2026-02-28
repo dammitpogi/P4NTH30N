@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using P4NTH30N.C0MMON.Services;
+using P4NTHE0N.C0MMON.Services;
 
-namespace P4NTH30N.PROF3T.Forgewright;
+namespace P4NTHE0N.PROF3T.Forgewright;
 
 /// <summary>
 /// FOUREYES-024-C: Platform-specific code generator for Forgewright fixes.

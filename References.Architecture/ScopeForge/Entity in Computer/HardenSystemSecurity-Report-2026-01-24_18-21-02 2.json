@@ -1,0 +1,207 @@
+{
+  "Time": "2026-01-24T18:21:07.7264416-08:00",
+  "MachineName": "SCOPEFORGE",
+  "UserName": "nexus",
+  "AppVersion": "1.0.38.0",
+  "Total": 14,
+  "Compliant": 12,
+  "NonCompliant": 2,
+  "LockScreen": {
+    "Count": 14,
+    "Items": [
+      {
+        "Name": "Require digits in Windows Hello PIN",
+        "Category": "LockScreen",
+        "IsApplied": true,
+        "StatusState": "Applied",
+        "SubCategoryName": "",
+        "DeviceIntents": [
+          "Business",
+          "SpecializedAccessWorkstation",
+          "PrivilegedAccessWorkstation"
+        ],
+        "URL": "https://learn.microsoft.com/windows/client-management/mdm/passportforwork-csp#devicetenantidpoliciespincomplexitydigits",
+        "ID": "019a8dfa-24bd-7860-a435-0e2d6ea2852d"
+      },
+      {
+        "Name": "Require lower case letters in Windows Hello PIN",
+        "Category": "LockScreen",
+        "IsApplied": true,
+        "StatusState": "Applied",
+        "SubCategoryName": "",
+        "DeviceIntents": [
+          "Business",
+          "SpecializedAccessWorkstation",
+          "PrivilegedAccessWorkstation"
+        ],
+        "URL": "https://learn.microsoft.com/windows/client-management/mdm/passportforwork-csp#devicetenantidpoliciespincomplexitylowercaseletters",
+        "ID": "019a8dfa-24bd-751f-a0b4-46fdeb9c68d3"
+      },
+      {
+        "Name": "Set Expiration for Windows Hello PIN",
+        "Category": "LockScreen",
+        "IsApplied": true,
+        "StatusState": "Applied",
+        "SubCategoryName": "",
+        "DeviceIntents": [
+          "SpecializedAccessWorkstation",
+          "PrivilegedAccessWorkstation"
+        ],
+        "URL": "https://learn.microsoft.com/windows/client-management/mdm/passportforwork-csp#devicetenantidpoliciespincomplexityexpiration",
+        "ID": "019a8dfa-24bd-79fe-ad1a-adda5634bc7c"
+      },
+      {
+        "Name": "Save history of Windows Hello PIN",
+        "Category": "LockScreen",
+        "IsApplied": true,
+        "StatusState": "Applied",
+        "SubCategoryName": "",
+        "DeviceIntents": [
+          "SpecializedAccessWorkstation",
+          "PrivilegedAccessWorkstation"
+        ],
+        "URL": "https://learn.microsoft.com/windows/client-management/mdm/passportforwork-csp#devicetenantidpoliciespincomplexityhistory",
+        "ID": "019a8dfa-24bd-7d7b-bdd3-0dbd96fd6f45"
+      },
+      {
+        "Name": "Don't Display Network Selection UI on lock screen",
+        "Category": "LockScreen",
+        "IsApplied": true,
+        "StatusState": "Applied",
+        "SubCategoryName": "",
+        "DeviceIntents": [
+          "Business",
+          "SpecializedAccessWorkstation",
+          "PrivilegedAccessWorkstation"
+        ],
+        "URL": "https://learn.microsoft.com/windows/client-management/mdm/policy-csp-windowslogon#dontdisplaynetworkselectionui",
+        "ID": "019a8dfa-24bd-7a41-b3c7-9a9c917dbf6d"
+      },
+      {
+        "Name": "Set the Machine inactivity limit policy so the device will automatically lock after 120 seconds of inactivity.",
+        "Category": "LockScreen",
+        "IsApplied": true,
+        "StatusState": "Applied",
+        "SubCategoryName": "",
+        "DeviceIntents": [
+          "Business",
+          "SpecializedAccessWorkstation",
+          "PrivilegedAccessWorkstation"
+        ],
+        "URL": "https://learn.microsoft.com/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/interactive-logon-machine-inactivity-limit",
+        "ID": "019a8dfa-24bd-7bb2-9fd0-65aa07ed0cf7"
+      },
+      {
+        "Name": "Set an Interactive logon policy to require CTRL+ALT+DEL key combination on Lock Screen before you can enter your credentials. This can mitigate certain attacks that utilize fake lock screens in order to capture the user credentials in clear text such as passwords.",
+        "Category": "LockScreen",
+        "IsApplied": false,
+        "StatusState": "NotApplied",
+        "SubCategory": "LockScreen_RequireCTRLAltDel",
+        "SubCategoryName": "Require CTRL Alt Del",
+        "DeviceIntents": [
+          "PrivilegedAccessWorkstation"
+        ],
+        "URL": "https://learn.microsoft.com/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/interactive-logon-do-not-require-ctrl-alt-del",
+        "ID": "019a8dfa-24be-7c7e-954a-1f6d256ef69b"
+      },
+      {
+        "Name": "Set an Interactive logon policy for Machine account lockout threshold so that the BitLocker encrypted device will be locked after 5 failed attempts to login. You will be required to enter BitLocker recovery key for the OS drive to login again.",
+        "Category": "LockScreen",
+        "IsApplied": true,
+        "StatusState": "Applied",
+        "SubCategoryName": "",
+        "DeviceIntents": [
+          "All"
+        ],
+        "URL": "",
+        "ID": "019a8dfa-24be-749c-a8b3-cbc794c0f4ff"
+      },
+      {
+        "Name": "Set an Interactive logon policy to stop displaying user information when the session is locked.",
+        "Category": "LockScreen",
+        "IsApplied": true,
+        "StatusState": "Applied",
+        "SubCategoryName": "",
+        "DeviceIntents": [
+          "Business",
+          "SpecializedAccessWorkstation",
+          "PrivilegedAccessWorkstation"
+        ],
+        "URL": "",
+        "ID": "019a8dfa-24be-77e9-bcd1-57f33d8aa05d"
+      },
+      {
+        "Name": "Set an Interactive logon policy to stop displaying the username at Lock Screen.",
+        "Category": "LockScreen",
+        "IsApplied": true,
+        "StatusState": "Applied",
+        "SubCategoryName": "",
+        "DeviceIntents": [
+          "Business",
+          "SpecializedAccessWorkstation",
+          "PrivilegedAccessWorkstation"
+        ],
+        "URL": "https://learn.microsoft.com/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/interactive-logon-dont-display-username-at-sign-in",
+        "ID": "019a8dfa-24be-7db6-988d-1d3a8871263f"
+      },
+      {
+        "Name": "Set an Interactive logon policy to stop displaying last signed-in details at Lock Screen.",
+        "Category": "LockScreen",
+        "IsApplied": false,
+        "StatusState": "NotApplied",
+        "SubCategory": "LockScreen_NoLastSignedIn",
+        "SubCategoryName": "No Last Signed In",
+        "DeviceIntents": [
+          "PrivilegedAccessWorkstation"
+        ],
+        "URL": "https://learn.microsoft.com/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/interactive-logon-do-not-display-last-user-name",
+        "ID": "019a8dfa-24be-7ee6-b9c1-745266806dce"
+      },
+      {
+        "Name": "Set the number of allowed failed sign-in attempts to 5. In combination with other policies in this category, this means every 5 failed sign-in attempts will need a full day to pass before 5 more attempts can be made, otherwise BitLocker will engage, the system will restart and 48-digit BitLocker code will be required. This policy greatly prevents brute force attempts.",
+        "Category": "LockScreen",
+        "IsApplied": true,
+        "StatusState": "Applied",
+        "SubCategoryName": "",
+        "DeviceIntents": [
+          "Business",
+          "SpecializedAccessWorkstation",
+          "PrivilegedAccessWorkstation",
+          "School"
+        ],
+        "URL": "https://learn.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/account-lockout-threshold",
+        "ID": "019a9053-c2ad-784a-a5f3-98833b9561ef"
+      },
+      {
+        "Name": "Set the account lockout duration to 1440 minutes or 1 day. In combination with other policies in this category, this means every 5 failed sign-in attempts will need a full day to pass before 5 more attempts can be made, otherwise BitLocker will engage, the system will restart and 48-digit BitLocker code will be required.",
+        "Category": "LockScreen",
+        "IsApplied": true,
+        "StatusState": "Applied",
+        "SubCategoryName": "",
+        "DeviceIntents": [
+          "Business",
+          "SpecializedAccessWorkstation",
+          "PrivilegedAccessWorkstation",
+          "School"
+        ],
+        "URL": "https://learn.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/reset-account-lockout-counter-after",
+        "ID": "019a9054-432d-78e3-84dd-643d9c6f32e5"
+      },
+      {
+        "Name": "Set the reset account lockout counter to 1440 minutes or 1 day.",
+        "Category": "LockScreen",
+        "IsApplied": true,
+        "StatusState": "Applied",
+        "SubCategoryName": "",
+        "DeviceIntents": [
+          "Business",
+          "SpecializedAccessWorkstation",
+          "PrivilegedAccessWorkstation",
+          "School"
+        ],
+        "URL": "https://learn.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/account-lockout-duration",
+        "ID": "019a9054-7174-7921-a470-8056254a15cf"
+      }
+    ]
+  }
+}

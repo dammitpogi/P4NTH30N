@@ -6,7 +6,7 @@
 param(
 	[string]$CdpHost = "192.168.56.1",
 	[int]$CdpPort = 9222,
-	[string]$OutputDir = "C:\P4NTH30N\STR4TEG15T\actions\ops017_results"
+	[string]$OutputDir = "C:\P4NTHE0N\STR4TEG15T\actions\ops017_results"
 )
 
 Write-Host ("=" * 60) -ForegroundColor Cyan

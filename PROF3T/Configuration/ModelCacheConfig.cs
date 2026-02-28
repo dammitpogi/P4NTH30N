@@ -1,4 +1,4 @@
-namespace P4NTH30N.PROF3T.Configuration;
+namespace P4NTHE0N.PROF3T.Configuration;
 
 public class ModelCacheConfig
 {

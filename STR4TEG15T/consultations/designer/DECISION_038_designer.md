@@ -46,7 +46,7 @@
    - Designer: Architecture, File Structure (Medium complexity, no approval)
    - Librarian: Research Gaps, Documentation (Low complexity, no approval)
    - Explorer: Pattern Discovery, Code Search (Low complexity, no approval)
-   - WindFixer: P4NTH30N Implementation (High complexity, Strategist approval)
+   - WindFixer: P4NTHE0N Implementation (High complexity, Strategist approval)
    - OpenFixer: External Config, CLI Tools (High complexity, Strategist approval)
    - Forgewright: Complex Implementation, Bug Fixes (Critical complexity, Strategist approval)
 
@@ -76,7 +76,7 @@
    - Budget thresholds and alert triggers
 
 3. **Token Usage Tracking**
-   - MongoDB collection: `P4NTH30N.tokenUsage`
+   - MongoDB collection: `P4NTHE0N.tokenUsage`
    - Document schema: { agent, task, model, tokens, timestamp, cost }
    - Aggregation for budget reporting
    - Alert queries for threshold violations
@@ -105,7 +105,7 @@
 | `AGENTS.md` | Add Forgewwright as primary agent, sub-decision authority matrix |
 | `STR4TEG15T/decisions/_templates/DECISION-TEMPLATE.md` | Add bug-fix, token budget, model selection sections |
 | Agent prompts (oracle.md, designer.md, etc.) | Add sub-decision authority knowledge |
-| MongoDB `P4NTH30N` database | Create `tokenUsage` collection |
+| MongoDB `P4NTHE0N` database | Create `tokenUsage` collection |
 
 ---
 
@@ -138,7 +138,7 @@ Any Agent ──▶ ErrorClassifier ──▶ Auto-Delegate ──▶ Forgewwrig
 | Designer | Architecture, Files | Medium | No |
 | Librarian | Research, Docs | Low | No |
 | Explorer | Discovery, Patterns | Low | No |
-| WindFixer | P4NTH30N Code | High | Yes |
+| WindFixer | P4NTHE0N Code | High | Yes |
 | OpenFixer | Config, CLI | High | Yes |
 | Forgewright | Complex, Bug Fixes | Critical | Yes |
 ```
@@ -167,7 +167,7 @@ Any Agent ──▶ ErrorClassifier ──▶ Auto-Delegate ──▶ Forgewwrig
 ### MongoDB Schema
 
 ```javascript
-// P4NTH30N.tokenUsage
+// P4NTHE0N.tokenUsage
 {
   _id: ObjectId,
   agent: "strategist",        // Agent name

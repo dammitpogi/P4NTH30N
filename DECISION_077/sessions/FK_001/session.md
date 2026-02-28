@@ -1,6 +1,6 @@
 # DECISION_077 Navigation Session
 
-**Session Directory**: C:\P4NTH30N\DECISION_077\sessions\FK_001
+**Session Directory**: C:\P4NTHE0N\DECISION_077\sessions\FK_001
 **Start Time**: 2026-02-21T18:44:32.008Z
 
 ---

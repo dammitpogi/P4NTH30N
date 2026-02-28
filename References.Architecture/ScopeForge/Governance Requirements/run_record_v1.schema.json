@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://scopeforge.net/schemas/runRecord.v1.json",
+  "title": "Run Record",
+  "type": "object",
+  "required": [
+    "payloadKind",
+    "runId",
+    "ts",
+    "bundleId",
+    "inputsHash",
+    "paramsHash",
+    "artifacts",
+    "vaultRefs"
+  ],
+  "properties": {
+    "payloadKind": {
+      "const": "runRecord"
+    },
+    "runId": {
+      "type": "string",
+      "minLength": 8
+    },
+    "ts": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "actor": {
+      "type": "object",
+      "required": [
+        "type",
+        "id"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "human",
+            "service",
+            "agent"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 3
+        },
+        "sessionId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "bundleId": {
+      "type": "string",
+      "minLength": 6
+    },
+    "inputsHash": {
+      "type": "string",
+      "minLength": 8
+    },
+    "paramsHash": {
+      "type": "string",
+      "minLength": 8
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "sha256",
+          "mediaType"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "minLength": 32
+          },
+          "mediaType": {
+            "type": "string",
+            "minLength": 3
+          },
+          "sizeBytes": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "uri": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "logsRef": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "vaultRefs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 3
+      }
+    }
+  },
+  "additionalProperties": false
+}

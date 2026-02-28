@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
-namespace P4NTH30N.PROF3T.Forgewright;
+namespace P4NTHE0N.PROF3T.Forgewright;
 
 /// <summary>
 /// FOUREYES-024-C: Safe fix applicator for Forgewright assisted fixes.

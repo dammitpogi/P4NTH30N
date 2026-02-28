@@ -15,7 +15,7 @@
 
 **Interface Design**:
 ```csharp
-namespace P4NTH30N.ModelTesting;
+namespace P4NTHE0N.ModelTesting;
 
 public interface ILlmBackend {
     Task<LlmResponse> CompleteAsync(LlmRequest request, CancellationToken ct);
@@ -182,7 +182,7 @@ public sealed class TemperatureSweep {
 using NJsonSchema;
 using NJsonSchema.Validation;
 
-namespace P4NTH30N.DeployLogAnalyzer.Validation;
+namespace P4NTHE0N.DeployLogAnalyzer.Validation;
 
 public sealed class JsonSchemaValidator {
     private readonly JsonSchema _schema;

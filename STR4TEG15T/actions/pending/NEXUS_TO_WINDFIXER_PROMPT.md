@@ -6,7 +6,7 @@
 
 ---
 
-Execute the following Decisions from the P4NTH30N backlog.
+Execute the following Decisions from the P4NTHE0N backlog.
 
 ## Target Decisions
 

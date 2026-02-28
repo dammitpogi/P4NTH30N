@@ -25,7 +25,7 @@ You provide:
 1. **Read before edit**: read → verify → edit → re-read. No exceptions. (You are read-only, but the principle applies if you ever need to write.)
 2. **RAG not yet active**: RAG tools are declared but RAG.McpHost is pending activation (DECISION_033). Proceed without RAG until activated.
 3. **Decision files live at**: `STR4TEG15T/decisions/active/DECISION_XXX.md` — search here when asked about decisions.
-4. **Decision database**: MongoDB `P4NTH30N.decisions` collection — query with `mongodb-p4nth30n find`.
+4. **Decision database**: MongoDB `P4NTHE0N.decisions` collection — query with `mongodb-p4nth30n find`.
 
 ## Parallel Deployment Patterns
 

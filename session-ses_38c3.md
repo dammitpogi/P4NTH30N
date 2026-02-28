@@ -172,13 +172,13 @@ I'll execute ARCH-003-PIVOT Phase 0 Day 1. Let me start by understanding the exi
 **Input:**
 ```json
 {
-  "filePath": "c:\\P4NTH30N"
+  "filePath": "c:\\P4NTHE0N"
 }
 ```
 
 **Output:**
 ```
-<path>c:\P4NTH30N</path>
+<path>c:\P4NTHE0N</path>
 <type>directory</type>
 <entries>
 .aider.chat.history.md
@@ -223,8 +223,8 @@ monitoring/
 NEXUS_PREFLIGHT.md
 NUL
 ORACLE_PLAN_APPROVAL_SNOOP.md
-P4NTH30N.slnx
-P4NTH30N/
+P4NTHE0N.slnx
+P4NTHE0N/
 PROF3T/
 README.md
 Releases/
@@ -254,22 +254,22 @@ Reminder to follow the workflow instructions, consider delegation to specialist(
 ```json
 {
   "pattern": "**/tests/**",
-  "path": "c:\\P4NTH30N"
+  "path": "c:\\P4NTHE0N"
 }
 ```
 
 **Output:**
 ```
-c:\P4NTH30N\tests\pre-validation\results.json
-c:\P4NTH30N\tests\pre-validation\test-configs\test5-special-characters.json
-c:\P4NTH30N\tests\pre-validation\test-configs\test4-empty-strings.json
-c:\P4NTH30N\tests\pre-validation\test-configs\test3-invalid-threshold-order.json
-c:\P4NTH30N\tests\pre-validation\test-configs\test2-missing-required.json
-c:\P4NTH30N\tests\pre-validation\test-configs\test1-valid-config.json
-c:\P4NTH30N\tests\fallback\fallback-system.test.ts
-c:\P4NTH30N\tests\fallback\mock-model-server.ts
-c:\P4NTH30N\tests\fallback\failure-scenarios.ts
-c:\P4NTH30N\tests\fallback\README.md
+c:\P4NTHE0N\tests\pre-validation\results.json
+c:\P4NTHE0N\tests\pre-validation\test-configs\test5-special-characters.json
+c:\P4NTHE0N\tests\pre-validation\test-configs\test4-empty-strings.json
+c:\P4NTHE0N\tests\pre-validation\test-configs\test3-invalid-threshold-order.json
+c:\P4NTHE0N\tests\pre-validation\test-configs\test2-missing-required.json
+c:\P4NTHE0N\tests\pre-validation\test-configs\test1-valid-config.json
+c:\P4NTHE0N\tests\fallback\fallback-system.test.ts
+c:\P4NTHE0N\tests\fallback\mock-model-server.ts
+c:\P4NTHE0N\tests\fallback\failure-scenarios.ts
+c:\P4NTHE0N\tests\fallback\README.md
 ```
 
 **Tool: glob**
@@ -278,112 +278,112 @@ c:\P4NTH30N\tests\fallback\README.md
 ```json
 {
   "pattern": "**/scripts/**",
-  "path": "c:\\P4NTH30N"
+  "path": "c:\\P4NTHE0N"
 }
 ```
 
 **Output:**
 ```
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\refint\DeployLogAnalyzer.Tests.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLogAnalyzer.Tests.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\DeployLogAnalyzer.Tests.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLogAnalyzer.Tests.pdb
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\DeployLogAnalyzer.Tests.pdb
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\LmStudioClientTests.cs
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLogAnalyzer.Tests.csproj.FileListAbsolute.txt
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\DeployLogAnalyzer.Tests.runtimeconfig.json
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLogAnalyzer.Tests.genruntimeconfig.cache
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\DeployLogAnalyzer.Tests.deps.json
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLo.9C30B57F.Up2Date
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\ref\DeployLogAnalyzer.Tests.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLogAnalyzer.Tests.csproj.AssemblyReference.cache
-c:\P4NTH30N\scripts\DeployLogAnalyzer\bin\Debug\net10.0\DeployLogAnalyzer.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\DeployLogAnalyzer.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\obj\Debug\net10.0\DeployLogAnalyzer.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\obj\Debug\net10.0\refint\DeployLogAnalyzer.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\bin\Debug\net10.0\DeployLogAnalyzer.pdb
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\DeployLogAnalyzer.pdb
-c:\P4NTH30N\scripts\DeployLogAnalyzer\obj\Debug\net10.0\DeployLogAnalyzer.pdb
-c:\P4NTH30N\scripts\DeployLogAnalyzer\LogClassifier.cs
-c:\P4NTH30N\scripts\DeployLogAnalyzer\LmStudioClient.cs
-c:\P4NTH30N\scripts\DeployLogAnalyzer\bin\Debug\net10.0\DeployLogAnalyzer.deps.json
-c:\P4NTH30N\scripts\DeployLogAnalyzer\obj\Debug\net10.0\DeployLogAnalyzer.AssemblyInfo.cs
-c:\P4NTH30N\scripts\DeployLogAnalyzer\obj\Debug\net10.0\DeployLogAnalyzer.AssemblyInfoInputs.cache
-c:\P4NTH30N\scripts\DeployLogAnalyzer\DeployLogAnalyzer.csproj
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLogAnalyzer.Tests.sourcelink.json
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\.msCoverageSourceRootsMapping_DeployLogAnalyzer.Tests
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLogAnalyzer.Tests.csproj.CoreCompileInputs.cache
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLogAnalyzer.Tests.AssemblyInfo.cs
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLogAnalyzer.Tests.AssemblyInfoInputs.cache
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLogAnalyzer.Tests.GeneratedMSBuildEditorConfig.editorconfig
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\.NETCoreApp,Version=v10.0.AssemblyAttributes.cs
-c:\P4NTH30N\scripts\DeployLogAnalyzer\obj\Debug\net10.0\DeployLogAnalyzer.assets.cache
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLogAnalyzer.Tests.assets.cache
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLogAnalyzer.Tests.GlobalUsings.g.cs
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\obj\DeployLogAnalyzer.Tests.csproj.nuget.dgspec.json
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\obj\project.nuget.cache
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\obj\project.assets.json
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\obj\DeployLogAnalyzer.Tests.csproj.nuget.g.targets
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\obj\DeployLogAnalyzer.Tests.csproj.nuget.g.props
-c:\P4NTH30N\scripts\DeployLogAnalyzer\obj\DeployLogAnalyzer.csproj.nuget.dgspec.json
-c:\P4NTH30N\scripts\DeployLogAnalyzer\obj\project.nuget.cache
-c:\P4NTH30N\scripts\DeployLogAnalyzer\obj\project.assets.json
-c:\P4NTH30N\scripts\DeployLogAnalyzer\obj\Debug\net10.0\DeployLogAnalyzer.csproj.FileListAbsolute.txt
-c:\P4NTH30N\scripts\DeployLogAnalyzer\obj\Debug\net10.0\DeployLogAnalyzer.csproj.CoreCompileInputs.cache
-c:\P4NTH30N\scripts\DeployLogAnalyzer\obj\Debug\net10.0\DeployLogAnalyzer.sourcelink.json
-c:\P4NTH30N\scripts\DeployLogAnalyzer\obj\Debug\net10.0\.NETCoreApp,Version=v10.0.AssemblyAttributes.cs
-c:\P4NTH30N\scripts\DeployLogAnalyzer\obj\Debug\net10.0\DeployLogAnalyzer.GeneratedMSBuildEditorConfig.editorconfig
-c:\P4NTH30N\scripts\DeployLogAnalyzer\obj\Debug\net10.0\DeployLogAnalyzer.GlobalUsings.g.cs
-c:\P4NTH30N\scripts\DeployLogAnalyzer\obj\DeployLogAnalyzer.csproj.nuget.g.targets
-c:\P4NTH30N\scripts\DeployLogAnalyzer\obj\DeployLogAnalyzer.csproj.nuget.g.props
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\ValidationPipelineTests.cs
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\FewShotPromptTests.cs
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\HealthCheckerTests.cs
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\DecisionTrackerTests.cs
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\LogClassifierTests.cs
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\DeployLogAnalyzer.Tests.csproj
-c:\P4NTH30N\scripts\DeployLogAnalyzer\ValidationPipeline.cs
-c:\P4NTH30N\scripts\DeployLogAnalyzer\DecisionTracker.cs
-c:\P4NTH30N\scripts\DeployLogAnalyzer\FewShotPrompt.cs
-c:\P4NTH30N\scripts\agent-versions.json
-c:\P4NTH30N\scripts\deploy-agents.ps1
-c:\P4NTH30N\scripts\DeployLogAnalyzer\HealthChecker.cs
-c:\P4NTH30N\scripts\restore\mongodb-restore.ps1
-c:\P4NTH30N\scripts\backup\mongodb-backup.ps1
-c:\P4NTH30N\scripts\vm\setup-executor-vm.ps1
-c:\P4NTH30N\scripts\setup\validate-environment.ps1
-c:\P4NTH30N\scripts\setup\setup-chromedriver.ps1
-c:\P4NTH30N\scripts\rag\embedding-bridge.py
-c:\P4NTH30N\scripts\rag\faiss-bridge.py
-c:\P4NTH30N\scripts\security\generate-master-key.ps1
-c:\P4NTH30N\scripts\open-windsurf-permissions.ps1
-c:\P4NTH30N\scripts\setup\setup-mongodb.ps1
-c:\P4NTH30N\scripts\setup\check-prerequisites.ps1
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\de\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\Microsoft.TestPlatform.CrossPlatEngine.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\cs\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\de\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\Microsoft.TestPlatform.CommunicationUtilities.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\cs\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\ko\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\de\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\Microsoft.VisualStudio.TestPlatform.Common.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\cs\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\Microsoft.TestPlatform.Utilities.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\de\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\cs\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\ko\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\de\Microsoft.TestPlatform.CoreUtilities.resources.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\Microsoft.TestPlatform.CoreUtilities.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\cs\Microsoft.TestPlatform.CoreUtilities.resources.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\zh-Hant\Microsoft.TestPlatform.CoreUtilities.resources.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\Microsoft.TestPlatform.PlatformAbstractions.dll
-c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\Microsoft.VisualStudio.CodeCoverage.Shim.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\refint\DeployLogAnalyzer.Tests.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLogAnalyzer.Tests.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\DeployLogAnalyzer.Tests.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLogAnalyzer.Tests.pdb
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\DeployLogAnalyzer.Tests.pdb
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\LmStudioClientTests.cs
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLogAnalyzer.Tests.csproj.FileListAbsolute.txt
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\DeployLogAnalyzer.Tests.runtimeconfig.json
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLogAnalyzer.Tests.genruntimeconfig.cache
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\DeployLogAnalyzer.Tests.deps.json
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLo.9C30B57F.Up2Date
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\ref\DeployLogAnalyzer.Tests.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLogAnalyzer.Tests.csproj.AssemblyReference.cache
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\bin\Debug\net10.0\DeployLogAnalyzer.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\DeployLogAnalyzer.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\obj\Debug\net10.0\DeployLogAnalyzer.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\obj\Debug\net10.0\refint\DeployLogAnalyzer.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\bin\Debug\net10.0\DeployLogAnalyzer.pdb
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\DeployLogAnalyzer.pdb
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\obj\Debug\net10.0\DeployLogAnalyzer.pdb
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\LogClassifier.cs
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\LmStudioClient.cs
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\bin\Debug\net10.0\DeployLogAnalyzer.deps.json
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\obj\Debug\net10.0\DeployLogAnalyzer.AssemblyInfo.cs
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\obj\Debug\net10.0\DeployLogAnalyzer.AssemblyInfoInputs.cache
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\DeployLogAnalyzer.csproj
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLogAnalyzer.Tests.sourcelink.json
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\.msCoverageSourceRootsMapping_DeployLogAnalyzer.Tests
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLogAnalyzer.Tests.csproj.CoreCompileInputs.cache
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLogAnalyzer.Tests.AssemblyInfo.cs
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLogAnalyzer.Tests.AssemblyInfoInputs.cache
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLogAnalyzer.Tests.GeneratedMSBuildEditorConfig.editorconfig
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\.NETCoreApp,Version=v10.0.AssemblyAttributes.cs
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\obj\Debug\net10.0\DeployLogAnalyzer.assets.cache
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLogAnalyzer.Tests.assets.cache
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\obj\Debug\net10.0\DeployLogAnalyzer.Tests.GlobalUsings.g.cs
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\obj\DeployLogAnalyzer.Tests.csproj.nuget.dgspec.json
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\obj\project.nuget.cache
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\obj\project.assets.json
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\obj\DeployLogAnalyzer.Tests.csproj.nuget.g.targets
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\obj\DeployLogAnalyzer.Tests.csproj.nuget.g.props
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\obj\DeployLogAnalyzer.csproj.nuget.dgspec.json
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\obj\project.nuget.cache
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\obj\project.assets.json
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\obj\Debug\net10.0\DeployLogAnalyzer.csproj.FileListAbsolute.txt
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\obj\Debug\net10.0\DeployLogAnalyzer.csproj.CoreCompileInputs.cache
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\obj\Debug\net10.0\DeployLogAnalyzer.sourcelink.json
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\obj\Debug\net10.0\.NETCoreApp,Version=v10.0.AssemblyAttributes.cs
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\obj\Debug\net10.0\DeployLogAnalyzer.GeneratedMSBuildEditorConfig.editorconfig
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\obj\Debug\net10.0\DeployLogAnalyzer.GlobalUsings.g.cs
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\obj\DeployLogAnalyzer.csproj.nuget.g.targets
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\obj\DeployLogAnalyzer.csproj.nuget.g.props
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\ValidationPipelineTests.cs
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\FewShotPromptTests.cs
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\HealthCheckerTests.cs
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\DecisionTrackerTests.cs
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\LogClassifierTests.cs
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\DeployLogAnalyzer.Tests.csproj
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\ValidationPipeline.cs
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\DecisionTracker.cs
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\FewShotPrompt.cs
+c:\P4NTHE0N\scripts\agent-versions.json
+c:\P4NTHE0N\scripts\deploy-agents.ps1
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\HealthChecker.cs
+c:\P4NTHE0N\scripts\restore\mongodb-restore.ps1
+c:\P4NTHE0N\scripts\backup\mongodb-backup.ps1
+c:\P4NTHE0N\scripts\vm\setup-executor-vm.ps1
+c:\P4NTHE0N\scripts\setup\validate-environment.ps1
+c:\P4NTHE0N\scripts\setup\setup-chromedriver.ps1
+c:\P4NTHE0N\scripts\rag\embedding-bridge.py
+c:\P4NTHE0N\scripts\rag\faiss-bridge.py
+c:\P4NTHE0N\scripts\security\generate-master-key.ps1
+c:\P4NTHE0N\scripts\open-windsurf-permissions.ps1
+c:\P4NTHE0N\scripts\setup\setup-mongodb.ps1
+c:\P4NTHE0N\scripts\setup\check-prerequisites.ps1
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\de\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\Microsoft.TestPlatform.CrossPlatEngine.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\cs\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\de\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\Microsoft.TestPlatform.CommunicationUtilities.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\cs\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\ko\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\de\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\Microsoft.VisualStudio.TestPlatform.Common.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\cs\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\Microsoft.TestPlatform.Utilities.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\de\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\cs\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\ko\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\de\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\Microsoft.TestPlatform.CoreUtilities.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\cs\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\zh-Hant\Microsoft.TestPlatform.CoreUtilities.resources.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\Microsoft.TestPlatform.PlatformAbstractions.dll
+c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\Microsoft.VisualStudio.CodeCoverage.Shim.dll
 
 (Results are truncated: showing first 100 results. Consider using a more specific path or pattern.)
 ```
@@ -394,112 +394,112 @@ c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\bin\Debug\net10.0\Microsoft.VisualSt
 ```json
 {
   "pattern": "**/T4CT1CS/**",
-  "path": "c:\\P4NTH30N"
+  "path": "c:\\P4NTHE0N"
 }
 ```
 
 **Output:**
 ```
-c:\P4NTH30N\T4CT1CS\speech\202602182000_Both_Consultations_Complete.md
-c:\P4NTH30N\T4CT1CS\speech\202602181945_Designer_Consultation_Complete.md
-c:\P4NTH30N\T4CT1CS\speech\202602181930_Empirical_Findings.md
-c:\P4NTH30N\T4CT1CS\speech\202602181900_Both_Fixers_Complete.md
-c:\P4NTH30N\T4CT1CS\obj\T4CT1CS.csproj.nuget.dgspec.json
-c:\P4NTH30N\T4CT1CS\prod-readiness\checklist.md
-c:\P4NTH30N\T4CT1CS\speech\202602181830_Calm_Synthesis.md
-c:\P4NTH30N\T4CT1CS\actions\pending\OPENFIXER_PROMPT.md
-c:\P4NTH30N\T4CT1CS\actions\pending\WINDFIXER_PROMPT.md
-c:\P4NTH30N\T4CT1CS\obj\Release\net10.0\T4CT1CS.csproj.FileListAbsolute.txt
-c:\P4NTH30N\T4CT1CS\bin\Release\net10.0\T4CT1CS.runtimeconfig.json
-c:\P4NTH30N\T4CT1CS\obj\Release\net10.0\T4CT1CS.genruntimeconfig.cache
-c:\P4NTH30N\T4CT1CS\bin\Release\net10.0\T4CT1CS.deps.json
-c:\P4NTH30N\T4CT1CS\bin\Release\net10.0\T4CT1CS.exe
-c:\P4NTH30N\T4CT1CS\obj\Release\net10.0\T4CT1CS.dll
-c:\P4NTH30N\T4CT1CS\bin\Release\net10.0\T4CT1CS.dll
-c:\P4NTH30N\T4CT1CS\obj\Release\net10.0\T4CT1CS.pdb
-c:\P4NTH30N\T4CT1CS\bin\Release\net10.0\T4CT1CS.pdb
-c:\P4NTH30N\T4CT1CS\obj\Release\net10.0\T4CT1CS.sourcelink.json
-c:\P4NTH30N\T4CT1CS\obj\Release\net10.0\T4CT1CS.csproj.CoreCompileInputs.cache
-c:\P4NTH30N\T4CT1CS\obj\Release\net10.0\T4CT1CS.AssemblyInfo.cs
-c:\P4NTH30N\T4CT1CS\obj\Release\net10.0\T4CT1CS.AssemblyInfoInputs.cache
-c:\P4NTH30N\T4CT1CS\obj\Release\net10.0\T4CT1CS.GeneratedMSBuildEditorConfig.editorconfig
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T23-00-00.md
-c:\P4NTH30N\T4CT1CS\actions\pending\OPUS_ULTIMATE_TEST.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T22-15-00.md
-c:\P4NTH30N\T4CT1CS\Program.cs
-c:\P4NTH30N\T4CT1CS\SimpleServiceProvider.cs
-c:\P4NTH30N\T4CT1CS\ConsoleLogger.cs
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T22-00-00.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T21-30-00.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T21-15-00.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T21-00-00.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T20-45-00.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T20-30-00.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T20-15-00.md
-c:\P4NTH30N\T4CT1CS\actions\pending\OPUS4.6_DISCOVERY_QUERY.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T20-00-00.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T19-45-00.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T19-30-00.md
-c:\P4NTH30N\T4CT1CS\actions\pending\SWE1.5_ROUND2_QUERY.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T19-15-00.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T19-00-00.md
-c:\P4NTH30N\T4CT1CS\actions\pending\SWE1.5_ROUND1_QUERY.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T18-45-00.md
-c:\P4NTH30N\T4CT1CS\actions\pending\WINDSURF_QUICK_REFERENCE.md
-c:\P4NTH30N\T4CT1CS\actions\pending\WINDSURF_PROMPT_VARIANTS.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T18-30-00.md
-c:\P4NTH30N\T4CT1CS\actions\pending\WINDSURF_MODEL_LIMITATIONS_PROMPT.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T18-00-00.md
-c:\P4NTH30N\T4CT1CS\speech\202602181400_WindSurf_Assimilation.md
-c:\P4NTH30N\T4CT1CS\actions\pending\FIXER_PROMPT.md
-c:\P4NTH30N\T4CT1CS\actions\pending\FIXER_WORKFLOW.md
-c:\P4NTH30N\T4CT1CS\actions\pending\FIXER_TO_STRATEGIST_REPLY.md
-c:\P4NTH30N\T4CT1CS\actions\pending\WINDFIXER_TO_STRATEGIST_REPLY.md
-c:\P4NTH30N\T4CT1CS\actions\pending\STRATEGIST_TO_FIXER_PROMPT.md
-c:\P4NTH30N\T4CT1CS\actions\pending\NEXUS_TO_WINDFIXER_PROMPT.md
-c:\P4NTH30N\T4CT1CS\actions\pending\NEXUS_PREFLIGHT.md
-c:\P4NTH30N\T4CT1CS\actions\pending\WINDSURF_PERMISSIONS_GUIDE.md
-c:\P4NTH30N\T4CT1CS\speech\202602181213_Running_logs.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T17-00-00-ASSIMILATION-COMPLETE.md
-c:\P4NTH30N\T4CT1CS\speech\202602180822_Boots-Down_logs.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T16-00-00-IMPLEMENTATION-DIRECTION.md
-c:\P4NTH30N\T4CT1CS\actions\pending\LM_STUDIO_DIRECTION.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T15-00-00-ORACLE-FINAL.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T14-00-00-DESIGNER-ASSESSMENT.md
-c:\P4NTH30N\T4CT1CS\actions\pending\FIXER_BRIEF_v2.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T13-00-00-CODEBASE-ASSESSMENT.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T12-05-00-FIXER-BRIEF.md
-c:\P4NTH30N\T4CT1CS\actions\pending\FIXER_BRIEF_FOUREYES.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T12-00-00-FOUREYES-DECISIONS.md
-c:\P4NTH30N\T4CT1CS\speech\20260217_Genesis_logs.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T17-15-00.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T17-00-00.md
-c:\P4NTH30N\T4CT1CS\README.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T16-30-00.md
-c:\P4NTH30N\T4CT1CS\actions\pending\WIN_PHASE_BRIEF.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T16-00-00.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T15-30-00.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T15-15-00.md
-c:\P4NTH30N\T4CT1CS\actions\pending\START_HERE.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T15-00-00.md
-c:\P4NTH30N\T4CT1CS\actions\pending\FOUR_EYES_MASTER_BRIEF.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T14-00-00.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T13-15-00.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T13-00-00.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T12-30-00.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T12-00-00.md
-c:\P4NTH30N\T4CT1CS\actions\pending\FIXER_BRIEF.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T11-30-00.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T11-00-00.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T10-30-00.md
-c:\P4NTH30N\T4CT1CS\speech\2026-02-18T09-00-00.md
-c:\P4NTH30N\T4CT1CS\speech\2025-02-17T21-00-00.md
-c:\P4NTH30N\T4CT1CS\speech\2025-02-17T20-45-00.md
-c:\P4NTH30N\T4CT1CS\obj\Release\net10.0\T4CT1CS.assets.cache
-c:\P4NTH30N\T4CT1CS\obj\T4CT1CS.csproj.nuget.g.targets
-c:\P4NTH30N\T4CT1CS\obj\T4CT1CS.csproj.nuget.g.props
-c:\P4NTH30N\T4CT1CS\obj\Release\net10.0\T4CT1CS.GlobalUsings.g.cs
-c:\P4NTH30N\T4CT1CS\T4CT1CS.csproj
+c:\P4NTHE0N\T4CT1CS\speech\202602182000_Both_Consultations_Complete.md
+c:\P4NTHE0N\T4CT1CS\speech\202602181945_Designer_Consultation_Complete.md
+c:\P4NTHE0N\T4CT1CS\speech\202602181930_Empirical_Findings.md
+c:\P4NTHE0N\T4CT1CS\speech\202602181900_Both_Fixers_Complete.md
+c:\P4NTHE0N\T4CT1CS\obj\T4CT1CS.csproj.nuget.dgspec.json
+c:\P4NTHE0N\T4CT1CS\prod-readiness\checklist.md
+c:\P4NTHE0N\T4CT1CS\speech\202602181830_Calm_Synthesis.md
+c:\P4NTHE0N\T4CT1CS\actions\pending\OPENFIXER_PROMPT.md
+c:\P4NTHE0N\T4CT1CS\actions\pending\WINDFIXER_PROMPT.md
+c:\P4NTHE0N\T4CT1CS\obj\Release\net10.0\T4CT1CS.csproj.FileListAbsolute.txt
+c:\P4NTHE0N\T4CT1CS\bin\Release\net10.0\T4CT1CS.runtimeconfig.json
+c:\P4NTHE0N\T4CT1CS\obj\Release\net10.0\T4CT1CS.genruntimeconfig.cache
+c:\P4NTHE0N\T4CT1CS\bin\Release\net10.0\T4CT1CS.deps.json
+c:\P4NTHE0N\T4CT1CS\bin\Release\net10.0\T4CT1CS.exe
+c:\P4NTHE0N\T4CT1CS\obj\Release\net10.0\T4CT1CS.dll
+c:\P4NTHE0N\T4CT1CS\bin\Release\net10.0\T4CT1CS.dll
+c:\P4NTHE0N\T4CT1CS\obj\Release\net10.0\T4CT1CS.pdb
+c:\P4NTHE0N\T4CT1CS\bin\Release\net10.0\T4CT1CS.pdb
+c:\P4NTHE0N\T4CT1CS\obj\Release\net10.0\T4CT1CS.sourcelink.json
+c:\P4NTHE0N\T4CT1CS\obj\Release\net10.0\T4CT1CS.csproj.CoreCompileInputs.cache
+c:\P4NTHE0N\T4CT1CS\obj\Release\net10.0\T4CT1CS.AssemblyInfo.cs
+c:\P4NTHE0N\T4CT1CS\obj\Release\net10.0\T4CT1CS.AssemblyInfoInputs.cache
+c:\P4NTHE0N\T4CT1CS\obj\Release\net10.0\T4CT1CS.GeneratedMSBuildEditorConfig.editorconfig
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T23-00-00.md
+c:\P4NTHE0N\T4CT1CS\actions\pending\OPUS_ULTIMATE_TEST.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T22-15-00.md
+c:\P4NTHE0N\T4CT1CS\Program.cs
+c:\P4NTHE0N\T4CT1CS\SimpleServiceProvider.cs
+c:\P4NTHE0N\T4CT1CS\ConsoleLogger.cs
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T22-00-00.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T21-30-00.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T21-15-00.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T21-00-00.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T20-45-00.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T20-30-00.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T20-15-00.md
+c:\P4NTHE0N\T4CT1CS\actions\pending\OPUS4.6_DISCOVERY_QUERY.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T20-00-00.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T19-45-00.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T19-30-00.md
+c:\P4NTHE0N\T4CT1CS\actions\pending\SWE1.5_ROUND2_QUERY.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T19-15-00.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T19-00-00.md
+c:\P4NTHE0N\T4CT1CS\actions\pending\SWE1.5_ROUND1_QUERY.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T18-45-00.md
+c:\P4NTHE0N\T4CT1CS\actions\pending\WINDSURF_QUICK_REFERENCE.md
+c:\P4NTHE0N\T4CT1CS\actions\pending\WINDSURF_PROMPT_VARIANTS.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T18-30-00.md
+c:\P4NTHE0N\T4CT1CS\actions\pending\WINDSURF_MODEL_LIMITATIONS_PROMPT.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T18-00-00.md
+c:\P4NTHE0N\T4CT1CS\speech\202602181400_WindSurf_Assimilation.md
+c:\P4NTHE0N\T4CT1CS\actions\pending\FIXER_PROMPT.md
+c:\P4NTHE0N\T4CT1CS\actions\pending\FIXER_WORKFLOW.md
+c:\P4NTHE0N\T4CT1CS\actions\pending\FIXER_TO_STRATEGIST_REPLY.md
+c:\P4NTHE0N\T4CT1CS\actions\pending\WINDFIXER_TO_STRATEGIST_REPLY.md
+c:\P4NTHE0N\T4CT1CS\actions\pending\STRATEGIST_TO_FIXER_PROMPT.md
+c:\P4NTHE0N\T4CT1CS\actions\pending\NEXUS_TO_WINDFIXER_PROMPT.md
+c:\P4NTHE0N\T4CT1CS\actions\pending\NEXUS_PREFLIGHT.md
+c:\P4NTHE0N\T4CT1CS\actions\pending\WINDSURF_PERMISSIONS_GUIDE.md
+c:\P4NTHE0N\T4CT1CS\speech\202602181213_Running_logs.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T17-00-00-ASSIMILATION-COMPLETE.md
+c:\P4NTHE0N\T4CT1CS\speech\202602180822_Boots-Down_logs.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T16-00-00-IMPLEMENTATION-DIRECTION.md
+c:\P4NTHE0N\T4CT1CS\actions\pending\LM_STUDIO_DIRECTION.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T15-00-00-ORACLE-FINAL.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T14-00-00-DESIGNER-ASSESSMENT.md
+c:\P4NTHE0N\T4CT1CS\actions\pending\FIXER_BRIEF_v2.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T13-00-00-CODEBASE-ASSESSMENT.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T12-05-00-FIXER-BRIEF.md
+c:\P4NTHE0N\T4CT1CS\actions\pending\FIXER_BRIEF_FOUREYES.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T12-00-00-FOUREYES-DECISIONS.md
+c:\P4NTHE0N\T4CT1CS\speech\20260217_Genesis_logs.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T17-15-00.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T17-00-00.md
+c:\P4NTHE0N\T4CT1CS\README.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T16-30-00.md
+c:\P4NTHE0N\T4CT1CS\actions\pending\WIN_PHASE_BRIEF.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T16-00-00.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T15-30-00.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T15-15-00.md
+c:\P4NTHE0N\T4CT1CS\actions\pending\START_HERE.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T15-00-00.md
+c:\P4NTHE0N\T4CT1CS\actions\pending\FOUR_EYES_MASTER_BRIEF.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T14-00-00.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T13-15-00.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T13-00-00.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T12-30-00.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T12-00-00.md
+c:\P4NTHE0N\T4CT1CS\actions\pending\FIXER_BRIEF.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T11-30-00.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T11-00-00.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T10-30-00.md
+c:\P4NTHE0N\T4CT1CS\speech\2026-02-18T09-00-00.md
+c:\P4NTHE0N\T4CT1CS\speech\2025-02-17T21-00-00.md
+c:\P4NTHE0N\T4CT1CS\speech\2025-02-17T20-45-00.md
+c:\P4NTHE0N\T4CT1CS\obj\Release\net10.0\T4CT1CS.assets.cache
+c:\P4NTHE0N\T4CT1CS\obj\T4CT1CS.csproj.nuget.g.targets
+c:\P4NTHE0N\T4CT1CS\obj\T4CT1CS.csproj.nuget.g.props
+c:\P4NTHE0N\T4CT1CS\obj\Release\net10.0\T4CT1CS.GlobalUsings.g.cs
+c:\P4NTHE0N\T4CT1CS\T4CT1CS.csproj
 
 (Results are truncated: showing first 100 results. Consider using a more specific path or pattern.)
 ```
@@ -510,18 +510,18 @@ c:\P4NTH30N\T4CT1CS\T4CT1CS.csproj
 ```json
 {
   "pattern": "**/pre-validation/**",
-  "path": "c:\\P4NTH30N"
+  "path": "c:\\P4NTHE0N"
 }
 ```
 
 **Output:**
 ```
-c:\P4NTH30N\tests\pre-validation\results.json
-c:\P4NTH30N\tests\pre-validation\test-configs\test5-special-characters.json
-c:\P4NTH30N\tests\pre-validation\test-configs\test4-empty-strings.json
-c:\P4NTH30N\tests\pre-validation\test-configs\test3-invalid-threshold-order.json
-c:\P4NTH30N\tests\pre-validation\test-configs\test2-missing-required.json
-c:\P4NTH30N\tests\pre-validation\test-configs\test1-valid-config.json
+c:\P4NTHE0N\tests\pre-validation\results.json
+c:\P4NTHE0N\tests\pre-validation\test-configs\test5-special-characters.json
+c:\P4NTHE0N\tests\pre-validation\test-configs\test4-empty-strings.json
+c:\P4NTHE0N\tests\pre-validation\test-configs\test3-invalid-threshold-order.json
+c:\P4NTHE0N\tests\pre-validation\test-configs\test2-missing-required.json
+c:\P4NTHE0N\tests\pre-validation\test-configs\test1-valid-config.json
 ```
 
 ---
@@ -535,20 +535,20 @@ Good. Existing infrastructure is in `scripts/DeployLogAnalyzer/`. Let me read th
 **Input:**
 ```json
 {
-  "filePath": "c:\\P4NTH30N\\scripts\\DeployLogAnalyzer\\LmStudioClient.cs"
+  "filePath": "c:\\P4NTHE0N\\scripts\\DeployLogAnalyzer\\LmStudioClient.cs"
 }
 ```
 
 **Output:**
 ```
-<path>c:\P4NTH30N\scripts\DeployLogAnalyzer\LmStudioClient.cs</path>
+<path>c:\P4NTHE0N\scripts\DeployLogAnalyzer\LmStudioClient.cs</path>
 <type>file</type>
 <content>1: using System.Diagnostics;
 2: using System.Net.Http.Headers;
 3: using System.Text;
 4: using System.Text.Json;
 5: 
-6: namespace P4NTH30N.DeployLogAnalyzer;
+6: namespace P4NTHE0N.DeployLogAnalyzer;
 7: 
 8: /// <summary>
 9: /// LM Studio integration client for deployment log analysis.
@@ -797,26 +797,26 @@ Reminder to follow the workflow instructions, consider delegation to specialist(
 **Input:**
 ```json
 {
-  "filePath": "c:\\P4NTH30N\\scripts\\DeployLogAnalyzer\\DeployLogAnalyzer.csproj"
+  "filePath": "c:\\P4NTHE0N\\scripts\\DeployLogAnalyzer\\DeployLogAnalyzer.csproj"
 }
 ```
 
 **Output:**
 ```
-<path>c:\P4NTH30N\scripts\DeployLogAnalyzer\DeployLogAnalyzer.csproj</path>
+<path>c:\P4NTHE0N\scripts\DeployLogAnalyzer\DeployLogAnalyzer.csproj</path>
 <type>file</type>
 <content>1: <Project Sdk="Microsoft.NET.Sdk">
 2: 	<PropertyGroup>
 3: 		<TargetFramework>net10.0</TargetFramework>
 4: 		<ImplicitUsings>enable</ImplicitUsings>
 5: 		<Nullable>enable</Nullable>
-6: 		<RootNamespace>P4NTH30N.DeployLogAnalyzer</RootNamespace>
+6: 		<RootNamespace>P4NTHE0N.DeployLogAnalyzer</RootNamespace>
 7: 	</PropertyGroup>
 8: 	<ItemGroup>
 9: 		<Compile Remove="Tests\**" />
 10: 	</ItemGroup>
 11: 	<ItemGroup>
-12: 		<InternalsVisibleTo Include="P4NTH30N.DeployLogAnalyzer.Tests" />
+12: 		<InternalsVisibleTo Include="P4NTHE0N.DeployLogAnalyzer.Tests" />
 13: 	</ItemGroup>
 14: </Project>
 15: 
@@ -833,19 +833,19 @@ Reminder to follow the workflow instructions, consider delegation to specialist(
 **Input:**
 ```json
 {
-  "filePath": "c:\\P4NTH30N\\scripts\\DeployLogAnalyzer\\ValidationPipeline.cs"
+  "filePath": "c:\\P4NTHE0N\\scripts\\DeployLogAnalyzer\\ValidationPipeline.cs"
 }
 ```
 
 **Output:**
 ```
-<path>c:\P4NTH30N\scripts\DeployLogAnalyzer\ValidationPipeline.cs</path>
+<path>c:\P4NTHE0N\scripts\DeployLogAnalyzer\ValidationPipeline.cs</path>
 <type>file</type>
 <content>1: using System.Diagnostics;
 2: using System.Text.Json;
 3: using System.Text.Json.Serialization;
 4: 
-5: namespace P4NTH30N.DeployLogAnalyzer;
+5: namespace P4NTHE0N.DeployLogAnalyzer;
 6: 
 7: /// <summary>
 8: /// Validation pipeline enforcing 95% accuracy on a test set before allowing deployment.
@@ -1136,18 +1136,18 @@ Reminder to follow the workflow instructions, consider delegation to specialist(
 **Input:**
 ```json
 {
-  "filePath": "c:\\P4NTH30N\\scripts\\DeployLogAnalyzer\\LogClassifier.cs"
+  "filePath": "c:\\P4NTHE0N\\scripts\\DeployLogAnalyzer\\LogClassifier.cs"
 }
 ```
 
 **Output:**
 ```
-<path>c:\P4NTH30N\scripts\DeployLogAnalyzer\LogClassifier.cs</path>
+<path>c:\P4NTHE0N\scripts\DeployLogAnalyzer\LogClassifier.cs</path>
 <type>file</type>
 <content>1: using System.Text.Json;
 2: using System.Text.RegularExpressions;
 3: 
-4: namespace P4NTH30N.DeployLogAnalyzer;
+4: namespace P4NTHE0N.DeployLogAnalyzer;
 5: 
 6: /// <summary>
 7: /// Deployment log analysis and classification engine.
@@ -1361,15 +1361,15 @@ Reminder to follow the workflow instructions, consider delegation to specialist(
 **Input:**
 ```json
 {
-  "filePath": "c:\\P4NTH30N\\scripts\\DeployLogAnalyzer\\FewShotPrompt.cs"
+  "filePath": "c:\\P4NTHE0N\\scripts\\DeployLogAnalyzer\\FewShotPrompt.cs"
 }
 ```
 
 **Output:**
 ```
-<path>c:\P4NTH30N\scripts\DeployLogAnalyzer\FewShotPrompt.cs</path>
+<path>c:\P4NTHE0N\scripts\DeployLogAnalyzer\FewShotPrompt.cs</path>
 <type>file</type>
-<content>1: namespace P4NTH30N.DeployLogAnalyzer;
+<content>1: namespace P4NTHE0N.DeployLogAnalyzer;
 2: 
 3: /// <summary>
 4: /// Few-shot prompt templates for LLM-powered deployment analysis.
@@ -1381,7 +1381,7 @@ Reminder to follow the workflow instructions, consider delegation to specialist(
 10: 	/// </summary>
 11: 	public static string GetConfigValidationPrompt() {
 12: 		return """
-13: 			You are a deployment configuration validator for the P4NTH30N system.
+13: 			You are a deployment configuration validator for the P4NTHE0N system.
 14: 			Analyze the provided configuration and determine if it is valid.
 15: 
 16: 			Rules:
@@ -1423,7 +1423,7 @@ Reminder to follow the workflow instructions, consider delegation to specialist(
 52: 	/// </summary>
 53: 	public static string GetLogClassificationPrompt() {
 54: 		return """
-55: 			You are a deployment log classifier for the P4NTH30N system.
+55: 			You are a deployment log classifier for the P4NTHE0N system.
 56: 			Classify each log entry by severity and extract error patterns.
 57: 
 58: 			Severity levels:
@@ -1457,7 +1457,7 @@ Reminder to follow the workflow instructions, consider delegation to specialist(
 86: 	/// </summary>
 87: 	public static string GetDeploymentDecisionPrompt() {
 88: 		return """
-89: 			You are a deployment decision advisor for the P4NTH30N system.
+89: 			You are a deployment decision advisor for the P4NTHE0N system.
 90: 			Based on the provided health report and log analysis, recommend GO or NO-GO.
 91: 
 92: 			Decision criteria:
@@ -1495,18 +1495,18 @@ Reminder to follow the workflow instructions, consider delegation to specialist(
 **Input:**
 ```json
 {
-  "filePath": "c:\\P4NTH30N\\scripts\\DeployLogAnalyzer\\DecisionTracker.cs"
+  "filePath": "c:\\P4NTHE0N\\scripts\\DeployLogAnalyzer\\DecisionTracker.cs"
 }
 ```
 
 **Output:**
 ```
-<path>c:\P4NTH30N\scripts\DeployLogAnalyzer\DecisionTracker.cs</path>
+<path>c:\P4NTHE0N\scripts\DeployLogAnalyzer\DecisionTracker.cs</path>
 <type>file</type>
 <content>1: using System.Text.Json;
 2: using System.Text.Json.Serialization;
 3: 
-4: namespace P4NTH30N.DeployLogAnalyzer;
+4: namespace P4NTHE0N.DeployLogAnalyzer;
 5: 
 6: /// <summary>
 7: /// Tracks deployment go/no-go decisions and implements rollback logic.
@@ -1711,17 +1711,17 @@ Reminder to follow the workflow instructions, consider delegation to specialist(
 **Input:**
 ```json
 {
-  "filePath": "c:\\P4NTH30N\\scripts\\DeployLogAnalyzer\\HealthChecker.cs"
+  "filePath": "c:\\P4NTHE0N\\scripts\\DeployLogAnalyzer\\HealthChecker.cs"
 }
 ```
 
 **Output:**
 ```
-<path>c:\P4NTH30N\scripts\DeployLogAnalyzer\HealthChecker.cs</path>
+<path>c:\P4NTHE0N\scripts\DeployLogAnalyzer\HealthChecker.cs</path>
 <type>file</type>
 <content>1: using System.Diagnostics;
 2: 
-3: namespace P4NTH30N.DeployLogAnalyzer;
+3: namespace P4NTHE0N.DeployLogAnalyzer;
 4: 
 5: /// <summary>
 6: /// System health validation for deployment readiness.
@@ -1733,8 +1733,8 @@ Reminder to follow the workflow instructions, consider delegation to specialist(
 12: 	private readonly string _dataDirectory;
 13: 
 14: 	public HealthChecker(
-15: 		string mongoConnectionString = "mongodb://localhost:27017/P4NTH30N",
-16: 		string dataDirectory = "C:\\P4NTH30N",
+15: 		string mongoConnectionString = "mongodb://localhost:27017/P4NTHE0N",
+16: 		string dataDirectory = "C:\\P4NTHE0N",
 17: 		LmStudioClient? lmClient = null) {
 18: 		_mongoConnectionString = mongoConnectionString;
 19: 		_dataDirectory = dataDirectory;
@@ -1945,13 +1945,13 @@ Reminder to follow the workflow instructions, consider delegation to specialist(
 **Input:**
 ```json
 {
-  "filePath": "c:\\P4NTH30N\\tests\\pre-validation\\results.json"
+  "filePath": "c:\\P4NTHE0N\\tests\\pre-validation\\results.json"
 }
 ```
 
 **Output:**
 ```
-<path>c:\P4NTH30N\tests\pre-validation\results.json</path>
+<path>c:\P4NTHE0N\tests\pre-validation\results.json</path>
 <type>file</type>
 <content>1: {
 2: 	"decision": "DEPLOY-002",
@@ -1959,7 +1959,7 @@ Reminder to follow the workflow instructions, consider delegation to specialist(
 4: 	"updatedDate": "2026-02-19T02:58:00Z",
 5: 	"executor": "Vigil (OpenFixer)",
 6: 	"status": "COMPLETED_WITH_FINDINGS",
-7: 	"summary": "Auth constraint resolved. 5-sample pre-validation executed against 3 local models. All models <=1B fail accuracy threshold. Best result: smollm2-1.7b at 40% (2/5). Maincoder-1B does not exist on HuggingFace. Empirical data proves <=1B models cannot reliably validate P4NTH30N configs.",
+7: 	"summary": "Auth constraint resolved. 5-sample pre-validation executed against 3 local models. All models <=1B fail accuracy threshold. Best result: smollm2-1.7b at 40% (2/5). Maincoder-1B does not exist on HuggingFace. Empirical data proves <=1B models cannot reliably validate P4NTHE0N configs.",
 8: 	"lmStudio": {
 9: 		"running": true,
 10: 		"port": 1234,
@@ -2115,7 +2115,7 @@ Reminder to follow the workflow instructions, consider delegation to specialist(
 160: 		"bestLatencyModel": "qwen2.5-0.5b-instruct"
 161: 	},
 162: 	"strategistInput": {
-163: 		"empiricalFindings": "<=1B local models cannot validate P4NTH30N configs. The task requires semantic understanding of field relationships (threshold ordering, valid platform names, injection detection) that sub-2B models lack.",
+163: 		"empiricalFindings": "<=1B local models cannot validate P4NTHE0N configs. The task requires semantic understanding of field relationships (threshold ordering, valid platform names, injection detection) that sub-2B models lack.",
 164: 		"recommendedPivot": "Rule-based JSON Schema validator as primary (100% accuracy for known rules) + LLM secondary for edge cases only",
 165: 		"alternativeApproaches": [
 166: 			"JSON Schema validation covers tests 1-4 deterministically (80% of cases)",
@@ -2139,13 +2139,13 @@ Reminder to follow the workflow instructions, consider delegation to specialist(
 **Input:**
 ```json
 {
-  "filePath": "c:\\P4NTH30N\\HunterConfig.json"
+  "filePath": "c:\\P4NTHE0N\\HunterConfig.json"
 }
 ```
 
 **Output:**
 ```
-<path>c:\P4NTH30N\HunterConfig.json</path>
+<path>c:\P4NTHE0N\HunterConfig.json</path>
 <type>file</type>
 <content>1: {
 2:   "PrizeTierLimits": {
@@ -2214,13 +2214,13 @@ Reminder to follow the workflow instructions, consider delegation to specialist(
 **Input:**
 ```json
 {
-  "filePath": "c:\\P4NTH30N\\scripts\\DeployLogAnalyzer\\Tests\\DeployLogAnalyzer.Tests.csproj"
+  "filePath": "c:\\P4NTHE0N\\scripts\\DeployLogAnalyzer\\Tests\\DeployLogAnalyzer.Tests.csproj"
 }
 ```
 
 **Output:**
 ```
-<path>c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\DeployLogAnalyzer.Tests.csproj</path>
+<path>c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\DeployLogAnalyzer.Tests.csproj</path>
 <type>file</type>
 <content>1: <Project Sdk="Microsoft.NET.Sdk">
 2: 	<PropertyGroup>
@@ -2228,7 +2228,7 @@ Reminder to follow the workflow instructions, consider delegation to specialist(
 4: 		<ImplicitUsings>enable</ImplicitUsings>
 5: 		<Nullable>enable</Nullable>
 6: 		<IsPackable>false</IsPackable>
-7: 		<RootNamespace>P4NTH30N.DeployLogAnalyzer.Tests</RootNamespace>
+7: 		<RootNamespace>P4NTHE0N.DeployLogAnalyzer.Tests</RootNamespace>
 8: 	</PropertyGroup>
 9: 	<ItemGroup>
 10: 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
@@ -2259,17 +2259,17 @@ Now let me read the existing test files and the test configs to complete the pic
 **Input:**
 ```json
 {
-  "filePath": "c:\\P4NTH30N\\scripts\\DeployLogAnalyzer\\Tests\\LmStudioClientTests.cs"
+  "filePath": "c:\\P4NTHE0N\\scripts\\DeployLogAnalyzer\\Tests\\LmStudioClientTests.cs"
 }
 ```
 
 **Output:**
 ```
-<path>c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\LmStudioClientTests.cs</path>
+<path>c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\LmStudioClientTests.cs</path>
 <type>file</type>
 <content>1: using Xunit;
 2: 
-3: namespace P4NTH30N.DeployLogAnalyzer.Tests;
+3: namespace P4NTHE0N.DeployLogAnalyzer.Tests;
 4: 
 5: public class LmStudioClientTests {
 6: 	[Fact]
@@ -2357,13 +2357,13 @@ Reminder to follow the workflow instructions, consider delegation to specialist(
 **Input:**
 ```json
 {
-  "filePath": "c:\\P4NTH30N\\tests\\pre-validation\\test-configs\\test1-valid-config.json"
+  "filePath": "c:\\P4NTHE0N\\tests\\pre-validation\\test-configs\\test1-valid-config.json"
 }
 ```
 
 **Output:**
 ```
-<path>c:\P4NTH30N\tests\pre-validation\test-configs\test1-valid-config.json</path>
+<path>c:\P4NTHE0N\tests\pre-validation\test-configs\test1-valid-config.json</path>
 <type>file</type>
 <content>1: {
 2: 	"name": "Test 1: Valid config with all fields",
@@ -2402,13 +2402,13 @@ Reminder to follow the workflow instructions, consider delegation to specialist(
 **Input:**
 ```json
 {
-  "filePath": "c:\\P4NTH30N\\tests\\pre-validation\\test-configs\\test2-missing-required.json"
+  "filePath": "c:\\P4NTHE0N\\tests\\pre-validation\\test-configs\\test2-missing-required.json"
 }
 ```
 
 **Output:**
 ```
-<path>c:\P4NTH30N\tests\pre-validation\test-configs\test2-missing-required.json</path>
+<path>c:\P4NTHE0N\tests\pre-validation\test-configs\test2-missing-required.json</path>
 <type>file</type>
 <content>1: {
 2: 	"name": "Test 2: Missing required field (username)",
@@ -2446,13 +2446,13 @@ Reminder to follow the workflow instructions, consider delegation to specialist(
 **Input:**
 ```json
 {
-  "filePath": "c:\\P4NTH30N\\tests\\pre-validation\\test-configs\\test3-invalid-threshold-order.json"
+  "filePath": "c:\\P4NTHE0N\\tests\\pre-validation\\test-configs\\test3-invalid-threshold-order.json"
 }
 ```
 
 **Output:**
 ```
-<path>c:\P4NTH30N\tests\pre-validation\test-configs\test3-invalid-threshold-order.json</path>
+<path>c:\P4NTHE0N\tests\pre-validation\test-configs\test3-invalid-threshold-order.json</path>
 <type>file</type>
 <content>1: {
 2: 	"name": "Test 3: Invalid threshold order (minor > major)",
@@ -2491,13 +2491,13 @@ Reminder to follow the workflow instructions, consider delegation to specialist(
 **Input:**
 ```json
 {
-  "filePath": "c:\\P4NTH30N\\tests\\pre-validation\\test-configs\\test4-empty-strings.json"
+  "filePath": "c:\\P4NTHE0N\\tests\\pre-validation\\test-configs\\test4-empty-strings.json"
 }
 ```
 
 **Output:**
 ```
-<path>c:\P4NTH30N\tests\pre-validation\test-configs\test4-empty-strings.json</path>
+<path>c:\P4NTHE0N\tests\pre-validation\test-configs\test4-empty-strings.json</path>
 <type>file</type>
 <content>1: {
 2: 	"name": "Test 4: Edge case - empty strings",
@@ -2540,13 +2540,13 @@ Reminder to follow the workflow instructions, consider delegation to specialist(
 **Input:**
 ```json
 {
-  "filePath": "c:\\P4NTH30N\\tests\\pre-validation\\test-configs\\test5-special-characters.json"
+  "filePath": "c:\\P4NTHE0N\\tests\\pre-validation\\test-configs\\test5-special-characters.json"
 }
 ```
 
 **Output:**
 ```
-<path>c:\P4NTH30N\tests\pre-validation\test-configs\test5-special-characters.json</path>
+<path>c:\P4NTHE0N\tests\pre-validation\test-configs\test5-special-characters.json</path>
 <type>file</type>
 <content>1: {
 2: 	"name": "Test 5: Edge case - special characters",
@@ -2594,13 +2594,13 @@ Reminder to follow the workflow instructions, consider delegation to specialist(
 **Input:**
 ```json
 {
-  "filePath": "c:\\P4NTH30N\\Directory.Build.props"
+  "filePath": "c:\\P4NTHE0N\\Directory.Build.props"
 }
 ```
 
 **Output:**
 ```
-<path>c:\P4NTH30N\Directory.Build.props</path>
+<path>c:\P4NTHE0N\Directory.Build.props</path>
 <type>file</type>
 <content>1: <Project>
 2: 	<PropertyGroup>
@@ -2631,7 +2631,7 @@ Now let me check whether `tests/ModelTestingPlatform` directory exists yet:
 ```json
 {
   "pattern": "tests/ModelTestingPlatform/**",
-  "path": "c:\\P4NTH30N"
+  "path": "c:\\P4NTHE0N"
 }
 ```
 
@@ -2645,17 +2645,17 @@ No files found
 **Input:**
 ```json
 {
-  "filePath": "c:\\P4NTH30N\\scripts\\DeployLogAnalyzer\\Tests\\FewShotPromptTests.cs"
+  "filePath": "c:\\P4NTHE0N\\scripts\\DeployLogAnalyzer\\Tests\\FewShotPromptTests.cs"
 }
 ```
 
 **Output:**
 ```
-<path>c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\FewShotPromptTests.cs</path>
+<path>c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\FewShotPromptTests.cs</path>
 <type>file</type>
 <content>1: using Xunit;
 2: 
-3: namespace P4NTH30N.DeployLogAnalyzer.Tests;
+3: namespace P4NTHE0N.DeployLogAnalyzer.Tests;
 4: 
 5: public class FewShotPromptTests {
 6: 	[Fact]
@@ -2744,17 +2744,17 @@ Reminder to follow the workflow instructions, consider delegation to specialist(
 **Input:**
 ```json
 {
-  "filePath": "c:\\P4NTH30N\\scripts\\DeployLogAnalyzer\\Tests\\ValidationPipelineTests.cs"
+  "filePath": "c:\\P4NTHE0N\\scripts\\DeployLogAnalyzer\\Tests\\ValidationPipelineTests.cs"
 }
 ```
 
 **Output:**
 ```
-<path>c:\P4NTH30N\scripts\DeployLogAnalyzer\Tests\ValidationPipelineTests.cs</path>
+<path>c:\P4NTHE0N\scripts\DeployLogAnalyzer\Tests\ValidationPipelineTests.cs</path>
 <type>file</type>
 <content>1: using Xunit;
 2: 
-3: namespace P4NTH30N.DeployLogAnalyzer.Tests;
+3: namespace P4NTHE0N.DeployLogAnalyzer.Tests;
 4: 
 5: public class ValidationPipelineTests {
 6: 	[Fact]
@@ -2914,7 +2914,7 @@ Let me create the project structure and all three files. First, create the proje
 **Input:**
 ```json
 {
-  "command": "mkdir \"c:\\P4NTH30N\\tests\\ModelTestingPlatform\"",
+  "command": "mkdir \"c:\\P4NTHE0N\\tests\\ModelTestingPlatform\"",
   "description": "Create ModelTestingPlatform directory"
 }
 ```
@@ -2930,8 +2930,8 @@ Now create all files. Let me build them:
 **Input:**
 ```json
 {
-  "filePath": "c:\\P4NTH30N\\tests\\ModelTestingPlatform\\ModelTestingPlatform.csproj",
-  "content": "<Project Sdk=\"Microsoft.NET.Sdk\">\n\t<PropertyGroup>\n\t\t<TargetFramework>net10.0</TargetFramework>\n\t\t<ImplicitUsings>enable</ImplicitUsings>\n\t\t<Nullable>enable</Nullable>\n\t\t<RootNamespace>P4NTH30N.ModelTestingPlatform</RootNamespace>\n\t\t<OutputType>Exe</OutputType>\n\t</PropertyGroup>\n\t<ItemGroup>\n\t\t<PackageReference Include=\"Microsoft.NET.Test.Sdk\" Version=\"17.12.0\" />\n\t\t<PackageReference Include=\"xunit\" Version=\"2.9.3\" />\n\t\t<PackageReference Include=\"xunit.runner.visualstudio\" Version=\"2.8.2\" />\n\t</ItemGroup>\n\t<ItemGroup>\n\t\t<ProjectReference Include=\"..\\..\\scripts\\DeployLogAnalyzer\\DeployLogAnalyzer.csproj\" />\n\t</ItemGroup>\n\t<ItemGroup>\n\t\t<None Update=\"test-configs\\*.json\" CopyToOutputDirectory=\"PreserveNewest\" />\n\t</ItemGroup>\n</Project>\n"
+  "filePath": "c:\\P4NTHE0N\\tests\\ModelTestingPlatform\\ModelTestingPlatform.csproj",
+  "content": "<Project Sdk=\"Microsoft.NET.Sdk\">\n\t<PropertyGroup>\n\t\t<TargetFramework>net10.0</TargetFramework>\n\t\t<ImplicitUsings>enable</ImplicitUsings>\n\t\t<Nullable>enable</Nullable>\n\t\t<RootNamespace>P4NTHE0N.ModelTestingPlatform</RootNamespace>\n\t\t<OutputType>Exe</OutputType>\n\t</PropertyGroup>\n\t<ItemGroup>\n\t\t<PackageReference Include=\"Microsoft.NET.Test.Sdk\" Version=\"17.12.0\" />\n\t\t<PackageReference Include=\"xunit\" Version=\"2.9.3\" />\n\t\t<PackageReference Include=\"xunit.runner.visualstudio\" Version=\"2.8.2\" />\n\t</ItemGroup>\n\t<ItemGroup>\n\t\t<ProjectReference Include=\"..\\..\\scripts\\DeployLogAnalyzer\\DeployLogAnalyzer.csproj\" />\n\t</ItemGroup>\n\t<ItemGroup>\n\t\t<None Update=\"test-configs\\*.json\" CopyToOutputDirectory=\"PreserveNewest\" />\n\t</ItemGroup>\n</Project>\n"
 }
 ```
 
@@ -2951,8 +2951,8 @@ Now the core file - `ModelTestHarness.cs` with `ILlmBackend` interface and `LmSt
 **Input:**
 ```json
 {
-  "filePath": "c:\\P4NTH30N\\tests\\ModelTestingPlatform\\ModelTestHarness.cs",
-  "content": "using System.Diagnostics;\nusing System.Net.Http.Headers;\nusing System.Text;\nusing System.Text.Json;\nusing System.Text.Json.Serialization;\n\nnamespace P4NTH30N.ModelTestingPlatform;\n\n/// <summary>\n/// Configurable inference parameters for LLM backend calls.\n/// </summary>\npublic sealed class InferenceParams {\n\tpublic double Temperature { get; init; } = 0.1;\n\tpublic double TopP { get; init; } = 0.9;\n\tpublic int TopK { get; init; } = 40;\n\tpublic bool DoSample { get; init; } = true;\n\tpublic int MaxTokens { get; init; } = 512;\n\n\t/// <summary>\n\t/// Deterministic config for reproducibility testing (temp=0.0, no sampling).\n\t/// </summary>\n\tpublic static InferenceParams Deterministic => new() {\n\t\tTemperature = 0.0,\n\t\tTopP = 1.0,\n\t\tTopK = 1,\n\t\tDoSample = false,\n\t\tMaxTokens = 512,\n\t};\n\n\t/// <summary>\n\t/// Default creative params (temp=0.7, standard sampling).\n\t/// </summary>\n\tpublic static InferenceParams Creative => new() {\n\t\tTemperature = 0.7,\n\t\tTopP = 0.9,\n\t\tTopK = 40,\n\t\tDoSample = true,\n\t\tMaxTokens = 512,\n\t};\n\n\tpublic override string ToString() =>\n\t\t$\"temp={Temperature:F2} top_p={TopP:F2} top_k={TopK} sample={DoSample} max={MaxTokens}\";\n}\n\n/// <summary>\n/// Result of a single LLM inference call with timing and metadata.\n/// </summary>\npublic sealed class InferenceResult {\n\tpublic string Response { get; init; } = string.Empty;\n\tpublic long LatencyMs { get; init; }\n\tpublic string ModelId { get; init; } = string.Empty;\n\tpublic InferenceParams Params { get; init; } = new();\n\tpublic bool Success { get; init; }\n\tpublic string? Error { get; init; }\n\tpublic DateTime Timestamp { get; init; } = DateTime.UtcNow;\n\n\t/// <summary>\n\t/// Attempts to parse the response as JSON. Returns null if invalid.\n\t/// </summary>\n\tpublic JsonDocument? TryParseJson() {\n\t\ttry {\n\t\t\tstring json = ExtractJsonBlock(Response);\n\t\t\treturn JsonDocument.Parse(json);\n\t\t}\n\t\tcatch {\n\t\t\treturn null;\n\t\t}\n\t}\n\n\t/// <summary>\n\t/// Whether the response contains valid JSON.\n\t/// </summary>\n\tpublic bool IsValidJson => TryParseJson() != null;\n\n\tprivate static string ExtractJsonBlock(string text) {\n\t\tint start = text.IndexOf('{');\n\t\tint end = text.LastIndexOf('}');\n\t\tif (start >= 0 && end > start) {\n\t\t\treturn text[start..(end + 1)];\n\t\t}\n\t\treturn text;\n\t}\n}\n\n/// <summary>\n/// Backend interface for LLM inference. Implementations can target LM Studio,\n/// Ollama, OpenAI-compatible APIs, or mock backends for testing.\n/// </summary>\npublic interface ILlmBackend : IDisposable {\n\t/// <summary>\n\t/// Unique identifier for this backend (e.g., \"lmstudio\", \"ollama\", \"mock\").\n\t/// </summary>\n\tstring BackendId { get; }\n\n\t/// <summary>\n\t/// The model currently loaded/targeted.\n\t/// </summary>\n\tstring ModelId { get; }\n\n\t/// <summary>\n\t/// Verifies connectivity to the backend.\n\t/// </summary>\n\tTask<bool> IsAvailableAsync(CancellationToken cancellationToken = default);\n\n\t/// <summary>\n\t/// Lists available models on the backend.\n\t/// </summary>\n\tTask<IReadOnlyList<string>> ListModelsAsync(CancellationToken cancellationToken = default);\n\n\t/// <summary>\n\t/// Sends a chat completion request with configurable inference parameters.\n\t/// </summary>\n\tTask<InferenceResult> ChatAsync(\n\t\tstring systemPrompt,\n\t\tstring userMessage,\n\t\tInferenceParams? inferenceParams = null,\n\t\tCancellationToken cancellationToken = default);\n}\n\n/// <summary>\n/// LM Studio backend implementation targeting localhost:1234 OpenAI-compatible API.\n/// Supports configurable temperature, top_p, top_k, do_sample, and max_tokens.\n/// </summary>\npublic sealed class LmStudioBackend : ILlmBackend {\n\tprivate readonly HttpClient _httpClient;\n\tprivate readonly string _baseUrl;\n\tprivate bool _disposed;\n\n\tpublic string BackendId => \"lmstudio\";\n\tpublic string ModelId { get; }\n\n\tpublic LmStudioBackend(\n\t\tstring baseUrl = \"http://localhost:1234\",\n\t\tstring modelId = \"smollm2-1.7b-instruct\",\n\t\tstring? apiKey = null,\n\t\tint timeoutSeconds = 120) {\n\t\t_baseUrl = baseUrl.TrimEnd('/');\n\t\tModelId = modelId;\n\n\t\t_httpClient = new HttpClient {\n\t\t\tBaseAddress = new Uri(_baseUrl),\n\t\t\tTimeout = TimeSpan.FromSeconds(timeoutSeconds),\n\t\t};\n\n\t\t_httpClient.DefaultRequestHeaders.Accept.Add(\n\t\t\tnew MediaTypeWithQualityHeaderValue(\"application/json\"));\n\n\t\tif (!string.IsNullOrWhiteSpace(apiKey)) {\n\t\t\t_httpClient.DefaultRequestHeaders.Authorization =\n\t\t\t\tnew AuthenticationHeaderValue(\"Bearer\", apiKey);\n\t\t}\n\t}\n\n\tpublic async Task<bool> IsAvailableAsync(CancellationToken cancellationToken = default) {\n\t\ttry {\n\t\t\tHttpResponseMessage response = await _httpClient.GetAsync(\n\t\t\t\t\"/v1/models\", cancellationToken);\n\t\t\treturn response.IsSuccessStatusCode;\n\t\t}\n\t\tcatch {\n\t\t\treturn false;\n\t\t}\n\t}\n\n\tpublic async Task<IReadOnlyList<string>> ListModelsAsync(CancellationToken cancellationToken = default) {\n\t\ttry {\n\t\t\tHttpResponseMessage response = await _httpClient.GetAsync(\n\t\t\t\t\"/v1/models\", cancellationToken);\n\t\t\tstring json = await response.Content.ReadAsStringAsync(cancellationToken);\n\n\t\t\tusing JsonDocument doc = JsonDocument.Parse(json);\n\t\t\tList<string> models = new();\n\n\t\t\tif (doc.RootElement.TryGetProperty(\"data\", out JsonElement data) &&\n\t\t\t\tdata.ValueKind == JsonValueKind.Array) {\n\t\t\t\tforeach (JsonElement model in data.EnumerateArray()) {\n\t\t\t\t\tif (model.TryGetProperty(\"id\", out JsonElement id)) {\n\t\t\t\t\t\tstring? modelId = id.GetString();\n\t\t\t\t\t\tif (modelId != null) models.Add(modelId);\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\n\t\t\treturn models.AsReadOnly();\n\t\t}\n\t\tcatch {\n\t\t\treturn Array.Empty<string>();\n\t\t}\n\t}\n\n\tpublic async Task<InferenceResult> ChatAsync(\n\t\tstring systemPrompt,\n\t\tstring userMessage,\n\t\tInferenceParams? inferenceParams = null,\n\t\tCancellationToken cancellationToken = default) {\n\t\tObjectDisposedException.ThrowIf(_disposed, this);\n\n\t\tInferenceParams p = inferenceParams ?? new InferenceParams();\n\t\tStopwatch sw = Stopwatch.StartNew();\n\n\t\ttry {\n\t\t\tobject requestBody = new {\n\t\t\t\tmodel = ModelId,\n\t\t\t\tmessages = new[] {\n\t\t\t\t\tnew { role = \"system\", content = systemPrompt },\n\t\t\t\t\tnew { role = \"user\", content = userMessage },\n\t\t\t\t},\n\t\t\t\tmax_tokens = p.MaxTokens,\n\t\t\t\ttemperature = p.Temperature,\n\t\t\t\ttop_p = p.TopP,\n\t\t\t\ttop_k = p.TopK,\n\t\t\t\tstream = false,\n\t\t\t};\n\n\t\t\tstring json = JsonSerializer.Serialize(requestBody);\n\t\t\tusing StringContent content = new(json, Encoding.UTF8, \"application/json\");\n\n\t\t\tHttpResponseMessage response = await _httpClient.PostAsync(\n\t\t\t\t\"/v1/chat/completions\", content, cancellationToken);\n\n\t\t\tstring responseJson = await response.Content.ReadAsStringAsync(cancellationToken);\n\t\t\tsw.Stop();\n\n\t\t\tif (!response.IsSuccessStatusCode) {\n\t\t\t\treturn new InferenceResult {\n\t\t\t\t\tResponse = responseJson,\n\t\t\t\t\tLatencyMs = sw.ElapsedMilliseconds,\n\t\t\t\t\tModelId = ModelId,\n\t\t\t\t\tParams = p,\n\t\t\t\t\tSuccess = false,\n\t\t\t\t\tError = $\"HTTP {(int)response.StatusCode}: {response.ReasonPhrase}\",\n\t\t\t\t};\n\t\t\t}\n\n\t\t\tusing JsonDocument doc = JsonDocument.Parse(responseJson);\n\t\t\tstring? completionText = doc.RootElement\n\t\t\t\t.GetProperty(\"choices\")[0]\n\t\t\t\t.GetProperty(\"message\")\n\t\t\t\t.GetProperty(\"content\")\n\t\t\t\t.GetString();\n\n\t\t\treturn new InferenceResult {\n\t\t\t\tResponse = completionText ?? string.Empty,\n\t\t\t\tLatencyMs = sw.ElapsedMilliseconds,\n\t\t\t\tModelId = ModelId,\n\t\t\t\tParams = p,\n\t\t\t\tSuccess = true,\n\t\t\t};\n\t\t}\n\t\tcatch (Exception ex) {\n\t\t\tsw.Stop();\n\t\t\treturn new InferenceResult {\n\t\t\t\tResponse = string.Empty,\n\t\t\t\tLatencyMs = sw.ElapsedMilliseconds,\n\t\t\t\tModelId = ModelId,\n\t\t\t\tParams = p,\n\t\t\t\tSuccess = false,\n\t\t\t\tError = ex.Message,\n\t\t\t};\n\t\t}\n\t}\n\n\tpublic void Dispose() {\n\t\tif (!_disposed) {\n\t\t\t_disposed = true;\n\t\t\t_httpClient.Dispose();\n\t\t}\n\t}\n}\n\n/// <summary>\n/// Mock backend for unit testing without LM Studio dependency.\n/// Returns configurable responses for deterministic test scenarios.\n/// </summary>\npublic sealed class MockLlmBackend : ILlmBackend {\n\tprivate readonly Queue<string> _responses = new();\n\tprivate readonly int _latencyMs;\n\tprivate readonly bool _available;\n\n\tpublic string BackendId => \"mock\";\n\tpublic string ModelId { get; }\n\tpublic int CallCount { get; private set; }\n\n\tpublic MockLlmBackend(\n\t\tstring modelId = \"mock-model\",\n\t\tint latencyMs = 10,\n\t\tbool available = true) {\n\t\tModelId = modelId;\n\t\t_latencyMs = latencyMs;\n\t\t_available = available;\n\t}\n\n\t/// <summary>\n\t/// Enqueues a response to be returned on the next ChatAsync call.\n\t/// </summary>\n\tpublic void EnqueueResponse(string response) {\n\t\t_responses.Enqueue(response);\n\t}\n\n\t/// <summary>\n\t/// Enqueues multiple responses.\n\t/// </summary>\n\tpublic void EnqueueResponses(params string[] responses) {\n\t\tforeach (string r in responses) {\n\t\t\t_responses.Enqueue(r);\n\t\t}\n\t}\n\n\tpublic Task<bool> IsAvailableAsync(CancellationToken cancellationToken = default) {\n\t\treturn Task.FromResult(_available);\n\t}\n\n\tpublic Task<IReadOnlyList<string>> ListModelsAsync(CancellationToken cancellationToken = default) {\n\t\tIReadOnlyList<string> models = new List<string> { ModelId }.AsReadOnly();\n\t\treturn Task.FromResult(models);\n\t}\n\n\tpublic async Task<InferenceResult> ChatAsync(\n\t\tstring systemPrompt,\n\t\tstring userMessage,\n\t\tInferenceParams? inferenceParams = null,\n\t\tCancellationToken cancellationToken = default) {\n\t\tCallCount++;\n\n\t\tif (_latencyMs > 0) {\n\t\t\tawait Task.Delay(_latencyMs, cancellationToken);\n\t\t}\n\n\t\tstring response = _responses.Count > 0\n\t\t\t? _responses.Dequeue()\n\t\t\t: \"{\\\"valid\\\": true, \\\"confidence\\\": 0.5, \\\"failures\\\": []}\";\n\n\t\treturn new InferenceResult {\n\t\t\tResponse = response,\n\t\t\tLatencyMs = _latencyMs,\n\t\t\tModelId = ModelId,\n\t\t\tParams = inferenceParams ?? new InferenceParams(),\n\t\t\tSuccess = true,\n\t\t};\n\t}\n\n\tpublic void Dispose() { }\n}\n\n/// <summary>\n/// Test case definition for model validation testing.\n/// Links a config JSON input to expected validation output.\n/// </summary>\npublic sealed class TestCase {\n\tpublic string Name { get; init; } = string.Empty;\n\tpublic string ConfigJson { get; init; } = string.Empty;\n\tpublic bool ExpectedValid { get; init; }\n\tpublic List<string> ExpectedFailures { get; init; } = new();\n\tpublic string SystemPrompt { get; init; } = string.Empty;\n\tpublic string UserPromptTemplate { get; init; } = \"Validate this configuration:\\n{0}\";\n\n\t/// <summary>\n\t/// Builds the user message from the template and config.\n\t/// </summary>\n\tpublic string BuildUserMessage() =>\n\t\tstring.Format(UserPromptTemplate, ConfigJson);\n}\n\n/// <summary>\n/// Result of evaluating a single test case against a model response.\n/// </summary>\npublic sealed class TestCaseResult {\n\tpublic string TestName { get; init; } = string.Empty;\n\tpublic string ModelId { get; init; } = string.Empty;\n\tpublic InferenceParams Params { get; init; } = new();\n\tpublic bool ExpectedValid { get; init; }\n\tpublic bool PredictedValid { get; init; }\n\tpublic bool Correct { get; init; }\n\tpublic double Confidence { get; init; }\n\tpublic long LatencyMs { get; init; }\n\tpublic bool JsonValid { get; init; }\n\tpublic List<string> PredictedFailures { get; init; } = new();\n\tpublic string RawResponse { get; init; } = string.Empty;\n\tpublic string? Error { get; init; }\n}\n\n/// <summary>\n/// Harness for running test cases against LLM backends with configurable parameters.\n/// Supports single runs, batch evaluation, and result aggregation.\n/// </summary>\npublic sealed class ModelTestHarness {\n\tprivate readonly ILlmBackend _backend;\n\tprivate readonly string _defaultSystemPrompt;\n\n\tpublic ModelTestHarness(ILlmBackend backend, string? systemPrompt = null) {\n\t\t_backend = backend;\n\t\t_defaultSystemPrompt = systemPrompt ?? P4NTH30N.DeployLogAnalyzer.FewShotPrompt.GetConfigValidationPrompt();\n\t}\n\n\t/// <summary>\n\t/// Runs a single test case with specified inference params.\n\t/// </summary>\n\tpublic async Task<TestCaseResult> RunTestAsync(\n\t\tTestCase testCase,\n\t\tInferenceParams? inferenceParams = null,\n\t\tCancellationToken cancellationToken = default) {\n\t\tInferenceParams p = inferenceParams ?? new InferenceParams();\n\t\tstring systemPrompt = string.IsNullOrEmpty(testCase.SystemPrompt)\n\t\t\t? _defaultSystemPrompt\n\t\t\t: testCase.SystemPrompt;\n\n\t\tInferenceResult inference = await _backend.ChatAsync(\n\t\t\tsystemPrompt,\n\t\t\ttestCase.BuildUserMessage(),\n\t\t\tp,\n\t\t\tcancellationToken);\n\n\t\tif (!inference.Success) {\n\t\t\treturn new TestCaseResult {\n\t\t\t\tTestName = testCase.Name,\n\t\t\t\tModelId = _backend.ModelId,\n\t\t\t\tParams = p,\n\t\t\t\tExpectedValid = testCase.ExpectedValid,\n\t\t\t\tPredictedValid = false,\n\t\t\t\tCorrect = false,\n\t\t\t\tConfidence = 0.0,\n\t\t\t\tLatencyMs = inference.LatencyMs,\n\t\t\t\tJsonValid = false,\n\t\t\t\tRawResponse = inference.Response,\n\t\t\t\tError = inference.Error,\n\t\t\t};\n\t\t}\n\n\t\treturn ParseTestResult(testCase, inference, p);\n\t}\n\n\t/// <summary>\n\t/// Runs all test cases and returns aggregated results.\n\t/// </summary>\n\tpublic async Task<BatchTestResult> RunBatchAsync(\n\t\tIReadOnlyList<TestCase> testCases,\n\t\tInferenceParams? inferenceParams = null,\n\t\tCancellationToken cancellationToken = default) {\n\t\tList<TestCaseResult> results = new();\n\t\tStopwatch sw = Stopwatch.StartNew();\n\n\t\tforeach (TestCase tc in testCases) {\n\t\t\tcancellationToken.ThrowIfCancellationRequested();\n\t\t\tTestCaseResult result = await RunTestAsync(tc, inferenceParams, cancellationToken);\n\t\t\tresults.Add(result);\n\t\t}\n\n\t\tsw.Stop();\n\t\treturn BatchTestResult.FromResults(results, _backend.ModelId, inferenceParams ?? new InferenceParams(), sw.ElapsedMilliseconds);\n\t}\n\n\t/// <summary>\n\t/// Loads test cases from the pre-validation test-configs directory.\n\t/// Compatible with the existing test config format.\n\t/// </summary>\n\tpublic static async Task<List<TestCase>> LoadTestCasesAsync(\n\t\tstring directory,\n\t\tCancellationToken cancellationToken = default) {\n\t\tList<TestCase> cases = new();\n\n\t\tif (!Directory.Exists(directory)) return cases;\n\n\t\tforeach (string file in Directory.GetFiles(directory, \"*.json\").OrderBy(f => f)) {\n\t\t\tstring json = await File.ReadAllTextAsync(file, cancellationToken);\n\t\t\ttry {\n\t\t\t\tusing JsonDocument doc = JsonDocument.Parse(json);\n\t\t\t\tJsonElement root = doc.RootElement;\n\n\t\t\t\tstring name = root.TryGetProperty(\"name\", out JsonElement n)\n\t\t\t\t\t? n.GetString() ?? Path.GetFileNameWithoutExtension(file)\n\t\t\t\t\t: Path.GetFileNameWithoutExtension(file);\n\n\t\t\t\tstring configJson = root.TryGetProperty(\"config\", out JsonElement cfg)\n\t\t\t\t\t? cfg.GetRawText() : json;\n\n\t\t\t\tbool expectedValid = false;\n\t\t\t\tList<string> expectedFailures = new();\n\n\t\t\t\tif (root.TryGetProperty(\"expected\", out JsonElement expected)) {\n\t\t\t\t\tif (expected.TryGetProperty(\"valid\", out JsonElement v)) {\n\t\t\t\t\t\texpectedValid = v.GetBoolean();\n\t\t\t\t\t}\n\t\t\t\t\tif (expected.TryGetProperty(\"failures\", out JsonElement f) &&\n\t\t\t\t\t\tf.ValueKind == JsonValueKind.Array) {\n\t\t\t\t\t\tforeach (JsonElement item in f.EnumerateArray()) {\n\t\t\t\t\t\t\tstring? s = item.GetString();\n\t\t\t\t\t\t\tif (s != null) expectedFailures.Add(s);\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\tcases.Add(new TestCase {\n\t\t\t\t\tName = name,\n\t\t\t\t\tConfigJson = configJson,\n\t\t\t\t\tExpectedValid = expectedValid,\n\t\t\t\t\tExpectedFailures = expectedFailures,\n\t\t\t\t});\n\t\t\t}\n\t\t\tcatch {\n\t\t\t\t// Skip malformed test files\n\t\t\t}\n\t\t}\n\n\t\treturn cases;\n\t}\n\n\tprivate TestCaseResult ParseTestResult(\n\t\tTestCase testCase,\n\t\tInferenceResult inference,\n\t\tInferenceParams p) {\n\t\tbool predictedValid = false;\n\t\tdouble confidence = 0.0;\n\t\tbool jsonValid = false;\n\t\tList<string> predictedFailures = new();\n\n\t\tusing JsonDocument? doc = inference.TryParseJson();\n\t\tif (doc != null) {\n\t\t\tjsonValid = true;\n\t\t\tJsonElement root = doc.RootElement;\n\n\t\t\tif (root.TryGetProperty(\"valid\", out JsonElement v)) {\n\t\t\t\tpredictedValid = v.GetBoolean();\n\t\t\t}\n\t\t\tif (root.TryGetProperty(\"confidence\", out JsonElement c)) {\n\t\t\t\tconfidence = c.GetDouble();\n\t\t\t}\n\t\t\tif (root.TryGetProperty(\"failures\", out JsonElement f) &&\n\t\t\t\tf.ValueKind == JsonValueKind.Array) {\n\t\t\t\tforeach (JsonElement item in f.EnumerateArray()) {\n\t\t\t\t\tstring? s = item.GetString();\n\t\t\t\t\tif (s != null) predictedFailures.Add(s);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tbool correct = predictedValid == testCase.ExpectedValid;\n\n\t\treturn new TestCaseResult {\n\t\t\tTestName = testCase.Name,\n\t\t\tModelId = _backend.ModelId,\n\t\t\tParams = p,\n\t\t\tExpectedValid = testCase.ExpectedValid,\n\t\t\tPredictedValid = predictedValid,\n\t\t\tCorrect = correct,\n\t\t\tConfidence = confidence,\n\t\t\tLatencyMs = inference.LatencyMs,\n\t\t\tJsonValid = jsonValid,\n\t\t\tPredictedFailures = predictedFailures,\n\t\t\tRawResponse = inference.Response,\n\t\t};\n\t}\n}\n\n/// <summary>\n/// Aggregated results from running a batch of test cases.\n/// </summary>\npublic sealed class BatchTestResult {\n\tpublic string ModelId { get; init; } = string.Empty;\n\tpublic InferenceParams Params { get; init; } = new();\n\tpublic int TotalTests { get; init; }\n\tpublic int CorrectCount { get; init; }\n\tpublic double Accuracy { get; init; }\n\tpublic int JsonValidCount { get; init; }\n\tpublic double JsonValidRate { get; init; }\n\tpublic double MeanLatencyMs { get; init; }\n\tpublic double MaxLatencyMs { get; init; }\n\tpublic double MinLatencyMs { get; init; }\n\tpublic long TotalDurationMs { get; init; }\n\tpublic List<TestCaseResult> Results { get; init; } = new();\n\tpublic DateTime Timestamp { get; init; } = DateTime.UtcNow;\n\n\tpublic static BatchTestResult FromResults(\n\t\tList<TestCaseResult> results,\n\t\tstring modelId,\n\t\tInferenceParams inferenceParams,\n\t\tlong totalDurationMs) {\n\t\tint total = results.Count;\n\t\tint correct = results.Count(r => r.Correct);\n\t\tint jsonValid = results.Count(r => r.JsonValid);\n\n\t\treturn new BatchTestResult {\n\t\t\tModelId = modelId,\n\t\t\tParams = inferenceParams,\n\t\t\tTotalTests = total,\n\t\t\tCorrectCount = correct,\n\t\t\tAccuracy = total > 0 ? (double)correct / total : 0.0,\n\t\t\tJsonValidCount = jsonValid,\n\t\t\tJsonValidRate = total > 0 ? (double)jsonValid / total : 0.0,\n\t\t\tMeanLatencyMs = results.Count > 0 ? results.Average(r => r.LatencyMs) : 0.0,\n\t\t\tMaxLatencyMs = results.Count > 0 ? results.Max(r => r.LatencyMs) : 0.0,\n\t\t\tMinLatencyMs = results.Count > 0 ? results.Min(r => r.LatencyMs) : 0.0,\n\t\t\tTotalDurationMs = totalDurationMs,\n\t\t\tResults = results,\n\t\t};\n\t}\n\n\t/// <summary>\n\t/// Checks if accuracy meets the Oracle-mandated decision gate threshold.\n\t/// </summary>\n\tpublic bool MeetsDecisionGate(double threshold = 0.70) => Accuracy >= threshold;\n\n\t/// <summary>\n\t/// Human-readable summary for console output.\n\t/// </summary>\n\tpublic override string ToString() {\n\t\tstring gate = MeetsDecisionGate() ? \"PASS\" : \"FAIL\";\n\t\treturn $\"[{ModelId}] {Params} | Accuracy: {Accuracy:P1} ({CorrectCount}/{TotalTests}) | \" +\n\t\t\t$\"JSON Valid: {JsonValidRate:P1} | Mean Latency: {MeanLatencyMs:F0}ms | Gate: {gate}\";\n\t}\n}\n\n/// <summary>\n/// Serializable report combining multiple batch results for comparison.\n/// </summary>\npublic sealed class ModelComparisonReport {\n\tpublic DateTime Timestamp { get; init; } = DateTime.UtcNow;\n\tpublic string DecisionGateThreshold { get; init; } = \"70%\";\n\tpublic List<BatchTestResult> BatchResults { get; init; } = new();\n\n\t/// <summary>\n\t/// Returns the best-performing batch result by accuracy.\n\t/// </summary>\n\tpublic BatchTestResult? GetBestResult() =>\n\t\tBatchResults.OrderByDescending(b => b.Accuracy).ThenBy(b => b.MeanLatencyMs).FirstOrDefault();\n\n\t/// <summary>\n\t/// Serializes the report to JSON.\n\t/// </summary>\n\tpublic string ToJson() {\n\t\tJsonSerializerOptions options = new() {\n\t\t\tWriteIndented = true,\n\t\t\tConverters = { new JsonStringEnumConverter() },\n\t\t};\n\t\treturn JsonSerializer.Serialize(this, options);\n\t}\n\n\t/// <summary>\n\t/// Saves report to disk.\n\t/// </summary>\n\tpublic async Task SaveAsync(string path, CancellationToken cancellationToken = default) {\n\t\tstring? dir = Path.GetDirectoryName(path);\n\t\tif (dir != null && !Directory.Exists(dir)) {\n\t\t\tDirectory.CreateDirectory(dir);\n\t\t}\n\t\tawait File.WriteAllTextAsync(path, ToJson(), cancellationToken);\n\t}\n}"
+  "filePath": "c:\\P4NTHE0N\\tests\\ModelTestingPlatform\\ModelTestHarness.cs",
+  "content": "using System.Diagnostics;\nusing System.Net.Http.Headers;\nusing System.Text;\nusing System.Text.Json;\nusing System.Text.Json.Serialization;\n\nnamespace P4NTHE0N.ModelTestingPlatform;\n\n/// <summary>\n/// Configurable inference parameters for LLM backend calls.\n/// </summary>\npublic sealed class InferenceParams {\n\tpublic double Temperature { get; init; } = 0.1;\n\tpublic double TopP { get; init; } = 0.9;\n\tpublic int TopK { get; init; } = 40;\n\tpublic bool DoSample { get; init; } = true;\n\tpublic int MaxTokens { get; init; } = 512;\n\n\t/// <summary>\n\t/// Deterministic config for reproducibility testing (temp=0.0, no sampling).\n\t/// </summary>\n\tpublic static InferenceParams Deterministic => new() {\n\t\tTemperature = 0.0,\n\t\tTopP = 1.0,\n\t\tTopK = 1,\n\t\tDoSample = false,\n\t\tMaxTokens = 512,\n\t};\n\n\t/// <summary>\n\t/// Default creative params (temp=0.7, standard sampling).\n\t/// </summary>\n\tpublic static InferenceParams Creative => new() {\n\t\tTemperature = 0.7,\n\t\tTopP = 0.9,\n\t\tTopK = 40,\n\t\tDoSample = true,\n\t\tMaxTokens = 512,\n\t};\n\n\tpublic override string ToString() =>\n\t\t$\"temp={Temperature:F2} top_p={TopP:F2} top_k={TopK} sample={DoSample} max={MaxTokens}\";\n}\n\n/// <summary>\n/// Result of a single LLM inference call with timing and metadata.\n/// </summary>\npublic sealed class InferenceResult {\n\tpublic string Response { get; init; } = string.Empty;\n\tpublic long LatencyMs { get; init; }\n\tpublic string ModelId { get; init; } = string.Empty;\n\tpublic InferenceParams Params { get; init; } = new();\n\tpublic bool Success { get; init; }\n\tpublic string? Error { get; init; }\n\tpublic DateTime Timestamp { get; init; } = DateTime.UtcNow;\n\n\t/// <summary>\n\t/// Attempts to parse the response as JSON. Returns null if invalid.\n\t/// </summary>\n\tpublic JsonDocument? TryParseJson() {\n\t\ttry {\n\t\t\tstring json = ExtractJsonBlock(Response);\n\t\t\treturn JsonDocument.Parse(json);\n\t\t}\n\t\tcatch {\n\t\t\treturn null;\n\t\t}\n\t}\n\n\t/// <summary>\n\t/// Whether the response contains valid JSON.\n\t/// </summary>\n\tpublic bool IsValidJson => TryParseJson() != null;\n\n\tprivate static string ExtractJsonBlock(string text) {\n\t\tint start = text.IndexOf('{');\n\t\tint end = text.LastIndexOf('}');\n\t\tif (start >= 0 && end > start) {\n\t\t\treturn text[start..(end + 1)];\n\t\t}\n\t\treturn text;\n\t}\n}\n\n/// <summary>\n/// Backend interface for LLM inference. Implementations can target LM Studio,\n/// Ollama, OpenAI-compatible APIs, or mock backends for testing.\n/// </summary>\npublic interface ILlmBackend : IDisposable {\n\t/// <summary>\n\t/// Unique identifier for this backend (e.g., \"lmstudio\", \"ollama\", \"mock\").\n\t/// </summary>\n\tstring BackendId { get; }\n\n\t/// <summary>\n\t/// The model currently loaded/targeted.\n\t/// </summary>\n\tstring ModelId { get; }\n\n\t/// <summary>\n\t/// Verifies connectivity to the backend.\n\t/// </summary>\n\tTask<bool> IsAvailableAsync(CancellationToken cancellationToken = default);\n\n\t/// <summary>\n\t/// Lists available models on the backend.\n\t/// </summary>\n\tTask<IReadOnlyList<string>> ListModelsAsync(CancellationToken cancellationToken = default);\n\n\t/// <summary>\n\t/// Sends a chat completion request with configurable inference parameters.\n\t/// </summary>\n\tTask<InferenceResult> ChatAsync(\n\t\tstring systemPrompt,\n\t\tstring userMessage,\n\t\tInferenceParams? inferenceParams = null,\n\t\tCancellationToken cancellationToken = default);\n}\n\n/// <summary>\n/// LM Studio backend implementation targeting localhost:1234 OpenAI-compatible API.\n/// Supports configurable temperature, top_p, top_k, do_sample, and max_tokens.\n/// </summary>\npublic sealed class LmStudioBackend : ILlmBackend {\n\tprivate readonly HttpClient _httpClient;\n\tprivate readonly string _baseUrl;\n\tprivate bool _disposed;\n\n\tpublic string BackendId => \"lmstudio\";\n\tpublic string ModelId { get; }\n\n\tpublic LmStudioBackend(\n\t\tstring baseUrl = \"http://localhost:1234\",\n\t\tstring modelId = \"smollm2-1.7b-instruct\",\n\t\tstring? apiKey = null,\n\t\tint timeoutSeconds = 120) {\n\t\t_baseUrl = baseUrl.TrimEnd('/');\n\t\tModelId = modelId;\n\n\t\t_httpClient = new HttpClient {\n\t\t\tBaseAddress = new Uri(_baseUrl),\n\t\t\tTimeout = TimeSpan.FromSeconds(timeoutSeconds),\n\t\t};\n\n\t\t_httpClient.DefaultRequestHeaders.Accept.Add(\n\t\t\tnew MediaTypeWithQualityHeaderValue(\"application/json\"));\n\n\t\tif (!string.IsNullOrWhiteSpace(apiKey)) {\n\t\t\t_httpClient.DefaultRequestHeaders.Authorization =\n\t\t\t\tnew AuthenticationHeaderValue(\"Bearer\", apiKey);\n\t\t}\n\t}\n\n\tpublic async Task<bool> IsAvailableAsync(CancellationToken cancellationToken = default) {\n\t\ttry {\n\t\t\tHttpResponseMessage response = await _httpClient.GetAsync(\n\t\t\t\t\"/v1/models\", cancellationToken);\n\t\t\treturn response.IsSuccessStatusCode;\n\t\t}\n\t\tcatch {\n\t\t\treturn false;\n\t\t}\n\t}\n\n\tpublic async Task<IReadOnlyList<string>> ListModelsAsync(CancellationToken cancellationToken = default) {\n\t\ttry {\n\t\t\tHttpResponseMessage response = await _httpClient.GetAsync(\n\t\t\t\t\"/v1/models\", cancellationToken);\n\t\t\tstring json = await response.Content.ReadAsStringAsync(cancellationToken);\n\n\t\t\tusing JsonDocument doc = JsonDocument.Parse(json);\n\t\t\tList<string> models = new();\n\n\t\t\tif (doc.RootElement.TryGetProperty(\"data\", out JsonElement data) &&\n\t\t\t\tdata.ValueKind == JsonValueKind.Array) {\n\t\t\t\tforeach (JsonElement model in data.EnumerateArray()) {\n\t\t\t\t\tif (model.TryGetProperty(\"id\", out JsonElement id)) {\n\t\t\t\t\t\tstring? modelId = id.GetString();\n\t\t\t\t\t\tif (modelId != null) models.Add(modelId);\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\n\t\t\treturn models.AsReadOnly();\n\t\t}\n\t\tcatch {\n\t\t\treturn Array.Empty<string>();\n\t\t}\n\t}\n\n\tpublic async Task<InferenceResult> ChatAsync(\n\t\tstring systemPrompt,\n\t\tstring userMessage,\n\t\tInferenceParams? inferenceParams = null,\n\t\tCancellationToken cancellationToken = default) {\n\t\tObjectDisposedException.ThrowIf(_disposed, this);\n\n\t\tInferenceParams p = inferenceParams ?? new InferenceParams();\n\t\tStopwatch sw = Stopwatch.StartNew();\n\n\t\ttry {\n\t\t\tobject requestBody = new {\n\t\t\t\tmodel = ModelId,\n\t\t\t\tmessages = new[] {\n\t\t\t\t\tnew { role = \"system\", content = systemPrompt },\n\t\t\t\t\tnew { role = \"user\", content = userMessage },\n\t\t\t\t},\n\t\t\t\tmax_tokens = p.MaxTokens,\n\t\t\t\ttemperature = p.Temperature,\n\t\t\t\ttop_p = p.TopP,\n\t\t\t\ttop_k = p.TopK,\n\t\t\t\tstream = false,\n\t\t\t};\n\n\t\t\tstring json = JsonSerializer.Serialize(requestBody);\n\t\t\tusing StringContent content = new(json, Encoding.UTF8, \"application/json\");\n\n\t\t\tHttpResponseMessage response = await _httpClient.PostAsync(\n\t\t\t\t\"/v1/chat/completions\", content, cancellationToken);\n\n\t\t\tstring responseJson = await response.Content.ReadAsStringAsync(cancellationToken);\n\t\t\tsw.Stop();\n\n\t\t\tif (!response.IsSuccessStatusCode) {\n\t\t\t\treturn new InferenceResult {\n\t\t\t\t\tResponse = responseJson,\n\t\t\t\t\tLatencyMs = sw.ElapsedMilliseconds,\n\t\t\t\t\tModelId = ModelId,\n\t\t\t\t\tParams = p,\n\t\t\t\t\tSuccess = false,\n\t\t\t\t\tError = $\"HTTP {(int)response.StatusCode}: {response.ReasonPhrase}\",\n\t\t\t\t};\n\t\t\t}\n\n\t\t\tusing JsonDocument doc = JsonDocument.Parse(responseJson);\n\t\t\tstring? completionText = doc.RootElement\n\t\t\t\t.GetProperty(\"choices\")[0]\n\t\t\t\t.GetProperty(\"message\")\n\t\t\t\t.GetProperty(\"content\")\n\t\t\t\t.GetString();\n\n\t\t\treturn new InferenceResult {\n\t\t\t\tResponse = completionText ?? string.Empty,\n\t\t\t\tLatencyMs = sw.ElapsedMilliseconds,\n\t\t\t\tModelId = ModelId,\n\t\t\t\tParams = p,\n\t\t\t\tSuccess = true,\n\t\t\t};\n\t\t}\n\t\tcatch (Exception ex) {\n\t\t\tsw.Stop();\n\t\t\treturn new InferenceResult {\n\t\t\t\tResponse = string.Empty,\n\t\t\t\tLatencyMs = sw.ElapsedMilliseconds,\n\t\t\t\tModelId = ModelId,\n\t\t\t\tParams = p,\n\t\t\t\tSuccess = false,\n\t\t\t\tError = ex.Message,\n\t\t\t};\n\t\t}\n\t}\n\n\tpublic void Dispose() {\n\t\tif (!_disposed) {\n\t\t\t_disposed = true;\n\t\t\t_httpClient.Dispose();\n\t\t}\n\t}\n}\n\n/// <summary>\n/// Mock backend for unit testing without LM Studio dependency.\n/// Returns configurable responses for deterministic test scenarios.\n/// </summary>\npublic sealed class MockLlmBackend : ILlmBackend {\n\tprivate readonly Queue<string> _responses = new();\n\tprivate readonly int _latencyMs;\n\tprivate readonly bool _available;\n\n\tpublic string BackendId => \"mock\";\n\tpublic string ModelId { get; }\n\tpublic int CallCount { get; private set; }\n\n\tpublic MockLlmBackend(\n\t\tstring modelId = \"mock-model\",\n\t\tint latencyMs = 10,\n\t\tbool available = true) {\n\t\tModelId = modelId;\n\t\t_latencyMs = latencyMs;\n\t\t_available = available;\n\t}\n\n\t/// <summary>\n\t/// Enqueues a response to be returned on the next ChatAsync call.\n\t/// </summary>\n\tpublic void EnqueueResponse(string response) {\n\t\t_responses.Enqueue(response);\n\t}\n\n\t/// <summary>\n\t/// Enqueues multiple responses.\n\t/// </summary>\n\tpublic void EnqueueResponses(params string[] responses) {\n\t\tforeach (string r in responses) {\n\t\t\t_responses.Enqueue(r);\n\t\t}\n\t}\n\n\tpublic Task<bool> IsAvailableAsync(CancellationToken cancellationToken = default) {\n\t\treturn Task.FromResult(_available);\n\t}\n\n\tpublic Task<IReadOnlyList<string>> ListModelsAsync(CancellationToken cancellationToken = default) {\n\t\tIReadOnlyList<string> models = new List<string> { ModelId }.AsReadOnly();\n\t\treturn Task.FromResult(models);\n\t}\n\n\tpublic async Task<InferenceResult> ChatAsync(\n\t\tstring systemPrompt,\n\t\tstring userMessage,\n\t\tInferenceParams? inferenceParams = null,\n\t\tCancellationToken cancellationToken = default) {\n\t\tCallCount++;\n\n\t\tif (_latencyMs > 0) {\n\t\t\tawait Task.Delay(_latencyMs, cancellationToken);\n\t\t}\n\n\t\tstring response = _responses.Count > 0\n\t\t\t? _responses.Dequeue()\n\t\t\t: \"{\\\"valid\\\": true, \\\"confidence\\\": 0.5, \\\"failures\\\": []}\";\n\n\t\treturn new InferenceResult {\n\t\t\tResponse = response,\n\t\t\tLatencyMs = _latencyMs,\n\t\t\tModelId = ModelId,\n\t\t\tParams = inferenceParams ?? new InferenceParams(),\n\t\t\tSuccess = true,\n\t\t};\n\t}\n\n\tpublic void Dispose() { }\n}\n\n/// <summary>\n/// Test case definition for model validation testing.\n/// Links a config JSON input to expected validation output.\n/// </summary>\npublic sealed class TestCase {\n\tpublic string Name { get; init; } = string.Empty;\n\tpublic string ConfigJson { get; init; } = string.Empty;\n\tpublic bool ExpectedValid { get; init; }\n\tpublic List<string> ExpectedFailures { get; init; } = new();\n\tpublic string SystemPrompt { get; init; } = string.Empty;\n\tpublic string UserPromptTemplate { get; init; } = \"Validate this configuration:\\n{0}\";\n\n\t/// <summary>\n\t/// Builds the user message from the template and config.\n\t/// </summary>\n\tpublic string BuildUserMessage() =>\n\t\tstring.Format(UserPromptTemplate, ConfigJson);\n}\n\n/// <summary>\n/// Result of evaluating a single test case against a model response.\n/// </summary>\npublic sealed class TestCaseResult {\n\tpublic string TestName { get; init; } = string.Empty;\n\tpublic string ModelId { get; init; } = string.Empty;\n\tpublic InferenceParams Params { get; init; } = new();\n\tpublic bool ExpectedValid { get; init; }\n\tpublic bool PredictedValid { get; init; }\n\tpublic bool Correct { get; init; }\n\tpublic double Confidence { get; init; }\n\tpublic long LatencyMs { get; init; }\n\tpublic bool JsonValid { get; init; }\n\tpublic List<string> PredictedFailures { get; init; } = new();\n\tpublic string RawResponse { get; init; } = string.Empty;\n\tpublic string? Error { get; init; }\n}\n\n/// <summary>\n/// Harness for running test cases against LLM backends with configurable parameters.\n/// Supports single runs, batch evaluation, and result aggregation.\n/// </summary>\npublic sealed class ModelTestHarness {\n\tprivate readonly ILlmBackend _backend;\n\tprivate readonly string _defaultSystemPrompt;\n\n\tpublic ModelTestHarness(ILlmBackend backend, string? systemPrompt = null) {\n\t\t_backend = backend;\n\t\t_defaultSystemPrompt = systemPrompt ?? P4NTHE0N.DeployLogAnalyzer.FewShotPrompt.GetConfigValidationPrompt();\n\t}\n\n\t/// <summary>\n\t/// Runs a single test case with specified inference params.\n\t/// </summary>\n\tpublic async Task<TestCaseResult> RunTestAsync(\n\t\tTestCase testCase,\n\t\tInferenceParams? inferenceParams = null,\n\t\tCancellationToken cancellationToken = default) {\n\t\tInferenceParams p = inferenceParams ?? new InferenceParams();\n\t\tstring systemPrompt = string.IsNullOrEmpty(testCase.SystemPrompt)\n\t\t\t? _defaultSystemPrompt\n\t\t\t: testCase.SystemPrompt;\n\n\t\tInferenceResult inference = await _backend.ChatAsync(\n\t\t\tsystemPrompt,\n\t\t\ttestCase.BuildUserMessage(),\n\t\t\tp,\n\t\t\tcancellationToken);\n\n\t\tif (!inference.Success) {\n\t\t\treturn new TestCaseResult {\n\t\t\t\tTestName = testCase.Name,\n\t\t\t\tModelId = _backend.ModelId,\n\t\t\t\tParams = p,\n\t\t\t\tExpectedValid = testCase.ExpectedValid,\n\t\t\t\tPredictedValid = false,\n\t\t\t\tCorrect = false,\n\t\t\t\tConfidence = 0.0,\n\t\t\t\tLatencyMs = inference.LatencyMs,\n\t\t\t\tJsonValid = false,\n\t\t\t\tRawResponse = inference.Response,\n\t\t\t\tError = inference.Error,\n\t\t\t};\n\t\t}\n\n\t\treturn ParseTestResult(testCase, inference, p);\n\t}\n\n\t/// <summary>\n\t/// Runs all test cases and returns aggregated results.\n\t/// </summary>\n\tpublic async Task<BatchTestResult> RunBatchAsync(\n\t\tIReadOnlyList<TestCase> testCases,\n\t\tInferenceParams? inferenceParams = null,\n\t\tCancellationToken cancellationToken = default) {\n\t\tList<TestCaseResult> results = new();\n\t\tStopwatch sw = Stopwatch.StartNew();\n\n\t\tforeach (TestCase tc in testCases) {\n\t\t\tcancellationToken.ThrowIfCancellationRequested();\n\t\t\tTestCaseResult result = await RunTestAsync(tc, inferenceParams, cancellationToken);\n\t\t\tresults.Add(result);\n\t\t}\n\n\t\tsw.Stop();\n\t\treturn BatchTestResult.FromResults(results, _backend.ModelId, inferenceParams ?? new InferenceParams(), sw.ElapsedMilliseconds);\n\t}\n\n\t/// <summary>\n\t/// Loads test cases from the pre-validation test-configs directory.\n\t/// Compatible with the existing test config format.\n\t/// </summary>\n\tpublic static async Task<List<TestCase>> LoadTestCasesAsync(\n\t\tstring directory,\n\t\tCancellationToken cancellationToken = default) {\n\t\tList<TestCase> cases = new();\n\n\t\tif (!Directory.Exists(directory)) return cases;\n\n\t\tforeach (string file in Directory.GetFiles(directory, \"*.json\").OrderBy(f => f)) {\n\t\t\tstring json = await File.ReadAllTextAsync(file, cancellationToken);\n\t\t\ttry {\n\t\t\t\tusing JsonDocument doc = JsonDocument.Parse(json);\n\t\t\t\tJsonElement root = doc.RootElement;\n\n\t\t\t\tstring name = root.TryGetProperty(\"name\", out JsonElement n)\n\t\t\t\t\t? n.GetString() ?? Path.GetFileNameWithoutExtension(file)\n\t\t\t\t\t: Path.GetFileNameWithoutExtension(file);\n\n\t\t\t\tstring configJson = root.TryGetProperty(\"config\", out JsonElement cfg)\n\t\t\t\t\t? cfg.GetRawText() : json;\n\n\t\t\t\tbool expectedValid = false;\n\t\t\t\tList<string> expectedFailures = new();\n\n\t\t\t\tif (root.TryGetProperty(\"expected\", out JsonElement expected)) {\n\t\t\t\t\tif (expected.TryGetProperty(\"valid\", out JsonElement v)) {\n\t\t\t\t\t\texpectedValid = v.GetBoolean();\n\t\t\t\t\t}\n\t\t\t\t\tif (expected.TryGetProperty(\"failures\", out JsonElement f) &&\n\t\t\t\t\t\tf.ValueKind == JsonValueKind.Array) {\n\t\t\t\t\t\tforeach (JsonElement item in f.EnumerateArray()) {\n\t\t\t\t\t\t\tstring? s = item.GetString();\n\t\t\t\t\t\t\tif (s != null) expectedFailures.Add(s);\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\tcases.Add(new TestCase {\n\t\t\t\t\tName = name,\n\t\t\t\t\tConfigJson = configJson,\n\t\t\t\t\tExpectedValid = expectedValid,\n\t\t\t\t\tExpectedFailures = expectedFailures,\n\t\t\t\t});\n\t\t\t}\n\t\t\tcatch {\n\t\t\t\t// Skip malformed test files\n\t\t\t}\n\t\t}\n\n\t\treturn cases;\n\t}\n\n\tprivate TestCaseResult ParseTestResult(\n\t\tTestCase testCase,\n\t\tInferenceResult inference,\n\t\tInferenceParams p) {\n\t\tbool predictedValid = false;\n\t\tdouble confidence = 0.0;\n\t\tbool jsonValid = false;\n\t\tList<string> predictedFailures = new();\n\n\t\tusing JsonDocument? doc = inference.TryParseJson();\n\t\tif (doc != null) {\n\t\t\tjsonValid = true;\n\t\t\tJsonElement root = doc.RootElement;\n\n\t\t\tif (root.TryGetProperty(\"valid\", out JsonElement v)) {\n\t\t\t\tpredictedValid = v.GetBoolean();\n\t\t\t}\n\t\t\tif (root.TryGetProperty(\"confidence\", out JsonElement c)) {\n\t\t\t\tconfidence = c.GetDouble();\n\t\t\t}\n\t\t\tif (root.TryGetProperty(\"failures\", out JsonElement f) &&\n\t\t\t\tf.ValueKind == JsonValueKind.Array) {\n\t\t\t\tforeach (JsonElement item in f.EnumerateArray()) {\n\t\t\t\t\tstring? s = item.GetString();\n\t\t\t\t\tif (s != null) predictedFailures.Add(s);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tbool correct = predictedValid == testCase.ExpectedValid;\n\n\t\treturn new TestCaseResult {\n\t\t\tTestName = testCase.Name,\n\t\t\tModelId = _backend.ModelId,\n\t\t\tParams = p,\n\t\t\tExpectedValid = testCase.ExpectedValid,\n\t\t\tPredictedValid = predictedValid,\n\t\t\tCorrect = correct,\n\t\t\tConfidence = confidence,\n\t\t\tLatencyMs = inference.LatencyMs,\n\t\t\tJsonValid = jsonValid,\n\t\t\tPredictedFailures = predictedFailures,\n\t\t\tRawResponse = inference.Response,\n\t\t};\n\t}\n}\n\n/// <summary>\n/// Aggregated results from running a batch of test cases.\n/// </summary>\npublic sealed class BatchTestResult {\n\tpublic string ModelId { get; init; } = string.Empty;\n\tpublic InferenceParams Params { get; init; } = new();\n\tpublic int TotalTests { get; init; }\n\tpublic int CorrectCount { get; init; }\n\tpublic double Accuracy { get; init; }\n\tpublic int JsonValidCount { get; init; }\n\tpublic double JsonValidRate { get; init; }\n\tpublic double MeanLatencyMs { get; init; }\n\tpublic double MaxLatencyMs { get; init; }\n\tpublic double MinLatencyMs { get; init; }\n\tpublic long TotalDurationMs { get; init; }\n\tpublic List<TestCaseResult> Results { get; init; } = new();\n\tpublic DateTime Timestamp { get; init; } = DateTime.UtcNow;\n\n\tpublic static BatchTestResult FromResults(\n\t\tList<TestCaseResult> results,\n\t\tstring modelId,\n\t\tInferenceParams inferenceParams,\n\t\tlong totalDurationMs) {\n\t\tint total = results.Count;\n\t\tint correct = results.Count(r => r.Correct);\n\t\tint jsonValid = results.Count(r => r.JsonValid);\n\n\t\treturn new BatchTestResult {\n\t\t\tModelId = modelId,\n\t\t\tParams = inferenceParams,\n\t\t\tTotalTests = total,\n\t\t\tCorrectCount = correct,\n\t\t\tAccuracy = total > 0 ? (double)correct / total : 0.0,\n\t\t\tJsonValidCount = jsonValid,\n\t\t\tJsonValidRate = total > 0 ? (double)jsonValid / total : 0.0,\n\t\t\tMeanLatencyMs = results.Count > 0 ? results.Average(r => r.LatencyMs) : 0.0,\n\t\t\tMaxLatencyMs = results.Count > 0 ? results.Max(r => r.LatencyMs) : 0.0,\n\t\t\tMinLatencyMs = results.Count > 0 ? results.Min(r => r.LatencyMs) : 0.0,\n\t\t\tTotalDurationMs = totalDurationMs,\n\t\t\tResults = results,\n\t\t};\n\t}\n\n\t/// <summary>\n\t/// Checks if accuracy meets the Oracle-mandated decision gate threshold.\n\t/// </summary>\n\tpublic bool MeetsDecisionGate(double threshold = 0.70) => Accuracy >= threshold;\n\n\t/// <summary>\n\t/// Human-readable summary for console output.\n\t/// </summary>\n\tpublic override string ToString() {\n\t\tstring gate = MeetsDecisionGate() ? \"PASS\" : \"FAIL\";\n\t\treturn $\"[{ModelId}] {Params} | Accuracy: {Accuracy:P1} ({CorrectCount}/{TotalTests}) | \" +\n\t\t\t$\"JSON Valid: {JsonValidRate:P1} | Mean Latency: {MeanLatencyMs:F0}ms | Gate: {gate}\";\n\t}\n}\n\n/// <summary>\n/// Serializable report combining multiple batch results for comparison.\n/// </summary>\npublic sealed class ModelComparisonReport {\n\tpublic DateTime Timestamp { get; init; } = DateTime.UtcNow;\n\tpublic string DecisionGateThreshold { get; init; } = \"70%\";\n\tpublic List<BatchTestResult> BatchResults { get; init; } = new();\n\n\t/// <summary>\n\t/// Returns the best-performing batch result by accuracy.\n\t/// </summary>\n\tpublic BatchTestResult? GetBestResult() =>\n\t\tBatchResults.OrderByDescending(b => b.Accuracy).ThenBy(b => b.MeanLatencyMs).FirstOrDefault();\n\n\t/// <summary>\n\t/// Serializes the report to JSON.\n\t/// </summary>\n\tpublic string ToJson() {\n\t\tJsonSerializerOptions options = new() {\n\t\t\tWriteIndented = true,\n\t\t\tConverters = { new JsonStringEnumConverter() },\n\t\t};\n\t\treturn JsonSerializer.Serialize(this, options);\n\t}\n\n\t/// <summary>\n\t/// Saves report to disk.\n\t/// </summary>\n\tpublic async Task SaveAsync(string path, CancellationToken cancellationToken = default) {\n\t\tstring? dir = Path.GetDirectoryName(path);\n\t\tif (dir != null && !Directory.Exists(dir)) {\n\t\t\tDirectory.CreateDirectory(dir);\n\t\t}\n\t\tawait File.WriteAllTextAsync(path, ToJson(), cancellationToken);\n\t}\n}"
 }
 ```
 
@@ -2972,8 +2972,8 @@ Now create `PromptConsistencyTester.cs`:
 **Input:**
 ```json
 {
-  "filePath": "c:\\P4NTH30N\\tests\\ModelTestingPlatform\\PromptConsistencyTester.cs",
-  "content": "using System.Text.Json;\nusing System.Text.Json.Serialization;\n\nnamespace P4NTH30N.ModelTestingPlatform;\n\n/// <summary>\n/// Tests prompt consistency by running the same test case N times and measuring variance.\n/// Oracle mandate: n=10 runs, acceptance criteria: variance < 5% = production ready.\n/// </summary>\npublic sealed class PromptConsistencyTester {\n\tprivate readonly ILlmBackend _backend;\n\tprivate readonly string _systemPrompt;\n\tprivate readonly int _runsPerTest;\n\n\t/// <summary>\n\t/// Default runs per test case (Oracle-mandated n=10).\n\t/// </summary>\n\tpublic const int DefaultRunCount = 10;\n\n\t/// <summary>\n\t/// Maximum acceptable variance for production readiness (5%).\n\t/// </summary>\n\tpublic const double MaxProductionVariance = 0.05;\n\n\tpublic PromptConsistencyTester(\n\t\tILlmBackend backend,\n\t\tstring? systemPrompt = null,\n\t\tint runsPerTest = DefaultRunCount) {\n\t\t_backend = backend;\n\t\t_systemPrompt = systemPrompt ?? P4NTH30N.DeployLogAnalyzer.FewShotPrompt.GetConfigValidationPrompt();\n\t\t_runsPerTest = runsPerTest;\n\t}\n\n\t/// <summary>\n\t/// Runs a single test case N times and measures consistency metrics.\n\t/// </summary>\n\tpublic async Task<ConsistencyResult> MeasureConsistencyAsync(\n\t\tTestCase testCase,\n\t\tInferenceParams? inferenceParams = null,\n\t\tCancellationToken cancellationToken = default) {\n\t\tInferenceParams p = inferenceParams ?? new InferenceParams();\n\t\tModelTestHarness harness = new(_backend, _systemPrompt);\n\n\t\tList<TestCaseResult> runs = new();\n\n\t\tfor (int i = 0; i < _runsPerTest; i++) {\n\t\t\tcancellationToken.ThrowIfCancellationRequested();\n\t\t\tTestCaseResult result = await harness.RunTestAsync(testCase, p, cancellationToken);\n\t\t\truns.Add(result);\n\t\t}\n\n\t\treturn CalculateConsistency(testCase, runs, p);\n\t}\n\n\t/// <summary>\n\t/// Runs all test cases N times each and produces a full consistency report.\n\t/// </summary>\n\tpublic async Task<ConsistencyReport> RunFullConsistencyTestAsync(\n\t\tIReadOnlyList<TestCase> testCases,\n\t\tInferenceParams? inferenceParams = null,\n\t\tCancellationToken cancellationToken = default) {\n\t\tList<ConsistencyResult> results = new();\n\t\tlong totalStartMs = Environment.TickCount64;\n\n\t\tforeach (TestCase tc in testCases) {\n\t\t\tcancellationToken.ThrowIfCancellationRequested();\n\t\t\tConsistencyResult result = await MeasureConsistencyAsync(tc, inferenceParams, cancellationToken);\n\t\t\tresults.Add(result);\n\t\t}\n\n\t\tlong totalDurationMs = Environment.TickCount64 - totalStartMs;\n\n\t\treturn new ConsistencyReport {\n\t\t\tModelId = _backend.ModelId,\n\t\t\tParams = inferenceParams ?? new InferenceParams(),\n\t\t\tRunsPerTest = _runsPerTest,\n\t\t\tTestResults = results,\n\t\t\tOverallAccuracy = results.Count > 0 ? results.Average(r => r.AccuracyRate) : 0.0,\n\t\t\tOverallVariance = results.Count > 0 ? results.Average(r => r.VarianceScore) : 0.0,\n\t\t\tOverallJsonValidRate = results.Count > 0 ? results.Average(r => r.JsonValidRate) : 0.0,\n\t\t\tMeanLatencyMs = results.Count > 0 ? results.Average(r => r.MeanLatencyMs) : 0.0,\n\t\t\tTotalDurationMs = totalDurationMs,\n\t\t\tIsProductionReady = results.Count > 0 && results.All(r => r.IsProductionReady),\n\t\t\tMeetsDecisionGate = results.Count > 0 &&\n\t\t\t\tresults.Average(r => r.AccuracyRate) >= 0.70,\n\t\t};\n\t}\n\n\tprivate ConsistencyResult CalculateConsistency(\n\t\tTestCase testCase,\n\t\tList<TestCaseResult> runs,\n\t\tInferenceParams p) {\n\t\tint totalRuns = runs.Count;\n\t\tint correctRuns = runs.Count(r => r.Correct);\n\t\tint jsonValidRuns = runs.Count(r => r.JsonValid);\n\t\tint predictedTrueCount = runs.Count(r => r.PredictedValid);\n\t\tint predictedFalseCount = runs.Count(r => !r.PredictedValid);\n\n\t\tdouble accuracyRate = totalRuns > 0 ? (double)correctRuns / totalRuns : 0.0;\n\t\tdouble jsonValidRate = totalRuns > 0 ? (double)jsonValidRuns / totalRuns : 0.0;\n\n\t\t// Variance: measure how often the prediction flips between runs.\n\t\t// 0.0 = perfectly consistent (all same answer), 0.5 = max variance (50/50 split).\n\t\tdouble predictionVariance = CalculatePredictionVariance(runs);\n\n\t\t// Standard error of accuracy across runs (binary outcomes).\n\t\tdouble standardError = CalculateStandardError(runs);\n\n\t\t// Latency stats\n\t\tdouble meanLatency = runs.Count > 0 ? runs.Average(r => r.LatencyMs) : 0.0;\n\t\tdouble maxLatency = runs.Count > 0 ? runs.Max(r => r.LatencyMs) : 0.0;\n\t\tdouble minLatency = runs.Count > 0 ? runs.Min(r => r.LatencyMs) : 0.0;\n\t\tdouble stdDevLatency = CalculateStdDev(runs.Select(r => (double)r.LatencyMs));\n\n\t\t// Confidence stats\n\t\tdouble meanConfidence = runs.Where(r => r.JsonValid).Select(r => r.Confidence).DefaultIfEmpty(0.0).Average();\n\t\tdouble stdDevConfidence = CalculateStdDev(runs.Where(r => r.JsonValid).Select(r => r.Confidence));\n\n\t\treturn new ConsistencyResult {\n\t\t\tTestName = testCase.Name,\n\t\t\tExpectedValid = testCase.ExpectedValid,\n\t\t\tModelId = _backend.ModelId,\n\t\t\tParams = p,\n\t\t\tTotalRuns = totalRuns,\n\t\t\tCorrectRuns = correctRuns,\n\t\t\tAccuracyRate = accuracyRate,\n\t\t\tJsonValidRuns = jsonValidRuns,\n\t\t\tJsonValidRate = jsonValidRate,\n\t\t\tPredictedTrueCount = predictedTrueCount,\n\t\t\tPredictedFalseCount = predictedFalseCount,\n\t\t\tVarianceScore = predictionVariance,\n\t\t\tStandardError = standardError,\n\t\t\tMeanLatencyMs = meanLatency,\n\t\t\tMaxLatencyMs = maxLatency,\n\t\t\tMinLatencyMs = minLatency,\n\t\t\tStdDevLatencyMs = stdDevLatency,\n\t\t\tMeanConfidence = meanConfidence,\n\t\t\tStdDevConfidence = stdDevConfidence,\n\t\t\tIsProductionReady = predictionVariance < MaxProductionVariance,\n\t\t\tRuns = runs,\n\t\t};\n\t}\n\n\t/// <summary>\n\t/// Calculates prediction variance as proportion of minority class.\n\t/// 0.0 = all predictions identical, 0.5 = maximum disagreement.\n\t/// </summary>\n\tprivate static double CalculatePredictionVariance(List<TestCaseResult> runs) {\n\t\tif (runs.Count == 0) return 0.0;\n\n\t\tint trueCount = runs.Count(r => r.PredictedValid);\n\t\tint falseCount = runs.Count - trueCount;\n\t\tint minority = Math.Min(trueCount, falseCount);\n\n\t\treturn (double)minority / runs.Count;\n\t}\n\n\t/// <summary>\n\t/// Standard error for binary outcome (correct/incorrect).\n\t/// SE = sqrt(p * (1-p) / n)\n\t/// </summary>\n\tprivate static double CalculateStandardError(List<TestCaseResult> runs) {\n\t\tif (runs.Count <= 1) return 0.0;\n\n\t\tdouble p = (double)runs.Count(r => r.Correct) / runs.Count;\n\t\treturn Math.Sqrt(p * (1.0 - p) / runs.Count);\n\t}\n\n\t/// <summary>\n\t/// Calculates standard deviation for a sequence of doubles.\n\t/// </summary>\n\tprivate static double CalculateStdDev(IEnumerable<double> values) {\n\t\tList<double> list = values.ToList();\n\t\tif (list.Count <= 1) return 0.0;\n\n\t\tdouble mean = list.Average();\n\t\tdouble sumSquaredDiffs = list.Sum(v => (v - mean) * (v - mean));\n\t\treturn Math.Sqrt(sumSquaredDiffs / (list.Count - 1));\n\t}\n}\n\n/// <summary>\n/// Consistency measurement for a single test case across N runs.\n/// </summary>\npublic sealed class ConsistencyResult {\n\tpublic string TestName { get; init; } = string.Empty;\n\tpublic bool ExpectedValid { get; init; }\n\tpublic string ModelId { get; init; } = string.Empty;\n\tpublic InferenceParams Params { get; init; } = new();\n\tpublic int TotalRuns { get; init; }\n\tpublic int CorrectRuns { get; init; }\n\tpublic double AccuracyRate { get; init; }\n\tpublic int JsonValidRuns { get; init; }\n\tpublic double JsonValidRate { get; init; }\n\tpublic int PredictedTrueCount { get; init; }\n\tpublic int PredictedFalseCount { get; init; }\n\n\t/// <summary>\n\t/// Prediction variance: 0.0 = perfectly consistent, 0.5 = max disagreement.\n\t/// </summary>\n\tpublic double VarianceScore { get; init; }\n\n\t/// <summary>\n\t/// Standard error of accuracy: sqrt(p*(1-p)/n).\n\t/// </summary>\n\tpublic double StandardError { get; init; }\n\n\tpublic double MeanLatencyMs { get; init; }\n\tpublic double MaxLatencyMs { get; init; }\n\tpublic double MinLatencyMs { get; init; }\n\tpublic double StdDevLatencyMs { get; init; }\n\tpublic double MeanConfidence { get; init; }\n\tpublic double StdDevConfidence { get; init; }\n\n\t/// <summary>\n\t/// Production ready: variance below 5% threshold.\n\t/// </summary>\n\tpublic bool IsProductionReady { get; init; }\n\n\t/// <summary>\n\t/// Individual run results (for detailed analysis).\n\t/// </summary>\n\t[JsonIgnore]\n\tpublic List<TestCaseResult> Runs { get; init; } = new();\n\n\tpublic override string ToString() {\n\t\tstring status = IsProductionReady ? \"PROD-READY\" : \"UNSTABLE\";\n\t\treturn $\"[{TestName}] Accuracy: {AccuracyRate:P0} | Variance: {VarianceScore:P1} | \" +\n\t\t\t$\"SE: {StandardError:F4} | Latency: {MeanLatencyMs:F0}ms +/- {StdDevLatencyMs:F0}ms | {status}\";\n\t}\n}\n\n/// <summary>\n/// Full consistency report across all test cases.\n/// </summary>\npublic sealed class ConsistencyReport {\n\tpublic string ModelId { get; init; } = string.Empty;\n\tpublic InferenceParams Params { get; init; } = new();\n\tpublic int RunsPerTest { get; init; }\n\tpublic double OverallAccuracy { get; init; }\n\tpublic double OverallVariance { get; init; }\n\tpublic double OverallJsonValidRate { get; init; }\n\tpublic double MeanLatencyMs { get; init; }\n\tpublic long TotalDurationMs { get; init; }\n\tpublic bool IsProductionReady { get; init; }\n\tpublic bool MeetsDecisionGate { get; init; }\n\tpublic List<ConsistencyResult> TestResults { get; init; } = new();\n\tpublic DateTime Timestamp { get; init; } = DateTime.UtcNow;\n\n\t/// <summary>\n\t/// Human-readable summary.\n\t/// </summary>\n\tpublic override string ToString() {\n\t\tstring gate = MeetsDecisionGate ? \"PASS (>=70%)\" : \"FAIL (<70%)\";\n\t\tstring prod = IsProductionReady ? \"YES\" : \"NO\";\n\t\treturn $\"\"\"\n\t\t\t=== Consistency Report: {ModelId} ===\n\t\t\tParams: {Params}\n\t\t\tRuns per test: {RunsPerTest}\n\t\t\tOverall Accuracy: {OverallAccuracy:P1}\n\t\t\tOverall Variance: {OverallVariance:P2}\n\t\t\tJSON Valid Rate: {OverallJsonValidRate:P1}\n\t\t\tMean Latency: {MeanLatencyMs:F0}ms\n\t\t\tTotal Duration: {TotalDurationMs}ms\n\t\t\tDecision Gate: {gate}\n\t\t\tProduction Ready: {prod}\n\t\t\t--- Per-Test ---\n\t\t\t{string.Join(\"\\n\", TestResults.Select(r => r.ToString()))}\n\t\t\t\"\"\";\n\t}\n\n\t/// <summary>\n\t/// Serializes to JSON for persistence.\n\t/// </summary>\n\tpublic string ToJson() {\n\t\tJsonSerializerOptions options = new() {\n\t\t\tWriteIndented = true,\n\t\t\tConverters = { new JsonStringEnumConverter() },\n\t\t};\n\t\treturn JsonSerializer.Serialize(this, options);\n\t}\n\n\t/// <summary>\n\t/// Saves report to disk.\n\t/// </summary>\n\tpublic async Task SaveAsync(string path, CancellationToken cancellationToken = default) {\n\t\tstring? dir = Path.GetDirectoryName(path);\n\t\tif (dir != null && !Directory.Exists(dir)) {\n\t\t\tDirectory.CreateDirectory(dir);\n\t\t}\n\t\tawait File.WriteAllTextAsync(path, ToJson(), cancellationToken);\n\t}\n}"
+  "filePath": "c:\\P4NTHE0N\\tests\\ModelTestingPlatform\\PromptConsistencyTester.cs",
+  "content": "using System.Text.Json;\nusing System.Text.Json.Serialization;\n\nnamespace P4NTHE0N.ModelTestingPlatform;\n\n/// <summary>\n/// Tests prompt consistency by running the same test case N times and measuring variance.\n/// Oracle mandate: n=10 runs, acceptance criteria: variance < 5% = production ready.\n/// </summary>\npublic sealed class PromptConsistencyTester {\n\tprivate readonly ILlmBackend _backend;\n\tprivate readonly string _systemPrompt;\n\tprivate readonly int _runsPerTest;\n\n\t/// <summary>\n\t/// Default runs per test case (Oracle-mandated n=10).\n\t/// </summary>\n\tpublic const int DefaultRunCount = 10;\n\n\t/// <summary>\n\t/// Maximum acceptable variance for production readiness (5%).\n\t/// </summary>\n\tpublic const double MaxProductionVariance = 0.05;\n\n\tpublic PromptConsistencyTester(\n\t\tILlmBackend backend,\n\t\tstring? systemPrompt = null,\n\t\tint runsPerTest = DefaultRunCount) {\n\t\t_backend = backend;\n\t\t_systemPrompt = systemPrompt ?? P4NTHE0N.DeployLogAnalyzer.FewShotPrompt.GetConfigValidationPrompt();\n\t\t_runsPerTest = runsPerTest;\n\t}\n\n\t/// <summary>\n\t/// Runs a single test case N times and measures consistency metrics.\n\t/// </summary>\n\tpublic async Task<ConsistencyResult> MeasureConsistencyAsync(\n\t\tTestCase testCase,\n\t\tInferenceParams? inferenceParams = null,\n\t\tCancellationToken cancellationToken = default) {\n\t\tInferenceParams p = inferenceParams ?? new InferenceParams();\n\t\tModelTestHarness harness = new(_backend, _systemPrompt);\n\n\t\tList<TestCaseResult> runs = new();\n\n\t\tfor (int i = 0; i < _runsPerTest; i++) {\n\t\t\tcancellationToken.ThrowIfCancellationRequested();\n\t\t\tTestCaseResult result = await harness.RunTestAsync(testCase, p, cancellationToken);\n\t\t\truns.Add(result);\n\t\t}\n\n\t\treturn CalculateConsistency(testCase, runs, p);\n\t}\n\n\t/// <summary>\n\t/// Runs all test cases N times each and produces a full consistency report.\n\t/// </summary>\n\tpublic async Task<ConsistencyReport> RunFullConsistencyTestAsync(\n\t\tIReadOnlyList<TestCase> testCases,\n\t\tInferenceParams? inferenceParams = null,\n\t\tCancellationToken cancellationToken = default) {\n\t\tList<ConsistencyResult> results = new();\n\t\tlong totalStartMs = Environment.TickCount64;\n\n\t\tforeach (TestCase tc in testCases) {\n\t\t\tcancellationToken.ThrowIfCancellationRequested();\n\t\t\tConsistencyResult result = await MeasureConsistencyAsync(tc, inferenceParams, cancellationToken);\n\t\t\tresults.Add(result);\n\t\t}\n\n\t\tlong totalDurationMs = Environment.TickCount64 - totalStartMs;\n\n\t\treturn new ConsistencyReport {\n\t\t\tModelId = _backend.ModelId,\n\t\t\tParams = inferenceParams ?? new InferenceParams(),\n\t\t\tRunsPerTest = _runsPerTest,\n\t\t\tTestResults = results,\n\t\t\tOverallAccuracy = results.Count > 0 ? results.Average(r => r.AccuracyRate) : 0.0,\n\t\t\tOverallVariance = results.Count > 0 ? results.Average(r => r.VarianceScore) : 0.0,\n\t\t\tOverallJsonValidRate = results.Count > 0 ? results.Average(r => r.JsonValidRate) : 0.0,\n\t\t\tMeanLatencyMs = results.Count > 0 ? results.Average(r => r.MeanLatencyMs) : 0.0,\n\t\t\tTotalDurationMs = totalDurationMs,\n\t\t\tIsProductionReady = results.Count > 0 && results.All(r => r.IsProductionReady),\n\t\t\tMeetsDecisionGate = results.Count > 0 &&\n\t\t\t\tresults.Average(r => r.AccuracyRate) >= 0.70,\n\t\t};\n\t}\n\n\tprivate ConsistencyResult CalculateConsistency(\n\t\tTestCase testCase,\n\t\tList<TestCaseResult> runs,\n\t\tInferenceParams p) {\n\t\tint totalRuns = runs.Count;\n\t\tint correctRuns = runs.Count(r => r.Correct);\n\t\tint jsonValidRuns = runs.Count(r => r.JsonValid);\n\t\tint predictedTrueCount = runs.Count(r => r.PredictedValid);\n\t\tint predictedFalseCount = runs.Count(r => !r.PredictedValid);\n\n\t\tdouble accuracyRate = totalRuns > 0 ? (double)correctRuns / totalRuns : 0.0;\n\t\tdouble jsonValidRate = totalRuns > 0 ? (double)jsonValidRuns / totalRuns : 0.0;\n\n\t\t// Variance: measure how often the prediction flips between runs.\n\t\t// 0.0 = perfectly consistent (all same answer), 0.5 = max variance (50/50 split).\n\t\tdouble predictionVariance = CalculatePredictionVariance(runs);\n\n\t\t// Standard error of accuracy across runs (binary outcomes).\n\t\tdouble standardError = CalculateStandardError(runs);\n\n\t\t// Latency stats\n\t\tdouble meanLatency = runs.Count > 0 ? runs.Average(r => r.LatencyMs) : 0.0;\n\t\tdouble maxLatency = runs.Count > 0 ? runs.Max(r => r.LatencyMs) : 0.0;\n\t\tdouble minLatency = runs.Count > 0 ? runs.Min(r => r.LatencyMs) : 0.0;\n\t\tdouble stdDevLatency = CalculateStdDev(runs.Select(r => (double)r.LatencyMs));\n\n\t\t// Confidence stats\n\t\tdouble meanConfidence = runs.Where(r => r.JsonValid).Select(r => r.Confidence).DefaultIfEmpty(0.0).Average();\n\t\tdouble stdDevConfidence = CalculateStdDev(runs.Where(r => r.JsonValid).Select(r => r.Confidence));\n\n\t\treturn new ConsistencyResult {\n\t\t\tTestName = testCase.Name,\n\t\t\tExpectedValid = testCase.ExpectedValid,\n\t\t\tModelId = _backend.ModelId,\n\t\t\tParams = p,\n\t\t\tTotalRuns = totalRuns,\n\t\t\tCorrectRuns = correctRuns,\n\t\t\tAccuracyRate = accuracyRate,\n\t\t\tJsonValidRuns = jsonValidRuns,\n\t\t\tJsonValidRate = jsonValidRate,\n\t\t\tPredictedTrueCount = predictedTrueCount,\n\t\t\tPredictedFalseCount = predictedFalseCount,\n\t\t\tVarianceScore = predictionVariance,\n\t\t\tStandardError = standardError,\n\t\t\tMeanLatencyMs = meanLatency,\n\t\t\tMaxLatencyMs = maxLatency,\n\t\t\tMinLatencyMs = minLatency,\n\t\t\tStdDevLatencyMs = stdDevLatency,\n\t\t\tMeanConfidence = meanConfidence,\n\t\t\tStdDevConfidence = stdDevConfidence,\n\t\t\tIsProductionReady = predictionVariance < MaxProductionVariance,\n\t\t\tRuns = runs,\n\t\t};\n\t}\n\n\t/// <summary>\n\t/// Calculates prediction variance as proportion of minority class.\n\t/// 0.0 = all predictions identical, 0.5 = maximum disagreement.\n\t/// </summary>\n\tprivate static double CalculatePredictionVariance(List<TestCaseResult> runs) {\n\t\tif (runs.Count == 0) return 0.0;\n\n\t\tint trueCount = runs.Count(r => r.PredictedValid);\n\t\tint falseCount = runs.Count - trueCount;\n\t\tint minority = Math.Min(trueCount, falseCount);\n\n\t\treturn (double)minority / runs.Count;\n\t}\n\n\t/// <summary>\n\t/// Standard error for binary outcome (correct/incorrect).\n\t/// SE = sqrt(p * (1-p) / n)\n\t/// </summary>\n\tprivate static double CalculateStandardError(List<TestCaseResult> runs) {\n\t\tif (runs.Count <= 1) return 0.0;\n\n\t\tdouble p = (double)runs.Count(r => r.Correct) / runs.Count;\n\t\treturn Math.Sqrt(p * (1.0 - p) / runs.Count);\n\t}\n\n\t/// <summary>\n\t/// Calculates standard deviation for a sequence of doubles.\n\t/// </summary>\n\tprivate static double CalculateStdDev(IEnumerable<double> values) {\n\t\tList<double> list = values.ToList();\n\t\tif (list.Count <= 1) return 0.0;\n\n\t\tdouble mean = list.Average();\n\t\tdouble sumSquaredDiffs = list.Sum(v => (v - mean) * (v - mean));\n\t\treturn Math.Sqrt(sumSquaredDiffs / (list.Count - 1));\n\t}\n}\n\n/// <summary>\n/// Consistency measurement for a single test case across N runs.\n/// </summary>\npublic sealed class ConsistencyResult {\n\tpublic string TestName { get; init; } = string.Empty;\n\tpublic bool ExpectedValid { get; init; }\n\tpublic string ModelId { get; init; } = string.Empty;\n\tpublic InferenceParams Params { get; init; } = new();\n\tpublic int TotalRuns { get; init; }\n\tpublic int CorrectRuns { get; init; }\n\tpublic double AccuracyRate { get; init; }\n\tpublic int JsonValidRuns { get; init; }\n\tpublic double JsonValidRate { get; init; }\n\tpublic int PredictedTrueCount { get; init; }\n\tpublic int PredictedFalseCount { get; init; }\n\n\t/// <summary>\n\t/// Prediction variance: 0.0 = perfectly consistent, 0.5 = max disagreement.\n\t/// </summary>\n\tpublic double VarianceScore { get; init; }\n\n\t/// <summary>\n\t/// Standard error of accuracy: sqrt(p*(1-p)/n).\n\t/// </summary>\n\tpublic double StandardError { get; init; }\n\n\tpublic double MeanLatencyMs { get; init; }\n\tpublic double MaxLatencyMs { get; init; }\n\tpublic double MinLatencyMs { get; init; }\n\tpublic double StdDevLatencyMs { get; init; }\n\tpublic double MeanConfidence { get; init; }\n\tpublic double StdDevConfidence { get; init; }\n\n\t/// <summary>\n\t/// Production ready: variance below 5% threshold.\n\t/// </summary>\n\tpublic bool IsProductionReady { get; init; }\n\n\t/// <summary>\n\t/// Individual run results (for detailed analysis).\n\t/// </summary>\n\t[JsonIgnore]\n\tpublic List<TestCaseResult> Runs { get; init; } = new();\n\n\tpublic override string ToString() {\n\t\tstring status = IsProductionReady ? \"PROD-READY\" : \"UNSTABLE\";\n\t\treturn $\"[{TestName}] Accuracy: {AccuracyRate:P0} | Variance: {VarianceScore:P1} | \" +\n\t\t\t$\"SE: {StandardError:F4} | Latency: {MeanLatencyMs:F0}ms +/- {StdDevLatencyMs:F0}ms | {status}\";\n\t}\n}\n\n/// <summary>\n/// Full consistency report across all test cases.\n/// </summary>\npublic sealed class ConsistencyReport {\n\tpublic string ModelId { get; init; } = string.Empty;\n\tpublic InferenceParams Params { get; init; } = new();\n\tpublic int RunsPerTest { get; init; }\n\tpublic double OverallAccuracy { get; init; }\n\tpublic double OverallVariance { get; init; }\n\tpublic double OverallJsonValidRate { get; init; }\n\tpublic double MeanLatencyMs { get; init; }\n\tpublic long TotalDurationMs { get; init; }\n\tpublic bool IsProductionReady { get; init; }\n\tpublic bool MeetsDecisionGate { get; init; }\n\tpublic List<ConsistencyResult> TestResults { get; init; } = new();\n\tpublic DateTime Timestamp { get; init; } = DateTime.UtcNow;\n\n\t/// <summary>\n\t/// Human-readable summary.\n\t/// </summary>\n\tpublic override string ToString() {\n\t\tstring gate = MeetsDecisionGate ? \"PASS (>=70%)\" : \"FAIL (<70%)\";\n\t\tstring prod = IsProductionReady ? \"YES\" : \"NO\";\n\t\treturn $\"\"\"\n\t\t\t=== Consistency Report: {ModelId} ===\n\t\t\tParams: {Params}\n\t\t\tRuns per test: {RunsPerTest}\n\t\t\tOverall Accuracy: {OverallAccuracy:P1}\n\t\t\tOverall Variance: {OverallVariance:P2}\n\t\t\tJSON Valid Rate: {OverallJsonValidRate:P1}\n\t\t\tMean Latency: {MeanLatencyMs:F0}ms\n\t\t\tTotal Duration: {TotalDurationMs}ms\n\t\t\tDecision Gate: {gate}\n\t\t\tProduction Ready: {prod}\n\t\t\t--- Per-Test ---\n\t\t\t{string.Join(\"\\n\", TestResults.Select(r => r.ToString()))}\n\t\t\t\"\"\";\n\t}\n\n\t/// <summary>\n\t/// Serializes to JSON for persistence.\n\t/// </summary>\n\tpublic string ToJson() {\n\t\tJsonSerializerOptions options = new() {\n\t\t\tWriteIndented = true,\n\t\t\tConverters = { new JsonStringEnumConverter() },\n\t\t};\n\t\treturn JsonSerializer.Serialize(this, options);\n\t}\n\n\t/// <summary>\n\t/// Saves report to disk.\n\t/// </summary>\n\tpublic async Task SaveAsync(string path, CancellationToken cancellationToken = default) {\n\t\tstring? dir = Path.GetDirectoryName(path);\n\t\tif (dir != null && !Directory.Exists(dir)) {\n\t\t\tDirectory.CreateDirectory(dir);\n\t\t}\n\t\tawait File.WriteAllTextAsync(path, ToJson(), cancellationToken);\n\t}\n}"
 }
 ```
 
@@ -2993,8 +2993,8 @@ Now create `TemperatureSweep.cs`:
 **Input:**
 ```json
 {
-  "filePath": "c:\\P4NTH30N\\tests\\ModelTestingPlatform\\TemperatureSweep.cs",
-  "content": "using System.Text.Json;\nusing System.Text.Json.Serialization;\n\nnamespace P4NTH30N.ModelTestingPlatform;\n\n/// <summary>\n/// Sweeps temperature parameter across a range and measures model performance at each setting.\n/// ARCH-003-PIVOT mandate: test temps 0.0, 0.1, 0.3, 0.5, 0.7, 1.0.\n/// CRITICAL: Run SmolLM2-1.7B with temp=0.0 + improved prompts first.\n/// </summary>\npublic sealed class TemperatureSweep {\n\tprivate readonly ILlmBackend _backend;\n\tprivate readonly string _systemPrompt;\n\tprivate readonly int _runsPerTemp;\n\n\t/// <summary>\n\t/// Default temperature values to sweep (ARCH-003-PIVOT specification).\n\t/// </summary>\n\tpublic static readonly double[] DefaultTemperatures = { 0.0, 0.1, 0.3, 0.5, 0.7, 1.0 };\n\n\tpublic TemperatureSweep(\n\t\tILlmBackend backend,\n\t\tstring? systemPrompt = null,\n\t\tint runsPerTemp = 3) {\n\t\t_backend = backend;\n\t\t_systemPrompt = systemPrompt ?? P4NTH30N.DeployLogAnalyzer.FewShotPrompt.GetConfigValidationPrompt();\n\t\t_runsPerTemp = runsPerTemp;\n\t}\n\n\t/// <summary>\n\t/// Runs a full temperature sweep across all test cases at each temperature.\n\t/// Returns results ordered by temperature for comparison.\n\t/// </summary>\n\tpublic async Task<TemperatureSweepReport> RunSweepAsync(\n\t\tIReadOnlyList<TestCase> testCases,\n\t\tdouble[]? temperatures = null,\n\t\tCancellationToken cancellationToken = default) {\n\t\tdouble[] temps = temperatures ?? DefaultTemperatures;\n\t\tList<TemperaturePoint> points = new();\n\t\tlong totalStartMs = Environment.TickCount64;\n\n\t\tforeach (double temp in temps) {\n\t\t\tcancellationToken.ThrowIfCancellationRequested();\n\n\t\t\tTemperaturePoint point = await RunAtTemperatureAsync(\n\t\t\t\ttestCases, temp, cancellationToken);\n\t\t\tpoints.Add(point);\n\t\t}\n\n\t\tlong totalDurationMs = Environment.TickCount64 - totalStartMs;\n\n\t\t// Find optimal temperature (highest accuracy, lowest variance as tiebreaker)\n\t\tTemperaturePoint? optimal = points\n\t\t\t.OrderByDescending(p => p.Accuracy)\n\t\t\t.ThenBy(p => p.MeanVariance)\n\t\t\t.ThenBy(p => p.MeanLatencyMs)\n\t\t\t.FirstOrDefault();\n\n\t\treturn new TemperatureSweepReport {\n\t\t\tModelId = _backend.ModelId,\n\t\t\tTestCaseCount = testCases.Count,\n\t\t\tRunsPerTemperature = _runsPerTemp,\n\t\t\tPoints = points,\n\t\t\tOptimalTemperature = optimal?.Temperature ?? 0.0,\n\t\t\tOptimalAccuracy = optimal?.Accuracy ?? 0.0,\n\t\t\tTotalDurationMs = totalDurationMs,\n\t\t\tMeetsDecisionGate = optimal?.MeetsDecisionGate ?? false,\n\t\t};\n\t}\n\n\t/// <summary>\n\t/// Runs all test cases at a single temperature setting, N times each.\n\t/// </summary>\n\tprivate async Task<TemperaturePoint> RunAtTemperatureAsync(\n\t\tIReadOnlyList<TestCase> testCases,\n\t\tdouble temperature,\n\t\tCancellationToken cancellationToken) {\n\t\tInferenceParams p = new() {\n\t\t\tTemperature = temperature,\n\t\t\tTopP = temperature == 0.0 ? 1.0 : 0.9,\n\t\t\tTopK = temperature == 0.0 ? 1 : 40,\n\t\t\tDoSample = temperature > 0.0,\n\t\t\tMaxTokens = 512,\n\t\t};\n\n\t\tPromptConsistencyTester tester = new(_backend, _systemPrompt, _runsPerTemp);\n\t\tConsistencyReport report = await tester.RunFullConsistencyTestAsync(\n\t\t\ttestCases, p, cancellationToken);\n\n\t\treturn new TemperaturePoint {\n\t\t\tTemperature = temperature,\n\t\t\tAccuracy = report.OverallAccuracy,\n\t\t\tMeanVariance = report.OverallVariance,\n\t\t\tJsonValidRate = report.OverallJsonValidRate,\n\t\t\tMeanLatencyMs = report.MeanLatencyMs,\n\t\t\tIsProductionReady = report.IsProductionReady,\n\t\t\tMeetsDecisionGate = report.MeetsDecisionGate,\n\t\t\tTestResults = report.TestResults,\n\t\t};\n\t}\n\n\t/// <summary>\n\t/// Runs only the critical temp=0.0 test (fast path for decision gate evaluation).\n\t/// This is the first test to run per Oracle mandate.\n\t/// </summary>\n\tpublic async Task<TemperaturePoint> RunCriticalDeterministicTestAsync(\n\t\tIReadOnlyList<TestCase> testCases,\n\t\tCancellationToken cancellationToken = default) {\n\t\treturn await RunAtTemperatureAsync(testCases, 0.0, cancellationToken);\n\t}\n}\n\n/// <summary>\n/// Performance data for a single temperature setting.\n/// </summary>\npublic sealed class TemperaturePoint {\n\tpublic double Temperature { get; init; }\n\tpublic double Accuracy { get; init; }\n\tpublic double MeanVariance { get; init; }\n\tpublic double JsonValidRate { get; init; }\n\tpublic double MeanLatencyMs { get; init; }\n\tpublic bool IsProductionReady { get; init; }\n\tpublic bool MeetsDecisionGate { get; init; }\n\tpublic List<ConsistencyResult> TestResults { get; init; } = new();\n\n\tpublic override string ToString() {\n\t\tstring gate = MeetsDecisionGate ? \"PASS\" : \"FAIL\";\n\t\tstring prod = IsProductionReady ? \"PROD\" : \"UNSTABLE\";\n\t\treturn $\"temp={Temperature:F1} | Accuracy: {Accuracy:P1} | Variance: {MeanVariance:P2} | \" +\n\t\t\t$\"JSON: {JsonValidRate:P1} | Latency: {MeanLatencyMs:F0}ms | Gate: {gate} | {prod}\";\n\t}\n}\n\n/// <summary>\n/// Full temperature sweep report with optimal temperature identification.\n/// </summary>\npublic sealed class TemperatureSweepReport {\n\tpublic string ModelId { get; init; } = string.Empty;\n\tpublic int TestCaseCount { get; init; }\n\tpublic int RunsPerTemperature { get; init; }\n\tpublic double OptimalTemperature { get; init; }\n\tpublic double OptimalAccuracy { get; init; }\n\tpublic bool MeetsDecisionGate { get; init; }\n\tpublic long TotalDurationMs { get; init; }\n\tpublic List<TemperaturePoint> Points { get; init; } = new();\n\tpublic DateTime Timestamp { get; init; } = DateTime.UtcNow;\n\n\t/// <summary>\n\t/// Human-readable sweep summary.\n\t/// </summary>\n\tpublic override string ToString() {\n\t\tstring gate = MeetsDecisionGate ? \"PASS (>=70%)\" : \"FAIL (<70%)\";\n\t\treturn $\"\"\"\n\t\t\t=== Temperature Sweep: {ModelId} ===\n\t\t\tTest Cases: {TestCaseCount}\n\t\t\tRuns per Temperature: {RunsPerTemperature}\n\t\t\tOptimal Temperature: {OptimalTemperature:F1}\n\t\t\tOptimal Accuracy: {OptimalAccuracy:P1}\n\t\t\tDecision Gate: {gate}\n\t\t\tTotal Duration: {TotalDurationMs}ms\n\t\t\t--- Per-Temperature ---\n\t\t\t{string.Join(\"\\n\", Points.Select(p => p.ToString()))}\n\t\t\t\"\"\";\n\t}\n\n\t/// <summary>\n\t/// Generates the Oracle decision gate evaluation.\n\t/// </summary>\n\tpublic string EvaluateDecisionGate() {\n\t\tif (OptimalAccuracy >= 0.70) {\n\t\t\treturn $\"DECISION GATE: PASS - {ModelId} achieves {OptimalAccuracy:P1} at temp={OptimalTemperature:F1}. \" +\n\t\t\t\t\"Keep LLM as secondary validator in hybrid pipeline.\";\n\t\t}\n\t\tif (OptimalAccuracy >= 0.60) {\n\t\t\treturn $\"DECISION GATE: REVIEW REQUIRED - {ModelId} achieves {OptimalAccuracy:P1} at temp={OptimalTemperature:F1}. \" +\n\t\t\t\t\"Between 60-70% threshold. Manual review needed before proceeding.\";\n\t\t}\n\t\treturn $\"DECISION GATE: FAIL - {ModelId} peaks at {OptimalAccuracy:P1} (temp={OptimalTemperature:F1}). \" +\n\t\t\t\"Below 60% threshold. Pivot to pure rule-based validation.\";\n\t}\n\n\t/// <summary>\n\t/// Serializes to JSON for persistence.\n\t/// </summary>\n\tpublic string ToJson() {\n\t\tJsonSerializerOptions options = new() {\n\t\t\tWriteIndented = true,\n\t\t\tConverters = { new JsonStringEnumConverter() },\n\t\t};\n\t\treturn JsonSerializer.Serialize(this, options);\n\t}\n\n\t/// <summary>\n\t/// Saves report to disk.\n\t/// </summary>\n\tpublic async Task SaveAsync(string path, CancellationToken cancellationToken = default) {\n\t\tstring? dir = Path.GetDirectoryName(path);\n\t\tif (dir != null && !Directory.Exists(dir)) {\n\t\t\tDirectory.CreateDirectory(dir);\n\t\t}\n\t\tawait File.WriteAllTextAsync(path, ToJson(), cancellationToken);\n\t}\n}"
+  "filePath": "c:\\P4NTHE0N\\tests\\ModelTestingPlatform\\TemperatureSweep.cs",
+  "content": "using System.Text.Json;\nusing System.Text.Json.Serialization;\n\nnamespace P4NTHE0N.ModelTestingPlatform;\n\n/// <summary>\n/// Sweeps temperature parameter across a range and measures model performance at each setting.\n/// ARCH-003-PIVOT mandate: test temps 0.0, 0.1, 0.3, 0.5, 0.7, 1.0.\n/// CRITICAL: Run SmolLM2-1.7B with temp=0.0 + improved prompts first.\n/// </summary>\npublic sealed class TemperatureSweep {\n\tprivate readonly ILlmBackend _backend;\n\tprivate readonly string _systemPrompt;\n\tprivate readonly int _runsPerTemp;\n\n\t/// <summary>\n\t/// Default temperature values to sweep (ARCH-003-PIVOT specification).\n\t/// </summary>\n\tpublic static readonly double[] DefaultTemperatures = { 0.0, 0.1, 0.3, 0.5, 0.7, 1.0 };\n\n\tpublic TemperatureSweep(\n\t\tILlmBackend backend,\n\t\tstring? systemPrompt = null,\n\t\tint runsPerTemp = 3) {\n\t\t_backend = backend;\n\t\t_systemPrompt = systemPrompt ?? P4NTHE0N.DeployLogAnalyzer.FewShotPrompt.GetConfigValidationPrompt();\n\t\t_runsPerTemp = runsPerTemp;\n\t}\n\n\t/// <summary>\n\t/// Runs a full temperature sweep across all test cases at each temperature.\n\t/// Returns results ordered by temperature for comparison.\n\t/// </summary>\n\tpublic async Task<TemperatureSweepReport> RunSweepAsync(\n\t\tIReadOnlyList<TestCase> testCases,\n\t\tdouble[]? temperatures = null,\n\t\tCancellationToken cancellationToken = default) {\n\t\tdouble[] temps = temperatures ?? DefaultTemperatures;\n\t\tList<TemperaturePoint> points = new();\n\t\tlong totalStartMs = Environment.TickCount64;\n\n\t\tforeach (double temp in temps) {\n\t\t\tcancellationToken.ThrowIfCancellationRequested();\n\n\t\t\tTemperaturePoint point = await RunAtTemperatureAsync(\n\t\t\t\ttestCases, temp, cancellationToken);\n\t\t\tpoints.Add(point);\n\t\t}\n\n\t\tlong totalDurationMs = Environment.TickCount64 - totalStartMs;\n\n\t\t// Find optimal temperature (highest accuracy, lowest variance as tiebreaker)\n\t\tTemperaturePoint? optimal = points\n\t\t\t.OrderByDescending(p => p.Accuracy)\n\t\t\t.ThenBy(p => p.MeanVariance)\n\t\t\t.ThenBy(p => p.MeanLatencyMs)\n\t\t\t.FirstOrDefault();\n\n\t\treturn new TemperatureSweepReport {\n\t\t\tModelId = _backend.ModelId,\n\t\t\tTestCaseCount = testCases.Count,\n\t\t\tRunsPerTemperature = _runsPerTemp,\n\t\t\tPoints = points,\n\t\t\tOptimalTemperature = optimal?.Temperature ?? 0.0,\n\t\t\tOptimalAccuracy = optimal?.Accuracy ?? 0.0,\n\t\t\tTotalDurationMs = totalDurationMs,\n\t\t\tMeetsDecisionGate = optimal?.MeetsDecisionGate ?? false,\n\t\t};\n\t}\n\n\t/// <summary>\n\t/// Runs all test cases at a single temperature setting, N times each.\n\t/// </summary>\n\tprivate async Task<TemperaturePoint> RunAtTemperatureAsync(\n\t\tIReadOnlyList<TestCase> testCases,\n\t\tdouble temperature,\n\t\tCancellationToken cancellationToken) {\n\t\tInferenceParams p = new() {\n\t\t\tTemperature = temperature,\n\t\t\tTopP = temperature == 0.0 ? 1.0 : 0.9,\n\t\t\tTopK = temperature == 0.0 ? 1 : 40,\n\t\t\tDoSample = temperature > 0.0,\n\t\t\tMaxTokens = 512,\n\t\t};\n\n\t\tPromptConsistencyTester tester = new(_backend, _systemPrompt, _runsPerTemp);\n\t\tConsistencyReport report = await tester.RunFullConsistencyTestAsync(\n\t\t\ttestCases, p, cancellationToken);\n\n\t\treturn new TemperaturePoint {\n\t\t\tTemperature = temperature,\n\t\t\tAccuracy = report.OverallAccuracy,\n\t\t\tMeanVariance = report.OverallVariance,\n\t\t\tJsonValidRate = report.OverallJsonValidRate,\n\t\t\tMeanLatencyMs = report.MeanLatencyMs,\n\t\t\tIsProductionReady = report.IsProductionReady,\n\t\t\tMeetsDecisionGate = report.MeetsDecisionGate,\n\t\t\tTestResults = report.TestResults,\n\t\t};\n\t}\n\n\t/// <summary>\n\t/// Runs only the critical temp=0.0 test (fast path for decision gate evaluation).\n\t/// This is the first test to run per Oracle mandate.\n\t/// </summary>\n\tpublic async Task<TemperaturePoint> RunCriticalDeterministicTestAsync(\n\t\tIReadOnlyList<TestCase> testCases,\n\t\tCancellationToken cancellationToken = default) {\n\t\treturn await RunAtTemperatureAsync(testCases, 0.0, cancellationToken);\n\t}\n}\n\n/// <summary>\n/// Performance data for a single temperature setting.\n/// </summary>\npublic sealed class TemperaturePoint {\n\tpublic double Temperature { get; init; }\n\tpublic double Accuracy { get; init; }\n\tpublic double MeanVariance { get; init; }\n\tpublic double JsonValidRate { get; init; }\n\tpublic double MeanLatencyMs { get; init; }\n\tpublic bool IsProductionReady { get; init; }\n\tpublic bool MeetsDecisionGate { get; init; }\n\tpublic List<ConsistencyResult> TestResults { get; init; } = new();\n\n\tpublic override string ToString() {\n\t\tstring gate = MeetsDecisionGate ? \"PASS\" : \"FAIL\";\n\t\tstring prod = IsProductionReady ? \"PROD\" : \"UNSTABLE\";\n\t\treturn $\"temp={Temperature:F1} | Accuracy: {Accuracy:P1} | Variance: {MeanVariance:P2} | \" +\n\t\t\t$\"JSON: {JsonValidRate:P1} | Latency: {MeanLatencyMs:F0}ms | Gate: {gate} | {prod}\";\n\t}\n}\n\n/// <summary>\n/// Full temperature sweep report with optimal temperature identification.\n/// </summary>\npublic sealed class TemperatureSweepReport {\n\tpublic string ModelId { get; init; } = string.Empty;\n\tpublic int TestCaseCount { get; init; }\n\tpublic int RunsPerTemperature { get; init; }\n\tpublic double OptimalTemperature { get; init; }\n\tpublic double OptimalAccuracy { get; init; }\n\tpublic bool MeetsDecisionGate { get; init; }\n\tpublic long TotalDurationMs { get; init; }\n\tpublic List<TemperaturePoint> Points { get; init; } = new();\n\tpublic DateTime Timestamp { get; init; } = DateTime.UtcNow;\n\n\t/// <summary>\n\t/// Human-readable sweep summary.\n\t/// </summary>\n\tpublic override string ToString() {\n\t\tstring gate = MeetsDecisionGate ? \"PASS (>=70%)\" : \"FAIL (<70%)\";\n\t\treturn $\"\"\"\n\t\t\t=== Temperature Sweep: {ModelId} ===\n\t\t\tTest Cases: {TestCaseCount}\n\t\t\tRuns per Temperature: {RunsPerTemperature}\n\t\t\tOptimal Temperature: {OptimalTemperature:F1}\n\t\t\tOptimal Accuracy: {OptimalAccuracy:P1}\n\t\t\tDecision Gate: {gate}\n\t\t\tTotal Duration: {TotalDurationMs}ms\n\t\t\t--- Per-Temperature ---\n\t\t\t{string.Join(\"\\n\", Points.Select(p => p.ToString()))}\n\t\t\t\"\"\";\n\t}\n\n\t/// <summary>\n\t/// Generates the Oracle decision gate evaluation.\n\t/// </summary>\n\tpublic string EvaluateDecisionGate() {\n\t\tif (OptimalAccuracy >= 0.70) {\n\t\t\treturn $\"DECISION GATE: PASS - {ModelId} achieves {OptimalAccuracy:P1} at temp={OptimalTemperature:F1}. \" +\n\t\t\t\t\"Keep LLM as secondary validator in hybrid pipeline.\";\n\t\t}\n\t\tif (OptimalAccuracy >= 0.60) {\n\t\t\treturn $\"DECISION GATE: REVIEW REQUIRED - {ModelId} achieves {OptimalAccuracy:P1} at temp={OptimalTemperature:F1}. \" +\n\t\t\t\t\"Between 60-70% threshold. Manual review needed before proceeding.\";\n\t\t}\n\t\treturn $\"DECISION GATE: FAIL - {ModelId} peaks at {OptimalAccuracy:P1} (temp={OptimalTemperature:F1}). \" +\n\t\t\t\"Below 60% threshold. Pivot to pure rule-based validation.\";\n\t}\n\n\t/// <summary>\n\t/// Serializes to JSON for persistence.\n\t/// </summary>\n\tpublic string ToJson() {\n\t\tJsonSerializerOptions options = new() {\n\t\t\tWriteIndented = true,\n\t\t\tConverters = { new JsonStringEnumConverter() },\n\t\t};\n\t\treturn JsonSerializer.Serialize(this, options);\n\t}\n\n\t/// <summary>\n\t/// Saves report to disk.\n\t/// </summary>\n\tpublic async Task SaveAsync(string path, CancellationToken cancellationToken = default) {\n\t\tstring? dir = Path.GetDirectoryName(path);\n\t\tif (dir != null && !Directory.Exists(dir)) {\n\t\t\tDirectory.CreateDirectory(dir);\n\t\t}\n\t\tawait File.WriteAllTextAsync(path, ToJson(), cancellationToken);\n\t}\n}"
 }
 ```
 

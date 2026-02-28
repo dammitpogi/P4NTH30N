@@ -71,7 +71,7 @@
   "mcpServers": {
     "filesystem": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "C:/P4NTH30N", "C:/Users/paulc/.config/opencode"]
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "C:/P4NTHE0N", "C:/Users/paulc/.config/opencode"]
     }
   }
 }
@@ -81,7 +81,7 @@
 1. WindSurf Settings → MCP
 2. Add Filesystem MCP server
 3. Configure allowed directories:
-   - `C:/P4NTH30N` (main project)
+   - `C:/P4NTHE0N` (main project)
    - `C:/Users/paulc/.config/opencode` (configs)
    - `C:/Users/paulc/.config/opencode/dev` (plugin dev)
 
@@ -95,7 +95,7 @@
 - Ignores: `.gitignore` paths, `node_modules`, hidden dot-paths
 
 **Solution - .codeiumignore**:
-Create `C:/P4NTH30N/.codeiumignore`:
+Create `C:/P4NTHE0N/.codeiumignore`:
 ```
 # Allow access to normally ignored files
 !.env.template
@@ -171,7 +171,7 @@ Copy-paste into WindSurf settings (settings.json):
       "args": [
         "-y", 
         "@modelcontextprotocol/server-filesystem",
-        "C:/P4NTH30N",
+        "C:/P4NTHE0N",
         "C:/Users/paulc/.config/opencode"
       ]
     }
@@ -219,7 +219,7 @@ rm test_permissions.md
 
 **Enterprise/Team Settings**:
 - Contact org admin to whitelist:
-  - `C:/P4NTH30N` directory
+  - `C:/P4NTHE0N` directory
   - Terminal commands: `dotnet`, `bun`, `npm`
   - MCP servers: filesystem, mongodb
 
@@ -237,7 +237,7 @@ rm test_permissions.md
 {
   "omnisharp.enableRoslynAnalyzers": true,
   "omnisharp.enableEditorConfigSupport": true,
-  "dotnet.defaultSolution": "P4NTH30N.slnx",
+  "dotnet.defaultSolution": "P4NTHE0N.slnx",
   "[csharp]": {
     "editor.defaultFormatter": "csharpier.csharpier-vscode"
   }
@@ -261,7 +261,7 @@ rm test_permissions.md
 | Terminal Mode | Settings → Terminal | **Turbo** |
 | Gitignore Access | Settings → Cascade | **ON** |
 | Auto-save | Settings → Files | **After Delay** |
-| MCP Filesystem | Settings → MCP | Add C:/P4NTH30N |
+| MCP Filesystem | Settings → MCP | Add C:/P4NTHE0N |
 | Allow List | settings.json | dotnet, bun, npm, git |
 | Deny List | settings.json | rm -rf, format |
 

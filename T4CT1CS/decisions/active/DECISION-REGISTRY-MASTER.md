@@ -1,4 +1,4 @@
-# P4NTH30N Decision Registry - Master Status
+# P4NTHE0N Decision Registry - Master Status
 
 **Last Updated**: 2026-02-20  
 **Total Decisions**: 30  
@@ -106,7 +106,7 @@
 1. **Complete Oracle Reviews** for T4CT1CS decisions (4 decisions)
 2. **Begin Implementation** of approved FORGE-001 and FORGE-002
 3. **Complete** Idempotent Signal Generation System testing
-4. **Deploy** DECISION_P4NTH30N_001 and DECISION_P4NTH30N_002
+4. **Deploy** DECISION_P4NTHE0N_001 and DECISION_P4NTHE0N_002
 
 ### Next Week (High)
 
@@ -146,8 +146,8 @@
 - [x] RAG-003-windsurf-capture.md
 
 ### DE51GN3R/decisions/
-- [x] DECISION_P4NTH30N_001.md
-- [x] DECISION_P4NTH30N_002.md
+- [x] DECISION_P4NTHE0N_001.md
+- [x] DECISION_P4NTHE0N_002.md
 
 ### STR4TEG15T/decisions/_templates/
 - [x] DECISION-TEMPLATE.md
@@ -174,6 +174,6 @@ Proposed → Consultation → Revised → Approved → In Progress → Completed
 
 ---
 
-*P4NTH30N Decision Registry*  
+*P4NTHE0N Decision Registry*  
 *Master Status Document*  
 *Updated: 2026-02-19*

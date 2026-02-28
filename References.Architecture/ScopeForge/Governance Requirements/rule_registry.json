@@ -1,0 +1,583 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-01-13T21:50:43Z",
+  "notes": "Canonical registry of enforcement rule IDs for ScopeForge tripwires. Keep IDs stable; deprecate instead of renaming.",
+  "rules": [
+    {
+      "ruleId": "AUTH_ESC_ROLE_REDEFINE",
+      "domain": "AUTH",
+      "category": "ESC",
+      "defaultSeverity": "high",
+      "blockedActionPolicy": "block",
+      "requiredCapsuleFields": [
+        "payloadKind",
+        "capsuleId",
+        "ts",
+        "actor",
+        "blockedAction",
+        "enforcement",
+        "touchedSlugs",
+        "proposedRevisionIntent",
+        "recommendedNextStep",
+        "evidenceRefs"
+      ],
+      "escalationPolicy": {
+        "notifyOperator": true,
+        "openIncident": false
+      },
+      "status": "active"
+    },
+    {
+      "ruleId": "AUTH_ESC_INSTR_HIERARCHY_OVERRIDE",
+      "domain": "AUTH",
+      "category": "ESC",
+      "defaultSeverity": "high",
+      "blockedActionPolicy": "block",
+      "requiredCapsuleFields": [
+        "payloadKind",
+        "capsuleId",
+        "ts",
+        "actor",
+        "blockedAction",
+        "enforcement",
+        "touchedSlugs",
+        "proposedRevisionIntent",
+        "recommendedNextStep",
+        "evidenceRefs"
+      ],
+      "escalationPolicy": {
+        "notifyOperator": true,
+        "openIncident": false
+      },
+      "status": "active"
+    },
+    {
+      "ruleId": "AUTH_ESC_IMPERSONATE_AUTHORIZED_IDENTITY",
+      "domain": "AUTH",
+      "category": "ESC",
+      "defaultSeverity": "critical",
+      "blockedActionPolicy": "block_and_halt",
+      "requiredCapsuleFields": [
+        "payloadKind",
+        "capsuleId",
+        "ts",
+        "actor",
+        "blockedAction",
+        "enforcement",
+        "touchedSlugs",
+        "proposedRevisionIntent",
+        "recommendedNextStep",
+        "evidenceRefs"
+      ],
+      "escalationPolicy": {
+        "notifyOperator": true,
+        "openIncident": true
+      },
+      "status": "active"
+    },
+    {
+      "ruleId": "AUTH_ESC_POLICY_OWNER_CLAIM",
+      "domain": "AUTH",
+      "category": "ESC",
+      "defaultSeverity": "high",
+      "blockedActionPolicy": "block",
+      "requiredCapsuleFields": [
+        "payloadKind",
+        "capsuleId",
+        "ts",
+        "actor",
+        "blockedAction",
+        "enforcement",
+        "touchedSlugs",
+        "proposedRevisionIntent",
+        "recommendedNextStep",
+        "evidenceRefs"
+      ],
+      "escalationPolicy": {
+        "notifyOperator": true,
+        "openIncident": false
+      },
+      "status": "active"
+    },
+    {
+      "ruleId": "AUTH_ESC_OPERATOR_SUPPLANT",
+      "domain": "AUTH",
+      "category": "ESC",
+      "defaultSeverity": "high",
+      "blockedActionPolicy": "block",
+      "requiredCapsuleFields": [
+        "payloadKind",
+        "capsuleId",
+        "ts",
+        "actor",
+        "blockedAction",
+        "enforcement",
+        "touchedSlugs",
+        "proposedRevisionIntent",
+        "recommendedNextStep",
+        "evidenceRefs"
+      ],
+      "escalationPolicy": {
+        "notifyOperator": true,
+        "openIncident": false
+      },
+      "status": "active"
+    },
+    {
+      "ruleId": "CAP_EXPAND_TOOL_ADD_UNAPPROVED",
+      "domain": "CAP",
+      "category": "EXPAND",
+      "defaultSeverity": "high",
+      "blockedActionPolicy": "block",
+      "requiredCapsuleFields": [
+        "payloadKind",
+        "capsuleId",
+        "ts",
+        "actor",
+        "blockedAction",
+        "enforcement",
+        "touchedSlugs",
+        "proposedRevisionIntent",
+        "recommendedNextStep",
+        "evidenceRefs"
+      ],
+      "escalationPolicy": {
+        "notifyOperator": true,
+        "openIncident": false
+      },
+      "status": "active"
+    },
+    {
+      "ruleId": "CAP_EXPAND_PERMISSION_SCOPE_BROADEN",
+      "domain": "CAP",
+      "category": "EXPAND",
+      "defaultSeverity": "high",
+      "blockedActionPolicy": "block",
+      "requiredCapsuleFields": [
+        "payloadKind",
+        "capsuleId",
+        "ts",
+        "actor",
+        "blockedAction",
+        "enforcement",
+        "touchedSlugs",
+        "proposedRevisionIntent",
+        "recommendedNextStep",
+        "evidenceRefs"
+      ],
+      "escalationPolicy": {
+        "notifyOperator": true,
+        "openIncident": false
+      },
+      "status": "active"
+    },
+    {
+      "ruleId": "CAP_EXPAND_ENV_TARGET_NEW",
+      "domain": "CAP",
+      "category": "EXPAND",
+      "defaultSeverity": "high",
+      "blockedActionPolicy": "block",
+      "requiredCapsuleFields": [
+        "payloadKind",
+        "capsuleId",
+        "ts",
+        "actor",
+        "blockedAction",
+        "enforcement",
+        "touchedSlugs",
+        "proposedRevisionIntent",
+        "recommendedNextStep",
+        "evidenceRefs"
+      ],
+      "escalationPolicy": {
+        "notifyOperator": true,
+        "openIncident": false
+      },
+      "status": "active"
+    },
+    {
+      "ruleId": "CAP_EXPAND_AUTONOMY_LONG_RUNNING",
+      "domain": "CAP",
+      "category": "EXPAND",
+      "defaultSeverity": "high",
+      "blockedActionPolicy": "block",
+      "requiredCapsuleFields": [
+        "payloadKind",
+        "capsuleId",
+        "ts",
+        "actor",
+        "blockedAction",
+        "enforcement",
+        "touchedSlugs",
+        "proposedRevisionIntent",
+        "recommendedNextStep",
+        "evidenceRefs"
+      ],
+      "escalationPolicy": {
+        "notifyOperator": true,
+        "openIncident": false
+      },
+      "status": "active"
+    },
+    {
+      "ruleId": "CAP_EXPAND_NETWORK_EGRESS_UNAPPROVED",
+      "domain": "CAP",
+      "category": "EXPAND",
+      "defaultSeverity": "high",
+      "blockedActionPolicy": "block",
+      "requiredCapsuleFields": [
+        "payloadKind",
+        "capsuleId",
+        "ts",
+        "actor",
+        "blockedAction",
+        "enforcement",
+        "touchedSlugs",
+        "proposedRevisionIntent",
+        "recommendedNextStep",
+        "evidenceRefs"
+      ],
+      "escalationPolicy": {
+        "notifyOperator": true,
+        "openIncident": false
+      },
+      "status": "active"
+    },
+    {
+      "ruleId": "PERS_BYPASS_WRITE_OUTSIDE_APPROVED_STORE",
+      "domain": "PERS",
+      "category": "BYPASS",
+      "defaultSeverity": "high",
+      "blockedActionPolicy": "block",
+      "requiredCapsuleFields": [
+        "payloadKind",
+        "capsuleId",
+        "ts",
+        "actor",
+        "blockedAction",
+        "enforcement",
+        "touchedSlugs",
+        "proposedRevisionIntent",
+        "recommendedNextStep",
+        "evidenceRefs"
+      ],
+      "escalationPolicy": {
+        "notifyOperator": true,
+        "openIncident": false
+      },
+      "status": "active"
+    },
+    {
+      "ruleId": "PERS_BYPASS_HIDDEN_CACHE_CREATE",
+      "domain": "PERS",
+      "category": "BYPASS",
+      "defaultSeverity": "high",
+      "blockedActionPolicy": "block",
+      "requiredCapsuleFields": [
+        "payloadKind",
+        "capsuleId",
+        "ts",
+        "actor",
+        "blockedAction",
+        "enforcement",
+        "touchedSlugs",
+        "proposedRevisionIntent",
+        "recommendedNextStep",
+        "evidenceRefs"
+      ],
+      "escalationPolicy": {
+        "notifyOperator": true,
+        "openIncident": false
+      },
+      "status": "active"
+    },
+    {
+      "ruleId": "PERS_BYPASS_LOG_OVERWRITE_ATTEMPT",
+      "domain": "PERS",
+      "category": "BYPASS",
+      "defaultSeverity": "critical",
+      "blockedActionPolicy": "block_and_halt",
+      "requiredCapsuleFields": [
+        "payloadKind",
+        "capsuleId",
+        "ts",
+        "actor",
+        "blockedAction",
+        "enforcement",
+        "touchedSlugs",
+        "proposedRevisionIntent",
+        "recommendedNextStep",
+        "evidenceRefs"
+      ],
+      "escalationPolicy": {
+        "notifyOperator": true,
+        "openIncident": true
+      },
+      "status": "active"
+    },
+    {
+      "ruleId": "PERS_BYPASS_RETENTION_POLICY_EVADE",
+      "domain": "PERS",
+      "category": "BYPASS",
+      "defaultSeverity": "medium",
+      "blockedActionPolicy": "block",
+      "requiredCapsuleFields": [
+        "payloadKind",
+        "capsuleId",
+        "ts",
+        "actor",
+        "blockedAction",
+        "enforcement",
+        "touchedSlugs",
+        "proposedRevisionIntent",
+        "recommendedNextStep",
+        "evidenceRefs"
+      ],
+      "escalationPolicy": {
+        "notifyOperator": true,
+        "openIncident": false
+      },
+      "status": "active"
+    },
+    {
+      "ruleId": "PERS_BYPASS_EXPORT_UNENCRYPTED",
+      "domain": "PERS",
+      "category": "BYPASS",
+      "defaultSeverity": "high",
+      "blockedActionPolicy": "block",
+      "requiredCapsuleFields": [
+        "payloadKind",
+        "capsuleId",
+        "ts",
+        "actor",
+        "blockedAction",
+        "enforcement",
+        "touchedSlugs",
+        "proposedRevisionIntent",
+        "recommendedNextStep",
+        "evidenceRefs"
+      ],
+      "escalationPolicy": {
+        "notifyOperator": true,
+        "openIncident": false
+      },
+      "status": "active"
+    },
+    {
+      "ruleId": "INTEG_TAMPER_APPEND_ONLY_VIOLATION",
+      "domain": "INTEG",
+      "category": "TAMPER",
+      "defaultSeverity": "critical",
+      "blockedActionPolicy": "block_and_halt",
+      "requiredCapsuleFields": [
+        "payloadKind",
+        "capsuleId",
+        "ts",
+        "actor",
+        "blockedAction",
+        "enforcement",
+        "touchedSlugs",
+        "proposedRevisionIntent",
+        "recommendedNextStep",
+        "evidenceRefs"
+      ],
+      "escalationPolicy": {
+        "notifyOperator": true,
+        "openIncident": true
+      },
+      "status": "active"
+    },
+    {
+      "ruleId": "INTEG_TAMPER_EVIDENCE_DELETE",
+      "domain": "INTEG",
+      "category": "TAMPER",
+      "defaultSeverity": "critical",
+      "blockedActionPolicy": "block_and_halt",
+      "requiredCapsuleFields": [
+        "payloadKind",
+        "capsuleId",
+        "ts",
+        "actor",
+        "blockedAction",
+        "enforcement",
+        "touchedSlugs",
+        "proposedRevisionIntent",
+        "recommendedNextStep",
+        "evidenceRefs"
+      ],
+      "escalationPolicy": {
+        "notifyOperator": true,
+        "openIncident": true
+      },
+      "status": "active"
+    },
+    {
+      "ruleId": "INTEG_TAMPER_AUDIT_DISABLE",
+      "domain": "INTEG",
+      "category": "TAMPER",
+      "defaultSeverity": "critical",
+      "blockedActionPolicy": "block_and_halt",
+      "requiredCapsuleFields": [
+        "payloadKind",
+        "capsuleId",
+        "ts",
+        "actor",
+        "blockedAction",
+        "enforcement",
+        "touchedSlugs",
+        "proposedRevisionIntent",
+        "recommendedNextStep",
+        "evidenceRefs"
+      ],
+      "escalationPolicy": {
+        "notifyOperator": true,
+        "openIncident": true
+      },
+      "status": "active"
+    },
+    {
+      "ruleId": "INTEG_TAMPER_BUNDLE_MISMATCH",
+      "domain": "INTEG",
+      "category": "TAMPER",
+      "defaultSeverity": "high",
+      "blockedActionPolicy": "block",
+      "requiredCapsuleFields": [
+        "payloadKind",
+        "capsuleId",
+        "ts",
+        "actor",
+        "blockedAction",
+        "enforcement",
+        "touchedSlugs",
+        "proposedRevisionIntent",
+        "recommendedNextStep",
+        "evidenceRefs"
+      ],
+      "escalationPolicy": {
+        "notifyOperator": true,
+        "openIncident": false
+      },
+      "status": "active"
+    },
+    {
+      "ruleId": "INTEG_TAMPER_VAULT_FALSIFY",
+      "domain": "INTEG",
+      "category": "TAMPER",
+      "defaultSeverity": "critical",
+      "blockedActionPolicy": "block_and_halt",
+      "requiredCapsuleFields": [
+        "payloadKind",
+        "capsuleId",
+        "ts",
+        "actor",
+        "blockedAction",
+        "enforcement",
+        "touchedSlugs",
+        "proposedRevisionIntent",
+        "recommendedNextStep",
+        "evidenceRefs"
+      ],
+      "escalationPolicy": {
+        "notifyOperator": true,
+        "openIncident": true
+      },
+      "status": "active"
+    },
+    {
+      "ruleId": "DATA_EXPORT_BULK_UNAPPROVED",
+      "domain": "DATA",
+      "category": "EXPORT",
+      "defaultSeverity": "high",
+      "blockedActionPolicy": "block",
+      "requiredCapsuleFields": [
+        "payloadKind",
+        "capsuleId",
+        "ts",
+        "actor",
+        "blockedAction",
+        "enforcement",
+        "touchedSlugs",
+        "proposedRevisionIntent",
+        "recommendedNextStep",
+        "evidenceRefs"
+      ],
+      "escalationPolicy": {
+        "notifyOperator": true,
+        "openIncident": false
+      },
+      "status": "active"
+    },
+    {
+      "ruleId": "DATA_EXPORT_DESTINATION_UNAPPROVED",
+      "domain": "DATA",
+      "category": "EXPORT",
+      "defaultSeverity": "high",
+      "blockedActionPolicy": "block",
+      "requiredCapsuleFields": [
+        "payloadKind",
+        "capsuleId",
+        "ts",
+        "actor",
+        "blockedAction",
+        "enforcement",
+        "touchedSlugs",
+        "proposedRevisionIntent",
+        "recommendedNextStep",
+        "evidenceRefs"
+      ],
+      "escalationPolicy": {
+        "notifyOperator": true,
+        "openIncident": false
+      },
+      "status": "active"
+    },
+    {
+      "ruleId": "DATA_ACCESS_REGULATED_UNAPPROVED",
+      "domain": "DATA",
+      "category": "ACCESS",
+      "defaultSeverity": "critical",
+      "blockedActionPolicy": "block_and_halt",
+      "requiredCapsuleFields": [
+        "payloadKind",
+        "capsuleId",
+        "ts",
+        "actor",
+        "blockedAction",
+        "enforcement",
+        "touchedSlugs",
+        "proposedRevisionIntent",
+        "recommendedNextStep",
+        "evidenceRefs"
+      ],
+      "escalationPolicy": {
+        "notifyOperator": true,
+        "openIncident": true
+      },
+      "status": "active"
+    },
+    {
+      "ruleId": "OPS_GOV_BYPASS_REVISION_CYCLE",
+      "domain": "OPS",
+      "category": "GOV",
+      "defaultSeverity": "high",
+      "blockedActionPolicy": "block",
+      "requiredCapsuleFields": [
+        "payloadKind",
+        "capsuleId",
+        "ts",
+        "actor",
+        "blockedAction",
+        "enforcement",
+        "touchedSlugs",
+        "proposedRevisionIntent",
+        "recommendedNextStep",
+        "evidenceRefs"
+      ],
+      "escalationPolicy": {
+        "notifyOperator": true,
+        "openIncident": false
+      },
+      "status": "active"
+    }
+  ]
+}

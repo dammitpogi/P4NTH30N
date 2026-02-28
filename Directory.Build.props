@@ -13,6 +13,7 @@
 		<DefaultItemExcludes>$(DefaultItemExcludes);$(MSBuildProjectDirectory)\obj\**;$(MSBuildProjectDirectory)\bin\**</DefaultItemExcludes>
 	</PropertyGroup>
 
+
 	<!-- Build lock prevention - use unique output paths per project -->
 	<PropertyGroup>
 		<!-- Use project-specific output directories to reduce file locking -->

@@ -1,0 +1,14 @@
+refs/heads/main
+refs/heads/rest
+refs/heads/seperate-update-loop
+refs/remotes/origin/main
+refs/remotes/origin/add-c#-function-to-retrieve-values-from-server
+refs/remotes/origin/add-function-to-query-server-values
+refs/remotes/origin/add-function-to-retrieve-fields-from-server
+refs/remotes/origin/bvbv
+refs/remotes/origin/main
+refs/remotes/origin/refactor-credentials-and-document-architecture
+refs/remotes/origin/remove-vpn-2026-02-09
+refs/remotes/origin/seperate-update-loop
+refs/remotes/origin/v0.9.1.0
+refs/stash

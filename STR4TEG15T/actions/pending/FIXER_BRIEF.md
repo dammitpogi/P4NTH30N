@@ -40,7 +40,7 @@ public class EncryptionService
 // C0MMON/Security/KeyManagement.cs
 public class KeyManagement
 {
-    // Master key path: C:\ProgramData\P4NTH30N\master.key
+    // Master key path: C:\ProgramData\P4NTHE0N\master.key
     // Permissions: 600 (Administrators only)
     // Format: 32 bytes random (RNGCryptoServiceProvider)
 }
@@ -227,7 +227,7 @@ All decisions can start immediately. No blocking dependencies.
 ```csharp
 // Algorithm: AES-256-GCM (via AesGcm class)
 // Key derivation: PBKDF2, 600,000 iterations, SHA-256
-// Master key: 32 bytes, stored in C:\ProgramData\P4NTH30N\master.key
+// Master key: 32 bytes, stored in C:\ProgramData\P4NTHE0N\master.key
 // File permissions: Administrators only
 // Nonce: 96-bit random per encryption
 // Tag: 128-bit authentication

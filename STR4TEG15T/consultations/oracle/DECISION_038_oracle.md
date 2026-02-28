@@ -64,7 +64,7 @@
 | Designer | Architecture, File Structure | Medium | No (assimilated) |
 | Librarian | Research Gaps, Documentation | Low | No |
 | Explorer | Pattern Discovery, Code Search | Low | No |
-| WindFixer | P4NTH30N Implementation | High | Yes (Strategist) |
+| WindFixer | P4NTHE0N Implementation | High | Yes (Strategist) |
 | OpenFixer | External Config, CLI Tools | High | Yes (Strategist) |
 | Forgewright | Complex Implementation, Bug Fixes | Critical | Yes (Strategist) |
 

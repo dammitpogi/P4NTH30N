@@ -1,14 +1,14 @@
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace P4NTH30N.T00L5ET;
+namespace P4NTHE0N.T00L5ET;
 
 public static class CredCheck
 {
 	public static async Task RunAsync()
 	{
 		var client = new MongoClient("mongodb://192.168.56.1:27017");
-		var db = client.GetDatabase("P4NTH30N");
+		var db = client.GetDatabase("P4NTHE0N");
 		var coll = db.GetCollection<BsonDocument>("CRED3N7IAL");
 
 		// Get distinct House values

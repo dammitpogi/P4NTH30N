@@ -1105,7 +1105,7 @@
       "decisionId": "DECISION_015",
       "title": "MongoDB Atlas Vector Search Integration",
       "category": "Infrastructure",
-      "description": "Implement vector search capabilities using MongoDB Atlas Vector Search to enable semantic similarity search across P4NTH30N data including error logs, signal patterns, jackpot histories, and vision frames",
+      "description": "Implement vector search capabilities using MongoDB Atlas Vector Search to enable semantic similarity search across P4NTHE0N data including error logs, signal patterns, jackpot histories, and vision frames",
       "status": "Completed",
       "source": "User Request",
       "section": "Infrastructure",
@@ -1276,7 +1276,7 @@
           "ERR0R",
           "H0U53"
         ],
-        "database": "P4NTH30N",
+        "database": "P4NTHE0N",
         "connection": "mongodb://localhost:27017",
         "readmeCollection": {
           "collection": "R34DM3",
@@ -1301,7 +1301,7 @@
           "C:/Users/paulc/.config/opencode/tools/mongodb.md"
         ],
         "note": "Documentation tool, not MCP server. For ToolHive integration, MongoDB MCP server would need to be configured separately.",
-        "futureGoal": "Convert to ToolHive MCP server for direct database operations via toolhive_call_tool. Would enable agents to query/modify P4NTH30N collections without mongosh.",
+        "futureGoal": "Convert to ToolHive MCP server for direct database operations via toolhive_call_tool. Would enable agents to query/modify P4NTHE0N collections without mongosh.",
         "nextSteps": [
           "Create MCP server project for MongoDB operations",
           "Implement CRUD tool wrappers",

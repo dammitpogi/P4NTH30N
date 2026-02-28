@@ -19,7 +19,7 @@
 ## SYSTEM OVERVIEW
 
 **What RAG Does**:
-- Retrieves relevant context from P4NTH30N knowledge base (docs, code, logs, decisions)
+- Retrieves relevant context from P4NTHE0N knowledge base (docs, code, logs, decisions)
 - Embeds queries and documents as vectors
 - Searches FAISS vector store for similarity
 - Returns structured context to agents

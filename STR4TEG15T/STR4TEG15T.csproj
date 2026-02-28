@@ -9,4 +9,10 @@
 		<Compile Remove="tools\**\*.cs" />
 		<None Remove="tools\**\*.cs" />
 	</ItemGroup>
+	<ItemGroup>
+		<None Include="AGENTS.md" />
+		<None Include="README.md" />
+		<None Include="knowledge\**\*.md" />
+		<None Include="memory\README.md" />
+	</ItemGroup>
 </Project>

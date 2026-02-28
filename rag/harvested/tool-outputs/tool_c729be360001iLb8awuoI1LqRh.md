@@ -13,7 +13,7 @@
       "decisionId": "WIND-010",
       "title": "WindSurf Context Awareness and Memory System",
       "category": "Platform-Integration",
-      "description": "Implement WindSurf context awareness features for P4NTH30N. Auto-generated memories based on codebase analysis. Rules for customizing behavior. Fast Context for instant codebase understanding. Windsurf Ignore (.codeiumignore) for excluding files from AI context.",
+      "description": "Implement WindSurf context awareness features for P4NTHE0N. Auto-generated memories based on codebase analysis. Rules for customizing behavior. Fast Context for instant codebase understanding. Windsurf Ignore (.codeiumignore) for excluding files from AI context.",
       "status": "Completed",
       "priority": "Medium",
       "dependencies": [
@@ -103,7 +103,7 @@
       "decisionId": "WIND-009",
       "title": "WindSurf Cascade Modes Configuration",
       "category": "Platform-Integration",
-      "description": "Configure and document WindSurf Cascade modes (Code, Plan, Ask) for P4NTH30N workflow. Code mode: fully agentic, all tools enabled. Plan mode: develop implementation plan before coding, writes to ~/.windsurf/plans/. Ask mode: search tools only, for learning and questions. Default to Code mode for implementation.",
+      "description": "Configure and document WindSurf Cascade modes (Code, Plan, Ask) for P4NTHE0N workflow. Code mode: fully agentic, all tools enabled. Plan mode: develop implementation plan before coding, writes to ~/.windsurf/plans/. Ask mode: search tools only, for learning and questions. Default to Code mode for implementation.",
       "status": "Completed",
       "priority": "High",
       "dependencies": [],
@@ -433,7 +433,7 @@
               ".windsurf/skills/test-execution/SKILL.md",
               ".windsurf/skills/deployment/SKILL.md"
             ],
-            "focus": "Core skills for P4NTH30N",
+            "focus": "Core skills for P4NTHE0N",
             "phase": 1,
             "timeline": "Day 1-2"
           }
@@ -480,7 +480,7 @@
       "decisionId": "WIND-005",
       "title": "WindSurf Workflow System Implementation",
       "category": "Platform-Integration",
-      "description": "Implement WindSurf workflow system for P4NTH30N. Workflows are markdown files in .windsurf/workflows/ containing title, description, and steps for Cascade to follow. Enables automated PR review, deployment, testing, and code formatting workflows. Workflow files limited to 12000 characters. Invoked via /[workflow-name] slash command.",
+      "description": "Implement WindSurf workflow system for P4NTHE0N. Workflows are markdown files in .windsurf/workflows/ containing title, description, and steps for Cascade to follow. Enables automated PR review, deployment, testing, and code formatting workflows. Workflow files limited to 12000 characters. Invoked via /[workflow-name] slash command.",
       "status": "Completed",
       "priority": "High",
       "dependencies": [
@@ -566,7 +566,7 @@
       "decisionId": "WIND-004",
       "title": "WindFixerCheckpointManager Implementation",
       "category": "Platform-Integration",
-      "description": "Implement WindFixerCheckpointManager with hybrid storage. File: P4NTH30N/.windfixer/checkpoints/{sessionId}.json. MongoDB: WINDFIXER_CHECKPOINT. Supports 6 triggers, TTL expiration, concurrent sessions via file locking.",
+      "description": "Implement WindFixerCheckpointManager with hybrid storage. File: P4NTHE0N/.windfixer/checkpoints/{sessionId}.json. MongoDB: WINDFIXER_CHECKPOINT. Supports 6 triggers, TTL expiration, concurrent sessions via file locking.",
       "status": "Completed",
       "priority": "Critical",
       "dependencies": [
@@ -586,7 +586,7 @@
       "implementation": {
         "targetFiles": [
           "C0MMON/Checkpoint/WindFixerCheckpointManager.cs",
-          "P4NTH30N/.windfixer/"
+          "P4NTHE0N/.windfixer/"
         ],
         "completedDate": "2026-02-18T20:37:00Z",
         "deliveredFiles": [
@@ -763,7 +763,7 @@
       "implementation": {
         "targetFiles": [
           "C:\\Users\\paulc\\.config\\opencode\\agents\\windfixer.md",
-          "P4NTH30N/tools/WindFixer/"
+          "P4NTHE0N/tools/WindFixer/"
         ],
         "deliveredFiles": [],
         "progress": "FIXER PROMPTS GENERATED. windfixer.md updated with Oracle-approved configuration (fallback chain, complexity scoring, cost controls, checkpoint system). FIXER_PROMPT.md created with full Decision backlog (28 decisions, 145 action items). Ready for autonomous execution.",
@@ -814,7 +814,7 @@
           "task": "Implement Decision complexity scoring algorithm for model routing (Simple/Medium/Complex)",
           "priority": 9,
           "files": [
-            "P4NTH30N/tools/WindFixer/ComplexityScorer.cs"
+            "P4NTHE0N/tools/WindFixer/ComplexityScorer.cs"
           ],
           "createdAt": {
             "$date": "2026-02-18T16:42:01.361Z"
@@ -834,7 +834,7 @@
           "task": "Implement checkpoint/resume mechanism: Save state after each Decision, resume from last successful on crash",
           "priority": 9,
           "files": [
-            "P4NTH30N/.windfixer-checkpoint.json"
+            "P4NTHE0N/.windfixer-checkpoint.json"
           ],
           "createdAt": {
             "$date": "2026-02-18T16:42:10.766Z"
@@ -915,11 +915,11 @@
           }
         ],
         "targetFiles": [
-          "P4NTH30N/C0MMON/Services/FallbackManager.cs",
-          "P4NTH30N/docs/fallback-strategy.md"
+          "P4NTHE0N/C0MMON/Services/FallbackManager.cs",
+          "P4NTHE0N/docs/fallback-strategy.md"
         ],
         "completedDate": "2026-02-18T20:38:00Z",
-        "progress": "Duplicate entry - primary FALLBACK-001 already completed. Circuit breaker tuning pivot documented. P4NTH30N-side CircuitBreaker supports configurable thresholds.",
+        "progress": "Duplicate entry - primary FALLBACK-001 already completed. Circuit breaker tuning pivot documented. P4NTHE0N-side CircuitBreaker supports configurable thresholds.",
         "status": "Completed"
       },
       "timestamp": {
@@ -955,14 +955,14 @@
           "timestamp": {
             "$date": "2026-02-18T20:37:42.833Z"
           },
-          "note": "Target file is outside P4NTH30N workspace (OpenCode config). Circuit breaker tuning recommendations: increase failure threshold for free tier rate limits, extend timeout window. Phase 1 config changes documented. Phase 2-3 deferred pending Phase 1 results."
+          "note": "Target file is outside P4NTHE0N workspace (OpenCode config). Circuit breaker tuning recommendations: increase failure threshold for free tier rate limits, extend timeout window. Phase 1 config changes documented. Phase 2-3 deferred pending Phase 1 results."
         },
         {
           "status": "Completed",
           "timestamp": {
             "$date": "2026-02-18T20:53:37.483Z"
           },
-          "note": "Circuit breaker tuning pivot completed. Target file external to P4NTH30N. P4NTH30N-side CircuitBreaker in C0MMON/Infrastructure/Resilience/ already supports configurable thresholds. Recommendations documented."
+          "note": "Circuit breaker tuning pivot completed. Target file external to P4NTHE0N. P4NTHE0N-side CircuitBreaker in C0MMON/Infrastructure/Resilience/ already supports configurable thresholds. Recommendations documented."
         }
       ]
     },
@@ -1031,10 +1031,10 @@
           }
         ],
         "targetFiles": [
-          "P4NTH30N/docs/consultation-workflow.md"
+          "P4NTHE0N/docs/consultation-workflow.md"
         ],
         "deliveredFiles": [
-          "P4NTH30N/docs/consultation-workflow.md"
+          "P4NTHE0N/docs/consultation-workflow.md"
         ],
         "progress": "COMPLETED: Consultation workflow documentation created. Tier 1/2/3 model, SLAs, cost controls, thresholds, escalation path documented."
       },
@@ -1073,9 +1073,9 @@
         "$oid": "6995ea5b585d7a13e61ec76a"
       },
       "decisionId": "ORG-001",
-      "title": "P4NTH30N Directory Consolidation",
+      "title": "P4NTHE0N Directory Consolidation",
       "category": "Platform Infrastructure",
-      "description": "Consolidate all configurations, development, and deployments into P4NTH30N directory for unified GitHub tracking, documentation, and development. Current scattered state across OpenCode, WindSurf, LM Studio configs needs centralization. Target directories: configs/, tools/, scripts/, docs/, agents/.",
+      "description": "Consolidate all configurations, development, and deployments into P4NTHE0N directory for unified GitHub tracking, documentation, and development. Current scattered state across OpenCode, WindSurf, LM Studio configs needs centralization. Target directories: configs/, tools/, scripts/, docs/, agents/.",
       "status": "Completed",
       "priority": "Critical",
       "dependencies": [
@@ -1108,7 +1108,7 @@
         "phases": [
           {
             "deliverables": [
-              "P4NTH30N/configs/ structure",
+              "P4NTHE0N/configs/ structure",
               "OpenCode configs",
               "WindSurf configs",
               "LM Studio configs"
@@ -1119,7 +1119,7 @@
           },
           {
             "deliverables": [
-              "P4NTH30N/scripts/ automation"
+              "P4NTHE0N/scripts/ automation"
             ],
             "focus": "Scripts consolidation",
             "phase": 2,
@@ -1127,8 +1127,8 @@
           },
           {
             "deliverables": [
-              "P4NTH30N/agents/ definitions",
-              "P4NTH30N/mcp/ configurations"
+              "P4NTHE0N/agents/ definitions",
+              "P4NTHE0N/mcp/ configurations"
             ],
             "focus": "Agent and MCP consolidation",
             "phase": 3,
@@ -1136,9 +1136,9 @@
           }
         ],
         "targetFiles": [
-          "P4NTH30N/configs/",
-          "P4NTH30N/scripts/",
-          "P4NTH30N/agents/"
+          "P4NTHE0N/configs/",
+          "P4NTHE0N/scripts/",
+          "P4NTHE0N/agents/"
         ],
         "deliveredFiles": [],
         "progress": "ORACLE APPROVAL: 87%. Phases: Config catalog + backup, unified .config/, deployment scripts, documentation. Ready for execution."
@@ -1173,7 +1173,7 @@
       "decisionId": "TOOL-001",
       "title": "ToolHive Tool Development Framework",
       "category": "Platform Infrastructure",
-      "description": "Establish in-house tool development and deployment framework using ToolHive MCP. All custom tools developed in P4NTH30N/tools and deployed to C:\\Users\\paulc\\.config\\opencode\\tools. Agents must use ToolHive for tool access (toolhive_find_tool, toolhive_call_tool). Document tool patterns, deployment流程, and usage guidelines.",
+      "description": "Establish in-house tool development and deployment framework using ToolHive MCP. All custom tools developed in P4NTHE0N/tools and deployed to C:\\Users\\paulc\\.config\\opencode\\tools. Agents must use ToolHive for tool access (toolhive_find_tool, toolhive_call_tool). Document tool patterns, deployment流程, and usage guidelines.",
       "status": "Completed",
       "priority": "High",
       "dependencies": [],
@@ -1185,7 +1185,7 @@
         ],
         "estimatedEffort": "2-3 days",
         "keyComponents": [
-          "Tool development directory: P4NTH30N/tools",
+          "Tool development directory: P4NTHE0N/tools",
           "Deployment directory: C:\\Users\\paulc\\.config\\opencode\\tools",
           "Tool documentation patterns",
           "ToolHive integration guidelines",
@@ -1203,7 +1203,7 @@
         "phases": [
           {
             "deliverables": [
-              "P4NTH30N/tools directory structure",
+              "P4NTHE0N/tools directory structure",
               "tool-development-guide.md",
               "example-tool/"
             ],
@@ -1228,17 +1228,17 @@
           }
         ],
         "targetFiles": [
-          "P4NTH30N/tools/",
-          "P4NTH30N/docs/tool-development-guide.md"
+          "P4NTHE0N/tools/",
+          "P4NTHE0N/docs/tool-development-guide.md"
         ],
         "deliveredFiles": [
-          "P4NTH30N/tools/mcp-p4nthon/src/index.ts",
-          "P4NTH30N/tools/mcp-p4nthon/package.json",
-          "P4NTH30N/tools/mcp-p4nthon/tsconfig.json",
-          "P4NTH30N/tools/mcp-p4nthon/.env.example",
-          "P4NTH30N/tools/mcp-p4nthon/README.md"
+          "P4NTHE0N/tools/mcp-p4nthon/src/index.ts",
+          "P4NTHE0N/tools/mcp-p4nthon/package.json",
+          "P4NTHE0N/tools/mcp-p4nthon/tsconfig.json",
+          "P4NTHE0N/tools/mcp-p4nthon/.env.example",
+          "P4NTHE0N/tools/mcp-p4nthon/README.md"
         ],
-        "progress": "COMPLETED: MCP-P4NTH30N directory structure created. 5 files delivered."
+        "progress": "COMPLETED: MCP-P4NTHE0N directory structure created. 5 files delivered."
       },
       "timestamp": {
         "$date": "2026-02-18T16:35:27.601Z"
@@ -1325,7 +1325,7 @@
       "implementation": {
         "targetFiles": [
           "C:\\Users\\paulc\\.config\\opencode\\agents\\windfixer.md",
-          "C:\\P4NTH30N\\C0MMON\\Services\\WindSurfBridge.cs"
+          "C:\\P4NTHE0N\\C0MMON\\Services\\WindSurfBridge.cs"
         ],
         "deliveredFiles": [
           "C:\\Users\\paulc\\.config\\opencode\\agents\\windfixer.md"
@@ -1374,13 +1374,13 @@
       "priority": "High",
       "implementation": {
         "targetFiles": [
-          "C:\\P4NTH30N\\W4TCHD0G\\→H0UND",
-          "C:\\P4NTH30N\\H0UND\\→HUN7ER",
+          "C:\\P4NTHE0N\\W4TCHD0G\\→H0UND",
+          "C:\\P4NTHE0N\\H0UND\\→HUN7ER",
           "C:\\Users\\paulc\\.config\\opencode\\agents\\windfixer.md",
-          "C:\\P4NTH30N\\docs\\PANTHEON.md"
+          "C:\\P4NTHE0N\\docs\\PANTHEON.md"
         ],
         "deliveredFiles": [
-          "P4NTH30N/docs/PANTHEON.md"
+          "P4NTHE0N/docs/PANTHEON.md"
         ],
         "progress": "COMPLETED: PANTHEON.md updated with agent renames. Added 'formerly Fixer' notation to OpenFixer and WindFixe
 

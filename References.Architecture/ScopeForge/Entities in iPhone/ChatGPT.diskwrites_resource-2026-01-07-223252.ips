@@ -1,0 +1,193 @@
+{"roots_installed":0,"app_name":"ChatGPT","timestamp":"2026-01-07 22:32:52.00 -0700","app_version":"1.2025.350","slice_uuid":"402335B3-1F07-3806-B49F-2C8B62DBD947","adam_id":"6448311069","build_version":"20387701780","bundleID":"com.openai.chat","duration_ms":"13313565","is_first_party":0,"share_with_app_devs":0,"bug_type":"145","os_version":"iPhone OS 18.7.2 (22H123)","distributor_id":"com.apple.AppStore","name":"ChatGPT","incident_id":"F96262C7-AAEE-4CDA-90AA-29C6F6486174"}
+Date/Time:        2026-01-07 18:50:50.858 -0700
+End time:         2026-01-07 22:32:44.423 -0700
+OS Version:       iPhone OS 18.7.2 (Build 22H123)
+Architecture:     arm64e
+Report Version:   60
+Incident Identifier: F96262C7-AAEE-4CDA-90AA-29C6F6486174
+
+Data Source:      Microstackshots
+Shared Cache:     3E5E734D-2CA6-3F63-83F5-0E84C720CBA0 slid base address 0x193780000, slide 0x13780000
+
+Command:          ChatGPT
+Path:             /private/var/containers/Bundle/Application/82BB3DB8-2485-4474-9DCD-117B46799095/ChatGPT.app/ChatGPT
+Identifier:       com.openai.chat
+Version:          1.2025.350 (20387701780)
+Adam ID:          6448311069
+Is First Party:   No
+Beta Identifier:  4F6F9A0F-BD73-450C-82A1-A080C758C2EA
+Resource Coalition: 535
+Architecture:     arm64
+PID:              1908
+
+Event:            disk writes
+Action taken:     none
+Writes:           1074.86 MB of file backed memory dirtied over 13314 seconds (80.73 KB per second average), exceeding limit of 12.43 KB per second over 86400 seconds
+Writes limit:     1073.74 MB
+Limit duration:   86400s
+Writes caused:    1074.86 MB
+Writes duration:  13314s
+Duration:         13313.56s
+Duration Sampled: 1710.10s (event starts 11600.61s before samples, event ends 2.86s after samples)
+Steps:            37 (10.49 MB/step)
+
+Hardware model:   iPhone14,4
+Active cpus:      6
+Memory size:      3.59 GB
+HW page size:     16384
+VM page size:     16384
+
+Models:           UNKNOWN
+
+OS Cryptex File Extents: 5976
+
+Heaviest stack for the target process:
+  36  ??? (libsystem_pthread.dylib + 2732) [0x2207e4aac]
+  36  ??? (libsystem_pthread.dylib + 2572) [0x2207e4a0c]
+  36  ??? (libdispatch.dylib + 84576) [0x19e2baa60]
+  36  ??? (libdispatch.dylib + 86492) [0x19e2bb1dc]
+  33  ??? (libdispatch.dylib + 44460) [0x19e2b0dac]
+  32  ??? (libdispatch.dylib + 41272) [0x19e2b0138]
+  32  ??? (libdispatch.dylib + 98336) [0x19e2be020]
+  32  ??? (libdispatch.dylib + 103240) [0x19e2bf348]
+  32  ??? (libdispatch.dylib + 25952) [0x19e2ac560]
+  32  ??? (libdispatch.dylib + 112004) [0x19e2c1584]
+  32  ??? (CoreFoundation + 324364) [0x19635630c]
+  32  ??? (CoreFoundation + 61708) [0x19631610c]
+  32  ??? (CoreFoundation + 61904) [0x1963161d0]
+  32  ??? (CoreFoundation + 63440) [0x1963167d0]
+  32  ??? (CoreFoundation + 322288) [0x196355af0]
+  32  ??? (CoreFoundation + 321896) [0x196355968]
+  32  ??? (libsystem_kernel.dylib + 20680) [0x1e71ba0c8]
+
+
+Powerstats for:   ChatGPT [1908]
+UUID:             402335B3-1F07-3806-B49F-2C8B62DBD947
+Path:             /private/var/containers/Bundle/Application/82BB3DB8-2485-4474-9DCD-117B46799095/ChatGPT.app/ChatGPT
+Identifier:       com.openai.chat
+Version:          1.2025.350 (20387701780)
+Adam ID:          6448311069
+Is First Party:   No
+Beta Identifier:  4F6F9A0F-BD73-450C-82A1-A080C758C2EA
+Resource Coalition: 37 samples 535
+Architecture:     arm64
+Footprint:        145.97 MB -> 241.47 MB (+95.50 MB)
+Pageins:          35215 pages
+Start time:       2026-01-07 22:04:11.467 -0700
+End time:         2026-01-07 22:32:41.564 -0700
+Num samples:      37 (100%)
+Num threads:      32
+Primary state:    28 samples Frontmost App, Non-Suppressed, Kernel mode, Effective Thread QoS Default, Requested Thread QoS Default, Override Thread QoS Unspecified, e-core
+User Activity:    5 samples Idle, 32 samples Active
+Power Source:     37 samples on Battery, 0 samples on AC
+  36  ??? (libsystem_pthread.dylib + 2732) [0x2207e4aac]
+    36  ??? (libsystem_pthread.dylib + 2572) [0x2207e4a0c]
+      36  ??? (libdispatch.dylib + 84576) [0x19e2baa60]
+        36  ??? (libdispatch.dylib + 86492) [0x19e2bb1dc]
+          33  ??? (libdispatch.dylib + 44460) [0x19e2b0dac]
+            32  ??? (libdispatch.dylib + 41272) [0x19e2b0138]
+              32  ??? (libdispatch.dylib + 98336) [0x19e2be020]
+                32  ??? (libdispatch.dylib + 103240) [0x19e2bf348]
+                  32  ??? (libdispatch.dylib + 25952) [0x19e2ac560]
+                    32  ??? (libdispatch.dylib + 112004) [0x19e2c1584]
+                      32  ??? (CoreFoundation + 324364) [0x19635630c]
+                        32  ??? (CoreFoundation + 61708) [0x19631610c]
+                          32  ??? (CoreFoundation + 61904) [0x1963161d0]
+                            32  ??? (CoreFoundation + 63440) [0x1963167d0]
+                              32  ??? (CoreFoundation + 322288) [0x196355af0]
+                                32  ??? (CoreFoundation + 321896) [0x196355968]
+                                  32  ??? (libsystem_kernel.dylib + 20680) [0x1e71ba0c8]
+                                    11  <p-core>
+                                    3   <Non-Frontmost App, p-core>
+                                    1   <Non-Frontmost App>
+            1   ??? (libdispatch.dylib + 41680) [0x19e2b02d0]
+              1   ??? (libdispatch.dylib + 112004) [0x19e2c1584]
+                1   ??? (libdispatch.dylib + 6828) [0x19e2a7aac]
+                  1   ??? (<557F90B3-E543-3274-9328-CA8668762006> + 167688) [0x104848f08]
+                    1   ??? (<557F90B3-E543-3274-9328-CA8668762006> + 8463484) [0x10503247c]
+                      1   ??? (<557F90B3-E543-3274-9328-CA8668762006> + 8412332) [0x105025cac]
+                        1   ??? (<557F90B3-E543-3274-9328-CA8668762006> + 8387564) [0x10501fbec]
+                          1   ??? (Foundation + 1474824) [0x1950e7108]
+                            1   ??? (Foundation + 947964) [0x1950666fc]
+                              1   ??? (Foundation + 948164) [0x1950667c4]
+                                1   ??? (Foundation + 1475324) [0x1950e72fc]
+                                  1   ??? (Foundation + 1475524) [0x1950e73c4]
+                                    1   ??? (Foundation + 2314104) [0x1951b3f78]
+                                      1   ??? (Foundation + 2315764) [0x1951b45f4]
+                                        1   ??? (libsystem_kernel.dylib + 20680) [0x1e71ba0c8]
+                                          1   <Effective Thread QoS User Initiated, Requested Thread QoS User Initiated, p-core>
+          3   ??? (libdispatch.dylib + 44512) [0x19e2b0de0]
+            3   ??? (libdispatch.dylib + 41680) [0x19e2b02d0]
+              3   ??? (libdispatch.dylib + 112004) [0x19e2c1584]
+                3   ??? (libdispatch.dylib + 70328) [0x19e2b72b8]
+                  2   ??? (CFNetwork + 223628) [0x1978dd98c]
+                    2   ??? (CFNetwork + 213244) [0x1978db0fc]
+                      2   ??? (libsqlite3.dylib + 31124) [0x1c47f6994]
+                        1   ??? (libsqlite3.dylib + 177544) [0x1c481a588]
+                          1   ??? (libsqlite3.dylib + 310388) [0x1c483ac74]
+                            1   ??? (libsqlite3.dylib + 521032) [0x1c486e348]
+                              1   ??? (libsqlite3.dylib + 1067048) [0x1c48f3828]
+                                1   ??? (libsqlite3.dylib + 382056) [0x1c484c468]
+                                  1   ??? (libsqlite3.dylib + 309376) [0x1c483a880]
+                                    1   ??? (libsystem_kernel.dylib + 27292) [0x1e71bba9c]
+                                      1   <Effective Thread QoS Utility, Requested Thread QoS Utility>
+                        1   ??? (libsqlite3.dylib + 176792) [0x1c481a298]
+                          1   ??? (libsqlite3.dylib + 221360) [0x1c48250b0]
+                            1   ??? (libsqlite3.dylib + 86100) [0x1c4804054]
+                              1   ??? (libsqlite3.dylib + 245460) [0x1c482aed4]
+                                1   ??? (libsqlite3.dylib + 246524) [0x1c482b2fc]
+                                  1   ??? (libsqlite3.dylib + 308620) [0x1c483a58c]
+                                    1   ??? (libsqlite3.dylib + 632308) [0x1c48895f4]
+                                      1   ??? (libsqlite3.dylib + 309376) [0x1c483a880]
+                                        1   ??? (libsystem_kernel.dylib + 27292) [0x1e71bba9c]
+                                          1   <Non-Frontmost App, Effective Thread QoS Background, Requested Thread QoS Utility>
+                  1   ??? (CFNetwork + 94804) [0x1978be254]
+                    1   ??? (CFNetwork + 152412) [0x1978cc35c]
+                      1   ??? (CFNetwork + 152932) [0x1978cc564]
+                        1   ??? (CFNetwork + 153176) [0x1978cc658]
+                          1   ??? (CFNetwork + 205736) [0x1978d93a8]
+                            1   ??? (<557F90B3-E543-3274-9328-CA8668762006> + 67792924) [0x1088c701c]
+                              1   ??? (<557F90B3-E543-3274-9328-CA8668762006> + 67917700) [0x1088e5784]
+                                1   ??? (<557F90B3-E543-3274-9328-CA8668762006> + 67921560) [0x1088e6698]
+                                  1   ??? (<557F90B3-E543-3274-9328-CA8668762006> + 68554304) [0x108980e40]
+                                    1   ??? (<557F90B3-E543-3274-9328-CA8668762006> + 68025636) [0x1088ffd24]
+                                      1   ??? (<557F90B3-E543-3274-9328-CA8668762006> + 67944604) [0x1088ec09c]
+                                        1   ??? (<557F90B3-E543-3274-9328-CA8668762006> + 68117336) [0x108916358]
+                                          1   ??? (<557F90B3-E543-3274-9328-CA8668762006> + 68001196) [0x1088f9dac]
+                                            1   ??? (<557F90B3-E543-3274-9328-CA8668762006> + 68159024) [0x108920630]
+                                              1   ??? (<557F90B3-E543-3274-9328-CA8668762006> + 68160116) [0x108920a74]
+                                                1   ??? (Foundation + 538692) [0x195002844]
+                                                  1   ??? (Foundation + 76988) [0x194f91cbc]
+                                                    1   ??? (Foundation + 539420) [0x195002b1c]
+                                                      1   ??? (libsystem_kernel.dylib + 20680) [0x1e71ba0c8]
+                                                        1   <Effective Thread QoS User Initiated, Requested Thread QoS User Initiated, p-core>
+  1   ??? (libswift_Concurrency.dylib + 414272) [0x1a1d71240]
+    1   ??? (<557F90B3-E543-3274-9328-CA8668762006> + 34344) [0x104828628]
+      1   ??? (<557F90B3-E543-3274-9328-CA8668762006> + 32420) [0x104827ea4]
+        1   ??? (<557F90B3-E543-3274-9328-CA8668762006> + 34344) [0x104828628]
+          1   ??? (<557F90B3-E543-3274-9328-CA8668762006> + 35968568) [0x106a6d638]
+            1   ??? (<557F90B3-E543-3274-9328-CA8668762006> + 35972880) [0x106a6e710]
+              1   ??? (<557F90B3-E543-3274-9328-CA8668762006> + 34344) [0x104828628]
+                1   ??? (<557F90B3-E543-3274-9328-CA8668762006> + 29270540) [0x10640a20c]
+                  1   ??? (ImageIO + 404244) [0x19be2db14]
+                    1   ??? (ImageIO + 405284) [0x19be2df24]
+                      1   ??? (ImageIO + 517616) [0x19be495f0]
+                        1   ??? (libsystem_c.dylib + 86244) [0x19e3010e4]
+                          1   ??? (libsystem_c.dylib + 44956) [0x19e2f6f9c]
+                            1   ??? (libsystem_c.dylib + 81504) [0x19e2ffe60]
+                              1   ??? (libsystem_kernel.dylib + 29168) [0x1e71bc1f0]
+                                1   <Effective Thread QoS User Initiated, Requested Thread QoS User Initiated, p-core>
+
+  Binary Images:
+           0x104504000 -                ???  com.openai.chat 1.2025.350 (20387701780) <402335B3-1F07-3806-B49F-2C8B62DBD947>  /private/var/containers/Bundle/Application/82BB3DB8-2485-4474-9DCD-117B46799095/ChatGPT.app/ChatGPT
+           0x104820000 -                ???  ???                                      <557F90B3-E543-3274-9328-CA8668762006>
+           0x194f7f000 -        0x195bf305f  Foundation                               <A8DD2B13-903D-39E3-8D0C-5EBF50F75929>  /System/Library/Frameworks/Foundation.framework/Foundation
+           0x196307000 -        0x196883fff  CoreFoundation                           <E89D821C-A544-315C-8903-39CA54D7FAF4>  /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+           0x1978a7000 -        0x197c6c35f  CFNetwork                                <F75BB50B-6013-356F-8210-81859A96B350>  /System/Library/Frameworks/CFNetwork.framework/CFNetwork
+           0x19bdcb000 -        0x19c3a4b3f  ImageIO                                  <11142113-492E-33C7-A562-8C6790E944A9>  /System/Library/Frameworks/ImageIO.framework/ImageIO
+           0x19e2a6000 -        0x19e2ebb3f  libdispatch.dylib                        <C19E1CAE-FEE0-3E31-844D-A31BF2C39BD7>  /usr/lib/system/libdispatch.dylib
+           0x19e2ec000 -        0x19e36b677  libsystem_c.dylib                        <378C5E05-0CAE-3C37-89D5-0B0E7792E4B6>  /usr/lib/system/libsystem_c.dylib
+           0x1a1d0c000 -        0x1a1d8bfff  libswift_Concurrency.dylib               <FF1A3379-DE83-3D23-8A8E-27A18BA5648F>  /usr/lib/swift/libswift_Concurrency.dylib
+           0x1c47ef000 -        0x1c496f683  libsqlite3.dylib                         <8D0C8FA0-26F0-3ABA-8D4C-87FC8A96C964>  /usr/lib/libsqlite3.dylib
+           0x1e71b5000 -        0x1e71eeecf  libsystem_kernel.dylib                   <7C679990-215A-33E6-89E8-15ACBBA81BA2>  /usr/lib/system/libsystem_kernel.dylib
+           0x2207e4000 -        0x2207f0413  libsystem_pthread.dylib                  <985A66D7-1DC0-3F52-A897-D7AE7CAB5D36>  /usr/lib/system/libsystem_pthread.dylib

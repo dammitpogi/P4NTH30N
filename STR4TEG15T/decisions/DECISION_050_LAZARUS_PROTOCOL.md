@@ -10,7 +10,7 @@
 
 ## 1. Purpose
 
-Build a **Lazarus Protocol** — an automatic self-healing system that ingests error logs from P4NTH30N, the plugin, and decision workflows; detects "contextually insane or chaotic" situations; and executes safe healing actions without manual intervention.
+Build a **Lazarus Protocol** — an automatic self-healing system that ingests error logs from P4NTHE0N, the plugin, and decision workflows; detects "contextually insane or chaotic" situations; and executes safe healing actions without manual intervention.
 
 The system must heal itself when broken, not make things worse when confused, and always maintain an audit trail.
 
@@ -66,7 +66,7 @@ Five-layer architecture with safety gates at every transition:
 ┌─────────────────────────────────────────────────────────────┐
 │  HEALING EXECUTION ENGINE (HEE)                              │
 │  • Plugin healer (model fallbacks, context compaction)       │
-│  • P4NTH30N healer (CDP reconnect, session restore)          │
+│  • P4NTHE0N healer (CDP reconnect, session restore)          │
 │  • Decision healer (bug reports to Forgewright)              │
 └────────────────────────┬────────────────────────────────────┘
                          │ Result
@@ -122,7 +122,7 @@ Every error gets classified across five dimensions:
 **Components**:
 1. **EIL**: Basic log parsers for:
    - oh-my-opencode plugin logs
-   - P4NTH30N C# runtime logs
+   - P4NTHE0N C# runtime logs
    - Decision execution logs
 
 2. **ADE**: Pattern matching for 10 known error signatures:
@@ -232,7 +232,7 @@ lazarus.ingest({
 });
 ```
 
-### 6.2 P4NTH30N Integration (C#)
+### 6.2 P4NTHE0N Integration (C#)
 
 Bridge component in `W4TCHD0G/`:
 
@@ -337,7 +337,7 @@ When bugs are found in this decision:
 
 ## 12. Dependencies
 
-- **MongoDB**: For healing history persistence (already used in P4NTH30N)
+- **MongoDB**: For healing history persistence (already used in P4NTHE0N)
 - **Redis** (optional): For circuit breaker state (can use in-memory initially)
 - **oh-my-opencode plugin**: Error hook integration points (DECISION_038 modifications)
 - **P4TCHD0G**: C# bridge for runtime error forwarding

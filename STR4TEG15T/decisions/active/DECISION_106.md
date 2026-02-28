@@ -22,7 +22,7 @@ The `NavigationMapLoader` class has a critical bug in directory discovery that p
 
 **Proposed Solution**:
 - **Option A**: Check for actual config files before selecting a directory
-- **Option B**: Always check absolute fallback path `C:\P4NTH30N\H4ND\tools\recorder`
+- **Option B**: Always check absolute fallback path `C:\P4NTHE0N\H4ND\tools\recorder`
 - **Option C**: Copy config files to build output directory via MSBuild
 
 ---
@@ -84,7 +84,7 @@ private static string GetDefaultMapsDirectory()
 **REQ-B: Always Check Absolute Fallback**
 - **Priority**: Must
 - **Acceptance Criteria**:
-  - `ResolveMapPath()` always checks `C:\P4NTH30N\H4ND\tools\recorder` as final fallback
+  - `ResolveMapPath()` always checks `C:\P4NTHE0N\H4ND\tools\recorder` as final fallback
   - Even if a candidate directory is found first, still check absolute path
   - Select directory with the most recent config files if multiple candidates have configs
 
@@ -120,7 +120,7 @@ private static string GetDefaultMapsDirectory()
         Path.Combine(baseDir, "..", "..", "tools", "recorder"),
         Path.Combine(baseDir, "..", "..", "..", "H4ND", "tools", "recorder"),
         Path.Combine(baseDir, "..", "..", "..", "..", "H4ND", "tools", "recorder"),
-        @"C:\P4NTH30N\H4ND\tools\recorder",
+        @"C:\P4NTHE0N\H4ND\tools\recorder",
     ];
 
     foreach (string candidate in candidates)
@@ -147,9 +147,9 @@ private static IEnumerable<string> GetAbsolutePlatformPaths(string platform)
     // Priority 1: Source of truth location
     yield return platform switch
     {
-        "firekirin" => @"C:\P4NTH30N\H4ND\tools\recorder\step-config-firekirin.json",
-        "orionstars" => @"C:\P4NTH30N\H4ND\tools\recorder\step-config-orionstars.json",
-        _ => $@"C:\P4NTH30N\H4ND\tools\recorder\step-config-{platform}.json",
+        "firekirin" => @"C:\P4NTHE0N\H4ND\tools\recorder\step-config-firekirin.json",
+        "orionstars" => @"C:\P4NTHE0N\H4ND\tools\recorder\step-config-orionstars.json",
+        _ => $@"C:\P4NTHE0N\H4ND\tools\recorder\step-config-{platform}.json",
     };
 }
 ```
@@ -197,7 +197,7 @@ Add to `H4ND.csproj`:
 
 ## Success Criteria
 
-1. H4ND loads step configs from `C:\P4NTH30N\H4ND\tools\recorder` correctly
+1. H4ND loads step configs from `C:\P4NTHE0N\H4ND\tools\recorder` correctly
 2. Console logs show which directory was selected
 3. Build output contains step config files
 4. No silent fallback to hardcoded actions when configs exist

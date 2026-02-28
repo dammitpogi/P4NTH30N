@@ -1,10 +1,10 @@
 # WINDFIXER PROMPT
 ## Comprehensive Implementation + RAG Discovery Mission
 
-**Context**: OpenFixer session was redirected to save tokens for upcoming RAG layer decision. This work is now assigned to WindFixer for comprehensive P4NTH30N codebase implementation.
+**Context**: OpenFixer session was redirected to save tokens for upcoming RAG layer decision. This work is now assigned to WindFixer for comprehensive P4NTHE0N codebase implementation.
 
 **Model**: Opus 4.6 Thinking (preferred for architecture work)
-**Environment**: WindSurf on C:\P4NTH30N
+**Environment**: WindSurf on C:\P4NTHE0N
 **Billing**: Per-prompt (cost-effective for bulk execution)
 
 ---
@@ -24,7 +24,7 @@
 // Location: tests/ModelTestingPlatform/ModelTestHarness.cs
 // Purpose: Automated testing framework for LM Studio models
 
-namespace P4NTH30N.ModelTesting;
+namespace P4NTHE0N.ModelTesting;
 
 public interface ILlmBackend {
     Task<LlmResponse> CompleteAsync(LlmRequest request, CancellationToken ct);
@@ -257,7 +257,7 @@ Metrics:
 - FourEyes: Vision-based decision making
 
 **Potential RAG Use Cases**:
-1. **Documentation Retrieval**: Query P4NTH30N docs for troubleshooting
+1. **Documentation Retrieval**: Query P4NTHE0N docs for troubleshooting
 2. **Error Analysis**: Similar error pattern retrieval from ERR0R collection
 3. **Decision Context**: Retrieve historical decisions for similar signals
 4. **Casino Platform Knowledge**: Retrieve platform-specific quirks/rules

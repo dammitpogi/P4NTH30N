@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace P4NTH30N.PROF3T;
+namespace P4NTHE0N.PROF3T;
 
 public interface IModelManager
 {

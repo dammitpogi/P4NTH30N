@@ -1,0 +1,128 @@
+{"roots_installed":0,"app_name":"Chrome","timestamp":"2026-01-14 21:40:23.00 -0700","app_version":"143.7499.151","slice_uuid":"4C4C44F8-5555-3144-A1B5-577FF96CEC51","adam_id":"535886823","build_version":"143.0.7499.151","bundleID":"com.google.chrome.ios","duration_ms":"66610808","is_first_party":0,"share_with_app_devs":0,"bug_type":"145","os_version":"iPhone OS 18.7.2 (22H123)","distributor_id":"com.apple.AppStore","name":"Chrome","incident_id":"287276A8-D788-4D83-9094-4590E6F3CAAC"}
+Date/Time:        2026-01-14 03:10:06.165 -0700
+End time:         2026-01-14 21:40:16.974 -0700
+OS Version:       iPhone OS 18.7.2 (Build 22H123)
+Architecture:     arm64e
+Report Version:   60
+Incident Identifier: 287276A8-D788-4D83-9094-4590E6F3CAAC
+
+Data Source:      Microstackshots
+Shared Cache:     3E5E734D-2CA6-3F63-83F5-0E84C720CBA0 slid base address 0x19d600000, slide 0x1d600000
+
+Command:          Chrome
+Path:             /private/var/containers/Bundle/Application/C1817EBE-8B4F-41A4-A981-1FAAE0F9848A/stable.app/Chrome
+Identifier:       com.google.chrome.ios
+Version:          143.7499.151 (143.0.7499.151)
+Adam ID:          535886823
+Is First Party:   No
+Beta Identifier:  F728E7F1-C36A-41AB-94E1-D8D4C810D198
+Resource Coalition: "com.google.chrome.ios"(951)
+Architecture:     arm64
+Parent:           UNKNOWN [1]
+PID:              6246
+
+Event:            disk writes
+Action taken:     none
+Writes:           1073.75 MB of file backed memory dirtied over 66611 seconds (16.12 KB per second average), exceeding limit of 12.43 KB per second over 86400 seconds
+Writes limit:     1073.74 MB
+Limit duration:   86400s
+Writes caused:    1073.75 MB
+Writes duration:  66611s
+Duration:         66610.81s
+Duration Sampled: 0.00s (event starts 66597.14s before samples, event ends 13.67s after samples)
+Steps:            1 (10.49 MB/step)
+
+Hardware model:   iPhone14,4
+Active cpus:      6
+Memory size:      3.59 GB
+HW page size:     16384
+VM page size:     16384
+Shared cache residency: 11.43% (558.84 MB / 4890.48 MB)
+
+Time Since Boot:  101691s
+Time Awake Since Boot: 69585s
+Time Since Wake:  521s
+
+Advisory levels:  Battery -> 1, User -> 3, ThermalPressure -> 0, Combined -> 1
+Free disk space:  57.24 GB/119.09 GB, low space threshold 150 MB
+Vnodes Available: 70.97% (14193/20000, 10000 allocated, 10000 soft limit)
+Models:           none
+
+Preferred User Language: en-US
+Country Code:     US
+Keyboards:        en_US QWERTY, emoji Emoji
+OS Cryptex File Extents: 5976
+
+Heaviest stack for the target process:
+  1  ??? (libsystem_pthread.dylib + 2744) [0x22a664ab8]
+  1  ??? (libsystem_pthread.dylib + 13124) [0x22a667344]
+  1  ??? (Chrome + 18837516) [0x105d6300c]
+  1  ??? (Chrome + 18749156) [0x105d4d6e4]
+  1  ??? (Chrome + 18749244) [0x105d4d73c]
+  1  ??? (Chrome + 18750248) [0x105d4db28]
+  1  ??? (Chrome + 18676620) [0x105d3bb8c]
+  1  ??? (Chrome + 18677708) [0x105d3bfcc]
+  1  ??? (Chrome + 18679348) [0x105d3c634]
+  1  ??? (Chrome + 18679188) [0x105d3c594]
+  1  ??? (Chrome + 18635440) [0x105d31ab0]
+  1  ??? (Chrome + 388836) [0x104bcaee4]
+  1  ??? (Chrome + 12877176) [0x1057b3d78]
+  1  ??? (Foundation + 1475784) [0x19ef674c8]
+  1  ??? (Foundation + 1472776) [0x19ef66908]
+  1  ??? (Foundation + 947964) [0x19eee66fc]
+  1  ??? (Foundation + 948164) [0x19eee67c4]
+  1  ??? (Foundation + 1475324) [0x19ef672fc]
+  1  ??? (Foundation + 1475588) [0x19ef67404]
+  1  ??? (Foundation + 1471036) [0x19ef6623c]
+  1  ??? (Foundation + 915120) [0x19eede6b0]
+  1  ??? (libsystem_kernel.dylib + 20680) [0x1f103a0c8]
+
+
+Powerstats for:   Chrome [6246]
+UUID:             4C4C44F8-5555-3144-A1B5-577FF96CEC51
+Path:             /private/var/containers/Bundle/Application/C1817EBE-8B4F-41A4-A981-1FAAE0F9848A/stable.app/Chrome
+Identifier:       com.google.chrome.ios
+Version:          143.7499.151 (143.0.7499.151)
+Adam ID:          535886823
+Is First Party:   No
+Beta Identifier:  F728E7F1-C36A-41AB-94E1-D8D4C810D198
+Resource Coalition: 1 sample "com.google.chrome.ios"(951)
+Architecture:     arm64
+Parent:           UNKNOWN [1]
+UID:              501
+Footprint:        145.97 MB
+Start time:       2026-01-14 21:40:03.306 -0700
+End time:         2026-01-14 21:40:03.306 -0700
+Num samples:      1 (100%)
+Num threads:      1
+Primary state:    1 samples Frontmost App, Non-Suppressed, Kernel mode, Effective Thread QoS Background, Requested Thread QoS Background, Override Thread QoS Unspecified, e-core
+User Activity:    0 samples Idle, 1 samples Active
+Power Source:     1 samples on Battery, 0 samples on AC
+  1  ??? (libsystem_pthread.dylib + 2744) [0x22a664ab8]
+    1  ??? (libsystem_pthread.dylib + 13124) [0x22a667344]
+      1  ??? (Chrome + 18837516) [0x105d6300c]
+        1  ??? (Chrome + 18749156) [0x105d4d6e4]
+          1  ??? (Chrome + 18749244) [0x105d4d73c]
+            1  ??? (Chrome + 18750248) [0x105d4db28]
+              1  ??? (Chrome + 18676620) [0x105d3bb8c]
+                1  ??? (Chrome + 18677708) [0x105d3bfcc]
+                  1  ??? (Chrome + 18679348) [0x105d3c634]
+                    1  ??? (Chrome + 18679188) [0x105d3c594]
+                      1  ??? (Chrome + 18635440) [0x105d31ab0]
+                        1  ??? (Chrome + 388836) [0x104bcaee4]
+                          1  ??? (Chrome + 12877176) [0x1057b3d78]
+                            1  ??? (Foundation + 1475784) [0x19ef674c8]
+                              1  ??? (Foundation + 1472776) [0x19ef66908]
+                                1  ??? (Foundation + 947964) [0x19eee66fc]
+                                  1  ??? (Foundation + 948164) [0x19eee67c4]
+                                    1  ??? (Foundation + 1475324) [0x19ef672fc]
+                                      1  ??? (Foundation + 1475588) [0x19ef67404]
+                                        1  ??? (Foundation + 1471036) [0x19ef6623c]
+                                          1  ??? (Foundation + 915120) [0x19eede6b0]
+                                            1  ??? (libsystem_kernel.dylib + 20680) [0x1f103a0c8]
+
+  Binary Images:
+           0x104b6c000 -                ???  com.google.chrome.ios 143.7499.151 (143.0.7499.151) <4C4C44F8-5555-3144-A1B5-577FF96CEC51>  /private/var/containers/Bundle/Application/C1817EBE-8B4F-41A4-A981-1FAAE0F9848A/stable.app/Chrome
+           0x19edff000 -        0x19fa7305f  Foundation                                          <A8DD2B13-903D-39E3-8D0C-5EBF50F75929>  /System/Library/Frameworks/Foundation.framework/Foundation
+           0x1f1035000 -        0x1f106eecf  libsystem_kernel.dylib                              <7C679990-215A-33E6-89E8-15ACBBA81BA2>  /usr/lib/system/libsystem_kernel.dylib
+           0x22a664000 -        0x22a670413  libsystem_pthread.dylib                             <985A66D7-1DC0-3F52-A897-D7AE7CAB5D36>  /usr/lib/system/libsystem_pthread.dylib

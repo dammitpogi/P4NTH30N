@@ -14,7 +14,7 @@ related: [DECISION_078, DECISION_077]
 
 ## Summary
 
-Extended the P4NTH30N Recorder TUI (DECISION_078) with conditional logic (if-then-else) and goto statements for error handling workflows. Users can now plot what happens when errors occur (server busy, session expired, element missing) directly in the visual interface.
+Extended the P4NTHE0N Recorder TUI (DECISION_078) with conditional logic (if-then-else) and goto statements for error handling workflows. Users can now plot what happens when errors occur (server busy, session expired, element missing) directly in the visual interface.
 
 ## Problem Statement
 

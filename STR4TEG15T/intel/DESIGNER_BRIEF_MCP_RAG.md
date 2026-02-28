@@ -4,7 +4,7 @@
 
 **WindFixer Discovery Summary**:
 - **RAG Infrastructure**: Python bridges exist, no C# integration
-- **FAISS**: IndexFlatL2 suitable for <100k vectors (P4NTH30N needs ~1k-50k)
+- **FAISS**: IndexFlatL2 suitable for <100k vectors (P4NTHE0N needs ~1k-50k)
 - **Context Windows**: SmolLM2-1.7B has 8k (not a bottleneck)
 - **Embeddings**: all-MiniLM-L6-v2 good, bge-small-en-v1.5 upgrade path
 - **Use Cases**: Error Analysis (#1), Platform Knowledge (#2), Config Context (#3)

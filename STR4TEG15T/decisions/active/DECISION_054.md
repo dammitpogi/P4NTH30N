@@ -12,7 +12,7 @@
 
 ## Executive Summary
 
-Ingest architecture patterns, agent definitions, and core codebase documentation into the RAG knowledge base. This institutional knowledge includes the AGENTS.md reference guide, C0MMON/ domain entities, RAG services, and system interfaces that define how P4NTH30N is structured and operated.
+Ingest architecture patterns, agent definitions, and core codebase documentation into the RAG knowledge base. This institutional knowledge includes the AGENTS.md reference guide, C0MMON/ domain entities, RAG services, and system interfaces that define how P4NTHE0N is structured and operated.
 
 **Current State**:
 - AGENTS.md: Comprehensive agent reference guide
@@ -33,7 +33,7 @@ Ingest architecture patterns, agent definitions, and core codebase documentation
 
 ### What Are Codebase Patterns?
 
-Codebase patterns are the structural and architectural conventions that govern P4NTH30N's implementation. They include:
+Codebase patterns are the structural and architectural conventions that govern P4NTHE0N's implementation. They include:
 
 - **Agent Definitions**: How agents are structured, their roles, and capabilities (AGENTS.md)
 - **Domain Entities**: Core business objects and their relationships (C0MMON/)
@@ -155,7 +155,7 @@ Codebase patterns provide:
 **Priority 1 - Must Ingest**:
 | File | Path | Why Priority |
 |------|------|--------------|
-| AGENTS.md | `c:\P4NTH30N\AGENTS.md` | Primary institutional reference |
+| AGENTS.md | `c:\P4NTHE0N\AGENTS.md` | Primary institutional reference |
 | FaissVectorStore | `C0MMON/RAG/FaissVectorStore.cs` | Core RAG implementation |
 | EmbeddingService | `C0MMON/RAG/EmbeddingService.cs` | Embedding generation |
 | HybridSearch | `C0MMON/RAG/HybridSearch.cs` | Search implementation |

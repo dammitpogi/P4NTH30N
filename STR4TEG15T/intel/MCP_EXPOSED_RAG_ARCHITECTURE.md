@@ -1,5 +1,5 @@
 # MCP-EXPOSED RAG ARCHITECTURE
-## RAG as an MCP Server for P4NTH30N Agents
+## RAG as an MCP Server for P4NTHE0N Agents
 
 **Vision**: Instead of custom SDKs or direct API calls, expose RAG as an **MCP Server** that all agents can access through the standard tool-calling pattern they already use.
 
@@ -316,7 +316,7 @@ await mcpClient.CallToolAsync("rag-server", "rag_ingest", new {
 ```json
 {
   "documentId": "doc_def456",
-  "filePath": "C:\\P4NTH30N\\docs\\architecture.md",
+  "filePath": "C:\\P4NTHE0N\\docs\\architecture.md",
   "status": "ingested",
   "fileSize": 15234,
   "chunks": 12
@@ -327,7 +327,7 @@ await mcpClient.CallToolAsync("rag-server", "rag_ingest", new {
 ```csharp
 // WindFixer ingesting documentation
 await mcpClient.CallToolAsync("rag-server", "rag_ingest_file", new {
-    filePath = "C:\\P4NTH30N\\docs\\NEW_FEATURE.md",
+    filePath = "C:\\P4NTHE0N\\docs\\NEW_FEATURE.md",
     metadata = new { agent = "WindFixer", type = "documentation" }
 });
 ```
@@ -500,7 +500,7 @@ public class RAGMiddleware {
         // Build augmented prompt
         var context = FormatRagResults(ragResult);
         var augmentedPrompt = $"""
-            Retrieved context from P4NTH30N knowledge base:
+            Retrieved context from P4NTHE0N knowledge base:
             {context}
             
             Original request:
@@ -595,18 +595,18 @@ public class StrategistAgent {
   "mcpServers": {
     "decisions-server": {
       "command": "node",
-      "args": ["C:/P4NTH30N/mcp/decisions-server/dist/index.js"]
+      "args": ["C:/P4NTHE0N/mcp/decisions-server/dist/index.js"]
     },
     "mongodb": {
       "command": "node", 
-      "args": ["C:/P4NTH30N/mcp/mongodb-mcp/dist/index.js"]
+      "args": ["C:/P4NTHE0N/mcp/mongodb-mcp/dist/index.js"]
     },
     "rag-server": {
       "command": "dotnet",
-      "args": ["run", "--project", "C:/P4NTH30N/src/RAG/McpServer.csproj"],
+      "args": ["run", "--project", "C:/P4NTHE0N/src/RAG/McpServer.csproj"],
       "env": {
-        "RAG_FAISS_INDEX": "C:/P4NTH30N/rag/faiss.index",
-        "RAG_MONGODB_URI": "mongodb://localhost:27017/P4NTH30N"
+        "RAG_FAISS_INDEX": "C:/P4NTHE0N/rag/faiss.index",
+        "RAG_MONGODB_URI": "mongodb://localhost:27017/P4NTHE0N"
       }
     }
   }

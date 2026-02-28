@@ -1,0 +1,122 @@
+{"restore_payload_version":"Unknown","restore_type":"OTAUpdate","os_version":"22H123","itunes_version":"22H123","bug_type":"183","restore_error":"39","name":"iPhoneRestore"}
+16fcaf000 : Client softwareupdateservicesd[1251] does not have the 'com.apple.private.softwareupdated-helpers' entitlement
+16fcaf000 : The secure object length value is: 1039
+16fcaf000 : Caller has pased in downloadOptions: MADownloadOptions allowsCellular: 0 resourceTimeout: -1 canUseCacheServer: 0 discretionary: 0 disableUI: 0 sessionId: (null) additionalServerParams:(null) allowsExpensiveAccess:1 requiresPowerPluggedIn: 0 prefersInfraWiFi: 1 liveServerOnly: -1 DownloadAuthorizationHeader: not present analyticsData: not present allowDaemonConnectionRetries: 0  + MAMsuDownloadOptions reqProdVersion: (null) delayPeriod: 0 managedDevice: 0 allowSameVersion: 0 prereqBuild: (null) prereqVersion: (null) prereqReleaseType: (default) liveAssetAudienceUUID: (null) purpose: (null)
+16fcaf000 : The attributes are: {
+    ActualMinimumSystemPartition = 7855;
+    AssetType = "com.apple.MobileAsset.SoftwareUpdate";
+    Build = 23C55;
+    CryptexSizeInfo =     (
+                {
+            CryptexSize = 14;
+            CryptexTag = "cryptex-app";
+        },
+                {
+            CryptexSize = 4740;
+            CryptexTag = "cryptex-system-arm64e";
+        }
+    );
+    DisablePreSoftwareUpdateAssetStaging = 1;
+    EAPFSEnabled = 1;
+    GranularRampingLogic =     (
+                {
+            BgPct = 100;
+            FgPct = 0;
+            Hour = 0;
+        },
+                {
+            BgPct = 90;
+            FgPct = 0;
+            Hour = 24;
+        },
+                {
+            BgPct = 75;
+            FgPct = 0;
+            Hour = 48;
+        },
+                {
+            BgPct = 60;
+            FgPct = 0;
+            Hour = 72;
+        },
+                {
+            BgPct = 45;
+            FgPct = 0;
+            Hour = 96;
+        },
+                {
+            BgPct = 30;
+            FgPct = 0;
+            Hour = 120;
+        },
+                {
+            BgPct = 15;
+            FgPct = 0;
+            Hour = 144;
+        },
+                {
+            BgPct = 0;
+            FgPct = 0;
+            Hour = 168;
+        }
+    );
+    InstallationSize = 0;
+    "InstallationSize-Snapshot" = 3380115899;
+    MinimumSystemPartition = 7907;
+    OSVersion = "9.9.26.2";
+    RSEPDigest = {length = 48, bytes = 0xfdce1dcd 2481d5e1 8deff48a a7fde053 ... 5d23c686 1a8cfb01 };
+    RSEPTBMDigests = "+QjCSRLkEjqHeeyGBhtxZncZOp4WSo6Lg3JACle4PAjx0350rasWGiIa0GoSVHS0\ne2qpbJ0j31w5oMvjkDiRE7LO5rYX8S1EXf7YYjCmBNsys3WAYZEFEaUK+APpkwEN\nVQSlNtSJ11V7fMOqRn3hBimWAasYhSLJkvzpZn5rM0LeTl1blUklQlML0wwGLs8N\nS9FgZx523ooiNklRp3FlKskKhZhD0RXazOBKz2iHCsXyIxGHX3le9RIwm6u7JdNd\ni+aEqnBNZBhF1BDvLfnk5epmTLkHEFR38zpsoyget6hxFUhNJvOjLrR6dMe8twkE";
+    Ramp = 0;
+    RestoreVersion = "23.3.55.0.0,0";
+    RestoreVersionInfo =     {
+        RestoreBuildGroup = 0;
+        RestoreLongVersion = "23.3.55.0.0,0";
+        RestoreVersion = "23.3.55.0.0";
+    };
+    SEPDigest = {length = 48, bytes = 0xba765789 fa3dc1de f7395d36 44b5b084 ... adcc8c33 d4c52c1f };
+    SEPTBMDigests = "jvieTe6iwXk8WO9o0YCmmeNOkQu22FTpdD6XxVMs+qYQ1YQf7LlTFMWrYieaHsr9\nbEhaf2PPvZQvwH1YwPkIHf/XwS6Bxlz9+mrM4rmjIKLSaxQHmabEnIhF8SOSFwh0\nghL9EQNepOsCf+o63efQCFNEbanw2oMTuz2xNA/G+E2cnQ0YWWxkunVWSqRGzuBC\n8Tcba9ffJPM0cydBMTvvpNJUtmQHUsVeL9k2/Lb05B8PTdiw6Qo4kK/4OrrPj6jL\nNtGCzUgYWg+ucv3DW8FRWMBQDJ0XpwRbYRFu7wGKzBdmemrnK2hquK+J6yIuEoc4";
+    SUConvReqd = 1;
+    SUDocumentationID = iOS262Long;
+    SUInstallTonightEnabled = 1;
+    SUMultiPassEnabled = 1;
+    SUProductSystemName = iOS;
+    SUPublisher = "Apple Inc.";
+    SupportedDeviceModels =     (
+        D16AP
+    );
+    SupportedDevices =     (
+        "iPhone14,4"
+    );
+    SystemPartitionPadding =     {
+        1024 = 1280;
+        128 = 1280;
+        16 = 160;
+        256 = 1280;
+        32 = 320;
+        512 = 1280;
+        64 = 640;
+        768 = 1280;
+        8 = 80;
+    };
+    SystemVolumeSealingOverhead = 221;
+    TrainName = LuckC;
+    "_CompressionAlgorithm" = zip;
+    "_DownloadSize" = 7767768272;
+    "_EventRecordingServiceURL" = "https://xp.apple.com/report";
+    "_IsZipStreamable" = 1;
+    "_MasteredVersion" = 55;
+    "_Measurement" = {length = 20, bytes = 0x<<<<<<<<<<<<<<<<<<UDID>>>>>>>>>>>>>>>>>>};
+    "_Measurement-SHA256" = {length = 32, bytes = 0x902aa08c 798f15bf a90bb1e1 b02fd690 ... d84ca296 28fcb483 };
+    "_MeasurementAlgorithm" = "SHA-1";
+    "_UnarchivedSize" = 7885506560;
+    "__AssetDefaultGarbageCollectionBehavior" = NeverCollected;
+    "__BaseURL" = "https://updates.cdn-apple.com/2025FallFCS/patches/089-90785/9123B3AF-6937-4724-A27CXXXX>>>>>CBBD/";
+    "__CanUseLocalCacheServer" = 1;
+    "__HideInstallAlert" = 0;
+    "__RelativePath" = "com_apple_MobileAsset_SoftwareUpdate/<<<<<<<<<<<<<<<<<<UDID>>>>>>>>>>>>>>>>>>.zip";
+}
+16fb97000 : Setting targetBrainVersion to 23C55
+16fb97000 : Sending load complete without error
+16fcaf000 : Entering handle_brain_is_loadable
+16fcaf000 : Unable to load trust cache: 0xe00002d8
+16fcaf000 : MobileSoftwareUpdateErrorDomain error 39 - Failed to load update brain trust cache

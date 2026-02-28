@@ -80,6 +80,25 @@ describe("Patch namespace", () => {
       }
     })
 
+    test("should parse windows absolute paths in headers", () => {
+      const patchText = `*** Begin Patch
+*** Update File: C:\\repo\\old-name.txt
+*** Move to: D:\\archive\\new-name.txt
+@@
+-Old content
++New content
+*** End Patch`
+
+      const result = Patch.parsePatch(patchText)
+      expect(result.hunks).toHaveLength(1)
+      const hunk = result.hunks[0]
+      expect(hunk.type).toBe("update")
+      expect(hunk.path).toBe("C:\\repo\\old-name.txt")
+      if (hunk.type === "update") {
+        expect(hunk.move_path).toBe("D:\\archive\\new-name.txt")
+      }
+    })
+
     test("should throw error for invalid patch format", () => {
       const invalidPatch = `This is not a valid patch`
 

@@ -17,7 +17,7 @@ This is a straightforward utility executable. C# console apps are well-understoo
 
 ### Risk Score: 2/10 (Very Low)
 Very low risk:
-- No runtime behavior changes to P4NTH30N
+- No runtime behavior changes to P4NTHE0N
 - Pure utility - if it fails, manual copy still works
 - Hash validation ensures integrity
 - Dry-run mode allows preview without changes

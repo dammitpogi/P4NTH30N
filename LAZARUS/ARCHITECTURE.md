@@ -5,7 +5,7 @@
 **Version**: 1.0  
 **Status**: Draft  
 **Classification**: System Architecture  
-**Scope**: P4NTH30N + oh-my-opencode-theseus Integration  
+**Scope**: P4NTHE0N + oh-my-opencode-theseus Integration  
 
 ---
 
@@ -40,7 +40,7 @@ The Lazarus Protocol treats system failures as **recovery opportunities**, not t
 │                                                                              │
 │  ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────────────┐  │
 │  │  Error Sources  │    │  Error Sources  │    │      Error Sources      │  │
-│  │   (P4NTH30N)    │    │ (oh-my-opencode)│    │      (External)         │  │
+│  │   (P4NTHE0N)    │    │ (oh-my-opencode)│    │      (External)         │  │
 │  │                 │    │                 │    │                         │  │
 │  │ • Agent crashes │    │ • Plugin errors │    │ • MongoDB failures      │  │
 │  │ • CDP failures  │    │ • Model timeouts│    │ • Network partitions    │  │
@@ -109,7 +109,7 @@ The Lazarus Protocol treats system failures as **recovery opportunities**, not t
 │  │              HEALING EXECUTION ENGINE (HEE)                          │   │
 │  │                                                                      │   │
 │  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐ │   │
-│  │  │   Plugin    │  │  P4NTH30N   │  │  Decision   │  │  Circuit    │ │   │
+│  │  │   Plugin    │  │  P4NTHE0N   │  │  Decision   │  │  Circuit    │ │   │
 │  │  │  Healer     │  │   Healer    │  │   Healer    │  │  Breaker    │ │   │
 │  │  │             │  │             │  │             │  │             │ │   │
 │  │  │• Model      │  │• CDP        │  │• Bug report │  │• Failure    │ │   │
@@ -152,7 +152,7 @@ interface LazarusError {
   fingerprint: string;           // Hash of key fields for dedup
   
   // Source
-  source: ErrorSource;           // P4NTH30N | PLUGIN | EXTERNAL
+  source: ErrorSource;           // P4NTHE0N | PLUGIN | EXTERNAL
   component: string;             // e.g., "H4ND", "background-manager"
   instance: string;              // Hostname/process ID
   
@@ -188,7 +188,7 @@ interface ErrorContext {
 }
 
 enum ErrorType {
-  // P4NTH30N Errors
+  // P4NTHE0N Errors
   CDP_DISCONNECT = 'cdp_disconnect',
   SESSION_EXPIRED = 'session_expired',
   CHROME_CRASH = 'chrome_crash',
@@ -222,7 +222,7 @@ enum ErrorType {
 
 | Parser | Source | Format | Responsibility |
 |--------|--------|--------|----------------|
-| `P4nth30nLogParser` | P4NTH30N logs | Structured JSON | Parse C# exception output, CDP events |
+| `P4nth30nLogParser` | P4NTHE0N logs | Structured JSON | Parse C# exception output, CDP events |
 | `PluginLogParser` | oh-my-opencode logs | Bun logger format | Parse agent failures, model errors |
 | `ChromeLogParser` | Chrome stderr | Text lines | Parse crash reports, devtools errors |
 | `MongoLogParser` | MongoDB logs | JSON | Parse connection failures, query timeouts |
@@ -962,7 +962,7 @@ type HealingActionType =
   | 'TASK_RETRY'
   | 'COMPACT_SESSION'
   
-  // P4NTH30N healing
+  // P4NTHE0N healing
   | 'CDP_RECONNECT'
   | 'CHROME_RESPAWN'
   | 'SESSION_RESTORE'
@@ -1079,7 +1079,7 @@ class PluginHealer {
 }
 ```
 
-#### 3.4.3 P4NTH30N Healer
+#### 3.4.3 P4NTHE0N Healer
 
 ```typescript
 class P4nth30nHealer {
@@ -1106,7 +1106,7 @@ class P4nth30nHealer {
       default:
         return {
           success: false,
-          error: `Unknown P4NTH30N action: ${action.type}`
+          error: `Unknown P4NTHE0N action: ${action.type}`
         };
     }
   }
@@ -1620,7 +1620,7 @@ class CircuitBreakerStateStore {
 ## 4. File Structure
 
 ```
-P4NTH30N/
+P4NTHE0N/
 ├── LAZARUS/                              # Lazarus Protocol root
 │   ├── README.md                         # System overview
 │   ├── ARCHITECTURE.md                   # This document
@@ -1683,7 +1683,7 @@ P4NTH30N/
 │   │   │   └── circuit-state-store.ts
 │   │   │
 │   │   ├── integrations/                 # External integrations
-│   │   │   ├── p4nth30n-adapter.ts       # P4NTH30N integration
+│   │   │   ├── p4nth30n-adapter.ts       # P4NTHE0N integration
 │   │   │   ├── plugin-adapter.ts         # oh-my-opencode integration
 │   │   │   ├── forgewright-client.ts     # Bug reporting
 │   │   │   └── notifications.ts          # Human notification
@@ -1721,7 +1721,7 @@ P4NTH30N/
 │       ├── migrate-signatures.ts         # Signature migration
 │       └── generate-report.ts            # Health report generation
 │
-├── H4ND/                                 # Integration with P4NTH30N
+├── H4ND/                                 # Integration with P4NTHE0N
 │   └── tools/
 │       └── lazarus-bridge/               # C# → TypeScript bridge
 │           ├── LazarusBridge.cs
@@ -1742,7 +1742,7 @@ P4NTH30N/
 
 ## 5. Integration Points
 
-### 5.1 P4NTH30N Integration
+### 5.1 P4NTHE0N Integration
 
 ```typescript
 // H4ND/tools/lazarus-bridge/LazarusBridge.cs
@@ -1761,7 +1761,7 @@ public class LazarusBridge : IDisposable
     {
         var lazarusError = new LazarusError
         {
-            Source = "P4NTH30N",
+            Source = "P4NTHE0N",
             Component = error.Component,
             Type = MapErrorType(error.Type),
             Severity = MapSeverity(error.Severity),
@@ -1887,7 +1887,7 @@ export class ErrorCaptureHook {
 export class ForgewrightClient {
   private decisionPath: string;
   
-  constructor(decisionPath: string = 'C:/P4NTH30N/STR4TEG15T/decisions') {
+  constructor(decisionPath: string = 'C:/P4NTHE0N/STR4TEG15T/decisions') {
     this.decisionPath = decisionPath;
   }
   
@@ -1965,7 +1965,7 @@ _Add analysis and fix details here._
 ### 6.1 Scenario: CDP Disconnection
 
 ```
-1. P4NTH30N detects CDP disconnection
+1. P4NTHE0N detects CDP disconnection
 2. C# ErrorForwarder captures error
 3. HTTP POST to Lazarus /ingest
 4. P4nth30nLogParser normalizes error
@@ -2212,7 +2212,7 @@ All GUARDED and MANUAL actions can be:
 - [ ] Error ingestion layer with parsers
 - [ ] MongoDB schema and storage
 - [ ] Basic HTTP API
-- [ ] P4NTH30N bridge
+- [ ] P4NTHE0N bridge
 
 ### Phase 2: Detection (Week 3)
 - [ ] Pattern matcher with signatures
@@ -2227,7 +2227,7 @@ All GUARDED and MANUAL actions can be:
 - [ ] Basic circuit breaker
 
 ### Phase 4: Integration (Week 5)
-- [ ] P4NTH30N healer
+- [ ] P4NTHE0N healer
 - [ ] Decision healer
 - [ ] oh-my-opencode hooks
 - [ ] Forgewright integration

@@ -1,10 +1,10 @@
-# MongoDB-P4NTH30N Server Hardening Strategy
+# MongoDB-P4NTHE0N Server Hardening Strategy
 
 ## Executive Summary
 
 **Objective**: Eliminate redundant database parameter passing while maintaining full ToolHive MCP compatibility through a configuration-driven wrapper layer.
 
-**Current State**: Callers must pass database/collection on every call; hardcoded to `P4NTH30N` database via env var.
+**Current State**: Callers must pass database/collection on every call; hardcoded to `P4NTHE0N` database via env var.
 
 **Target State**: Zero-config calls for primary database; optional override for multi-tenant scenarios; backward compatible.
 
@@ -18,14 +18,14 @@
 |-------|--------|-----------|
 | Database name in every call | Verbosity, cognitive load | Every operation |
 | No collection-level defaults | Repetitive collection names | Domain-specific queries |
-| Hardcoded P4NTH30N database | No multi-tenant support | Architecture limitation |
+| Hardcoded P4NTHE0N database | No multi-tenant support | Architecture limitation |
 | Env var only configuration | No runtime flexibility | Deployment constraint |
 
 ### Current Call Pattern (Verbose)
 ```javascript
 // Every call requires explicit database context
 mongo_find({
-  database: "P4NTH30N",      // Redundant - always same
+  database: "P4NTHE0N",      // Redundant - always same
   collection: "CRED3N7IAL",  // Could be defaulted per-tool
   filter: { Username: "user1" }
 })
@@ -66,7 +66,7 @@ query_credentials({
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────┐
-│              MongoDB-P4NTH30N Server (Wrapper)               │
+│              MongoDB-P4NTHE0N Server (Wrapper)               │
 │  ┌──────────────┐  ┌──────────────┐  ┌──────────────────┐   │
 │  │ Config Layer │  │ Tool Registry│  │ Default Resolver │   │
 │  │  - defaults  │  │  - metadata  │  │  - inject params │   │
@@ -94,43 +94,43 @@ query_credentials({
 {
   "schemaVersion": "1.0.0",
   "server": {
-    "defaultDatabase": "P4NTH30N",
+    "defaultDatabase": "P4NTHE0N",
     "allowDatabaseOverride": true,
     "enforceCollectionWhitelist": false
   },
   "tools": {
     "query_credentials": {
       "defaultCollection": "CRED3N7IAL",
-      "defaultDatabase": "P4NTH30N",
+      "defaultDatabase": "P4NTHE0N",
       "description": "Query user credentials and thresholds"
     },
     "query_signals": {
       "defaultCollection": "SIGN4L",
-      "defaultDatabase": "P4NTH30N"
+      "defaultDatabase": "P4NTHE0N"
     },
     "query_jackpots": {
       "defaultCollection": "J4CKP0T",
-      "defaultDatabase": "P4NTH30N"
+      "defaultDatabase": "P4NTHE0N"
     },
     "mongo_find": {
       "requireCollection": true,
-      "defaultDatabase": "P4NTH30N"
+      "defaultDatabase": "P4NTHE0N"
     },
     "mongo_insertOne": {
       "requireCollection": true,
-      "defaultDatabase": "P4NTH30N"
+      "defaultDatabase": "P4NTHE0N"
     },
     "mongo_updateOne": {
       "requireCollection": true,
-      "defaultDatabase": "P4NTH30N"
+      "defaultDatabase": "P4NTHE0N"
     },
     "mongo_insertMany": {
       "requireCollection": true,
-      "defaultDatabase": "P4NTH30N"
+      "defaultDatabase": "P4NTHE0N"
     },
     "mongo_updateMany": {
       "requireCollection": true,
-      "defaultDatabase": "P4NTH30N"
+      "defaultDatabase": "P4NTHE0N"
     }
   },
   "aliases": {
@@ -176,8 +176,8 @@ export class ConfigLoader {
 
   private getDefaultConfigPath(): string {
     // Priority: env var > relative to dist > relative to src
-    if (process.env.MCP_P4NTH30N_CONFIG) {
-      return process.env.MCP_P4NTH30N_CONFIG;
+    if (process.env.MCP_P4NTHE0N_CONFIG) {
+      return process.env.MCP_P4NTHE0N_CONFIG;
     }
     // Resolved relative to compiled output
     return resolve(__dirname, '../../config/database-defaults.json');
@@ -201,7 +201,7 @@ export class ConfigLoader {
     return {
       schemaVersion: "1.0.0",
       server: {
-        defaultDatabase: process.env.DATABASE_NAME || "P4NTH30N",
+        defaultDatabase: process.env.DATABASE_NAME || "P4NTHE0N",
         allowDatabaseOverride: true,
         enforceCollectionWhitelist: false
       },
@@ -321,7 +321,7 @@ export const DOMAIN_TOOLS: ToolDefinition[] = [
       properties: {
         database: {
           type: "string",
-          description: "Optional: Override default database (P4NTH30N)",
+          description: "Optional: Override default database (P4NTHE0N)",
         },
         filter: {
           type: "object",
@@ -381,7 +381,7 @@ export const DOMAIN_TOOLS: ToolDefinition[] = [
   },
   {
     name: "get_system_status",
-    description: "Get overall P4NTH30N system status summary",
+    description: "Get overall P4NTHE0N system status summary",
     injectDefaults: true,
     inputSchema: {
       type: "object" as const,
@@ -406,7 +406,7 @@ export const GENERIC_TOOLS: ToolDefinition[] = [
       properties: {
         database: {
           type: "string",
-          description: "Optional: Override default database (P4NTH30N)",
+          description: "Optional: Override default database (P4NTHE0N)",
         },
         collection: {
           type: "string",
@@ -429,7 +429,7 @@ export const GENERIC_TOOLS: ToolDefinition[] = [
       properties: {
         database: {
           type: "string",
-          description: "Optional: Override default database (P4NTH30N)",
+          description: "Optional: Override default database (P4NTHE0N)",
         },
         collection: {
           type: "string",
@@ -552,7 +552,7 @@ export function getEnrichedTools(): ToolDefinition[] {
 ```typescript
 #!/usr/bin/env node
 /**
- * MCP-P4NTH30N Server v2.0
+ * MCP-P4NTHE0N Server v2.0
  * 
  * Model Context Protocol server with configuration-driven defaults.
  * Eliminates redundant database/collection parameters through smart injection.
@@ -751,13 +751,13 @@ const toolHandlers: Record<
 async function main() {
   // Pre-load configuration
   configLoader.load();
-  console.error("MCP-P4NTH30N v2.0 server starting...");
+  console.error("MCP-P4NTHE0N v2.0 server starting...");
   console.error(`Default database: ${configLoader.getDefaultDatabase()}`);
   console.error(`Database override: ${configLoader.isDatabaseOverrideAllowed() ? 'enabled' : 'disabled'}`);
 
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error("MCP-P4NTH30N server running on stdio");
+  console.error("MCP-P4NTHE0N server running on stdio");
 }
 
 main().catch((error) => {
@@ -779,12 +779,12 @@ main().catch((error) => {
   "transport": "stdio",
   "command": "node",
   "args": [
-    "C:/P4NTH30N/tools/mcp-p4nthon/dist/index.js"
+    "C:/P4NTHE0N/tools/mcp-p4nthon/dist/index.js"
   ],
   "envVars": {
     "MONGODB_URI": "mongodb://localhost:27017",
-    "DATABASE_NAME": "P4NTH30N",
-    "MCP_P4NTH30N_CONFIG": "C:/P4NTH30N/tools/mcp-p4nthon/config/database-defaults.json"
+    "DATABASE_NAME": "P4NTHE0N",
+    "MCP_P4NTHE0N_CONFIG": "C:/P4NTHE0N/tools/mcp-p4nthon/config/database-defaults.json"
   },
   "tags": [
     "p4nth30n",
@@ -793,7 +793,7 @@ main().catch((error) => {
     "crud",
     "v2"
   ],
-  "description": "P4NTH30N MongoDB with smart defaults - no database/collection required for primary operations",
+  "description": "P4NTHE0N MongoDB with smart defaults - no database/collection required for primary operations",
   "enabled": true
 }
 ```
@@ -804,7 +804,7 @@ main().catch((error) => {
 ```javascript
 #!/usr/bin/env node
 /**
- * Migration helper for MongoDB-P4NTH30N v1 to v2 calls
+ * Migration helper for MongoDB-P4NTHE0N v1 to v2 calls
  * 
  * Usage: node migrate-calls.js --check <file>  # Check for deprecated patterns
  *        node migrate-calls.js --fix <file>     # Auto-fix where safe
@@ -835,8 +835,8 @@ const MIGRATION_PATTERNS = [
     autoFixable: true
   },
   {
-    name: "Explicit P4NTH30N database parameter",
-    pattern: /database\s*:\s*["']P4NTH30N["']/g,
+    name: "Explicit P4NTHE0N database parameter",
+    pattern: /database\s*:\s*["']P4NTHE0N["']/g,
     suggestion: "Remove - database is now defaulted",
     autoFixable: true,
     fix: (match, fullText) => {
@@ -944,7 +944,7 @@ describe('ConfigLoader', () => {
   it('loads defaults from file', () => {
     const loader = new ConfigLoader('./config/database-defaults.json');
     const config = loader.load();
-    expect(config.server.defaultDatabase).toBe('P4NTH30N');
+    expect(config.server.defaultDatabase).toBe('P4NTHE0N');
   });
 
   it('falls back to env var when file missing', () => {
@@ -979,7 +979,7 @@ describe('ParameterInjector', () => {
 
   it('injects default database when not specified', () => {
     const result = injector.inject('query_credentials', {});
-    expect(result.database).toBe('P4NTH30N');
+    expect(result.database).toBe('P4NTHE0N');
   });
 
   it('preserves user database when specified', () => {
@@ -1006,18 +1006,18 @@ describe('ParameterInjector', () => {
 
 | Test Case | Expected Result | Validation Method |
 |-----------|-----------------|-------------------|
-| `query_credentials({filter: {}})` | Uses P4NTH30N.CRED3N7IAL | Check returned database name |
+| `query_credentials({filter: {}})` | Uses P4NTHE0N.CRED3N7IAL | Check returned database name |
 | `query_credentials({database: 'TEST'})` | Uses TEST.CRED3N7IAL | Check returned database name |
-| `mongo_find({collection: 'test'})` | Uses P4NTH30N.test | Check returned database name |
+| `mongo_find({collection: 'test'})` | Uses P4NTHE0N.test | Check returned database name |
 | `mongo_find({})` | Throws "collection required" | Error message validation |
-| Legacy call with `database: 'P4NTH30N'` | Works (backward compat) | Integration test |
+| Legacy call with `database: 'P4NTHE0N'` | Works (backward compat) | Integration test |
 
 #### Manual Verification Steps
 
 ```bash
 # 1. Start server with test config
 cd tools/mcp-p4nthon
-MCP_P4NTH30N_CONFIG=./config/database-defaults.json node dist/index.js
+MCP_P4NTHE0N_CONFIG=./config/database-defaults.json node dist/index.js
 
 # 2. Test with MCP inspector (or direct JSON-RPC)
 # Send ListTools request - verify schemas show optional database/collection
@@ -1044,7 +1044,7 @@ Server default from database-defaults.json
     ↓ (if undefined)
 Environment variable DATABASE_NAME
     ↓ (if undefined)
-Hardcoded fallback "P4NTH30N"
+Hardcoded fallback "P4NTHE0N"
 ```
 
 ### 6.2 Error Scenarios
@@ -1063,7 +1063,7 @@ Hardcoded fallback "P4NTH30N"
 
 **Mechanism**:
 1. User-provided values always win over defaults
-2. Existing explicit `database: 'P4NTH30N'` calls work unchanged
+2. Existing explicit `database: 'P4NTHE0N'` calls work unchanged
 3. Existing explicit `collection: 'NAME'` calls work unchanged
 4. Only new calls can omit parameters
 
@@ -1103,7 +1103,7 @@ const creds = await query_credentials({ filter: { Username: user } });
 // ✅ Old pattern - still works
 const creds = await mongo_find({ 
   collection: 'CRED3N7IAL',
-  database: 'P4NTH30N',  // Redundant but harmless
+  database: 'P4NTHE0N',  // Redundant but harmless
   filter: { Username: user } 
 });
 ```
@@ -1112,7 +1112,7 @@ const creds = await mongo_find({
 
 Target high-value simplifications:
 1. Replace `mongo_find({collection: 'CRED3N7IAL', ...})` → `query_credentials({...})`
-2. Remove explicit `database: 'P4NTH30N'` where redundant
+2. Remove explicit `database: 'P4NTHE0N'` where redundant
 3. Add per-workflow collection defaults for repeated operations
 
 ### 7.5 Migration Example
@@ -1122,7 +1122,7 @@ Target high-value simplifications:
 // Every credential lookup - verbose
 async function getUserCreds(username: string) {
   const result = await mongo_find({
-    database: 'P4NTH30N',      // Always same
+    database: 'P4NTHE0N',      // Always same
     collection: 'CRED3N7IAL',  // Always same
     filter: { Username: username },
     limit: 1
@@ -1208,7 +1208,7 @@ This strategy delivers high value (simplified calls) with low risk (backward com
 | Phase | Agent | Rationale |
 |-------|-------|-----------|
 | Phase 1-2 (Config, Schema) | @openfixer | TypeScript/Node.js config systems |
-| Phase 3 (Server Integration) | @windfixer | P4NTH30N-specific integration |
+| Phase 3 (Server Integration) | @windfixer | P4NTHE0N-specific integration |
 | Phase 4 (ToolHive, Migration) | @openfixer | External config, CLI tools |
 | Validation & Testing | @windfixer | Live service validation |
 
@@ -1263,7 +1263,7 @@ interface DatabaseDefaultsConfig {
 ```json
 {
   "server": {
-    "defaultDatabase": "P4NTH30N_PROD",
+    "defaultDatabase": "P4NTHE0N_PROD",
     "allowDatabaseOverride": false,
     "enforceCollectionWhitelist": true
   }
@@ -1274,7 +1274,7 @@ interface DatabaseDefaultsConfig {
 ```json
 {
   "server": {
-    "defaultDatabase": "P4NTH30N_DEV",
+    "defaultDatabase": "P4NTHE0N_DEV",
     "allowDatabaseOverride": true
   },
   "aliases": {

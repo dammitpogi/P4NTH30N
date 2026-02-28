@@ -1,5 +1,5 @@
 // Query MongoDB for FireKirin credentials with balance > 0
-db = db.getSiblingDB('P4NTH30N');
+db = db.getSiblingDB('P4NTHE0N');
 const creds = db.CRED3N7IAL.find({
   Game: 'FireKirin',
   Enabled: true,

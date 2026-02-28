@@ -13,7 +13,7 @@
 
 ## Executive Summary
 
-Current RAG implementation (DECISION_061) uses flat vector storage. Research on the Keck Observatory Archive dashboard shows R-tree spatial indexing improves query performance by 20x. As P4NTH30N's document corpus grows (currently 1,568 vectors), hierarchical indexing will be essential for maintaining sub-second query latency.
+Current RAG implementation (DECISION_061) uses flat vector storage. Research on the Keck Observatory Archive dashboard shows R-tree spatial indexing improves query performance by 20x. As P4NTHE0N's document corpus grows (currently 1,568 vectors), hierarchical indexing will be essential for maintaining sub-second query latency.
 
 **Current Problem**:
 - Flat vector index scales linearly with document count

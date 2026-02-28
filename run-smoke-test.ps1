@@ -13,13 +13,13 @@ Write-Host ""
 Write-Host "[1/5] Querying MongoDB for FireKirin credentials..." -ForegroundColor Yellow
 
 $mongoScript = @"
-use P4NTH30N
+use P4NTHE0N
 db.CRED3N7IAL.find({Game: 'FireKirin'}).sort({Balance: -1}).limit(10).forEach(function(doc) {
     print('Username: ' + doc.Username + ' | Balance: ' + doc.Balance + ' | Enabled: ' + doc.Enabled + ' | Locked: ' + doc.Locked);
 });
 "@
 
-$queryFile = "C:\P4NTH30N\temp-mongo-query.js"
+$queryFile = "C:\P4NTHE0N\temp-mongo-query.js"
 $mongoScript | Out-File -FilePath $queryFile -Encoding UTF8 -NoNewline
 
 Write-Host "Executing MongoDB query..." -ForegroundColor Gray
@@ -31,7 +31,7 @@ Write-Host $mongoOutput
 # Use step-config.json credentials as fallback
 if ([string]::IsNullOrEmpty($Username)) {
     Write-Host "Using credentials from step-config.json" -ForegroundColor Yellow
-    $stepConfig = Get-Content "C:\P4NTH30N\H4ND\tools\recorder\step-config.json" | ConvertFrom-Json
+    $stepConfig = Get-Content "C:\P4NTHE0N\H4ND\tools\recorder\step-config.json" | ConvertFrom-Json
     $Username = $stepConfig.metadata.credentials.firekirin.username
     $Password = $stepConfig.metadata.credentials.firekirin.password
     Write-Host "Credential: $Username" -ForegroundColor Cyan
@@ -53,7 +53,7 @@ try {
 Write-Host ""
 Write-Host "[3/5] Creating screenshot directory..." -ForegroundColor Yellow
 $timestamp = Get-Date -Format "yyyy-MM-dd_HHmmss"
-$screenshotDir = "C:\P4NTH30N\SMOKE_TEST_SCREENSHOTS\$timestamp"
+$screenshotDir = "C:\P4NTHE0N\SMOKE_TEST_SCREENSHOTS\$timestamp"
 New-Item -ItemType Directory -Path $screenshotDir -Force | Out-Null
 Write-Host "Directory: $screenshotDir" -ForegroundColor Green
 
@@ -64,7 +64,7 @@ Write-Host "Credential: $Username" -ForegroundColor Gray
 Write-Host "Note: Expecting failure at balance verification" -ForegroundColor Yellow
 Write-Host ""
 
-$smokeTestPath = "C:\P4NTH30N\H4ND\SmokeTest\bin\Release\net10.0-windows7.0\H4ND.SmokeTest.exe"
+$smokeTestPath = "C:\P4NTHE0N\H4ND\SmokeTest\bin\Release\net10.0-windows7.0\H4ND.SmokeTest.exe"
 
 if (-not (Test-Path $smokeTestPath)) {
     Write-Host "ERROR: Smoke test not found at: $smokeTestPath" -ForegroundColor Red

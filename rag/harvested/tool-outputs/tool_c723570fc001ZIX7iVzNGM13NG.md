@@ -57,7 +57,7 @@
       "decisionId": "WIND-004",
       "title": "WindFixerCheckpointManager Implementation",
       "category": "Platform-Integration",
-      "description": "Implement WindFixerCheckpointManager with hybrid storage. File: P4NTH30N/.windfixer/checkpoints/{sessionId}.json. MongoDB: WINDFIXER_CHECKPOINT. Supports 6 triggers, TTL expiration, concurrent sessions via file locking.",
+      "description": "Implement WindFixerCheckpointManager with hybrid storage. File: P4NTHE0N/.windfixer/checkpoints/{sessionId}.json. MongoDB: WINDFIXER_CHECKPOINT. Supports 6 triggers, TTL expiration, concurrent sessions via file locking.",
       "status": "Proposed",
       "priority": "Critical",
       "dependencies": [
@@ -77,7 +77,7 @@
       "implementation": {
         "targetFiles": [
           "C0MMON/Checkpoint/WindFixerCheckpointManager.cs",
-          "P4NTH30N/.windfixer/"
+          "P4NTHE0N/.windfixer/"
         ]
       },
       "timestamp": {
@@ -232,7 +232,7 @@
       "decisionId": "TOOL-001",
       "title": "ToolHive Tool Development Framework",
       "category": "Platform Infrastructure",
-      "description": "Establish in-house tool development and deployment framework using ToolHive MCP. All custom tools developed in P4NTH30N/tools and deployed to C:\\Users\\paulc\\.config\\opencode\\tools. Agents must use ToolHive for tool access (toolhive_find_tool, toolhive_call_tool). Document tool patterns, deployment流程, and usage guidelines.",
+      "description": "Establish in-house tool development and deployment framework using ToolHive MCP. All custom tools developed in P4NTHE0N/tools and deployed to C:\\Users\\paulc\\.config\\opencode\\tools. Agents must use ToolHive for tool access (toolhive_find_tool, toolhive_call_tool). Document tool patterns, deployment流程, and usage guidelines.",
       "status": "Proposed",
       "priority": "High",
       "dependencies": [],
@@ -244,7 +244,7 @@
         ],
         "estimatedEffort": "2-3 days",
         "keyComponents": [
-          "Tool development directory: P4NTH30N/tools",
+          "Tool development directory: P4NTHE0N/tools",
           "Deployment directory: C:\\Users\\paulc\\.config\\opencode\\tools",
           "Tool documentation patterns",
           "ToolHive integration guidelines",
@@ -262,7 +262,7 @@
         "phases": [
           {
             "deliverables": [
-              "P4NTH30N/tools directory structure",
+              "P4NTHE0N/tools directory structure",
               "tool-development-guide.md",
               "example-tool/"
             ],
@@ -287,11 +287,11 @@
           }
         ],
         "targetFiles": [
-          "P4NTH30N/tools/",
-          "P4NTH30N/docs/tool-development-guide.md"
+          "P4NTHE0N/tools/",
+          "P4NTHE0N/docs/tool-development-guide.md"
         ],
         "deliveredFiles": [],
-        "progress": "ORACLE APPROVAL: 62%. Iteration required: Use existing HoneyBelt at ~/.config/opencode/tools/ not P4NTH30N/tools/. Create documentation in P4NTH30N/docs/ explaining development process. Awaiting Designer iteration."
+        "progress": "ORACLE APPROVAL: 62%. Iteration required: Use existing HoneyBelt at ~/.config/opencode/tools/ not P4NTHE0N/tools/. Create documentation in P4NTHE0N/docs/ explaining development process. Awaiting Designer iteration."
       },
       "timestamp": {
         "$date": "2026-02-18T16:35:27.601Z"
@@ -321,7 +321,7 @@
       "priority": "Medium",
       "implementation": {
         "targetFiles": [
-          "C:\\P4NTH30N\\docs\\Explorer-Librarian-Workarounds.md"
+          "C:\\P4NTHE0N\\docs\\Explorer-Librarian-Workarounds.md"
         ]
       },
       "timestamp": {
@@ -352,8 +352,8 @@
       "priority": "High",
       "implementation": {
         "targetFiles": [
-          "C:\\P4NTH30N\\PROF3T\\AutomationEngine.cs",
-          "C:\\P4NTH30N\\C0MMON\\Services\\CostOptimizer.cs"
+          "C:\\P4NTHE0N\\PROF3T\\AutomationEngine.cs",
+          "C:\\P4NTHE0N\\C0MMON\\Services\\CostOptimizer.cs"
         ]
       },
       "timestamp": {

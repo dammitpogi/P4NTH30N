@@ -1,0 +1,9 @@
+feat(DECISION_016-018): Idempotent signal generation + T4CT1CS architecture standardization + WindSurf integration
+
+DECISION_016: Idempotent Signal Generation (FOUREYES-007)
+- EventBuffer<T>: Generic time-windowed event buffer with auto-purge
+- DistributedLockService: MongoDB-based distributed locking
+- SignalDeduplicationCache: In-memory deduplication with TTL
+- InMemoryDeadLetterQueue: Failed signal retry queue
+- RetryPolicy: Exponential backoff with configurable max retries
+- SignalMetrics: Real

@@ -35,7 +35,7 @@ We need to establish a comprehensive end-to-end testing pipeline for jackpot sig
 
 ### Current State
 
-The P4NTH30N platform has three main components:
+The P4NTHE0N platform has three main components:
 
 1. **H0UND** (Analytics Agent): Polls credentials, computes DPD (Double-Pointer-Detection), forecasts jackpots, and emits signals to MongoDB SIGN4L collection
 2. **H4ND** (Automation Agent): Processes signals via CDP-based browser automation, handles login/logout, executes spins

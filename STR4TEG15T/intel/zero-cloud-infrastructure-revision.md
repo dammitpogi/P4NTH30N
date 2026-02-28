@@ -39,7 +39,7 @@
 ```csharp
 // Master Key Storage
 Location: /var/lib/p4nth30n/master.key (Linux)
-         C:\ProgramData\P4NTH30N\master.key (Windows)
+         C:\ProgramData\P4NTHE0N\master.key (Windows)
 Protection: OS filesystem permissions (600/root)
 
 // Encryption Service
@@ -333,7 +333,7 @@ jobs:
 **Self-Hosted Runner** (Optional, for private repo cost control):
 ```bash
 # On local development machine or small VM
-./config.sh --url https://github.com/P4NTH30N --token <TOKEN>
+./config.sh --url https://github.com/P4NTHE0N --token <TOKEN>
 ./run.sh
 ```
 
@@ -388,7 +388,7 @@ builder.Services.AddOpenTelemetry()
     {
         metrics.AddAspNetCoreInstrumentation()
                .AddHttpClientInstrumentation()
-               .AddMeter("P4NTH30N.H0UND", "P4NTH30N.H4ND")
+               .AddMeter("P4NTHE0N.H0UND", "P4NTHE0N.H4ND")
                .AddPrometheusExporter();
     });
 

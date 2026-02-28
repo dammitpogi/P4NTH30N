@@ -475,8 +475,8 @@ A resilient subagent system that:
 - Log all restart activity
 
 **Related Patterns**:
-- P4NTH30N CircuitBreaker (C0MMON) - similar pattern, different context
-- P4NTH30N SystemDegradationManager - could share backoff strategies
+- P4NTHE0N CircuitBreaker (C0MMON) - similar pattern, different context
+- P4NTHE0N SystemDegradationManager - could share backoff strategies
 
 ---
 

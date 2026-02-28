@@ -4,7 +4,7 @@
 **project_id**: 6bca83b670a16680d54ed49b159b2a2eb350d9b2
 **parent_id**: NULL
 **slug**: kind-star
-**directory**: c:\P4NTH30N
+**directory**: c:\P4NTHE0N
 **title**: Synthesis of Decision Engine Evolution and Deployment Narrative
 **version**: 1.2.8
 **share_url**: NULL

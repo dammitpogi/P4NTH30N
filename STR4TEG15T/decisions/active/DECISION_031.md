@@ -68,7 +68,7 @@ Rename all L33T-speak directory and project names to plain English equivalents. 
 
 ### Phase 1: Directory and Project Renames
 1. Rename directories on filesystem
-2. Update P4NTH30N.slnx with new paths
+2. Update P4NTHE0N.slnx with new paths
 3. Update all csproj files
 4. Update Directory.Build.props if needed
 
@@ -214,7 +214,7 @@ Negative Factors:
 
 ## Notes
 
-- P4NTH30N itself stays as P4NTH30N - it is the brand name
+- P4NTHE0N itself stays as P4NTHE0N - it is the brand name
 - This is a large but mechanical change - ideal for WindFixer batch execution
 - Consider doing filesystem renames and code renames in separate commits
 

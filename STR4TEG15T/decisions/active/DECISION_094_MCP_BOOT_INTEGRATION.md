@@ -33,8 +33,8 @@ Replace the contents with the following structure:
     {
       "name": "RAG Server",
       "type": "http",
-      "executable": "C:\\ProgramData\\P4NTH30N\\bin\\RAG.McpHost.exe",
-      "arguments": "--port 5001 --transport http --bridge http://127.0.0.1:5000 --mongo mongodb://localhost:27017 --db P4NTH30N",
+      "executable": "C:\\ProgramData\\P4NTHE0N\\bin\\RAG.McpHost.exe",
+      "arguments": "--port 5001 --transport http --bridge http://127.0.0.1:5000 --mongo mongodb://localhost:27017 --db P4NTHE0N",
       "healthCheckUrl": "http://127.0.0.1:5001/health",
       "dependsOn": ["MongoDB"]
     },
@@ -42,7 +42,7 @@ Replace the contents with the following structure:
       "name": "FourEyes MCP",
       "type": "http",
       "executable": "node",
-      "workingDirectory": "C:\\P4NTH30N\\tools\\mcp-foureyes",
+      "workingDirectory": "C:\\P4NTHE0N\\tools\\mcp-foureyes",
       "arguments": "server.js --http",
       "environment": {
         "CDP_HOST": "127.0.0.1",
@@ -57,7 +57,7 @@ Replace the contents with the following structure:
       "name": "Honeybelt MCP",
       "type": "http",
       "executable": "node",
-      "workingDirectory": "C:\\P4NTH30N\\tools\\mcp-development\\servers\\honeybelt-server",
+      "workingDirectory": "C:\\P4NTHE0N\\tools\\mcp-development\\servers\\honeybelt-server",
       "arguments": "dist/index.js --http",
       "environment": {
         "MCP_PORT": "5303"
@@ -206,7 +206,7 @@ foreach ($url in $endpoints) {
 ## Rollback
 
 If issues occur:
-1. Disable autostart task: `Disable-ScheduledTask -TaskName "P4NTH30N-AutoStart"`
+1. Disable autostart task: `Disable-ScheduledTask -TaskName "P4NTHE0N-AutoStart"`
 2. Restore original `config/autostart.json`
 3. Manual start: `thv start mongodb-p4nth30n decisions-server`
 

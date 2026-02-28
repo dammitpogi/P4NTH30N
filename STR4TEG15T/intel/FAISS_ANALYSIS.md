@@ -46,7 +46,7 @@ The FAISS implementation exists as `scripts/rag/faiss-bridge.py` — a standalon
 
 ## 3. Scalability Assessment
 
-### For P4NTH30N Use Cases
+### For P4NTHE0N Use Cases
 
 | Scenario | Vector Count | IndexFlatL2 Viable? |
 |----------|-------------|---------------------|
@@ -88,7 +88,7 @@ The FAISS implementation exists as `scripts/rag/faiss-bridge.py` — a standalon
 
 ## 6. Recommendation
 
-**Keep current FAISS bridge** for initial RAG implementation. The P4NTH30N vector counts are well within IndexFlatL2 limits. Priority should be:
+**Keep current FAISS bridge** for initial RAG implementation. The P4NTHE0N vector counts are well within IndexFlatL2 limits. Priority should be:
 
 1. Write C# `FaissVectorStore.cs` to spawn and communicate with `faiss-bridge.py`
 2. Add error recovery (restart Python process on crash)

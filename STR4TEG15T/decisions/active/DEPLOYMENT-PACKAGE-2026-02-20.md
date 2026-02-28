@@ -253,10 +253,10 @@ bun run build
 bun test src/background/resilience/
 ```
 
-**For DECISION_035, 036** (P4NTH30N):
+**For DECISION_035, 036** (P4NTHE0N):
 ```bash
-cd /c/P4NTH30N
-dotnet build P4NTH30N.slnx
+cd /c/P4NTHE0N
+dotnet build P4NTHE0N.slnx
 dotnet test UNI7T35T/UNI7T35T.csproj
 ```
 

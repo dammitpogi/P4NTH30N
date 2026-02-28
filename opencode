@@ -1,0 +1,13 @@
+@echo off
+setlocal
+
+set "OPENCODE_EXE=C:\P4NTH30N\OP3NF1XER\opencode-dev\packages\opencode\dist\opencode-windows-x64\bin\opencode.exe"
+
+if not exist "%OPENCODE_EXE%" (
+  echo Local OpenCode build not found.
+  echo Run: powershell -ExecutionPolicy Bypass -File "C:\P4NTH30N\OP3NF1XER\update-opencode-dev.ps1"
+  exit /b 1
+)
+
+"%OPENCODE_EXE%" %*
+exit /b %ERRORLEVEL%

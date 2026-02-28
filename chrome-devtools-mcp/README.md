@@ -1,4 +1,4 @@
-# P4NTH30N CDP MCP Server
+# P4NTHE0N CDP MCP Server
 
 **OPS_018**: Enable Remote CDP Execution for MCP Server
 
@@ -31,7 +31,7 @@ Configured in `~/.codeium/windsurf/mcp_config.json`. Reload Windsurf to activate
 {
   "p4nth30n-cdp-mcp": {
     "command": "node",
-    "args": ["C:\\P4NTH30N\\chrome-devtools-mcp\\server.js", "stdio"],
+    "args": ["C:\\P4NTHE0N\\chrome-devtools-mcp\\server.js", "stdio"],
     "type": "stdio"
   }
 }

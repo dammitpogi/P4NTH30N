@@ -3,14 +3,14 @@ using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace P4NTH30N.CLEANUP;
+namespace P4NTHE0N.CLEANUP;
 
 public class DpdMigrationRunner
 {
 	private readonly string _connectionString;
 	private readonly string _databaseName;
 
-	public DpdMigrationRunner(string connectionString = "mongodb://localhost:27017", string databaseName = "P4NTH30N")
+	public DpdMigrationRunner(string connectionString = "mongodb://localhost:27017", string databaseName = "P4NTHE0N")
 	{
 		_connectionString = connectionString;
 		_databaseName = databaseName;

@@ -1,5 +1,5 @@
 # RAG-001: Comprehensive Implementation Plan
-## P4NTH30N as Self-Funded Agentic Environment
+## P4NTHE0N as Self-Funded Agentic Environment
 
 **Vision**: RAG isn't just a feature—it's the **knowledge backbone** of the entire agentic ecosystem. Every agent (H0UND, H4ND, WindFixer, OpenFixer, Strategist, Oracle, Designer) gets RAG-accessible context for all development workflows.
 
@@ -81,7 +81,7 @@ foreach (var chunk in chunks) {
 | sentence-t5-xl | 2GB | 768 | Slow | Best |
 | E5-large-v2 | 1.3GB | 1024 | Slow | Best |
 
-**For P4NTH30N**: all-MiniLM-L6-v2 (fast, small, CPU-friendly)
+**For P4NTHE0N**: all-MiniLM-L6-v2 (fast, small, CPU-friendly)
 
 **ONNX Runtime** (already in INFRA-010):
 ```csharp
@@ -100,7 +100,7 @@ var embedding = results[0].AsTensor<float>().ToArray();
 - In-memory vector database
 - Fast nearest-neighbor search
 - Index types: Flat (exact), IVF (fast), HNSW (fastest)
-- **Best for**: P4NTH30N (self-hosted, zero cost)
+- **Best for**: P4NTHE0N (self-hosted, zero cost)
 
 **Alternative: MongoDB Atlas Vector Search**:
 - Cloud-based (rejected - violates zero-cloud policy)
@@ -125,7 +125,7 @@ var results = documents[indices[0]], documents[indices[1]], ...;
 ```
 
 **Persistence**:
-- FAISS index saved to disk: `C:\P4NTH30N\rag\faiss.index`
+- FAISS index saved to disk: `C:\P4NTHE0N\rag\faiss.index`
 - Reload on startup
 - Incremental updates (add new docs without rebuilding)
 
@@ -182,7 +182,7 @@ public class RAGContextBuilder {
     public string BuildPrompt(string userQuery, List<Document> retrievedDocs) {
         var sb = new StringBuilder();
         
-        sb.AppendLine("You are an assistant for P4NTH30N, a casino automation platform.");
+        sb.AppendLine("You are an assistant for P4NTHE0N, a casino automation platform.");
         sb.AppendLine("Use the following retrieved context to answer the question.");
         sb.AppendLine("If the context doesn't contain the answer, say so.");
         sb.AppendLine();
@@ -208,7 +208,7 @@ public class RAGContextBuilder {
 
 ---
 
-## RAG FOR P4NTH30N AGENTS
+## RAG FOR P4NTHE0N AGENTS
 
 ### Agent-Specific Knowledge Bases
 
@@ -287,7 +287,7 @@ Response: Complete strategy with supporting data
 
 **4. Onboarding Workflow**:
 ```
-New agent asks: "What's P4NTH30N's architecture?"
+New agent asks: "What's P4NTHE0N's architecture?"
 ↓
 RAG retrieves:
   - docs/PANTHEON.md
@@ -358,7 +358,7 @@ Response: Comprehensive overview with context
 **File System Watchers**:
 ```csharp
 // Watch for changes and auto-ingest
-var watcher = new FileSystemWatcher("C:\\P4NTH30N\\docs");
+var watcher = new FileSystemWatcher("C:\\P4NTHE0N\\docs");
 watcher.Changed += async (s, e) => {
     await ragService.IngestDocumentAsync(e.FullPath);
 };
@@ -382,11 +382,11 @@ foreach (var change in cursor.ToEnumerable()) {
 ```powershell
 # Nightly rebuild of entire RAG index
 .\scripts\rag\rebuild-index.ps1 -SourceDirs @(
-    "C:\P4NTH30N\docs",
-    "C:\P4NTH30N\C0MMON",
-    "C:\P4NTH30N\H0UND",
-    "C:\P4NTH30N\H4ND",
-    "C:\P4NTH30N\T4CT1CS\speech"
+    "C:\P4NTHE0N\docs",
+    "C:\P4NTHE0N\C0MMON",
+    "C:\P4NTHE0N\H0UND",
+    "C:\P4NTHE0N\H4ND",
+    "C:\P4NTHE0N\T4CT1CS\speech"
 ) -MongoCollections @(
     "EV3NT",
     "ERR0R",
@@ -489,7 +489,7 @@ public class StrategistAgent {
 ## RAG-001 DECISION STRUCTURE
 
 ### Decision ID: RAG-001
-**Title**: RAG Layer Architecture for P4NTH30N Agentic Environment
+**Title**: RAG Layer Architecture for P4NTHE0N Agentic Environment
 
 **Status**: Proposed (awaiting WindFixer discovery)
 
@@ -544,7 +544,7 @@ public class StrategistAgent {
 **Success Metrics**:
 - Query latency: <100ms (p95)
 - Embedding generation: <50ms per chunk
-- Index size: <10GB for full P4NTH30N corpus
+- Index size: <10GB for full P4NTHE0N corpus
 - Accuracy: >90% relevant retrieval (top-5)
 
 ---
@@ -566,10 +566,10 @@ public class StrategistAgent {
    - Define agent integration patterns
 
 4. **Implementation**
-   - WindFixer executes (P4NTH30N codebase)
+   - WindFixer executes (P4NTHE0N codebase)
    - 14-day timeline
    - Incremental delivery
 
 ---
 
-**RAG transforms P4NTH30N from a collection of agents into a unified, knowledge-driven organism. Every agent remembers, learns, and builds on collective intelligence.**
+**RAG transforms P4NTHE0N from a collection of agents into a unified, knowledge-driven organism. Every agent remembers, learns, and builds on collective intelligence.**

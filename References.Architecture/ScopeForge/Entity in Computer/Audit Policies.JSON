@@ -1,0 +1,422 @@
+﻿[
+  {
+    "CategoryName": "System",
+    "SubcategoryName": "Security State Change",
+    "AuditingInformation": 0,
+    "CategoryGuid": "69979848-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9210-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "System",
+    "SubcategoryName": "Security System Extension",
+    "AuditingInformation": 0,
+    "CategoryGuid": "69979848-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9211-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "System",
+    "SubcategoryName": "System Integrity",
+    "AuditingInformation": 0,
+    "CategoryGuid": "69979848-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9212-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "System",
+    "SubcategoryName": "IPsec Driver",
+    "AuditingInformation": 0,
+    "CategoryGuid": "69979848-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9213-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "System",
+    "SubcategoryName": "Other System Events",
+    "AuditingInformation": 0,
+    "CategoryGuid": "69979848-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9214-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Logon/Logoff",
+    "SubcategoryName": "Logon",
+    "AuditingInformation": 0,
+    "CategoryGuid": "69979849-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9215-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Logon/Logoff",
+    "SubcategoryName": "Logoff",
+    "AuditingInformation": 0,
+    "CategoryGuid": "69979849-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9216-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Logon/Logoff",
+    "SubcategoryName": "Account Lockout",
+    "AuditingInformation": 3,
+    "CategoryGuid": "69979849-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9217-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Logon/Logoff",
+    "SubcategoryName": "IPsec Main Mode",
+    "AuditingInformation": 0,
+    "CategoryGuid": "69979849-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9218-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Logon/Logoff",
+    "SubcategoryName": "IPsec Quick Mode",
+    "AuditingInformation": 0,
+    "CategoryGuid": "69979849-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9219-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Logon/Logoff",
+    "SubcategoryName": "IPsec Extended Mode",
+    "AuditingInformation": 0,
+    "CategoryGuid": "69979849-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce921a-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Logon/Logoff",
+    "SubcategoryName": "Special Logon",
+    "AuditingInformation": 0,
+    "CategoryGuid": "69979849-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce921b-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Logon/Logoff",
+    "SubcategoryName": "Other Logon/Logoff Events",
+    "AuditingInformation": 0,
+    "CategoryGuid": "69979849-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce921c-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Logon/Logoff",
+    "SubcategoryName": "Network Policy Server",
+    "AuditingInformation": 0,
+    "CategoryGuid": "69979849-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9243-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Logon/Logoff",
+    "SubcategoryName": "User / Device Claims",
+    "AuditingInformation": 3,
+    "CategoryGuid": "69979849-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9247-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Logon/Logoff",
+    "SubcategoryName": "Group Membership",
+    "AuditingInformation": 3,
+    "CategoryGuid": "69979849-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9249-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Logon/Logoff",
+    "SubcategoryName": "Access Rights",
+    "AuditingInformation": 3,
+    "CategoryGuid": "69979849-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce924b-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Object Access",
+    "SubcategoryName": "File System",
+    "AuditingInformation": 3,
+    "CategoryGuid": "6997984a-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce921d-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Object Access",
+    "SubcategoryName": "Registry",
+    "AuditingInformation": 0,
+    "CategoryGuid": "6997984a-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce921e-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Object Access",
+    "SubcategoryName": "Kernel Object",
+    "AuditingInformation": 0,
+    "CategoryGuid": "6997984a-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce921f-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Object Access",
+    "SubcategoryName": "SAM",
+    "AuditingInformation": 0,
+    "CategoryGuid": "6997984a-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9220-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Object Access",
+    "SubcategoryName": "Certification Services",
+    "AuditingInformation": 3,
+    "CategoryGuid": "6997984a-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9221-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Object Access",
+    "SubcategoryName": "Application Generated",
+    "AuditingInformation": 0,
+    "CategoryGuid": "6997984a-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9222-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Object Access",
+    "SubcategoryName": "Handle Manipulation",
+    "AuditingInformation": 0,
+    "CategoryGuid": "6997984a-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9223-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Object Access",
+    "SubcategoryName": "File Share",
+    "AuditingInformation": 3,
+    "CategoryGuid": "6997984a-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9224-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Object Access",
+    "SubcategoryName": "Filtering Platform Packet Drop",
+    "AuditingInformation": 0,
+    "CategoryGuid": "6997984a-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9225-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Object Access",
+    "SubcategoryName": "Filtering Platform Connection",
+    "AuditingInformation": 0,
+    "CategoryGuid": "6997984a-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9226-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Object Access",
+    "SubcategoryName": "Other Object Access Events",
+    "AuditingInformation": 0,
+    "CategoryGuid": "6997984a-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9227-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Object Access",
+    "SubcategoryName": "Detailed File Share",
+    "AuditingInformation": 3,
+    "CategoryGuid": "6997984a-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9244-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Object Access",
+    "SubcategoryName": "Removable Storage",
+    "AuditingInformation": 0,
+    "CategoryGuid": "6997984a-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9245-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Object Access",
+    "SubcategoryName": "Central Policy Staging",
+    "AuditingInformation": 0,
+    "CategoryGuid": "6997984a-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9246-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Privilege Use",
+    "SubcategoryName": "Sensitive Privilege Use",
+    "AuditingInformation": 0,
+    "CategoryGuid": "6997984b-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9228-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Privilege Use",
+    "SubcategoryName": "Non Sensitive Privilege Use",
+    "AuditingInformation": 0,
+    "CategoryGuid": "6997984b-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9229-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Privilege Use",
+    "SubcategoryName": "Other Privilege Use Events",
+    "AuditingInformation": 0,
+    "CategoryGuid": "6997984b-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce922a-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Detailed Tracking",
+    "SubcategoryName": "Process Creation",
+    "AuditingInformation": 0,
+    "CategoryGuid": "6997984c-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce922b-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Detailed Tracking",
+    "SubcategoryName": "Process Termination",
+    "AuditingInformation": 0,
+    "CategoryGuid": "6997984c-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce922c-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Detailed Tracking",
+    "SubcategoryName": "DPAPI Activity",
+    "AuditingInformation": 0,
+    "CategoryGuid": "6997984c-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce922d-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Detailed Tracking",
+    "SubcategoryName": "RPC Events",
+    "AuditingInformation": 0,
+    "CategoryGuid": "6997984c-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce922e-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Detailed Tracking",
+    "SubcategoryName": "Plug and Play Events",
+    "AuditingInformation": 0,
+    "CategoryGuid": "6997984c-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9248-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Detailed Tracking",
+    "SubcategoryName": "Token Right Adjusted Events",
+    "AuditingInformation": 0,
+    "CategoryGuid": "6997984c-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce924a-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Policy Change",
+    "SubcategoryName": "Audit Policy Change",
+    "AuditingInformation": 3,
+    "CategoryGuid": "6997984d-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce922f-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Policy Change",
+    "SubcategoryName": "Authentication Policy Change",
+    "AuditingInformation": 3,
+    "CategoryGuid": "6997984d-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9230-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Policy Change",
+    "SubcategoryName": "Authorization Policy Change",
+    "AuditingInformation": 3,
+    "CategoryGuid": "6997984d-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9231-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Policy Change",
+    "SubcategoryName": "MPSSVC Rule-Level Policy Change",
+    "AuditingInformation": 3,
+    "CategoryGuid": "6997984d-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9232-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Policy Change",
+    "SubcategoryName": "Filtering Platform Policy Change",
+    "AuditingInformation": 3,
+    "CategoryGuid": "6997984d-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9233-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Policy Change",
+    "SubcategoryName": "Other Policy Change Events",
+    "AuditingInformation": 3,
+    "CategoryGuid": "6997984d-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9234-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Account Management",
+    "SubcategoryName": "User Account Management",
+    "AuditingInformation": 3,
+    "CategoryGuid": "6997984e-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9235-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Account Management",
+    "SubcategoryName": "Computer Account Management",
+    "AuditingInformation": 3,
+    "CategoryGuid": "6997984e-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9236-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Account Management",
+    "SubcategoryName": "Security Group Management",
+    "AuditingInformation": 3,
+    "CategoryGuid": "6997984e-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9237-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Account Management",
+    "SubcategoryName": "Distribution Group Management",
+    "AuditingInformation": 3,
+    "CategoryGuid": "6997984e-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9238-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Account Management",
+    "SubcategoryName": "Application Group Management",
+    "AuditingInformation": 3,
+    "CategoryGuid": "6997984e-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9239-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Account Management",
+    "SubcategoryName": "Other Account Management Events",
+    "AuditingInformation": 3,
+    "CategoryGuid": "6997984e-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce923a-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "DS Access",
+    "SubcategoryName": "Directory Service Access",
+    "AuditingInformation": 0,
+    "CategoryGuid": "6997984f-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce923b-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "DS Access",
+    "SubcategoryName": "Directory Service Changes",
+    "AuditingInformation": 0,
+    "CategoryGuid": "6997984f-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce923c-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "DS Access",
+    "SubcategoryName": "Directory Service Replication",
+    "AuditingInformation": 0,
+    "CategoryGuid": "6997984f-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce923d-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "DS Access",
+    "SubcategoryName": "Detailed Directory Service Replication",
+    "AuditingInformation": 0,
+    "CategoryGuid": "6997984f-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce923e-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Account Logon",
+    "SubcategoryName": "Credential Validation",
+    "AuditingInformation": 3,
+    "CategoryGuid": "69979850-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce923f-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Account Logon",
+    "SubcategoryName": "Kerberos Service Ticket Operations",
+    "AuditingInformation": 3,
+    "CategoryGuid": "69979850-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9240-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Account Logon",
+    "SubcategoryName": "Other Account Logon Events",
+    "AuditingInformation": 3,
+    "CategoryGuid": "69979850-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9241-69ae-11d9-bed3-505054503030"
+  },
+  {
+    "CategoryName": "Account Logon",
+    "SubcategoryName": "Kerberos Authentication Service",
+    "AuditingInformation": 3,
+    "CategoryGuid": "69979850-797a-11d9-bed3-505054503030",
+    "SubcategoryGuid": "0cce9242-69ae-11d9-bed3-505054503030"
+  }
+]

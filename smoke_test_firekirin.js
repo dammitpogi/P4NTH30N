@@ -6,7 +6,7 @@ const path = require('path');
 const CONFIG = {
     cdpPort: 9222,
     url: 'http://web.orionstars.org/hot_play/orionstars/',
-    screenshotsDir: 'C:\\P4NTH30N\\SMOKE_TEST_SCREENSHOTS',
+    screenshotsDir: 'C:\\P4NTHE0N\\SMOKE_TEST_SCREENSHOTS',
     // FireKirin coordinates (from specification)
     accountField: { rx: 0.4946, ry: 0.4243 },
     passwordField: { rx: 0.4946, ry: 0.5052 },

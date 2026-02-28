@@ -61,11 +61,11 @@ if ($null -ne $mongoSvc) {
 }
 
 # 1c. Backup script exists
-$backupScript = "C:\P4NTH30N\scripts\backup\mongodb-backup.ps1"
+$backupScript = "C:\P4NTHE0N\scripts\backup\mongodb-backup.ps1"
 Test-Check "MongoDB backup script exists" (Test-Path $backupScript)
 
 # 1d. Restore script exists
-$restoreScript = "C:\P4NTH30N\scripts\restore\mongodb-restore.ps1"
+$restoreScript = "C:\P4NTHE0N\scripts\restore\mongodb-restore.ps1"
 Test-Check "MongoDB restore script exists" (Test-Path $restoreScript)
 
 Write-Host ""
@@ -115,12 +115,12 @@ Write-Host "4. Documentation" -ForegroundColor Yellow
 Write-Host ("-" * 40) -ForegroundColor DarkGray
 
 $docs = @(
-	"C:\P4NTH30N\docs\vm-deployment\architecture.md",
-	"C:\P4NTH30N\docs\vm-deployment\network-setup.md",
-	"C:\P4NTH30N\docs\vm-deployment\chrome-cdp-config.md",
-	"C:\P4NTH30N\docs\vm-deployment\troubleshooting.md",
-	"C:\P4NTH30N\docs\disaster-recovery\runbook.md",
-	"C:\P4NTH30N\docs\jackpot_selectors.md"
+	"C:\P4NTHE0N\docs\vm-deployment\architecture.md",
+	"C:\P4NTHE0N\docs\vm-deployment\network-setup.md",
+	"C:\P4NTHE0N\docs\vm-deployment\chrome-cdp-config.md",
+	"C:\P4NTHE0N\docs\vm-deployment\troubleshooting.md",
+	"C:\P4NTHE0N\docs\disaster-recovery\runbook.md",
+	"C:\P4NTHE0N\docs\jackpot_selectors.md"
 )
 foreach ($doc in $docs) {
 	$name = Split-Path $doc -Leaf
@@ -134,20 +134,20 @@ Write-Host "5. Code Health" -ForegroundColor Yellow
 Write-Host ("-" * 40) -ForegroundColor DarkGray
 
 # No more extension failure
-$h4ndContent = Get-Content "C:\P4NTH30N\H4ND\H4ND.cs" -Raw
+$h4ndContent = Get-Content "C:\P4NTHE0N\H4ND\H4ND.cs" -Raw
 Test-Check "No 'Extension failure' in H4ND.cs" (-not ($h4ndContent -match '"Extension failure\."'))
 Test-Check "VerifyGamePageLoadedAsync in H4ND.cs" ($h4ndContent -match "VerifyGamePageLoadedAsync")
 
 # Config-driven selectors
-$actionsContent = Get-Content "C:\P4NTH30N\H4ND\Infrastructure\CdpGameActions.cs" -Raw
+$actionsContent = Get-Content "C:\P4NTHE0N\H4ND\Infrastructure\CdpGameActions.cs" -Raw
 Test-Check "GameSelectors config support" ($actionsContent -match "GameSelectors")
 
 # Session manager
-Test-Check "ChromeSessionManager exists" (Test-Path "C:\P4NTH30N\H4ND\Infrastructure\ChromeSessionManager.cs")
-Test-Check "VmHealthMonitor exists" (Test-Path "C:\P4NTH30N\H4ND\Infrastructure\VmHealthMonitor.cs")
+Test-Check "ChromeSessionManager exists" (Test-Path "C:\P4NTHE0N\H4ND\Infrastructure\ChromeSessionManager.cs")
+Test-Check "VmHealthMonitor exists" (Test-Path "C:\P4NTHE0N\H4ND\Infrastructure\VmHealthMonitor.cs")
 
 # No temp scripts
-$tempCount = (Get-ChildItem "C:\P4NTH30N\temp_*" -File -ErrorAction SilentlyContinue | Measure-Object).Count
+$tempCount = (Get-ChildItem "C:\P4NTHE0N\temp_*" -File -ErrorAction SilentlyContinue | Measure-Object).Count
 Test-Check "No temp scripts remaining" ($tempCount -eq 0) "$tempCount found"
 
 Write-Host ""

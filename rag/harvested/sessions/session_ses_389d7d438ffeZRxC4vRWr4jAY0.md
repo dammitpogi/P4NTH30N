@@ -4,7 +4,7 @@
 **project_id**: 6bca83b670a16680d54ed49b159b2a2eb350d9b2
 **parent_id**: NULL
 **slug**: lucky-rocket
-**directory**: c:\P4NTH30N
+**directory**: c:\P4NTHE0N
 **title**: RAG with ToolHive: LLMs for LM Studio installation
 **version**: 1.2.6
 **share_url**: NULL

@@ -1,0 +1,45 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'fltr'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=fltr",
+                    "--package=fltr"
+                ],
+                "filter": {
+                    "name": "fltr",
+                    "kind": "bin"
+                }
+            },
+            "args": ["--file=test.txt", "--prompt=who", "--batch-size=2", "--debug"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'fltr'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=fltr",
+                    "--package=fltr"
+                ],
+                "filter": {
+                    "name": "fltr",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

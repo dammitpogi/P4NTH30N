@@ -5,7 +5,7 @@
 Use this when you need rapid intelligence without overwhelming detail.
 
 ```
-Quick Model Capability Assessment for P4NTH30N Platform
+Quick Model Capability Assessment for P4NTHE0N Platform
 
 Please provide concise answers (1-2 sentences each):
 
@@ -30,7 +30,7 @@ Format: Numbered list, brief answers only.
 Use this when you need detailed technical specifications.
 
 ```
-Technical Model Specification for P4NTH30N C# Development
+Technical Model Specification for P4NTHE0N C# Development
 
 Provide detailed technical specifications:
 
@@ -134,7 +134,7 @@ Provide workflow patterns, not just capabilities.
 Use this when you need to understand relative strengths for decision-making.
 
 ```
-Comparative Model Analysis for P4NTH30N
+Comparative Model Analysis for P4NTHE0N
 
 Compare yourself to other WindSurf models (SWE-1.5, Claude, GPT, etc.):
 
@@ -175,7 +175,7 @@ Provide honest comparisons with specific examples.
 Use this when you need to find breaking points and failure modes.
 
 ```
-Edge Case and Limitation Discovery for P4NTH30N
+Edge Case and Limitation Discovery for P4NTHE0N
 
 Help us discover your boundaries:
 
@@ -220,12 +220,12 @@ Be specific about failure modes and warning signs.
 
 ---
 
-## Variant 6: P4NTH30N-Specific (Contextualized)
+## Variant 6: P4NTHE0N-Specific (Contextualized)
 
 Use this when you want responses tailored to our specific tech stack.
 
 ```
-P4NTH30N Platform - Model Capability Assessment
+P4NTHE0N Platform - Model Capability Assessment
 
 Our stack: C# .NET 10, MongoDB, Selenium, Multi-process architecture (H0UND analytics agent, H4ND automation agent, W4TCHD0G vision system)
 
@@ -273,7 +273,7 @@ Provide specific, actionable guidance for our context.
 | Workflow design | Variant 3 | 10 min | Medium |
 | Model selection | Variant 4 | 10 min | Medium |
 | Stress testing | Variant 5 | 15 min | High |
-| P4NTH30N planning | Variant 6 | 15 min | High |
+| P4NTHE0N planning | Variant 6 | 15 min | High |
 
 ---
 
@@ -286,7 +286,7 @@ Use **Variant 1** on all 8 models simultaneously to get baseline capabilities.
 Use **Variant 2** on SWE-1.5, Claude 4 Sonnet, and GPT-5.2 for technical specs.
 
 ### Phase 3: Contextual (Primary Models)
-Use **Variant 6** on top 3 models for P4NTH30N-specific guidance.
+Use **Variant 6** on top 3 models for P4NTHE0N-specific guidance.
 
 ### Phase 4: Edge Cases (Stress Test)
 Use **Variant 5** on models being considered for critical paths.

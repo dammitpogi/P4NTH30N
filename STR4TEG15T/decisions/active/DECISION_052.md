@@ -12,7 +12,7 @@
 
 ## Executive Summary
 
-Ingest all 86 speech log files from STR4TEG15T/speech/ into the RAG knowledge base. Speech logs contain the institutional memory of P4NTH30N: operational narratives, session syntheses, agent reports, and strategic reflections that document our journey and learned lessons.
+Ingest all 86 speech log files from STR4TEG15T/speech/ into the RAG knowledge base. Speech logs contain the institutional memory of P4NTHE0N: operational narratives, session syntheses, agent reports, and strategic reflections that document our journey and learned lessons.
 
 **Current State**:
 - 86 speech log files (.md) in STR4TEG15T/speech/
@@ -32,7 +32,7 @@ Ingest all 86 speech log files from STR4TEG15T/speech/ into the RAG knowledge ba
 
 ### What Are Speech Logs?
 
-Speech logs are narrative documents capturing the operational journey of P4NTH30N. They include:
+Speech logs are narrative documents capturing the operational journey of P4NTHE0N. They include:
 
 - **Operational Logs**: Real-time session documentation (e.g., `20260220T1700_Self_Correction_and_Hardening.md`)
 - **Session Syntheses**: Consolidated summaries of multi-hour work sessions
@@ -96,7 +96,7 @@ Speech logs provide:
 
 ### File Inventory
 
-**Source Directory**: `c:\P4NTH30N\STR4TEG15T\speech\`
+**Source Directory**: `c:\P4NTHE0N\STR4TEG15T\speech\`
 
 **File Count**: 86 .md files
 
@@ -247,7 +247,7 @@ Speech logs provide:
 **Query Use Cases**:
 - "How do we activate WindFixer?" → Returns activation pattern speech
 - "What happened on 2026-02-20?" → Returns session logs from that date
-- "Genesis of P4NTH30N" → Returns origin story
+- "Genesis of P4NTHE0N" → Returns origin story
 
 ---
 

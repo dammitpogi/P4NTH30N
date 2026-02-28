@@ -1,6 +1,6 @@
 # DECISION_077 Navigation Session
 
-**Session Directory**: C:\P4NTH30N\DECISION_077\sessions\firekirin-run-2026-02-21T11-37-45
+**Session Directory**: C:\P4NTHE0N\DECISION_077\sessions\firekirin-run-2026-02-21T11-37-45
 **Start Time**: 2026-02-21T18:40:54.601Z
 
 ---

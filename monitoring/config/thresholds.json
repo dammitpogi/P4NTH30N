@@ -1,6 +1,6 @@
 {
 	"version": "1.0.0",
-	"description": "Tunable thresholds for P4NTH30N monitoring and alerting",
+	"description": "Tunable thresholds for P4NTHE0N monitoring and alerting",
 	"environment": "production",
 	"thresholds": {
 		"agents": {

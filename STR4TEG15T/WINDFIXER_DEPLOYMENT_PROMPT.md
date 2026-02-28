@@ -60,7 +60,7 @@ H4ND/EntryPoint/
 10. appsettings.json updates
 
 **Bootstrap Protocol:**
-Before implementing verify self modification permissions. Confirm P4NTH30N directory structure. Verify MongoDB connectivity at 192.168.56.1:27017. Test Chrome CDP at localhost:9222. Validate dotnet CLI. Do NOT proceed until bootstrap succeeds.
+Before implementing verify self modification permissions. Confirm P4NTHE0N directory structure. Verify MongoDB connectivity at 192.168.56.1:27017. Test Chrome CDP at localhost:9222. Validate dotnet CLI. Do NOT proceed until bootstrap succeeds.
 
 **Validation:**
 - `dotnet build H4ND/H4ND.csproj` — zero errors
@@ -175,7 +175,7 @@ Configuration driven selectors. Agent implementation completion. These harden wh
 
 5. MongoDB is verified. Twelve collections. One hundred ninety two decisions. Three hundred ten credentials. Eight hundred ten jackpots. The data layer is healthy.
 
-6. Both repos have UNCOMMITTED changes. Massive amounts. The P4NTH30N repo shows hundreds of modified and untracked files. The opencode repo shows plugin changes. These need commits but await explicit Nexus request.
+6. Both repos have UNCOMMITTED changes. Massive amounts. The P4NTHE0N repo shows hundreds of modified and untracked files. The opencode repo shows plugin changes. These need commits but await explicit Nexus request.
 
 ---
 

@@ -25,7 +25,7 @@
 
 ---
 
-## 2. Test Cases for P4NTH30N Use Cases
+## 2. Test Cases for P4NTHE0N Use Cases
 
 ### Category 1: Similar Game Names
 | Text A | Text B | Expected Similarity |

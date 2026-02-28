@@ -1,17 +1,17 @@
 # WINDFIXER EXECUTION PROMPT
-## Batch: 11 Decisions | P4NTH30N Codebase | Opus 4.6 Thinking
+## Batch: 11 Decisions | P4NTHE0N Codebase | Opus 4.6 Thinking
 
 **Execution Date**: 2026-02-18  
 **Assigned Agent**: WindFixer (WindSurf)  
 **Model**: Opus 4.6 Thinking (preferred)  
-**Target**: P4NTH30N repository (C:\P4NTH30N)  
+**Target**: P4NTHE0N repository (C:\P4NTHE0N)  
 **Billing**: Per-prompt (cost-effective for bulk execution)
 
 ---
 
 ## YOUR MISSION
 
-Execute 11 decisions in the P4NTH30N codebase. You have full access to the P4NTH30N directory. Work systematically through each decision, implementing with comprehensive unit tests and C# best practices.
+Execute 11 decisions in the P4NTHE0N codebase. You have full access to the P4NTHE0N directory. Work systematically through each decision, implementing with comprehensive unit tests and C# best practices.
 
 **CRITICAL**: If you encounter any constraints or blockers that prevent completion, document them immediately using the CONSTRAINT REPORT format at the end of this prompt. These constraints will be passed to OpenFixer for resolution.
 
@@ -30,7 +30,7 @@ Execute 11 decisions in the P4NTH30N codebase. You have full access to the P4NTH
 1. Download Maincoder-1B GGUF from Hugging Face
    - URL: https://huggingface.co/Maincode/Maincoder-1B
    - File: maincoder-1b-q4_k.gguf (Q4_K quantization, ~0.8GB)
-   - Target: C:\P4NTH30N\models\
+   - Target: C:\P4NTHE0N\models\
 
 2. Set up LM Studio (if not already running)
    - Load maincoder-1b-q4_k.gguf
@@ -67,9 +67,9 @@ Execute 11 decisions in the P4NTH30N codebase. You have full access to the P4NTH
    - JSON format validity
 
 **Deliverables**:
-- C:\P4NTH30N\models\maincoder-1b-q4_k.gguf (or documentation of download failure)
-- C:\P4NTH30N\tests\pre-validation\results.json (test results)
-- C:\P4NTH30N\tests\pre-validation\test-configs\ (5 test configurations)
+- C:\P4NTHE0N\models\maincoder-1b-q4_k.gguf (or documentation of download failure)
+- C:\P4NTHE0N\tests\pre-validation\results.json (test results)
+- C:\P4NTHE0N\tests\pre-validation\test-configs\ (5 test configurations)
 
 **Success Criteria**:
 - [ ] Model file exists (~0.8GB) OR documented download failure
@@ -126,7 +126,7 @@ Execute 11 decisions in the P4NTH30N codebase. You have full access to the P4NTH
    - Calculate accuracy, precision, recall
    - Block deployment if <95%
 
-**Target Directory**: C:\P4NTH30N\scripts\DeployLogAnalyzer\
+**Target Directory**: C:\P4NTHE0N\scripts\DeployLogAnalyzer\
 
 **Deliverables**:
 - scripts/DeployLogAnalyzer/LmStudioClient.cs
@@ -510,8 +510,8 @@ RECOMMENDED OPENFIXER ACTION: [Re-consultation needed / Threshold adjustment]
 ## EXECUTION CHECKLIST
 
 Before starting:
-- [ ] Read C:\P4NTH30N\T4CT1CS\decisions\active\DECISION_ASSIMILATION_REPORT.md
-- [ ] Verify P4NTH30N repository structure
+- [ ] Read C:\P4NTHE0N\T4CT1CS\decisions\active\DECISION_ASSIMILATION_REPORT.md
+- [ ] Verify P4NTHE0N repository structure
 - [ ] Confirm Opus 4.6 Thinking model active
 
 During execution:

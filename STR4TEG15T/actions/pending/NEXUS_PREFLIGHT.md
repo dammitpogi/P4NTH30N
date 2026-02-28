@@ -22,7 +22,7 @@ Run these test commands in WindSurf terminal:
 
 ```bash
 # Should execute without prompting
-dotnet build P4NTH30N.slnx --no-restore
+dotnet build P4NTHE0N.slnx --no-restore
 
 # Should execute without prompting  
 dotnet test UNI7T35T/UNI7T35T.csproj --filter "FullyQualifiedName~TestClassName"

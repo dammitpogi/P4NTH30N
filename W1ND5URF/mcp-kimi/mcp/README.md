@@ -13,7 +13,7 @@ MCP server that integrates Kimi Code API with Windsurf via ToolHive.
 ### 1. Build and Deploy to ToolHive
 
 ```bash
-cd C:\P4NTH30N\W1ND5URF\mcp
+cd C:\P4NTHE0N\W1ND5URF\mcp
 
 # Build the Docker image
 docker build -t kimi-code-mcp .

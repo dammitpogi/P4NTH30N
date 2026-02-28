@@ -4,7 +4,7 @@
 **project_id**: 6bca83b670a16680d54ed49b159b2a2eb350d9b2
 **parent_id**: ses_389ef5bcdffeqr5Fajizs7xIQg
 **slug**: swift-sailor
-**directory**: c:\P4NTH30N
+**directory**: c:\P4NTHE0N
 **title**: Background: Query test signal status
 **version**: 1.2.6
 **share_url**: NULL

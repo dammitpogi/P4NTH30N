@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://scopeforge.net/schemas/blockedActionRevisionCapsule.v1.json",
+  "title": "Blocked Action Revision Capsule",
+  "type": "object",
+  "required": [
+    "payloadKind",
+    "capsuleId",
+    "ts",
+    "actor",
+    "blockedAction",
+    "enforcement",
+    "touchedSlugs",
+    "proposedRevisionIntent",
+    "recommendedNextStep",
+    "evidenceRefs"
+  ],
+  "properties": {
+    "payloadKind": {
+      "const": "blockedActionRevision"
+    },
+    "capsuleId": {
+      "type": "string",
+      "minLength": 8
+    },
+    "ts": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "revisionCycleId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "actor": {
+      "type": "object",
+      "required": [
+        "type",
+        "id"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "human",
+            "service",
+            "agent"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 3
+        },
+        "sessionId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "blockedAction": {
+      "type": "object",
+      "required": [
+        "intent",
+        "requestedBy"
+      ],
+      "properties": {
+        "intent": {
+          "type": "string",
+          "minLength": 3
+        },
+        "target": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "requestedBy": {
+          "enum": [
+            "system",
+            "developer",
+            "user"
+          ]
+        },
+        "inputsHash": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "enforcement": {
+      "type": "object",
+      "required": [
+        "outcome",
+        "reason",
+        "severity"
+      ],
+      "properties": {
+        "outcome": {
+          "const": "blocked"
+        },
+        "ruleId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 3
+        },
+        "severity": {
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "touchedSlugs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "proposedRevisionIntent": {
+      "type": "string",
+      "minLength": 3
+    },
+    "recommendedNextStep": {
+      "type": "string",
+      "minLength": 3
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

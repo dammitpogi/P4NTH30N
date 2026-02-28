@@ -12,7 +12,7 @@
 
 ## Executive Summary
 
-FourEyes is a multi-modal vision-based automation system that can assist in P4NTH30N development by providing visual feedback, automated testing, and intelligent decision-making. Currently, 7 of 20 FourEyes components are complete, but the system needs activation for development assistance. This decision establishes the infrastructure to get FourEyes operational as a development subagent that can observe, analyze, and interact with the game platforms through vision.
+FourEyes is a multi-modal vision-based automation system that can assist in P4NTHE0N development by providing visual feedback, automated testing, and intelligent decision-making. Currently, 7 of 20 FourEyes components are complete, but the system needs activation for development assistance. This decision establishes the infrastructure to get FourEyes operational as a development subagent that can observe, analyze, and interact with the game platforms through vision.
 
 **Current Problem**:
 - FourEyes components exist but are not integrated for development use

@@ -14,7 +14,7 @@ Remember the CONVERGENCE_ACHIEVED moment when all pieces came together. That con
 
 **Absolute Clarity of Next Step**
 
-Use the Recorder at `C:\P4NTH30N\H4ND\tools\recorder` to map the FireKirin navigation path:
+Use the Recorder at `C:\P4NTHE0N\H4ND\tools\recorder` to map the FireKirin navigation path:
 
 **PHASE 1: Login Phase**
 1. Launch Recorder: `bun run tui`
@@ -103,7 +103,7 @@ Create navigation map entries in this format:
 ```
 
 **Resources**
-- Recorder location: `C:\P4NTH30N\H4ND\tools\recorder`
+- Recorder location: `C:\P4NTHE0N\H4ND\tools\recorder`
 - Operator manual: `H4ND/tools/recorder/OPERATOR_MANUAL.md`
 - Step schema: `H4ND/tools/recorder/STEP_SCHEMA.json`
 - Quick start: `H4ND/tools/recorder/QUICK_START.md`

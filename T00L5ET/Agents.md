@@ -2,7 +2,7 @@
 
 ## Responsibility
 
-General utility tools and helper programs for the P4NTH30N ecosystem. Contains standalone tools for diagnostics, data manipulation, and system administration.
+General utility tools and helper programs for the P4NTHE0N ecosystem. Contains standalone tools for diagnostics, data manipulation, and system administration.
 
 ## When Working Here
 

@@ -3,7 +3,7 @@ using System.Text;
 using System.Text.Json;
 using Microsoft.Data.Sqlite;
 
-namespace P4NTH30N.T00L5ET;
+namespace P4NTHE0N.T00L5ET;
 
 /// <summary>
 /// DECISION_034: Session History Harvester for RAG.
@@ -31,7 +31,7 @@ public sealed class SessionHarvester
 		_openCodeRoot = openCodeRoot ?? Path.Combine(
 			Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
 			".local", "share", "opencode");
-		_outputDir = outputDir ?? Path.Combine("C:\\P4NTH30N", "rag", "harvested");
+		_outputDir = outputDir ?? Path.Combine("C:\\P4NTHE0N", "rag", "harvested");
 		_dryRun = dryRun;
 		_since = since;
 		_ragUrl = ragUrl ?? "http://127.0.0.1:5100/mcp";

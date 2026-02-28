@@ -1,0 +1,97 @@
+Phase 1A — Strike List (Mobile “Eyes + Baton”)
+
+Objective
+Ship the smallest decisive “mobile runner” that can safely trigger governed sessions, capture inputs, and emit Vault-first evidence for replay.
+
+S1 — Activation & Baton Control
+1) Controlled Activation only
+- Require explicit user intent phrase / UI toggle (e.g., “DEV MODE ON”).
+- Hard-fail if activation signal is missing.
+
+2) Dormant-by-default
+- No background behavior.
+- No proactive tool calls.
+- No periodic checks.
+
+3) Session scope lock
+- Each run has: runId, bundleId, purpose, allowed tools, allowed data sources.
+- Enforce “one session = one scope.”
+
+S2 — Identity + Session Handshake
+4) Whisper handshake (minimal)
+- Start-of-session handshake packet:
+  - runId
+  - bundleId (Canon/Forge/Vault versions)
+  - requestType (read/analyze/plan/execute)
+  - toolPolicyRef
+  - user-confirm flag
+
+5) Named identity attribution
+- Every output declares role (Atlas-mode on mobile) + session runId.
+
+S3 — Vault-First Evidence (Replayability)
+6) Vault event stream on every run
+- Record: prompt/input, parameters, tool calls (even denied), outputs, errors.
+- Append-only; no edits.
+
+7) Hashes for integrity
+- inputsHash, paramsHash, artifactsHash.
+- Store hashes in the Vault run record.
+
+8) Evidence Mode fallback
+- If blocked or uncertain: emit a blocked-action capsule → stop.
+
+S4 — Tool Boundary Enforcement (Mobile)
+9) Deniest possible default
+- Tools OFF unless explicitly allowed in-session.
+- Allowlist is per-run, not global.
+
+10) Schema validation
+- Reject unknown fields.
+- Reject oversized payloads.
+- Reject ambiguous targets (no wildcard destinations).
+
+11) Rate limits + timeouts
+- Tight defaults on mobile.
+- Fail closed (no retries that change intent).
+
+S5 — Data Handling & Privacy
+12) Local-first capture
+- Keep intermediate notes local to session context.
+- Persist only via Vault/Forge artifacts.
+
+13) No hidden persistence
+- No writing to arbitrary files.
+- No “remember this” behavior outside Vault/Forge.
+
+14) Redaction gate
+- Auto-redact secrets / tokens / keys if detected.
+- If unsure: Evidence Mode capsule.
+
+S6 — Outputs (Atlasian-compliant)
+15) Short structured outputs
+- Compliance header line.
+- Minimal paragraphs.
+- Clear “What happened / What emitted / What next.”
+
+16) No transcript dumps
+- Summarize; quote only short fragments when necessary.
+
+S7 — Transport / Sync (Mobile → Laptop)
+17) Artifact packaging
+- Emit a single “Run Bundle” directory:
+  - CANON (read-only copy)
+  - FORGE (if updated)
+  - VAULT (append)
+  - run_record.json
+  - tool_log.json
+
+18) Safe handoff contract
+- Laptop runner must verify hashes + bundleId match before executing.
+
+S8 — Acceptance Gates (done = shippable)
+A) Mobile runner refuses to operate without activation phrase/toggle.
+B) Every run produces a Vault run record with hashes + tool log.
+C) Tools are deny-by-default; allowlist is per-run.
+D) Blocked-action capsule path exists and terminates execution.
+E) Handoff bundle verifies on laptop (hash check passes).

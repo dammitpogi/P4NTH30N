@@ -125,9 +125,9 @@
 ## NOT IMPLEMENTED (1 decision)
 
 ### DECISION_037: Subagent Resilience
-- ErrorClassifier, BackoffManager, ConnectionHealthMonitor: NOT FOUND in P4NTH30N repo
+- ErrorClassifier, BackoffManager, ConnectionHealthMonitor: NOT FOUND in P4NTHE0N repo
 - W1NDF1XER/resilience/ directory does not exist
-- Target is oh-my-opencode-theseus plugin (external to P4NTH30N)
+- Target is oh-my-opencode-theseus plugin (external to P4NTHE0N)
 - **Next**: Implement in plugin directory (~/.config/opencode/dev/)
 
 ---

@@ -5,7 +5,7 @@
 ```
 SWE-1.5 Discovery - Round 2: Edge Cases, Stress Testing & Failure Modes
 
-Based on Round 1 findings (128K context, 8K output, 50-60 turn retention), we need to understand your breaking points and failure modes for P4NTH30N production planning.
+Based on Round 1 findings (128K context, 8K output, 50-60 turn retention), we need to understand your breaking points and failure modes for P4NTHE0N production planning.
 
 ## 1. EXACT CONTEXT LIMITS
 - What happens when you hit exactly 128,000 tokens?
@@ -80,7 +80,7 @@ Based on Round 1 findings (128K context, 8K output, 50-60 turn retention), we ne
 ## RESPONSE FORMAT
 Provide specific examples, exact numbers, and observed behaviors. Include "I don't know" where applicable rather than guessing.
 
-This intelligence determines whether SWE-1.5 is production-ready for P4NTH30N.
+This intelligence determines whether SWE-1.5 is production-ready for P4NTHE0N.
 ```
 
 ---
@@ -116,7 +116,7 @@ Provide observed behaviors, not theoretical limits.
 |----------|---------------|
 | Exact failure mode at 128K | Determines buffer requirements |
 | Behavior beyond 60 turns | Impacts long-running workflows |
-| 20+ file refactor capability | Affects P4NTH30N codebase management |
+| 20+ file refactor capability | Affects P4NTHE0N codebase management |
 | Truncation signaling | Prevents silent data loss |
 | Tool failure recovery | Impacts agentic workflow reliability |
 | Self-correction ability | Determines error handling needs |

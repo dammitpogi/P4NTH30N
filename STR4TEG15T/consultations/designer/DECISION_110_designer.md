@@ -479,7 +479,7 @@ H4ND.Tests/
 
 ```csharp
 // File: H4ND/Domains/Common/Guard.cs
-namespace P4NTH30N.H4ND.Domains.Common;
+namespace P4NTHE0N.H4ND.Domains.Common;
 
 /// <summary>
 /// Fail-fast validation helpers. Throws immediately on invalid input.
@@ -587,7 +587,7 @@ public sealed record Money
 
 ```csharp
 // File: H4ND/Domains/Common/IDomainEvent.cs
-namespace P4NTH30N.H4ND.Domains.Common;
+namespace P4NTHE0N.H4ND.Domains.Common;
 
 /// <summary>
 /// Marker interface for domain events.
@@ -601,7 +601,7 @@ public interface IDomainEvent
 }
 
 // File: H4ND/Domains/Common/AggregateRoot.cs
-namespace P4NTH30N.H4ND.Domains.Common;
+namespace P4NTHE0N.H4ND.Domains.Common;
 
 /// <summary>
 /// Base class for all aggregate roots.
@@ -634,10 +634,10 @@ public abstract class AggregateRoot
 }
 
 // File: H4ND/Domains/Execution/Events/JackpotPoppedEvent.cs
-namespace P4NTH30N.H4ND.Domains.Execution.Events;
+namespace P4NTHE0N.H4ND.Domains.Execution.Events;
 
-using P4NTH30N.H4ND.Domains.Common;
-using P4NTH30N.H4ND.Domains.Execution.ValueObjects;
+using P4NTHE0N.H4ND.Domains.Common;
+using P4NTHE0N.H4ND.Domains.Execution.ValueObjects;
 
 /// <summary>
 /// Raised when a jackpot pop is detected via DPD pattern.
@@ -669,11 +669,11 @@ public sealed record JackpotPoppedEvent : IDomainEvent
 }
 
 // File: H4ND/Domains/Execution/Aggregates/SpinSession.cs
-namespace P4NTH30N.H4ND.Domains.Execution.Aggregates;
+namespace P4NTHE0N.H4ND.Domains.Execution.Aggregates;
 
-using P4NTH30N.H4ND.Domains.Common;
-using P4NTH30N.H4ND.Domains.Execution.Events;
-using P4NTH30N.H4ND.Domains.Execution.ValueObjects;
+using P4NTHE0N.H4ND.Domains.Common;
+using P4NTHE0N.H4ND.Domains.Execution.Events;
+using P4NTHE0N.H4ND.Domains.Execution.ValueObjects;
 
 public sealed class SpinSession : AggregateRoot
 {
@@ -721,10 +721,10 @@ public sealed class SpinSession : AggregateRoot
 
 ```csharp
 // File: H4ND/Domains/Automation/Repositories/ICredentialRepository.cs
-namespace P4NTH30N.H4ND.Domains.Automation.Repositories;
+namespace P4NTHE0N.H4ND.Domains.Automation.Repositories;
 
-using P4NTH30N.H4ND.Domains.Automation.Aggregates;
-using P4NTH30N.H4ND.Domains.Automation.ValueObjects;
+using P4NTHE0N.H4ND.Domains.Automation.Aggregates;
+using P4NTHE0N.H4ND.Domains.Automation.ValueObjects;
 
 /// <summary>
 /// Repository for Credential aggregates.
@@ -745,10 +745,10 @@ public interface ICredentialRepository
 }
 
 // File: H4ND/Domains/Automation/Repositories/ISignalRepository.cs
-namespace P4NTH30N.H4ND.Domains.Automation.Repositories;
+namespace P4NTHE0N.H4ND.Domains.Automation.Repositories;
 
-using P4NTH30N.H4ND.Domains.Automation.Aggregates;
-using P4NTH30N.H4ND.Domains.Automation.ValueObjects;
+using P4NTHE0N.H4ND.Domains.Automation.Aggregates;
+using P4NTHE0N.H4ND.Domains.Automation.ValueObjects;
 
 /// <summary>
 /// Repository for SignalQueue aggregates.
@@ -765,10 +765,10 @@ public interface ISignalRepository
 }
 
 // File: H4ND/Domains/Execution/Repositories/ISpinSessionRepository.cs
-namespace P4NTH30N.H4ND.Domains.Execution.Repositories;
+namespace P4NTHE0N.H4ND.Domains.Execution.Repositories;
 
-using P4NTH30N.H4ND.Domains.Execution.Aggregates;
-using P4NTH30N.H4ND.Domains.Execution.ValueObjects;
+using P4NTHE0N.H4ND.Domains.Execution.Aggregates;
+using P4NTHE0N.H4ND.Domains.Execution.ValueObjects;
 
 public interface ISpinSessionRepository
 {
@@ -783,12 +783,12 @@ public interface ISpinSessionRepository
 }
 
 // File: H4ND/Infrastructure/Persistence/MongoDbCredentialRepository.cs
-namespace P4NTH30N.H4ND.Infrastructure.Persistence;
+namespace P4NTHE0N.H4ND.Infrastructure.Persistence;
 
 using MongoDB.Driver;
-using P4NTH30N.H4ND.Domains.Automation.Aggregates;
-using P4NTH30N.H4ND.Domains.Automation.Repositories;
-using P4NTH30N.H4ND.Domains.Automation.ValueObjects;
+using P4NTHE0N.H4ND.Domains.Automation.Aggregates;
+using P4NTHE0N.H4ND.Domains.Automation.Repositories;
+using P4NTHE0N.H4ND.Domains.Automation.ValueObjects;
 
 public sealed class MongoDbCredentialRepository : ICredentialRepository
 {
@@ -872,11 +872,11 @@ public sealed class MongoDbCredentialRepository : ICredentialRepository
 
 ```csharp
 // File: H4ND/Infrastructure/Logging/LogCollectionNames.cs
-namespace P4NTH30N.H4ND.Infrastructure.Logging;
+namespace P4NTHE0N.H4ND.Infrastructure.Logging;
 
 /// <summary>
 /// MongoDB collection names for structured logging.
-/// Follows P4NTH30N obfuscation pattern.
+/// Follows P4NTHE0N obfuscation pattern.
 /// </summary>
 public static class LogCollectionNames
 {
@@ -906,7 +906,7 @@ public static class LogCollectionNames
 }
 
 // File: H4ND/Infrastructure/Logging/LogEntry.cs
-namespace P4NTH30N.H4ND.Infrastructure.Logging;
+namespace P4NTHE0N.H4ND.Infrastructure.Logging;
 
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
@@ -947,7 +947,7 @@ public sealed class LogEntry
 }
 
 // File: H4ND/Infrastructure/Logging/MongoDbLogger.cs
-namespace P4NTH30N.H4ND.Infrastructure.Logging;
+namespace P4NTHE0N.H4ND.Infrastructure.Logging;
 
 using MongoDB.Driver;
 
@@ -1035,7 +1035,7 @@ public sealed class MongoDbLogger : ILogger
 }
 
 // File: H4ND/Infrastructure/Logging/MongoDbLoggerProvider.cs
-namespace P4NTH30N.H4ND.Infrastructure.Logging;
+namespace P4NTHE0N.H4ND.Infrastructure.Logging;
 
 using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
@@ -1067,12 +1067,12 @@ public sealed class MongoDbLoggerProvider : ILoggerProvider
 **Usage in Domain Services**:
 ```csharp
 // File: H4ND/Domains/Execution/Services/DpdJackpotDetector.cs
-namespace P4NTH30N.H4ND.Domains.Execution.Services;
+namespace P4NTHE0N.H4ND.Domains.Execution.Services;
 
-using P4NTH30N.H4ND.Domains.Automation.Aggregates;
-using P4NTH30N.H4ND.Domains.Common;
-using P4NTH30N.H4ND.Domains.Execution.Events;
-using P4NTH30N.H4ND.Domains.Execution.ValueObjects;
+using P4NTHE0N.H4ND.Domains.Automation.Aggregates;
+using P4NTHE0N.H4ND.Domains.Common;
+using P4NTHE0N.H4ND.Domains.Execution.Events;
+using P4NTHE0N.H4ND.Domains.Execution.ValueObjects;
 
 public sealed class DpdJackpotDetector : IJackpotDetector
 {
@@ -1296,7 +1296,7 @@ public static class LogMigrationHelper
 
 ```csharp
 // H4ND/Domains/Common/DomainException.cs
-namespace P4NTH30N.H4ND.Domains.Common;
+namespace P4NTHE0N.H4ND.Domains.Common;
 
 public sealed class DomainException : Exception
 {
@@ -1316,11 +1316,11 @@ public sealed class DomainException : Exception
 
 ```csharp
 // H4ND/Domains/Automation/Aggregates/Credential.cs
-namespace P4NTH30N.H4ND.Domains.Automation.Aggregates;
+namespace P4NTHE0N.H4ND.Domains.Automation.Aggregates;
 
-using P4NTH30N.H4ND.Domains.Common;
-using P4NTH30N.H4ND.Domains.Automation.ValueObjects;
-using P4NTH30N.H4ND.Domains.Automation.Events;
+using P4NTHE0N.H4ND.Domains.Common;
+using P4NTHE0N.H4ND.Domains.Automation.ValueObjects;
+using P4NTHE0N.H4ND.Domains.Automation.Events;
 
 public sealed class Credential : AggregateRoot
 {
@@ -1421,7 +1421,7 @@ public sealed class Credential : AggregateRoot
 
 ```csharp
 // H4ND/Domains/Execution/ValueObjects/JackpotTier.cs
-namespace P4NTH30N.H4ND.Domains.Execution.ValueObjects;
+namespace P4NTHE0N.H4ND.Domains.Execution.ValueObjects;
 
 public enum JackpotTier
 {
@@ -1432,10 +1432,10 @@ public enum JackpotTier
 }
 
 // H4ND/Domains/Execution/Services/IJackpotDetector.cs
-namespace P4NTH30N.H4ND.Domains.Execution.Services;
+namespace P4NTHE0N.H4ND.Domains.Execution.Services;
 
-using P4NTH30N.H4ND.Domains.Automation.Aggregates;
-using P4NTH30N.H4ND.Domains.Execution.ValueObjects;
+using P4NTHE0N.H4ND.Domains.Automation.Aggregates;
+using P4NTHE0N.H4ND.Domains.Execution.ValueObjects;
 
 public interface IJackpotDetector
 {
@@ -1459,7 +1459,7 @@ public sealed class JackpotDetectionResult
 
 ```csharp
 // H4ND/Domains/Monitoring/ValueObjects/HealthStatus.cs
-namespace P4NTH30N.H4ND.Domains.Monitoring.ValueObjects;
+namespace P4NTHE0N.H4ND.Domains.Monitoring.ValueObjects;
 
 public enum HealthStatus
 {
@@ -1469,9 +1469,9 @@ public enum HealthStatus
 }
 
 // H4ND/Domains/Monitoring/Services/IHealthMonitor.cs
-namespace P4NTH30N.H4ND.Domains.Monitoring.Services;
+namespace P4NTHE0N.H4ND.Domains.Monitoring.Services;
 
-using P4NTH30N.H4ND.Domains.Monitoring.ValueObjects;
+using P4NTHE0N.H4ND.Domains.Monitoring.ValueObjects;
 
 public interface IHealthMonitor
 {
@@ -1485,9 +1485,9 @@ public interface IHealthMonitor
 
 ```csharp
 // H4ND/Infrastructure/Messaging/IDomainEventPublisher.cs
-namespace P4NTH30N.H4ND.Infrastructure.Messaging;
+namespace P4NTHE0N.H4ND.Infrastructure.Messaging;
 
-using P4NTH30N.H4ND.Domains.Common;
+using P4NTHE0N.H4ND.Domains.Common;
 
 public interface IDomainEventPublisher
 {
@@ -1496,7 +1496,7 @@ public interface IDomainEventPublisher
 }
 
 // H4ND/Infrastructure/Resilience/ICircuitBreaker.cs
-namespace P4NTH30N.H4ND.Infrastructure.Resilience;
+namespace P4NTHE0N.H4ND.Infrastructure.Resilience;
 
 public interface ICircuitBreaker
 {
@@ -1700,5 +1700,5 @@ The phased approach allows incremental delivery with validation at each checkpoi
 ---
 
 *Designer Consultation v1.0*  
-*Aegis, P4NTH30N Architecture*  
+*Aegis, P4NTHE0N Architecture*  
 *2026-02-22*

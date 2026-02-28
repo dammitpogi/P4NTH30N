@@ -40,7 +40,7 @@ This decision establishes comprehensive hardening for ToolHive infrastructure ac
 - Stale ToolHive workloads consuming ports and causing collision conflicts
 - No standardized health probe validation before marking services as healthy
 - Port collisions between ToolHive auto-discovered services and manually configured containers
-- Callers repeatedly pass `database: "P4NTH30N"` in nearly every MongoDB tool call
+- Callers repeatedly pass `database: "P4NTHE0N"` in nearly every MongoDB tool call
 - Existing MongoDB behavior is noisy and error-prone across agents and workflows
 
 **Proposed Solutions**:
@@ -72,7 +72,7 @@ The decisions-server container has experienced multiple restart loops in product
 
 ### MongoDB Default Database Context
 
-The current ToolHive MongoDB server model is explicit by default and requires database in most tool schemas. This is robust, but repetitive for single-database operations (`P4NTH30N`).
+The current ToolHive MongoDB server model is explicit by default and requires database in most tool schemas. This is robust, but repetitive for single-database operations (`P4NTHE0N`).
 
 Recent remediation stabilized the server by aligning to ToolHive and official MongoDB MCP behavior. The next step is developer-experience hardening without reintroducing hidden context risks.
 
@@ -349,7 +349,7 @@ A hardened infrastructure where:
 - [ ] Decision write operation succeeds and persists to MongoDB
 - [ ] Decision read operation retrieves correct data
 - [ ] Concurrent requests (10+) handled without connection pool exhaustion
-- [ ] MongoDB calls without `database` argument resolve to `P4NTH30N`
+- [ ] MongoDB calls without `database` argument resolve to `P4NTHE0N`
 - [ ] MongoDB calls with explicit `database` override use specified database
 
 #### Failover Testing
@@ -427,7 +427,7 @@ If container deployment is completely blocked:
 2. Run as local Node.js process:
    ```bash
    cd tools/mcp-development/servers/decisions-server
-   MONGODB_URI=mongodb://localhost:27017/P4NTH30N node dist/index.js
+   MONGODB_URI=mongodb://localhost:27017/P4NTHE0N node dist/index.js
    ```
 3. Update gateway config to use stdio transport pointing to local process
 4. Update `servers.json` to use `"transport": "stdio"` with `"command": "node"`
@@ -438,7 +438,7 @@ If MongoDB connectivity issues persist:
 1. Verify MongoDB service status: `Get-Service MongoDB`
 2. If MongoDB down, restart: `Restart-Service MongoDB`
 3. If network issues, use `127.0.0.1` instead of `host.docker.internal`
-4. Test connectivity: `mongosh mongodb://127.0.0.1:27017/P4NTH30N --eval "db.adminCommand('ping')"`
+4. Test connectivity: `mongosh mongodb://127.0.0.1:27017/P4NTHE0N --eval "db.adminCommand('ping')"`
 
 #### Fallback D: Explicit Database Mode
 If default database resolution causes issues:

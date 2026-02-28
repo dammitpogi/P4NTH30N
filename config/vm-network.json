@@ -29,7 +29,7 @@
 		"_note": "Chrome DevTools Protocol port. Must match CdpConfig.Port in appsettings.json."
 	},
 	"Firewall": {
-		"RuleName": "P4NTH30N-CDP-VM",
+		"RuleName": "P4NTHE0N-CDP-VM",
 		"Direction": "Inbound",
 		"Protocol": "TCP",
 		"_note": "Allows TCP {CDP.Port} from {Subnet} only. Created by Setup-CDPNetwork.ps1."

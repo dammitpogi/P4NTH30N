@@ -1,0 +1,26 @@
+{
+  "runId": "RUN-000001",
+  "bundleId": "BUNDLE-v0058",
+  "startedAt": "MONOTONIC_COUNTER_ONLY",
+  "purpose": "phase1a.mobile.runner",
+  "requestType": "analyze|plan|execute|read",
+  "toolPolicyRef": "TP-DEFAULT-DENY-v1",
+  "inputsHash": "sha256:...",
+  "paramsHash": "sha256:...",
+  "artifactsHash": "sha256:...",
+  "artifacts": [
+    {
+      "path": "VAULT_Oath_Archive_v0058.json",
+      "hash": "sha256:..."
+    },
+    {
+      "path": "run_tool_log.json",
+      "hash": "sha256:..."
+    }
+  ],
+  "result": {
+    "status": "ok|blocked|error",
+    "blockedReason": null,
+    "capsuleRef": null
+  }
+}

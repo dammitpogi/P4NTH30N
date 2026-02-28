@@ -1,0 +1,142 @@
+{"roots_installed":0,"app_name":"ChatGPT","timestamp":"2026-01-17 18:01:08.00 -0700","app_version":"1.2026.006","slice_uuid":"4E577C95-6FC5-308B-BB56-FE9C7966EBE1","adam_id":"6448311069","build_version":"20885802981","bundleID":"com.openai.chat","duration_ms":"14151048","is_first_party":0,"share_with_app_devs":0,"bug_type":"145","os_version":"iPhone OS 18.7.2 (22H123)","distributor_id":"com.apple.AppStore","name":"ChatGPT","incident_id":"92814A78-546F-4FEF-B126-F5F4B5D96F9B"}
+Date/Time:        2026-01-17 14:05:07.987 -0700
+End time:         2026-01-17 18:00:59.035 -0700
+OS Version:       iPhone OS 18.7.2 (Build 22H123)
+Architecture:     arm64e
+Report Version:   60
+Incident Identifier: 92814A78-546F-4FEF-B126-F5F4B5D96F9B
+
+Data Source:      Microstackshots
+Shared Cache:     3E5E734D-2CA6-3F63-83F5-0E84C720CBA0 slid base address 0x187d3c000, slide 0x7d3c000
+
+Command:          ChatGPT
+Path:             /private/var/containers/Bundle/Application/B4E09060-3D6B-41D3-8AC2-0C9B3F459C8C/ChatGPT.app/ChatGPT
+Identifier:       com.openai.chat
+Version:          1.2026.006 (20885802981)
+Adam ID:          6448311069
+Is First Party:   No
+Beta Identifier:  C30A388C-79B1-4677-B467-EC7CCD300CDF
+Resource Coalition: "com.openai.chat"(613)
+Architecture:     arm64
+Parent:           UNKNOWN [1]
+PID:              1962
+
+Event:            disk writes
+Action taken:     none
+Writes:           1077.22 MB of file backed memory dirtied over 14151 seconds (76.12 KB per second average), exceeding limit of 12.43 KB per second over 86400 seconds
+Writes limit:     1073.74 MB
+Limit duration:   86400s
+Writes caused:    1077.22 MB
+Writes duration:  14151s
+Duration:         14151.05s
+Duration Sampled: 404.26s (event starts 13739.56s before samples, event ends 7.22s after samples)
+Steps:            11 (10.49 MB/step)
+
+Hardware model:   iPhone14,4
+Active cpus:      6
+Memory size:      3.59 GB
+HW page size:     16384
+VM page size:     16384
+Shared cache residency: 8.83% (431.83 MB / 4890.48 MB)
+
+Time Since Boot:  16532s
+Time Awake Since Boot: 14259s
+Time Since Wake:  13771s
+
+Total CPU Time:   6.204s
+Advisory levels:  Battery -> 3, User -> 3, ThermalPressure -> 20, Combined -> 2
+Free disk space:  54.29 GB/119.09 GB, low space threshold 150 MB
+Vnodes Available: 67.95% (13591/20000, 10000 allocated, 10000 soft limit)
+Models:           none
+
+Preferred User Language: en-US
+Country Code:     US
+Keyboards:        en_US QWERTY, emoji Emoji
+OS Cryptex File Extents: 5976
+
+Heaviest stack for the target process:
+  11  ??? (libsystem_pthread.dylib + 2732) [0x214da0aac]
+  11  ??? (libsystem_pthread.dylib + 2572) [0x214da0a0c]
+  11  ??? (libdispatch.dylib + 84576) [0x192876a60]
+  11  ??? (libdispatch.dylib + 86492) [0x1928771dc]
+  11  ??? (libdispatch.dylib + 44460) [0x19286cdac]
+  10  ??? (libdispatch.dylib + 41272) [0x19286c138]
+  10  ??? (libdispatch.dylib + 98336) [0x19287a020]
+  10  ??? (libdispatch.dylib + 103240) [0x19287b348]
+  10  ??? (libdispatch.dylib + 25952) [0x192868560]
+  10  ??? (libdispatch.dylib + 112004) [0x19287d584]
+  10  ??? (CoreFoundation + 324364) [0x18a91230c]
+  10  ??? (CoreFoundation + 61708) [0x18a8d210c]
+  10  ??? (CoreFoundation + 61904) [0x18a8d21d0]
+  10  ??? (CoreFoundation + 63440) [0x18a8d27d0]
+  10  ??? (CoreFoundation + 322288) [0x18a911af0]
+  10  ??? (CoreFoundation + 321896) [0x18a911968]
+  10  ??? (libsystem_kernel.dylib + 20680) [0x1db7760c8]
+
+
+Powerstats for:   ChatGPT [1962]
+UUID:             4E577C95-6FC5-308B-BB56-FE9C7966EBE1
+Path:             /private/var/containers/Bundle/Application/B4E09060-3D6B-41D3-8AC2-0C9B3F459C8C/ChatGPT.app/ChatGPT
+Identifier:       com.openai.chat
+Version:          1.2026.006 (20885802981)
+Adam ID:          6448311069
+Is First Party:   No
+Beta Identifier:  C30A388C-79B1-4677-B467-EC7CCD300CDF
+Resource Coalition: 11 samples "com.openai.chat"(613)
+Architecture:     arm64
+Parent:           UNKNOWN [1]
+UID:              501
+Footprint:        144.91 MB -> 204.67 MB (+59.77 MB)
+Pageins:          9530 pages
+Start time:       2026-01-17 17:54:07.551 -0700
+End time:         2026-01-17 18:00:51.814 -0700
+Num samples:      11 (100%)
+Num threads:      7
+Primary state:    9 samples Frontmost App, Non-Suppressed, Kernel mode, Effective Thread QoS Default, Requested Thread QoS Default, Override Thread QoS Unspecified, e-core
+User Activity:    0 samples Idle, 11 samples Active
+Power Source:     0 samples on Battery, 11 samples on AC
+  11  ??? (libsystem_pthread.dylib + 2732) [0x214da0aac]
+    11  ??? (libsystem_pthread.dylib + 2572) [0x214da0a0c]
+      11  ??? (libdispatch.dylib + 84576) [0x192876a60]
+        11  ??? (libdispatch.dylib + 86492) [0x1928771dc]
+          11  ??? (libdispatch.dylib + 44460) [0x19286cdac]
+            10  ??? (libdispatch.dylib + 41272) [0x19286c138]
+              10  ??? (libdispatch.dylib + 98336) [0x19287a020]
+                10  ??? (libdispatch.dylib + 103240) [0x19287b348]
+                  10  ??? (libdispatch.dylib + 25952) [0x192868560]
+                    10  ??? (libdispatch.dylib + 112004) [0x19287d584]
+                      10  ??? (CoreFoundation + 324364) [0x18a91230c]
+                        10  ??? (CoreFoundation + 61708) [0x18a8d210c]
+                          10  ??? (CoreFoundation + 61904) [0x18a8d21d0]
+                            10  ??? (CoreFoundation + 63440) [0x18a8d27d0]
+                              10  ??? (CoreFoundation + 322288) [0x18a911af0]
+                                10  ??? (CoreFoundation + 321896) [0x18a911968]
+                                  10  ??? (libsystem_kernel.dylib + 20680) [0x1db7760c8]
+                                    2   <p-core>
+                                    1   <User mode>
+            1   ??? (libdispatch.dylib + 41680) [0x19286c2d0]
+              1   ??? (libdispatch.dylib + 112004) [0x19287d584]
+                1   ??? (libdispatch.dylib + 6828) [0x192863aac]
+                  1   ??? (<56219C41-F6E5-3808-B5CD-9569A832C6FC> + 69849976) [0x108b15378]
+                    1   ??? (<56219C41-F6E5-3808-B5CD-9569A832C6FC> + 168836) [0x1048a1384]
+                      1   ??? (<56219C41-F6E5-3808-B5CD-9569A832C6FC> + 70752972) [0x108bf1acc]
+                        1   ??? (<56219C41-F6E5-3808-B5CD-9569A832C6FC> + 70752048) [0x108bf1730]
+                          1   ??? (<56219C41-F6E5-3808-B5CD-9569A832C6FC> + 70752788) [0x108bf1a14]
+                            1   ??? (<56219C41-F6E5-3808-B5CD-9569A832C6FC> + 70749244) [0x108bf0c3c]
+                              1   ??? (<56219C41-F6E5-3808-B5CD-9569A832C6FC> + 70866068) [0x108c0d494]
+                                1   ??? (<56219C41-F6E5-3808-B5CD-9569A832C6FC> + 70867304) [0x108c0d968]
+                                  1   ??? (<56219C41-F6E5-3808-B5CD-9569A832C6FC> + 70319996) [0x108b87f7c]
+                                    1   ??? (Foundation + 895040) [0x189615840]
+                                      1   ??? (Foundation + 896424) [0x189615da8]
+                                        1   ??? (Foundation + 915120) [0x18961a6b0]
+                                          1   ??? (libsystem_kernel.dylib + 20680) [0x1db7760c8]
+                                            1   <Effective Thread QoS Utility, Requested Thread QoS Utility>
+
+  Binary Images:
+           0x104530000 -                ???  com.openai.chat 1.2026.006 (20885802981) <4E577C95-6FC5-308B-BB56-FE9C7966EBE1>  /private/var/containers/Bundle/Application/B4E09060-3D6B-41D3-8AC2-0C9B3F459C8C/ChatGPT.app/ChatGPT
+           0x104878000 -                ???  ???                                      <56219C41-F6E5-3808-B5CD-9569A832C6FC>
+           0x18953b000 -        0x18a1af05f  Foundation                               <A8DD2B13-903D-39E3-8D0C-5EBF50F75929>  /System/Library/Frameworks/Foundation.framework/Foundation
+           0x18a8c3000 -        0x18ae3ffff  CoreFoundation                           <E89D821C-A544-315C-8903-39CA54D7FAF4>  /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+           0x192862000 -        0x1928a7b3f  libdispatch.dylib                        <C19E1CAE-FEE0-3E31-844D-A31BF2C39BD7>  /usr/lib/system/libdispatch.dylib
+           0x1db771000 -        0x1db7aaecf  libsystem_kernel.dylib                   <7C679990-215A-33E6-89E8-15ACBBA81BA2>  /usr/lib/system/libsystem_kernel.dylib
+           0x214da0000 -        0x214dac413  libsystem_pthread.dylib                  <985A66D7-1DC0-3F52-A897-D7AE7CAB5D36>  /usr/lib/system/libsystem_pthread.dylib

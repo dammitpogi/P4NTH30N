@@ -29,12 +29,12 @@ Write-Host ''
 Write-Host 'Enabling microphone monitoring...'
 
 # Enable Listen to this device
-& 'C:\P4NTH30N\SoundVolumeView\SoundVolumeView.exe' /SetListenToThisDevice 'Beats Pill\Device\Headset Microphone\Capture' 1
+& 'C:\P4NTHE0N\SoundVolumeView\SoundVolumeView.exe' /SetListenToThisDevice 'Beats Pill\Device\Headset Microphone\Capture' 1
 
 Start-Sleep -Seconds 1
 
 # Set playback device
-& 'C:\P4NTH30N\SoundVolumeView\SoundVolumeView.exe' /SetPlaybackThroughDevice 'Beats Pill\Device\Headset Microphone\Capture' 'Beats Pill\Device\Speakers\Render'
+& 'C:\P4NTHE0N\SoundVolumeView\SoundVolumeView.exe' /SetPlaybackThroughDevice 'Beats Pill\Device\Headset Microphone\Capture' 'Beats Pill\Device\Speakers\Render'
 
 Write-Host ''
 Write-Host 'Microphone monitoring should now be enabled!'

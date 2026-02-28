@@ -3,10 +3,10 @@ Write-Host 'Verifying Audio Configuration...'
 Write-Host '================================'
 Write-Host ''
 
-& 'C:\P4NTH30N\SoundVolumeView\SoundVolumeView.exe' /scomma 'C:\P4NTH30N\final_check.csv'
+& 'C:\P4NTHE0N\SoundVolumeView\SoundVolumeView.exe' /scomma 'C:\P4NTHE0N\final_check.csv'
 Start-Sleep -Seconds 1
 
-$lines = Get-Content 'C:\P4NTH30N\final_check.csv'
+$lines = Get-Content 'C:\P4NTHE0N\final_check.csv'
 
 Write-Host 'Default Devices:'
 Write-Host '---------------'

@@ -72,6 +72,13 @@ export namespace Patch {
   }
 
   // Parser implementation
+  function parseHeaderValue(line: string, prefix: string): string | undefined {
+    if (!line.startsWith(prefix)) return
+    const value = line.slice(prefix.length).trim()
+    if (!value) return
+    return value
+  }
+
   function parsePatchHeader(
     lines: string[],
     startIdx: number,
@@ -79,23 +86,23 @@ export namespace Patch {
     const line = lines[startIdx]
 
     if (line.startsWith("*** Add File:")) {
-      const filePath = line.split(":", 2)[1]?.trim()
+      const filePath = parseHeaderValue(line, "*** Add File:")
       return filePath ? { filePath, nextIdx: startIdx + 1 } : null
     }
 
     if (line.startsWith("*** Delete File:")) {
-      const filePath = line.split(":", 2)[1]?.trim()
+      const filePath = parseHeaderValue(line, "*** Delete File:")
       return filePath ? { filePath, nextIdx: startIdx + 1 } : null
     }
 
     if (line.startsWith("*** Update File:")) {
-      const filePath = line.split(":", 2)[1]?.trim()
+      const filePath = parseHeaderValue(line, "*** Update File:")
       let movePath: string | undefined
       let nextIdx = startIdx + 1
 
       // Check for move directive
       if (nextIdx < lines.length && lines[nextIdx].startsWith("*** Move to:")) {
-        movePath = lines[nextIdx].split(":", 2)[1]?.trim()
+        movePath = parseHeaderValue(lines[nextIdx], "*** Move to:")
         nextIdx++
       }
 

@@ -17,7 +17,7 @@ OpenFixer attempted direct MongoDB updates for DECISION_092 and DECISION_093 sta
 
 This indicates a **data model mismatch** between:
 - File-based decisions (STR4TEG15T/decisions/active/DECISION_*.md)
-- MongoDB persistence layer (P4NTH30N.decisions collection)
+- MongoDB persistence layer (P4NTHE0N.decisions collection)
 
 **Impact**: Decision status cannot be updated deterministically. Governance integrity is compromised.
 

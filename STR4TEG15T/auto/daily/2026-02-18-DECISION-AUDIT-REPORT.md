@@ -1,4 +1,4 @@
-# P4NTH30N Decision Audit Report
+# P4NTHE0N Decision Audit Report
 
 **Date:** 2026-02-18
 **Auditor:** Strategist

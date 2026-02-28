@@ -4,7 +4,7 @@
 **project_id**: 6bca83b670a16680d54ed49b159b2a2eb350d9b2
 **parent_id**: ses_387d09e2bffef5yfyry41cskAe
 **slug**: proud-eagle
-**directory**: c:\P4NTH30N
+**directory**: c:\P4NTHE0N
 **title**: Librarian ArXiv research (@librarian subagent)
 **version**: 1.2.6
 **share_url**: NULL

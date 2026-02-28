@@ -1,0 +1,1924 @@
+{"restore_payload_version":"Unknown","restore_type":"OTAUpdate","os_version":"22H123","itunes_version":"22H123","bug_type":"183","restore_error":"812","name":"iPhoneRestore"}
+16fbfb000 : session (null) became invalid: (null)
+16fd13000 : Sending load complete without error
+206f98200 : MSU running in normal env
+206f98200 : initializing new event recorder with options: (null)
+206f98200 : start
+206f98200 : Using NVRAM dictionary from IODeviceTree since there is no key for ota-uuid in there
+
+206f98200 : Permanent update volume present..supportDir will be placed there
+206f98200 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+206f98200 : <UMEventRecorder: 0x1025bfa20>: initializing event recorder with systemMountPoint: (null)
+206f98200 : <UMEventRecorder: 0x1025bfa20>: initializing event recorder with dataMountPoint: (null)
+206f98200 : <UMEventRecorder: 0x1025bfa20>: initializing event recorder with updateMountPoint: (null)
+206f98200 : <UMEventRecorder: 0x1025bfa20>: initializing event recorder with nvramPath: (null)
+206f98200 : <UMEventRecorder: 0x1025bfa20>: initializing event recorder with targetOSVersion: 23C55
+206f98200 : <UMEventRecorder: 0x1025bfa20>: initializing event recorder with context: (null)
+206f98200 : <UMEventRecorder: 0x1025bfa20>: initializing event recorder with baseServerURL: https://xp.apple.com/report
+206f98200 : <UMEventRecorder: 0x1025bfa20>: initializing event recorder with uuidXXXX>>>>>>-72A6-42AA-9095XXXX>>>>>3EAC
+206f98200 : MSU running in normal env
+206f98200 : Attempting to gather analytics data for phase : UpdateFinished
+206f98200 : add_persistent_target_volume_metrics: nothing to do.
+206f98200 : Additional analytics data is {
+}
+206f98200 : InstallInProgressAfterApply is false
+
+206f98200 : ignoring call to recordPostUpdateEvent when no install is in progress or we haven't performed the apply operation
+206f98200 : initializing new submission queue
+206f98200 : MSU running in normal env
+16de23000 : submitEventsInBackground running
+16de23000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+206f98200 : is_first_boot_after_update: is first boot: NO
+206f98200 : retrieve_previous_update_state: found previous update state MSUPreviousUpdateState=1
+206f98200 : is_first_boot_after_update: is first boot: NO
+16de23000 : -[UMEventRecorder submitEventsInBackground:withOptions:]_block_invoke: Previously submitted events will NOT BE resubmitted
+
+16de23000 : Found 1 unsubmitted events in update volume
+16de23000 : posting to https://xp.apple.com/report/2/psr_ota length = 920
+16de23000 : data = {"clientId":"0D78BCAF-72A6-42AA-9095XXXX>>>>>3EAC","events":[{"targetOSVersion":"23C55","deviceClass":"iPhone","storageCapacity":122070,"systemFsCapacity":6756,"currentOSVersion":"22H123","eapfsMode":"YES","rapidSecurityResponseInstalled":"false","dataFsCapacity":115186,"currentOSType":"user","reportVersion":1,"type":"ota","event":"brainLoad","systemFsFree":0,"eventTime":"1768795166688","failureReason":"MSU 812 (Failed to download catalog, MADownloadResult:MADownloadNetworkingError);com.apple.MobileAssetError.Download 47 (Download failed due to a general networking error. (Catalog download for com.apple.MobileAsset.MobileSoftwareUpdate.UpdateBrain));","uptime":19955,"batteryIsCharging":false,"batteryLevel":38,"deviceModel":"D16AP","currentProductVersionExtra":"unknown","currentBaseOSVersion":"22H123","result":"MSU 812","MobileAssetAssetAudience":"DefaultAssetAudienceForReleaseTypeuser","dataFsFree":93541}]}
+16de23000 : UMEventSubmitter: -[UMEventSubmitter _defaultSession]: Setting waitsForConnectivity to true for splunk eventSubmission..
+
+206f98200 : currentOSType indicated as nil. Overriding it to be BootedOSReleaseTypeUnknown
+206f98200 : Pallas is enabled
+206f98200 : SU configuration:
+ Asset Audience XXXX>>>>>>-6e8f-4908-b724XXXX>>>>>5e5c
+ SU Asset URL: https://mesu.apple.com/assets/
+ Brain URL: https://mesu.apple.com/assets/
+ Documentation URL: https://mesu.apple.com/assets/
+ WatchDocumentation URL: https://mesu.apple.com/assets/
+206f98200 : Dictionary is {
+    BootedOSAssetAudience = "01c1d682-6e8f-4908-b724XXXX>>>>>5e5c";
+    BootedOSBrainURL = "https://mesu.apple.com/assets/";
+    BootedOSDocumentationURL = "https://mesu.apple.com/assets/";
+    BootedOSLanguage = en;
+    BootedOSProductVersion = "18.7.2";
+    BootedOSSUAssetURL = "https://mesu.apple.com/assets/";
+    BootedOSType = BootedOSReleaseTypeUnknown;
+    BootedOSVersion = 22H123;
+    BootedOSWatchDocumentationURL = "https://mesu.apple.com/assets/";
+}
+206f98200 : Saving env data to /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+206f98200 : Updating file permissions
+206f98200 : fixup_permissions_for_bootedos_state_file: Successfully fixed up permissions for /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+16df3b000 : session (null) didReceiveChallenge
+16dfc7000 : 1 events successfully submitted
+16e053000 : session (null) became invalid: (null)
+16deaf000 : Client softwareupdateservicesd[457] does not have the 'com.apple.private.softwareupdated-helpers' entitlement
+16deaf000 : retrieve_previous_update_state: found previous update state MSUPreviousUpdateState=1
+16deaf000 : Unable to determine asset audience from defaults. Assuming default audience for build in use
+16deaf000 : [-[UMEventRecorder _recordEvent:getPowerLog:information:callback:]] (purge) - {
+    MobileAssetAssetAudience = DefaultAssetAudienceForReleaseTypeuser;
+    batteryIsCharging = 1;
+    batteryLevel = 11;
+    currentBaseOSVersion = 22H123;
+    currentOSType = user;
+    currentOSVersion = 22H123;
+    currentProductVersionExtra = unknown;
+    dataFsCapacity = 115186;
+    dataFsFree = 93476;
+    deviceClass = iPhone;
+    deviceModel = D16AP;
+    eapfsMode = YES;
+    event = purge;
+    eventTime = 1768800042969;
+    rapidSecurityResponseInstalled = false;
+    reportVersion = 1;
+    storageCapacity = 122070;
+    systemFsCapacity = 6756;
+    systemFsFree = 0;
+    targetOSVersion = 23C55;
+    type = ota;
+    uptime = 149;
+}
+
+16deaf000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16deaf000 : Sending event to PowerLog: {
+    MobileAssetAssetAudience = DefaultAssetAudienceForReleaseTypeuser;
+    RequestUUID = "93790B3C-F621-4795-9350XXXX>>>>>9899";
+    batteryIsCharging = 1;
+    batteryLevel = 11;
+    currentBaseOSVersion = 22H123;
+    currentOSType = user;
+    currentOSVersion = 22H123;
+    currentProductVersionExtra = unknown;
+    dataFsCapacity = 115186;
+    dataFsFree = 93476;
+    deviceClass = iPhone;
+    deviceModel = D16AP;
+    eapfsMode = YES;
+    event = 0;
+    eventTime = 1768800042969;
+    rapidSecurityResponseInstalled = false;
+    reportVersion = 1;
+    storageCapacity = 122070;
+    systemFsCapacity = 6756;
+    systemFsFree = 0;
+    targetOSVersion = 23C55;
+    type = ota;
+    uptime = 149;
+}
+16df3b000 : submitEventsInBackground running
+16df3b000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16df3b000 : -[UMEventRecorder submitEventsInBackground:withOptions:]_block_invoke: Previously submitted events will NOT BE resubmitted
+
+16df3b000 : Found 1 unsubmitted events in update volume
+16df3b000 : posting to https://xp.apple.com/report/2/psr_ota length = 624
+16df3b000 : data = {"clientId":"0D78BCAF-72A6-42AA-9095XXXX>>>>>3EAC","events":[{"targetOSVersion":"23C55","deviceClass":"iPhone","storageCapacity":122070,"systemFsCapacity":6756,"currentOSVersion":"22H123","eapfsMode":"YES","rapidSecurityResponseInstalled":"false","dataFsCapacity":115186,"currentOSType":"user","reportVersion":1,"type":"ota","event":"purge","systemFsFree":0,"eventTime":"1768800042969","uptime":149,"batteryIsCharging":true,"batteryLevel":11,"deviceModel":"D16AP","currentProductVersionExtra":"unknown","currentBaseOSVersion":"22H123","MobileAssetAssetAudience":"DefaultAssetAudienceForReleaseTypeuser","dataFsFree":93476}]}
+16e053000 : session (null) became invalid: (null)
+16dfc7000 : POST failed: Error Domain=NSURLErrorDomain Code=-1200 "An SSL error has occurred and a secure connection to the server cannot be made." UserInfo={NSErrorFailingURLStringKey=https://xp.apple.com/report/2/psr_ota, NSLocalizedRecoverySuggestion=Would you like to connect to the server anyway?, _kCFStreamErrorDomainKey=3, _NSURLErrorFailingURLSessionTaskErrorKey=LocalDataTask <CCFDEF54-9899-4CC6-A28FXXXX>>>>>4C58>.<1>, _NSURLErrorRelatedURLSessionTaskErrorKey=(
+    "LocalDataTask <CCFDEF54-9899-4CC6-A28FXXXX>>>>>4C58>.<1>"
+), NSLocalizedDescription=An SSL error has occurred and a secure connection to the server cannot be made., NSErrorFailingURLKey=https://xp.apple.com/report/2/psr_ota, NSUnderlyingError=0xb5a02cea0 {Error Domain=kCFErrorDomainCFNetwork Code=-1200 "(null)" UserInfo={_kCFStreamPropertySSLClientCertificateState=0, _kCFNetworkCFStreamSSLErrorOriginalValue=-9816, _kCFStreamErrorDomainKey=3, _kCFStreamErrorCodeKey=-9816, _NSURLErrorNWPathKey=satisfied (Path is satisfied), viable, interface: en0[802.11], ipv4, dns, uses wifi}}, _kCFStreamErrorCodeKey=-9816}
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM ota-uuid not found..Nothing to do
+
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM ota-result not found..Nothing to do
+
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM ota-failure-reason not found..Nothing to do
+
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM ota-breadcrumbs not found..Nothing to do
+
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM ota-submission-url not found..Nothing to do
+
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM ota-os-version not found..Nothing to do
+
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM ota-original-os-version not found..Nothing to do
+
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM ota-original-base-os-version not found..Nothing to do
+
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM ota-install-tonight not found..Nothing to do
+
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM ota-context not found..Nothing to do
+
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM ota-brain-version not found..Nothing to do
+
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-pre-conversion not found..Nothing to do
+
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-post-conversion not found..Nothing to do
+
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM ota-conv-panic-indicator not found..Nothing to do
+
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-fsck-metrics not found..Nothing to do
+
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-sealvolume-metrics not found..Nothing to do
+
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-migrator-metrics not found..Nothing to do
+
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-converter-metrics not found..Nothing to do
+
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM ota-forced-reset-uptime not found..Nothing to do
+
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM ota-initial-forced-reset-uptime not found..Nothing to do
+
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM ramrod-nvram-sequence not found..Nothing to do
+
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM ota-snapshot-update not found..Nothing to do
+
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM pre-recovery-ota-failure-uuid not found..Nothing to do
+
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM recoveryos-initiated-update not found..Nothing to do
+
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM ota-controllerVersion not found..Nothing to do
+
+16df3b000 : msu_delete_nvram_variable_if_exists: NVRAM ota-updateType not found..Nothing to do
+
+16df3b000 : Permanent update volume present..supportDir will be placed there
+16df3b000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+206f98200 : MSU running in normal env
+206f98200 : initializing new event recorder with options: (null)
+206f98200 : start
+206f98200 : Using NVRAM dictionary from IODeviceTree since there is no key for ota-uuid in there
+
+206f98200 : Permanent update volume present..supportDir will be placed there
+206f98200 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+206f98200 : <UMEventRecorder: 0x104867a20>: initializing event recorder with systemMountPoint: (null)
+206f98200 : <UMEventRecorder: 0x104867a20>: initializing event recorder with dataMountPoint: (null)
+206f98200 : <UMEventRecorder: 0x104867a20>: initializing event recorder with updateMountPoint: (null)
+206f98200 : <UMEventRecorder: 0x104867a20>: initializing event recorder with nvramPath: (null)
+206f98200 : <UMEventRecorder: 0x104867a20>: initializing event recorder with targetOSVersion: (null)
+206f98200 : <UMEventRecorder: 0x104867a20>: initializing event recorder with context: (null)
+206f98200 : <UMEventRecorder: 0x104867a20>: initializing event recorder with baseServerURL: (null)
+206f98200 : <UMEventRecorder: 0x104867a20>: initializing event recorder with uuid: (null)
+206f98200 : MSU running in normal env
+206f98200 : Attempting to gather analytics data for phase : UpdateFinished
+206f98200 : add_persistent_target_volume_metrics: nothing to do.
+206f98200 : Additional analytics data is {
+}
+206f98200 : InstallInProgressAfterApply is false
+
+206f98200 : ignoring call to recordPostUpdateEvent when no install is in progress or we haven't performed the apply operation
+206f98200 : initializing new submission queue
+206f98200 : MSU running in normal env
+16b96f000 : submitEventsInBackground running
+16b96f000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+206f98200 : is_first_boot_after_update: is first boot: NO
+206f98200 : retrieve_previous_update_state: found previous update state MSUPreviousUpdateState=1
+206f98200 : is_first_boot_after_update: is first boot: NO
+16b96f000 : -[UMEventRecorder submitEventsInBackground:withOptions:]_block_invoke: Previously submitted events will NOT BE resubmitted
+
+16b96f000 : Found 1 unsubmitted events in update volume
+16b96f000 : posting to https://xp.apple.com/report/2/psr_ota length = 624
+16b96f000 : data = {"clientId":"0D78BCAF-72A6-42AA-9095XXXX>>>>>3EAC","events":[{"targetOSVersion":"23C55","deviceClass":"iPhone","storageCapacity":122070,"systemFsCapacity":6756,"currentOSVersion":"22H123","eapfsMode":"YES","rapidSecurityResponseInstalled":"false","dataFsCapacity":115186,"currentOSType":"user","reportVersion":1,"type":"ota","event":"purge","systemFsFree":0,"eventTime":"1768800042969","uptime":149,"batteryIsCharging":true,"batteryLevel":11,"deviceModel":"D16AP","currentProductVersionExtra":"unknown","currentBaseOSVersion":"22H123","MobileAssetAssetAudience":"DefaultAssetAudienceForReleaseTypeuser","dataFsFree":93476}]}
+16b96f000 : UMEventSubmitter: -[UMEventSubmitter _defaultSession]: Setting waitsForConnectivity to true for splunk eventSubmission..
+
+206f98200 : currentOSType indicated as nil. Overriding it to be BootedOSReleaseTypeUnknown
+206f98200 : Pallas is enabled
+206f98200 : SU configuration:
+ Asset Audience XXXX>>>>>>-6e8f-4908-b724XXXX>>>>>5e5c
+ SU Asset URL: https://mesu.apple.com/assets/
+ Brain URL: https://mesu.apple.com/assets/
+ Documentation URL: https://mesu.apple.com/assets/
+ WatchDocumentation URL: https://mesu.apple.com/assets/
+206f98200 : Dictionary is {
+    BootedOSAssetAudience = "01c1d682-6e8f-4908-b724XXXX>>>>>5e5c";
+    BootedOSBrainURL = "https://mesu.apple.com/assets/";
+    BootedOSDocumentationURL = "https://mesu.apple.com/assets/";
+    BootedOSLanguage = en;
+    BootedOSProductVersion = "18.7.2";
+    BootedOSSUAssetURL = "https://mesu.apple.com/assets/";
+    BootedOSType = BootedOSReleaseTypeUnknown;
+    BootedOSVersion = 22H123;
+    BootedOSWatchDocumentationURL = "https://mesu.apple.com/assets/";
+}
+206f98200 : Saving env data to /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+206f98200 : Updating file permissions
+206f98200 : fixup_permissions_for_bootedos_state_file: Successfully fixed up permissions for /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+16ba87000 : Client bird[343] does not have the 'com.apple.private.softwareupdated-helpers' entitlement
+16bb13000 : session (null) didReceiveChallenge
+16b9fb000 : 1 events successfully submitted
+16ba87000 : session (null) became invalid: (null)
+207e1c200 : MSU running in normal env
+207e1c200 : initializing new event recorder with options: (null)
+207e1c200 : start
+207e1c200 : Using NVRAM dictionary from IODeviceTree since there is no key for ota-uuid in there
+
+207e1c200 : Permanent update volume present..supportDir will be placed there
+207e1c200 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+207e1c200 : <UMEventRecorder: 0x102a6f960>: initializing event recorder with systemMountPoint: (null)
+207e1c200 : <UMEventRecorder: 0x102a6f960>: initializing event recorder with dataMountPoint: (null)
+207e1c200 : <UMEventRecorder: 0x102a6f960>: initializing event recorder with updateMountPoint: (null)
+207e1c200 : <UMEventRecorder: 0x102a6f960>: initializing event recorder with nvramPath: (null)
+207e1c200 : <UMEventRecorder: 0x102a6f960>: initializing event recorder with targetOSVersion: (null)
+207e1c200 : <UMEventRecorder: 0x102a6f960>: initializing event recorder with context: (null)
+207e1c200 : <UMEventRecorder: 0x102a6f960>: initializing event recorder with baseServerURL: (null)
+207e1c200 : <UMEventRecorder: 0x102a6f960>: initializing event recorder with uuid: (null)
+207e1c200 : MSU running in normal env
+207e1c200 : Attempting to gather analytics data for phase : UpdateFinished
+207e1c200 : add_persistent_target_volume_metrics: nothing to do.
+207e1c200 : Additional analytics data is {
+}
+207e1c200 : InstallInProgressAfterApply is false
+
+207e1c200 : ignoring call to recordPostUpdateEvent when no install is in progress or we haven't performed the apply operation
+1fcdb4200 : MSU running in normal env
+1fcdb4200 : initializing new event recorder with options: (null)
+1fcdb4200 : start
+1fd128200 : MSU running in normal env
+1fd128200 : initializing new event recorder with options: (null)
+1fd128200 : start
+1fd128200 : Using NVRAM dictionary from IODeviceTree since there is no key for ota-uuid in there
+
+1fd128200 : Permanent update volume present..supportDir will be placed there
+1fd128200 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+1fd128200 : <UMEventRecorder: 0x10506bdc0>: initializing event recorder with systemMountPoint: (null)
+1fd128200 : <UMEventRecorder: 0x10506bdc0>: initializing event recorder with dataMountPoint: (null)
+1fd128200 : <UMEventRecorder: 0x10506bdc0>: initializing event recorder with updateMountPoint: (null)
+1fd128200 : <UMEventRecorder: 0x10506bdc0>: initializing event recorder with nvramPath: (null)
+1fd128200 : <UMEventRecorder: 0x10506bdc0>: initializing event recorder with targetOSVersion: (null)
+1fd128200 : <UMEventRecorder: 0x10506bdc0>: initializing event recorder with context: (null)
+1fd128200 : <UMEventRecorder: 0x10506bdc0>: initializing event recorder with baseServerURL: (null)
+1fd128200 : <UMEventRecorder: 0x10506bdc0>: initializing event recorder with uuid: (null)
+1fd128200 : MSU running in normal env
+1fd128200 : Attempting to gather analytics data for phase : UpdateFinished
+1fd128200 : add_persistent_target_volume_metrics: nothing to do.
+1fd128200 : Additional analytics data is {
+}
+1fd128200 : InstallInProgressAfterApply is false
+
+1fd128200 : ignoring call to recordPostUpdateEvent when no install is in progress or we haven't performed the apply operation
+1fd128200 : initializing new submission queue
+1fd128200 : MSU running in normal env
+16b387000 : submitEventsInBackground running
+16b387000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+1fd128200 : is_first_boot_after_update: is first boot: NO
+1fd128200 : retrieve_previous_update_state: found previous update state MSUPreviousUpdateState=1
+1fd128200 : is_first_boot_after_update: is first boot: NO
+16b387000 : -[UMEventRecorder submitEventsInBackground:withOptions:]_block_invoke: Previously submitted events will NOT BE resubmitted
+
+1fd128200 : currentOSType indicated as nil. Overriding it to be BootedOSReleaseTypeUnknown
+1fd128200 : Pallas is enabled
+1fd128200 : SU configuration:
+ Asset Audience XXXX>>>>>>-6e8f-4908-b724XXXX>>>>>5e5c
+ SU Asset URL: https://mesu.apple.com/assets/
+ Brain URL: https://mesu.apple.com/assets/
+ Documentation URL: https://mesu.apple.com/assets/
+ WatchDocumentation URL: https://mesu.apple.com/assets/
+1fd128200 : Dictionary is {
+    BootedOSAssetAudience = "01c1d682-6e8f-4908-b724XXXX>>>>>5e5c";
+    BootedOSBrainURL = "https://mesu.apple.com/assets/";
+    BootedOSDocumentationURL = "https://mesu.apple.com/assets/";
+    BootedOSLanguage = en;
+    BootedOSProductVersion = "18.7.2";
+    BootedOSSUAssetURL = "https://mesu.apple.com/assets/";
+    BootedOSType = BootedOSReleaseTypeUnknown;
+    BootedOSVersion = 22H123;
+    BootedOSWatchDocumentationURL = "https://mesu.apple.com/assets/";
+}
+1fd128200 : Saving env data to /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+1fd128200 : Updating file permissions
+1fd128200 : fixup_permissions_for_bootedos_state_file: Successfully fixed up permissions for /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+1f5258200 : MSU running in normal env
+1f5258200 : initializing new event recorder with options: (null)
+1f5258200 : start
+1f5258200 : Using NVRAM dictionary from IODeviceTree since there is no key for ota-uuid in there
+
+1f5258200 : Permanent update volume present..supportDir will be placed there
+1f5258200 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+1f5258200 : <UMEventRecorder: 0x100393940>: initializing event recorder with systemMountPoint: (null)
+1f5258200 : <UMEventRecorder: 0x100393940>: initializing event recorder with dataMountPoint: (null)
+1f5258200 : <UMEventRecorder: 0x100393940>: initializing event recorder with updateMountPoint: (null)
+1f5258200 : <UMEventRecorder: 0x100393940>: initializing event recorder with nvramPath: (null)
+1f5258200 : <UMEventRecorder: 0x100393940>: initializing event recorder with targetOSVersion: (null)
+1f5258200 : <UMEventRecorder: 0x100393940>: initializing event recorder with context: (null)
+1f5258200 : <UMEventRecorder: 0x100393940>: initializing event recorder with baseServerURL: (null)
+1f5258200 : <UMEventRecorder: 0x100393940>: initializing event recorder with uuid: (null)
+1fb524200 : MSU running in normal env
+1fb524200 : initializing new event recorder with options: (null)
+1fb524200 : start
+1fb524200 : Using NVRAM dictionary from IODeviceTree since there is no key for ota-uuid in there
+
+1fb524200 : Permanent update volume present..supportDir will be placed there
+1fb524200 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+1fb524200 : <UMEventRecorder: 0x102a17600>: initializing event recorder with systemMountPoint: (null)
+1fb524200 : <UMEventRecorder: 0x102a17600>: initializing event recorder with dataMountPoint: (null)
+1fb524200 : <UMEventRecorder: 0x102a17600>: initializing event recorder with updateMountPoint: (null)
+1fb524200 : <UMEventRecorder: 0x102a17600>: initializing event recorder with nvramPath: (null)
+1fb524200 : <UMEventRecorder: 0x102a17600>: initializing event recorder with targetOSVersion: (null)
+1fb524200 : <UMEventRecorder: 0x102a17600>: initializing event recorder with context: (null)
+1fb524200 : <UMEventRecorder: 0x102a17600>: initializing event recorder with baseServerURL: (null)
+1fb524200 : <UMEventRecorder: 0x102a17600>: initializing event recorder with uuid: (null)
+1fb524200 : MSU running in normal env
+1fb524200 : Attempting to gather analytics data for phase : UpdateFinished
+1fb524200 : add_persistent_target_volume_metrics: nothing to do.
+1fb524200 : Additional analytics data is {
+}
+1fb524200 : InstallInProgressAfterApply is false
+
+1fb524200 : ignoring call to recordPostUpdateEvent when no install is in progress or we haven't performed the apply operation
+1fb524200 : initializing new submission queue
+1fb524200 : MSU running in normal env
+16d677000 : submitEventsInBackground running
+16d677000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+1fb524200 : is_first_boot_after_update: is first boot: NO
+1fb524200 : retrieve_previous_update_state: found previous update state MSUPreviousUpdateState=1
+1fb524200 : is_first_boot_after_update: is first boot: NO
+16d677000 : -[UMEventRecorder submitEventsInBackground:withOptions:]_block_invoke: Previously submitted events will NOT BE resubmitted
+
+1fb524200 : currentOSType indicated as nil. Overriding it to be BootedOSReleaseTypeUnknown
+1fb524200 : Pallas is enabled
+1fb524200 : SU configuration:
+ Asset Audience XXXX>>>>>>-6e8f-4908-b724XXXX>>>>>5e5c
+ SU Asset URL: https://mesu.apple.com/assets/
+ Brain URL: https://mesu.apple.com/assets/
+ Documentation URL: https://mesu.apple.com/assets/
+ WatchDocumentation URL: https://mesu.apple.com/assets/
+1fb524200 : Dictionary is {
+    BootedOSAssetAudience = "01c1d682-6e8f-4908-b724XXXX>>>>>5e5c";
+    BootedOSBrainURL = "https://mesu.apple.com/assets/";
+    BootedOSDocumentationURL = "https://mesu.apple.com/assets/";
+    BootedOSLanguage = en;
+    BootedOSProductVersion = "18.7.2";
+    BootedOSSUAssetURL = "https://mesu.apple.com/assets/";
+    BootedOSType = BootedOSReleaseTypeUnknown;
+    BootedOSVersion = 22H123;
+    BootedOSWatchDocumentationURL = "https://mesu.apple.com/assets/";
+}
+1fb524200 : Saving env data to /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+1fb524200 : Updating file permissions
+1fb524200 : fixup_permissions_for_bootedos_state_file: Successfully fixed up permissions for /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+1ee9a0200 : MSU running in normal env
+1ee9a0200 : initializing new event recorder with options: (null)
+1ee9a0200 : start
+1ee9a0200 : Using NVRAM dictionary from IODeviceTree since there is no key for ota-uuid in there
+
+1ee9a0200 : Permanent update volume present..supportDir will be placed there
+1ee9a0200 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+1ee9a0200 : <UMEventRecorder: 0x100e23af0>: initializing event recorder with systemMountPoint: (null)
+1ee9a0200 : <UMEventRecorder: 0x100e23af0>: initializing event recorder with dataMountPoint: (null)
+1ee9a0200 : <UMEventRecorder: 0x100e23af0>: initializing event recorder with updateMountPoint: (null)
+1ee9a0200 : <UMEventRecorder: 0x100e23af0>: initializing event recorder with nvramPath: (null)
+1ee9a0200 : <UMEventRecorder: 0x100e23af0>: initializing event recorder with targetOSVersion: (null)
+1ee9a0200 : <UMEventRecorder: 0x100e23af0>: initializing event recorder with context: (null)
+1ee9a0200 : <UMEventRecorder: 0x100e23af0>: initializing event recorder with baseServerURL: (null)
+1ee9a0200 : <UMEventRecorder: 0x100e23af0>: initializing event recorder with uuid: (null)
+1ee9a0200 : MSU running in normal env
+1ee9a0200 : Attempting to gather analytics data for phase : UpdateFinished
+1ee9a0200 : add_persistent_target_volume_metrics: nothing to do.
+1ee9a0200 : Additional analytics data is {
+}
+1ee9a0200 : InstallInProgressAfterApply is false
+
+1ee9a0200 : ignoring call to recordPostUpdateEvent when no install is in progress or we haven't performed the apply operation
+1ee9a0200 : initializing new submission queue
+1ee9a0200 : MSU running in normal env
+16f4fb000 : submitEventsInBackground running
+16f4fb000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+1ee9a0200 : is_first_boot_after_update: is first boot: NO
+1ee9a0200 : retrieve_previous_update_state: found previous update state MSUPreviousUpdateState=1
+1ee9a0200 : is_first_boot_after_update: is first boot: NO
+16f4fb000 : -[UMEventRecorder submitEventsInBackground:withOptions:]_block_invoke: Previously submitted events will NOT BE resubmitted
+
+1ee9a0200 : currentOSType indicated as nil. Overriding it to be BootedOSReleaseTypeUnknown
+1ee9a0200 : Pallas is enabled
+1ee9a0200 : SU configuration:
+ Asset Audience XXXX>>>>>>-6e8f-4908-b724XXXX>>>>>5e5c
+ SU Asset URL: https://mesu.apple.com/assets/
+ Brain URL: https://mesu.apple.com/assets/
+ Documentation URL: https://mesu.apple.com/assets/
+ WatchDocumentation URL: https://mesu.apple.com/assets/
+1ee9a0200 : Dictionary is {
+    BootedOSAssetAudience = "01c1d682-6e8f-4908-b724XXXX>>>>>5e5c";
+    BootedOSBrainURL = "https://mesu.apple.com/assets/";
+    BootedOSDocumentationURL = "https://mesu.apple.com/assets/";
+    BootedOSLanguage = en;
+    BootedOSProductVersion = "18.7.2";
+    BootedOSSUAssetURL = "https://mesu.apple.com/assets/";
+    BootedOSType = BootedOSReleaseTypeUnknown;
+    BootedOSVersion = 22H123;
+    BootedOSWatchDocumentationURL = "https://mesu.apple.com/assets/";
+}
+1ee9a0200 : Saving env data to /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+1ee9a0200 : Updating file permissions
+1ee9a0200 : fixup_permissions_for_bootedos_state_file: Successfully fixed up permissions for /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+2027c0200 : MSU running in normal env
+2027c0200 : initializing new event recorder with options: (null)
+2027c0200 : start
+2027c0200 : Using NVRAM dictionary from IODeviceTree since there is no key for ota-uuid in there
+
+2027c0200 : Permanent update volume present..supportDir will be placed there
+2027c0200 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+2027c0200 : <UMEventRecorder: 0x102437a20>: initializing event recorder with systemMountPoint: (null)
+2027c0200 : <UMEventRecorder: 0x102437a20>: initializing event recorder with dataMountPoint: (null)
+2027c0200 : <UMEventRecorder: 0x102437a20>: initializing event recorder with updateMountPoint: (null)
+2027c0200 : <UMEventRecorder: 0x102437a20>: initializing event recorder with nvramPath: (null)
+2027c0200 : <UMEventRecorder: 0x102437a20>: initializing event recorder with targetOSVersion: (null)
+2027c0200 : <UMEventRecorder: 0x102437a20>: initializing event recorder with context: (null)
+2027c0200 : <UMEventRecorder: 0x102437a20>: initializing event recorder with baseServerURL: (null)
+2027c0200 : <UMEventRecorder: 0x102437a20>: initializing event recorder with uuid: (null)
+2027c0200 : MSU running in normal env
+2027c0200 : Attempting to gather analytics data for phase : UpdateFinished
+2027c0200 : add_persistent_target_volume_metrics: nothing to do.
+2027c0200 : Additional analytics data is {
+}
+2027c0200 : InstallInProgressAfterApply is false
+
+2027c0200 : ignoring call to recordPostUpdateEvent when no install is in progress or we haven't performed the apply operation
+2027c0200 : initializing new submission queue
+2027c0200 : MSU running in normal env
+16de13000 : submitEventsInBackground running
+16de13000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+2027c0200 : is_first_boot_after_update: is first boot: NO
+2027c0200 : retrieve_previous_update_state: found previous update state MSUPreviousUpdateState=1
+2027c0200 : is_first_boot_after_update: is first boot: NO
+16de13000 : -[UMEventRecorder submitEventsInBackground:withOptions:]_block_invoke: Previously submitted events will NOT BE resubmitted
+
+2027c0200 : currentOSType indicated as nil. Overriding it to be BootedOSReleaseTypeUnknown
+2027c0200 : Pallas is enabled
+2027c0200 : SU configuration:
+ Asset Audience XXXX>>>>>>-6e8f-4908-b724XXXX>>>>>5e5c
+ SU Asset URL: https://mesu.apple.com/assets/
+ Brain URL: https://mesu.apple.com/assets/
+ Documentation URL: https://mesu.apple.com/assets/
+ WatchDocumentation URL: https://mesu.apple.com/assets/
+2027c0200 : Dictionary is {
+    BootedOSAssetAudience = "01c1d682-6e8f-4908-b724XXXX>>>>>5e5c";
+    BootedOSBrainURL = "https://mesu.apple.com/assets/";
+    BootedOSDocumentationURL = "https://mesu.apple.com/assets/";
+    BootedOSLanguage = en;
+    BootedOSProductVersion = "18.7.2";
+    BootedOSSUAssetURL = "https://mesu.apple.com/assets/";
+    BootedOSType = BootedOSReleaseTypeUnknown;
+    BootedOSVersion = 22H123;
+    BootedOSWatchDocumentationURL = "https://mesu.apple.com/assets/";
+}
+2027c0200 : Saving env data to /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+2027c0200 : Updating file permissions
+2027c0200 : fixup_permissions_for_bootedos_state_file: Successfully fixed up permissions for /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+16de13000 : Client softwareupdateservicesd[462] does not have the 'com.apple.private.softwareupdated-helpers' entitlement
+16de9f000 : retrieve_previous_update_state: found previous update state MSUPreviousUpdateState=1
+16de9f000 : event reporting is not enabled, discarding event (purge) - (null)
+
+16de13000 : submitEventsInBackground running
+16de13000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16de13000 : -[UMEventRecorder submitEventsInBackground:withOptions:]_block_invoke: Previously submitted events will NOT BE resubmitted
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM ota-uuid not found..Nothing to do
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM ota-result not found..Nothing to do
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM ota-failure-reason not found..Nothing to do
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM ota-breadcrumbs not found..Nothing to do
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM ota-submission-url not found..Nothing to do
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM ota-os-version not found..Nothing to do
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM ota-original-os-version not found..Nothing to do
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM ota-original-base-os-version not found..Nothing to do
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM ota-install-tonight not found..Nothing to do
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM ota-context not found..Nothing to do
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM ota-brain-version not found..Nothing to do
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-pre-conversion not found..Nothing to do
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-post-conversion not found..Nothing to do
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM ota-conv-panic-indicator not found..Nothing to do
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-fsck-metrics not found..Nothing to do
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-sealvolume-metrics not found..Nothing to do
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-migrator-metrics not found..Nothing to do
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-converter-metrics not found..Nothing to do
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM ota-forced-reset-uptime not found..Nothing to do
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM ota-initial-forced-reset-uptime not found..Nothing to do
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM ramrod-nvram-sequence not found..Nothing to do
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM ota-snapshot-update not found..Nothing to do
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM pre-recovery-ota-failure-uuid not found..Nothing to do
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM recoveryos-initiated-update not found..Nothing to do
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM ota-controllerVersion not found..Nothing to do
+
+16de13000 : msu_delete_nvram_variable_if_exists: NVRAM ota-updateType not found..Nothing to do
+
+16de13000 : Permanent update volume present..supportDir will be placed there
+16de13000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+1ff2b8200 : MSU running in normal env
+1ff2b8200 : initializing new event recorder with options: (null)
+1ff2b8200 : start
+1ff2b8200 : Using NVRAM dictionary from IODeviceTree since there is no key for ota-uuid in there
+
+1ff2b8200 : Permanent update volume present..supportDir will be placed there
+1ff2b8200 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+1ff2b8200 : <UMEventRecorder: 0x1003336a0>: initializing event recorder with systemMountPoint: (null)
+1ff2b8200 : <UMEventRecorder: 0x1003336a0>: initializing event recorder with dataMountPoint: (null)
+1ff2b8200 : <UMEventRecorder: 0x1003336a0>: initializing event recorder with updateMountPoint: (null)
+1ff2b8200 : <UMEventRecorder: 0x1003336a0>: initializing event recorder with nvramPath: (null)
+1ff2b8200 : <UMEventRecorder: 0x1003336a0>: initializing event recorder with targetOSVersion: (null)
+1ff2b8200 : <UMEventRecorder: 0x1003336a0>: initializing event recorder with context: (null)
+1ff2b8200 : <UMEventRecorder: 0x1003336a0>: initializing event recorder with baseServerURL: (null)
+1ff2b8200 : <UMEventRecorder: 0x1003336a0>: initializing event recorder with uuid: (null)
+1ff2b8200 : MSU running in normal env
+1ff2b8200 : Attempting to gather analytics data for phase : UpdateFinished
+1ff2b8200 : add_persistent_target_volume_metrics: nothing to do.
+1ff2b8200 : Additional analytics data is {
+}
+1ff2b8200 : InstallInProgressAfterApply is false
+
+1ff2b8200 : ignoring call to recordPostUpdateEvent when no install is in progress or we haven't performed the apply operation
+1ff2b8200 : initializing new submission queue
+1ff2b8200 : MSU running in normal env
+16fe1f000 : submitEventsInBackground running
+16fe1f000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+1ff2b8200 : is_first_boot_after_update: is first boot: NO
+1ff2b8200 : retrieve_previous_update_state: found previous update state MSUPreviousUpdateState=1
+1ff2b8200 : is_first_boot_after_update: is first boot: NO
+16fe1f000 : -[UMEventRecorder submitEventsInBackground:withOptions:]_block_invoke: Previously submitted events will NOT BE resubmitted
+
+1ff2b8200 : currentOSType indicated as nil. Overriding it to be BootedOSReleaseTypeUnknown
+1ff2b8200 : Pallas is enabled
+1ff2b8200 : SU configuration:
+ Asset Audience XXXX>>>>>>-6e8f-4908-b724XXXX>>>>>5e5c
+ SU Asset URL: https://mesu.apple.com/assets/
+ Brain URL: https://mesu.apple.com/assets/
+ Documentation URL: https://mesu.apple.com/assets/
+ WatchDocumentation URL: https://mesu.apple.com/assets/
+1ff2b8200 : Dictionary is {
+    BootedOSAssetAudience = "01c1d682-6e8f-4908-b724XXXX>>>>>5e5c";
+    BootedOSBrainURL = "https://mesu.apple.com/assets/";
+    BootedOSDocumentationURL = "https://mesu.apple.com/assets/";
+    BootedOSLanguage = en;
+    BootedOSProductVersion = "18.7.2";
+    BootedOSSUAssetURL = "https://mesu.apple.com/assets/";
+    BootedOSType = BootedOSReleaseTypeUnknown;
+    BootedOSVersion = 22H123;
+    BootedOSWatchDocumentationURL = "https://mesu.apple.com/assets/";
+}
+1ff2b8200 : Saving env data to /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+1ff2b8200 : Updating file permissions
+1ff2b8200 : fixup_permissions_for_bootedos_state_file: Successfully fixed up permissions for /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+16fe1f000 : Client softwareupdateservicesd[586] does not have the 'com.apple.private.softwareupdated-helpers' entitlement
+16fe1f000 : retrieve_previous_update_state: found previous update state MSUPreviousUpdateState=1
+16fe1f000 : event reporting is not enabled, discarding event (purge) - (null)
+
+16feab000 : submitEventsInBackground running
+16feab000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16feab000 : -[UMEventRecorder submitEventsInBackground:withOptions:]_block_invoke: Previously submitted events will NOT BE resubmitted
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM ota-uuid not found..Nothing to do
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM ota-result not found..Nothing to do
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM ota-failure-reason not found..Nothing to do
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM ota-breadcrumbs not found..Nothing to do
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM ota-submission-url not found..Nothing to do
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM ota-os-version not found..Nothing to do
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM ota-original-os-version not found..Nothing to do
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM ota-original-base-os-version not found..Nothing to do
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM ota-install-tonight not found..Nothing to do
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM ota-context not found..Nothing to do
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM ota-brain-version not found..Nothing to do
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-pre-conversion not found..Nothing to do
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-post-conversion not found..Nothing to do
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM ota-conv-panic-indicator not found..Nothing to do
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-fsck-metrics not found..Nothing to do
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-sealvolume-metrics not found..Nothing to do
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-migrator-metrics not found..Nothing to do
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-converter-metrics not found..Nothing to do
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM ota-forced-reset-uptime not found..Nothing to do
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM ota-initial-forced-reset-uptime not found..Nothing to do
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM ramrod-nvram-sequence not found..Nothing to do
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM ota-snapshot-update not found..Nothing to do
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM pre-recovery-ota-failure-uuid not found..Nothing to do
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM recoveryos-initiated-update not found..Nothing to do
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM ota-controllerVersion not found..Nothing to do
+
+16feab000 : msu_delete_nvram_variable_if_exists: NVRAM ota-updateType not found..Nothing to do
+
+16feab000 : Permanent update volume present..supportDir will be placed there
+16feab000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16fe1f000 : Client bird[350] does not have the 'com.apple.private.softwareupdated-helpers' entitlement
+16feab000 : Purge update service connection handler: <dictionary: 0x27c2a66b0> { count = 1, transaction: 0, voucher = 0x0, contents =
+	"XPCErrorDescription" => <string: 0x27c2a6830> { length = 22, contents = "Connection interrupted" }
+}
+1ff2b8200 : MSU running in normal env
+1ff2b8200 : initializing new event recorder with options: (null)
+1ff2b8200 : start
+1ff2b8200 : Using NVRAM dictionary from IODeviceTree since there is no key for ota-uuid in there
+
+1ff2b8200 : Permanent update volume present..supportDir will be placed there
+1ff2b8200 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+1ff2b8200 : <UMEventRecorder: 0x104e2f6a0>: initializing event recorder with systemMountPoint: (null)
+1ff2b8200 : <UMEventRecorder: 0x104e2f6a0>: initializing event recorder with dataMountPoint: (null)
+1ff2b8200 : <UMEventRecorder: 0x104e2f6a0>: initializing event recorder with updateMountPoint: (null)
+1ff2b8200 : <UMEventRecorder: 0x104e2f6a0>: initializing event recorder with nvramPath: (null)
+1ff2b8200 : <UMEventRecorder: 0x104e2f6a0>: initializing event recorder with targetOSVersion: (null)
+1ff2b8200 : <UMEventRecorder: 0x104e2f6a0>: initializing event recorder with context: (null)
+1ff2b8200 : <UMEventRecorder: 0x104e2f6a0>: initializing event recorder with baseServerURL: (null)
+1ff2b8200 : <UMEventRecorder: 0x104e2f6a0>: initializing event recorder with uuid: (null)
+1ff2b8200 : MSU running in normal env
+1ff2b8200 : Attempting to gather analytics data for phase : UpdateFinished
+1ff2b8200 : add_persistent_target_volume_metrics: nothing to do.
+1ff2b8200 : Additional analytics data is {
+}
+1ff2b8200 : InstallInProgressAfterApply is false
+
+1ff2b8200 : ignoring call to recordPostUpdateEvent when no install is in progress or we haven't performed the apply operation
+1ff2b8200 : initializing new submission queue
+1ff2b8200 : MSU running in normal env
+16b607000 : submitEventsInBackground running
+16b607000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+1ff2b8200 : is_first_boot_after_update: is first boot: NO
+1ff2b8200 : retrieve_previous_update_state: found previous update state MSUPreviousUpdateState=1
+1ff2b8200 : is_first_boot_after_update: is first boot: NO
+16b607000 : -[UMEventRecorder submitEventsInBackground:withOptions:]_block_invoke: Previously submitted events will NOT BE resubmitted
+
+1ff2b8200 : currentOSType indicated as nil. Overriding it to be BootedOSReleaseTypeUnknown
+1ff2b8200 : Pallas is enabled
+1ff2b8200 : SU configuration:
+ Asset Audience XXXX>>>>>>-6e8f-4908-b724XXXX>>>>>5e5c
+ SU Asset URL: https://mesu.apple.com/assets/
+ Brain URL: https://mesu.apple.com/assets/
+ Documentation URL: https://mesu.apple.com/assets/
+ WatchDocumentation URL: https://mesu.apple.com/assets/
+1ff2b8200 : Dictionary is {
+    BootedOSAssetAudience = "01c1d682-6e8f-4908-b724XXXX>>>>>5e5c";
+    BootedOSBrainURL = "https://mesu.apple.com/assets/";
+    BootedOSDocumentationURL = "https://mesu.apple.com/assets/";
+    BootedOSLanguage = en;
+    BootedOSProductVersion = "18.7.2";
+    BootedOSSUAssetURL = "https://mesu.apple.com/assets/";
+    BootedOSType = BootedOSReleaseTypeUnknown;
+    BootedOSVersion = 22H123;
+    BootedOSWatchDocumentationURL = "https://mesu.apple.com/assets/";
+}
+1ff2b8200 : Saving env data to /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+1ff2b8200 : Updating file permissions
+1ff2b8200 : fixup_permissions_for_bootedos_state_file: Successfully fixed up permissions for /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+16b71f000 : Client softwareupdateservicesd[586] does not have the 'com.apple.private.softwareupdated-helpers' entitlement
+16b71f000 : Using OS prepare calculation because MSUBrain is not loaded
+16b71f000 : Returning non-snapshot preparation size
+16b71f000 : nonsnapshot preparation size : 0 (0 MB)
+16b71f000 : 
+get_nonsnapshot_preparation_size():
++ 0 MB update_attributes["InstallationSize"] (string)
+---
+  0 MB
+16b71f000 : Also returning snapshot prepare size
+16b71f000 : cryptex size requirementXXXX>>>>>>64 (5704 MB)
+16b71f000 : 
+cryptex_size_requirement_for_update_type(msu_update_type_snapshot):
+    16 MB update_attributes["CryptexSizeInfo"][0(cryptex-app)]["CryptexSize"] * 1.2
++ 5688 MB update_attributes["CryptexSizeInfo"][1(cryptex-system-arm64e)]["CryptexSize"] * 1.2
+------
+  5704 MB
+16b71f000 : snapshot preparation size (mastered) XXXX>>>>>>63 (8928 MB)
+16b71f000 : 
+get_snapshot_preparation_size():
+  3223 MB update_attributes["InstallationSize-Snapshot"] (string)
++ 5704 MB cryptex_size_requirement_for_update_type(msu_update_type_snapshot)
+------
+  8927 MB
+16b71f000 : Using OS apply calculation because MSUBrain is not loaded
+16b71f000 : Returning non-snapshot apply size
+16b71f000 : cryptex size requirementXXXX>>>>>>64 (5704 MB)
+16b71f000 : 
+cryptex_size_requirement_for_update_type(msu_update_type_legacy):
+    16 MB update_attributes["CryptexSizeInfo"][0(cryptex-app)]["CryptexSize"] * 1.2
++ 5688 MB update_attributes["CryptexSizeInfo"][1(cryptex-system-arm64e)]["CryptexSize"] * 1.2
+------
+  5704 MB
+16b71f000 : Sealing requires 221 MiB overhead
+16b71f000 : Minimum system partition is 8236564480 (7855 MB)
+16b71f000 : System partition padding is 1342177280 (1280 MB)
+16b71f000 : System partition firmware is 126877696 (121 MB)
+16b71f000 : APFS system volume is using 7084871680 (6756 MB)
+16b71f000 : Checking for overprovisioning volume
+16b71f000 : Failed to get container path. Unable to check for overprovisioning volume
+16b71f000 : Checking for overprovisioning file
+16b71f000 : nand is not overprovisioned
+16b71f000 : Use of APFSIOC_GET_PREALLOCATE_MIN_SPACE is not expressly disallowed by asset attributes
+16b71f000 : 8425 MB reserve file will be needed (non-snapshot)
+16b71f000 : preallocating a 8425 MB reserve file will require an additional 1632 MB of free space
+16b71f000 : free space required is 10966151168 (10458 MB)
+16b71f000 : 
+get_nonsnapshot_apply_and_reserve_sizes():
+    300 MB UPDATE_PARTITION_SIZE * 2
+    100 MB UPDATE_APFS_RESERVE
+   1280 MB systemPartitionPadding = get_system_partition_padding()
+   5704 MB cryptex_size_requirement_for_update_type(msu_update_type_legacy)
+    221 MB update_attributes["SystemVolumeSealingOverhead"]
+    121 MB RCGetSystemPartitionExtrasSizeForDevice()
+   7855 MB update_attributes["ActualMinimumSystemPartition"]
+  -6756 MB -currentSystemPartitionSize (getattrlist)
++  1632 MB get_apfs_preallocate_min(8425 MB)
+-------
+  10457 MB
+16b71f000 : Also returning snapshot apply size
+16b71f000 : Sealing requires 221 MiB overhead
+16b71f000 : Use of APFSIOC_GET_PREALLOCATE_MIN_SPACE is not expressly disallowed by asset attributes
+16b71f000 : 221 MB reserve file will be needed (snapshot)
+16b71f000 : preallocating a 221 MB reserve file will require an additional 156 MB of free space
+16b71f000 : snapshot application size XXXX>>>>>>8 (777 MB)
+16b71f000 : 
+get_snapshot_apply_and_reserve_sizes():
+  400 MB 2*UPDATE_PARTITION_SIZE + UPDATE_APFS_RESERVE
+  221 MB update_attributes["SystemVolumeSealingOverhead"]
++ 156 MB get_apfs_preallocate_min(221 MB)
+-----
+  777 MB
+16b607000 : Client softwareupdateservicesd[586] does not have the 'com.apple.private.softwareupdated-helpers' entitlement
+16b607000 : The secure object length value is: 1439
+16b607000 : Caller has pased in downloadOptions: MADownloadOptions allowsCellular: 1 resourceTimeout: -1 canUseCacheServer: 0 discretionary: 0 disableUI: 0 sessionId: (null) additionalServerParams:{ } allowsExpensiveAccess:1 requiresPowerPluggedIn: 0 prefersInfraWiFi: 1 liveServerOnly: 0 DownloadAuthorizationHeader: not present analyticsData: not present allowDaemonConnectionRetries: 0  + MAMsuDownloadOptions reqProdVersion: (null) delayPeriod: 0 managedDevice: 0 allowSameVersion: 0 prereqBuild: (null) prereqVersion: (null) prereqReleaseType: (default) liveAssetAudienceUUID: (null) purpose: (null)
+16b607000 : The attributes are: {
+    ActualMinimumSystemPartition = 7855;
+    AssetType = "com.apple.MobileAsset.SoftwareUpdate";
+    Build = 23C55;
+    CryptexSizeInfo =     (
+                {
+            CryptexSize = 14;
+            CryptexTag = "cryptex-app";
+        },
+                {
+            CryptexSize = 4740;
+            CryptexTag = "cryptex-system-arm64e";
+        }
+    );
+    DisablePreSoftwareUpdateAssetStaging = 1;
+    EAPFSEnabled = 1;
+    GranularRampingLogic =     (
+                {
+            BgPct = 100;
+            FgPct = 0;
+            Hour = 0;
+        },
+                {
+            BgPct = 90;
+            FgPct = 0;
+            Hour = 24;
+        },
+                {
+            BgPct = 75;
+            FgPct = 0;
+            Hour = 48;
+        },
+                {
+            BgPct = 60;
+            FgPct = 0;
+            Hour = 72;
+        },
+                {
+            BgPct = 45;
+            FgPct = 0;
+            Hour = 96;
+        },
+                {
+            BgPct = 30;
+            FgPct = 0;
+            Hour = 120;
+        },
+                {
+            BgPct = 15;
+            FgPct = 0;
+            Hour = 144;
+        },
+                {
+            BgPct = 0;
+            FgPct = 0;
+            Hour = 168;
+        }
+    );
+    InstallationSize = 0;
+    "InstallationSize-Snapshot" = 3380115899;
+    MinimumSystemPartition = 7907;
+    OSVersion = "9.9.26.2";
+    RSEPDigest = {length = 48, bytes = 0xfdce1dcd 2481d5e1 8deff48a a7fde053 ... 5d23c686 1a8cfb01 };
+    RSEPTBMDigests = "+QjCSRLkEjqHeeyGBhtxZncZOp4WSo6Lg3JACle4PAjx0350rasWGiIa0GoSVHS0\ne2qpbJ0j31w5oMvjkDiRE7LO5rYX8S1EXf7YYjCmBNsys3WAYZEFEaUK+APpkwEN\nVQSlNtSJ11V7fMOqRn3hBimWAasYhSLJkvzpZn5rM0LeTl1blUklQlML0wwGLs8N\nS9FgZx523ooiNklRp3FlKskKhZhD0RXazOBKz2iHCsXyIxGHX3le9RIwm6u7JdNd\ni+aEqnBNZBhF1BDvLfnk5epmTLkHEFR38zpsoyget6hxFUhNJvOjLrR6dMe8twkE";
+    Ramp = 0;
+    RestoreVersion = "23.3.55.0.0,0";
+    RestoreVersionInfo =     {
+        RestoreBuildGroup = 0;
+        RestoreLongVersion = "23.3.55.0.0,0";
+        RestoreVersion = "23.3.55.0.0";
+    };
+    SEPDigest = {length = 48, bytes = 0xba765789 fa3dc1de f7395d36 44b5b084 ... adcc8c33 d4c52c1f };
+    SEPTBMDigests = "jvieTe6iwXk8WO9o0YCmmeNOkQu22FTpdD6XxVMs+qYQ1YQf7LlTFMWrYieaHsr9\nbEhaf2PPvZQvwH1YwPkIHf/XwS6Bxlz9+mrM4rmjIKLSaxQHmabEnIhF8SOSFwh0\nghL9EQNepOsCf+o63efQCFNEbanw2oMTuz2xNA/G+E2cnQ0YWWxkunVWSqRGzuBC\n8Tcba9ffJPM0cydBMTvvpNJUtmQHUsVeL9k2/Lb05B8PTdiw6Qo4kK/4OrrPj6jL\nNtGCzUgYWg+ucv3DW8FRWMBQDJ0XpwRbYRFu7wGKzBdmemrnK2hquK+J6yIuEoc4";
+    SUConvReqd = 1;
+    SUDocumentationID = iOS262Long;
+    SUInstallTonightEnabled = 1;
+    SUMultiPassEnabled = 1;
+    SUProductSystemName = iOS;
+    SUPublisher = "Apple Inc.";
+    SupportedDeviceModels =     (
+        D16AP
+    );
+    SupportedDevices =     (
+        "iPhone14,4"
+    );
+    SystemPartitionPadding =     {
+        1024 = 1280;
+        128 = 1280;
+        16 = 160;
+        256 = 1280;
+        32 = 320;
+        512 = 1280;
+        64 = 640;
+        768 = 1280;
+        8 = 80;
+    };
+    SystemVolumeSealingOverhead = 221;
+    TrainName = LuckC;
+    "_CompressionAlgorithm" = zip;
+    "_DownloadSize" = 7767768272;
+    "_EventRecordingServiceURL" = "https://xp.apple.com/report";
+    "_IsZipStreamable" = 1;
+    "_MasteredVersion" = 55;
+    "_Measurement" = {length = 20, bytes = 0x<<<<<<<<<<<<<<<<<<UDID>>>>>>>>>>>>>>>>>>};
+    "_Measurement-SHA256" = {length = 32, bytes = 0x902aa08c 798f15bf a90bb1e1 b02fd690 ... d84ca296 28fcb483 };
+    "_MeasurementAlgorithm" = "SHA-1";
+    "_UnarchivedSize" = 7885506560;
+    "__AssetDefaultGarbageCollectionBehavior" = NeverCollected;
+    "__BaseURL" = "https://updates.cdn-apple.com/2025FallFCS/patches/089-90785/9123B3AF-6937-4724-A27CXXXX>>>>>CBBD/";
+    "__CanUseLocalCacheServer" = 1;
+    "__HideInstallAlert" = 0;
+    "__RelativePath" = "com_apple_MobileAsset_SoftwareUpdate/<<<<<<<<<<<<<<<<<<UDID>>>>>>>>>>>>>>>>>>.zip";
+}
+16b607000 : Setting targetBrainVersion to 23C55
+16b607000 : Sending load complete without error
+16b693000 : Entering handle_brain_is_loadable
+16b693000 : Permanent update volume present..supportDir will be placed there
+16b693000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16b693000 : setting uuid in startRecordingInstall to 9E96F52F-EC34-41C2-8F27XXXX>>>>>4A39
+16b693000 : Permanent update volume present..supportDir will be placed there
+16b693000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16b693000 : Permanent update volume present..supportDir will be placed there
+16b693000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16b693000 : Unable to determine asset audience from defaults. Assuming default audience for build in use
+16b693000 : [-[UMEventRecorder _recordEvent:getPowerLog:information:callback:]] (brainLoad) - {
+    MobileAssetAssetAudience = DefaultAssetAudienceForReleaseTypeuser;
+    UUID = "9E96F52F-EC34-41C2-8F27XXXX>>>>>4A39";
+    batteryIsCharging = 0;
+    batteryLevel = 26;
+    context = "SUS-2.0";
+    controllerVersion = "SUS-2.0";
+    currentBaseOSVersion = 22H123;
+    currentOSType = user;
+    currentOSVersion = 22H123;
+    currentProductVersionExtra = unknown;
+    dataFsCapacity = 115186;
+    dataFsFree = 91544;
+    deviceClass = iPhone;
+    deviceModel = D16AP;
+    eapfsMode = YES;
+    event = brainLoad;
+    eventTime = 1768854346468;
+    installTonight = "[LEGACY]false,autoOff,disabled,fg,toggleAIOn,toggleADOn,toggleAISDFOn,toggleAIRSROn";
+    rapidSecurityResponseInstalled = false;
+    reportVersion = 1;
+    result = success;
+    storageCapacity = 122070;
+    systemFsCapacity = 6756;
+    systemFsFree = 0;
+    targetBrainVersion = 23C55;
+    targetOSVersion = 23C55;
+    type = ota;
+    uptime = 14887;
+}
+
+16b693000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16b693000 : Sending event to PowerLog: {
+    MobileAssetAssetAudience = DefaultAssetAudienceForReleaseTypeuser;
+    RequestUUID = "0F87F955-6D83-4012-96DFXXXX>>>>>72BA";
+    UUID = "9E96F52F-EC34-41C2-8F27XXXX>>>>>4A39";
+    batteryIsCharging = 0;
+    batteryLevel = 26;
+    context = "SUS-2.0";
+    controllerVersion = "SUS-2.0";
+    currentBaseOSVersion = 22H123;
+    currentOSType = user;
+    currentOSVersion = 22H123;
+    currentProductVersionExtra = unknown;
+    dataFsCapacity = 115186;
+    dataFsFree = 91544;
+    deviceClass = iPhone;
+    deviceModel = D16AP;
+    eapfsMode = YES;
+    event = 100;
+    eventTime = 1768854346468;
+    installTonight = "[LEGACY]false,autoOff,disabled,fg,toggleAIOn,toggleADOn,toggleAISDFOn,toggleAIRSROn";
+    rapidSecurityResponseInstalled = false;
+    reportVersion = 1;
+    result = success;
+    storageCapacity = 122070;
+    systemFsCapacity = 6756;
+    systemFsFree = 0;
+    targetBrainVersion = 23C55;
+    targetOSVersion = 23C55;
+    type = ota;
+    uptime = 14887;
+}
+16b71f000 : submitEventsInBackground running
+16b71f000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16b71f000 : -[UMEventRecorder submitEventsInBackground:withOptions:]_block_invoke: Previously submitted events will NOT BE resubmitted
+
+16b71f000 : Found 1 unsubmitted events in update volume
+16b71f000 : posting to https://xp.apple.com/report/2/psr_ota length = 878
+16b71f000 : data = {"clientId":"9E96F52F-EC34-41C2-8F27XXXX>>>>>4A39","events":[{"installTonight":"[LEGACY]false,autoOff,disabled,fg,toggleAIOn,toggleADOn,toggleAISDFOn,toggleAIRSROn","deviceClass":"iPhone","context":"SUS-2.0","targetOSVersion":"23C55","storageCapacity":122070,"systemFsCapacity":6756,"targetBrainVersion":"23C55","currentOSVersion":"22H123","eapfsMode":"YES","rapidSecurityResponseInstalled":"false","dataFsCapacity":115186,"currentOSType":"user","reportVersion":1,"type":"ota","event":"brainLoad","systemFsFree":0,"eventTime":"1768854346468","UUID":"9E96F52F-EC34-41C2-8F27XXXX>>>>>4A39","uptime":14887,"deviceModel":"D16AP","batteryLevel":26,"batteryIsCharging":false,"controllerVersion":"SUS-2.0","currentBaseOSVersion":"22H123","result":"success","currentProductVersionExtra":"unknown","MobileAssetAssetAudience":"DefaultAssetAudienceForReleaseTypeuser","dataFsFree":91544}]}
+16b693000 : session (null) didReceiveChallenge
+16b693000 : 1 events successfully submitted
+16b607000 : session (null) became invalid: (null)
+1ff2b8200 : MSU running in normal env
+1ff2b8200 : initializing new event recorder with options: (null)
+1ff2b8200 : start
+1ff2b8200 : Using NVRAM dictionary from IODeviceTree since there is no key for ota-uuid in there
+
+1ff2b8200 : Permanent update volume present..supportDir will be placed there
+1ff2b8200 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+1ff2b8200 : <UMEventRecorder: 0x1010a36a0>: initializing event recorder with systemMountPoint: (null)
+1ff2b8200 : <UMEventRecorder: 0x1010a36a0>: initializing event recorder with dataMountPoint: (null)
+1ff2b8200 : <UMEventRecorder: 0x1010a36a0>: initializing event recorder with updateMountPoint: (null)
+1ff2b8200 : <UMEventRecorder: 0x1010a36a0>: initializing event recorder with nvramPath: (null)
+1ff2b8200 : <UMEventRecorder: 0x1010a36a0>: initializing event recorder with targetOSVersion: 23C55
+1ff2b8200 : <UMEventRecorder: 0x1010a36a0>: initializing event recorder with context: (null)
+1ff2b8200 : <UMEventRecorder: 0x1010a36a0>: initializing event recorder with baseServerURL: https://xp.apple.com/report
+1ff2b8200 : <UMEventRecorder: 0x1010a36a0>: initializing event recorder with uuidXXXX>>>>>>-EC34-41C2-8F27XXXX>>>>>4A39
+1ff2b8200 : MSU running in normal env
+1ff2b8200 : Attempting to gather analytics data for phase : UpdateFinished
+1ff2b8200 : add_persistent_target_volume_metrics: nothing to do.
+1ff2b8200 : Additional analytics data is {
+}
+1ff2b8200 : InstallInProgressAfterApply is false
+
+1ff2b8200 : ignoring call to recordPostUpdateEvent when no install is in progress or we haven't performed the apply operation
+1ff2b8200 : initializing new submission queue
+1ff2b8200 : MSU running in normal env
+16f2d3000 : submitEventsInBackground running
+16f2d3000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+1ff2b8200 : is_first_boot_after_update: is first boot: NO
+1ff2b8200 : retrieve_previous_update_state: found previous update state MSUPreviousUpdateState=1
+1ff2b8200 : is_first_boot_after_update: is first boot: NO
+16f2d3000 : -[UMEventRecorder submitEventsInBackground:withOptions:]_block_invoke: Previously submitted events will NOT BE resubmitted
+
+16f2d3000 : Found 1 unsubmitted events in update volume
+16f2d3000 : posting to https://xp.apple.com/report/2/psr_ota length = 1184
+16f2d3000 : data = {"clientId":"9E96F52F-EC34-41C2-8F27XXXX>>>>>4A39","events":[{"installTonight":"[LEGACY]false,autoOff,disabled,fg,toggleAIOn,toggleADOn,toggleAISDFOn,toggleAIRSROn","deviceModel":"D16AP","rapidSecurityResponseUpdate":false,"snapshotPrepareSize":2905,"batteryLevel":26,"batteryIsCharging":false,"context":"SUS-2.0","AutoUpdate":"UNKNOWN","nonSnapshotApplySize":400,"eventTime":"1768854349320","reportVersion":1,"currentBaseOSVersion":"22H123","eapfsMode":"YES","MobileAssetAssetAudience":"DefaultAssetAudienceForReleaseTypeuser","currentOSVersion":"22H123","uptime":14890,"controllerVersion":"SUS-2.0","type":"ota","purgeableSpaceMB":11965,"mobileAssetsSpaceMB":1500,"rapidSecurityResponseInstalled":"false","systemFsCapacity":6756,"storageCapacity":122070,"rapidSecurityResponseRollback":false,"snapshotApplySize":400,"UUID":"9E96F52F-EC34-41C2-8F27XXXX>>>>>4A39","systemFsFree":0,"currentProductVersionExtra":"unknown","result":"success","targetOSVersion":"23C55","rapidSecurityResponseCombo":false,"brainVersion":"23C55","event":"preflightWakeup","dataFsFree":91543,"updateDownloaded":"NO","currentOSType":"user","AutoDownload":"ON","deviceClass":"iPhone","dataFsCapacity":115186}]}
+16f2d3000 : UMEventSubmitter: -[UMEventSubmitter _defaultSession]: Setting waitsForConnectivity to true for splunk eventSubmission..
+
+16f35f000 : session (null) didReceiveChallenge
+16f477000 : 1 events successfully submitted
+16f35f000 : session (null) became invalid: (null)
+1ff2b8200 : currentOSType indicated as nil. Overriding it to be BootedOSReleaseTypeUnknown
+1ff2b8200 : Pallas is enabled
+1ff2b8200 : SU configuration:
+ Asset Audience XXXX>>>>>>-6e8f-4908-b724XXXX>>>>>5e5c
+ SU Asset URL: https://mesu.apple.com/assets/
+ Brain URL: https://mesu.apple.com/assets/
+ Documentation URL: https://mesu.apple.com/assets/
+ WatchDocumentation URL: https://mesu.apple.com/assets/
+1ff2b8200 : Dictionary is {
+    BootedOSAssetAudience = "01c1d682-6e8f-4908-b724XXXX>>>>>5e5c";
+    BootedOSBrainURL = "https://mesu.apple.com/assets/";
+    BootedOSDocumentationURL = "https://mesu.apple.com/assets/";
+    BootedOSLanguage = en;
+    BootedOSProductVersion = "18.7.2";
+    BootedOSSUAssetURL = "https://mesu.apple.com/assets/";
+    BootedOSType = BootedOSReleaseTypeUnknown;
+    BootedOSVersion = 22H123;
+    BootedOSWatchDocumentationURL = "https://mesu.apple.com/assets/";
+}
+1ff2b8200 : Saving env data to /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+1ff2b8200 : Updating file permissions
+1ff2b8200 : fixup_permissions_for_bootedos_state_file: Successfully fixed up permissions for /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+16f3eb000 : Client softwareupdateservicesd[586] does not have the 'com.apple.private.softwareupdated-helpers' entitlement
+16f477000 : Permanent update volume present..supportDir will be placed there
+16f477000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16f477000 : generated a new uuid string F2FC1A7D-49F6-47C2-8D04XXXX>>>>>728C
+16f477000 : setting uuid in startRecordingInstall to F2FC1A7D-49F6-47C2-8D04XXXX>>>>>728C
+16f477000 : Permanent update volume present..supportDir will be placed there
+16f477000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16f477000 : Permanent update volume present..supportDir will be placed there
+16f477000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16f477000 : Unable to determine asset audience from defaults. Assuming default audience for build in use
+16f477000 : [-[UMEventRecorder _recordEvent:getPowerLog:information:callback:]] (brainLoad) - {
+    MobileAssetAssetAudience = DefaultAssetAudienceForReleaseTypeuser;
+    UUID = "9E96F52F-EC34-41C2-8F27XXXX>>>>>4A39";
+    batteryIsCharging = 0;
+    batteryLevel = 13;
+    context = "SUS-2.0";
+    controllerVersion = "SUS-2.0";
+    currentBaseOSVersion = 22H123;
+    currentOSType = user;
+    currentOSVersion = 22H123;
+    currentProductVersionExtra = unknown;
+    dataFsCapacity = 115186;
+    dataFsFree = 91731;
+    deviceClass = iPhone;
+    deviceModel = D16AP;
+    eapfsMode = YES;
+    event = brainLoad;
+    eventTime = 1768855166110;
+    installTonight = "[LEGACY]false,autoOff,disabled,fg,toggleAIOn,toggleADOn,toggleAISDFOn,toggleAIRSROn";
+    nonSnapshotApplySize = 400;
+    rapidSecurityResponseInstalled = false;
+    reportVersion = 1;
+    result = success;
+    snapshotApplySize = 400;
+    snapshotPrepareSize = 2905;
+    storageCapacity = 122070;
+    systemFsCapacity = 6756;
+    systemFsFree = 0;
+    targetOSVersion = 23C55;
+    type = ota;
+    uptime = 15707;
+}
+
+16f477000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16f477000 : Sending event to PowerLog: {
+    MobileAssetAssetAudience = DefaultAssetAudienceForReleaseTypeuser;
+    RequestUUID = "58939B5A-BC0B-4C11-928EXXXX>>>>>94BB";
+    UUID = "9E96F52F-EC34-41C2-8F27XXXX>>>>>4A39";
+    batteryIsCharging = 0;
+    batteryLevel = 13;
+    context = "SUS-2.0";
+    controllerVersion = "SUS-2.0";
+    currentBaseOSVersion = 22H123;
+    currentOSType = user;
+    currentOSVersion = 22H123;
+    currentProductVersionExtra = unknown;
+    dataFsCapacity = 115186;
+    dataFsFree = 91731;
+    deviceClass = iPhone;
+    deviceModel = D16AP;
+    eapfsMode = YES;
+    event = 100;
+    eventTime = 1768855166110;
+    installTonight = "[LEGACY]false,autoOff,disabled,fg,toggleAIOn,toggleADOn,toggleAISDFOn,toggleAIRSROn";
+    nonSnapshotApplySize = 400;
+    rapidSecurityResponseInstalled = false;
+    reportVersion = 1;
+    result = success;
+    snapshotApplySize = 400;
+    snapshotPrepareSize = 2905;
+    storageCapacity = 122070;
+    systemFsCapacity = 6756;
+    systemFsFree = 0;
+    targetOSVersion = 23C55;
+    type = ota;
+    uptime = 15707;
+}
+16f3eb000 : submitEventsInBackground running
+16f3eb000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16f3eb000 : -[UMEventRecorder submitEventsInBackground:withOptions:]_block_invoke: Previously submitted events will NOT BE resubmitted
+
+16f3eb000 : Found 1 unsubmitted events in update volume
+16f3eb000 : posting to https://xp.apple.com/report/2/psr_ota length = 927
+16f3eb000 : data = {"clientId":"F2FC1A7D-49F6-47C2-8D04XXXX>>>>>728C","events":[{"installTonight":"[LEGACY]false,autoOff,disabled,fg,toggleAIOn,toggleADOn,toggleAISDFOn,toggleAIRSROn","deviceClass":"iPhone","context":"SUS-2.0","snapshotApplySize":400,"storageCapacity":122070,"systemFsCapacity":6756,"targetOSVersion":"23C55","currentOSVersion":"22H123","eapfsMode":"YES","rapidSecurityResponseInstalled":"false","dataFsCapacity":115186,"currentOSType":"user","reportVersion":1,"type":"ota","event":"brainLoad","nonSnapshotApplySize":400,"systemFsFree":0,"eventTime":"1768855166110","UUID":"9E96F52F-EC34-41C2-8F27XXXX>>>>>4A39","snapshotPrepareSize":2905,"uptime":15707,"batteryIsCharging":false,"batteryLevel":13,"deviceModel":"D16AP","controllerVersion":"SUS-2.0","currentBaseOSVersion":"22H123","result":"success","currentProductVersionExtra":"unknown","MobileAssetAssetAudience":"DefaultAssetAudienceForReleaseTypeuser","dataFsFree":91731}]}
+16f35f000 : session (null) didReceiveChallenge
+16f2d3000 : 1 events successfully submitted
+16f2d3000 : session (null) became invalid: (null)
+16f35f000 : Purge update service connection handler: <dictionary: 0x27c2a66b0> { count = 1, transaction: 0, voucher = 0x0, contents =
+	"XPCErrorDescription" => <string: 0x27c2a6830> { length = 22, contents = "Connection interrupted" }
+}
+208128200 : MSU running in normal env
+208128200 : initializing new event recorder with options: (null)
+208128200 : start
+208128200 : Using NVRAM dictionary from IODeviceTree since there is no key for ota-uuid in there
+
+208128200 : Permanent update volume present..supportDir will be placed there
+208128200 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+208128200 : <UMEventRecorder: 0x1048f7d80>: initializing event recorder with systemMountPoint: (null)
+208128200 : <UMEventRecorder: 0x1048f7d80>: initializing event recorder with dataMountPoint: (null)
+208128200 : <UMEventRecorder: 0x1048f7d80>: initializing event recorder with updateMountPoint: (null)
+208128200 : <UMEventRecorder: 0x1048f7d80>: initializing event recorder with nvramPath: (null)
+208128200 : <UMEventRecorder: 0x1048f7d80>: initializing event recorder with targetOSVersion: 23C55
+208128200 : <UMEventRecorder: 0x1048f7d80>: initializing event recorder with context: (null)
+208128200 : <UMEventRecorder: 0x1048f7d80>: initializing event recorder with baseServerURL: https://xp.apple.com/report
+208128200 : <UMEventRecorder: 0x1048f7d80>: initializing event recorder with uuidXXXX>>>>>>-49F6-47C2-8D04XXXX>>>>>728C
+208128200 : MSU running in normal env
+208128200 : Attempting to gather analytics data for phase : UpdateFinished
+208128200 : add_persistent_target_volume_metrics: nothing to do.
+208128200 : Additional analytics data is {
+}
+208128200 : InstallInProgressAfterApply is false
+
+208128200 : ignoring call to recordPostUpdateEvent when no install is in progress or we haven't performed the apply operation
+208128200 : initializing new submission queue
+16b827000 : submitEventsInBackground running
+208128200 : MSU running in normal env
+16b827000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+208128200 : is_first_boot_after_update: is first boot: NO
+208128200 : retrieve_previous_update_state: found previous update state MSUPreviousUpdateState=1
+208128200 : is_first_boot_after_update: is first boot: NO
+16b827000 : -[UMEventRecorder submitEventsInBackground:withOptions:]_block_invoke: Previously submitted events will NOT BE resubmitted
+
+208128200 : currentOSType indicated as nil. Overriding it to be BootedOSReleaseTypeUnknown
+208128200 : Pallas is enabled
+208128200 : SU configuration:
+ Asset Audience XXXX>>>>>>-6e8f-4908-b724XXXX>>>>>5e5c
+ SU Asset URL: https://mesu.apple.com/assets/
+ Brain URL: https://mesu.apple.com/assets/
+ Documentation URL: https://mesu.apple.com/assets/
+ WatchDocumentation URL: https://mesu.apple.com/assets/
+208128200 : Dictionary is {
+    BootedOSAssetAudience = "01c1d682-6e8f-4908-b724XXXX>>>>>5e5c";
+    BootedOSBrainURL = "https://mesu.apple.com/assets/";
+    BootedOSDocumentationURL = "https://mesu.apple.com/assets/";
+    BootedOSLanguage = en;
+    BootedOSProductVersion = "18.7.2";
+    BootedOSSUAssetURL = "https://mesu.apple.com/assets/";
+    BootedOSType = BootedOSReleaseTypeUnknown;
+    BootedOSVersion = 22H123;
+    BootedOSWatchDocumentationURL = "https://mesu.apple.com/assets/";
+}
+208128200 : Saving env data to /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+208128200 : Updating file permissions
+208128200 : fixup_permissions_for_bootedos_state_file: Successfully fixed up permissions for /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+16b93f000 : Client softwareupdateservicesd[461] does not have the 'com.apple.private.softwareupdated-helpers' entitlement
+16b9cb000 : retrieve_previous_update_state: found previous update state MSUPreviousUpdateState=1
+16b9cb000 : Client softwareupdateservicesd[461] does not have the 'com.apple.private.softwareupdated-helpers' entitlement
+16b9cb000 : The secure object length value is: 1439
+16b9cb000 : Caller has pased in downloadOptions: MADownloadOptions allowsCellular: 1 resourceTimeout: -1 canUseCacheServer: 0 discretionary: 0 disableUI: 0 sessionId: (null) additionalServerParams:{ } allowsExpensiveAccess:1 requiresPowerPluggedIn: 0 prefersInfraWiFi: 1 liveServerOnly: 0 DownloadAuthorizationHeader: not present analyticsData: not present allowDaemonConnectionRetries: 0  + MAMsuDownloadOptions reqProdVersion: (null) delayPeriod: 0 managedDevice: 0 allowSameVersion: 0 prereqBuild: (null) prereqVersion: (null) prereqReleaseType: (default) liveAssetAudienceUUID: (null) purpose: (null)
+16b9cb000 : The attributes are: {
+    ActualMinimumSystemPartition = 7855;
+    AssetType = "com.apple.MobileAsset.SoftwareUpdate";
+    Build = 23C55;
+    CryptexSizeInfo =     (
+                {
+            CryptexSize = 14;
+            CryptexTag = "cryptex-app";
+        },
+                {
+            CryptexSize = 4740;
+            CryptexTag = "cryptex-system-arm64e";
+        }
+    );
+    DisablePreSoftwareUpdateAssetStaging = 1;
+    EAPFSEnabled = 1;
+    GranularRampingLogic =     (
+                {
+            BgPct = 100;
+            FgPct = 0;
+            Hour = 0;
+        },
+                {
+            BgPct = 90;
+            FgPct = 0;
+            Hour = 24;
+        },
+                {
+            BgPct = 75;
+            FgPct = 0;
+            Hour = 48;
+        },
+                {
+            BgPct = 60;
+            FgPct = 0;
+            Hour = 72;
+        },
+                {
+            BgPct = 45;
+            FgPct = 0;
+            Hour = 96;
+        },
+                {
+            BgPct = 30;
+            FgPct = 0;
+            Hour = 120;
+        },
+                {
+            BgPct = 15;
+            FgPct = 0;
+            Hour = 144;
+        },
+                {
+            BgPct = 0;
+            FgPct = 0;
+            Hour = 168;
+        }
+    );
+    InstallationSize = 0;
+    "InstallationSize-Snapshot" = 3380115899;
+    MinimumSystemPartition = 7907;
+    OSVersion = "9.9.26.2";
+    RSEPDigest = {length = 48, bytes = 0xfdce1dcd 2481d5e1 8deff48a a7fde053 ... 5d23c686 1a8cfb01 };
+    RSEPTBMDigests = "+QjCSRLkEjqHeeyGBhtxZncZOp4WSo6Lg3JACle4PAjx0350rasWGiIa0GoSVHS0\ne2qpbJ0j31w5oMvjkDiRE7LO5rYX8S1EXf7YYjCmBNsys3WAYZEFEaUK+APpkwEN\nVQSlNtSJ11V7fMOqRn3hBimWAasYhSLJkvzpZn5rM0LeTl1blUklQlML0wwGLs8N\nS9FgZx523ooiNklRp3FlKskKhZhD0RXazOBKz2iHCsXyIxGHX3le9RIwm6u7JdNd\ni+aEqnBNZBhF1BDvLfnk5epmTLkHEFR38zpsoyget6hxFUhNJvOjLrR6dMe8twkE";
+    Ramp = 0;
+    RestoreVersion = "23.3.55.0.0,0";
+    RestoreVersionInfo =     {
+        RestoreBuildGroup = 0;
+        RestoreLongVersion = "23.3.55.0.0,0";
+        RestoreVersion = "23.3.55.0.0";
+    };
+    SEPDigest = {length = 48, bytes = 0xba765789 fa3dc1de f7395d36 44b5b084 ... adcc8c33 d4c52c1f };
+    SEPTBMDigests = "jvieTe6iwXk8WO9o0YCmmeNOkQu22FTpdD6XxVMs+qYQ1YQf7LlTFMWrYieaHsr9\nbEhaf2PPvZQvwH1YwPkIHf/XwS6Bxlz9+mrM4rmjIKLSaxQHmabEnIhF8SOSFwh0\nghL9EQNepOsCf+o63efQCFNEbanw2oMTuz2xNA/G+E2cnQ0YWWxkunVWSqRGzuBC\n8Tcba9ffJPM0cydBMTvvpNJUtmQHUsVeL9k2/Lb05B8PTdiw6Qo4kK/4OrrPj6jL\nNtGCzUgYWg+ucv3DW8FRWMBQDJ0XpwRbYRFu7wGKzBdmemrnK2hquK+J6yIuEoc4";
+    SUConvReqd = 1;
+    SUDocumentationID = iOS262Long;
+    SUInstallTonightEnabled = 1;
+    SUMultiPassEnabled = 1;
+    SUProductSystemName = iOS;
+    SUPublisher = "Apple Inc.";
+    SupportedDeviceModels =     (
+        D16AP
+    );
+    SupportedDevices =     (
+        "iPhone14,4"
+    );
+    SystemPartitionPadding =     {
+        1024 = 1280;
+        128 = 1280;
+        16 = 160;
+        256 = 1280;
+        32 = 320;
+        512 = 1280;
+        64 = 640;
+        768 = 1280;
+        8 = 80;
+    };
+    SystemVolumeSealingOverhead = 221;
+    TrainName = LuckC;
+    "_CompressionAlgorithm" = zip;
+    "_DownloadSize" = 7767768272;
+    "_EventRecordingServiceURL" = "https://xp.apple.com/report";
+    "_IsZipStreamable" = 1;
+    "_MasteredVersion" = 55;
+    "_Measurement" = {length = 20, bytes = 0x<<<<<<<<<<<<<<<<<<UDID>>>>>>>>>>>>>>>>>>};
+    "_Measurement-SHA256" = {length = 32, bytes = 0x902aa08c 798f15bf a90bb1e1 b02fd690 ... d84ca296 28fcb483 };
+    "_MeasurementAlgorithm" = "SHA-1";
+    "_UnarchivedSize" = 7885506560;
+    "__AssetDefaultGarbageCollectionBehavior" = NeverCollected;
+    "__BaseURL" = "https://updates.cdn-apple.com/2025FallFCS/patches/089-90785/9123B3AF-6937-4724-A27CXXXX>>>>>CBBD/";
+    "__CanUseLocalCacheServer" = 1;
+    "__HideInstallAlert" = 0;
+    "__RelativePath" = "com_apple_MobileAsset_SoftwareUpdate/<<<<<<<<<<<<<<<<<<UDID>>>>>>>>>>>>>>>>>>.zip";
+}
+16b93f000 : Setting targetBrainVersion to 23C55
+16b93f000 : Sending load complete without error
+16b93f000 : Entering handle_brain_is_loadable
+16b93f000 : Permanent update volume present..supportDir will be placed there
+16b93f000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16b93f000 : setting uuid in startRecordingInstall to 9E96F52F-EC34-41C2-8F27XXXX>>>>>4A39
+16b93f000 : Permanent update volume present..supportDir will be placed there
+16b93f000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16b93f000 : Permanent update volume present..supportDir will be placed there
+16b93f000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16b93f000 : Unable to determine asset audience from defaults. Assuming default audience for build in use
+16b93f000 : [-[UMEventRecorder _recordEvent:getPowerLog:information:callback:]] (brainLoad) - {
+    MobileAssetAssetAudience = DefaultAssetAudienceForReleaseTypeuser;
+    batteryIsCharging = 1;
+    batteryLevel = 13;
+    currentBaseOSVersion = 22H123;
+    currentOSType = user;
+    currentOSVersion = 22H123;
+    currentProductVersionExtra = unknown;
+    dataFsCapacity = 115185;
+    dataFsFree = 93817;
+    deviceClass = iPhone;
+    deviceModel = D16AP;
+    eapfsMode = YES;
+    event = brainLoad;
+    eventTime = 1768856262296;
+    nonSnapshotApplySize = 400;
+    rapidSecurityResponseInstalled = false;
+    reportVersion = 1;
+    result = success;
+    snapshotApplySize = 400;
+    snapshotPrepareSize = 2905;
+    snapshotUpdate = true;
+    storageCapacity = 122070;
+    systemFsCapacity = 6758;
+    systemFsFree = 0;
+    targetBrainVersion = 23C55;
+    targetOSVersion = 23C55;
+    type = ota;
+    uptime = 207;
+}
+
+16b93f000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16b93f000 : Sending event to PowerLog: {
+    MobileAssetAssetAudience = DefaultAssetAudienceForReleaseTypeuser;
+    RequestUUID = "F55D9784-087D-4A65-AEE8XXXX>>>>>F90A";
+    batteryIsCharging = 1;
+    batteryLevel = 13;
+    currentBaseOSVersion = 22H123;
+    currentOSType = user;
+    currentOSVersion = 22H123;
+    currentProductVersionExtra = unknown;
+    dataFsCapacity = 115185;
+    dataFsFree = 93817;
+    deviceClass = iPhone;
+    deviceModel = D16AP;
+    eapfsMode = YES;
+    event = 100;
+    eventTime = 1768856262296;
+    nonSnapshotApplySize = 400;
+    rapidSecurityResponseInstalled = false;
+    reportVersion = 1;
+    result = success;
+    snapshotApplySize = 400;
+    snapshotPrepareSize = 2905;
+    snapshotUpdate = true;
+    storageCapacity = 122070;
+    systemFsCapacity = 6758;
+    systemFsFree = 0;
+    targetBrainVersion = 23C55;
+    targetOSVersion = 23C55;
+    type = ota;
+    uptime = 207;
+}
+16b9cb000 : submitEventsInBackground running
+16b9cb000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16b9cb000 : -[UMEventRecorder submitEventsInBackground:withOptions:]_block_invoke: Previously submitted events will NOT BE resubmitted
+
+16b9cb000 : Found 1 unsubmitted events in update volume
+16b9cb000 : posting to https://xp.apple.com/report/2/psr_ota length = 778
+16b9cb000 : data = {"clientId":"9E96F52F-EC34-41C2-8F27XXXX>>>>>4A39","events":[{"snapshotApplySize":400,"deviceClass":"iPhone","targetOSVersion":"23C55","storageCapacity":122070,"systemFsCapacity":6758,"targetBrainVersion":"23C55","currentOSVersion":"22H123","eapfsMode":"YES","rapidSecurityResponseInstalled":"false","dataFsCapacity":115185,"currentOSType":"user","reportVersion":1,"type":"ota","event":"brainLoad","nonSnapshotApplySize":400,"systemFsFree":0,"eventTime":"1768856262296","snapshotPrepareSize":2905,"snapshotUpdate":"true","uptime":207,"batteryLevel":13,"deviceModel":"D16AP","batteryIsCharging":true,"currentBaseOSVersion":"22H123","result":"success","currentProductVersionExtra":"unknown","MobileAssetAssetAudience":"DefaultAssetAudienceForReleaseTypeuser","dataFsFree":93817}]}
+16b8b3000 : Unable to determine asset audience from defaults. Assuming default audience for build in use
+16b8b3000 : [-[UMEventRecorder _recordEvent:getPowerLog:information:callback:]] (purge) - {
+    MobileAssetAssetAudience = DefaultAssetAudienceForReleaseTypeuser;
+    batteryIsCharging = 1;
+    batteryLevel = 13;
+    currentBaseOSVersion = 22H123;
+    currentOSType = user;
+    currentOSVersion = 22H123;
+    currentProductVersionExtra = unknown;
+    dataFsCapacity = 115185;
+    dataFsFree = 93817;
+    deviceClass = iPhone;
+    deviceModel = D16AP;
+    eapfsMode = YES;
+    event = purge;
+    eventTime = 1768856262321;
+    nonSnapshotApplySize = 400;
+    rapidSecurityResponseInstalled = false;
+    reportVersion = 1;
+    snapshotApplySize = 400;
+    snapshotPrepareSize = 2905;
+    snapshotUpdate = true;
+    storageCapacity = 122070;
+    systemFsCapacity = 6758;
+    systemFsFree = 0;
+    targetOSVersion = 23C55;
+    type = ota;
+    uptime = 207;
+}
+
+16b8b3000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16b8b3000 : Sending event to PowerLog: {
+    MobileAssetAssetAudience = DefaultAssetAudienceForReleaseTypeuser;
+    RequestUUID = "4B14948E-2311-4945-ACF2XXXX>>>>>FB3B";
+    batteryIsCharging = 1;
+    batteryLevel = 13;
+    currentBaseOSVersion = 22H123;
+    currentOSType = user;
+    currentOSVersion = 22H123;
+    currentProductVersionExtra = unknown;
+    dataFsCapacity = 115185;
+    dataFsFree = 93817;
+    deviceClass = iPhone;
+    deviceModel = D16AP;
+    eapfsMode = YES;
+    event = 0;
+    eventTime = 1768856262321;
+    nonSnapshotApplySize = 400;
+    rapidSecurityResponseInstalled = false;
+    reportVersion = 1;
+    snapshotApplySize = 400;
+    snapshotPrepareSize = 2905;
+    snapshotUpdate = true;
+    storageCapacity = 122070;
+    systemFsCapacity = 6758;
+    systemFsFree = 0;
+    targetOSVersion = 23C55;
+    type = ota;
+    uptime = 207;
+}
+16b827000 : session (null) didReceiveChallenge
+16bae3000 : 1 events successfully submitted
+16bae3000 : session (null) became invalid: (null)
+16b93f000 : submitEventsInBackground running
+16b93f000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16b93f000 : -[UMEventRecorder submitEventsInBackground:withOptions:]_block_invoke: Previously submitted events will NOT BE resubmitted
+
+16b93f000 : Found 1 unsubmitted events in update volume
+16b93f000 : posting to https://xp.apple.com/report/2/psr_ota length = 726
+16b93f000 : data = {"clientId":"9E96F52F-EC34-41C2-8F27XXXX>>>>>4A39","events":[{"snapshotApplySize":400,"deviceClass":"iPhone","targetOSVersion":"23C55","storageCapacity":122070,"systemFsCapacity":6758,"currentOSVersion":"22H123","eapfsMode":"YES","rapidSecurityResponseInstalled":"false","dataFsCapacity":115185,"currentOSType":"user","reportVersion":1,"type":"ota","event":"purge","nonSnapshotApplySize":400,"systemFsFree":0,"eventTime":"1768856262321","snapshotPrepareSize":2905,"snapshotUpdate":"true","batteryIsCharging":true,"batteryLevel":13,"deviceModel":"D16AP","currentBaseOSVersion":"22H123","uptime":207,"currentProductVersionExtra":"unknown","MobileAssetAssetAudience":"DefaultAssetAudienceForReleaseTypeuser","dataFsFree":93817}]}
+16b827000 : session (null) didReceiveChallenge
+16bae3000 : 1 events successfully submitted
+16bae3000 : session (null) became invalid: (null)
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM ota-uuid not found..Nothing to do
+
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM ota-result not found..Nothing to do
+
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM ota-failure-reason not found..Nothing to do
+
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM ota-breadcrumbs not found..Nothing to do
+
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM ota-submission-url not found..Nothing to do
+
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM ota-os-version not found..Nothing to do
+
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM ota-original-os-version not found..Nothing to do
+
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM ota-original-base-os-version not found..Nothing to do
+
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM ota-install-tonight not found..Nothing to do
+
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM ota-context not found..Nothing to do
+
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM ota-brain-version not found..Nothing to do
+
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-pre-conversion not found..Nothing to do
+
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-post-conversion not found..Nothing to do
+
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM ota-conv-panic-indicator not found..Nothing to do
+
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-fsck-metrics not found..Nothing to do
+
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-sealvolume-metrics not found..Nothing to do
+
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-migrator-metrics not found..Nothing to do
+
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM OTA-converter-metrics not found..Nothing to do
+
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM ota-forced-reset-uptime not found..Nothing to do
+
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM ota-initial-forced-reset-uptime not found..Nothing to do
+
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM ramrod-nvram-sequence not found..Nothing to do
+
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM ota-snapshot-update not found..Nothing to do
+
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM pre-recovery-ota-failure-uuid not found..Nothing to do
+
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM recoveryos-initiated-update not found..Nothing to do
+
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM ota-controllerVersion not found..Nothing to do
+
+16b93f000 : msu_delete_nvram_variable_if_exists: NVRAM ota-updateType not found..Nothing to do
+
+16b93f000 : Permanent update volume present..supportDir will be placed there
+16b93f000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16b8b3000 : Client softwareupdateservicesd[461] does not have the 'com.apple.private.softwareupdated-helpers' entitlement
+16b8b3000 : The secure object length value is: 1439
+16b8b3000 : Caller has pased in downloadOptions: MADownloadOptions allowsCellular: 1 resourceTimeout: -1 canUseCacheServer: 0 discretionary: 0 disableUI: 0 sessionId: (null) additionalServerParams:{ } allowsExpensiveAccess:1 requiresPowerPluggedIn: 0 prefersInfraWiFi: 1 liveServerOnly: 0 DownloadAuthorizationHeader: not present analyticsData: not present allowDaemonConnectionRetries: 0  + MAMsuDownloadOptions reqProdVersion: (null) delayPeriod: 0 managedDevice: 0 allowSameVersion: 0 prereqBuild: (null) prereqVersion: (null) prereqReleaseType: (default) liveAssetAudienceUUID: (null) purpose: (null)
+16b8b3000 : The attributes are: {
+    ActualMinimumSystemPartition = 7855;
+    AssetType = "com.apple.MobileAsset.SoftwareUpdate";
+    Build = 23C55;
+    CryptexSizeInfo =     (
+                {
+            CryptexSize = 14;
+            CryptexTag = "cryptex-app";
+        },
+                {
+            CryptexSize = 4740;
+            CryptexTag = "cryptex-system-arm64e";
+        }
+    );
+    DisablePreSoftwareUpdateAssetStaging = 1;
+    EAPFSEnabled = 1;
+    GranularRampingLogic =     (
+                {
+            BgPct = 100;
+            FgPct = 0;
+            Hour = 0;
+        },
+                {
+            BgPct = 90;
+            FgPct = 0;
+            Hour = 24;
+        },
+                {
+            BgPct = 75;
+            FgPct = 0;
+            Hour = 48;
+        },
+                {
+            BgPct = 60;
+            FgPct = 0;
+            Hour = 72;
+        },
+                {
+            BgPct = 45;
+            FgPct = 0;
+            Hour = 96;
+        },
+                {
+            BgPct = 30;
+            FgPct = 0;
+            Hour = 120;
+        },
+                {
+            BgPct = 15;
+            FgPct = 0;
+            Hour = 144;
+        },
+                {
+            BgPct = 0;
+            FgPct = 0;
+            Hour = 168;
+        }
+    );
+    InstallationSize = 0;
+    "InstallationSize-Snapshot" = 3380115899;
+    MinimumSystemPartition = 7907;
+    OSVersion = "9.9.26.2";
+    RSEPDigest = {length = 48, bytes = 0xfdce1dcd 2481d5e1 8deff48a a7fde053 ... 5d23c686 1a8cfb01 };
+    RSEPTBMDigests = "+QjCSRLkEjqHeeyGBhtxZncZOp4WSo6Lg3JACle4PAjx0350rasWGiIa0GoSVHS0\ne2qpbJ0j31w5oMvjkDiRE7LO5rYX8S1EXf7YYjCmBNsys3WAYZEFEaUK+APpkwEN\nVQSlNtSJ11V7fMOqRn3hBimWAasYhSLJkvzpZn5rM0LeTl1blUklQlML0wwGLs8N\nS9FgZx523ooiNklRp3FlKskKhZhD0RXazOBKz2iHCsXyIxGHX3le9RIwm6u7JdNd\ni+aEqnBNZBhF1BDvLfnk5epmTLkHEFR38zpsoyget6hxFUhNJvOjLrR6dMe8twkE";
+    Ramp = 0;
+    RestoreVersion = "23.3.55.0.0,0";
+    RestoreVersionInfo =     {
+        RestoreBuildGroup = 0;
+        RestoreLongVersion = "23.3.55.0.0,0";
+        RestoreVersion = "23.3.55.0.0";
+    };
+    SEPDigest = {length = 48, bytes = 0xba765789 fa3dc1de f7395d36 44b5b084 ... adcc8c33 d4c52c1f };
+    SEPTBMDigests = "jvieTe6iwXk8WO9o0YCmmeNOkQu22FTpdD6XxVMs+qYQ1YQf7LlTFMWrYieaHsr9\nbEhaf2PPvZQvwH1YwPkIHf/XwS6Bxlz9+mrM4rmjIKLSaxQHmabEnIhF8SOSFwh0\nghL9EQNepOsCf+o63efQCFNEbanw2oMTuz2xNA/G+E2cnQ0YWWxkunVWSqRGzuBC\n8Tcba9ffJPM0cydBMTvvpNJUtmQHUsVeL9k2/Lb05B8PTdiw6Qo4kK/4OrrPj6jL\nNtGCzUgYWg+ucv3DW8FRWMBQDJ0XpwRbYRFu7wGKzBdmemrnK2hquK+J6yIuEoc4";
+    SUConvReqd = 1;
+    SUDocumentationID = iOS262Long;
+    SUInstallTonightEnabled = 1;
+    SUMultiPassEnabled = 1;
+    SUProductSystemName = iOS;
+    SUPublisher = "Apple Inc.";
+    SupportedDeviceModels =     (
+        D16AP
+    );
+    SupportedDevices =     (
+        "iPhone14,4"
+    );
+    SystemPartitionPadding =     {
+        1024 = 1280;
+        128 = 1280;
+        16 = 160;
+        256 = 1280;
+        32 = 320;
+        512 = 1280;
+        64 = 640;
+        768 = 1280;
+        8 = 80;
+    };
+    SystemVolumeSealingOverhead = 221;
+    TrainName = LuckC;
+    "_CompressionAlgorithm" = zip;
+    "_DownloadSize" = 7767768272;
+    "_EventRecordingServiceURL" = "https://xp.apple.com/report";
+    "_IsZipStreamable" = 1;
+    "_MasteredVersion" = 55;
+    "_Measurement" = {length = 20, bytes = 0x<<<<<<<<<<<<<<<<<<UDID>>>>>>>>>>>>>>>>>>};
+    "_Measurement-SHA256" = {length = 32, bytes = 0x902aa08c 798f15bf a90bb1e1 b02fd690 ... d84ca296 28fcb483 };
+    "_MeasurementAlgorithm" = "SHA-1";
+    "_UnarchivedSize" = 7885506560;
+    "__AssetDefaultGarbageCollectionBehavior" = NeverCollected;
+    "__BaseURL" = "https://updates.cdn-apple.com/2025FallFCS/patches/089-90785/9123B3AF-6937-4724-A27CXXXX>>>>>CBBD/";
+    "__CanUseLocalCacheServer" = 1;
+    "__HideInstallAlert" = 0;
+    "__RelativePath" = "com_apple_MobileAsset_SoftwareUpdate/<<<<<<<<<<<<<<<<<<UDID>>>>>>>>>>>>>>>>>>.zip";
+}
+16b93f000 : Setting targetBrainVersion to 23C55
+16b93f000 : Sending load complete without error
+16b93f000 : Entering handle_brain_is_loadable
+16b93f000 : brain has been loaded
+16b8b3000 : Purge update service connection handler: <dictionary: 0x2851166b0> { count = 1, transaction: 0, voucher = 0x0, contents =
+	"XPCErrorDescription" => <string: 0x285116830> { length = 22, contents = "Connection interrupted" }
+}
+1f4af0200 : MSU running in normal env
+1f4af0200 : initializing new event recorder with options: (null)
+1f4af0200 : start
+1f4af0200 : Using NVRAM dictionary from IODeviceTree since there is no key for ota-uuid in there
+
+1f4af0200 : Permanent update volume present..supportDir will be placed there
+1f4af0200 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+1f4af0200 : <UMEventRecorder: 0x100eb8020>: initializing event recorder with systemMountPoint: (null)
+1f4af0200 : <UMEventRecorder: 0x100eb8020>: initializing event recorder with dataMountPoint: (null)
+1f4af0200 : <UMEventRecorder: 0x100eb8020>: initializing event recorder with updateMountPoint: (null)
+1f4af0200 : <UMEventRecorder: 0x100eb8020>: initializing event recorder with nvramPath: (null)
+1f4af0200 : <UMEventRecorder: 0x100eb8020>: initializing event recorder with targetOSVersion: 23C55
+1f4af0200 : <UMEventRecorder: 0x100eb8020>: initializing event recorder with context: (null)
+1f4af0200 : <UMEventRecorder: 0x100eb8020>: initializing event recorder with baseServerURL: https://xp.apple.com/report
+1f4af0200 : <UMEventRecorder: 0x100eb8020>: initializing event recorder with uuidXXXX>>>>>>-EC34-41C2-8F27XXXX>>>>>4A39
+1f4af0200 : MSU running in normal env
+1f4af0200 : Attempting to gather analytics data for phase : UpdateFinished
+1f4af0200 : add_persistent_target_volume_metrics: nothing to do.
+1f4af0200 : Additional analytics data is {
+}
+1f4af0200 : InstallInProgressAfterApply is false
+
+1f4af0200 : ignoring call to recordPostUpdateEvent when no install is in progress or we haven't performed the apply operation
+1f4af0200 : initializing new submission queue
+1f4af0200 : MSU running in normal env
+16f42f000 : submitEventsInBackground running
+16f42f000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+1f4af0200 : is_first_boot_after_update: is first boot: NO
+1f4af0200 : retrieve_previous_update_state: found previous update state MSUPreviousUpdateState=1
+1f4af0200 : is_first_boot_after_update: is first boot: NO
+16f42f000 : -[UMEventRecorder submitEventsInBackground:withOptions:]_block_invoke: Previously submitted events will NOT BE resubmitted
+
+1f4af0200 : currentOSType indicated as nil. Overriding it to be BootedOSReleaseTypeUnknown
+1f4af0200 : Pallas is enabled
+1f4af0200 : SU configuration:
+ Asset Audience XXXX>>>>>>-6e8f-4908-b724XXXX>>>>>5e5c
+ SU Asset URL: https://mesu.apple.com/assets/
+ Brain URL: https://mesu.apple.com/assets/
+ Documentation URL: https://mesu.apple.com/assets/
+ WatchDocumentation URL: https://mesu.apple.com/assets/
+1f4af0200 : Dictionary is {
+    BootedOSAssetAudience = "01c1d682-6e8f-4908-b724XXXX>>>>>5e5c";
+    BootedOSBrainURL = "https://mesu.apple.com/assets/";
+    BootedOSDocumentationURL = "https://mesu.apple.com/assets/";
+    BootedOSLanguage = en;
+    BootedOSProductVersion = "18.7.2";
+    BootedOSSUAssetURL = "https://mesu.apple.com/assets/";
+    BootedOSType = BootedOSReleaseTypeUnknown;
+    BootedOSVersion = 22H123;
+    BootedOSWatchDocumentationURL = "https://mesu.apple.com/assets/";
+}
+1f4af0200 : Saving env data to /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+1f4af0200 : Updating file permissions
+1f4af0200 : fixup_permissions_for_bootedos_state_file: Successfully fixed up permissions for /private/var/MobileSoftwareUpdate//Controller/NeRD/BootedOSState.plist
+16f42f000 : Client softwareupdateservicesd[562] does not have the 'com.apple.private.softwareupdated-helpers' entitlement
+16f42f000 : retrieve_previous_update_state: found previous update state MSUPreviousUpdateState=1
+16f42f000 : Client softwareupdateservicesd[562] does not have the 'com.apple.private.softwareupdated-helpers' entitlement
+16f42f000 : The secure object length value is: 1439
+16f42f000 : Caller has pased in downloadOptions: MADownloadOptions allowsCellular: 1 resourceTimeout: -1 canUseCacheServer: 0 discretionary: 0 disableUI: 0 sessionId: (null) additionalServerParams:{ } allowsExpensiveAccess:1 requiresPowerPluggedIn: 0 prefersInfraWiFi: 1 liveServerOnly: 0 DownloadAuthorizationHeader: not present analyticsData: not present allowDaemonConnectionRetries: 0  + MAMsuDownloadOptions reqProdVersion: (null) delayPeriod: 0 managedDevice: 0 allowSameVersion: 0 prereqBuild: (null) prereqVersion: (null) prereqReleaseType: (default) liveAssetAudienceUUID: (null) purpose: (null)
+16f42f000 : The attributes are: {
+    ActualMinimumSystemPartition = 7855;
+    AssetType = "com.apple.MobileAsset.SoftwareUpdate";
+    Build = 23C55;
+    CryptexSizeInfo =     (
+                {
+            CryptexSize = 14;
+            CryptexTag = "cryptex-app";
+        },
+                {
+            CryptexSize = 4740;
+            CryptexTag = "cryptex-system-arm64e";
+        }
+    );
+    DisablePreSoftwareUpdateAssetStaging = 1;
+    EAPFSEnabled = 1;
+    GranularRampingLogic =     (
+                {
+            BgPct = 100;
+            FgPct = 0;
+            Hour = 0;
+        },
+                {
+            BgPct = 90;
+            FgPct = 0;
+            Hour = 24;
+        },
+                {
+            BgPct = 75;
+            FgPct = 0;
+            Hour = 48;
+        },
+                {
+            BgPct = 60;
+            FgPct = 0;
+            Hour = 72;
+        },
+                {
+            BgPct = 45;
+            FgPct = 0;
+            Hour = 96;
+        },
+                {
+            BgPct = 30;
+            FgPct = 0;
+            Hour = 120;
+        },
+                {
+            BgPct = 15;
+            FgPct = 0;
+            Hour = 144;
+        },
+                {
+            BgPct = 0;
+            FgPct = 0;
+            Hour = 168;
+        }
+    );
+    InstallationSize = 0;
+    "InstallationSize-Snapshot" = 3380115899;
+    MinimumSystemPartition = 7907;
+    OSVersion = "9.9.26.2";
+    RSEPDigest = {length = 48, bytes = 0xfdce1dcd 2481d5e1 8deff48a a7fde053 ... 5d23c686 1a8cfb01 };
+    RSEPTBMDigests = "+QjCSRLkEjqHeeyGBhtxZncZOp4WSo6Lg3JACle4PAjx0350rasWGiIa0GoSVHS0\ne2qpbJ0j31w5oMvjkDiRE7LO5rYX8S1EXf7YYjCmBNsys3WAYZEFEaUK+APpkwEN\nVQSlNtSJ11V7fMOqRn3hBimWAasYhSLJkvzpZn5rM0LeTl1blUklQlML0wwGLs8N\nS9FgZx523ooiNklRp3FlKskKhZhD0RXazOBKz2iHCsXyIxGHX3le9RIwm6u7JdNd\ni+aEqnBNZBhF1BDvLfnk5epmTLkHEFR38zpsoyget6hxFUhNJvOjLrR6dMe8twkE";
+    Ramp = 0;
+    RestoreVersion = "23.3.55.0.0,0";
+    RestoreVersionInfo =     {
+        RestoreBuildGroup = 0;
+        RestoreLongVersion = "23.3.55.0.0,0";
+        RestoreVersion = "23.3.55.0.0";
+    };
+    SEPDigest = {length = 48, bytes = 0xba765789 fa3dc1de f7395d36 44b5b084 ... adcc8c33 d4c52c1f };
+    SEPTBMDigests = "jvieTe6iwXk8WO9o0YCmmeNOkQu22FTpdD6XxVMs+qYQ1YQf7LlTFMWrYieaHsr9\nbEhaf2PPvZQvwH1YwPkIHf/XwS6Bxlz9+mrM4rmjIKLSaxQHmabEnIhF8SOSFwh0\nghL9EQNepOsCf+o63efQCFNEbanw2oMTuz2xNA/G+E2cnQ0YWWxkunVWSqRGzuBC\n8Tcba9ffJPM0cydBMTvvpNJUtmQHUsVeL9k2/Lb05B8PTdiw6Qo4kK/4OrrPj6jL\nNtGCzUgYWg+ucv3DW8FRWMBQDJ0XpwRbYRFu7wGKzBdmemrnK2hquK+J6yIuEoc4";
+    SUConvReqd = 1;
+    SUDocumentationID = iOS262Long;
+    SUInstallTonightEnabled = 1;
+    SUMultiPassEnabled = 1;
+    SUProductSystemName = iOS;
+    SUPublisher = "Apple Inc.";
+    SupportedDeviceModels =     (
+        D16AP
+    );
+    SupportedDevices =     (
+        "iPhone14,4"
+    );
+    SystemPartitionPadding =     {
+        1024 = 1280;
+        128 = 1280;
+        16 = 160;
+        256 = 1280;
+        32 = 320;
+        512 = 1280;
+        64 = 640;
+        768 = 1280;
+        8 = 80;
+    };
+    SystemVolumeSealingOverhead = 221;
+    TrainName = LuckC;
+    "_CompressionAlgorithm" = zip;
+    "_DownloadSize" = 7767768272;
+    "_EventRecordingServiceURL" = "https://xp.apple.com/report";
+    "_IsZipStreamable" = 1;
+    "_MasteredVersion" = 55;
+    "_Measurement" = {length = 20, bytes = 0x<<<<<<<<<<<<<<<<<<UDID>>>>>>>>>>>>>>>>>>};
+    "_Measurement-SHA256" = {length = 32, bytes = 0x902aa08c 798f15bf a90bb1e1 b02fd690 ... d84ca296 28fcb483 };
+    "_MeasurementAlgorithm" = "SHA-1";
+    "_UnarchivedSize" = 7885506560;
+    "__AssetDefaultGarbageCollectionBehavior" = NeverCollected;
+    "__BaseURL" = "https://updates.cdn-apple.com/2025FallFCS/patches/089-90785/9123B3AF-6937-4724-A27CXXXX>>>>>CBBD/";
+    "__CanUseLocalCacheServer" = 1;
+    "__HideInstallAlert" = 0;
+    "__RelativePath" = "com_apple_MobileAsset_SoftwareUpdate/<<<<<<<<<<<<<<<<<<UDID>>>>>>>>>>>>>>>>>>.zip";
+}
+16f42f000 : MobileSoftwareUpdateErrorDomain error 812 - Failed to download catalog, MADownloadResult:MADownloadNotConnectedToInternet
+16f42f000 : Setting targetBrainVersion to (null)
+16f42f000 : Failed to install update brain: Error Domain=MobileSoftwareUpdateErrorDomain Code=812 "Failed to download catalog, MADownloadResult:MADownloadNotConnectedToInternet" UserInfo={NSLocalizedDescription=Failed to download catalog, MADownloadResult:MADownloadNotConnectedToInternet, NSUnderlyingError=0xaf002cf90 {Error Domain=com.apple.MobileAssetError.Download Code=65 "Download failed due to there being no Internet connection. (Catalog download for com.apple.MobileAsset.MobileSoftwareUpdate.UpdateBrain)" UserInfo={NSLocalizedDescription=Download failed due to there being no Internet connection. (Catalog download for com.apple.MobileAsset.MobileSoftwareUpdate.UpdateBrain), checkNetwork=true}}}
+16f42f000 : Permanent update volume present..supportDir will be placed there
+16f42f000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16f42f000 : generated a new uuid string 270F168E-9BD0-49B2-AEBCXXXX>>>>>93CE
+16f42f000 : setting uuid in startRecordingInstall to 270F168E-9BD0-49B2-AEBCXXXX>>>>>93CE
+16f42f000 : Permanent update volume present..supportDir will be placed there
+16f42f000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16f42f000 : Permanent update volume present..supportDir will be placed there
+16f42f000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16f42f000 : Unable to determine asset audience from defaults. Assuming default audience for build in use
+16f42f000 : [-[UMEventRecorder _recordEvent:getPowerLog:information:callback:]] (brainLoad) - {
+    MobileAssetAssetAudience = DefaultAssetAudienceForReleaseTypeuser;
+    UUID = "9E96F52F-EC34-41C2-8F27XXXX>>>>>4A39";
+    batteryIsCharging = 1;
+    batteryLevel = 40;
+    context = "SUS-2.0";
+    controllerVersion = "SUS-2.0";
+    currentBaseOSVersion = 22H123;
+    currentOSType = user;
+    currentOSVersion = 22H123;
+    currentProductVersionExtra = unknown;
+    dataFsCapacity = 115185;
+    dataFsFree = 93817;
+    deviceClass = iPhone;
+    deviceModel = D16AP;
+    eapfsMode = YES;
+    event = brainLoad;
+    eventTime = 1768858477543;
+    failureReason = "MSU 812 (Failed to download catalog, MADownloadResult:MADownloadNotConnectedToInternet);com.apple.MobileAssetError.Download 65 (Download failed due to there being no Internet connection. (Catalog download for com.apple.MobileAsset.MobileSoftwareUpdate.UpdateBrain));";
+    installTonight = "[LEGACY]false,autoOff,disabled,fg,toggleAIOn,toggleADOn,toggleAISDFOn,toggleAIRSROn";
+    nonSnapshotApplySize = 400;
+    rapidSecurityResponseInstalled = false;
+    reportVersion = 1;
+    result = "MSU 812";
+    snapshotApplySize = 400;
+    snapshotPrepareSize = 2905;
+    snapshotUpdate = true;
+    storageCapacity = 122070;
+    systemFsCapacity = 6758;
+    systemFsFree = 0;
+    targetOSVersion = 23C55;
+    type = ota;
+    uptime = 316;
+}
+
+16f42f000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint
+16f42f000 : Sending event to PowerLog: {
+    MobileAssetAssetAudience = DefaultAssetAudienceForReleaseTypeuser;
+    RequestUUID = "F029A031-38EC-4811-86FBXXXX>>>>>0B9C";
+    UUID = "9E96F52F-EC34-41C2-8F27XXXX>>>>>4A39";
+    batteryIsCharging = 1;
+    batteryLevel = 40;
+    context = "SUS-2.0";
+    controllerVersion = "SUS-2.0";
+    currentBaseOSVersion = 22H123;
+    currentOSType = user;
+    currentOSVersion = 22H123;
+    currentProductVersionExtra = unknown;
+    dataFsCapacity = 115185;
+    dataFsFree = 93817;
+    deviceClass = iPhone;
+    deviceModel = D16AP;
+    eapfsMode = YES;
+    event = 100;
+    eventTime = 1768858477543;
+    failureReason = "MSU 812 (Failed to download catalog, MADownloadResult:MADownloadNotConnectedToInternet);com.apple.MobileAssetError.Download 65 (Download failed due to there being no Internet connection. (Catalog download for com.apple.MobileAsset.MobileSoftwareUpdate.UpdateBrain));";
+    installTonight = "[LEGACY]false,autoOff,disabled,fg,toggleAIOn,toggleADOn,toggleAISDFOn,toggleAIRSROn";
+    nonSnapshotApplySize = 400;
+    rapidSecurityResponseInstalled = false;
+    reportVersion = 1;
+    result = "MSU 812";
+    snapshotApplySize = 400;
+    snapshotPrepareSize = 2905;
+    snapshotUpdate = true;
+    storageCapacity = 122070;
+    systemFsCapacity = 6758;
+    systemFsFree = 0;
+    targetOSVersion = 23C55;
+    type = ota;
+    uptime = 316;
+}
+16f547000 : submitEventsInBackground running
+16f547000 : -[UMEventRecorder _supportDirectoryWithMountPoint:]: mountPoint is nil...Using /var/MobileSoftwareUpdate as the mountPoint

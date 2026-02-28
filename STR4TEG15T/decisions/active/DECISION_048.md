@@ -16,7 +16,7 @@ The ToolHive MCP Gateway currently aggregates tool definitions from 5 registered
 
 **Current Problem**:
 - Gateway lists 20 tools from 5 servers but returns "Unknown tool" errors on execution
-- Agents must bypass the gateway to use FourEyes, P4NTH30N, and other MCP tools
+- Agents must bypass the gateway to use FourEyes, P4NTHE0N, and other MCP tools
 - The gateway's purpose (unified access) is undermined by the proxy limitation
 
 **Proposed Solution**:
@@ -69,7 +69,7 @@ The gateway transparently proxies the call to the underlying FourEyes MCP server
 
 3. **PROXY-003**: Support stdio transport protocol
    - **Priority**: Must
-   - **Acceptance Criteria**: FourEyes, RAG, P4NTH30N, and Honeybelt servers (all stdio) receive proxied calls
+   - **Acceptance Criteria**: FourEyes, RAG, P4NTHE0N, and Honeybelt servers (all stdio) receive proxied calls
 
 4. **PROXY-004**: Support HTTP transport protocol
    - **Priority**: Must
@@ -147,7 +147,7 @@ if (toolName.includes('.')) {
 | ACT-048-003 | Implement HTTP transport proxy | WindFixer | Pending | High |
 | ACT-048-004 | Add error handling and fallbacks | WindFixer | Pending | High |
 | ACT-048-005 | Test proxy with FourEyes screenshot | WindFixer | Pending | High |
-| ACT-048-006 | Test proxy with P4NTH30N query | WindFixer | Pending | Medium |
+| ACT-048-006 | Test proxy with P4NTHE0N query | WindFixer | Pending | Medium |
 | ACT-048-007 | Update documentation | Librarian | Pending | Low |
 
 ---
@@ -245,7 +245,7 @@ if (toolName.includes('.')) {
 ## Notes
 
 **Implementation Priority**: 
-1. stdio transport (FourEyes, P4NTH30N, Honeybelt)
+1. stdio transport (FourEyes, P4NTHE0N, Honeybelt)
 2. HTTP transport (Decisions server)
 3. Error handling and edge cases
 

@@ -111,7 +111,7 @@
 
 | Data Type | Rule | Action |
 |-----------|------|--------|
-| **File paths** | Replace with relative | `C:\P4NTH30N\C0MMON\...` → `C0MMON/...` |
+| **File paths** | Replace with relative | `C:\P4NTHE0N\C0MMON\...` → `C0MMON/...` |
 | **Line numbers** | Hash or remove | Protect code structure |
 | **Stack traces** | Strip to exception type | Remove implementation details |
 | **Credentials** | REJECT entire document | Never ingest secrets |

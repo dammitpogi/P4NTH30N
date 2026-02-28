@@ -13,7 +13,7 @@ param(
 	[int]$CdpPort = 9222,
 	[string]$MongoHost = "192.168.56.1",
 	[int]$MongoPort = 27017,
-	[string]$H4ndProject = "C:\P4NTH30N\H4ND\H4ND.csproj",
+	[string]$H4ndProject = "C:\P4NTHE0N\H4ND\H4ND.csproj",
 	[switch]$DryRun
 )
 

@@ -508,7 +508,7 @@ public class ProductionMetrics : IProductionMetrics
             .Field("model_inference_ms", metrics.ModelInferenceMs)
             .Timestamp(DateTime.UtcNow, WritePrecision.Ns);
             
-        await _influxClient.WritePointAsync(point, "P4NTH30N");
+        await _influxClient.WritePointAsync(point, "P4NTHE0N");
     }
 }
 

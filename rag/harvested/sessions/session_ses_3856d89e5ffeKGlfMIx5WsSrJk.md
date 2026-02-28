@@ -4,7 +4,7 @@
 **project_id**: 6bca83b670a16680d54ed49b159b2a2eb350d9b2
 **parent_id**: ses_3857f632effer4YjF2rz4zlY94
 **slug**: nimble-meadow
-**directory**: c:\P4NTH30N
+**directory**: c:\P4NTHE0N
 **title**: Apply optimized agent model chains (@fixer subagent)
 **version**: 1.2.8
 **share_url**: NULL

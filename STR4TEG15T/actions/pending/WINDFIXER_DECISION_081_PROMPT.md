@@ -60,7 +60,7 @@ Execute DECISION_081 in four phases:
 - Decision: STR4TEG15T/decisions/active/DECISION_081.md
 - Implementation guide: STR4TEG15T/decisions/active/DESIGNER_IMPLEMENTATION_INPUT.md
 - RAG: http://127.0.0.1:5001 (for pattern queries)
-- Chrome profiles base: C:/ProgramData/P4NTH30N/chrome-profiles/
+- Chrome profiles base: C:/ProgramData/P4NTHE0N/chrome-profiles/
 
 **Report Format**
 After each phase, report:

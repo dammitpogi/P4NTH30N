@@ -12,13 +12,13 @@
 
 ## Executive Summary
 
-Build a C# console executable that deploys agent configurations from the P4NTH30N repository to their runtime locations. Configs are authored and versioned in the repo, then a single exe run pushes them to OpenCode, WindSurf, and ProgramData. This replaces manual copy operations and ensures all environments stay in sync.
+Build a C# console executable that deploys agent configurations from the P4NTHE0N repository to their runtime locations. Configs are authored and versioned in the repo, then a single exe run pushes them to OpenCode, WindSurf, and ProgramData. This replaces manual copy operations and ensures all environments stay in sync.
 
 **Current Problem**:
 - Agent prompts live in C:\Users\paulc\.config\opencode\agents\ but are authored in STR4TEG15T, OPENFIXER, etc.
 - Syncing requires manual file copies that are error-prone and forgotten
-- WindSurf configs at C:\P4NTH30N\.windsurf\ are separate from OpenCode configs
-- RAG.McpHost.exe at C:\ProgramData\P4NTH30N\bin\ must be published manually
+- WindSurf configs at C:\P4NTHE0N\.windsurf\ are separate from OpenCode configs
+- RAG.McpHost.exe at C:\ProgramData\P4NTHE0N\bin\ must be published manually
 - No single command to update everything
 
 **Proposed Solution**:
@@ -47,13 +47,13 @@ Build a C# console executable that deploys agent configurations from the P4NTH30
 ### WindSurf Configs
 | Source (Repo) | Destination (Runtime) |
 |---------------|----------------------|
-| .windsurf/rules.md | C:\P4NTH30N\.windsurf\rules.md |
-| .windsurf/workflows/ | C:\P4NTH30N\.windsurf\workflows/ |
+| .windsurf/rules.md | C:\P4NTHE0N\.windsurf\rules.md |
+| .windsurf/workflows/ | C:\P4NTHE0N\.windsurf\workflows/ |
 
 ### RAG Binary
 | Source (Publish Output) | Destination (Runtime) |
 |-------------------------|----------------------|
-| src/RAG.McpHost/bin/Release/net10.0/publish/ | C:\ProgramData\P4NTH30N\bin\ |
+| src/RAG.McpHost/bin/Release/net10.0/publish/ | C:\ProgramData\P4NTHE0N\bin\ |
 
 ### MCP Config
 | Source (Repo) | Destination (Runtime) |

@@ -15,7 +15,7 @@ tags:
   - greenfield
 ---
 
-# DECISION_096: Rebuild Decisions-Server, MongoDB-P4NTH30N, and RAG-Server for ToolHive-Native Docker Operation
+# DECISION_096: Rebuild Decisions-Server, MongoDB-P4NTHE0N, and RAG-Server for ToolHive-Native Docker Operation
 
 **Decision ID**: REBUILD-096  
 **Category**: INFRA  
@@ -99,7 +99,7 @@ Issues:
 - Error messages are cryptic (stack traces exposed to users)
 ```
 
-#### MongoDB-P4NTH30N
+#### MongoDB-P4NTHE0N
 ```
 Current: Direct MongoDB driver → Custom MCP wrapper → Manual ToolHive config
 Issues:
@@ -138,11 +138,11 @@ Docker-First Design:
 - Prometheus metrics endpoint
 ```
 
-#### MongoDB-P4NTH30N v2 (ToolHive-Native)
+#### MongoDB-P4NTHE0N v2 (ToolHive-Native)
 ```
 Docker-First Design:
 - HTTP/SSE transport with connection pooling
-- Default database resolution (P4NTH30N if not specified)
+- Default database resolution (P4NTHE0N if not specified)
 - MongoDB topology-aware connection (single node vs replica set)
 - Query timeout and cancellation support
 - MCP-compliant error codes (map MongoDB errors)
@@ -290,19 +290,19 @@ From analysis of `toolhive-gateway/src/index.ts` and `toolhive-gateway/src/regis
    - **Relevance**: MCP-DBLP implementation for bibliographic database access
    - **Key Finding**: Natural language interface + direct database access = accuracy + usability
    - **Implementation Insight**: Bypass LLM during final data export for guaranteed accuracy
-   - **For MongoDB-P4NTH30N v2**: Direct MongoDB driver usage with MCP protocol wrapper
+   - **For MongoDB-P4NTHE0N v2**: Direct MongoDB driver usage with MCP protocol wrapper
 
 2. **arXiv:2510.05968** - "Extending ResourceLink: Patterns for Large Dataset Processing in MCP"
    - **Relevance**: ResourceLink patterns for scalable reporting
    - **Key Finding**: Dual-response pattern for iterative query refinement + out-of-band data access
    - **Implementation Insight**: Multi-tenant security and resource lifecycle management patterns
-   - **For MongoDB-P4NTH30N v2**: Implement streaming for large result sets with ResourceLink pattern
+   - **For MongoDB-P4NTHE0N v2**: Implement streaming for large result sets with ResourceLink pattern
 
 3. **arXiv:2509.15957** - "EHR-MCP: Real-world Evaluation of Clinical Information Retrieval"
    - **Relevance**: Production MCP deployment in hospital setting
    - **Key Finding**: Near-perfect accuracy in simple tasks; challenges in complex time-dependent queries
    - **Implementation Insight**: ReAct agent pattern with tool selection and SQL generation
-   - **For MongoDB-P4NTH30N v2**: Support iterative query refinement and complex aggregations
+   - **For MongoDB-P4NTHE0N v2**: Support iterative query refinement and complex aggregations
 
 ### Round 1: Decision Systems Research
 
@@ -666,7 +666,7 @@ Based on MCP specification analysis and ToolHive gateway patterns, all v2 server
 
 ---
 
-### Phase 3: MongoDB-P4NTH30N v2 (Weeks 4-5)
+### Phase 3: MongoDB-P4NTHE0N v2 (Weeks 4-5)
 
 **Objective**: Build new MongoDB MCP server from scratch.
 
@@ -677,7 +677,7 @@ Based on MCP specification analysis and ToolHive gateway patterns, all v2 server
 - **Acceptance Criteria**:
   - Tools: find, findOne, insertOne, insertMany, updateOne, updateMany, deleteOne, deleteMany, aggregate, countDocuments
   - Input validation using Zod schemas
-  - Default database resolution (P4NTH30N if not specified)
+  - Default database resolution (P4NTHE0N if not specified)
   - Collection existence validation before operations
 
 **REQ-096-010**: MongoDB Resilience
@@ -1200,7 +1200,7 @@ describe('REQ-096-026 DNS Rebinding Protection', () => {
 | `servers/decisions-server-v2/tests/unit/**/*.test.ts` | Unit tests |
 | `servers/decisions-server-v2/tests/integration/**/*.test.ts` | Integration tests |
 
-### MongoDB-P4NTH30N v2
+### MongoDB-P4NTHE0N v2
 
 | File | Purpose |
 |------|---------|
@@ -1536,5 +1536,5 @@ This decision explicitly chooses **rebuild** over **refactor** because:
 ---
 
 *Decision REBUILD-096*  
-*Rebuild Decisions-Server and MongoDB-P4NTH30N for ToolHive-Native Docker Operation*  
+*Rebuild Decisions-Server and MongoDB-P4NTHE0N for ToolHive-Native Docker Operation*  
 *2026-02-22*

@@ -47,7 +47,7 @@ STR4TEG15T/
 ## Decision Storage
 
 **Primary**: Markdown files in decisions/active/
-**Persistence**: MongoDB P4NTH30N.decisions collection
+**Persistence**: MongoDB P4NTHE0N.decisions collection
 **Rule**: File first, then database. Both must stay in sync.
 
 ## Consultation Protocol
@@ -79,4 +79,4 @@ canon/ contains proven patterns from past sessions. These are referenced forward
 
 ---
 
-*Part of the P4NTH30N Agent Architecture*
+*Part of the P4NTHE0N Agent Architecture*

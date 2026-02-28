@@ -101,7 +101,7 @@ The 24-hour burn-in failed immediately because Chrome CDP was not running. Manua
 **CdpLifecycleConfig (appsettings.json):**
 ```json
 {
-  "P4NTH30N": {
+  "P4NTHE0N": {
     "H4ND": {
       "CdpLifecycle": {
         "AutoStart": true,
@@ -405,7 +405,7 @@ appsettings.json                  (MODIFY: add CdpLifecycle section)
 - Phase 4 depends on Phase 3
 
 **Validation Criteria:**
-- Chrome auto-starts when running `P4NTH30N.exe burn-in` without manual Chrome startup
+- Chrome auto-starts when running `P4NTHE0N.exe burn-in` without manual Chrome startup
 - Chrome process visible in Task Manager with correct command line
 - Burn-in proceeds after Chrome becomes available
 - Chrome closes when H4ND exits

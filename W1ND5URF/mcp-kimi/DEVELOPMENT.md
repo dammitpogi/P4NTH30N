@@ -26,7 +26,7 @@ This will compile `src/extension.ts` into `out/extension.js`.
 
 1. Open the W1ND5URF folder in VS Code/Windsurf
 2. Press `F5` to launch Extension Development Host
-3. Open your P4NTH30N workspace in the new window
+3. Open your P4NTHE0N workspace in the new window
 4. Navigate to any file with an AGENTS.md nearby
 5. Check the status bar for AGENTS context
 

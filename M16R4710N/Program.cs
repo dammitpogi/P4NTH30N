@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using MongoDB.Driver;
-using P4NTH30N.C0MMON;
+using P4NTHE0N.C0MMON;
 
 namespace M16R4710N
 {
@@ -11,7 +11,7 @@ namespace M16R4710N
 		static async Task Main(string[] args)
 		{
 			var client = new MongoClient("mongodb://localhost:27017");
-			var database = client.GetDatabase("P4NTH30N");
+			var database = client.GetDatabase("P4NTHE0N");
 			var credentials = database.GetCollection<Credential>("CR3D3N7IAL");
 			var jackpots = database.GetCollection<Jackpot>("J4CKP0T");
 

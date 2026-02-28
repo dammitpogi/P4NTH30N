@@ -2,7 +2,7 @@
 
 **Decision ID**: DECISION_113  
 **Category**: ARCH  
-**Status**: InProgress (H4ND Phase 1)  
+**Status**: In Progress (H4ND + H0UND validated; FireKirin rollout pending)  
 **Priority**: Critical  
 **Date**: 2026-02-23  
 **Oracle Approval**: 72% (Models: Oracle - Risk/Performance Analysis)  
@@ -300,14 +300,14 @@ _logger.LogEventAsync(new ChaosEvent {
 | ACT-113-002 | Implement MongoChaosLogger with batch writes and indexes | WindFixer | Pending | Critical |
 | ACT-113-003 | Create [ChaosPoint], [SanityTest], [PerformanceSample] attributes | WindFixer | Pending | Critical |
 | ACT-113-004 | Implement ChaosLoggingConfig and configuration system | WindFixer | Pending | Critical |
-| ACT-113-005 | Instrument H0UND ServiceOrchestrator chaos points | WindFixer | Pending | Critical |
-| ACT-113-006 | Instrument H0UND PollingWorker chaos points | WindFixer | Pending | Critical |
-| ACT-113-007 | Instrument H0UND OrionStarsBalanceProvider chaos points | WindFixer | Pending | Critical |
-| ACT-113-008 | Instrument H0UND.cs main loop chaos points | WindFixer | Pending | Critical |
-| ACT-113-009 | Instrument H4ND LegacyRuntimeHost chaos points | WindFixer | In Progress | Critical |
+| ACT-113-005 | Instrument H0UND ServiceOrchestrator chaos points | WindFixer | Completed (Phase H0UND) | Critical |
+| ACT-113-006 | Instrument H0UND PollingWorker chaos points | WindFixer | Completed (Phase H0UND) | Critical |
+| ACT-113-007 | Instrument H0UND OrionStarsBalanceProvider chaos points | WindFixer | Completed (Phase H0UND) | Critical |
+| ACT-113-008 | Instrument H0UND.cs main loop chaos points | WindFixer | Completed (Phase H0UND) | Critical |
+| ACT-113-009 | Instrument H4ND LegacyRuntimeHost chaos points | WindFixer | Completed (Phase H4ND) | Critical |
 | ACT-113-010 | Instrument H4ND Repositories chaos points | WindFixer | Pending | Critical |
 | ACT-113-011 | Instrument H4ND SignalDistributor chaos points | WindFixer | Pending | Critical |
-| ACT-113-012 | Instrument H4ND ParallelSpinWorker chaos points | WindFixer | In Progress | Critical |
+| ACT-113-012 | Instrument H4ND ParallelSpinWorker chaos points | WindFixer | Completed (Phase H4ND) | Critical |
 | ACT-113-013 | Instrument CdpGameActions FireKirin login chaos points | WindFixer | Pending | Critical |
 | ACT-113-014 | Instrument LoginPhase navigation chaos points | WindFixer | Pending | Critical |
 | ACT-113-015 | Implement adaptive sampling and performance features | WindFixer | Pending | High |
@@ -316,8 +316,8 @@ _logger.LogEventAsync(new ChaosEvent {
 | ACT-113-018 | Performance testing (10,000 events/sec target) | WindFixer | Pending | Medium |
 | ACT-113-019 | Create deployment documentation | OpenFixer | Pending | Medium |
 | ACT-113-020 | Update AGENTS.md with chaos logging guidelines | OpenFixer | Pending | Low |
-| ACT-113-021 | Implement dynamic `_debug` object model (envelope + typed payload) for H4ND error evidence | WindFixer | In Progress | Critical |
-| ACT-113-022 | Wire `IErrorEvidence` service into H4ND runtime hot paths (P0 hotspots first) | WindFixer | In Progress | Critical |
+| ACT-113-021 | Implement dynamic `_debug` object model (envelope + typed payload) for H4ND error evidence | WindFixer | Completed | Critical |
+| ACT-113-022 | Wire `IErrorEvidence` service into H4ND runtime hot paths (P0 hotspots first) | WindFixer | Completed | Critical |
 
 ---
 
@@ -554,6 +554,139 @@ Modify ACT-113-015:
   - `H4ND/Services/SessionRenewalService.cs`
   - `H4ND/Services/SignalGenerator.cs`
 - Priority objective: capture reproducible evidence (`when`, `where`, `exception copy`, `state snapshot`) into `_debug` with correlation context and TTL.
+
+### Implementation Evidence (2026-02-24)
+
+- WindFixer reported Error Evidence System completion for H4ND scope with no regressions.
+- P1 hotspot completed: `H4ND/Services/SignalGenerator.cs` instrumented with `IErrorEvidence`.
+  - `H4ND-SIGGEN-001`: warning capture when no eligible credentials found.
+  - `H4ND-SIGGEN-002`: per-signal insert failure capture with hashed usernames.
+  - `H4ND-SIGGEN-003`: pipeline-level exception capture.
+- Call-site wiring completed in `H4ND/EntryPoint/UnifiedEntryPoint.cs`:
+  - SignalGenerator in GENERATE-SIGNALS mode.
+  - SessionRenewalService in HEALTH, BURN-IN, and PARALLEL modes.
+- Type ambiguity fix completed in:
+  - `H4ND/Services/SignalGenerator.cs`
+  - `H4ND/Services/SessionRenewalService.cs`
+  - using fully qualified `Infrastructure.Logging.ErrorEvidence.ErrorSeverity`.
+- Validation evidence (reported):
+  - Build: 0 errors, 0 warnings (`H4ND`, `UNI7T35T`).
+  - Tests: 508/516 passed, 8 pre-existing failures, 0 regressions.
+- Files modified in final pass (reported):
+  - `H4ND/Services/SignalGenerator.cs`
+  - `H4ND/Services/SessionRenewalService.cs`
+  - `H4ND/EntryPoint/UnifiedEntryPoint.cs`
+- Deployment journal evidence:
+  - `OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_113_H4ND_ERROR_EVIDENCE.md`
+- Closure validation handoff prompt:
+  - `STR4TEG15T/handoffs/DEPLOY_WINDFIXER_DECISION_113_CLOSURE_VALIDATION_v1.txt`
+
+### Closure Validation Snapshot (2026-02-24, One-Pass)
+
+Gate execution summary:
+
+- Gate 1 (fault-injection, 5 hotspots): **Completed via targeted `_debug` fault-injection chains**
+- Gate 2 (TTL/index verification): **Completed with remediation + re-verification**
+- Gate 3 (artifact updates/checklist): **Completed in this pass**
+
+#### Closure Checklist
+
+- [x] Gate 1 executed for all 5 requested hotspots.
+- [x] `_debug` records reconstruct event chains by both `sessionId` and `correlationId`.
+- [x] Gate 2 required indexes verified present.
+- [x] Missing `_debug` runtime collection remediated by creating collection + required indexes.
+- [x] Decision/journal artifacts updated with matrices and residual risks.
+
+#### Gate 1 Fault-Injection Matrix
+
+| Hotspot | Scenario | Expected Failure | `_debug` Docs | Sample Chain (event order) | Result |
+|---|---|---|---:|---|---|
+| `LegacyRuntimeHost.cs:260-263` | `HS1_EARLY_ACK_PATH` | Ack observed before authoritative path | 3 | `scope_start -> ack_observed_preprocess -> fault_injected_expected` | PASS |
+| `LegacyRuntimeHost.cs:578-601` | `HS2_UNLOCK_BEFORE_PERSIST` | Unlock/persist race window | 3 | `scope_start -> unlock_called -> persist_failed_window` | PASS |
+| `SpinExecution.cs:53` | `HS3_ACK_OWNERSHIP_OVERLAP` | Ack ownership overlap before authoritative ack | 3 | `scope_start -> ack_observed_before_authoritative_ack -> spin_failed_expected` | PASS |
+| `LegacyRuntimeHost.cs:482,507,532,557` | `HS4_DELETEALL_BRANCH` | `DeleteAll` branch anomaly path | 3 | `scope_start -> deleteall_branch_entered -> branch_fault_injected` | PASS |
+| `ParallelSpinWorker.cs:218-220,235-237` | `HS5_RETRY_CLAIM_RELEASE` | Retry path with claim-release failure | 3 | `scope_start -> retry_path_entered -> claim_release_failed_expected` | PASS |
+
+#### Gate 2 Index/TTL Matrix
+
+| Required Index | Expected Definition | Observed | Result |
+|---|---|---|---|
+| TTL on `expiresAt` | `{ expiresAt: 1 }`, `expireAfterSeconds: 0` | `idx_debug_expiresAt_ttl` with `expireAfterSeconds: 0` | PASS |
+| Session chain index | `{ sessionId: 1, capturedAt: -1 }` | `idx_debug_session_capturedAt` | PASS |
+| Correlation chain index | `{ correlationId: 1, capturedAt: -1 }` | `idx_debug_correlation_capturedAt` (`sparse: true`) | PASS |
+| Component/operation index | `{ component: 1, operation: 1, capturedAt: -1 }` | `idx_debug_component_operation_capturedAt` | PASS |
+| Error code index | `{ errorCode: 1, capturedAt: -1 }` | `idx_debug_errorCode_capturedAt` (`sparse: true`) | PASS |
+
+Remediation applied during Gate 2:
+
+- `_debug` collection did not exist in runtime DB.
+- Created `_debug` and all 5 required indexes.
+- Re-ran index verification; all required indexes present.
+
+#### Remaining Risk Items
+
+| Risk | Owner | Next Action |
+|---|---|---|
+| Runtime-path native hotspot harness delivered and executed in `UNI7T35T`; all five hotspot scenarios passed with expected `errorCode` + chain reconstruction evidence (`--decision113-only`). | WindFixer/OpenFixer | Closed on 2026-02-24 (no further action). |
+| Mongo-unavailable graceful-degradation behavior validated with deterministic outage simulation and recovery evidence (`--decision113-outage-only`). | OpenFixer | Closed on 2026-02-24 (no further action). |
+
+Residual blocker deployment prompts:
+
+- `STR4TEG15T/handoffs/DEPLOY_WINDFIXER_DECISION_113_RUNTIME_HARNESS_v1.txt`
+- `STR4TEG15T/handoffs/DEPLOY_OPENFIXER_DECISION_113_MONGO_OUTAGE_VALIDATION_v1.txt`
+
+Next phase deployment prompt:
+
+- `STR4TEG15T/handoffs/DEPLOY_WINDFIXER_DECISION_113_H0UND_ROLLOUT_v1.txt`
+- `STR4TEG15T/handoffs/DEPLOY_WINDFIXER_DECISION_113_FIREKIRIN_ROLLOUT_v1.txt`
+
+### Residual Blocker #1 Execution (2026-02-24)
+
+- Implemented deterministic runtime-native hotspot harness in `UNI7T35T/H4ND/Decision113/HotspotFaultHarnessTests.cs`.
+- Added targeted test runner switch in `UNI7T35T/Program.cs`: `--decision113-only`.
+- Execution command: `dotnet run --project UNI7T35T/UNI7T35T.csproj -- --decision113-only`.
+- Native harness matrix: `HS1=PASS`, `HS2=PASS`, `HS3=PASS`, `HS4=PASS`, `HS5=PASS`.
+- Verified per-scenario expectations: hotspot `errorCode` markers present, session/correlation chain continuity valid, and envelope fields (`capturedAt`, `location`, `exception`) present.
+
+### Residual Blocker #2 Execution (2026-02-24)
+
+- Implemented bounded Mongo outage degradation validator in `UNI7T35T/H4ND/Decision113/MongoOutageDegradationTests.cs`.
+- Added targeted runner switch in `UNI7T35T/Program.cs`: `--decision113-outage-only`.
+- Execution command: `dotnet run --project UNI7T35T/UNI7T35T.csproj -- --decision113-outage-only`.
+- Outage method used: controlled `_debug` sink unavailability simulation via gated repository fault injection (`InsertManyAsync` throws timeout) while keeping runtime path active.
+- Timeline (UTC):
+  - baseline: `2026-02-24T11:14:41.3205764Z -> 2026-02-24T11:14:43.4152155Z`
+  - outage: `2026-02-24T11:14:43.4152155Z -> 2026-02-24T11:14:46.8343395Z`
+  - recovery: `2026-02-24T11:14:46.8343396Z -> 2026-02-24T11:14:48.8389924Z`
+- Counter evidence (outage window):
+  - `enqueued=300`, `written=0`, `droppedQueue=0`, `droppedSink=128`, `enabled=True`
+  - operational logs: `sink failure dropped` lines=`26`, `summary enqueued` lines=`3`
+- Stability outcome: **PASS** (`stable=True`, `nonBlocking=True`, no crash/hard block).
+- Recovery outcome: **PASS** (post-outage `_debug` writes observed: `recovery writes=24`).
+
+### H0UND Rollout Execution (2026-02-24)
+
+- Implemented H0UND error-evidence rollout for DECISION_113 hotspots:
+  - `H0UND/Services/Orchestration/ServiceOrchestrator.cs`
+  - `H0UND/Application/Polling/PollingWorker.cs`
+  - `H0UND/Infrastructure/Polling/OrionStarsBalanceProvider.cs`
+  - `H0UND/H0UND.cs`
+  - `H0UND/Infrastructure/Polling/BalanceProviderFactory.cs`
+  - `H0UND/H0UND.csproj` (error-evidence stack reference)
+- Added deterministic sampling for non-critical polling warnings via stable-key modulus sampling.
+- Added 100% capture for errors + invariant failures in orchestrator, polling, and main-loop boundaries.
+- Added H0UND rollout validation harness:
+  - `UNI7T35T/H0UND/Decision113/H0UNDErrorEvidenceRolloutTests.cs`
+  - `UNI7T35T/Program.cs` switch: `--decision113-h0und-only`
+- Validation command:
+  - `dotnet run --project UNI7T35T/UNI7T35T.csproj -- --decision113-h0und-only`
+- PASS matrix:
+  - `ServiceOrchestrator=PASS`
+  - `PollingWorker=PASS`
+  - `OrionStarsBalanceProvider=PASS`
+  - `H0UND.Main=PASS`
+- `_debug` chain reconstruction validated by `sessionId` + `correlationId` for scenarios:
+  - `H0UND_ORCH`, `H0UND_POLL`, `H0UND_ORION`, `H0UND_MAIN`
 
 **Design Document Reference**: `STR4TEG15T/designs/DESIGN_051_CHAOS_LOGGING_ARCHITECTURE.md` (2,200 lines)
 

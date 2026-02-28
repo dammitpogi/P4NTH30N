@@ -8,7 +8,7 @@ services:
     tty: true
     environment:
       # MongoDB connection using host.docker.internal which maps to host
-      - MONGODB_URI=mongodb://host.docker.internal:27017/P4NTH30N
+      - MONGODB_URI=mongodb://host.docker.internal:27017/P4NTHE0N
       - MCP_TRANSPORT=stdio
       # Additional config for Node.js to properly resolve host.docker.internal
       - NODE_OPTIONS=--dns-result-order=ipv4first

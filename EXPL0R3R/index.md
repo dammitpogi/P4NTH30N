@@ -76,4 +76,4 @@ Explorer → reports → Strategist, Designer, Oracle
 
 ---
 
-*Part of the P4NTH30N Agent Architecture*
+*Part of the P4NTHE0N Agent Architecture*

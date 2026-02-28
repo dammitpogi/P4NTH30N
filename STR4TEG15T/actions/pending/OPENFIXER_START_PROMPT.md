@@ -25,7 +25,7 @@ Complete RAG-001 Oracle condition #3 (Python bridge) and deploy to OpenCode envi
 
 2. **Create model directory**:
    ```powershell
-   New-Item -ItemType Directory -Force -Path "C:\ProgramData\P4NTH30N\models"
+   New-Item -ItemType Directory -Force -Path "C:\ProgramData\P4NTHE0N\models"
    ```
 
 ### Phase 2: Download ONNX Model (10 min)
@@ -34,29 +34,29 @@ Complete RAG-001 Oracle condition #3 (Python bridge) and deploy to OpenCode envi
 
 ```powershell
 # Option 1: Using huggingface-cli (if available)
-huggingface-cli download sentence-transformers/all-MiniLM-L6-v2 --local-dir "C:\ProgramData\P4NTH30N\models\all-MiniLM-L6-v2"
+huggingface-cli download sentence-transformers/all-MiniLM-L6-v2 --local-dir "C:\ProgramData\P4NTHE0N\models\all-MiniLM-L6-v2"
 
 # Option 2: Direct download (manual)
 # Download from: https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/tree/main/onnx
 # Files needed:
-# - model.onnx → C:\ProgramData\P4NTH30N\models\all-MiniLM-L6-v2.onnx
-# - config.json → C:\ProgramData\P4NTH30N\models\config.json
-# - tokenizer.json → C:\ProgramData\P4NTH30N\models\tokenizer.json
+# - model.onnx → C:\ProgramData\P4NTHE0N\models\all-MiniLM-L6-v2.onnx
+# - config.json → C:\ProgramData\P4NTHE0N\models\config.json
+# - tokenizer.json → C:\ProgramData\P4NTHE0N\models\tokenizer.json
 
 # Verify download:
-Test-Path "C:\ProgramData\P4NTH30N\models\all-MiniLM-L6-v2.onnx"
+Test-Path "C:\ProgramData\P4NTHE0N\models\all-MiniLM-L6-v2.onnx"
 ```
 
 ### Phase 3: Python Bridge Service (30 min)
 
 **Create directory structure**:
 ```powershell
-New-Item -ItemType Directory -Force -Path "C:\P4NTH30N\src\RAG\PythonBridge"
+New-Item -ItemType Directory -Force -Path "C:\P4NTHE0N\src\RAG\PythonBridge"
 ```
 
 **Create embedding_bridge.py**:
 ```python
-# C:\P4NTH30N\src\RAG\PythonBridge\embedding_bridge.py
+# C:\P4NTHE0N\src\RAG\PythonBridge\embedding_bridge.py
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import onnxruntime as ort
@@ -69,11 +69,11 @@ import time
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-app = FastAPI(title="P4NTH30N RAG Embedding Bridge")
+app = FastAPI(title="P4NTHE0N RAG Embedding Bridge")
 
 # Configuration
-MODEL_PATH = Path("C:/ProgramData/P4NTH30N/models/all-MiniLM-L6-v2.onnx")
-TOKENIZER_PATH = Path("C:/ProgramData/P4NTH30N/models/tokenizer.json")
+MODEL_PATH = Path("C:/ProgramData/P4NTHE0N/models/all-MiniLM-L6-v2.onnx")
+TOKENIZER_PATH = Path("C:/ProgramData/P4NTHE0N/models/tokenizer.json")
 PORT = 5000
 
 # Global model session
@@ -212,14 +212,14 @@ pydantic==2.6.0
 
 **Install dependencies**:
 ```powershell
-cd C:\P4NTH30N\src\RAG\PythonBridge
+cd C:\P4NTHE0N\src\RAG\PythonBridge
 pip install -r requirements.txt
 ```
 
 **Test Python bridge**:
 ```powershell
 # Start service
-python C:\P4NTH30N\src\RAG\PythonBridge\embedding_bridge.py
+python C:\P4NTHE0N\src\RAG\PythonBridge\embedding_bridge.py
 
 # In another terminal, test:
 Invoke-RestMethod -Uri "http://localhost:5000/health" -Method GET
@@ -230,7 +230,7 @@ Invoke-RestMethod -Uri "http://localhost:5000/health" -Method GET
 
 **Create PythonEmbeddingClient.cs**:
 ```csharp
-// C:\P4NTH30N\src\RAG\PythonEmbeddingClient.cs
+// C:\P4NTHE0N\src\RAG\PythonEmbeddingClient.cs
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -238,7 +238,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace P4NTH30N.RAG
+namespace P4NTHE0N.RAG
 {
     public class PythonEmbeddingClient : IDisposable
     {
@@ -361,7 +361,7 @@ namespace P4NTH30N.RAG
 
 **Update EmbeddingService.cs** (add Python bridge integration):
 ```csharp
-// Add to existing EmbeddingService.cs in C:\P4NTH30N\src\RAG\
+// Add to existing EmbeddingService.cs in C:\P4NTHE0N\src\RAG\
 
 public class EmbeddingService
 {
@@ -431,11 +431,11 @@ notepad C:\Users\paulc\.config\opencode\mcp.json
       "args": [
         "run",
         "--project",
-        "C:/P4NTH30N/src/RAG/RAG.csproj"
+        "C:/P4NTHE0N/src/RAG/RAG.csproj"
       ],
       "env": {
-        "RAG_MODEL_PATH": "C:/ProgramData/P4NTH30N/models/all-MiniLM-L6-v2.onnx",
-        "RAG_INDEX_PATH": "C:/ProgramData/P4NTH30N/rag-index",
+        "RAG_MODEL_PATH": "C:/ProgramData/P4NTHE0N/models/all-MiniLM-L6-v2.onnx",
+        "RAG_INDEX_PATH": "C:/ProgramData/P4NTHE0N/rag-index",
         "PYTHON_BRIDGE_URL": "http://127.0.0.1:5000",
         "DOTNET_ENVIRONMENT": "Development"
       }
@@ -462,7 +462,7 @@ toolhive list-tools | findstr rag_
 
 **Execute deployment**:
 ```powershell
-cd C:\P4NTH30N
+cd C:\P4NTHE0N
 
 # Preview first
 .\scripts\deploy-agents.ps1 -WhatIf
@@ -561,12 +561,12 @@ Update decisions-server: Mark Oracle condition #3 as complete.
 
 **Python bridge won't start**:
 - Check port 5000 not in use: `Get-Process -Id (Get-NetTCPConnection -LocalPort 5000).OwningProcess`
-- Verify model files exist: `Test-Path "C:\ProgramData\P4NTH30N\models\all-MiniLM-L6-v2.onnx"`
+- Verify model files exist: `Test-Path "C:\ProgramData\P4NTHE0N\models\all-MiniLM-L6-v2.onnx"`
 - Check Python packages installed: `pip list | findstr onnx`
 
 **MCP tools not appearing**:
 - Verify mcp.json syntax is valid JSON
-- Check dotnet run works manually: `dotnet run --project C:/P4NTH30N/src/RAG/RAG.csproj`
+- Check dotnet run works manually: `dotnet run --project C:/P4NTHE0N/src/RAG/RAG.csproj`
 - Restart ToolHive if needed
 
 **Embedding generation slow**:

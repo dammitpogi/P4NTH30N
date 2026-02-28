@@ -177,8 +177,8 @@ chrome.exe --remote-debugging-port=9222 --remote-debugging-address=127.0.0.1 --i
 
 ### Step 3: Execute Login
 ```powershell
-cd C:\P4NTH30N\H4ND\tools\recorder
-bun run recorder.ts --step --phase=Login --screenshot=002.png --session-dir="C:\P4NTH30N\DECISION_077\sessions\firekirin-2026-02-21T12-22-45" --run-tool=login
+cd C:\P4NTHE0N\H4ND\tools\recorder
+bun run recorder.ts --step --phase=Login --screenshot=002.png --session-dir="C:\P4NTHE0N\DECISION_077\sessions\firekirin-2026-02-21T12-22-45" --run-tool=login
 ```
 
 ### Step 4: Verify Game Lobby
@@ -186,12 +186,12 @@ bun run recorder.ts --step --phase=Login --screenshot=002.png --session-dir="C:\
 # Take screenshot of game lobby after login
 # Save as 003.png
 
-bun run recorder.ts --step --phase=GameSelection --screenshot=003.png --session-dir="C:\P4NTH30N\DECISION_077\sessions\firekirin-2026-02-21T12-22-45" --run-tool=diag
+bun run recorder.ts --step --phase=GameSelection --screenshot=003.png --session-dir="C:\P4NTHE0N\DECISION_077\sessions\firekirin-2026-02-21T12-22-45" --run-tool=diag
 ```
 
 ### Step 5: Navigate to Fortune Piggy
 ```powershell
-bun run recorder.ts --step --phase=GameSelection --screenshot=004.png --session-dir="C:\P4NTH30N\DECISION_077\sessions\firekirin-2026-02-21T12-22-45" --run-tool=nav
+bun run recorder.ts --step --phase=GameSelection --screenshot=004.png --session-dir="C:\P4NTHE0N\DECISION_077\sessions\firekirin-2026-02-21T12-22-45" --run-tool=nav
 ```
 
 ### Step 6: Execute Spin
@@ -199,7 +199,7 @@ bun run recorder.ts --step --phase=GameSelection --screenshot=004.png --session-
 # Take screenshot of Fortune Piggy game
 # Save as 005.png
 
-bun run recorder.ts --step --phase=Spin --screenshot=005.png --session-dir="C:\P4NTH30N\DECISION_077\sessions\firekirin-2026-02-21T12-22-45"
+bun run recorder.ts --step --phase=Spin --screenshot=005.png --session-dir="C:\P4NTHE0N\DECISION_077\sessions\firekirin-2026-02-21T12-22-45"
 ```
 
 ---
@@ -207,7 +207,7 @@ bun run recorder.ts --step --phase=Spin --screenshot=005.png --session-dir="C:\P
 ## Session Status
 
 **Session ID**: `firekirin-2026-02-21T12-22-45`
-**Session Directory**: `C:\P4NTH30N\DECISION_077\sessions\firekirin-2026-02-21T12-22-45`
+**Session Directory**: `C:\P4NTHE0N\DECISION_077\sessions\firekirin-2026-02-21T12-22-45`
 **Steps Completed**: 1/6
 **Current Phase**: Login (diagnostic complete, CDP not running)
 **Blocker**: Chrome CDP must be started before login execution

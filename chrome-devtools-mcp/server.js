@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * P4NTH30N CDP MCP Server
+ * P4NTHE0N CDP MCP Server
  *
  * Lightweight MCP server that provides evaluate_script with per-call
  * host/port targeting for remote Chrome DevTools Protocol execution.

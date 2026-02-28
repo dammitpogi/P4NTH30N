@@ -11,13 +11,13 @@ Created: `C:\Users\paulc\.config\opencode\mcp.json`
 {
   "mcpServers": {
     "rag-server": {
-      "command": "C:/ProgramData/P4NTH30N/bin/RAG.McpHost.exe",
+      "command": "C:/ProgramData/P4NTHE0N/bin/RAG.McpHost.exe",
       "args": [
         "--port", "5001",
-        "--index", "C:/ProgramData/P4NTH30N/rag-index",
-        "--model", "C:/ProgramData/P4NTH30N/models/all-MiniLM-L6-v2.onnx",
+        "--index", "C:/ProgramData/P4NTHE0N/rag-index",
+        "--model", "C:/ProgramData/P4NTHE0N/models/all-MiniLM-L6-v2.onnx",
         "--bridge", "http://127.0.0.1:5000",
-        "--mongo", "mongodb://localhost:27017/P4NTH30N"
+        "--mongo", "mongodb://localhost:27017/P4NTHE0N"
       ],
       "env": {
         "DOTNET_ENVIRONMENT": "Production"
@@ -35,7 +35,7 @@ Created: `C:\Users\paulc\.config\opencode\mcp.json`
    ```
    If not running, start it:
    ```powershell
-   Start-Process "C:\ProgramData\P4NTH30N\bin\RAG.McpHost.exe"
+   Start-Process "C:\ProgramData\P4NTHE0N\bin\RAG.McpHost.exe"
    ```
 3. **After restart, verify tools appear**:
    ```bash

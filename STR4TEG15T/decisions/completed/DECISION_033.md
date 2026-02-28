@@ -12,10 +12,10 @@
 
 ## Executive Summary
 
-Activate the existing RAG system as the institutional memory hub for all P4NTH30N agents. The RAG infrastructure exists but is not ingesting automatically and is rarely utilized. This decision makes RAG the central knowledge store that all agents read from and write to, transforming isolated agent sessions into a shared learning experience.
+Activate the existing RAG system as the institutional memory hub for all P4NTHE0N agents. The RAG infrastructure exists but is not ingesting automatically and is rarely utilized. This decision makes RAG the central knowledge store that all agents read from and write to, transforming isolated agent sessions into a shared learning experience.
 
 **Current Problem**:
-- RAG.McpHost.exe exists at C:\ProgramData\P4NTH30N\bin\ but is not running as a service
+- RAG.McpHost.exe exists at C:\ProgramData\P4NTHE0N\bin\ but is not running as a service
 - FileWatcher.cs exists but is not configured with correct watch paths
 - No agent currently queries RAG before starting work
 - Each session starts from scratch with no memory of past decisions or outcomes
@@ -88,12 +88,12 @@ RAG.McpHost.exe (MCP Server - port 5001)
 
 ### Phase 2: FileWatcher Configuration
 1. Update FileWatcherConfig with correct watch paths:
-   - C:\P4NTH30N\STRATEGIST\ (decisions, speech, canon, manifest)
-   - C:\P4NTH30N\OPENFIXER\deployments\
-   - C:\P4NTH30N\WINDFIXER\deployments\
-   - C:\P4NTH30N\ORACLE\
-   - C:\P4NTH30N\DESIGNER\
-   - C:\P4NTH30N\docs\
+   - C:\P4NTHE0N\STRATEGIST\ (decisions, speech, canon, manifest)
+   - C:\P4NTHE0N\OPENFIXER\deployments\
+   - C:\P4NTHE0N\WINDFIXER\deployments\
+   - C:\P4NTHE0N\ORACLE\
+   - C:\P4NTHE0N\DESIGNER\
+   - C:\P4NTHE0N\docs\
 2. Set file patterns: *.md, *.json
 3. Set debounce period: 5 minutes
 4. Exclude patterns: bin/, obj/, .git/

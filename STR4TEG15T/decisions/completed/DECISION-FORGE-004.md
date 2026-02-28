@@ -62,8 +62,8 @@ All agent work, regardless of deployment source (Strategist or direct Nexus requ
 
 **Files Modified**:
 - `C:\Users\paulc\.config\opencode\agents\openfixer.md`
-- `C:\P4NTH30N\agents\openfixer.md`
-- `C:\P4NTH30N\agents\strategist.md`
+- `C:\P4NTHE0N\agents\openfixer.md`
+- `C:\P4NTHE0N\agents\strategist.md`
 
 **Documentation Requirements (Now Enforced)**:
 1. **Decision File**: `STR4TEG15T/decisions/active/DECISION_XXX.md`
@@ -77,7 +77,7 @@ All agent work, regardless of deployment source (Strategist or direct Nexus requ
 | ID | Action | Assigned To | Status | Priority |
 |----|--------|-------------|--------|----------|
 | ACT-FORGE-004-1 | Update primary OpenFixer agent | @openfixer | Completed | Critical |
-| ACT-FORGE-004-2 | Update P4NTH30N OpenFixer agent | @openfixer | Completed | Critical |
+| ACT-FORGE-004-2 | Update P4NTHE0N OpenFixer agent | @openfixer | Completed | Critical |
 | ACT-FORGE-004-3 | Update Strategist deployment patterns | @openfixer | Completed | Critical |
 | ACT-FORGE-004-4 | Create reference decision (AUD-001) | @openfixer | Completed | Critical |
 | ACT-FORGE-004-5 | Update manifest with workflow correction | @openfixer | Completed | Critical |
@@ -173,13 +173,13 @@ All agent work, regardless of deployment source (Strategist or direct Nexus requ
    - Added Anti-Patterns about documentation skipping
    - Updated version to v2.1 with changelog
 
-2. **`C:\P4NTH30N\agents\openfixer.md`**
+2. **`C:\P4NTHE0N\agents\openfixer.md`**
    - Complete rewrite with comprehensive documentation section
    - Added Documentation Requirements (CRITICAL) section
    - Added LESSON LEARNED (2026-02-20) referencing DECISION-AUD-001
    - Updated version to v2.1
 
-3. **`C:\P4NTH30N\agents\strategist.md`**
+3. **`C:\P4NTHE0N\agents\strategist.md`**
    - Updated Pattern 2: Pipeline Delegation
    - Added CRITICAL note about OpenFixer documentation
    - Explicitly states: "Even for direct Nexus requests - NO EXCEPTIONS"
@@ -195,7 +195,7 @@ All agent work, regardless of deployment source (Strategist or direct Nexus requ
 ## Verification
 
 ✅ Primary agent file contains "DOCUMENTATION IS MANDATORY"  
-✅ P4NTH30N agent file contains "Documentation Requirements (CRITICAL)"  
+✅ P4NTHE0N agent file contains "Documentation Requirements (CRITICAL)"  
 ✅ Strategist Pattern 2 updated with OpenFixer documentation note  
 ✅ All agent versions updated to v2.1  
 ✅ DECISION-AUD-001 referenced as lesson learned  
