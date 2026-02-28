@@ -1,4 +1,4 @@
-namespace P4NTH30N.RAG;
+namespace P4NTHE0N.RAG;
 
 /// <summary>
 /// Manages scheduled index rebuilds:
@@ -150,12 +150,12 @@ public sealed class ScheduledRebuilder : IDisposable
 			# 4-hour incremental rebuild
 			$incrementalAction = New-ScheduledTaskAction -Execute $exePath -Argument "--rebuild incremental"
 			$incrementalTrigger = New-ScheduledTaskTrigger -Once -At (Get-Date) -RepetitionInterval (New-TimeSpan -Hours 4)
-			Register-ScheduledTask -TaskName "P4NTH30N-RAG-Incremental" -Action $incrementalAction -Trigger $incrementalTrigger -Description "P4NTH30N RAG incremental index rebuild every 4 hours" -RunLevel Highest
+			Register-ScheduledTask -TaskName "P4NTHE0N-RAG-Incremental" -Action $incrementalAction -Trigger $incrementalTrigger -Description "P4NTHE0N RAG incremental index rebuild every 4 hours" -RunLevel Highest
 
 			# Nightly 3 AM full rebuild
 			$nightlyAction = New-ScheduledTaskAction -Execute $exePath -Argument "--rebuild full"
 			$nightlyTrigger = New-ScheduledTaskTrigger -Daily -At "3:00 AM"
-			Register-ScheduledTask -TaskName "P4NTH30N-RAG-Nightly" -Action $nightlyAction -Trigger $nightlyTrigger -Description "P4NTH30N RAG full index rebuild at 3 AM" -RunLevel Highest
+			Register-ScheduledTask -TaskName "P4NTHE0N-RAG-Nightly" -Action $nightlyAction -Trigger $nightlyTrigger -Description "P4NTHE0N RAG full index rebuild at 3 AM" -RunLevel Highest
 
 			Write-Host "Scheduled tasks registered successfully."
 			""";
@@ -237,7 +237,7 @@ public sealed class ScheduledRebuilderConfig
 	/// Source directories to re-ingest during rebuilds.
 	/// </summary>
 	public List<string> SourceDirectories { get; init; } =
-		new() { @"C:\P4NTH30N\docs", @"C:\P4NTH30N\C0MMON", @"C:\P4NTH30N\H0UND", @"C:\P4NTH30N\H4ND", @"C:\P4NTH30N\T4CT1CS\intel" };
+		new() { @"C:\P4NTHE0N\docs", @"C:\P4NTHE0N\C0MMON", @"C:\P4NTHE0N\H0UND", @"C:\P4NTHE0N\H4ND", @"C:\P4NTHE0N\T4CT1CS\intel" };
 
 	/// <summary>
 	/// Max concurrency for batch ingestion during rebuilds.

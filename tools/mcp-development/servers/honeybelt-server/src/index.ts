@@ -1,6 +1,6 @@
 /**
  * MIGRATE-004: Honeybelt MCP Server
- * Provides operations and reporting tools for P4NTH30N agents.
+ * Provides operations and reporting tools for P4NTHE0N agents.
  *
  * Protocol: MCP 2024-11-05 via stdio or Streamable HTTP
  * Usage: node dist/index.js [--http] [--port=PORT]

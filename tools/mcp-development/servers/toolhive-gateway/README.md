@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **ToolHive MCP Gateway** is a unified Model Context Protocol (MCP) server that aggregates all P4NTH30N MCP servers into a single entry point for OpenCode. This centralizes tool access and simplifies configuration management.
+The **ToolHive MCP Gateway** is a unified Model Context Protocol (MCP) server that aggregates all P4NTHE0N MCP servers into a single entry point for OpenCode. This centralizes tool access and simplifies configuration management.
 
 ## Architecture
 
@@ -26,16 +26,16 @@ The **ToolHive MCP Gateway** is a unified Model Context Protocol (MCP) server th
     ┌────┴────┬────────┬────────┬────────┐
     ▼         ▼        ▼        ▼        ▼
 ┌───────┐ ┌───────┐ ┌───────┐ ┌───────┐ ┌───────┐
-│FourEyes│ │  RAG  │ │P4NTH30N│ │Decisions│ │Honeybelt│
+│FourEyes│ │  RAG  │ │P4NTHE0N│ │Decisions│ │Honeybelt│
 │  MCP   │ │  MCP  │ │  MCP   │ │ Server  │ │ Server  │
 └───────┘ └───────┘ └───────┘ └───────┘ └───────┘
 ```
 
 ## Location
 
-**Source Code:** `C:/P4NTH30N/tools/mcp-development/servers/toolhive-gateway/`
+**Source Code:** `C:/P4NTHE0N/tools/mcp-development/servers/toolhive-gateway/`
 
-**Entry Point:** `C:/P4NTH30N/tools/mcp-development/servers/toolhive-gateway/dist/index.js`
+**Entry Point:** `C:/P4NTHE0N/tools/mcp-development/servers/toolhive-gateway/dist/index.js`
 
 ## Configuration
 
@@ -51,7 +51,7 @@ Add to `~/.config/opencode/opencode.json`:
       "type": "local",
       "command": [
         "node",
-        "C:/P4NTH30N/tools/mcp-development/servers/toolhive-gateway/dist/index.js"
+        "C:/P4NTHE0N/tools/mcp-development/servers/toolhive-gateway/dist/index.js"
       ],
       "enabled": true
     }
@@ -67,7 +67,7 @@ opencode mcp list
 
 # Expected output:
 # ● ✓ toolhive-gateway connected
-#     node C:/P4NTH30N/tools/mcp-development/servers/toolhive-gateway/dist/index.js
+#     node C:/P4NTHE0N/tools/mcp-development/servers/toolhive-gateway/dist/index.js
 ```
 
 ## Registered MCP Servers
@@ -87,7 +87,7 @@ opencode mcp list
 
 **Command:**
 ```bash
-node C:/P4NTH30N/tools/mcp-foureyes/server.js
+node C:/P4NTHE0N/tools/mcp-foureyes/server.js
 ```
 
 ### 2. RAG MCP Server
@@ -97,21 +97,21 @@ node C:/P4NTH30N/tools/mcp-foureyes/server.js
 **Status:** registered
 
 **Tools:**
-- `rag_query` - Search P4NTH30N knowledge base
+- `rag_query` - Search P4NTHE0N knowledge base
 - `rag_ingest` - Ingest document into knowledge base
 - `rag_status` - Check RAG system status
 
 **Command:**
 ```bash
-C:/ProgramData/P4NTH30N/bin/RAG.McpHost.exe
+C:/ProgramData/P4NTHE0N/bin/RAG.McpHost.exe
   --port 5001
-  --index C:/ProgramData/P4NTH30N/rag-index
-  --model C:/ProgramData/P4NTH30N/models/all-MiniLM-L6-v2.onnx
+  --index C:/ProgramData/P4NTHE0N/rag-index
+  --model C:/ProgramData/P4NTHE0N/models/all-MiniLM-L6-v2.onnx
   --bridge http://127.0.0.1:5000
-  --mongo mongodb://localhost:27017/P4NTH30N
+  --mongo mongodb://localhost:27017/P4NTHE0N
 ```
 
-### 3. P4NTH30N MCP Server
+### 3. P4NTHE0N MCP Server
 **ID:** `p4nth30n-mcp`
 **Purpose:** MongoDB data access for casino automation
 **Transport:** stdio
@@ -121,11 +121,11 @@ C:/ProgramData/P4NTH30N/bin/RAG.McpHost.exe
 - `query_credentials` - Query CRED3N7IAL collection for user credentials and thresholds
 - `query_signals` - Query SIGN4L collection for active signals
 - `query_jackpots` - Query J4CKP0T collection for jackpot forecasts
-- `get_system_status` - Get overall P4NTH30N system status summary
+- `get_system_status` - Get overall P4NTHE0N system status summary
 
 **Command:**
 ```bash
-node C:/P4NTH30N/tools/mcp-p4nthon/dist/index.js
+node C:/P4NTHE0N/tools/mcp-p4nthon/dist/index.js
 ```
 
 ### 4. Decisions MCP Server
@@ -156,7 +156,7 @@ node C:/P4NTH30N/tools/mcp-p4nthon/dist/index.js
 
 **Command:**
 ```bash
-node C:/P4NTH30N/tools/mcp-development/servers/honeybelt-server/dist/index.js
+node C:/P4NTHE0N/tools/mcp-development/servers/honeybelt-server/dist/index.js
 ```
 
 ## Gateway Meta-Tools
@@ -201,7 +201,7 @@ The gateway performs health checks every 60 seconds on all registered servers:
 ### Build Commands
 
 ```bash
-cd C:/P4NTH30N/tools/mcp-development/servers/toolhive-gateway
+cd C:/P4NTHE0N/tools/mcp-development/servers/toolhive-gateway
 
 # Install dependencies
 npm install
@@ -217,13 +217,13 @@ npm run build
 If any of the registered MCP servers are missing their compiled files:
 
 ```bash
-# Build P4NTH30N MCP Server
-cd C:/P4NTH30N/tools/mcp-p4nthon
+# Build P4NTHE0N MCP Server
+cd C:/P4NTHE0N/tools/mcp-p4nthon
 npm install
 npm run build
 
 # Build Honeybelt Server
-cd C:/P4NTH30N/tools/mcp-development/servers/honeybelt-server
+cd C:/P4NTHE0N/tools/mcp-development/servers/honeybelt-server
 npm run build
 ```
 
@@ -233,10 +233,10 @@ npm run build
 
 1. Check that all server entry points exist:
    ```bash
-   ls -la C:/P4NTH30N/tools/mcp-foureyes/server.js
-   ls -la C:/P4NTH30N/tools/mcp-p4nthon/dist/index.js
-   ls -la C:/ProgramData/P4NTH30N/bin/RAG.McpHost.exe
-   ls -la C:/P4NTH30N/tools/mcp-development/servers/honeybelt-server/dist/index.js
+   ls -la C:/P4NTHE0N/tools/mcp-foureyes/server.js
+   ls -la C:/P4NTHE0N/tools/mcp-p4nthon/dist/index.js
+   ls -la C:/ProgramData/P4NTHE0N/bin/RAG.McpHost.exe
+   ls -la C:/P4NTHE0N/tools/mcp-development/servers/honeybelt-server/dist/index.js
    ```
 
 2. Rebuild missing servers (see Build Instructions above)
@@ -286,7 +286,7 @@ Agents can access all ToolHive tools using the standard MCP tool calling pattern
 
 1. **Tool Call Proxying** - Currently the gateway aggregates tool definitions but doesn't proxy calls to underlying servers. Adding proxy functionality would enable full tool execution through the gateway.
 
-2. **Dynamic Server Discovery** - Implement automatic discovery of new MCP servers in the P4NTH30N/tools directory.
+2. **Dynamic Server Discovery** - Implement automatic discovery of new MCP servers in the P4NTHE0N/tools directory.
 
 3. **Load Balancing** - Support multiple instances of the same MCP server for high availability.
 
@@ -296,7 +296,7 @@ Agents can access all ToolHive tools using the standard MCP tool calling pattern
 
 - [MCP Documentation](https://modelcontextprotocol.io/)
 - [OpenCode MCP Servers](https://opencode.ai/docs/mcp-servers/)
-- [P4NTH30N AGENTS.md](C:/P4NTH30N/AGENTS.md)
+- [P4NTHE0N AGENTS.md](C:/P4NTHE0N/AGENTS.md)
 
 ---
 

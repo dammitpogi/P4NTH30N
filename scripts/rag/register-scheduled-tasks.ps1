@@ -19,8 +19,8 @@ Write-Host "User: $TaskUser"
 Write-Host "Force: $Force"
 Write-Host "Dry Run: $DryRun"
 
-$exePath = "C:\ProgramData\P4NTH30N\bin\RAG.McpHost.exe"
-$rebuildScript = "C:\P4NTH30N\scripts\rag\rebuild-index.ps1"
+$exePath = "C:\ProgramData\P4NTHE0N\bin\RAG.McpHost.exe"
+$rebuildScript = "C:\P4NTHE0N\scripts\rag\rebuild-index.ps1"
 
 # Verify executable exists
 if (-not (Test-Path $exePath)) {

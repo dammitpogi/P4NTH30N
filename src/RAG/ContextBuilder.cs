@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace P4NTH30N.RAG;
+namespace P4NTHE0N.RAG;
 
 /// <summary>
 /// Structured context assembly for RAG query results.
@@ -161,7 +161,7 @@ public sealed class ContextBuilderConfig
 	/// System instruction for RAG prompts.
 	/// </summary>
 	public string SystemInstruction { get; init; } =
-		"You are an assistant for P4NTH30N, a casino automation platform. "
+		"You are an assistant for P4NTHE0N, a casino automation platform. "
 		+ "Use the following retrieved context to answer the question. "
 		+ "If the context doesn't contain the answer, say so. "
 		+ "Always cite your sources.";

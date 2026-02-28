@@ -148,7 +148,7 @@ The system that measures its failures is stronger than the system that hides the
 - Changes of mind are documented explicitly
 
 ### Record-Keeping
-**Directory**: `C:\P4NTH30N\OR4CL3`
+**Directory**: `C:\P4NTHE0N\OR4CL3`
 - assessments/ - Decision assessments
 - consultations/ - Consultation records
 - patterns/ - Recognized patterns

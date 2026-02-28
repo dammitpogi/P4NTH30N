@@ -3,7 +3,7 @@ using Microsoft.Extensions.Caching.Memory;
 using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
 
-namespace P4NTH30N.RAG;
+namespace P4NTHE0N.RAG;
 
 /// <summary>
 /// Embedding service using ONNX Runtime with all-MiniLM-L6-v2 model.

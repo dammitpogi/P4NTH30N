@@ -8,7 +8,7 @@
 
 param(
     [switch]$Full,
-    [string]$RagRoot = "C:\P4NTH30N",
+    [string]$RagRoot = "C:\P4NTHE0N",
     [switch]$DryRun
 )
 

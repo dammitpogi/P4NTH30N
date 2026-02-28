@@ -1,7 +1,7 @@
 {
   "name": "@p4nth30n/toolhive-gateway",
   "version": "1.1.0",
-  "description": "Unified MCP tool discovery, routing, and health monitoring gateway for P4NTH30N agents with ToolHive Desktop integration (DECISION_051)",
+  "description": "Unified MCP tool discovery, routing, and health monitoring gateway for P4NTHE0N agents with ToolHive Desktop integration (DECISION_051)",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",

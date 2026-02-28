@@ -1,7 +1,7 @@
 {
   "name": "@p4nth30n/honeybelt-server",
   "version": "1.1.0",
-  "description": "Honeybelt operations and reporting MCP server for P4NTH30N with HTTP support",
+  "description": "Honeybelt operations and reporting MCP server for P4NTHE0N with HTTP support",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",

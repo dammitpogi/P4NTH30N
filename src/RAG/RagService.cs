@@ -2,7 +2,7 @@ using System.Diagnostics;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace P4NTH30N.RAG;
+namespace P4NTHE0N.RAG;
 
 /// <summary>
 /// Core RAG service coordinating embedding, vector search, and context assembly.
@@ -193,7 +193,7 @@ public sealed class RagServiceConfig
 	/// <summary>
 	/// MongoDB database name.
 	/// </summary>
-	public string DatabaseName { get; init; } = "P4NTH30N";
+	public string DatabaseName { get; init; } = "P4NTHE0N";
 
 	/// <summary>
 	/// Audit log collection name.

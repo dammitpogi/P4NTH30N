@@ -2,7 +2,7 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Text.Json;
 
-namespace P4NTH30N.RAG;
+namespace P4NTHE0N.RAG;
 
 /// <summary>
 /// In-memory vector store implementing IndexFlatL2 (exact nearest-neighbor search).

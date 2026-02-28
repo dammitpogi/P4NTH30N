@@ -70,7 +70,7 @@ function inferTags(name: string, image?: string): string[] {
     tags.push('tooling', 'optimization');
   }
 
-  // P4NTH30N specific
+  // P4NTHE0N specific
   if (lowerName.includes('p4nth30n') || lowerName.includes('decisions') || lowerName.includes('rag-server')) {
     tags.push('p4nth30n');
   }
@@ -94,7 +94,7 @@ function generateDescription(name: string, image?: string): string {
     'context7-remote': 'Documentation context and knowledge base',
     'json-query-mcp': 'JSON data querying and manipulation',
     'modelcontextprotocol-server-filesystem': 'Filesystem access and file operations',
-    'mongodb-p4nth30n': 'MongoDB database access for P4NTH30N',
+    'mongodb-p4nth30n': 'MongoDB database access for P4NTHE0N',
     'rag-server': 'Retrieval-Augmented Generation server',
     'toolhive-mcp-optimizer': 'ToolHive MCP server optimization',
     'decisions-server': 'Decision management and workflow',

@@ -3,8 +3,8 @@
 # Prerequisites: RAG.McpHost.exe running, MongoDB accessible.
 
 param(
-    [string]$RepoRoot = "C:\P4NTH30N",
-    [string]$RagConfig = "C:\P4NTH30N\config\rag-activation.json",
+    [string]$RepoRoot = "C:\P4NTHE0N",
+    [string]$RagConfig = "C:\P4NTHE0N\config\rag-activation.json",
     [switch]$DryRun
 )
 
@@ -32,7 +32,7 @@ if (Test-Path $ragExe) {
     Write-Host "  [OK] RAG.McpHost.exe found at $ragExe" -ForegroundColor Green
 } else {
     Write-Host "  [WARN] RAG.McpHost.exe not found at $ragExe" -ForegroundColor Yellow
-    Write-Host "  Run: dotnet publish src/RAG.McpHost/ -c Release -o C:\ProgramData\P4NTH30N\bin\" -ForegroundColor DarkGray
+    Write-Host "  Run: dotnet publish src/RAG.McpHost/ -c Release -o C:\ProgramData\P4NTHE0N\bin\" -ForegroundColor DarkGray
 }
 
 # --- Phase 2: Count files for bulk ingestion ---

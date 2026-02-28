@@ -2,7 +2,7 @@
 # Requires RAG.McpHost to be running (src/RAG.McpHost).
 
 param(
-	[string]$DocsRoot = "C:\P4NTH30N\docs",
+	[string]$DocsRoot = "C:\P4NTHE0N\docs",
 	[string]$RagEndpoint = "http://localhost:5302",
 	[switch]$DryRun
 )

@@ -4,7 +4,7 @@
 		<TargetFramework>net10.0-windows7.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<RootNamespace>P4NTH30N.RAG.McpHost</RootNamespace>
+		<RootNamespace>P4NTHE0N.RAG.McpHost</RootNamespace>
 		<AssemblyName>RAG.McpHost</AssemblyName>
 		<PublishSingleFile>true</PublishSingleFile>
 		<SelfContained>true</SelfContained>

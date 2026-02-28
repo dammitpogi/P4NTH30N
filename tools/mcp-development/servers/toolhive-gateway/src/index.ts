@@ -2,7 +2,7 @@
  * MIGRATE-004 + DECISION_051: ToolHive Gateway - Unified MCP Tool Discovery & Routing
  *
  * MCP server that acts as a gateway for discovering, routing, and monitoring
- * all P4NTH30N tool servers. Provides:
+ * all P4NTHE0N tool servers. Provides:
  * - Tool discovery across all registered MCP servers
  * - Health monitoring for all servers
  * - Agent-specific tool filtering
@@ -73,7 +73,7 @@ async function routeToolCall(
   return result as { content: Array<{ type: string; text?: string; data?: unknown }> };
 }
 
-// Register built-in P4NTH30N servers
+// Register built-in P4NTHE0N servers
 function registerBuiltinServers(): void {
   // 1. FourEyes MCP - Vision and analysis via CDP + LMStudio
   registry.register({
@@ -82,7 +82,7 @@ function registerBuiltinServers(): void {
     transport: 'stdio',
     connection: { 
       command: 'node', 
-      args: ['C:/P4NTH30N/tools/mcp-foureyes/server.js'],
+      args: ['C:/P4NTHE0N/tools/mcp-foureyes/server.js'],
     },
     tools: [
       { name: 'analyze_frame', description: 'Capture CDP screenshot and analyze via LMStudio vision model' },
@@ -104,31 +104,31 @@ function registerBuiltinServers(): void {
       url: 'http://localhost:5001/mcp',
     },
     tools: [
-      { name: 'rag_query', description: 'Search P4NTH30N knowledge base' },
+      { name: 'rag_query', description: 'Search P4NTHE0N knowledge base' },
       { name: 'rag_ingest', description: 'Ingest document into knowledge base' },
       { name: 'rag_status', description: 'Check RAG system status' },
     ],
     tags: ['search', 'rag', 'knowledge', 'embeddings'],
-    description: 'Retrieval-Augmented Generation for P4NTH30N docs and decisions',
+    description: 'Retrieval-Augmented Generation for P4NTHE0N docs and decisions',
   });
 
-  // 3. P4NTH30N MCP - MongoDB data access
+  // 3. P4NTHE0N MCP - MongoDB data access
   registry.register({
     id: 'p4nth30n-mcp',
-    name: 'P4NTH30N MCP Server',
+    name: 'P4NTHE0N MCP Server',
     transport: 'stdio',
     connection: { 
       command: 'node', 
-      args: ['C:/P4NTH30N/tools/mcp-p4nthon/dist/index.js'],
+      args: ['C:/P4NTHE0N/tools/mcp-p4nthon/dist/index.js'],
     },
     tools: [
       { name: 'query_credentials', description: 'Query CRED3N7IAL collection for user credentials and thresholds' },
       { name: 'query_signals', description: 'Query SIGN4L collection for active signals' },
       { name: 'query_jackpots', description: 'Query J4CKP0T collection for jackpot forecasts' },
-      { name: 'get_system_status', description: 'Get overall P4NTH30N system status summary' },
+      { name: 'get_system_status', description: 'Get overall P4NTHE0N system status summary' },
     ],
     tags: ['database', 'mongodb', 'casino', 'automation'],
-    description: 'P4NTH30N platform data access - credentials, signals, jackpots',
+    description: 'P4NTHE0N platform data access - credentials, signals, jackpots',
   });
 
   // 4. Decisions Server - Docker container with stdio transport
@@ -141,7 +141,7 @@ function registerBuiltinServers(): void {
     transport: 'stdio',
     connection: {
       command: 'docker',
-      args: ['run', '-i', '--rm', '-e', 'MONGODB_URI=mongodb://192.168.56.1:27017/P4NTH30N?directConnection=true', 'decisions-server:v1.2.0'],
+      args: ['run', '-i', '--rm', '-e', 'MONGODB_URI=mongodb://192.168.56.1:27017/P4NTHE0N?directConnection=true', 'decisions-server:v1.2.0'],
     },
     tools: [
       { name: 'connect', description: 'Connect to MongoDB database' },
@@ -162,7 +162,7 @@ function registerBuiltinServers(): void {
       { name: 'listCategories', description: 'List all decision categories' },
     ],
     tags: ['decisions', 'workflow', 'strategist'],
-    description: 'Decision management server for P4NTH30N workflow',
+    description: 'Decision management server for P4NTHE0N workflow',
   });
 
   // 5. Honeybelt Server - Tooling and operations
@@ -172,7 +172,7 @@ function registerBuiltinServers(): void {
     transport: 'stdio',
     connection: { 
       command: 'node', 
-      args: ['C:/P4NTH30N/tools/mcp-development/servers/honeybelt-server/dist/index.js'],
+      args: ['C:/P4NTHE0N/tools/mcp-development/servers/honeybelt-server/dist/index.js'],
     },
     tools: [
       { name: 'honeybelt_status', description: 'Check honeybelt service status' },

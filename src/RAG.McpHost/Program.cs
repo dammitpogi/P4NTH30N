@@ -1,9 +1,9 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using MongoDB.Driver;
-using P4NTH30N.RAG;
+using P4NTHE0N.RAG;
 
-namespace P4NTH30N.RAG.McpHost;
+namespace P4NTHE0N.RAG.McpHost;
 
 /// <summary>
 /// Standalone MCP Host for the RAG server.
@@ -196,7 +196,7 @@ public static class Program
 	{
 		Console.WriteLine(
 			"""
-			RAG.McpHost - P4NTH30N RAG MCP Server
+			RAG.McpHost - P4NTHE0N RAG MCP Server
 
 			Usage: RAG.McpHost [options]
 
@@ -206,7 +206,7 @@ public static class Program
 			  --model, -m <path>        ONNX model path (default: rag/models/all-MiniLM-L6-v2.onnx)
 			  --bridge, -b <url>        Python embedding bridge URL (default: http://127.0.0.1:5000)
 			  --mongo <uri>             MongoDB connection URI (default: mongodb://localhost:27017)
-			  --db <name>               MongoDB database name (default: P4NTH30N)
+			  --db <name>               MongoDB database name (default: P4NTHE0N)
 			  --max-restarts <n>        Max auto-restart attempts (default: 5)
 			  --transport, -t <mode>    Transport mode: stdio or http (default: http)
 			  --help, -h                Show this help
@@ -221,11 +221,11 @@ public static class Program
 internal sealed class HostConfig
 {
 	public int Port { get; set; } = 5100;
-	public string IndexPath { get; set; } = Path.Combine("C:", "ProgramData", "P4NTH30N", "rag", "faiss.index");
-	public string ModelPath { get; set; } = Path.Combine("C:", "ProgramData", "P4NTH30N", "rag", "models", "all-MiniLM-L6-v2.onnx");
+	public string IndexPath { get; set; } = Path.Combine("C:", "ProgramData", "P4NTHE0N", "rag", "faiss.index");
+	public string ModelPath { get; set; } = Path.Combine("C:", "ProgramData", "P4NTHE0N", "rag", "models", "all-MiniLM-L6-v2.onnx");
 	public string BridgeUrl { get; set; } = "http://127.0.0.1:5000";
 	public string MongoUri { get; set; } = "mongodb://localhost:27017";
-	public string DatabaseName { get; set; } = "P4NTH30N";
+	public string DatabaseName { get; set; } = "P4NTHE0N";
 	public int MaxRestarts { get; set; } = 5;
 	public string Transport { get; set; } = "http";
 }

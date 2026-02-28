@@ -1,9 +1,9 @@
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using P4NTH30N.RAG;
+using P4NTHE0N.RAG;
 
-namespace P4NTH30N.RAG.McpHost;
+namespace P4NTHE0N.RAG.McpHost;
 
 /// <summary>
 /// MCP stdio transport: reads JSON-RPC requests from stdin, dispatches to tools, writes responses to stdout.

@@ -6,19 +6,27 @@
     "url": "http://127.0.0.1:5001/mcp",
     "port": 5001
   },
-  "tags": ["toolhive-desktop", "search", "p4nth30n", "rag"],
-  "description": "P4NTH30N RAG server with semantic search",
+  "tags": ["toolhive-desktop", "search", "p4nthe0n", "rag"],
+  "description": "P4NTHE0N RAG server with semantic search",
   "source": "rag-server.json",
   "image": "",
   "process": {
-    "executable": "C:/ProgramData/P4NTH30N/bin/RAG.McpHost.exe",
+    "executable": "C:/ProgramData/P4NTHE0N/bin/RAG.McpHost.exe",
     "args": [
       "--port",
       "5001",
       "--transport",
       "http",
+      "--index",
+      "C:/ProgramData/P4NTHE0N/rag/faiss.index",
+      "--model",
+      "C:/ProgramData/P4NTHE0N/rag/models/all-MiniLM-L6-v2.onnx",
       "--bridge",
-      "http://127.0.0.1:5000"
+      "http://127.0.0.1:5000",
+      "--mongo",
+      "mongodb://localhost:27017",
+      "--db",
+      "P4NTHE0N"
     ],
     "autoStart": true,
     "restartOnFailure": true

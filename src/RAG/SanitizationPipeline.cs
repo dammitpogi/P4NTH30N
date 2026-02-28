@@ -2,7 +2,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace P4NTH30N.RAG;
+namespace P4NTHE0N.RAG;
 
 /// <summary>
 /// ERR0R sanitization pipeline for pre-ingestion data cleaning.
@@ -120,7 +120,7 @@ public sealed class SanitizationPipeline
 
 	/// <summary>
 	/// Replaces absolute file paths with relative paths.
-	/// C:\P4NTH30N\C0MMON\... → C0MMON/...
+	/// C:\P4NTHE0N\C0MMON\... → C0MMON/...
 	/// </summary>
 	private (string Result, bool Changed) SanitizeFilePaths(string content)
 	{
@@ -320,7 +320,7 @@ public sealed class SanitizationConfig
 	/// <summary>
 	/// Root paths to strip from absolute file paths.
 	/// </summary>
-	public List<string> PathRoots { get; init; } = new() { @"C:\P4NTH30N\", @"C:/P4NTH30N/", @"c:\P4NTH30N\", @"c:/P4NTH30N/" };
+	public List<string> PathRoots { get; init; } = new() { @"C:\P4NTHE0N\", @"C:/P4NTHE0N/", @"c:\P4NTHE0N\", @"c:/P4NTHE0N/" };
 }
 
 /// <summary>

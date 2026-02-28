@@ -1,6 +1,6 @@
 using System.Text.Json;
 
-namespace P4NTH30N.RAG;
+namespace P4NTHE0N.RAG;
 
 /// <summary>
 /// Configuration for RAG activation, watching, and bulk ingestion.
@@ -66,7 +66,7 @@ public sealed class RagActivationConfig
     private static string ResolveConfigPath()
     {
         // Check environment variable first
-        string? envPath = Environment.GetEnvironmentVariable("P4NTH30N_RAG_ACTIVATION_CONFIG");
+        string? envPath = Environment.GetEnvironmentVariable("P4NTHE0N_RAG_ACTIVATION_CONFIG");
         if (!string.IsNullOrWhiteSpace(envPath) && File.Exists(envPath))
         {
             return envPath;
@@ -75,6 +75,7 @@ public sealed class RagActivationConfig
         // Standard locations
         string[] candidates =
         [
+            @"C:\P4NTHE0N\config\rag-activation.json",
             @"C:\P4NTH30N\config\rag-activation.json",
             Path.Combine(AppContext.BaseDirectory, "config", "rag-activation.json"),
             Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "config", "rag-activation.json")),
@@ -112,8 +113,9 @@ public sealed class FileWatcherOptions
     public int DebounceMinutes { get; init; } = 5;
     public List<string> WatchPaths { get; init; } = new()
     {
-        @"C:\P4NTH30N\docs",
-        @"C:\P4NTH30N\STR4T3G15T\decisions",
+        @"C:\P4NTHE0N\docs",
+        @"C:\P4NTHE0N\STR4TEG15T\decisions",
+        @"C:\P4NTH30N\STR4TEG15T\decisions",
     };
     public List<string> FilePatterns { get; init; } = new() { "*.md", "*.json" };
     public List<string> ExcludeDirectories { get; init; } = new() { "bin", "obj", ".git", "node_modules", "Releases" };

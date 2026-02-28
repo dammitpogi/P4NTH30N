@@ -2,10 +2,10 @@
 net stop MongoDB
 
 # Reconfigure service to use config file with replica set
-$configPath = "C:\ProgramData\P4NTH30N\mongodb\mongod.cfg"
+$configPath = "C:\ProgramData\P4NTHE0N\mongodb\mongod.cfg"
 
 # Create config directory
-New-Item -ItemType Directory -Path "C:\ProgramData\P4NTH30N\mongodb" -Force | Out-Null
+New-Item -ItemType Directory -Path "C:\ProgramData\P4NTHE0N\mongodb" -Force | Out-Null
 
 # Create config file with replica set
 $config = @"

@@ -4,7 +4,7 @@ using System.Text.Json;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace P4NTH30N.RAG;
+namespace P4NTHE0N.RAG;
 
 /// <summary>
 /// Watches MongoDB change streams on EV3NT, ERR0R, G4ME, and decisions collections.

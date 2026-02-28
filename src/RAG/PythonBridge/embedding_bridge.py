@@ -24,8 +24,15 @@ logger = logging.getLogger("embedding_bridge")
 app = FastAPI(title="P4NTH30N RAG Embedding Bridge", version="1.0.0")
 
 # Configuration
-MODEL_PATH = Path("C:/ProgramData/P4NTH30N/models/all-MiniLM-L6-v2.onnx")
-TOKENIZER_PATH = Path("C:/ProgramData/P4NTH30N/models/tokenizer.json")
+PRIMARY_MODEL_PATH = Path("C:/ProgramData/P4NTHE0N/rag/models/all-MiniLM-L6-v2.onnx")
+LEGACY_MODEL_PATH = Path("C:/ProgramData/P4NTH30N/models/all-MiniLM-L6-v2.onnx")
+PRIMARY_TOKENIZER_PATH = Path("C:/ProgramData/P4NTHE0N/rag/models/tokenizer.json")
+LEGACY_TOKENIZER_PATH = Path("C:/ProgramData/P4NTH30N/models/tokenizer.json")
+
+MODEL_PATH = PRIMARY_MODEL_PATH if PRIMARY_MODEL_PATH.exists() else LEGACY_MODEL_PATH
+TOKENIZER_PATH = (
+    PRIMARY_TOKENIZER_PATH if PRIMARY_TOKENIZER_PATH.exists() else LEGACY_TOKENIZER_PATH
+)
 PORT = 5000
 
 # Global model session

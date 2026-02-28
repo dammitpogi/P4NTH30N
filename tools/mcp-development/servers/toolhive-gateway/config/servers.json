@@ -90,7 +90,7 @@
       "image": "servers-decisions-server-v2",
       "envVars": {
         "MCP_TRANSPORT": "sse",
-        "MONGODB_URI": "mongodb://host.docker.internal:27017/P4NTH30N"
+        "MONGODB_URI": "mongodb://host.docker.internal:27017/P4NTHE0N"
       },
       "enabled": true
     },
@@ -219,12 +219,12 @@
         "mongodb",
         "crud"
       ],
-      "description": "P4NTH30N MongoDB database with CRUD operations for decisions (v2 SSE)",
+      "description": "P4NTHE0N MongoDB database with CRUD operations for decisions (v2 SSE)",
       "source": "mongodb-p4nth30n.json",
       "envVars": {
         "MCP_TRANSPORT": "sse",
         "MONGODB_URI": "mongodb://localhost:27017",
-        "DATABASE_NAME": "P4NTH30N"
+        "DATABASE_NAME": "P4NTHE0N"
       },
       "enabled": true
     },
@@ -264,7 +264,7 @@
         "p4nth30n",
         "rag"
       ],
-      "description": "P4NTH30N RAG server with semantic search (v2 SSE)",
+      "description": "P4NTHE0N RAG server with semantic search (v2 SSE)",
       "source": "rag-server.json",
       "image": "servers-rag-server-v2",
       "envVars": {

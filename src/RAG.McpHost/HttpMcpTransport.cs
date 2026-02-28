@@ -4,9 +4,9 @@ using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using P4NTH30N.RAG;
+using P4NTHE0N.RAG;
 
-namespace P4NTH30N.RAG.McpHost;
+namespace P4NTHE0N.RAG.McpHost;
 
 /// <summary>
 /// MCP Streamable HTTP transport: exposes JSON-RPC over HTTP POST at /mcp endpoint.

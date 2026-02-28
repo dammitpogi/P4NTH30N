@@ -23,7 +23,7 @@ export class HoneybeltOperations {
   private services: Map<string, ServiceStatus> = new Map();
 
   constructor() {
-    // Register known P4NTH30N services
+    // Register known P4NTHE0N services
     this.registerService('H4ND', 'unknown');
     this.registerService('W4TCHD0G', 'unknown');
     this.registerService('H0UND', 'unknown');

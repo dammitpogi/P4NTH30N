@@ -1,10 +1,10 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace P4NTH30N.RAG;
+namespace P4NTHE0N.RAG;
 
 /// <summary>
-/// MCP Server exposing RAG as 6 discoverable tools for all P4NTH30N agents.
+/// MCP Server exposing RAG as 6 discoverable tools for all P4NTHE0N agents.
 /// Tools: rag_query, rag_ingest, rag_ingest_file, rag_status, rag_rebuild_index, rag_search_similar
 /// </summary>
 public sealed class RagMcpServer

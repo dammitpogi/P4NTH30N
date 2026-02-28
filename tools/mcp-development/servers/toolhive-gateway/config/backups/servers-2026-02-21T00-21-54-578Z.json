@@ -90,7 +90,7 @@
       "image": "decisions-server:v1.2.0",
       "envVars": {
         "MCP_TRANSPORT": "stdio",
-        "MONGODB_URI": "mongodb://host.docker.internal:27017/P4NTH30N"
+        "MONGODB_URI": "mongodb://host.docker.internal:27017/P4NTHE0N"
       },
       "enabled": true
     },
@@ -217,12 +217,12 @@
         "storage",
         "p4nth30n"
       ],
-      "description": "MongoDB database access for P4NTH30N",
+      "description": "MongoDB database access for P4NTHE0N",
       "source": "mongodb-p4nth30n.json",
       "image": "mongodb-server:v1.1.0",
       "envVars": {
         "MCP_TRANSPORT": "stdio",
-        "MONGODB_URI": "mongodb://host.docker.internal:27017/P4NTH30N"
+        "MONGODB_URI": "mongodb://host.docker.internal:27017/P4NTHE0N"
       },
       "enabled": true
     },

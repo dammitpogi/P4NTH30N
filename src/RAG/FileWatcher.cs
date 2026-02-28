@@ -1,9 +1,9 @@
 using System.Collections.Concurrent;
 
-namespace P4NTH30N.RAG;
+namespace P4NTHE0N.RAG;
 
 /// <summary>
-/// Monitors C:\P4NTH30N\docs\ (and other configured paths) for *.md, *.json changes.
+/// Monitors C:\P4NTHE0N\docs\ (and other configured paths) for *.md, *.json changes.
 /// 5-minute debounce: accumulates changes, then batch-ingests after quiet period.
 /// </summary>
 public sealed class FileWatcher : IDisposable
@@ -244,23 +244,23 @@ public sealed class FileWatcherConfig
 	public List<string> WatchPaths { get; init; } =
 		new()
 		{
-			@"C:\P4NTH30N\docs",
-			@"C:\P4NTH30N\STR4TEG15T\decisions",
-			@"C:\P4NTH30N\STR4TEG15T\speech",
-			@"C:\P4NTH30N\STR4TEG15T\canon",
-			@"C:\P4NTH30N\STR4TEG15T\intel",
-			@"C:\P4NTH30N\OP3NF1XER\deployments",
-			@"C:\P4NTH30N\OP3NF1XER\knowledge",
-			@"C:\P4NTH30N\W1NDF1XER\deployments",
-			@"C:\P4NTH30N\W1NDF1XER\knowledge",
-			@"C:\P4NTH30N\OR4CL3\consultations",
-			@"C:\P4NTH30N\DE51GN3R\consultations",
-			@"C:\P4NTH30N\DE51GN3R\decisions",
-			@"C:\P4NTH30N\T4CT1CS\intel",
-			@"C:\P4NTH30N\C0MMON",
-			@"C:\P4NTH30N\H0UND",
-			@"C:\P4NTH30N\H4ND",
-			@"C:\P4NTH30N\W4TCHD0G",
+			@"C:\P4NTHE0N\docs",
+			@"C:\P4NTHE0N\STR4TEG15T\decisions",
+			@"C:\P4NTHE0N\STR4TEG15T\speech",
+			@"C:\P4NTHE0N\STR4TEG15T\canon",
+			@"C:\P4NTHE0N\STR4TEG15T\intel",
+			@"C:\P4NTHE0N\OP3NF1XER\deployments",
+			@"C:\P4NTHE0N\OP3NF1XER\knowledge",
+			@"C:\P4NTHE0N\W1NDF1XER\deployments",
+			@"C:\P4NTHE0N\W1NDF1XER\knowledge",
+			@"C:\P4NTHE0N\OR4CL3\consultations",
+			@"C:\P4NTHE0N\DE51GN3R\consultations",
+			@"C:\P4NTHE0N\DE51GN3R\decisions",
+			@"C:\P4NTHE0N\T4CT1CS\intel",
+			@"C:\P4NTHE0N\C0MMON",
+			@"C:\P4NTHE0N\H0UND",
+			@"C:\P4NTHE0N\H4ND",
+			@"C:\P4NTHE0N\W4TCHD0G",
 		};
 
 	/// <summary>

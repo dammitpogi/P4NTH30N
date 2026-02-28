@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System.Text.Json;
 
-namespace P4NTH30N.RAG;
+namespace P4NTHE0N.RAG;
 
 /// <summary>
 /// HTTP client for the Python embedding bridge service.
@@ -103,7 +103,7 @@ public sealed class PythonEmbeddingClient : IDisposable
 	/// </summary>
 	public static async Task<Process?> StartBridgeAsync(
 		string pythonPath = "python",
-		string bridgeScript = @"C:\P4NTH30N\src\RAG\PythonBridge\embedding_bridge.py",
+		string bridgeScript = @"C:\P4NTHE0N\src\RAG\PythonBridge\embedding_bridge.py",
 		int healthCheckTimeoutSeconds = 30,
 		CancellationToken cancellationToken = default
 	)

@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace P4NTH30N.RAG;
+namespace P4NTHE0N.RAG;
 
 /// <summary>
 /// Enhanced query pipeline: embed → hybrid search (BM25 + FAISS) → join → format with citations.
@@ -183,8 +183,8 @@ public sealed class QueryPipeline
 		// Normalize path separators
 		source = source.Replace('\\', '/');
 		// Strip common prefixes
-		if (source.StartsWith("C:/P4NTH30N/", StringComparison.OrdinalIgnoreCase))
-			source = source["C:/P4NTH30N/".Length..];
+		if (source.StartsWith("C:/P4NTHE0N/", StringComparison.OrdinalIgnoreCase))
+			source = source["C:/P4NTHE0N/".Length..];
 
 		return $"[{source}] (score: {result.Score:F3})";
 	}

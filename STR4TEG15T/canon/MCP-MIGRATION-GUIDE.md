@@ -61,7 +61,7 @@ Add to `~/.codeium/windsurf/mcp_config.json`:
   "mcpServers": {
     "my-server": {
       "command": "node",
-      "args": ["C:/P4NTH30N/tools/mcp-development/servers/my-server/dist/index.js"]
+      "args": ["C:/P4NTHE0N/tools/mcp-development/servers/my-server/dist/index.js"]
     }
   }
 }
