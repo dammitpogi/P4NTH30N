@@ -1,0 +1,34 @@
+OpenFixer, execute this package when Nexus explicitly initiates deployment.
+
+Mode: Deployment
+Decision: DECISION_114
+Status: HandoffReady (blocked on OpenCode ask-permission provenance)
+Objective: Implement OpenCode permission-gate configuration so strategist deletion tests produce OpenCode-originated ask/allow evidence.
+
+Context:
+- STR4TEG15T/decisions/active/DECISION_114.md
+- C:\Users\paulc\.config\opencode\opencode.json
+- C:\Users\paulc\.config\opencode\agents\strategist.md
+
+Mission:
+1) Configure strategist deletion-capable path so OpenCode emits permission ask events (path `1a` selected by Nexus).
+2) Use least-disruptive configuration that preserves strategist editing workflow while making deletion audit provenance explicit.
+3) Document exact config rationale and tradeoffs.
+4) Provide a deterministic re-test procedure for DECISION_114 deletion protocol validation.
+
+Required outputs:
+- Updated `C:\Users\paulc\.config\opencode\opencode.json`
+- Deployment journal: `OP3NF1XER/deployments/JOURNAL_YYYY-MM-DD_DECISION_114_PERMISSION_GATE.md`
+- Decision evidence update in `STR4TEG15T/decisions/active/DECISION_114.md`
+
+Report format:
+1. Files changed
+2. Commands run
+3. Permission-gate change summary (before/after)
+4. Re-test checklist for OpenCode ask provenance
+5. Remaining blockers and recommendation
+
+Constraints:
+- No product code changes.
+- Keep config changes minimal and reversible.
+- Prioritize explicit ask-permission provenance over convenience for deletion operations.

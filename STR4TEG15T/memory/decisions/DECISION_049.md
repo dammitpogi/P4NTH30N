@@ -78,17 +78,17 @@ RAG MCP Server configuration in ToolHive Gateway:
   name: 'RAG MCP Server',
   transport: 'stdio',
   connection: { 
-    command: 'C:/ProgramData/P4NTH30N/bin/RAG.McpHost.exe',
+    command: 'C:/ProgramData/P4NTHE0N/bin/RAG.McpHost.exe',
     args: [
       '--port', '5001',
-      '--index', 'C:/ProgramData/P4NTH30N/rag-index',
-      '--model', 'C:/ProgramData/P4NTH30N/models/all-MiniLM-L6-v2.onnx',
+      '--index', 'C:/ProgramData/P4NTHE0N/rag-index',
+      '--model', 'C:/ProgramData/P4NTHE0N/models/all-MiniLM-L6-v2.onnx',
       '--bridge', 'http://127.0.0.1:5000',
-      '--mongo', 'mongodb://localhost:27017/P4NTH30N'
+      '--mongo', 'mongodb://localhost:27017/P4NTHE0N'
     ],
   },
   tools: [
-    { name: 'rag_query', description: 'Search P4NTH30N knowledge base' },
+    { name: 'rag_query', description: 'Search P4NTHE0N knowledge base' },
     { name: 'rag_ingest', description: 'Ingest document into knowledge base' },
     { name: 'rag_status', description: 'Check RAG system status' },
   ],
@@ -117,11 +117,11 @@ RAG server status: healthy with all 3 tools operational
 3. **RAG-003**: Verify dependencies
    - **Priority**: Must
    - **Acceptance Criteria**: All required files and services accessible:
-     - RAG.McpHost.exe exists at `C:/ProgramData/P4NTH30N/bin/RAG.McpHost.exe`
-     - Index directory exists at `C:/ProgramData/P4NTH30N/rag-index`
-     - Model file exists at `C:/ProgramData/P4NTH30N/models/all-MiniLM-L6-v2.onnx`
+     - RAG.McpHost.exe exists at `C:/ProgramData/P4NTHE0N/bin/RAG.McpHost.exe`
+     - Index directory exists at `C:/ProgramData/P4NTHE0N/rag-index`
+     - Model file exists at `C:/ProgramData/P4NTHE0N/models/all-MiniLM-L6-v2.onnx`
      - Bridge service accessible at `http://127.0.0.1:5000`
-     - MongoDB accessible at `mongodb://localhost:27017/P4NTH30N`
+     - MongoDB accessible at `mongodb://localhost:27017/P4NTHE0N`
 
 4. **RAG-004**: Confirm healthy status
    - **Priority**: Must
@@ -141,12 +141,12 @@ RAG server status: healthy with all 3 tools operational
 
 **Startup Command**:
 ```bash
-C:/ProgramData/P4NTH30N/bin/RAG.McpHost.exe \
+C:/ProgramData/P4NTHE0N/bin/RAG.McpHost.exe \
   --port 5001 \
-  --index C:/ProgramData/P4NTH30N/rag-index \
-  --model C:/ProgramData/P4NTH30N/models/all-MiniLM-L6-v2.onnx \
+  --index C:/ProgramData/P4NTHE0N/rag-index \
+  --model C:/ProgramData/P4NTHE0N/models/all-MiniLM-L6-v2.onnx \
   --bridge http://127.0.0.1:5000 \
-  --mongo mongodb://localhost:27017/P4NTH30N
+  --mongo mongodb://localhost:27017/P4NTHE0N
 ```
 
 **Health Check Method**:
@@ -291,7 +291,7 @@ Full details in: `OP3NF1XER/deployments/JOURNAL_2026-02-20_RAG_RESTORATION.md`
 1. Check process exists: `Get-Process RAG.McpHost` (PowerShell)
 2. Check port binding: `netstat -an | findstr 5001`
 3. Test bridge: `curl http://127.0.0.1:5000/health`
-4. Check logs: Look in `C:/ProgramData/P4NTH30N/logs/` or console output
+4. Check logs: Look in `C:/ProgramData/P4NTHE0N/logs/` or console output
 
 ---
 

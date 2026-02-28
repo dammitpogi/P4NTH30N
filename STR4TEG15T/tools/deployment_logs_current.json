@@ -1,0 +1,2017 @@
+{
+  "endpoint": "https://backboard.railway.com/graphql/v2",
+  "mode": "bearer",
+  "ok": true,
+  "statusCode": 200,
+  "body": {
+    "data": {
+      "deploymentLogs": [
+        {
+          "timestamp": "2026-02-24T08:14:41.899719051Z",
+          "severity": "error",
+          "message": "  configPath: 'models.providers.google.apiKey'"
+        },
+        {
+          "timestamp": "2026-02-24T08:14:41.899724963Z",
+          "severity": "error",
+          "message": "}"
+        },
+        {
+          "timestamp": "2026-02-24T08:14:41.899731420Z",
+          "severity": "info",
+          "message": "\u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:14:41.899737366Z",
+          "severity": "info",
+          "message": "\u25c7  Config \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e"
+        },
+        {
+          "timestamp": "2026-02-24T08:14:41.899746891Z",
+          "severity": "info",
+          "message": "\u2502                                                            \u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:14:41.899753152Z",
+          "severity": "info",
+          "message": "\u2502  Config invalid; doctor will run with best-effort config.  \u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:14:41.899759109Z",
+          "severity": "info",
+          "message": "\u2502                                                            \u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:14:41.899766668Z",
+          "severity": "info",
+          "message": "\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f"
+        },
+        {
+          "timestamp": "2026-02-24T08:14:41.899772876Z",
+          "severity": "error",
+          "message": "Config invalid"
+        },
+        {
+          "timestamp": "2026-02-24T08:14:41.899778006Z",
+          "severity": "error",
+          "message": "File: /data/.clawdbot/openclaw.json"
+        },
+        {
+          "timestamp": "2026-02-24T08:14:41.899783742Z",
+          "severity": "error",
+          "message": "Problem:"
+        },
+        {
+          "timestamp": "2026-02-24T08:14:41.899789645Z",
+          "severity": "error",
+          "message": "  - <root>: Missing env var \"GEMINI_API_KEY\" referenced at config path: models.providers.google.apiKey"
+        },
+        {
+          "timestamp": "2026-02-24T08:14:41.899796671Z",
+          "severity": "error",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:14:41.899831372Z",
+          "severity": "error",
+          "message": "Run: openclaw doctor --fix"
+        },
+        {
+          "timestamp": "2026-02-24T08:14:41.899840149Z",
+          "severity": "error",
+          "message": "[gateway] exited code=1 signal=null"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:13.165134007Z",
+          "severity": "error",
+          "message": "Failed to read config at /data/.clawdbot/openclaw.json MissingEnvVarError: Missing env var \"GEMINI_API_KEY\" referenced at config path: models.providers.google.apiKey"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:13.165141622Z",
+          "severity": "error",
+          "message": "    at substituteString (file:///openclaw/dist/config-Cz6PlSb8.js:535:56)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:13.165151667Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:547:40)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:13.165160176Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:13.165168895Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:13.165178573Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:13.165187170Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:13.165193988Z",
+          "severity": "error",
+          "message": "    at resolveConfigEnvVars (file:///openclaw/dist/config-Cz6PlSb8.js:565:9)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:13.165274275Z",
+          "severity": "error",
+          "message": "    at Object.loadConfig (file:///openclaw/dist/config-Cz6PlSb8.js:4616:27)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:13.165281026Z",
+          "severity": "error",
+          "message": "    at loadConfig (file:///openclaw/dist/config-Cz6PlSb8.js:4867:20)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:13.165305963Z",
+          "severity": "error",
+          "message": "    at file:///openclaw/dist/loader-Ds3or8QX.js:16884:34 {"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:13.165313644Z",
+          "severity": "error",
+          "message": "  varName: 'GEMINI_API_KEY',"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:13.165321045Z",
+          "severity": "error",
+          "message": "  configPath: 'models.providers.google.apiKey'"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:13.165327950Z",
+          "severity": "error",
+          "message": "}"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:13.165571999Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:13.165881958Z",
+          "severity": "error",
+          "message": "Failed to read config at /data/.clawdbot/openclaw.json MissingEnvVarError: Missing env var \"GEMINI_API_KEY\" referenced at config path: models.providers.google.apiKey"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:13.165891875Z",
+          "severity": "error",
+          "message": "    at substituteString (file:///openclaw/dist/config-Cz6PlSb8.js:535:56)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:13.165899672Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:547:40)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:14.482435656Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:14.482446219Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:14.482454843Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:14.483777351Z",
+          "severity": "error",
+          "message": "    at resolveConfigEnvVars (file:///openclaw/dist/config-Cz6PlSb8.js:565:9)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:14.483805639Z",
+          "severity": "error",
+          "message": "    at Object.loadConfig (file:///openclaw/dist/config-Cz6PlSb8.js:4616:27)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:14.483817799Z",
+          "severity": "error",
+          "message": "    at loadConfig (file:///openclaw/dist/config-Cz6PlSb8.js:4867:20)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:14.483830683Z",
+          "severity": "error",
+          "message": "    at runCli (file:///openclaw/dist/run-main-CXp6H6-6.js:160:38) {"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:14.483840530Z",
+          "severity": "error",
+          "message": "  varName: 'GEMINI_API_KEY',"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:14.483850989Z",
+          "severity": "error",
+          "message": "  configPath: 'models.providers.google.apiKey'"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:14.483864743Z",
+          "severity": "error",
+          "message": "}"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:14.483875527Z",
+          "severity": "error",
+          "message": "Failed to read config at /data/.clawdbot/openclaw.json MissingEnvVarError: Missing env var \"GEMINI_API_KEY\" referenced at config path: models.providers.google.apiKey"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:14.483885676Z",
+          "severity": "error",
+          "message": "    at substituteString (/openclaw/dist/plugin-sdk/index.js:8194:61)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:14.484033450Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8206:41)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:14.484048269Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8210:67)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:14.484057218Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8210:67)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:14.484066896Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8210:67)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:14.484078994Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8210:67)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:14.484086709Z",
+          "severity": "error",
+          "message": "    at resolveConfigEnvVars (/openclaw/dist/plugin-sdk/index.js:8224:10)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:14.484095642Z",
+          "severity": "error",
+          "message": "    at Object.loadConfig (/openclaw/dist/plugin-sdk/index.js:11054:30)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:15.515432488Z",
+          "severity": "error",
+          "message": "    at loadConfig (/openclaw/dist/plugin-sdk/index.js:11305:21)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:15.515451850Z",
+          "severity": "error",
+          "message": "    at /openclaw/dist/plugin-sdk/index.js:18809:36 {"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:15.515463265Z",
+          "severity": "error",
+          "message": "  varName: 'GEMINI_API_KEY',"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:15.515472436Z",
+          "severity": "error",
+          "message": "  configPath: 'models.providers.google.apiKey'"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:15.515479934Z",
+          "severity": "error",
+          "message": "}"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:15.515488655Z",
+          "severity": "info",
+          "message": "\u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:15.515496519Z",
+          "severity": "info",
+          "message": "\u25c7  Config \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:15.515503469Z",
+          "severity": "info",
+          "message": "\u2502                                                            \u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:15.515511074Z",
+          "severity": "info",
+          "message": "\u2502  Config invalid; doctor will run with best-effort config.  \u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:15.515518444Z",
+          "severity": "info",
+          "message": "\u2502                                                            \u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:15.515526587Z",
+          "severity": "info",
+          "message": "\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:15.515533922Z",
+          "severity": "error",
+          "message": "Config invalid"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:15.515540784Z",
+          "severity": "error",
+          "message": "File: /data/.clawdbot/openclaw.json"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:15.515547477Z",
+          "severity": "error",
+          "message": "Problem:"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:15.515554455Z",
+          "severity": "error",
+          "message": "  - <root>: Missing env var \"GEMINI_API_KEY\" referenced at config path: models.providers.google.apiKey"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:15.515561921Z",
+          "severity": "error",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:15:15.515569945Z",
+          "severity": "error",
+          "message": "Run: openclaw doctor --fix"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:15.515579039Z",
+          "severity": "error",
+          "message": "[gateway] exited code=1 signal=null"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.292746548Z",
+          "severity": "error",
+          "message": "Failed to read config at /data/.clawdbot/openclaw.json MissingEnvVarError: Missing env var \"GEMINI_API_KEY\" referenced at config path: models.providers.google.apiKey"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.292753535Z",
+          "severity": "error",
+          "message": "    at substituteString (file:///openclaw/dist/config-Cz6PlSb8.js:535:56)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.292761275Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:547:40)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.292769614Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.292822222Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.292832659Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.292842253Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.292850682Z",
+          "severity": "error",
+          "message": "    at resolveConfigEnvVars (file:///openclaw/dist/config-Cz6PlSb8.js:565:9)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.292858328Z",
+          "severity": "error",
+          "message": "    at Object.loadConfig (file:///openclaw/dist/config-Cz6PlSb8.js:4616:27)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.292866185Z",
+          "severity": "error",
+          "message": "    at loadConfig (file:///openclaw/dist/config-Cz6PlSb8.js:4867:20)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.292873311Z",
+          "severity": "error",
+          "message": "    at file:///openclaw/dist/loader-Ds3or8QX.js:16884:34 {"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.292880486Z",
+          "severity": "error",
+          "message": "  varName: 'GEMINI_API_KEY',"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.292887972Z",
+          "severity": "error",
+          "message": "  configPath: 'models.providers.google.apiKey'"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.292894349Z",
+          "severity": "error",
+          "message": "}"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.292900331Z",
+          "severity": "error",
+          "message": "Failed to read config at /data/.clawdbot/openclaw.json MissingEnvVarError: Missing env var \"GEMINI_API_KEY\" referenced at config path: models.providers.google.apiKey"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.292906939Z",
+          "severity": "error",
+          "message": "    at substituteString (/openclaw/dist/plugin-sdk/index.js:8194:61)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.292914023Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8206:41)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.292920312Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8210:67)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.298611504Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8210:67)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.298757603Z",
+          "severity": "info",
+          "message": "\u25c7  Config \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.298766859Z",
+          "severity": "info",
+          "message": "\u2502                                                            \u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.298773286Z",
+          "severity": "info",
+          "message": "\u2502  Config invalid; doctor will run with best-effort config.  \u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.298785000Z",
+          "severity": "info",
+          "message": "\u2502                                                            \u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.298792092Z",
+          "severity": "info",
+          "message": "\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.298800065Z",
+          "severity": "error",
+          "message": "Config invalid"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.298847199Z",
+          "severity": "error",
+          "message": "File: /data/.clawdbot/openclaw.json"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.298880760Z",
+          "severity": "error",
+          "message": "Problem:"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.298897286Z",
+          "severity": "error",
+          "message": "  - <root>: Missing env var \"GEMINI_API_KEY\" referenced at config path: models.providers.google.apiKey"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.299023091Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8210:67)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.299030967Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8210:67)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.299037126Z",
+          "severity": "error",
+          "message": "    at resolveConfigEnvVars (/openclaw/dist/plugin-sdk/index.js:8224:10)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.299044074Z",
+          "severity": "error",
+          "message": "    at Object.loadConfig (/openclaw/dist/plugin-sdk/index.js:11054:30)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.299051370Z",
+          "severity": "error",
+          "message": "    at loadConfig (/openclaw/dist/plugin-sdk/index.js:11305:21)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.299057988Z",
+          "severity": "error",
+          "message": "    at /openclaw/dist/plugin-sdk/index.js:18809:36 {"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.299064190Z",
+          "severity": "error",
+          "message": "  varName: 'GEMINI_API_KEY',"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.299069913Z",
+          "severity": "error",
+          "message": "  configPath: 'models.providers.google.apiKey'"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.299076159Z",
+          "severity": "error",
+          "message": "}"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.299083502Z",
+          "severity": "info",
+          "message": "\u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.299631123Z",
+          "severity": "error",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.299637901Z",
+          "severity": "error",
+          "message": "Run: openclaw doctor --fix"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:35.299645087Z",
+          "severity": "error",
+          "message": "[gateway] exited code=1 signal=null"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.800543612Z",
+          "severity": "error",
+          "message": "    at substituteString (file:///openclaw/dist/config-Cz6PlSb8.js:535:56)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.800562600Z",
+          "severity": "error",
+          "message": "Failed to read config at /data/.clawdbot/openclaw.json MissingEnvVarError: Missing env var \"GEMINI_API_KEY\" referenced at config path: models.providers.google.apiKey"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.800565545Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:547:40)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.800578751Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.800583370Z",
+          "severity": "error",
+          "message": "    at substituteString (file:///openclaw/dist/config-Cz6PlSb8.js:535:56)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.800589099Z",
+          "severity": "error",
+          "message": "  varName: 'GEMINI_API_KEY',"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.800602272Z",
+          "severity": "error",
+          "message": "}"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.800605014Z",
+          "severity": "error",
+          "message": "  configPath: 'models.providers.google.apiKey'"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.800615470Z",
+          "severity": "error",
+          "message": "Failed to read config at /data/.clawdbot/openclaw.json MissingEnvVarError: Missing env var \"GEMINI_API_KEY\" referenced at config path: models.providers.google.apiKey"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.800639509Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:547:40)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.800650853Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.800657151Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.800666071Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.800671576Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.800677283Z",
+          "severity": "error",
+          "message": "    at resolveConfigEnvVars (file:///openclaw/dist/config-Cz6PlSb8.js:565:9)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.800682527Z",
+          "severity": "error",
+          "message": "    at Object.loadConfig (file:///openclaw/dist/config-Cz6PlSb8.js:4616:27)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.800687930Z",
+          "severity": "error",
+          "message": "    at loadConfig (file:///openclaw/dist/config-Cz6PlSb8.js:4867:20)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.800695797Z",
+          "severity": "error",
+          "message": "    at file:///openclaw/dist/loader-Ds3or8QX.js:16884:34 {"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.809718009Z",
+          "severity": "error",
+          "message": "  configPath: 'models.providers.google.apiKey'"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.809737001Z",
+          "severity": "error",
+          "message": "}"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.809749908Z",
+          "severity": "error",
+          "message": "    at runCli (file:///openclaw/dist/run-main-CXp6H6-6.js:160:38) {"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.809758175Z",
+          "severity": "error",
+          "message": "Failed to read config at /data/.clawdbot/openclaw.json MissingEnvVarError: Missing env var \"GEMINI_API_KEY\" referenced at config path: models.providers.google.apiKey"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.809760626Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.809771922Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.809772459Z",
+          "severity": "error",
+          "message": "  varName: 'GEMINI_API_KEY',"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.809782900Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.809791446Z",
+          "severity": "error",
+          "message": "    at resolveConfigEnvVars (file:///openclaw/dist/config-Cz6PlSb8.js:565:9)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.809801134Z",
+          "severity": "error",
+          "message": "    at Object.loadConfig (file:///openclaw/dist/config-Cz6PlSb8.js:4616:27)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.809812580Z",
+          "severity": "error",
+          "message": "    at loadConfig (file:///openclaw/dist/config-Cz6PlSb8.js:4867:20)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.809813171Z",
+          "severity": "error",
+          "message": "    at substituteString (/openclaw/dist/plugin-sdk/index.js:8194:61)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.809824180Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8206:41)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.809840583Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8210:67)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.809852496Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8210:67)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.809858031Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8210:67)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.809875085Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8210:67)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.809886244Z",
+          "severity": "error",
+          "message": "    at resolveConfigEnvVars (/openclaw/dist/plugin-sdk/index.js:8224:10)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.809895629Z",
+          "severity": "error",
+          "message": "    at Object.loadConfig (/openclaw/dist/plugin-sdk/index.js:11054:30)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.814833233Z",
+          "severity": "error",
+          "message": "    at loadConfig (/openclaw/dist/plugin-sdk/index.js:11305:21)"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.814838277Z",
+          "severity": "error",
+          "message": "    at /openclaw/dist/plugin-sdk/index.js:18809:36 {"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.814843000Z",
+          "severity": "error",
+          "message": "  varName: 'GEMINI_API_KEY',"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.814848593Z",
+          "severity": "error",
+          "message": "  configPath: 'models.providers.google.apiKey'"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.814854326Z",
+          "severity": "error",
+          "message": "}"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.814859353Z",
+          "severity": "info",
+          "message": "\u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.814864575Z",
+          "severity": "info",
+          "message": "\u25c7  Config \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.814870331Z",
+          "severity": "info",
+          "message": "\u2502                                                            \u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.814875861Z",
+          "severity": "info",
+          "message": "\u2502  Config invalid; doctor will run with best-effort config.  \u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.814881066Z",
+          "severity": "info",
+          "message": "\u2502                                                            \u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.814885453Z",
+          "severity": "info",
+          "message": "\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.814890512Z",
+          "severity": "error",
+          "message": "Config invalid"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.814895598Z",
+          "severity": "error",
+          "message": "File: /data/.clawdbot/openclaw.json"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.814903747Z",
+          "severity": "error",
+          "message": "Problem:"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.814909166Z",
+          "severity": "error",
+          "message": "  - <root>: Missing env var \"GEMINI_API_KEY\" referenced at config path: models.providers.google.apiKey"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.814915805Z",
+          "severity": "error",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.814920929Z",
+          "severity": "error",
+          "message": "Run: openclaw doctor --fix"
+        },
+        {
+          "timestamp": "2026-02-24T08:15:54.814925593Z",
+          "severity": "error",
+          "message": "[gateway] exited code=1 signal=null"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:15.529562768Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:15.529583164Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:15.529595102Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:15.529605838Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:15.529620450Z",
+          "severity": "error",
+          "message": "    at resolveConfigEnvVars (file:///openclaw/dist/config-Cz6PlSb8.js:565:9)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:15.529631868Z",
+          "severity": "error",
+          "message": "    at Object.loadConfig (file:///openclaw/dist/config-Cz6PlSb8.js:4616:27)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:15.529692737Z",
+          "severity": "error",
+          "message": "Failed to read config at /data/.clawdbot/openclaw.json MissingEnvVarError: Missing env var \"GEMINI_API_KEY\" referenced at config path: models.providers.google.apiKey"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:15.529724887Z",
+          "severity": "error",
+          "message": "    at substituteString (file:///openclaw/dist/config-Cz6PlSb8.js:535:56)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:15.529733190Z",
+          "severity": "error",
+          "message": "    at loadConfig (file:///openclaw/dist/config-Cz6PlSb8.js:4867:20)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:15.529741301Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:547:40)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:15.529747120Z",
+          "severity": "error",
+          "message": "    at substituteString (/openclaw/dist/plugin-sdk/index.js:8194:61)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:15.529759183Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8206:41)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:15.529766498Z",
+          "severity": "error",
+          "message": "    at file:///openclaw/dist/loader-Ds3or8QX.js:16884:34 {"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:15.529770903Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8210:67)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:15.529797365Z",
+          "severity": "error",
+          "message": "  varName: 'GEMINI_API_KEY',"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:15.529813224Z",
+          "severity": "error",
+          "message": "  configPath: 'models.providers.google.apiKey'"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:15.529822498Z",
+          "severity": "error",
+          "message": "}"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:15.529831807Z",
+          "severity": "error",
+          "message": "Failed to read config at /data/.clawdbot/openclaw.json MissingEnvVarError: Missing env var \"GEMINI_API_KEY\" referenced at config path: models.providers.google.apiKey"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:16.957581087Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8210:67)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:16.957588299Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8210:67)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:16.957600112Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8210:67)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:16.957609194Z",
+          "severity": "error",
+          "message": "    at resolveConfigEnvVars (/openclaw/dist/plugin-sdk/index.js:8224:10)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:16.957619712Z",
+          "severity": "error",
+          "message": "    at Object.loadConfig (/openclaw/dist/plugin-sdk/index.js:11054:30)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:16.957629000Z",
+          "severity": "error",
+          "message": "    at loadConfig (/openclaw/dist/plugin-sdk/index.js:11305:21)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:16.957637240Z",
+          "severity": "error",
+          "message": "    at /openclaw/dist/plugin-sdk/index.js:18809:36 {"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:16.960262525Z",
+          "severity": "error",
+          "message": "  varName: 'GEMINI_API_KEY',"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:16.960277851Z",
+          "severity": "error",
+          "message": "  configPath: 'models.providers.google.apiKey'"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:16.960287889Z",
+          "severity": "error",
+          "message": "}"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:16.960296063Z",
+          "severity": "info",
+          "message": "\u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:16.960304386Z",
+          "severity": "info",
+          "message": "\u25c7  Config \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:16.960313703Z",
+          "severity": "info",
+          "message": "\u2502                                                            \u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:16.960323107Z",
+          "severity": "info",
+          "message": "\u2502  Config invalid; doctor will run with best-effort config.  \u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:16.960329853Z",
+          "severity": "info",
+          "message": "\u2502                                                            \u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:16.960336984Z",
+          "severity": "info",
+          "message": "\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:16.960344382Z",
+          "severity": "error",
+          "message": "Config invalid"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:16.960351989Z",
+          "severity": "error",
+          "message": "File: /data/.clawdbot/openclaw.json"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:16.960358666Z",
+          "severity": "error",
+          "message": "Problem:"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:16.960364804Z",
+          "severity": "error",
+          "message": "  - <root>: Missing env var \"GEMINI_API_KEY\" referenced at config path: models.providers.google.apiKey"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:18.656893590Z",
+          "severity": "error",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:16:18.656900379Z",
+          "severity": "error",
+          "message": "Run: openclaw doctor --fix"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:18.656907003Z",
+          "severity": "error",
+          "message": "[gateway] exited code=1 signal=null"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.578540185Z",
+          "severity": "error",
+          "message": "Failed to read config at /data/.clawdbot/openclaw.json MissingEnvVarError: Missing env var \"GEMINI_API_KEY\" referenced at config path: models.providers.google.apiKey"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.578553841Z",
+          "severity": "error",
+          "message": "    at substituteString (file:///openclaw/dist/config-Cz6PlSb8.js:535:56)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.578563011Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:547:40)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.578571932Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.578581198Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.578593705Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.578606581Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.578616085Z",
+          "severity": "error",
+          "message": "    at resolveConfigEnvVars (file:///openclaw/dist/config-Cz6PlSb8.js:565:9)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.578625412Z",
+          "severity": "error",
+          "message": "    at Object.loadConfig (file:///openclaw/dist/config-Cz6PlSb8.js:4616:27)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.578639227Z",
+          "severity": "error",
+          "message": "    at loadConfig (file:///openclaw/dist/config-Cz6PlSb8.js:4867:20)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.578647823Z",
+          "severity": "error",
+          "message": "    at file:///openclaw/dist/loader-Ds3or8QX.js:16884:34 {"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.578656521Z",
+          "severity": "error",
+          "message": "  varName: 'GEMINI_API_KEY',"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.578670339Z",
+          "severity": "error",
+          "message": "  configPath: 'models.providers.google.apiKey'"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.578680147Z",
+          "severity": "error",
+          "message": "}"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.578688163Z",
+          "severity": "error",
+          "message": "Failed to read config at /data/.clawdbot/openclaw.json MissingEnvVarError: Missing env var \"GEMINI_API_KEY\" referenced at config path: models.providers.google.apiKey"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.578696580Z",
+          "severity": "error",
+          "message": "    at substituteString (/openclaw/dist/plugin-sdk/index.js:8194:61)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.578710314Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8206:41)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.578719040Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8210:67)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.587452024Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8210:67)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.587458644Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8210:67)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.587466416Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8210:67)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.587474246Z",
+          "severity": "error",
+          "message": "    at resolveConfigEnvVars (/openclaw/dist/plugin-sdk/index.js:8224:10)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.587480121Z",
+          "severity": "error",
+          "message": "    at Object.loadConfig (/openclaw/dist/plugin-sdk/index.js:11054:30)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.587485142Z",
+          "severity": "error",
+          "message": "    at loadConfig (/openclaw/dist/plugin-sdk/index.js:11305:21)"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.587491463Z",
+          "severity": "error",
+          "message": "    at /openclaw/dist/plugin-sdk/index.js:18809:36 {"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.587498793Z",
+          "severity": "error",
+          "message": "  varName: 'GEMINI_API_KEY',"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.587506076Z",
+          "severity": "error",
+          "message": "  configPath: 'models.providers.google.apiKey'"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.587512763Z",
+          "severity": "error",
+          "message": "}"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.587519849Z",
+          "severity": "info",
+          "message": "\u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.587526103Z",
+          "severity": "info",
+          "message": "\u25c7  Config \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.587533186Z",
+          "severity": "info",
+          "message": "\u2502                                                            \u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.587540450Z",
+          "severity": "info",
+          "message": "\u2502  Config invalid; doctor will run with best-effort config.  \u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.587547840Z",
+          "severity": "info",
+          "message": "\u2502                                                            \u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.587564912Z",
+          "severity": "info",
+          "message": "\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.587576388Z",
+          "severity": "error",
+          "message": "Config invalid"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.587586897Z",
+          "severity": "error",
+          "message": "File: /data/.clawdbot/openclaw.json"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.587595784Z",
+          "severity": "error",
+          "message": "Problem:"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.587605222Z",
+          "severity": "error",
+          "message": "  - <root>: Missing env var \"GEMINI_API_KEY\" referenced at config path: models.providers.google.apiKey"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.598098648Z",
+          "severity": "error",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.598109495Z",
+          "severity": "error",
+          "message": "Run: openclaw doctor --fix"
+        },
+        {
+          "timestamp": "2026-02-24T08:16:37.598117595Z",
+          "severity": "error",
+          "message": "[gateway] exited code=1 signal=null"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:45.157260145Z",
+          "severity": "error",
+          "message": "Failed to read config at /data/.clawdbot/openclaw.json MissingEnvVarError: Missing env var \"GEMINI_API_KEY\" referenced at config path: models.providers.google.apiKey"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:45.157265730Z",
+          "severity": "error",
+          "message": "    at substituteString (file:///openclaw/dist/config-Cz6PlSb8.js:535:56)"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:45.157272721Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:547:40)"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:45.157279453Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:45.157300882Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:45.157308608Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:45.157314631Z",
+          "severity": "error",
+          "message": "    at substituteAny (file:///openclaw/dist/config-Cz6PlSb8.js:551:65)"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:45.157320980Z",
+          "severity": "error",
+          "message": "    at resolveConfigEnvVars (file:///openclaw/dist/config-Cz6PlSb8.js:565:9)"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:45.159855553Z",
+          "severity": "error",
+          "message": "    at Object.loadConfig (file:///openclaw/dist/config-Cz6PlSb8.js:4616:27)"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:45.159864266Z",
+          "severity": "error",
+          "message": "    at loadConfig (file:///openclaw/dist/config-Cz6PlSb8.js:4867:20)"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:45.159871566Z",
+          "severity": "error",
+          "message": "    at file:///openclaw/dist/loader-Ds3or8QX.js:16884:34 {"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:45.159879625Z",
+          "severity": "error",
+          "message": "  varName: 'GEMINI_API_KEY',"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:45.159887046Z",
+          "severity": "error",
+          "message": "  configPath: 'models.providers.google.apiKey'"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:45.159895823Z",
+          "severity": "error",
+          "message": "}"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:45.159905462Z",
+          "severity": "error",
+          "message": "Failed to read config at /data/.clawdbot/openclaw.json MissingEnvVarError: Missing env var \"GEMINI_API_KEY\" referenced at config path: models.providers.google.apiKey"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:45.159913145Z",
+          "severity": "error",
+          "message": "    at substituteString (/openclaw/dist/plugin-sdk/index.js:8194:61)"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:45.159920230Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8206:41)"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:45.159931574Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8210:67)"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:46.904572892Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8210:67)"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:46.904579143Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8210:67)"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:46.904590609Z",
+          "severity": "error",
+          "message": "    at substituteAny (/openclaw/dist/plugin-sdk/index.js:8210:67)"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:46.904599221Z",
+          "severity": "error",
+          "message": "    at resolveConfigEnvVars (/openclaw/dist/plugin-sdk/index.js:8224:10)"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:46.904605771Z",
+          "severity": "error",
+          "message": "    at Object.loadConfig (/openclaw/dist/plugin-sdk/index.js:11054:30)"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:46.904613612Z",
+          "severity": "error",
+          "message": "    at loadConfig (/openclaw/dist/plugin-sdk/index.js:11305:21)"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:46.904621042Z",
+          "severity": "error",
+          "message": "    at /openclaw/dist/plugin-sdk/index.js:18809:36 {"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:46.904645257Z",
+          "severity": "error",
+          "message": "  varName: 'GEMINI_API_KEY',"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:46.904652278Z",
+          "severity": "error",
+          "message": "  configPath: 'models.providers.google.apiKey'"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:46.904662849Z",
+          "severity": "error",
+          "message": "}"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:46.904678508Z",
+          "severity": "info",
+          "message": "\u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:46.904685211Z",
+          "severity": "info",
+          "message": "\u25c7  Config \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:46.904693026Z",
+          "severity": "info",
+          "message": "\u2502                                                            \u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:46.904706041Z",
+          "severity": "info",
+          "message": "\u2502  Config invalid; doctor will run with best-effort config.  \u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:46.904712694Z",
+          "severity": "info",
+          "message": "\u2502                                                            \u2502"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:46.904720291Z",
+          "severity": "info",
+          "message": "\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:46.904728054Z",
+          "severity": "error",
+          "message": "Config invalid"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:46.904740809Z",
+          "severity": "error",
+          "message": "File: /data/.clawdbot/openclaw.json"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:46.904751558Z",
+          "severity": "error",
+          "message": "Problem:"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:46.904758897Z",
+          "severity": "error",
+          "message": "  - <root>: Missing env var \"GEMINI_API_KEY\" referenced at config path: models.providers.google.apiKey"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:48.402005410Z",
+          "severity": "error",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:24:48.402015465Z",
+          "severity": "error",
+          "message": "Run: openclaw doctor --fix"
+        },
+        {
+          "timestamp": "2026-02-24T08:24:48.402024135Z",
+          "severity": "error",
+          "message": "[gateway] exited code=1 signal=null"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:30.180818694Z",
+          "severity": "info",
+          "message": "2026-02-24T08:25:22.339Z [canvas] host mounted at http://127.0.0.1:18789/__openclaw__/canvas/ (root /data/.clawdbot/canvas)"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:30.180832762Z",
+          "severity": "info",
+          "message": "2026-02-24T08:25:22.789Z [heartbeat] started"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:30.180839633Z",
+          "severity": "info",
+          "message": "2026-02-24T08:25:22.829Z [gateway] agent model: anthropic/claude-sonnet-4-5-20250929"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:30.180846748Z",
+          "severity": "info",
+          "message": "2026-02-24T08:25:22.833Z [gateway] listening on ws://127.0.0.1:18789 (PID 500)"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:30.180854286Z",
+          "severity": "info",
+          "message": "2026-02-24T08:25:22.840Z [gateway] listening on ws://[::1]:18789"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:30.180862267Z",
+          "severity": "info",
+          "message": "2026-02-24T08:25:22.849Z [gateway] log file: /tmp/openclaw/openclaw-2026-02-24.log"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:30.180869911Z",
+          "severity": "info",
+          "message": "2026-02-24T08:25:23.024Z [browser/service] Browser control service ready (profiles=2)"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:30.180878196Z",
+          "severity": "info",
+          "message": "2026-02-24T08:25:24.677Z [telegram] [default] starting provider (@Almastockbot)"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:30.180885228Z",
+          "severity": "info",
+          "message": "2026-02-24T08:25:24.820Z [telegram] autoSelectFamily=false (default-node22)"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:30.180893783Z",
+          "severity": "info",
+          "message": "2026-02-24T08:25:28.688Z [agents/auth-profiles] inherited auth-profiles from main agent"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983384255Z",
+          "severity": "error",
+          "message": "2026-02-24T08:25:41.695Z [diagnostic] lane wait exceeded: lane=main waitedMs=12881 queueAhead=2"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983390772Z",
+          "severity": "info",
+          "message": "2026-02-24T08:25:41.945Z Config applied and restarted. Here's your new setup:"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983399627Z",
+          "severity": "info",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983406400Z",
+          "severity": "info",
+          "message": "---"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983415727Z",
+          "severity": "info",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983423396Z",
+          "severity": "info",
+          "message": "## \u2705 Multi-Agent Architecture Active"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983431717Z",
+          "severity": "info",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983437703Z",
+          "severity": "info",
+          "message": "| Agent | Model | Fallbacks | Role |"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983445010Z",
+          "severity": "info",
+          "message": "|-------|-------|-----------|------|"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983451992Z",
+          "severity": "info",
+          "message": "| **Dash** (default) | Claude Sonnet | \u2192 Gemini Flash \u2192 GPT-4o | Daily driver |"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983459582Z",
+          "severity": "info",
+          "message": "| **Coder** | Claude Opus | \u2192 Sonnet | Complex coding |"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983465520Z",
+          "severity": "info",
+          "message": "| **Scout** | GPT-4o | \u2192 Gemini Flash | Research, different perspective |"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983471933Z",
+          "severity": "info",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983482527Z",
+          "severity": "info",
+          "message": "---"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983488289Z",
+          "severity": "info",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983495139Z",
+          "severity": "info",
+          "message": "## \ud83d\udd11 Add These to Railway"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983500843Z",
+          "severity": "info",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983506750Z",
+          "severity": "info",
+          "message": "Go to **Railway \u2192 Your Project \u2192 Variables** and add:"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983513251Z",
+          "severity": "info",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983520227Z",
+          "severity": "info",
+          "message": "| Variable | Value |"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983525994Z",
+          "severity": "info",
+          "message": "|----------|-------|"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983534470Z",
+          "severity": "info",
+          "message": "| `GEMINI_API_KEY` | `AIzaSyCmT79KoX7eKD0CkvkTPyh7ReKQ-EJNOxg` |"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983542275Z",
+          "severity": "info",
+          "message": "| `OPENAI_API_KEY` | *(get from platform.openai.com)* |"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983549099Z",
+          "severity": "info",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983556413Z",
+          "severity": "info",
+          "message": "After adding the keys, Railway will redeploy automatically."
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983562864Z",
+          "severity": "info",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983569982Z",
+          "severity": "info",
+          "message": "---"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:49.983576091Z",
+          "severity": "info",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:25:50.949273955Z",
+          "severity": "info",
+          "message": "- `openai/gpt-4o` - GPT-4o (once key is added)"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:50.949310537Z",
+          "severity": "info",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:25:50.949328686Z",
+          "severity": "info",
+          "message": "**Spawn specialists:**"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:50.949343498Z",
+          "severity": "info",
+          "message": "```"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:50.949354352Z",
+          "severity": "info",
+          "message": "Ask Coder to debug this complex issue..."
+        },
+        {
+          "timestamp": "2026-02-24T08:25:50.949366641Z",
+          "severity": "info",
+          "message": "\u2192 I'll use sessions_spawn to run it on Opus"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:50.949378730Z",
+          "severity": "info",
+          "message": "```"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:50.949391058Z",
+          "severity": "info",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:25:50.949402866Z",
+          "severity": "info",
+          "message": "---"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:50.949416200Z",
+          "severity": "info",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:25:50.949428601Z",
+          "severity": "info",
+          "message": "## Current Status"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:50.949440609Z",
+          "severity": "info",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:25:50.949451942Z",
+          "severity": "info",
+          "message": "- \u2705 **Gemini** - Ready once you add the key to Railway"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:50.949462595Z",
+          "severity": "info",
+          "message": "- \u23f3 **OpenAI** - Needs API key (remember: platform.openai.com, separate from ChatGPT Plus)"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:50.949473840Z",
+          "severity": "info",
+          "message": "- \u2705 **Claude** - Already working"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:50.949537652Z",
+          "severity": "info",
+          "message": "## How to Use the Agents"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:50.949572804Z",
+          "severity": "info",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:25:50.949582866Z",
+          "severity": "info",
+          "message": "**Switch models in chat:**"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:50.949592739Z",
+          "severity": "info",
+          "message": "- `Sonnet` / `Opus` / `Haiku` - Claude models"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:50.949599786Z",
+          "severity": "info",
+          "message": "- `google/gemini-2.0-flash` - Gemini"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:50.950488007Z",
+          "severity": "info",
+          "message": "- \u2705 **Fallback cascade** - If Claude rate-limits, auto-switches to Gemini \u2192 OpenAI"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:50.950502566Z",
+          "severity": "info",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:25:50.950513834Z",
+          "severity": "info",
+          "message": "Let me know once you've added the Railway env vars and I'll test the connections!"
+        },
+        {
+          "timestamp": "2026-02-24T08:25:50.950520637Z",
+          "severity": "error",
+          "message": "2026-02-24T08:25:48.028Z [diagnostic] lane wait exceeded: lane=main waitedMs=19140 queueAhead=1"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:10.357482790Z",
+          "severity": "info",
+          "message": "2026-02-24T08:26:05.377Z [reload] config change detected; evaluating reload (meta.lastTouchedAt, auth.profiles.openai:default, auth.profiles.google:default, models.providers.openai.models, models.providers.google.models, agents.defaults.contextPruning, agents.defaults.heartbeat, agents.list, bindings)"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:10.357503129Z",
+          "severity": "error",
+          "message": "2026-02-24T08:26:05.380Z [reload] config change requires gateway restart (meta.lastTouchedAt, auth.profiles.openai:default, auth.profiles.google:default)"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:10.357511914Z",
+          "severity": "info",
+          "message": "2026-02-24T08:26:05.385Z [gateway] signal SIGUSR1 received"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:10.357521853Z",
+          "severity": "info",
+          "message": "2026-02-24T08:26:05.400Z [gateway] received SIGUSR1; restarting"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:10.357531236Z",
+          "severity": "info",
+          "message": "2026-02-24T08:26:06.865Z [gateway] signal SIGUSR1 received"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:10.357539739Z",
+          "severity": "info",
+          "message": "2026-02-24T08:26:06.867Z [gateway] received SIGUSR1 during shutdown; ignoring"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:11.294108034Z",
+          "severity": "error",
+          "message": "2026-02-24T08:26:10.407Z [gateway] shutdown timed out; exiting without full cleanup"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:11.294113101Z",
+          "severity": "error",
+          "message": "[proxy] Error: connect ECONNREFUSED 127.0.0.1:18789"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:11.294118401Z",
+          "severity": "error",
+          "message": "    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16) {"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:11.294123804Z",
+          "severity": "error",
+          "message": "  errno: -111,"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:11.294129321Z",
+          "severity": "error",
+          "message": "  code: 'ECONNREFUSED',"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:11.294133722Z",
+          "severity": "error",
+          "message": "  syscall: 'connect',"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:11.294138495Z",
+          "severity": "error",
+          "message": "  address: '127.0.0.1',"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:11.294143452Z",
+          "severity": "error",
+          "message": "  port: 18789"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:11.294148061Z",
+          "severity": "error",
+          "message": "}"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:11.294154268Z",
+          "severity": "error",
+          "message": "[gateway] exited code=0 signal=null"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:20.318717200Z",
+          "severity": "info",
+          "message": "2026-02-24T08:26:20.287Z [canvas] host mounted at http://127.0.0.1:18789/__openclaw__/canvas/ (root /data/.clawdbot/canvas)"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:21.053632445Z",
+          "severity": "info",
+          "message": "2026-02-24T08:26:20.701Z [gateway] listening on ws://127.0.0.1:18789 (PID 539)"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:21.053640536Z",
+          "severity": "info",
+          "message": "2026-02-24T08:26:20.708Z [gateway] listening on ws://[::1]:18789"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:21.053648115Z",
+          "severity": "info",
+          "message": "2026-02-24T08:26:20.723Z [gateway] log file: /tmp/openclaw/openclaw-2026-02-24.log"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:21.053767937Z",
+          "severity": "info",
+          "message": "2026-02-24T08:26:20.666Z [heartbeat] started"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:21.053778101Z",
+          "severity": "info",
+          "message": "2026-02-24T08:26:20.696Z [gateway] agent model: anthropic/claude-sonnet-4-5-20250929"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:21.053811036Z",
+          "severity": "info",
+          "message": "2026-02-24T08:26:20.802Z [browser/service] Browser control service ready (profiles=2)"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:22.362115159Z",
+          "severity": "info",
+          "message": "2026-02-24T08:26:21.559Z [telegram] autoSelectFamily=false (default-node22)"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:22.362164668Z",
+          "severity": "info",
+          "message": "2026-02-24T08:26:21.510Z [telegram] [default] starting provider (@Almastockbot)"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:41.556912264Z",
+          "severity": "info",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:26:41.556928517Z",
+          "severity": "info",
+          "message": "**3. Redeploy** (Railway should auto-redeploy when you add the variables)"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:41.556940821Z",
+          "severity": "info",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:26:41.556943189Z",
+          "severity": "error",
+          "message": "2026-02-24T08:26:34.140Z [diagnostic] lane wait exceeded: lane=main waitedMs=11083 queueAhead=0"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:41.556952578Z",
+          "severity": "info",
+          "message": "Once those are set, your fallback cascade will work:"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:41.556964330Z",
+          "severity": "info",
+          "message": "2026-02-24T08:26:34.224Z Config updated and gateway restarted successfully! "
+        },
+        {
+          "timestamp": "2026-02-24T08:26:41.556965988Z",
+          "severity": "info",
+          "message": "- **Dash** (you): Sonnet \u2192 Gemini 2.0 Flash \u2192 GPT-4o"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:41.556977139Z",
+          "severity": "info",
+          "message": "- **Coder**: Opus \u2192 Sonnet"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:41.556988095Z",
+          "severity": "info",
+          "message": "- **Scout**: GPT-4o \u2192 Gemini 2.0 Flash"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:41.556996332Z",
+          "severity": "info",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:26:41.556998625Z",
+          "severity": "info",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:26:41.557012070Z",
+          "severity": "info",
+          "message": "If Anthropic rate-limits or goes down, the system will automatically fall back to Gemini or OpenAI. The auth profiles I just added tell OpenClaw to look for those environment variables."
+        },
+        {
+          "timestamp": "2026-02-24T08:26:41.557013108Z",
+          "severity": "info",
+          "message": "Now you need to add these environment variables in Railway:"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:41.557023907Z",
+          "severity": "info",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:26:41.557029545Z",
+          "severity": "info",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:26:41.557034374Z",
+          "severity": "info",
+          "message": "**1. Go to your Railway project \u2192 Variables tab**"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:41.557040226Z",
+          "severity": "info",
+          "message": "Where do you find your OpenAI API key? It should be at: https://platform.openai.com/api-keys"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:41.557072434Z",
+          "severity": "info",
+          "message": ""
+        },
+        {
+          "timestamp": "2026-02-24T08:26:41.557079026Z",
+          "severity": "info",
+          "message": "**2. Add these two variables:**"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:41.557085398Z",
+          "severity": "info",
+          "message": "```"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:41.557091562Z",
+          "severity": "info",
+          "message": "OPENAI_API_KEY=<your-openai-api-key>"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:41.557097849Z",
+          "severity": "info",
+          "message": "GOOGLE_API_KEY=AIzaSyCmT79KoX7eKD0CkvkTPyh7ReKQ-EJNOxg"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:41.557105150Z",
+          "severity": "info",
+          "message": "```"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:43.707967819Z",
+          "severity": "error",
+          "message": "2026-02-24T08:26:42.879Z [agent/embedded] read tool called without path: toolCallId=toolu_01XQGCxufbrbkYLjmR2ZnBjh argsType=object"
+        },
+        {
+          "timestamp": "2026-02-24T08:26:43.707976272Z",
+          "severity": "error",
+          "message": "2026-02-24T08:26:42.926Z [agent/embedded] read tool called without path: toolCallId=toolu_01X4s4pfgcyT5gwnz3pgBF44 argsType=object"
+        }
+      ]
+    }
+  }
+}

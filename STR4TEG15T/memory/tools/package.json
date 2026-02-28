@@ -8,7 +8,12 @@
     "sweep:full": "bun run sweep.ts --full",
     "search": "bun run searcher.ts",
     "validate": "bun run sweep.ts --validate",
-    "build": "bun build sweep.ts --compile --outfile ../sweep.exe"
+    "build": "bun build sweep.ts --compile --outfile ../sweep.exe",
+    "decision:index": "bun run decision-status-indexer.ts",
+    "manifest:v2:scaffold": "bun run manifest-v2-scaffold.ts",
+    "manifest:v2:integrity": "bun run manifest-v2-integrity.ts",
+    "governance:lint": "bun run governance-lint.ts",
+    "reconsolidation:gate": "bun run reconsolidation-gate.ts"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

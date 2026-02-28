@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
 
-$content = Get-Content "C:\P4NTH30N\STR4TEG15T\decisions\active\DECISION_061.md" -Raw -ErrorAction Stop
+$content = Get-Content "C:\P4NTHE0N\STR4TEG15T\decisions\active\DECISION_061.md" -Raw -ErrorAction Stop
 
 $jsonBody = @{
     jsonrpc = "2.0"

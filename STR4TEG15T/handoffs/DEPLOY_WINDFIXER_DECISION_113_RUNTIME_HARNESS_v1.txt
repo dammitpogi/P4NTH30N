@@ -1,0 +1,48 @@
+## Task: @windfixer
+
+WindFixer, execute DECISION_113 residual blocker #1 now. No planning mode.
+
+Mode: Deployment
+Decision ID: DECISION_113
+Current Status: Validating
+Requested Action: Build runtime-native hotspot fault harness and validate direct code-path evidence
+
+### Objective
+
+Create a deterministic runtime-native hotspot harness under `UNI7T35T/H4ND` that triggers the top-5 concurrency hotspots through real code paths (not DB-level injection), then verifies `_debug` evidence chain integrity.
+
+### Required Hotspots
+
+1. `H4ND/Services/LegacyRuntimeHost.cs:260-263` (early ack path)
+2. `H4ND/Services/LegacyRuntimeHost.cs:578-601` (unlock-before-persist)
+3. `H4ND/Infrastructure/SpinExecution.cs:53` (ack ownership overlap)
+4. `H4ND/Services/LegacyRuntimeHost.cs:482,507,532,557` (`DeleteAll` branch)
+5. `H4ND/Parallel/ParallelSpinWorker.cs:218-220,235-237` (retry + claim release)
+
+### Deliverables
+
+1. Add deterministic test harness and tests in `UNI7T35T/H4ND`.
+2. For each hotspot, execute native fault path and assert:
+   - expected `errorCode`/event markers emitted
+   - `sessionId` + `correlationId` chain reconstructs in order
+   - evidence document includes `where/when/exception` envelope fields
+3. Emit per-hotspot PASS/FAIL matrix.
+
+### Constraints
+
+1. Do not change production semantics beyond testability hooks.
+2. Keep instrumentation overhead minimal.
+3. Fail tests on missing correlation chain continuity.
+
+### Files to Update
+
+- `UNI7T35T/H4ND/*` (new harness + tests)
+- Any minimal production seams required for deterministic fault triggering
+
+### Final Report Format
+
+1. Tests added
+2. Commands executed
+3. 5-hotspot native matrix
+4. Files changed
+5. Remaining gaps (if any)

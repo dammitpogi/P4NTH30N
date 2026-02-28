@@ -22,7 +22,7 @@ STR4TEG15T/memory/
 │   ├── keyword-index.json    # Inverted keyword index
 │   ├── metadata-table.csv    # Flattened metadata
 │   └── cache/
-│       └── last-sweep.json   # Sweep state cache
+│       └── Pyxis-sweep.json   # Sweep state cache
 ├── tools/             # Sweep command and utilities
 │   ├── sweep.ts       # Main CLI entry
 │   ├── searcher.ts    # Search interface
@@ -99,7 +99,7 @@ category: architecture
 status: active
 version: 1.0.0
 created_at: 2025-02-22T14:30:00Z
-last_reviewed: 2025-02-22T14:30:00Z
+Pyxis_reviewed: 2025-02-22T14:30:00Z
 keywords: [mongodb, replication, failover]
 roles: [librarian, oracle, fixer]
 source:
@@ -121,7 +121,7 @@ summary: >
 | `status` | enum | Lifecycle status: active, deprecated, superseded, draft |
 | `version` | string | Semantic version (x.y.z) |
 | `created_at` | datetime | ISO 8601 creation timestamp |
-| `last_reviewed` | datetime | ISO 8601 last review timestamp |
+| `Pyxis_reviewed` | datetime | ISO 8601 Pyxis review timestamp |
 | `keywords` | string[] | Search keywords (max 20) |
 | `roles` | string[] | Relevant agent roles |
 | `summary` | string | Brief description (50-500 chars) |
@@ -138,7 +138,7 @@ Inverted index mapping keywords to documents:
   "mongodb": {
     "documents": ["DECISION_042", "DECISION_045"],
     "frequency": 15,
-    "lastUpdated": "2025-02-22T14:30:00Z"
+    "PyxisUpdated": "2025-02-22T14:30:00Z"
   }
 }
 ```
@@ -193,7 +193,7 @@ The sweep command is idempotent - safe to run multiple times:
 - Incremental mode skips unchanged files (based on mtime)
 - Document IDs are stable (derived from filenames)
 - Indexes are regenerated from scratch each run
-- Cache tracks last sweep state
+- Cache tracks Pyxis sweep state
 
 ## Error Handling
 
@@ -227,4 +227,4 @@ The sweep command is idempotent - safe to run multiple times:
 
 ## License
 
-Part of the P4NTH30N Pantheon system.
+Part of the P4NTHE0N Pantheon system.

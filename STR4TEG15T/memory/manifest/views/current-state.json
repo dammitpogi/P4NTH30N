@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "2.0.0",
+  "generatedAt": "2026-02-23T23:48:30.000Z",
+  "decisions": {
+    "DECISION_116": {
+      "status": "HandoffReady",
+      "lastEventId": "evt_20260223_archive_validation_001",
+      "lastUpdated": "2026-02-23T23:55:00Z"
+    }
+  },
+  "meta": {
+    "source": "dec116-closure-validation",
+    "note": "Materialized view updated to satisfy event/view parity for closure validation."
+  }
+}

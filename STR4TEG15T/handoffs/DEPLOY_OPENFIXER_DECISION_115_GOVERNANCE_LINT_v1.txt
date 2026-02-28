@@ -1,0 +1,52 @@
+OpenFixer, execute this package when Nexus explicitly initiates deployment.
+
+Mode: Deployment
+Decision: DECISION_115
+Status: Iterating
+Objective: Implement runtime governance lint/check automation and structured-ask validation.
+
+Context:
+- STR4TEG15T/decisions/active/DECISION_115.md
+- STR4TEG15T/decisions/active/DECISION_114.md
+- C:\Users\paulc\.config\opencode\agents\strategist.md
+- C:\Users\paulc\.config\opencode\agents\openfixer.md
+- STR4TEG15T/memory/tools/
+
+Mission:
+Implement ACT-115-009 and ACT-115-011 by creating a governance lint utility that verifies pre-handoff completeness and structured Nexus ask format.
+Also implement ACT-115-016 by adding automatic OpenFixer prompt parity checks each lint run.
+
+Required lint checks:
+1) Pre-handoff governance completeness:
+   - harden question present (canonical token: `Harden:`)
+   - expand question present (canonical token: `Expand:`)
+   - narrow question present (canonical token: `Narrow:`)
+   - closure checklist draft present
+   - deployment delta handling reference present
+2) Structured ask format in strategist-facing prompts:
+   - numbered question blocks detected
+   - lettered choices detected (`a)`, `b)`, ...)
+   - recommended default present for each decision-point question
+   - mode/decision/status header present
+3) Automatic OpenFixer prompt parity check:
+   - compare `C:\Users\paulc\.config\opencode\agents\openfixer.md` vs `C:\P4NTHE0N\agents\openfixer.md`
+   - report PASS when equivalent on governance sections, FAIL with explicit diff summary when drift exists
+   - execute automatically on each governance lint run (no explicit Nexus trigger required)
+
+Deliverables:
+- Tooling changes under STR4TEG15T/memory/tools/ (or nearest governance tooling location)
+- Deployment report: OP3NF1XER/deployments/JOURNAL_YYYY-MM-DD_DECISION_115_GOVERNANCE_LINT.md
+- Decision evidence updates in STR4TEG15T/decisions/active/DECISION_115.md
+- Parity check output artifact (machine-readable), for example: `STR4TEG15T/memory/decision-engine/openfixer-prompt-parity.json`
+
+Report format:
+1. Files changed
+2. Commands run
+3. Lint validation matrix (PASS/PARTIAL/FAIL)
+4. Example output for one passing and one failing case
+5. Closure recommendation for DECISION_115
+
+Constraints:
+- No product code changes in H0UND/, H4ND/, C0MMON/, W4TCHD0G/, UNI7T35T/.
+- No synthesis speech artifacts.
+- Keep implementation idempotent, path-explicit, and CI-friendly.

@@ -1,0 +1,1 @@
+{"eventId":"evt_20260223_archive_validation_001","timestamp":"2026-02-23T23:55:00Z","decisionId":"DECISION_116","eventType":"status_observed","actor":"OpenFixer","payload":{"status":"HandoffReady","reason":"Controlled archive checksum validation seed event"},"trace":{"sourceFile":"STR4TEG15T/decisions/active/DECISION_116.md","correlationId":"dec116-closure-validation"}}

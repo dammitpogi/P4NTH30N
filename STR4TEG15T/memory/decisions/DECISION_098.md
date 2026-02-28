@@ -54,7 +54,7 @@ source:
 
 ## Executive Summary
 
-The recorder at `C:\P4NTH30N\H4ND\tools\recorder` contains a complete navigation map in step-config.json, documenting verified FireKirin coordinates, timing, and verification gates. This decision implements that map into H4ND's ParallelSpinWorker, transforming manual recorder workflows into automated parallel execution.
+The recorder at `C:\P4NTHE0N\H4ND\tools\recorder` contains a complete navigation map in step-config.json, documenting verified FireKirin coordinates, timing, and verification gates. This decision implements that map into H4ND's ParallelSpinWorker, transforming manual recorder workflows into automated parallel execution.
 
 **Current Problem**:
 - Recorder has mapped FireKirin navigation (step-config.json ready)
@@ -403,7 +403,7 @@ This document contains:
 
 ## Notes
 
-The step-config.json at `C:\P4NTH30N\H4ND\tools\recorder\step-config.json` is the source of truth. It contains:
+The step-config.json at `C:\P4NTHE0N\H4ND\tools\recorder\step-config.json` is the source of truth. It contains:
 - Verified FireKirin coordinates (rx/ry + x/y fallback)
 - Phase-based workflow structure
 - Verification gates for each step

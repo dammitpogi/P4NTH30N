@@ -1,0 +1,319 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-02-24T16:58:53Z",
+  "checks": {
+    "outsideCanonicalCount": 292,
+    "duplicateDecisionIds": 53,
+    "targetPathConflicts": 6
+  },
+  "duplicateDecisionIds": {
+    "DECISION_093": [
+      "DECISION_093_ARCHITECTURE.md",
+      "DECISION_093_BOOT_TIME_ARCHITECTURE.md",
+      "STR4TEG15T/decisions/active/DECISION_093.md",
+      "STR4TEG15T/decisions/active/DECISION_093_SYNTHESIS.md"
+    ],
+    "DECISION-051": [
+      "OP3NF1XER/deployments/COMPLETION-REPORT_DECISION-051.md",
+      "OP3NF1XER/deployments/JOURNAL_2026-02-21_DECISION-051.md"
+    ],
+    "DECISION_062": [
+      "OP3NF1XER/deployments/DECISION_062_IMPLEMENTATION_PACKAGE.md",
+      "OP3NF1XER/deployments/JOURNAL_2026-02-20_DECISION_062.md",
+      "STR4TEG15T/decisions/active/DECISION_062.md"
+    ],
+    "DECISION_047": [
+      "OP3NF1XER/deployments/JOURNAL_2026-02-20_DECISION_047_BURN_IN.md",
+      "STR4TEG15T/decisions/active/DECISION_047.md"
+    ],
+    "DECISION_050": [
+      "OP3NF1XER/deployments/JOURNAL_2026-02-20_DECISION_050.md",
+      "STR4TEG15T/decisions/DECISION_050_LAZARUS_PROTOCOL.md",
+      "STR4TEG15T/decisions/active/DECISION_050.md"
+    ],
+    "DECISION_068": [
+      "OP3NF1XER/deployments/JOURNAL_2026-02-20_DECISION_068_FOUR_EYES_VISION.md",
+      "STR4TEG15T/decisions/active/DECISION_068.md"
+    ],
+    "DECISION_080": [
+      "OP3NF1XER/deployments/JOURNAL_2026-02-21_DECISION_080_RAG_RESTORATION.md",
+      "STR4TEG15T/actions/pending/OPENFIXER_DECISION_080_PROMPT.md",
+      "STR4TEG15T/decisions/active/DECISION_080.md"
+    ],
+    "DECISION_088": [
+      "OP3NF1XER/deployments/JOURNAL_2026-02-21_DECISION_088_DPD_FIX.md",
+      "STR4TEG15T/decisions/active/DECISION_088.md",
+      "W1NDF1XER/deployments/DECISION_088_TUI_CONDITIONAL_LOGIC.md"
+    ],
+    "DECISION_089": [
+      "OP3NF1XER/deployments/JOURNAL_2026-02-22_DECISION_089_DASHBOARD_LOGGING.md",
+      "STR4TEG15T/decisions/active/DECISION_089.md"
+    ],
+    "DECISION_090": [
+      "OP3NF1XER/deployments/JOURNAL_2026-02-22_DECISION_090_DASHBOARD_UI.md",
+      "STR4TEG15T/decisions/active/DECISION_090.md"
+    ],
+    "DECISION_092": [
+      "OP3NF1XER/deployments/JOURNAL_2026-02-22_DECISION_092_093_ENFORCEMENT.md",
+      "STR4TEG15T/decisions/active/DECISION_092.md"
+    ],
+    "DECISION_096": [
+      "OP3NF1XER/deployments/JOURNAL_2026-02-22_DECISION_096_WEEK1_SECURITY_FOUNDATION.md",
+      "OP3NF1XER/deployments/JOURNAL_2026-02-22_DECISION_096_WEEK2_IMPLEMENTATION.md",
+      "OP3NF1XER/deployments/JOURNAL_2026-02-22_DECISION_096_WEEK3_IMPLEMENTATION.md",
+      "OP3NF1XER/deployments/JOURNAL_2026-02-22_DECISION_096_WEEK4_INTEGRATION_DEPLOYMENT.md",
+      "STR4TEG15T/consultations/oracle/DECISION_096_framework_regression_research.md",
+      "STR4TEG15T/consultations/oracle/DECISION_096_http_sse_scholar_research.md",
+      "STR4TEG15T/consultations/oracle/DECISION_096_http_sse_security_research.md",
+      "STR4TEG15T/consultations/oracle/DECISION_096_oracle.md",
+      "STR4TEG15T/decisions/active/DECISION_096.md",
+      "STR4TEG15T/handoffs/DECISION_096_WEEK2_SERVER_IMPLEMENTATIONS.md",
+      "STR4TEG15T/handoffs/DECISION_096_WEEK3_PROTOCOL_IMPLEMENTATION.md",
+      "STR4TEG15T/handoffs/DECISION_096_WEEK4_INTEGRATION_DEPLOYMENT.md"
+    ],
+    "DECISION_105": [
+      "OP3NF1XER/deployments/JOURNAL_2026-02-22_DECISION_105_SILENT_FAILURE_TOOLS.md",
+      "STR4TEG15T/consultations/DESIGNER_DECISION_105_REVIEW.md",
+      "STR4TEG15T/decisions/active/DECISION_105.md"
+    ],
+    "DECISION_114": [
+      "OP3NF1XER/deployments/JOURNAL_2026-02-23_DECISION_114_AUDIT_FOLLOWUP.md",
+      "OP3NF1XER/deployments/JOURNAL_2026-02-23_DECISION_114_WORKFLOW_HARDENING.md",
+      "OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_114_PERMISSION_GATE.md",
+      "STR4TEG15T/consultations/designer/DECISION_114_designer.md",
+      "STR4TEG15T/consultations/oracle/DECISION_114_oracle.md",
+      "STR4TEG15T/decisions/active/DECISION_114.md",
+      "STR4TEG15T/decisions/active/DECISION_114_CHANGE_CONTROL_v1.md",
+      "STR4TEG15T/decisions/active/DECISION_114_SYNTHESIS_POLICY_v1.md",
+      "STR4TEG15T/handoffs/DECISION_114_OPENFIXER_HANDOFF_v1.md"
+    ],
+    "DECISION_115": [
+      "OP3NF1XER/deployments/JOURNAL_2026-02-23_DECISION_115_AUDIT_FOLLOWUP.md",
+      "OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_115_CLOSURE_VALIDATION.md",
+      "OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_115_GOVERNANCE_LINT.md",
+      "OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_115_GOVERNANCE_LINT_FINAL.md",
+      "OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_115_GOVERNANCE_LINT_REMEDIATION.md",
+      "STR4TEG15T/decisions/active/DECISION_115.md",
+      "STR4TEG15T/decisions/active/DECISION_115_DEPLOYMENT_GOVERNANCE_v1.md"
+    ],
+    "DECISION_116": [
+      "OP3NF1XER/deployments/JOURNAL_2026-02-23_DECISION_116_AUTOMATION_FOUNDATION.md",
+      "OP3NF1XER/deployments/JOURNAL_2026-02-23_DECISION_116_CLOSURE_VALIDATION.md",
+      "STR4TEG15T/decisions/active/DECISION_116.md",
+      "STR4TEG15T/decisions/active/DECISION_116_AUTOMATION_v1.md",
+      "STR4TEG15T/decisions/active/DECISION_116_MANIFEST_V2_ARCHITECTURE_v1.md",
+      "STR4TEG15T/decisions/active/DECISION_116_WINDOWS_MICROTOOLS_v1.md"
+    ],
+    "DECISION_054": [
+      "OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_054_DISCOVERY_PATH_TEST.md",
+      "STR4TEG15T/decisions/DECISION_054_OPENCLAW_INCIDENT_DISCOVERY_PLAN.md",
+      "STR4TEG15T/decisions/active/DECISION_054.md"
+    ],
+    "DECISION_055": [
+      "OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_055_OPENCLAW_CONFIG_FIX.md",
+      "OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_055_OPENCLAW_CONFIG_FIX_PASS2.md",
+      "OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_055_OPENCLAW_REMOVE_GEMINI_DEP.md",
+      "OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_055_OPENCLAW_REMOVE_OPENAI_DEP.md",
+      "OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_055_OPENCLAW_ROLLBACK.md",
+      "STR4TEG15T/decisions/DECISION_055_OPENCLAW_CONFIG_REMEDIATION_AND_GATEWAY_RESET.md",
+      "STR4TEG15T/decisions/active/DECISION_055.md",
+      "STR4TEG15T/handoffs/CHECKLIST_DECISION_055_OPENCLAW_PRE_ROLLBACK_v1.md",
+      "STR4TEG15T/handoffs/ROOT_SOURCE_AND_PREVENTION_DECISION_055_v1.md"
+    ],
+    "DECISION_113": [
+      "OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_113_H4ND_ERROR_EVIDENCE.md",
+      "STR4TEG15T/decisions/active/DECISION_113.md",
+      "STR4TEG15T/handoffs/DECISION_113_CRITICAL_CHAOS_POINTS.md",
+      "STR4TEG15T/handoffs/DECISION_113_IMPLEMENTATION_ROADMAP.md",
+      "STR4TEG15T/handoffs/DECISION_113_RACE_CONDITION_ANALYSIS.md"
+    ],
+    "DECISION_108": [
+      "STR4TEG15T/DECISION_108_COMPLETION_SUMMARY.md",
+      "STR4TEG15T/decisions/active/DECISION_108.md",
+      "STR4TEG15T/handoffs/DECISION_108_OPENFIXER_HANDOFF.md"
+    ],
+    "DECISION_081": [
+      "STR4TEG15T/actions/pending/WINDFIXER_DECISION_081_PROMPT.md",
+      "STR4TEG15T/decisions/active/DECISION_081.md"
+    ],
+    "DECISION_031": [
+      "STR4TEG15T/consultations/designer/DECISION_031_designer.md",
+      "STR4TEG15T/consultations/oracle/DECISION_031_oracle.md",
+      "STR4TEG15T/decisions/active/DECISION_031.md"
+    ],
+    "DECISION_032": [
+      "STR4TEG15T/consultations/designer/DECISION_032_designer.md",
+      "STR4TEG15T/consultations/oracle/DECISION_032_oracle.md",
+      "STR4TEG15T/decisions/completed/DECISION_032.md"
+    ],
+    "DECISION_033": [
+      "STR4TEG15T/consultations/designer/DECISION_033_designer.md",
+      "STR4TEG15T/consultations/oracle/DECISION_033_oracle.md",
+      "STR4TEG15T/decisions/completed/DECISION_033.md"
+    ],
+    "DECISION_034": [
+      "STR4TEG15T/consultations/designer/DECISION_034_designer.md",
+      "STR4TEG15T/consultations/oracle/DECISION_034_oracle.md",
+      "STR4TEG15T/decisions/completed/DECISION_034.md"
+    ],
+    "DECISION_035": [
+      "STR4TEG15T/consultations/designer/DECISION_035_designer.md",
+      "STR4TEG15T/consultations/oracle/DECISION_035_oracle.md",
+      "STR4TEG15T/decisions/active/DECISION_035.md"
+    ],
+    "DECISION_036": [
+      "STR4TEG15T/consultations/designer/DECISION_036_designer.md",
+      "STR4TEG15T/consultations/oracle/DECISION_036_oracle.md",
+      "STR4TEG15T/decisions/active/DECISION_036.md"
+    ],
+    "DECISION_037": [
+      "STR4TEG15T/consultations/designer/DECISION_037_designer.md",
+      "STR4TEG15T/consultations/oracle/DECISION_037_oracle.md",
+      "STR4TEG15T/decisions/completed/DECISION_037.md"
+    ],
+    "DECISION_038": [
+      "STR4TEG15T/consultations/designer/DECISION_038_designer.md",
+      "STR4TEG15T/consultations/oracle/DECISION_038_oracle.md",
+      "STR4TEG15T/decisions/active/DECISION_038.md"
+    ],
+    "DECISION_039": [
+      "STR4TEG15T/consultations/designer/DECISION_039_designer.md",
+      "STR4TEG15T/consultations/oracle/DECISION_039_oracle.md",
+      "STR4TEG15T/decisions/active/DECISION_039.md"
+    ],
+    "DECISION_040": [
+      "STR4TEG15T/consultations/designer/DECISION_040_designer.md",
+      "STR4TEG15T/consultations/oracle/DECISION_040_oracle.md",
+      "STR4TEG15T/decisions/completed/DECISION_040.md"
+    ],
+    "DECISION_041": [
+      "STR4TEG15T/consultations/designer/DECISION_041_designer.md",
+      "STR4TEG15T/consultations/oracle/DECISION_041_oracle.md",
+      "STR4TEG15T/decisions/active/DECISION_041.md"
+    ],
+    "DECISION_042": [
+      "STR4TEG15T/consultations/designer/DECISION_042_designer.md",
+      "STR4TEG15T/consultations/oracle/DECISION_042_oracle.md",
+      "STR4TEG15T/decisions/active/DECISION_042.md"
+    ],
+    "DECISION_043": [
+      "STR4TEG15T/consultations/designer/DECISION_043_designer.md",
+      "STR4TEG15T/consultations/oracle/DECISION_043_oracle.md",
+      "STR4TEG15T/decisions/completed/DECISION_043.md"
+    ],
+    "DECISION_044": [
+      "STR4TEG15T/consultations/designer/DECISION_044_designer.md",
+      "STR4TEG15T/consultations/oracle/DECISION_044_oracle.md",
+      "STR4TEG15T/decisions/completed/DECISION_044.md"
+    ],
+    "DECISION_051": [
+      "STR4TEG15T/consultations/designer/DECISION_051_designer.md",
+      "STR4TEG15T/consultations/designer/DECISION_051_dynamic_error_objects.md",
+      "STR4TEG15T/decisions/DECISION_051_H0UND_CHAOS_MAPPING.md",
+      "STR4TEG15T/decisions/active/DECISION_051.md"
+    ],
+    "DECISION_110": [
+      "STR4TEG15T/consultations/designer/DECISION_110_designer.md",
+      "STR4TEG15T/decisions/active/DECISION_110.md",
+      "STR4TEG15T/decisions/active/DECISION_110_PHASE7_PHASE8.md",
+      "STR4TEG15T/handoffs/DECISION_110_PHASE7_8_EXECUTION_PLAN.md",
+      "STR4TEG15T/handoffs/windfixer/DECISION_110_P4NTHE0N_REFACTOR_MASTER_HANDOFF.md",
+      "STR4TEG15T/research/DECISION_110_arxiv_research.md"
+    ],
+    "DECISION_025": [
+      "STR4TEG15T/consultations/oracle/DECISION_025_oracle.md",
+      "STR4TEG15T/decisions/active/DECISION_025.md"
+    ],
+    "DECISION_026": [
+      "STR4TEG15T/consultations/oracle/DECISION_026_oracle.md",
+      "STR4TEG15T/decisions/completed/DECISION_026.md"
+    ],
+    "DECISION_027": [
+      "STR4TEG15T/consultations/oracle/DECISION_027_oracle.md",
+      "STR4TEG15T/decisions/active/DECISION_027.md"
+    ],
+    "DECISION_028": [
+      "STR4TEG15T/consultations/oracle/DECISION_028_oracle.md",
+      "STR4TEG15T/decisions/active/DECISION_028.md"
+    ],
+    "DECISION_052": [
+      "STR4TEG15T/decisions/DECISION_052_OPENCLAW_RAILWAY_RECOVERY.md",
+      "STR4TEG15T/decisions/active/DECISION_052.md"
+    ],
+    "DECISION_053": [
+      "STR4TEG15T/decisions/DECISION_053_OPENCLAW_RAILWAY_ACCESS_STRATEGY.md",
+      "STR4TEG15T/decisions/active/DECISION_053.md"
+    ],
+    "DECISION_078": [
+      "STR4TEG15T/decisions/active/DECISION_078.md",
+      "W1NDF1XER/NEXUS_HANDOFF_DECISION_078.md",
+      "W1NDF1XER/NEXUS_HANDOFF_DECISION_078_v2.1.md"
+    ],
+    "DECISION_083": [
+      "STR4TEG15T/decisions/active/DECISION_083.md",
+      "STR4TEG15T/decisions/completed/DECISION_083.md"
+    ],
+    "DECISION_084": [
+      "STR4TEG15T/decisions/active/DECISION_084.md",
+      "STR4TEG15T/decisions/completed/DECISION_084.md"
+    ],
+    "DECISION_085": [
+      "STR4TEG15T/decisions/active/DECISION_085.md",
+      "STR4TEG15T/decisions/completed/DECISION_085.md"
+    ],
+    "DECISION_086": [
+      "STR4TEG15T/decisions/active/DECISION_086.md",
+      "STR4TEG15T/decisions/active/DECISION_086_TEST.md",
+      "STR4TEG15T/decisions/completed/DECISION_086.md"
+    ],
+    "DECISION_095": [
+      "STR4TEG15T/decisions/active/DECISION_095.md",
+      "STR4TEG15T/decisions/active/DECISION_095_MONGODB_TOOLHIVE_HARDENING.md",
+      "STR4TEG15T/handoffs/DECISION_095_PLANNING_PROMPT.md"
+    ],
+    "DECISION_097": [
+      "STR4TEG15T/decisions/active/DECISION_097.md",
+      "STR4TEG15T/decisions/completed/DECISION_097.md"
+    ],
+    "DECISION_098": [
+      "STR4TEG15T/decisions/active/DECISION_098.md",
+      "STR4TEG15T/handoffs/DECISION_098_IMPLEMENTATION_SPECIFICATIONS.md"
+    ],
+    "DECISION_099": [
+      "STR4TEG15T/decisions/active/DECISION_099.md",
+      "STR4TEG15T/decisions/completed/DECISION_099.md",
+      "STR4TEG15T/handoffs/WINDFIXER_DECISION_099_PROMPT.md"
+    ],
+    "RAG-001": [
+      "STR4TEG15T/intel/RAG-001_FINAL_DECISION.md",
+      "docs/decisions/RAG-001-rag-context-layer.md"
+    ]
+  },
+  "targetPathConflicts": {
+    "STR4TEG15T/memory/decisions/DECISION_083.md": [
+      "STR4TEG15T/decisions/active/DECISION_083.md",
+      "STR4TEG15T/decisions/completed/DECISION_083.md"
+    ],
+    "STR4TEG15T/memory/decisions/DECISION_084.md": [
+      "STR4TEG15T/decisions/active/DECISION_084.md",
+      "STR4TEG15T/decisions/completed/DECISION_084.md"
+    ],
+    "STR4TEG15T/memory/decisions/DECISION_085.md": [
+      "STR4TEG15T/decisions/active/DECISION_085.md",
+      "STR4TEG15T/decisions/completed/DECISION_085.md"
+    ],
+    "STR4TEG15T/memory/decisions/DECISION_086.md": [
+      "STR4TEG15T/decisions/active/DECISION_086.md",
+      "STR4TEG15T/decisions/completed/DECISION_086.md"
+    ],
+    "STR4TEG15T/memory/decisions/DECISION_097.md": [
+      "STR4TEG15T/decisions/active/DECISION_097.md",
+      "STR4TEG15T/decisions/completed/DECISION_097.md"
+    ],
+    "STR4TEG15T/memory/decisions/DECISION_099.md": [
+      "STR4TEG15T/decisions/active/DECISION_099.md",
+      "STR4TEG15T/decisions/completed/DECISION_099.md"
+    ]
+  },
+  "status": "fail"
+}

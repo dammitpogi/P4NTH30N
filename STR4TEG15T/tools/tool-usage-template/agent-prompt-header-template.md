@@ -157,7 +157,7 @@ When primary tools are unavailable:
 ### Decisions Server Timeout
 - Use mongodb-p4nth30n directly
 - Collection: decisions
-- Database: P4NTH30N
+- Database: P4NTHE0N
 - Maximum 2 retries
 
 ### Web Search Unavailable

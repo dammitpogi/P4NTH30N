@@ -236,7 +236,7 @@ When a primary tool is unavailable:
      server_name: "mongodb-p4nth30n",
      tool_name: "find",
      parameters: {
-       database: "P4NTH30N",
+       database: "P4NTHE0N",
        collection: "decisions",
        filter: { decisionId: "DECISION_XXX" }
      }

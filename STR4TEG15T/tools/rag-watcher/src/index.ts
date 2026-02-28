@@ -25,8 +25,8 @@ interface Config {
 function parseArgs(): Config {
   const args = process.argv.slice(2);
   
-  // Find repo root (default to P4NTH30N)
-  const repoRoot = process.env.P4NTH30N_ROOT || 'c:\\P4NTH30N';
+  // Find repo root (default to P4NTHE0N)
+  const repoRoot = process.env.P4NTHE0N_ROOT || 'c:\\P4NTHE0N';
   
   return {
     repoRoot,

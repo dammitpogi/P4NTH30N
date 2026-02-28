@@ -39,7 +39,7 @@ source:
   type: decision
   original_path: ../../../STR4TEG15T/decisions/active/DECISION_078.md
 ---
-# DECISION_078: P4NTH30N Recorder TUI — Visual Macro Editor & Live Debugger
+# DECISION_078: P4NTHE0N Recorder TUI — Visual Macro Editor & Live Debugger
 
 **Decision ID**: TOOL-078  
 **Category**: TOOL  
@@ -53,7 +53,7 @@ source:
 
 ## Executive Summary
 
-The P4NTH30N Recorder TUI is a terminal-based visual macro editor for creating, editing, and testing navigation workflows for FireKirin and OrionStars game platforms. It transforms workflow recording from a tedious, error-prone JSON editing process into an interactive, debuggable experience with breakpoints, live execution preview, and precise coordinate control.
+The P4NTHE0N Recorder TUI is a terminal-based visual macro editor for creating, editing, and testing navigation workflows for FireKirin and OrionStars game platforms. It transforms workflow recording from a tedious, error-prone JSON editing process into an interactive, debuggable experience with breakpoints, live execution preview, and precise coordinate control.
 
 **Current Problem**:
 - Recording workflows required manual JSON editing of `step-config.json`
@@ -404,7 +404,7 @@ const __dir = dirname(fileURLToPath(import.meta.url));
 
 **Files**:
 ```
-C:\P4NTH30N\H4ND\tools\recorder\
+C:\P4NTHE0N\H4ND\tools\recorder\
 ├── recorder-tui.ts          # Entry point
 ├── tui/
 │   ├── types.ts             # Types
@@ -417,7 +417,7 @@ C:\P4NTH30N\H4ND\tools\recorder\
 
 **Launch**:
 ```bash
-cd C:\P4NTH30N\H4ND\tools\recorder
+cd C:\P4NTHE0N\H4ND\tools\recorder
 bun run tui
 ```
 
@@ -606,5 +606,5 @@ bun build tui/runner.ts --no-bundle   → Exit 0
 ---
 
 *Decision TOOL-078*  
-*P4NTH30N Recorder TUI — Visual Macro Editor & Live Debugger*  
+*P4NTHE0N Recorder TUI — Visual Macro Editor & Live Debugger*  
 *2026-02-21 (v2.1)*

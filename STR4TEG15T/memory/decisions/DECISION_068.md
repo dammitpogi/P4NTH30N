@@ -180,7 +180,7 @@ foureyes-mcp_list_models      - Confirm vision models available
 ```bash
 # Find FourEyes config file
 grep -r "192.168.56.1" ~/.config/opencode/
-grep -r "192.168.56.1" ~/P4NTH30N/
+grep -r "192.168.56.1" ~/P4NTHE0N/
 
 # Update to 127.0.0.1
 # Restart FourEyes MCP server if needed
@@ -210,7 +210,7 @@ foureyes-mcp_analyze_frame
 ### Step 4: Vision-Validated Burn-In
 ```bash
 # Run burn-in with vision monitoring
-cd C:\P4NTH30N\H4ND\bin\Release\net10.0-windows7.0
+cd C:\P4NTHE0N\H4ND\bin\Release\net10.0-windows7.0
 H4ND.exe BURN-IN
 
 # In parallel, capture screenshots every 60 seconds

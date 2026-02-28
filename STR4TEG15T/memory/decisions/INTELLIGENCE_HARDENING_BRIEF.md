@@ -93,7 +93,7 @@ DoSomething(); // If this fails, it throws. Good. Now we know.
 
 Not by hiding errors, but by **isolating them**. When something fails, it fails **immediately**, **visibly**, and **controllably**.
 
-**For P4NTH30N**:
+**For P4NTHE0N**:
 - Every `try-catch` that swallows exceptions is a lie
 - Every `return true` on failure is deception
 - Every "graceful degradation" is just slow death
@@ -117,7 +117,7 @@ They don't wait for failures to find them. **They hunt failures down.**
 ### The Principle
 **"If you want to find weaknesses in your system, break things on purpose."** - OneUptime
 
-**For P4NTH30N**:
+**For P4NTHE0N**:
 We found 17 silent failures by accident. We should have been **forcing** them.
 
 **Chaos Tactics for H4ND**:
@@ -143,7 +143,7 @@ Sound familiar? Our models gave us confident answers that were **wrong**.
 ### Byzantine Fault Detection
 **"We consider a fully distributed detection system where every node is equipped with its own detector, which watches for faults on the other nodes."** - Haeberlen, MPI-SWS
 
-**For P4NTH30N**:
+**For P4NTHE0N**:
 We need **detectors that don't trust the source**.
 
 **Implementation**:

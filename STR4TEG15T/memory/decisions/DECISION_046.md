@@ -112,7 +112,7 @@ Hardcoded JavaScript selectors in `CdpGameActions` become brittle when game plat
 **Configuration Schema**:
 ```json
 {
-  "P4NTH30N:H4ND:JackpotSelectors": {
+  "P4NTHE0N:H4ND:JackpotSelectors": {
     "FireKirin": {
       "Grand": [
         "window.jackpot?.grand",
@@ -266,7 +266,7 @@ Negative Factors:
 **Configuration Schema (Complete):**
 ```json
 {
-  "P4NTH30N:H4ND:JackpotSelectors": {
+  "P4NTHE0N:H4ND:JackpotSelectors": {
     "FireKirin": {
       "Grand": [
         "window.game?.lucky?.grand || 0",

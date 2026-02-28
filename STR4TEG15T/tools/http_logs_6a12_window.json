@@ -1,0 +1,23 @@
+{
+  "endpoint": "https://backboard.railway.com/graphql/v2",
+  "mode": "bearer",
+  "ok": true,
+  "statusCode": 200,
+  "body": {
+    "data": {
+      "httpLogs": [
+        {
+          "timestamp": "2026-02-24T08:26:48.737077242Z",
+          "method": "GET",
+          "path": "/healthz",
+          "httpStatus": 200,
+          "clientUa": "curl/8.17.0",
+          "srcIp": "136.38.18.244",
+          "requestId": "hdWyQygqRReo8XsoCx5-qw",
+          "responseDetails": "",
+          "upstreamErrors": ""
+        }
+      ]
+    }
+  }
+}

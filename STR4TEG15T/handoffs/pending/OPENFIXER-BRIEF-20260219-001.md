@@ -67,11 +67,11 @@ Extended Model Testing Platform with:
    ```bash
    # Download sentence-transformers/all-MiniLM-L6-v2 to OpenCode environment
    # Target path: C:\Users\paulc\.cache\onnx\all-MiniLM-L6-v2.onnx
-   # Or: C:\ProgramData\P4NTH30N\models\all-MiniLM-L6-v2.onnx
+   # Or: C:\ProgramData\P4NTHE0N\models\all-MiniLM-L6-v2.onnx
    ```
 
 2. **Python Bridge Service**:
-   - File: C:\P4NTH30N\src\RAG\PythonBridge\embedding_bridge.py
+   - File: C:\P4NTHE0N\src\RAG\PythonBridge\embedding_bridge.py
    - Purpose: FastAPI service wrapping ONNX Runtime for embeddings
    - Port: 5000 (configurable)
    - Endpoints:
@@ -80,7 +80,7 @@ Extended Model Testing Platform with:
      - GET /model-info - Model metadata
 
 3. **C# Client Integration**:
-   - File: C:\P4NTH30N\src\RAG\PythonEmbeddingClient.cs
+   - File: C:\P4NTHE0N\src\RAG\PythonEmbeddingClient.cs
    - Purpose: HTTP client for Python bridge
    - Fallback: If Python bridge unavailable, use direct ONNX (slower but functional)
 
@@ -107,10 +107,10 @@ Extended Model Testing Platform with:
      "mcpServers": {
        "rag-server": {
          "command": "dotnet",
-         "args": ["run", "--project", "C:/P4NTH30N/src/RAG/RAG.csproj"],
+         "args": ["run", "--project", "C:/P4NTHE0N/src/RAG/RAG.csproj"],
          "env": {
-           "RAG_MODEL_PATH": "C:/ProgramData/P4NTH30N/models/all-MiniLM-L6-v2.onnx",
-           "RAG_INDEX_PATH": "C:/ProgramData/P4NTH30N/rag-index",
+           "RAG_MODEL_PATH": "C:/ProgramData/P4NTHE0N/models/all-MiniLM-L6-v2.onnx",
+           "RAG_INDEX_PATH": "C:/ProgramData/P4NTHE0N/rag-index",
            "PYTHON_BRIDGE_PORT": "5000"
          }
        }
@@ -130,7 +130,7 @@ Extended Model Testing Platform with:
 
 **Command**:
 ```powershell
-cd C:\P4NTH30N
+cd C:\P4NTHE0N
 .\scripts\deploy-agents.ps1 -WhatIf   # Preview
 .\scripts\deploy-agents.ps1 -Force    # Execute
 ```
@@ -138,7 +138,7 @@ cd C:\P4NTH30N
 **Expected Output**:
 ```
 === Agent Deployment Report ===
-Source:  C:\P4NTH30N\agents
+Source:  C:\P4NTHE0N\agents
 Target:  C:\Users\paulc\.config\opencode\agents
 
 Changes detected:
@@ -213,7 +213,7 @@ OpenFixer completion validated when:
 If deployment fails:
 1. Backups in: C:\Users\paulc\.config\opencode\agents\.backups\
 2. Restore: Copy .backups/*.[timestamp].bak to parent
-3. WindFixer state preserved in P4NTH30N/ (can redeploy)
+3. WindFixer state preserved in P4NTHE0N/ (can redeploy)
 4. MCP deregistration: Remove rag-server from mcp.json
 
 ---
@@ -236,7 +236,7 @@ Upon completion, OpenFixer must report to Strategist:
 ## STRATEGIC CONTEXT
 
 ### Why This Matters
-RAG-001 enables all P4NTH30N agents to access institutional knowledge via vector search. Without OpenFixer completing Python bridge integration, the RAG system cannot generate embeddings, rendering it non-functional. This is a critical blocker for downstream decisions.
+RAG-001 enables all P4NTHE0N agents to access institutional knowledge via vector search. Without OpenFixer completing Python bridge integration, the RAG system cannot generate embeddings, rendering it non-functional. This is a critical blocker for downstream decisions.
 
 ### Dependencies
 - **Blocks**: RAG-001 Phase 2-3 (FileSystemWatcher, MongoDB change streams)
@@ -270,16 +270,16 @@ RAG-001 enables all P4NTH30N agents to access institutional knowledge via vector
 OpenFixer should execute in this order:
 
 1. **Download ONNX model**
-   - Target: C:\ProgramData\P4NTH30N\models\all-MiniLM-L6-v2.onnx
+   - Target: C:\ProgramData\P4NTHE0N\models\all-MiniLM-L6-v2.onnx
    - Verify file integrity
 
 2. **Create Python bridge**
-   - C:\P4NTH30N\src\RAG\PythonBridge\embedding_bridge.py
+   - C:\P4NTHE0N\src\RAG\PythonBridge\embedding_bridge.py
    - FastAPI service, port 5000
    - Test endpoints manually
 
 3. **Create C# Python client**
-   - C:\P4NTH30N\src\RAG\PythonEmbeddingClient.cs
+   - C:\P4NTHE0N\src\RAG\PythonEmbeddingClient.cs
    - Integrate with EmbeddingService.cs
 
 4. **Register MCP server**

@@ -1,0 +1,20 @@
+Nate completion synthesis:
+
+We closed this decision scope with evidence-first execution. We verified access, ran reversible mutation tests, and then executed constrained recovery passes in sequence: targeted state-path corrections, controlled restarts, rollback, and dependency-removal edits. Every pass was validated with endpoint probes and deployment logs, and all artifacts were journaled.
+
+What we proved: control-plane operations succeeded, but runtime startup continued to fail on provider env dependencies in active config. First blocker was OPENAI_API_KEY at models.providers.openai.apiKey. After removing that hard dependency, the next blocker surfaced as GEMINI_API_KEY at models.providers.google.apiKey. This confirms a cascading provider-dependency ladder rather than random platform instability.
+
+Root-source of failure: provider config dependencies were enabled before runtime env completeness was guaranteed. In short, config evolved faster than environment readiness.
+
+Prevention guidance for your model workflow:
+1) Enforce two-phase provider onboarding:
+   - Phase A: set env var and verify runtime visibility.
+   - Phase B: apply provider apiKey config dependency.
+2) Add config-save guardrails:
+   - reject writes that reference unset env vars.
+3) Roll out one provider at a time:
+   - validate health + logs after each provider change.
+4) Treat setup-save as restart-triggering:
+   - avoid duplicate saves in ambiguous-error windows.
+
+This incident is now documented, bounded, and converted into a repeatable prevention standard.

@@ -1,0 +1,1049 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-02-23T23:23:06.924Z",
+  "sourceDirectory": "C:\\P4NTHE0N\\STR4TEG15T\\decisions\\active",
+  "total": 108,
+  "byStatus": {
+    "Burn-In FAILED — Configuration Issue (CDP Host IP Mismatch)": 1,
+    "Completed": 39,
+    "In Progress - FireKirin Complete, OrionStars Blocked": 1,
+    "Approved": 14,
+    "Completed (Includes DECISION_094)": 1,
+    "Ready for Implementation": 2,
+    "Proposed": 8,
+    "Completed (SessionRenewalService + 12 tests, live probe validated HTTP 200)": 1,
+    "Not Launch": 1,
+    "Implemented": 4,
+    "Implemented (AgentRegistry + PredictorAgent + ExecutorAgent + MonitorAgent)": 1,
+    "Phase 1 Implemented (WagerOptimizer rule-based + feature logging; Phase 2 XGBoost deferred until training data)": 1,
+    "REJECTED (Oracle: 65% rejected, Designer: 55% rejected — risk too high, benefit too low)": 1,
+    "ALL APPROVED": 1,
+    "Approved for Implementation": 1,
+    "Mixed (Some Approved, Some Pending Designer)": 1,
+    "Interfaces Only": 1,
+    "Unknown": 12,
+    "✅ Ready for Implementation": 1,
+    "✅ Deployment Package Complete": 1,
+    "**Phase 2 In Progress**": 1,
+    "Under budget ✅": 1,
+    "✅ Implemented": 1,
+    "In Progress (Phase 7 and 8 partial execution complete)": 1,
+    "InProgress (H4ND Phase 1)": 1,
+    "Validating (Deployment completed; audit in progress)": 1,
+    "InProgress (Workflow updates continuing; audit standardization pending)": 1,
+    "HandoffReady (Awaiting Nexus initiation for implementation + parallel audits)": 1,
+    "COMPLETED": 1,
+    "InProgress": 1,
+    "Partially Implemented (Gateway Only)": 1,
+    "Implemented (via DECISION_045 — GameSelectorConfig.cs + appsettings.json fallback chains)": 1,
+    "**COMPLETED - DEPLOYED TO PRODUCTION**": 1,
+    "Operational Optimization": 1,
+    "Completed (v2.0 — Live CDP Execution)": 1
+  },
+  "byCategory": {
+    "ARCH (Architecture)": 8,
+    "ARCH": 6,
+    "Unknown": 24,
+    "AUTH": 1,
+    "AUTO (Automation)": 3,
+    "AUTO": 4,
+    "CORE": 10,
+    "BUG": 1,
+    "CANON (Institutional Knowledge)": 1,
+    "CORE (Core Functionality)": 1,
+    "CRIT (Critical Infrastructure)": 1,
+    "Analytics": 1,
+    "Architecture": 1,
+    "Machine Learning": 1,
+    "Infrastructure": 2,
+    "INFRA": 17,
+    "RAG": 3,
+    "FORGE": 6,
+    "Operations": 1,
+    "FEAT": 2,
+    "Infrastructure / Boot-Time Architecture": 1,
+    "INFRA (Infrastructure)": 3,
+    "FORGE (Platform-Pattern)": 2,
+    "FORGE (Process)": 1,
+    "IMPL": 1,
+    "MON (Monitoring)": 2,
+    "OPS": 1,
+    "OPS (Operations)": 1,
+    "TEST": 1,
+    "TOOL": 1
+  },
+  "decisions": [
+    {
+      "decisionId": "ARCH-047",
+      "title": "DECISION_047: Parallel H4ND Execution for Multi-Signal Auto-Spins",
+      "status": "Burn-In FAILED — Configuration Issue (CDP Host IP Mismatch)",
+      "category": "ARCH (Architecture)",
+      "priority": "Critical",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_047.md"
+    },
+    {
+      "decisionId": "ARCH-055",
+      "title": "DECISION_055: Unified Game Execution Engine",
+      "status": "Completed",
+      "category": "ARCH (Architecture)",
+      "priority": "Critical",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_055.md"
+    },
+    {
+      "decisionId": "ARCH-077",
+      "title": "DECISION_077: Navigation Workflow Architecture with T00L5ET Integration",
+      "status": "In Progress - FireKirin Complete, OrionStars Blocked",
+      "category": "ARCH (Architecture)",
+      "priority": "Critical",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_077.md"
+    },
+    {
+      "decisionId": "ARCH-081",
+      "title": "DECISION_081: Canvas Typing Fix + Chrome Profile Isolation for Parallel Credentials",
+      "status": "Approved",
+      "category": "ARCH (Architecture)",
+      "priority": "Critical",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_081.md"
+    },
+    {
+      "decisionId": "ARCH-093",
+      "title": "DECISION_093: H0UND as Unified Always-On Platform with System Tray Integration",
+      "status": "Completed (Includes DECISION_094)",
+      "category": "ARCH",
+      "priority": "Critical",
+      "date": "2026-02-22",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_093.md"
+    },
+    {
+      "decisionId": "ARCH-093",
+      "title": "DECISION_093: Unified Architecture Synthesis",
+      "status": "Ready for Implementation",
+      "category": "Unknown",
+      "priority": "Unknown",
+      "date": "Unknown",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_093_SYNTHESIS.md"
+    },
+    {
+      "decisionId": "ARCH-101",
+      "title": "DECISION_101: Complete H4ND Multiprofile Implementation",
+      "status": "Approved",
+      "category": "ARCH (Architecture)",
+      "priority": "Critical",
+      "date": "2026-02-22",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_101.md"
+    },
+    {
+      "decisionId": "ARCH-104",
+      "title": "DECISION_104",
+      "status": "Proposed",
+      "category": "ARCH (Architecture)",
+      "priority": "Critical",
+      "date": "2026-02-22",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_104.md"
+    },
+    {
+      "decisionId": "ARCH-110",
+      "title": "DECISION_110: P4NTHE0N Architecture Refactoring - SOLID, DDD, Fail-Fast, and Structured Logging",
+      "status": "Approved",
+      "category": "ARCH",
+      "priority": "Critical",
+      "date": "2026-02-22",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_110.md"
+    },
+    {
+      "decisionId": "AUTH-041",
+      "title": "DECISION_041: OrionStars Session Renewal and Authentication Recovery",
+      "status": "Completed (SessionRenewalService + 12 tests, live probe validated HTTP 200)",
+      "category": "AUTH",
+      "priority": "Critical",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_041.md"
+    },
+    {
+      "decisionId": "AUTO-056",
+      "title": "DECISION_056: Automatic Chrome CDP Lifecycle Management",
+      "status": "Completed",
+      "category": "AUTO (Automation)",
+      "priority": "Critical",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_056.md"
+    },
+    {
+      "decisionId": "AUTO-059",
+      "title": "DECISION_059: Post-Burn-In Analysis and Decision Promotion",
+      "status": "Completed",
+      "category": "AUTO (Automation)",
+      "priority": "Critical",
+      "date": "Unknown",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_059.md"
+    },
+    {
+      "decisionId": "AUTO-107",
+      "title": "DECISION_107: Orion Stars / FireKirin Automation Failure Investigation",
+      "status": "Approved",
+      "category": "AUTO",
+      "priority": "Critical",
+      "date": "2026-02-22",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_107.md"
+    },
+    {
+      "decisionId": "BUG-001",
+      "title": "DECISION_069: Fix DPD Data Loss Bug in AnalyticsWorker",
+      "status": "Completed",
+      "category": "CORE",
+      "priority": "Critical",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_069.md"
+    },
+    {
+      "decisionId": "BUG-002",
+      "title": "DECISION_070: Fix Credential Lock Leak in H0UND Polling Loop",
+      "status": "Completed",
+      "category": "CORE",
+      "priority": "Critical",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_070.md"
+    },
+    {
+      "decisionId": "BUG-003",
+      "title": "DECISION_071: Fix Analytics Signal Wipe on Generation Failure",
+      "status": "Completed",
+      "category": "CORE",
+      "priority": "Critical",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_071.md"
+    },
+    {
+      "decisionId": "BUG-004",
+      "title": "DECISION_072: Fix Idempotent Signal Generator Silent Group Drops",
+      "status": "Completed",
+      "category": "CORE",
+      "priority": "Critical",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_072.md"
+    },
+    {
+      "decisionId": "BUG-005",
+      "title": "DECISION_073: Fix WebSocket Balance Query Error Handling",
+      "status": "Completed",
+      "category": "CORE",
+      "priority": "High",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_073.md"
+    },
+    {
+      "decisionId": "BUG-006",
+      "title": "DECISION_074: Fix Signal Deduplication Cache TTL Suppression",
+      "status": "Completed",
+      "category": "CORE",
+      "priority": "Medium",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_074.md"
+    },
+    {
+      "decisionId": "BUG-007",
+      "title": "DECISION_075: Fix SignalDistributor Reclaim Window Double Processing",
+      "status": "Completed",
+      "category": "CORE",
+      "priority": "Low",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_075.md"
+    },
+    {
+      "decisionId": "BUG-106",
+      "title": "DECISION_106: Fix NavigationMapLoader Config Discovery Bug",
+      "status": "Completed",
+      "category": "BUG",
+      "priority": "Critical",
+      "date": "2026-02-22",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_106.md"
+    },
+    {
+      "decisionId": "CANON-105",
+      "title": "DECISION_105: Nexus Inventory of Silent-Failure Patterns - Institutional Canon",
+      "status": "Approved",
+      "category": "CANON (Institutional Knowledge)",
+      "priority": "Critical",
+      "date": "2026-02-22",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_105.md"
+    },
+    {
+      "decisionId": "CORE-092",
+      "title": "DECISION-092: H4ND Directory Codemap Generation",
+      "status": "Approved",
+      "category": "CORE",
+      "priority": "Medium",
+      "date": "2026-02-23",
+      "sourceFile": "STR4TEG15T/decisions/active/CORE-092.md"
+    },
+    {
+      "decisionId": "CORE-102",
+      "title": "DECISION_102: Fix H4ND Navigation Config Loading - JSON Schema Mismatch",
+      "status": "Not Launch",
+      "category": "CORE (Core Functionality)",
+      "priority": "Critical",
+      "date": "2026-02-22",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_102.md"
+    },
+    {
+      "decisionId": "CRIT-103",
+      "title": "DECISION_103: Critical - Remediate Systematic Silent Failures Across H4ND",
+      "status": "Proposed",
+      "category": "CRIT (Critical Infrastructure)",
+      "priority": "CRITICAL",
+      "date": "2026-02-22",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_103.md"
+    },
+    {
+      "decisionId": "DECISION_025",
+      "title": "DECISION_025: Atypicality-Based Anomaly Detection for Jackpot Patterns",
+      "status": "Implemented",
+      "category": "Analytics",
+      "priority": "High",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_025.md"
+    },
+    {
+      "decisionId": "DECISION_027",
+      "title": "DECISION_027: AgentNet-Style Decentralized Coordination Protocol",
+      "status": "Implemented (AgentRegistry + PredictorAgent + ExecutorAgent + MonitorAgent)",
+      "category": "Architecture",
+      "priority": "Medium",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_027.md"
+    },
+    {
+      "decisionId": "DECISION_028",
+      "title": "DECISION_028: XGBoost Dynamic Wager Placement Optimization",
+      "status": "Phase 1 Implemented (WagerOptimizer rule-based + feature logging; Phase 2 XGBoost deferred until training data)",
+      "category": "Machine Learning",
+      "priority": "Medium",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_028.md"
+    },
+    {
+      "decisionId": "DECISION_031",
+      "title": "DECISION_031: Rename L33T Directory Names to Plain English",
+      "status": "REJECTED (Oracle: 65% rejected, Designer: 55% rejected — risk too high, benefit too low)",
+      "category": "Infrastructure",
+      "priority": "High",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_031.md"
+    },
+    {
+      "decisionId": "DECISION_034",
+      "title": "ALL DECISIONS APPROVED - Final Status Report",
+      "status": "ALL APPROVED",
+      "category": "Unknown",
+      "priority": "Unknown",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/ALL-DECISIONS-APPROVED-STATUS.md"
+    },
+    {
+      "decisionId": "DECISION_035",
+      "title": "Strategist Summary: Three-Decision Package",
+      "status": "Approved for Implementation",
+      "category": "Unknown",
+      "priority": "IMPLEMENT FIRST",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/SUMMARY-Three-Decision-Package-2026-02-20.md"
+    },
+    {
+      "decisionId": "DECISION_037",
+      "title": "Deployment Package: Sprint 2026-02-20",
+      "status": "Ready for Implementation",
+      "category": "Unknown",
+      "priority": "Unknown",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DEPLOYMENT-PACKAGE-2026-02-20.md"
+    },
+    {
+      "decisionId": "DECISION_039",
+      "title": "COMPLETE DECISION INVENTORY - All Active Decisions",
+      "status": "Mixed (Some Approved, Some Pending Designer)",
+      "category": "INFRA",
+      "priority": "Unknown",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/COMPLETE-DECISION-INVENTORY.md"
+    },
+    {
+      "decisionId": "DECISION_044",
+      "title": "DECISION ASSIMILATION REPORT",
+      "status": "Interfaces Only",
+      "category": "Unknown",
+      "priority": "Unknown",
+      "date": "2026-02-20T14:30 UTC-07",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_ASSIMILATION_REPORT.md"
+    },
+    {
+      "decisionId": "DECISION_048",
+      "title": "DECISION_048: Implement Tool Call Proxying in ToolHive Gateway",
+      "status": "Completed",
+      "category": "INFRA",
+      "priority": "High",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_048.md"
+    },
+    {
+      "decisionId": "DECISION_049",
+      "title": "DECISION_049: Restore RAG MCP Server to Healthy Status",
+      "status": "Completed",
+      "category": "INFRA",
+      "priority": "High",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_049.md"
+    },
+    {
+      "decisionId": "DECISION_050",
+      "title": "DECISION_050: Restore Decisions MCP Server to Healthy Status",
+      "status": "Completed",
+      "category": "INFRA",
+      "priority": "High",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_050.md"
+    },
+    {
+      "decisionId": "DECISION_051",
+      "title": "DECISION_051: Configurable ToolHive Desktop Integration",
+      "status": "Completed",
+      "category": "INFRA",
+      "priority": "Critical",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_051.md"
+    },
+    {
+      "decisionId": "DECISION_052",
+      "title": "DECISION_052: Ingest Speech Logs into RAG",
+      "status": "Completed",
+      "category": "RAG",
+      "priority": "Critical",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_052.md"
+    },
+    {
+      "decisionId": "DECISION_053",
+      "title": "DECISION_053: Ingest Decisions into RAG",
+      "status": "Completed",
+      "category": "RAG",
+      "priority": "Critical",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_053.md"
+    },
+    {
+      "decisionId": "DECISION_054",
+      "title": "DECISION_054: Ingest Codebase Patterns into RAG",
+      "status": "Completed",
+      "category": "RAG",
+      "priority": "High",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_054.md"
+    },
+    {
+      "decisionId": "DECISION_061",
+      "title": "DECISION_061: Agent Prompt Updates + RAG File Watcher",
+      "status": "Completed",
+      "category": "INFRA",
+      "priority": "Critical",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_061.md"
+    },
+    {
+      "decisionId": "DECISION_062",
+      "title": "DECISION_062: Agent Prompt Tool Usage Documentation Update",
+      "status": "Completed",
+      "category": "FORGE",
+      "priority": "High",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_062.md"
+    },
+    {
+      "decisionId": "DECISION_063",
+      "title": "DECISION_063: RAG File Watcher as Windows Service",
+      "status": "Completed",
+      "category": "INFRA",
+      "priority": "Critical",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_063.md"
+    },
+    {
+      "decisionId": "DECISION_064",
+      "title": "DECISION_064: Geometry-Based Anomaly Detection for Early Failure Warning",
+      "status": "Approved",
+      "category": "AUTO (Automation)",
+      "priority": "High",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_064.md"
+    },
+    {
+      "decisionId": "DECISION_065",
+      "title": "DECISION_065: Hierarchical RAG Indexing with R-Tree Structure",
+      "status": "Approved",
+      "category": "INFRA",
+      "priority": "High",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_065.md"
+    },
+    {
+      "decisionId": "DECISION_065",
+      "title": "Designer Implementation Input - Consolidated Strategies",
+      "status": "Unknown",
+      "category": "Unknown",
+      "priority": "Unknown",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/DESIGNER_IMPLEMENTATION_INPUT.md"
+    },
+    {
+      "decisionId": "DECISION_065",
+      "title": "QUICK REFERENCE: Research Decisions 064-067",
+      "status": "✅ Ready for Implementation",
+      "category": "Unknown",
+      "priority": "Unknown",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/QUICK_REF_064-067.md"
+    },
+    {
+      "decisionId": "DECISION_065",
+      "title": "STRATEGIST REPORT: Research Decisions Ready for Implementation",
+      "status": "✅ Deployment Package Complete",
+      "category": "Unknown",
+      "priority": "Unknown",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/STRATEGIST_REPORT_2026-02-21.md"
+    },
+    {
+      "decisionId": "DECISION_066",
+      "title": "DECISION_066: Post-Execution Tool Reflection Mechanism",
+      "status": "Approved",
+      "category": "FORGE",
+      "priority": "Medium",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_066.md"
+    },
+    {
+      "decisionId": "DECISION_067",
+      "title": "DECISION_067: Multi-Agent ADR Validation Workflow",
+      "status": "Approved",
+      "category": "ARCH (Architecture)",
+      "priority": "Medium",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_067.md"
+    },
+    {
+      "decisionId": "DECISION_068",
+      "title": "DECISION_068: FourEyes Vision-Validated Burn-In for DECISION_047",
+      "status": "Completed",
+      "category": "Operations",
+      "priority": "Critical",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_068.md"
+    },
+    {
+      "decisionId": "DECISION_076",
+      "title": "DECISION_076: Chrome SSL Certificate Bypass for Platform Accessibility",
+      "status": "Completed",
+      "category": "Infrastructure",
+      "priority": "Critical",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_076.md"
+    },
+    {
+      "decisionId": "DECISION_083",
+      "title": "DECISION_083: H0UND Data Reset for Burn-In Period",
+      "status": "Completed",
+      "category": "CORE",
+      "priority": "Critical",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_083.md"
+    },
+    {
+      "decisionId": "DECISION_084",
+      "title": "DECISION_084: Filter Jackpots with Insufficient DPD Data from Display",
+      "status": "Completed",
+      "category": "CORE",
+      "priority": "High",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_084.md"
+    },
+    {
+      "decisionId": "DECISION_085",
+      "title": "DECISION_085: Enhanced CLI Display System for H0UND",
+      "status": "Completed",
+      "category": "FEAT",
+      "priority": "High",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_085.md"
+    },
+    {
+      "decisionId": "DECISION_086",
+      "title": "DECISION_086: Agent Documentation & RAG Integration System",
+      "status": "Approved",
+      "category": "ARCH",
+      "priority": "High",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_086.md"
+    },
+    {
+      "decisionId": "DECISION_086",
+      "title": "DECISION_086_TEST",
+      "status": "Approved",
+      "category": "ARCH",
+      "priority": "High",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_086_TEST.md"
+    },
+    {
+      "decisionId": "DECISION_087",
+      "title": "DECISION_087: Agent Prompt Enhancement & Automated Decision Creation",
+      "status": "**Phase 2 In Progress**",
+      "category": "AUTO",
+      "priority": "Critical",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_087.md"
+    },
+    {
+      "decisionId": "DECISION_088",
+      "title": "DECISION_088",
+      "status": "Unknown",
+      "category": "Unknown",
+      "priority": "Unknown",
+      "date": "Unknown",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_088.md"
+    },
+    {
+      "decisionId": "DECISION_089",
+      "title": "DECISION_089 - Dashboard & Logging Improvements",
+      "status": "Unknown",
+      "category": "Unknown",
+      "priority": "Unknown",
+      "date": "Unknown",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_089.md"
+    },
+    {
+      "decisionId": "DECISION_090",
+      "title": "DECISION_090 - Dashboard & UI Improvements Session",
+      "status": "Unknown",
+      "category": "Unknown",
+      "priority": "Unknown",
+      "date": "Unknown",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_090.md"
+    },
+    {
+      "decisionId": "DECISION_091",
+      "title": "DECISION_091",
+      "status": "Under budget ✅",
+      "category": "Unknown",
+      "priority": "Unknown",
+      "date": "Unknown",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_091.md"
+    },
+    {
+      "decisionId": "DECISION_094",
+      "title": "DECISION_094: MCP Server Boot-Time Integration",
+      "status": "✅ Implemented",
+      "category": "Infrastructure / Boot-Time Architecture",
+      "priority": "High",
+      "date": "Unknown",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_094_MCP_BOOT_INTEGRATION.md"
+    },
+    {
+      "decisionId": "DECISION_098",
+      "title": "DECISION_098: Implement Recorder Navigation Map to H4ND Parallel Workers",
+      "status": "Completed",
+      "category": "ARCH (Architecture)",
+      "priority": "Critical",
+      "date": "2026-02-22",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_098.md"
+    },
+    {
+      "decisionId": "DECISION_099",
+      "title": "MOVED TO COMPLETED",
+      "status": "Completed",
+      "category": "Unknown",
+      "priority": "Unknown",
+      "date": "Unknown",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_099.md"
+    },
+    {
+      "decisionId": "DECISION_100",
+      "title": "DECISION_100: Integrate Theseus Plugin Fallback System for Oracle Repair",
+      "status": "Proposed",
+      "category": "INFRA (Infrastructure)",
+      "priority": "Critical",
+      "date": "2026-02-22",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_100.md"
+    },
+    {
+      "decisionId": "DECISION_108",
+      "title": "DECISION_108: Librarian Memory System for RAG Fallback",
+      "status": "Completed",
+      "category": "INFRA",
+      "priority": "High",
+      "date": "2026-02-22",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_108.md"
+    },
+    {
+      "decisionId": "DECISION_110",
+      "title": "DECISION_110 Phase 7-8 Execution Record",
+      "status": "In Progress (Phase 7 and 8 partial execution complete)",
+      "category": "ARCH",
+      "priority": "Unknown",
+      "date": "2026-02-23",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_110_PHASE7_PHASE8.md"
+    },
+    {
+      "decisionId": "DECISION_111",
+      "title": "DECISION_111: Designer Agent Prompt Update - Documentation & RAG Emphasis",
+      "status": "Completed",
+      "category": "AUTO",
+      "priority": "High",
+      "date": "2026-02-22",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_111.md"
+    },
+    {
+      "decisionId": "DECISION_112",
+      "title": "DECISION_112: Explorer & Librarian Agent Alignment",
+      "status": "Completed",
+      "category": "AUTO",
+      "priority": "High",
+      "date": "2026-02-22",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_112.md"
+    },
+    {
+      "decisionId": "DECISION_113",
+      "title": "DECISION_113: Implement Universal Chaos Logging and Sanity Test System",
+      "status": "InProgress (H4ND Phase 1)",
+      "category": "ARCH",
+      "priority": "Critical",
+      "date": "2026-02-23",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_113.md"
+    },
+    {
+      "decisionId": "DECISION_114",
+      "title": "DECISION_114: Strategist Workflow Hardening and Auditability Baseline",
+      "status": "Validating (Deployment completed; audit in progress)",
+      "category": "FORGE",
+      "priority": "High",
+      "date": "2026-02-23",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_114.md"
+    },
+    {
+      "decisionId": "DECISION_114",
+      "title": "DECISION_114 Change Control v1",
+      "status": "Unknown",
+      "category": "Unknown",
+      "priority": "Unknown",
+      "date": "2026-02-23",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_114_CHANGE_CONTROL_v1.md"
+    },
+    {
+      "decisionId": "DECISION_114",
+      "title": "DECISION_114 Synthesis Policy v1",
+      "status": "Unknown",
+      "category": "Unknown",
+      "priority": "Unknown",
+      "date": "2026-02-23",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_114_SYNTHESIS_POLICY_v1.md"
+    },
+    {
+      "decisionId": "DECISION_115",
+      "title": "DECISION_115: Deployment-Phase Decision Governance and Self-Improvement Gate",
+      "status": "InProgress (Workflow updates continuing; audit standardization pending)",
+      "category": "FORGE",
+      "priority": "High",
+      "date": "2026-02-23",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_115.md"
+    },
+    {
+      "decisionId": "DECISION_115",
+      "title": "DECISION_115 Deployment Governance v1",
+      "status": "Unknown",
+      "category": "Unknown",
+      "priority": "Unknown",
+      "date": "2026-02-23",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_115_DEPLOYMENT_GOVERNANCE_v1.md"
+    },
+    {
+      "decisionId": "DECISION_116",
+      "title": "DECISION_116: Decision Storage Simplification and Manifest v2 Performance Model",
+      "status": "HandoffReady (Awaiting Nexus initiation for implementation + parallel audits)",
+      "category": "INFRA",
+      "priority": "High",
+      "date": "2026-02-23",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_116.md"
+    },
+    {
+      "decisionId": "DECISION_116",
+      "title": "DECISION_116 Automation Strategy v1",
+      "status": "Unknown",
+      "category": "Unknown",
+      "priority": "Unknown",
+      "date": "2026-02-23",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_116_AUTOMATION_v1.md"
+    },
+    {
+      "decisionId": "DECISION_116",
+      "title": "DECISION_116 Manifest v2 Architecture v1",
+      "status": "Unknown",
+      "category": "Unknown",
+      "priority": "Unknown",
+      "date": "2026-02-23",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_116_MANIFEST_V2_ARCHITECTURE_v1.md"
+    },
+    {
+      "decisionId": "DECISION_116",
+      "title": "DECISION_116 Windows Micro-Tools Strategy v1",
+      "status": "Unknown",
+      "category": "Unknown",
+      "priority": "Unknown",
+      "date": "2026-02-23",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_116_WINDOWS_MICROTOOLS_v1.md"
+    },
+    {
+      "decisionId": "DECISION-TOOLHIVE-001",
+      "title": "DECISION: ToolHive Gateway HTTP Tool Discovery",
+      "status": "Completed",
+      "category": "Unknown",
+      "priority": "Unknown",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION-TOOLHIVE-001.md"
+    },
+    {
+      "decisionId": "FEAT-036",
+      "title": "DECISION_036: FourEyes Development Assistant Activation",
+      "status": "Implemented",
+      "category": "FEAT",
+      "priority": "Critical",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_036.md"
+    },
+    {
+      "decisionId": "FORGE-001",
+      "title": "DECISION: T4CT1CS Directory Architecture Standardization",
+      "status": "Proposed",
+      "category": "FORGE (Platform-Pattern)",
+      "priority": "Critical",
+      "date": "2026-02-18",
+      "sourceFile": "STR4TEG15T/decisions/active/FORGE-001-Directory-Architecture.md"
+    },
+    {
+      "decisionId": "FORGE-002",
+      "title": "FORGE-002: Decision-Making Process Enhancement Framework",
+      "status": "Approved",
+      "category": "FORGE (Platform-Pattern)",
+      "priority": "Critical",
+      "date": "2026-02-18",
+      "sourceFile": "STR4TEG15T/decisions/active/FORGE-002-Decision-Making-Enhancement.md"
+    },
+    {
+      "decisionId": "FORGE-003",
+      "title": "DECISION_038: Multi-Agent Decision-Making Workflow with Forgewright",
+      "status": "Implemented",
+      "category": "FORGE",
+      "priority": "Critical",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_038.md"
+    },
+    {
+      "decisionId": "FORGE-004",
+      "title": "DECISION_109: Fix FireKirin Workflow Ignoring Recorded Step Config",
+      "status": "Completed",
+      "category": "FORGE",
+      "priority": "Critical",
+      "date": "2026-02-22",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_109.md"
+    },
+    {
+      "decisionId": "FORGE-082",
+      "title": "DECISION_082: Model Attribution Standard for Decision Consultations",
+      "status": "Proposed",
+      "category": "FORGE (Process)",
+      "priority": "Medium",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_082.md"
+    },
+    {
+      "decisionId": "FOUREYES_CODEBASE_REFERENCE",
+      "title": "Four-Eyes Vision System: Codebase-Enhanced Decision Framework",
+      "status": "COMPLETED",
+      "category": "Unknown",
+      "priority": "Unknown",
+      "date": "Unknown",
+      "sourceFile": "STR4TEG15T/decisions/active/FOUREYES_CODEBASE_REFERENCE.md"
+    },
+    {
+      "decisionId": "FOUREYES_DECISION_FRAMEWORK",
+      "title": "Four-Eyes Vision System - Decision Framework",
+      "status": "Unknown",
+      "category": "Unknown",
+      "priority": "Unknown",
+      "date": "Unknown",
+      "sourceFile": "STR4TEG15T/decisions/active/FOUREYES_DECISION_FRAMEWORK.md"
+    },
+    {
+      "decisionId": "IDEMPOTENT SIGNAL GENERATION SYSTEM",
+      "title": "Cascade Chat Conversation",
+      "status": "Unknown",
+      "category": "Unknown",
+      "priority": "Unknown",
+      "date": "Unknown",
+      "sourceFile": "STR4TEG15T/decisions/active/Idempotent Signal Generation System.md"
+    },
+    {
+      "decisionId": "IMPL-042",
+      "title": "DECISION_042: Agent Implementation Completion (DECISION_027/028)",
+      "status": "Proposed",
+      "category": "IMPL",
+      "priority": "Medium",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_042.md"
+    },
+    {
+      "decisionId": "INFRA-068",
+      "title": "INFRA-068: MCP Server Configuration Consolidation and Cleanup",
+      "status": "Completed",
+      "category": "INFRA",
+      "priority": "High",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/INFRA-068_MCP_Consolidation.md"
+    },
+    {
+      "decisionId": "INFRA-079",
+      "title": "DECISION_079: Direct RAG MCP Connection for OpenCode and WindSurf",
+      "status": "InProgress",
+      "category": "INFRA (Infrastructure)",
+      "priority": "Critical",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_079.md"
+    },
+    {
+      "decisionId": "INFRA-080",
+      "title": "DECISION_080: RAG Vector Index Re-ingestion",
+      "status": "Completed",
+      "category": "INFRA (Infrastructure)",
+      "priority": "Critical",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_080.md"
+    },
+    {
+      "decisionId": "INFRA-092",
+      "title": "DECISION_092: Restore RAG Server and Pantheon Database Tools to ToolHive",
+      "status": "Completed",
+      "category": "INFRA",
+      "priority": "Critical",
+      "date": "2026-02-22",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_092.md"
+    },
+    {
+      "decisionId": "INFRA-095",
+      "title": "DECISION_095",
+      "status": "Approved",
+      "category": "INFRA",
+      "priority": "High",
+      "date": "2026-02-22",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_095.md"
+    },
+    {
+      "decisionId": "INFRA-095",
+      "title": "DECISION_095_MONGODB_TOOLHIVE_HARDENING",
+      "status": "Proposed",
+      "category": "INFRA",
+      "priority": "High",
+      "date": "2026-02-22",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_095_MONGODB_TOOLHIVE_HARDENING.md"
+    },
+    {
+      "decisionId": "MIGRATE-004",
+      "title": "DECISION_039: Tool Migration to MCP Server via ToolHive",
+      "status": "Partially Implemented (Gateway Only)",
+      "category": "INFRA",
+      "priority": "Critical",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_039.md"
+    },
+    {
+      "decisionId": "MON-057",
+      "title": "DECISION_057: Real-Time Burn-In Monitoring Dashboard",
+      "status": "Completed",
+      "category": "MON (Monitoring)",
+      "priority": "Critical",
+      "date": "2026-02-21",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_057.md"
+    },
+    {
+      "decisionId": "MON-058",
+      "title": "DECISION_058: Burn-In Alert Thresholds and Escalation",
+      "status": "Completed",
+      "category": "MON (Monitoring)",
+      "priority": "Critical",
+      "date": "Unknown",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_058.md"
+    },
+    {
+      "decisionId": "OPS-046",
+      "title": "DECISION_046: Configuration-Driven Jackpot Selectors",
+      "status": "Implemented (via DECISION_045 — GameSelectorConfig.cs + appsettings.json fallback chains)",
+      "category": "OPS",
+      "priority": "High",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_046.md"
+    },
+    {
+      "decisionId": "OPS-060",
+      "title": "DECISION_060: Operational Deployment - Production Readiness",
+      "status": "Completed",
+      "category": "OPS (Operations)",
+      "priority": "Critical",
+      "date": "Unknown",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_060.md"
+    },
+    {
+      "decisionId": "RAG-097",
+      "title": "DECISION_097",
+      "status": "Proposed",
+      "category": "INFRA",
+      "priority": "Critical",
+      "date": "2026-02-22",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_097.md"
+    },
+    {
+      "decisionId": "REBUILD-096",
+      "title": "DECISION_096",
+      "status": "**COMPLETED - DEPLOYED TO PRODUCTION**",
+      "category": "INFRA",
+      "priority": "Critical",
+      "date": "2026-02-22",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_096.md"
+    },
+    {
+      "decisionId": "STRATEGY-ARCHITECTURE-V3",
+      "title": "P4NTHE0N: Streamlined Agentic Architecture v3.0",
+      "status": "Operational Optimization",
+      "category": "Unknown",
+      "priority": "Unknown",
+      "date": "2026-02-18",
+      "sourceFile": "STR4TEG15T/decisions/active/STRATEGY-ARCHITECTURE-v3.md"
+    },
+    {
+      "decisionId": "TEST-035",
+      "title": "DECISION_035: End-to-End Jackpot Signal Testing Pipeline",
+      "status": "Implemented",
+      "category": "TEST",
+      "priority": "Critical",
+      "date": "2026-02-20",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_035.md"
+    },
+    {
+      "decisionId": "TOOL-078",
+      "title": "DECISION_078: P4NTHE0N Recorder TUI — Visual Macro Editor & Live Debugger",
+      "status": "Completed (v2.0 — Live CDP Execution)",
+      "category": "TOOL",
+      "priority": "High",
+      "date": "2026-02-21 (v2.0 upgrade same day)",
+      "sourceFile": "STR4TEG15T/decisions/active/DECISION_078.md"
+    }
+  ]
+}

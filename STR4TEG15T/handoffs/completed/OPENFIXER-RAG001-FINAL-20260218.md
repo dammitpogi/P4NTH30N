@@ -16,17 +16,17 @@
 dotnet publish src/RAG.McpHost/RAG.McpHost.csproj `
   -c Release -r win-x64 --self-contained true `
   -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true `
-  -o C:/ProgramData/P4NTH30N/bin/
+  -o C:/ProgramData/P4NTHE0N/bin/
 ```
 
 **Result**:
-- Executable: `C:\ProgramData\P4NTH30N\bin\RAG.McpHost.exe`
+- Executable: `C:\ProgramData\P4NTHE0N\bin\RAG.McpHost.exe`
 - Size: 87 MB (self-contained, single-file)
 - Build: 0 errors, 0 warnings
 - `--help` output verified:
 
 ```
-RAG.McpHost - P4NTH30N RAG MCP Server
+RAG.McpHost - P4NTHE0N RAG MCP Server
 
 Usage: RAG.McpHost [options]
 
@@ -52,14 +52,14 @@ Options:
 ```json
 "p4nth30n/rag-server": {
   "type": "stdio",
-  "command": "C:/ProgramData/P4NTH30N/bin/RAG.McpHost.exe",
+  "command": "C:/ProgramData/P4NTHE0N/bin/RAG.McpHost.exe",
   "args": [
     "--transport", "stdio",
-    "--index", "C:/ProgramData/P4NTH30N/rag-index",
-    "--model", "C:/ProgramData/P4NTH30N/models/all-MiniLM-L6-v2.onnx",
+    "--index", "C:/ProgramData/P4NTHE0N/rag-index",
+    "--model", "C:/ProgramData/P4NTHE0N/models/all-MiniLM-L6-v2.onnx",
     "--bridge", "http://127.0.0.1:5000",
     "--mongo", "mongodb://localhost:27017",
-    "--db", "P4NTH30N"
+    "--db", "P4NTHE0N"
   ],
   "env": {
     "DOTNET_ENVIRONMENT": "Production"
@@ -83,7 +83,7 @@ Options:
 ### Task 3: Register Windows Scheduled Tasks
 **Status**: COMPLETED
 
-**File Created**: `C:\P4NTH30N\scripts\rag\register-scheduled-tasks.ps1`
+**File Created**: `C:\P4NTHE0N\scripts\rag\register-scheduled-tasks.ps1`
 
 **Tasks Created**:
 1. **RAG-Incremental-Rebuild** - Every 4 hours (Ready)
@@ -103,7 +103,7 @@ RAG-Nightly-Rebuild     Ready
 **Status**: COMPLETED
 
 **Actions Performed**:
-1. Created config with `replication: replSetName: rs0` at `C:\ProgramData\P4NTH30N\mongodb\mongod.cfg`
+1. Created config with `replication: replSetName: rs0` at `C:\ProgramData\P4NTHE0N\mongodb\mongod.cfg`
 2. Reconfigured MongoDB service to use config file
 3. Initialized replica set: `rs.initiate({_id: 'rs0', members: [{_id: 0, host: 'localhost:27017'}]})`
 
@@ -194,13 +194,13 @@ toolhive call-tool rag-server rag_query { "query": "test document", "topK": 5 }
 
 | File | Action | Purpose |
 |------|--------|---------|
-| `C:\ProgramData\P4NTH30N\bin\RAG.McpHost.exe` | Created | MCP server executable (87MB) |
-| `C:\ProgramData\P4NTH30N\rag-index\` | Created | FAISS index directory |
-| `C:\ProgramData\P4NTH30N\models\` | Created | ONNX model directory |
-| `C:\ProgramData\P4NTH30N\mongodb\mongod.cfg` | Created | MongoDB config with replica set |
+| `C:\ProgramData\P4NTHE0N\bin\RAG.McpHost.exe` | Created | MCP server executable (87MB) |
+| `C:\ProgramData\P4NTHE0N\rag-index\` | Created | FAISS index directory |
+| `C:\ProgramData\P4NTHE0N\models\` | Created | ONNX model directory |
+| `C:\ProgramData\P4NTHE0N\mongodb\mongod.cfg` | Created | MongoDB config with replica set |
 | `C:\Users\paulc\AppData\Roaming\Code\User\mcp.json` | Modified | Added rag-server entry |
-| `C:\P4NTH30N\scripts\rag\register-scheduled-tasks.ps1` | Created | Task registration script |
-| `C:\P4NTH30N\scripts\rag\reconfigure-mongodb-replset.ps1` | Created | MongoDB replica set config |
+| `C:\P4NTHE0N\scripts\rag\register-scheduled-tasks.ps1` | Created | Task registration script |
+| `C:\P4NTHE0N\scripts\rag\reconfigure-mongodb-replset.ps1` | Created | MongoDB replica set config |
 
 ---
 

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-02-24T00:25:05.338Z",
+  "runtimePromptPath": "C:/Users/paulc/.config/opencode/agents/openfixer.md",
+  "repositoryPromptPath": "C:/P4NTHE0N/agents/openfixer.md",
+  "status": "PASS",
+  "sections": [
+    {
+      "section": "Execution Rules",
+      "status": "PASS",
+      "details": "Equivalent (5 normalized lines)."
+    },
+    {
+      "section": "Completion Report",
+      "status": "PASS",
+      "details": "Equivalent (4 normalized lines)."
+    },
+    {
+      "section": "Governance Report Standard",
+      "status": "PASS",
+      "details": "Equivalent (6 normalized lines)."
+    },
+    {
+      "section": "Developmental Learning Capture",
+      "status": "PASS",
+      "details": "Equivalent (3 normalized lines)."
+    }
+  ],
+  "diffSummary": []
+}

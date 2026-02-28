@@ -66,7 +66,7 @@ The 24-hour burn-in will run unattended, but operators need visibility into syst
 - Real-time dashboard accessible via HTTP endpoint
 - WebSocket push notifications for critical alerts
 - MongoDB collection for historical burn-in data
-- CLI command `P4NTH30N.exe monitor` to attach to running burn-in
+- CLI command `P4NTHE0N.exe monitor` to attach to running burn-in
 
 ---
 
@@ -96,7 +96,7 @@ The 24-hour burn-in will run unattended, but operators need visibility into syst
 
 5. **MON-057-005**: CLI Monitor Attachment
    - **Priority**: Must
-   - **Acceptance Criteria**: `P4NTH30N.exe monitor` connects to running burn-in, displays live updating dashboard in terminal
+   - **Acceptance Criteria**: `P4NTHE0N.exe monitor` connects to running burn-in, displays live updating dashboard in terminal
    - **Implementation**: ConsoleUI with periodic refresh, WebSocket client
 
 6. **MON-057-006**: Progress Tracking

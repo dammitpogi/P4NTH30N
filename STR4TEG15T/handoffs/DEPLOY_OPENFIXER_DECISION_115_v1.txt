@@ -1,0 +1,38 @@
+OpenFixer, execute DECISION_115 when Nexus explicitly initiates this deployment.
+
+Context:
+- Parent workflow decision: STR4TEG15T/decisions/active/DECISION_114.md
+- Governance decision: STR4TEG15T/decisions/active/DECISION_115.md
+- Governance companion: STR4TEG15T/decisions/active/DECISION_115_DEPLOYMENT_GOVERNANCE_v1.md
+- Strategist policy target: C:\Users\paulc\.config\opencode\agents\strategist.md
+
+Mission:
+Implement deployment-phase decision governance so strategist handoffs always include pre-handoff scope questions, closure checklist drafting, and controlled handling of in-flight deployment decision deltas.
+
+Do this in order:
+1) Read DECISION_114 and DECISION_115 artifacts and verify policy parity with strategist.md.
+2) Update strategist.md to enforce automatic pre-handoff gates:
+   - harden/expand/narrow question set,
+   - closure checklist draft,
+   - deployment-phase status transitions,
+   - versioned companion file rule for scope deltas.
+3) Update DECISION_114 with a closure checklist block aligned to DECISION_115 governance rules.
+4) If governance language needs expansion, update/create versioned companion docs and link them clearly.
+5) Produce deployment report with governance parity evidence.
+
+Required outputs:
+- OP3NF1XER/deployments/JOURNAL_YYYY-MM-DD_DECISION_115_DEPLOYMENT_GOVERNANCE.md
+- Updated C:\Users\paulc\.config\opencode\agents\strategist.md
+- Updated STR4TEG15T/decisions/active/DECISION_114.md (closure checklist integration)
+- Any versioned decision companion docs created during execution
+
+Report back with:
+- files changed,
+- checklist of requirements met,
+- unresolved blockers,
+- recommendation: DECISION_114 ready to close or further iteration needed.
+
+Constraints:
+- No product code modifications in H0UND/, H4ND/, C0MMON/, W4TCHD0G/, UNI7T35T/.
+- No synthesis speech file creation unless Nexus explicitly requests it.
+- Keep evidence path-explicit and audit-friendly.

@@ -239,7 +239,7 @@ describe('Difficulty Classifier', () => {
       'Performance optimization is critical - latency must stay below 2 seconds. ' +
       'This blocks DECISION_045 and is related to DECISION_038. ' +
       'The rollback strategy must handle data corruption scenarios. ' +
-      'Coordinate between windfixer for P4NTH30N changes and openfixer for config updates. ' +
+      'Coordinate between windfixer for P4NTHE0N changes and openfixer for config updates. ' +
       Array(200).fill('additional context about implementation details').join(' ');
 
     const result = classify({ query: complexQuery });

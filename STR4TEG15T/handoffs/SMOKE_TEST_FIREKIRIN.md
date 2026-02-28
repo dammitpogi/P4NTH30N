@@ -13,13 +13,13 @@ Get-Command chrome -ErrorAction SilentlyContinue
 # Expected: Path to chrome.exe
 
 # Verify MongoDB connection
-mongosh "mongodb://192.168.56.1:27017/P4NTH30N?directConnection=true" --eval "db.CR3D3N7IAL.countDocuments()"
+mongosh "mongodb://192.168.56.1:27017/P4NTHE0N?directConnection=true" --eval "db.CR3D3N7IAL.countDocuments()"
 # Expected: Number > 0
 ```
 
 ### Step 2: Build and Run Smoke Test
 ```powershell
-cd C:\P4NTH30N
+cd C:\P4NTHE0N
 dotnet build H4ND/H4ND.csproj -c Release
 
 # Run smoke test executable

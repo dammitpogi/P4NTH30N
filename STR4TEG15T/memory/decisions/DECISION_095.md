@@ -63,7 +63,7 @@ We will harden `mongodb-p4nth30n` for ToolHive-native operation by introducing a
 This decision keeps compatibility with ToolHive expectations and MongoDB MCP conventions by avoiding an unsafe global implicit context. Instead, we resolve defaults deterministically with a clear precedence model and strict validation.
 
 **Current Problem**:
-- Callers repeatedly pass `database: "P4NTH30N"` in nearly every MongoDB tool call.
+- Callers repeatedly pass `database: "P4NTHE0N"` in nearly every MongoDB tool call.
 - Existing behavior is noisy and error-prone across agents and workflows.
 - Prior implementations mixed custom assumptions with ToolHive semantics.
 
@@ -76,7 +76,7 @@ This decision keeps compatibility with ToolHive expectations and MongoDB MCP con
 
 ## Background
 
-The current ToolHive MongoDB server model is explicit by default and requires database in most tool schemas. This is robust, but repetitive for single-database operations (`P4NTH30N`).
+The current ToolHive MongoDB server model is explicit by default and requires database in most tool schemas. This is robust, but repetitive for single-database operations (`P4NTHE0N`).
 
 Recent remediation stabilized the server by aligning to ToolHive and official MongoDB MCP behavior. The next step is developer-experience hardening without reintroducing hidden context risks.
 

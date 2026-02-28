@@ -81,7 +81,7 @@ Implemented Chrome SSL certificate bypass to enable platform accessibility for F
 
 ### Configuration Change
 
-**File**: `C:\P4NTH30N\H4ND\Services\CdpLifecycleConfig.cs`
+**File**: `C:\P4NTHE0N\H4ND\Services\CdpLifecycleConfig.cs`
 
 **Before**:
 ```csharp
@@ -127,7 +127,7 @@ public string[] AdditionalArgs { get; set; } = ["--no-sandbox", "--disable-gpu",
 
 ### Files Modified
 
-1. **C:\P4NTH30N\H4ND\Services\CdpLifecycleConfig.cs**
+1. **C:\P4NTHE0N\H4ND\Services\CdpLifecycleConfig.cs**
    - Line 21: Added `--ignore-certificate-errors` to AdditionalArgs default array
 
 ### Launch Commands

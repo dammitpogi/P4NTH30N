@@ -100,18 +100,18 @@ curl -s http://127.0.0.1:5001/mcp -X POST -H "Content-Type: application/json" \
 
 ### Documents to Re-ingest
 
-1. **Speech Logs**: `C:\P4NTH30N\STR4TEG15T\speech\*.md` (~86 files)
+1. **Speech Logs**: `C:\P4NTHE0N\STR4TEG15T\speech\*.md` (~86 files)
    - Metadata: {"agent": "strategist", "type": "speech"}
 
 2. **Decision Documents**: 
-   - `C:\P4NTH30N\STR4TEG15T\decisions\active\*.md` (~60 files)
-   - `C:\P4NTH30N\STR4TEG15T\decisions\completed\*.md` (~20 files)
+   - `C:\P4NTHE0N\STR4TEG15T\decisions\active\*.md` (~60 files)
+   - `C:\P4NTHE0N\STR4TEG15T\decisions\completed\*.md` (~20 files)
    - Metadata: {"agent": "strategist", "type": "decision"}
 
 3. **Codebase Patterns**:
    - `C:\Users\paulc\.config\opencode\AGENTS.md`
-   - `C:\P4NTH30N\C0MMON\RAG\*.cs` (5 files)
-   - `C:\P4NTH30N\C0MMON\Infrastructure\*.cs` (core interfaces)
+   - `C:\P4NTHE0N\C0MMON\RAG\*.cs` (5 files)
+   - `C:\P4NTHE0N\C0MMON\Infrastructure\*.cs` (core interfaces)
    - Metadata: {"agent": "strategist", "type": "pattern"}
 
 ---

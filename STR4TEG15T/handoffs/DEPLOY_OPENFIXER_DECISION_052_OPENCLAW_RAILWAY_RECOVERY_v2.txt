@@ -1,0 +1,56 @@
+OpenFixer, execute DECISION_052 only when Nexus explicitly initiates deployment.
+
+Mode: Deployment
+Decision ID: DECISION_052
+Current status: Iterating -> HandoffReady (on Nexus initiation)
+
+Context:
+- Decision: STR4TEG15T/decisions/DECISION_052_OPENCLAW_RAILWAY_RECOVERY.md
+- Control-plane decision: STR4TEG15T/decisions/DECISION_053_OPENCLAW_RAILWAY_ACCESS_STRATEGY.md
+- Outage evidence: https://clawdbot-railway-template-production-461f.up.railway.app returns HTTP 503
+- Railway dashboard: https://railway.com/dashboard
+- Access: Nexus-provided in-session credentials only; do not persist secrets
+
+Mission:
+Restore OpenClaw to HTTP 200 using rollback-first posture and produce audit evidence.
+
+Execution phases:
+1) Stabilize (web UI first unless Nexus explicitly selects API)
+   - Log in to Railway.
+   - Identify last successful deployment and broken deployment.
+   - Roll back to last successful deployment.
+   - Verify HTTP 200 on production URL within 60 seconds.
+
+2) Restore
+   - Validate health/core routes 3x consecutively.
+   - Review logs for crash loops/startup failures.
+   - Confirm no active 5xx spike.
+
+3) Validate
+   - Test `/setup` and `/openclaw` surfaces.
+   - Confirm OpenClaw Railway baseline settings remain aligned:
+     - HTTP proxy port 8080
+     - `PORT=8080`
+     - volume mounted at `/data`
+   - Run 10-request spot check with zero 5xx.
+
+4) Prevent (document only in this pass)
+   - Capture root cause hypothesis from deployment diff/logs.
+   - Recommend at least 3 prevention controls.
+
+Required artifacts:
+- OP3NF1XER/deployments/JOURNAL_YYYY-MM-DD_DECISION_052_OPENCLAW_RECOVERY.md
+- Update STR4TEG15T/decisions/DECISION_052_OPENCLAW_RAILWAY_RECOVERY.md with deployment IDs, timestamps, and validation evidence.
+
+Report format:
+1. Actions performed (ordered)
+2. Evidence (status codes, deployment IDs, key logs)
+3. Validation matrix (PASS/PARTIAL/FAIL)
+4. Root cause hypothesis + confidence
+5. Residual risks + next actions
+
+Constraints:
+- No workflow bypass.
+- No secret persistence.
+- Rollback-first during outage window.
+- If rollback is blocked by migration/state risk, stop and escalate to Nexus with evidence.

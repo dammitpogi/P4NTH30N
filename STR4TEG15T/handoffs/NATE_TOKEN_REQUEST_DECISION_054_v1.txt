@@ -1,0 +1,22 @@
+Nate, quick unblock request to restore OpenClaw safely.
+
+Why we are asking:
+- Current token is valid, but it is not attached to the project that hosts
+  `clawdbot-railway-template-production-461f.up.railway.app`.
+- We cannot prove edit authority or apply fixes without target-project scope.
+
+Please provide ONE of the following:
+
+Option A (preferred):
+1) Railway project token from the exact OpenClaw production project/environment.
+
+Option B:
+1) Railway account/workspace token from the account that owns that project,
+2) plus confirmation of owning account email.
+
+After receipt, we will run a reversible permission smoke test:
+- set `PYXIS_ACCESS_TEST=ok`
+- verify
+- remove immediately
+
+No destructive operations will be performed during this check.

@@ -55,11 +55,11 @@ source:
 
 ## Executive Summary
 
-The RAG Server (`rag-server`) and Pantheon Database tools (`mongodb-p4nth30n`) are currently unavailable through ToolHive, despite being critical infrastructure components for the P4NTH30N platform. These tools were previously operational but are no longer discoverable or accessible through the ToolHive Gateway. This decision addresses the restoration of both services to ensure agents can access institutional memory (RAG) and decision persistence (MongoDB).
+The RAG Server (`rag-server`) and Pantheon Database tools (`mongodb-p4nth30n`) are currently unavailable through ToolHive, despite being critical infrastructure components for the P4NTHE0N platform. These tools were previously operational but are no longer discoverable or accessible through the ToolHive Gateway. This decision addresses the restoration of both services to ensure agents can access institutional memory (RAG) and decision persistence (MongoDB).
 
 **Current Problem**:
 - RAG Server tools (`rag_query`, `rag_ingest`, `rag_search_similar`) not available via ToolHive
-- Pantheon Database tools (`find`, `updateOne`, `insertOne` on P4NTH30N.decisions) not available via ToolHive
+- Pantheon Database tools (`find`, `updateOne`, `insertOne` on P4NTHE0N.decisions) not available via ToolHive
 - Agents cannot query institutional memory or persist decisions to MongoDB through standardized ToolHive interface
 - Previous configurations in `mcp.json` and ToolHive gateway may be outdated or misconfigured
 
@@ -87,7 +87,7 @@ Based on initial investigation and Explorer reports:
 
 **Build Status**:
 - ✅ Project compiles successfully
-- ✅ Executable exists at `C:\ProgramData\P4NTH30N\bin\RAG.McpHost.exe`
+- ✅ Executable exists at `C:\ProgramData\P4NTHE0N\bin\RAG.McpHost.exe`
 - Configured in `config/rag-activation.json` with port 5001, MongoDB URI
 
 **Tools Exposed** (6 tools):
@@ -107,7 +107,7 @@ Based on initial investigation and Explorer reports:
 **Dependencies**:
 - LM Studio: Python bridge for embeddings (default `http://127.0.0.1:5000`)
 - Qdrant: Vector database (Rancher/Kubernetes deployment)
-- MongoDB: Metadata storage (`mongodb://localhost:27017/P4NTH30N`)
+- MongoDB: Metadata storage (`mongodb://localhost:27017/P4NTHE0N`)
 - ONNX Fallback: all-MiniLM-L6-v2 via Microsoft.ML.OnnxRuntime
 
 **Current State**:
@@ -128,7 +128,7 @@ Based on initial investigation and Explorer reports:
 - **p4nth30n-mcp**: `tools/mcp-p4nthon/` - TypeScript MCP server
   - Exposes: `query_credentials`, `query_signals`, `query_jackpots`, `get_system_status`
   - Collections: `CRED3N7IAL`, `SIGN4L`, `J4CKP0T`
-  - Connection: `mongodb://localhost:27017/P4NTH30N`
+  - Connection: `mongodb://localhost:27017/P4NTHE0N`
   
 **Expected Tools** (per Strategist canon):
 - `insertOne` - Insert single document
@@ -139,10 +139,10 @@ Based on initial investigation and Explorer reports:
 - Target collection: `decisions`
 
 **MongoDB Configuration**:
-- Primary: `mongodb://localhost:27017/P4NTH30N` (`appsettings.json`)
-- VM variant: `mongodb://192.168.56.1:27017/P4NTH30N?directConnection=true` (`appsettings.vm.json`)
-- Development: `mongodb://localhost:27017/P4NTH30N_DEV` (`appsettings.Development.json`)
-- Gateway Docker: `mongodb://host.docker.internal:27017/P4NTH30N`
+- Primary: `mongodb://localhost:27017/P4NTHE0N` (`appsettings.json`)
+- VM variant: `mongodb://192.168.56.1:27017/P4NTHE0N?directConnection=true` (`appsettings.vm.json`)
+- Development: `mongodb://localhost:27017/P4NTHE0N_DEV` (`appsettings.Development.json`)
+- Gateway Docker: `mongodb://host.docker.internal:27017/P4NTHE0N`
 
 **Key Collections**:
 - `decisions` - Decision persistence (primary for Strategist)
@@ -225,7 +225,7 @@ Based on initial investigation and Explorer reports:
 - Dependencies: LM Studio (embeddings), Qdrant (vector DB), MongoDB (metadata)
 
 **Pantheon Database Architecture**:
-- MongoDB: localhost:27017/P4NTH30N
+- MongoDB: localhost:27017/P4NTHE0N
 - MCP Server: Needs implementation or restoration
 - Collections: decisions, C0N7EXT, R4G_M37R1C5, etc.
 
@@ -361,7 +361,7 @@ Based on initial investigation and Explorer reports:
 ### Explorer Investigation
 - **Date**: 2026-02-22
 - **RAG Server Findings**: 
-  - Executable exists at `C:\ProgramData\P4NTH30N\bin\RAG.McpHost.exe`
+  - Executable exists at `C:\ProgramData\P4NTHE0N\bin\RAG.McpHost.exe`
   - Process NOT currently running
   - 6 tools exposed: rag_query, rag_ingest, rag_ingest_file, rag_status, rag_rebuild_index, rag_search_similar
   - HTTP transport on port 5001, stdio transport available
@@ -369,7 +369,7 @@ Based on initial investigation and Explorer reports:
   - ToolHive Gateway has config entry but server is down
 - **Pantheon DB Findings**:
   - `p4nth30n-mcp` exists in `tools/mcp-p4nthon/` with limited query tools
-  - MongoDB running at localhost:27017/P4NTH30N
+  - MongoDB running at localhost:27017/P4NTHE0N
   - Missing `mongodb-p4nth30n.json` source file in gateway config
   - CRUD tools (insertOne, find, updateOne) not implemented
   - Multiple overlapping implementations need consolidation
@@ -423,14 +423,14 @@ Based on Explorer investigations and Designer consultation, the implementation f
 
 2. **Start RAG Server**:
    ```powershell
-   C:\ProgramData\P4NTH30N\bin\RAG.McpHost.exe `
+   C:\ProgramData\P4NTHE0N\bin\RAG.McpHost.exe `
      --port 5001 `
      --transport http `
-     --index "C:\ProgramData\P4NTH30N\rag\faiss.index" `
-     --model "C:\ProgramData\P4NTH30N\rag\models\all-MiniLM-L6-v2.onnx" `
+     --index "C:\ProgramData\P4NTHE0N\rag\faiss.index" `
+     --model "C:\ProgramData\P4NTHE0N\rag\models\all-MiniLM-L6-v2.onnx" `
      --bridge http://127.0.0.1:5000 `
      --mongo mongodb://localhost:27017 `
-     --db P4NTH30N
+     --db P4NTHE0N
    ```
 
 3. **Update Gateway Config**:
@@ -502,9 +502,9 @@ Based on Explorer investigations and Designer consultation, the implementation f
 
 | File/Resource | Action | Purpose |
 |---------------|--------|---------|
-| `C:\ProgramData\P4NTH30N\bin\RAG.McpHost.exe` | VERIFY EXISTS | RAG server executable |
-| `C:\ProgramData\P4NTH30N\rag\faiss.index` | VERIFY EXISTS | FAISS vector index |
-| `C:\ProgramData\P4NTH30N\rag\models\all-MiniLM-L6-v2.onnx` | VERIFY EXISTS | ONNX embedding model |
+| `C:\ProgramData\P4NTHE0N\bin\RAG.McpHost.exe` | VERIFY EXISTS | RAG server executable |
+| `C:\ProgramData\P4NTHE0N\rag\faiss.index` | VERIFY EXISTS | FAISS vector index |
+| `C:\ProgramData\P4NTHE0N\rag\models\all-MiniLM-L6-v2.onnx` | VERIFY EXISTS | ONNX embedding model |
 | `http://127.0.0.1:5000` | VERIFY RUNNING | LM Studio embeddings endpoint |
 | `mongodb://localhost:27017` | VERIFY RUNNING | MongoDB connection |
 

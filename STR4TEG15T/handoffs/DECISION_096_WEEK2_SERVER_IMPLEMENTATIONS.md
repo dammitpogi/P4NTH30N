@@ -427,7 +427,7 @@ BIND_ADDRESS=127.0.0.1
 MCP_AUTH_TOKEN=<generate-256-bit-random-token>
 
 # For mongodb-p4nth30n-v2
-MONGODB_URI=mongodb://192.168.56.1:27017/P4NTH30N
+MONGODB_URI=mongodb://192.168.56.1:27017/P4NTHE0N
 
 # For rag-server-v2
 VECTOR_STORE_PATH=/data/vector-store

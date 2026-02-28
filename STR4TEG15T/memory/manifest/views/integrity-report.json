@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-02-23T23:48:34.343Z",
+  "root": "C:\\P4NTHE0N\\STR4TEG15T\\memory\\manifest",
+  "summary": {
+    "checksPassed": 5,
+    "checksFailed": 0,
+    "warnings": 0
+  },
+  "checks": [
+    {
+      "name": "event_view_parity_missing_views",
+      "status": "PASS",
+      "details": "Every decisionId from events exists in current-state view."
+    },
+    {
+      "name": "event_view_parity_orphan_views",
+      "status": "PASS",
+      "details": "No orphaned decision entries in current-state."
+    },
+    {
+      "name": "view_index_parity",
+      "status": "PASS",
+      "details": "by-decision index aligns with current-state decision keys."
+    },
+    {
+      "name": "replay_consistency",
+      "status": "PASS",
+      "details": "Replay-derived statuses match current-state view."
+    },
+    {
+      "name": "archive_checksum_hooks",
+      "status": "PASS",
+      "details": "Validated checksum hooks for 1 archive entries."
+    }
+  ]
+}

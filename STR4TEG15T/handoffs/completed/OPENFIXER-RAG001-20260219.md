@@ -15,8 +15,8 @@ RAG-001 Oracle condition #3 (Python bridge for embedding generation) has been su
 
 ### 1. Environment Setup ✅
 - Python 3.12.10 verified
-- Model directory created: `C:\ProgramData\P4NTH30N\models\`
-- PythonBridge directory created: `C:\P4NTH30N\src\RAG\PythonBridge\`
+- Model directory created: `C:\ProgramData\P4NTHE0N\models\`
+- PythonBridge directory created: `C:\P4NTHE0N\src\RAG\PythonBridge\`
 
 ### 2. ONNX Model Download ✅
 - **Model**: sentence-transformers/all-MiniLM-L6-v2
@@ -24,10 +24,10 @@ RAG-001 Oracle condition #3 (Python bridge for embedding generation) has been su
   - `all-MiniLM-L6-v2.onnx` (90.4 MB)
   - `tokenizer.json` (466 KB)
   - `config.json` (612 B)
-- **Location**: `C:\ProgramData\P4NTH30N\models\`
+- **Location**: `C:\ProgramData\P4NTHE0N\models\`
 
 ### 3. Python Bridge Service ✅
-**File**: `C:\P4NTH30N\src\RAG\PythonBridge\embedding_bridge.py`
+**File**: `C:\P4NTHE0N\src\RAG\PythonBridge\embedding_bridge.py`
 
 **Endpoints**:
 - `GET /health` - Health check
@@ -51,7 +51,7 @@ RAG-001 Oracle condition #3 (Python bridge for embedding generation) has been su
 - pydantic>=2.6.0
 
 ### 4. C# Python Client ✅
-**File**: `C:\P4NTH30N\src\RAG\PythonEmbeddingClient.cs`
+**File**: `C:\P4NTHE0N\src\RAG\PythonEmbeddingClient.cs`
 
 **Features**:
 - HTTP client for Python bridge
@@ -76,10 +76,10 @@ RAG-001 Oracle condition #3 (Python bridge for embedding generation) has been su
 ```json
 "rag-server": {
   "command": "dotnet",
-  "args": ["run", "--project", "C:/P4NTH30N/src/RAG/RAG.csproj"],
+  "args": ["run", "--project", "C:/P4NTHE0N/src/RAG/RAG.csproj"],
   "env": {
-    "RAG_MODEL_PATH": "C:/ProgramData/P4NTH30N/models/all-MiniLM-L6-v2.onnx",
-    "RAG_INDEX_PATH": "C:/ProgramData/P4NTH30N/rag-index",
+    "RAG_MODEL_PATH": "C:/ProgramData/P4NTHE0N/models/all-MiniLM-L6-v2.onnx",
+    "RAG_INDEX_PATH": "C:/ProgramData/P4NTHE0N/rag-index",
     "PYTHON_BRIDGE_URL": "http://127.0.0.1:5000",
     "DOTNET_ENVIRONMENT": "Development"
   },
@@ -99,7 +99,7 @@ RAG-001 Oracle condition #3 (Python bridge for embedding generation) has been su
 **Backup**: `strategist.md.2026-02-18_21-52-23.bak`
 
 ### 7. AGENTS.md Updates ✅
-**Updated**: `C:\P4NTH30N\agents\strategist.md`
+**Updated**: `C:\P4NTHE0N\agents\strategist.md`
 
 **Added Sections**:
 - RAG MCP Tools (6 tools with examples)
@@ -143,16 +143,16 @@ All 7 tests passed:
 ## FILES CREATED/MODIFIED
 
 ### New Files
-1. `C:\P4NTH30N\src\RAG\PythonBridge\embedding_bridge.py` (202 lines)
-2. `C:\P4NTH30N\src\RAG\PythonBridge\requirements.txt` (6 lines)
-3. `C:\P4NTH30N\src\RAG\PythonEmbeddingClient.cs` (180 lines)
-4. `C:\ProgramData\P4NTH30N\models\all-MiniLM-L6-v2.onnx` (90.4 MB)
-5. `C:\ProgramData\P4NTH30N\models\tokenizer.json` (466 KB)
-6. `C:\ProgramData\P4NTH30N\models\config.json` (612 B)
+1. `C:\P4NTHE0N\src\RAG\PythonBridge\embedding_bridge.py` (202 lines)
+2. `C:\P4NTHE0N\src\RAG\PythonBridge\requirements.txt` (6 lines)
+3. `C:\P4NTHE0N\src\RAG\PythonEmbeddingClient.cs` (180 lines)
+4. `C:\ProgramData\P4NTHE0N\models\all-MiniLM-L6-v2.onnx` (90.4 MB)
+5. `C:\ProgramData\P4NTHE0N\models\tokenizer.json` (466 KB)
+6. `C:\ProgramData\P4NTHE0N\models\config.json` (612 B)
 
 ### Modified Files
-1. `C:\P4NTH30N\src\RAG\EmbeddingService.cs` (Added bridge integration)
-2. `C:\P4NTH30N\agents\strategist.md` (Added RAG tools section)
+1. `C:\P4NTHE0N\src\RAG\EmbeddingService.cs` (Added bridge integration)
+2. `C:\P4NTHE0N\agents\strategist.md` (Added RAG tools section)
 3. `C:\Users\paulc\.config\opencode\opencode.json` (Added rag-server entry)
 
 ---
@@ -202,7 +202,7 @@ RAG-001 Phase 1 is now production-ready with all 4 Oracle conditions met:
 ### Starting the Python Bridge
 ```powershell
 # Manual start
-python C:\P4NTH30N\src\RAG\PythonBridge\embedding_bridge.py
+python C:\P4NTHE0N\src\RAG\PythonBridge\embedding_bridge.py
 
 # Or via C# helper
 var process = await PythonEmbeddingClient.StartBridgeAsync();
@@ -222,7 +222,7 @@ Invoke-RestMethod -Uri "http://localhost:5000/embed" -Method POST -Body $body -C
 ```csharp
 var config = new EmbeddingConfig {
     PythonBridgeUrl = "http://127.0.0.1:5000",
-    ModelPath = "C:/ProgramData/P4NTH30N/models/all-MiniLM-L6-v2.onnx"
+    ModelPath = "C:/ProgramData/P4NTHE0N/models/all-MiniLM-L6-v2.onnx"
 };
 var service = new EmbeddingService(config);
 ```

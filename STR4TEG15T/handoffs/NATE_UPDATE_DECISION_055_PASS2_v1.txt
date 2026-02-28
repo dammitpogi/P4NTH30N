@@ -1,0 +1,22 @@
+Nate update:
+
+We completed the first minimal fix pass and the service is still not recovered.
+
+What was done:
+- Corrected `CLAWDBOT_STATE_DIR` to `/data/.openclaw`.
+- Performed one controlled restart.
+- Re-ran health probes and spot checks.
+
+Outcome:
+- `/healthz` remains 200 and `/setup` remains 401 (wrapper/auth shell alive),
+- `/openclaw` remains 503/timeout (gateway still failing).
+- Logs still show `MissingEnvVarError` for `OPENAI_API_KEY` at `models.providers.openai.apiKey`.
+
+Next safest move (approved minimal pass 2):
+- Apply exactly one additional config-path correction:
+  `OPENCLAW_STATE_DIR=/data/.openclaw`
+- Perform one controlled restart,
+- Re-run the same validation matrix,
+- Stop and escalate to rollback gate if still unhealthy.
+
+No broad rewrites, no rollback/reset in this pass.

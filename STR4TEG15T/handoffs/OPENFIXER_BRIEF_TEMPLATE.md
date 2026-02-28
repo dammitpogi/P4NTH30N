@@ -17,17 +17,17 @@
 [2-3 sentence summary of what this decision does and why it matters]
 
 **Example**:  
-RAG-001 implements a Retrieval-Augmented Generation layer for P4NTH30N, enabling all agents to query a vector database of documentation, code, and decisions. WindFixer has completed the P4NTH30N-side implementation (MCP server, embedding service, FAISS store), but deployment to OpenCode environment requires OpenFixer access.
+RAG-001 implements a Retrieval-Augmented Generation layer for P4NTHE0N, enabling all agents to query a vector database of documentation, code, and decisions. WindFixer has completed the P4NTHE0N-side implementation (MCP server, embedding service, FAISS store), but deployment to OpenCode environment requires OpenFixer access.
 
 ---
 
 ## WINDFIXER COMPLETION STATUS
 
 ### What WindFixer Completed ✅
-- [x] All P4NTH30N codebase implementation
+- [x] All P4NTHE0N codebase implementation
 - [x] Unit tests (45/45 passing)
 - [x] Build validation (0 errors)
-- [x] Documentation in P4NTH30N/docs/
+- [x] Documentation in P4NTHE0N/docs/
 
 ### Files Created by WindFixer
 ```
@@ -58,7 +58,7 @@ docs/
 | 3 | Verify integration | Cross-platform test | Strategist can call rag_query |
 
 ### What OpenFixer Should NOT Do
-- ❌ Modify P4NTH30N/src/ files (WindFixer owns this)
+- ❌ Modify P4NTHE0N/src/ files (WindFixer owns this)
 - ❌ Change C# implementation (preserved)
 - ❌ Re-run tests (already validated)
 
@@ -77,7 +77,7 @@ docs/
 
 **Command**:
 ```powershell
-cd C:\P4NTH30N
+cd C:\P4NTHE0N
 .\scripts\deploy-agents.ps1 -WhatIf   # Preview first
 .\scripts\deploy-agents.ps1 -Force    # Execute
 ```
@@ -85,7 +85,7 @@ cd C:\P4NTH30N
 **Expected Output**:
 ```
 === Agent Deployment Report ===
-Source:  C:\P4NTH30N\agents
+Source:  C:\P4NTHE0N\agents
 Target:  C:\Users\paulc\.config\opencode\agents
 Time:    2026-02-18_21-30-00
 
@@ -122,7 +122,7 @@ code C:\Users\paulc\.config\opencode\mcp.json
   "mcpServers": {
     "rag-server": {
       "command": "dotnet",
-      "args": ["run", "--project", "C:/P4NTH30N/src/RAG/McpServer.csproj"]
+      "args": ["run", "--project", "C:/P4NTHE0N/src/RAG/McpServer.csproj"]
     }
   }
 }
@@ -188,7 +188,7 @@ RAG-001 enables all agents to access institutional knowledge. Without OpenFixer 
 If deployment fails:
 1. Backups in: `C:\Users\paulc\.config\opencode\agents\.backups\`
 2. Restore: Copy `.backups/*.[timestamp].bak` to parent
-3. WindFixer state preserved in P4NTH30N/ (can redeploy)
+3. WindFixer state preserved in P4NTHE0N/ (can redeploy)
 
 ---
 
@@ -226,7 +226,7 @@ If OpenFixer encounters blockers:
 1. Document in T4CT1CS/handoffs/blocked/
 2. Tag Strategist for re-assessment
 3. Possible actions:
-   - Re-delegate to WindFixer (if P4NTH30N-side fix needed)
+   - Re-delegate to WindFixer (if P4NTHE0N-side fix needed)
    - Escalate to Nexus (if architectural decision needed)
    - Modify decision scope (if condition cannot be met)
 

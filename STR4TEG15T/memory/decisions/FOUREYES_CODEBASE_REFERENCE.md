@@ -326,7 +326,7 @@ public async Task<HealthCheck> CheckVisionStreamHealth()
 
 **Current State**:
 ```csharp
-namespace P4NTH30N.C0MMON.Infrastructure;
+namespace P4NTHE0N.C0MMON.Infrastructure;
 public class EventBuffer
 {
     // Placeholder
@@ -391,7 +391,7 @@ lock (_bufferLock)
 
 **Needed**:
 - Hugging Face model download integration
-- Local cache management at `~/.cache/P4NTH30N/models/`
+- Local cache management at `~/.cache/P4NTHE0N/models/`
 - Model lifecycle management (load, unload, cache eviction)
 - HuggingFaceClient for model downloads
 

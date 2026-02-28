@@ -1,0 +1,13 @@
+Nate update:
+
+Branch-b pass to remove OpenAI dependency completed.
+Result: OpenAI missing-env error cleared, but service is still not recovered.
+
+New blocker now surfaced in logs:
+- MissingEnvVarError for GEMINI_API_KEY at models.providers.google.apiKey.
+
+Next constrained step:
+- remove hard Gemini API key dependency from active config,
+- one controlled restart,
+- full endpoint + log validation,
+- no rollback/reset in this pass.

@@ -180,7 +180,7 @@ Now I have a comprehensive understanding of the codebase. Let me provide my Desi
   "TestHarness": {
     "MongoDB": {
       "ConnectionString": "mongodb://192.168.56.1:27017/?directConnection=true",
-      "DatabaseName": "P4NTH30N",
+      "DatabaseName": "P4NTHE0N",
       "TestCollection": "TEST"
     },
     "CDP": {

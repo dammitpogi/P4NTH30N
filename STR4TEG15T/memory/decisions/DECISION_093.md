@@ -36,7 +36,7 @@ summary: >-
   Date**: 2026-02-22 **Status**: Ready for Implementation --- ## Executive
   Summary This document synthesizes outputs from 3 parallel Designer
   consultations and comprehensive Explorer research into a unified
-  implementation strategy for DECISION_093. H0UND will become `P4NTH30N.exe` -
+  implementation strategy for DECISION_093. H0UND will become `P4NTHE0N.exe` -
   an always-on platform that manages 15+ services through sys
 source:
   type: decision
@@ -53,7 +53,7 @@ source:
 
 ## Executive Summary
 
-This document synthesizes outputs from 3 parallel Designer consultations and comprehensive Explorer research into a unified implementation strategy for DECISION_093. H0UND will become `P4NTH30N.exe` - an always-on platform that manages 15+ services through system tray integration, service orchestration, and boot-time auto-start.
+This document synthesizes outputs from 3 parallel Designer consultations and comprehensive Explorer research into a unified implementation strategy for DECISION_093. H0UND will become `P4NTHE0N.exe` - an always-on platform that manages 15+ services through system tray integration, service orchestration, and boot-time auto-start.
 
 **Key Deliverables**:
 1. System Tray Architecture (Designer 1)
@@ -65,7 +65,7 @@ This document synthesizes outputs from 3 parallel Designer consultations and com
 
 ## 1. Complete Service Inventory
 
-Based on Explorer investigation, P4NTH30N must manage the following services:
+Based on Explorer investigation, P4NTHE0N must manage the following services:
 
 ### Critical Services (Must Be Running)
 
@@ -78,7 +78,7 @@ Based on Explorer investigation, P4NTH30N must manage the following services:
 | 5 | MongoDB MCP | MCP Server | Decision CRUD operations | MongoDB | stdio via ToolHive |
 | 6 | decisions-server | MCP Server | Decision persistence Docker | MongoDB | ToolHive managed |
 | 7 | ToolHive Gateway | Registry | Aggregates 15+ MCP servers | Node runtime | Multiple ports |
-| 8 | **P4NTH30N.exe** | Orchestrator | **Main platform manager (H0UND)** | All above | System tray |
+| 8 | **P4NTHE0N.exe** | Orchestrator | **Main platform manager (H0UND)** | All above | System tray |
 
 ### ToolHive Managed MCPs (15+ Servers)
 
@@ -110,7 +110,7 @@ Based on Explorer investigation, P4NTH30N must manage the following services:
 
 | Task | Schedule | Purpose |
 |------|----------|---------|
-| P4NTH30N-AutoStart | Boot + 30s delay | Platform auto-start |
+| P4NTHE0N-AutoStart | Boot + 30s delay | Platform auto-start |
 | RAG-Incremental-Rebuild | Every 4 hours | Index maintenance |
 | RAG-Nightly-Rebuild | 03:00 daily | Full index rebuild |
 
@@ -124,7 +124,7 @@ Based on Explorer investigation, P4NTH30N must manage the following services:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    P4NTH30N.exe Process                     │
+│                    P4NTHE0N.exe Process                     │
 ├─────────────────────────────────────────────────────────────┤
 │  ┌──────────────────────┐    ┌───────────────────────────┐ │
 │  │    Main Thread       │    │   WinForms Thread         │ │
@@ -214,7 +214,7 @@ Based on Explorer investigation, P4NTH30N must manage the following services:
 4. RAG Server (needs 1-3)
 5. MongoDB MCP + decisions-server
 6. ToolHive Gateway (aggregates all)
-7. **P4NTH30N.exe** (orchestrator)
+7. **P4NTHE0N.exe** (orchestrator)
 8. Scheduled tasks
 
 ---
@@ -228,7 +228,7 @@ Based on Explorer investigation, P4NTH30N must manage the following services:
 <!-- H0UND/H0UND.csproj -->
 <PropertyGroup>
   <OutputType>Exe</OutputType>
-  <AssemblyName>P4NTH30N</AssemblyName>
+  <AssemblyName>P4NTHE0N</AssemblyName>
   <UseWindowsForms>true</UseWindowsForms>
   <ApplicationManifest>app.manifest</ApplicationManifest>
 </PropertyGroup>
@@ -348,7 +348,7 @@ Based on Explorer investigation, P4NTH30N must manage the following services:
     {
       "name": "RAG Server",
       "type": "http",
-      "executable": "C:\\ProgramData\\P4NTH30N\\bin\\RAG.McpHost.exe",
+      "executable": "C:\\ProgramData\\P4NTHE0N\\bin\\RAG.McpHost.exe",
       "arguments": "--port 5001 --transport http --bridge http://127.0.0.1:5000",
       "healthCheck": {
         "type": "http",
@@ -366,7 +366,7 @@ Based on Explorer investigation, P4NTH30N must manage the following services:
       "name": "MongoDB MCP",
       "type": "stdio",
       "executable": "node",
-      "arguments": "C:\\P4NTH30N\\tools\\mcp-p4nthon\\dist\\index.js",
+      "arguments": "C:\\P4NTHE0N\\tools\\mcp-p4nthon\\dist\\index.js",
       "healthCheck": {
         "type": "stdio",
         "method": "tools/list",
@@ -420,7 +420,7 @@ Based on Explorer investigation, P4NTH30N must manage the following services:
 
 ## 7. Success Criteria
 
-1. ✅ Build produces `P4NTH30N.exe`
+1. ✅ Build produces `P4NTHE0N.exe`
 2. ✅ System tray icon visible when running
 3. ✅ Close button minimizes to tray (not exit)
 4. ✅ Double-click tray shows/hides dashboard

@@ -2,7 +2,7 @@ WindFixer, implement DECISION_099: FireKirin Login Smoke Test.
 
 **Context**: We need a pre-burn-in validation gate for DECISION_047. This smoke test validates FireKirin login works BEFORE we commit to 24-hour burn-in.
 
-**Decision File**: `C:\P4NTH30N\STR4TEG15T\decisions\active\DECISION_099.md`
+**Decision File**: `C:\P4NTHE0N\STR4TEG15T\decisions\active\DECISION_099.md`
 
 **Your Mission**: Create standalone smoke test executable that validates:
 1. Chrome Profile-W0 launches on port 9222
@@ -117,7 +117,7 @@ if (balance <= 0) return PhaseResult.Failed("Verification", $"Balance = {balance
 **Console Output Format**:
 ```
 ═══════════════════════════════════════════════════════════════════
-  P4NTH30N SMOKE TEST - FireKirin Login Validation
+  P4NTHE0N SMOKE TEST - FireKirin Login Validation
 ═══════════════════════════════════════════════════════════════════
 
 [14:32:15] TEST STARTED
@@ -148,13 +148,13 @@ if (balance <= 0) return PhaseResult.Failed("Verification", $"Balance = {balance
 ```
 
 **Resources**:
-- ChromeProfileManager: `C:\P4NTH30N\H4ND\Parallel\ChromeProfileManager.cs`
-- NavigationMapLoader: `C:\P4NTH30N\H4ND\Navigation\NavigationMapLoader.cs`
-- StepExecutor: `C:\P4NTH30N\H4ND\Navigation\StepExecutor.cs`
-- CdpGameActions: `C:\P4NTH30N\C0MMON\Infrastructure\Cdp\CdpGameActions.cs`
-- step-config.json: `C:\P4NTH30N\H4ND\tools\recorder\step-config.json`
+- ChromeProfileManager: `C:\P4NTHE0N\H4ND\Parallel\ChromeProfileManager.cs`
+- NavigationMapLoader: `C:\P4NTHE0N\H4ND\Navigation\NavigationMapLoader.cs`
+- StepExecutor: `C:\P4NTHE0N\H4ND\Navigation\StepExecutor.cs`
+- CdpGameActions: `C:\P4NTHE0N\C0MMON\Infrastructure\Cdp\CdpGameActions.cs`
+- step-config.json: `C:\P4NTHE0N\H4ND\tools\recorder\step-config.json`
 
-**Credentials**: Read from MongoDB at 192.168.56.1:27017, database P4NTH30N, collection CR3D3N7IAL
+**Credentials**: Read from MongoDB at 192.168.56.1:27017, database P4NTHE0N, collection CR3D3N7IAL
 
 **Success Criteria**:
 1. ✅ Project builds with 0 errors

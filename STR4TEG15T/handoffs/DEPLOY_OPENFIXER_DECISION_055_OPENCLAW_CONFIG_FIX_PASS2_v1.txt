@@ -1,0 +1,42 @@
+OpenFixer, execute this second minimal remediation pass now.
+
+Mode: Deployment
+Decision IDs: DECISION_052, DECISION_054, DECISION_055
+
+Scope constraints (strict):
+1) Apply exactly one config-path mutation: `OPENCLAW_STATE_DIR=/data/.openclaw`.
+2) Perform exactly one controlled restart/redeploy.
+3) No additional variable changes.
+4) No rollback/reset in this pass.
+5) No secret persistence in repo artifacts.
+
+Target:
+- projectId: 1256dcd2-0929-417a-8f32-39137ffa523b
+- environmentId: 3ba89542-4d69-44cf-9a98-92f0058c30aa
+- serviceId: 2224d9e4-80a7-49d5-b2d4-cf37385fc843
+
+Execution steps:
+1. Snapshot current variables and latest deployment id.
+2. Upsert `OPENCLAW_STATE_DIR=/data/.openclaw` (`skipDeploys=true`).
+3. Trigger one controlled restart on latest deployment.
+4. Validate 3 rounds:
+   - `/healthz`
+   - `/setup`
+   - `/openclaw`
+5. Run 10-request `/openclaw` spot check.
+6. Pull deployment logs and explicitly check for:
+   - MissingEnvVarError OPENAI_API_KEY
+   - config file path (`/data/.clawdbot/openclaw.json` vs `/data/.openclaw/openclaw.json`)
+
+Stop condition:
+- If not recovered, stop and return evidence + rollback recommendation gate.
+
+Required artifact:
+- `OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_055_OPENCLAW_CONFIG_FIX_PASS2.md`
+
+Report format:
+1) Ordered actions
+2) Exact mutation applied
+3) Validation matrix
+4) Key log deltas
+5) Final state: Recovered / Partial / Not recovered

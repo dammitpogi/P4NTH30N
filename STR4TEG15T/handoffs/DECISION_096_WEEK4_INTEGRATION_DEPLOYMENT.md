@@ -210,7 +210,7 @@ Create `toolhive-config.json` for each server:
 ```json
 {
   "id": "decisions-server-v2",
-  "name": "P4NTH30N Decisions Server v2",
+  "name": "P4NTHE0N Decisions Server v2",
   "description": "MCP server for decision management and querying",
   "transport": "http",
   "connection": {
@@ -292,8 +292,8 @@ Create `toolhive-config.json` for each server:
 ```json
 {
   "id": "mongodb-p4nth30n-v2",
-  "name": "MongoDB P4NTH30N Server v2",
-  "description": "MCP server for MongoDB operations on P4NTH30N database",
+  "name": "MongoDB P4NTHE0N Server v2",
+  "description": "MCP server for MongoDB operations on P4NTHE0N database",
   "transport": "http",
   "connection": {
     "url": "http://localhost:3001",
@@ -307,7 +307,7 @@ Create `toolhive-config.json` for each server:
       "inputSchema": {
         "type": "object",
         "properties": {
-          "database": { "type": "string", "default": "P4NTH30N" },
+          "database": { "type": "string", "default": "P4NTHE0N" },
           "collection": { "type": "string" },
           "filter": { "type": "object" },
           "limit": { "type": "number", "default": 10 },
@@ -576,7 +576,7 @@ services:
     ports:
       - "127.0.0.1:27017:27017"
     environment:
-      - MONGO_INITDB_DATABASE=P4NTH30N
+      - MONGO_INITDB_DATABASE=P4NTHE0N
     volumes:
       - mongodb-data:/data/db
     networks:
@@ -601,10 +601,10 @@ Create `.env.example`:
 MCP_AUTH_TOKEN=your-256-bit-token-here
 
 # MongoDB Connection (for mongodb-p4nth30n-v2)
-MONGODB_URI=mongodb://host.docker.internal:27017/P4NTH30N
+MONGODB_URI=mongodb://host.docker.internal:27017/P4NTHE0N
 
 # Optional: For local testing with Docker MongoDB
-# MONGODB_URI=mongodb://mongodb:27017/P4NTH30N
+# MONGODB_URI=mongodb://mongodb:27017/P4NTHE0N
 ```
 
 ---
@@ -617,7 +617,7 @@ Create `servers/scripts/deploy.sh`:
 #!/bin/bash
 set -e
 
-echo "=== P4NTH30N MCP Servers Deployment ==="
+echo "=== P4NTHE0N MCP Servers Deployment ==="
 
 # Check environment
 if [ -z "$MCP_AUTH_TOKEN" ]; then
@@ -694,7 +694,7 @@ echo "=== Tests Complete ==="
 Create `servers/README.md`:
 
 ```markdown
-# P4NTH30N MCP Servers v2
+# P4NTHE0N MCP Servers v2
 
 ToolHive-native MCP servers for decision management, MongoDB operations, and RAG.
 

@@ -45,7 +45,7 @@ source:
 **Agent**: Explorer (Pyxis)  
 **Mission**: Analyze Theseus plugin fallback mechanics for infinite loop implementation and triage analytics  
 **Date**: 2026-02-22  
-**Source**: `C:\P4NTH30N\plugins\theseues`
+**Source**: `C:\P4NTHE0N\plugins\theseues`
 
 ---
 

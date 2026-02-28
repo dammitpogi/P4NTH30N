@@ -1,0 +1,71 @@
+## Task: @windfixer
+
+WindFixer, execute DECISION_113 closure validation in ONE pass. You have CLI access. Do not stop in planning mode.
+
+We are past implementation. We now need proof. If we skip this, DECISION_113 cannot close.
+
+Mode: Deployment
+Decision ID: DECISION_113
+Current Status: InProgress (H4ND Phase 1)
+Requested Action: Complete all 3 closure gates in one execution pass
+
+### Gate 1 — Fault-Injection Validation (Top 5 Concurrency Hotspots)
+
+Run targeted fault-injection tests and capture evidence that `_debug` records can reconstruct failure chains by `sessionId` and `correlationId`.
+
+Hotspots to validate:
+1. `H4ND/Services/LegacyRuntimeHost.cs:260-263` (early ack path)
+2. `H4ND/Services/LegacyRuntimeHost.cs:578-601` (unlock-before-persist window)
+3. `H4ND/Infrastructure/SpinExecution.cs:53` (ack ownership overlap)
+4. `H4ND/Services/LegacyRuntimeHost.cs:482,507,532,557` (`DeleteAll` branch behavior)
+5. `H4ND/Parallel/ParallelSpinWorker.cs:218-220,235-237` (retry + claim release)
+
+Required outputs for Gate 1:
+- test name + scenario + expected failure
+- observed `_debug` document count per scenario
+- one sample correlation chain per scenario (event order)
+- pass/fail matrix for all 5 hotspots
+
+### Gate 2 — MongoDB `_debug` TTL/Index Verification
+
+Verify in runtime environment that required indexes exist and are active:
+- TTL on `expiresAt`
+- `{ sessionId: 1, capturedAt: -1 }`
+- `{ correlationId: 1, capturedAt: -1 }`
+- `{ component: 1, operation: 1, capturedAt: -1 }`
+- `{ errorCode: 1, capturedAt: -1 }`
+
+Required outputs for Gate 2:
+- index list evidence (names + key definitions + TTL config)
+- explicit PASS/FAIL per required index
+- remediation applied if missing (create index and re-verify)
+
+### Gate 3 — Closure Checklist Draft and Decision Artifact Update
+
+Update decision artifacts with closure-ready evidence.
+
+Files to update:
+- `STR4TEG15T/decisions/active/DECISION_113.md`
+- `OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_113_H4ND_ERROR_EVIDENCE.md`
+
+Add:
+- closure checklist with explicit checkboxes and outcomes
+- fault-injection summary table
+- index verification table
+- remaining risk items (if any) with owner and next action
+
+### Hard Constraints
+
+1. Do not remove existing telemetry behavior.
+2. Do not downgrade capture for errors/invariant failures (must remain 100%).
+3. If Mongo is unavailable, validation must still report graceful degradation behavior.
+4. Keep edits minimal and readable.
+
+### Final Report Format (single response)
+
+1. Commands/tests executed
+2. Gate 1 result (5-hotspot matrix)
+3. Gate 2 result (index/TTL matrix)
+4. Files changed
+5. Closure checklist status
+6. Open blockers (if any)

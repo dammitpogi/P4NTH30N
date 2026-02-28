@@ -1,0 +1,49 @@
+OpenFixer, execute DECISION_114 handoff when Nexus explicitly initiates deployment.
+
+Context:
+- Decision: STR4TEG15T/decisions/active/DECISION_114.md
+- Handoff: STR4TEG15T/handoffs/DECISION_114_OPENFIXER_HANDOFF_v1.md
+- Strategist policy target: C:\Users\paulc\.config\opencode\agents\strategist.md
+
+Mission:
+Operationalize and validate strategist workflow hardening for planning-to-deployment governance, including consistent decision file handling and deployment reporting standards.
+
+Do this in order:
+1) Read and validate policy parity across:
+   - STR4TEG15T/decisions/active/DECISION_114.md
+   - STR4TEG15T/decisions/active/DECISION_114_CHANGE_CONTROL_v1.md
+   - STR4TEG15T/decisions/active/DECISION_114_SYNTHESIS_POLICY_v1.md
+   - C:\Users\paulc\.config\opencode\agents\strategist.md
+2) Apply any required prompt/config edits to preserve all DECISION_114 requirements.
+3) Verify workflow contains:
+   - explicit states and gates,
+   - SyncQueued fallback behavior,
+   - consultation timeout/arbitration,
+   - deletion protocol with reason-before-attempt,
+   - pass discipline questions (harden/expand/narrow),
+   - synthesis gate (no speech output unless requested),
+   - per-pass manifest update requirement,
+   - explicit strategist role boundary (no implementation work).
+4) Ensure consistent file-handling policy is documented and enforceable:
+   - minor changes in-place,
+   - major changes in versioned companion docs,
+   - decision file length hygiene (<1000 lines via references where needed).
+5) Handle ongoing deployment governance:
+   - if deployment scope expands, create a versioned companion decision file and link to DECISION_114,
+   - capture rationale and status in deployment journal.
+
+Expected output artifacts (required):
+- OP3NF1XER/deployments/JOURNAL_YYYY-MM-DD_DECISION_114_WORKFLOW_HARDENING.md
+- Decision evidence updates in STR4TEG15T/decisions/active/DECISION_114.md
+- Any new versioned companion decision file if scope changed
+
+Report back with:
+- exact files changed,
+- validation checklist outcomes,
+- pending blockers,
+- recommendation: ready to close DECISION_114 or keep Iterating/HandoffReady.
+
+Constraints:
+- Do not modify product code in H0UND/, H4ND/, C0MMON/, W4TCHD0G/, UNI7T35T/.
+- Do not create synthesis speech artifacts unless Nexus explicitly requests synthesis.
+- Keep changes audit-friendly and path-explicit.

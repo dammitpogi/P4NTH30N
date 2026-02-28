@@ -918,7 +918,7 @@ The 4-point DPD minimum aligns with DECISION_084's display filter - if we don't 
 **1. CV Metric Implementation** ✅ **Add to ForecastingService**
 
 ```csharp
-namespace P4NTH30N.H0UND.Domain.Forecasting;
+namespace P4NTHE0N.H0UND.Domain.Forecasting;
 
 /// <summary>
 /// Forecast stability metrics based on Klee & Xia (2025) research.

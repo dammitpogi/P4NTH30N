@@ -348,7 +348,7 @@ async function executeTool(name: string, args: unknown): Promise<unknown> {
 
 ---
 
-### Part 3: MongoDB-P4NTH30N-v2 Implementation
+### Part 3: MongoDB-P4NTHE0N-v2 Implementation
 
 Create `src/db/connection.ts`:
 
@@ -417,7 +417,7 @@ export const mongoTools = [
     inputSchema: {
       type: 'object',
       properties: {
-        database: { type: 'string', description: 'Database name (default: P4NTH30N)' },
+        database: { type: 'string', description: 'Database name (default: P4NTHE0N)' },
         collection: { type: 'string', description: 'Collection name' },
         filter: { type: 'object', description: 'MongoDB filter query' },
         limit: { type: 'number', default: 10 },
@@ -508,7 +508,7 @@ export const mongoTools = [
 ];
 
 const FindSchema = z.object({
-  database: z.string().default('P4NTH30N'),
+  database: z.string().default('P4NTHE0N'),
   collection: z.string(),
   filter: z.record(z.unknown()).default({}),
   limit: z.number().default(10),
@@ -516,38 +516,38 @@ const FindSchema = z.object({
 });
 
 const FindOneSchema = z.object({
-  database: z.string().default('P4NTH30N'),
+  database: z.string().default('P4NTHE0N'),
   collection: z.string(),
   filter: z.record(z.unknown())
 });
 
 const InsertOneSchema = z.object({
-  database: z.string().default('P4NTH30N'),
+  database: z.string().default('P4NTHE0N'),
   collection: z.string(),
   document: z.record(z.unknown())
 });
 
 const UpdateOneSchema = z.object({
-  database: z.string().default('P4NTH30N'),
+  database: z.string().default('P4NTHE0N'),
   collection: z.string(),
   filter: z.record(z.unknown()),
   update: z.record(z.unknown())
 });
 
 const DeleteOneSchema = z.object({
-  database: z.string().default('P4NTH30N'),
+  database: z.string().default('P4NTHE0N'),
   collection: z.string(),
   filter: z.record(z.unknown())
 });
 
 const CountSchema = z.object({
-  database: z.string().default('P4NTH30N'),
+  database: z.string().default('P4NTHE0N'),
   collection: z.string(),
   filter: z.record(z.unknown()).default({})
 });
 
 const AggregateSchema = z.object({
-  database: z.string().default('P4NTH30N'),
+  database: z.string().default('P4NTHE0N'),
   collection: z.string(),
   pipeline: z.array(z.record(z.unknown()))
 });
@@ -627,7 +627,7 @@ import { connectMongoDB, disconnectMongoDB, checkMongoDBHealth } from './db/conn
 const config = loadConfig();
 
 // Connect to MongoDB
-await connectMongoDB(config.MONGODB_URI, 'P4NTH30N');
+await connectMongoDB(config.MONGODB_URI, 'P4NTHE0N');
 
 // Update health check to include MongoDB
 server.get('/ready', async () => {

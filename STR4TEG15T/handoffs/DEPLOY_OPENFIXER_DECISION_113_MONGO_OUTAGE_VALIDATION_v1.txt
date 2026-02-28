@@ -1,0 +1,55 @@
+## Task: @openfixer
+
+OpenFixer, execute DECISION_113 residual blocker #2 now. No planning mode.
+
+Mode: Deployment
+Decision ID: DECISION_113
+Current Status: Validating
+Requested Action: Run controlled Mongo-unavailable validation and capture graceful degradation evidence
+
+### Objective
+
+Prove `_debug` sink degradation behavior under Mongo outage with deterministic evidence artifacts.
+
+### Required Validation
+
+1. Simulate Mongo unavailable state for the `_debug` sink path.
+2. Run H4ND path(s) that emit error evidence events.
+3. Verify runtime remains stable and non-blocking.
+4. Capture drop/backpressure/degradation counters from `ErrorEvidenceService` and operational logs.
+5. Recover Mongo and verify system resumes normal write behavior.
+
+### Evidence Required
+
+1. Timeline:
+   - pre-outage baseline
+   - outage window
+   - recovery window
+2. Metrics/counters:
+   - dropped events count
+   - queue/backpressure counters
+   - any circuit/open-state indicators
+3. Runtime behavior:
+   - no crash/no hard block confirmation
+4. Post-recovery:
+   - successful `_debug` writes observed
+
+### Files to Update
+
+- `OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_113_H4ND_ERROR_EVIDENCE.md`
+- `STR4TEG15T/decisions/active/DECISION_113.md`
+
+### Constraints
+
+1. No destructive data operations.
+2. Keep outage test bounded and reversible.
+3. Capture explicit PASS/FAIL for degradation criteria.
+
+### Final Report Format
+
+1. Outage method used
+2. Commands executed
+3. Counter evidence summary
+4. Stability outcome (pass/fail)
+5. Recovery outcome (pass/fail)
+6. Files changed

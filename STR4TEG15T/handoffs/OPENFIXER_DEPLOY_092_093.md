@@ -80,29 +80,29 @@ mongosh --eval "db.adminCommand('ping')"
 
 **Check RAG Server Executable**:
 ```powershell
-Test-Path "C:\ProgramData\P4NTH30N\bin\RAG.McpHost.exe"
+Test-Path "C:\ProgramData\P4NTHE0N\bin\RAG.McpHost.exe"
 # Should return True
 ```
 
 **Check FAISS Index**:
 ```powershell
-Test-Path "C:\ProgramData\P4NTH30N\rag\faiss.index"
-Test-Path "C:\ProgramData\P4NTH30N\rag\models\all-MiniLM-L6-v2.onnx"
+Test-Path "C:\ProgramData\P4NTHE0N\rag\faiss.index"
+Test-Path "C:\ProgramData\P4NTHE0N\rag\models\all-MiniLM-L6-v2.onnx"
 ```
 
 ### 1.2 Start RAG Server
 
-Create startup script `C:\P4NTH30N\scripts\start-rag-server.ps1`:
+Create startup script `C:\P4NTHE0N\scripts\start-rag-server.ps1`:
 ```powershell
-$process = Start-Process -FilePath "C:\ProgramData\P4NTH30N\bin\RAG.McpHost.exe" `
+$process = Start-Process -FilePath "C:\ProgramData\P4NTHE0N\bin\RAG.McpHost.exe" `
   -ArgumentList @(
     "--port", "5001",
     "--transport", "http",
-    "--index", "C:\ProgramData\P4NTH30N\rag\faiss.index",
-    "--model", "C:\ProgramData\P4NTH30N\rag\models\all-MiniLM-L6-v2.onnx",
+    "--index", "C:\ProgramData\P4NTHE0N\rag\faiss.index",
+    "--model", "C:\ProgramData\P4NTHE0N\rag\models\all-MiniLM-L6-v2.onnx",
     "--bridge", "http://127.0.0.1:5000",
     "--mongo", "mongodb://localhost:27017",
-    "--db", "P4NTH30N"
+    "--db", "P4NTHE0N"
   ) `
   -WindowStyle Hidden -PassThru
 
@@ -119,7 +119,7 @@ curl http://127.0.0.1:5001/health
 
 ### 1.3 Update ToolHive Gateway Config
 
-Read `C:\P4NTH30N\tools\mcp-development\servers\toolhive-gateway\config\servers.json`
+Read `C:\P4NTHE0N\tools\mcp-development\servers\toolhive-gateway\config\servers.json`
 
 Update RAG Server entry (lines 252-273):
 ```json
@@ -132,11 +132,11 @@ Update RAG Server entry (lines 252-273):
     "port": 5001
   },
   "tags": ["toolhive-desktop", "search", "p4nth30n", "rag"],
-  "description": "P4NTH30N RAG server with semantic search",
+  "description": "P4NTHE0N RAG server with semantic search",
   "source": "rag-server.json",
   "image": "",
   "process": {
-    "executable": "C:/ProgramData/P4NTH30N/bin/RAG.McpHost.exe",
+    "executable": "C:/ProgramData/P4NTHE0N/bin/RAG.McpHost.exe",
     "args": ["--port", "5001", "--transport", "http", "--bridge", "http://127.0.0.1:5000"],
     "autoStart": true,
     "restartOnFailure": true
@@ -149,7 +149,7 @@ Update RAG Server entry (lines 252-273):
 
 ```powershell
 # Test via ToolHive
-cd C:\P4NTH30N\tools\mcp-development\servers\toolhive-gateway
+cd C:\P4NTHE0N\tools\mcp-development\servers\toolhive-gateway
 npm run list-tools | Select-String "rag_"
 # Should show: rag_query, rag_ingest, rag_status, rag_rebuild_index, rag_search_similar, rag_ingest_file
 ```
@@ -166,7 +166,7 @@ npm run list-tools | Select-String "rag_"
 
 ### 2.1 Extend mcp-p4nthon with CRUD Tools
 
-Read `C:\P4NTH30N\tools\mcp-p4nthon\src\index.ts`
+Read `C:\P4NTHE0N\tools\mcp-p4nthon\src\index.ts`
 
 Add 5 new tool definitions after line 93:
 ```typescript
@@ -283,27 +283,27 @@ case "mongo_updateMany": {
 ### 2.2 Build mcp-p4nthon
 
 ```powershell
-cd C:\P4NTH30N\tools\mcp-p4nthon
+cd C:\P4NTHE0N\tools\mcp-p4nthon
 npm run build
 # Should complete with no errors
 ```
 
 ### 2.3 Create Gateway Config
 
-Create `C:\P4NTH30N\tools\mcp-development\servers\toolhive-gateway\config\mongodb-p4nth30n.json`:
+Create `C:\P4NTHE0N\tools\mcp-development\servers\toolhive-gateway\config\mongodb-p4nth30n.json`:
 ```json
 {
   "id": "toolhive-mongodb-p4nth30n-v2",
   "name": "mongodb-p4nth30n",
   "transport": "stdio",
   "command": "node",
-  "args": ["C:/P4NTH30N/tools/mcp-p4nthon/dist/index.js"],
+  "args": ["C:/P4NTHE0N/tools/mcp-p4nthon/dist/index.js"],
   "envVars": {
     "MONGODB_URI": "mongodb://localhost:27017",
-    "DATABASE_NAME": "P4NTH30N"
+    "DATABASE_NAME": "P4NTHE0N"
   },
   "tags": ["p4nth30n", "database", "mongodb", "crud"],
-  "description": "P4NTH30N MongoDB database with full CRUD operations",
+  "description": "P4NTHE0N MongoDB database with full CRUD operations",
   "enabled": true
 }
 ```
@@ -317,13 +317,13 @@ Update MongoDB entry (lines 207-227) in servers.json:
   "name": "mongodb-p4nth30n",
   "transport": "stdio",
   "command": "node",
-  "args": ["C:/P4NTH30N/tools/mcp-p4nthon/dist/index.js"],
+  "args": ["C:/P4NTHE0N/tools/mcp-p4nthon/dist/index.js"],
   "envVars": {
     "MONGODB_URI": "mongodb://localhost:27017",
-    "DATABASE_NAME": "P4NTH30N"
+    "DATABASE_NAME": "P4NTHE0N"
   },
   "tags": ["toolhive-desktop", "database", "storage", "p4nth30n", "mongodb", "crud"],
-  "description": "P4NTH30N MongoDB database with CRUD operations for decisions",
+  "description": "P4NTHE0N MongoDB database with CRUD operations for decisions",
   "source": "mongodb-p4nth30n.json",
   "image": "",
   "enabled": true
@@ -334,7 +334,7 @@ Update MongoDB entry (lines 207-227) in servers.json:
 
 ```powershell
 # Test via ToolHive
-cd C:\P4NTH30N\tools\mcp-development\servers\toolhive-gateway
+cd C:\P4NTHE0N\tools\mcp-development\servers\toolhive-gateway
 npm run list-tools | Select-String "mongo_"
 # Should show: mongo_insertOne, mongo_find, mongo_updateOne, mongo_insertMany, mongo_updateMany
 
@@ -353,7 +353,7 @@ $body = @{
   }
 } | ConvertTo-Json -Depth 5
 
-$body | node C:\P4NTH30N\tools\mcp-p4nthon\dist\index.js
+$body | node C:\P4NTHE0N\tools\mcp-p4nthon\dist\index.js
 # Should return decision documents
 ```
 
@@ -369,7 +369,7 @@ $body | node C:\P4NTH30N\tools\mcp-p4nthon\dist\index.js
 
 ### 3.1 Modify H0UND.csproj
 
-Read `C:\P4NTH30N\H0UND\H0UND.csproj`
+Read `C:\P4NTHE0N\H0UND\H0UND.csproj`
 
 Update:
 ```xml
@@ -380,8 +380,8 @@ Update:
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     
-    <!-- DECISION_093: Build as P4NTH30N.exe -->
-    <AssemblyName>P4NTH30N</AssemblyName>
+    <!-- DECISION_093: Build as P4NTHE0N.exe -->
+    <AssemblyName>P4NTHE0N</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
@@ -406,31 +406,31 @@ Update:
 
 ### 3.2 Create Tray Icon Resource
 
-Create directory `C:\P4NTH30N\H0UND\Resources\`
+Create directory `C:\P4NTHE0N\H0UND\Resources\`
 
 If hound-icon.ico doesn't exist, use a default Windows icon temporarily:
 ```powershell
 # Copy a default icon or create placeholder
-Copy-Item "C:\Windows\System32\shell32.dll" "C:\P4NTH30N\H0UND\Resources\hound-icon.ico" -ErrorAction SilentlyContinue
+Copy-Item "C:\Windows\System32\shell32.dll" "C:\P4NTHE0N\H0UND\Resources\hound-icon.ico" -ErrorAction SilentlyContinue
 # Note: Replace with actual icon file when available
 ```
 
 ### 3.3 Build Test
 
 ```powershell
-cd C:\P4NTH30N
+cd C:\P4NTHE0N
 dotnet build H0UND\H0UND.csproj -c Release
 
 # Verify output
-Test-Path "C:\P4NTH30N\H0UND\bin\Release\net10.0-windows7.0\P4NTH30N.exe"
+Test-Path "C:\P4NTHE0N\H0UND\bin\Release\net10.0-windows7.0\P4NTHE0N.exe"
 # Should return True
 ```
 
 **PHASE 3 COMPLETE CRITERIA**:
-- [ ] H0UND.csproj modified with AssemblyName=P4NTH30N
+- [ ] H0UND.csproj modified with AssemblyName=P4NTHE0N
 - [ ] UseWindowsForms enabled
 - [ ] Build succeeds
-- [ ] P4NTH30N.exe exists in output directory
+- [ ] P4NTHE0N.exe exists in output directory
 
 ---
 
@@ -439,16 +439,16 @@ Test-Path "C:\P4NTH30N\H0UND\bin\Release\net10.0-windows7.0\P4NTH30N.exe"
 ### 4.1 Create Infrastructure Directories
 
 ```powershell
-New-Item -ItemType Directory -Force -Path "C:\P4NTH30N\H0UND\Infrastructure\Tray"
-New-Item -ItemType Directory -Force -Path "C:\P4NTH30N\H0UND\Infrastructure\Native"
-New-Item -ItemType Directory -Force -Path "C:\P4NTH30N\H0UND\Infrastructure\BootTime"
-New-Item -ItemType Directory -Force -Path "C:\P4NTH30N\H0UND\Services\Orchestration"
-New-Item -ItemType Directory -Force -Path "C:\P4NTH30N\H0UND\Services\Orchestration\HealthCheckers"
+New-Item -ItemType Directory -Force -Path "C:\P4NTHE0N\H0UND\Infrastructure\Tray"
+New-Item -ItemType Directory -Force -Path "C:\P4NTHE0N\H0UND\Infrastructure\Native"
+New-Item -ItemType Directory -Force -Path "C:\P4NTHE0N\H0UND\Infrastructure\BootTime"
+New-Item -ItemType Directory -Force -Path "C:\P4NTHE0N\H0UND\Services\Orchestration"
+New-Item -ItemType Directory -Force -Path "C:\P4NTHE0N\H0UND\Services\Orchestration\HealthCheckers"
 ```
 
 ### 4.2 Create NativeMethods.cs
 
-Create `C:\P4NTH30N\H0UND\Infrastructure\Native\NativeMethods.cs`:
+Create `C:\P4NTHE0N\H0UND\Infrastructure\Native\NativeMethods.cs`:
 ```csharp
 using System.Runtime.InteropServices;
 
@@ -491,7 +491,7 @@ internal static class NativeMethods
 
 ### 4.3 Create ITrayCallback.cs
 
-Create `C:\P4NTH30N\H0UND\Infrastructure\Tray\ITrayCallback.cs`:
+Create `C:\P4NTHE0N\H0UND\Infrastructure\Tray\ITrayCallback.cs`:
 ```csharp
 namespace H0UND.Infrastructure.Tray;
 
@@ -505,7 +505,7 @@ public interface ITrayCallback
 
 ### 4.4 Create ConsoleWindowManager.cs
 
-Create `C:\P4NTH30N\H0UND\Infrastructure\Tray\ConsoleWindowManager.cs`:
+Create `C:\P4NTHE0N\H0UND\Infrastructure\Tray\ConsoleWindowManager.cs`:
 ```csharp
 using H0UND.Infrastructure.Native;
 
@@ -567,7 +567,7 @@ public sealed class ConsoleWindowManager : IDisposable
 
 ### 4.5 Create TrayHost.cs
 
-Create `C:\P4NTH30N\H0UND\Infrastructure\Tray\TrayHost.cs`:
+Create `C:\P4NTHE0N\H0UND\Infrastructure\Tray\TrayHost.cs`:
 ```csharp
 using System.ComponentModel;
 
@@ -602,7 +602,7 @@ public sealed class TrayHost : ApplicationContext, IDisposable
         _notifyIcon = new NotifyIcon
         {
             Icon = System.Drawing.SystemIcons.Application,
-            Text = "P4NTH30N Dashboard",
+            Text = "P4NTHE0N Dashboard",
             Visible = true,
             ContextMenuStrip = contextMenu
         };
@@ -682,11 +682,11 @@ public sealed class TrayHost : ApplicationContext, IDisposable
 
 ### 4.6 Create app.manifest
 
-Create `C:\P4NTH30N\H0UND\app.manifest`:
+Create `C:\P4NTHE0N\H0UND\app.manifest`:
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
-  <assemblyIdentity version="1.0.0.0" name="P4NTH30N"/>
+  <assemblyIdentity version="1.0.0.0" name="P4NTHE0N"/>
   <trustInfo xmlns="urn:schemas-microsoft-com:asm.v2">
     <security>
       <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
@@ -706,10 +706,10 @@ Create `C:\P4NTH30N\H0UND\app.manifest`:
 ### 4.7 Build and Test Tray Integration
 
 ```powershell
-cd C:\P4NTH30N
+cd C:\P4NTHE0N
 dotnet build H0UND\H0UND.csproj -c Release
 
-# Run P4NTH30N.exe and verify tray icon appears
+# Run P4NTHE0N.exe and verify tray icon appears
 # Test: Close button minimizes to tray
 # Test: Double-click tray shows dashboard
 # Test: Exit from menu closes application
@@ -728,13 +728,13 @@ dotnet build H0UND\H0UND.csproj -c Release
 
 ### 5.1 Create Register-AutoStart.ps1
 
-Create `C:\P4NTH30N\scripts\Register-AutoStart.ps1`:
+Create `C:\P4NTHE0N\scripts\Register-AutoStart.ps1`:
 ```powershell
 #Requires -RunAsAdministrator
 
 param(
-    [string]$ExecutablePath = "C:\P4NTH30N\H0UND\bin\Release\net10.0-windows7.0\P4NTH30N.exe",
-    [string]$TaskName = "P4NTH30N-AutoStart",
+    [string]$ExecutablePath = "C:\P4NTHE0N\H0UND\bin\Release\net10.0-windows7.0\P4NTHE0N.exe",
+    [string]$TaskName = "P4NTHE0N-AutoStart",
     [int]$DelaySeconds = 30
 )
 
@@ -774,7 +774,7 @@ try {
         -Force
     
     Write-Host "Task '$TaskName' registered successfully." -ForegroundColor Green
-    Write-Host "P4NTH30N will start automatically at boot (with ${DelaySeconds}s delay)." -ForegroundColor Green
+    Write-Host "P4NTHE0N will start automatically at boot (with ${DelaySeconds}s delay)." -ForegroundColor Green
 }
 catch {
     Write-Error "Failed to register task: $_"
@@ -784,12 +784,12 @@ catch {
 
 ### 5.2 Create Unregister-AutoStart.ps1
 
-Create `C:\P4NTH30N\scripts\Unregister-AutoStart.ps1`:
+Create `C:\P4NTHE0N\scripts\Unregister-AutoStart.ps1`:
 ```powershell
 #Requires -RunAsAdministrator
 
 param(
-    [string]$TaskName = "P4NTH30N-AutoStart"
+    [string]$TaskName = "P4NTHE0N-AutoStart"
 )
 
 try {
@@ -804,18 +804,18 @@ catch {
 
 ### 5.3 Create Check-PlatformStatus.ps1
 
-Create `C:\P4NTH30N\scripts\Check-PlatformStatus.ps1`:
+Create `C:\P4NTHE0N\scripts\Check-PlatformStatus.ps1`:
 ```powershell
-# Check all P4NTH30N services status
+# Check all P4NTHE0N services status
 
-Write-Host "=== P4NTH30N Platform Status Check ===" -ForegroundColor Cyan
+Write-Host "=== P4NTHE0N Platform Status Check ===" -ForegroundColor Cyan
 
-# Check P4NTH30N process
-$p4nth30n = Get-Process -Name "P4NTH30N" -ErrorAction SilentlyContinue
+# Check P4NTHE0N process
+$p4nth30n = Get-Process -Name "P4NTHE0N" -ErrorAction SilentlyContinue
 if ($p4nth30n) {
-    Write-Host "[OK] P4NTH30N.exe running (PID: $($p4nth30n.Id))" -ForegroundColor Green
+    Write-Host "[OK] P4NTHE0N.exe running (PID: $($p4nth30n.Id))" -ForegroundColor Green
 } else {
-    Write-Host "[MISSING] P4NTH30N.exe not running" -ForegroundColor Red
+    Write-Host "[MISSING] P4NTHE0N.exe not running" -ForegroundColor Red
 }
 
 # Check RAG Server
@@ -843,7 +843,7 @@ if ($lmstudio) {
 }
 
 # Check Task Scheduler entry
-$task = Get-ScheduledTask -TaskName "P4NTH30N-AutoStart" -ErrorAction SilentlyContinue
+$task = Get-ScheduledTask -TaskName "P4NTHE0N-AutoStart" -ErrorAction SilentlyContinue
 if ($task) {
     Write-Host "[OK] Auto-start task registered" -ForegroundColor Green
 } else {
@@ -860,7 +860,7 @@ Write-Host "`nStatus check complete." -ForegroundColor Cyan
 .\scripts\Register-AutoStart.ps1
 
 # Verify
-Get-ScheduledTask -TaskName "P4NTH30N-AutoStart"
+Get-ScheduledTask -TaskName "P4NTHE0N-AutoStart"
 ```
 
 **PHASE 5 COMPLETE CRITERIA**:
@@ -875,7 +875,7 @@ Get-ScheduledTask -TaskName "P4NTH30N-AutoStart"
 
 ### 6.1 Create Service Orchestration Interfaces
 
-Create `C:\P4NTH30N\H0UND\Services\Orchestration\IManagedService.cs`:
+Create `C:\P4NTHE0N\H0UND\Services\Orchestration\IManagedService.cs`:
 ```csharp
 namespace H0UND.Services.Orchestration;
 
@@ -907,7 +907,7 @@ public class ServiceStatusChangedEventArgs : EventArgs
 }
 ```
 
-Create `C:\P4NTH30N\H0UND\Services\Orchestration\IServiceOrchestrator.cs`:
+Create `C:\P4NTHE0N\H0UND\Services\Orchestration\IServiceOrchestrator.cs`:
 ```csharp
 namespace H0UND.Services.Orchestration;
 
@@ -931,7 +931,7 @@ public class OrchestratorEventArgs : EventArgs
 
 ### 6.2 Create ExponentialBackoffRetryPolicy
 
-Create `C:\P4NTH30N\H0UND\Services\Orchestration\ExponentialBackoffRetryPolicy.cs`:
+Create `C:\P4NTHE0N\H0UND\Services\Orchestration\ExponentialBackoffRetryPolicy.cs`:
 ```csharp
 namespace H0UND.Services.Orchestration;
 
@@ -978,7 +978,7 @@ public class ExponentialBackoffRetryPolicy
 
 ### 6.3 Create ManagedService Base Class
 
-Create `C:\P4NTH30N\H0UND\Services\Orchestration\ManagedService.cs`:
+Create `C:\P4NTHE0N\H0UND\Services\Orchestration\ManagedService.cs`:
 ```csharp
 using System.Diagnostics;
 
@@ -1035,7 +1035,7 @@ public abstract class ManagedService : IManagedService, IDisposable
 
 ### 6.4 Create HttpManagedService
 
-Create `C:\P4NTH30N\H0UND\Services\Orchestration\HttpManagedService.cs`:
+Create `C:\P4NTHE0N\H0UND\Services\Orchestration\HttpManagedService.cs`:
 ```csharp
 using System.Diagnostics;
 
@@ -1157,7 +1157,7 @@ public class HttpManagedService : ManagedService
 
 ### 6.5 Create ServiceOrchestrator
 
-Create `C:\P4NTH30N\H0UND\Services\Orchestration\ServiceOrchestrator.cs`:
+Create `C:\P4NTHE0N\H0UND\Services\Orchestration\ServiceOrchestrator.cs`:
 ```csharp
 using System.Collections.Concurrent;
 
@@ -1298,7 +1298,7 @@ public class ServiceOrchestrator : IServiceOrchestrator, IDisposable
 ### 6.6 Build and Test
 
 ```powershell
-cd C:\P4NTH30N
+cd C:\P4NTHE0N
 dotnet build H0UND\H0UND.csproj -c Release
 
 # Should build successfully with all new service orchestration code
@@ -1316,7 +1316,7 @@ dotnet build H0UND\H0UND.csproj -c Release
 
 ### 7.1 Update H0UND Program.cs
 
-Modify `C:\P4NTH30N\H0UND\Program.cs` to integrate tray and orchestration:
+Modify `C:\P4NTHE0N\H0UND\Program.cs` to integrate tray and orchestration:
 
 Add at top:
 ```csharp
@@ -1328,14 +1328,14 @@ Modify Main to implement ITrayCallback and integrate orchestrator (reference DEC
 
 ### 7.2 Create autostart.json Config
 
-Create `C:\P4NTH30N\config\autostart.json`:
+Create `C:\P4NTHE0N\config\autostart.json`:
 ```json
 {
   "services": [
     {
       "name": "RAG Server",
       "type": "http",
-      "executable": "C:\\ProgramData\\P4NTH30N\\bin\\RAG.McpHost.exe",
+      "executable": "C:\\ProgramData\\P4NTHE0N\\bin\\RAG.McpHost.exe",
       "arguments": "--port 5001 --transport http --bridge http://127.0.0.1:5000",
       "healthCheckUrl": "http://127.0.0.1:5001/health"
     }
@@ -1349,18 +1349,18 @@ Create `C:\P4NTH30N\config\autostart.json`:
 ### 7.3 Final Build
 
 ```powershell
-cd C:\P4NTH30N
+cd C:\P4NTHE0N
 dotnet build H0UND\H0UND.csproj -c Release
 
 # Verify output
-ls H0UND\bin\Release\net10.0-windows7.0\P4NTH30N.exe
+ls H0UND\bin\Release\net10.0-windows7.0\P4NTHE0N.exe
 ```
 
 ### 7.4 End-to-End Test
 
 ```powershell
-# 1. Test P4NTH30N.exe starts
-.\H0UND\bin\Release\net10.0-windows7.0\P4NTH30N.exe
+# 1. Test P4NTHE0N.exe starts
+.\H0UND\bin\Release\net10.0-windows7.0\P4NTHE0N.exe
 
 # 2. Verify tray icon appears
 
@@ -1374,7 +1374,7 @@ ls H0UND\bin\Release\net10.0-windows7.0\P4NTH30N.exe
 .\scripts\Check-PlatformStatus.ps1
 
 # 7. Verify auto-start task
-Get-ScheduledTask -TaskName "P4NTH30N-AutoStart"
+Get-ScheduledTask -TaskName "P4NTHE0N-AutoStart"
 ```
 
 ---
@@ -1389,7 +1389,7 @@ Get-ScheduledTask -TaskName "P4NTH30N-AutoStart"
 - [ ] Can query/insert/update through ToolHive
 
 **DECISION_093 Complete**:
-- [ ] Build produces P4NTH30N.exe
+- [ ] Build produces P4NTHE0N.exe
 - [ ] Tray icon visible when running
 - [ ] Close minimizes to tray (not exit)
 - [ ] Double-click shows/hides dashboard

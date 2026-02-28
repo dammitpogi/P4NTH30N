@@ -1,0 +1,41 @@
+OpenFixer, execute dependency-removal remediation now (Gemini dependency).
+
+Mode: Deployment
+Decision IDs: DECISION_052, DECISION_054, DECISION_055
+
+Nexus approval context: branch `b` continuation.
+
+Objective:
+Remove hard runtime dependency on `GEMINI_API_KEY` from active OpenClaw config path so gateway can boot without that env var.
+
+Strict constraints:
+1) Minimal config edit only.
+2) One controlled restart only (note any implicit restart behavior if setup save endpoint is used).
+3) No rollback/reset in this pass.
+4) No secret persistence in repo artifacts.
+
+Target:
+- projectId: 1256dcd2-0929-417a-8f32-39137ffa523b
+- environmentId: 3ba89542-4d69-44cf-9a98-92f0058c30aa
+- serviceId: 2224d9e4-80a7-49d5-b2d4-cf37385fc843
+
+Execution steps:
+1) Capture pre-change state (`/healthz`, `/setup`, `/openclaw`) and logs.
+2) Edit active config path shown in logs (`/data/.clawdbot/openclaw.json`) to remove hard `models.providers.google.apiKey` dependency.
+3) Perform one controlled restart.
+4) Validate 3 rounds: `/healthz`, `/setup`, `/openclaw`.
+5) Run 10-request `/openclaw` spot check.
+6) Pull logs and confirm whether MissingEnvVarError GEMINI_API_KEY is gone; report any next surfaced dependency.
+
+Stop condition:
+- Stop after one pass and report final state.
+
+Required artifact:
+- `OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_055_OPENCLAW_REMOVE_GEMINI_DEP.md`
+
+Report format:
+1) Ordered actions
+2) Exact config delta summary
+3) Validation matrix
+4) Key log deltas
+5) Final state: Recovered / Partial / Not recovered

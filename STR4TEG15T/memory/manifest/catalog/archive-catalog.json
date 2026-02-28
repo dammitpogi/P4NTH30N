@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "2.0.0",
+  "generatedAt": "2026-02-23T23:47:41.448Z",
+  "archives": [
+    {
+      "path": "archive/2026/2026-02-23-closure-validation.jsonl",
+      "sha256": "5b91a6bbfb883152b9eeed7aac56bfc1750df35e1a59fd1fccf0a5bba9073555",
+      "sourcePartition": "events/2026/02/23.jsonl",
+      "createdBy": "dec116-closure-validation"
+    }
+  ]
+}

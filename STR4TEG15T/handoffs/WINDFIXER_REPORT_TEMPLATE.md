@@ -48,7 +48,7 @@ Formatting: ✅ CSharpier applied
 ### Files Ready for OpenFixer Deployment
 
 ```
-P4NTH30N/agents/rag-mcp-server.md
+P4NTHE0N/agents/rag-mcp-server.md
 - Purpose: RAG MCP server agent definition
 - Destination: C:\Users\paulc\.config\opencode\agents\
 - Deployment method: .\scripts\deploy-agents.ps1
@@ -108,7 +108,7 @@ toolhive list-tools | grep rag_
 If OpenFixer deployment fails:
 1. Backup location: `C:\Users\paulc\.config\opencode\agents\.backups\`
 2. Rollback command: Copy `.backups/*.[timestamp].bak` to parent
-3. WindFixer state: Preserved in P4NTH30N/, can redeploy
+3. WindFixer state: Preserved in P4NTHE0N/, can redeploy
 
 ---
 

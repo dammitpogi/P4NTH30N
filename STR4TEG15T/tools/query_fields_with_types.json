@@ -1,0 +1,1311 @@
+{
+  "endpoint": "https://backboard.railway.com/graphql/v2",
+  "mode": "bearer",
+  "ok": true,
+  "statusCode": 200,
+  "body": {
+    "data": {
+      "__type": {
+        "fields": [
+          {
+            "name": "adminVolumeInstancesForVolume",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "allPlatformFeatureFlags",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "apiToken",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "ApiTokenContext",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "apiTokens",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QueryApiTokensConnection",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "auditLog",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "AuditLog",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "auditLogEventTypeInfo",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "auditLogs",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QueryAuditLogsConnection",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "bucketInstanceDetails",
+            "type": {
+              "kind": "OBJECT",
+              "name": "BucketInstanceDetails",
+              "ofType": null
+            }
+          },
+          {
+            "name": "bucketS3Credentials",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "buildLogs",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "canvasViewMergePreview",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "CanvasViewMergePreview",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "changelogBlockImage",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "complianceAgreements",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "ComplianceAgreementsInfo",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "customDomain",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "CustomDomain",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "customDomainAvailable",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "DomainAvailable",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "deployment",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Deployment",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "deploymentEvents",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QueryDeploymentEventsConnection",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "deploymentInstanceExecutions",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QueryDeploymentInstanceExecutionsConnection",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "deploymentLogs",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "deploymentSnapshot",
+            "type": {
+              "kind": "OBJECT",
+              "name": "DeploymentSnapshot",
+              "ofType": null
+            }
+          },
+          {
+            "name": "deploymentTriggers",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QueryDeploymentTriggersConnection",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "deployments",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QueryDeploymentsConnection",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "domains",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "AllDomains",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "egressGateways",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "environment",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Environment",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "environmentLogs",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "environmentPatch",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "EnvironmentPatch",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "environmentPatches",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QueryEnvironmentPatchesConnection",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "environmentStagedChanges",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "EnvironmentPatch",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "environments",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QueryEnvironmentsConnection",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "estimatedUsage",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "events",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QueryEventsConnection",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "externalWorkspaces",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "functionRuntime",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "FunctionRuntime",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "functionRuntimes",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "gitHubRepoAccessAvailable",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "GitHubAccess",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "gitHubSshKeys",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "githubIsRepoNameAvailable",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "githubRepo",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "GitHubRepoWithoutInstallation",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "githubRepoBranches",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "githubRepos",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "githubWritableScopes",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "herokuApps",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "httpLogs",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "integrationAuth",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "IntegrationAuth",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "integrationAuths",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QueryIntegrationAuthsConnection",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "integrations",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QueryIntegrationsConnection",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "inviteCode",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "InviteCode",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "me",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "User",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "metrics",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "notificationDeliveries",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QueryNotificationDeliveriesConnection",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "notificationRules",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "observabilityDashboards",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QueryObservabilityDashboardsConnection",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "passkeys",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QueryPasskeysConnection",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "platformStatus",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "PlatformStatus",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "preferences",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Preferences",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "privateNetworkEndpoint",
+            "type": {
+              "kind": "OBJECT",
+              "name": "PrivateNetworkEndpoint",
+              "ofType": null
+            }
+          },
+          {
+            "name": "privateNetworkEndpointNameAvailable",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "privateNetworks",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "project",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Project",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "projectCompliance",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "ProjectComplianceInfo",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "projectInvitation",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "UNION",
+                "name": "PublicProjectInvitation",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "projectInvitations",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "projectInviteCode",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "InviteCode",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "projectMembers",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "projectResourceAccess",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "ProjectResourceAccess",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "projectToken",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "ProjectToken",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "projectTokens",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QueryProjectTokensConnection",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "projectWorkspaceMembers",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "ProjectWorkspaceMembersResponse",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "projects",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QueryProjectsConnection",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "publicStats",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "PublicStats",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "referralInfo",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "ReferralInfo",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "regions",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "resourceAccess",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "ResourceAccess",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "service",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Service",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "serviceDomainAvailable",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "DomainAvailable",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "serviceInstance",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "ServiceInstance",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "serviceInstanceIsUpdatable",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "serviceInstanceLimitOverride",
+            "type": {
+              "kind": "SCALAR",
+              "name": "ServiceInstanceLimit",
+              "ofType": null
+            }
+          },
+          {
+            "name": "serviceInstanceLimits",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ServiceInstanceLimit",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "sessions",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QuerySessionsConnection",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "sshPublicKeys",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QuerySshPublicKeysConnection",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "tcpProxies",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "template",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Template",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "templateMetrics",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "TemplateMetrics",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "templateSourceForProject",
+            "type": {
+              "kind": "OBJECT",
+              "name": "Template",
+              "ofType": null
+            }
+          },
+          {
+            "name": "templates",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QueryTemplatesConnection",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "templatesCount",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "trustedDomains",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QueryTrustedDomainsConnection",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "twoFactorInfo",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "TwoFactorInfo",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "usage",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "userProfile",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "UserProfileResponse",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "variables",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "EnvironmentVariables",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "variablesForServiceDeployment",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "EnvironmentVariables",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "vercelInfo",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "VercelInfo",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "volumeInstance",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "VolumeInstance",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "volumeInstanceBackupList",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "volumeInstanceBackupScheduleList",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null
+                }
+              }
+            }
+          },
+          {
+            "name": "workflowStatus",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "WorkflowResult",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "workspace",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Workspace",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "workspaceByCode",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Workspace",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "workspaceIdentityProviders",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QueryWorkspaceIdentityProvidersConnection",
+                "ofType": null
+              }
+            }
+          },
+          {
+            "name": "workspaceTemplates",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "QueryWorkspaceTemplatesConnection",
+                "ofType": null
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

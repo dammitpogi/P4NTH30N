@@ -44,7 +44,7 @@ Process all decision files once:
 npm start
 
 # Or with explicit path
-P4NTH30N_ROOT=/path/to/P4NTH30N npm start
+P4NTHE0N_ROOT=/path/to/P4NTHE0N npm start
 ```
 
 ### Watch Mode
@@ -83,7 +83,7 @@ npm run ingest
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `P4NTH30N_ROOT` | Path to P4NTH30N repository | `c:\P4NTH30N` |
+| `P4NTHE0N_ROOT` | Path to P4NTHE0N repository | `c:\P4NTHE0N` |
 | `LOG_LEVEL` | Logging level (debug, info, warn, error) | `info` |
 
 ### Directory Structure
@@ -91,7 +91,7 @@ npm run ingest
 The watcher expects the following structure:
 
 ```
-P4NTH30N/
+P4NTHE0N/
 ├── STR4TEG15T/
 │   ├── decisions/
 │   │   ├── active/

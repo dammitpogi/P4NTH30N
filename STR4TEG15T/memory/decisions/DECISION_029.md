@@ -47,7 +47,7 @@ OpenFixer was tasked with creating decisions from ArXiv research. The Librarian 
 ## What Worked
 
 ### 1. Direct MongoDB Access Bypasses Tool Failures
-When the decisions-server timed out 6 consecutive times, we pivoted to mongodb-p4nth30n insertMany and wrote all 6 decisions in a single call. This is now canon: when the decisions-server is down, use MongoDB directly. The collection is "decisions" in database "P4NTH30N".
+When the decisions-server timed out 6 consecutive times, we pivoted to mongodb-p4nth30n insertMany and wrote all 6 decisions in a single call. This is now canon: when the decisions-server is down, use MongoDB directly. The collection is "decisions" in database "P4NTHE0N".
 
 ### 2. Role Assimilation Under Pressure
 OpenFixer assimilated Oracle and Designer roles in the same session. The Oracle analysis was rigorous: individual feasibility, risk, complexity, and resource scores. The Designer strategy included phased implementation with validation steps. Neither role was diminished by assimilation.
@@ -73,13 +73,13 @@ Every round of decision work appends to manifest/manifest.json. This is the sour
 DECISION_029 and DECISION_030 got 88% oracle approval with "Conditional" status. They remain Proposed, not Rejected. They will be revisited when foundational decisions are complete. This is the correct pattern for research-heavy, long-horizon work.
 
 ### The Strategist Plans. Does Not Build.
-This session demonstrated the boundary clearly. Research, analysis, decision creation, oracle assessment, designer strategy. No code was written. No files were modified in P4NTH30N source directories. The Strategist creates the map. The Fixers walk the path.
+This session demonstrated the boundary clearly. Research, analysis, decision creation, oracle assessment, designer strategy. No code was written. No files were modified in P4NTHE0N source directories. The Strategist creates the map. The Fixers walk the path.
 
 ### ArXiv Research Pattern
 1. Use BrightData search_engine_batch with site:arxiv.org queries
 2. Scrape top papers with scrape_batch
 3. Use sequential thinking to synthesize findings
-4. Map findings to P4NTH30N architecture
+4. Map findings to P4NTHE0N architecture
 5. Create decisions with research sources cited
 
 ## Metrics

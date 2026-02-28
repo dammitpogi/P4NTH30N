@@ -1,0 +1,58 @@
+OpenFixer, execute this package when Nexus explicitly initiates deployment.
+
+Context:
+- STR4TEG15T/decisions/active/DECISION_114.md
+- STR4TEG15T/decisions/active/DECISION_115.md
+- STR4TEG15T/decisions/active/DECISION_116.md
+- STR4TEG15T/decisions/active/DECISION_116_AUTOMATION_v1.md
+- STR4TEG15T/decisions/active/DECISION_116_MANIFEST_V2_ARCHITECTURE_v1.md
+- STR4TEG15T/decisions/active/DECISION_116_WINDOWS_MICROTOOLS_v1.md
+- C:\Users\paulc\.config\opencode\agents\strategist.md
+- C:\Users\paulc\.config\opencode\agents\openfixer.md
+
+Mission:
+Implement DECISION_116 automation foundations and perform the DECISION_114 + DECISION_115 audits in the same session for context/token efficiency.
+
+Execution Order:
+1) Implementation pass (DECISION_116)
+   - Implement decision-status index generation automation (flat directory model, no by-status folder assumptions).
+   - Implement manifest v2 storage scaffolding for events/views/snapshots/archive/catalog.
+   - Implement baseline integrity checks (event/view parity, replay consistency, checksum verification hooks).
+   - Keep changes to strategist workflow/tooling domains only.
+
+2) Audit pass A (DECISION_114)
+   - Verify deployed behavior against decision contract.
+   - Confirm unresolved blockers and closure readiness gates.
+
+3) Audit pass B (DECISION_115)
+   - Verify manual Nexus-initiation gate and governance controls are actually enforceable.
+   - Validate whether openfixer prompt standards need further hardening.
+
+4) Consolidated guidance output
+   - Provide operations guidance for: configure, triage, repair, and rollback.
+   - Provide how-to guidance for using new automation in future decisions.
+
+Required Artifacts:
+- OP3NF1XER/deployments/JOURNAL_YYYY-MM-DD_DECISION_116_AUTOMATION_FOUNDATION.md
+- OP3NF1XER/deployments/JOURNAL_YYYY-MM-DD_DECISION_114_AUDIT_FOLLOWUP.md
+- OP3NF1XER/deployments/JOURNAL_YYYY-MM-DD_DECISION_115_AUDIT_FOLLOWUP.md
+- Updates to STR4TEG15T/decisions/active/DECISION_114.md
+- Updates to STR4TEG15T/decisions/active/DECISION_115.md
+- Updates to STR4TEG15T/decisions/active/DECISION_116.md
+
+Report Format (single response):
+1. Files changed
+2. Commands run
+3. Validation matrix (PASS/PARTIAL/FAIL per requirement)
+4. Unresolved blockers
+5. Triage/repair runbook summary
+6. Closure recommendation for each decision:
+   - DECISION_114
+   - DECISION_115
+   - DECISION_116
+
+Constraints:
+- No product code modifications in H0UND/, H4ND/, C0MMON/, W4TCHD0G/, UNI7T35T/.
+- No synthesis speech artifact creation.
+- No automatic deployment chaining; complete only this scope.
+- Keep outputs path-explicit and audit-friendly.

@@ -55,7 +55,7 @@ source:
 
 This decision documents two related infrastructure improvements completed in a single session:
 
-1. **Agent Prompt Updates**: Updated all 11 agent prompt files to reflect the current tool landscape - activating RAG, documenting ToolHive Gateway architecture, exposing P4NTH30N MCP and Honeybelt tools.
+1. **Agent Prompt Updates**: Updated all 11 agent prompt files to reflect the current tool landscape - activating RAG, documenting ToolHive Gateway architecture, exposing P4NTHE0N MCP and Honeybelt tools.
 
 2. **RAG File Watcher**: Created a standalone PowerShell script that automatically ingests new documents into the RAG knowledge base without requiring agent involvement.
 
@@ -74,7 +74,7 @@ This decision documents two related infrastructure improvements completed in a s
 After RAG (DECISION_033) and ToolHive Gateway (DECISION_051) were completed, agent prompts still contained outdated information:
 - Every agent canon pattern said "RAG not yet active"
 - ToolHive Gateway routing pattern was undocumented
-- P4NTH30N MCP tools were completely unknown to agents
+- P4NTHE0N MCP tools were completely unknown to agents
 - Honeybelt operations were not referenced
 
 ### Problem 2: Manual RAG Ingestion Required
@@ -94,10 +94,10 @@ Documents created during workflow (decisions, speech logs, deployment journals) 
 
 | File | Changes |
 |------|---------|
-| AGENTS.md | RAG activated, ToolHive Gateway documented, P4NTH30N MCP added, Honeybelt added |
+| AGENTS.md | RAG activated, ToolHive Gateway documented, P4NTHE0N MCP added, Honeybelt added |
 | orchestrator.md | RAG activated, ToolHive Gateway patterns |
 | strategist.md | RAG integration section added, version → v3.1 |
-| oracle.md | RAG activated, P4NTH30N MCP awareness, version → v2.1 |
+| oracle.md | RAG activated, P4NTHE0N MCP awareness, version → v2.1 |
 | designer.md | RAG activated, platform context queries, version → v2.1 |
 | explorer.md | RAG activated, platform data tools, version → v2.1 |
 | librarian.md | RAG activated, ToolHive Gateway examples, version → v3.1 |
@@ -110,12 +110,12 @@ Documents created during workflow (decisions, speech logs, deployment journals) 
 - "RAG not yet active" removed from all 11 files (11 occurrences)
 - "RAG is active" added to canon patterns (11 occurrences)
 - ToolHive Gateway routing documented (`serverId.toolName` pattern)
-- P4NTH30N MCP exposed (query_credentials, query_signals, query_jackpots, get_system_status)
+- P4NTHE0N MCP exposed (query_credentials, query_signals, query_jackpots, get_system_status)
 - Honeybelt operations added to forgewright and openfixer
 
 ### Solution 2: RAG File Watcher
 
-**Script Location**: `C:\P4NTH30N\STR4TEG15T\tools\rag-watcher\Watch-RagIngest.ps1`
+**Script Location**: `C:\P4NTHE0N\STR4TEG15T\tools\rag-watcher\Watch-RagIngest.ps1`
 
 **Watched Directories**:
 - `STR4TEG15T/decisions/active/` - Decision files
@@ -142,7 +142,7 @@ Documents created during workflow (decisions, speech logs, deployment journals) 
 .\Watch-RagIngest.ps1
 
 # As Windows service
-Start-Process powershell.exe -ArgumentList "-NoProfile", "-ExecutionPolicy Bypass", "-File", "C:\P4NTH30N\STR4TEG15T\tools\rag-watcher\Watch-RagIngest.ps1" -WindowStyle Hidden
+Start-Process powershell.exe -ArgumentList "-NoProfile", "-ExecutionPolicy Bypass", "-File", "C:\P4NTHE0N\STR4TEG15T\tools\rag-watcher\Watch-RagIngest.ps1" -WindowStyle Hidden
 ```
 
 ---

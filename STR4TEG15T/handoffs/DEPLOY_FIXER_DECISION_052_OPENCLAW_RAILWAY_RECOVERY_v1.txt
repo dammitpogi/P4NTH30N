@@ -1,0 +1,56 @@
+Fixer, execute DECISION_052 only when Nexus explicitly initiates deployment.
+
+Mode: Deployment
+Decision ID: DECISION_052
+Current status: Approved -> HandoffReady (on Nexus initiation)
+
+Context:
+- Decision: STR4TEG15T/decisions/DECISION_052_OPENCLAW_RAILWAY_RECOVERY.md
+- Outage evidence: production URL returns HTTP 503
+- Production URL: https://clawdbot-railway-template-production-461f.up.railway.app
+- Railway dashboard: https://railway.com/dashboard
+- Credentials: use Nexus-provided in-session credentials only (do not persist)
+
+Mission:
+Restore OpenClaw service to HTTP 200 as fast as possible using rollback-first posture, then validate and document.
+
+Execution order:
+1) Stabilize
+   - Log in to Railway dashboard.
+   - Identify broken deployment and last known good deployment.
+   - Execute rollback/restore to last known good deployment immediately.
+   - Verify production URL returns HTTP 200 within 60 seconds.
+
+2) Restore
+   - Validate health endpoint(s) and core route(s) 3 consecutive times.
+   - Check logs for startup errors and restart loops.
+   - Confirm no active 5xx spike.
+
+3) Validate
+   - Run a minimal synthetic journey for OpenClaw core path.
+   - Confirm DB/integration connectivity if visible in logs/status.
+   - Perform a 10-request spot check with zero 5xx.
+
+4) Prevent
+   - Capture root cause candidate from bad deployment diff/logs.
+   - Propose at least 3 prevention controls (deploy gates, alerts, config validation).
+
+Required artifacts:
+- OP3NF1XER/deployments/JOURNAL_YYYY-MM-DD_DECISION_052_OPENCLAW_RECOVERY.md
+- Update STR4TEG15T/decisions/DECISION_052_OPENCLAW_RAILWAY_RECOVERY.md with:
+  - exact deployment IDs (good/bad),
+  - timeline timestamps,
+  - final status transition to Closed only if validation passes.
+
+Report format:
+1. Actions performed (ordered)
+2. Evidence (status codes, deployment IDs, key log lines)
+3. Validation checklist (PASS/PARTIAL/FAIL)
+4. Root cause hypothesis and confidence
+5. Remaining risks and recommended follow-up
+
+Constraints:
+- Prioritize rollback over fix-forward during outage window.
+- Do not store secrets in repo files.
+- Do not modify product source code unless rollback cannot restore service.
+- If rollback fails and migration/state risk is detected, stop and report before destructive recovery steps.

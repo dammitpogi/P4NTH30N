@@ -1,0 +1,48 @@
+## Task: @windfixer
+
+WindFixer, execute DECISION_113 H0UND rollout now. No planning mode.
+
+Mode: Deployment
+Decision ID: DECISION_113
+Current Status: In Progress (H4ND validated; H0UND/FireKirin pending)
+Requested Action: Instrument all H0UND chaos points with error evidence + sanity checks
+
+### Scope (H0UND)
+
+1. `H0UND/Services/Orchestration/ServiceOrchestrator.cs`
+   - 116, 144, 181, 217
+2. `H0UND/Application/Polling/PollingWorker.cs`
+   - 22, 52, 75, 84
+3. `H0UND/Infrastructure/Polling/OrionStarsBalanceProvider.cs`
+   - 11, 17, 23
+4. `H0UND/H0UND.cs`
+   - 70-90, 224, 229, 306, 497
+
+### Requirements
+
+1. Reuse shared error-evidence infrastructure and `_debug` correlation model.
+2. Capture `when/where/exception/context` for all failures.
+3. Add pre/post sanity checks at lock, retry, anomaly callback, and coercion points.
+4. Use deterministic sampling in hot polling loops; 100% capture for errors/invariant failures.
+5. Keep runtime non-blocking and readable.
+
+### Validation
+
+1. Add/extend H0UND-focused tests in `UNI7T35T`.
+2. Demonstrate chain reconstruction by `sessionId` + `correlationId` for at least 4 H0UND scenarios.
+3. Provide PASS/FAIL matrix per H0UND hotspot group.
+
+### Files to Update
+
+- H0UND source files listed above
+- `STR4TEG15T/decisions/active/DECISION_113.md`
+- `OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_113_H4ND_ERROR_EVIDENCE.md` (append H0UND pass section)
+
+### Final Report Format
+
+1. Commands executed
+2. Hotspot coverage matrix (H0UND)
+3. Sampling + sanity behavior summary
+4. `_debug` evidence query proof
+5. Files changed
+6. Remaining blockers

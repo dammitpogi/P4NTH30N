@@ -98,7 +98,7 @@ The 24-hour burn-in must halt on critical failures, but not all anomalies requir
 
 ```json
 {
-  "P4NTH30N": {
+  "P4NTHE0N": {
     "H4ND": {
       "BurnInAlerts": {
         "ErrorRateWarnThreshold": 0.05,

@@ -52,7 +52,7 @@ source:
 
 ## Executive Summary
 
-Integrate the oh-my-opencode-theseus plugin's sophisticated fallback and resilience system into P4NTH30N's OpenCode infrastructure. The primary goal is to **repair Oracle** - ensuring the Oracle agent (Orion) has robust model fallback chains, error recovery, and circuit breaker protection when providing critical risk assessments and approvals.
+Integrate the oh-my-opencode-theseus plugin's sophisticated fallback and resilience system into P4NTHE0N's OpenCode infrastructure. The primary goal is to **repair Oracle** - ensuring the Oracle agent (Orion) has robust model fallback chains, error recovery, and circuit breaker protection when providing critical risk assessments and approvals.
 
 **Key Insight from Theseus**: The plugin's fallback system has proven itself in production with:
 - Automatic model fallback chains when primary models fail
@@ -72,7 +72,7 @@ Integrate the oh-my-opencode-theseus plugin's sophisticated fallback and resilie
 - This creates bottlenecks and delays in the decision pipeline
 
 ### The Theseus Plugin
-Located at `C:\P4NTH30N\plugins\theseues`, this is a production-hardened OpenCode plugin featuring:
+Located at `C:\P4NTHE0N\plugins\theseues`, this is a production-hardened OpenCode plugin featuring:
 
 | Component | Purpose |
 |-----------|---------|
@@ -281,7 +281,7 @@ Oracle_Score = (gpqa * 0.45) + (aime * 0.2) + ((math_index / 100) * 0.2) + (mmlu
 1. **INFRA-100-001**: Error Classification Integration
    - **Priority**: Must
    - **Acceptance Criteria**: All Oracle errors classified into 6 types
-   - **Implementation**: Port ErrorClassifier from Theseus to P4NTH30N
+   - **Implementation**: Port ErrorClassifier from Theseus to P4NTHE0N
 
 2. **INFRA-100-002**: Model Fallback Chain for Oracle
    - **Priority**: Must
@@ -499,7 +499,7 @@ Based on Explorer analysis, use extended chain for maximum resilience:
 
 1. **ErrorClassifier** (1 hour)
    - Copy from Theseus
-   - Adapt to P4NTH30N logging
+   - Adapt to P4NTHE0N logging
    - Add Oracle-specific error patterns
 
 2. **CircuitBreaker** (1 hour)
@@ -573,7 +573,7 @@ Based on Explorer analysis, use extended chain for maximum resilience:
 
 ## Dependencies
 
-- **Source**: oh-my-opencode-theseus plugin (`C:\P4NTH30N\plugins\theseues`)
+- **Source**: oh-my-opencode-theseus plugin (`C:\P4NTHE0N\plugins\theseues`)
 - **Target**: OpenCode plugin infrastructure
 - **Blocks**: DECISION_101 (Oracle Repair via Fallback)
 - **Blocked by**: None
@@ -584,14 +584,14 @@ Based on Explorer analysis, use extended chain for maximum resilience:
 
 **OpenFixer**: Port Theseus resilience system for Oracle repair.
 
-**Source Files** (from `C:\P4NTH30N\plugins\theseues\src\`):
+**Source Files** (from `C:\P4NTHE0N\plugins\theseues\src\`):
 1. `background/resilience/error-classifier.ts`
 2. `background/resilience/network-circuit-breaker.ts`
 3. `background/resilience/backoff-manager.ts`
 4. `background/resilience/connection-health-monitor.ts`
 5. `background/resilience/retry-metrics.ts`
 
-**Target Location**: `C:\P4NTH30N\STR4TEG15T\tools\oracle-resilience\`
+**Target Location**: `C:\P4NTHE0N\STR4TEG15T\tools\oracle-resilience\`
 
 **Integration Target**: OpenCode plugin at `~/.config/opencode/plugins/`
 

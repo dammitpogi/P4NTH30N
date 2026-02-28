@@ -1,0 +1,14 @@
+Nate update:
+
+Rollback succeeded at deployment control plane but runtime still failed with the same error:
+MissingEnvVarError for OPENAI_API_KEY at models.providers.openai.apiKey.
+
+We are now executing branch `b`:
+- remove the hard OpenAI API key dependency from active runtime config,
+- do one controlled restart,
+- run full endpoint and log validation.
+
+This pass is constrained:
+- minimal config edit only,
+- no rollback/reset,
+- full evidence journal output.

@@ -1,0 +1,37 @@
+OpenFixer, prepare rollback execution package only. Do not execute rollback in this pass.
+
+Mode: Deployment
+Action: Prepare rollback artifacts only (no execution)
+Decision IDs: DECISION_052, DECISION_054, DECISION_055
+Current status: HandoffReady
+
+Target service:
+- URL: https://clawdbot-railway-template-production-461f.up.railway.app
+- projectId: 1256dcd2-0929-417a-8f32-39137ffa523b
+- environmentId: 3ba89542-4d69-44cf-9a98-92f0058c30aa
+- serviceId: 2224d9e4-80a7-49d5-b2d4-cf37385fc843
+
+Rollback candidate target:
+- deploymentId: b7d30dd4-d5b7-4135-90e5-9074ddeafb34
+- selection reason: latest prior rollback-eligible deployment before current active deployment f578fd88-5994-4527-8797-9b1c57e2e725.
+
+Strict constraints:
+1) No rollback mutation, no restart, no reset.
+2) No additional config changes.
+3) No secret persistence in repository artifacts.
+4) Artifact preparation only.
+
+Required outputs:
+1) Copy-paste rollback execution prompt.
+2) Rollback evidence journal skeleton.
+3) Pre-rollback checklist including target id/reason, persistent /data impact expectations, and validation matrix.
+4) Explicit stop gate requiring Nexus approval before any rollback execution.
+
+Stop gate (mandatory):
+- Stop after artifacts are created.
+- Execution is blocked until explicit Nexus approval is provided in a new pass.
+
+Required artifact paths:
+- STR4TEG15T/handoffs/DEPLOY_OPENFIXER_DECISION_055_OPENCLAW_ROLLBACK_EXECUTE_v1.txt
+- OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_055_OPENCLAW_ROLLBACK.md
+- STR4TEG15T/handoffs/CHECKLIST_DECISION_055_OPENCLAW_PRE_ROLLBACK_v1.md

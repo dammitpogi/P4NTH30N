@@ -1,0 +1,27 @@
+Nate update for OpenFixer handoff:
+
+We corrected the incident record to spec with evidence.
+
+1) Access is verified.
+- The first Railway key has target-project scope.
+- Reversible mutation smoke test passed:
+  - `variableUpsert(PYXIS_ACCESS_TEST=ok)` -> true
+  - verify present
+  - `variableDelete(PYXIS_ACCESS_TEST)` -> true
+  - verify absent
+
+2) Root cause is identified.
+- Latest deployment logs show gateway startup failure:
+  - `MissingEnvVarError: Missing env var "OPENAI_API_KEY" referenced at config path: models.providers.openai.apiKey`
+- Wrapper remains up, but proxy cannot reach local gateway because gateway never boots.
+
+3) Required remediation posture.
+- Minimal, surgical correction only.
+- No broad config rewrites.
+- No reset/rollback unless explicitly escalated after evidence.
+
+Requested permission to execute via OpenFixer:
+- Apply minimal provider env/config correction for missing `OPENAI_API_KEY` dependency.
+- Perform one controlled restart/redeploy.
+- Validate `/healthz`, `/openclaw`, `/setup` after fix.
+- Record full journal evidence and stop/escalate if recovery fails.

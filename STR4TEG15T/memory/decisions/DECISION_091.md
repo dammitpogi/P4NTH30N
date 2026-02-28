@@ -32,7 +32,7 @@ roles:
   - oracle
 summary: >-
   # DECISION_091: TUI Conditional Logic & Goto Integration ## Summary Extended
-  the P4NTH30N Recorder TUI (DECISION_078) with conditional logic (if-then-else)
+  the P4NTHE0N Recorder TUI (DECISION_078) with conditional logic (if-then-else)
   and goto statements for error handling workflows. Users can now plot what
   happens when errors occur (server busy, session expired, element missing)
   directly in the visual interface. ## Problem Statement The TUI could only
@@ -47,7 +47,7 @@ source:
 
 ## Summary
 
-Extended the P4NTH30N Recorder TUI (DECISION_078) with conditional logic (if-then-else) and goto statements for error handling workflows. Users can now plot what happens when errors occur (server busy, session expired, element missing) directly in the visual interface.
+Extended the P4NTHE0N Recorder TUI (DECISION_078) with conditional logic (if-then-else) and goto statements for error handling workflows. Users can now plot what happens when errors occur (server busy, session expired, element missing) directly in the visual interface.
 
 ## Problem Statement
 

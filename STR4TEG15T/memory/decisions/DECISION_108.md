@@ -74,7 +74,7 @@ When the RAG system is unavailable, the Pantheon loses access to institutional m
 ## Background
 
 ### Current State
-The P4NTH30N system has extensive documentation scattered across multiple directories:
+The P4NTHE0N system has extensive documentation scattered across multiple directories:
 - `STR4TEG15T/decisions/` - 100+ decision documents
 - `STR4TEG15T/consultations/` - Oracle and Designer consultations
 - `STR4TEG15T/canon/` - Proven patterns and learnings

@@ -1,0 +1,39 @@
+OpenFixer, execute this discovery package only when Nexus explicitly initiates discovery.
+
+Mode: Inquiry
+Decision ID: DECISION_054
+Current status: Approved
+
+Context:
+- STR4TEG15T/decisions/DECISION_054_OPENCLAW_INCIDENT_DISCOVERY_PLAN.md
+- STR4TEG15T/decisions/DECISION_052_OPENCLAW_RAILWAY_RECOVERY.md
+- Target URL: https://clawdbot-railway-template-production-461f.up.railway.app
+- Railway endpoint: https://backboard.railway.com/graphql/v2
+
+Mission:
+Collect read-only evidence to classify outage root-cause bucket. Do not perform rollback/redeploy/restart.
+
+Execution:
+1) Validate Railway token type and scope
+2) Resolve project/environment/service identifiers
+3) List last 10 deployments and identify rollback candidate
+4) Pull build logs and runtime logs for latest failed/crashed deployment
+5) Check variable baseline (`PORT`, OpenClaw state/workspace vars) and volume mount evidence
+6) Produce classification: RuntimeCrash | PortProxyMismatch | EnvDrift | DependencyFailure | Unknown
+
+Required artifacts:
+- OP3NF1XER/deployments/JOURNAL_YYYY-MM-DD_DECISION_054_DISCOVERY.md
+- Decision update note appended to DECISION_052 with findings summary
+
+Report format:
+1. Token type and scope
+2. IDs discovered (project/environment/service)
+3. Deployment table (last 10)
+4. Log excerpts (key lines only)
+5. Variable baseline results
+6. Classification + confidence + recommended next action
+
+Constraints:
+- Read-only operations only.
+- No secret persistence.
+- No deployment mutations in discovery pass.

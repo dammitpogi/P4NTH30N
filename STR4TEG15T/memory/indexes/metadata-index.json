@@ -1193,7 +1193,7 @@
       "librarian",
       "oracle"
     ],
-    "summary": "Set up the RAG file watcher as a persistent Windows service to ensure continuous automatic ingestion of new documents into the RAG knowledge base. This eliminates the need for manual intervention and ensures institutional memory is always preserved. **Implementation Complete**: - Created Windows Scheduled Task `P4NTH30N-RAG-Watcher` - Task runs at system startup with SYSTEM privileges - Runs continuously polling for new files every 5 seconds - No agent dependency - pure automation ---",
+    "summary": "Set up the RAG file watcher as a persistent Windows service to ensure continuous automatic ingestion of new documents into the RAG knowledge base. This eliminates the need for manual intervention and ensures institutional memory is always preserved. **Implementation Complete**: - Created Windows Scheduled Task `P4NTHE0N-RAG-Watcher` - Task runs at system startup with SYSTEM privileges - Runs continuously polling for new files every 5 seconds - No agent dependency - pure automation ---",
     "source": {
       "type": "decision",
       "original_path": "../../../STR4TEG15T/decisions/active/DECISION_063.md"
@@ -2313,7 +2313,7 @@
       "librarian",
       "oracle"
     ],
-    "summary": "# DECISION_091: TUI Conditional Logic & Goto Integration ## Summary Extended the P4NTH30N Recorder TUI (DECISION_078) with conditional logic (if-then-else) and goto statements for error handling workflows. Users can now plot what happens when errors occur (server busy, session expired, element missing) directly in the visual interface. ## Problem Statement The TUI could only record linear happy-path workflows. When errors occurred: - Server busy responses - Session timeouts - Elements not",
+    "summary": "# DECISION_091: TUI Conditional Logic & Goto Integration ## Summary Extended the P4NTHE0N Recorder TUI (DECISION_078) with conditional logic (if-then-else) and goto statements for error handling workflows. Users can now plot what happens when errors occur (server busy, session expired, element missing) directly in the visual interface. ## Problem Statement The TUI could only record linear happy-path workflows. When errors occurred: - Server busy responses - Session timeouts - Elements not",
     "source": {
       "type": "decision",
       "original_path": "../../../STR4TEG15T/decisions/active/DECISION_091.md"
@@ -2393,7 +2393,7 @@
       "librarian",
       "oracle"
     ],
-    "summary": "# DECISION_093: Unified Architecture Synthesis ## H0UND as Always-On Platform - Complete Implementation Strategy **Decision ID**: ARCH-093 **Synthesis Date**: 2026-02-22 **Status**: Ready for Implementation --- ## Executive Summary This document synthesizes outputs from 3 parallel Designer consultations and comprehensive Explorer research into a unified implementation strategy for DECISION_093. H0UND will become `P4NTH30N.exe` - an always-on platform that manages 15+ services through sys",
+    "summary": "# DECISION_093: Unified Architecture Synthesis ## H0UND as Always-On Platform - Complete Implementation Strategy **Decision ID**: ARCH-093 **Synthesis Date**: 2026-02-22 **Status**: Ready for Implementation --- ## Executive Summary This document synthesizes outputs from 3 parallel Designer consultations and comprehensive Explorer research into a unified implementation strategy for DECISION_093. H0UND will become `P4NTHE0N.exe` - an always-on platform that manages 15+ services through sys",
     "source": {
       "type": "decision",
       "original_path": "../../../STR4TEG15T/decisions/active/DECISION_093_SYNTHESIS.md"
@@ -3393,7 +3393,7 @@
       "librarian",
       "oracle"
     ],
-    "summary": "**Date**: 2026-02-20 **Strategist**: Atlas **Status**: Approved for Implementation **Total Decisions**: 3 **Total Action Items**: 35 **Estimated Effort**: 6-8 weeks",
+    "summary": "**Date**: 2026-02-20 **Strategist**: Pyxis **Status**: Approved for Implementation **Total Decisions**: 3 **Total Action Items**: 35 **Estimated Effort**: 6-8 weeks",
     "source": {
       "type": "decision",
       "original_path": "../../../STR4TEG15T/decisions/active/SUMMARY-Three-Decision-Package-2026-02-20.md"

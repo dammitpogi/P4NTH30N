@@ -1,0 +1,39 @@
+OpenFixer, execute rollback only after explicit Nexus approval is confirmed in this pass.
+
+Mode: Deployment
+Action: Controlled rollback execution
+Decision IDs: DECISION_052, DECISION_054, DECISION_055
+
+Execution gate:
+- REQUIRED: Nexus approval present in current pass.
+- If approval is absent, stop immediately and return "BLOCKED: Nexus approval required".
+
+Target service:
+- URL: https://clawdbot-railway-template-production-461f.up.railway.app
+- projectId: 1256dcd2-0929-417a-8f32-39137ffa523b
+- environmentId: 3ba89542-4d69-44cf-9a98-92f0058c30aa
+- serviceId: 2224d9e4-80a7-49d5-b2d4-cf37385fc843
+
+Rollback target:
+- deploymentId: b7d30dd4-d5b7-4135-90e5-9074ddeafb34
+- reason: latest prior rollback-eligible deployment before current active deployment f578fd88-5994-4527-8797-9b1c57e2e725.
+
+Execution steps:
+1) Re-validate target deployment metadata (`status`, `canRollback`) immediately before mutation.
+2) Capture pre-rollback probes for `/healthz`, `/setup`, `/openclaw`.
+3) Execute one rollback mutation to target deployment id.
+4) Run 3 validation rounds for `/healthz`, `/setup`, `/openclaw`.
+5) Run 10-request `/openclaw` spot check.
+6) Pull deployment logs and check:
+   - MissingEnvVarError for OPENAI_API_KEY
+   - config path (`/data/.clawdbot/openclaw.json` vs `/data/.openclaw/openclaw.json`)
+
+Report format:
+1) Ordered actions
+2) Exact rollback mutation result
+3) Validation matrix
+4) Key log deltas
+5) Final state: Recovered / Partial / Not recovered
+
+Required journal:
+- OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_055_OPENCLAW_ROLLBACK.md

@@ -2,7 +2,7 @@
 .SYNOPSIS
     RAG File Watcher v2 - Automatically ingests new/changed documents into RAG knowledge base.
 .DESCRIPTION
-    Watches P4NTH30N directories for new or modified files and automatically ingests them
+    Watches P4NTHE0N directories for new or modified files and automatically ingests them
     into the RAG knowledge base via rag_ingest_file (file-based, no truncation).
     Runs as a background service. Survives restarts via Windows Scheduled Task.
     
@@ -35,11 +35,11 @@
 .PARAMETER WatchInterval
     Polling interval in seconds. Default: 30
 .PARAMETER StateFile
-    Path to state file tracking ingested files. Default: C:\P4NTH30N\RAG-watcher-state.json
+    Path to state file tracking ingested files. Default: C:\P4NTHE0N\RAG-watcher-state.json
 .PARAMETER RunOnce
     Run once instead of continuous watch mode.
 .PARAMETER LogFile
-    Path to log file. Default: C:\P4NTH30N\logs\rag-watcher.log
+    Path to log file. Default: C:\P4NTHE0N\logs\rag-watcher.log
 .EXAMPLE
     .\Watch-RagIngest.ps1 -RunOnce
     # Run a single pass to ingest all existing files
@@ -50,8 +50,8 @@
 param(
     [string]$RagUrl = "http://localhost:5001/mcp",
     [int]$WatchInterval = 30,
-    [string]$StateFile = "C:\P4NTH30N\RAG-watcher-state.json",
-    [string]$LogFile = "C:\P4NTH30N\logs\rag-watcher.log",
+    [string]$StateFile = "C:\P4NTHE0N\RAG-watcher-state.json",
+    [string]$LogFile = "C:\P4NTHE0N\logs\rag-watcher.log",
     [switch]$RunOnce,
     [switch]$Verbose,
     [switch]$ResetState
@@ -90,49 +90,49 @@ function Write-Log {
 # ============================================================
 # PATHS CONFIGURATION
 # ============================================================
-$P4NTH30N = "C:\P4NTH30N"
+$P4NTHE0N = "C:\P4NTHE0N"
 $HomeDir = $env:USERPROFILE
 
 # Watch configurations: each entry defines a directory, its extensions, recursion, and metadata
 $WatchConfigs = @(
     # --- STRATEGIST CORPUS ---
     @{
-        Path = "$P4NTH30N\STR4TEG15T\decisions\active"
+        Path = "$P4NTHE0N\STR4TEG15T\decisions\active"
         Extensions = @("*.md")
         Recurse = $false
         DefaultType = "decision"
         DefaultAgent = "strategist"
     },
     @{
-        Path = "$P4NTH30N\STR4TEG15T\decisions\completed"
+        Path = "$P4NTHE0N\STR4TEG15T\decisions\completed"
         Extensions = @("*.md")
         Recurse = $false
         DefaultType = "decision"
         DefaultAgent = "strategist"
     },
     @{
-        Path = "$P4NTH30N\STR4TEG15T\speech"
+        Path = "$P4NTHE0N\STR4TEG15T\speech"
         Extensions = @("*.md")
         Recurse = $false
         DefaultType = "speech"
         DefaultAgent = "strategist"
     },
     @{
-        Path = "$P4NTH30N\STR4TEG15T\manifest"
+        Path = "$P4NTHE0N\STR4TEG15T\manifest"
         Extensions = @("*.md", "*.json")
         Recurse = $false
         DefaultType = "manifest"
         DefaultAgent = "strategist"
     },
     @{
-        Path = "$P4NTH30N\STR4TEG15T\actions"
+        Path = "$P4NTHE0N\STR4TEG15T\actions"
         Extensions = @("*.md")
         Recurse = $true
         DefaultType = "action"
         DefaultAgent = "strategist"
     },
     @{
-        Path = "$P4NTH30N\STR4TEG15T\submissions"
+        Path = "$P4NTHE0N\STR4TEG15T\submissions"
         Extensions = @("*.md")
         Recurse = $true
         DefaultType = "submission"
@@ -140,7 +140,7 @@ $WatchConfigs = @(
     },
     # --- OPENFIXER CORPUS ---
     @{
-        Path = "$P4NTH30N\OP3NF1XER\deployments"
+        Path = "$P4NTHE0N\OP3NF1XER\deployments"
         Extensions = @("*.md")
         Recurse = $false
         DefaultType = "deployment"
@@ -148,14 +148,14 @@ $WatchConfigs = @(
     },
     # --- CODEBASE PATTERNS ---
     @{
-        Path = "$P4NTH30N\C0MMON\RAG"
+        Path = "$P4NTHE0N\C0MMON\RAG"
         Extensions = @("*.cs")
         Recurse = $false
         DefaultType = "pattern"
         DefaultAgent = "strategist"
     },
     @{
-        Path = "$P4NTH30N\C0MMON\Infrastructure"
+        Path = "$P4NTHE0N\C0MMON\Infrastructure"
         Extensions = @("*.cs")
         Recurse = $true
         DefaultType = "pattern"

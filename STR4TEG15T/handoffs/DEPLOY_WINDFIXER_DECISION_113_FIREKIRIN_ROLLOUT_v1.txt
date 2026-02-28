@@ -1,0 +1,52 @@
+## Task: @windfixer
+
+WindFixer, execute DECISION_113 FireKirin rollout now. No planning mode.
+
+Mode: Deployment
+Decision ID: DECISION_113
+Current Status: In Progress (H4ND + H0UND validated; FireKirin rollout pending)
+Requested Action: Instrument FireKirin login/workflow chaos points and validate `_debug` evidence chains.
+
+### Scope (FireKirin)
+
+1. `H4ND/Infrastructure/CdpGameActions.cs`
+   - 60, 68, 70, 74, 77, 82, 89, 95-97, 99, 103-105, 107, 111-113, 117, 121
+2. `H4ND/SmokeTest/Phases/LoginPhase.cs`
+   - 35, 45-55, 58, 75, 79-97, 100, 103-106, 110-119, 129-139
+
+### Requirements
+
+1. Reuse DECISION_113 error-evidence contracts and `_debug` schema.
+2. Capture:
+   - navigation start/step/fallback boundaries
+   - websocket auth attempt/success/fallback
+   - canvas input anomalies and verification failures
+   - phase transition failures with exception copies
+3. Preserve non-blocking behavior and readability.
+4. Use deterministic sampling only for non-critical chatter; errors/invariants remain 100% capture.
+
+### Validation
+
+1. Add FireKirin-focused tests under `UNI7T35T`.
+2. Provide at least 4 scenario proofs with `_debug` chain reconstruction by `sessionId` + `correlationId`.
+3. Return PASS/FAIL matrix for:
+   - CdpGameActions login path
+   - websocket->canvas fallback path
+   - LoginPhase navigation/phase transitions
+
+### Files to Update
+
+- `H4ND/Infrastructure/CdpGameActions.cs`
+- `H4ND/SmokeTest/Phases/LoginPhase.cs`
+- `UNI7T35T/*` (FireKirin rollout tests)
+- `STR4TEG15T/decisions/active/DECISION_113.md`
+- `OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_113_H4ND_ERROR_EVIDENCE.md` (append FireKirin section)
+
+### Final Report Format
+
+1. Commands executed
+2. FireKirin hotspot coverage matrix
+3. Sampling + sanity behavior summary
+4. `_debug` query proof
+5. Files changed
+6. Remaining blockers

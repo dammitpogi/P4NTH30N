@@ -314,7 +314,7 @@ public sealed class WorkerPool : IDisposable
 | Risk | Impact | Likelihood | Mitigation |
 |------|--------|------------|------------|
 | Chrome port conflicts | High | Low | Use fixed port range (9222-9231), check before launch |
-| Profile directory permissions | Medium | Low | Ensure `C:\ProgramData\P4NTH30N\chrome-profiles` exists and is writable |
+| Profile directory permissions | Medium | Low | Ensure `C:\ProgramData\P4NTHE0N\chrome-profiles` exists and is writable |
 | Memory usage with multiple Chrome instances | Medium | Medium | Monitor with 5 workers, scale down if needed |
 | Profile cleanup failures | Low | Low | Set `CleanupProfilesOnDispose = false` to preserve sessions |
 

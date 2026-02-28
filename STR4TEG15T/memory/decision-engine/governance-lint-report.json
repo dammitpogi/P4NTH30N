@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-02-24T00:25:05.338Z",
+  "inputs": {
+    "decisionFile": "C:/P4NTHE0N/STR4TEG15T/decisions/active/DECISION_115.md",
+    "structuredAskFile": "C:/P4NTHE0N/STR4TEG15T/decisions/active/DECISION_115.md",
+    "strategistPrompt": "C:/Users/paulc/.config/opencode/agents/strategist.md",
+    "runtimeOpenFixerPrompt": "C:/Users/paulc/.config/opencode/agents/openfixer.md",
+    "repositoryOpenFixerPrompt": "C:/P4NTHE0N/agents/openfixer.md"
+  },
+  "checks": {
+    "preHandoffGovernance": [
+      {
+        "id": "pre_handoff_harden_question",
+        "status": "PASS",
+        "details": "Requires at least one harden question."
+      },
+      {
+        "id": "pre_handoff_expand_question",
+        "status": "PASS",
+        "details": "Requires at least one expand question."
+      },
+      {
+        "id": "pre_handoff_narrow_question",
+        "status": "PASS",
+        "details": "Requires at least one narrow question."
+      },
+      {
+        "id": "pre_handoff_closure_checklist",
+        "status": "PASS",
+        "details": "Requires closure checklist draft section."
+      },
+      {
+        "id": "pre_handoff_delta_handling_reference",
+        "status": "PASS",
+        "details": "Requires deployment delta handling reference."
+      }
+    ],
+    "structuredAskFormat": [
+      {
+        "id": "structured_numbered_question_blocks",
+        "status": "PASS",
+        "details": "Requires numbered question blocks."
+      },
+      {
+        "id": "structured_lettered_choices",
+        "status": "PASS",
+        "details": "Requires lettered answer choices (a), b), ...)."
+      },
+      {
+        "id": "structured_recommended_default_per_question",
+        "status": "PARTIAL",
+        "details": "Decision-point questions=0, recommended-default markers=4"
+      },
+      {
+        "id": "structured_mode_decision_status_header",
+        "status": "PASS",
+        "details": "Requires Mode, Decision, and Status headers."
+      }
+    ],
+    "openfixerPromptParity": [
+      {
+        "id": "openfixer_prompt_governance_parity",
+        "status": "PASS",
+        "details": "Runtime and repository governance sections are equivalent."
+      }
+    ]
+  },
+  "summary": {
+    "pass": 9,
+    "partial": 1,
+    "fail": 0,
+    "overall": "PARTIAL"
+  }
+}

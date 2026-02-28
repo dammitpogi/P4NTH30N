@@ -229,7 +229,7 @@ To restore original audio configuration:
 SoundVolumeView.exe /SetDefault "Beats Pill\Device\Speakers\Render" all
 
 # Uninstall VB-Cable via Control Panel or:
-# C:\P4NTH30N\VBCable\VBCABLE_Setup_x64.exe -u
+# C:\P4NTHE0N\VBCable\VBCABLE_Setup_x64.exe -u
 ```
 
 ---

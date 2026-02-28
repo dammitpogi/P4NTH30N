@@ -1,0 +1,62 @@
+OpenFixer, execute this deployment pass now.
+
+Mode: Deployment
+Decision IDs: DECISION_052, DECISION_054, DECISION_055
+Current status: HandoffReady -> Deploying
+
+Target service:
+- URL: https://clawdbot-railway-template-production-461f.up.railway.app
+- Railway projectId: 1256dcd2-0929-417a-8f32-39137ffa523b
+- Railway environmentId: 3ba89542-4d69-44cf-9a98-92f0058c30aa (production)
+- Railway serviceId: 2224d9e4-80a7-49d5-b2d4-cf37385fc843
+
+Verified evidence:
+- Deployment edit authority verified via reversible variable upsert/delete.
+- Latest deployment logs show root cause:
+  MissingEnvVarError: Missing env var "OPENAI_API_KEY" referenced at models.providers.openai.apiKey
+- Wrapper up, gateway down; /openclaw returns 502/503.
+
+Mission:
+Restore gateway startup with minimal config correction and controlled restart.
+
+Execution constraints:
+1) Minimal-change remediation only; no broad config rewrites.
+2) Do not store secrets in repository artifacts.
+3) If a new provider key is required and unavailable, use a config-path fix that removes hard dependency on OPENAI_API_KEY rather than fabricating values.
+4) No rollback/reset unless minimal fix fails and you provide evidence first.
+
+Execution steps:
+1. Snapshot current state
+   - Record current variables and latest deployment id.
+   - Record /healthz, /setup, /openclaw status codes.
+
+2. Apply minimal fix
+   - Resolve missing OPENAI_API_KEY dependency by one of:
+     a) safely supplying existing valid secret from approved source, OR
+     b) editing config to remove/replace provider path requiring OPENAI_API_KEY.
+   - Keep all other unrelated settings intact.
+
+3. Restart/redeploy once
+   - Trigger one controlled restart/redeploy.
+
+4. Validate
+   - Probe /healthz, /setup, /openclaw at least 3 times.
+   - Confirm gateway reachable true and no startup MissingEnvVarError.
+   - Confirm zero 5xx in a 10-request spot check on /openclaw.
+
+5. Stop condition
+   - If not recovered after one pass, stop and return evidence + next safest option.
+
+Required artifacts:
+- OP3NF1XER/deployments/JOURNAL_YYYY-MM-DD_DECISION_055_OPENCLAW_CONFIG_FIX.md
+- Decision updates in:
+  - STR4TEG15T/decisions/DECISION_052_OPENCLAW_RAILWAY_RECOVERY.md
+  - STR4TEG15T/decisions/DECISION_054_OPENCLAW_INCIDENT_DISCOVERY_PLAN.md
+  - STR4TEG15T/decisions/DECISION_055_OPENCLAW_CONFIG_REMEDIATION_AND_GATEWAY_RESET.md
+
+Report format:
+1) Actions performed (ordered)
+2) Exact mutations applied
+3) Validation results with status codes
+4) Log evidence before/after
+5) Final state: Recovered / Partial / Not recovered

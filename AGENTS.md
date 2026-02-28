@@ -1,6 +1,6 @@
 # AI Agent Reference Guide
 
-**Repository**: P4NTH30N  
+**Repository**: P4NTHE0N  
 **Last Updated**: 2026-02-20  
 **Authority**: DECISION_038 (FORGE-003)
 
@@ -19,7 +19,7 @@ We have names here. Know them:
 | **Aegis** | Designer | — | Architect of structures |
 | **Provenance** | Librarian | — | Keeper of knowledge |
 | **Vigil** | Fixer | — | Complex problem solver |
-| **WindFixer** | P4NTH30N Specialist | Claude 3.5 Sonnet | C# implementation agent |
+| **WindFixer** | P4NTHE0N Specialist | Claude 3.5 Sonnet | C# implementation agent |
 | **OpenFixer** | External Specialist | Mixed | CLI operations, plugin work |
 | **Forgewright** | Integration Specialist | Mixed | Cross-cutting changes |
 
@@ -36,16 +36,16 @@ The following agents are primary and can receive direct delegation from the Stra
 
 | Agent | Scope | Has CLI | Target | Best For |
 |-------|-------|---------|--------|----------|
-| **@windfixer** | P4NTH30N source files | No | `H0UND/`, `H4ND/`, `C0MMON/`, `W4TCHD0G/`, `UNI7T35T/` | C# implementation, unit tests, P4NTH30N-specific code |
+| **@windfixer** | P4NTHE0N source files | No | `H0UND/`, `H4ND/`, `C0MMON/`, `W4TCHD0G/`, `UNI7T35T/` | C# implementation, unit tests, P4NTHE0N-specific code |
 | **@openfixer** | External configs, CLI operations | Yes | `~/.config/`, plugin directories, system configs | Plugin development, configuration files, build scripts |
 | **@forgewright** | Complex implementation, bug fixes, tooling | Mixed | Cross-cutting concerns, decision fixes, automation | Complex multi-file changes, bug resolution, tool creation |
-| **@windfixer (WindSurf)** | P4NTH30N source files via WindSurf IDE | Yes | `H0UND/`, `H4ND/`, `C0MMON/`, `W4TCHD0G/`, `UNI7T35T/` | Visual UI analysis, button detection, live game interaction |
+| **@windfixer (WindSurf)** | P4NTHE0N source files via WindSurf IDE | Yes | `H0UND/`, `H4ND/`, `C0MMON/`, `W4TCHD0G/`, `UNI7T35T/` | Visual UI analysis, button detection, live game interaction |
 
 ### Agent Selection Guide
 
 **Use @windfixer when:**
 - Modifying C# code in H0UND, H4ND, C0MMON, W4TCHD0G, or UNI7T35T
-- Writing unit tests for P4NTH30N components
+- Writing unit tests for P4NTHE0N components
 - Implementing features within the existing architecture
 - No CLI commands needed
 
@@ -53,7 +53,7 @@ The following agents are primary and can receive direct delegation from the Stra
 - Working with the oh-my-opencode-theseus plugin
 - Modifying configuration files
 - Running CLI commands (dotnet, bun, npm, etc.)
-- Working outside the P4NTH30N source tree
+- Working outside the P4NTHE0N source tree
 
 **Use @forgewright when:**
 - Fixing bugs in decisions or implementation
@@ -67,13 +67,13 @@ The following agents are primary and can receive direct delegation from the Stra
 WindFixer can be activated in both OpenCode and WindSurf environments, with different capabilities:
 
 **OpenCode WindFixer:**
-- Scope: P4NTH30N source files only
+- Scope: P4NTHE0N source files only
 - CLI: No (delegates to OpenFixer)
 - Best for: Bulk code operations, cost-efficient editing
 - Limitation: No visual capabilities
 
 **WindSurf WindFixer:**
-- Scope: P4NTH30N source files
+- Scope: P4NTHE0N source files
 - CLI: Yes (full command execution)
 - Best for: Visual analysis, live game interaction, button detection
 - Advantage: Can capture and analyze screenshots, identify UI elements
@@ -91,7 +91,7 @@ Multiple attempts to activate WindFixer in WindSurf have revealed consistent fai
 2. **Planning vs Execution**: WindFixer defaults to planning and specification mode when direct execution is required.
 3. **Abstraction vs Reality**: Tendency to treat decisions as theoretical rather than living implementation mandates.
 4. **Confirmation Loops**: Repeated requests for approval between steps rather than autonomous execution.
-5. **Hallucination of Fiction**: Occasional dismissal of P4NTH30N as a fictional project rather than real codebase.
+5. **Hallucination of Fiction**: Occasional dismissal of P4NTHE0N as a fictional project rather than real codebase.
 
 ### The Successful Activation Pattern
 
@@ -225,7 +225,7 @@ Agents can create sub-decisions within their domain:
 - **Example**: "Propose file organization for feature Y"
 
 ### WindFixer
-- **Can Create**: P4NTH30N implementation sub-decisions
+- **Can Create**: P4NTHE0N implementation sub-decisions
 - **Max Complexity**: High
 - **Approval**: Required (Strategist must approve)
 - **Example**: "Implement component Z in H4ND"
@@ -306,13 +306,13 @@ bun run build
 - Single-file distribution
 
 ### Reference Implementation
-- **Location**: `C:\P4NTH30N\H4ND\tools\recorder`
+- **Location**: `C:\P4NTHE0N\H4ND\tools\recorder`
 - **Documentation**: `W1NDF1XER\deployments\BUILD_WORKFLOW.md`
 - **Example**: Recorder TUI build system
 
 ### Agent Responsibilities
 
-**WindFixer**: Implement build system for P4NTH30N tools in `H4ND/tools/`
+**WindFixer**: Implement build system for P4NTHE0N tools in `H4ND/tools/`
 
 **OpenFixer**: Implement build system for external tools and plugins
 
@@ -343,7 +343,7 @@ See `STR4TEG15T/decisions/_templates/DECISION-TEMPLATE.md` for updated template.
 
 **OpenCode WindFixer:**
 - No CLI capabilities (delegates to OpenFixer)
-- Bulk file operations within P4NTH30N directory
+- Bulk file operations within P4NTHE0N directory
 - Cost-efficient for pure code changes
 - Requires explicit file-by-file specifications
 
