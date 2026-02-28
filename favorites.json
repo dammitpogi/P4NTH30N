@@ -31749,6 +31749,23 @@
               ]
             }
           ]
+        },
+        {
+          "name": "consult",
+          "children": [
+            {
+              "name": "1.md",
+              "path": "OP3NF1XER\\nate-alma\\specs\\1.md"
+            },
+            {
+              "name": "2.md",
+              "path": "OP3NF1XER\\nate-alma\\specs\\2.md"
+            },
+            {
+              "name": "Alma_Frontend.md",
+              "path": "OP3NF1XER\\nate-alma\\specs\\Alma_Frontend.md"
+            }
+          ]
         }
       ]
     }

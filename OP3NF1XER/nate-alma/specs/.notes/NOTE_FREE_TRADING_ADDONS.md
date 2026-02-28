@@ -1,3 +1,14 @@
+---
+title: Free Trading Add-ons
+kind: note
+status: draft
+last_updated: 2026-02-28
+topics:
+  - trading
+  - add-ons
+  - free-tier
+---
+
 Here are **free (or free-tier) add-ons** that tend to make a trading-help agent *way* more useful than “general web search,” especially on a low-cost personal deployment.
 
 ## High-leverage free additions

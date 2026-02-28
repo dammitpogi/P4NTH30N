@@ -1,3 +1,17 @@
+---
+title: UI Consultation 01 - Wireframe Specifications
+kind: spec
+status: accepted
+owner: Nexus
+last_updated: 2026-02-28
+topics:
+  - ui
+  - wireframes
+  - specifications
+related:
+  - SPEC_UI_LAYOUTS.md
+---
+
 # Executive Summary  
 We will implement a 3‑column, editorial-style interface (TOC | Reader | Agent panel) that strictly emphasizes book-based learning. The left-hand TOC uses a vertical nav, which users naturally scan more than other areas【3†L136-L139】. The center Reader displays richly formatted content (styled via Tailwind’s Typography plugin for clean, readable prose【11†L111-L119】), and the right Agent panel hosts AI learning tools. All components derive from a unified Tailwind-based design system (e.g. [shadcn/ui]) for consistency【7†L19-L22】【27†L98-L102】. We will use semantic colors (charcoal greys + one accent) and consistent spacing/radii across all pages. Every async process (search, highlights saving, agent queries, indexing, etc.) will provide explicit status and results – turning background jobs “into a visible, predictable, and trustworthy experience”【25†L90-L99】【22†L180-L188】. In keeping with UX best practices, no page will ever be blank: each empty state will show a helpful message and a clear “next action” (e.g. “No notes yet. Click 🔖 in the Reader to bookmark a section”)【18†L134-L142】【18†L242-L248】. The deliverables below cover the information architecture, wireframe specifications for each page, interaction flows, component inventory, and a prioritized MVP build plan. We will complete the Library and Reader UI **first** (per governance) before other areas. Success criteria for “Book UI” include: users can navigate the TOC, load sections, highlight/add notes/bookmarks, and see progress – all without dead-ends or silent failures.  
 
@@ -9,7 +23,22 @@ We will implement a 3‑column, editorial-style interface (TOC | Reader | Agent 
 - **Routes & Deep Links:** We use Next.js pages or layouts: e.g. `/library` (or root `/`) for the Library page, `/reader/[slug]` for a section view. Each section heading in a Reader has an HTML anchor (and URL fragment) so deep links work – e.g. `/reader/options-intro#delta-strategy`. This mirrors common TOC behavior【33†L127-L135】 and even allows link sharing of specific subtopics. Other routes: `/notes` for Notes listing, `/playbooks` for the Playbook dashboard, and admin-only pages like `/admin/status`. Placeholders: `/dashboard`, `/journal`, `/alerts` lead to simple “coming soon” pages.  
 
 ## (1) Library Wireframe Spec  
-- **Purpose:** Provide an overview of the book’s sections and allow navigation, search, and quick resumption of reading. Also surface “Today’s focus” and recent notes to encourage continuity.  
+title: UI Consultation 01 - Wireframe Specifications
+kind: spec
+status: accepted
+owner: Nexus
+last_updated: 2026-02-28
+topics:
+  - ui
+  - wireframes
+  - specifications
+related:
+  - SPEC_UI_LAYOUTS.md
+---
+
+Got it — **MongoDB-backed book content over a Tailscale connection** is a totally workable "code-first" approach, and it pairs nicely with App Router **if you design for caching + reindex + offline fallback**.
+
+Here's the cleanest way to think about it.y.  
 - **Layout:** Three columns:
   - **Left Rail (TOC):** Collapsible tree of Parts→Chapters→Sections. Use a shadcn `Sidebar` or vertical nav component. Each section node shows a small progress bar or badge (e.g. “🟢● 60%”) reflecting how much of that section is read【5†L63-L69】. Unread sections are grey, completed are green.  
   - **Header (top of main area):** Contains a search input (`Input` with search icon) to query `/api/book/search`, a prominent “Continue Reading” (`Button primary`) linking to the last-opened section, and a bookmarks list or icon.  

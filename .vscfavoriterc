@@ -1,0 +1,19 @@
+{
+  "resources": [
+    {
+      "filePath": ".windsurf",
+      "group": "Default"
+    },
+    {
+      "filePath": "OP3NF1XER",
+      "group": "Default"
+    },
+    {
+      "filePath": "OP3NF1XER\\nate-alma",
+      "group": "Default"
+    }
+  ],
+  "groups": [
+    "Default"
+  ]
+}

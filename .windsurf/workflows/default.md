@@ -647,7 +647,7 @@ Write-back must include Decision linkage and query-friendly anchors for future r
 
 ### 8c. Workflow Self-Update
 **SELF-LEARNING MANDATORY**: If this workflow needs hardening based on mistakes made:
-- Update `.windsurf/workflows/windfixer.md` in the same pass
+- Update `.windsurf/workflows/default.md` in the same pass
 - Add new anti-patterns to the NEVER DO section with specific mistake context
 - Refine consultation loop parameters based on outcomes
 - Document the mistake that triggered the hardening
