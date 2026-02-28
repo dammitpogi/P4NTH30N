@@ -1,6 +1,6 @@
 using System.Collections.Concurrent;
 
-namespace P4NTH30N.H4ND.Parallel;
+namespace P4NTHE0N.H4ND.Parallel;
 
 /// <summary>
 /// Phase 7: Coordinates shared CDP/session resource access across workers.

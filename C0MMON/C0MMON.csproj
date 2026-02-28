@@ -8,7 +8,7 @@
 	<PropertyGroup>
 		<RepoRoot>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..'))\</RepoRoot>
 		<ReleasesRoot>$(RepoRoot)Releases\</ReleasesRoot>
-		<ReleasePrefix>CANON_P4NTH30N_Rollout_v</ReleasePrefix>
+		<ReleasePrefix>CANON_P4NTHE0N_Rollout_v</ReleasePrefix>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="H.InputSimulator" Version="1.5.0" />

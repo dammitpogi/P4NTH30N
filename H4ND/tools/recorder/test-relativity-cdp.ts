@@ -16,8 +16,8 @@ import { CdpClient, sleep } from './cdp-client';
 import type { CanvasBounds, RelativeCoordinate } from './types';
 import { mkdirSync, existsSync } from 'fs';
 
-const RESULTS_DIR = 'C:\\P4NTH30N\\H4ND\\tools\\recorder\\sessions\\relativity-test';
-const GRID_IMAGE = 'file:///C:/P4NTH30N/STR4TEG15T/screen_coords_grid.png';
+const RESULTS_DIR = 'C:\\P4NTHE0N\\H4ND\\tools\\recorder\\sessions\\relativity-test';
+const GRID_IMAGE = 'file:///C:/P4NTHE0N/STR4TEG15T/screen_coords_grid.png';
 
 // Test viewports
 const VIEWPORTS = [

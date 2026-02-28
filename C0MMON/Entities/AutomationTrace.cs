@@ -1,7 +1,7 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace P4NTH30N.C0MMON.Entities;
+namespace P4NTHE0N.C0MMON.Entities;
 
 /// <summary>
 /// DECISION_026: Entity representing a CDP automation trace for debugging.

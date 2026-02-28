@@ -1,9 +1,9 @@
 using System.Text.RegularExpressions;
 
-namespace P4NTH30N.SWE.Validation;
+namespace P4NTHE0N.SWE.Validation;
 
 /// <summary>
-/// Validates generated C# code against P4NTH30N standards.
+/// Validates generated C# code against P4NTHE0N standards.
 /// Enforces size limits, syntax rules, naming conventions, and C# 12 feature usage.
 /// </summary>
 public sealed class CodeGenerationValidator
@@ -222,11 +222,11 @@ public sealed class CodeGenerationValidator
 	/// </summary>
 	public static void ValidateStyle(string sourceCode, CodeValidationResult result)
 	{
-		// Check for var usage (P4NTH30N prefers explicit types)
+		// Check for var usage (P4NTHE0N prefers explicit types)
 		MatchCollection varUsages = Regex.Matches(sourceCode, @"\bvar\s+\w+\s*=");
 		if (varUsages.Count > 0)
 		{
-			result.AddInfo($"Found {varUsages.Count} 'var' usage(s) - P4NTH30N prefers explicit types");
+			result.AddInfo($"Found {varUsages.Count} 'var' usage(s) - P4NTHE0N prefers explicit types");
 		}
 
 		// Check using directives are at top

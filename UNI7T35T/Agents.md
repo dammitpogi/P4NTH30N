@@ -2,7 +2,7 @@
 
 ## Responsibility
 
-Unit testing project for P4NTH30N. Contains automated tests for validating core functionality, preventing regressions, and ensuring code quality.
+Unit testing project for P4NTHE0N. Contains automated tests for validating core functionality, preventing regressions, and ensuring code quality.
 
 ## When Working Here
 

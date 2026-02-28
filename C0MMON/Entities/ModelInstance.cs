@@ -1,6 +1,6 @@
 using System;
 
-namespace P4NTH30N.C0MMON.Entities;
+namespace P4NTHE0N.C0MMON.Entities;
 
 /// <summary>
 /// FOUREYES-013: C0MMON-side model instance entity for cross-project use.

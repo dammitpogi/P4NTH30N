@@ -8,7 +8,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace P4NTH30N.C0MMON.Checkpoint;
+namespace P4NTHE0N.C0MMON.Checkpoint;
 
 /// <summary>
 /// Hybrid checkpoint manager with file + MongoDB storage.

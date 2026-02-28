@@ -3,9 +3,9 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using P4NTH30N.C0MMON.Entities;
+using P4NTHE0N.C0MMON.Entities;
 
-namespace P4NTH30N.H4ND.Vision;
+namespace P4NTHE0N.H4ND.Vision;
 
 /// <summary>
 /// FEAT-036: Tracks vision command execution lifecycle.

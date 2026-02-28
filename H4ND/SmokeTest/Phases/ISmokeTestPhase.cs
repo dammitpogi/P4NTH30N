@@ -1,4 +1,4 @@
-namespace P4NTH30N.H4ND.SmokeTest.Phases;
+namespace P4NTHE0N.H4ND.SmokeTest.Phases;
 
 /// <summary>
 /// ARCH-099: Interface for a smoke test phase.

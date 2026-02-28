@@ -1,10 +1,10 @@
 using System.Diagnostics;
 
-namespace P4NTH30N.H4ND.Services;
+namespace P4NTHE0N.H4ND.Services;
 
 /// <summary>
 /// AUTO-056-005: Configuration POCO for Chrome CDP lifecycle management.
-/// Bound from appsettings.json P4NTH30N:H4ND:CdpLifecycle section.
+/// Bound from appsettings.json P4NTHE0N:H4ND:CdpLifecycle section.
 /// </summary>
 public sealed class CdpLifecycleConfig
 {

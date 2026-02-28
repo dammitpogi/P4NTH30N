@@ -5,11 +5,11 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using P4NTH30N.C0MMON.Entities;
-using P4NTH30N.C0MMON.Interfaces;
-using P4NTH30N.H4ND.Vision;
+using P4NTHE0N.C0MMON.Entities;
+using P4NTHE0N.C0MMON.Interfaces;
+using P4NTHE0N.H4ND.Vision;
 
-namespace P4NTH30N.H4ND;
+namespace P4NTHE0N.H4ND;
 
 /// <summary>
 /// FOUREYES-015: H4ND vision command listener implementation.

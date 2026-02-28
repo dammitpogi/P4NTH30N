@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using P4NTH30N.H0UND.Domain;
-using P4NTH30N.W4TCHD0G.Models;
+using P4NTHE0N.H0UND.Domain;
+using P4NTHE0N.W4TCHD0G.Models;
 
-namespace P4NTH30N.H0UND.Services;
+namespace P4NTHE0N.H0UND.Services;
 
 public class VisionDecisionEngine
 {

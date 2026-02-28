@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using MongoDB.Bson;
 
-namespace P4NTH30N.H4ND.Infrastructure.Logging;
+namespace P4NTHE0N.H4ND.Infrastructure.Logging;
 
 /// <summary>
 /// DECISION_110 Phase 2: Structured logger interface for all 4 log sinks.

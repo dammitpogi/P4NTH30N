@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace P4NTH30N.C0MMON.Services.BugHandling;
+namespace P4NTHE0N.C0MMON.Services.BugHandling;
 
 /// <summary>
 /// FOUREYES-024-B: Triage dashboard for human review.

@@ -1,4 +1,4 @@
-namespace P4NTH30N.H4ND.Navigation.ErrorHandling;
+namespace P4NTHE0N.H4ND.Navigation.ErrorHandling;
 
 /// <summary>
 /// ARCH-098: Error handler interface for step execution failures.

@@ -1,13 +1,13 @@
 using System.Text.Json;
-using P4NTH30N.H4ND.Navigation;
-using P4NTH30N.H4ND.Navigation.Retry;
-using P4NTH30N.H4ND.Navigation.Strategies;
-using P4NTH30N.H4ND.Navigation.Verification;
-using P4NTH30N.H4ND.Navigation.ErrorHandling;
-using P4NTH30N.H4ND.Infrastructure;
+using P4NTHE0N.H4ND.Navigation;
+using P4NTHE0N.H4ND.Navigation.Retry;
+using P4NTHE0N.H4ND.Navigation.Strategies;
+using P4NTHE0N.H4ND.Navigation.Verification;
+using P4NTHE0N.H4ND.Navigation.ErrorHandling;
+using P4NTHE0N.H4ND.Infrastructure;
 using UNI7T35T.Mocks;
 
-namespace P4NTH30N.UNI7T35T.Navigation;
+namespace P4NTHE0N.UNI7T35T.Navigation;
 
 /// <summary>
 /// ARCH-098: Unit tests for NavigationMap, NavigationMapLoader, StepExecutor, strategies, and retry.
@@ -139,7 +139,7 @@ public static class NavigationMapTests
 	private static bool NAV_005_LoaderCaches()
 	{
 		// Use the actual recorder directory
-		var loader = new NavigationMapLoader(@"C:\P4NTH30N\H4ND\tools\recorder");
+		var loader = new NavigationMapLoader(@"C:\P4NTHE0N\H4ND\tools\recorder");
 		var map1 = loader.Load("firekirin");
 		var map2 = loader.Load("firekirin");
 
@@ -152,7 +152,7 @@ public static class NavigationMapTests
 	// ── NAV-006: Loader missing platform ────────────────────────────────
 	private static bool NAV_006_LoaderMissing()
 	{
-		var loader = new NavigationMapLoader(@"C:\P4NTH30N\H4ND\tools\recorder");
+		var loader = new NavigationMapLoader(@"C:\P4NTHE0N\H4ND\tools\recorder");
 		var map = loader.Load("nonexistent_platform_xyz");
 		// Should return null (falls through to generic step-config.json which exists)
 		// Actually the generic exists, so it will load. Test with a truly empty dir instead.

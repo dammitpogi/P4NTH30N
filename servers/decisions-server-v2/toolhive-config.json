@@ -1,6 +1,6 @@
 {
   "id": "decisions-server-v2",
-  "name": "P4NTH30N Decisions Server v2",
+  "name": "P4NTHE0N Decisions Server v2",
   "description": "MCP server for decision management and querying",
   "transport": "http",
   "connection": {

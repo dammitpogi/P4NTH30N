@@ -1,11 +1,11 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using P4NTH30N.C0MMON.Infrastructure.Cdp;
-using P4NTH30N.C0MMON.Entities;
-using P4NTH30N.H4ND.Infrastructure;
+using P4NTHE0N.C0MMON.Infrastructure.Cdp;
+using P4NTHE0N.C0MMON.Entities;
+using P4NTHE0N.H4ND.Infrastructure;
 
-namespace P4NTH30N.UNI7T35T.TestHarness;
+namespace P4NTHE0N.UNI7T35T.TestHarness;
 
 /// <summary>
 /// TEST-035: Validates login flow for FireKirin and OrionStars platforms.

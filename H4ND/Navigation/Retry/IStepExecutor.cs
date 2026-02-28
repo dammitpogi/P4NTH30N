@@ -1,4 +1,4 @@
-namespace P4NTH30N.H4ND.Navigation.Retry;
+namespace P4NTHE0N.H4ND.Navigation.Retry;
 
 /// <summary>
 /// ARCH-098: Abstraction for step execution — enables Decorator pattern for retry.

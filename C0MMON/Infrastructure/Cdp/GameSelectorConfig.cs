@@ -1,8 +1,8 @@
-namespace P4NTH30N.C0MMON.Infrastructure.Cdp;
+namespace P4NTHE0N.C0MMON.Infrastructure.Cdp;
 
 /// <summary>
 /// OPS_012: Configuration-driven jackpot selectors per game.
-/// Bound from appsettings.json P4NTH30N:H4ND:GameSelectors section.
+/// Bound from appsettings.json P4NTHE0N:H4ND:GameSelectors section.
 /// Supports per-game page readiness checks and jackpot tier probe expressions.
 /// </summary>
 public sealed class GameSelectorConfig

@@ -1,4 +1,4 @@
-namespace P4NTH30N.H4ND.SmokeTest.Reporting;
+namespace P4NTHE0N.H4ND.SmokeTest.Reporting;
 
 /// <summary>
 /// ARCH-099: Human-readable console output with progress indicators.
@@ -13,7 +13,7 @@ public sealed class ConsoleReporter : ISmokeTestReporter
 	{
 		Console.WriteLine();
 		Console.WriteLine(Bar);
-		Console.WriteLine("  P4NTH30N SMOKE TEST - FireKirin Login Validation");
+		Console.WriteLine("  P4NTHE0N SMOKE TEST - FireKirin Login Validation");
 		Console.WriteLine(Bar);
 		Console.WriteLine($"[{DateTime.Now:HH:mm:ss}] TEST STARTED");
 		Console.WriteLine($"[{DateTime.Now:HH:mm:ss}] Target: {config.Platform}");

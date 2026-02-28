@@ -1,9 +1,9 @@
 using System.Text.Json;
 
-namespace P4NTH30N.C0MMON.Infrastructure.Configuration;
+namespace P4NTHE0N.C0MMON.Infrastructure.Configuration;
 
 /// <summary>
-/// Extension methods for loading and binding P4NTH30N configuration from JSON files
+/// Extension methods for loading and binding P4NTHE0N configuration from JSON files
 /// and environment variables. Provides a unified configuration loading pipeline
 /// without depending on Microsoft.Extensions.Configuration (keeping C0MMON lightweight).
 /// </summary>
@@ -16,26 +16,26 @@ namespace P4NTH30N.C0MMON.Infrastructure.Configuration;
 public static class ConfigurationExtensions
 {
 	/// <summary>
-	/// Loads P4NTH30N configuration from JSON files with environment-specific overrides.
+	/// Loads P4NTHE0N configuration from JSON files with environment-specific overrides.
 	/// Resolution order (highest priority last):
 	/// 1. appsettings.json
 	/// 2. appsettings.{environment}.json
-	/// 3. Environment variables (prefixed P4NTH30N__)
+	/// 3. Environment variables (prefixed P4NTHE0N__)
 	/// </summary>
 	/// <param name="basePath">Directory containing appsettings.json files.</param>
 	/// <param name="environment">Environment name: Development, Staging, or Production.</param>
-	/// <returns>Fully resolved <see cref="P4NTH30NOptions"/>.</returns>
-	public static P4NTH30NOptions LoadConfiguration(string? basePath = null, string? environment = null)
+	/// <returns>Fully resolved <see cref="P4NTHE0NOptions"/>.</returns>
+	public static P4NTHE0NOptions LoadConfiguration(string? basePath = null, string? environment = null)
 	{
 		basePath ??= AppContext.BaseDirectory;
 		environment ??= ResolveEnvironment();
 
 		// Step 1: Load base appsettings.json
-		P4NTH30NOptions options = new();
+		P4NTHE0NOptions options = new();
 		string basefile = Path.Combine(basePath, "appsettings.json");
 		if (File.Exists(basefile))
 		{
-			P4NTH30NOptions? baseOptions = LoadFromJsonFile(basefile);
+			P4NTHE0NOptions? baseOptions = LoadFromJsonFile(basefile);
 			if (baseOptions is not null)
 				options = baseOptions;
 		}
@@ -44,7 +44,7 @@ public static class ConfigurationExtensions
 		string envFile = Path.Combine(basePath, $"appsettings.{environment}.json");
 		if (File.Exists(envFile))
 		{
-			P4NTH30NOptions? envOptions = LoadFromJsonFile(envFile);
+			P4NTHE0NOptions? envOptions = LoadFromJsonFile(envFile);
 			if (envOptions is not null)
 				MergeOptions(options, envOptions);
 		}
@@ -57,13 +57,13 @@ public static class ConfigurationExtensions
 	}
 
 	/// <summary>
-	/// Resolves the current environment from the P4NTH30N_ENVIRONMENT variable.
+	/// Resolves the current environment from the P4NTHE0N_ENVIRONMENT variable.
 	/// Defaults to "Development" if not set.
 	/// </summary>
 	public static string ResolveEnvironment()
 	{
 		string? env =
-			Environment.GetEnvironmentVariable("P4NTH30N_ENVIRONMENT")
+			Environment.GetEnvironmentVariable("P4NTHE0N_ENVIRONMENT")
 			?? Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT")
 			?? Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
@@ -71,16 +71,16 @@ public static class ConfigurationExtensions
 	}
 
 	/// <summary>
-	/// Loads and deserializes the P4NTH30N section from a JSON settings file.
+	/// Loads and deserializes the P4NTHE0N section from a JSON settings file.
 	/// </summary>
-	private static P4NTH30NOptions? LoadFromJsonFile(string filePath)
+	private static P4NTHE0NOptions? LoadFromJsonFile(string filePath)
 	{
 		try
 		{
 			string json = File.ReadAllText(filePath);
 			using JsonDocument doc = JsonDocument.Parse(json, new JsonDocumentOptions { CommentHandling = JsonCommentHandling.Skip, AllowTrailingCommas = true });
 
-			if (doc.RootElement.TryGetProperty("P4NTH30N", out JsonElement p4Section))
+			if (doc.RootElement.TryGetProperty("P4NTHE0N", out JsonElement p4Section))
 			{
 				string sectionJson = p4Section.GetRawText();
 				JsonSerializerOptions jsonOptions = new()
@@ -89,7 +89,7 @@ public static class ConfigurationExtensions
 					ReadCommentHandling = JsonCommentHandling.Skip,
 					AllowTrailingCommas = true,
 				};
-				return JsonSerializer.Deserialize<P4NTH30NOptions>(sectionJson, jsonOptions);
+				return JsonSerializer.Deserialize<P4NTHE0NOptions>(sectionJson, jsonOptions);
 			}
 
 			return null;
@@ -105,7 +105,7 @@ public static class ConfigurationExtensions
 	/// Merges non-null/non-default values from source into target.
 	/// Source values take precedence (environment overrides base).
 	/// </summary>
-	private static void MergeOptions(P4NTH30NOptions target, P4NTH30NOptions source)
+	private static void MergeOptions(P4NTHE0NOptions target, P4NTHE0NOptions source)
 	{
 		// Database overrides
 		if (!string.IsNullOrWhiteSpace(source.Database.ConnectionString) && source.Database.ConnectionString != new DatabaseOptions().ConnectionString)
@@ -130,36 +130,36 @@ public static class ConfigurationExtensions
 
 	/// <summary>
 	/// Applies environment variable overrides. Variables follow the pattern:
-	/// P4NTH30N__Section__Key (double underscore = nesting separator).
+	/// P4NTHE0N__Section__Key (double underscore = nesting separator).
 	/// </summary>
-	private static void ApplyEnvironmentVariables(P4NTH30NOptions options)
+	private static void ApplyEnvironmentVariables(P4NTHE0NOptions options)
 	{
 		// Database
-		string? connStr = Environment.GetEnvironmentVariable("P4NTH30N__Database__ConnectionString") ?? Environment.GetEnvironmentVariable("P4NTH30N_MONGODB_URI");
+		string? connStr = Environment.GetEnvironmentVariable("P4NTHE0N__Database__ConnectionString") ?? Environment.GetEnvironmentVariable("P4NTHE0N_MONGODB_URI");
 		if (!string.IsNullOrWhiteSpace(connStr))
 			options.Database.ConnectionString = connStr;
 
-		string? dbName = Environment.GetEnvironmentVariable("P4NTH30N__Database__DatabaseName") ?? Environment.GetEnvironmentVariable("P4NTH30N_MONGODB_DB");
+		string? dbName = Environment.GetEnvironmentVariable("P4NTHE0N__Database__DatabaseName") ?? Environment.GetEnvironmentVariable("P4NTHE0N_MONGODB_DB");
 		if (!string.IsNullOrWhiteSpace(dbName))
 			options.Database.DatabaseName = dbName;
 
 		// Security
-		string? masterKeyPath = Environment.GetEnvironmentVariable("P4NTH30N__Security__MasterKeyPath");
+		string? masterKeyPath = Environment.GetEnvironmentVariable("P4NTHE0N__Security__MasterKeyPath");
 		if (!string.IsNullOrWhiteSpace(masterKeyPath))
 			options.Security.MasterKeyPath = masterKeyPath;
 
 		// Safety
-		string? dailyLimit = Environment.GetEnvironmentVariable("P4NTH30N__Safety__DailyLossLimit");
+		string? dailyLimit = Environment.GetEnvironmentVariable("P4NTHE0N__Safety__DailyLossLimit");
 		if (!string.IsNullOrWhiteSpace(dailyLimit) && decimal.TryParse(dailyLimit, out decimal limit))
 			options.Safety.DailyLossLimit = limit;
 
 		// H0UND polling
-		string? pollInterval = Environment.GetEnvironmentVariable("P4NTH30N__H0UND__Polling__IntervalSeconds");
+		string? pollInterval = Environment.GetEnvironmentVariable("P4NTHE0N__H0UND__Polling__IntervalSeconds");
 		if (!string.IsNullOrWhiteSpace(pollInterval) && int.TryParse(pollInterval, out int interval))
 			options.H0UND.Polling.IntervalSeconds = interval;
 
 		// H4ND headless
-		string? headless = Environment.GetEnvironmentVariable("P4NTH30N__H4ND__Selenium__Headless");
+		string? headless = Environment.GetEnvironmentVariable("P4NTHE0N__H4ND__Selenium__Headless");
 		if (!string.IsNullOrWhiteSpace(headless) && bool.TryParse(headless, out bool isHeadless))
 			options.H4ND.Selenium.Headless = isHeadless;
 	}

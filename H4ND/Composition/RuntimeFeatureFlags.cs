@@ -1,4 +1,4 @@
-namespace P4NTH30N.H4ND.Composition;
+namespace P4NTHE0N.H4ND.Composition;
 
 public sealed class RuntimeFeatureFlags
 {

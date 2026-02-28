@@ -1,4 +1,4 @@
-namespace P4NTH30N.C0MMON.Infrastructure.EventBus;
+namespace P4NTHE0N.C0MMON.Infrastructure.EventBus;
 
 /// <summary>
 /// TECH-FE-015: Phase 1 event bus interface for FourEyes-H4ND integration.

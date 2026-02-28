@@ -1,8 +1,8 @@
-using P4NTH30N.C0MMON.Infrastructure.Cdp;
-using P4NTH30N.H4ND.Navigation;
-using P4NTH30N.H4ND.Navigation.Retry;
+using P4NTHE0N.C0MMON.Infrastructure.Cdp;
+using P4NTHE0N.H4ND.Navigation;
+using P4NTHE0N.H4ND.Navigation.Retry;
 
-namespace P4NTH30N.H4ND.SmokeTest.Phases;
+namespace P4NTHE0N.H4ND.SmokeTest.Phases;
 
 /// <summary>
 /// ARCH-099: Phase 3 — Execute Login phase from NavigationMap with 6-strategy Canvas typing.
@@ -100,8 +100,8 @@ public sealed class LoginPhase : ISmokeTestPhase
 			Console.WriteLine("[SmokeTest] No NavigationMap found — falling back to CdpGameActions login");
 			bool loginOk = _config.Platform.ToLowerInvariant() switch
 			{
-				"firekirin" => await P4NTH30N.H4ND.Infrastructure.CdpGameActions.LoginFireKirinAsync(cdp, username, password, ct),
-				"orionstars" => await P4NTH30N.H4ND.Infrastructure.CdpGameActions.LoginOrionStarsAsync(cdp, username, password, ct),
+				"firekirin" => await P4NTHE0N.H4ND.Infrastructure.CdpGameActions.LoginFireKirinAsync(cdp, username, password, ct),
+				"orionstars" => await P4NTHE0N.H4ND.Infrastructure.CdpGameActions.LoginOrionStarsAsync(cdp, username, password, ct),
 				_ => false,
 			};
 

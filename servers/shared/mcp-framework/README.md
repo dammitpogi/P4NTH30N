@@ -1,6 +1,6 @@
 # @p4nth30n/mcp-framework
 
-Shared foundation for P4NTH30N MCP v2 servers.
+Shared foundation for P4NTHE0N MCP v2 servers.
 
 ## Week 1 Scope (DECISION_096)
 

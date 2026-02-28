@@ -1,7 +1,7 @@
 using System.Collections.Concurrent;
 using System.Diagnostics;
 
-namespace P4NTH30N.SWE.Monitoring;
+namespace P4NTHE0N.SWE.Monitoring;
 
 /// <summary>
 /// Performance monitoring for SWE-1.5 workflows.

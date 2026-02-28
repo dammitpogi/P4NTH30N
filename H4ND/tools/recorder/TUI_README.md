@@ -1,4 +1,4 @@
-# P4NTH30N Recorder TUI — Comprehensive Operation Guide
+# P4NTHE0N Recorder TUI — Comprehensive Operation Guide
 
 **Version**: 1.1  
 **Created**: 2026-02-21  
@@ -39,7 +39,7 @@
 
 ## What Is This?
 
-The **P4NTH30N Recorder TUI** is a terminal-based macro editor for creating, editing, and testing navigation workflows for FireKirin and OrionStars game platforms. It provides a visual, interactive interface for building step-by-step automation sequences with precise coordinate control, breakpoints, and live execution preview.
+The **P4NTHE0N Recorder TUI** is a terminal-based macro editor for creating, editing, and testing navigation workflows for FireKirin and OrionStars game platforms. It provides a visual, interactive interface for building step-by-step automation sequences with precise coordinate control, breakpoints, and live execution preview.
 
 Think of it as a **macro recorder meets debugger** — you define each action (click, type, wait), set verification gates, add breakpoints, and run the entire sequence step-by-step while watching it execute in real-time.
 
@@ -156,14 +156,14 @@ Each view has its own:
 ### Launch
 
 ```bash
-cd C:\P4NTH30N\H4ND\tools\recorder
+cd C:\P4NTHE0N\H4ND\tools\recorder
 bun run recorder-tui.ts
 ```
 
 You'll see:
 
 ```
-┌─ P4NTH30N RECORDER v1.0  FireKirin [UNSAVED]  step-list ────────────────┐
+┌─ P4NTHE0N RECORDER v1.0  FireKirin [UNSAVED]  step-list ────────────────┐
 │                                                                          │
 │ ┌─ Steps ──────────────────────────────────────────────────────────────┐│
 │ │  ▸  1 [Login] navigate (diag)                                       ││
@@ -196,10 +196,10 @@ You'll see:
 ### Header Bar
 
 ```
-┌─ P4NTH30N RECORDER v1.0  FireKirin [UNSAVED]  step-list ────────────────┐
+┌─ P4NTHE0N RECORDER v1.0  FireKirin [UNSAVED]  step-list ────────────────┐
 ```
 
-- **Title**: Always shows "P4NTH30N RECORDER v1.0"
+- **Title**: Always shows "P4NTHE0N RECORDER v1.0"
 - **Platform**: Current platform (FireKirin or OrionStars)
 - **[UNSAVED]**: Appears when you have unsaved changes
 - **View mode**: Current view (step-list, step-edit, run-mode, etc.)
@@ -902,7 +902,7 @@ This helps you remember **why** you took a screenshot when reviewing the workflo
 **Step 1: Start with an empty config**
 
 ```bash
-cd C:\P4NTH30N\H4ND\tools\recorder
+cd C:\P4NTHE0N\H4ND\tools\recorder
 cp step-config.json step-config-firekirin-backup.json
 # Edit step-config.json, set steps: []
 bun run recorder-tui.ts
@@ -1416,7 +1416,7 @@ The TUI is a **visual editor** for workflows. Actual execution happens via **T00
 ```bash
 # From TUI, save your workflow
 # Then run via T00L5ET:
-cd C:\P4NTH30N\T00L5ET\bin\Debug\net10.0-windows7.0
+cd C:\P4NTHE0N\T00L5ET\bin\Debug\net10.0-windows7.0
 .\T00L5ET.exe login --platform=firekirin --username=JustinHu21 --password=abc123
 ```
 
@@ -1491,7 +1491,7 @@ If you want to extend the TUI:
 
 ## Conclusion
 
-The P4NTH30N Recorder TUI transforms workflow recording from a tedious, error-prone process into a **visual, interactive, debuggable experience**.
+The P4NTHE0N Recorder TUI transforms workflow recording from a tedious, error-prone process into a **visual, interactive, debuggable experience**.
 
 ### Key Takeaways
 
@@ -1518,12 +1518,12 @@ The P4NTH30N Recorder TUI transforms workflow recording from a tedious, error-pr
 
 ### Support
 
-- **Issues**: File in P4NTH30N repo under `H4ND/tools/recorder/`
+- **Issues**: File in P4NTHE0N repo under `H4ND/tools/recorder/`
 - **Questions**: Ask WindFixer or Nexus
 - **Documentation**: This file + `OPERATOR_MANUAL.md` + `QUICK_START.md`
 
 ---
 
 **Built by WindFixer for Nexus**  
-**DECISION_078 — P4NTH30N Recorder TUI**  
+**DECISION_078 — P4NTHE0N Recorder TUI**  
 **v1.0: 2026-02-21 | v1.1: 2026-02-22**

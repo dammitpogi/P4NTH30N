@@ -1,7 +1,7 @@
 using System.Collections.Concurrent;
-using P4NTH30N.W4TCHD0G.Models;
+using P4NTHE0N.W4TCHD0G.Models;
 
-namespace P4NTH30N.W4TCHD0G.Stream;
+namespace P4NTHE0N.W4TCHD0G.Stream;
 
 /// <summary>
 /// Thread-safe circular frame buffer for storing decoded video frames.

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using P4NTH30N.C0MMON.Entities;
-using P4NTH30N.C0MMON.Interfaces;
+using P4NTHE0N.C0MMON.Entities;
+using P4NTHE0N.C0MMON.Interfaces;
 
 namespace UNI7T35T.Mocks;
 

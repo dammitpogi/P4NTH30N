@@ -1,10 +1,10 @@
 using System.Diagnostics;
-using P4NTH30N.H4ND.Navigation.ErrorHandling;
-using P4NTH30N.H4ND.Navigation.Retry;
-using P4NTH30N.H4ND.Navigation.Strategies;
-using P4NTH30N.H4ND.Navigation.Verification;
+using P4NTHE0N.H4ND.Navigation.ErrorHandling;
+using P4NTHE0N.H4ND.Navigation.Retry;
+using P4NTHE0N.H4ND.Navigation.Strategies;
+using P4NTHE0N.H4ND.Navigation.Verification;
 
-namespace P4NTH30N.H4ND.Navigation;
+namespace P4NTHE0N.H4ND.Navigation;
 
 /// <summary>
 /// ARCH-098: Core step executor — resolves strategy by action type, runs verification gates,

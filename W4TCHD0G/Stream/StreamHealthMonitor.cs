@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace P4NTH30N.W4TCHD0G.Stream;
+namespace P4NTHE0N.W4TCHD0G.Stream;
 
 /// <summary>
 /// Monitors RTMP stream health metrics: latency, frame rate, drop rate, and connection status.

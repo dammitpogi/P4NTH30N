@@ -1,6 +1,6 @@
 using System.Collections.Concurrent;
 
-namespace P4NTH30N.W4TCHD0G.Input;
+namespace P4NTHE0N.W4TCHD0G.Input;
 
 /// <summary>
 /// Thread-safe FIFO queue for sequentially executing input actions on the VM.

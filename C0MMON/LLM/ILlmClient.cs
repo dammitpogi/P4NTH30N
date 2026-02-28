@@ -1,4 +1,4 @@
-namespace P4NTH30N.C0MMON.LLM;
+namespace P4NTHE0N.C0MMON.LLM;
 
 /// <summary>
 /// Contract for LLM inference providers. Abstracts over OpenAI API, local LM Studio,

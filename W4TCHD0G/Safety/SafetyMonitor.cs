@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace P4NTH30N.W4TCHD0G.Safety;
+namespace P4NTHE0N.W4TCHD0G.Safety;
 
 /// <summary>
 /// Production safety monitor that tracks spending, losses, and anomalies
@@ -26,7 +26,7 @@ public sealed class SafetyMonitor : ISafetyMonitor
 	/// Override code required to deactivate the kill switch.
 	/// Changed via configuration; default is a memorable string.
 	/// </summary>
-	private const string DefaultOverrideCode = "CONFIRM-RESUME-P4NTH30N";
+	private const string DefaultOverrideCode = "CONFIRM-RESUME-P4NTHE0N";
 
 	private readonly decimal _dailySpendLimit;
 	private readonly decimal _dailyLossLimit;

@@ -1,6 +1,6 @@
 using System.Collections.Concurrent;
 
-namespace P4NTH30N.C0MMON.Infrastructure.EventBus;
+namespace P4NTHE0N.C0MMON.Infrastructure.EventBus;
 
 /// <summary>
 /// TECH-FE-015: In-memory event bus for single-VM deployment.

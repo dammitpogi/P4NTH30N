@@ -1,4 +1,4 @@
-namespace P4NTH30N.W4TCHD0G.Input;
+namespace P4NTHE0N.W4TCHD0G.Input;
 
 /// <summary>
 /// Translates coordinates between host screen space, VM screen space,

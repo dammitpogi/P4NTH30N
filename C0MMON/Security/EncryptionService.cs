@@ -2,7 +2,7 @@ using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace P4NTH30N.C0MMON.Security;
+namespace P4NTHE0N.C0MMON.Security;
 
 /// <summary>
 /// AES-256-GCM authenticated encryption service for credential protection.

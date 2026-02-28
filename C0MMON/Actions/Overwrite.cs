@@ -2,7 +2,7 @@ using System;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
-namespace P4NTH30N.C0MMON;
+namespace P4NTHE0N.C0MMON;
 
 public static partial class Actions
 {
@@ -33,7 +33,7 @@ public static partial class Actions
 		Mouse.Click(540, 70);
 
 		Screen.WaitForColor(new Point(215, 65), Color.FromArgb(0, 120, 215));
-		Keyboard.Send("C:\\OneDrive\\P4NTH30N\\RUL3S").Wait(400).Enter().Wait(400).Enter();
+		Keyboard.Send("C:\\OneDrive\\P4NTHE0N\\RUL3S").Wait(400).Enter().Wait(400).Enter();
 
 		Mouse.Move(605, 200);
 		Screen.WaitForColor(new Point(605, 185), Color.FromArgb(35, 104, 212));

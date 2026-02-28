@@ -1,6 +1,6 @@
 using System;
 
-namespace P4NTH30N.W4TCHD0G.Models;
+namespace P4NTHE0N.W4TCHD0G.Models;
 
 public class VisionFrame
 {

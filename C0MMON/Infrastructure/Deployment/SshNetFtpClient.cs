@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using P4NTH30N.C0MMON.Interfaces;
+using P4NTHE0N.C0MMON.Interfaces;
 using Renci.SshNet;
 using Renci.SshNet.Sftp;
 
-namespace P4NTH30N.C0MMON.Infrastructure.Deployment;
+namespace P4NTHE0N.C0MMON.Infrastructure.Deployment;
 
 /// <summary>
 /// SSH.NET-based implementation for SFTP operations.

@@ -3,7 +3,7 @@ UpdateOn: 2026-02-23T12:02 AM
 
 ## Responsibility
 
-H0UND is the analytics and polling engine for P4NTH30N ("The Brain"). It monitors game platform balances (FireKirin, OrionStars) via HTTP/WebSocket polling, calculates DPD (Dollars Per Day) for jackpot forecasting, generates automation signals when thresholds are met, and provides comprehensive system health monitoring with circuit breakers and adaptive throttling.
+H0UND is the analytics and polling engine for P4NTHE0N ("The Brain"). It monitors game platform balances (FireKirin, OrionStars) via HTTP/WebSocket polling, calculates DPD (Dollars Per Day) for jackpot forecasting, generates automation signals when thresholds are met, and provides comprehensive system health monitoring with circuit breakers and adaptive throttling.
 
 **Core Functions:**
 - **Polling**: Continuous balance monitoring from game platforms

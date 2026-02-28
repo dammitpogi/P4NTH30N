@@ -1,4 +1,4 @@
-# P4NTH30N MCP Servers v2
+# P4NTHE0N MCP Servers v2
 
 ToolHive-native MCP servers for decisions, MongoDB operations, and RAG search.
 

@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
-namespace P4NTH30N.H4ND.Domains.Common;
+namespace P4NTHE0N.H4ND.Domains.Common;
 
 /// <summary>
 /// DECISION_110 Phase 1: Fail-fast invariant guard.

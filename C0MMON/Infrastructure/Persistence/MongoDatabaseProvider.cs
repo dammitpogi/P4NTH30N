@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace P4NTH30N.C0MMON.Infrastructure.Persistence;
+namespace P4NTHE0N.C0MMON.Infrastructure.Persistence;
 
 public interface IMongoDatabaseProvider
 {

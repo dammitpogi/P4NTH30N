@@ -21,6 +21,11 @@
 		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.0" />
 	</ItemGroup>
 	<ItemGroup>
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+			<_Parameter1>UNI7T35T</_Parameter1>
+		</AssemblyAttribute>
+	</ItemGroup>
+	<ItemGroup>
 		<None Update="..\appsettings.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 			<Link>appsettings.json</Link>

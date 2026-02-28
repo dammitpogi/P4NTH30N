@@ -13,7 +13,7 @@ export class SessionManager {
   static async initialize(
     platform: 'firekirin' | 'orionstars',
     decision: string,
-    baseDir: string = 'C:\\P4NTH30N\\DECISION_077\\sessions'
+    baseDir: string = 'C:\\P4NTHE0N\\DECISION_077\\sessions'
   ): Promise<SessionManager> {
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
     const sessionId = `${platform}-${timestamp}`;

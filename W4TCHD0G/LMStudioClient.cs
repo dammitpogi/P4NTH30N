@@ -5,9 +5,9 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using P4NTH30N.W4TCHD0G.Models;
+using P4NTHE0N.W4TCHD0G.Models;
 
-namespace P4NTH30N.W4TCHD0G;
+namespace P4NTHE0N.W4TCHD0G;
 
 public class LMStudioClient : ILMStudioClient
 {

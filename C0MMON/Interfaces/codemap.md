@@ -67,7 +67,7 @@ Interface Usage Flow:
 - `ValidatedMongoRepository` adds validation layer
 
 **EF Core Implementation (C0MMON/EF):**
-- `P4NTH30NDbContext` implements repository patterns
+- `P4NTHE0NDbContext` implements repository patterns
 - `AnalyticsRepositories` provide analytics-specific implementations
 - `AnalyticsServices` use EF Core for complex queries
 

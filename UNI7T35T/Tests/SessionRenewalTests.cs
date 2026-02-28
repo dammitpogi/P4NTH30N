@@ -1,6 +1,6 @@
-using P4NTH30N.H4ND.Services;
+using P4NTHE0N.H4ND.Services;
 
-namespace P4NTH30N.UNI7T35T.Tests;
+namespace P4NTHE0N.UNI7T35T.Tests;
 
 /// <summary>
 /// AUTH-041: Unit tests for SessionRenewalService components.

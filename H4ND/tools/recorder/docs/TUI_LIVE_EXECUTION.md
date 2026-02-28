@@ -1,4 +1,4 @@
-# P4NTH30N Recorder TUI — Live Execution Guide
+# P4NTHE0N Recorder TUI — Live Execution Guide
 
 **Version**: 2.1  
 **Date**: 2026-02-21  
@@ -57,7 +57,7 @@ The `TuiRunner` class wraps `CdpClient` and provides:
 ### 1. Launch TUI
 
 ```bash
-cd C:\P4NTH30N\H4ND\tools\recorder
+cd C:\P4NTHE0N\H4ND\tools\recorder
 bun run tui
 ```
 

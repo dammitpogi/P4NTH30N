@@ -6,9 +6,9 @@ import { dirname, resolve } from 'node:path';
 
 const LEGACY_URL = 'http://127.0.0.1:5001/mcp';
 const V2_BASE_URL = 'http://127.0.0.1:3002';
-const WATCHER_STATE_PATH = resolve('c:/P4NTH30N/RAG-watcher-state.json');
+const WATCHER_STATE_PATH = resolve('c:/P4NTHE0N/RAG-watcher-state.json');
 const EXPORT_PATH = resolve(
-  `c:/P4NTH30N/servers/tests/rag-migration-export-${Date.now()}.json`,
+  `c:/P4NTHE0N/servers/tests/rag-migration-export-${Date.now()}.json`,
 );
 const AUTH_TOKEN = process.env.MCP_AUTH_TOKEN;
 const ORIGIN = 'http://localhost:5173';

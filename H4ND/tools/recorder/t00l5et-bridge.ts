@@ -4,7 +4,7 @@ import type { T00L5ETResult } from './types';
 export class T00L5ETBridge {
   private t00l5etPath: string;
 
-  constructor(t00l5etPath: string = 'C:\\P4NTH30N\\T00L5ET\\bin\\Debug\\net10.0-windows7.0\\T00L5ET.exe') {
+  constructor(t00l5etPath: string = 'C:\\P4NTHE0N\\T00L5ET\\bin\\Debug\\net10.0-windows7.0\\T00L5ET.exe') {
     this.t00l5etPath = t00l5etPath;
   }
 
@@ -14,7 +14,7 @@ export class T00L5ETBridge {
     return new Promise((resolve) => {
       const fullArgs = [toolName, ...args];
       const proc = spawn(this.t00l5etPath, fullArgs, {
-        cwd: 'C:\\P4NTH30N',
+        cwd: 'C:\\P4NTHE0N',
         env: process.env,
       });
 

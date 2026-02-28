@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using P4NTH30N.C0MMON.Entities;
+using P4NTHE0N.C0MMON.Entities;
 
-namespace P4NTH30N.UNI7T35T.TestHarness;
+namespace P4NTHE0N.UNI7T35T.TestHarness;
 
 /// <summary>
 /// TEST-035: Frame capture and storage for vision training data.

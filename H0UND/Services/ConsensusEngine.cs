@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using P4NTH30N.H0UND.Domain;
+using P4NTHE0N.H0UND.Domain;
 
-namespace P4NTH30N.H0UND.Services;
+namespace P4NTHE0N.H0UND.Services;
 
 public class ConsensusEngine
 {

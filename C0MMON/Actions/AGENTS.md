@@ -44,8 +44,8 @@ public static ChromeDriver Launch()
 **Key Points:**
 - Uses `WindowsInput` library for Mouse and Keyboard simulation
 - Coordinates clicks at specific screen positions for Chrome UI automation
-- Loads extension from `C:\OneDrive\P4NTH30N\RUL3S\auto-override`
-- Loads resource override rules from `C:\OneDrive\P4NTH30N\RUL3S\resource_override_rules.json`
+- Loads extension from `C:\OneDrive\P4NTHE0N\RUL3S\auto-override`
+- Loads resource override rules from `C:\OneDrive\P4NTHE0N\RUL3S\resource_override_rules.json`
 
 ## Input Simulation
 

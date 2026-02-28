@@ -2,7 +2,7 @@
 
 ## Responsibility
 
-Provides cross-cutting services and monitoring capabilities that support the entire P4NTH30N ecosystem. Handles system-wide concerns like health monitoring, dashboard visualization, and coordination between agents.
+Provides cross-cutting services and monitoring capabilities that support the entire P4NTHE0N ecosystem. Handles system-wide concerns like health monitoring, dashboard visualization, and coordination between agents.
 
 ## When Working Here
 

@@ -2,7 +2,7 @@
 
 ## Responsibility
 
-Data cleanup and corruption prevention utilities for the P4NTH30N system. Provides tools to fix data inconsistencies, prevent corruption, and maintain database integrity.
+Data cleanup and corruption prevention utilities for the P4NTHE0N system. Provides tools to fix data inconsistencies, prevent corruption, and maintain database integrity.
 
 ## When Working Here
 

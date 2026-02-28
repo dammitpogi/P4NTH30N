@@ -1,4 +1,4 @@
-namespace P4NTH30N.C0MMON.Interfaces;
+namespace P4NTHE0N.C0MMON.Interfaces;
 
 /// <summary>
 /// DECISION_027: Base agent interface for AgentNet decentralized coordination.

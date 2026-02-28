@@ -1,6 +1,6 @@
-using P4NTH30N.H4ND.Composition;
+using P4NTHE0N.H4ND.Composition;
 
-namespace P4NTH30N.H4ND.Services;
+namespace P4NTHE0N.H4ND.Services;
 
 public sealed class RefactoredRuntimeHost : IRuntimeHost
 {

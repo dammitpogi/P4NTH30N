@@ -140,7 +140,7 @@ What other side-channel approaches should I try?
 
 ## Files Location
 
-All tools stored in: `C:\P4NTH30N\tools\windsurf-crypto-analysis\`
+All tools stored in: `C:\P4NTHE0N\tools\windsurf-crypto-analysis\`
 
 - `crypto_analysis.py` - Main analysis toolkit
 - `memory_dump_analyzer.py` - Memory dump analysis

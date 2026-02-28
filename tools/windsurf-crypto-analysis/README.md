@@ -264,4 +264,4 @@ Encryption is likely strong.
 
 ## License
 
-Internal use only for P4NTH30N project.
+Internal use only for P4NTHE0N project.

@@ -1,7 +1,7 @@
-using P4NTH30N.H4ND.Domains.Execution.Aggregates;
-using P4NTH30N.H4ND.Domains.Execution.ValueObjects;
+using P4NTHE0N.H4ND.Domains.Execution.Aggregates;
+using P4NTHE0N.H4ND.Domains.Execution.ValueObjects;
 
-namespace P4NTH30N.H4ND.Domains.Execution.Repositories;
+namespace P4NTHE0N.H4ND.Domains.Execution.Repositories;
 
 public interface ISpinSessionRepository
 {

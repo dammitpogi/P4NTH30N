@@ -1,4 +1,4 @@
-namespace P4NTH30N.C0MMON.Persistence;
+namespace P4NTHE0N.C0MMON.Persistence;
 
 public interface IMongoUnitOfWork
 {

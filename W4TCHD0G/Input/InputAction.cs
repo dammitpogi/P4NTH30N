@@ -1,4 +1,4 @@
-namespace P4NTH30N.W4TCHD0G.Input;
+namespace P4NTHE0N.W4TCHD0G.Input;
 
 /// <summary>
 /// Represents a queued input action for sequential execution on the VM.

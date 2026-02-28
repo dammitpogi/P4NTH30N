@@ -1,8 +1,8 @@
-using P4NTH30N.H4ND.Domains.Common;
-using P4NTH30N.H4ND.Domains.Monitoring.Events;
-using P4NTH30N.H4ND.Domains.Monitoring.ValueObjects;
+using P4NTHE0N.H4ND.Domains.Common;
+using P4NTHE0N.H4ND.Domains.Monitoring.Events;
+using P4NTHE0N.H4ND.Domains.Monitoring.ValueObjects;
 
-namespace P4NTH30N.H4ND.Domains.Monitoring.Aggregates;
+namespace P4NTHE0N.H4ND.Domains.Monitoring.Aggregates;
 
 public sealed class HealthCheck : AggregateRoot
 {

@@ -1,6 +1,6 @@
 using System.Collections.Concurrent;
 
-namespace P4NTH30N.C0MMON.Infrastructure.Caching;
+namespace P4NTHE0N.C0MMON.Infrastructure.Caching;
 
 /// <summary>
 /// In-memory cache with TTL expiration for frequently accessed data.

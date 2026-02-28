@@ -1,8 +1,8 @@
 using System.Diagnostics;
-using P4NTH30N.C0MMON.Entities;
-using P4NTH30N.C0MMON.Infrastructure.Resilience;
+using P4NTHE0N.C0MMON.Entities;
+using P4NTHE0N.C0MMON.Infrastructure.Resilience;
 
-namespace P4NTH30N.H4ND.Infrastructure;
+namespace P4NTHE0N.H4ND.Infrastructure;
 
 /// <summary>
 /// TECH-FE-015: Validates required fields and confidence threshold.

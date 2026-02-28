@@ -4,9 +4,9 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using FluentFTP;
-using IProjectFtpClient = P4NTH30N.C0MMON.Interfaces.IFtpClient;
+using IProjectFtpClient = P4NTHE0N.C0MMON.Interfaces.IFtpClient;
 
-namespace P4NTH30N.C0MMON.Infrastructure.Deployment;
+namespace P4NTHE0N.C0MMON.Infrastructure.Deployment;
 
 /// <summary>
 /// FluentFTP-based implementation for FTP/FTPS operations.

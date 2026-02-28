@@ -1,14 +1,17 @@
 using System.Diagnostics;
+using System.Security.Cryptography;
 using System.Threading.Channels;
-using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Entities;
-using P4NTH30N.C0MMON.Infrastructure.Cdp;
-using P4NTH30N.H4ND.Infrastructure;
-using P4NTH30N.H4ND.Navigation;
-using P4NTH30N.H4ND.Navigation.Retry;
-using P4NTH30N.H4ND.Services;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.C0MMON.Entities;
+using P4NTHE0N.C0MMON.Infrastructure.Cdp;
+using P4NTHE0N.H4ND.Infrastructure;
+using P4NTHE0N.H4ND.Infrastructure.Logging.ErrorEvidence;
+using P4NTHE0N.H4ND.Navigation;
+using P4NTHE0N.H4ND.Navigation.Retry;
+using P4NTHE0N.H4ND.Services;
+using CommonErrorSeverity = P4NTHE0N.C0MMON.ErrorSeverity;
 
-namespace P4NTH30N.H4ND.Parallel;
+namespace P4NTHE0N.H4ND.Parallel;
 
 /// <summary>
 /// ARCH-047/055/081/098: Consumer — reads SignalWorkItems from the channel and executes
@@ -33,6 +36,7 @@ public sealed class ParallelSpinWorker
 	private readonly ChromeProfileManager? _profileManager;
 	private readonly NavigationMapLoader? _mapLoader;
 	private readonly IStepExecutor? _stepExecutor;
+	private readonly IErrorEvidence _errors;
 	private readonly int _maxSignalsBeforeRestart;
 	private int _signalsProcessed;
 
@@ -52,6 +56,7 @@ public sealed class ParallelSpinWorker
 		ChromeProfileManager? profileManager = null,
 		NavigationMapLoader? mapLoader = null,
 		IStepExecutor? stepExecutor = null,
+		IErrorEvidence? errors = null,
 		int maxSignalsBeforeRestart = 100)
 	{
 		_workerId = workerId ?? throw new ArgumentException("Worker ID cannot be null or empty", nameof(workerId));
@@ -67,6 +72,7 @@ public sealed class ParallelSpinWorker
 		_profileManager = profileManager;
 		_mapLoader = mapLoader;
 		_stepExecutor = stepExecutor;
+		_errors = errors ?? NoopErrorEvidence.Instance;
 		_maxSignalsBeforeRestart = maxSignalsBeforeRestart;
 	}
 
@@ -76,6 +82,15 @@ public sealed class ParallelSpinWorker
 	/// </summary>
 	public async Task RunAsync(CancellationToken ct)
 	{
+		using ErrorScope workerScope = _errors.BeginScope(
+			"ParallelSpinWorker",
+			"RunAsync",
+			new Dictionary<string, object>
+			{
+				["workerId"] = _workerId,
+				["workerIndex"] = _workerIndex,
+			});
+
 		Console.WriteLine($"[Worker-{_workerId}] Started");
 
 		CdpClient? cdp = null;
@@ -85,6 +100,14 @@ public sealed class ParallelSpinWorker
 			cdp = await InitializeCdpWithProfileAsync(ct);
 			if (cdp == null)
 			{
+				_errors.CaptureWarning(
+					"H4ND-PAR-CDP-INIT-001",
+					"CDP connection failed during worker startup",
+					context: new Dictionary<string, object>
+					{
+						["workerId"] = _workerId,
+					});
+
 				Console.WriteLine($"[Worker-{_workerId}] CDP connection failed — exiting");
 				_metrics.RecordWorkerError(_workerId, "cdp_connect_failed");
 				return;
@@ -95,7 +118,21 @@ public sealed class ParallelSpinWorker
 				if (_signalsProcessed >= _maxSignalsBeforeRestart)
 				{
 					Console.WriteLine($"[Worker-{_workerId}] Restart threshold reached ({_signalsProcessed} signals) — cycling CDP");
-					cdp.Dispose();
+					try
+					{
+						cdp.Dispose();
+					}
+					catch (Exception ex)
+					{
+						_errors.CaptureWarning(
+							"H4ND-PAR-CDP-DISPOSE-001",
+							"CDP dispose failed during worker recycle",
+							context: new Dictionary<string, object>
+							{
+								["workerId"] = _workerId,
+							},
+							evidence: new { ex.Message, exceptionType = ex.GetType().FullName });
+					}
 
 					// ARCH-081: Restart Chrome with profile if manager available
 					if (_profileManager != null)
@@ -116,7 +153,22 @@ public sealed class ParallelSpinWorker
 				if (!await EnsureChromeHealthyAsync(cdp, ct))
 				{
 					Console.WriteLine($"[Worker-{_workerId}] Chrome unhealthy — restarting");
-					cdp.Dispose();
+					try
+					{
+						cdp.Dispose();
+					}
+					catch (Exception ex)
+					{
+						_errors.CaptureWarning(
+							"H4ND-PAR-CDP-DISPOSE-002",
+							"CDP dispose failed after health check failure",
+							context: new Dictionary<string, object>
+							{
+								["workerId"] = _workerId,
+							},
+							evidence: new { ex.Message, exceptionType = ex.GetType().FullName });
+					}
+
 					cdp = await InitializeCdpWithProfileAsync(ct);
 					if (cdp == null) break;
 				}
@@ -130,12 +182,40 @@ public sealed class ParallelSpinWorker
 		}
 		catch (Exception ex)
 		{
+			_errors.Capture(
+				ex,
+				"H4ND-PAR-WORKER-001",
+				"Fatal worker error",
+				context: new Dictionary<string, object>
+				{
+					["workerId"] = _workerId,
+					["signalsProcessed"] = _signalsProcessed,
+				});
+
 			Console.WriteLine($"[Worker-{_workerId}] Fatal error: {ex.Message}");
 			_metrics.RecordWorkerError(_workerId, ex.Message);
 		}
 		finally
 		{
-			cdp?.Dispose();
+			if (cdp != null)
+			{
+				try
+				{
+					cdp.Dispose();
+				}
+				catch (Exception ex)
+				{
+					_errors.CaptureWarning(
+						"H4ND-PAR-CDP-DISPOSE-003",
+						"CDP dispose failed during worker finalization",
+						context: new Dictionary<string, object>
+						{
+							["workerId"] = _workerId,
+						},
+						evidence: new { ex.Message, exceptionType = ex.GetType().FullName });
+				}
+			}
+
 			Console.WriteLine($"[Worker-{_workerId}] Stopped (processed {_signalsProcessed} signals)");
 		}
 	}
@@ -146,7 +226,29 @@ public sealed class ParallelSpinWorker
 		var credential = workItem.Credential;
 		var sw = Stopwatch.StartNew();
 
+		using ErrorScope itemScope = _errors.BeginScope(
+			"ParallelSpinWorker",
+			"ProcessWorkItem",
+			new Dictionary<string, object>
+			{
+				["workerId"] = _workerId,
+				["signalId"] = signal._id.ToString(),
+				["credentialId"] = credential._id.ToString(),
+				["game"] = credential.Game,
+				["house"] = credential.House,
+				["retryCount"] = workItem.RetryCount,
+			});
+
 		Console.WriteLine($"[Worker-{_workerId}] Processing {workItem}");
+
+		if (signal.Acknowledged)
+		{
+			_errors.CaptureWarning(
+				"H4ND-PAR-ACK-OBS-001",
+				"Signal already acknowledged before parallel worker processing",
+				context: BuildWorkItemContext(workItem),
+				evidence: SnapshotSignal(signal));
+		}
 
 		// ARCH-055: Resolve selectors via GameSelectorConfig if available
 		GameSelectors? selectors = null;
@@ -170,6 +272,16 @@ public sealed class ParallelSpinWorker
 
 					if (!loginOk)
 					{
+						_errors.CaptureWarning(
+							"H4ND-PAR-LOGIN-FAIL-001",
+							"Worker login failed",
+							context: BuildWorkItemContext(workItem),
+							evidence: new
+							{
+								signal = SnapshotSignal(signal),
+								credential = SnapshotCredential(credential),
+							});
+
 						Console.WriteLine($"[Worker-{_workerId}] Login failed for {credential.Username}@{credential.Game}");
 						_metrics.RecordSpinResult(_workerId, false, sw.Elapsed, "login_failed");
 
@@ -179,8 +291,6 @@ public sealed class ParallelSpinWorker
 						}
 						return true;
 					}
-
-					_uow.Signals.Acknowledge(signal);
 
 					VisionCommand spinCommand = new()
 					{
@@ -193,6 +303,15 @@ public sealed class ParallelSpinWorker
 					};
 
 					bool spinOk = await _resourceCoordinator.ExecuteCdpAsync(spinCt => _spinExecution.ExecuteSpinAsync(spinCommand, cdp, signal, credential, spinCt), innerCt);
+					if (spinOk && !signal.Acknowledged)
+					{
+						_errors.CaptureInvariantFailure(
+							"H4ND-PAR-ACK-INV-001",
+							"Signal should be acknowledged by SpinExecution on successful spin",
+							expected: true,
+							actual: signal.Acknowledged,
+							context: BuildWorkItemContext(workItem));
+					}
 
 					sw.Stop();
 					_metrics.RecordSpinResult(_workerId, spinOk, sw.Elapsed, spinOk ? null : "spin_failed");
@@ -207,6 +326,18 @@ public sealed class ParallelSpinWorker
 		}
 		catch (Exception ex) when (_sessionRenewal != null && SessionRenewalService.IsSessionFailure(ex))
 		{
+			_errors.Capture(
+				ex,
+				"H4ND-PAR-AUTH-FAIL-001",
+				"Parallel worker authentication/session failure",
+				context: BuildWorkItemContext(workItem),
+				evidence: new
+				{
+					signal = SnapshotSignal(signal),
+					credential = SnapshotCredential(credential),
+				},
+				severity: P4NTHE0N.H4ND.Infrastructure.Logging.ErrorEvidence.ErrorSeverity.Warning);
+
 			// ARCH-055: Self-healing on 403/401 — auto-renew session
 			sw.Stop();
 			Console.WriteLine($"[Worker-{_workerId}] AUTH FAILURE for {credential.Username}@{credential.Game}: {ex.Message}");
@@ -216,16 +347,35 @@ public sealed class ParallelSpinWorker
 			if (healed && workItem.CanRetry)
 			{
 				workItem.RetryCount++;
-				_uow.Signals.ReleaseClaim(signal);
+				ReleaseClaimWithEvidence(
+					_uow,
+					_errors,
+					workItem,
+					"H4ND-PAR-CLAIM-REL-001",
+					"Failed to release signal claim after successful self-healing");
+
 				Console.WriteLine($"[Worker-{_workerId}] Session renewed — released signal for retry ({workItem.RetryCount}/{SignalWorkItem.MaxRetries})");
 			}
 		}
 		catch (Exception ex)
 		{
+			_errors.Capture(
+				ex,
+				"H4ND-PAR-PROC-001",
+				"Parallel worker failed processing work item",
+				context: BuildWorkItemContext(workItem),
+				evidence: new
+				{
+					signal = SnapshotSignal(signal),
+					credential = SnapshotCredential(credential),
+					workerId = _workerId,
+					retryCount = workItem.RetryCount,
+				});
+
 			sw.Stop();
 			Console.WriteLine($"[Worker-{_workerId}] Error processing {credential.Username}@{credential.Game}: {ex.Message}");
 			_uow.Errors.Insert(
-				ErrorLog.Create(ErrorType.SystemError, $"ParallelWorker-{_workerId}", ex.Message, ErrorSeverity.High)
+				ErrorLog.Create(ErrorType.SystemError, $"ParallelWorker-{_workerId}", ex.Message, CommonErrorSeverity.High)
 			);
 			_metrics.RecordSpinResult(_workerId, false, sw.Elapsed, ex.Message);
 
@@ -233,7 +383,13 @@ public sealed class ParallelSpinWorker
 			if (workItem.CanRetry)
 			{
 				workItem.RetryCount++;
-				_uow.Signals.ReleaseClaim(signal);
+				ReleaseClaimWithEvidence(
+					_uow,
+					_errors,
+					workItem,
+					"H4ND-PAR-CLAIM-REL-002",
+					"Failed to release signal claim after processing error");
+
 				Console.WriteLine($"[Worker-{_workerId}] Released claim on signal {signal._id} for retry ({workItem.RetryCount}/{SignalWorkItem.MaxRetries})");
 			}
 		}
@@ -246,8 +402,109 @@ public sealed class ParallelSpinWorker
 			}
 			catch (Exception unlockEx)
 			{
+				_errors.CaptureWarning(
+					"H4ND-PAR-CRED-UNLOCK-001",
+					"Failed to unlock credential in worker finally block",
+					context: BuildWorkItemContext(workItem),
+					evidence: new
+					{
+						unlockEx.Message,
+						exceptionType = unlockEx.GetType().FullName,
+						credential = SnapshotCredential(credential),
+					});
+
 				Console.WriteLine($"[Worker-{_workerId}] CRITICAL: Failed to unlock credential {credential.Username}: {unlockEx.Message}");
 			}
+		}
+	}
+
+	private static Dictionary<string, object> BuildWorkItemContext(SignalWorkItem workItem)
+	{
+		Signal signal = workItem.Signal;
+		Credential credential = workItem.Credential;
+
+		return new Dictionary<string, object>
+		{
+			["signalId"] = signal._id.ToString(),
+			["credentialId"] = credential._id.ToString(),
+			["house"] = credential.House,
+			["game"] = credential.Game,
+			["priority"] = signal.Priority,
+			["acknowledged"] = signal.Acknowledged,
+			["retryCount"] = workItem.RetryCount,
+		};
+	}
+
+	private static Dictionary<string, object> SnapshotSignal(Signal signal)
+	{
+		return new Dictionary<string, object>
+		{
+			["signalId"] = signal._id.ToString(),
+			["house"] = signal.House,
+			["game"] = signal.Game,
+			["usernameHash"] = HashForEvidence(signal.Username),
+			["priority"] = signal.Priority,
+			["acknowledged"] = signal.Acknowledged,
+			["claimedBy"] = signal.ClaimedBy ?? string.Empty,
+			["claimedAtUtc"] = signal.ClaimedAt?.ToString("O") ?? string.Empty,
+		};
+	}
+
+	private static Dictionary<string, object> SnapshotCredential(Credential credential)
+	{
+		return new Dictionary<string, object>
+		{
+			["credentialId"] = credential._id.ToString(),
+			["usernameHash"] = HashForEvidence(credential.Username),
+			["house"] = credential.House,
+			["game"] = credential.Game,
+			["unlocked"] = credential.Unlocked,
+			["updated"] = credential.Updated,
+			["banned"] = credential.Banned,
+			["balance"] = credential.Balance,
+			["grand"] = credential.Jackpots.Grand,
+			["major"] = credential.Jackpots.Major,
+			["minor"] = credential.Jackpots.Minor,
+			["mini"] = credential.Jackpots.Mini,
+		};
+	}
+
+	private static string HashForEvidence(string input)
+	{
+		if (string.IsNullOrWhiteSpace(input))
+		{
+			return string.Empty;
+		}
+
+		byte[] bytes = SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(input));
+		return Convert.ToHexString(bytes).Substring(0, 16);
+	}
+
+	public static bool ReleaseClaimWithEvidence(
+		IUnitOfWork uow,
+		IErrorEvidence errors,
+		SignalWorkItem workItem,
+		string errorCode,
+		string message)
+	{
+		try
+		{
+			uow.Signals.ReleaseClaim(workItem.Signal);
+			return true;
+		}
+		catch (Exception releaseEx)
+		{
+			errors.CaptureWarning(
+				errorCode,
+				message,
+				context: BuildWorkItemContext(workItem),
+				evidence: new
+				{
+					releaseEx.Message,
+					exceptionType = releaseEx.GetType().FullName,
+					signalId = workItem.Signal._id.ToString(),
+				});
+			return false;
 		}
 	}
 

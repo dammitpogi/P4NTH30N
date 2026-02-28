@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using MongoDB.Bson;
-using P4NTH30N.C0MMON;
+using P4NTHE0N.C0MMON;
 
-namespace P4NTH30N.C0MMON.Interfaces;
+namespace P4NTHE0N.C0MMON.Interfaces;
 
 public interface IStoreErrors
 {

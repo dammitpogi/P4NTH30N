@@ -1,4 +1,4 @@
-# Building P4NTH30N Recorder TUI
+# Building P4NTHE0N Recorder TUI
 
 This document describes how to build standalone executables for the Recorder TUI.
 
@@ -11,7 +11,7 @@ This document describes how to build standalone executables for the Recorder TUI
 
 ### Option 1: Using npm script (recommended)
 ```powershell
-cd C:\P4NTH30N\H4ND\tools\recorder
+cd C:\P4NTHE0N\H4ND\tools\recorder
 bun run build
 ```
 
@@ -19,7 +19,7 @@ This runs the `build.ps1` script which provides detailed output and error checki
 
 ### Option 2: Direct build command
 ```powershell
-cd C:\P4NTH30N\H4ND\tools\recorder
+cd C:\P4NTHE0N\H4ND\tools\recorder
 bun run build:tui
 ```
 
@@ -27,7 +27,7 @@ This directly invokes Bun's compile feature.
 
 ### Option 3: Manual build
 ```powershell
-cd C:\P4NTH30N\H4ND\tools\recorder
+cd C:\P4NTHE0N\H4ND\tools\recorder
 bun build recorder-tui.ts --compile --outfile dist/recorder-tui.exe
 ```
 

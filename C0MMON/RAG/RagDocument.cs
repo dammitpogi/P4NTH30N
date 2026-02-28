@@ -1,7 +1,7 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace P4NTH30N.C0MMON.RAG;
+namespace P4NTHE0N.C0MMON.RAG;
 
 /// <summary>
 /// Represents a document stored in the RAG vector store.

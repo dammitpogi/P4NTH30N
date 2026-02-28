@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using P4NTH30N.C0MMON.Infrastructure.Resilience;
+using P4NTHE0N.C0MMON.Infrastructure.Resilience;
 
-namespace P4NTH30N.C0MMON.Interfaces
+namespace P4NTHE0N.C0MMON.Interfaces
 {
 	public interface IModelTriageRepository
 	{

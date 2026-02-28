@@ -2,7 +2,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
 
-namespace P4NTH30N.C0MMON.RAG;
+namespace P4NTHE0N.C0MMON.RAG;
 
 /// <summary>
 /// Generates text embeddings using a local ONNX model (all-MiniLM-L6-v2) via Python bridge.

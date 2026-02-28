@@ -1,10 +1,10 @@
 using System.Diagnostics;
-using P4NTH30N.W4TCHD0G.Input;
-using P4NTH30N.W4TCHD0G.Models;
-using P4NTH30N.W4TCHD0G.Stream;
-using P4NTH30N.W4TCHD0G.Vision;
+using P4NTHE0N.W4TCHD0G.Input;
+using P4NTHE0N.W4TCHD0G.Models;
+using P4NTHE0N.W4TCHD0G.Stream;
+using P4NTHE0N.W4TCHD0G.Vision;
 
-namespace P4NTH30N.W4TCHD0G.Agent;
+namespace P4NTHE0N.W4TCHD0G.Agent;
 
 /// <summary>
 /// FourEyes vision-based automation agent. Orchestrates the full pipeline:

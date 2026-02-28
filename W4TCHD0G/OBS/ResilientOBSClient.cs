@@ -2,9 +2,9 @@ using System.Diagnostics;
 using System.Net.WebSockets;
 using System.Text;
 using System.Text.Json;
-using P4NTH30N.W4TCHD0G.Models;
+using P4NTHE0N.W4TCHD0G.Models;
 
-namespace P4NTH30N.W4TCHD0G.OBS;
+namespace P4NTHE0N.W4TCHD0G.OBS;
 
 /// <summary>
 /// Resilient OBS WebSocket client with exponential backoff reconnection,

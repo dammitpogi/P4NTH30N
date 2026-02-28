@@ -1,6 +1,6 @@
 using System;
 
-namespace P4NTH30N.UNI7T35T.Infrastructure;
+namespace P4NTHE0N.UNI7T35T.Infrastructure;
 
 // DECISION_086: Deterministic time provider for reproducible testing
 // Based on Klee & Xia (2025) recommendation for deterministic testing

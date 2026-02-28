@@ -2,7 +2,7 @@
 
 ## Responsibility
 
-H0UND is the analytics and polling engine for P4NTH30N. It monitors game platform balances (FireKirin, OrionStars) via polling, calculates DPD (Dollars Per Day) for forecasting, and processes signals through the SignalService.
+H0UND is the analytics and polling engine for P4NTHE0N. It monitors game platform balances (FireKirin, OrionStars) via polling, calculates DPD (Dollars Per Day) for forecasting, and processes signals through the SignalService.
 
 ## When Working Here
 

@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace P4NTH30N.H4ND.Navigation.Retry;
+namespace P4NTHE0N.H4ND.Navigation.Retry;
 
 /// <summary>
 /// ARCH-098: Decorator pattern — wraps IStepExecutor with retry logic.

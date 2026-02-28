@@ -1,8 +1,8 @@
-using P4NTH30N.W4TCHD0G.Input;
-using P4NTH30N.W4TCHD0G.Models;
-using P4NTH30N.W4TCHD0G.Vision;
+using P4NTHE0N.W4TCHD0G.Input;
+using P4NTHE0N.W4TCHD0G.Models;
+using P4NTHE0N.W4TCHD0G.Vision;
 
-namespace P4NTH30N.W4TCHD0G.Agent;
+namespace P4NTHE0N.W4TCHD0G.Agent;
 
 /// <summary>
 /// Makes automation decisions by combining vision analysis with signal data.

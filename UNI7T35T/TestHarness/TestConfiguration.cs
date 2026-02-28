@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace P4NTH30N.UNI7T35T.TestHarness;
+namespace P4NTHE0N.UNI7T35T.TestHarness;
 
 /// <summary>
 /// TEST-035: Configuration for E2E test execution.
@@ -17,7 +17,7 @@ public sealed class TestConfiguration
 	/// <summary>
 	/// MongoDB database name.
 	/// </summary>
-	public string MongoDatabaseName { get; set; } = "P4NTH30N";
+	public string MongoDatabaseName { get; set; } = "P4NTHE0N";
 
 	/// <summary>
 	/// CDP host for Chrome browser automation.
@@ -62,7 +62,7 @@ public sealed class TestConfiguration
 	/// <summary>
 	/// Directory for captured frame storage.
 	/// </summary>
-	public string FrameOutputDirectory { get; set; } = @"C:\P4NTH30N\training-data\frames";
+	public string FrameOutputDirectory { get; set; } = @"C:\P4NTHE0N\training-data\frames";
 
 	/// <summary>
 	/// Whether to store test results in MongoDB.

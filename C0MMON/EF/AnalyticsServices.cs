@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Infrastructure.Persistence;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.C0MMON.Infrastructure.Persistence;
 
-namespace P4NTH30N.C0MMON.EF;
+namespace P4NTHE0N.C0MMON.EF;
 
 /// <summary>
 /// High-level analytics services for H0UND workloads.
@@ -99,9 +99,9 @@ public class HouseSummary
 	public DateTime LastUpdated { get; set; }
 }
 
-public class AnalyticsService(P4NTH30NDbContext context, ICredentialAnalyticsRepository credentialRepo, IJackpotAnalyticsRepository jackpotRepo) : IAnalyticsService
+public class AnalyticsService(P4NTHE0NDbContext context, ICredentialAnalyticsRepository credentialRepo, IJackpotAnalyticsRepository jackpotRepo) : IAnalyticsService
 {
-	private readonly P4NTH30NDbContext _context = context;
+	private readonly P4NTHE0NDbContext _context = context;
 
 	public async Task<DPDAnalysisResult> AnalyzeDPDAsync(string house, string game)
 	{

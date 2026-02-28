@@ -1,7 +1,7 @@
-namespace P4NTH30N.C0MMON.Infrastructure.Monitoring;
+namespace P4NTHE0N.C0MMON.Infrastructure.Monitoring;
 
 /// <summary>
-/// Health check system for P4NTH30N components.
+/// Health check system for P4NTHE0N components.
 /// Reports component health status for monitoring dashboards.
 /// </summary>
 /// <remarks>

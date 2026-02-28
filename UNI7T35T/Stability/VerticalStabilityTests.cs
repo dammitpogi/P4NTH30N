@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using P4NTH30N.C0MMON;
-using P4NTH30N.H0UND.Domain.Forecasting;
-using P4NTH30N.UNI7T35T.Infrastructure;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.H0UND.Domain.Forecasting;
+using P4NTHE0N.UNI7T35T.Infrastructure;
 using UNI7T35T.Mocks;
 
-namespace P4NTH30N.UNI7T35T.Stability;
+namespace P4NTHE0N.UNI7T35T.Stability;
 
 // DECISION_086: Vertical stability tests based on Godahewa et al. (2023)
 // Validates that ETAs progress forward and never backward across forecast horizons

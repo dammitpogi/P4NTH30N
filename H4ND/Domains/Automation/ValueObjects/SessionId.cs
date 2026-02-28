@@ -1,7 +1,7 @@
 using System;
-using P4NTH30N.H4ND.Domains.Common;
+using P4NTHE0N.H4ND.Domains.Common;
 
-namespace P4NTH30N.H4ND.Domains.Automation.ValueObjects;
+namespace P4NTHE0N.H4ND.Domains.Automation.ValueObjects;
 
 /// <summary>
 /// DECISION_110 Phase 1: Immutable session identifier for a single H4ND execution lifecycle.

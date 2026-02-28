@@ -2,7 +2,7 @@
 
 ## Responsibility
 
-Application versioning and release management for P4NTH30N. Provides centralized version information across all agents and components.
+Application versioning and release management for P4NTHE0N. Provides centralized version information across all agents and components.
 
 ## When Working Here
 
@@ -38,7 +38,7 @@ string displayVersion = AppVersion.GetDisplayVersion();
 Console.WriteLine(AppVersion.GetDisplayVersion());
 
 // In logs
-logger.Info($"Starting P4NTH30N {AppVersion.GetInformationalVersion()}");
+logger.Info($"Starting P4NTHE0N {AppVersion.GetInformationalVersion()}");
 
 // Display version without build metadata
 Console.WriteLine($"Version: {AppVersion.GetDisplayVersion()}");

@@ -1,8 +1,8 @@
-using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Interfaces;
-using P4NTH30N.H4ND.Infrastructure;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.C0MMON.Interfaces;
+using P4NTHE0N.H4ND.Infrastructure;
 
-namespace P4NTH30N.H4ND.Agents;
+namespace P4NTHE0N.H4ND.Agents;
 
 /// <summary>
 /// DECISION_027: H4ND executor agent — receives execution requests

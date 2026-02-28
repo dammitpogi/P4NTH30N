@@ -85,7 +85,7 @@ Defines contracts and abstractions that enable loose coupling between system com
 - MongoDatabaseProvider handles connection management
 
 **EF Core (C0MMON/EF):**
-- P4NTH30NDbContext implements repository patterns
+- P4NTHE0NDbContext implements repository patterns
 - AnalyticsRepositories provide analytics-specific implementations
 
 ## Used By

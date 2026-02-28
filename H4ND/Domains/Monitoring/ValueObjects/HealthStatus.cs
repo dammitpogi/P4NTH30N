@@ -1,4 +1,4 @@
-namespace P4NTH30N.H4ND.Domains.Monitoring.ValueObjects;
+namespace P4NTHE0N.H4ND.Domains.Monitoring.ValueObjects;
 
 public enum HealthStatus
 {

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using P4NTH30N.W4TCHD0G.Models;
+using P4NTHE0N.W4TCHD0G.Models;
 
-namespace P4NTH30N.W4TCHD0G.Vision.Stubs;
+namespace P4NTHE0N.W4TCHD0G.Vision.Stubs;
 
 /// <summary>
 /// FEAT-036: Stub jackpot detector for pipeline testing.

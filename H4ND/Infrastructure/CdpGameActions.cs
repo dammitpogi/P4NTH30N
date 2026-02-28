@@ -1,6 +1,6 @@
-using P4NTH30N.C0MMON.Infrastructure.Cdp;
+using P4NTHE0N.C0MMON.Infrastructure.Cdp;
 
-namespace P4NTH30N.H4ND.Infrastructure;
+namespace P4NTHE0N.H4ND.Infrastructure;
 
 /// <summary>
 /// Canvas bounding rectangle returned by getBoundingClientRect().
@@ -127,8 +127,8 @@ public static class CdpGameActions
 	{
 		try
 		{
-			P4NTH30N.H4ND.Navigation.NavigationMapLoader loader = new();
-			P4NTH30N.H4ND.Navigation.NavigationMap? map = loader.Load("FireKirin");
+			P4NTHE0N.H4ND.Navigation.NavigationMapLoader loader = new();
+			P4NTHE0N.H4ND.Navigation.NavigationMap? map = loader.Load("FireKirin");
 			if (map == null)
 			{
 				return (FkDefaultAccountTarget, FkDefaultPasswordTarget, FkDefaultLoginTarget, "fallback-constants (no map)");
@@ -155,7 +155,7 @@ public static class CdpGameActions
 		}
 	}
 
-	private static bool TryGetFireKirinCoordinate(P4NTH30N.H4ND.Navigation.NavigationMap map, string key, out ClickTarget target)
+	private static bool TryGetFireKirinCoordinate(P4NTHE0N.H4ND.Navigation.NavigationMap map, string key, out ClickTarget target)
 	{
 		target = default;
 		if (map.Metadata.Coordinates == null)
@@ -163,13 +163,13 @@ public static class CdpGameActions
 			return false;
 		}
 
-		if (!map.Metadata.Coordinates.TryGetValue("firekirin", out Dictionary<string, P4NTH30N.H4ND.Navigation.PlatformCoordinates>? coords)
+		if (!map.Metadata.Coordinates.TryGetValue("firekirin", out Dictionary<string, P4NTHE0N.H4ND.Navigation.PlatformCoordinates>? coords)
 			|| coords == null)
 		{
 			return false;
 		}
 
-		if (!coords.TryGetValue(key, out P4NTH30N.H4ND.Navigation.PlatformCoordinates? c) || c == null)
+		if (!coords.TryGetValue(key, out P4NTHE0N.H4ND.Navigation.PlatformCoordinates? c) || c == null)
 		{
 			return false;
 		}
@@ -179,7 +179,7 @@ public static class CdpGameActions
 	}
 
 	private static bool TryGetLoginPhaseClickTargets(
-		P4NTH30N.H4ND.Navigation.NavigationMap map,
+		P4NTHE0N.H4ND.Navigation.NavigationMap map,
 		out ClickTarget account,
 		out ClickTarget password,
 		out ClickTarget login)
@@ -188,9 +188,9 @@ public static class CdpGameActions
 		password = FkDefaultPasswordTarget;
 		login = FkDefaultLoginTarget;
 
-		P4NTH30N.H4ND.Navigation.NavigationStep? accountStep = map.GetStepById(2);
-		P4NTH30N.H4ND.Navigation.NavigationStep? passwordStep = map.GetStepById(4);
-		P4NTH30N.H4ND.Navigation.NavigationStep? loginStep = map.GetStepById(6);
+		P4NTHE0N.H4ND.Navigation.NavigationStep? accountStep = map.GetStepById(2);
+		P4NTHE0N.H4ND.Navigation.NavigationStep? passwordStep = map.GetStepById(4);
+		P4NTHE0N.H4ND.Navigation.NavigationStep? loginStep = map.GetStepById(6);
 
 		if (accountStep == null || passwordStep == null || loginStep == null)
 		{

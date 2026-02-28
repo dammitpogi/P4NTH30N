@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using P4NTH30N.C0MMON.Interfaces;
+using P4NTHE0N.C0MMON.Interfaces;
 
-namespace P4NTH30N.C0MMON.Infrastructure.Persistence;
+namespace P4NTHE0N.C0MMON.Infrastructure.Persistence;
 
 internal sealed class RepoCredentials(IMongoDatabaseProvider provider) : IRepoCredentials
 {
@@ -466,38 +466,38 @@ internal sealed class ErrorLogRepository(IMongoDatabaseProvider provider) : ISto
 // TEST-035: TestResults repository for E2E test pipeline
 internal sealed class TestResultsRepository(IMongoDatabaseProvider provider) : IRepoTestResults
 {
-	private readonly IMongoCollection<P4NTH30N.C0MMON.Entities.TestResult> _testResults =
-		provider.Database.GetCollection<P4NTH30N.C0MMON.Entities.TestResult>(MongoCollectionNames.TestResults);
+	private readonly IMongoCollection<P4NTHE0N.C0MMON.Entities.TestResult> _testResults =
+		provider.Database.GetCollection<P4NTHE0N.C0MMON.Entities.TestResult>(MongoCollectionNames.TestResults);
 
-	public void Insert(P4NTH30N.C0MMON.Entities.TestResult result)
+	public void Insert(P4NTHE0N.C0MMON.Entities.TestResult result)
 	{
 		_testResults.InsertOne(result);
 	}
 
-	public void Update(P4NTH30N.C0MMON.Entities.TestResult result)
+	public void Update(P4NTHE0N.C0MMON.Entities.TestResult result)
 	{
-		var filter = Builders<P4NTH30N.C0MMON.Entities.TestResult>.Filter.Eq("_id", result._id);
+		var filter = Builders<P4NTHE0N.C0MMON.Entities.TestResult>.Filter.Eq("_id", result._id);
 		_testResults.ReplaceOne(filter, result, new ReplaceOptions { IsUpsert = true });
 	}
 
-	public P4NTH30N.C0MMON.Entities.TestResult? GetByRunId(string testRunId)
+	public P4NTHE0N.C0MMON.Entities.TestResult? GetByRunId(string testRunId)
 	{
 		return _testResults.Find(t => t.TestRunId == testRunId).FirstOrDefault();
 	}
 
-	public List<P4NTH30N.C0MMON.Entities.TestResult> GetByCategory(string category)
+	public List<P4NTHE0N.C0MMON.Entities.TestResult> GetByCategory(string category)
 	{
 		return _testResults.Find(t => t.Category == category).SortByDescending(t => t.StartedAt).ToList();
 	}
 
-	public List<P4NTH30N.C0MMON.Entities.TestResult> GetRecent(int count = 20)
+	public List<P4NTHE0N.C0MMON.Entities.TestResult> GetRecent(int count = 20)
 	{
-		return _testResults.Find(Builders<P4NTH30N.C0MMON.Entities.TestResult>.Filter.Empty)
+		return _testResults.Find(Builders<P4NTHE0N.C0MMON.Entities.TestResult>.Filter.Empty)
 			.SortByDescending(t => t.StartedAt).Limit(count).ToList();
 	}
 
 	public long Count()
 	{
-		return _testResults.CountDocuments(Builders<P4NTH30N.C0MMON.Entities.TestResult>.Filter.Empty);
+		return _testResults.CountDocuments(Builders<P4NTHE0N.C0MMON.Entities.TestResult>.Filter.Empty);
 	}
 }

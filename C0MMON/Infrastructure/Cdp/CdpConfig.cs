@@ -1,8 +1,8 @@
-namespace P4NTH30N.C0MMON.Infrastructure.Cdp;
+namespace P4NTHE0N.C0MMON.Infrastructure.Cdp;
 
 /// <summary>
 /// Configuration for Chrome DevTools Protocol client.
-/// Bound from appsettings.json P4NTH30N:H4ND:Cdp section.
+/// Bound from appsettings.json P4NTHE0N:H4ND:Cdp section.
 /// </summary>
 public sealed class CdpConfig
 {

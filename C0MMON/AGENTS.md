@@ -2,7 +2,7 @@
 
 ## Responsibility
 
-C0MMON provides shared infrastructure, domain logic, and cross-cutting concerns for the P4NTH30N ecosystem. This project contains reusable components that enable automation, analytics, and monitoring across all agents.
+C0MMON provides shared infrastructure, domain logic, and cross-cutting concerns for the P4NTHE0N ecosystem. This project contains reusable components that enable automation, analytics, and monitoring across all agents.
 
 ## When Working in C0MMON
 
@@ -39,7 +39,7 @@ C0MMON provides shared infrastructure, domain logic, and cross-cutting concerns 
 
 - Used by H4ND (automation agent)
 - Used by H0UND (analytics agent)
-- Shared infrastructure for all P4NTH30N agents
+- Shared infrastructure for all P4NTHE0N agents
 - Provides domain entities, repositories, and services
 
 ## Architecture Overview
@@ -80,7 +80,7 @@ C0MMON provides shared infrastructure, domain logic, and cross-cutting concerns 
 - Configurable timeouts and retry logic
 
 ### VM Deployment Infrastructure
-- **MongoConnectionOptions**: Added mongodb.uri file override with env var fallback (P4NTH30N_MONGODB_URI)
+- **MongoConnectionOptions**: Added mongodb.uri file override with env var fallback (P4NTHE0N_MONGODB_URI)
 - **CdpClient**: WebSocket URL rewriting (localhost→HostIp) for remote CDP connections
 - **Command ID Matching**: Fixed CDP event message interleaving in SendCommandAsync
 - **Port Proxy**: netsh interface portproxy for 192.168.56.1:9222 → 127.0.0.1:9222

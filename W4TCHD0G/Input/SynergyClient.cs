@@ -2,7 +2,7 @@ using System.Diagnostics;
 using System.Net.Sockets;
 using System.Text;
 
-namespace P4NTH30N.W4TCHD0G.Input;
+namespace P4NTHE0N.W4TCHD0G.Input;
 
 /// <summary>
 /// Minimal Synergy protocol client for programmatic VM input control.
@@ -82,7 +82,7 @@ public sealed class SynergyClient : ISynergyClient
 	/// </summary>
 	private string _hostIp = string.Empty;
 	private int _port;
-	private string _clientName = "P4NTH30N";
+	private string _clientName = "P4NTHE0N";
 
 	/// <summary>
 	/// Whether this instance has been disposed.
@@ -108,7 +108,7 @@ public sealed class SynergyClient : ISynergyClient
 	}
 
 	/// <inheritdoc />
-	public async Task ConnectAsync(string hostIp, int port = 24800, string clientName = "P4NTH30N", CancellationToken cancellationToken = default)
+	public async Task ConnectAsync(string hostIp, int port = 24800, string clientName = "P4NTHE0N", CancellationToken cancellationToken = default)
 	{
 		ObjectDisposedException.ThrowIf(_disposed, this);
 

@@ -5,10 +5,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using P4NTH30N.C0MMON.Entities;
-using P4NTH30N.C0MMON.Interfaces;
+using P4NTHE0N.C0MMON.Entities;
+using P4NTHE0N.C0MMON.Interfaces;
 
-namespace P4NTH30N.W4TCHD0G;
+namespace P4NTHE0N.W4TCHD0G;
 
 /// <summary>
 /// FOUREYES-010: Cerberus Protocol - OBS self-healing implementation.

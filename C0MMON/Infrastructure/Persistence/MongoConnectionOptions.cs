@@ -1,16 +1,16 @@
 using System;
 
-namespace P4NTH30N.C0MMON.Infrastructure.Persistence;
+namespace P4NTHE0N.C0MMON.Infrastructure.Persistence;
 
 public sealed class MongoConnectionOptions
 {
 	public string ConnectionString { get; init; } = "mongodb://localhost:27017/";
-	public string DatabaseName { get; init; } = "P4NTH30N";
+	public string DatabaseName { get; init; } = "P4NTHE0N";
 
 	public static MongoConnectionOptions FromEnvironment()
 	{
-		string? uri = Environment.GetEnvironmentVariable("P4NTH30N_MONGODB_URI");
-		string? db = Environment.GetEnvironmentVariable("P4NTH30N_MONGODB_DB");
+		string? uri = Environment.GetEnvironmentVariable("P4NTHE0N_MONGODB_URI");
+		string? db = Environment.GetEnvironmentVariable("P4NTHE0N_MONGODB_DB");
 
 		// VM deployment: check config file overrides in multiple locations
 		if (string.IsNullOrWhiteSpace(uri))
@@ -36,7 +36,7 @@ public sealed class MongoConnectionOptions
 		MongoConnectionOptions options = new()
 		{
 			ConnectionString = string.IsNullOrWhiteSpace(uri) ? "mongodb://localhost:27017/" : uri,
-			DatabaseName = string.IsNullOrWhiteSpace(db) ? "P4NTH30N" : db,
+			DatabaseName = string.IsNullOrWhiteSpace(db) ? "P4NTHE0N" : db,
 		};
 
 		Console.WriteLine($"[MongoConnectionOptions] Using: {options.ConnectionString} / {options.DatabaseName}");

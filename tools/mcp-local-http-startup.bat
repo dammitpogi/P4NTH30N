@@ -1,18 +1,18 @@
 @echo off
-REM Start P4NTH30N Local MCP Servers in HTTP mode for ToolHive management
+REM Start P4NTHE0N Local MCP Servers in HTTP mode for ToolHive management
 REM These servers will be registered as "remote" MCP servers in ToolHive
 
-echo Starting P4NTH30N Local MCP Servers (HTTP mode)...
+echo Starting P4NTHE0N Local MCP Servers (HTTP mode)...
 echo.
 
 REM Start foureyes-mcp on port 5302
 echo Starting foureyes-mcp on port 5302...
-start "FourEyes MCP" /min cmd /c "cd /d C:\P4NTH30N\tools\mcp-foureyes && set MCP_PORT=5302 && node server.js --http"
+start "FourEyes MCP" /min cmd /c "cd /d C:\P4NTHE0N\tools\mcp-foureyes && set MCP_PORT=5302 && node server.js --http"
 timeout /t 2 /nobreak >nul
 
 REM Start honeybelt-server on port 5303
 echo Starting honeybelt-server on port 5303...
-start "Honeybelt MCP" /min cmd /c "cd /d C:\P4NTH30N\tools\mcp-development\servers\honeybelt-server && set MCP_PORT=5303 && node dist\index.js --http"
+start "Honeybelt MCP" /min cmd /c "cd /d C:\P4NTHE0N\tools\mcp-development\servers\honeybelt-server && set MCP_PORT=5303 && node dist\index.js --http"
 timeout /t 2 /nobreak >nul
 
 REM Start json-query-mcp on port 5304

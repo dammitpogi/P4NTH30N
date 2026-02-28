@@ -1,16 +1,16 @@
 using System.Threading.Channels;
-using P4NTH30N.C0MMON.Entities;
-using P4NTH30N.C0MMON.Infrastructure.Cdp;
-using P4NTH30N.H4ND.Infrastructure;
-using P4NTH30N.H4ND.Navigation;
-using P4NTH30N.H4ND.Navigation.Strategies;
-using P4NTH30N.H4ND.Navigation.Verification;
-using P4NTH30N.H4ND;
-using P4NTH30N.H4ND.Parallel;
-using P4NTH30N.H4ND.Services;
+using P4NTHE0N.C0MMON.Entities;
+using P4NTHE0N.C0MMON.Infrastructure.Cdp;
+using P4NTHE0N.H4ND.Infrastructure;
+using P4NTHE0N.H4ND.Navigation;
+using P4NTHE0N.H4ND.Navigation.Strategies;
+using P4NTHE0N.H4ND.Navigation.Verification;
+using P4NTHE0N.H4ND;
+using P4NTHE0N.H4ND.Parallel;
+using P4NTHE0N.H4ND.Services;
 using UNI7T35T.Mocks;
 
-namespace P4NTH30N.UNI7T35T.Tests;
+namespace P4NTHE0N.UNI7T35T.Tests;
 
 /// <summary>
 /// CRIT-103: Tychon Protocol chaos tests.

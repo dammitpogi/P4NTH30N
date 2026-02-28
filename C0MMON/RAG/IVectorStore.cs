@@ -1,4 +1,4 @@
-namespace P4NTH30N.C0MMON.RAG;
+namespace P4NTHE0N.C0MMON.RAG;
 
 /// <summary>
 /// Contract for vector similarity search operations.

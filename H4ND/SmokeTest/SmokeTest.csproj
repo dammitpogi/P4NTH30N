@@ -3,11 +3,11 @@
 		<OutputType>Exe</OutputType>
 		<TargetFramework>net10.0-windows7.0</TargetFramework>
 		<AssemblyName>H4ND.SmokeTest</AssemblyName>
-		<RootNamespace>P4NTH30N.H4ND.SmokeTest</RootNamespace>
+		<RootNamespace>P4NTHE0N.H4ND.SmokeTest</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<PublishSingleFile>true</PublishSingleFile>
-		<StartupObject>P4NTH30N.H4ND.SmokeTest.SmokeTestProgram</StartupObject>
+		<StartupObject>P4NTHE0N.H4ND.SmokeTest.SmokeTestProgram</StartupObject>
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\H4ND\H4ND.csproj" />

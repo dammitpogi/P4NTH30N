@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using P4NTH30N.C0MMON.Interfaces;
+using P4NTHE0N.C0MMON.Interfaces;
 
-namespace P4NTH30N.C0MMON.DomainServices;
+namespace P4NTHE0N.C0MMON.DomainServices;
 
 /// <summary>
 /// Domain service for calculating credential priority based on jackpot estimations and DPD.

@@ -2,7 +2,7 @@ using System.Collections.Concurrent;
 using System.Linq;
 using System.Text.Json;
 
-namespace P4NTH30N.H4ND.Navigation;
+namespace P4NTHE0N.H4ND.Navigation;
 
 /// <summary>
 /// ARCH-098: Loads and caches NavigationMap objects from step-config JSON files.
@@ -174,9 +174,9 @@ public sealed class NavigationMapLoader
 	{
 		yield return platform switch
 		{
-			"firekirin" => @"C:\P4NTH30N\H4ND\tools\recorder\step-config-firekirin.json",
-			"orionstars" => @"C:\P4NTH30N\H4ND\tools\recorder\step-config-orionstars.json",
-			_ => $@"C:\P4NTH30N\H4ND\tools\recorder\step-config-{platform}.json",
+			"firekirin" => @"C:\P4NTHE0N\H4ND\tools\recorder\step-config-firekirin.json",
+			"orionstars" => @"C:\P4NTHE0N\H4ND\tools\recorder\step-config-orionstars.json",
+			_ => $@"C:\P4NTHE0N\H4ND\tools\recorder\step-config-{platform}.json",
 		};
 	}
 
@@ -214,7 +214,7 @@ public sealed class NavigationMapLoader
 		// copied build outputs under bin/*/tools/recorder, which can be stale.
 		string[] candidates =
 		[
-			@"C:\P4NTH30N\H4ND\tools\recorder",
+			@"C:\P4NTHE0N\H4ND\tools\recorder",
 			Path.Combine(baseDir, "tools", "recorder"),
 			Path.Combine(baseDir, "..", "tools", "recorder"),
 			Path.Combine(baseDir, "..", "..", "tools", "recorder"),

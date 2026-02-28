@@ -1,9 +1,9 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using P4NTH30N.W4TCHD0G.Input;
+using P4NTHE0N.W4TCHD0G.Input;
 
-namespace P4NTH30N.W4TCHD0G.Development;
+namespace P4NTHE0N.W4TCHD0G.Development;
 
 /// <summary>
 /// FEAT-036: Mandatory confirmation gate for all spin actions in development mode.

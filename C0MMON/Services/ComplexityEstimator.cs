@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 
-namespace P4NTH30N.C0MMON.Services;
+namespace P4NTHE0N.C0MMON.Services;
 
 /// <summary>
 /// Keyword-based task complexity estimator.

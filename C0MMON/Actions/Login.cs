@@ -2,7 +2,7 @@ using System;
 using System.Drawing;
 using OpenQA.Selenium.Chrome;
 
-namespace P4NTH30N.C0MMON;
+namespace P4NTHE0N.C0MMON;
 
 public static partial class Actions
 {

@@ -1,9 +1,9 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using P4NTH30N.C0MMON.Infrastructure.Cdp;
+using P4NTHE0N.C0MMON.Infrastructure.Cdp;
 
-namespace P4NTH30N.UNI7T35T.TestHarness;
+namespace P4NTHE0N.UNI7T35T.TestHarness;
 
 /// <summary>
 /// TEST-035: Detects jackpot splash screens via CDP.

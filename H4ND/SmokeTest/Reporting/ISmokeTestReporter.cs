@@ -1,4 +1,4 @@
-namespace P4NTH30N.H4ND.SmokeTest.Reporting;
+namespace P4NTHE0N.H4ND.SmokeTest.Reporting;
 
 /// <summary>
 /// ARCH-099: Interface for reporting smoke test progress and results.

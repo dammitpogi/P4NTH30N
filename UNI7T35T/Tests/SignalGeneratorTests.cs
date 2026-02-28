@@ -1,9 +1,9 @@
-using P4NTH30N.C0MMON;
-using P4NTH30N.H4ND.EntryPoint;
-using P4NTH30N.H4ND.Services;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.H4ND.EntryPoint;
+using P4NTHE0N.H4ND.Services;
 using UNI7T35T.Mocks;
 
-namespace P4NTH30N.UNI7T35T.Tests;
+namespace P4NTHE0N.UNI7T35T.Tests;
 
 /// <summary>
 /// ARCH-055: Unit tests for SignalGenerator and extended RunMode parsing.

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace P4NTH30N.C0MMON.Interfaces;
+namespace P4NTHE0N.C0MMON.Interfaces;
 
 /// <summary>
 /// Strategy interface for VM provider implementations (Hyper-V, VirtualBox, VMware).

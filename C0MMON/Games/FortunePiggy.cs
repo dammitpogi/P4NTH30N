@@ -2,9 +2,9 @@ using System;
 using System.Drawing;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using P4NTH30N.C0MMON.Infrastructure.Persistence;
+using P4NTHE0N.C0MMON.Infrastructure.Persistence;
 
-namespace P4NTH30N.C0MMON;
+namespace P4NTHE0N.C0MMON;
 
 public static partial class Games
 {
@@ -158,11 +158,11 @@ public static partial class Games
 						case "FireKirin":
 							driver.Navigate().GoToUrl("http://play.firekirin.in/web_mobile/firekirin/");
 							// .GetColorAt(new Point(925, 120)).Equals(Color.FromArgb(255, 255, 251, 48));
-							P4NTH30N.C0MMON.Screen.WaitForColor(new Point(925, 120), Color.FromArgb(255, 255, 251, 48));
+							P4NTHE0N.C0MMON.Screen.WaitForColor(new Point(925, 120), Color.FromArgb(255, 255, 251, 48));
 							break;
 						case "OrionStars":
 							driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
-							P4NTH30N.C0MMON.Screen.WaitForColor(new Point(715, 128), Color.FromArgb(255, 254, 242, 181));
+							P4NTHE0N.C0MMON.Screen.WaitForColor(new Point(715, 128), Color.FromArgb(255, 254, 242, 181));
 							break;
 					}
 					return newSignal;
@@ -302,11 +302,11 @@ public static partial class Games
 				case "FireKirin":
 					driver.Navigate().GoToUrl("http://play.firekirin.in/web_mobile/firekirin/");
 					// .GetColorAt(new Point(925, 120)).Equals(Color.FromArgb(255, 255, 251, 48));
-					P4NTH30N.C0MMON.Screen.WaitForColor(new Point(925, 120), Color.FromArgb(255, 255, 251, 48));
+					P4NTHE0N.C0MMON.Screen.WaitForColor(new Point(925, 120), Color.FromArgb(255, 255, 251, 48));
 					break;
 				case "OrionStars":
 					driver.Navigate().GoToUrl("http://web.orionstars.org/hot_play/orionstars/");
-					P4NTH30N.C0MMON.Screen.WaitForColor(new Point(715, 128), Color.FromArgb(255, 254, 242, 181));
+					P4NTHE0N.C0MMON.Screen.WaitForColor(new Point(715, 128), Color.FromArgb(255, 254, 242, 181));
 					break;
 			}
 			return null;

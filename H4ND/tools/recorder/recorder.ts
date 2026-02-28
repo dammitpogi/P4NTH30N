@@ -31,7 +31,7 @@ async function main() {
 async function handleInit(args: string[]) {
   const platform = getArg(args, '--platform') as 'firekirin' | 'orionstars' || 'firekirin';
   const decision = getArg(args, '--decision') || 'DECISION_077';
-  const baseDir = getArg(args, '--base-dir') || 'C:\\P4NTH30N\\DECISION_077\\sessions';
+  const baseDir = getArg(args, '--base-dir') || 'C:\\P4NTHE0N\\DECISION_077\\sessions';
 
   console.log(`Initializing session for ${platform}...`);
   
@@ -87,7 +87,7 @@ async function handleStep(args: string[]) {
   await ensureChromeWithCDP(cdpPort, profileDir);
 
   const metadataPath = join(sessionDir, 'session.ndjson');
-  const configPath = join('C:\\P4NTH30N\\H4ND\\config\\firekirin', 'phase-definitions.json');
+  const configPath = join('C:\\P4NTHE0N\\H4ND\\config\\firekirin', 'phase-definitions.json');
   
   const configContent = await readFile(configPath, 'utf-8');
   const config: PlatformConfig = JSON.parse(configContent);
@@ -248,7 +248,7 @@ async function ensureChromeWithCDP(port: number = 9222, profileDir?: string): Pr
 
   // ARCH-081: Use provided profile dir or default temp dir
   const userDataDir = profileDir
-    || `C:\\ProgramData\\P4NTH30N\\chrome-profiles\\Profile-Recorder-${port}`;
+    || `C:\\ProgramData\\P4NTHE0N\\chrome-profiles\\Profile-Recorder-${port}`;
 
   console.log(`[CDP Check] Starting Chrome with CDP on port ${port} (profile: ${userDataDir})...`);
   const chromeArgs = [
@@ -294,7 +294,7 @@ function getArg(args: string[], name: string): string | undefined {
 
 function printUsage() {
   console.log(`
-P4NTH30N Recorder - Navigation Workflow Recording Tool
+P4NTHE0N Recorder - Navigation Workflow Recording Tool
 
 Usage:
   bun run recorder.ts --init --platform=<platform> [--decision=<decision>]
@@ -322,7 +322,7 @@ Options:
 
 Examples:
   bun run recorder.ts --init --platform=firekirin --decision=DECISION_077
-  bun run recorder.ts --step --phase=Login --screenshot=001.png --session-dir=C:\\P4NTH30N\\DECISION_077\\sessions\\firekirin-2026-02-21 --run-tool=diag
+  bun run recorder.ts --step --phase=Login --screenshot=001.png --session-dir=C:\\P4NTHE0N\\DECISION_077\\sessions\\firekirin-2026-02-21 --run-tool=diag
 `);
 }
 

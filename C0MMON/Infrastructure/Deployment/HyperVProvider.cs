@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using P4NTH30N.C0MMON.Interfaces;
+using P4NTHE0N.C0MMON.Interfaces;
 
-namespace P4NTH30N.C0MMON.Infrastructure.Deployment;
+namespace P4NTHE0N.C0MMON.Infrastructure.Deployment;
 
 /// <summary>
 /// Hyper-V VM provider implementation using PowerShell cmdlets.

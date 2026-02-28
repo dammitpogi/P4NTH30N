@@ -1,7 +1,7 @@
 {
   "name": "@p4nth30n/mcp-framework",
   "version": "2.0.0",
-  "description": "Shared MCP server framework for P4NTH30N v2 servers",
+  "description": "Shared MCP server framework for P4NTHE0N v2 servers",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

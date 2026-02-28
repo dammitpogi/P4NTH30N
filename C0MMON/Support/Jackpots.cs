@@ -2,7 +2,7 @@ using System;
 using System.Runtime.Serialization;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace P4NTH30N.C0MMON;
+namespace P4NTHE0N.C0MMON;
 
 [BsonIgnoreExtraElements]
 public class Jackpots

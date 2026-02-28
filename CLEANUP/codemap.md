@@ -2,7 +2,7 @@
 
 ## Responsibility
 
-Data cleanup and corruption prevention utilities for the P4NTH30N system. Provides tools to fix data inconsistencies, prevent corruption, and maintain database integrity through validation, repair, and proactive monitoring.
+Data cleanup and corruption prevention utilities for the P4NTHE0N system. Provides tools to fix data inconsistencies, prevent corruption, and maintain database integrity through validation, repair, and proactive monitoring.
 
 **Core Functions:**
 - **Data Repair**: Fix inconsistencies without data loss
@@ -228,7 +228,7 @@ dotnet run --project CLEANUP/CLEANUP.csproj -- --validate --verbose
 3. **Backup Before Major Cleanup**
    ```bash
    # MongoDB backup
-   mongodump --db P4NTH30N --out /backup/$(date +%Y%m%d)
+   mongodump --db P4NTHE0N --out /backup/$(date +%Y%m%d)
    ```
 
 4. **Monitor Logs for Unexpected Behavior**

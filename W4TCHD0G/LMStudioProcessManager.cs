@@ -6,9 +6,9 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using P4NTH30N.C0MMON.Interfaces;
+using P4NTHE0N.C0MMON.Interfaces;
 
-namespace P4NTH30N.W4TCHD0G;
+namespace P4NTHE0N.W4TCHD0G;
 
 /// <summary>
 /// FOUREYES-025: LM Studio process manager implementation.

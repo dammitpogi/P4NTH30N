@@ -1,4 +1,4 @@
-namespace P4NTH30N.SWE.Workflows;
+namespace P4NTHE0N.SWE.Workflows;
 
 /// <summary>
 /// Agent integration patterns for H0UND/H4ND coordination.

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace P4NTH30N.H0UND.Domain;
+namespace P4NTHE0N.H0UND.Domain;
 
 public class DecisionRationale
 {

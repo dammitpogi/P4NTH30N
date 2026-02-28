@@ -3,7 +3,7 @@ UpdateOn: 2026-02-23T12:02 AM
 
 ## Responsibility
 
-Core shared library providing enterprise-grade infrastructure, domain logic, and cross-cutting concerns for the P4NTH30N ecosystem. Contains reusable components enabling automation, analytics, monitoring, LLM integration, RAG systems, caching, security, and data persistence across all agents.
+Core shared library providing enterprise-grade infrastructure, domain logic, and cross-cutting concerns for the P4NTHE0N ecosystem. Contains reusable components enabling automation, analytics, monitoring, LLM integration, RAG systems, caching, security, and data persistence across all agents.
 
 ## Design
 
@@ -17,7 +17,7 @@ Core shared library providing enterprise-grade infrastructure, domain logic, and
 - **Repository Pattern**: `IRepo<T>` interfaces with MongoDB implementations
 - **Unit of Work**: `MongoUnitOfWork` for atomic operations and transaction boundaries
 - **Validation**: `IsValid(IStoreErrors?)` pattern - validates but never auto-repairs
-- **Options Pattern**: `P4NTH30NOptions` for strongly-typed configuration
+- **Options Pattern**: `P4NTHE0NOptions` for strongly-typed configuration
 - **Dependency Injection**: Service registration via `ConfigurationExtensions`
 - **CDP-First**: Chrome DevTools Protocol for browser automation (replaces Selenium)
 
@@ -32,7 +32,7 @@ C0MMON/
 ├── Games/                # Platform parsers (FireKirin, OrionStars, Gold777) - now CDP-based
 ├── Infrastructure/
 │   ├── Caching/          # CacheService for distributed caching
-│   ├── Configuration/    # P4NTH30NOptions, SecretsProvider, validation
+│   ├── Configuration/    # P4NTHE0NOptions, SecretsProvider, validation
 │   ├── Cdp/              # Chrome DevTools Protocol client (ICdpClient, CdpClient, CdpConfig)
 │   ├── Monitoring/       # HealthChecks, MetricsService
 │   └── Persistence/      # MongoDB implementation
@@ -114,11 +114,11 @@ Plaintext (in memory only)
 ```
 appsettings.json / Environment Variables
     ↓
-ConfigurationExtensions.AddP4NTH30NConfiguration()
+ConfigurationExtensions.AddP4NTHE0NConfiguration()
     ↓
 ConfigurationValidator.Validate()
     ↓
-P4NTH30NOptions (injected via IOptions<T>)
+P4NTHE0NOptions (injected via IOptions<T>)
 ```
 
 ## Integration
@@ -127,7 +127,7 @@ P4NTH30NOptions (injected via IOptions<T>)
 - **Used by**: H4ND, H0UND, W4TCHD0G, T00L5ET, UNI7T35T, PROF3T
 - **Data Access**: All agents consume via IMongoUnitOfWork and repository interfaces
 - **CDP Infrastructure**: H4ND uses CdpClient for browser automation
-- **Configuration**: Centralized via P4NTH30NOptions
+- **Configuration**: Centralized via P4NTHE0NOptions
 - **Caching**: Distributed caching via CacheService
 - **Security**: Encryption via EncryptionService
 
@@ -149,17 +149,17 @@ P4NTH30NOptions (injected via IOptions<T>)
 - `SIGN4L`: Signal queue (derived from EV3NT)
 
 ### Namespace Patterns
-- Interfaces: `P4NTH30N.C0MMON.Interfaces`
-- Infrastructure: `P4NTH30N.C0MMON.Infrastructure.*`
-- Entities: `P4NTH30N.C0MMON` (root - migration to Domain/ pending)
-- RAG: `P4NTH30N.C0MMON.RAG`
-- Security: `P4NTH30N.C0MMON.Security`
-- LLM: `P4NTH30N.C0MMON.LLM`
+- Interfaces: `P4NTHE0N.C0MMON.Interfaces`
+- Infrastructure: `P4NTHE0N.C0MMON.Infrastructure.*`
+- Entities: `P4NTHE0N.C0MMON` (root - migration to Domain/ pending)
+- RAG: `P4NTHE0N.C0MMON.RAG`
+- Security: `P4NTHE0N.C0MMON.Security`
+- LLM: `P4NTHE0N.C0MMON.LLM`
 
 ### Global Usings
 ```csharp
-global using P4NTH30N.C0MMON.Interfaces;
-global using P4NTH30N.C0MMON.Infrastructure.Persistence;
+global using P4NTHE0N.C0MMON.Interfaces;
+global using P4NTHE0N.C0MMON.Infrastructure.Persistence;
 ```
 
 ## Key Components
@@ -175,7 +175,7 @@ global using P4NTH30N.C0MMON.Infrastructure.Persistence;
 ### Infrastructure/Persistence/
 - **MongoDatabaseProvider.cs**: Connection factory with environment-based configuration
   - Supports mongodb.uri file override
-  - Environment variable fallback (P4NTH30N_MONGODB_URI)
+  - Environment variable fallback (P4NTHE0N_MONGODB_URI)
 - **MongoUnitOfWork.cs**: Aggregates all repositories, implements Unit of Work pattern
 - **Repositories.cs**: Concrete implementations of IRepoCredentials, IRepoSignals, etc.
 - **ValidatedMongoRepository.cs**: Base repository with validation before write operations
@@ -187,7 +187,7 @@ global using P4NTH30N.C0MMON.Infrastructure.Persistence;
 - **CacheService.cs**: Distributed caching with TTL support
 
 ### Infrastructure/Configuration/
-- **P4NTH30NOptions.cs**: Strongly-typed configuration options
+- **P4NTHE0NOptions.cs**: Strongly-typed configuration options
 - **ConfigurationExtensions.cs**: DI registration extensions
 - **ConfigurationValidator.cs**: Startup validation
 - **SecretsProvider.cs**: Secure secret retrieval
@@ -251,7 +251,7 @@ global using P4NTH30N.C0MMON.Infrastructure.Persistence;
 - Driver redirects to `localhost:27017` without `?directConnection=true`
 - **Fix**: Append `?directConnection=true` to connection string
 - **File override**: `mongodb.uri` file in app directory
-- **Env var**: `P4NTH30N_MONGODB_URI`
+- **Env var**: `P4NTHE0N_MONGODB_URI`
 
 **CDP Remote Debugging**:
 - Chrome `--remote-debugging-address=0.0.0.0` still binds to `127.0.0.1`
@@ -285,7 +285,7 @@ global using P4NTH30N.C0MMON.Infrastructure.Persistence;
 ### Validation Philosophy
 - Validate but do NOT mutate - invalid data is logged to ERR0R collection
 - Use `entity.IsValid(errorStore)` pattern throughout
-- Never auto-repair data (P4NTH30NSanityChecker removed)
+- Never auto-repair data (P4NTHE0NSanityChecker removed)
 
 ### Security
 - Credentials currently stored in plain text (automation priority)

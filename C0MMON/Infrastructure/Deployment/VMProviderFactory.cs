@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using P4NTH30N.C0MMON.Interfaces;
+using P4NTHE0N.C0MMON.Interfaces;
 
-namespace P4NTH30N.C0MMON.Infrastructure.Deployment;
+namespace P4NTHE0N.C0MMON.Infrastructure.Deployment;
 
 /// <summary>
 /// Factory for creating VM provider and file transfer implementations.

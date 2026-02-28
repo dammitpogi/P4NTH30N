@@ -2,7 +2,7 @@ using System;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace P4NTH30N.H4ND.Infrastructure.Logging;
+namespace P4NTHE0N.H4ND.Infrastructure.Logging;
 
 /// <summary>
 /// DECISION_110 Phase 2: Domain event log document for L0G_D0M41N.

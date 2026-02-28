@@ -4,7 +4,7 @@
 	"updatedDate": "2026-02-19T02:58:00Z",
 	"executor": "Vigil (OpenFixer)",
 	"status": "COMPLETED_WITH_FINDINGS",
-	"summary": "Auth constraint resolved. 5-sample pre-validation executed against 3 local models. All models <=1B fail accuracy threshold. Best result: smollm2-1.7b at 40% (2/5). Maincoder-1B does not exist on HuggingFace. Empirical data proves <=1B models cannot reliably validate P4NTH30N configs.",
+	"summary": "Auth constraint resolved. 5-sample pre-validation executed against 3 local models. All models <=1B fail accuracy threshold. Best result: smollm2-1.7b at 40% (2/5). Maincoder-1B does not exist on HuggingFace. Empirical data proves <=1B models cannot reliably validate P4NTHE0N configs.",
 	"lmStudio": {
 		"running": true,
 		"port": 1234,
@@ -160,7 +160,7 @@
 		"bestLatencyModel": "qwen2.5-0.5b-instruct"
 	},
 	"strategistInput": {
-		"empiricalFindings": "<=1B local models cannot validate P4NTH30N configs. The task requires semantic understanding of field relationships (threshold ordering, valid platform names, injection detection) that sub-2B models lack.",
+		"empiricalFindings": "<=1B local models cannot validate P4NTHE0N configs. The task requires semantic understanding of field relationships (threshold ordering, valid platform names, injection detection) that sub-2B models lack.",
 		"recommendedPivot": "Rule-based JSON Schema validator as primary (100% accuracy for known rules) + LLM secondary for edge cases only",
 		"alternativeApproaches": [
 			"JSON Schema validation covers tests 1-4 deterministically (80% of cases)",

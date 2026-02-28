@@ -1,8 +1,11 @@
 using System.Net;
-using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Entities;
+using System.Security.Cryptography;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.C0MMON.Entities;
+using P4NTHE0N.H4ND.Infrastructure.Logging.ErrorEvidence;
+using CommonErrorSeverity = P4NTHE0N.C0MMON.ErrorSeverity;
 
-namespace P4NTH30N.H4ND.Services;
+namespace P4NTHE0N.H4ND.Services;
 
 /// <summary>
 /// AUTH-041: Session renewal and authentication recovery service.
@@ -13,13 +16,15 @@ public sealed class SessionRenewalService
 {
 	private readonly IUnitOfWork _uow;
 	private readonly SessionRenewalConfig _config;
+	private readonly IErrorEvidence _errors;
 	private readonly Dictionary<string, PlatformHealth> _platformHealth = new();
 	private DateTime _lastHealthCheck = DateTime.MinValue;
 
-	public SessionRenewalService(IUnitOfWork uow, SessionRenewalConfig? config = null)
+	public SessionRenewalService(IUnitOfWork uow, SessionRenewalConfig? config = null, IErrorEvidence? errors = null)
 	{
 		_uow = uow;
 		_config = config ?? new SessionRenewalConfig();
+		_errors = errors ?? NoopErrorEvidence.Instance;
 
 		foreach (string platform in _config.PlatformFallbackOrder)
 		{
@@ -33,6 +38,14 @@ public sealed class SessionRenewalService
 	/// </summary>
 	public async Task<PlatformProbeResult> ProbePlatformAsync(string platform, CancellationToken ct = default)
 	{
+		using ErrorScope scope = _errors.BeginScope(
+			"SessionRenewalService",
+			"ProbePlatformAsync",
+			new Dictionary<string, object>
+			{
+				["platform"] = platform,
+			});
+
 		string configUrl = platform switch
 		{
 			"FireKirin" => "http://play.firekirin.in/web_mobile/plat/config/hall/firekirin/config.json",
@@ -64,11 +77,34 @@ public sealed class SessionRenewalService
 			}
 
 			Console.WriteLine($"[SessionRenewal] Probe {platform}: HTTP {result.StatusCode} ({(result.IsReachable ? "OK" : "FAILED")})");
+			if (!result.IsReachable)
+			{
+				_errors.CaptureWarning(
+					"H4ND-SESSION-PROBE-001",
+					$"Platform probe failed with HTTP {result.StatusCode}",
+					context: new Dictionary<string, object>
+					{
+						["platform"] = platform,
+						["statusCode"] = result.StatusCode,
+						["url"] = configUrl,
+					});
+			}
+
 			return result;
 		}
 		catch (Exception ex)
 		{
 			Console.WriteLine($"[SessionRenewal] Probe {platform} error: {ex.Message}");
+			_errors.Capture(
+				ex,
+				"H4ND-SESSION-PROBE-002",
+				"Platform probe threw exception",
+				context: new Dictionary<string, object>
+				{
+					["platform"] = platform,
+					["url"] = configUrl,
+				},
+				severity: Infrastructure.Logging.ErrorEvidence.ErrorSeverity.Warning);
 
 			if (_platformHealth.TryGetValue(platform, out var health))
 			{
@@ -95,6 +131,17 @@ public sealed class SessionRenewalService
 	/// </summary>
 	public CredentialRefreshResult RefreshCredential(Credential credential)
 	{
+		using ErrorScope scope = _errors.BeginScope(
+			"SessionRenewalService",
+			"RefreshCredential",
+			new Dictionary<string, object>
+			{
+				["credentialId"] = credential._id.ToString(),
+				["house"] = credential.House,
+				["game"] = credential.Game,
+				["usernameHash"] = HashForEvidence(credential.Username),
+			});
+
 		try
 		{
 			var balances = credential.Game switch
@@ -114,6 +161,17 @@ public sealed class SessionRenewalService
 		}
 		catch (InvalidOperationException ex) when (ex.Message.Contains("suspended"))
 		{
+			_errors.CaptureWarning(
+				"H4ND-SESSION-REFRESH-001",
+				"Credential refresh detected suspended account",
+				context: new Dictionary<string, object>
+				{
+					["credentialId"] = credential._id.ToString(),
+					["house"] = credential.House,
+					["game"] = credential.Game,
+					["usernameHash"] = HashForEvidence(credential.Username),
+				});
+
 			return new CredentialRefreshResult
 			{
 				Success = false,
@@ -124,6 +182,19 @@ public sealed class SessionRenewalService
 		}
 		catch (Exception ex)
 		{
+			_errors.Capture(
+				ex,
+				"H4ND-SESSION-REFRESH-002",
+				"Credential refresh failed",
+				context: new Dictionary<string, object>
+				{
+					["credentialId"] = credential._id.ToString(),
+					["house"] = credential.House,
+					["game"] = credential.Game,
+					["usernameHash"] = HashForEvidence(credential.Username),
+				},
+				severity: Infrastructure.Logging.ErrorEvidence.ErrorSeverity.Warning);
+
 			return new CredentialRefreshResult
 			{
 				Success = false,
@@ -139,6 +210,15 @@ public sealed class SessionRenewalService
 	/// </summary>
 	public async Task<SessionRenewalResult> RenewSessionAsync(string platform, CancellationToken ct = default)
 	{
+		using ErrorScope scope = _errors.BeginScope(
+			"SessionRenewalService",
+			"RenewSessionAsync",
+			new Dictionary<string, object>
+			{
+				["platform"] = platform,
+				["maxAttempts"] = _config.MaxRenewalAttempts,
+			});
+
 		Console.WriteLine($"[SessionRenewal] Attempting session renewal for {platform}");
 
 		for (int attempt = 1; attempt <= _config.MaxRenewalAttempts; attempt++)
@@ -225,6 +305,14 @@ public sealed class SessionRenewalService
 	/// </summary>
 	public async Task<PlatformFallbackResult> FindWorkingPlatformAsync(CancellationToken ct = default)
 	{
+		using ErrorScope scope = _errors.BeginScope(
+			"SessionRenewalService",
+			"FindWorkingPlatformAsync",
+			new Dictionary<string, object>
+			{
+				["fallbackOrder"] = string.Join("|", _config.PlatformFallbackOrder),
+			});
+
 		Console.WriteLine($"[SessionRenewal] Searching for working platform (order: {string.Join(" → ", _config.PlatformFallbackOrder)})");
 
 		foreach (string platform in _config.PlatformFallbackOrder)
@@ -245,8 +333,19 @@ public sealed class SessionRenewalService
 
 		Console.WriteLine("[SessionRenewal] ALL PLATFORMS FAILED — operator intervention required");
 		_uow.Errors.Insert(
-			ErrorLog.Create(ErrorType.SystemError, "SessionRenewal", "All platforms failed session renewal — operator intervention required", ErrorSeverity.Critical)
+			ErrorLog.Create(ErrorType.SystemError, "SessionRenewal", "All platforms failed session renewal — operator intervention required", CommonErrorSeverity.Critical)
 		);
+
+		_errors.CaptureInvariantFailure(
+			"H4ND-SESSION-FALLBACK-001",
+			"All platforms exhausted during session fallback",
+			expected: "AnyHealthyPlatform",
+			actual: "None",
+			context: new Dictionary<string, object>
+			{
+				["attemptedPlatforms"] = string.Join("|", _config.PlatformFallbackOrder),
+				["count"] = _config.PlatformFallbackOrder.Length,
+			});
 
 		return new PlatformFallbackResult
 		{
@@ -302,6 +401,17 @@ public sealed class SessionRenewalService
 	private static (double Balance, double Grand, double Major, double Minor, double Mini) CastBalances(dynamic b)
 	{
 		return ((double)b.Balance, (double)b.Grand, (double)b.Major, (double)b.Minor, (double)b.Mini);
+	}
+
+	private static string HashForEvidence(string input)
+	{
+		if (string.IsNullOrWhiteSpace(input))
+		{
+			return string.Empty;
+		}
+
+		byte[] bytes = SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(input));
+		return Convert.ToHexString(bytes).Substring(0, 16);
 	}
 }
 

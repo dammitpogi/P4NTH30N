@@ -1,7 +1,7 @@
-using P4NTH30N.H4ND.Domains.Monitoring.ValueObjects;
-using AggregateHealthCheck = P4NTH30N.H4ND.Domains.Monitoring.Aggregates.HealthCheck;
+using P4NTHE0N.H4ND.Domains.Monitoring.ValueObjects;
+using AggregateHealthCheck = P4NTHE0N.H4ND.Domains.Monitoring.Aggregates.HealthCheck;
 
-namespace P4NTH30N.H4ND.Domains.Monitoring.Repositories;
+namespace P4NTHE0N.H4ND.Domains.Monitoring.Repositories;
 
 public interface IHealthCheckRepository
 {

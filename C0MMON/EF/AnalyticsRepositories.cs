@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Infrastructure.Persistence;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.C0MMON.Infrastructure.Persistence;
 
-namespace P4NTH30N.C0MMON.EF;
+namespace P4NTHE0N.C0MMON.EF;
 
 /// <summary>
 /// EF Core-based analytics repositories for H0UND workloads.
@@ -36,9 +36,9 @@ public interface IJackpotAnalyticsRepository
 	Task<List<Jackpot>> GetAllUpcomingJackpotsAsync(int minPriority);
 }
 
-public class CredentialAnalyticsRepository(P4NTH30NDbContext context) : ICredentialAnalyticsRepository
+public class CredentialAnalyticsRepository(P4NTHE0NDbContext context) : ICredentialAnalyticsRepository
 {
-	private readonly P4NTH30NDbContext _context = context;
+	private readonly P4NTHE0NDbContext _context = context;
 
 	public async Task<List<Credential>> GetEnabledCredentialsAsync(string house, string game)
 	{
@@ -86,9 +86,9 @@ public class CredentialAnalyticsRepository(P4NTH30NDbContext context) : ICredent
 	}
 }
 
-public class JackpotAnalyticsRepository(P4NTH30NDbContext context) : IJackpotAnalyticsRepository
+public class JackpotAnalyticsRepository(P4NTHE0NDbContext context) : IJackpotAnalyticsRepository
 {
-	private readonly P4NTH30NDbContext _context = context;
+	private readonly P4NTHE0NDbContext _context = context;
 
 	public async Task<List<Jackpot>> GetUpcomingJackpotsAsync(string house, string game, int priority, DateTime beforeDate)
 	{

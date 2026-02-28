@@ -3,7 +3,7 @@ UpdateOn: 2026-02-23T12:02 AM
 
 ## Responsibility
 
-W4TCHD0G is the comprehensive vision, safety, and monitoring system for P4NTH30N. It provides OBS (Open Broadcaster Software) integration for video stream capture, computer vision for game state detection, safety monitoring with spend/loss limits and kill switch, win detection with dual confirmation (balance + OCR), and health monitoring for all system components.
+W4TCHD0G is the comprehensive vision, safety, and monitoring system for P4NTHE0N. It provides OBS (Open Broadcaster Software) integration for video stream capture, computer vision for game state detection, safety monitoring with spend/loss limits and kill switch, win detection with dual confirmation (balance + OCR), and health monitoring for all system components.
 
 **Core Capabilities:**
 - **Vision System**: OBS WebSocket integration, frame capture, vision processing

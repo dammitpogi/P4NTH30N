@@ -1,4 +1,4 @@
-namespace P4NTH30N.H4ND.SmokeTest;
+namespace P4NTHE0N.H4ND.SmokeTest;
 
 /// <summary>
 /// ARCH-099: Configuration for the smoke test execution.
@@ -25,7 +25,7 @@ public sealed class SmokeTestConfig
 	/// <summary>
 	/// MongoDB database name.
 	/// </summary>
-	public string MongoDatabaseName { get; set; } = "P4NTH30N";
+	public string MongoDatabaseName { get; set; } = "P4NTHE0N";
 
 	/// <summary>
 	/// MongoDB credential collection name.

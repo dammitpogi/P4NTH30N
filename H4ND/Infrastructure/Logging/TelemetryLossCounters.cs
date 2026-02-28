@@ -1,6 +1,6 @@
 using System.Threading;
 
-namespace P4NTH30N.H4ND.Infrastructure.Logging;
+namespace P4NTHE0N.H4ND.Infrastructure.Logging;
 
 /// <summary>
 /// DECISION_110 Phase 2: Thread-safe counters tracking telemetry data loss.

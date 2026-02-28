@@ -1,8 +1,8 @@
 using System;
 using MongoDB.Driver;
-using P4NTH30N.H4ND.Infrastructure.Logging;
+using P4NTHE0N.H4ND.Infrastructure.Logging;
 
-namespace P4NTH30N.H4ND.Infrastructure.Persistence;
+namespace P4NTHE0N.H4ND.Infrastructure.Persistence;
 
 /// <summary>
 /// DECISION_110 Phase 2: Creates the 4 log collections and ensures indexes.

@@ -182,7 +182,7 @@ Results:
 
 ## Tools Ready
 
-All tools are in: `C:\P4NTH30N\tools\windsurf-crypto-analysis\`
+All tools are in: `C:\P4NTHE0N\tools\windsurf-crypto-analysis\`
 
 - `crypto_analysis.py` - Main analysis toolkit
 - `memory_dump_analyzer.py` - Memory dump analysis (if needed)

@@ -1,7 +1,7 @@
 {
   "id": "mongodb-p4nth30n-v2",
-  "name": "MongoDB P4NTH30N Server v2",
-  "description": "MCP server for MongoDB operations on P4NTH30N database",
+  "name": "MongoDB P4NTHE0N Server v2",
+  "description": "MCP server for MongoDB operations on P4NTHE0N database",
   "transport": "http",
   "connection": {
     "url": "http://localhost:3001",
@@ -17,7 +17,7 @@
         "properties": {
           "database": {
             "type": "string",
-            "default": "P4NTH30N"
+            "default": "P4NTHE0N"
           },
           "collection": {
             "type": "string"

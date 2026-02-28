@@ -1,4 +1,4 @@
-namespace P4NTH30N.W4TCHD0G.Input;
+namespace P4NTHE0N.W4TCHD0G.Input;
 
 /// <summary>
 /// Contract for programmatic input control on a remote VM via Synergy protocol.
@@ -13,7 +13,7 @@ public interface ISynergyClient : IDisposable
 	/// <param name="port">Synergy port. Default: 24800.</param>
 	/// <param name="clientName">Client screen name registered in Synergy config.</param>
 	/// <param name="cancellationToken">Cancellation token.</param>
-	Task ConnectAsync(string hostIp, int port = 24800, string clientName = "P4NTH30N", CancellationToken cancellationToken = default);
+	Task ConnectAsync(string hostIp, int port = 24800, string clientName = "P4NTHE0N", CancellationToken cancellationToken = default);
 
 	/// <summary>
 	/// Disconnects from the Synergy server gracefully.

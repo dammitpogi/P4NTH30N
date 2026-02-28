@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace P4NTH30N.C0MMON.Interfaces;
+namespace P4NTHE0N.C0MMON.Interfaces;
 
 /// <summary>
 /// Configuration for VM deployment.

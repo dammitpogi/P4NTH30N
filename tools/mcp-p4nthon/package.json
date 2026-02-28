@@ -1,7 +1,7 @@
 {
 	"name": "mcp-p4nth30n",
 	"version": "1.0.0",
-	"description": "Model Context Protocol server for P4NTH30N casino automation platform",
+	"description": "Model Context Protocol server for P4NTHE0N casino automation platform",
 	"type": "module",
 	"main": "dist/index.js",
 	"bin": {
@@ -20,7 +20,7 @@
 		"automation",
 		"mongodb"
 	],
-	"author": "P4NTH30N Team",
+	"author": "P4NTHE0N Team",
 	"license": "MIT",
 	"dependencies": {
 		"@modelcontextprotocol/sdk": "^1.0.0",

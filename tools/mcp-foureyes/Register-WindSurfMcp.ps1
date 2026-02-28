@@ -13,7 +13,7 @@ $config = Get-Content $configPath -Raw | ConvertFrom-Json
 # Add foureyes-mcp entry
 $fourEyesConfig = @{
     command = "node"
-    args = @("C:/P4NTH30N/tools/mcp-foureyes/server.js", "stdio")
+    args = @("C:/P4NTHE0N/tools/mcp-foureyes/server.js", "stdio")
     env = @{
         CDP_HOST = "192.168.56.1"
         CDP_PORT = "9222"

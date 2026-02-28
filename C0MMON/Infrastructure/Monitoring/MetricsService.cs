@@ -1,7 +1,7 @@
 using System.Collections.Concurrent;
 using System.Diagnostics;
 
-namespace P4NTH30N.C0MMON.Infrastructure.Monitoring;
+namespace P4NTHE0N.C0MMON.Infrastructure.Monitoring;
 
 /// <summary>
 /// Lightweight metrics collection for KPIs: counters, gauges, histograms.

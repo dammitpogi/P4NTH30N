@@ -1,7 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace P4NTH30N.SWE;
+namespace P4NTHE0N.SWE;
 
 /// <summary>
 /// Manages decision clustering for batch execution within 30-turn session limits.

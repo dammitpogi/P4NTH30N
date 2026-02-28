@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using P4NTH30N.W4TCHD0G.Configuration;
-using P4NTH30N.W4TCHD0G.Models;
+using P4NTHE0N.W4TCHD0G.Configuration;
+using P4NTHE0N.W4TCHD0G.Models;
 
-namespace P4NTH30N.W4TCHD0G;
+namespace P4NTHE0N.W4TCHD0G;
 
 public class OBSVisionBridge : IDisposable
 {

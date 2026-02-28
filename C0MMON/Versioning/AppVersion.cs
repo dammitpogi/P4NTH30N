@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace P4NTH30N.C0MMON.Versioning;
+namespace P4NTHE0N.C0MMON.Versioning;
 
 public static class AppVersion
 {

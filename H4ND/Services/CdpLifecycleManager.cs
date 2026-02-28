@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System.Net.Http;
 
-namespace P4NTH30N.H4ND.Services;
+namespace P4NTHE0N.H4ND.Services;
 
 /// <summary>
 /// AUTO-056: Chrome CDP lifecycle manager.

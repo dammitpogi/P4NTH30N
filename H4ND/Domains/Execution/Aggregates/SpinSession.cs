@@ -1,8 +1,8 @@
-using P4NTH30N.H4ND.Domains.Common;
-using P4NTH30N.H4ND.Domains.Execution.Events;
-using P4NTH30N.H4ND.Domains.Execution.ValueObjects;
+using P4NTHE0N.H4ND.Domains.Common;
+using P4NTHE0N.H4ND.Domains.Execution.Events;
+using P4NTHE0N.H4ND.Domains.Execution.ValueObjects;
 
-namespace P4NTH30N.H4ND.Domains.Execution.Aggregates;
+namespace P4NTHE0N.H4ND.Domains.Execution.Aggregates;
 
 public sealed class SpinSession : AggregateRoot
 {

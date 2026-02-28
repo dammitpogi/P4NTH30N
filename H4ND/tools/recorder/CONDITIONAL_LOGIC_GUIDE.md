@@ -434,7 +434,7 @@ Step 1 → Step 2 → Step 3 (fatal error) → ABORT
 The recorder automatically evaluates conditionals when executing steps. No special flags needed:
 
 ```bash
-bun run recorder.ts --step --phase=Login --screenshot=005.png --session-dir=C:\P4NTH30N\DECISION_077\sessions\firekirin-2026-02-22
+bun run recorder.ts --step --phase=Login --screenshot=005.png --session-dir=C:\P4NTHE0N\DECISION_077\sessions\firekirin-2026-02-22
 ```
 
 The conditional logic will be evaluated and logged to the session report.

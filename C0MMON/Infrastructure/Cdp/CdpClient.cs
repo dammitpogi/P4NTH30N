@@ -3,7 +3,7 @@ using System.Net.WebSockets;
 using System.Text;
 using System.Text.Json;
 
-namespace P4NTH30N.C0MMON.Infrastructure.Cdp;
+namespace P4NTHE0N.C0MMON.Infrastructure.Cdp;
 
 /// <summary>
 /// Chrome DevTools Protocol client that connects to a remote Chrome instance.

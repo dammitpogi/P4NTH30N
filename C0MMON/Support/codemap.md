@@ -2,7 +2,7 @@
 
 ## Responsibility
 
-C0MMON/Support contains value objects, configuration structures, and utility types that support the core domain logic. These supporting types encapsulate complex data structures, business rules, and calculations that are reused across the P4NTH30N system.
+C0MMON/Support contains value objects, configuration structures, and utility types that support the core domain logic. These supporting types encapsulate complex data structures, business rules, and calculations that are reused across the P4NTHE0N system.
 
 **Core Support Types:**
 - **DPD**: Days Past Due calculations and toggle management for jackpot detection

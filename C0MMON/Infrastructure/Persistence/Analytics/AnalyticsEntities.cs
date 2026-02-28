@@ -1,6 +1,6 @@
 using MongoDB.Bson;
 
-namespace P4NTH30N.C0MMON.Persistence.Analytics;
+namespace P4NTHE0N.C0MMON.Persistence.Analytics;
 
 /// <summary>
 /// Analytics event stored in MongoDB.

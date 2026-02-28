@@ -3,7 +3,7 @@ using System.Text;
 using System.Text.Json;
 using MongoDB.Driver;
 
-namespace P4NTH30N.C0MMON.RAG;
+namespace P4NTHE0N.C0MMON.RAG;
 
 /// <summary>
 /// FAISS-backed vector store that communicates with a Python bridge process

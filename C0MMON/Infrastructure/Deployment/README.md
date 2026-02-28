@@ -2,7 +2,7 @@
 
 ## Overview
 
-This system provides comprehensive VM control and file transfer capabilities for P4NTH30N deployment workflows. It supports Hyper-V (primary) and VirtualBox (fallback) VM providers, along with FTP/SFTP file transfer mechanisms.
+This system provides comprehensive VM control and file transfer capabilities for P4NTHE0N deployment workflows. It supports Hyper-V (primary) and VirtualBox (fallback) VM providers, along with FTP/SFTP file transfer mechanisms.
 
 ## Architecture
 
@@ -81,10 +81,10 @@ Create VMs in Hyper-V Manager and note their names. Ensure the VMs have:
 ### Basic VM Deployment
 
 ```csharp
-using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Interfaces;
-using P4NTH30N.C0MMON.Infrastructure.Deployment;
-using P4NTH30N.C0MMON.Services;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.C0MMON.Interfaces;
+using P4NTHE0N.C0MMON.Infrastructure.Deployment;
+using P4NTHE0N.C0MMON.Services;
 
 // Create factory and service
 IVMProviderFactory factory = new VMProviderFactory();
@@ -92,7 +92,7 @@ VMDeploymentService deploymentService = new(factory);
 
 // Configure deployment
 VMConfiguration config = new(
-    Name: "P4NTH30N-Deploy-01",
+    Name: "P4NTHE0N-Deploy-01",
     ProviderType: VMProviderType.HyperV,
     MemoryMB: 4096,
     CpuCount: 2,
@@ -234,7 +234,7 @@ For command execution inside VMs without network connectivity:
 
 ## Error Handling
 
-The system follows P4NTH30N error handling patterns:
+The system follows P4NTHE0N error handling patterns:
 
 ```csharp
 try
@@ -258,7 +258,7 @@ catch (Exception ex)
 }
 ```
 
-## Integration with P4NTH30N
+## Integration with P4NTHE0N
 
 ### Using with H4ND Agent
 

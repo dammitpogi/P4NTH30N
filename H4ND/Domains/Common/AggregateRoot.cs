@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace P4NTH30N.H4ND.Domains.Common;
+namespace P4NTHE0N.H4ND.Domains.Common;
 
 /// <summary>
 /// DECISION_110 Phase 3: Base class for aggregate roots.

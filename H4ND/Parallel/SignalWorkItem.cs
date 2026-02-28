@@ -1,6 +1,6 @@
-using P4NTH30N.C0MMON;
+using P4NTHE0N.C0MMON;
 
-namespace P4NTH30N.H4ND.Parallel;
+namespace P4NTHE0N.H4ND.Parallel;
 
 /// <summary>
 /// ARCH-047: DTO for channel-based signal distribution.

@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using P4NTH30N.C0MMON.Entities;
+using P4NTHE0N.C0MMON.Entities;
 
-namespace P4NTH30N.C0MMON.Interfaces;
+namespace P4NTHE0N.C0MMON.Interfaces;
 
 /// <summary>
 /// FOUREYES-010: Cerberus Protocol - OBS self-healing contract.

@@ -5,7 +5,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using Timer = System.Timers.Timer;
 
-namespace P4NTH30N.C0MMON.Monitoring
+namespace P4NTHE0N.C0MMON.Monitoring
 {
 	/// <summary>
 	/// Real-time monitoring service for detecting extreme values and data corruption

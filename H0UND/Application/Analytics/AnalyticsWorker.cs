@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using P4NTH30N.C0MMON;
-using P4NTH30N.H0UND.Domain.Forecasting;
-using P4NTH30N.H0UND.Domain.Signals;
-using P4NTH30N.Services;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.H0UND.Domain.Forecasting;
+using P4NTHE0N.H0UND.Domain.Signals;
+using P4NTHE0N.Services;
 
-namespace P4NTH30N.H0UND.Application.Analytics;
+namespace P4NTHE0N.H0UND.Application.Analytics;
 
 public sealed class AnalyticsWorker
 {

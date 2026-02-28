@@ -1,6 +1,6 @@
-using P4NTH30N.H4ND.Services;
+using P4NTHE0N.H4ND.Services;
 
-namespace P4NTH30N.UNI7T35T.Tests;
+namespace P4NTHE0N.UNI7T35T.Tests;
 
 /// <summary>
 /// ARCH-055: Unit tests for SystemHealthReport DTOs and BurnIn metrics.
@@ -149,7 +149,7 @@ public static class SystemHealthReportTests
 
 	static bool Test_ParallelMetrics_SelfHealingCounters()
 	{
-		var metrics = new P4NTH30N.H4ND.Parallel.ParallelMetrics();
+		var metrics = new P4NTHE0N.H4ND.Parallel.ParallelMetrics();
 
 		metrics.IncrementRenewalAttempts();
 		metrics.IncrementRenewalAttempts();

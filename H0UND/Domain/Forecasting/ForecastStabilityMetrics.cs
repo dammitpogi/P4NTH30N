@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace P4NTH30N.H0UND.Domain.Forecasting;
+namespace P4NTHE0N.H0UND.Domain.Forecasting;
 
 // DECISION_085: Forecast stability metrics based on Klee & Xia (2025) research
 // CV = σ/μ, target CV < 5% for stable forecasts

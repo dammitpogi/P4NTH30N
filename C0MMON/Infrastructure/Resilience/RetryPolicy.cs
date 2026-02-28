@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace P4NTH30N.C0MMON.Infrastructure.Resilience;
+namespace P4NTHE0N.C0MMON.Infrastructure.Resilience;
 
 public sealed class RetryPolicy
 {

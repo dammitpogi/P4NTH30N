@@ -1,6 +1,6 @@
 using System.Collections.Concurrent;
 
-namespace P4NTH30N.H4ND.Infrastructure;
+namespace P4NTHE0N.H4ND.Infrastructure;
 
 /// <summary>
 /// OPS-JP-001: Operational monitoring for spin execution.

@@ -2,12 +2,12 @@
 setlocal enabledelayedexpansion
 
 echo ==========================================================
-echo P4NTH30N MongoDB Cleanup and Validation Script
+echo P4NTHE0N MongoDB Cleanup and Validation Script
 echo ==========================================================
 echo.
 
 echo [1/4] Building cleanup utility...
-cd /d "c:\P4NTH30N\CLEANUP"
+cd /d "c:\P4NTHE0N\CLEANUP"
 dotnet build --configuration Release
 if %ERRORLEVEL% neq 0 (
     echo ERROR: Build failed!
@@ -36,7 +36,7 @@ if %CLEANUP_EXIT_CODE% equ 0 (
 echo.
 echo [4/4] System validation summary...
 echo ==========================================================
-echo P4NTH30N MongoDB Status Report
+echo P4NTHE0N MongoDB Status Report
 echo ==========================================================
 echo Timestamp: %date% %time%
 echo Cleanup Exit Code: %CLEANUP_EXIT_CODE%
@@ -51,7 +51,7 @@ echo    - Validation: PASSED
 echo.
 
 echo 🛡️ Protection Status:
-echo    ✅ P4NTH30NSanityChecker: Active
+echo    ✅ P4NTHE0NSanityChecker: Active
 echo    ✅ ValidatedMongoRepository: Active
 echo    ✅ Extreme value detection: Working
 echo    ✅ Auto-correction: Enabled

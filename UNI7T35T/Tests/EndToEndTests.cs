@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using P4NTH30N.C0MMON.Entities;
-using P4NTH30N.UNI7T35T.TestHarness;
-using P4NTH30N.W4TCHD0G.Agent;
+using P4NTHE0N.C0MMON.Entities;
+using P4NTHE0N.UNI7T35T.TestHarness;
+using P4NTHE0N.W4TCHD0G.Agent;
 using UNI7T35T.Mocks;
 
-namespace P4NTH30N.UNI7T35T.Tests;
+namespace P4NTHE0N.UNI7T35T.Tests;
 
 /// <summary>
 /// TEST-035: E2E test suite for the jackpot signal testing pipeline.

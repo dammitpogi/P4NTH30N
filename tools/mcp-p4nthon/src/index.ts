@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * MCP-P4NTH30N Server
+ * MCP-P4NTHE0N Server
  * 
- * Model Context Protocol server for P4NTH30N platform integration.
+ * Model Context Protocol server for P4NTHE0N platform integration.
  * Provides tools for querying casino automation data, signals, and jackpots.
  */
 
@@ -16,7 +16,7 @@ import { MongoClient } from "mongodb";
 
 // Configuration from environment
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017";
-const DATABASE_NAME = process.env.DATABASE_NAME || "P4NTH30N";
+const DATABASE_NAME = process.env.DATABASE_NAME || "P4NTHE0N";
 
 // MongoDB client
 let mongoClient: MongoClient | null = null;
@@ -85,7 +85,7 @@ const TOOLS = [
 	},
 	{
 		name: "get_system_status",
-		description: "Get overall P4NTH30N system status summary",
+		description: "Get overall P4NTHE0N system status summary",
 		inputSchema: {
 			type: "object" as const,
 			properties: {},
@@ -414,7 +414,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 async function main() {
 	const transport = new StdioServerTransport();
 	await server.connect(transport);
-	console.error("MCP-P4NTH30N server running on stdio");
+	console.error("MCP-P4NTHE0N server running on stdio");
 }
 
 main().catch((error) => {

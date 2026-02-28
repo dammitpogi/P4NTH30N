@@ -2,7 +2,7 @@
 
 ## Responsibility
 
-Health monitoring, diagnostics, and system observability for P4NTH30N. Tracks system health, detects anomalies, and provides diagnostic capabilities.
+Health monitoring, diagnostics, and system observability for P4NTHE0N. Tracks system health, detects anomalies, and provides diagnostic capabilities.
 
 ## When Working Here
 

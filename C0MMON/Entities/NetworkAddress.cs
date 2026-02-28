@@ -2,7 +2,7 @@ using System.Diagnostics;
 using System.Net.Http.Json;
 using System.Text.Json;
 
-namespace P4NTH30N.C0MMON;
+namespace P4NTHE0N.C0MMON;
 
 public class CountryMetadata
 {

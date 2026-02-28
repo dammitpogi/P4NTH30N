@@ -2,12 +2,12 @@ using System;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using P4NTH30N.CLEANUP;
+using P4NTHE0N.CLEANUP;
 
-namespace P4NTH30N.CLEANUP
+namespace P4NTHE0N.CLEANUP
 {
 	/// <summary>
-	/// Standalone MongoDB cleanup runner for P4NTH30N
+	/// Standalone MongoDB cleanup runner for P4NTHE0N
 	/// Connects to MongoDB and performs comprehensive cleanup of extreme values
 	/// </summary>
 	public class MongoCleanupRunner
@@ -15,7 +15,7 @@ namespace P4NTH30N.CLEANUP
 		private readonly string _connectionString;
 		private readonly string _databaseName;
 
-		public MongoCleanupRunner(string connectionString = "mongodb://localhost:27017", string databaseName = "P4NTH30N")
+		public MongoCleanupRunner(string connectionString = "mongodb://localhost:27017", string databaseName = "P4NTHE0N")
 		{
 			_connectionString = connectionString;
 			_databaseName = databaseName;
@@ -25,7 +25,7 @@ namespace P4NTH30N.CLEANUP
 		{
 			try
 			{
-				Console.WriteLine("🚀 Starting P4NTH30N MongoDB Cleanup Utility");
+				Console.WriteLine("🚀 Starting P4NTHE0N MongoDB Cleanup Utility");
 				Console.WriteLine($"📍 Connecting to: {_connectionString}/{_databaseName}");
 				Console.WriteLine($"🕒 Started at: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
 				Console.WriteLine();
@@ -119,7 +119,7 @@ namespace P4NTH30N.CLEANUP
 		{
 			// Parse command line arguments
 			string connectionString = "mongodb://localhost:27017";
-			string databaseName = "P4NTH30N";
+			string databaseName = "P4NTHE0N";
 
 			if (args.Length >= 1)
 			{
@@ -131,7 +131,7 @@ namespace P4NTH30N.CLEANUP
 				databaseName = args[1];
 			}
 
-			Console.WriteLine("🔧 P4NTH30N MongoDB Cleanup Utility");
+			Console.WriteLine("🔧 P4NTHE0N MongoDB Cleanup Utility");
 			Console.WriteLine("Usage: MongoCleanupRunner.exe [connectionString] [databaseName]");
 			Console.WriteLine($"Using: {connectionString} / {databaseName}");
 			Console.WriteLine();

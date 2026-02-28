@@ -1301,7 +1301,7 @@ export class RecorderTUI {
   // ─── Header ────────────────────────────────────────────────────
   private renderHeader(cols: number): string {
     let out = '';
-    const title = ` P4NTH30N RECORDER ${c.gray}v3.0${c.reset} `;
+    const title = ` P4NTHE0N RECORDER ${c.gray}v3.0${c.reset} `;
     const platform = this.state.config.platform === 'firekirin'
       ? `${c.brightRed}FireKirin${c.reset}`
       : `${c.brightBlue}OrionStars${c.reset}`;

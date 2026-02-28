@@ -1,14 +1,14 @@
 using System.Diagnostics;
 using MongoDB.Driver;
-using P4NTH30N.H4ND.Domains.Common;
-using P4NTH30N.H4ND.Infrastructure.Persistence;
+using P4NTHE0N.H4ND.Domains.Common;
+using P4NTHE0N.H4ND.Infrastructure.Persistence;
 
-namespace P4NTH30N.UNI7T35T.H4ND.Decision110;
+namespace P4NTHE0N.UNI7T35T.H4ND.Decision110;
 
 public static class PersistenceRepositoryTests
 {
 	private const string MongoConnectionString = "mongodb://192.168.56.1:27017";
-	private const string DatabaseName = "P4NTH30N";
+	private const string DatabaseName = "P4NTHE0N";
 
 	public static (int passed, int failed) RunAll()
 	{

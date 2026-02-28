@@ -1,9 +1,9 @@
 using System;
 using System.Threading.Tasks;
-using P4NTH30N.C0MMON.Entities;
-using P4NTH30N.C0MMON.Infrastructure.EventBus;
+using P4NTHE0N.C0MMON.Entities;
+using P4NTHE0N.C0MMON.Infrastructure.EventBus;
 
-namespace P4NTH30N.H4ND.Vision;
+namespace P4NTHE0N.H4ND.Vision;
 
 /// <summary>
 /// FEAT-036: Publishes vision commands to the event bus for H4ND consumption.

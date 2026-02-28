@@ -10,9 +10,9 @@ using System.Text;
 using System.Text.Json;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using P4NTH30N.C0MMON.Infrastructure.Persistence;
+using P4NTHE0N.C0MMON.Infrastructure.Persistence;
 
-namespace P4NTH30N.C0MMON;
+namespace P4NTHE0N.C0MMON;
 
 public static class FireKirin
 {
@@ -44,7 +44,7 @@ public static class FireKirin
 		// Current: Cannot update URLs without code changes, brittle if casinos change domains
 		// Fix: Move URLs to configuration files or settings
 		driver.Navigate().GoToUrl("http://play.firekirin.in/web_mobile/firekirin/");
-		P4NTH30N.C0MMON.Screen.WaitForColor(new Point(925, 120), Color.FromArgb(255, 255, 251, 48));
+		P4NTHE0N.C0MMON.Screen.WaitForColor(new Point(925, 120), Color.FromArgb(255, 255, 251, 48));
 		Thread.Sleep(2000);
 		Mouse.Click(80, 235);
 		Thread.Sleep(800);

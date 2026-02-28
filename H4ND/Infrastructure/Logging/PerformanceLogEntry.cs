@@ -2,7 +2,7 @@ using System;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace P4NTH30N.H4ND.Infrastructure.Logging;
+namespace P4NTHE0N.H4ND.Infrastructure.Logging;
 
 /// <summary>
 /// DECISION_110 Phase 2: Performance log document for L0G_P3RF0RM4NC3.

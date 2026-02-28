@@ -1,12 +1,12 @@
 using System.Diagnostics;
 using System.Text.Json;
-using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Entities;
-using P4NTH30N.C0MMON.Infrastructure.Cdp;
-using P4NTH30N.C0MMON.Infrastructure.Persistence;
-using P4NTH30N.H4ND.Infrastructure;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.C0MMON.Entities;
+using P4NTHE0N.C0MMON.Infrastructure.Cdp;
+using P4NTHE0N.C0MMON.Infrastructure.Persistence;
+using P4NTHE0N.H4ND.Infrastructure;
 
-namespace P4NTH30N.H4ND.Services;
+namespace P4NTHE0N.H4ND.Services;
 
 /// <summary>
 /// SPIN-044: First Autonomous Jackpot Spin Execution Controller.

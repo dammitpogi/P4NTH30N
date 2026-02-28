@@ -5,7 +5,7 @@ using System.Threading.Channels;
 using System.Threading.Tasks;
 using MongoDB.Driver;
 
-namespace P4NTH30N.H4ND.Infrastructure.Logging;
+namespace P4NTHE0N.H4ND.Infrastructure.Logging;
 
 /// <summary>
 /// DECISION_110 Phase 2: Buffered, backpressure-aware log writer.

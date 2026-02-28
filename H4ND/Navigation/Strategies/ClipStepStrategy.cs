@@ -1,6 +1,6 @@
 using System.Text.Json;
 
-namespace P4NTH30N.H4ND.Navigation.Strategies;
+namespace P4NTHE0N.H4ND.Navigation.Strategies;
 
 public sealed class ClipStepStrategy : IStepStrategy
 {

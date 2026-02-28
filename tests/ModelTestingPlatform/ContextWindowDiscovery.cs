@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System.Text;
 
-namespace P4NTH30N.ModelTestingPlatform;
+namespace P4NTHE0N.ModelTestingPlatform;
 
 /// <summary>
 /// Binary search discovery for model context window limits.

@@ -1,7 +1,7 @@
-using P4NTH30N.H4ND.Domains.Automation.ValueObjects;
-using P4NTH30N.H4ND.Domains.Common;
+using P4NTHE0N.H4ND.Domains.Automation.ValueObjects;
+using P4NTHE0N.H4ND.Domains.Common;
 
-namespace P4NTH30N.H4ND.Domains.Automation.Events;
+namespace P4NTHE0N.H4ND.Domains.Automation.Events;
 
 public sealed record SignalReceivedEvent : DomainEventBase
 {

@@ -9,7 +9,7 @@ Screenshot-guided navigation recording system for mapping FireKirin/OrionStars w
 
 ### 1. Initialize Session
 ```powershell
-cd C:\P4NTH30N\H4ND\tools\recorder
+cd C:\P4NTHE0N\H4ND\tools\recorder
 bun run recorder.ts --init --platform={firekirin|orionstars} --decision=DECISION_077
 ```
 **Output**: Session directory path (save this)

@@ -14,7 +14,7 @@ Entity Framework Core data access layer for analytics and complex queries. Provi
 
 ## Core Components
 
-### P4NTH30NDbContext.cs
+### P4NTHE0NDbContext.cs
 Main EF Core database context:
 - Entity configurations
 - Relationship mappings
@@ -39,9 +39,9 @@ High-level analytics operations:
 - Uses repositories for data access
 
 ### AnalyticsEntities.cs
-> **Note**: Entity configurations are embedded in `P4NTH30NDbContext.cs` OnModelCreating - no separate file exists.
+> **Note**: Entity configurations are embedded in `P4NTHE0NDbContext.cs` OnModelCreating - no separate file exists.
 
-EF Core entity configurations (in P4NTH30NDbContext.cs):
+EF Core entity configurations (in P4NTHE0NDbContext.cs):
 - Table mappings for Credential, Signal, Jackpot, House, ProcessEvent, Received, ErrorLog
 - Key definitions
 - Property configurations
@@ -97,7 +97,7 @@ Connection string in appsettings.json:
 ```json
 {
   "ConnectionStrings": {
-    "Analytics": "mongodb://localhost:27017/P4NTH30N_Analytics"
+    "Analytics": "mongodb://localhost:27017/P4NTHE0N_Analytics"
   }
 }
 ```

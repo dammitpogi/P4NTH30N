@@ -3,7 +3,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 
-namespace P4NTH30N.C0MMON.LLM;
+namespace P4NTHE0N.C0MMON.LLM;
 
 /// <summary>
 /// LLM client supporting OpenAI-compatible chat completion APIs.

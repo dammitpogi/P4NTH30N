@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace P4NTH30N.C0MMON.Entities;
+namespace P4NTHE0N.C0MMON.Entities;
 
 /// <summary>
 /// TEST-035: Entity representing the result of an E2E test execution.

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace P4NTH30N.C0MMON.Services.AI;
+namespace P4NTHE0N.C0MMON.Services.AI;
 
 public class ModelRouter : IModelRouter
 {

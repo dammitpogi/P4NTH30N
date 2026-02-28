@@ -1,11 +1,11 @@
 #!/usr/bin/env pwsh
-# Build script for P4NTH30N Recorder TUI
+# Build script for P4NTHE0N Recorder TUI
 # Generates standalone executable using Bun's compile feature
 
 $ErrorActionPreference = "Stop"
 
 Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
-Write-Host "  P4NTH30N Recorder TUI - Build Script" -ForegroundColor Cyan
+Write-Host "  P4NTHE0N Recorder TUI - Build Script" -ForegroundColor Cyan
 Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
 Write-Host ""
 

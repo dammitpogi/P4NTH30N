@@ -1,8 +1,8 @@
 using System;
 using System.Threading;
-using P4NTH30N.H4ND.Domains.Automation.ValueObjects;
+using P4NTHE0N.H4ND.Domains.Automation.ValueObjects;
 
-namespace P4NTH30N.H4ND.Domains.Common;
+namespace P4NTHE0N.H4ND.Domains.Common;
 
 /// <summary>
 /// DECISION_110 Phase 1: Ambient correlation context flowing through async operations.

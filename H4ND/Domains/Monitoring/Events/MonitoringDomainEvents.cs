@@ -1,6 +1,6 @@
-using P4NTH30N.H4ND.Domains.Common;
+using P4NTHE0N.H4ND.Domains.Common;
 
-namespace P4NTH30N.H4ND.Domains.Monitoring.Events;
+namespace P4NTHE0N.H4ND.Domains.Monitoring.Events;
 
 public sealed record HealthDegradedEvent : DomainEventBase
 {

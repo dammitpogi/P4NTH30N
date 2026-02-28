@@ -2,8 +2,8 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
-using P4NTH30N.C0MMON.Infrastructure.Cdp;
-using P4NTH30N.H4ND.Services;
+using P4NTHE0N.C0MMON.Infrastructure.Cdp;
+using P4NTHE0N.H4ND.Services;
 
 public class LiveJackpotReaderTest {
     public static async Task RunAsync() {

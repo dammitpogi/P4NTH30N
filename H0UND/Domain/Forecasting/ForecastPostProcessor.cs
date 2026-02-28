@@ -1,9 +1,9 @@
 using System;
-using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Interfaces;
-using P4NTH30N.C0MMON.Infrastructure.Persistence;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.C0MMON.Interfaces;
+using P4NTHE0N.C0MMON.Infrastructure.Persistence;
 
-namespace P4NTH30N.H0UND.Domain.Forecasting;
+namespace P4NTHE0N.H0UND.Domain.Forecasting;
 
 // DECISION_085: Post-processing pipeline for forecast ETAs
 // Based on Klee & Xia (2025) post-processing rules and Hu et al. (2025) data quality assessment

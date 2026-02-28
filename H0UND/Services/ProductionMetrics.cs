@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using P4NTH30N.C0MMON.Entities;
-using P4NTH30N.C0MMON.Interfaces;
+using P4NTHE0N.C0MMON.Entities;
+using P4NTHE0N.C0MMON.Interfaces;
 
-namespace P4NTH30N.H0UND.Services;
+namespace P4NTHE0N.H0UND.Services;
 
 /// <summary>
 /// FOUREYES-017: Production metrics collection service.

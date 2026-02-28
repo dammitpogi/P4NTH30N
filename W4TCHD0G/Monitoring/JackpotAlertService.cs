@@ -1,4 +1,4 @@
-namespace P4NTH30N.W4TCHD0G.Monitoring;
+namespace P4NTHE0N.W4TCHD0G.Monitoring;
 
 /// <summary>
 /// Delivers jackpot win alerts through multiple channels: console, file log,

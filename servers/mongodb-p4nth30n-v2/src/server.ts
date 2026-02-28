@@ -29,7 +29,7 @@ export async function createServer(
   const connect = dependencies.connect ?? connectMongoDB;
   const health = dependencies.health ?? checkMongoDBHealth;
 
-  await connect(config.MONGODB_URI, 'P4NTH30N');
+  await connect(config.MONGODB_URI, 'P4NTHE0N');
 
   const server = Fastify({ logger: true });
 

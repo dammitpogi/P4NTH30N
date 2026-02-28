@@ -1,8 +1,8 @@
 using System.Diagnostics;
-using P4NTH30N.W4TCHD0G.Models;
-using P4NTH30N.W4TCHD0G.Stream;
+using P4NTHE0N.W4TCHD0G.Models;
+using P4NTHE0N.W4TCHD0G.Stream;
 
-namespace P4NTH30N.W4TCHD0G.Vision;
+namespace P4NTHE0N.W4TCHD0G.Vision;
 
 /// <summary>
 /// Contract for the main vision processing pipeline.

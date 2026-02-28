@@ -1,4 +1,4 @@
-namespace P4NTH30N.W4TCHD0G.OBS;
+namespace P4NTHE0N.W4TCHD0G.OBS;
 
 /// <summary>
 /// Exponential backoff reconnection policy with jitter.

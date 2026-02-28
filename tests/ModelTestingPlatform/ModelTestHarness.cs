@@ -4,7 +4,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace P4NTH30N.ModelTestingPlatform;
+namespace P4NTHE0N.ModelTestingPlatform;
 
 /// <summary>
 /// Configurable inference parameters for LLM backend calls.
@@ -409,7 +409,7 @@ public sealed class ModelTestHarness
 	public ModelTestHarness(ILlmBackend backend, string? systemPrompt = null)
 	{
 		_backend = backend;
-		_defaultSystemPrompt = systemPrompt ?? P4NTH30N.DeployLogAnalyzer.FewShotPrompt.GetConfigValidationPrompt();
+		_defaultSystemPrompt = systemPrompt ?? P4NTHE0N.DeployLogAnalyzer.FewShotPrompt.GetConfigValidationPrompt();
 	}
 
 	/// <summary>

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace P4NTH30N.C0MMON.Interfaces;
+namespace P4NTHE0N.C0MMON.Interfaces;
 
 /// <summary>
 /// FOUREYES-014: C0MMON-side contract for autonomous learning and model self-improvement.

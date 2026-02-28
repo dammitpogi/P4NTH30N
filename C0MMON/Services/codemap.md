@@ -2,7 +2,7 @@
 
 ## Responsibility
 
-C0MMON/Services provides cross-cutting services and monitoring capabilities that support the entire P4NTH30N ecosystem. These services handle system-wide concerns like health monitoring, dashboard visualization, and coordination between different agents and components.
+C0MMON/Services provides cross-cutting services and monitoring capabilities that support the entire P4NTHE0N ecosystem. These services handle system-wide concerns like health monitoring, dashboard visualization, and coordination between different agents and components.
 
 **Core Services:**
 - **Dashboard**: Real-time monitoring and visualization interface

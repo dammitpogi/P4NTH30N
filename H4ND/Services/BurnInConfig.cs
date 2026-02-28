@@ -1,8 +1,8 @@
-namespace P4NTH30N.H4ND.Services;
+namespace P4NTHE0N.H4ND.Services;
 
 /// <summary>
 /// ARCH-055-006: Configuration POCO for burn-in validation mode.
-/// Bound from appsettings.json P4NTH30N:H4ND:BurnIn section.
+/// Bound from appsettings.json P4NTHE0N:H4ND:BurnIn section.
 /// </summary>
 public sealed class BurnInConfig
 {

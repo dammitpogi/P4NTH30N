@@ -1,4 +1,4 @@
-namespace P4NTH30N.H0UND.Infrastructure.Polling;
+namespace P4NTHE0N.H0UND.Infrastructure.Polling;
 
 public interface IBalanceProvider
 {

@@ -1,8 +1,8 @@
-using P4NTH30N.C0MMON.Entities;
-using P4NTH30N.C0MMON.Support;
-using P4NTH30N.H0UND.Services;
+using P4NTHE0N.C0MMON.Entities;
+using P4NTHE0N.C0MMON.Support;
+using P4NTHE0N.H0UND.Services;
 
-namespace P4NTH30N.UNI7T35T.Tests;
+namespace P4NTHE0N.UNI7T35T.Tests;
 
 /// <summary>
 /// DECISION_025: Unit tests for AtypicalityScore and AnomalyDetector.

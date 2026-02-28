@@ -2,7 +2,7 @@
 
 ## Responsibility
 
-Defines core domain models and data structures for the P4NTH30N system. These entities represent fundamental business objects that persist in MongoDB and flow through all agents.
+Defines core domain models and data structures for the P4NTHE0N system. These entities represent fundamental business objects that persist in MongoDB and flow through all agents.
 
 ## When Working Here
 

@@ -1,7 +1,7 @@
-using P4NTH30N.H4ND.SmokeTest;
-using P4NTH30N.H4ND.SmokeTest.Reporting;
+using P4NTHE0N.H4ND.SmokeTest;
+using P4NTHE0N.H4ND.SmokeTest.Reporting;
 
-namespace P4NTH30N.H4ND.SmokeTest;
+namespace P4NTHE0N.H4ND.SmokeTest;
 
 // ARCH-099: FireKirin Login Smoke Test — Pre-Burn-In Validation Gate
 // Usage: H4ND.SmokeTest.exe --platform firekirin [--profile W0] [--port 9222] [--output console|json]
@@ -87,7 +87,7 @@ internal static class SmokeTestProgram
 	private static void PrintHelp()
 	{
 		Console.WriteLine(@"
-P4NTH30N SMOKE TEST - FireKirin Login Validation Gate
+P4NTHE0N SMOKE TEST - FireKirin Login Validation Gate
 Usage: H4ND.SmokeTest.exe [options]
 
 Options:

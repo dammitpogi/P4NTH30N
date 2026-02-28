@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace P4NTH30N.UNI7T35T.Infrastructure;
+namespace P4NTHE0N.UNI7T35T.Infrastructure;
 
 // DECISION_086: Coefficient of Variation (CV) calculator for forecast stability testing
 // Based on Klee & Xia (2025) - CV = σ/μ, stable if CV < 0.05

@@ -1,11 +1,11 @@
-using P4NTH30N.C0MMON.Infrastructure.Cdp;
-using P4NTH30N.H4ND.Infrastructure;
-using P4NTH30N.H4ND.Navigation;
-using P4NTH30N.H4ND.Parallel;
-using P4NTH30N.H4ND.SmokeTest.Phases;
-using P4NTH30N.H4ND.SmokeTest.Reporting;
+using P4NTHE0N.C0MMON.Infrastructure.Cdp;
+using P4NTHE0N.H4ND.Infrastructure;
+using P4NTHE0N.H4ND.Navigation;
+using P4NTHE0N.H4ND.Parallel;
+using P4NTHE0N.H4ND.SmokeTest.Phases;
+using P4NTHE0N.H4ND.SmokeTest.Reporting;
 
-namespace P4NTH30N.H4ND.SmokeTest;
+namespace P4NTHE0N.H4ND.SmokeTest;
 
 /// <summary>
 /// ARCH-099: Main orchestrator with circuit breaker pattern.

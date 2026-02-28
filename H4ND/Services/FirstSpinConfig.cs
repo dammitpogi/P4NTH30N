@@ -1,8 +1,8 @@
-namespace P4NTH30N.H4ND.Services;
+namespace P4NTHE0N.H4ND.Services;
 
 /// <summary>
 /// SPIN-044: Configuration for the first autonomous jackpot spin execution.
-/// Bound from appsettings.json P4NTH30N:H4ND:FirstSpin section.
+/// Bound from appsettings.json P4NTHE0N:H4ND:FirstSpin section.
 /// </summary>
 public sealed class FirstSpinConfig
 {

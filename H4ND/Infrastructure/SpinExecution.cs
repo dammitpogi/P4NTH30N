@@ -1,10 +1,13 @@
 using System.Diagnostics;
-using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Entities;
-using P4NTH30N.C0MMON.Infrastructure.Cdp;
-using P4NTH30N.C0MMON.Infrastructure.Persistence;
+using System.Security.Cryptography;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.C0MMON.Entities;
+using P4NTHE0N.C0MMON.Infrastructure.Cdp;
+using P4NTHE0N.C0MMON.Infrastructure.Persistence;
+using P4NTHE0N.H4ND.Infrastructure.Logging.ErrorEvidence;
+using CommonErrorSeverity = P4NTHE0N.C0MMON.ErrorSeverity;
 
-namespace P4NTH30N.H4ND.Infrastructure;
+namespace P4NTHE0N.H4ND.Infrastructure;
 
 /// <summary>
 /// TECH-JP-002: Executes spins via CDP and tracks metrics.
@@ -14,11 +17,13 @@ public sealed class SpinExecution
 {
 	private readonly IUnitOfWork _uow;
 	private readonly SpinMetrics _metrics;
+	private readonly IErrorEvidence _errors;
 
-	public SpinExecution(IUnitOfWork uow, SpinMetrics metrics)
+	public SpinExecution(IUnitOfWork uow, SpinMetrics metrics, IErrorEvidence? errors = null)
 	{
 		_uow = uow;
 		_metrics = metrics;
+		_errors = errors ?? NoopErrorEvidence.Instance;
 	}
 
 	/// <summary>
@@ -27,6 +32,19 @@ public sealed class SpinExecution
 	/// </summary>
 	public async Task<bool> ExecuteSpinAsync(VisionCommand command, ICdpClient cdp, Signal signal, Credential credential, CancellationToken cancellationToken = default)
 	{
+		using ErrorScope scope = _errors.BeginScope(
+			"SpinExecution",
+			"ExecuteSpinAsync",
+			new Dictionary<string, object>
+			{
+				["signalId"] = signal._id.ToString(),
+				["credentialId"] = credential._id.ToString(),
+				["house"] = credential.House,
+				["game"] = credential.Game,
+				["priority"] = signal.Priority,
+				["workerCommandType"] = command.CommandType.ToString(),
+			});
+
 		Stopwatch sw = Stopwatch.StartNew();
 		double balanceBefore = credential.Balance;
 		bool success = false;
@@ -34,23 +52,46 @@ public sealed class SpinExecution
 
 		try
 		{
-			// Execute the spin via CdpClient based on the game type
-			switch (credential.Game)
+			if (signal.Acknowledged)
 			{
-				case "FireKirin":
-					await CdpGameActions.SpinFireKirinAsync(cdp, cancellationToken);
-					break;
-				case "OrionStars":
-					await CdpGameActions.SpinOrionStarsAsync(cdp, cancellationToken);
-					break;
-				default:
-					throw new Exception($"Unrecognized Game for spin: '{credential.Game}'");
+				_errors.CaptureWarning(
+					"H4ND-ACK-OBS-010",
+					"Signal was already acknowledged before authoritative SpinExecution ack",
+					context: BuildContext(command, signal, credential),
+					evidence: new
+					{
+						signalId = signal._id.ToString(),
+						acknowledged = signal.Acknowledged,
+					});
+			}
+
+			// Execute the spin via CdpClient based on the game type.
+			bool spinExecuted = credential.Game switch
+			{
+				"FireKirin" => await CdpGameActions.SpinFireKirinAsync(cdp, cancellationToken),
+				"OrionStars" => await CdpGameActions.SpinOrionStarsAsync(cdp, cancellationToken),
+				_ => throw new Exception($"Unrecognized Game for spin: '{credential.Game}'"),
+			};
+
+			if (!spinExecuted)
+			{
+				throw new InvalidOperationException($"CDP spin action returned false for {credential.Game}");
 			}
 
 			Console.WriteLine($"({DateTime.Now}) {credential.House} - Completed Reel Spins via SpinExecution...");
 
-			// Acknowledge the signal after successful spin
+			// DECISION_113: authoritative ACK ownership is here.
 			_uow.Signals.Acknowledge(signal);
+
+			if (!signal.Acknowledged)
+			{
+				_errors.CaptureInvariantFailure(
+					"H4ND-ACK-INV-001",
+					"Signal remained unacknowledged after authoritative ack call",
+					expected: true,
+					actual: signal.Acknowledged,
+					context: BuildContext(command, signal, credential));
+			}
 
 			success = true;
 			return true;
@@ -63,8 +104,23 @@ public sealed class SpinExecution
 			errorMessage = ex.Message;
 			Console.WriteLine($"[{line}] [SpinExecution] Spin failed for {credential.Username}@{credential.Game}: {ex.Message}");
 
+			_errors.Capture(
+				ex,
+				"H4ND-SPINEXEC-001",
+				$"Spin failed for {credential.Game}",
+				context: BuildContext(command, signal, credential),
+				evidence: new
+				{
+					signalId = signal._id.ToString(),
+					signalAcknowledged = signal.Acknowledged,
+					credentialId = credential._id.ToString(),
+					usernameHash = HashForEvidence(credential.Username),
+					commandReason = command.Reason,
+					line,
+				});
+
 			_uow.Errors.Insert(
-				ErrorLog.Create(ErrorType.SystemError, "SpinExecution", $"Spin failed for {credential.Username}@{credential.Game}: {ex.Message}", ErrorSeverity.High)
+				ErrorLog.Create(ErrorType.SystemError, "SpinExecution", $"Spin failed for {credential.Username}@{credential.Game}: {ex.Message}", CommonErrorSeverity.High)
 			);
 
 			return false;
@@ -89,5 +145,29 @@ public sealed class SpinExecution
 				}
 			);
 		}
+	}
+
+	private static Dictionary<string, object> BuildContext(VisionCommand command, Signal signal, Credential credential)
+	{
+		return new Dictionary<string, object>
+		{
+			["signalId"] = signal._id.ToString(),
+			["credentialId"] = credential._id.ToString(),
+			["house"] = credential.House,
+			["game"] = credential.Game,
+			["priority"] = signal.Priority,
+			["commandType"] = command.CommandType.ToString(),
+		};
+	}
+
+	private static string HashForEvidence(string input)
+	{
+		if (string.IsNullOrWhiteSpace(input))
+		{
+			return string.Empty;
+		}
+
+		byte[] bytes = SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(input));
+		return Convert.ToHexString(bytes).Substring(0, 16);
 	}
 }

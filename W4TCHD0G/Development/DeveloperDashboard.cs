@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using P4NTH30N.W4TCHD0G.Agent;
-using P4NTH30N.W4TCHD0G.Models;
+using P4NTHE0N.W4TCHD0G.Agent;
+using P4NTHE0N.W4TCHD0G.Models;
 
-namespace P4NTH30N.W4TCHD0G.Development;
+namespace P4NTHE0N.W4TCHD0G.Development;
 
 /// <summary>
 /// FEAT-036: Real-time developer dashboard for FourEyes observation.

@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace P4NTH30N.H4ND.Navigation;
+namespace P4NTHE0N.H4ND.Navigation;
 
 /// <summary>
 /// ARCH-098: Result of executing a single navigation step or an entire phase.

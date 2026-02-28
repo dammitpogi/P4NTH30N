@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace P4NTH30N.SWE.Workflows;
+namespace P4NTHE0N.SWE.Workflows;
 
 /// <summary>
 /// Orchestrator-mediated parallel agent delegation with timeout handling,

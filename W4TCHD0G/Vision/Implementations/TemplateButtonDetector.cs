@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using P4NTH30N.W4TCHD0G.Models;
+using P4NTHE0N.W4TCHD0G.Models;
 
-namespace P4NTH30N.W4TCHD0G.Vision.Implementations;
+namespace P4NTHE0N.W4TCHD0G.Vision.Implementations;
 
 /// <summary>
 /// FEAT-036: Template-matching button detector.

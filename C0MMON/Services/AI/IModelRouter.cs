@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace P4NTH30N.C0MMON.Services.AI;
+namespace P4NTHE0N.C0MMON.Services.AI;
 
 public interface IModelRouter
 {

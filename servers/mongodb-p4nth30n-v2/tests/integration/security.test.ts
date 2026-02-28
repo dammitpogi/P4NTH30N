@@ -24,7 +24,7 @@ describe('security integration', () => {
         PORT: '3001',
         BIND_ADDRESS: '127.0.0.1',
         MCP_AUTH_TOKEN: VALID_TOKEN,
-        MONGODB_URI: 'mongodb://localhost:27017/P4NTH30N',
+        MONGODB_URI: 'mongodb://localhost:27017/P4NTHE0N',
       },
       {
         connect: async () => undefined,
@@ -53,7 +53,7 @@ describe('security integration', () => {
         PORT: '3001',
         BIND_ADDRESS: '127.0.0.1',
         MCP_AUTH_TOKEN: VALID_TOKEN,
-        MONGODB_URI: 'mongodb://localhost:27017/P4NTH30N',
+        MONGODB_URI: 'mongodb://localhost:27017/P4NTHE0N',
       },
       {
         connect: async () => undefined,

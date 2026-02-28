@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * P4NTH30N FourEyes MCP Server
+ * P4NTHE0N FourEyes MCP Server
  *
  * Exposes FourEyes vision capabilities as MCP tools:
  * - analyze_frame: CDP screenshot → LMStudio vision model → structured analysis
@@ -336,7 +336,7 @@ async function handleReviewDecision({ decision_id, title, description, oracle_ap
 		return { content: [{ type: "text", text: "[FourEyes] No LMStudio model available for review. Start LMStudio and load a model." }], isError: true };
 	}
 
-	const reviewPrompt = `You are Four Eyes, an independent second-opinion reviewer for critical decisions in the P4NTH30N system.
+	const reviewPrompt = `You are Four Eyes, an independent second-opinion reviewer for critical decisions in the P4NTHE0N system.
 
 Review this decision and provide your independent assessment:
 

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using P4NTH30N.C0MMON;
+using P4NTHE0N.C0MMON;
 
-namespace P4NTH30N.H0UND.Domain.Forecasting;
+namespace P4NTHE0N.H0UND.Domain.Forecasting;
 
 public static class DpdCalculator
 {

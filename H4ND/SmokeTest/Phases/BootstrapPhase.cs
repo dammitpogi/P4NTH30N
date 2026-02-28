@@ -1,8 +1,8 @@
-using P4NTH30N.C0MMON.Infrastructure.Cdp;
-using P4NTH30N.H4ND.Infrastructure;
-using P4NTH30N.H4ND.Parallel;
+using P4NTHE0N.C0MMON.Infrastructure.Cdp;
+using P4NTHE0N.H4ND.Infrastructure;
+using P4NTHE0N.H4ND.Parallel;
 
-namespace P4NTH30N.H4ND.SmokeTest.Phases;
+namespace P4NTHE0N.H4ND.SmokeTest.Phases;
 
 /// <summary>
 /// ARCH-099: Phase 1 — Launch Chrome Profile-W0, connect CDP, verify canvas bounds.

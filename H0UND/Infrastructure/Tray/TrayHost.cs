@@ -23,7 +23,7 @@ public sealed class TrayHost : IDisposable
         _notifyIcon = new NotifyIcon
         {
             Icon = ResolveTrayIcon(),
-            Text = "P4NTH30N Dashboard",
+            Text = "P4NTHE0N Dashboard",
             Visible = true,
             ContextMenuStrip = contextMenu,
         };

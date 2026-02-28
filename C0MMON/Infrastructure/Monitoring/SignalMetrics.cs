@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 
-namespace P4NTH30N.C0MMON.Infrastructure.Monitoring;
+namespace P4NTHE0N.C0MMON.Infrastructure.Monitoring;
 
 public sealed class SignalMetrics
 {

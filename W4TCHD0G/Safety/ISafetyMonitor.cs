@@ -1,4 +1,4 @@
-namespace P4NTH30N.W4TCHD0G.Safety;
+namespace P4NTHE0N.W4TCHD0G.Safety;
 
 /// <summary>
 /// Contract for monitoring safety limits and triggering circuit breakers.

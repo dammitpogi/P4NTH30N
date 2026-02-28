@@ -1,7 +1,7 @@
 using System.Diagnostics;
-using P4NTH30N.C0MMON.Infrastructure.Cdp;
+using P4NTHE0N.C0MMON.Infrastructure.Cdp;
 
-namespace P4NTH30N.H4ND.Parallel;
+namespace P4NTHE0N.H4ND.Parallel;
 
 /// <summary>
 /// ARCH-081: Manages isolated Chrome profiles for parallel workers.
@@ -308,7 +308,7 @@ public sealed class ChromeProfileConfig
 	/// Base directory for Chrome profile directories.
 	/// Each worker gets a subdirectory: Profile-W{workerId}
 	/// </summary>
-	public string ProfilesBasePath { get; set; } = @"C:\ProgramData\P4NTH30N\chrome-profiles";
+	public string ProfilesBasePath { get; set; } = @"C:\ProgramData\P4NTHE0N\chrome-profiles";
 
 	/// <summary>
 	/// Path to Chrome executable.

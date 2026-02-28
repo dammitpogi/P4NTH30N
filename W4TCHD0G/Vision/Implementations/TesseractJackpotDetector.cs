@@ -4,9 +4,9 @@ using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using P4NTH30N.W4TCHD0G.Models;
+using P4NTHE0N.W4TCHD0G.Models;
 
-namespace P4NTH30N.W4TCHD0G.Vision.Implementations;
+namespace P4NTHE0N.W4TCHD0G.Vision.Implementations;
 
 /// <summary>
 /// FEAT-036: Tesseract-based jackpot detector.

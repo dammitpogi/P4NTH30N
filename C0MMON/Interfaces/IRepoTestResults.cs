@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using P4NTH30N.C0MMON.Entities;
+using P4NTHE0N.C0MMON.Entities;
 
-namespace P4NTH30N.C0MMON.Interfaces;
+namespace P4NTHE0N.C0MMON.Interfaces;
 
 /// <summary>
 /// TEST-035: Repository interface for E2E test results.

@@ -1,7 +1,7 @@
-using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Support;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.C0MMON.Support;
 
-namespace P4NTH30N.H0UND.Services;
+namespace P4NTHE0N.H0UND.Services;
 
 /// <summary>
 /// DECISION_028: Dynamic wager optimization service.

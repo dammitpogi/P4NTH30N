@@ -1,4 +1,4 @@
-namespace P4NTH30N.W4TCHD0G.Agent;
+namespace P4NTHE0N.W4TCHD0G.Agent;
 
 /// <summary>
 /// Polls MongoDB SIGN4L collection for pending signals from H0UND.

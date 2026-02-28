@@ -6,7 +6,7 @@
 
 2. **Initialize session:**
    ```powershell
-   cd C:\P4NTH30N\H4ND\tools\recorder
+   cd C:\P4NTHE0N\H4ND\tools\recorder
    bun run recorder.ts --init --platform=firekirin
    ```
 
@@ -64,12 +64,12 @@ curl http://127.0.0.1:9222/json/version
 
 **View session log:**
 ```powershell
-cat C:\P4NTH30N\DECISION_077\sessions\{session-id}\session.md
+cat C:\P4NTHE0N\DECISION_077\sessions\{session-id}\session.md
 ```
 
 **List all screenshots:**
 ```powershell
-ls C:\P4NTH30N\DECISION_077\sessions\{session-id}\screenshots\
+ls C:\P4NTHE0N\DECISION_077\sessions\{session-id}\screenshots\
 ```
 
 ---

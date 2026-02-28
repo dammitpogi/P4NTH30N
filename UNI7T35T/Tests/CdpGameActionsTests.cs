@@ -1,5 +1,5 @@
-using P4NTH30N.H4ND.Infrastructure;
-using P4NTH30N.H4ND.Services;
+using P4NTHE0N.H4ND.Infrastructure;
+using P4NTHE0N.H4ND.Services;
 using UNI7T35T.Mocks;
 
 namespace UNI7T35T.Tests;

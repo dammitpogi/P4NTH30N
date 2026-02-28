@@ -1,7 +1,7 @@
 using System.Collections.Concurrent;
 using System.Diagnostics;
 
-namespace P4NTH30N.SWE.Workflows;
+namespace P4NTHE0N.SWE.Workflows;
 
 /// <summary>
 /// Parallel tool execution engine supporting up to 10 concurrent calls per turn.

@@ -14,6 +14,8 @@ H4ND is the automation execution agent that manages game platform interactions t
 - **Validation first**: Extensive validation before any operations (NaN, Infinity, negative checks)
 - **Health checks**: CDP connectivity validation at startup
 - **Operational monitoring**: Spin metrics collection and HTTP health endpoint
+- **Vision-first UI control**: Use multimodal state checks before and after clicks to prevent blind navigation loops
+- **Decision recall required**: Query prior decisions before changing click-path or selector logic
 
 ## Core Functions
 

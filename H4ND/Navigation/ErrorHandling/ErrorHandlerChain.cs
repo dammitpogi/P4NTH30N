@@ -1,6 +1,6 @@
-using P4NTH30N.H4ND.Navigation.Verification;
+using P4NTHE0N.H4ND.Navigation.Verification;
 
-namespace P4NTH30N.H4ND.Navigation.ErrorHandling;
+namespace P4NTHE0N.H4ND.Navigation.ErrorHandling;
 
 /// <summary>
 /// ARCH-098: Chain of error handlers — captures screenshot, checks conditional goto, then aborts.

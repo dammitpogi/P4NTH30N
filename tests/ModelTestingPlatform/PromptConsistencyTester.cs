@@ -1,7 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace P4NTH30N.ModelTestingPlatform;
+namespace P4NTHE0N.ModelTestingPlatform;
 
 /// <summary>
 /// Tests prompt consistency by running the same test case N times and measuring variance.
@@ -26,7 +26,7 @@ public sealed class PromptConsistencyTester
 	public PromptConsistencyTester(ILlmBackend backend, string? systemPrompt = null, int runsPerTest = DefaultRunCount)
 	{
 		_backend = backend;
-		_systemPrompt = systemPrompt ?? P4NTH30N.DeployLogAnalyzer.FewShotPrompt.GetConfigValidationPrompt();
+		_systemPrompt = systemPrompt ?? P4NTHE0N.DeployLogAnalyzer.FewShotPrompt.GetConfigValidationPrompt();
 		_runsPerTest = runsPerTest;
 	}
 

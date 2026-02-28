@@ -1,12 +1,13 @@
 using System.Threading.Channels;
-using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Infrastructure.Cdp;
-using P4NTH30N.H4ND.Infrastructure;
-using P4NTH30N.H4ND.Navigation;
-using P4NTH30N.H4ND.Navigation.Retry;
-using P4NTH30N.H4ND.Services;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.C0MMON.Infrastructure.Cdp;
+using P4NTHE0N.H4ND.Infrastructure;
+using P4NTHE0N.H4ND.Infrastructure.Logging.ErrorEvidence;
+using P4NTHE0N.H4ND.Navigation;
+using P4NTHE0N.H4ND.Navigation.Retry;
+using P4NTHE0N.H4ND.Services;
 
-namespace P4NTH30N.H4ND.Parallel;
+namespace P4NTHE0N.H4ND.Parallel;
 
 /// <summary>
 /// ARCH-047/055: Orchestrates N ParallelSpinWorkers consuming from a shared channel.
@@ -26,6 +27,7 @@ public sealed class WorkerPool : IDisposable
 	private readonly int _maxSignalsPerWorker;
 	private readonly CdpResourceCoordinator _resourceCoordinator;
 	private readonly bool _ownsResourceCoordinator;
+	private readonly IErrorEvidence _errors;
 	private readonly ChromeProfileManager? _profileManager;
 	private readonly NavigationMapLoader? _mapLoader;
 	private readonly IStepExecutor? _stepExecutor;
@@ -47,6 +49,7 @@ public sealed class WorkerPool : IDisposable
 		ParallelMetrics metrics,
 		SessionRenewalService? sessionRenewal = null,
 		GameSelectorConfig? selectorConfig = null,
+		IErrorEvidence? errors = null,
 		int maxSignalsPerWorker = 100,
 		CdpResourceCoordinator? resourceCoordinator = null,
 		ChromeProfileManager? profileManager = null,
@@ -61,6 +64,7 @@ public sealed class WorkerPool : IDisposable
 		_metrics = metrics;
 		_sessionRenewal = sessionRenewal;
 		_selectorConfig = selectorConfig;
+		_errors = errors ?? NoopErrorEvidence.Instance;
 		_maxSignalsPerWorker = maxSignalsPerWorker;
 		if (resourceCoordinator == null)
 		{
@@ -97,6 +101,7 @@ public sealed class WorkerPool : IDisposable
 				metrics: _metrics,
 				sessionRenewal: _sessionRenewal,
 				selectorConfig: _selectorConfig,
+				errors: _errors,
 				maxSignalsBeforeRestart: _maxSignalsPerWorker,
 				resourceCoordinator: _resourceCoordinator,
 				profileManager: _profileManager,

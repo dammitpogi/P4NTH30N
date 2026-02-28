@@ -4,7 +4,7 @@ import { getDb } from '../db/connection.js';
 const JsonRecordSchema = z.record(z.string(), z.unknown());
 
 const FindSchema = z.object({
-  database: z.string().default('P4NTH30N'),
+  database: z.string().default('P4NTHE0N'),
   collection: z.string().min(1),
   filter: JsonRecordSchema.default({}),
   limit: z.number().int().positive().max(1000).default(10),
@@ -12,38 +12,38 @@ const FindSchema = z.object({
 });
 
 const FindOneSchema = z.object({
-  database: z.string().default('P4NTH30N'),
+  database: z.string().default('P4NTHE0N'),
   collection: z.string().min(1),
   filter: JsonRecordSchema,
 });
 
 const InsertOneSchema = z.object({
-  database: z.string().default('P4NTH30N'),
+  database: z.string().default('P4NTHE0N'),
   collection: z.string().min(1),
   document: JsonRecordSchema,
 });
 
 const UpdateOneSchema = z.object({
-  database: z.string().default('P4NTH30N'),
+  database: z.string().default('P4NTHE0N'),
   collection: z.string().min(1),
   filter: JsonRecordSchema,
   update: JsonRecordSchema,
 });
 
 const DeleteOneSchema = z.object({
-  database: z.string().default('P4NTH30N'),
+  database: z.string().default('P4NTHE0N'),
   collection: z.string().min(1),
   filter: JsonRecordSchema,
 });
 
 const CountSchema = z.object({
-  database: z.string().default('P4NTH30N'),
+  database: z.string().default('P4NTHE0N'),
   collection: z.string().min(1),
   filter: JsonRecordSchema.default({}),
 });
 
 const AggregateSchema = z.object({
-  database: z.string().default('P4NTH30N'),
+  database: z.string().default('P4NTHE0N'),
   collection: z.string().min(1),
   pipeline: z.array(JsonRecordSchema),
 });

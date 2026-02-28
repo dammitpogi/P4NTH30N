@@ -1,4 +1,4 @@
-namespace P4NTH30N.H4ND.Navigation.Verification;
+namespace P4NTHE0N.H4ND.Navigation.Verification;
 
 /// <summary>
 /// ARCH-098: Verification gate strategy for pre/post-condition checks.

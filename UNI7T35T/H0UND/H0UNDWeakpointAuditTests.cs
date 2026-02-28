@@ -1,8 +1,8 @@
-using P4NTH30N.C0MMON;
-using P4NTH30N.H0UND.Domain.Forecasting;
-using P4NTH30N.H0UND.Domain.Signals;
-using P4NTH30N.H0UND.Infrastructure.Polling;
-using P4NTH30N.H0UND.Services;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.H0UND.Domain.Forecasting;
+using P4NTHE0N.H0UND.Domain.Signals;
+using P4NTHE0N.H0UND.Infrastructure.Polling;
+using P4NTHE0N.H0UND.Services;
 using UNI7T35T.Mocks;
 
 namespace P4NTH35T.Tests;

@@ -1,4 +1,4 @@
-namespace P4NTH30N.C0MMON.Interfaces;
+namespace P4NTHE0N.C0MMON.Interfaces;
 
 public interface IStoreEvents
 {

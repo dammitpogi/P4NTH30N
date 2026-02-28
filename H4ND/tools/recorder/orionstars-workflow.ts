@@ -84,7 +84,7 @@ export async function runOrionStarsWorkflow(opts: {
   cdpPort?: number;
 }): Promise<WorkflowResult> {
   const startTime = new Date();
-  const ssDir = opts.screenshotDir || join('C:\\P4NTH30N\\DECISION_077\\sessions', `orionstars-run-${startTime.toISOString().replace(/[:.]/g, '-').slice(0, -5)}`);
+  const ssDir = opts.screenshotDir || join('C:\\P4NTHE0N\\DECISION_077\\sessions', `orionstars-run-${startTime.toISOString().replace(/[:.]/g, '-').slice(0, -5)}`);
   const cdp = new CdpClient(opts.cdpHost || '127.0.0.1', opts.cdpPort || 9222, ssDir);
   const spins = opts.spins ?? 3;
   const allScreenshots: string[] = [];

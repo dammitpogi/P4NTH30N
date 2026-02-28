@@ -207,7 +207,7 @@ Continue Outer Loop (retry)
 - **System.Text.Json**: Signal file serialization
 - **Microsoft.Extensions.Configuration**: appsettings.json loading
 
-### Data Collections (MongoDB - P4NTH30N)
+### Data Collections (MongoDB - P4NTHE0N)
 - `EV3NT` → Received signals (via `uow.Received`)
 - `CR3D3N7IAL` → User credentials (via `uow.Credentials`)
 - `ERR0R` → Validation errors (via `uow.Errors`)
@@ -275,7 +275,7 @@ GrandCheckInterval: 500ms
 ### CDP Configuration (appsettings.json)
 ```json
 {
-  "P4NTH30N:H4ND:Cdp": {
+  "P4NTHE0N:H4ND:Cdp": {
     "HostIp": "192.168.56.1",
     "Port": 9222,
     "TimeoutMs": 30000,

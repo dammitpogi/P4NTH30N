@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Concurrent;
 using System.Linq;
-using P4NTH30N.C0MMON.Interfaces;
+using P4NTHE0N.C0MMON.Interfaces;
 
-namespace P4NTH30N.C0MMON.Infrastructure.Resilience
+namespace P4NTHE0N.C0MMON.Infrastructure.Resilience
 {
 	public class ProactiveCircuitBreaker
 	{

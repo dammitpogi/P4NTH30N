@@ -1,7 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace P4NTH30N.H4ND.SmokeTest.Reporting;
+namespace P4NTHE0N.H4ND.SmokeTest.Reporting;
 
 /// <summary>
 /// ARCH-099: Machine-readable JSON output for CI/CD integration.

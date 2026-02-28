@@ -1,7 +1,7 @@
-using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Interfaces;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.C0MMON.Interfaces;
 
-namespace P4NTH30N.H0UND.Agents;
+namespace P4NTHE0N.H0UND.Agents;
 
 /// <summary>
 /// DECISION_027: H0UND predictor agent — generates jackpot predictions

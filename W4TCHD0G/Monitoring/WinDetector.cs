@@ -1,6 +1,6 @@
-using P4NTH30N.W4TCHD0G.Models;
+using P4NTHE0N.W4TCHD0G.Models;
 
-namespace P4NTH30N.W4TCHD0G.Monitoring;
+namespace P4NTHE0N.W4TCHD0G.Monitoring;
 
 /// <summary>
 /// Detects jackpot wins by monitoring balance changes and vision analysis.

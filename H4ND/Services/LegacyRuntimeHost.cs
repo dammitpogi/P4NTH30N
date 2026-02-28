@@ -1,23 +1,27 @@
 using System.Text.Json;
+using System.Security.Cryptography;
 using Figgle;
 using Figgle.Fonts;
 using Microsoft.Extensions.Configuration;
-using P4NTH30N;
-using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Entities;
-using P4NTH30N.C0MMON.Infrastructure.Cdp;
-using P4NTH30N.C0MMON.Infrastructure.EventBus;
-using P4NTH30N.C0MMON.Infrastructure.Persistence;
-using P4NTH30N.C0MMON.Infrastructure.Resilience;
-using P4NTH30N.C0MMON.Versioning;
-using P4NTH30N.H4ND;
-using P4NTH30N.H4ND.Infrastructure;
-using P4NTH30N.H4ND.Navigation;
-using P4NTH30N.H4ND.Navigation.Retry;
-using P4NTH30N.H4ND.EntryPoint;
-using P4NTH30N.H4ND.Parallel;
-using P4NTH30N.H4ND.Vision;
-using P4NTH30N.Services;
+using P4NTHE0N;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.C0MMON.Entities;
+using P4NTHE0N.C0MMON.Infrastructure.Cdp;
+using P4NTHE0N.C0MMON.Infrastructure.EventBus;
+using P4NTHE0N.C0MMON.Infrastructure.Persistence;
+using P4NTHE0N.C0MMON.Infrastructure.Resilience;
+using P4NTHE0N.C0MMON.Versioning;
+using P4NTHE0N.H4ND;
+using P4NTHE0N.H4ND.Composition;
+using P4NTHE0N.H4ND.Infrastructure;
+using P4NTHE0N.H4ND.Infrastructure.Logging.ErrorEvidence;
+using P4NTHE0N.H4ND.Navigation;
+using P4NTHE0N.H4ND.Navigation.Retry;
+using P4NTHE0N.H4ND.EntryPoint;
+using P4NTHE0N.H4ND.Parallel;
+using P4NTHE0N.H4ND.Vision;
+using P4NTHE0N.Services;
+using CommonErrorSeverity = P4NTHE0N.C0MMON.ErrorSeverity;
 
 // TECH-H4ND-001: CDP replaces Selenium for browser UI interaction.
 // TECH-FE-015: Event bus + command pipeline for FourEyes integration.
@@ -25,7 +29,7 @@ using P4NTH30N.Services;
 // TECH-JP-002: Jackpot signal-to-spin pipeline via event bus.
 // OPS-JP-001: Jackpot operational monitoring.
 
-namespace P4NTH30N
+namespace P4NTHE0N
 {
 	internal static class LegacyHeader
 	{
@@ -33,7 +37,7 @@ namespace P4NTH30N
 	}
 }
 
-namespace P4NTH30N.H4ND.Services
+namespace P4NTHE0N.H4ND.Services
 {
 
 public sealed class LegacyRuntimeHost : IRuntimeHost
@@ -50,6 +54,7 @@ public sealed class LegacyRuntimeHost : IRuntimeHost
 	private static void RunLegacy(string[] args)
 	{
 		MongoUnitOfWork uow = s_uow;
+		IErrorEvidence errors = ServiceCollectionExtensions.CurrentErrorEvidence;
 		RunMode mode = UnifiedEntryPoint.ParseMode(args);
 
 		// --- ARCH-055: generate-signals does NOT require CDP ---
@@ -92,7 +97,7 @@ public sealed class LegacyRuntimeHost : IRuntimeHost
 			.Build();
 
 		CdpConfig cdpConfig = new();
-		config.GetSection("P4NTH30N:H4ND:Cdp").Bind(cdpConfig);
+		config.GetSection("P4NTHE0N:H4ND:Cdp").Bind(cdpConfig);
 
 		// --- ARCH-055: Health mode skips CDP pre-flight (reports status instead) ---
 		if (mode == RunMode.Health)
@@ -104,7 +109,7 @@ public sealed class LegacyRuntimeHost : IRuntimeHost
 
 		// --- AUTO-056: CDP lifecycle management (auto-start Chrome if needed) ---
 		CdpLifecycleConfig lifecycleConfig = new();
-		config.GetSection("P4NTH30N:H4ND:CdpLifecycle").Bind(lifecycleConfig);
+		config.GetSection("P4NTHE0N:H4ND:CdpLifecycle").Bind(lifecycleConfig);
 		CdpLifecycleManager cdpLifecycle = new(lifecycleConfig);
 
 		bool cdpEnsured = cdpLifecycle.EnsureAvailableAsync().GetAwaiter().GetResult();
@@ -132,7 +137,7 @@ public sealed class LegacyRuntimeHost : IRuntimeHost
 				Console.WriteLine($"[H4ND]   - {error}");
 			}
 			uow.Errors.Insert(
-				ErrorLog.Create(ErrorType.SystemError, "H4ND:CdpHealthCheck", $"CDP pre-flight failed: {string.Join("; ", healthStatus.Errors)}", ErrorSeverity.Critical)
+				ErrorLog.Create(ErrorType.SystemError, "H4ND:CdpHealthCheck", $"CDP pre-flight failed: {string.Join("; ", healthStatus.Errors)}", CommonErrorSeverity.Critical)
 			);
 			Console.WriteLine("[H4ND] Halting — CDP connectivity is required. Fix Chrome/CDP and restart.");
 			cdpLifecycle.Dispose();
@@ -144,7 +149,7 @@ public sealed class LegacyRuntimeHost : IRuntimeHost
 		if (mode == RunMode.FirstSpin)
 		{
 			FirstSpinConfig firstSpinConfig = new();
-			config.GetSection("P4NTH30N:H4ND:FirstSpin").Bind(firstSpinConfig);
+			config.GetSection("P4NTHE0N:H4ND:FirstSpin").Bind(firstSpinConfig);
 
 			SpinMetrics fsMetrics = new();
 			FirstSpinController firstSpinController = new(uow, firstSpinConfig, fsMetrics);
@@ -185,7 +190,7 @@ public sealed class LegacyRuntimeHost : IRuntimeHost
 
 		// --- OPS-JP-001: Initialize spin metrics + health endpoint ---
 		SpinMetrics spinMetrics = new();
-		SpinExecution spinExecution = new(uow, spinMetrics);
+		SpinExecution spinExecution = new(uow, spinMetrics, errors);
 		SpinHealthEndpoint spinHealthEndpoint = new(spinMetrics);
 		spinHealthEndpoint.Start();
 		DateTime lastMetricsLog = DateTime.MinValue;
@@ -241,6 +246,15 @@ public sealed class LegacyRuntimeHost : IRuntimeHost
 
 			try
 			{
+				using ErrorScope runtimeScope = errors.BeginScope(
+					"LegacyRuntimeHost",
+					"RunLegacyLoop",
+					new Dictionary<string, object>
+					{
+						["mode"] = mode.ToString(),
+						["listenForSignals"] = listenForSignals,
+					});
+
 				double lastRetrievedGrand = 0;
 				Signal? overrideSignal = null;
 				Credential? lastCredential = null;
@@ -257,9 +271,20 @@ public sealed class LegacyRuntimeHost : IRuntimeHost
 					}
 					else
 					{
+						using ErrorScope processScope = errors.BeginScope(
+							"LegacyRuntimeHost",
+							"ProcessCredential",
+							new Dictionary<string, object>
+							{
+								["credentialId"] = credential._id.ToString(),
+								["house"] = credential.House,
+								["game"] = credential.Game,
+								["hasSignal"] = signal != null,
+								["signalId"] = signal?._id.ToString() ?? string.Empty,
+							});
+
 						uow.Credentials.Lock(credential);
-						if (signal != null)
-							uow.Signals.Acknowledge(signal);
+						RecordPreProcessAckObservation(errors, signal, credential);
 
 						if (signal != null)
 						{
@@ -382,7 +407,7 @@ public sealed class LegacyRuntimeHost : IRuntimeHost
 									ErrorType.ValidationError,
 									"H4ND",
 									$"Invalid raw values for {credential.Username}@{credential.Game}: Grand={balances.Grand}, Major={balances.Major}, Minor={balances.Minor}, Mini={balances.Mini}, Balance={balances.Balance}",
-									ErrorSeverity.Critical
+									CommonErrorSeverity.Critical
 								)
 							);
 							uow.Credentials.Unlock(credential);
@@ -410,7 +435,15 @@ public sealed class LegacyRuntimeHost : IRuntimeHost
 
 						if (signal != null)
 						{
-							uow.Signals.Acknowledge(signal);
+							if (signal.Acknowledged)
+							{
+								errors.CaptureWarning(
+									"H4ND-ACK-OBS-002",
+									"Signal already acknowledged before receive side-effects",
+									context: BuildSignalContext(signal, credential),
+									evidence: SnapshotSignal(signal));
+							}
+
 							File.WriteAllText(Path.Combine(Path.GetTempPath(), "S1GNAL.json"), JsonSerializer.Serialize(true));
 							switch (signal.Priority)
 							{
@@ -444,6 +477,16 @@ public sealed class LegacyRuntimeHost : IRuntimeHost
 							bool spinOk = spinExecution.ExecuteSpinAsync(spinCommand, cdp!, signal, credential).GetAwaiter().GetResult();
 							if (!spinOk)
 							{
+								errors.CaptureWarning(
+									"H4ND-SPIN-FAIL-001",
+									"SpinExecution returned false",
+									context: BuildSignalContext(signal, credential),
+									evidence: new
+									{
+										signal = SnapshotSignal(signal),
+										credential = SnapshotCredential(credential),
+									});
+
 								Console.WriteLine($"[H4ND] Spin failed for {credential.Username}@{credential.Game} — continuing");
 							}
 
@@ -479,7 +522,10 @@ public sealed class LegacyRuntimeHost : IRuntimeHost
 									grandJackpot.DPD.Toggles.GrandPopped = false;
 									credential.Thresholds.NewGrand(credential.Jackpots.Grand);
 									if (gameSignal != null && gameSignal.Priority.Equals(4))
+									{
+										RecordDeleteAllBranchMarker(errors, gameSignal, credential, 4);
 										uow.Signals.DeleteAll(credential.House, credential.Game);
+									}
 								}
 								else if (grandJackpot?.DPD != null)
 									grandJackpot.DPD.Toggles.GrandPopped = true;
@@ -504,7 +550,10 @@ public sealed class LegacyRuntimeHost : IRuntimeHost
 									majorJackpot.DPD.Toggles.MajorPopped = false;
 									credential.Thresholds.NewMajor(credential.Jackpots.Major);
 									if (gameSignal != null && gameSignal.Priority.Equals(3))
+									{
+										RecordDeleteAllBranchMarker(errors, gameSignal, credential, 3);
 										uow.Signals.DeleteAll(credential.House, credential.Game);
+									}
 								}
 								else if (majorJackpot?.DPD != null)
 									majorJackpot.DPD.Toggles.MajorPopped = true;
@@ -529,7 +578,10 @@ public sealed class LegacyRuntimeHost : IRuntimeHost
 									minorJackpot.DPD.Toggles.MinorPopped = false;
 									credential.Thresholds.NewMinor(credential.Jackpots.Minor);
 									if (gameSignal != null && gameSignal.Priority.Equals(2))
+									{
+										RecordDeleteAllBranchMarker(errors, gameSignal, credential, 2);
 										uow.Signals.DeleteAll(credential.House, credential.Game);
+									}
 								}
 								else if (minorJackpot?.DPD != null)
 									minorJackpot.DPD.Toggles.MinorPopped = true;
@@ -554,7 +606,10 @@ public sealed class LegacyRuntimeHost : IRuntimeHost
 									miniJackpot.DPD.Toggles.MiniPopped = false;
 									credential.Thresholds.NewMini(credential.Jackpots.Mini);
 									if (gameSignal != null && gameSignal.Priority.Equals(1))
+									{
+										RecordDeleteAllBranchMarker(errors, gameSignal, credential, 1);
 										uow.Signals.DeleteAll(credential.House, credential.Game);
+									}
 								}
 								else if (miniJackpot?.DPD != null)
 									miniJackpot.DPD.Toggles.MiniPopped = true;
@@ -575,7 +630,9 @@ public sealed class LegacyRuntimeHost : IRuntimeHost
 						if (credential.Settings.Gold777 == null)
 							credential.Settings.Gold777 = new Gold777_Settings();
 						credential.Updated = true;
+						Dictionary<string, object> beforeUnlock = SnapshotCredential(credential);
 						uow.Credentials.Unlock(credential);
+						RecordUnlockBeforePersistInvariant(errors, signal, credential);
 
 						credential.LastUpdated = DateTime.UtcNow;
 						credential.Balance = validatedBalance; // Use validated balance
@@ -591,7 +648,7 @@ public sealed class LegacyRuntimeHost : IRuntimeHost
 									ErrorType.ValidationError,
 									"H4ND",
 									$"Credential validation failed before upsert: {credential.Username}@{credential.Game}",
-									ErrorSeverity.High
+									CommonErrorSeverity.High
 								)
 							);
 						}
@@ -599,13 +656,29 @@ public sealed class LegacyRuntimeHost : IRuntimeHost
 						{
 							uow.Credentials.Upsert(credential);
 						}
+
+						if (signal != null)
+						{
+							Dictionary<string, object> afterUpsert = SnapshotCredential(credential);
+							errors.CaptureWarning(
+								"H4ND-MUT-UNLOCK-UPSERT-001",
+								"Credential unlock-before-upsert mutation checkpoint",
+								context: BuildSignalContext(signal, credential),
+								evidence: new
+								{
+									before = beforeUnlock,
+									after = afterUpsert,
+									diff = ComputeDiff(beforeUnlock, afterUpsert),
+								});
+						}
+
 						lastCredential = credential;
 
 						// Periodic health monitoring - simple error count from ERR0R
 						if ((DateTime.Now - lastHealthCheck).TotalMinutes >= 5)
 						{
 							var recentErrors = uow.Errors.GetBySource("H4ND").Take(10).ToList();
-							string status = recentErrors.Any(e => e.Severity == ErrorSeverity.Critical) ? "CRITICAL" : "HEALTHY";
+							string status = recentErrors.Any(e => e.Severity == CommonErrorSeverity.Critical) ? "CRITICAL" : "HEALTHY";
 							Console.WriteLine($"💊 H4ND Health: {status} | Recent Errors: {recentErrors.Count}");
 							lastHealthCheck = DateTime.Now;
 						}
@@ -632,6 +705,16 @@ public sealed class LegacyRuntimeHost : IRuntimeHost
 			}
 			catch (Exception ex)
 			{
+				errors.Capture(
+					ex,
+					"H4ND-LEGACY-LOOP-001",
+					"Unhandled exception in LegacyRuntimeHost run loop",
+					context: new Dictionary<string, object>
+					{
+						["listenForSignals"] = listenForSignals,
+						["mode"] = mode.ToString(),
+					});
+
 				Console.WriteLine(ex.Message);
 				Console.WriteLine(ex);
 				Thread.Sleep(5000);
@@ -644,13 +727,145 @@ public sealed class LegacyRuntimeHost : IRuntimeHost
 					{
 						cdp.Dispose();
 					}
-					catch { }
+					catch (Exception disposeEx)
+					{
+						errors.CaptureWarning(
+							"H4ND-CDP-DISPOSE-001",
+							"CDP dispose failed during runtime loop cleanup",
+							context: new Dictionary<string, object>
+							{
+								["mode"] = mode.ToString(),
+							},
+							evidence: new
+							{
+								exceptionType = disposeEx.GetType().FullName,
+								disposeEx.Message,
+							});
+					}
+
 					cdp = null;
 					// FEAT-036: Reset so VisionCommandHandler re-wires on next CDP connection
 					visionHandlerWired = false;
 				}
 			}
 		}
+	}
+
+	private static Dictionary<string, object> BuildSignalContext(Signal signal, Credential credential)
+	{
+		return new Dictionary<string, object>
+		{
+			["signalId"] = signal._id.ToString(),
+			["credentialId"] = credential._id.ToString(),
+			["house"] = credential.House,
+			["game"] = credential.Game,
+			["priority"] = signal.Priority,
+			["acknowledged"] = signal.Acknowledged,
+		};
+	}
+
+	public static void RecordPreProcessAckObservation(IErrorEvidence errors, Signal? signal, Credential credential)
+	{
+		if (signal?.Acknowledged != true)
+		{
+			return;
+		}
+
+		errors.CaptureWarning(
+			"H4ND-ACK-OBS-001",
+			"Signal observed as already acknowledged before processing",
+			context: BuildSignalContext(signal, credential),
+			evidence: SnapshotSignal(signal));
+	}
+
+	public static void RecordUnlockBeforePersistInvariant(IErrorEvidence errors, Signal? signal, Credential credential)
+	{
+		if (credential.Unlocked)
+		{
+			return;
+		}
+
+		errors.CaptureInvariantFailure(
+			"H4ND-CRED-INV-001",
+			"Credential remained locked after unlock call",
+			expected: true,
+			actual: credential.Unlocked,
+			context: signal == null ? null : BuildSignalContext(signal, credential));
+	}
+
+	public static void RecordDeleteAllBranchMarker(IErrorEvidence errors, Signal signal, Credential credential, int priority)
+	{
+		errors.CaptureWarning(
+			"H4ND-DELALL-BRANCH-001",
+			"DeleteAll branch executed for matched signal priority",
+			context: BuildSignalContext(signal, credential),
+			evidence: new
+			{
+				priority,
+				house = credential.House,
+				game = credential.Game,
+				signalId = signal._id.ToString(),
+			});
+	}
+
+	private static Dictionary<string, object> SnapshotSignal(Signal signal)
+	{
+		return new Dictionary<string, object>
+		{
+			["signalId"] = signal._id.ToString(),
+			["house"] = signal.House,
+			["game"] = signal.Game,
+			["usernameHash"] = HashForEvidence(signal.Username),
+			["priority"] = signal.Priority,
+			["acknowledged"] = signal.Acknowledged,
+			["claimedBy"] = signal.ClaimedBy ?? string.Empty,
+			["claimedAtUtc"] = signal.ClaimedAt?.ToString("O") ?? string.Empty,
+		};
+	}
+
+	private static Dictionary<string, object> SnapshotCredential(Credential credential)
+	{
+		return new Dictionary<string, object>
+		{
+			["credentialId"] = credential._id.ToString(),
+			["usernameHash"] = HashForEvidence(credential.Username),
+			["house"] = credential.House,
+			["game"] = credential.Game,
+			["unlocked"] = credential.Unlocked,
+			["updated"] = credential.Updated,
+			["banned"] = credential.Banned,
+			["balance"] = credential.Balance,
+			["grand"] = credential.Jackpots.Grand,
+			["major"] = credential.Jackpots.Major,
+			["minor"] = credential.Jackpots.Minor,
+			["mini"] = credential.Jackpots.Mini,
+		};
+	}
+
+	private static IReadOnlyList<string> ComputeDiff(Dictionary<string, object> before, Dictionary<string, object> after)
+	{
+		List<string> diff = [];
+		foreach (KeyValuePair<string, object> pair in before)
+		{
+			after.TryGetValue(pair.Key, out object? afterValue);
+			if (!Equals(pair.Value, afterValue))
+			{
+				diff.Add(pair.Key);
+			}
+		}
+
+		return diff;
+	}
+
+	private static string HashForEvidence(string input)
+	{
+		if (string.IsNullOrWhiteSpace(input))
+		{
+			return string.Empty;
+		}
+
+		byte[] bytes = SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(input));
+		return Convert.ToHexString(bytes).Substring(0, 16);
 	}
 
 	private static async Task<bool> ExecuteLoginWithRecorderAsync(

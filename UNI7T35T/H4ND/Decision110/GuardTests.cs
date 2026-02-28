@@ -1,7 +1,7 @@
 using System;
-using P4NTH30N.H4ND.Domains.Common;
+using P4NTHE0N.H4ND.Domains.Common;
 
-namespace P4NTH30N.UNI7T35T.H4ND.Decision110;
+namespace P4NTHE0N.UNI7T35T.H4ND.Decision110;
 
 /// <summary>
 /// DECISION_110: Unit tests for Guard fail-fast invariants.

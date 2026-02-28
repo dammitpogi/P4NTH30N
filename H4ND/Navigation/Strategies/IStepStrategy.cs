@@ -1,4 +1,4 @@
-namespace P4NTH30N.H4ND.Navigation.Strategies;
+namespace P4NTHE0N.H4ND.Navigation.Strategies;
 
 /// <summary>
 /// ARCH-098: Strategy pattern interface for step action execution.

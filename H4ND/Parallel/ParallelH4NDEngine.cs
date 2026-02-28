@@ -1,11 +1,12 @@
 using System.Threading.Channels;
-using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Infrastructure.Cdp;
-using P4NTH30N.H4ND.Infrastructure;
-using P4NTH30N.H4ND.Navigation;
-using P4NTH30N.H4ND.Services;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.C0MMON.Infrastructure.Cdp;
+using P4NTHE0N.H4ND.Composition;
+using P4NTHE0N.H4ND.Infrastructure;
+using P4NTHE0N.H4ND.Navigation;
+using P4NTHE0N.H4ND.Services;
 
-namespace P4NTH30N.H4ND.Parallel;
+namespace P4NTHE0N.H4ND.Parallel;
 
 /// <summary>
 /// ARCH-047/055: Main orchestrator for parallel H4ND execution.
@@ -86,8 +87,10 @@ public sealed class ParallelH4NDEngine : IDisposable
 			SingleWriter = true,
 		});
 
+		var errors = ServiceCollectionExtensions.CurrentErrorEvidence;
+
 		// Create spin execution (shared across workers via thread-safe UoW)
-		var spinExecution = new SpinExecution(_uow, _spinMetrics);
+		var spinExecution = new SpinExecution(_uow, _spinMetrics, errors);
 
 		// Start distributor (producer)
 		var distributor = new SignalDistributor(
@@ -107,19 +110,20 @@ public sealed class ParallelH4NDEngine : IDisposable
 		var stepExecutor = StepExecutor.CreateDefault();
 
 		_workerPool = new WorkerPool(
-			_config.WorkerCount,
-			channel.Reader,
-			_uow,
-			spinExecution,
-			_cdpConfig,
-			_metrics,
-			_sessionRenewal,
-			_selectorConfig,
-			_config.MaxSignalsPerWorker,
-			_resourceCoordinator,
-			_profileManager,
-			mapLoader,
-			stepExecutor);
+			workerCount: _config.WorkerCount,
+			reader: channel.Reader,
+			uow: _uow,
+			spinExecution: spinExecution,
+			cdpConfig: _cdpConfig,
+			metrics: _metrics,
+			sessionRenewal: _sessionRenewal,
+			selectorConfig: _selectorConfig,
+			errors: errors,
+			maxSignalsPerWorker: _config.MaxSignalsPerWorker,
+			resourceCoordinator: _resourceCoordinator,
+			profileManager: _profileManager,
+			mapLoader: mapLoader,
+			stepExecutor: stepExecutor);
 
 		await _workerPool.StartAsync(_cts.Token);
 
@@ -199,7 +203,7 @@ public sealed class ParallelH4NDEngine : IDisposable
 
 /// <summary>
 /// ARCH-047: Configuration for parallel execution.
-/// Bound from appsettings.json P4NTH30N:H4ND:Parallel section.
+/// Bound from appsettings.json P4NTHE0N:H4ND:Parallel section.
 /// </summary>
 public sealed class ParallelConfig
 {

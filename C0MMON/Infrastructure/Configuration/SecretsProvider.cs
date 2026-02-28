@@ -1,7 +1,7 @@
 using System.Text.Json;
-using P4NTH30N.C0MMON.Security;
+using P4NTHE0N.C0MMON.Security;
 
-namespace P4NTH30N.C0MMON.Infrastructure.Configuration;
+namespace P4NTHE0N.C0MMON.Infrastructure.Configuration;
 
 /// <summary>
 /// Provides encrypted secrets storage for local development and production use.
@@ -183,11 +183,11 @@ public sealed class SecretsProvider
 	}
 
 	/// <summary>
-	/// Applies secrets as overrides to a P4NTH30NOptions instance.
+	/// Applies secrets as overrides to a P4NTHE0NOptions instance.
 	/// Known secret keys are mapped to their corresponding options properties.
 	/// </summary>
 	/// <param name="options">The options to apply secrets to.</param>
-	public void ApplyTo(P4NTH30NOptions options)
+	public void ApplyTo(P4NTHE0NOptions options)
 	{
 		if (options is null || _encryptedValues is null || _encryptedValues.Count == 0)
 			return;

@@ -7,8 +7,8 @@ Screenshot-guided navigation recorder for mapping FireKirin/OrionStars workflows
 
 ### 1. Record a Step (Auto-Starts Chrome)
 ```powershell
-cd C:\P4NTH30N\H4ND\tools\recorder
-bun run recorder.ts --step --phase=Login --screenshot=001.png --session-dir="C:\P4NTH30N\DECISION_077\sessions\FK_001" --run-tool=diag
+cd C:\P4NTHE0N\H4ND\tools\recorder
+bun run recorder.ts --step --phase=Login --screenshot=001.png --session-dir="C:\P4NTHE0N\DECISION_077\sessions\FK_001" --run-tool=diag
 ```
 
 **What Happens:**
@@ -35,16 +35,16 @@ bun run recorder.ts --step --phase=Login --screenshot=001.png --session-dir="C:\
 
 ```powershell
 # Step 1: Check CDP and take initial screenshot
-bun run recorder.ts --step --phase=Login --screenshot=001_login_page.png --session-dir="C:\P4NTH30N\DECISION_077\sessions\FK_001" --run-tool=diag
+bun run recorder.ts --step --phase=Login --screenshot=001_login_page.png --session-dir="C:\P4NTHE0N\DECISION_077\sessions\FK_001" --run-tool=diag
 
 # Step 2: Record clicking account field (manual action)
-bun run recorder.ts --step --phase=Login --screenshot=002_account_focused.png --session-dir="C:\P4NTH30N\DECISION_077\sessions\FK_001" --run-tool=none
+bun run recorder.ts --step --phase=Login --screenshot=002_account_focused.png --session-dir="C:\P4NTHE0N\DECISION_077\sessions\FK_001" --run-tool=none
 
 # Step 3: Record typing username (no screenshot needed)
-bun run recorder.ts --step --phase=Login --screenshot=003_username_entered.png --session-dir="C:\P4NTH30N\DECISION_077\sessions\FK_001" --run-tool=none
+bun run recorder.ts --step --phase=Login --screenshot=003_username_entered.png --session-dir="C:\P4NTHE0N\DECISION_077\sessions\FK_001" --run-tool=none
 
 # Step 4: Execute login
-bun run recorder.ts --step --phase=Login --screenshot=004_login_clicked.png --session-dir="C:\P4NTH30N\DECISION_077\sessions\FK_001" --run-tool=login
+bun run recorder.ts --step --phase=Login --screenshot=004_login_clicked.png --session-dir="C:\P4NTHE0N\DECISION_077\sessions\FK_001" --run-tool=login
 ```
 
 ## Output Files
@@ -79,32 +79,32 @@ The recorder now **automatically**:
 ### Record Manual Navigation
 ```powershell
 # Just record what you see, no tool execution
-bun run recorder.ts --step --phase=Login --screenshot=current_state.png --session-dir="C:\P4NTH30N\DECISION_077\sessions\manual_001" --run-tool=none
+bun run recorder.ts --step --phase=Login --screenshot=current_state.png --session-dir="C:\P4NTHE0N\DECISION_077\sessions\manual_001" --run-tool=none
 ```
 
 ### Verify CDP Connection
 ```powershell
 # Quick diagnostic check
-bun run recorder.ts --step --phase=Login --screenshot=check.png --session-dir="C:\P4NTH30N\DECISION_077\sessions\diag_001" --run-tool=diag
+bun run recorder.ts --step --phase=Login --screenshot=check.png --session-dir="C:\P4NTHE0N\DECISION_077\sessions\diag_001" --run-tool=diag
 ```
 
 ### Execute Automated Login
 ```powershell
 # Run full login via T00L5ET
-bun run recorder.ts --step --phase=Login --screenshot=login_attempt.png --session-dir="C:\P4NTH30N\DECISION_077\sessions\auto_login" --run-tool=login
+bun run recorder.ts --step --phase=Login --screenshot=login_attempt.png --session-dir="C:\P4NTHE0N\DECISION_077\sessions\auto_login" --run-tool=login
 ```
 
 ## View Results
 
 ```powershell
 # Human-readable report
-Get-Content "C:\P4NTH30N\DECISION_077\sessions\FK_001\session.md"
+Get-Content "C:\P4NTHE0N\DECISION_077\sessions\FK_001\session.md"
 
 # Machine-readable log
-Get-Content "C:\P4NTH30N\DECISION_077\sessions\FK_001\session.ndjson"
+Get-Content "C:\P4NTHE0N\DECISION_077\sessions\FK_001\session.ndjson"
 
 # Screenshots
-Get-ChildItem "C:\P4NTH30N\DECISION_077\sessions\FK_001\screenshots\"
+Get-ChildItem "C:\P4NTHE0N\DECISION_077\sessions\FK_001\screenshots\"
 ```
 
 ## Troubleshooting
@@ -115,9 +115,9 @@ Get-ChildItem "C:\P4NTH30N\DECISION_077\sessions\FK_001\screenshots\"
 - Try again
 
 **T00L5ET not found:**
-- Verify path: `C:\P4NTH30N\T00L5ET\bin\Debug\net10.0-windows7.0\T00L5ET.exe`
+- Verify path: `C:\P4NTHE0N\T00L5ET\bin\Debug\net10.0-windows7.0\T00L5ET.exe`
 - Build T00L5ET if missing
 
 **Session directory errors:**
 - Recorder auto-creates directories now
-- Ensure you have write permissions to `C:\P4NTH30N\DECISION_077\sessions\`
+- Ensure you have write permissions to `C:\P4NTHE0N\DECISION_077\sessions\`

@@ -1,6 +1,6 @@
-using P4NTH30N.H4ND.Domains.Common;
+using P4NTHE0N.H4ND.Domains.Common;
 
-namespace P4NTH30N.H4ND.Domains.Automation.ValueObjects;
+namespace P4NTHE0N.H4ND.Domains.Automation.ValueObjects;
 
 public readonly record struct Money
 {

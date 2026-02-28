@@ -1,9 +1,10 @@
 using MongoDB.Bson;
 using MongoDB.Driver;
-using P4NTH30N.H4ND.Domains.Common;
-using P4NTH30N.H4ND.Infrastructure.Logging;
+using P4NTHE0N.H4ND.Domains.Common;
+using P4NTHE0N.H4ND.Infrastructure.Logging;
+using P4NTHE0N.H4ND.Infrastructure.Logging.ErrorEvidence;
 
-namespace P4NTH30N.H4ND.Infrastructure.Persistence;
+namespace P4NTHE0N.H4ND.Infrastructure.Persistence;
 
 public sealed class MongoDbContext
 {
@@ -15,22 +16,25 @@ public sealed class MongoDbContext
 	}
 
 	public IMongoCollection<CredentialDocument> Credentials =>
-		_database.GetCollection<CredentialDocument>("P4NTH30N_CREDENTIAL");
+		_database.GetCollection<CredentialDocument>("P4NTHE0N_CREDENTIAL");
 
 	public IMongoCollection<SignalQueueDocument> SignalQueues =>
-		_database.GetCollection<SignalQueueDocument>("P4NTH30N_SIGNAL_QUEUE");
+		_database.GetCollection<SignalQueueDocument>("P4NTHE0N_SIGNAL_QUEUE");
 
 	public IMongoCollection<SpinSessionDocument> SpinSessions =>
-		_database.GetCollection<SpinSessionDocument>("P4NTH30N_SPIN_SESSION");
+		_database.GetCollection<SpinSessionDocument>("P4NTHE0N_SPIN_SESSION");
 
 	public IMongoCollection<HealthCheckDocument> HealthChecks =>
-		_database.GetCollection<HealthCheckDocument>("P4NTH30N_HEALTH_CHECK");
+		_database.GetCollection<HealthCheckDocument>("P4NTHE0N_HEALTH_CHECK");
 
 	public IMongoCollection<DomainLogEntry> DomainLogs =>
 		_database.GetCollection<DomainLogEntry>(LogCollectionNames.Domain);
 
 	public IMongoCollection<DomainEventEnvelope> DomainEvents =>
 		_database.GetCollection<DomainEventEnvelope>(LogCollectionNames.Domain);
+
+	public IMongoCollection<ErrorEvidenceDocument> DebugEvidence =>
+		_database.GetCollection<ErrorEvidenceDocument>("_debug");
 
 	public void EnsurePhase4Indexes()
 	{
@@ -61,6 +65,35 @@ public sealed class MongoDbContext
 		HealthChecks.Indexes.CreateOne(new CreateIndexModel<HealthCheckDocument>(
 			Builders<HealthCheckDocument>.IndexKeys.Ascending(x => x.Component),
 			new CreateIndexOptions { Name = "idx_health_component", Unique = true }));
+	}
+
+	public void EnsureDebugEvidenceIndexes(string collectionName = "_debug")
+	{
+		IMongoCollection<ErrorEvidenceDocument> collection = _database.GetCollection<ErrorEvidenceDocument>(collectionName);
+
+		List<CreateIndexModel<ErrorEvidenceDocument>> models =
+		[
+			new(
+				Builders<ErrorEvidenceDocument>.IndexKeys.Ascending(x => x.ExpiresAtUtc),
+				new CreateIndexOptions { Name = "idx_debug_expiresAt_ttl", ExpireAfter = TimeSpan.Zero }),
+			new(
+				Builders<ErrorEvidenceDocument>.IndexKeys.Ascending(x => x.SessionId).Descending(x => x.CapturedAtUtc),
+				new CreateIndexOptions { Name = "idx_debug_session_capturedAt" }),
+			new(
+				Builders<ErrorEvidenceDocument>.IndexKeys.Ascending(x => x.CorrelationId).Descending(x => x.CapturedAtUtc),
+				new CreateIndexOptions { Name = "idx_debug_correlation_capturedAt", Sparse = true }),
+			new(
+				Builders<ErrorEvidenceDocument>.IndexKeys
+					.Ascending(x => x.Component)
+					.Ascending(x => x.Operation)
+					.Descending(x => x.CapturedAtUtc),
+				new CreateIndexOptions { Name = "idx_debug_component_operation_capturedAt" }),
+			new(
+				Builders<ErrorEvidenceDocument>.IndexKeys.Ascending(x => x.ErrorCode).Descending(x => x.CapturedAtUtc),
+				new CreateIndexOptions { Name = "idx_debug_errorCode_capturedAt", Sparse = true }),
+		];
+
+		collection.Indexes.CreateMany(models);
 	}
 }
 

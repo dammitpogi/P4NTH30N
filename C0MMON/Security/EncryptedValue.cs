@@ -1,6 +1,6 @@
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace P4NTH30N.C0MMON.Security;
+namespace P4NTHE0N.C0MMON.Security;
 
 /// <summary>
 /// Immutable container for AES-256-GCM encrypted data.

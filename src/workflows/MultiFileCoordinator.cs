@@ -1,6 +1,6 @@
 using System.Collections.Concurrent;
 
-namespace P4NTH30N.SWE.Workflows;
+namespace P4NTHE0N.SWE.Workflows;
 
 /// <summary>
 /// Coordinates 5-7 file edits per turn with cross-reference validation,

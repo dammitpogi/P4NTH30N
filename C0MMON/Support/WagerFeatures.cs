@@ -1,7 +1,7 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace P4NTH30N.C0MMON.Support;
+namespace P4NTHE0N.C0MMON.Support;
 
 /// <summary>
 /// DECISION_028: Feature vector for XGBoost dynamic wager placement.

@@ -1,6 +1,6 @@
-using P4NTH30N.H4ND.Infrastructure;
+using P4NTHE0N.H4ND.Infrastructure;
 
-namespace P4NTH30N.H4ND.Navigation.Strategies;
+namespace P4NTHE0N.H4ND.Navigation.Strategies;
 
 /// <summary>
 /// ARCH-098: Executes a type action using CdpGameActions.TypeIntoCanvasAsync (6-strategy fallback).

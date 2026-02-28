@@ -1,8 +1,8 @@
 using System;
-using P4NTH30N.C0MMON;
-using P4NTH30N.Services;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.Services;
 
-namespace P4NTH30N.H0UND.Infrastructure.Polling;
+namespace P4NTHE0N.H0UND.Infrastructure.Polling;
 
 public class FireKirinBalanceProvider : IBalanceProvider
 {

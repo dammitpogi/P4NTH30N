@@ -1,11 +1,11 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using P4NTH30N.C0MMON.Entities;
-using P4NTH30N.C0MMON.Infrastructure.Cdp;
-using P4NTH30N.H4ND.Infrastructure;
+using P4NTHE0N.C0MMON.Entities;
+using P4NTHE0N.C0MMON.Infrastructure.Cdp;
+using P4NTHE0N.H4ND.Infrastructure;
 
-namespace P4NTH30N.H4ND.Vision;
+namespace P4NTHE0N.H4ND.Vision;
 
 /// <summary>
 /// FEAT-036: Executes vision commands via CDP in H4ND.

@@ -4,10 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using P4NTH30N.W4TCHD0G.Models;
-using P4NTH30N.W4TCHD0G.Vision;
+using P4NTHE0N.W4TCHD0G.Models;
+using P4NTHE0N.W4TCHD0G.Vision;
 
-namespace P4NTH30N.W4TCHD0G.Development;
+namespace P4NTHE0N.W4TCHD0G.Development;
 
 /// <summary>
 /// FEAT-036: Captures and labels vision frames for training data collection.

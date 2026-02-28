@@ -1,4 +1,4 @@
-namespace P4NTH30N.H4ND.Services;
+namespace P4NTHE0N.H4ND.Services;
 
 /// <summary>
 /// ARCH-055-002: Result DTO for signal generation operations.

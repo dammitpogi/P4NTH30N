@@ -1,7 +1,7 @@
-using P4NTH30N.H4ND.Domains.Automation.Aggregates;
-using P4NTH30N.H4ND.Domains.Automation.ValueObjects;
+using P4NTHE0N.H4ND.Domains.Automation.Aggregates;
+using P4NTHE0N.H4ND.Domains.Automation.ValueObjects;
 
-namespace P4NTH30N.H4ND.Domains.Automation.Repositories;
+namespace P4NTHE0N.H4ND.Domains.Automation.Repositories;
 
 public interface ICredentialRepository
 {

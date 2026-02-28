@@ -1,4 +1,4 @@
-namespace P4NTH30N.W4TCHD0G.Vision;
+namespace P4NTHE0N.W4TCHD0G.Vision;
 
 /// <summary>
 /// Defines a rectangular region of interest (ROI) within a vision frame.

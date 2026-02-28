@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using P4NTH30N.C0MMON.Infrastructure.Persistence;
-using P4NTH30N.C0MMON.Infrastructure.Resilience;
-using P4NTH30N.C0MMON.Interfaces;
+using P4NTHE0N.C0MMON.Infrastructure.Persistence;
+using P4NTHE0N.C0MMON.Infrastructure.Resilience;
+using P4NTHE0N.C0MMON.Interfaces;
 
-namespace P4NTH30N.C0MMON.Monitoring;
+namespace P4NTHE0N.C0MMON.Monitoring;
 
 public class HealthCheckService : IHealthCheckService
 {

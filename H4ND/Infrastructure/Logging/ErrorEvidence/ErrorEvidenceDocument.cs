@@ -1,7 +1,7 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace P4NTH30N.H4ND.Infrastructure.Logging.ErrorEvidence;
+namespace P4NTHE0N.H4ND.Infrastructure.Logging.ErrorEvidence;
 
 public sealed class ErrorEvidenceDocument
 {

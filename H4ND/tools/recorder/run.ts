@@ -22,8 +22,8 @@ function getArg(name: string, def?: string): string | undefined {
 
 async function getCredentialFromMongo(game: string): Promise<{ username: string; password: string } | null> {
   return new Promise((resolve) => {
-    const t00l5et = 'C:\\P4NTH30N\\T00L5ET\\bin\\Debug\\net10.0-windows7.0\\T00L5ET.exe';
-    const proc = spawn(t00l5et, ['credcheck'], { cwd: 'C:\\P4NTH30N' });
+    const t00l5et = 'C:\\P4NTHE0N\\T00L5ET\\bin\\Debug\\net10.0-windows7.0\\T00L5ET.exe';
+    const proc = spawn(t00l5et, ['credcheck'], { cwd: 'C:\\P4NTHE0N' });
     let stdout = '';
     proc.stdout?.on('data', (d: Buffer) => { stdout += d.toString(); });
     proc.on('close', () => {

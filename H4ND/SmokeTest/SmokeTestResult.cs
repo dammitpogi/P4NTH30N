@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace P4NTH30N.H4ND.SmokeTest;
+namespace P4NTHE0N.H4ND.SmokeTest;
 
 /// <summary>
 /// ARCH-099: Result data model for smoke test execution.

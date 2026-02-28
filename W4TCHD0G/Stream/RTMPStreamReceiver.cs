@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using System.Text;
-using P4NTH30N.W4TCHD0G.Models;
+using P4NTHE0N.W4TCHD0G.Models;
 
-namespace P4NTH30N.W4TCHD0G.Stream;
+namespace P4NTHE0N.W4TCHD0G.Stream;
 
 /// <summary>
 /// RTMP stream receiver using a process-based FFmpeg subprocess.

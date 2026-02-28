@@ -3,7 +3,7 @@ UpdateOn: 2026-02-23T12:02 AM
 
 ## Responsibility
 
-C0MMON/Entities defines the core domain models and data structures for the P4NTH30N system. These entities represent the fundamental business objects that persist in MongoDB and flow through all agents, providing the data model foundation for automation, analytics, and monitoring.
+C0MMON/Entities defines the core domain models and data structures for the P4NTHE0N system. These entities represent the fundamental business objects that persist in MongoDB and flow through all agents, providing the data model foundation for automation, analytics, and monitoring.
 
 **Core Entities:**
 - **Credential**: User authentication data, jackpot tracking, thresholds, and DPD toggles

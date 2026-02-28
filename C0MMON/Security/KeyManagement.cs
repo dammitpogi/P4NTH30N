@@ -3,7 +3,7 @@ using System.Security.AccessControl;
 using System.Security.Cryptography;
 using System.Security.Principal;
 
-namespace P4NTH30N.C0MMON.Security;
+namespace P4NTHE0N.C0MMON.Security;
 
 /// <summary>
 /// Manages the master encryption key lifecycle: generation, loading, derivation, and rotation.
@@ -11,7 +11,7 @@ namespace P4NTH30N.C0MMON.Security;
 /// </summary>
 /// <remarks>
 /// SECURITY NOTES:
-/// - Master key file default path: C:\ProgramData\P4NTH30N\master.key
+/// - Master key file default path: C:\ProgramData\P4NTHE0N\master.key
 /// - File permissions: Administrators group only (read/write)
 /// - Key size: 256 bits (32 bytes) cryptographically random
 /// - Key derivation: PBKDF2-SHA512 with 600,000 iterations (OWASP 2025)
@@ -23,7 +23,7 @@ public sealed class KeyManagement : IKeyManagement, IDisposable
 	/// Default directory for storing the master key file.
 	/// Uses ProgramData to survive user profile changes.
 	/// </summary>
-	private const string DefaultKeyDirectory = @"C:\ProgramData\P4NTH30N";
+	private const string DefaultKeyDirectory = @"C:\ProgramData\P4NTHE0N";
 
 	/// <summary>
 	/// Default filename for the master key.
@@ -276,7 +276,7 @@ public sealed class KeyManagement : IKeyManagement, IDisposable
 	{
 		// DECISION: Static salt per purpose is acceptable because AES-GCM nonces
 		// provide per-record uniqueness. The salt differentiates key purposes.
-		return "P4NTH30N.CRED3N7IAL.v1"u8.ToArray();
+		return "P4NTHE0N.CRED3N7IAL.v1"u8.ToArray();
 	}
 
 	/// <summary>

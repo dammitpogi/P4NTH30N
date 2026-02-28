@@ -1,4 +1,4 @@
-namespace P4NTH30N.W4TCHD0G.Configuration;
+namespace P4NTHE0N.W4TCHD0G.Configuration;
 
 public class OBSConfig
 {

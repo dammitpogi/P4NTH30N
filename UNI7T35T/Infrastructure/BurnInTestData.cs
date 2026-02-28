@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using P4NTH30N.C0MMON;
+using P4NTHE0N.C0MMON;
 
-namespace P4NTH30N.UNI7T35T.Infrastructure;
+namespace P4NTHE0N.UNI7T35T.Infrastructure;
 
 // DECISION_086: Parameterized test data for burn-in validation
 // Organized by research dimension (Liu & Zhang 2019 sampling, Hu et al. 2025 data quality)

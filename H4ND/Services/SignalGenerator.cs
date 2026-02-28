@@ -1,7 +1,9 @@
 using System.Diagnostics;
-using P4NTH30N.C0MMON;
+using System.Security.Cryptography;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.H4ND.Infrastructure.Logging.ErrorEvidence;
 
-namespace P4NTH30N.H4ND.Services;
+namespace P4NTHE0N.H4ND.Services;
 
 /// <summary>
 /// ARCH-055-002: Generates signals from enabled, unlocked, non-banned credentials.
@@ -11,6 +13,7 @@ namespace P4NTH30N.H4ND.Services;
 public sealed class SignalGenerator
 {
 	private readonly IUnitOfWork _uow;
+	private readonly IErrorEvidence _errors;
 
 	/// <summary>
 	/// Priority distribution weights (cumulative): 40% Mini, 30% Minor, 20% Major, 10% Grand.
@@ -23,7 +26,11 @@ public sealed class SignalGenerator
 		(4, 1.00),  // Grand — 10%
 	];
 
-	public SignalGenerator(IUnitOfWork uow) => _uow = uow;
+	public SignalGenerator(IUnitOfWork uow, IErrorEvidence? errors = null)
+	{
+		_uow = uow;
+		_errors = errors ?? NoopErrorEvidence.Instance;
+	}
 
 	/// <summary>
 	/// Generates N signals from eligible credentials in CR3D3N7IAL.
@@ -34,6 +41,17 @@ public sealed class SignalGenerator
 	/// <param name="fixedPriority">Optional: override priority distribution with a fixed priority (1-4).</param>
 	public SignalGenerationResult Generate(int count, string? filterGame = null, string? filterHouse = null, int? fixedPriority = null)
 	{
+		using ErrorScope scope = _errors.BeginScope(
+			"SignalGenerator",
+			"Generate",
+			new Dictionary<string, object>
+			{
+				["requestedCount"] = count,
+				["filterGame"] = filterGame ?? "(all)",
+				["filterHouse"] = filterHouse ?? "(all)",
+				["fixedPriority"] = fixedPriority?.ToString() ?? "(distribution)",
+			});
+
 		Stopwatch sw = Stopwatch.StartNew();
 		SignalGenerationResult result = new() { Requested = count };
 
@@ -50,6 +68,14 @@ public sealed class SignalGenerator
 			{
 				result.Errors.Add("No eligible credentials found (enabled, unlocked, not banned)");
 				Console.WriteLine("[SignalGenerator] No eligible credentials found");
+				_errors.CaptureWarning(
+					"H4ND-SIGGEN-001",
+					"No eligible credentials for signal generation",
+					context: new Dictionary<string, object>
+					{
+						["filterGame"] = filterGame ?? "(all)",
+						["filterHouse"] = filterHouse ?? "(all)",
+					});
 				sw.Stop();
 				result.Elapsed = sw.Elapsed;
 				return result;
@@ -124,6 +150,18 @@ public sealed class SignalGenerator
 					result.Failed++;
 					result.Errors.Add($"Failed to insert signal for {cred.Username}@{cred.Game}: {ex.Message}");
 					Console.WriteLine($"[SignalGenerator] Insert failed: {ex.Message}");
+					_errors.Capture(
+						ex,
+						"H4ND-SIGGEN-002",
+						"Signal insert failed",
+						context: new Dictionary<string, object>
+						{
+							["usernameHash"] = HashForEvidence(cred.Username),
+							["game"] = cred.Game,
+							["house"] = cred.House,
+							["priority"] = priority,
+						},
+						severity: Infrastructure.Logging.ErrorEvidence.ErrorSeverity.Warning);
 				}
 			}
 		}
@@ -132,6 +170,16 @@ public sealed class SignalGenerator
 			result.Failed++;
 			result.Errors.Add($"Signal generation error: {ex.Message}");
 			Console.WriteLine($"[SignalGenerator] Error: {ex.Message}");
+			_errors.Capture(
+				ex,
+				"H4ND-SIGGEN-003",
+				"Signal generation pipeline failed",
+				context: new Dictionary<string, object>
+				{
+					["requestedCount"] = count,
+					["insertedSoFar"] = result.Inserted,
+					["failedSoFar"] = result.Failed,
+				});
 		}
 
 		sw.Stop();
@@ -152,5 +200,13 @@ public sealed class SignalGenerator
 				return priority;
 		}
 		return 1; // Fallback to Mini
+	}
+
+	private static string HashForEvidence(string input)
+	{
+		if (string.IsNullOrWhiteSpace(input))
+			return string.Empty;
+		byte[] bytes = SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(input));
+		return Convert.ToHexString(bytes).Substring(0, 16);
 	}
 }

@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace P4NTH30N.H4ND.Navigation;
+namespace P4NTHE0N.H4ND.Navigation;
 
 /// <summary>
 /// ARCH-098: Immutable navigation map parsed from recorder step-config.json.

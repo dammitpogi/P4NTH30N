@@ -1,5 +1,5 @@
-using P4NTH30N.H4ND.Infrastructure;
-using P4NTH30N.H4ND.Parallel;
+using P4NTHE0N.H4ND.Infrastructure;
+using P4NTHE0N.H4ND.Parallel;
 using UNI7T35T.Mocks;
 
 namespace UNI7T35T.Tests;
@@ -190,7 +190,7 @@ public static class Decision081Tests
 		var config = new ChromeProfileConfig();
 		return config.BasePort == 9222
 			&& config.MaxWorkers == 10
-			&& config.ProfilesBasePath == @"C:\ProgramData\P4NTH30N\chrome-profiles"
+			&& config.ProfilesBasePath == @"C:\ProgramData\P4NTHE0N\chrome-profiles"
 			&& config.StartupTimeoutSeconds == 15
 			&& !config.CleanupProfilesOnDispose
 			&& config.AdditionalArgs.Count == 0;

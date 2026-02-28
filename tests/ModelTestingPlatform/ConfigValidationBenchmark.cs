@@ -1,10 +1,10 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace P4NTH30N.ModelTestingPlatform;
+namespace P4NTHE0N.ModelTestingPlatform;
 
 /// <summary>
-/// ARCH-003 task benchmark: validates model ability to classify P4NTH30N credential configs.
+/// ARCH-003 task benchmark: validates model ability to classify P4NTHE0N credential configs.
 /// 20 test configs: 10 valid, 10 invalid with various failure modes.
 /// Metrics: precision, recall, F1, accuracy, latency.
 /// </summary>
@@ -16,7 +16,7 @@ public sealed class ConfigValidationBenchmark
 	public ConfigValidationBenchmark(ILlmBackend backend, string? systemPrompt = null)
 	{
 		_backend = backend;
-		_systemPrompt = systemPrompt ?? P4NTH30N.DeployLogAnalyzer.FewShotPrompt.GetConfigValidationPrompt();
+		_systemPrompt = systemPrompt ?? P4NTHE0N.DeployLogAnalyzer.FewShotPrompt.GetConfigValidationPrompt();
 	}
 
 	/// <summary>

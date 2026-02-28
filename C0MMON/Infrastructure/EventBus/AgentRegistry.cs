@@ -1,7 +1,7 @@
 using System.Collections.Concurrent;
-using P4NTH30N.C0MMON.Interfaces;
+using P4NTHE0N.C0MMON.Interfaces;
 
-namespace P4NTH30N.C0MMON.Infrastructure.EventBus;
+namespace P4NTHE0N.C0MMON.Infrastructure.EventBus;
 
 /// <summary>
 /// DECISION_027: Agent registry for dynamic capability discovery and message routing.

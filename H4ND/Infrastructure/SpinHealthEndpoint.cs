@@ -2,7 +2,7 @@ using System.Net;
 using System.Text;
 using System.Text.Json;
 
-namespace P4NTH30N.H4ND.Infrastructure;
+namespace P4NTHE0N.H4ND.Infrastructure;
 
 /// <summary>
 /// OPS-JP-001: Simple HTTP health endpoint that exposes spin metrics summary.

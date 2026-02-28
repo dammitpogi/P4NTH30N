@@ -5,13 +5,13 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Infrastructure.Monitoring;
-using P4NTH30N.C0MMON.Infrastructure.Resilience;
-using P4NTH30N.H0UND.Domain.Signals;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.C0MMON.Infrastructure.Monitoring;
+using P4NTHE0N.C0MMON.Infrastructure.Resilience;
+using P4NTHE0N.H0UND.Domain.Signals;
 using UNI7T35T.Mocks;
 
-namespace P4NTH30N.UNI7T35T.Tests;
+namespace P4NTHE0N.UNI7T35T.Tests;
 
 public static class IdempotentSignalTests
 {

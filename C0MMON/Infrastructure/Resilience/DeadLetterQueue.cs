@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
-using P4NTH30N.C0MMON.Infrastructure.Persistence;
+using P4NTHE0N.C0MMON.Infrastructure.Persistence;
 
-namespace P4NTH30N.C0MMON.Infrastructure.Resilience;
+namespace P4NTHE0N.C0MMON.Infrastructure.Resilience;
 
 public class DeadLetterEntry
 {

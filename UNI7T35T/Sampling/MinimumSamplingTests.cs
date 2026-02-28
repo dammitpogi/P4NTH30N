@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using P4NTH30N.C0MMON;
-using P4NTH30N.H0UND.Domain.Forecasting;
-using P4NTH30N.UNI7T35T.Infrastructure;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.H0UND.Domain.Forecasting;
+using P4NTHE0N.UNI7T35T.Infrastructure;
 using UNI7T35T.Mocks;
 
-namespace P4NTH30N.UNI7T35T.Sampling;
+namespace P4NTHE0N.UNI7T35T.Sampling;
 
 // DECISION_086: Minimum sampling tests based on Liu & Zhang (2019)
 // Validates the 4-point DPD threshold for valid forecasting

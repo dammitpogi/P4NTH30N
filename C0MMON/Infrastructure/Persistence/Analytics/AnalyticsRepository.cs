@@ -1,6 +1,6 @@
 using MongoDB.Driver;
 
-namespace P4NTH30N.C0MMON.Persistence.Analytics;
+namespace P4NTHE0N.C0MMON.Persistence.Analytics;
 
 /// <summary>
 /// MongoDB collection names for analytics storage.

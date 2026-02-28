@@ -1,22 +1,22 @@
-namespace P4NTH30N.C0MMON.Infrastructure.Configuration;
+namespace P4NTHE0N.C0MMON.Infrastructure.Configuration;
 
 /// <summary>
-/// Root strongly-typed options for the entire P4NTH30N platform.
-/// Binds to the "P4NTH30N" section in appsettings.json.
+/// Root strongly-typed options for the entire P4NTHE0N platform.
+/// Binds to the "P4NTHE0N" section in appsettings.json.
 /// </summary>
 /// <remarks>
 /// Configuration hierarchy (lowest to highest priority):
 /// 1. appsettings.json (base defaults)
 /// 2. appsettings.{Environment}.json (environment overrides)
-/// 3. Environment variables (prefixed P4NTH30N__)
+/// 3. Environment variables (prefixed P4NTHE0N__)
 /// 4. Local secrets file (encrypted, via INFRA-009 EncryptionService)
 /// </remarks>
-public sealed class P4NTH30NOptions
+public sealed class P4NTHE0NOptions
 {
 	/// <summary>
 	/// Configuration section key in appsettings.json.
 	/// </summary>
-	public const string SectionKey = "P4NTH30N";
+	public const string SectionKey = "P4NTHE0N";
 
 	/// <summary>
 	/// MongoDB database connection settings.
@@ -62,12 +62,12 @@ public sealed class DatabaseOptions
 	/// <summary>
 	/// MongoDB connection string. Sensitive — should be in secrets for production.
 	/// </summary>
-	public string ConnectionString { get; set; } = "mongodb://localhost:27017/P4NTH30N";
+	public string ConnectionString { get; set; } = "mongodb://localhost:27017/P4NTHE0N";
 
 	/// <summary>
 	/// MongoDB database name.
 	/// </summary>
-	public string DatabaseName { get; set; } = "P4NTH30N";
+	public string DatabaseName { get; set; } = "P4NTHE0N";
 
 	/// <summary>
 	/// Connection timeout in seconds.
@@ -229,9 +229,9 @@ public sealed class SecurityOptions
 {
 	/// <summary>
 	/// Path to the master encryption key file.
-	/// Default: C:\ProgramData\P4NTH30N\master.key
+	/// Default: C:\ProgramData\P4NTHE0N\master.key
 	/// </summary>
-	public string MasterKeyPath { get; set; } = @"C:\ProgramData\P4NTH30N\master.key";
+	public string MasterKeyPath { get; set; } = @"C:\ProgramData\P4NTHE0N\master.key";
 
 	/// <summary>
 	/// Whether to enforce OS-level file permissions on the master key.

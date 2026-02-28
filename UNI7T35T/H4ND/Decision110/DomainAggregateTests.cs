@@ -1,8 +1,8 @@
-using P4NTH30N.H4ND.Domains.Automation.Aggregates;
-using P4NTH30N.H4ND.Domains.Automation.ValueObjects;
-using P4NTH30N.H4ND.Domains.Execution.Events;
+using P4NTHE0N.H4ND.Domains.Automation.Aggregates;
+using P4NTHE0N.H4ND.Domains.Automation.ValueObjects;
+using P4NTHE0N.H4ND.Domains.Execution.Events;
 
-namespace P4NTH30N.UNI7T35T.H4ND.Decision110;
+namespace P4NTHE0N.UNI7T35T.H4ND.Decision110;
 
 public static class DomainAggregateTests
 {
@@ -51,7 +51,7 @@ public static class DomainAggregateTests
 
 			var popEvent = credential.UncommittedEvents.OfType<JackpotPoppedEvent>().FirstOrDefault();
 			return popEvent is not null
-				&& popEvent.Tier == P4NTH30N.H4ND.Domains.Execution.ValueObjects.JackpotTier.Grand
+				&& popEvent.Tier == P4NTHE0N.H4ND.Domains.Execution.ValueObjects.JackpotTier.Grand
 				&& !credential.DpdState.GrandPopped;
 		});
 

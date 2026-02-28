@@ -1,7 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace P4NTH30N.ModelTestingPlatform;
+namespace P4NTHE0N.ModelTestingPlatform;
 
 /// <summary>
 /// Sweeps temperature parameter across a range and measures model performance at each setting.
@@ -22,7 +22,7 @@ public sealed class TemperatureSweep
 	public TemperatureSweep(ILlmBackend backend, string? systemPrompt = null, int runsPerTemp = 3)
 	{
 		_backend = backend;
-		_systemPrompt = systemPrompt ?? P4NTH30N.DeployLogAnalyzer.FewShotPrompt.GetConfigValidationPrompt();
+		_systemPrompt = systemPrompt ?? P4NTHE0N.DeployLogAnalyzer.FewShotPrompt.GetConfigValidationPrompt();
 		_runsPerTemp = runsPerTemp;
 	}
 

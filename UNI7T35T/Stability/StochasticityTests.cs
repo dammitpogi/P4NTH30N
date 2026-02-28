@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using P4NTH30N.C0MMON;
-using P4NTH30N.H0UND.Domain.Forecasting;
-using P4NTH30N.UNI7T35T.Infrastructure;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.H0UND.Domain.Forecasting;
+using P4NTHE0N.UNI7T35T.Infrastructure;
 using UNI7T35T.Mocks;
 
-namespace P4NTH30N.UNI7T35T.Stability;
+namespace P4NTHE0N.UNI7T35T.Stability;
 
 // DECISION_086: Stochasticity tests based on Klee & Xia (2025)
 // Uses Coefficient of Variation (CV) to measure forecast stability: CV = σ/μ

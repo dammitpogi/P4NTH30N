@@ -1,12 +1,12 @@
-using P4NTH30N.W4TCHD0G.Agent;
-using P4NTH30N.W4TCHD0G.Input;
-using P4NTH30N.W4TCHD0G.Models;
-using P4NTH30N.W4TCHD0G.Monitoring;
-using P4NTH30N.W4TCHD0G.Safety;
-using P4NTH30N.W4TCHD0G.Stream;
-using P4NTH30N.W4TCHD0G.Vision;
+using P4NTHE0N.W4TCHD0G.Agent;
+using P4NTHE0N.W4TCHD0G.Input;
+using P4NTHE0N.W4TCHD0G.Models;
+using P4NTHE0N.W4TCHD0G.Monitoring;
+using P4NTHE0N.W4TCHD0G.Safety;
+using P4NTHE0N.W4TCHD0G.Stream;
+using P4NTHE0N.W4TCHD0G.Vision;
 
-namespace P4NTH30N.UNI7T35T.Tests;
+namespace P4NTHE0N.UNI7T35T.Tests;
 
 /// <summary>
 /// End-to-end integration tests for the full jackpot automation pipeline.
@@ -315,7 +315,7 @@ public static class PipelineIntegrationTests
 			Assert(!wrongCode, "Wrong override code should fail");
 			Assert(!monitor.IsSafeToContinue(), "Still should be unsafe");
 
-			bool rightCode = monitor.DeactivateKillSwitch("CONFIRM-RESUME-P4NTH30N");
+			bool rightCode = monitor.DeactivateKillSwitch("CONFIRM-RESUME-P4NTHE0N");
 			Assert(rightCode, "Correct override code should succeed");
 			Assert(monitor.IsSafeToContinue(), "Should be safe after override");
 			Pass("SafetyMonitor_KillSwitchOverride");

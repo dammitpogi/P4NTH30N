@@ -2,7 +2,7 @@
 
 ## Responsibility
 
-Contains value objects, configuration structures, and utility types that support core domain logic. These supporting types encapsulate complex data structures, business rules, and calculations reused across the P4NTH30N system.
+Contains value objects, configuration structures, and utility types that support core domain logic. These supporting types encapsulate complex data structures, business rules, and calculations reused across the P4NTHE0N system.
 
 ## When Working Here
 

@@ -4,20 +4,20 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MongoDB.EntityFrameworkCore;
-using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Infrastructure.Persistence;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.C0MMON.Infrastructure.Persistence;
 
-namespace P4NTH30N.C0MMON.EF
+namespace P4NTHE0N.C0MMON.EF
 {
 	/// <summary>
-	/// Entity Framework DbContext for P4NTH30N platform using MongoDB provider.
+	/// Entity Framework DbContext for P4NTHE0N platform using MongoDB provider.
 	/// This provides an alternative to the existing MongoDB.Driver repository pattern.
 	/// Use alongside existing repositories for gradual migration or specific scenarios.
 	///
 	/// NOTE: MongoDB EF Core provider has different APIs than standard EF Core.
 	/// This is a basic example - full feature mapping may require additional configuration.
 	/// </summary>
-	public class P4NTH30NDbContext : DbContext
+	public class P4NTHE0NDbContext : DbContext
 	{
 		// Entity sets mirroring existing MongoDB collections
 		public DbSet<Credential> Credentials { get; set; }
@@ -131,7 +131,7 @@ namespace P4NTH30N.C0MMON.EF
 		/// </summary>
 		public static async Task ExampleUsage()
 		{
-			await using var efContext = new P4NTH30NDbContext();
+			await using var efContext = new P4NTHE0NDbContext();
 			var credentialRepo = efContext.CreateCredentialAnalyticsRepository();
 
 			var highValue = await credentialRepo.GetHighValueCredentialsAsync(1000);

@@ -1,6 +1,6 @@
 using System.IO.Compression;
 
-namespace P4NTH30N.C0MMON.Support;
+namespace P4NTHE0N.C0MMON.Support;
 
 /// <summary>
 /// DECISION_025: Compression-based atypicality scoring.

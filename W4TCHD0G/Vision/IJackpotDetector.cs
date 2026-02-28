@@ -1,6 +1,6 @@
-using P4NTH30N.W4TCHD0G.Models;
+using P4NTHE0N.W4TCHD0G.Models;
 
-namespace P4NTH30N.W4TCHD0G.Vision;
+namespace P4NTHE0N.W4TCHD0G.Vision;
 
 /// <summary>
 /// Contract for detecting and extracting jackpot values from vision frames via OCR.

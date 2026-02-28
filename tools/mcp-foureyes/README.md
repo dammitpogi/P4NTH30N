@@ -1,4 +1,4 @@
-# P4NTH30N FourEyes MCP Server
+# P4NTHE0N FourEyes MCP Server
 
 MCP server exposing FourEyes vision capabilities for WindSurf and OpenCode.
 
@@ -21,7 +21,7 @@ MCP server exposing FourEyes vision capabilities for WindSurf and OpenCode.
 ## Installation
 
 ```bash
-cd C:\P4NTH30N\tools\mcp-foureyes
+cd C:\P4NTHE0N\tools\mcp-foureyes
 npm install
 ```
 
@@ -34,7 +34,7 @@ In `~/.config/opencode/mcp.json`:
 {
   "foureyes-mcp": {
     "command": "node",
-    "args": ["C:/P4NTH30N/tools/mcp-foureyes/server.js", "stdio"],
+    "args": ["C:/P4NTHE0N/tools/mcp-foureyes/server.js", "stdio"],
     "env": {
       "CDP_HOST": "192.168.56.1",
       "CDP_PORT": "9222",
@@ -52,7 +52,7 @@ Add to `~/.codeium/windsurf/mcp_config.json`:
   "mcpServers": {
     "foureyes-mcp": {
       "command": "node",
-      "args": ["C:/P4NTH30N/tools/mcp-foureyes/server.js", "stdio"],
+      "args": ["C:/P4NTHE0N/tools/mcp-foureyes/server.js", "stdio"],
       "env": {
         "CDP_HOST": "192.168.56.1",
         "CDP_PORT": "9222",

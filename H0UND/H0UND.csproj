@@ -4,12 +4,14 @@
 		<TargetFramework>net10.0-windows7.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<AssemblyName>P4NTH30N</AssemblyName>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		<AssemblyName>P4NTHE0N</AssemblyName>
 		<UseWindowsForms>true</UseWindowsForms>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\C0MMON\C0MMON.csproj" />
+		<ProjectReference Include="..\H4ND\H4ND.csproj" />
 		<ProjectReference Include="..\W4TCHD0G\W4TCHD0G.csproj" />
 	</ItemGroup>
 	<ItemGroup>

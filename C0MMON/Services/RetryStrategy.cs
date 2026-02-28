@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace P4NTH30N.C0MMON.Services;
+namespace P4NTHE0N.C0MMON.Services;
 
 /// <summary>
 /// Retry strategy with exponential backoff and model fallback chain.

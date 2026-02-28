@@ -1,6 +1,6 @@
 using System;
 
-namespace P4NTH30N.C0MMON.Entities;
+namespace P4NTHE0N.C0MMON.Entities;
 
 /// <summary>
 /// FOUREYES-010: Cerberus Protocol healing action entity.

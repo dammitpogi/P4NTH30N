@@ -1,12 +1,12 @@
 using System.Text.Json.Serialization;
-using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Infrastructure.Cdp;
-using P4NTH30N.H4ND.Infrastructure;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.C0MMON.Infrastructure.Cdp;
+using P4NTHE0N.H4ND.Infrastructure;
 
-namespace P4NTH30N.H4ND.Services;
+namespace P4NTHE0N.H4ND.Services;
 
 /// <summary>
-/// ARCH-055-005: Aggregated system health report for the P4NTH30N engine.
+/// ARCH-055-005: Aggregated system health report for the P4NTHE0N engine.
 /// Collects CDP, MongoDB, platform, and parallel engine status into a single JSON report.
 /// </summary>
 public sealed class SystemHealthReport

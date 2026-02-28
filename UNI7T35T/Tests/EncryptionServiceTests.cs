@@ -1,5 +1,5 @@
 using System.Security.Cryptography;
-using P4NTH30N.C0MMON.Security;
+using P4NTHE0N.C0MMON.Security;
 
 namespace UNI7T35T.Tests;
 
@@ -18,7 +18,7 @@ public class EncryptionServiceTests
 	/// </summary>
 	public void Setup()
 	{
-		_tempKeyDir = Path.Combine(Path.GetTempPath(), $"P4NTH30N_Test_{Guid.NewGuid():N}");
+		_tempKeyDir = Path.Combine(Path.GetTempPath(), $"P4NTHE0N_Test_{Guid.NewGuid():N}");
 		Directory.CreateDirectory(_tempKeyDir);
 		_tempKeyPath = Path.Combine(_tempKeyDir, "test-master.key");
 	}
@@ -432,7 +432,7 @@ public class EncryptionServiceTests
 			}
 
 			// Different salt should produce different key
-			byte[] otherSalt = "P4NTH30N.OTHER.v1"u8.ToArray();
+			byte[] otherSalt = "P4NTHE0N.OTHER.v1"u8.ToArray();
 			byte[] derived3 = keyMgmt.DeriveKey(otherSalt);
 
 			if (derived1.SequenceEqual(derived3))

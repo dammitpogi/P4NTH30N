@@ -17,7 +17,7 @@ if [[ -z "${MCP_AUTH_TOKEN:-}" ]]; then
 fi
 
 if [[ -z "${MONGODB_URI:-}" ]]; then
-  export MONGODB_URI="mongodb://mongodb:27017/P4NTH30N"
+  export MONGODB_URI="mongodb://mongodb:27017/P4NTHE0N"
 fi
 
 if [[ -z "${VECTOR_STORE_PATH:-}" ]]; then
@@ -28,7 +28,7 @@ if [[ -z "${EMBEDDING_MODEL:-}" ]]; then
   export EMBEDDING_MODEL="text-embedding-3-small"
 fi
 
-echo "=== P4NTH30N MCP Servers Deployment ==="
+echo "=== P4NTHE0N MCP Servers Deployment ==="
 docker compose -f "$COMPOSE_FILE" build
 docker compose -f "$COMPOSE_FILE" up -d
 
