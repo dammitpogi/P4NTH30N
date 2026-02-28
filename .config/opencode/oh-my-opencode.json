@@ -42,21 +42,25 @@
     }
   },
   "civitai": {
-      "options": {
-        "baseURL": "https://api.civitai.com/v1",
-        "apiKey": {
-          "env": "CIVITAI_API_KEY"
-        }
+    "options": {
+      "baseURL": "https://api.civitai.com/v1",
+      "apiKey": {
+        "env": "CIVITAI_API_KEY"
       }
     }
   },
   "modelscope": {
     "options": {
-        "baseURL": "https://modelscope.ai/api/v1",
-        "apiKey": {
-          "env": "MODELSCOPE_API_KEY"
-        }
+      "baseURL": "https://modelscope.ai/api/v1",
+      "apiKey": {
+        "env": "MODELSCOPE_API_KEY"
       }
+    }
+  },
+  "mcpServers": {
+    "rag-server": {
+      "url": "http://127.0.0.1:5100/mcp",
+      "type": "remote"
     }
   }
 }

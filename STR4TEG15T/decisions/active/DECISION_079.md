@@ -2,7 +2,7 @@
 
 **Decision ID**: INFRA-079  
 **Category**: INFRA (Infrastructure)  
-**Status**: InProgress  
+**Status**: Completed  
 **Priority**: Critical  
 **Date**: 2026-02-21  
 **Oracle Approval**: 82% (Models: Kimi K2.5 - risk assessment)  
@@ -68,10 +68,10 @@ Currently only accessible via ToolHive Gateway (port 54718). Need direct access 
 | ID | Action | Assigned To | Status | Priority |
 |----|--------|-------------|--------|----------|
 | ACT-079-001 | Add rag-server to OpenCode opencode.json | Strategist | ✅ Complete | Critical |
-| ACT-079-002 | Find WindSurf MCP config location | @fixer | 🔄 In Progress | Critical |
-| ACT-079-003 | Add rag-server to WindSurf config | @fixer | Pending | Critical |
-| ACT-079-004 | Verify rag_query from OpenCode | @fixer | Pending | High |
-| ACT-079-005 | Verify rag_query from WindSurf | @fixer | Pending | High |
+| ACT-079-002 | Find WindSurf MCP config location | @fixer | ✅ Complete | Critical |
+| ACT-079-003 | Add rag-server to WindSurf config | @fixer | ✅ Complete | Critical |
+| ACT-079-004 | Verify rag_query from OpenCode | @fixer | ✅ Complete | High |
+| ACT-079-005 | Verify rag_query from WindSurf | @fixer | ✅ Complete | High |
 
 ---
 
@@ -115,9 +115,9 @@ The MCP servers are defined in the `mcpServers` key. Add:
 ## Success Criteria
 
 1. ✅ OpenCode opencode.json includes rag-server MCP entry
-2. ⬜ WindSurf config includes rag-server MCP entry  
-3. ⬜ OpenCode agents can call rag_query directly
-4. ⬜ WindSurf agents can call rag_query directly
+2. ✅ WindSurf config includes rag-server MCP entry  
+3. ✅ OpenCode agents can call rag_query directly
+4. ✅ WindSurf agents can call rag_query directly
 
 ---
 
@@ -181,10 +181,12 @@ The MCP servers are defined in the `mcpServers` key. Add:
 
 ## Notes
 
-RAG server is healthy but vector count = 0. Re-ingestion in progress via DECISION_080.
+RAG server is healthy and running on port 5100. Vector count = 0 (awaiting re-ingestion via DECISION_080).
 
 OpenCode direct connection: ✅ COMPLETE
-WindSurf direct connection: 🔄 IN PROGRESS
+WindSurf direct connection: ✅ COMPLETE
+
+Both environments can now access rag_query, rag_status, and other RAG MCP tools directly without ToolHive Gateway pass-through.
 
 ---
 
