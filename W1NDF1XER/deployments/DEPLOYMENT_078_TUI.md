@@ -1,4 +1,4 @@
-# DEPLOYMENT_078: P4NTH30N Recorder TUI
+# DEPLOYMENT_078: P4NTHE0N Recorder TUI
 
 **Deployment ID**: DEPLOY-078  
 **Decision**: DECISION_078  
@@ -12,7 +12,7 @@
 
 ## Deployment Summary
 
-Successfully deployed the P4NTH30N Recorder TUI — a zero-dependency terminal-based visual macro editor for FireKirin and OrionStars workflow mapping. The TUI transforms workflow recording from manual JSON editing into an interactive, debuggable experience with breakpoints, live execution preview, and precise coordinate control.
+Successfully deployed the P4NTHE0N Recorder TUI — a zero-dependency terminal-based visual macro editor for FireKirin and OrionStars workflow mapping. The TUI transforms workflow recording from manual JSON editing into an interactive, debuggable experience with breakpoints, live execution preview, and precise coordinate control.
 
 **Files Deployed**: 5 new files, 2 modified  
 **Lines of Code**: ~1,200 TypeScript, ~1,100 Markdown documentation  
@@ -26,25 +26,25 @@ Successfully deployed the P4NTH30N Recorder TUI — a zero-dependency terminal-b
 
 | File | Lines | Purpose |
 |------|-------|---------|
-| `C:\P4NTH30N\H4ND\tools\recorder\tui\types.ts` | 88 | MacroStep, MacroConfig, AppState, ViewMode types |
-| `C:\P4NTH30N\H4ND\tools\recorder\tui\screen.ts` | 160 | ANSI rendering primitives (colors, box drawing, cursor) |
-| `C:\P4NTH30N\H4ND\tools\recorder\tui\app.ts` | 900+ | Main TUI app (state machine, views, input handling) |
-| `C:\P4NTH30N\H4ND\tools\recorder\recorder-tui.ts` | 20 | Entry point |
+| `C:\P4NTHE0N\H4ND\tools\recorder\tui\types.ts` | 88 | MacroStep, MacroConfig, AppState, ViewMode types |
+| `C:\P4NTHE0N\H4ND\tools\recorder\tui\screen.ts` | 160 | ANSI rendering primitives (colors, box drawing, cursor) |
+| `C:\P4NTHE0N\H4ND\tools\recorder\tui\app.ts` | 900+ | Main TUI app (state machine, views, input handling) |
+| `C:\P4NTHE0N\H4ND\tools\recorder\recorder-tui.ts` | 20 | Entry point |
 
 ### Documentation
 
 | File | Lines | Purpose |
 |------|-------|---------|
-| `C:\P4NTH30N\H4ND\tools\recorder\TUI_README.md` | 1,100+ | 20-section comprehensive operation guide |
-| `C:\P4NTH30N\STR4TEG15T\decisions\active\DECISION_078.md` | 450+ | Decision documentation with Oracle/Designer consultation |
-| `C:\P4NTH30N\W1NDF1XER\deployments\DEPLOYMENT_078_TUI.md` | This file | Deployment record |
+| `C:\P4NTHE0N\H4ND\tools\recorder\TUI_README.md` | 1,100+ | 20-section comprehensive operation guide |
+| `C:\P4NTHE0N\STR4TEG15T\decisions\active\DECISION_078.md` | 450+ | Decision documentation with Oracle/Designer consultation |
+| `C:\P4NTHE0N\W1NDF1XER\deployments\DEPLOYMENT_078_TUI.md` | This file | Deployment record |
 
 ### Modified Files
 
 | File | Change | Reason |
 |------|--------|--------|
-| `C:\P4NTH30N\H4ND\tools\recorder\package.json` | Added `"tui": "bun run recorder-tui.ts"` script | Launch shortcut |
-| `C:\P4NTH30N\H4ND\tools\recorder\step-config.json` | Rewritten to MacroStep format with `breakpoint` fields | TUI compatibility |
+| `C:\P4NTHE0N\H4ND\tools\recorder\package.json` | Added `"tui": "bun run recorder-tui.ts"` script | Launch shortcut |
+| `C:\P4NTHE0N\H4ND\tools\recorder\step-config.json` | Rewritten to MacroStep format with `breakpoint` fields | TUI compatibility |
 
 ---
 
@@ -141,7 +141,7 @@ step-config.json (disk, updated)
 ### Bun Build (No Bundle)
 
 ```bash
-cd C:\P4NTH30N\H4ND\tools\recorder
+cd C:\P4NTHE0N\H4ND\tools\recorder
 bun build recorder-tui.ts --no-bundle
 ```
 
@@ -170,7 +170,7 @@ Run directly: bun run recorder-tui.ts
 ### Launch TUI
 
 ```bash
-cd C:\P4NTH30N\H4ND\tools\recorder
+cd C:\P4NTHE0N\H4ND\tools\recorder
 bun run tui
 ```
 
@@ -389,7 +389,7 @@ private renumberSteps(): void {
 **Status**: TUI is operational and ready for use.
 
 **Next Steps for Nexus**:
-1. Launch TUI: `cd C:\P4NTH30N\H4ND\tools\recorder && bun run tui`
+1. Launch TUI: `cd C:\P4NTHE0N\H4ND\tools\recorder && bun run tui`
 2. Review existing FireKirin workflow (14 steps, 2 breakpoints)
 3. Add OrionStars workflow steps (currently blocked on Canvas login)
 4. Set breakpoints on critical steps (login, game selection, spin)
@@ -413,5 +413,5 @@ DEPLOYMENT_078 successfully delivered a zero-dependency TUI for visual macro edi
 ---
 
 **Deployed by WindFixer**  
-**DECISION_078 — P4NTH30N Recorder TUI**  
+**DECISION_078 — P4NTHE0N Recorder TUI**  
 **2026-02-21**

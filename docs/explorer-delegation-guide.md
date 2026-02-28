@@ -184,7 +184,7 @@ CONSTRAINTS: Do not make changes, report only
 
 ---
 
-## Integration with P4NTH30N Workflow
+## Integration with P4NTHE0N Workflow
 
 ### Pre-Implementation Discovery
 ```

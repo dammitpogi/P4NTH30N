@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\P4NTH30N\\scripts\\DeployLogAnalyzer\\DeployLogAnalyzer.csproj": {}
+    "C:\\P4NTHE0N\\scripts\\DeployLogAnalyzer\\DeployLogAnalyzer.csproj": {}
   },
   "projects": {
-    "C:\\P4NTH30N\\scripts\\DeployLogAnalyzer\\DeployLogAnalyzer.csproj": {
+    "C:\\P4NTHE0N\\scripts\\DeployLogAnalyzer\\DeployLogAnalyzer.csproj": {
       "version": "0.8.5.6",
       "restore": {
-        "projectUniqueName": "C:\\P4NTH30N\\scripts\\DeployLogAnalyzer\\DeployLogAnalyzer.csproj",
+        "projectUniqueName": "C:\\P4NTHE0N\\scripts\\DeployLogAnalyzer\\DeployLogAnalyzer.csproj",
         "projectName": "DeployLogAnalyzer",
-        "projectPath": "C:\\P4NTH30N\\scripts\\DeployLogAnalyzer\\DeployLogAnalyzer.csproj",
+        "projectPath": "C:\\P4NTHE0N\\scripts\\DeployLogAnalyzer\\DeployLogAnalyzer.csproj",
         "packagesPath": "C:\\Users\\paulc\\.nuget\\packages\\",
-        "outputPath": "C:\\P4NTH30N\\scripts\\DeployLogAnalyzer\\obj\\",
+        "outputPath": "C:\\P4NTHE0N\\scripts\\DeployLogAnalyzer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\paulc\\AppData\\Roaming\\NuGet\\NuGet.Config",

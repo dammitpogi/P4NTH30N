@@ -9,7 +9,7 @@
 
 ## Purpose
 
-P4NTH30N uses multiple specialized agents (H0UND, H4ND, WindFixer, OpenFixer, Strategist, Oracle, Designer). This guide documents patterns for delegating work to multiple agents in parallel to maximize throughput within session limits.
+P4NTHE0N uses multiple specialized agents (H0UND, H4ND, WindFixer, OpenFixer, Strategist, Oracle, Designer). This guide documents patterns for delegating work to multiple agents in parallel to maximize throughput within session limits.
 
 ---
 
@@ -19,8 +19,8 @@ P4NTH30N uses multiple specialized agents (H0UND, H4ND, WindFixer, OpenFixer, St
 
 | Agent | Environment | Strengths | Constraints |
 |-------|-------------|-----------|-------------|
-| **WindFixer** | WindSurf (C:\P4NTH30N) | C# implementation, solution builds, file creation | Cannot access OpenCode env |
-| **OpenFixer** | OpenCode (~/.config/opencode) | Agent configs, MCP registration, deployment | Cannot modify P4NTH30N codebase directly |
+| **WindFixer** | WindSurf (C:\P4NTHE0N) | C# implementation, solution builds, file creation | Cannot access OpenCode env |
+| **OpenFixer** | OpenCode (~/.config/opencode) | Agent configs, MCP registration, deployment | Cannot modify P4NTHE0N codebase directly |
 | **Strategist** | Any | Decision creation, planning, prioritization | No implementation |
 | **Oracle** | Any | Risk assessment, condition enforcement | No implementation |
 | **Designer** | Any | Architecture review, pattern design | No implementation |
@@ -94,7 +94,7 @@ Output: Design doc → T4CT1CS/consultations/designer/
 
 ### Stage 3: Implementation (WindFixer)
 Input: Design doc + discovery report
-Task: Implement [feature] in P4NTH30N
+Task: Implement [feature] in P4NTHE0N
 Output: Code + handoff report → T4CT1CS/handoffs/windfixer/
 
 ### Stage 4: Deployment (OpenFixer)

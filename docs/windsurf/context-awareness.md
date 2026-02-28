@@ -2,7 +2,7 @@
 
 ## Overview
 
-P4NTH30N uses several WindSurf features for context awareness:
+P4NTHE0N uses several WindSurf features for context awareness:
 
 ## Fast Context
 

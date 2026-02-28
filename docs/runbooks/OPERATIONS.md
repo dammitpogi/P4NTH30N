@@ -1,4 +1,4 @@
-# P4NTH30N Operations Runbook
+# P4NTHE0N Operations Runbook
 
 > **Staleness**: 30 days (runbook-tier)
 > **Last Reviewed**: 2026-02-18
@@ -18,7 +18,7 @@ mongosh --eval "db.adminCommand('ping')"
 # Expected: { ok: 1 }
 
 # 2. Build verification
-dotnet build P4NTH30N.slnx --no-restore
+dotnet build P4NTHE0N.slnx --no-restore
 # Expected: Build succeeded, 0 errors
 
 # 3. Test gate

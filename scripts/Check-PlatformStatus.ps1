@@ -1,10 +1,10 @@
-Write-Host "=== P4NTH30N Platform Status Check ===" -ForegroundColor Cyan
+Write-Host "=== P4NTHE0N Platform Status Check ===" -ForegroundColor Cyan
 
-$p4nth30n = Get-Process -Name "P4NTH30N" -ErrorAction SilentlyContinue
+$p4nth30n = Get-Process -Name "P4NTHE0N" -ErrorAction SilentlyContinue
 if ($p4nth30n) {
-    Write-Host "[OK] P4NTH30N.exe running (PID: $($p4nth30n.Id))" -ForegroundColor Green
+    Write-Host "[OK] P4NTHE0N.exe running (PID: $($p4nth30n.Id))" -ForegroundColor Green
 } else {
-    Write-Host "[MISSING] P4NTH30N.exe not running" -ForegroundColor Red
+    Write-Host "[MISSING] P4NTHE0N.exe not running" -ForegroundColor Red
 }
 
 $rag = Get-Process -Name "RAG.McpHost" -ErrorAction SilentlyContinue
@@ -21,7 +21,7 @@ if ($mongo) {
     Write-Host "[MISSING] MongoDB not running" -ForegroundColor Red
 }
 
-$task = Get-ScheduledTask -TaskName "P4NTH30N-AutoStart" -ErrorAction SilentlyContinue
+$task = Get-ScheduledTask -TaskName "P4NTHE0N-AutoStart" -ErrorAction SilentlyContinue
 if ($task) {
     Write-Host "[OK] Auto-start task registered" -ForegroundColor Green
 } else {
@@ -40,7 +40,7 @@ catch {
     Write-Host "[MISSING] RAG health endpoint unavailable" -ForegroundColor Red
 }
 
-$gatewayConfig = "C:\P4NTH30N\tools\mcp-development\servers\toolhive-gateway\config\servers.json"
+$gatewayConfig = "C:\P4NTHE0N\tools\mcp-development\servers\toolhive-gateway\config\servers.json"
 if (Test-Path $gatewayConfig) {
     $gatewayRaw = Get-Content $gatewayConfig -Raw
     if ($gatewayRaw -match '"name"\s*:\s*"rag-server"' -and $gatewayRaw -match '"name"\s*:\s*"mongodb-p4nth30n"') {
@@ -52,7 +52,7 @@ if (Test-Path $gatewayConfig) {
     Write-Host "[MISSING] Gateway config not found" -ForegroundColor Red
 }
 
-$mongoMcpFile = "C:\P4NTH30N\tools\mcp-p4nthon\src\index.ts"
+$mongoMcpFile = "C:\P4NTHE0N\tools\mcp-p4nthon\src\index.ts"
 if (Test-Path $mongoMcpFile) {
     $mongoMcpRaw = Get-Content $mongoMcpFile -Raw
     $requiredTools = @("mongo_insertOne", "mongo_find", "mongo_updateOne", "mongo_insertMany", "mongo_updateMany")

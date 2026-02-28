@@ -1,4 +1,4 @@
-# P4NTH30N Deployment Guide: Four-Eyes Vision System
+# P4NTHE0N Deployment Guide: Four-Eyes Vision System
 
 **Status:** Planning Phase  
 **Source:** D3CISI0NS Collection (DECISION_012)

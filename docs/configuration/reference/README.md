@@ -1,10 +1,10 @@
 # Configuration Reference
 
-Complete reference for all configuration options in P4NTH30N.
+Complete reference for all configuration options in P4NTHE0N.
 
 ## Overview
 
-P4NTH30N uses a layered configuration system:
+P4NTHE0N uses a layered configuration system:
 
 ```
 Environment Variables (highest priority)
@@ -24,13 +24,13 @@ appsettings.json (base defaults, committed)
 
 ```json
 {
-  "P4NTH30N": {
+  "P4NTHE0N": {
     "Environment": "Development",
     "Version": "2.0.0"
   },
   "MongoDB": {
-    "ConnectionString": "mongodb://localhost:27017/P4NTH30N",
-    "DatabaseName": "P4NTH30N",
+    "ConnectionString": "mongodb://localhost:27017/P4NTHE0N",
+    "DatabaseName": "P4NTHE0N",
     "MaxConnectionPoolSize": 100,
     "ServerSelectionTimeoutMs": 5000
   },
@@ -98,7 +98,7 @@ appsettings.json (base defaults, committed)
     "Safety": {
       "DailySpendLimit": 1000.00,
       "ConsecutiveLossLimit": 10,
-      "KillSwitchCode": "CONFIRM-RESUME-P4NTH30N"
+      "KillSwitchCode": "CONFIRM-RESUME-P4NTHE0N"
     },
     "Alerts": {
       "Console": true,
@@ -112,7 +112,7 @@ appsettings.json (base defaults, committed)
     }
   },
   "Security": {
-    "MasterKeyPath": "C:\\ProgramData\\P4NTH30N\\master.key",
+    "MasterKeyPath": "C:\\ProgramData\\P4NTHE0N\\master.key",
     "Encryption": {
       "Algorithm": "AES-256-GCM",
       "KeyRotationDays": 365
@@ -127,7 +127,7 @@ appsettings.json (base defaults, committed)
     "LogLevel": {
       "Default": "Information",
       "Microsoft": "Warning",
-      "P4NTH30N": "Debug"
+      "P4NTHE0N": "Debug"
     },
     "File": {
       "Enabled": true,
@@ -145,61 +145,61 @@ appsettings.json (base defaults, committed)
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `P4NTH30N_ENVIRONMENT` | Active environment | `Development` |
-| `P4NTH30N_MONGODB_URI` | MongoDB connection string | `mongodb://localhost:27017/P4NTH30N` |
-| `P4NTH30N_MONGODB_DB` | MongoDB database name | `P4NTH30N` |
-| `P4NTH30N_VERSION` | Application version | `2.0.0` |
+| `P4NTHE0N_ENVIRONMENT` | Active environment | `Development` |
+| `P4NTHE0N_MONGODB_URI` | MongoDB connection string | `mongodb://localhost:27017/P4NTHE0N` |
+| `P4NTHE0N_MONGODB_DB` | MongoDB database name | `P4NTHE0N` |
+| `P4NTHE0N_VERSION` | Application version | `2.0.0` |
 
 ### Security
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `P4NTH30N_SECURITY_MASTERKEYPATH` | Master encryption key path | `C:\ProgramData\P4NTH30N\master.key` |
-| `P4NTH30N_SECURITY_KEY_ROTATION_DAYS` | Days between key rotation | `365` |
+| `P4NTHE0N_SECURITY_MASTERKEYPATH` | Master encryption key path | `C:\ProgramData\P4NTHE0N\master.key` |
+| `P4NTHE0N_SECURITY_KEY_ROTATION_DAYS` | Days between key rotation | `365` |
 
 ### H0UND Settings
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `P4NTH30N_H0UND_POLLING_INTERVAL_SECONDS` | Polling interval | `30` |
-| `P4NTH30N_H0UND_POLLING_RETRY_ATTEMPTS` | API retry attempts | `3` |
-| `P4NTH30N_H0UND_ANALYTICS_INTERVAL_SECONDS` | Analytics run interval | `10` |
-| `P4NTH30N_H0UND_DPD_MINIMUM_POINTS` | Min data points for DPD | `25` |
-| `P4NTH30N_H0UND_DASHBOARD_ENABLED` | Enable dashboard | `true` |
+| `P4NTHE0N_H0UND_POLLING_INTERVAL_SECONDS` | Polling interval | `30` |
+| `P4NTHE0N_H0UND_POLLING_RETRY_ATTEMPTS` | API retry attempts | `3` |
+| `P4NTHE0N_H0UND_ANALYTICS_INTERVAL_SECONDS` | Analytics run interval | `10` |
+| `P4NTHE0N_H0UND_DPD_MINIMUM_POINTS` | Min data points for DPD | `25` |
+| `P4NTHE0N_H0UND_DASHBOARD_ENABLED` | Enable dashboard | `true` |
 
 ### H4ND Settings
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `P4NTH30N_H4ND_POLL_INTERVAL_SECONDS` | Signal poll interval | `5` |
-| `P4NTH30N_H4ND_SPIN_TIMEOUT_SECONDS` | Max spin duration | `30` |
-| `P4NTH30N_H4ND_BROWSER_HEADLESS` | Run Chrome headless | `false` |
-| `P4NTH30N_H4ND_SAFETY_HEALTH_CHECK_MINUTES` | Health check interval | `5` |
+| `P4NTHE0N_H4ND_POLL_INTERVAL_SECONDS` | Signal poll interval | `5` |
+| `P4NTHE0N_H4ND_SPIN_TIMEOUT_SECONDS` | Max spin duration | `30` |
+| `P4NTHE0N_H4ND_BROWSER_HEADLESS` | Run Chrome headless | `false` |
+| `P4NTHE0N_H4ND_SAFETY_HEALTH_CHECK_MINUTES` | Health check interval | `5` |
 
 ### W4TCHD0G Settings
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `P4NTH30N_W4TCHD0G_OBS_WEBSOCKET_URL` | OBS WebSocket URL | `ws://localhost:4455` |
-| `P4NTH30N_W4TCHD0G_FRAME_RATE` | Vision frame rate (FPS) | `2` |
-| `P4NTH30N_W4TCHD0G_RTMPSERVER` | RTMP server URL | `rtmp://localhost:1935/live` |
-| `P4NTH30N_SAFETY_DAILY_SPEND_LIMIT` | Daily spend limit (USD) | `1000` |
-| `P4NTH30N_SAFETY_CONSECUTIVE_LOSS_LIMIT` | Max consecutive losses | `10` |
-| `P4NTH30N_SAFETY_KILL_SWITCH_CODE` | Kill switch override code | *(required)* |
+| `P4NTHE0N_W4TCHD0G_OBS_WEBSOCKET_URL` | OBS WebSocket URL | `ws://localhost:4455` |
+| `P4NTHE0N_W4TCHD0G_FRAME_RATE` | Vision frame rate (FPS) | `2` |
+| `P4NTHE0N_W4TCHD0G_RTMPSERVER` | RTMP server URL | `rtmp://localhost:1935/live` |
+| `P4NTHE0N_SAFETY_DAILY_SPEND_LIMIT` | Daily spend limit (USD) | `1000` |
+| `P4NTHE0N_SAFETY_CONSECUTIVE_LOSS_LIMIT` | Max consecutive losses | `10` |
+| `P4NTHE0N_SAFETY_KILL_SWITCH_CODE` | Kill switch override code | *(required)* |
 
 ### Caching
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `P4NTH30N_CACHING_ENABLED` | Enable caching | `true` |
-| `P4NTH30N_CACHING_DEFAULT_EXPIRATION_MINUTES` | Default cache TTL | `5` |
+| `P4NTHE0N_CACHING_ENABLED` | Enable caching | `true` |
+| `P4NTHE0N_CACHING_DEFAULT_EXPIRATION_MINUTES` | Default cache TTL | `5` |
 
 ### Logging
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `P4NTH30N_LOGGING_LOGLEVEL_DEFAULT` | Default log level | `Information` |
-| `P4NTH30N_LOGGING_FILE_ENABLED` | Enable file logging | `true` |
+| `P4NTHE0N_LOGGING_LOGLEVEL_DEFAULT` | Default log level | `Information` |
+| `P4NTHE0N_LOGGING_FILE_ENABLED` | Enable file logging | `true` |
 
 ## Configuration by Environment
 
@@ -207,11 +207,11 @@ appsettings.json (base defaults, committed)
 
 ```json
 {
-  "P4NTH30N": {
+  "P4NTHE0N": {
     "Environment": "Development"
   },
   "MongoDB": {
-    "ConnectionString": "mongodb://localhost:27017/P4NTH30N_Dev"
+    "ConnectionString": "mongodb://localhost:27017/P4NTHE0N_Dev"
   },
   "H4ND": {
     "Browser": {
@@ -221,7 +221,7 @@ appsettings.json (base defaults, committed)
   "Logging": {
     "LogLevel": {
       "Default": "Debug",
-      "P4NTH30N": "Debug"
+      "P4NTHE0N": "Debug"
     }
   }
 }
@@ -231,11 +231,11 @@ appsettings.json (base defaults, committed)
 
 ```json
 {
-  "P4NTH30N": {
+  "P4NTHE0N": {
     "Environment": "Production"
   },
   "MongoDB": {
-    "ConnectionString": "mongodb://prod-server:27017/P4NTH30N",
+    "ConnectionString": "mongodb://prod-server:27017/P4NTHE0N",
     "MaxConnectionPoolSize": 200
   },
   "H4ND": {
@@ -257,7 +257,7 @@ appsettings.json (base defaults, committed)
   "Logging": {
     "LogLevel": {
       "Default": "Warning",
-      "P4NTH30N": "Information"
+      "P4NTHE0N": "Information"
     }
   }
 }
@@ -270,8 +270,8 @@ appsettings.json (base defaults, committed)
 ```csharp
 public class MongoDBOptions
 {
-    public string ConnectionString { get; set; } = "mongodb://localhost:27017/P4NTH30N";
-    public string DatabaseName { get; set; } = "P4NTH30N";
+    public string ConnectionString { get; set; } = "mongodb://localhost:27017/P4NTHE0N";
+    public string DatabaseName { get; set; } = "P4NTHE0N";
     public int MaxConnectionPoolSize { get; set; } = 100;
     public int ServerSelectionTimeoutMs { get; set; } = 5000;
     public int SocketTimeoutMs { get; set; } = 30000;
@@ -430,7 +430,7 @@ public class WebhookAlertOptions
 ```csharp
 public class SecurityOptions
 {
-    public string MasterKeyPath { get; set; } = @"C:\ProgramData\P4NTH30N\master.key";
+    public string MasterKeyPath { get; set; } = @"C:\ProgramData\P4NTHE0N\master.key";
     public EncryptionOptions Encryption { get; set; } = new();
 }
 
@@ -453,7 +453,7 @@ public class ConfigurationValidator
 {
     public static void Validate(IConfiguration configuration)
     {
-        var options = configuration.GetSection("P4NTH30N").Get<P4NTH30NOptions>();
+        var options = configuration.GetSection("P4NTHE0N").Get<P4NTHE0NOptions>();
         
         // Required settings
         if (string.IsNullOrEmpty(options.Security?.MasterKeyPath))
@@ -494,7 +494,7 @@ public class ConfigurationValidator
 ```json
 {
   "MongoDB": {
-    "ConnectionString": "mongodb://localhost:27017/P4NTH30N"
+    "ConnectionString": "mongodb://localhost:27017/P4NTHE0N"
   },
   "W4TCHD0G": {
     "Safety": {
@@ -502,7 +502,7 @@ public class ConfigurationValidator
     }
   },
   "Security": {
-    "MasterKeyPath": "C:\\P4NTH30N\\master.key"
+    "MasterKeyPath": "C:\\P4NTHE0N\\master.key"
   }
 }
 ```
@@ -511,11 +511,11 @@ public class ConfigurationValidator
 
 ```json
 {
-  "P4NTH30N": {
+  "P4NTHE0N": {
     "Environment": "Development"
   },
   "MongoDB": {
-    "ConnectionString": "mongodb://localhost:27017/P4NTH30N_Dev"
+    "ConnectionString": "mongodb://localhost:27017/P4NTHE0N_Dev"
   },
   "H0UND": {
     "Polling": {
@@ -539,11 +539,11 @@ public class ConfigurationValidator
 
 ```json
 {
-  "P4NTH30N": {
+  "P4NTHE0N": {
     "Environment": "Production"
   },
   "MongoDB": {
-    "ConnectionString": "mongodb://prod-mongo:27017/P4NTH30N",
+    "ConnectionString": "mongodb://prod-mongo:27017/P4NTHE0N",
     "MaxConnectionPoolSize": 200
   },
   "H4ND": {

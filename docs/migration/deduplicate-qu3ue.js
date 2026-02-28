@@ -1,5 +1,5 @@
 // Deduplicate QU3UE entries by House/Name, keeping the earliest Updated entry
-db = db.getSiblingDB("P4NTH30N");
+db = db.getSiblingDB("P4NTHE0N");
 db.QU3UE.aggregate([
   { $sort: { House: 1, Name: 1, Updated: 1 } },
   { $group: {

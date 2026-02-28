@@ -45,7 +45,7 @@ Stop-Process -Name H4ND, H0UND -Force -ErrorAction SilentlyContinue
 Start-Service MongoDB
 
 # Verify collections
-mongosh --eval "db.getCollectionNames()" P4NTH30N
+mongosh --eval "db.getCollectionNames()" P4NTHE0N
 ```
 
 **RTO**: 15-30 minutes | **RPO**: Time since last backup
@@ -57,7 +57,7 @@ mongosh --eval "db.getCollectionNames()" P4NTH30N
 .\scripts\backup\mongodb-backup.ps1
 
 # Backup location
-# C:\backups\mongodb\P4NTH30N_YYYYMMDD_HHmmss\
+# C:\backups\mongodb\P4NTHE0N_YYYYMMDD_HHmmss\
 ```
 
 **Recommendation**: Schedule via Windows Task Scheduler every 15 minutes for RPO target.
@@ -144,7 +144,7 @@ Restore-VMSnapshot -VMName "H4NDv2-Production" -Name "LastKnownGood"
 # 2. Configure network (see docs/vm-deployment/network-setup.md)
 # 3. Install .NET 10 Runtime
 # 4. Deploy H4ND:
-Copy-Item -ToSession $vmSession -Path C:\P4NTH30N\publish\h4nd-vm-full\* -Destination C:\H4ND\ -Recurse
+Copy-Item -ToSession $vmSession -Path C:\P4NTHE0N\publish\h4nd-vm-full\* -Destination C:\H4ND\ -Recurse
 # 5. Copy appsettings.json with VM-specific config
 ```
 
@@ -223,7 +223,7 @@ cd C:\H4ND
 
 **Recommended**: Create startup script:
 ```powershell
-# C:\P4NTH30N\scripts\startup.ps1
+# C:\P4NTHE0N\scripts\startup.ps1
 Start-Service MongoDB
 Start-Sleep 5
 Start-VM H4NDv2-Production
@@ -258,16 +258,16 @@ Start-Sleep 30
 ### Rolling Back H4ND
 
 ```powershell
-# Releases are versioned in C:\P4NTH30N\Releases\
+# Releases are versioned in C:\P4NTHE0N\Releases\
 # Find the last known good release
-Get-ChildItem C:\P4NTH30N\Releases\ -Directory | Sort-Object Name -Descending | Select-Object -First 5
+Get-ChildItem C:\P4NTHE0N\Releases\ -Directory | Sort-Object Name -Descending | Select-Object -First 5
 
 # Stop H4ND on VM
 Invoke-Command -VMName "H4NDv2-Production" -ScriptBlock { Stop-Process -Name H4ND -Force -ErrorAction SilentlyContinue }
 
 # Copy rollback version
-$release = "CANON_P4NTH30N_Rollout_v0004"
-Copy-Item -ToSession $vmSession -Path "C:\P4NTH30N\Releases\$release\*" -Destination "C:\H4ND\" -Recurse -Force
+$release = "CANON_P4NTHE0N_Rollout_v0004"
+Copy-Item -ToSession $vmSession -Path "C:\P4NTHE0N\Releases\$release\*" -Destination "C:\H4ND\" -Recurse -Force
 
 # Restart
 Invoke-Command -VMName "H4NDv2-Production" -ScriptBlock { cd C:\H4ND; .\H4ND.exe H4ND }

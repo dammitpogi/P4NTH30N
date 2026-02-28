@@ -9,7 +9,7 @@
 
 ## 1. Overview
 
-The Librarian is responsible for documentation currency, cross-referencing, and context injection across the P4NTH30N codebase. This strategy defines protocols for how documentation stays synchronized with code changes.
+The Librarian is responsible for documentation currency, cross-referencing, and context injection across the P4NTHE0N codebase. This strategy defines protocols for how documentation stays synchronized with code changes.
 
 ---
 

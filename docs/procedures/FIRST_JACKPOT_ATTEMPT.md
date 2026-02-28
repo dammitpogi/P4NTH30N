@@ -36,7 +36,7 @@ Complete ALL items before starting the first attempt. Any unchecked item = NO GO
 ## Execution Procedures
 
 ### T-10 Minutes: Final Preparation
-1. Open terminal on host, navigate to P4NTH30N directory
+1. Open terminal on host, navigate to P4NTHE0N directory
 2. Verify all pre-flight checks are GREEN
 3. Note starting balance: $___________
 4. Note start time: ___________
@@ -113,8 +113,8 @@ The safety monitor will automatically activate the kill switch when:
 ### Kill Switch Deactivation (Resume)
 Only deactivate after understanding and addressing the trigger:
 ```csharp
-// Override code: CONFIRM-RESUME-P4NTH30N
-safetyMonitor.DeactivateKillSwitch("CONFIRM-RESUME-P4NTH30N");
+// Override code: CONFIRM-RESUME-P4NTHE0N
+safetyMonitor.DeactivateKillSwitch("CONFIRM-RESUME-P4NTHE0N");
 ```
 
 ## Post-Attempt Analysis

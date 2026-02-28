@@ -96,7 +96,7 @@ Savings = (OpusTasks × OpusCost) - (SWETasks × SWECost + EscalatedTasks × Opu
 ### SWE-1.5 Output Validation
 - [ ] Code compiles without errors
 - [ ] All existing tests still pass
-- [ ] New code follows P4NTH30N style (CSharpier check)
+- [ ] New code follows P4NTHE0N style (CSharpier check)
 - [ ] No regressions in functionality
 - [ ] File count within session limits
 
@@ -124,7 +124,7 @@ Generate documentation for:
 Component: {component_name}
 Files: {source_files}
 Format: XML doc comments + README
-Style: P4NTH30N standards (see AGENTS.md)
+Style: P4NTHE0N standards (see AGENTS.md)
 ```
 
 ### Test Generation Template

@@ -12,7 +12,7 @@
 
 ## Executive Summary
 
-The P4NTH30N Recorder TUI (DECISION_078) lacked error handling capabilities. Users could record workflows but had no way to define what happens when errors occur during execution (server busy, session expired, element not found). This decision extends the TUI with conditional logic (if-then-else) and goto statements, enabling users to plot error recovery workflows directly in the visual interface.
+The P4NTHE0N Recorder TUI (DECISION_078) lacked error handling capabilities. Users could record workflows but had no way to define what happens when errors occur during execution (server busy, session expired, element not found). This decision extends the TUI with conditional logic (if-then-else) and goto statements, enabling users to plot error recovery workflows directly in the visual interface.
 
 **Current Problem**:
 - TUI could only record happy-path workflows

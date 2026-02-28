@@ -1,6 +1,6 @@
 # Agent Build Workflow — Bun Executable Compilation
 
-**Authority**: Standard build method for P4NTH30N agents  
+**Authority**: Standard build method for P4NTHE0N agents  
 **Applies to**: WindFixer, OpenFixer, Forgewright  
 **Last Updated**: 2026-02-22  
 **Status**: Active
@@ -9,7 +9,7 @@
 
 ## Overview
 
-This document defines the standard build workflow for creating standalone executables from TypeScript/JavaScript tools in the P4NTH30N ecosystem. The workflow uses **Bun's compile feature** to generate self-contained `.exe` files that require no runtime dependencies.
+This document defines the standard build workflow for creating standalone executables from TypeScript/JavaScript tools in the P4NTHE0N ecosystem. The workflow uses **Bun's compile feature** to generate self-contained `.exe` files that require no runtime dependencies.
 
 ## Why Bun Compile?
 
@@ -216,7 +216,7 @@ bun.lock
 
 ## Agent Build Workflow
 
-### For WindFixer (P4NTH30N Tools)
+### For WindFixer (P4NTHE0N Tools)
 
 When implementing or updating TypeScript/JavaScript tools in `H4ND/tools/`:
 
@@ -305,11 +305,11 @@ Before distributing an executable:
 
 ## Example: Recorder TUI Build
 
-**Location**: `C:\P4NTH30N\H4ND\tools\recorder`
+**Location**: `C:\P4NTHE0N\H4ND\tools\recorder`
 
 **Build**:
 ```powershell
-cd C:\P4NTH30N\H4ND\tools\recorder
+cd C:\P4NTHE0N\H4ND\tools\recorder
 bun run build
 ```
 
@@ -321,7 +321,7 @@ bun run build
 .\dist\recorder-tui.exe --config=custom.json
 ```
 
-**Documentation**: See `C:\P4NTH30N\H4ND\tools\recorder\BUILD.md`
+**Documentation**: See `C:\P4NTHE0N\H4ND\tools\recorder\BUILD.md`
 
 ---
 
@@ -362,6 +362,6 @@ bun run build
 ## References
 
 - **Bun Documentation**: https://bun.sh/docs/bundler/executables
-- **Example Implementation**: `C:\P4NTH30N\H4ND\tools\recorder\build.ps1`
-- **Agent Documentation**: `C:\P4NTH30N\STR4TEG15T\decisions\active\DECISION_086.md`
-- **Decision Template**: `C:\P4NTH30N\STR4TEG15T\decisions\_templates\DECISION-TEMPLATE.md`
+- **Example Implementation**: `C:\P4NTHE0N\H4ND\tools\recorder\build.ps1`
+- **Agent Documentation**: `C:\P4NTHE0N\STR4TEG15T\decisions\active\DECISION_086.md`
+- **Decision Template**: `C:\P4NTHE0N\STR4TEG15T\decisions\_templates\DECISION-TEMPLATE.md`

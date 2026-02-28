@@ -1,0 +1,36 @@
+﻿{
+  "mcpServers": {
+    "p4ntheon-rag": {
+      "command": "C:\\P4NTH30N\\src\\RAG.McpHost\\bin\\Release\\net8.0\\win-x64\\publish\\RAG.McpHost.exe",
+      "args": [
+        "--port", "5100",
+        "--index", "p4ntheon",
+        "--model", "C:\\ProgramData\\P4NTH30N\\rag\\models\\all-MiniLM-L6-v2.onnx",
+        "--mongo", "localhost:27017",
+        "--workspace", "C:\\P4NTH30N"
+      ],
+      "env": {
+        "RAG_ENABLED": "true",
+        "CHROME_CDP_PORT": "9222"
+      }
+    },
+    "chrome-devtools": {
+      "command": "node",
+      "args": ["c:\\P4NTH30N\\chrome-devtools-mcp\\server.js"],
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "p4ntheon-tools": {
+      "command": "C:\\P4NTH30N\\T00L5ET\\bin\\Release\\net8.0\\win-x64\\publish\\T00L5ET.exe",
+      "args": [
+        "--mcp",
+        "--workspace", "C:\\P4NTH30N"
+      ],
+      "env": {
+        "MONGODB_HOST": "192.168.56.1:27017",
+        "CHROME_CDP_PORT": "9222"
+      }
+    }
+  }
+}

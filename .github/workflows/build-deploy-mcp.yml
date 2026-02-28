@@ -1,0 +1,330 @@
+name: P4NTHE0N MCP Services Build and Deploy
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'src/**'
+      - 'T00L5ET/**'
+      - 'H4ND/**'
+      - 'H0UND/**'
+      - 'C0MMON/**'
+      - 'W4TCHD0G/**'
+      - 'scripts/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'src/**'
+      - 'T00L5ET/**'
+      - 'H4ND/**'
+      - 'H0UND/**'
+      - 'C0MMON/**'
+      - 'W4TCHD0G/**'
+      - 'scripts/**'
+  workflow_dispatch:
+
+env:
+  DOTNET_VERSION: '8.0.x'
+  CONFIGURATION: 'Release'
+
+jobs:
+  build-and-test:
+    name: Build and Test
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+    
+    - name: Cache NuGet packages
+      uses: actions/cache@v4
+      with:
+        path: ~/.nuget/packages
+        key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
+        restore-keys: |
+          ${{ runner.os }}-nuget-
+    
+    - name: Restore dependencies
+      run: dotnet restore
+    
+    - name: Build solution
+      run: dotnet build --configuration ${{ env.CONFIGURATION }} --no-restore
+    
+    - name: Run tests
+      run: dotnet run --project UNI7T35T/UNI7T35T.csproj --configuration ${{ env.CONFIGURATION }}
+    
+    - name: Publish RAG MCP Host
+      run: |
+        dotnet publish src/RAG.McpHost/RAG.McpHost.csproj `
+          --configuration ${{ env.CONFIGURATION }} `
+          --runtime win-x64 `
+          --self-contained `
+          --output publish/rag-mcp-host
+    
+    - name: Publish T00L5ET
+      run: |
+        dotnet publish T00L5ET/T00L5ET.csproj `
+          --configuration ${{ env.CONFIGURATION }} `
+          --runtime win-x64 `
+          --self-contained `
+          --output publish/p4ntheon-tools
+    
+    - name: Create MCP configurations
+      run: |
+        # Create Visual Studio MCP config
+        $vsMcpConfig = @{
+          version = "1.0"
+          inputs = @{
+            solution_path = "C:\P4NTH30N\P4NTHE0N.slnx"
+            rag_enabled = "true"
+            chrome_cdp_port = "9222"
+          }
+          servers = @{
+            "p4ntheon-rag" = @{
+              type = "stdio"
+              command = "publish/rag-mcp-host/RAG.McpHost.exe"
+              args = @("--port", "5100", "--index", "p4ntheon", "--model", "C:\ProgramData\P4NTH30N\rag\models\all-MiniLM-L6-v2.onnx", "--mongo", "localhost:27017", "--workspace", "C:\P4NTH30N")
+              env = @{
+                RAG_ENABLED = "${input:rag_enabled}"
+                CHROME_CDP_PORT = "${input:chrome_cdp_port}"
+              }
+              disabled = $false
+            }
+            "chrome-devtools" = @{
+              type = "http"
+              url = "http://localhost:5301/mcp"
+              disabled = $false
+            }
+            "p4ntheon-tools" = @{
+              type = "stdio"
+              command = "publish/p4ntheon-tools/T00L5ET.exe"
+              args = @("--mcp", "--workspace", "C:\P4NTH30N")
+              disabled = $false
+            }
+          }
+        }
+        $vsMcpConfig | ConvertTo-Json -Depth 10 | Out-File "publish/.mcp/mcp.json" -Encoding UTF8 -Force
+        
+        # Create WindSurf MCP config
+        $wsMcpConfig = @{
+          mcpServers = @{
+            "p4ntheon-rag" = @{
+              command = "publish/rag-mcp-host/RAG.McpHost.exe"
+              args = @("--port", "5100", "--index", "p4ntheon", "--model", "C:\ProgramData\P4NTH30N\rag\models\all-MiniLM-L6-v2.onnx", "--mongo", "localhost:27017", "--workspace", "C:\P4NTH30N")
+              env = @{
+                RAG_ENABLED = "true"
+                CHROME_CDP_PORT = "9222"
+              }
+            }
+            "chrome-devtools" = @{
+              command = "node"
+              args = @("chrome-devtools-mcp/server.js")
+            }
+            "p4ntheon-tools" = @{
+              command = "publish/p4ntheon-tools/T00L5ET.exe"
+              args = @("--mcp", "--workspace", "C:\P4NTH30N")
+            }
+          }
+        }
+        $wsMcpConfig | ConvertTo-Json -Depth 10 | Out-File "publish/.windsurf/mcp_config.json" -Encoding UTF8 -Force
+        
+        # Create T00L5ET deploy manifest
+        $t00l5etManifest = @{
+          agents = @(
+            @{
+              name = "P4NTHE0N Tools"
+              source = "publish/p4ntheon-tools/P4NTHE0N.Tools.dll"
+              destination = "C:\Users\runneradmin\.config\opencode\agents\P4NTHE0N-Tools.json"
+            }
+          )
+          mcp = @(
+            @{
+              name = "P4NTHE0N Tools MCP"
+              source = "publish/p4ntheon-tools/T00L5ET.exe"
+              args = @("--mcp", "--workspace", "C:\P4NTH30N")
+              destination = "C:\Users\runneradmin\.config\opencode\mcp\P4NTHE0N-Tools.json"
+            }
+          )
+          binaries = @(
+            @{
+              name = "T00L5ET.exe"
+              source = "publish/p4ntheon-tools/T00L5ET.exe"
+              destination = "C:\ProgramData\P4NTH30N\bin\T00L5ET.exe"
+            }
+          )
+        }
+        $t00l5etManifest | ConvertTo-Json -Depth 10 | Out-File "publish/p4ntheon-tools/deploy-manifest.json" -Encoding UTF8 -Force
+      shell: pwsh
+    
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: mcp-services-${{ github.sha }}
+        path: |
+          publish/
+          !publish/**/*.pdb
+          !publish/**/*.xml
+        retention-days: 30
+    
+    - name: Upload MCP configurations
+      uses: actions/upload-artifact@v4
+      with:
+        name: mcp-configs-${{ github.sha }}
+        path: |
+          publish/.mcp/
+          publish/.windsurf/
+        retention-days: 30
+
+  deploy-staging:
+    name: Deploy to Staging
+    runs-on: windows-latest
+    needs: build-and-test
+    if: github.ref == 'refs/heads/develop'
+    environment: staging
+    
+    steps:
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: mcp-services-${{ github.sha }}
+        path: deploy/
+    
+    - name: Download MCP configurations
+      uses: actions/download-artifact@v4
+      with:
+        name: mcp-configs-${{ github.sha }}
+        path: deploy-configs/
+    
+    - name: Deploy to staging
+      run: |
+        # Stop existing services
+        Write-Host "Stopping existing MCP services..."
+        Stop-Process -Name "RAG.McpHost" -Force -ErrorAction SilentlyContinue
+        Stop-Process -Name "T00L5ET" -Force -ErrorAction SilentlyContinue
+        Stop-Process -Name "node" -Force -ErrorAction SilentlyContinue
+        
+        # Copy binaries
+        Write-Host "Copying binaries..."
+        Copy-Item "deploy/rag-mcp-host/*" "C:\P4NTH30N\src\RAG.McpHost\bin\Release\net8.0\win-x64\publish\" -Force -Recurse
+        Copy-Item "deploy/p4ntheon-tools/*" "C:\P4NTH30N\T00L5ET\bin\Release\net8.0\win-x64\publish\" -Force -Recurse
+        
+        # Copy configurations
+        Write-Host "Copying configurations..."
+        Copy-Item "deploy-configs/.mcp/*" "C:\P4NTH30N\.mcp\" -Force -Recurse
+        Copy-Item "deploy-configs/.windsurf/*" "C:\P4NTH30N\.windsurf" -Force -Recurse
+        Copy-Item "deploy/p4ntheon-tools/deploy-manifest.json" "C:\P4NTH30N\T00L5ET\deploy-manifest.json" -Force
+        
+        # Start services
+        Write-Host "Starting MCP services..."
+        & "C:\P4NTH30N\Start-All-MCP-Servers.ps1"
+        
+        Write-Host "Deployment to staging complete!"
+      shell: pwsh
+
+  deploy-production:
+    name: Deploy to Production
+    runs-on: windows-latest
+    needs: build-and-test
+    if: github.ref == 'refs/heads/main'
+    environment: production
+    
+    steps:
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: mcp-services-${{ github.sha }}
+        path: deploy/
+    
+    - name: Download MCP configurations
+      uses: actions/download-artifact@v4
+      with:
+        name: mcp-configs-${{ github.sha }}
+        path: deploy-configs/
+    
+    - name: Deploy to production
+      run: |
+        # Stop existing services
+        Write-Host "Stopping existing MCP services..."
+        Stop-Process -Name "RAG.McpHost" -Force -ErrorAction SilentlyContinue
+        Stop-Process -Name "T00L5ET" -Force -ErrorAction SilentlyContinue
+        Stop-Process -Name "node" -Force -ErrorAction SilentlyContinue
+        
+        # Copy binaries
+        Write-Host "Copying binaries..."
+        Copy-Item "deploy/rag-mcp-host/*" "C:\P4NTH30N\src\RAG.McpHost\bin\Release\net8.0\win-x64\publish\" -Force -Recurse
+        Copy-Item "deploy/p4ntheon-tools/*" "C:\P4NTH30N\T00L5ET\bin\Release\net8.0\win-x64\publish\" -Force -Recurse
+        
+        # Copy configurations
+        Write-Host "Copying configurations..."
+        Copy-Item "deploy-configs/.mcp/*" "C:\P4NTH30N\.mcp" -Force -Recurse
+        Copy-Item "deploy-configs/.windsurf/*" "C:\P4NTH30N\.windsurf" -Force -Recurse
+        Copy-Item "deploy/p4ntheon-tools/deploy-manifest.json" "C:\P4NTH30N\T00L5ET\deploy-manifest.json" -Force
+        
+        # Start services
+        Write-Host "Starting MCP services..."
+        & "C:\P4NTH30N\Start-All-MCP-Servers.ps1"
+        
+        Write-Host "Deployment to production complete!"
+      shell: pwsh
+
+  verify-deployment:
+    name: Verify Deployment
+    runs-on: windows-latest
+    needs: [deploy-staging, deploy-production]
+    if: always() && (needs.deploy-staging.result == 'success' || needs.deploy-production.result == 'success')
+    
+    steps:
+    - name: Verify MCP services
+      run: |
+        Write-Host "Verifying MCP services..."
+        
+        # Check RAG MCP Host
+        try {
+            $ragHealth = Invoke-RestMethod -Uri "http://localhost:5100/health" -Method GET -TimeoutSec 10
+            Write-Host "✅ RAG MCP Host: $($ragHealth.status)"
+        } catch {
+            Write-Host "❌ RAG MCP Host: Failed"
+            exit 1
+        }
+        
+        # Check Chrome DevTools MCP
+        try {
+            $cdpHealth = Invoke-RestMethod -Uri "http://localhost:5301/mcp" -Method GET -TimeoutSec 10
+            Write-Host "✅ Chrome DevTools MCP: $($cdpHealth.status)"
+        } catch {
+            Write-Host "❌ Chrome DevTools MCP: Failed"
+            exit 1
+        }
+        
+        # Check P4NTHE0N Tools
+        $toolsProcess = Get-Process -Name "T00L5ET" -ErrorAction SilentlyContinue
+        if ($toolsProcess) {
+            Write-Host "✅ P4NTHE0N Tools: Running (PID: $($toolsProcess.Id))"
+        } else {
+            Write-Host "❌ P4NTHE0N Tools: Not running"
+            exit 1
+        }
+        
+        # Check MongoDB
+        try {
+            $mongoResult = Test-NetConnection -ComputerName "localhost" -Port 27017 -InformationLevel Quiet -WarningAction SilentlyContinue
+            if ($mongoResult) {
+                Write-Host "✅ MongoDB: Connected"
+            } else {
+                Write-Host "❌ MongoDB: Not connected"
+                exit 1
+            }
+        } catch {
+            Write-Host "❌ MongoDB: Connection test failed"
+            exit 1
+        }
+        
+        Write-Host "🎉 All MCP services verified successfully!"
+      shell: pwsh

@@ -11,7 +11,7 @@
 
 ## Executive Summary
 
-Implement a Retrieval-Augmented Generation (RAG) Context layer for the P4NTH30N platform to provide comprehensive access to chat sessions, decisions, and code documentation. The system will use ToolHive for MCP exposure, LM Studio for local embeddings with a small/fast model, and Qdrant vector database deployed on Rancher Desktop Kubernetes.
+Implement a Retrieval-Augmented Generation (RAG) Context layer for the P4NTHE0N platform to provide comprehensive access to chat sessions, decisions, and code documentation. The system will use ToolHive for MCP exposure, LM Studio for local embeddings with a small/fast model, and Qdrant vector database deployed on Rancher Desktop Kubernetes.
 
 ---
 
@@ -663,7 +663,7 @@ tail -f ~/.config/opencode/logs/rag-queries.log
 
 | Category | Count | Description |
 |----------|-------|-------------|
-| Chat Sessions | 20 | Various agent conversations from P4NTH30N |
+| Chat Sessions | 20 | Various agent conversations from P4NTHE0N |
 | Decisions | 15 | Architecture and strategy decisions |
 | Code Context | 10 | C# code snippets and patterns |
 | Edge Cases | 5 | Empty queries, long queries, special characters |
@@ -841,7 +841,7 @@ alerts:
 
 - MCP server runs locally (no external exposure)
 - No sensitive data in embeddings (decisions only, no credentials)
-- MongoDB connection uses existing P4NTH30N credentials
+- MongoDB connection uses existing P4NTHE0N credentials
 
 ### Audit Logging
 
@@ -916,7 +916,7 @@ Example: Before approving a new database pattern, search for "database pattern v
 ## 13. File Structure
 
 ```
-P4NTH30N/
+P4NTHE0N/
 ├── MCP/
 │   └── rag-server/
 │       ├── src/

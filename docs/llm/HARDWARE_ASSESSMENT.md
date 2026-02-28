@@ -36,7 +36,7 @@
 | Setting | Value | Rationale |
 |---------|-------|-----------|
 | `n_gpu_layers` | 0 | Pure CPU inference (GT 710 unusable) |
-| `n_threads` | 14 | 12C/24T — leave headroom for OS + P4NTH30N agents |
+| `n_threads` | 14 | 12C/24T — leave headroom for OS + P4NTHE0N agents |
 | `n_batch` | 512 | Good throughput without excessive memory |
 | `n_ctx` | 4096 | Sufficient for RAG context assembly |
 | `use_mmap` | true | Memory-map model file for faster loading |

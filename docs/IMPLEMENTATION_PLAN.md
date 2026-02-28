@@ -1,4 +1,4 @@
-# P4NTH30N Implementation Plan: Four-Eyes Vision System
+# P4NTHE0N Implementation Plan: Four-Eyes Vision System
 
 **Status:** Planning Phase  
 **Source:** D3CISI0NS Collection (DECISION_001 - DECISION_012)  

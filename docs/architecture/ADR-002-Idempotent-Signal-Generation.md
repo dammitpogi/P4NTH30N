@@ -22,7 +22,7 @@ H0UND analytics agent generates duplicate signals during high-load jackpot forec
 - Must resolve race conditions with zero breaking changes to H4ND
 - Must add <100ms latency to the signal pipeline
 - Must work with existing MongoDB infrastructure (no Redis/external dependencies)
-- Must follow P4NTH30N patterns (IStoreErrors, IsValid, etc.)
+- Must follow P4NTHE0N patterns (IStoreErrors, IsValid, etc.)
 
 ## Options Considered
 
@@ -128,7 +128,7 @@ The lock overhead is amortized across all credentials in a game group (typically
 
 ## Deployment Guide
 
-1. Build: `dotnet build P4NTH30N.slnx`
+1. Build: `dotnet build P4NTHE0N.slnx`
 2. Run tests: `dotnet test UNI7T35T/UNI7T35T.csproj`
 3. Deploy H0UND with `useIdempotentSignals: true` (default)
 4. MongoDB TTL index is created automatically on first lock acquire

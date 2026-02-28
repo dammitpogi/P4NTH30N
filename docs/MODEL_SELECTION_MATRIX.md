@@ -141,7 +141,7 @@ dotnet run --project tests/ModelTestingPlatform -- consistency --model smollm2-1
 
 ## Key Findings
 
-1. **≤2B local models cannot reliably validate P4NTH30N configs** — they lack semantic understanding of field relationships
+1. **≤2B local models cannot reliably validate P4NTHE0N configs** — they lack semantic understanding of field relationships
 2. **Rule-based validation is superior** for deterministic tasks — 100% accuracy, <10ms latency, zero cost
 3. **LLM value is in edge cases only** — injection detection, semantic analysis of "does this config make business sense"
 4. **Hardware is the bottleneck** — GT 710 GPU is useless for inference, CPU-only limits model size to ≤2B

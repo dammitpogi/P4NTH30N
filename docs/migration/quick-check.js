@@ -1,4 +1,4 @@
-db = db.getSiblingDB("P4NTH30N");
+db = db.getSiblingDB("P4NTHE0N");
 const nextGame = db.N3XT.findOne();
 print("N3XT.next:", JSON.stringify(nextGame, null, 2));
 

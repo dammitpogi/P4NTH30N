@@ -3,5 +3,6 @@
   "[csharp]": {
     "editor.defaultFormatter": "ms-dotnettools.csharp"
   },
-  "editor.detectIndentation": false
+"editor.detectIndentation": false,
+"git.ignoreLimitWarning": true
 }

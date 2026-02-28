@@ -1,3 +1,8 @@
+---
+name: test-execution
+description: Execute and manage unit and integration tests for P4NTH30N. Run specific tests, analyze failures, and generate coverage reports. Use before committing code, after implementing features, when debugging test failures, or for coverage analysis.
+---
+
 # Test Execution
 
 ## Description

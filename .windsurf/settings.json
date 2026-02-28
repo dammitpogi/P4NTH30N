@@ -11,6 +11,7 @@
     "dd"
   ],
   "windsurf.cascadeGitignoreAccess": true,
+  "windsurf.openNewWindowOnProjectOpen": false,
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 500,
   "editor.formatOnSave": true,

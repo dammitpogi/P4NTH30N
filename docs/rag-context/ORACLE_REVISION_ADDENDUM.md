@@ -560,7 +560,7 @@ Pre-validation must be a hard gate before Phase 2.
 # Pre-validation for RAG-001 before Phase 2
 
 param(
-    [string]$MongoDBConnectionString = "mongodb://localhost:27017/P4NTH30N",
+    [string]$MongoDBConnectionString = "mongodb://localhost:27017/P4NTHE0N",
     [string]$LMStudioUrl = "http://localhost:1234",
     [string]$QdrantUrl = "http://localhost:30333"
 )

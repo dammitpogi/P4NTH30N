@@ -3,7 +3,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 
-namespace P4NTH30N.DeployLogAnalyzer;
+namespace P4NTHE0N.DeployLogAnalyzer;
 
 /// <summary>
 /// LM Studio integration client for deployment log analysis.

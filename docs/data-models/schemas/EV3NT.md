@@ -4,7 +4,7 @@ Event log and audit trail for all system activities.
 
 ## Purpose
 
-EV3NT serves as the central audit log for P4NTH30N. All agents (H0UND, H4ND, W4TCHD0G) write events here for:
+EV3NT serves as the central audit log for P4NTHE0N. All agents (H0UND, H4ND, W4TCHD0G) write events here for:
 - Signal generation and processing
 - Automation actions
 - Win detection

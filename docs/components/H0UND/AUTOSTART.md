@@ -13,7 +13,7 @@ Windows Boot
     ↓
 Task Scheduler (30s delay)
     ↓
-P4NTH30N.exe --background
+P4NTHE0N.exe --background
     ↓
 ServiceOrchestrator loads config/autostart.json
     ↓
@@ -63,7 +63,7 @@ if (hasNodeConfig)
     {
       "name": "RAG Server",
       "type": "http",
-      "executable": "C:\\ProgramData\\P4NTH30N\\bin\\RAG.McpHost.exe",
+      "executable": "C:\\ProgramData\\P4NTHE0N\\bin\\RAG.McpHost.exe",
       "arguments": "--port 5001 --transport http --bridge http://127.0.0.1:5000",
       "healthCheckUrl": "http://127.0.0.1:5001/health",
       "dependsOn": ["MongoDB"]
@@ -72,7 +72,7 @@ if (hasNodeConfig)
       "name": "FourEyes MCP",
       "type": "node",
       "executable": "node",
-      "workingDirectory": "C:\\P4NTH30N\\tools\\mcp-foureyes",
+      "workingDirectory": "C:\\P4NTHE0N\\tools\\mcp-foureyes",
       "arguments": "server.js --http",
       "environment": {
         "CDP_HOST": "127.0.0.1",
@@ -143,26 +143,26 @@ sudo .\scripts\Register-AutoStart.ps1  # ❌ WRONG - causes "not valid Win32 app
 
 ```powershell
 # Check H0UND task
-Get-ScheduledTask -TaskName "P4NTH30N-AutoStart"
+Get-ScheduledTask -TaskName "P4NTHE0N-AutoStart"
 
 # Check ToolHive task
 Get-ScheduledTask -TaskName "ToolHive-AutoStart"
 
-# View all P4NTH30N tasks
-Get-ScheduledTask | Where-Object { $_.TaskName -like "*P4NTH30N*" -or $_.TaskName -like "*ToolHive*" }
+# View all P4NTHE0N tasks
+Get-ScheduledTask | Where-Object { $_.TaskName -like "*P4NTHE0N*" -or $_.TaskName -like "*ToolHive*" }
 ```
 
 ### 4. Test Without Reboot
 
 ```powershell
 # Start H0UND task manually
-Start-ScheduledTask -TaskName "P4NTH30N-AutoStart"
+Start-ScheduledTask -TaskName "P4NTHE0N-AutoStart"
 
 # Check if running
-Get-Process P4NTH30N
+Get-Process P4NTHE0N
 
 # View task history
-Get-ScheduledTaskInfo -TaskName "P4NTH30N-AutoStart"
+Get-ScheduledTaskInfo -TaskName "P4NTHE0N-AutoStart"
 ```
 
 ## Troubleshooting
@@ -215,7 +215,7 @@ Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
 **Check Event Logs**:
 ```powershell
 # View recent task failures
-Get-WinEvent -FilterHashtable @{LogName='Microsoft-Windows-TaskScheduler/Operational'; StartTime=(Get-Date).AddHours(-1)} | Where-Object { $_.Message -like "*P4NTH30N*" }
+Get-WinEvent -FilterHashtable @{LogName='Microsoft-Windows-TaskScheduler/Operational'; StartTime=(Get-Date).AddHours(-1)} | Where-Object { $_.Message -like "*P4NTHE0N*" }
 ```
 
 **Common Causes**:
@@ -225,7 +225,7 @@ Get-WinEvent -FilterHashtable @{LogName='Microsoft-Windows-TaskScheduler/Operati
 
 **Verify Executable**:
 ```powershell
-Test-Path "C:\P4NTH30N\H0UND\bin\Release\net10.0-windows7.0\P4NTH30N.exe"
+Test-Path "C:\P4NTHE0N\H0UND\bin\Release\net10.0-windows7.0\P4NTHE0N.exe"
 ```
 
 ### Service Health Check Failures
@@ -233,13 +233,13 @@ Test-Path "C:\P4NTH30N\H0UND\bin\Release\net10.0-windows7.0\P4NTH30N.exe"
 **Check service logs**:
 ```powershell
 # H0UND logs in background mode
-tail -f "$env:LOCALAPPDATA\P4NTH30N\logs\h0und.log"
+tail -f "$env:LOCALAPPDATA\P4NTHE0N\logs\h0und.log"
 ```
 
 **Manual service test**:
 ```powershell
 # Test FourEyes manually
-cd C:\P4NTH30N\tools\mcp-foureyes
+cd C:\P4NTHE0N\tools\mcp-foureyes
 $env:CDP_HOST="127.0.0.1"
 $env:CDP_PORT="9222"
 $env:MCP_PORT="5302"
@@ -250,7 +250,7 @@ node server.js --http
 
 ```powershell
 # Remove H0UND task (Admin PowerShell)
-Unregister-ScheduledTask -TaskName "P4NTH30N-AutoStart" -Confirm:$false
+Unregister-ScheduledTask -TaskName "P4NTHE0N-AutoStart" -Confirm:$false
 
 # Remove ToolHive task
 Unregister-ScheduledTask -TaskName "ToolHive-AutoStart" -Confirm:$false

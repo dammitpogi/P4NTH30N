@@ -1,6 +1,6 @@
 # C0MMON Component Guide
 
-Shared library — The foundation of P4NTH30N providing cross-cutting concerns.
+Shared library — The foundation of P4NTHE0N providing cross-cutting concerns.
 
 ## Overview
 
@@ -38,7 +38,7 @@ C0MMON/
 │   ├── Caching/
 │   │   └── CacheService.cs
 │   ├── Configuration/
-│   │   ├── P4NTH30NOptions.cs
+│   │   ├── P4NTHE0NOptions.cs
 │   │   ├── ConfigurationExtensions.cs
 │   │   └── SecretsProvider.cs
 │   ├── Monitoring/
@@ -470,7 +470,7 @@ public class KeyManagement : IKeyManagement
             hashAlgorithmName: HashAlgorithmName.SHA256,
             ikm: masterKey,
             outputLength: 32,
-            salt: Encoding.UTF8.GetBytes("P4NTH30N"),
+            salt: Encoding.UTF8.GetBytes("P4NTHE0N"),
             info: Encoding.UTF8.GetBytes("encryption-v1"));
     }
 }
@@ -663,7 +663,7 @@ public class MyService
 ### Encryption Usage
 ```csharp
 // Encrypt sensitive data
-var keyMgmt = new KeyManagement(@"C:\ProgramData\P4NTH30N\master.key");
+var keyMgmt = new KeyManagement(@"C:\ProgramData\P4NTHE0N\master.key");
 var encryption = new EncryptionService(keyMgmt);
 
 string encrypted = encryption.EncryptToString("sensitive data");
@@ -686,8 +686,8 @@ var response = await llm.CompleteAsync(new LlmRequest
 
 ```csharp
 // C0MMON/GlobalUsings.cs
-global using P4NTH30N.C0MMON.Interfaces;
-global using P4NTH30N.C0MMON.Infrastructure.Persistence;
+global using P4NTHE0N.C0MMON.Interfaces;
+global using P4NTHE0N.C0MMON.Infrastructure.Persistence;
 global using MongoDB.Driver;
 global using System.Text.Json;
 ```

@@ -1,0 +1,19 @@
+#!/bin/bash
+# VNC xstartup configuration
+# Starts Fluxbox and sets up the desktop environment
+
+#!/bin/sh
+
+# Start D-Bus session (required for some applications)
+eval `dbus-launch --sh-syntax`
+
+# Set keyboard layout
+setxkbmap us
+
+# Disable screen saver
+xset s off
+xset -dpms
+xset s noblank
+
+# Start window manager
+exec fluxbox

@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Restores a P4NTH30N MongoDB backup.
+    Restores a P4NTHE0N MongoDB backup.
 
 .DESCRIPTION
     INFRA-005: Backup and Disaster Recovery.
@@ -10,7 +10,7 @@
     Path to the .zip backup archive to restore.
 
 .PARAMETER Database
-    Target database name. Default: P4NTH30N
+    Target database name. Default: P4NTHE0N
 
 .PARAMETER ConnectionString
     MongoDB connection string. Default: mongodb://localhost:27017
@@ -19,14 +19,14 @@
     If set, drops existing collections before restore.
 
 .EXAMPLE
-    .\mongodb-restore.ps1 -BackupArchive "C:\P4NTH30N\backups\P4NTH30N_20260218_120000.zip"
-    .\mongodb-restore.ps1 -BackupArchive "C:\P4NTH30N\backups\P4NTH30N_20260218_120000.zip" -Drop
+    .\mongodb-restore.ps1 -BackupArchive "C:\P4NTHE0N\backups\P4NTHE0N_20260218_120000.zip"
+    .\mongodb-restore.ps1 -BackupArchive "C:\P4NTHE0N\backups\P4NTHE0N_20260218_120000.zip" -Drop
 #>
 
 param(
     [Parameter(Mandatory=$true)]
     [string]$BackupArchive,
-    [string]$Database = "P4NTH30N",
+    [string]$Database = "P4NTHE0N",
     [string]$ConnectionString = "mongodb://localhost:27017",
     [switch]$Drop
 )
@@ -34,7 +34,7 @@ param(
 $ErrorActionPreference = "Stop"
 
 Write-Host "╔══════════════════════════════════════════════╗"
-Write-Host "║  P4NTH30N MongoDB Restore                    ║"
+Write-Host "║  P4NTHE0N MongoDB Restore                    ║"
 Write-Host "╚══════════════════════════════════════════════╝"
 Write-Host ""
 
@@ -51,7 +51,7 @@ if (-not $mongorestore) {
 }
 
 # Extract archive
-$tempDir = Join-Path $env:TEMP "P4NTH30N_restore_$(Get-Date -Format 'yyyyMMdd_HHmmss')"
+$tempDir = Join-Path $env:TEMP "P4NTHE0N_restore_$(Get-Date -Format 'yyyyMMdd_HHmmss')"
 Write-Host "[Restore] Extracting $BackupArchive..."
 Expand-Archive -Path $BackupArchive -DestinationPath $tempDir -Force
 

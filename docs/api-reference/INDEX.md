@@ -1,10 +1,10 @@
 # API Reference
 
-Complete reference for all public interfaces, entities, and services in P4NTH30N.
+Complete reference for all public interfaces, entities, and services in P4NTHE0N.
 
 ## Overview
 
-P4NTH30N uses interface-based design for testability and loose coupling. All major components communicate through well-defined interfaces.
+P4NTHE0N uses interface-based design for testability and loose coupling. All major components communicate through well-defined interfaces.
 
 ### Interface Categories
 

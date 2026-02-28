@@ -8,7 +8,7 @@
 	dead-lettered here for replay/diagnosis.
 
 	Creates:
-	  - V1S10N_DLQ collection in P4NTH30N database
+	  - V1S10N_DLQ collection in P4NTHE0N database
 	  - Index on Timestamp (descending) for time-ordered queries
 	  - Index on Reprocessed (ascending) for unprocessed lookups
 	  - Compound index on Source + Timestamp for per-source queries
@@ -20,7 +20,7 @@
 	MongoDB connection string. Default: mongodb://localhost:27017
 
 .PARAMETER DatabaseName
-	Target database. Default: P4NTH30N
+	Target database. Default: P4NTHE0N
 
 .PARAMETER CollectionName
 	Collection name. Default: V1S10N_DLQ
@@ -39,7 +39,7 @@
 [CmdletBinding()]
 param(
 	[string]$ConnectionString = "mongodb://localhost:27017",
-	[string]$DatabaseName = "P4NTH30N",
+	[string]$DatabaseName = "P4NTHE0N",
 	[string]$CollectionName = "V1S10N_DLQ",
 	[int]$TTLDays = 30
 )
@@ -58,7 +58,7 @@ function Write-Status {
 }
 
 Write-Host ""
-Write-Host "P4NTH30N V1S10N_DLQ Setup (INFRA-VM-001)" -ForegroundColor Cyan
+Write-Host "P4NTHE0N V1S10N_DLQ Setup (INFRA-VM-001)" -ForegroundColor Cyan
 Write-Host "==========================================" -ForegroundColor Cyan
 Write-Host "  Connection: $ConnectionString"
 Write-Host "  Database:   $DatabaseName"

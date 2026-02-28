@@ -1,8 +1,8 @@
 #Requires -RunAsAdministrator
 
 param(
-    [string]$ExecutablePath = "C:\P4NTH30N\H0UND\bin\Release\net10.0-windows7.0\P4NTH30N.exe",
-    [string]$TaskName = "P4NTH30N-AutoStart",
+    [string]$ExecutablePath = "C:\P4NTHE0N\H0UND\bin\Release\net10.0-windows7.0\P4NTHE0N.exe",
+    [string]$TaskName = "P4NTHE0N-AutoStart",
     [int]$DelaySeconds = 30
 )
 

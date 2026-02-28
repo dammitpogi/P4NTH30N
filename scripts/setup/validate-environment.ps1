@@ -1,9 +1,9 @@
 <#
 .SYNOPSIS
-    Validates the P4NTH30N environment is fully configured and operational.
+    Validates the P4NTHE0N environment is fully configured and operational.
 
 .DESCRIPTION
-    Performs end-to-end validation of all P4NTH30N dependencies and services:
+    Performs end-to-end validation of all P4NTHE0N dependencies and services:
     - .NET SDK version and build capability
     - MongoDB connectivity and database existence
     - Chrome and ChromeDriver availability and version matching
@@ -73,7 +73,7 @@ function Test-DotNetBuild {
     }
 
     # Test build
-    $slnPath = Join-Path $PSScriptRoot "..\..\P4NTH30N.slnx"
+    $slnPath = Join-Path $PSScriptRoot "..\..\P4NTHE0N.slnx"
     if (Test-Path $slnPath) {
         try {
             $buildOutput = dotnet build $slnPath --no-restore --verbosity quiet 2>&1
@@ -86,7 +86,7 @@ function Test-DotNetBuild {
             Write-Check "Build check failed: $_" "WARN"
         }
     } else {
-        Write-Check "P4NTH30N.slnx not found at expected path" "WARN"
+        Write-Check "P4NTHE0N.slnx not found at expected path" "WARN"
     }
 }
 
@@ -120,13 +120,13 @@ function Test-MongoDBConnection {
         return
     }
 
-    # Check P4NTH30N database exists
+    # Check P4NTHE0N database exists
     try {
         $dbList = mongosh --eval "db.adminCommand('listDatabases').databases.map(d=>d.name)" --quiet 2>$null
-        if ($dbList -match "P4NTH30N") {
-            Write-Check "P4NTH30N database exists" "PASS"
+        if ($dbList -match "P4NTHE0N") {
+            Write-Check "P4NTHE0N database exists" "PASS"
         } else {
-            Write-Check "P4NTH30N database not found (will be created on first use)" "WARN"
+            Write-Check "P4NTHE0N database not found (will be created on first use)" "WARN"
         }
     } catch {
         Write-Check "Database listing failed: $_" "WARN"
@@ -220,7 +220,7 @@ function Test-ConfigurationFiles {
 function Test-SecuritySetup {
     Write-Host "`n--- Security ---" -ForegroundColor White
 
-    $keyPath = "C:\ProgramData\P4NTH30N\master.key"
+    $keyPath = "C:\ProgramData\P4NTHE0N\master.key"
     if (Test-Path $keyPath) {
         $keySize = (Get-Item $keyPath).Length
         if ($keySize -eq 32) {
@@ -241,24 +241,24 @@ function Test-SecuritySetup {
 function Test-EnvironmentVariables {
     Write-Host "`n--- Environment Variables ---" -ForegroundColor White
 
-    $envName = [Environment]::GetEnvironmentVariable("P4NTH30N_ENVIRONMENT")
+    $envName = [Environment]::GetEnvironmentVariable("P4NTHE0N_ENVIRONMENT")
     if ($envName) {
-        Write-Check "P4NTH30N_ENVIRONMENT = $envName" "PASS"
+        Write-Check "P4NTHE0N_ENVIRONMENT = $envName" "PASS"
     } else {
-        Write-Check "P4NTH30N_ENVIRONMENT not set (defaults to Development)" "WARN"
+        Write-Check "P4NTHE0N_ENVIRONMENT not set (defaults to Development)" "WARN"
     }
 
-    $mongoUri = [Environment]::GetEnvironmentVariable("P4NTH30N_MONGODB_URI")
+    $mongoUri = [Environment]::GetEnvironmentVariable("P4NTHE0N_MONGODB_URI")
     if ($mongoUri) {
-        Write-Check "P4NTH30N_MONGODB_URI is set" "PASS"
+        Write-Check "P4NTHE0N_MONGODB_URI is set" "PASS"
     } else {
-        Write-Check "P4NTH30N_MONGODB_URI not set (using appsettings.json default)" "WARN"
+        Write-Check "P4NTHE0N_MONGODB_URI not set (using appsettings.json default)" "WARN"
     }
 }
 
 # ── Execute All Checks ───────────────────────────────────────────────────
 Write-Host ""
-Write-Host "P4NTH30N Environment Validation" -ForegroundColor Cyan
+Write-Host "P4NTHE0N Environment Validation" -ForegroundColor Cyan
 Write-Host "Environment: $Environment" -ForegroundColor Cyan
 Write-Host "================================" -ForegroundColor Cyan
 

@@ -12,7 +12,7 @@
 
 ## Executive Summary
 
-This decision specifies the file sources, ingestion pipeline, and metadata schema for the RAG Context Layer (RAG-001). It enables comprehensive session exposure across OpenCode, WindSurf, and P4NTH30N instances to provide rich contextual memory for the casino automation system.
+This decision specifies the file sources, ingestion pipeline, and metadata schema for the RAG Context Layer (RAG-001). It enables comprehensive session exposure across OpenCode, WindSurf, and P4NTHE0N instances to provide rich contextual memory for the casino automation system.
 
 ---
 
@@ -50,14 +50,14 @@ This decision specifies the file sources, ingestion pipeline, and metadata schem
 | **WindSurf** | `C:\Users\paulc\.windsurf\extensions\extensions.json` | Extensions | ✅ YES | P3 |
 | **WindSurf** | `C:\Users\paulc\AppData\Roaming\Windsurf\User\History\` | File History | ⚠️ Limited | P3 |
 | **WindSurf** | `C:\Users\paulc\AppData\Roaming\Windsurf\Local Storage\leveldb\` | LevelDB | ❌ Binary | P4 |
-| **P4NTH30N** | `C:\P4NTH30N\T4CT1CS\**\*.md` | Decisions/Intel | ✅ YES | P0 |
-| **P4NTH30N** | `C:\P4NTH30N\session-ses_*.md` | Session Exports | ✅ YES | P0 |
+| **P4NTHE0N** | `C:\P4NTHE0N\T4CT1CS\**\*.md` | Decisions/Intel | ✅ YES | P0 |
+| **P4NTHE0N** | `C:\P4NTHE0N\session-ses_*.md` | Session Exports | ✅ YES | P0 |
 | **VS Code** | `C:\Users\paulc\AppData\Roaming\Code\logs\` | CLI Logs | ✅ YES | P2 |
 
 ### 1.2 Source Details
 
 #### OpenCode Session Exports (`session-*.md`)
-- **Location**: Workspace root (e.g., `C:\P4NTH30N\session-*.md`)
+- **Location**: Workspace root (e.g., `C:\P4NTHE0N\session-*.md`)
 - **Format**: Markdown with conversation turns
 - **Content**: Full agent conversations with tool calls
 - **Size**: ~10-50KB per session
@@ -69,8 +69,8 @@ This decision specifies the file sources, ingestion pipeline, and metadata schem
 - **Content**: Agent orchestration, model fallback, tool usage
 - **Size**: Growing, currently ~1MB+
 
-#### P4NTH30N T4CT1CS
-- **Location**: `C:\P4NTH30N\T4CT1CS\**\*.md`
+#### P4NTHE0N T4CT1CS
+- **Location**: `C:\P4NTHE0N\T4CT1CS\**\*.md`
 - **Format**: Markdown documents
 - **Content**: Decisions, speeches, handoffs, intel reports
 - **Subfolders**: `intel/`, `speech/`, `handoffs/`, `actions/`, `auto/`
@@ -112,7 +112,7 @@ This decision specifies the file sources, ingestion pipeline, and metadata schem
 |--------|-----------|---------------|---------------|
 | OpenCode Sessions | FileWatcherConnector | `.md` | 30s |
 | OpenCode Debug Log | JsonLogConnector | `.log` (JSONL) | 60s |
-| P4NTH30N T4CT1CS | FileWatcherConnector | `.md` | 30s |
+| P4NTHE0N T4CT1CS | FileWatcherConnector | `.md` | 30s |
 | WindSurf Logs | FileWatcherConnector | `.log` | 60s |
 | Agent Prompts | FileWatcherConnector | `.md` | 300s |
 | Model Configs | JsonFileConnector | `.json` | 300s |
@@ -160,7 +160,7 @@ The base schema from RAG-001 is extended with source-specific fields:
       "extension": String,       // Which extension generated log
       "windowId": String         // Window identifier
     },
-    // P4NTH30N specific
+    // P4NTHE0N specific
     "p4nth30n": {
       "documentType": String,    // "decision" | "speech" | "handoff" | "intel"
       "decisionId": String,     // If decision document
@@ -253,9 +253,9 @@ type ContentType =
 }
 ```
 
-### 4.3 P4NTH30N T4CT1CS Documents
+### 4.3 P4NTHE0N T4CT1CS Documents
 
-**Source**: `C:\P4NTH30N\T4CT1CS\**\*.md`
+**Source**: `C:\P4NTHE0N\T4CT1CS\**\*.md`
 
 **Subfolder Mapping**:
 | Subfolder | documentType | Example |
@@ -316,7 +316,7 @@ type ContentType =
 ```yaml
 watchers:
   - name: "opencode-sessions"
-    path: "C:\\P4NTH30N"
+    path: "C:\\P4NTHE0N"
     pattern: "session-ses_*.md"
     interval: 30s
     
@@ -326,7 +326,7 @@ watchers:
     interval: 60s
     
   - name: "p4nth30n-t4ct1cs"
-    path: "C:\\P4NTH30N\\T4CT1CS"
+    path: "C:\\P4NTHE0N\\T4CT1CS"
     pattern: "**/*.md"
     interval: 30s
     
@@ -403,7 +403,7 @@ dotnet test RAG.Ingestion.Tests --filter "Parser"
 
 **Tasks**:
 1. Implement OpenCode metadata extraction
-2. Implement P4NTH30N metadata extraction
+2. Implement P4NTHE0N metadata extraction
 3. Implement WindSurf metadata extraction
 4. Add sourcePlatform/sourceType to all documents
 
@@ -431,10 +431,10 @@ dotnet test RAG.Ingestion.Tests --filter "Parser"
 
 | Category | Count | Source | Description |
 |----------|-------|--------|-------------|
-| OpenCode Sessions | 15 | P4NTH30N/session-*.md | Agent conversations |
+| OpenCode Sessions | 15 | P4NTHE0N/session-*.md | Agent conversations |
 | OpenCode Debug | 10 | .debug/opencode-debug.log | Log entries |
-| P4NTH30N Decisions | 15 | T4CT1CS/intel/*.md | Decision documents |
-| P4NTH30N Speeches | 10 | T4CT1CS/speech/*.md | Status reports |
+| P4NTHE0N Decisions | 15 | T4CT1CS/intel/*.md | Decision documents |
+| P4NTHE0N Speeches | 10 | T4CT1CS/speech/*.md | Status reports |
 | WindSurf Logs | 5 | Windsurf/logs/*.log | Extension logs |
 | Agent Prompts | 5 | .config/opencode/agents/*.md | System prompts |
 
@@ -559,7 +559,7 @@ function shouldIngest(content: string, filePath: string): boolean {
 ## 10. File Structure
 
 ```
-P4NTH30N/
+P4NTHE0N/
 ├── RAG/
 │   └── Ingestion/
 │       ├── Connectors/
@@ -574,7 +574,7 @@ P4NTH30N/
 │       │   └── IParser.cs
 │       ├── Metadata/
 │       │   ├── OpenCodeMetadataExtractor.cs
-│       │   ├── P4NTH30NMetadataExtractor.cs
+│       │   ├── P4NTHE0NMetadataExtractor.cs
 │       │   ├── WindSurfMetadataExtractor.cs
 │       │   └── IMetadataExtractor.cs
 │       ├── Services/
@@ -662,7 +662,7 @@ If file ingestion causes issues:
 **Oracle Review Required:**
 
 This decision implements file ingestion for the RAG Context Layer with:
-- 12 source paths across 4 platforms (OpenCode, WindSurf, P4NTH30N, VS Code)
+- 12 source paths across 4 platforms (OpenCode, WindSurf, P4NTHE0N, VS Code)
 - 4-level fallback mechanism (from RAG-001)
 - 60-sample benchmark requirement
 - <1s/file ingestion latency target

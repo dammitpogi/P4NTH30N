@@ -2,7 +2,7 @@
 
 ## Overview
 
-P4NTH30N uses a Hyper-V virtual machine to isolate the H4ND browser automation agent from the host system. The VM connects back to the host for Chrome CDP (browser control) and MongoDB (data persistence).
+P4NTHE0N uses a Hyper-V virtual machine to isolate the H4ND browser automation agent from the host system. The VM connects back to the host for Chrome CDP (browser control) and MongoDB (data persistence).
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
@@ -10,8 +10,8 @@ P4NTH30N uses a Hyper-V virtual machine to isolate the H4ND browser automation a
 │ Windows 11 Pro                                                   │
 │                                                                  │
 │  ┌──────────────┐   ┌──────────────┐   ┌──────────────────────┐ │
-│  │ Chrome       │   │ MongoDB      │   │ P4NTH30N Source      │ │
-│  │ :9222 (CDP)  │   │ :27017       │   │ C:\P4NTH30N\         │ │
+│  │ Chrome       │   │ MongoDB      │   │ P4NTHE0N Source      │ │
+│  │ :9222 (CDP)  │   │ :27017       │   │ C:\P4NTHE0N\         │ │
 │  └──────┬───────┘   └──────┬───────┘   └──────────────────────┘ │
 │         │                  │                                     │
 │  ┌──────┴──────────────────┴─────────────────────────────┐      │
@@ -74,10 +74,10 @@ P4NTH30N uses a Hyper-V virtual machine to isolate the H4ND browser automation a
 ### appsettings.json (VM copy)
 ```json
 {
-  "P4NTH30N": {
+  "P4NTHE0N": {
     "Database": {
-      "ConnectionString": "mongodb://192.168.56.1:27017/P4NTH30N?directConnection=true",
-      "DatabaseName": "P4NTH30N"
+      "ConnectionString": "mongodb://192.168.56.1:27017/P4NTHE0N?directConnection=true",
+      "DatabaseName": "P4NTHE0N"
     },
     "H4ND": {
       "Cdp": {

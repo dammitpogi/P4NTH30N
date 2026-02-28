@@ -1,3 +1,8 @@
+---
+name: deployment
+description: Deploy P4NTH30N to target environments with validation, monitoring, and rollback capability. Use for deploying to staging/production, hotfix deployment, environment updates, or release management.
+---
+
 # Deployment
 
 ## Description

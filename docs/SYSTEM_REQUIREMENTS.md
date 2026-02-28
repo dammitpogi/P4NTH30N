@@ -1,4 +1,4 @@
-# P4NTH30N System Requirements
+# P4NTHE0N System Requirements
 
 ## Minimum Requirements
 
@@ -50,8 +50,8 @@
 Create a `.env` file in the project root with:
 
 ```
-P4NTH30N_MONGODB_URI=mongodb://localhost:27017/P4NTH30N
-P4NTH30N_ENVIRONMENT=Development
+P4NTHE0N_MONGODB_URI=mongodb://localhost:27017/P4NTHE0N
+P4NTHE0N_ENVIRONMENT=Development
 ```
 
 ## Quick Start

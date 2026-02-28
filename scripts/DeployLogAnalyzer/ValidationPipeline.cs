@@ -2,7 +2,7 @@ using System.Diagnostics;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace P4NTH30N.DeployLogAnalyzer;
+namespace P4NTHE0N.DeployLogAnalyzer;
 
 /// <summary>
 /// Validation stage identifier for two-stage pipeline.

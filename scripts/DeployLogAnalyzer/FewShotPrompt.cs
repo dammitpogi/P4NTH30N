@@ -1,4 +1,4 @@
-namespace P4NTH30N.DeployLogAnalyzer;
+namespace P4NTHE0N.DeployLogAnalyzer;
 
 /// <summary>
 /// Few-shot prompt templates for LLM-powered deployment analysis.
@@ -12,7 +12,7 @@ public static class FewShotPrompt
 	public static string GetConfigValidationPrompt()
 	{
 		return """
-			You are a deployment configuration validator for the P4NTH30N system.
+			You are a deployment configuration validator for the P4NTHE0N system.
 			Analyze the provided configuration and determine if it is valid.
 
 			Rules:
@@ -55,7 +55,7 @@ public static class FewShotPrompt
 	public static string GetLogClassificationPrompt()
 	{
 		return """
-			You are a deployment log classifier for the P4NTH30N system.
+			You are a deployment log classifier for the P4NTHE0N system.
 			Classify each log entry by severity and extract error patterns.
 
 			Severity levels:
@@ -90,7 +90,7 @@ public static class FewShotPrompt
 	public static string GetDeploymentDecisionPrompt()
 	{
 		return """
-			You are a deployment decision advisor for the P4NTH30N system.
+			You are a deployment decision advisor for the P4NTHE0N system.
 			Based on the provided health report and log analysis, recommend GO or NO-GO.
 
 			Decision criteria:

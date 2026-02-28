@@ -1,14 +1,14 @@
 <#
 .SYNOPSIS
-    Syncs agent definitions from P4NTH30N/agents/ to OpenCode agents directory.
+    Syncs agent definitions from P4NTHE0N/agents/ to OpenCode agents directory.
 
 .DESCRIPTION
-    Compares file hashes between source (P4NTH30N/agents/) and target
+    Compares file hashes between source (P4NTHE0N/agents/) and target
     (OpenCode/agents/), backs up existing files, copies changed files,
     and updates the version tracking manifest.
 
 .PARAMETER SourceDir
-    Source directory containing agent definitions. Default: C:\P4NTH30N\agents
+    Source directory containing agent definitions. Default: C:\P4NTHE0N\agents
 
 .PARAMETER TargetDir
     Target OpenCode agents directory. Default: C:\Users\paulc\.config\opencode\agents
@@ -26,14 +26,14 @@
 #>
 
 param(
-    [string]$SourceDir = "C:\P4NTH30N\agents",
+    [string]$SourceDir = "C:\P4NTHE0N\agents",
     [string]$TargetDir = "C:\Users\paulc\.config\opencode\agents",
     [switch]$WhatIf,
     [switch]$Force
 )
 
 $ErrorActionPreference = "Stop"
-$VersionFile = "C:\P4NTH30N\scripts\agent-versions.json"
+$VersionFile = "C:\P4NTHE0N\scripts\agent-versions.json"
 $BackupDir = Join-Path $TargetDir ".backups"
 $Timestamp = Get-Date -Format "yyyy-MM-dd_HH-mm-ss"
 

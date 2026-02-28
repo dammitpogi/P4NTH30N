@@ -3,7 +3,7 @@
 ## Pre-Deployment Checklist
 
 - [ ] All tests passing: `dotnet run --project UNI7T35T\UNI7T35T.csproj`
-- [ ] Build succeeds: `dotnet build P4NTH30N.slnx`
+- [ ] Build succeeds: `dotnet build P4NTHE0N.slnx`
 - [ ] Formatting check: `dotnet csharpier check`
 - [ ] MongoDB backup taken: `.\scripts\backup\mongodb-backup.ps1`
 - [ ] Environment validation: `.\scripts\setup\validate-environment.ps1`
@@ -19,7 +19,7 @@
 
 **Verify**:
 ```powershell
-Get-ScheduledTask -TaskName "P4NTH30N-AutoStart"
+Get-ScheduledTask -TaskName "P4NTHE0N-AutoStart"
 ```
 
 **Note**: Do not use `sudo` on Windows. Use "Run as Administrator" instead.
@@ -53,12 +53,12 @@ See [H0UND Autostart Guide](../components/H0UND/AUTOSTART.md) for full details.
 ### 2. Pull Latest Code
 ```powershell
 git pull origin main
-dotnet restore P4NTH30N.slnx
+dotnet restore P4NTHE0N.slnx
 ```
 
 ### 3. Build
 ```powershell
-dotnet build P4NTH30N.slnx -c Debug
+dotnet build P4NTHE0N.slnx -c Debug
 ```
 
 ### 4. Run Tests
@@ -88,7 +88,7 @@ dotnet run --project H4ND\H4ND.csproj
 # Stop agents
 # Revert to previous commit
 git revert HEAD
-dotnet build P4NTH30N.slnx
+dotnet build P4NTHE0N.slnx
 dotnet run --project H0UND\H0UND.csproj
 ```
 
@@ -99,6 +99,6 @@ dotnet run --project H0UND\H0UND.csproj
 .\scripts\restore\mongodb-restore.ps1 -BackupArchive "path\to\backup.zip" -Drop
 # Revert code
 git checkout <previous-tag>
-dotnet build P4NTH30N.slnx
+dotnet build P4NTHE0N.slnx
 # Restart agents
 ```

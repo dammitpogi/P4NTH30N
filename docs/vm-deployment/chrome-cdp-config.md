@@ -92,4 +92,4 @@ Since games use Canvas rendering, jackpot values are NOT in the DOM. The page re
 3. **Iframe present** → Game loaded in iframe
 4. **Document complete + not login** → Past login screen
 
-These checks are configurable via `appsettings.json` under `P4NTH30N:H4ND:GameSelectors`.
+These checks are configurable via `appsettings.json` under `P4NTHE0N:H4ND:GameSelectors`.

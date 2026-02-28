@@ -35,7 +35,7 @@
 - CRITICAL alerts trigger immediate halt with diagnostic dump
 - WARN alerts notify without stopping
 - Recommendations generated based on alert patterns
-- Config in `appsettings.json` → `P4NTH30N:H4ND:BurnInAlerts`
+- Config in `appsettings.json` → `P4NTHE0N:H4ND:BurnInAlerts`
 
 ### DECISION_059: Post-Burn-In Analysis and Decision Promotion — IMPLEMENTED
 **Files Created:**

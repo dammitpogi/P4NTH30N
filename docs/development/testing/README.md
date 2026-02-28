@@ -1,10 +1,10 @@
 # Testing Guide
 
-Comprehensive guide for writing, running, and maintaining tests in P4NTH30N.
+Comprehensive guide for writing, running, and maintaining tests in P4NTHE0N.
 
 ## Overview
 
-P4NTH30N uses a robust testing strategy with 27 passing tests covering unit tests, integration tests, and mock infrastructure. Tests ensure reliability, prevent regressions, and document expected behavior.
+P4NTHE0N uses a robust testing strategy with 27 passing tests covering unit tests, integration tests, and mock infrastructure. Tests ensure reliability, prevent regressions, and document expected behavior.
 
 ### Test Categories
 

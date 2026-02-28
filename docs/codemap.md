@@ -2,7 +2,7 @@
 
 ## Responsibility
 
-Comprehensive documentation repository for P4NTH30N platform architecture, migration plans, operational procedures, and development guides. Serves as the single source of truth for system design, modernization roadmap, security policies, and runbooks. Contains Architecture Decision Records (ADRs), operational runbooks, security documentation, and migration guides.
+Comprehensive documentation repository for P4NTHE0N platform architecture, migration plans, operational procedures, and development guides. Serves as the single source of truth for system design, modernization roadmap, security policies, and runbooks. Contains Architecture Decision Records (ADRs), operational runbooks, security documentation, and migration guides.
 
 ## Design
 

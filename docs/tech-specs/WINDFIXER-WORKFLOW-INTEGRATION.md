@@ -125,7 +125,7 @@ description: Execute Windows-specific implementation tasks via Strategist delega
 # WindFixer Implementation Protocol
 
 ## Role
-You are WindFixer, a Windows-native implementation specialist within the P4NTH30N system.
+You are WindFixer, a Windows-native implementation specialist within the P4NTHE0N system.
 
 ## Task Acquisition
 
@@ -136,7 +136,7 @@ You are WindFixer, a Windows-native implementation specialist within the P4NTH30
 ## Implementation Standards
 
 ### Code Quality
-- Follow C# conventions in P4NTH30N
+- Follow C# conventions in P4NTHE0N
 - Use primary constructors where appropriate
 - Add XML documentation for public APIs
 - Maintain null safety
@@ -172,7 +172,7 @@ Include:
 using System;
 using System.IO;
 using System.Threading.Tasks;
-using P4NTH30N.C0MMON.Interfaces;
+using P4NTHE0N.C0MMON.Interfaces;
 
 namespace W1NDF1X3R.Services;
 
@@ -188,11 +188,11 @@ public class WindFixerWorkflowService : IWindFixer
     {
         _handoffDirectory = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
-            "P4NTH30N", "T4CT1CS", "handoffs", "windfixer"
+            "P4NTHE0N", "T4CT1CS", "handoffs", "windfixer"
         );
         _workflowPath = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
-            "P4NTH30N", ".windsurf", "workflows", "windfixer.md"
+            "P4NTHE0N", ".windsurf", "workflows", "windfixer.md"
         );
     }
     
@@ -334,7 +334,7 @@ public class WindSurfAutoLauncher : IDisposable
     {
         var handoffDir = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
-            "P4NTH30N", "T4CT1CS", "handoffs", "windfixer"
+            "P4NTHE0N", "T4CT1CS", "handoffs", "windfixer"
         );
         
         _watcher = new FileSystemWatcher(handoffDir, "TASK-*.md")
@@ -433,7 +433,7 @@ If we need deeper integration, use Cascade Hooks:
 {
   "pre_user_prompt": [
     {
-      "command": "powershell.exe -File C:\\P4NTH30N\\W1NDF1X3R\\hooks\\check-for-tasks.ps1",
+      "command": "powershell.exe -File C:\\P4NTHE0N\\W1NDF1X3R\\hooks\\check-for-tasks.ps1",
       "show_output": false
     }
   ]
@@ -444,7 +444,7 @@ If we need deeper integration, use Cascade Hooks:
 
 ```powershell
 # Check if there are pending WindFixer tasks
-$taskDir = "$env:USERPROFILE\P4NTH30N\T4CT1CS\handoffs\windfixer"
+$taskDir = "$env:USERPROFILE\P4NTHE0N\T4CT1CS\handoffs\windfixer"
 $tasks = Get-ChildItem -Path $taskDir -Filter "TASK-*.md" -ErrorAction SilentlyContinue
 
 if ($tasks.Count -gt 0) {
@@ -549,7 +549,7 @@ if (status.State == TaskState.Completed)
 
 ## Next Steps
 
-1. Create workflow file in P4NTH30N repo
+1. Create workflow file in P4NTHE0N repo
 2. Implement WindFixerWorkflowService
 3. Test manual workflow invocation
 4. Add auto-launcher

@@ -133,7 +133,7 @@ function Test-Git {
 function Test-EnvironmentVariables {
     Write-Status "Checking environment variables..." "INFO"
     $required = @(
-        "P4NTH30N_MONGODB_URI"
+        "P4NTHE0N_MONGODB_URI"
     )
     $missing = @()
     foreach ($var in $required) {
@@ -150,7 +150,7 @@ function Test-EnvironmentVariables {
     }
 }
 
-Write-Host "`nP4NTH30N Prerequisites Check" -ForegroundColor Cyan
+Write-Host "`nP4NTHE0N Prerequisites Check" -ForegroundColor Cyan
 Write-Host "============================`n" -ForegroundColor Cyan
 
 Test-DotNetSDK

@@ -1,5 +1,5 @@
 # Decision Clustering Strategy
-## P4NTH30N 122 Decision Execution Plan
+## P4NTHE0N 122 Decision Execution Plan
 
 **Decision**: SWE-004  
 **Status**: Implemented  

@@ -1,7 +1,7 @@
 using System.Text.Json;
 using System.Text.RegularExpressions;
 
-namespace P4NTH30N.DeployLogAnalyzer;
+namespace P4NTHE0N.DeployLogAnalyzer;
 
 /// <summary>
 /// Deployment log analysis and classification engine.

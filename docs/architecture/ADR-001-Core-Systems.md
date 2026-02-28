@@ -4,7 +4,7 @@
 **Accepted** — Hybrid Monolithic with Containerization Path
 
 ## Context
-P4NTH30N consists of H4ND (automation), H0UND (analytics), and C0MMON (shared library) deployed as separate processes sharing a MongoDB database. Need to lock in the architecture pattern that governs deployment, scaling, and operational complexity.
+P4NTHE0N consists of H4ND (automation), H0UND (analytics), and C0MMON (shared library) deployed as separate processes sharing a MongoDB database. Need to lock in the architecture pattern that governs deployment, scaling, and operational complexity.
 
 ## Decision
 **Maintain hybrid monolithic architecture** with documented containerization migration path.
@@ -36,14 +36,14 @@ P4NTH30N consists of H4ND (automation), H0UND (analytics), and C0MMON (shared li
 │              │                      │            │
 │       ┌──────┴──────┐        ┌──────┴───────┐   │
 │       │   MongoDB   │        │   VM (exec)  │   │
-│       │  P4NTH30N   │        │   Chrome+OBS │   │
+│       │  P4NTHE0N   │        │   Chrome+OBS │   │
 │       └─────────────┘        └──────────────┘   │
 └─────────────────────────────────────────────────┘
 ```
 
 ### Deployment Model
 - **Current**: Separate .NET executables on same Windows host
-- **Data**: Single MongoDB instance (P4NTH30N database)
+- **Data**: Single MongoDB instance (P4NTHE0N database)
 - **Communication**: Shared database (no message queues)
 - **Configuration**: Shared appsettings.json + environment variables
 

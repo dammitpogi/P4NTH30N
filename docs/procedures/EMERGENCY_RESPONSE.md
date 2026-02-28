@@ -63,7 +63,7 @@
 3. Stakeholder explicitly approves resumption
 
 ```
-Override code: CONFIRM-RESUME-P4NTH30N
+Override code: CONFIRM-RESUME-P4NTHE0N
 ```
 
 **Document every override** with:

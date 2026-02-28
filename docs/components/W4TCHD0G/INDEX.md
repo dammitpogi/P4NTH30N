@@ -1,6 +1,6 @@
 # W4TCHD0G Component Guide
 
-Vision, safety, and monitoring agent — "The Watchdog" of P4NTH30N.
+Vision, safety, and monitoring agent — "The Watchdog" of P4NTHE0N.
 
 ## Overview
 
@@ -596,7 +596,7 @@ public class FrameBuffer
     "Safety": {
       "DailySpendLimit": 1000.00,
       "ConsecutiveLossLimit": 10,
-      "KillSwitchCode": "CONFIRM-RESUME-P4NTH30N"
+      "KillSwitchCode": "CONFIRM-RESUME-P4NTHE0N"
     },
     "Alerts": {
       "Console": true,

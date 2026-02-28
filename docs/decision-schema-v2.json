@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-2020-12/schema",
   "$id": "https://p4nth30n.io/decision/v2/schema.json",
-  "title": "P4NTH30N Decision Schema v2",
+  "title": "P4NTHE0N Decision Schema v2",
   "description": "Enhanced decision schema with complete plan capture, approval conditions, and implementation specifications",
   "version": "2.0.0",
   "type": "object",

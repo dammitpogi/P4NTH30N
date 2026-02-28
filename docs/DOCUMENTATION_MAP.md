@@ -1,4 +1,4 @@
-# P4NTH30N Documentation Map
+# P4NTHE0N Documentation Map
 
 Visual guide to the documentation structure.
 

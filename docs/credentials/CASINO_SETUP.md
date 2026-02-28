@@ -7,7 +7,7 @@ Real casino credentials are encrypted using the INFRA-009 AES-256-GCM encryption
 ## Prerequisites
 
 - Master encryption key generated (`scripts/security/generate-master-key.ps1`)
-- MongoDB running with P4NTH30N database
+- MongoDB running with P4NTHE0N database
 - Casino account(s) created and funded
 
 ## Credential Encryption
@@ -16,7 +16,7 @@ Real casino credentials are encrypted using the INFRA-009 AES-256-GCM encryption
 
 ```csharp
 // Using the SecretsProvider (INFRA-002)
-var keyMgmt = new KeyManagement(@"C:\ProgramData\P4NTH30N\master.key");
+var keyMgmt = new KeyManagement(@"C:\ProgramData\P4NTHE0N\master.key");
 var encryption = new EncryptionService(keyMgmt);
 
 // Encrypt password

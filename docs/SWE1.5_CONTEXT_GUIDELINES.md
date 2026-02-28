@@ -1,5 +1,5 @@
 # SWE-1.5 Context Management Guidelines
-## P4NTH30N Multi-Agent System
+## P4NTHE0N Multi-Agent System
 
 **Decision**: SWE-001  
 **Status**: Implemented  

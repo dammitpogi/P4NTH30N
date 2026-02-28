@@ -669,7 +669,7 @@ function sanitizeMessage(content: string): string {
 ### Access Control
 
 - Extension runs locally only
-- MongoDB connection uses existing P4NTH30N credentials
+- MongoDB connection uses existing P4NTHE0N credentials
 - No cloud storage of captured conversations
 - Local backup encrypted at rest
 
@@ -678,7 +678,7 @@ function sanitizeMessage(content: string): string {
 ## 10. File Structure
 
 ```
-P4NTH30N/
+P4NTHE0N/
 ├── tools/
 │   └── windsurf-capture-extension/
 │       ├── src/

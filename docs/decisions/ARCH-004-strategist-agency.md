@@ -224,7 +224,7 @@ public interface IForgewright : IImplementor
 
 ```csharp
 // C0MMON/Interfaces/IImplementor.cs
-namespace P4NTH30N.C0MMON.Interfaces;
+namespace P4NTHE0N.C0MMON.Interfaces;
 
 public interface IImplementor
 {
@@ -499,7 +499,7 @@ dotnet test UNI7T35T/UNI7T35T.csproj --filter "StrategistAgency"
 ## 8. File Structure
 
 ```
-P4NTH30N/
+P4NTHE0N/
 ├── C0MMON/
 │   └── Interfaces/
 │       ├── IImplementor.cs

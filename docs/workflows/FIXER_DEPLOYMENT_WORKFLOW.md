@@ -10,7 +10,7 @@
 ## OVERVIEW
 
 This document defines the refined deployment workflow where:
-1. **WindFixer** executes all P4NTH30N codebase decisions first
+1. **WindFixer** executes all P4NTHE0N codebase decisions first
 2. **Strategist** receives completion reports and identifies blockers
 3. **OpenFixer** handles OpenCode-only tasks and constraint resolution
 
@@ -27,17 +27,17 @@ This sequential handoff pattern replaces the parallel execution model to ensure 
 **Actor**: WindFixer (WindSurf environment)
 
 **Scope**:
-- All work within `C:\P4NTH30N\` directory
+- All work within `C:\P4NTHE0N\` directory
 - C# code implementation
 - Unit tests and validation
-- Documentation in `P4NTH30N/docs/`
-- Scripts in `P4NTH30N/scripts/`
+- Documentation in `P4NTHE0N/docs/`
+- Scripts in `P4NTHE0N/scripts/`
 - Attempt OpenCode work, report blockers
 
 **Process**:
 ```
 1. Read decision specification
-2. Implement all P4NTH30N-side components
+2. Implement all P4NTHE0N-side components
 3. Run build and tests
 4. If OpenCode access needed:
    a. Attempt via available methods
@@ -217,7 +217,7 @@ Submits to Strategist
 Strategist receives WindFixer Report
 ↓
 Reviews:
-  - ✅ All P4NTH30N code complete
+  - ✅ All P4NTHE0N code complete
   - ✅ Tests passing
   - ✅ Blocker identified: OpenCode access
 ↓
@@ -292,7 +292,7 @@ Review-Strategist
 
 ### Key Advantages
 
-1. **Clear Boundaries**: WindFixer owns P4NTH30N, OpenFixer owns OpenCode
+1. **Clear Boundaries**: WindFixer owns P4NTHE0N, OpenFixer owns OpenCode
 2. **Preserved Context**: Handoff templates ensure nothing lost
 3. **Easier Debugging**: Know exactly which Fixer touched what
 4. **Better Accountability**: Clear responsibility at each phase
@@ -304,10 +304,10 @@ Review-Strategist
 
 ### When WindFixer Cannot Complete
 
-**Scenario**: WindFixer encounters technical blocker in P4NTH30N
+**Scenario**: WindFixer encounters technical blocker in P4NTHE0N
 
 **Options**:
-1. **Re-delegate to WindFixer**: If fix is P4NTH30N-side
+1. **Re-delegate to WindFixer**: If fix is P4NTHE0N-side
 2. **Escalate to Nexus**: If architectural decision needed
 3. **Modify decision scope**: If condition cannot be met
 
@@ -379,7 +379,7 @@ T4CT1CS/handoffs/
 
 ### For New Decisions
 
-- [ ] Decision created with clear P4NTH30N/OpenCode split
+- [ ] Decision created with clear P4NTHE0N/OpenCode split
 - [ ] WindFixer assigned and begins execution
 - [ ] WindFixer report template reviewed
 - [ ] Strategist monitoring plan in place

@@ -2,11 +2,22 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "C#: C0RR3CT",
+            "name": "C#: H4ND",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/C0RR3CT/bin/Debug/net9.0-windows/C0RR3CT.dll",
+            "program": "${workspaceFolder}/H4ND/bin/Debug/net8.0/H4ND.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "stopAtEntry": false
+        },
+        {
+            "name": "C#: H0UND",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/H0UND/bin/Debug/net8.0/H0UND.dll",
             "args": [],
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",

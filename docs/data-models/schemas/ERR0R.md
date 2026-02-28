@@ -16,7 +16,7 @@ ERR0R captures all validation failures and processing errors across the system. 
   "Error": "Balance is negative: -50.00",
   "User": "casino_user",
   "Agent": "H4ND",
-  "StackTrace": "at P4NTH30N.C0MMON.Entities.Credential.IsValid...",
+  "StackTrace": "at P4NTHE0N.C0MMON.Entities.Credential.IsValid...",
   "Severity": "Warning",
   "Timestamp": "2026-01-15T10:30:00Z",
   "CorrelationId": "abc-123-def"

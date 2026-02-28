@@ -283,9 +283,9 @@ using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
-using P4NTH30N.C0MMON.Infrastructure.Persistence;
+using P4NTHE0N.C0MMON.Infrastructure.Persistence;
 
-namespace P4NTH30N.C0MMON.Infrastructure.Resilience;
+namespace P4NTHE0N.C0MMON.Infrastructure.Resilience;
 
 public class DistributedLock
 {
@@ -501,7 +501,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace P4NTH30N.C0MMON.Infrastructure.Resilience;
+namespace P4NTHE0N.C0MMON.Infrastructure.Resilience;
 
 public interface ISignalDeduplicationCache
 {
@@ -615,7 +615,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace P4NTH30N.C0MMON.Infrastructure.Resilience;
+namespace P4NTHE0N.C0MMON.Infrastructure.Resilience;
 
 public sealed class RetryPolicy
 {
@@ -735,9 +735,9 @@ using System.Collections.Generic;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
-using P4NTH30N.C0MMON.Infrastructure.Persistence;
+using P4NTHE0N.C0MMON.Infrastructure.Persistence;
 
-namespace P4NTH30N.C0MMON.Infrastructure.Resilience;
+namespace P4NTHE0N.C0MMON.Infrastructure.Resilience;
 
 public class DeadLetterEntry
 {
@@ -908,7 +908,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 
-namespace P4NTH30N.C0MMON.Infrastructure.Monitoring;
+namespace P4NTHE0N.C0MMON.Infrastructure.Monitoring;
 
 public sealed class SignalMetrics
 {
@@ -1040,11 +1040,11 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Infrastructure.Monitoring;
-using P4NTH30N.C0MMON.Infrastructure.Resilience;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.C0MMON.Infrastructure.Monitoring;
+using P4NTHE0N.C0MMON.Infrastructure.Resilience;
 
-namespace P4NTH30N.H0UND.Domain.Signals;
+namespace P4NTHE0N.H0UND.Domain.Signals;
 
 public sealed class IdempotentSignalGenerator
 {
@@ -1286,7 +1286,7 @@ public const string DeadLetters = "D34DL3TT3R";
 
 ```csharp
 // BEFORE (broken — circular dependency):
-using P4NTH30N.W4TCHD0G.Models;
+using P4NTHE0N.W4TCHD0G.Models;
 object Evaluate(object context, VisionAnalysis? visionAnalysis);
 
 // AFTER (fixed):
@@ -1320,15 +1320,15 @@ Test Categories:
 ### Final Build — SUCCESS
 
 ```
-PS C:\P4NTH30N> dotnet build P4NTH30N.slnx
+PS C:\P4NTHE0N> dotnet build P4NTHE0N.slnx
 
-  C0MMON -> C:\P4NTH30N\C0MMON\bin\Debug\net10.0-windows7.0\C0MMON.dll
-  PROF3T -> C:\P4NTH30N\PROF3T\bin\Debug\net10.0-windows7.0\PROF3T.dll
-  T00L5ET -> C:\P4NTH30N\T00L5ET\bin\Debug\net10.0-windows7.0\T00L5ET.dll
-  W4TCHD0G -> C:\P4NTH30N\W4TCHD0G\bin\Debug\net10.0-windows7.0\W4TCHD0G.dll
-  H0UND -> C:\P4NTH30N\H0UND\bin\Debug\net10.0-windows7.0\H0UND.dll
-  H4ND -> C:\P4NTH30N\H4ND\bin\Debug\net10.0-windows7.0\H4ND.dll
-  UNI7T35T -> C:\P4NTH30N\UNI7T35T\bin\Debug\net10.0-windows7.0\UNI7T35T.dll
+  C0MMON -> C:\P4NTHE0N\C0MMON\bin\Debug\net10.0-windows7.0\C0MMON.dll
+  PROF3T -> C:\P4NTHE0N\PROF3T\bin\Debug\net10.0-windows7.0\PROF3T.dll
+  T00L5ET -> C:\P4NTHE0N\T00L5ET\bin\Debug\net10.0-windows7.0\T00L5ET.dll
+  W4TCHD0G -> C:\P4NTHE0N\W4TCHD0G\bin\Debug\net10.0-windows7.0\W4TCHD0G.dll
+  H0UND -> C:\P4NTHE0N\H0UND\bin\Debug\net10.0-windows7.0\H0UND.dll
+  H4ND -> C:\P4NTHE0N\H4ND\bin\Debug\net10.0-windows7.0\H4ND.dll
+  UNI7T35T -> C:\P4NTHE0N\UNI7T35T\bin\Debug\net10.0-windows7.0\UNI7T35T.dll
 
 Build succeeded.
     0 Error(s)
@@ -1342,7 +1342,7 @@ Build succeeded.
 
 ```
 ╔════════════════════════════════════════════════════════════════════╗
-║          UNI7T35T - P4NTH30N Test Platform                        ║
+║          UNI7T35T - P4NTHE0N Test Platform                        ║
 ║          H0UND Analytics + Security + Pipeline Test Suite          ║
 ╚════════════════════════════════════════════════════════════════════╝
 
@@ -1451,7 +1451,7 @@ Running Pipeline Integration Tests...
 
 ### Error 1: MetricsSnapshot Name Collision
 ```
-CS0101: The namespace 'P4NTH30N.C0MMON.Infrastructure.Monitoring' already contains
+CS0101: The namespace 'P4NTHE0N.C0MMON.Infrastructure.Monitoring' already contains
 a definition for 'MetricsSnapshot'
 ```
 **Root Cause**: Existing `MetricsSnapshot` class in `MetricsService.cs` collided with my new record.
@@ -1459,9 +1459,9 @@ a definition for 'MetricsSnapshot'
 
 ### Error 2: Pre-existing IVisionDecisionEngine Build Error
 ```
-CS0234: The type or namespace name 'W4TCHD0G' does not exist in the namespace 'P4NTH30N'
+CS0234: The type or namespace name 'W4TCHD0G' does not exist in the namespace 'P4NTHE0N'
 ```
-**Root Cause**: `C0MMON/Interfaces/IVisionDecisionEngine.cs` referenced `P4NTH30N.W4TCHD0G.Models` but C0MMON had no project reference to W4TCHD0G. Adding the reference created a circular dependency.
+**Root Cause**: `C0MMON/Interfaces/IVisionDecisionEngine.cs` referenced `P4NTHE0N.W4TCHD0G.Models` but C0MMON had no project reference to W4TCHD0G. Adding the reference created a circular dependency.
 **Fix**: Changed parameter type from `VisionAnalysis?` to `object?` to break the circular dependency.
 
 ### Error 3: Circular Dependency (C0MMON ↔ W4TCHD0G)
@@ -1474,10 +1474,10 @@ MSB4006: There is a circular dependency in the target dependency graph
 ### Error 4: Ambiguous HealthCheckService/HealthStatus
 ```
 CS0104: 'HealthCheckService' is an ambiguous reference between
-'P4NTH30N.C0MMON.Monitoring.HealthCheckService' and
-'P4NTH30N.C0MMON.Infrastructure.Monitoring.HealthCheckService'
+'P4NTHE0N.C0MMON.Monitoring.HealthCheckService' and
+'P4NTHE0N.C0MMON.Infrastructure.Monitoring.HealthCheckService'
 ```
-**Root Cause**: My new `using P4NTH30N.C0MMON.Infrastructure.Monitoring;` import brought in a second `HealthCheckService` and `HealthStatus` type.
+**Root Cause**: My new `using P4NTHE0N.C0MMON.Infrastructure.Monitoring;` import brought in a second `HealthCheckService` and `HealthStatus` type.
 **Fix**: Removed the ambiguous using, fully qualified the 3 references (`C0MMON.Monitoring.HealthCheckService`, `C0MMON.Monitoring.SystemHealth`, `C0MMON.Monitoring.HealthStatus`).
 
 ### Error 5: Unreachable Code in Test

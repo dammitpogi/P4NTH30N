@@ -1,6 +1,6 @@
 # H0UND Component Guide
 
-Analytics and polling agent — "The Brain" of P4NTH30N.
+Analytics and polling agent — "The Brain" of P4NTHE0N.
 
 ## Overview
 

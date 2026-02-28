@@ -65,7 +65,7 @@ function Write-Status {
 }
 
 Write-Host ""
-Write-Host "P4NTH30N GPU-P Setup (INFRA-VM-001 Fallback)" -ForegroundColor Cyan
+Write-Host "P4NTHE0N GPU-P Setup (INFRA-VM-001 Fallback)" -ForegroundColor Cyan
 Write-Host "==============================================" -ForegroundColor Cyan
 Write-Host ""
 

@@ -140,12 +140,12 @@ function Install-MongoDBService {
     }
 }
 
-function Initialize-P4NTH30NDatabase {
-    Write-Status "Initializing P4NTH30N database..."
+function Initialize-P4NTHE0NDatabase {
+    Write-Status "Initializing P4NTHE0N database..."
     
     try {
         $initScript = @"
-use P4NTH30N;
+use P4NTHE0N;
 
 // Create collections if they don't exist
 db.createCollection('CRED3N7IAL');
@@ -159,7 +159,7 @@ db.createCollection('ERR0R');
 db.createCollection('H0U53');
 db.createCollection('R34DM3');
 
-print('P4NTH30N database initialized successfully');
+print('P4NTHE0N database initialized successfully');
 "@
         
         $tempFile = "$env:TEMP\init-p4nth30n.js"
@@ -178,7 +178,7 @@ print('P4NTH30N database initialized successfully');
 }
 
 # Main execution
-Write-Host "`nMongoDB Setup for P4NTH30N" -ForegroundColor Cyan
+Write-Host "`nMongoDB Setup for P4NTHE0N" -ForegroundColor Cyan
 Write-Host "===========================`n" -ForegroundColor Cyan
 
 if (-not (Test-Admin)) {
@@ -210,7 +210,7 @@ elseif ($StartService) {
 }
 
 # Initialize database
-Initialize-P4NTH30NDatabase
+Initialize-P4NTHE0NDatabase
 
 Write-Host "`n===========================" -ForegroundColor Cyan
 Write-Status "MongoDB setup complete!" "SUCCESS"

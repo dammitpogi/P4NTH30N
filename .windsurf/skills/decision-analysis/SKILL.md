@@ -1,3 +1,8 @@
+---
+name: decision-analysis
+description: Analyze a Decision from the P4NTH30N decision framework. Query specifications, assess complexity, identify dependencies, and provide implementation recommendations. Use before implementing a Decision, evaluating Decision priority, complexity estimation, or identifying potential blockers.
+---
+
 # Decision Analysis
 
 ## Description

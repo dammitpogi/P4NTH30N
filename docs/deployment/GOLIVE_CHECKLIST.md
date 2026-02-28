@@ -33,11 +33,11 @@ All CRITICAL items must be GREEN. Any RED = NO GO.
 .\scripts\setup\validate-environment.ps1 -Environment Production -Strict
 
 # Verify build
-dotnet build P4NTH30N.slnx
+dotnet build P4NTHE0N.slnx
 dotnet run --project UNI7T35T\UNI7T35T.csproj
 
 # Verify MongoDB
-mongosh --eval "use P4NTH30N; db.CRED3N7IAL.countDocuments()"
+mongosh --eval "use P4NTHE0N; db.CRED3N7IAL.countDocuments()"
 ```
 
 ### 2. Agent Deployment (15 minutes)

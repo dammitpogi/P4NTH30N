@@ -2,7 +2,7 @@
 
 ## Overview
 
-Model versioning strategy for P4NTH30N ML components: RAG embeddings, LLM inference, and jackpot prediction experiments.
+Model versioning strategy for P4NTHE0N ML components: RAG embeddings, LLM inference, and jackpot prediction experiments.
 
 ## Current Models
 
@@ -39,7 +39,7 @@ dvc init
 dvc add models/all-MiniLM-L6-v2.onnx
 
 # Configure local remote storage
-dvc remote add -d local C:\P4NTH30N\model-store
+dvc remote add -d local C:\P4NTHE0N\model-store
 ```
 
 ### Phase 3: MLflow (Post-Revenue)

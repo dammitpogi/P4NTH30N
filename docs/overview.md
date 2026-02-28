@@ -1,10 +1,10 @@
-# Gemini Context: P4NTH30N Platform
+# Gemini Context: P4NTHE0N Platform
 
-This document provides a comprehensive overview of the P4NTH30N project, its architecture, and development conventions to guide future interactions.
+This document provides a comprehensive overview of the P4NTHE0N project, its architecture, and development conventions to guide future interactions.
 
 ## Project Overview
 
-P4NTH30N is a sophisticated, multi-agent automation platform written in C#/.NET. Its primary purpose is to interact with online casino game portals, specifically **FireKirin** and **OrionStars**.
+P4NTHE0N is a sophisticated, multi-agent automation platform written in C#/.NET. Its primary purpose is to interact with online casino game portals, specifically **FireKirin** and **OrionStars**.
 
 The system is designed to:
 1.  **Discover Jackpots:** Automatically retrieve jackpot and player balance information.
@@ -25,12 +25,12 @@ The entire system is comprised of multiple projects within a single .NET solutio
 The project is a standard .NET solution. To build all projects, run the following command from the root directory:
 
 ```shell
-dotnet build P4NTH30N.slnx
+dotnet build P4NTHE0N.slnx
 ```
 
 ### Running the Platform
 
-The P4NTH30N platform requires at least two agents to be running concurrently. You will need to open two separate terminals.
+The P4NTHE0N platform requires at least two agents to be running concurrently. You will need to open two separate terminals.
 
 **Terminal 1: Run the `H0UND` (Polling + Analytics Agent)**
 ```shell
@@ -50,7 +50,7 @@ Before operating the platform, verify it’s properly configured:
 
 ```bash
 # 1. Verify build
-dotnet build P4NTH30N.slnx --no-restore
+dotnet build P4NTHE0N.slnx --no-restore
 # Check: No errors or warnings (except nullable warnings if enabled)
 
 # 2. Verify formatting
@@ -62,7 +62,7 @@ dotnet test UNI7T35T/UNI7T35T.csproj
 # Check: All tests pass (exit code 0)
 
 # 4. Verify dependencies
-dotnet restore P4NTH30N.slnx
+dotnet restore P4NTHE0N.slnx
 # Check: All packages restore successfully
 
 # 5. Runtime verification
@@ -100,4 +100,4 @@ dotnet watch test --project ./UNI7T35T/UNI7T35T.csproj
 *   **Tier Suppression (Spin* Caps):** Credentials include per-tier Spin settings (`SpinGrand/Major/Minor/Mini`) that gate whether a tier is eligible for forecasting/signals. If a tier threshold exceeds sanity caps (Mini > 30, Minor > 134, Major > 630, Grand > 1800), that tier is automatically disabled by setting the corresponding `Spin* = false` during credential persistence. Data collection + DPD continue.
 *   **Technology Mix:** The platform uses a clever mix of technologies. Selenium is used only for the initial UI interaction (login/navigation), while the more critical jackpot data is retrieved via more reliable, direct API calls (HTTP/WebSockets), as seen in `FireKirin.cs`.
 *   **In-Progress Migration:** The presence of "New\*" entities (e.g., `Credential New.cs`) and copied game logic files (`FireKirin New.cs`) indicates an ongoing refactoring effort to move from a game-centric data model to a credential-centric one. This is an important consideration for any future changes.
-*   **Configuration:** The system relies on a reachable MongoDB instance. Default connection settings come from environment variables: `P4NTH30N_MONGODB_URI` and `P4NTH30N_MONGODB_DB`. H0UND analytics reads can be switched with `H0UND_ANALYTICS_STORE=EF|MONGO` (default: `EF`).
+*   **Configuration:** The system relies on a reachable MongoDB instance. Default connection settings come from environment variables: `P4NTHE0N_MONGODB_URI` and `P4NTHE0N_MONGODB_DB`. H0UND analytics reads can be switched with `H0UND_ANALYTICS_STORE=EF|MONGO` (default: `EF`).

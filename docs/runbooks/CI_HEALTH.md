@@ -13,8 +13,8 @@
 ```yaml
 # .github/workflows/pr-validation.yml gates
 steps:
-  - dotnet restore P4NTH30N.slnx
-  - dotnet build P4NTH30N.slnx --no-restore
+  - dotnet restore P4NTHE0N.slnx
+  - dotnet build P4NTHE0N.slnx --no-restore
   - dotnet test UNI7T35T/UNI7T35T.csproj --no-build
   - dotnet csharpier check
 ```

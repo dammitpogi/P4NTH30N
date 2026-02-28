@@ -1,6 +1,6 @@
 # Contributing Guide
 
-Guidelines for contributing to P4NTH30N.
+Guidelines for contributing to P4NTHE0N.
 
 ## Quick Links
 
@@ -44,18 +44,18 @@ Guidelines for contributing to P4NTH30N.
 # Click "Fork" button on GitHub
 
 # 2. Clone your fork
-git clone https://github.com/YOUR_USERNAME/P4NTH30N.git
-cd P4NTH30N
+git clone https://github.com/YOUR_USERNAME/P4NTHE0N.git
+cd P4NTHE0N
 
 # 3. Add upstream remote
-git remote add upstream https://github.com/original/P4NTH30N.git
+git remote add upstream https://github.com/original/P4NTHE0N.git
 
 # 4. Setup environment
 .\scripts\setup\check-prerequisites.ps1
 .\scripts\setup\setup-mongodb.ps1 -StartService
 
 # 5. Build and test
-dotnet build P4NTH30N.slnx
+dotnet build P4NTHE0N.slnx
 dotnet test UNI7T35T/UNI7T35T.csproj
 ```
 
@@ -97,7 +97,7 @@ dotnet csharpier .
 dotnet test UNI7T35T/UNI7T35T.csproj
 
 # Build solution
-dotnet build P4NTH30N.slnx
+dotnet build P4NTHE0N.slnx
 ```
 
 ### 3. Commit Changes
@@ -157,7 +157,7 @@ int count = 0;     // ✓ Good
 Int32 count = 0;   // ✗ Avoid
 
 // File-scoped namespaces
-namespace P4NTH30N.C0MMON;  // ✓ Good
+namespace P4NTHE0N.C0MMON;  // ✓ Good
 
 // Primary constructors
 public class MyClass(IMyService service)  // ✓ Good
@@ -513,7 +513,7 @@ Contributors will be:
 - Mentioned in release notes
 - Credited in relevant documentation
 
-Thank you for contributing to P4NTH30N!
+Thank you for contributing to P4NTHE0N!
 
 ---
 

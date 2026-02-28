@@ -4,8 +4,8 @@
 
 param(
 	[string]$VmName = "H4NDv2-Production",
-	[string]$H4ndProject = "C:\P4NTH30N\H4ND\H4ND.csproj",
-	[string]$PublishDir = "C:\P4NTH30N\publish\h4nd-vm-full",
+	[string]$H4ndProject = "C:\P4NTHE0N\H4ND\H4ND.csproj",
+	[string]$PublishDir = "C:\P4NTHE0N\publish\h4nd-vm-full",
 	[string]$VmDeployDir = "C:\H4ND",
 	[string]$Configuration = "Release",
 	[switch]$SkipBuild,
@@ -32,7 +32,7 @@ if (-not $SkipBuild) {
 
 if (-not $SkipTests) {
 	Write-Host "[2/5] Running tests..." -ForegroundColor Yellow
-	dotnet run --project C:\P4NTH30N\UNI7T35T\UNI7T35T.csproj
+	dotnet run --project C:\P4NTHE0N\UNI7T35T\UNI7T35T.csproj
 	if ($LASTEXITCODE -ne 0) { throw "Tests failed" }
 	Write-Host "  Tests passed" -ForegroundColor Green
 } else {
@@ -45,17 +45,33 @@ if (Test-Path $PublishDir) { Remove-Item $PublishDir -Recurse -Force }
 dotnet publish $H4ndProject -c $Configuration -r win-x64 -o $PublishDir
 if ($LASTEXITCODE -ne 0) { throw "Publish failed" }
 
-# Copy VM-specific appsettings
+# Copy VM-specific appsettings with updated MCP configuration
 $vmAppSettings = @{
-	P4NTH30N = @{
+	P4NTHHE0N = @{
 		Database = @{
-			ConnectionString = "mongodb://192.168.56.1:27017/P4NTH30N?directConnection=true"
-			DatabaseName = "P4NTH30N"
+			ConnectionString = "mongodb://localhost:27017/P4NTH30N?directConnection=true"
+			DatabaseName = "P4NTHE0N"
 		}
 		H4ND = @{
 			Cdp = @{
-				HostIp = "192.168.56.1"
+				HostIp = "localhost"
 				Port = 9222
+			}
+			MCP = @{
+				RAG = @{
+					Enabled = $true
+					Host = "localhost"
+					Port = 5100
+				}
+				ChromeDevTools = @{
+					Enabled = $true
+					Host = "localhost"
+					Port = 5301
+				}
+				Tools = @{
+					Enabled = $true
+					Workspace = "C:\P4NTH30N"
+				}
 			}
 		}
 	}

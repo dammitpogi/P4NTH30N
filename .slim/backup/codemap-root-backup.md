@@ -1,4 +1,4 @@
-# Repository Atlas: P4NTH30N Platform
+# Repository Atlas: P4NTHE0N Platform
 
 ## Project Responsibility
 Multi-agent automation platform for online casino game portals (FireKirin and OrionStars). Event-driven system with two primary agents (HUN7ER analytics and H4ND automation) communicating asynchronously via MongoDB to discover jackpots, generate signals, and automate gameplay.
@@ -10,7 +10,7 @@ Multi-agent automation platform for online casino game portals (FireKirin and Or
 - `T00L5ET/`: Manual utilities for database operations and one-off tasks
 - `UNI7T35T/`: Testing platform for features and bug simulation
 - `C0MMON/`: Shared library for all components
-- `P4NTH30N.slnx`: .NET solution file
+- `P4NTHE0N.slnx`: .NET solution file
 - `HunterConfig.json`: Configuration for prize tiers, rate limits, watchdog
 
 ## Repository Directory Map

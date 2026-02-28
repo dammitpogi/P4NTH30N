@@ -1,4 +1,4 @@
-# P4NTH30N Governance Framework
+# P4NTHE0N Governance Framework
 
 > **Owner**: Oracle Decision Board
 > **Staleness**: 90 days (architecture-tier)
@@ -94,7 +94,7 @@ PROPOSED → APPROVED (≥90%) → IN_PROGRESS → COMPLETED
 ## 5. Change Management
 
 ### Pre-merge Checklist
-1. `dotnet build P4NTH30N.slnx` — zero errors
+1. `dotnet build P4NTHE0N.slnx` — zero errors
 2. `dotnet test UNI7T35T/UNI7T35T.csproj` — all tests pass
 3. `dotnet csharpier check` — formatting clean
 4. Relevant AGENTS.md updated if behavior changed

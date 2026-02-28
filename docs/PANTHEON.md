@@ -4,7 +4,7 @@
 
 ## Overview
 
-PANTHEON is a self-funded agentic environment that coordinates multiple AI agents for automated software development, testing, and operations. Originally built for the P4NTH30N casino automation project, it has evolved into a general-purpose agentic platform.
+PANTHEON is a self-funded agentic environment that coordinates multiple AI agents for automated software development, testing, and operations. Originally built for the P4NTHE0N casino automation project, it has evolved into a general-purpose agentic platform.
 
 ---
 
@@ -19,12 +19,12 @@ PANTHEON is a self-funded agentic environment that coordinates multiple AI agent
 | **Designer** | OpenCode | Implementation research, architecture | ✅ Active |
 | **Orchestrator** | OpenCode | Coordinates one-time changes | ✅ Active |
 | **OpenFixer** | OpenCode | **Primary Fixer** - External edits, CLI operations | ✅ Active |
-| **WindFixer** | WindSurf | Bulk P4NTH30N directory work only | ✅ Active |
+| **WindFixer** | WindSurf | Bulk P4NTHE0N directory work only | ✅ Active |
 | **ForgeWright** | OpenCode | Bug handling via unit testing | ✅ Active |
 | **Explorer** | OpenCode | Codebase discovery | ⚠️ Buggy (model fallback) |
 | **Librarian** | OpenCode | Documentation lookup | ⚠️ Buggy (model fallback) |
 
-### P4NTH30N Project Agents
+### P4NTHE0N Project Agents
 
 | Agent | Former Name | Purpose |
 |-------|-------------|---------|
@@ -32,7 +32,7 @@ PANTHEON is a self-funded agentic environment that coordinates multiple AI agent
 | **HUN7ER** | H0UND | Signal hunting and prediction |
 | **H4ND** | H4ND | Browser automation |
 | **OpenFixer** | Fixer | **Primary Fixer** - External edits, CLI operations |
-| **WindFixer** | Fixer | Bulk P4NTH30N directory work only |
+| **WindFixer** | Fixer | Bulk P4NTHE0N directory work only |
 
 ---
 
@@ -45,11 +45,11 @@ PANTHEON is a self-funded agentic environment that coordinates multiple AI agent
 - Cost: Higher per-prompt but better for orchestration
 
 ### WindSurf
-- **Bulk P4NTH30N work only**
+- **Bulk P4NTHE0N work only**
 - Opus 4.6 Thinking (preferred model)
 - Cheaper per-prompt billing
 - **WindFixer** handles bulk directory work
-- **Cannot use CLI tools or edit outside C:\P4NTH30N**
+- **Cannot use CLI tools or edit outside C:\P4NTHE0N**
 
 ---
 
@@ -120,9 +120,9 @@ C:\Users\paulc\.config\opencode\agents\
 └── librarian.md      # Buggy
 ```
 
-### P4NTH30N Project
+### P4NTHE0N Project
 ```
-C:\P4NTH30N\
+C:\P4NTHE0N\
 ├── H0UND\           # Vision (was W4TCHD0G)
 ├── HUN7ER\          # Signal hunting (was H0UND)
 ├── H4ND\            # Browser automation

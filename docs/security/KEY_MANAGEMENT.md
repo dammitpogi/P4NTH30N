@@ -1,21 +1,21 @@
-# P4NTH30N Key Management Guide (INFRA-009)
+# P4NTHE0N Key Management Guide (INFRA-009)
 
 ## Overview
 
-P4NTH30N uses **AES-256-GCM** authenticated encryption with a locally stored master key to protect credentials at rest in MongoDB. Zero cloud dependencies, zero recurring costs.
+P4NTHE0N uses **AES-256-GCM** authenticated encryption with a locally stored master key to protect credentials at rest in MongoDB. Zero cloud dependencies, zero recurring costs.
 
 ## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                    Master Key File                          │
-│  C:\ProgramData\P4NTH30N\master.key (32 bytes, ACL locked) │
+│  C:\ProgramData\P4NTHE0N\master.key (32 bytes, ACL locked) │
 └─────────────────┬───────────────────────────────────────────┘
                   │
                   ▼  PBKDF2-SHA512 (600k iterations)
 ┌─────────────────────────────────────────────────────────────┐
 │              Derived Encryption Key (32 bytes)              │
-│         Salt: "P4NTH30N.CRED3N7IAL.v1" (per purpose)       │
+│         Salt: "P4NTHE0N.CRED3N7IAL.v1" (per purpose)       │
 └─────────────────┬───────────────────────────────────────────┘
                   │
                   ▼  AES-256-GCM
@@ -42,7 +42,7 @@ P4NTH30N uses **AES-256-GCM** authenticated encryption with a locally stored mas
 
 | File | Path | Purpose |
 |------|------|---------|
-| Master Key | `C:\ProgramData\P4NTH30N\master.key` | Production master key |
+| Master Key | `C:\ProgramData\P4NTHE0N\master.key` | Production master key |
 | Key Generator | `scripts/security/generate-master-key.ps1` | Key creation script |
 | Encryption Service | `C0MMON/Security/EncryptionService.cs` | AES-256-GCM operations |
 | Key Management | `C0MMON/Security/KeyManagement.cs` | Key lifecycle management |
@@ -57,7 +57,7 @@ P4NTH30N uses **AES-256-GCM** authenticated encryption with a locally stored mas
 .\scripts\security\generate-master-key.ps1
 
 # Custom path (development)
-.\scripts\security\generate-master-key.ps1 -KeyPath "C:\Dev\P4NTH30N\test.key"
+.\scripts\security\generate-master-key.ps1 -KeyPath "C:\Dev\P4NTHE0N\test.key"
 ```
 
 ### 2. Use in Code
@@ -65,7 +65,7 @@ P4NTH30N uses **AES-256-GCM** authenticated encryption with a locally stored mas
 ```csharp
 // Initialize key management and encryption
 using KeyManagement keyMgmt = new();
-keyMgmt.LoadMasterKey();  // Loads from C:\ProgramData\P4NTH30N\master.key
+keyMgmt.LoadMasterKey();  // Loads from C:\ProgramData\P4NTHE0N\master.key
 
 using EncryptionService encSvc = new(keyMgmt);
 

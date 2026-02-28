@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace P4NTH30N.DeployLogAnalyzer;
+namespace P4NTHE0N.DeployLogAnalyzer;
 
 /// <summary>
 /// System health validation for deployment readiness.
@@ -12,7 +12,7 @@ public sealed class HealthChecker
 	private readonly string _mongoConnectionString;
 	private readonly string _dataDirectory;
 
-	public HealthChecker(string mongoConnectionString = "mongodb://localhost:27017/P4NTH30N", string dataDirectory = "C:\\P4NTH30N", LmStudioClient? lmClient = null)
+	public HealthChecker(string mongoConnectionString = "mongodb://localhost:27017/P4NTHE0N", string dataDirectory = "C:\\P4NTHE0N", LmStudioClient? lmClient = null)
 	{
 		_mongoConnectionString = mongoConnectionString;
 		_dataDirectory = dataDirectory;

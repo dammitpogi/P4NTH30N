@@ -1,8 +1,17 @@
-# P4NTH30N RAG Architecture (INFRA-010)
+# P4NTHE0N RAG Architecture (INFRA-010)
 
 ## Overview
 
-Retrieval-Augmented Generation (RAG) system for LLM inference, using local FAISS vector search and MongoDB keyword search with hybrid fusion. Zero cloud dependencies, zero recurring costs.
+Retrieval-Augmented Generation (RAG) system for LLM inference, using local vector search and MongoDB-backed metadata. Zero cloud dependencies, zero recurring costs.
+
+Canonical runtime stack (production):
+- `src/RAG.McpHost/Program.cs` (MCP host process)
+- `src/RAG/McpServer.cs` (tool surface: `rag_query`, `rag_ingest`, `rag_ingest_file`, `rag_status`, `rag_rebuild_index`, `rag_search_similar`)
+- `tools/mcp-development/servers/toolhive-gateway/config/rag-server.json` (ToolHive registration)
+
+Legacy/reference implementation:
+- `C0MMON/RAG/*` remains available as library-level patterns and interfaces.
+- Agent/tool integration should prefer the MCP runtime above as the canonical path.
 
 ## Architecture
 
@@ -31,7 +40,7 @@ Retrieval-Augmented Generation (RAG) system for LLM inference, using local FAISS
 │       │       │             │                                 │
 │  ┌────┴─────┐ │  ┌──────────┴───────────────┐                 │
 │  │Embedding │ │  │ RagDocument Collection   │                 │
-│  │ Service  │ │  │ (MongoDB: P4NTH30N.RAG)  │                 │
+│  │ Service  │ │  │ (MongoDB: P4NTHE0N.RAG)  │                 │
 │  │ (Python) │ │  └──────────────────────────┘                 │
 │  └──────────┘ │                                               │
 └───────────────┴───────────────────────────────────────────────┘
@@ -41,18 +50,15 @@ Retrieval-Augmented Generation (RAG) system for LLM inference, using local FAISS
 
 | Component | File | Purpose |
 |-----------|------|---------|
-| **IEmbeddingService** | `C0MMON/RAG/IEmbeddingService.cs` | Contract for text → vector embedding |
-| **EmbeddingService** | `C0MMON/RAG/EmbeddingService.cs` | Python bridge to sentence-transformers |
-| **IVectorStore** | `C0MMON/RAG/IVectorStore.cs` | Contract for vector CRUD + search |
-| **FaissVectorStore** | `C0MMON/RAG/FaissVectorStore.cs` | Python bridge to FAISS index |
-| **IHybridSearch** | `C0MMON/RAG/IHybridSearch.cs` | Contract for vector + keyword fusion |
-| **HybridSearch** | `C0MMON/RAG/HybridSearch.cs` | RRF-based hybrid search |
-| **IContextBuilder** | `C0MMON/RAG/IContextBuilder.cs` | Contract for LLM prompt assembly |
-| **ContextBuilder** | `C0MMON/RAG/ContextBuilder.cs` | Token-budget-aware prompt builder |
-| **RagDocument** | `C0MMON/RAG/RagDocument.cs` | Document entity with metadata |
-| **SearchResult** | `C0MMON/RAG/SearchResult.cs` | Search result with score + method |
-| **faiss-bridge.py** | `scripts/rag/faiss-bridge.py` | FAISS Python subprocess |
-| **embedding-bridge.py** | `scripts/rag/embedding-bridge.py` | sentence-transformers subprocess |
+| **RAG.McpHost** | `src/RAG.McpHost/Program.cs` | Canonical MCP host process |
+| **RagMcpServer** | `src/RAG/McpServer.cs` | Canonical 6-tool MCP surface |
+| **RagService** | `src/RAG/RagService.cs` | Query/orchestration core |
+| **IngestionPipeline** | `src/RAG/IngestionPipeline.cs` | Chunk/sanitize/embed/store pipeline |
+| **FaissVectorStore** | `src/RAG/FaissVectorStore.cs` | Vector index storage and persistence |
+| **EmbeddingService** | `src/RAG/EmbeddingService.cs` | ONNX + Python bridge embeddings |
+| **Python bridge** | `src/RAG/PythonBridge/embedding_bridge.py` | FastAPI embedding service |
+| **ToolHive config** | `tools/mcp-development/servers/toolhive-gateway/config/rag-server.json` | Canonical server registration |
+| **Library reference** | `C0MMON/RAG/*` | Interface/pattern reference and legacy flow |
 
 ## Python Dependencies
 
@@ -62,7 +68,7 @@ pip install faiss-cpu numpy sentence-transformers torch
 
 ## MongoDB Schema
 
-### RAG Collection: `P4NTH30N.RAG`
+### RAG Collection: `P4NTHE0N.RAG`
 
 ```javascript
 {

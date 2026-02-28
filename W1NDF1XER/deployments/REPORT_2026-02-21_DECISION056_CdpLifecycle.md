@@ -54,7 +54,7 @@
 ## Integration Test Flow
 
 ```
-P4NTH30N.exe burn-in
+P4NTHE0N.exe burn-in
   → UnifiedEntryPoint.RunBurnIn()
     → CdpLifecycleManager created from appsettings.json
     → BurnInController receives ICdpLifecycleManager

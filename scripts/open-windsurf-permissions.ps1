@@ -9,7 +9,7 @@ Write-Host ""
 # Paths
 $vscodeSettingsPath = "$env:APPDATA\Code\User\settings.json"
 $windsurfSettingsPath = "$env:APPDATA\Windsurf\User\settings.json"
-$projectSettingsPath = "C:\P4NTH30N\.windsurf\settings.json"
+$projectSettingsPath = "C:\P4NTHE0N\.windsurf\settings.json"
 
 Write-Host "Step 1: Creating WindSurf configuration..." -ForegroundColor Yellow
 
@@ -50,7 +50,7 @@ Merge-Settings $windsurfSettingsPath $projectSettings
 
 Write-Host ""
 Write-Host "Step 2: Verifying .codeiumignore..." -ForegroundColor Yellow
-$codeiumIgnorePath = "C:\P4NTH30N\.codeiumignore"
+$codeiumIgnorePath = "C:\P4NTHE0N\.codeiumignore"
 if (Test-Path $codeiumIgnorePath) {
     Write-Host "  OK: $codeiumIgnorePath" -ForegroundColor Green
 } else {
@@ -61,7 +61,7 @@ Write-Host ""
 Write-Host "Step 3: Testing write permissions..." -ForegroundColor Yellow
 
 try {
-    $testFile = "C:\P4NTH30N\.windsurf\permission_test.tmp"
+    $testFile = "C:\P4NTHE0N\.windsurf\permission_test.tmp"
     "test" | Set-Content $testFile
     Remove-Item $testFile
     Write-Host "  OK: Write permissions working" -ForegroundColor Green

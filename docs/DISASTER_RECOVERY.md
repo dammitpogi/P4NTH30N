@@ -26,9 +26,9 @@
 
 # Scheduled task (run as admin)
 $action = New-ScheduledTaskAction -Execute "powershell.exe" `
-    -Argument "-File C:\P4NTH30N\scripts\backup\mongodb-backup.ps1"
+    -Argument "-File C:\P4NTHE0N\scripts\backup\mongodb-backup.ps1"
 $trigger = New-ScheduledTaskTrigger -Daily -At "00:00"
-Register-ScheduledTask -TaskName "P4NTH30N-Backup" -Action $action -Trigger $trigger
+Register-ScheduledTask -TaskName "P4NTHE0N-Backup" -Action $action -Trigger $trigger
 ```
 
 ## Restore Procedures
@@ -36,10 +36,10 @@ Register-ScheduledTask -TaskName "P4NTH30N-Backup" -Action $action -Trigger $tri
 ### Standard Restore
 ```powershell
 # List available backups
-Get-ChildItem C:\P4NTH30N\backups -Filter "*.zip" | Sort-Object CreationTime -Descending
+Get-ChildItem C:\P4NTHE0N\backups -Filter "*.zip" | Sort-Object CreationTime -Descending
 
 # Restore latest
-.\scripts\restore\mongodb-restore.ps1 -BackupArchive "C:\P4NTH30N\backups\P4NTH30N_LATEST.zip"
+.\scripts\restore\mongodb-restore.ps1 -BackupArchive "C:\P4NTHE0N\backups\P4NTHE0N_LATEST.zip"
 
 # Restore with collection replacement
 .\scripts\restore\mongodb-restore.ps1 -BackupArchive "path\to\backup.zip" -Drop

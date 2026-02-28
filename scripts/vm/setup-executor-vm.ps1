@@ -11,10 +11,10 @@
     - Chrome + Synergy Client + OBS pre-configured
 
 .PARAMETER VMName
-    Name for the Hyper-V VM. Default: P4NTH30N-Executor
+    Name for the Hyper-V VM. Default: P4NTHE0N-Executor
 
 .PARAMETER VHDXPath
-    Path for the virtual hard disk. Default: C:\VMs\P4NTH30N-Executor.vhdx
+    Path for the virtual hard disk. Default: C:\VMs\P4NTHE0N-Executor.vhdx
 
 .PARAMETER ISOPath
     Path to Windows 10 ISO for installation. Required for new VMs.
@@ -42,7 +42,7 @@
 
 [CmdletBinding()]
 param(
-    [string]$VMName = "P4NTH30N-Executor",
+    [string]$VMName = "P4NTHE0N-Executor",
     [string]$VHDXPath = "C:\VMs\$VMName.vhdx",
     [string]$ISOPath,
     [int]$CPUCount = 4,
@@ -66,7 +66,7 @@ function Write-Status {
 
 # ── Prerequisites ─────────────────────────────────────────────────────────
 Write-Host ""
-Write-Host "P4NTH30N Executor VM Setup (VM-002)" -ForegroundColor Cyan
+Write-Host "P4NTHE0N Executor VM Setup (VM-002)" -ForegroundColor Cyan
 Write-Host "=====================================" -ForegroundColor Cyan
 Write-Host ""
 

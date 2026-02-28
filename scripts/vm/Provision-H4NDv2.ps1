@@ -75,7 +75,7 @@ function Write-Status {
 
 # ── Prerequisites ────────────────────────────────────────────────────────
 Write-Host ""
-Write-Host "P4NTH30N H4NDv2 VM Provisioning (INFRA-VM-001)" -ForegroundColor Cyan
+Write-Host "P4NTHE0N H4NDv2 VM Provisioning (INFRA-VM-001)" -ForegroundColor Cyan
 Write-Host "================================================" -ForegroundColor Cyan
 Write-Host ""
 

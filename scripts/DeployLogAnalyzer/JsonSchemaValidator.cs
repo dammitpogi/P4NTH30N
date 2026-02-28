@@ -4,7 +4,7 @@ using System.Text.Json;
 using NJsonSchema;
 using NJsonSchema.Validation;
 
-namespace P4NTH30N.DeployLogAnalyzer;
+namespace P4NTHE0N.DeployLogAnalyzer;
 
 /// <summary>
 /// Deterministic JSON Schema validator for credential configurations.
@@ -148,7 +148,7 @@ public sealed class JsonSchemaValidator
 			return projectPath;
 
 		// Try absolute known path
-		string absolutePath = @"C:\P4NTH30N\scripts\DeployLogAnalyzer\schemas\credential.json";
+		string absolutePath = @"C:\P4NTHE0N\scripts\DeployLogAnalyzer\schemas\credential.json";
 		if (File.Exists(absolutePath))
 			return absolutePath;
 

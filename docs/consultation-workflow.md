@@ -8,7 +8,7 @@
 
 ## Overview
 
-This document defines the tiered consultation model for P4NTH30N platform operations, ensuring efficient resource utilization while maintaining system reliability.
+This document defines the tiered consultation model for P4NTHE0N platform operations, ensuring efficient resource utilization while maintaining system reliability.
 
 ---
 
@@ -26,7 +26,7 @@ This document defines the tiered consultation model for P4NTH30N platform operat
 | **Examples** | Status checks, threshold queries, signal monitoring |
 
 **Tools:**
-- MCP-P4NTH30N server queries
+- MCP-P4NTHE0N server queries
 - Dashboard monitoring
 - Automated alerts
 

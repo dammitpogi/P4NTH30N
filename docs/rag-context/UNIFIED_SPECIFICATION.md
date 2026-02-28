@@ -395,7 +395,7 @@ async function executeSearch(args: SearchInput): Promise<SearchOutput> {
 # RAG-001 Pre-Validation with Retrieval Accuracy Gate
 
 param(
-    [string]$MongoDBConnectionString = "mongodb://localhost:27017/P4NTH30N",
+    [string]$MongoDBConnectionString = "mongodb://localhost:27017/P4NTHE0N",
     [string]$LMStudioUrl = "http://localhost:1234",
     [string]$QdrantUrl = "http://localhost:30333",
     [string]$McpServerUrl = "http://localhost:3000"
@@ -597,7 +597,7 @@ if ($failed -eq 0 -and $accuracy -ge 80) {
 ### 8. C# Interface (Aligned)
 
 ```csharp
-namespace P4NTH30N.C0MMON.Interfaces;
+namespace P4NTHE0N.C0MMON.Interfaces;
 
 public interface IRagContext
 {

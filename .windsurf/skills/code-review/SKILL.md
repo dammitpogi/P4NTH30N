@@ -1,3 +1,8 @@
+---
+name: code-review
+description: Perform comprehensive code review following P4NTH30N standards. Check for style compliance, security issues, performance concerns, and architectural alignment. Use before committing changes, reviewing PRs, quality assurance, or during refactoring.
+---
+
 # Code Review
 
 ## Description
@@ -26,8 +31,6 @@ Or ask Cascade:
 - [ ] Uses primary constructors where appropriate
 - [ ] File-scoped namespaces preferred
 - [ ] No `var` (explicit types required)
-- [ ] Lines < 170 characters
-- [ ] CSharpier formatted
 
 ### Security
 - [ ] No hardcoded credentials
@@ -44,7 +47,7 @@ Or ask Cascade:
 - [ ] No blocking calls in async methods
 
 ### Architecture
-- [ ] Follows SOLID principles
+- [ ] Follows SOLID and DDD principles
 - [ ] Interface segregation respected
 - [ ] Dependency injection used
 - [ ] No circular dependencies

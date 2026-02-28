@@ -10,7 +10,7 @@
 
 **Fix**: Add `?directConnection=true` to the connection string:
 ```
-mongodb://192.168.56.1:27017/P4NTH30N?directConnection=true
+mongodb://192.168.56.1:27017/P4NTHE0N?directConnection=true
 ```
 
 ---

@@ -4,10 +4,10 @@ Complete documentation of MongoDB collections, document schemas, and entity rela
 
 ## Overview
 
-P4NTH30N uses MongoDB as its primary data store. Data is organized into collections representing different domains:
+P4NTHE0N uses MongoDB as its primary data store. Data is organized into collections representing different domains:
 
 ```
-MongoDB (P4NTH30N database)
+MongoDB (P4NTHE0N database)
 ├── CRED3N7IAL    - User credentials and settings
 ├── EV3NT         - Events, signals, and audit log
 ├── ERR0R         - Validation and processing errors

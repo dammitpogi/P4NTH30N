@@ -1,6 +1,6 @@
 # H4ND Component Guide
 
-Automation agent — "The Hands" of P4NTH30N.
+Automation agent — "The Hands" of P4NTHE0N.
 
 ## Overview
 

@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Generates a new P4NTH30N master encryption key for AES-256-GCM credential protection.
+    Generates a new P4NTHE0N master encryption key for AES-256-GCM credential protection.
 
 .DESCRIPTION
     Creates a 256-bit (32-byte) cryptographically random master key and stores it
@@ -13,7 +13,7 @@
     will make ALL previously encrypted credentials unrecoverable unless you have a backup.
 
 .PARAMETER KeyPath
-    Full path to the master key file. Default: C:\ProgramData\P4NTH30N\master.key
+    Full path to the master key file. Default: C:\ProgramData\P4NTHE0N\master.key
 
 .PARAMETER Force
     Overwrite an existing key file. Use with extreme caution.
@@ -42,7 +42,7 @@
 [CmdletBinding()]
 param(
     [Parameter()]
-    [string]$KeyPath = "C:\ProgramData\P4NTH30N\master.key",
+    [string]$KeyPath = "C:\ProgramData\P4NTHE0N\master.key",
 
     [Parameter()]
     [switch]$Force,
@@ -54,7 +54,7 @@ param(
 $ErrorActionPreference = "Stop"
 
 Write-Host "╔════════════════════════════════════════════════════════════════╗" -ForegroundColor Cyan
-Write-Host "║  P4NTH30N Master Key Generator (INFRA-009)                   ║" -ForegroundColor Cyan
+Write-Host "║  P4NTHE0N Master Key Generator (INFRA-009)                   ║" -ForegroundColor Cyan
 Write-Host "╚════════════════════════════════════════════════════════════════╝" -ForegroundColor Cyan
 Write-Host ""
 

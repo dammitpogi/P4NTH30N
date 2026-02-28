@@ -96,7 +96,7 @@ if (-not $HostIP) { $HostIP = "192.168.56.1" }
 if ($Port -eq 0)  { $Port = 9222 }
 
 Write-Host ""
-Write-Host "P4NTH30N CDP Connectivity Smoke Test" -ForegroundColor Cyan
+Write-Host "P4NTHE0N CDP Connectivity Smoke Test" -ForegroundColor Cyan
 Write-Host "=====================================" -ForegroundColor Cyan
 Write-Host "  Target: $HostIP`:$Port"
 Write-Host "  Timeout: ${TimeoutSec}s"

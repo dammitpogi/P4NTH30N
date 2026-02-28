@@ -7,7 +7,7 @@
 
 ## Overview
 
-WindSurf is the AI-powered IDE used for P4NTH30N development. This document describes the WindSurf configuration and workflow integration.
+WindSurf is the AI-powered IDE used for P4NTHE0N development. This document describes the WindSurf configuration and workflow integration.
 
 ---
 
@@ -148,7 +148,7 @@ Exclude files from AI context (similar to .gitignore).
 
 ---
 
-## Integration with P4NTH30N
+## Integration with P4NTHE0N
 
 ### Decision Framework
 

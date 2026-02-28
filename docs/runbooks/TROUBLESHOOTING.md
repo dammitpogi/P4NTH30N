@@ -10,17 +10,17 @@ Get-Service MongoDB
 Start-Service MongoDB
 
 # Check connection string
-$env:P4NTH30N_MONGO_CONNECTION
+$env:P4NTHE0N_MONGO_CONNECTION
 # Default: mongodb://localhost:27017
 ```
 
 ### High Disk Usage
 ```powershell
 # Check database size
-mongosh --eval "use P4NTH30N; db.stats()"
+mongosh --eval "use P4NTHE0N; db.stats()"
 
 # Compact collections
-mongosh --eval "use P4NTH30N; db.runCommand({compact: 'EV3NT'})"
+mongosh --eval "use P4NTHE0N; db.runCommand({compact: 'EV3NT'})"
 ```
 
 ## H0UND Issues
@@ -74,7 +74,7 @@ mongosh --eval "use P4NTH30N; db.runCommand({compact: 'EV3NT'})"
 ### Check System Health
 ```powershell
 # Build verification
-dotnet build P4NTH30N.slnx
+dotnet build P4NTHE0N.slnx
 
 # Run tests
 dotnet run --project UNI7T35T\UNI7T35T.csproj

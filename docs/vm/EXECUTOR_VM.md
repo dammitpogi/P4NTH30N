@@ -1,4 +1,4 @@
-# P4NTH30N Executor VM Configuration (VM-002)
+# P4NTHE0N Executor VM Configuration (VM-002)
 
 ## Overview
 
@@ -73,7 +73,7 @@ HOST (FourEyes)                          VM (Executor)
 
 1. Set as **Client**
 2. Server IP: `<HOST_IP>`
-3. Screen name: `P4NTH30N-Executor`
+3. Screen name: `P4NTHE0N-Executor`
 4. Port: 24800
 5. Auto-start on boot
 
@@ -83,10 +83,10 @@ HOST (FourEyes)                          VM (Executor)
 
 ```powershell
 # Allow RTMP from VM
-netsh advfirewall firewall add rule name="P4NTH30N RTMP" dir=in action=allow protocol=tcp localport=1935
+netsh advfirewall firewall add rule name="P4NTHE0N RTMP" dir=in action=allow protocol=tcp localport=1935
 
 # Allow Synergy to VM
-netsh advfirewall firewall add rule name="P4NTH30N Synergy" dir=in action=allow protocol=tcp localport=24800
+netsh advfirewall firewall add rule name="P4NTHE0N Synergy" dir=in action=allow protocol=tcp localport=24800
 ```
 
 ### Port Summary
@@ -117,7 +117,7 @@ Monitor VM resource usage during operation:
 
 ```powershell
 # Check VM resource usage
-Get-VM -Name "P4NTH30N-Executor" | Select-Object Name, State, CPUUsage, MemoryAssigned, Uptime
+Get-VM -Name "P4NTHE0N-Executor" | Select-Object Name, State, CPUUsage, MemoryAssigned, Uptime
 ```
 
 **Expected usage under load:**

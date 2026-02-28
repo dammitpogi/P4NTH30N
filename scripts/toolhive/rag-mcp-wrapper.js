@@ -5,13 +5,13 @@
 const { spawn } = require('child_process');
 const path = require('path');
 
-const RAG_EXE = 'C:/ProgramData/P4NTH30N/bin/RAG.McpHost.exe';
+const RAG_EXE = 'C:/ProgramData/P4NTHE0N/bin/RAG.McpHost.exe';
 const RAG_ARGS = [
   '--port', '5001',
-  '--index', 'C:/ProgramData/P4NTH30N/rag-index',
-  '--model', 'C:/ProgramData/P4NTH30N/models/all-MiniLM-L6-v2.onnx',
+  '--index', 'C:/ProgramData/P4NTHE0N/rag-index',
+  '--model', 'C:/ProgramData/P4NTHE0N/models/all-MiniLM-L6-v2.onnx',
   '--bridge', 'http://127.0.0.1:5000',
-  '--mongo', 'mongodb://localhost:27017/P4NTH30N'
+  '--mongo', 'mongodb://localhost:27017/P4NTHE0N'
 ];
 
 console.error('Starting RAG MCP Host...');

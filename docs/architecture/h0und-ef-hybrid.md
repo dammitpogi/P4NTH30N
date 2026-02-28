@@ -10,14 +10,14 @@ Refactor H0UND toward SOLID/DDD boundaries while adopting Entity Framework for a
 - Error logging and process events remain Mongo-backed.
 
 ### Uses EF (read model)
-- Analytics reads can use `P4NTH30N.C0MMON.EF.P4NTH30NDbContext` (MongoDB EF Core provider).
+- Analytics reads can use `P4NTHE0N.C0MMON.EF.P4NTHE0NDbContext` (MongoDB EF Core provider).
 - H0UND analytics reads are routed through `H0UND/Application/Analytics/AnalyticsWorker.cs`.
 
 ## Runtime Switches
 
 ### Mongo connection
-- `P4NTH30N_MONGODB_URI` (default: `mongodb://localhost:27017/`)
-- `P4NTH30N_MONGODB_DB` (default: `P4NTH30N`)
+- `P4NTHE0N_MONGODB_URI` (default: `mongodb://localhost:27017/`)
+- `P4NTHE0N_MONGODB_DB` (default: `P4NTHE0N`)
 
 ### H0UND analytics read store
 - `H0UND_ANALYTICS_STORE=EF|MONGO`
@@ -26,7 +26,7 @@ Refactor H0UND toward SOLID/DDD boundaries while adopting Entity Framework for a
 - `MONGO`: analytics reads use `uow.Credentials.GetAll()`, `uow.Signals.GetAll()`, `uow.Jackpots.GetAll()`.
 
 ## Code Landmarks
-- `C0MMON/EF/P4NTH30NDbContext.cs`: EF DbContext configured from environment.
+- `C0MMON/EF/P4NTHE0NDbContext.cs`: EF DbContext configured from environment.
 - `C0MMON/EF/AnalyticsServices.cs`: analytics service with proper DbContext injection.
 - `H0UND/Application/Analytics/AnalyticsWorker.cs`: hybrid analytics read path + writes via `IMongoUnitOfWork`.
 - `H0UND/Application/Polling/PollingWorker.cs`: balance query + retry extracted from host.

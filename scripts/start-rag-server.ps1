@@ -1,6 +1,6 @@
-$exePath = 'C:\ProgramData\P4NTH30N\bin\RAG.McpHost.exe'
-$indexPath = 'C:\ProgramData\P4NTH30N\rag\faiss.index'
-$modelPath = 'C:\ProgramData\P4NTH30N\rag\models\all-MiniLM-L6-v2.onnx'
+$exePath = 'C:\ProgramData\P4NTHE0N\bin\RAG.McpHost.exe'
+$indexPath = 'C:\ProgramData\P4NTHE0N\rag\faiss.index'
+$modelPath = 'C:\ProgramData\P4NTHE0N\rag\models\all-MiniLM-L6-v2.onnx'
 
 if (-not (Test-Path $exePath)) {
   Write-Error "RAG executable not found: $exePath"
@@ -18,7 +18,7 @@ $args = @(
   '--model', $modelPath,
   '--bridge', 'http://127.0.0.1:5000',
   '--mongo', 'mongodb://localhost:27017',
-  '--db', 'P4NTH30N'
+  '--db', 'P4NTHE0N'
 )
 
 if (Test-Path $indexPath) {

@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace P4NTH30N.DeployLogAnalyzer.Tests;
+namespace P4NTHE0N.DeployLogAnalyzer.Tests;
 
 public class BusinessRulesValidatorTests
 {

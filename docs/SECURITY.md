@@ -18,7 +18,7 @@
 Master Key (master.key)
     │
     ├── ACL: Admin-only read
-    ├── Location: C:\ProgramData\P4NTH30N\master.key
+    ├── Location: C:\ProgramData\P4NTHE0N\master.key
     └── Generated: scripts/security/generate-master-key.ps1
 
     │ HKDF derivation

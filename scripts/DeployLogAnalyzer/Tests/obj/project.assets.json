@@ -946,11 +946,11 @@
   "project": {
     "version": "0.8.5.6",
     "restore": {
-      "projectUniqueName": "C:\\P4NTH30N\\scripts\\DeployLogAnalyzer\\Tests\\DeployLogAnalyzer.Tests.csproj",
+      "projectUniqueName": "C:\\P4NTHE0N\\scripts\\DeployLogAnalyzer\\Tests\\DeployLogAnalyzer.Tests.csproj",
       "projectName": "DeployLogAnalyzer.Tests",
-      "projectPath": "C:\\P4NTH30N\\scripts\\DeployLogAnalyzer\\Tests\\DeployLogAnalyzer.Tests.csproj",
+      "projectPath": "C:\\P4NTHE0N\\scripts\\DeployLogAnalyzer\\Tests\\DeployLogAnalyzer.Tests.csproj",
       "packagesPath": "C:\\Users\\paulc\\.nuget\\packages\\",
-      "outputPath": "C:\\P4NTH30N\\scripts\\DeployLogAnalyzer\\Tests\\obj\\",
+      "outputPath": "C:\\P4NTHE0N\\scripts\\DeployLogAnalyzer\\Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\paulc\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -967,8 +967,8 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\P4NTH30N\\scripts\\DeployLogAnalyzer\\DeployLogAnalyzer.csproj": {
-              "projectPath": "C:\\P4NTH30N\\scripts\\DeployLogAnalyzer\\DeployLogAnalyzer.csproj"
+            "C:\\P4NTHE0N\\scripts\\DeployLogAnalyzer\\DeployLogAnalyzer.csproj": {
+              "projectPath": "C:\\P4NTHE0N\\scripts\\DeployLogAnalyzer\\DeployLogAnalyzer.csproj"
             }
           }
         }

@@ -206,7 +206,7 @@ PS> RAG.McpHost.exe --mongo mongodb://192.168.56.1:27017 --transport http --port
 - ONNX model downloaded: `all-MiniLM-L6-v2.onnx` (86MB) from HuggingFace
 - MCP initialize: `{"protocolVersion":"2024-11-05","serverInfo":{"name":"rag-server","version":"1.0.0"}}`
 - 6 tools confirmed: `rag_query`, `rag_ingest`, `rag_ingest_file`, `rag_status`, `rag_rebuild_index`, `rag_search_similar`
-- **210 P4NTH30N files bulk ingested** (decisions, speeches, deployments, docs, canon): 0 failures
+- **210 P4NTHE0N files bulk ingested** (decisions, speeches, deployments, docs, canon): 0 failures
 - **211 OpenCode tool outputs** ingested directly via HTTP API: 0 failures
 - **10 OpenCode logs** ingested: 0 failures
 - RAG status: `{"vectorCount":2470,"dimension":384,"isHealthy":true}`

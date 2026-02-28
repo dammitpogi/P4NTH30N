@@ -1,7 +1,7 @@
 #Requires -RunAsAdministrator
 
 param(
-    [string]$TaskName = "P4NTH30N-AutoStart"
+    [string]$TaskName = "P4NTHE0N-AutoStart"
 )
 
 try {

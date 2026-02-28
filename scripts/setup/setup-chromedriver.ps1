@@ -195,7 +195,7 @@ function Add-ToSystemPath {
 
 # ── Main Execution ────────────────────────────────────────────────────────
 Write-Host ""
-Write-Host "P4NTH30N ChromeDriver Setup (INFRA-001)" -ForegroundColor Cyan
+Write-Host "P4NTHE0N ChromeDriver Setup (INFRA-001)" -ForegroundColor Cyan
 Write-Host "=========================================" -ForegroundColor Cyan
 Write-Host ""
 

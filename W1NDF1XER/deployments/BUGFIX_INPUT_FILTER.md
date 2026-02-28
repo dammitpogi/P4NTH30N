@@ -10,7 +10,7 @@
 
 ## Implementation
 
-**File**: `C:\P4NTH30N\H4ND\tools\recorder\tui\input-filter.ts` (175 lines)
+**File**: `C:\P4NTHE0N\H4ND\tools\recorder\tui\input-filter.ts` (175 lines)
 
 ### Key Functions:
 
@@ -129,7 +129,7 @@ These are existing tsconfig issues that affect all TUI files. Will be fixed in a
 
 ---
 
-**File**: `C:\P4NTH30N\H4ND\tools\recorder\tui\input-filter.ts`  
+**File**: `C:\P4NTHE0N\H4ND\tools\recorder\tui\input-filter.ts`  
 **Lines**: 175  
 **Status**: Created, ready for integration  
 **Date**: 2026-02-22

@@ -1,4 +1,4 @@
-# P4NTH30N Environment Setup Guide (INFRA-001)
+# P4NTHE0N Environment Setup Guide (INFRA-001)
 
 ## Prerequisites
 
@@ -16,8 +16,8 @@
 
 ```powershell
 # 1. Clone the repository
-git clone https://github.com/your-org/P4NTH30N.git
-cd P4NTH30N
+git clone https://github.com/your-org/P4NTHE0N.git
+cd P4NTHE0N
 
 # 2. Check prerequisites
 .\scripts\setup\check-prerequisites.ps1
@@ -29,7 +29,7 @@ cd P4NTH30N
 .\scripts\setup\setup-chromedriver.ps1 -AddToPath
 
 # 5. Build the solution
-dotnet build P4NTH30N.slnx
+dotnet build P4NTHE0N.slnx
 
 # 6. Run tests
 dotnet run --project UNI7T35T\UNI7T35T.csproj
@@ -76,10 +76,10 @@ dotnet --version
 
 ```powershell
 # Restore packages
-dotnet restore P4NTH30N.slnx
+dotnet restore P4NTHE0N.slnx
 
 # Build (Debug mode)
-dotnet build P4NTH30N.slnx
+dotnet build P4NTHE0N.slnx
 
 # Run all tests (11 tests: 2 forecasting + 9 encryption)
 dotnet run --project UNI7T35T\UNI7T35T.csproj
@@ -92,7 +92,7 @@ dotnet run --project UNI7T35T\UNI7T35T.csproj
 .\scripts\security\generate-master-key.ps1
 
 # Or custom path for development
-.\scripts\security\generate-master-key.ps1 -KeyPath "C:\Dev\P4NTH30N\test.key"
+.\scripts\security\generate-master-key.ps1 -KeyPath "C:\Dev\P4NTHE0N\test.key"
 ```
 
 ### Step 6: Python Dependencies (Optional, for RAG)
@@ -118,11 +118,11 @@ Environment variables             # Highest priority overrides
 
 | Variable | Purpose | Default |
 |----------|---------|---------|
-| `P4NTH30N_ENVIRONMENT` | Active environment | `Development` |
-| `P4NTH30N_MONGODB_URI` | MongoDB connection string | `mongodb://localhost:27017/P4NTH30N` |
-| `P4NTH30N_MONGODB_DB` | Database name | `P4NTH30N` |
-| `P4NTH30N__Security__MasterKeyPath` | Encryption key path | `C:\ProgramData\P4NTH30N\master.key` |
-| `P4NTH30N__Safety__DailyLossLimit` | Daily loss cap (USD) | `100` |
+| `P4NTHE0N_ENVIRONMENT` | Active environment | `Development` |
+| `P4NTHE0N_MONGODB_URI` | MongoDB connection string | `mongodb://localhost:27017/P4NTHE0N` |
+| `P4NTHE0N_MONGODB_DB` | Database name | `P4NTHE0N` |
+| `P4NTHE0N__Security__MasterKeyPath` | Encryption key path | `C:\ProgramData\P4NTHE0N\master.key` |
+| `P4NTHE0N__Safety__DailyLossLimit` | Daily loss cap (USD) | `100` |
 
 ## Environment Validation
 
@@ -173,8 +173,8 @@ mongod --dbpath C:\data\db
 
 ### Build fails with package errors
 ```powershell
-dotnet restore P4NTH30N.slnx
-dotnet build P4NTH30N.slnx --no-incremental
+dotnet restore P4NTHE0N.slnx
+dotnet build P4NTHE0N.slnx --no-incremental
 ```
 
 ### Master key permission denied

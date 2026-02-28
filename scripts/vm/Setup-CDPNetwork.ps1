@@ -64,7 +64,7 @@ function Write-Status {
 
 # ── Prerequisites ────────────────────────────────────────────────────────
 Write-Host ""
-Write-Host "P4NTH30N CDP Network Setup (INFRA-VM-001)" -ForegroundColor Cyan
+Write-Host "P4NTHE0N CDP Network Setup (INFRA-VM-001)" -ForegroundColor Cyan
 Write-Host "===========================================" -ForegroundColor Cyan
 Write-Host ""
 
@@ -111,7 +111,7 @@ if ($PrefixLength -eq 0) { $PrefixLength = 24 }
 if (-not $SubnetPrefix)  { $SubnetPrefix = "192.168.56.0/24" }
 if ($CdpPort -eq 0)      { $CdpPort = 9222 }
 
-$firewallRuleName = "P4NTH30N-CDP-VM"
+$firewallRuleName = "P4NTHE0N-CDP-VM"
 
 Write-Host "  Switch:    $SwitchName"
 Write-Host "  Host IP:   $HostGatewayIP/$PrefixLength"

@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Automated MongoDB backup script for P4NTH30N database.
+    Automated MongoDB backup script for P4NTHE0N database.
 
 .DESCRIPTION
     INFRA-005: Backup and Disaster Recovery.
@@ -8,10 +8,10 @@
     Supports retention policies (7 daily, 4 weekly, 12 monthly).
 
 .PARAMETER BackupDir
-    Directory to store backups. Default: C:\P4NTH30N\backups
+    Directory to store backups. Default: C:\P4NTHE0N\backups
 
 .PARAMETER Database
-    MongoDB database name. Default: P4NTH30N
+    MongoDB database name. Default: P4NTHE0N
 
 .PARAMETER ConnectionString
     MongoDB connection string. Default: mongodb://localhost:27017
@@ -25,8 +25,8 @@
 #>
 
 param(
-    [string]$BackupDir = "C:\P4NTH30N\backups",
-    [string]$Database = "P4NTH30N",
+    [string]$BackupDir = "C:\P4NTHE0N\backups",
+    [string]$Database = "P4NTHE0N",
     [string]$ConnectionString = "mongodb://localhost:27017",
     [int]$RetainDays = 7
 )
@@ -37,7 +37,7 @@ $backupName = "${Database}_${timestamp}"
 $backupPath = Join-Path $BackupDir $backupName
 
 Write-Host "╔══════════════════════════════════════════════╗"
-Write-Host "║  P4NTH30N MongoDB Backup                     ║"
+Write-Host "║  P4NTHE0N MongoDB Backup                     ║"
 Write-Host "╚══════════════════════════════════════════════╝"
 Write-Host ""
 
