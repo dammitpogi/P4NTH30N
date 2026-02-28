@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Token usage analytics and budget alerts for P4NTH30N agents.
+    Token usage analytics and budget alerts for P4NTHE0N agents.
 .DESCRIPTION
     Tracks token consumption per decision, agent, and model.
     Alerts at 80% budget, halts at 100%.

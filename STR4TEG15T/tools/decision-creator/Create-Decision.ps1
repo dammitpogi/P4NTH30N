@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Automated decision scaffolding tool for P4NTH30N agents.
+    Automated decision scaffolding tool for P4NTHE0N agents.
 .DESCRIPTION
     Creates a new decision file from the standard template with pre-filled metadata.
     Any agent with sub-decision authority can use this tool.

@@ -58,13 +58,13 @@ However, agent prompts have inconsistent coverage of the three critical requirem
 | Designer | ~/.config/opencode/agents/ | Yes | Yes | Yes | Yes | Complete |
 | Librarian | ~/.config/opencode/agents/ | Yes | Yes | Yes | Yes | Complete |
 | Explorer | ~/.config/opencode/agents/ | Yes | Yes | Yes | Yes | Complete |
-| Orchestrator | P4NTH30N/agents/ | Yes | Yes | Yes | Yes | Complete |
-| WindFixer | P4NTH30N/agents/ | Yes | Yes | Yes | Yes | Complete |
-| OpenFixer | P4NTH30N/agents/ | Yes | Yes | Yes | Yes | Complete |
-| Forgewright | P4NTH30N/agents/ | Yes | Yes | Yes | Yes | Complete |
-| Fixer (base) | P4NTH30N/agents/ | **DEPRECATED** | — | — | — | Replaced by OpenFixer |
+| Orchestrator | P4NTHE0N/agents/ | Yes | Yes | Yes | Yes | Complete |
+| WindFixer | P4NTHE0N/agents/ | Yes | Yes | Yes | Yes | Complete |
+| OpenFixer | P4NTHE0N/agents/ | Yes | Yes | Yes | Yes | Complete |
+| Forgewright | P4NTHE0N/agents/ | Yes | Yes | Yes | Yes | Complete |
+| Fixer (base) | P4NTHE0N/agents/ | **DEPRECATED** | — | — | — | Replaced by OpenFixer |
 
-**Critical Gap**: CLOSED. All P4NTH30N/agents/ prompts now include:
+**Critical Gap**: CLOSED. All P4NTHE0N/agents/ prompts now include:
 - Directory references with specific paths
 - Documentation requirements with file formats
 - RAG integration with ToolHive call examples
@@ -934,7 +934,7 @@ This avoids duplication and keeps future migration trivial.
 ### Recommended Directory Structure Update
 
 ```
-P4NTH30N/
+P4NTHE0N/
 ├── AGENTS.md                    # Tool-agnostic root context
 ├── CLAUDE.md → AGENTS.md        # Symbolic link
 ├── STR4TEG15T/
