@@ -19,7 +19,7 @@
 
 ### Problem Statement
 
-The H4ND agent in the H4NDv2-Production VM is failing to connect to MongoDB because the Machine-level environment variable `P4NTH30N_MONGODB_URI` is set to `mongodb://192.168.56.1:27017/` **WITHOUT** the `?directConnection=true` query parameter.
+The H4ND agent in the H4NDv2-Production VM is failing to connect to MongoDB because the Machine-level environment variable `P4NTHE0N_MONGODB_URI` is set to `mongodb://192.168.56.1:27017/` **WITHOUT** the `?directConnection=true` query parameter.
 
 This causes the MongoDB driver to perform replica set discovery, which fails because:
 1. MongoDB is configured with `replSetName: rs0`
@@ -31,7 +31,7 @@ The `mongodb.uri` file in `C:\H4ND\` contains the correct URI with `?directConne
 
 ### Proposed Implementation
 
-1. Update Machine-level env var `P4NTH30N_MONGODB_URI` to `mongodb://192.168.56.1:27017/?directConnection=true`
+1. Update Machine-level env var `P4NTHE0N_MONGODB_URI` to `mongodb://192.168.56.1:27017/?directConnection=true`
 2. Restart H4ND process in VM
 3. Verify MongoDB connection in H4ND logs
 4. Confirm signal processing loop starts successfully
@@ -130,7 +130,7 @@ Clean up the 43 temporary PowerShell scripts created during iterative debugging 
 
 ### Implementation Steps
 
-1. List all `temp_*.ps1` files in `c:\P4NTH30N\`
+1. List all `temp_*.ps1` files in `c:\P4NTHE0N\`
 2. Review each for valuable diagnostic patterns worth preserving
 3. Delete non-essential temp scripts
 4. Review `MongoConnectionOptions.cs` — consider if file-based override is still needed

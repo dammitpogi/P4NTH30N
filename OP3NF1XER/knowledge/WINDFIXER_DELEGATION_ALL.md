@@ -160,7 +160,7 @@ public static async Task<double> ReadJackpotValueAsync(
 ```json
 // appsettings.json
 {
-  "P4NTH30N:H4ND:JackpotSelectors": {
+  "P4NTHE0N:H4ND:JackpotSelectors": {
     "FireKirin": {
       "Grand": ["window.jackpot?.grand", "document.querySelector('.grand')?.textContent"],
       "Major": ["window.jackpot?.major", "document.querySelector('.major')?.textContent"]
@@ -246,7 +246,7 @@ public static async Task<double> ReadJackpotValueAsync(
 **Blocked By**: OPS_005  
 
 **Tasks**:
-- Review 43 temp scripts in `c:\P4NTH30N\temp_*.ps1`
+- Review 43 temp scripts in `c:\P4NTHE0N\temp_*.ps1`
 - Archive useful patterns
 - Delete obsolete scripts
 - Verify H4ND auto-start

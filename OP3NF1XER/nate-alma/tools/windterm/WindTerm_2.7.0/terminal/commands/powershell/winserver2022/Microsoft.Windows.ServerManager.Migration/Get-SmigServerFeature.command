@@ -1,0 +1,45 @@
+description: Gets the set of all Windows features that can be migrated from the local
+  server or from a migration store
+synopses:
+- Get-SmigServerFeature [<CommonParameters>]
+- Get-SmigServerFeature -Path <String> -Password <SecureString> [<CommonParameters>]
+options:
+  -Password SecureString:
+    required: true
+  -Path String:
+    required: true
+  -Debug,-db Switch: ~
+  -ErrorAction,-ea ActionPreference:
+    values:
+    - Break
+    - Suspend
+    - Ignore
+    - Inquire
+    - Continue
+    - Stop
+    - SilentlyContinue
+  -ErrorVariable,-ev String: ~
+  -InformationAction,-ia ActionPreference:
+    values:
+    - Break
+    - Suspend
+    - Ignore
+    - Inquire
+    - Continue
+    - Stop
+    - SilentlyContinue
+  -InformationVariable,-iv String: ~
+  -OutVariable,-ov String: ~
+  -OutBuffer,-ob Int32: ~
+  -PipelineVariable,-pv String: ~
+  -Verbose,-vb Switch: ~
+  -WarningAction,-wa ActionPreference:
+    values:
+    - Break
+    - Suspend
+    - Ignore
+    - Inquire
+    - Continue
+    - Stop
+    - SilentlyContinue
+  -WarningVariable,-wv String: ~

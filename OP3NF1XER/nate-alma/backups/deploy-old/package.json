@@ -1,0 +1,31 @@
+{
+  "name": "openclaw-alma-v2",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "OpenClaw Railway deployment with SSH preconfiguration - OP3NF1XER governance",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "node src/server.js",
+    "start": "node src/server.js",
+    "lint": "node -c src/server.js",
+    "test": "node --test",
+    "smoke": "node scripts/smoke.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "http-proxy": "^1.18.1",
+    "tar": "^7.5.4"
+  },
+  "keywords": [
+    "openclaw",
+    "railway",
+    "deployment",
+    "ssh",
+    "openfixer"
+  ],
+  "author": "OP3NF1XER / P4NTHE0N",
+  "license": "MIT"
+}

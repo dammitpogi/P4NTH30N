@@ -1,0 +1,2420 @@
+{
+  "skillsRoot": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\skills",
+  "scriptsScanned": 70,
+  "checks": [
+    {
+      "script": "anthropic-usage\\scripts\\check_usage.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has exception handling blocks",
+          "line": 23,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "api-tools\\scripts\\api_request.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has exception handling blocks",
+          "line": 60,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "apple-calendar\\scripts\\cal-create.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "apple-calendar\\scripts\\cal-delete.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "apple-calendar\\scripts\\cal-events.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "apple-calendar\\scripts\\cal-list.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "apple-calendar\\scripts\\cal-read.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "apple-calendar\\scripts\\cal-search.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "apple-calendar\\scripts\\cal-update.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "auth-vault\\scripts\\vault.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has exception handling blocks",
+          "line": 110,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "chromadb-memory\\scripts\\index.ts",
+      "passCount": 2,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "computer-use\\scripts\\click.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "computer-use\\scripts\\cursor_position.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "computer-use\\scripts\\drag.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "computer-use\\scripts\\hold_key.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "computer-use\\scripts\\key.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "computer-use\\scripts\\minimal-desktop.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "computer-use\\scripts\\mouse_down.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "computer-use\\scripts\\mouse_move.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "computer-use\\scripts\\mouse_up.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "computer-use\\scripts\\screenshot.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "computer-use\\scripts\\scroll.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "computer-use\\scripts\\setup-vnc.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 5,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "computer-use\\scripts\\type_text.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "computer-use\\scripts\\vnc_start.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "computer-use\\scripts\\vnc_stop.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "computer-use\\scripts\\wait.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "computer-use\\scripts\\zoom.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "context-memory\\scripts\\add.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no try/except blocks found",
+          "line": 1,
+          "recommendation": "Consider top-level exception handling if this script is operator-facing."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "context-memory\\scripts\\done.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no try/except blocks found",
+          "line": 1,
+          "recommendation": "Consider top-level exception handling if this script is operator-facing."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "context-memory\\scripts\\list.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no try/except blocks found",
+          "line": 1,
+          "recommendation": "Consider top-level exception handling if this script is operator-facing."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "context-memory\\scripts\\remind.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has exception handling blocks",
+          "line": 30,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "context-memory\\scripts\\remind_add.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no try/except blocks found",
+          "line": 1,
+          "recommendation": "Consider top-level exception handling if this script is operator-facing."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "context-memory\\scripts\\remind_check.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no try/except blocks found",
+          "line": 1,
+          "recommendation": "Consider top-level exception handling if this script is operator-facing."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "context-memory\\scripts\\view.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no try/except blocks found",
+          "line": 1,
+          "recommendation": "Consider top-level exception handling if this script is operator-facing."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "decision-trees\\scripts\\decision_tree.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has exception handling blocks",
+          "line": 135,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "deepwiki\\scripts\\deepwiki.js",
+      "passCount": 3,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "doctrine-engine\\scripts\\cite_doctrine.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no try/except blocks found",
+          "line": 1,
+          "recommendation": "Consider top-level exception handling if this script is operator-facing."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "doctrine-engine\\scripts\\query_decision_engine.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no try/except blocks found",
+          "line": 1,
+          "recommendation": "Consider top-level exception handling if this script is operator-facing."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "doctrine-engine\\scripts\\rebuild_index.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no try/except blocks found",
+          "line": 1,
+          "recommendation": "Consider top-level exception handling if this script is operator-facing."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "doctrine-engine\\scripts\\search_bible.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no try/except blocks found",
+          "line": 1,
+          "recommendation": "Consider top-level exception handling if this script is operator-facing."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "doctrine-engine\\scripts\\search_substack_teachings.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no try/except blocks found",
+          "line": 1,
+          "recommendation": "Consider top-level exception handling if this script is operator-facing."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "exa-plus\\scripts\\code.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "exa-plus\\scripts\\content.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "uses parent traversal path coupling",
+          "line": 18,
+          "recommendation": "Prefer absolute resolution from script location for stronger portability."
+        }
+      ]
+    },
+    {
+      "script": "exa-plus\\scripts\\search.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "uses parent traversal path coupling",
+          "line": 30,
+          "recommendation": "Prefer absolute resolution from script location for stronger portability."
+        }
+      ]
+    },
+    {
+      "script": "finance\\scripts\\market_quote.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has exception handling blocks",
+          "line": 55,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "finance\\scripts\\market_series.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no try/except blocks found",
+          "line": 1,
+          "recommendation": "Consider top-level exception handling if this script is operator-facing."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "finance\\scripts\\market_watchlist.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has exception handling blocks",
+          "line": 88,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "mcp-builder\\scripts\\connections.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has exception handling blocks",
+          "line": 31,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "mcp-builder\\scripts\\evaluation.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has exception handling blocks",
+          "line": 60,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "model-switcher\\scripts\\switch.sh",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shell fail-fast semantics",
+          "line": 2,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "nate-agent-ops-kit\\scripts\\apply_nate_baseline.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has exception handling blocks",
+          "line": 43,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "nate-agent-ops-kit\\scripts\\extract_requests.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has exception handling blocks",
+          "line": 30,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "nate-agent-ops-kit\\scripts\\workflow_runner.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no try/except blocks found",
+          "line": 1,
+          "recommendation": "Consider top-level exception handling if this script is operator-facing."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "openclaw-endpoint-kit\\scripts\\endpoint_probe.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has exception handling blocks",
+          "line": 11,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "openclaw-model-switch-kit\\scripts\\switch_anthropic_model.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has exception handling blocks",
+          "line": 173,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "sag\\scripts\\sag.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no try/except blocks found",
+          "line": 1,
+          "recommendation": "Consider top-level exception handling if this script is operator-facing."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "script-sanity-kit\\scripts\\chaos_audit.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "includes PASS/WARNING runtime markers",
+          "line": 87,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has exception handling blocks",
+          "line": 113,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "uses parent traversal path coupling",
+          "line": 162,
+          "recommendation": "Prefer absolute resolution from script location for stronger portability."
+        }
+      ]
+    },
+    {
+      "script": "script-sanity-kit\\scripts\\run_with_sanity.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has exception handling blocks",
+          "line": 106,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "senior-architect\\scripts\\architecture_diagram_generator.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has exception handling blocks",
+          "line": 107,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "senior-architect\\scripts\\dependency_analyzer.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has exception handling blocks",
+          "line": 91,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "senior-architect\\scripts\\project_architect.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has exception handling blocks",
+          "line": 108,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "smtp-send\\scripts\\send_email.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has exception handling blocks",
+          "line": 35,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "technews\\scripts\\article_fetcher.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has exception handling blocks",
+          "line": 47,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "technews\\scripts\\social_reactions.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has exception handling blocks",
+          "line": 23,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "technews\\scripts\\techmeme_scraper.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has exception handling blocks",
+          "line": 21,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "technews\\scripts\\technews.py",
+      "passCount": 4,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has exception handling blocks",
+          "line": 56,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "uses parent traversal path coupling",
+          "line": 47,
+          "recommendation": "Prefer absolute resolution from script location for stronger portability."
+        }
+      ]
+    },
+    {
+      "script": "tradingview\\auth-fetch.js",
+      "passCount": 3,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "tradingview\\fetch.js",
+      "passCount": 3,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    },
+    {
+      "script": "tradingview\\spx-to-spy.js",
+      "passCount": 3,
+      "warningCount": 0,
+      "findings": [
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "has shebang",
+          "line": 1,
+          "recommendation": "No action needed."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "no inline PASS/WARNING markers",
+          "line": 1,
+          "recommendation": "Run through run_with_sanity.py for verbose runtime diagnostics."
+        },
+        {
+          "level": "PASS",
+          "severity": "info",
+          "message": "avoids parent traversal path coupling",
+          "line": 1,
+          "recommendation": "No action needed."
+        }
+      ]
+    }
+  ],
+  "passedChecks": 274,
+  "warningChecks": 0,
+  "severityCounts": {
+    "blocker": 0,
+    "info": 274
+  }
+}

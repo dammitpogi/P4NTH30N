@@ -1,0 +1,16 @@
+{
+  "operation": "corpus-merge",
+  "timestamp": "20260226_175442",
+  "sourcePaths": [
+    "alma-teachings/substack/",
+    "dev/memory/substack/"
+  ],
+  "totalFilesProcessed": 341,
+  "identicalSha256": 341,
+  "differentContent": 0,
+  "newFilesAdded": 0,
+  "collisions": [],
+  "sha256Verification": "all-341-files-verified-identical",
+  "result": "perfect-deduplication",
+  "notes": "Both corpus directories contained exactly the same files by sha256. No duplicates or conflicts. Merge resulted in zero new files added."
+}

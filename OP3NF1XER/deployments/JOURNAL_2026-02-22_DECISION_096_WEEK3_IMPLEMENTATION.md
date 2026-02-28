@@ -17,7 +17,7 @@ WINDFIXER COMPLETION REPORT - DECISION_096 Week 3
 
 DECISION:
 - ID: DECISION_096
-- Title: Rebuild Decisions-Server, MongoDB-P4NTH30N, and RAG-Server for ToolHive-Native Docker Operation
+- Title: Rebuild Decisions-Server, MongoDB-P4NTHE0N, and RAG-Server for ToolHive-Native Docker Operation
 - Phase: Week 3 - MCP Protocol Implementation
 - Approval: 94%
 
@@ -73,7 +73,7 @@ mongodb-p4nth30n-v2:
 - Connection pooling with configurable min/max pool size
 - Health check integration (/ready reports MongoDB status)
 - Graceful shutdown disconnects cleanly
-- Default database: P4NTH30N
+- Default database: P4NTHE0N
 
 rag-server-v2:
 - In-memory vector store with cosine similarity

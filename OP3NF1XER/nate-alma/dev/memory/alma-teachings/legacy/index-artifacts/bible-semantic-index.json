@@ -1,0 +1,602 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2026-02-25T08:25:00Z",
+  "generatedBy": "OpenFixer",
+  "description": "Semantic search index for Nate/Alma doctrine bible. Maps every post to searchable concepts, tokens, post-type, and semantic clusters so an agent can locate teachings by intent.",
+  "bibleRoot": "OP3NF1XER/nate-alma/dev/memory/alma-teachings/bible",
+  "totalDocuments": 35,
+  "postTypeDistribution": {
+    "intraday": 14,
+    "weekly": 11,
+    "educational": 5,
+    "monthly": 0,
+    "meta": 5
+  },
+  "semanticClusters": {
+    "volatility-greeks": {
+      "description": "Options Greeks, implied/realized vol, skew, vanna, vomma, gamma, charm, veta, speed profile, butterfly spreads",
+      "aliases": ["volatility", "vix", "vanna", "vomma", "zomma", "vega", "gamma", "theta", "skew", "charm", "veta", "speed", "greeks", "iv", "implied vol", "realized vol", "vol surface", "butterfly", "straddle", "risk reversal", "iron fly", "convexity"],
+      "seedFiles": [
+        "2025-01-29-educational-thread-chat.md",
+        "2025-01-29-intraday-post-28-feb.md",
+        "2025-01-29-weekly-post-09-feb-14-feb.md",
+        "unknown-date-ahead-of-datas-short-term-positioning-shift-risk-reward-shif.md",
+        "2025-01-29-intraday-post-28-aug.md"
+      ]
+    },
+    "macro-rates-fed": {
+      "description": "FOMC, Fed policy, Powell, CPI, PPI, PCE, GDP, inflation, yields, rate cuts, quantitative tightening, stagflation, debt ceiling, Treasury bills",
+      "aliases": ["fomc", "fed", "powell", "boj", "cpi", "ppi", "pce", "yields", "inflation", "rates", "gdp", "stagflation", "qt", "quantitative tightening", "rate cut", "hawkish", "dovish", "debt ceiling", "treasury"],
+      "seedFiles": [
+        "2025-01-29-intraday-post-19-march-fed.md",
+        "2025-01-29-post-fomc-intraday-post-29-jan.md",
+        "2025-01-29-gdp-release-weekly-post-22-26-dec-free-post.md",
+        "2025-01-29-opex-vixpery-and-pce-week-weekly-post-17-20-feb.md",
+        "unknown-date-after-fomc-and-us-uae-deal-intraday-post-08-may.md",
+        "unknown-date-ahead-of-fomc-intraday-post-05-may.md"
+      ]
+    },
+    "opex-flows-positioning": {
+      "description": "Options expiration, VIX expiry, dealer positioning, gamma exposure, CTA flows, buyback, OpEx mechanics, net gamma, customer positioning, CBOE data",
+      "aliases": ["opex", "expiry", "dealer", "positioning", "expo", "flows", "gamma exposure", "cta", "buyback", "vix expo", "vixpery", "net gamma", "collar", "jheqx"],
+      "seedFiles": [
+        "2025-01-29-january-opex-week-quant-breakdown-weekly-post-12-16-jan-free.md",
+        "2025-01-29-opex-intraday-post-20-march-fed-path-and-tech-with-geos.md",
+        "2025-01-29-opex-vixpery-and-pce-week-weekly-post-17-20-feb.md",
+        "unknown-date-after-the-opex-intraday-post-21-july.md",
+        "unknown-date-accumulating-risk-intraday-post-16-oct.md"
+      ]
+    },
+    "geopolitics-policy": {
+      "description": "China-US trade war, tariffs, Iran military risk, Russia-Ukraine, Board of Peace, Greenland, Ramadan, oil prices, bipolar world, Christian-nationalist ideology, Middle East, Venezuela",
+      "aliases": ["china", "tariff", "war", "ukraine", "iran", "geopolitical", "bipolar", "trump", "greenland", "board of peace", "russia", "venezuela", "oil", "ramadan", "middle east", "ceasefire", "sanctions"],
+      "seedFiles": [
+        "2025-01-29-board-of-peace-greenland-hidden-left-tail-and-kurtosis-geopo.md",
+        "2025-01-29-iran-risk-and-oil-prices.md",
+        "unknown-date-above-the-line-china-vs-us-intraday-post-25-april.md",
+        "unknown-date-after-nfp-fed-weekly-post-05-09-may.md",
+        "2025-01-29-earning-season-micro-and-macro-flows-carry-trade-geopolitic-.md"
+      ]
+    },
+    "risk-framework": {
+      "description": "Window of Risk, left-tail/right-tail, kurtosis, VaR, Sharpe, Sortino, beta, mean reversion, risk premia, crowded trades, liquidity vacuum",
+      "aliases": ["risk", "left-tail", "right-tail", "tail", "window of risk", "recession", "stagflation", "var", "beta", "sharpe", "sortino", "kurtosis", "mean reversion", "liquidity vacuum", "crowded"],
+      "seedFiles": [
+        "2025-01-29-window-of-risk-pt-2-flows-update.md",
+        "2025-01-29-free-spx-gold-btc-a-quick-overview-of-the-recent-momentum-an.md",
+        "unknown-date-accumulating-risk-intraday-post-16-oct.md",
+        "2025-01-29-board-of-peace-greenland-hidden-left-tail-and-kurtosis-geopo.md"
+      ]
+    },
+    "ai-bubble-crypto": {
+      "description": "AI bubble, tech valuation, NVDA, capex spending, Bitcoin 5-year outlook, bubble burst triggers, passive flows, dispersion",
+      "aliases": ["nvda", "nvidia", "ai", "bitcoin", "btc", "valuation", "bubble", "tech", "capex", "dispersion", "passive flows"],
+      "seedFiles": [
+        "2025-01-29-articles-predictions-education.md",
+        "2025-01-29-warsh-gold-sentiment-weekly-post-02-06-feb.md",
+        "2025-01-29-earning-season-micro-and-macro-flows-carry-trade-geopolitic-.md"
+      ]
+    },
+    "educational-foundations": {
+      "description": "Reflexivity theory, Soros lecture, furu vs analyst, daily post reading guide, trading principles, statistical arbitrage, probability distributions, skew trading, Python quant course",
+      "aliases": ["reflexivity", "soros", "education", "what is", "concept", "statistical arbitrage", "python course", "probability", "distribution", "trading principles", "furu", "analyst", "guide"],
+      "seedFiles": [
+        "2025-01-29-theory-of-reflexivity-by-george-soros.md",
+        "2025-01-29-what-s-the-difference-between-a-furu-and-an-analyst-with-boo.md",
+        "2025-01-29-educational-thread-chat.md",
+        "unknown-date-a-guide-to-reading-my-daily-posts.md",
+        "2025-01-29-python-course.md"
+      ]
+    },
+    "performance-community": {
+      "description": "Performance reviews, year-end reflections, prediction accuracy, subscriber community, testimonials, model track record",
+      "aliases": ["performance", "review", "year", "summary", "prediction", "accuracy", "track record", "testimonial", "community"],
+      "seedFiles": [
+        "2025-01-29-april-s-performance-review.md",
+        "2025-01-29-a-year-is-over.md",
+        "2025-01-29-3-latest-weekly-posts-have-been-set-free.md"
+      ]
+    },
+    "spot-decay-liquidity": {
+      "description": "Spot decay mechanics, liquidity structure, insider speculation, negative wealth effect, hidden QE, rangebounding, oscillation with negative drift",
+      "aliases": ["spot decay", "liquidity", "insider", "wealth effect", "hidden qe", "rangebounding", "oscillation", "drift", "leverage flush"],
+      "seedFiles": [
+        "2025-01-29-appendix-for-today-s-intraday-post.md",
+        "2025-01-29-intraday-post-19-march-fed.md"
+      ]
+    },
+    "carry-trade-fx": {
+      "description": "Yen carry trade, USDJPY, BoJ rate decisions, dedollarization, dollar/gold correlation, crack spread, Brent, gasoil",
+      "aliases": ["carry trade", "yen", "usdjpy", "boj", "dedollarization", "dollar", "gold", "crack spread", "brent", "gasoil", "fx"],
+      "seedFiles": [
+        "2025-01-29-earning-season-micro-and-macro-flows-carry-trade-geopolitic-.md",
+        "2025-01-29-iran-risk-and-oil-prices.md",
+        "2025-01-29-warsh-gold-sentiment-weekly-post-02-06-feb.md"
+      ]
+    }
+  },
+  "documents": [
+    {
+      "id": "reflexivity-soros",
+      "file": "2025-01-29-theory-of-reflexivity-by-george-soros.md",
+      "title": "Theory of Reflexivity by George Soros",
+      "postType": "educational",
+      "date": "2026-01-28",
+      "source": "https://stochvoltrader.substack.com/p/theory-of-reflexivity-by-george-soros",
+      "concepts": ["educational-foundations"],
+      "topTerms": ["reflexivity", "soros", "equilibrium", "fallibility", "emh", "efficient market", "bubble", "boom", "bust", "super-bubble", "uncertainty", "financial markets", "lecture", "ceu", "budapest"],
+      "excerpt": "Semi-transcript of Soros 2009 CEU Budapest lecture on fallibility, reflexivity, and human uncertainty principle. Markets always distort underlying fundamentals. EMH vs reflexivity. Super-bubbles. Applies to understanding why volatility cycles need narratives.",
+      "teachingWeight": "foundational"
+    },
+    {
+      "id": "educational-thread",
+      "file": "2025-01-29-educational-thread-chat.md",
+      "title": "Educational thread (chat)",
+      "postType": "educational",
+      "date": "2025-12-10",
+      "source": "https://stochvoltrader.substack.com/p/educational-thread-chat",
+      "concepts": ["volatility-greeks", "educational-foundations"],
+      "topTerms": ["implied volatility", "realized volatility", "probability distribution", "skew trading", "weekly play", "vol"],
+      "excerpt": "Quick explanation of realized/implied volatility, probability distributions, skew trading. Chat-format educational post.",
+      "teachingWeight": "foundational"
+    },
+    {
+      "id": "furu-vs-analyst",
+      "file": "2025-01-29-what-s-the-difference-between-a-furu-and-an-analyst-with-boo.md",
+      "title": "What's the Difference Between a Furu and an Analyst? (with book recommendations)",
+      "postType": "educational",
+      "date": "2025-05-03",
+      "source": "https://stochvoltrader.substack.com/p/whats-the-difference-between-a-furu",
+      "concepts": ["educational-foundations"],
+      "topTerms": ["furu", "analyst", "fraud", "due diligence", "book recommendations", "liberal capitalism", "consumer", "copy-trade", "guru"],
+      "excerpt": "Distinguishes market 'gurus' from real analysts. Book recommendations. Fraud in financial media. Why laypeople gravitate to simple predictions vs complex analysis.",
+      "teachingWeight": "foundational"
+    },
+    {
+      "id": "articles-predictions",
+      "file": "2025-01-29-articles-predictions-education.md",
+      "title": "Articles - Predictions, Education",
+      "postType": "meta",
+      "date": "2026-01-10",
+      "source": "https://stochvoltrader.substack.com/p/articles-predictions-education",
+      "concepts": ["ai-bubble-crypto", "educational-foundations"],
+      "topTerms": ["ai bubble", "debt crisis", "stagflation", "momentum trading", "georisk", "challenges 2026", "liquidity structure", "speed profile", "gamma derivative"],
+      "excerpt": "Index post linking major articles: challenges of 2026, AI/tech bubble burst warnings, liquidity structure, gamma-derivative speed profile framework for intraday trading.",
+      "teachingWeight": "navigational"
+    },
+    {
+      "id": "iran-risk-oil",
+      "file": "2025-01-29-iran-risk-and-oil-prices.md",
+      "title": "Iran-risk and oil prices",
+      "postType": "intraday",
+      "date": "2026-02-24",
+      "source": "https://stochvoltrader.substack.com/p/iran-risk-and-oil-prices",
+      "concepts": ["geopolitics-policy", "carry-trade-fx"],
+      "topTerms": ["iran", "oil", "military intervention", "ramadan", "crack spread", "brent", "gasoil", "backwardation", "arab spring", "supply chain", "stagflation", "shah", "first island chain", "china"],
+      "excerpt": "Trump missed Iran military window. Ramadan constraint. Crack spread at 95th percentile. Brent call demand surging. Geopolitical risk assessment of military strike consequences.",
+      "teachingWeight": "analytical"
+    },
+    {
+      "id": "year-over",
+      "file": "2025-01-29-a-year-is-over.md",
+      "title": "A year is over...",
+      "postType": "meta",
+      "date": "2025-12-31",
+      "source": "https://stochvoltrader.substack.com/p/a-year-is-over",
+      "concepts": ["performance-community"],
+      "topTerms": ["reflection", "subscribers", "community", "performance", "february top", "geopolitical shifts", "testimonials", "market maker", "fund manager", "retail trader"],
+      "excerpt": "Year-end reflection. 2,494 subscribers. Called February top, geopolitical shifts. Community of market makers, fund managers, retail traders united by curiosity and humility.",
+      "teachingWeight": "meta"
+    },
+    {
+      "id": "april-performance",
+      "file": "2025-01-29-april-s-performance-review.md",
+      "title": "April's performance review",
+      "postType": "meta",
+      "date": "2025-05-14",
+      "source": "https://stochvoltrader.substack.com/p/aprils-performance-review",
+      "concepts": ["performance-community", "educational-foundations"],
+      "topTerms": ["performance", "review", "weighing machine", "voting machine", "benjamin graham", "volatility cycles", "narrative", "macro", "tape analysis"],
+      "excerpt": "Defense of macro analysis approach. 'Short run voting machine, long run weighing machine' (Graham). Volatility cycles need narratives. Market is about valuing things.",
+      "teachingWeight": "philosophical"
+    },
+    {
+      "id": "board-of-peace-greenland",
+      "file": "2025-01-29-board-of-peace-greenland-hidden-left-tail-and-kurtosis-geopo.md",
+      "title": "Board of Peace, Greenland, Hidden Left-tail and Kurtosis | Geopolitical Developments",
+      "postType": "weekly",
+      "date": "2026-01-20",
+      "source": "https://stochvoltrader.substack.com/p/board-of-peace-greenland-hidden-left",
+      "concepts": ["geopolitics-policy", "risk-framework"],
+      "topTerms": ["board of peace", "un 2.0", "greenland", "left-tail", "kurtosis", "davos", "trump", "christian nationalist", "absolutist", "hegemonic trap", "china", "russia", "geopolitical architecture"],
+      "excerpt": "Trump's 'Board of Peace' UN replacement at Davos. Absolutist arrangements masquerading as constitutional. Christian-nationalist ideology push. Hidden left-tail risk in geopolitical architecture collapse.",
+      "teachingWeight": "analytical"
+    },
+    {
+      "id": "earning-season-macro-flows",
+      "file": "2025-01-29-earning-season-micro-and-macro-flows-carry-trade-geopolitic-.md",
+      "title": "Earning season, Micro and Macro flows, Carry trade & Geopolitic landscape | Quant Insights - January 2026",
+      "postType": "weekly",
+      "date": "2026-01-23",
+      "source": "https://stochvoltrader.substack.com/p/earning-season-micro-and-macro-flows",
+      "concepts": ["macro-rates-fed", "carry-trade-fx", "geopolitics-policy", "ai-bubble-crypto"],
+      "topTerms": ["boj", "usdjpy", "carry trade", "japan", "gilt crisis", "fitch", "volatility control funds", "portfolio insurance", "earning season", "institutional flows", "nvidia", "macro context"],
+      "excerpt": "Comprehensive macro report. BoJ rate decision impact on carry trade. Japan gilt-crisis parallel to UK 2022. Volatility-control funds at 95-98% equity exposure (parallels 1987 portfolio insurance). Institutional flow analysis.",
+      "teachingWeight": "comprehensive"
+    },
+    {
+      "id": "spx-gold-btc-overview",
+      "file": "2025-01-29-free-spx-gold-btc-a-quick-overview-of-the-recent-momentum-an.md",
+      "title": "[free] SPX, Gold, BTC - A quick overview of the recent momentum and sentiment",
+      "postType": "weekly",
+      "date": "2025-11-18",
+      "source": "https://stochvoltrader.substack.com/p/free-spx-gold-btc-a-quick-overview",
+      "concepts": ["risk-framework", "ai-bubble-crypto"],
+      "topTerms": ["spx", "gold", "btc", "bitcoin", "momentum", "sentiment", "window of risk", "seasonality", "vix expo", "buy the dip", "dollar gold correlation"],
+      "excerpt": "SPX testing November lows. 10% decline below 6200 would be healthy. Gold temporal retest of lows. Dollar/gold correlation shift. BTC correlation with equities.",
+      "teachingWeight": "analytical"
+    },
+    {
+      "id": "window-of-risk-pt2",
+      "file": "2025-01-29-window-of-risk-pt-2-flows-update.md",
+      "title": "Window of Risk Pt. 2 - Flows update",
+      "postType": "weekly",
+      "date": "2025-10-29",
+      "source": "https://stochvoltrader.substack.com/p/window-of-risk-pt-2-flows-update",
+      "concepts": ["risk-framework", "opex-flows-positioning", "volatility-greeks"],
+      "topTerms": ["window of risk", "flows", "put call ratio", "short vol", "short vomma", "crowded", "realized volatility", "valuation", "leverage", "gap fill", "cta", "long gamma", "short realized vol"],
+      "excerpt": "Comprehensive Window of Risk framework. Prior WoR calls: Feb-April, May correction, July/August window. All played out. Market running on passive flows, short-vol crowded, valuation metrics 'on the moon'.",
+      "teachingWeight": "comprehensive"
+    },
+    {
+      "id": "python-course",
+      "file": "2025-01-29-python-course.md",
+      "title": "Python course",
+      "postType": "educational",
+      "date": "2026-02-08",
+      "source": "https://stochvoltrader.substack.com/p/python-course-eba",
+      "concepts": ["educational-foundations"],
+      "topTerms": ["python", "course", "jason strimpel", "pyquant", "quantlib", "portfolio optimization", "riskfolio", "pandas", "algorithmic trading"],
+      "excerpt": "Python course by Jason Strimpel (20+ years quant, $20B credit exposure). 19 hours: core Python, Pandas, QuantLib derivatives pricing, Riskfolio portfolio optimization. 41 lessons, lifetime access.",
+      "teachingWeight": "resource"
+    },
+    {
+      "id": "failed-payments",
+      "file": "2025-01-29-failed-payments.md",
+      "title": "Failed payments",
+      "postType": "meta",
+      "date": "2025-08-20",
+      "source": "https://stochvoltrader.substack.com/p/failed-payments-9ab",
+      "concepts": [],
+      "topTerms": ["stripe", "payments", "subscription", "support", "tradingview"],
+      "excerpt": "Administrative post about Stripe payment issues and customer support contacts. Monthly subscription recommended at $35/month.",
+      "teachingWeight": "administrative"
+    },
+    {
+      "id": "guide-daily-posts",
+      "file": "unknown-date-a-guide-to-reading-my-daily-posts.md",
+      "title": "A Guide to Reading My Daily Posts",
+      "postType": "educational",
+      "date": "2025-11-11",
+      "source": "https://stochvoltrader.substack.com/p/a-guide-to-reading-my-daily-posts",
+      "concepts": ["educational-foundations", "volatility-greeks"],
+      "topTerms": ["heatmap", "speed profile", "vanna flip", "pivot", "probability levels", "reverse engineer", "butterfly spreads", "risk reversal", "distribution", "optionsdepth", "script inputs"],
+      "excerpt": "How to read Alma's daily posts. 4 components: premarket heatmap, script inputs (levels with probabilities), speed profile description, vanna flip/speed slip. Reverse-engineering market structure.",
+      "teachingWeight": "foundational"
+    },
+    {
+      "id": "china-vs-us-apr25",
+      "file": "unknown-date-above-the-line-china-vs-us-intraday-post-25-april.md",
+      "title": "Above the line..., China vs US - Intraday post (25/April)",
+      "postType": "intraday",
+      "date": "2025-04-25",
+      "source": "https://stochvoltrader.substack.com/p/above-the-line-china-vs-us-intraday",
+      "concepts": ["geopolitics-policy"],
+      "topTerms": ["china", "us", "witkoff", "kremlin", "putin", "ceasefire", "may 9", "rome", "pope funeral", "saudi", "arms package", "assassination", "balashikha"],
+      "excerpt": "Witkoff in Kremlin. Major General assassination in Balashikha. Trump ceasefire timeline: May 9 target. Pope funeral in Rome for bilateral talks. Saudi $100B+ arms deal. China lying about trade talks.",
+      "teachingWeight": "analytical"
+    },
+    {
+      "id": "accumulating-risk-oct16",
+      "file": "unknown-date-accumulating-risk-intraday-post-16-oct.md",
+      "title": "Accumulating risk - Intraday post (16/Oct)",
+      "postType": "intraday",
+      "date": "2025-10-16",
+      "source": "https://stochvoltrader.substack.com/p/accumulating-risk-intraday-post-16oct",
+      "concepts": ["risk-framework", "geopolitics-policy", "opex-flows-positioning"],
+      "topTerms": ["window of risk", "geo risks", "rate cuts", "venezuela", "covert ops", "hy oas", "move index", "complacency", "puts", "cta", "vixpiry", "headline sensitive"],
+      "excerpt": "Geo risks not properly priced. HY OAS at 3.1%, MOVE mid-70s. Venezuela escalation. Institutions accumulating puts against retail short-vol crowding. Market headline sensitive.",
+      "teachingWeight": "analytical"
+    },
+    {
+      "id": "after-fomc-uae-may08",
+      "file": "unknown-date-after-fomc-and-us-uae-deal-intraday-post-08-may.md",
+      "title": "After FOMC and US-UAE deal, Intraday post (08/May)",
+      "postType": "intraday",
+      "date": "2025-05-08",
+      "source": "https://stochvoltrader.substack.com/p/after-fomc-intraday-post-08may",
+      "concepts": ["macro-rates-fed", "spot-decay-liquidity"],
+      "topTerms": ["fomc", "fed", "rate cut", "june", "july", "treasury bills", "hidden qe", "rrp", "repo", "crash mats", "otm puts", "vol carry"],
+      "excerpt": "Post-FOMC analysis. Hidden QE via Treasury bill issuance reducing long-end supply. 'Crash mats' built by selling OTM puts. 60% odds of July cut. 2s10s steepening opportunity.",
+      "teachingWeight": "analytical"
+    },
+    {
+      "id": "after-nfp-fed-weekly-may",
+      "file": "unknown-date-after-nfp-fed-weekly-post-05-09-may.md",
+      "title": "After NFP, Fed, Weekly post (05-09/May)",
+      "postType": "weekly",
+      "date": "2025-05-04",
+      "source": "https://stochvoltrader.substack.com/p/after-nfp-fed-weekly-post-05-09may",
+      "concepts": ["macro-rates-fed", "geopolitics-policy"],
+      "topTerms": ["nfp", "tariffs", "sino-russian alliance", "taiwan", "victory day", "credible policy", "rates", "177000 payroll", "limit order hunting", "short vol"],
+      "excerpt": "Post-NFP 177K jobs. Tariff policy credibility analysis. Sino-Russian alliance constraining US options. Taiwan risk acceleration. Victory Day timeline. Limit-order hunting dynamics.",
+      "teachingWeight": "comprehensive"
+    },
+    {
+      "id": "after-opex-jul21",
+      "file": "unknown-date-after-the-opex-intraday-post-21-july.md",
+      "title": "After the opEx + Intraday post (21/July)",
+      "postType": "intraday",
+      "date": "2025-07-21",
+      "source": "https://stochvoltrader.substack.com/p/after-the-opex-intraday-post-21july",
+      "concepts": ["opex-flows-positioning"],
+      "topTerms": ["opex", "buyback", "spx", "6321", "snowball effect", "liquidity", "fomc", "momentum shift", "ranging"],
+      "excerpt": "Post-OpEx buyback flow predicted. SPX at 6313. Structural pivot at 6321.75 ES / 6281.89 SPX. Market ranging 2 weeks before FOMC risk target.",
+      "teachingWeight": "tactical"
+    },
+    {
+      "id": "ahead-of-data-jul02",
+      "file": "unknown-date-ahead-of-datas-short-term-positioning-shift-risk-reward-shif.md",
+      "title": "Ahead of datas, Short-term positioning shift, Risk/reward shift + Intraday post (02/July)",
+      "postType": "intraday",
+      "date": "2025-07-02",
+      "source": "https://stochvoltrader.substack.com/p/ahead-of-datas-short-term-positioning",
+      "concepts": ["volatility-greeks", "macro-rates-fed"],
+      "topTerms": ["powell", "ecb", "data dependent", "nfp", "pmi", "tariff", "short fly", "vomma", "charm", "veta", "vanna", "speed", "risk reward shift", "6000", "6070", "6145"],
+      "excerpt": "Powell at ECB conference reaffirms data dependency. Short fly spread at 6000/6070/6145. Complex Greeks analysis: short vega/vomma/charm, long veta/vanna/theta/delta. Risk/reward shift framework.",
+      "teachingWeight": "analytical"
+    },
+    {
+      "id": "ahead-fomc-may05",
+      "file": "unknown-date-ahead-of-fomc-intraday-post-05-may.md",
+      "title": "Ahead of FOMC, Intraday post (05/May)",
+      "postType": "intraday",
+      "date": "2025-05-05",
+      "source": "https://stochvoltrader.substack.com/p/ahead-of-fomc-intraday-post-05may",
+      "concepts": ["macro-rates-fed", "geopolitics-policy", "ai-bubble-crypto"],
+      "topTerms": ["fomc", "semiconductor tariffs", "section 232", "chip duties", "may 7", "wafer out", "sell into strength", "rate decision", "growth shock"],
+      "excerpt": "Section 232 semiconductor probe. 25-100% chip tariffs imminent. Only 10 comments filed vs 300 for prior probes. Growth-shock + Fed decision collision. Sell into strength recommendation.",
+      "teachingWeight": "analytical"
+    },
+    {
+      "id": "appendix-intraday-mar13",
+      "file": "2025-01-29-appendix-for-today-s-intraday-post.md",
+      "title": "Appendix for today's intraday post",
+      "postType": "intraday",
+      "date": "2025-03-13",
+      "source": "https://stochvoltrader.substack.com/p/appendix-for-todays-intraday-post",
+      "concepts": ["spot-decay-liquidity", "volatility-greeks", "geopolitics-policy"],
+      "topTerms": ["rangebounding", "spot decay", "liquidity", "insider speculation", "gamma decay", "realized vol", "jheqx collar", "speed", "vanna", "charm", "middle eastern investors", "negative wealth effect", "oscillation negative drift"],
+      "excerpt": "Four key statements: low/negative gamma, realized vol bid vs implied underperformance, JHEQX collar put strike, skew stagnant despite bearishness. Spot decay = hedged grind lower to make tech attractive for ME investors.",
+      "teachingWeight": "comprehensive"
+    },
+    {
+      "id": "gdp-release-dec",
+      "file": "2025-01-29-gdp-release-weekly-post-22-26-dec-free-post.md",
+      "title": "GDP Release - Weekly post (22-26/Dec)",
+      "postType": "weekly",
+      "date": "2025-12-20",
+      "source": "https://stochvoltrader.substack.com/p/gdp-release-weekly-post-22-26dec",
+      "concepts": ["macro-rates-fed", "opex-flows-positioning"],
+      "topTerms": ["gdp", "sentiment breakdown", "positioning", "liquidity vacuum", "gap fill", "poc", "gdpnow", "3.2%", "3.5%", "inflation scare", "spx yields beta", "goldilocks"],
+      "excerpt": "GDP release analysis. Liquidity vacuum below market. Weekly POC at 6810. GDPNow at 3.5% vs 3.2% consensus. SPX/yields beta analysis for inflation scare scenarios. 'Goldilocks' case framework.",
+      "teachingWeight": "analytical"
+    },
+    {
+      "id": "intraday-mar19-fed",
+      "file": "2025-01-29-intraday-post-19-march-fed.md",
+      "title": "Intraday post 19/march (+Fed)",
+      "postType": "intraday",
+      "date": "2025-03-19",
+      "source": "https://stochvoltrader.substack.com/p/intraday-post-19march-fed",
+      "concepts": ["macro-rates-fed", "spot-decay-liquidity"],
+      "topTerms": ["stagflation", "fed", "hawkish cut", "inflation", "qt", "runoff", "reserves", "debt ceiling", "overnight markets", "leverage flush", "citadel", "renaissance", "tax harvesting"],
+      "excerpt": "US struggling with stagflation. Trump trying to eradicate on paper. Hawkish cut was populist. Fed QT runoff mechanics. Debt ceiling risk to reserve levels. Renaissance losses, Citadel MM profits.",
+      "teachingWeight": "analytical"
+    },
+    {
+      "id": "intraday-aug28",
+      "file": "2025-01-29-intraday-post-28-aug.md",
+      "title": "Intraday post (28/Aug)",
+      "postType": "intraday",
+      "date": "2025-08-28",
+      "source": "https://stochvoltrader.substack.com/p/intraday-post-28aug",
+      "concepts": ["volatility-greeks", "opex-flows-positioning"],
+      "topTerms": ["short fly", "speed", "centroid", "gamma", "magnetic", "vomma", "power hour", "pin", "call skew", "put skew", "delta", "nvda", "gdp", "pce"],
+      "excerpt": "Detailed intraday speed profile coding. Short fly pattern with net negative speed. Centroid 6466-6472. Gamma magnetic at 6493. Power hour pin analysis. Exact pivot, confirmation, and target levels.",
+      "teachingWeight": "tactical"
+    },
+    {
+      "id": "intraday-feb28",
+      "file": "2025-01-29-intraday-post-28-feb.md",
+      "title": "Intraday post (28/feb)",
+      "postType": "intraday",
+      "date": "2025-02-28",
+      "source": "https://stochvoltrader.substack.com/p/intraday-post-28feb",
+      "concepts": ["volatility-greeks", "spot-decay-liquidity"],
+      "topTerms": ["gamma", "vanna", "vanna flip", "charm convexity", "color", "speed", "mean reversion", "spot decay", "heatmap", "optionsdepth", "zero vanna", "negative speed", "pivot"],
+      "excerpt": "Detailed gamma coding for expo day. Zero vanna at 5914, downside flip at 5795.65. Negative speed environment. Short color (negative charm convexity). Spot decay pattern explanation from '22/'23.",
+      "teachingWeight": "tactical"
+    },
+    {
+      "id": "jan-opex-quant-breakdown",
+      "file": "2025-01-29-january-opex-week-quant-breakdown-weekly-post-12-16-jan-free.md",
+      "title": "January OpEx week quant breakdown | Weekly post (12-16/Jan) - FREE",
+      "postType": "weekly",
+      "date": "2026-01-11",
+      "source": "https://stochvoltrader.substack.com/p/january-opex-week-quant-breakdown",
+      "concepts": ["opex-flows-positioning", "risk-framework", "ai-bubble-crypto"],
+      "topTerms": ["opex", "quant breakdown", "scotus", "challenges 2026", "bubble", "ai", "btc", "nvda", "oil", "tsm", "yields", "pain trade", "short vol", "long straddle", "put flies", "tlt puts"],
+      "excerpt": "January OpEx breakdown. Dice loaded, game rigged, pain trade up. Short vol front-end, long straddles long-end. Deep OTM TLT puts. Q2 first serious shake expected. Shock factor rising.",
+      "teachingWeight": "comprehensive"
+    },
+    {
+      "id": "opex-mar20-fed-path",
+      "file": "2025-01-29-opex-intraday-post-20-march-fed-path-and-tech-with-geos.md",
+      "title": "OpEx, Intraday post (20/march) + Fed path and tech (with geos)",
+      "postType": "intraday",
+      "date": "2025-03-20",
+      "source": "https://stochvoltrader.substack.com/p/opex-intraday-post-20march-fed-path",
+      "concepts": ["macro-rates-fed", "opex-flows-positioning"],
+      "topTerms": ["fomc", "sep", "dot plot", "stagflation", "qt slowdown", "25bn to 5bn", "yield curve", "usd", "tariff inflation", "transitory", "two cuts 2025"],
+      "excerpt": "FOMC: growth forecasts marked down to 1.7%, inflation revised up. QT slowed from $25B to $5B/month. SEP skewed toward weaker activity. Tariff inflation more persistent than expected. Powell dovish but underestimating risks.",
+      "teachingWeight": "analytical"
+    },
+    {
+      "id": "opex-vixpery-pce-feb",
+      "file": "2025-01-29-opex-vixpery-and-pce-week-weekly-post-17-20-feb.md",
+      "title": "OpEx, VIXpery and PCE week | Weekly post (17-20/Feb)",
+      "postType": "weekly",
+      "date": "2026-02-16",
+      "source": "https://stochvoltrader.substack.com/p/opex-vixpery-and-pce-week-weekly",
+      "concepts": ["opex-flows-positioning", "macro-rates-fed"],
+      "topTerms": ["opex", "vixpery", "pce", "gdp", "fomc minutes", "net gamma", "44%", "reversion model", "red dot", "distribution", "nasdaq ranging", "spx shaky", "good news is good news"],
+      "excerpt": "Short week: FOMC minutes Wednesday, PCE+GDP Friday, VIX expo + monthly OpEx. Net gamma grew 44.56%. Reversion model red dot appeared. NASDAQ ranging since October FOMC. Sentiment shifting to 'good news is good news'.",
+      "teachingWeight": "comprehensive"
+    },
+    {
+      "id": "post-fomc-jan29",
+      "file": "2025-01-29-post-fomc-intraday-post-29-jan.md",
+      "title": "Post-FOMC | Intraday post (29/Jan)",
+      "postType": "intraday",
+      "date": "2026-01-29",
+      "source": "https://stochvoltrader.substack.com/p/post-fomc-intraday-post-29jan",
+      "concepts": ["macro-rates-fed", "volatility-greeks", "carry-trade-fx"],
+      "topTerms": ["fomc", "es futures", "globex", "dedollarization", "powell", "dollar", "gold", "speed profile", "net negative", "vol sold", "gamma inflow", "sigma range", "poc", "liquidity"],
+      "excerpt": "Post-FOMC: structure shifting to globex as dedollarization continues. Powell didn't comment dollar. SPX speed profile net negative. Vol sold both directions, more downside protection. Gamma inflow +23%, volume -17%.",
+      "teachingWeight": "tactical"
+    },
+    {
+      "id": "warsh-gold-sentiment-feb",
+      "file": "2025-01-29-warsh-gold-sentiment-weekly-post-02-06-feb.md",
+      "title": "Warsh, Gold, Sentiment | Weekly post (02-06/Feb)",
+      "postType": "weekly",
+      "date": "2026-02-01",
+      "source": "https://stochvoltrader.substack.com/p/warsh-gold-sentiment-weekly-post",
+      "concepts": ["macro-rates-fed", "ai-bubble-crypto", "carry-trade-fx"],
+      "topTerms": ["warsh", "fed chair", "front end easing", "back end discipline", "curve steepener", "term premia", "ai productivity", "druckenmiller", "duquesne", "palantir", "karp", "bubble burst", "gold", "crypto"],
+      "excerpt": "Warsh nomination as Fed Chair. 'Front-end easing + back-end discipline' regime. Curve steepener, rising term premia. AI/productivity narrative needed. Druckenmiller-Duquesne network. Bubble burst approaching.",
+      "teachingWeight": "comprehensive"
+    },
+    {
+      "id": "weekly-feb09-14",
+      "file": "2025-01-29-weekly-post-09-feb-14-feb.md",
+      "title": "Weekly post (09/feb - 14/feb)",
+      "postType": "weekly",
+      "date": "2025-02-09",
+      "source": "https://stochvoltrader.substack.com/p/weekly-post-09feb-14feb",
+      "concepts": ["volatility-greeks", "opex-flows-positioning"],
+      "topTerms": ["skew", "iv surface", "3d", "atm vol", "otm put", "otm call", "slope", "quadratic trendline", "rate of change", "butterfly", "hill", "left tail", "data hedge", "volatility spike"],
+      "excerpt": "Advanced: coded SPX skew into Feb 18 in 3D. IV rate-of-change measured across put/call segments. ATM vol +29% into Friday vs minimal wing movement. Traders hedging data but not expecting left-tail risk.",
+      "teachingWeight": "analytical"
+    },
+    {
+      "id": "python-course-launched-weekly",
+      "file": "2025-01-29-python-course-is-launched-weekly-post-09-13-feb.md",
+      "title": "Python course is launched | Weekly post (09-13/Feb)",
+      "postType": "weekly",
+      "date": "2026-02-08",
+      "source": "https://stochvoltrader.substack.com/p/python-course-is-launched-weekly",
+      "concepts": ["macro-rates-fed", "opex-flows-positioning", "ai-bubble-crypto"],
+      "topTerms": ["python course", "nfp", "cpi", "good news", "goldilocks", "copper supply", "tech growth", "infrastructure", "bubble burst", "es 7005", "6960", "shock factor", "speed profile", "centroid"],
+      "excerpt": "Python course announced. NFP+CPI data week. Tech growth unsustainable — bubble bursts when market recognizes demand is infrastructure-built. ES pivots at 7005 and 6960/70. Shock factor rising.",
+      "teachingWeight": "analytical"
+    },
+    {
+      "id": "3-posts-set-free",
+      "file": "2025-01-29-3-latest-weekly-posts-have-been-set-free.md",
+      "title": "3 latest weekly posts have been set free",
+      "postType": "meta",
+      "date": "2026-02-21",
+      "source": "https://stochvoltrader.substack.com/p/3-latest-weekly-posts-have-been-set",
+      "concepts": ["performance-community"],
+      "topTerms": ["weekly posts", "free", "predictions", "volatile feb 3", "consolidation", "rebound", "melt-up", "snapback", "customer positioning", "cboe", "models", "referral"],
+      "excerpt": "3 weekly posts set free showing prediction accuracy: volatile Feb 3, mid-week vol, Monday-Tuesday ranging + Wednesday melt-up + Friday snapback. Models derived from CBOE customer positioning data.",
+      "teachingWeight": "meta"
+    }
+  ],
+  "queryRecipes": [
+    {
+      "intent": "Understand Alma's volatility framework",
+      "query": "volatility greeks vanna vomma speed profile",
+      "expectedClusters": ["volatility-greeks", "educational-foundations"]
+    },
+    {
+      "intent": "Find Window of Risk analysis",
+      "query": "window of risk left-tail crowded trade",
+      "expectedClusters": ["risk-framework"]
+    },
+    {
+      "intent": "Get FOMC/Fed impact analysis",
+      "query": "fomc fed rate cut stagflation powell",
+      "expectedClusters": ["macro-rates-fed"]
+    },
+    {
+      "intent": "Find OpEx positioning breakdown",
+      "query": "opex dealer gamma exposure positioning flows",
+      "expectedClusters": ["opex-flows-positioning"]
+    },
+    {
+      "intent": "Understand geopolitical risk framing",
+      "query": "china tariff iran ukraine geopolitical risk",
+      "expectedClusters": ["geopolitics-policy"]
+    },
+    {
+      "intent": "Find AI bubble / crypto analysis",
+      "query": "ai bubble nvidia btc bitcoin valuation",
+      "expectedClusters": ["ai-bubble-crypto"]
+    },
+    {
+      "intent": "Learn Alma's foundational theory",
+      "query": "reflexivity soros education mean reversion probability",
+      "expectedClusters": ["educational-foundations"]
+    },
+    {
+      "intent": "Review performance and track record",
+      "query": "performance review prediction accuracy track record",
+      "expectedClusters": ["performance-community"]
+    },
+    {
+      "intent": "Understand spot decay and liquidity dynamics",
+      "query": "spot decay liquidity hidden qe negative wealth effect",
+      "expectedClusters": ["spot-decay-liquidity"]
+    },
+    {
+      "intent": "Find carry trade and FX analysis",
+      "query": "carry trade yen boj usdjpy dedollarization gold",
+      "expectedClusters": ["carry-trade-fx"]
+    },
+    {
+      "intent": "Get Warsh Fed Chair regime implications",
+      "query": "warsh fed chair front end easing discipline curve steepener",
+      "expectedClusters": ["macro-rates-fed", "ai-bubble-crypto"]
+    },
+    {
+      "intent": "Find intraday speed profile examples",
+      "query": "speed profile centroid pivot gamma magnetic pin",
+      "expectedClusters": ["volatility-greeks"]
+    }
+  ],
+  "aliasExpansionMap": {
+    "vol": ["volatility", "vix", "implied vol", "realized vol", "iv"],
+    "greeks": ["gamma", "vanna", "vomma", "theta", "vega", "charm", "veta", "zomma", "color", "speed"],
+    "fed": ["fomc", "powell", "rate cut", "hawkish", "dovish", "dot plot", "sep", "qt", "quantitative tightening"],
+    "opex": ["expiry", "expo", "vixpery", "vix expo", "monthly opex", "quarterly opex", "dealer positioning"],
+    "risk": ["window of risk", "left-tail", "right-tail", "kurtosis", "var", "sharpe", "sortino", "crowded"],
+    "geo": ["geopolitical", "china", "tariff", "iran", "ukraine", "russia", "venezuela", "trump", "board of peace"],
+    "bubble": ["ai bubble", "tech bubble", "nvda", "nvidia", "capex", "valuation", "passive flows", "dispersion"],
+    "macro": ["cpi", "ppi", "pce", "gdp", "nfp", "inflation", "stagflation", "yields", "treasury", "debt ceiling"],
+    "fx": ["carry trade", "yen", "usdjpy", "boj", "dedollarization", "dollar", "gold", "brent", "gasoil"],
+    "education": ["reflexivity", "soros", "probability", "distribution", "python", "mean reversion", "statistical arbitrage"]
+  }
+}

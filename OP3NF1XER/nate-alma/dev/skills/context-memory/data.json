@@ -1,0 +1,202 @@
+{
+  "context": {
+    "active": [
+      {
+        "id": "c88b81e6",
+        "text": "Install OpenClaw on Mac mini (brew install openclaw)",
+        "created": "2026-02-23T07:12:39.324131",
+        "status": "active"
+      },
+      {
+        "id": "83d5619e",
+        "text": "Pair Mac mini node (openclaw pair on Railway + Mac)",
+        "created": "2026-02-23T07:12:43.324481",
+        "status": "active"
+      },
+      {
+        "id": "76f3abec",
+        "text": "Set up Webull API for market data + trade tracking",
+        "created": "2026-02-23T07:12:46.902478",
+        "status": "active"
+      }
+    ],
+    "inbox": [
+      {
+        "id": "c8e006cd",
+        "text": "Install OpenClaw on Mac mini via Homebrew",
+        "created": "2026-02-06T06:40:35.974329",
+        "status": "done"
+      },
+      {
+        "id": "9a35f63a",
+        "text": "Pair Mac mini as OpenClaw node (openclaw pair)",
+        "created": "2026-02-06T06:40:36.027591",
+        "status": "done"
+      },
+      {
+        "id": "5c71ed58",
+        "text": "Set up Apple Calendar access via Mac node",
+        "created": "2026-02-06T06:40:36.081814",
+        "status": "active"
+      },
+      {
+        "id": "14efe161",
+        "text": "Set up Apple Reminders access via Mac node",
+        "created": "2026-02-06T06:40:36.127828",
+        "status": "active"
+      },
+      {
+        "id": "051f1dd5",
+        "text": "Connect HomeKit for smart home control",
+        "created": "2026-02-06T06:40:36.177781",
+        "status": "active"
+      },
+      {
+        "id": "94a5410d",
+        "text": "Figure out Alexa integration (speakers, lights, plugs)",
+        "created": "2026-02-06T06:40:36.227351",
+        "status": "active"
+      },
+      {
+        "id": "1844276e",
+        "text": "Figure out Govee integration (lights, plugs)",
+        "created": "2026-02-06T06:40:36.273026",
+        "status": "active"
+      },
+      {
+        "id": "bd922345",
+        "text": "Build morning wake-up routine with lights/speakers",
+        "created": "2026-02-06T06:40:36.325749",
+        "status": "active"
+      },
+      {
+        "id": "b8beafe8",
+        "text": "Get access to Nate's Apple Notes (thousands of notes, via Mac node)",
+        "created": "2026-02-06T07:14:39.201098",
+        "status": "active"
+      },
+      {
+        "id": "7ace225b",
+        "text": "Get access to Nate's Facebook history (data export)",
+        "created": "2026-02-06T07:14:39.255391",
+        "status": "done"
+      },
+      {
+        "id": "2280e518",
+        "text": "Set up Webull API integration (market data + Nate's trades)",
+        "created": "2026-02-06T15:56:13.664286",
+        "status": "done"
+      },
+      {
+        "id": "2f2e16e4",
+        "text": "Set up X/Twitter monitoring for @satymahajan (needs Mac node + browser)",
+        "created": "2026-02-06T16:40:15.750825",
+        "status": "done"
+      },
+      {
+        "id": "3389d934",
+        "text": "Figure out how to fetch recent tweets (not just profile) from vxtwitter API for @alma271828",
+        "created": "2026-02-06T16:50:40.567658",
+        "status": "active"
+      },
+      {
+        "id": "eb02ac2c",
+        "text": "Fix X timeline checking - need browser automation via Mac node to see recent tweets (not just specific URLs)",
+        "created": "2026-02-06T18:15:22.672108",
+        "status": "active"
+      },
+      {
+        "id": "a3bc9b40",
+        "text": "Set up Discord bot integration - add Alma to Nate's Discord server",
+        "created": "2026-02-06T18:31:54.906427",
+        "status": "active"
+      },
+      {
+        "id": "7c68baab",
+        "text": "Add tag/label support to context-memory system (filter tasks by project)",
+        "created": "2026-02-06T18:33:44.800012",
+        "status": "done"
+      },
+      {
+        "id": "74dcf88f",
+        "text": "Set up TTS voice for Alma - explore ElevenLabs or other providers for warm/raspy female voice option",
+        "created": "2026-02-06T19:52:33.732231",
+        "status": "done"
+      }
+    ],
+    "ideas": [
+      {
+        "id": "d038ccaa",
+        "text": "TTS voice - ElevenLabs warm/raspy female voice for storytelling",
+        "created": "2026-02-23T07:12:57.050913",
+        "status": "active"
+      },
+      {
+        "id": "c5384a41",
+        "text": "Add tag/label filtering to context-memory (project-based views)",
+        "created": "2026-02-23T07:13:00.379965",
+        "status": "active"
+      }
+    ],
+    "blockers": [],
+    "urgent": []
+  },
+  "memory": {
+    "projects": [
+      {
+        "id": "1c79ddcf",
+        "text": "Mac Mini Node - Install OpenClaw, pair node, enable Calendar/Reminders/Notes/HomeKit access",
+        "created": "2026-02-23T07:12:18.194673",
+        "status": "active"
+      },
+      {
+        "id": "f0b45390",
+        "text": "Smart Home Control - HomeKit, Alexa, Govee integration + morning routines",
+        "created": "2026-02-23T07:12:24.960237",
+        "status": "active"
+      },
+      {
+        "id": "3a35e01c",
+        "text": "Trading Infrastructure - Webull API, market data feeds, watchlist automation",
+        "created": "2026-02-23T07:12:28.021224",
+        "status": "active"
+      },
+      {
+        "id": "5548f9f9",
+        "text": "Social Monitoring - X/Twitter tracking, Discord integration",
+        "created": "2026-02-23T07:12:30.989427",
+        "status": "active"
+      }
+    ],
+    "goals": [],
+    "lessons": [],
+    "decisions": [],
+    "people": []
+  },
+  "reminders": [
+    {
+      "id": "59308267",
+      "text": "Send trading materials to Alma",
+      "dueAt": 1770246426695,
+      "priority": "high",
+      "created": 1770244626,
+      "fired": true
+    },
+    {
+      "id": "dc15cdae",
+      "text": "URGENT: Configure Railway timezone",
+      "dueAt": 1770244690949,
+      "priority": "high",
+      "created": 1770244630,
+      "fired": true
+    },
+    {
+      "id": "8ab19d43",
+      "text": "Mac mini setup - install OpenClaw, pair node, get access to Calendar/Reminders/Notes/HomeKit",
+      "dueAt": 1770410552350,
+      "priority": "high",
+      "created": 1770399752,
+      "fired": false
+    }
+  ]
+}

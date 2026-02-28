@@ -48,7 +48,7 @@ registry.register({
   transport: 'stdio',
   connection: {
     command: 'docker',
-    args: ['run', '-i', '--rm', '-e', 'MONGODB_URI=mongodb://192.168.56.1:27017/P4NTH30N?directConnection=true', 'decisions-server:v1.2.0'],
+    args: ['run', '-i', '--rm', '-e', 'MONGODB_URI=mongodb://192.168.56.1:27017/P4NTHE0N?directConnection=true', 'decisions-server:v1.2.0'],
   },
   ...
 });
@@ -82,10 +82,10 @@ Decisions MCP server v1.1.0 running on stdio
 ```
 {
   "connected": true,
-  "database": "P4NTH30N",
+  "database": "P4NTHE0N",
   "collection": "D3CISI0NS",
   "documentCount": 192,
-  "uri": "mongodb://192.168.56.1:27017/P4NTH30N?directConnection=true"
+  "uri": "mongodb://192.168.56.1:27017/P4NTHE0N?directConnection=true"
 }
 ✅ Connected to MongoDB with 192 decisions
 ```
@@ -111,8 +111,8 @@ Decisions MCP server v1.1.0 running on stdio
   "count": 2,
   "decisions": [
     {
-      "decisionId": "DECISION_P4NTH30N_002",
-      "title": "Agent Prompt and Knowledge Deployment to P4NTH30N",
+      "decisionId": "DECISION_P4NTHE0N_002",
+      "title": "Agent Prompt and Knowledge Deployment to P4NTHE0N",
       "status": "InProgress",
       ...
     },

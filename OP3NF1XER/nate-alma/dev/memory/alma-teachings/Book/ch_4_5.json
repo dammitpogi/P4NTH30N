@@ -1,0 +1,139 @@
+{
+  "structure": {
+    "Part_IV_Crisis_Architecture": {
+      "description": "Systemic instability and asymmetry.",
+      "chapters": [
+        {
+          "title": "The Crisis Blueprint",
+          "sections": [
+            {
+              "section": "Bubble buildup timeline",
+              "mission": "Map the structural stages of bubble formation from liquidity expansion to reflexive instability.",
+              "tags": ["bubble cycle", "liquidity expansion", "reflexivity", "systemic build-up", "cycle timing"]
+            },
+            {
+              "section": "Conditional breakpoints",
+              "mission": "Identify structural thresholds that, once breached, accelerate regime transition.",
+              "tags": ["breakpoints", "trigger levels", "regime acceleration", "structural thresholds"]
+            },
+            {
+              "section": "If-then logic chains",
+              "mission": "Formalize probabilistic scenario construction through conditional macro and volatility pathways.",
+              "tags": ["conditional logic", "scenario modeling", "probability tree", "macro triggers"]
+            },
+            {
+              "section": "Asymmetric risk stacking",
+              "mission": "Explain how layered risks compound convexity and produce nonlinear downside outcomes.",
+              "tags": ["asymmetry", "convex risk", "risk stacking", "nonlinearity", "tail amplification"]
+            }
+          ]
+        },
+        {
+          "title": "Managed Stability",
+          "sections": [
+            {
+              "section": "Volatility suppression",
+              "mission": "Describe how institutional intervention dampens realized volatility while embedding latent instability.",
+              "tags": ["vol suppression", "institutional intervention", "realized volatility", "latent risk"]
+            },
+            {
+              "section": "CTA asymmetry",
+              "mission": "Analyze how systematic strategies add limited upside but amplify downside selling pressure.",
+              "tags": ["CTA models", "systematic selling", "trend following", "downside convexity"]
+            },
+            {
+              "section": "Vol-control fund exposure",
+              "mission": "Explain how volatility-targeting funds increase leverage in calm regimes and accelerate de-risking in stress.",
+              "tags": ["vol control", "leverage expansion", "forced deleveraging", "realized volatility trigger"]
+            },
+            {
+              "section": "Exponential downside de-risking",
+              "mission": "Illustrate how feedback loops convert small declines into rapid structural liquidation events.",
+              "tags": ["liquidation cascade", "feedback loop", "systemic selloff", "convex downside"]
+            }
+          ]
+        }
+      ]
+    },
+    "Part_V_The_Trader_Mind": {
+      "description": "Psychology and probabilistic discipline.",
+      "chapters": [
+        {
+          "title": "The Wall Street Casino",
+          "sections": [
+            {
+              "section": "Mathematical pitfalls",
+              "mission": "Expose common statistical misunderstandings that lead to negative expectancy trading.",
+              "tags": ["statistics", "expectancy", "probability error", "retail traps"]
+            },
+            {
+              "section": "Retail illusion",
+              "mission": "Show how structural asymmetry disadvantages uninformed participants.",
+              "tags": ["retail trading", "information asymmetry", "structural disadvantage"]
+            },
+            {
+              "section": "Hit-rate vs expectancy",
+              "mission": "Differentiate between win percentage and long-term profitability through risk-reward asymmetry.",
+              "tags": ["expectancy", "risk-reward", "probability", "trade structure"]
+            },
+            {
+              "section": "Risk asymmetry",
+              "mission": "Instill understanding of convex payoff structures and survival-based trading.",
+              "tags": ["risk asymmetry", "convex payoff", "capital preservation", "downside protection"]
+            }
+          ]
+        },
+        {
+          "title": "Probability Over Prediction",
+          "sections": [
+            {
+              "section": "Conditional thinking",
+              "mission": "Teach scenario-based reasoning over deterministic forecasting.",
+              "tags": ["conditional probability", "scenario analysis", "non-determinism"]
+            },
+            {
+              "section": "Scenario stacking",
+              "mission": "Demonstrate how multiple conditional paths can coexist within a probabilistic framework.",
+              "tags": ["multi-scenario modeling", "risk layering", "probability weighting"]
+            },
+            {
+              "section": "Position sizing discipline",
+              "mission": "Explain how capital allocation determines survival more than directional accuracy.",
+              "tags": ["position sizing", "capital management", "risk control"]
+            },
+            {
+              "section": "Capital preservation",
+              "mission": "Reinforce that longevity in markets depends on protecting downside exposure.",
+              "tags": ["capital preservation", "drawdown control", "risk management"]
+            }
+          ]
+        },
+        {
+          "title": "Do Not Marry a Side",
+          "sections": [
+            {
+              "section": "Ego in trading",
+              "mission": "Identify psychological attachment as a primary source of structural trading error.",
+              "tags": ["ego", "bias", "psychology", "cognitive distortion"]
+            },
+            {
+              "section": "Framework switching",
+              "mission": "Encourage adaptive thinking when volatility regimes shift.",
+              "tags": ["adaptability", "regime shift", "mental flexibility"]
+            },
+            {
+              "section": "Be like water",
+              "mission": "Promote fluid probabilistic thinking aligned with structural flow changes.",
+              "tags": ["fluidity", "discipline", "adaptive trading"]
+            },
+            {
+              "section": "Volatility first, opinion second",
+              "mission": "Conclude with the principle that structural volatility analysis must override personal bias.",
+              "tags": ["volatility primacy", "structure over opinion", "risk discipline"]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

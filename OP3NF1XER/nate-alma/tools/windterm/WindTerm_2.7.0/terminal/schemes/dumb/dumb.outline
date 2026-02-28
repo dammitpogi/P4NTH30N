@@ -1,0 +1,26 @@
+//WindTerm Dumb Outline
+//Version: 1.0
+{
+	"type": "level",
+	"patterns": [
+		{
+			"name": "prompt",
+			"scope": "prompt.line.dumb",
+			"match": "(*UTF)(?x)(?m)^(
+						  ->
+						| [^\\n\\$#%\\x{e0b0}]*+[\\$#%]
+						| [^\\n]*?\\x{e0b0}
+						) [ \\t]*+
+						(?<command>(\\S[^\\n\\x{e0b0}]*+|(?!\\n)))
+					$"
+		}
+	],
+	"regions": [
+		{
+			"name": "prompt",
+			"title": "${command}",
+			"icon": "king::Label",
+			"sequence": ["prompt"]
+		}
+	]
+}

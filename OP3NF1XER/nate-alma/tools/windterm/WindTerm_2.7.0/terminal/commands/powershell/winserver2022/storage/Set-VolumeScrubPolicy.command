@@ -1,0 +1,63 @@
+description: Sets the status of the volume scrub policy
+synopses:
+- Set-VolumeScrubPolicy [-DriveLetter] <Char[]> [[-Enable] <Boolean>] [-CimSession
+  <CimSession[]>] [-ThrottleLimit <Int32>] [-AsJob] [-PassThru] [<CommonParameters>]
+- Set-VolumeScrubPolicy -ObjectId <String[]> [[-Enable] <Boolean>] [-CimSession <CimSession[]>]
+  [-ThrottleLimit <Int32>] [-AsJob] [-PassThru] [<CommonParameters>]
+- Set-VolumeScrubPolicy -Path <String[]> [[-Enable] <Boolean>] [-CimSession <CimSession[]>]
+  [-ThrottleLimit <Int32>] [-AsJob] [-PassThru] [<CommonParameters>]
+- Set-VolumeScrubPolicy -FileSystemLabel <String[]> [[-Enable] <Boolean>] [-CimSession
+  <CimSession[]>] [-ThrottleLimit <Int32>] [-AsJob] [-PassThru] [<CommonParameters>]
+- Set-VolumeScrubPolicy -InputObject <CimInstance[]> [[-Enable] <Boolean>] [-CimSession
+  <CimSession[]>] [-ThrottleLimit <Int32>] [-AsJob] [-PassThru] [<CommonParameters>]
+options:
+  -AsJob Switch: ~
+  -CimSession,-Session CimSession[]: ~
+  -DriveLetter Char[]:
+    required: true
+  -Enable Boolean: ~
+  -FileSystemLabel String[]:
+    required: true
+  -InputObject CimInstance[]:
+    required: true
+  -ObjectId,-Id String[]:
+    required: true
+  -PassThru Switch: ~
+  -Path String[]:
+    required: true
+  -ThrottleLimit Int32: ~
+  -Debug,-db Switch: ~
+  -ErrorAction,-ea ActionPreference:
+    values:
+    - Break
+    - Suspend
+    - Ignore
+    - Inquire
+    - Continue
+    - Stop
+    - SilentlyContinue
+  -ErrorVariable,-ev String: ~
+  -InformationAction,-ia ActionPreference:
+    values:
+    - Break
+    - Suspend
+    - Ignore
+    - Inquire
+    - Continue
+    - Stop
+    - SilentlyContinue
+  -InformationVariable,-iv String: ~
+  -OutVariable,-ov String: ~
+  -OutBuffer,-ob Int32: ~
+  -PipelineVariable,-pv String: ~
+  -Verbose,-vb Switch: ~
+  -WarningAction,-wa ActionPreference:
+    values:
+    - Break
+    - Suspend
+    - Ignore
+    - Inquire
+    - Continue
+    - Stop
+    - SilentlyContinue
+  -WarningVariable,-wv String: ~

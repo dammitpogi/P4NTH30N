@@ -1,0 +1,82 @@
+description:
+  copies files between hosts on a network.
+synopses:
+  - scp [-346BCpqrTv] [-c cipher] [-F ssh_config] [-i identity_file] [-l limit] [-o ssh_option] [-P port] [-S program] [[user@]host1:]file1 ... [[user@]host2:]file2
+options:
+  -3: Copies between two remote hosts are transferred through the local host.
+  -4: Forces scp to use IPv4 addresses only.
+  -6: Forces scp to use IPv6 addresses only.
+  -B: Selects batch mode (prevents asking for passwords or passphrases).
+  -C: Compression enable.
+  -c cipher: Selects the cipher to use for encrypting the data transfer.
+  -F ssh_config: Specifies an alternative per-user configuration file for ssh.
+  -i identity_file: Selects the file from which the identity (private key) for public key authentication is read.
+  -l limit: Limits the used bandwidth, specified in Kbit/s.
+  -o ssh_option:
+    description: Can be used to pass options to ssh in the format used in ssh_config.
+    values:
+      - AddressFamily
+      - BatchMode
+      - BindAddress
+      - CanonicalDomains
+      - CanonicalizeFallbackLocal
+      - CanonicalizeHostname
+      - CanonicalizeMaxDots
+      - CanonicalizePermittedCNAMEs
+      - CertificateFile
+      - ChallengeResponseAuthentication
+      - CheckHostIP
+      - Ciphers
+      - Compression
+      - ConnectionAttempts
+      - ConnectTimeout
+      - ControlMaster
+      - ControlPath
+      - ControlPersist
+      - GlobalKnownHostsFile
+      - GSSAPIAuthentication
+      - GSSAPIDelegateCredentials
+      - HashKnownHosts
+      - Host
+      - HostbasedAuthentication
+      - HostbasedKeyTypes
+      - HostKeyAlgorithms
+      - HostKeyAlias
+      - HostName
+      - IdentitiesOnly
+      - IdentityAgent
+      - IdentityFile
+      - IPQoS
+      - KbdInteractiveAuthentication
+      - KbdInteractiveDevices
+      - KexAlgorithms
+      - LogLevel
+      - MACs
+      - NoHostAuthenticationForLocalhost
+      - NumberOfPasswordPrompts
+      - PasswordAuthentication
+      - PKCS11Provider
+      - Port
+      - PreferredAuthentications
+      - ProxyCommand
+      - ProxyJump
+      - PubkeyAcceptedKeyTypes
+      - PubkeyAuthentication
+      - RekeyLimit
+      - SendEnv
+      - ServerAliveInterval
+      - ServerAliveCountMax
+      - StrictHostKeyChecking
+      - TCPKeepAlive
+      - UpdateHostKeys
+      - UsePrivilegedPort
+      - User
+      - UserKnownHostsFile
+      - VerifyHostKeyDNS
+  -P port: Specifies the port to connect to on the remote host.
+  -p: Preserves modification times, access times, and modes from the original file.
+  -q: Quiet mode, disables the progress meter as well as warning and diagnostic messages from ssh.
+  -r: Recursively copy entire directories. Note that scp follows symbolic links encountered in the tree traversal.
+  -S program: Name of program to use for the encrypted connection.
+  -T: Disable strict filename checking.
+  -v: Verbose mode.  Causes scp and ssh to print debugging messages about their progress.

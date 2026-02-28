@@ -1,0 +1,10 @@
+//WindTerm Dumb System
+//Version: 1.0
+{
+	"System": "dumb",
+	"Catalog": "dumb",
+	"Abbreviation": "Dumb",
+	"Description": "Dumb",
+	"CaseSensitive": true,
+	"lexer": "source.dumb"
+}

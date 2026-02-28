@@ -1,0 +1,39 @@
+//WindTerm macOS Pair
+//Version: 1.0
+{
+	"masks": [
+		{
+			"name": "quote",
+			"scope": "string.quoted.double.macos"
+		}
+	],
+	"barriers": [
+		{
+			"name": "prompt",
+			"scope": "sign.directive.prompt.macos"
+		}
+	],
+	"blocks": [
+		{
+			"name": "brace",
+			"scope": "punctuation.definition.block.macos",
+			"ignoreString": false,
+			"begin": "{",
+			"end": "}"
+		},
+		{
+			"name": "parentheses",
+			"scope": "punctuation.definition.block.macos",
+			"ignoreString": false,
+			"begin": "\\(",
+			"end": "\\)"
+		},
+		{
+			"name": "bracket",
+			"scope": "punctuation.definition.block.macos",
+			"ignoreString": false,
+			"begin": "\\[",
+			"end": "\\]"
+		}
+	]
+}

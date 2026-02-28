@@ -12,10 +12,10 @@ DECISIONS TO IMPLEMENT (in order):
 4. DECISION_060 - Operational Deployment (infrastructure only)
 
 FILES PROVIDED:
-- c:\P4NTH30N\STR4TEG15T\decisions\active\DECISION_057.md
-- c:\P4NTH30N\STR4TEG15T\decisions\active\DECISION_058.md
-- c:\P4NTH30N\STR4TEG15T\decisions\active\DECISION_059.md
-- c:\P4NTH30N\STR4TEG15T\decisions\active\DECISION_060.md
+- c:\P4NTHE0N\STR4TEG15T\decisions\active\DECISION_057.md
+- c:\P4NTHE0N\STR4TEG15T\decisions\active\DECISION_058.md
+- c:\P4NTHE0N\STR4TEG15T\decisions\active\DECISION_059.md
+- c:\P4NTHE0N\STR4TEG15T\decisions\active\DECISION_060.md
 
 CRITICAL CONTEXT:
 - DECISION_056 just completed (Chrome auto-start working)
@@ -31,7 +31,7 @@ PHASE 1: DECISION_057 - Monitoring Dashboard
 1. Create BurnInMonitor service (collects metrics every 60s)
 2. Create HTTP endpoint at /monitor/burnin (port 5002)
 3. Create WebSocket hub for real-time alerts
-4. Create CLI monitor command (P4NTH30N.exe monitor)
+4. Create CLI monitor command (P4NTHE0N.exe monitor)
 5. Create MongoDB repository for historical data
 6. TEST: Dashboard accessible, metrics updating
 

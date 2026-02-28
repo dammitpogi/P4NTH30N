@@ -1,0 +1,10 @@
+//WindTerm None System
+//Version: 1.0
+{
+	"System": "none",
+	"Catalog": "none",
+	"Abbreviation": "none",
+	"Description": "none",
+	"CaseSensitive": true,
+	"lexer": "source.none"
+}

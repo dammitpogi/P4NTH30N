@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VII. Analysis Archive - Doctrine Bible</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/alma-chat.css">
+</head>
+<body data-chapter="archive" data-lesson-id="archive-overview">
+
+  <header class="header">
+    <div class="header-brand">
+      <div class="header-logo">DB</div>
+      <div>
+        <div class="header-title">Doctrine Bible</div>
+        <div class="header-subtitle">Trading Curriculum</div>
+      </div>
+    </div>
+    <nav class="header-nav">
+      <div class="header-search">
+        <span class="header-search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Search topics... (Ctrl+K)">
+        <div class="search-results" id="search-results"></div>
+      </div>
+      <a href="../index.html" class="nav-btn">📚 Home</a>
+      <button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+    </nav>
+  </header>
+
+  <div class="app-container">
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-title">Course Progress</div>
+        <div class="sidebar-subtitle">7 Chapters</div>
+        <div class="sidebar-progress">
+          <div class="progress-label">
+            <span>Overall Progress</span>
+            <span id="progress-percent">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+      
+      <nav class="nav-tree">
+        <div class="nav-section " data-section="foundations">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">📖</span>
+            <span class="nav-section-title">I. Foundations</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-foundations.html" class="nav-lesson " data-lesson="foundations-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="principles">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">⚖️</span>
+            <span class="nav-section-title">II. Trading Principles</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-principles.html" class="nav-lesson " data-lesson="principles-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="mechanics">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">⚙️</span>
+            <span class="nav-section-title">III. Market Mechanics</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-mechanics.html" class="nav-lesson " data-lesson="mechanics-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="macro">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">🌍</span>
+            <span class="nav-section-title">IV. Macro Analysis</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-macro.html" class="nav-lesson " data-lesson="macro-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="technical">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">📊</span>
+            <span class="nav-section-title">V. Technical Analysis</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-technical.html" class="nav-lesson " data-lesson="technical-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="assets">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">💎</span>
+            <span class="nav-section-title">VI. Asset Classes</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-assets.html" class="nav-lesson " data-lesson="assets-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section expanded" data-section="archive">
+          <div class="nav-section-header active">
+            <span class="nav-section-icon">📚</span>
+            <span class="nav-section-title">VII. Analysis Archive</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-archive.html" class="nav-lesson active" data-lesson="archive-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="content-wrapper">
+        <div class="breadcrumbs">
+          <a href="../index.html">Home</a>
+          <span class="breadcrumbs-separator">→</span>
+          <span class="breadcrumbs-current">VII. Analysis Archive</span>
+        </div>
+
+        <div class="page-header">
+          <div class="page-category">📚 Chapter Overview</div>
+          <h1 class="page-title">VII. Analysis Archive</h1>
+          <p class="page-subtitle">Complete collection of weekly and intraday market posts</p>
+          <div class="page-meta">
+            <div class="page-meta-item">🏷️ Key Themes: 3</div>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <h2>Chapter Guide</h2>
+          <p>This chapter guide is written to teach the concepts from basics.</p>
+
+          <div class="chapter-guide">
+            <h2>Core Concepts</h2>
+<p>
+  The archive is your “case law.” It is not the curriculum itself; it is the evidence set. Use it
+  to see how the doctrine is applied under real conditions.
+</p>
+
+<h2>How To Apply</h2>
+<h3>Weekly posts first, intraday posts second</h3>
+<p>
+  Weekly posts typically frame structure and regime. Intraday posts typically provide timing,
+  confirmations, and concrete levels.
+</p>
+
+<h3>Make your own flashcards</h3>
+<ol>
+  <li>Copy the pivot, targets, and invalidation.</li>
+  <li>Write the regime state and event pressure.</li>
+  <li>After the fact, grade process (did confirmations/invalidation work?), not just PnL.</li>
+</ol>
+
+<h3>How to read a daily post (outline)</h3>
+<p>
+  The goal is not to stare at lagging indicators. The goal is to reverse-engineer what structure the
+  market is pricing, then use levels as checkpoints to interpret price action.
+</p>
+<ol>
+  <li><strong>Premarket heatmap:</strong> get the positioning map (where flows likely matter).</li>
+  <li><strong>Script inputs:</strong> pivots, targets, and probability checkpoints (upside/downside).</li>
+  <li><strong>Speed profile:</strong> the expected drift and whether mechanics are suppressive/supportive.</li>
+  <li><strong>Vanna flip / speed slip:</strong> the regime-change conditions (what breaks the current path).</li>
+</ol>
+
+<h3>A disciplined intraday workflow</h3>
+<p>
+  Most days you only have one true edge opportunity (two at most). The skill is waiting.
+</p>
+<ol>
+  <li>Watch the first 30-40 minutes; let the market build and retest a structure.</li>
+  <li>Define your daily budget: loss limit and profit limit.</li>
+  <li>Pick one side you understand (long/short) and define entry conditions + size.</li>
+  <li>Write the invalidation first, take the loss when invalidated, and do not "revenge trade".</li>
+  <li>If the setup doesn't show up, leave it for tomorrow.</li>
+</ol>
+
+<h2>Common Mistakes</h2>
+<ul>
+  <li>Reading old posts as “predictions” rather than as examples of a method.</li>
+  <li>Ignoring the event calendar context (CPI/FOMC/OpEx) that made the day behave that way.</li>
+  <li>Cherry-picking only the wins and skipping the disciplined invalidations.</li>
+  <li>Taking every printed level as a signal instead of using levels as checkpoints.</li>
+  <li>Overtrading the open (0DTE noise) instead of waiting for structure.</li>
+</ul>
+
+<h2>Citations (Local Corpus)</h2>
+<div class="citations">
+  <ul>
+    <li><code>bible/unknown-date-a-guide-to-reading-my-daily-posts.md</code></li>
+    <li><code>bible/unknown-date-important-trading-advice-intraday-post-16-june.md</code></li>
+    <li><code>bible/2025-01-29-3-latest-weekly-posts-have-been-set-free.md</code></li>
+    <li><code>bible/all-posts.json</code></li>
+  </ul>
+</div>
+
+<h2>Self-Check</h2>
+<ol>
+  <li>Can you summarize the weekly thesis in 3 bullets before reading intraday posts?</li>
+  <li>Can you extract pivot + confirmation + invalidation from a post without adding numbers?</li>
+  <li>Can you grade a day on process (rules followed), not outcome (PnL)?</li>
+</ol>
+
+<h2>Further Reading (General)</h2>
+<ul>
+  <li><a href="https://www.investopedia.com/terms/j/journaling.asp" target="_blank" rel="noopener">Trading journal basics</a></li>
+</ul>
+
+          </div>
+
+        </div>
+
+        <div class="chapter-nav">
+          <a href="./chapter-assets.html" class="chapter-nav-btn prev">
+            <div>
+              <div class="chapter-nav-label">← Previous</div>
+              <div class="chapter-nav-title">VI. Asset Classes</div>
+            </div>
+          </a>
+          
+          <a href="../index.html" class="chapter-nav-btn next">
+            <div>
+              <div class="chapter-nav-label">Next →</div>
+              <div class="chapter-nav-title">Home</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/app.js"></script>
+  <script src="../config/alma-config.js"></script>
+  <script src="../js/health-monitor.js"></script>
+  <script src="../js/alma-chat.js"></script>
+  <script src="../js/ask-alma-buttons.js"></script>
+</body>
+</html>

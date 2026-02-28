@@ -100,7 +100,7 @@ OPS_008 (Production Readiness)
 
 ### @windfixer (C# Code Implementation)
 
-**Primary Responsibility**: C# code changes within the P4NTH30N solution
+**Primary Responsibility**: C# code changes within the P4NTHE0N solution
 
 **Assigned Decisions**:
 1. **OPS_017** - Discover Jackpot DOM/JS Selectors
@@ -402,7 +402,7 @@ public static async Task<double> ReadJackpotValueAsync(
 - `OP3NF1XER/knowledge/DECISION_REPORTS_OPS_012-016.md`
 
 ### MongoDB Sources
-- Collection: `P4NTH30N.DECISIONS`
+- Collection: `P4NTHE0N.DECISIONS`
 - Count: 14 documents
 - Last Updated: 2026-02-19
 

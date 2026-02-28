@@ -1,0 +1,14 @@
+[build]
+builder = "dockerfile"
+
+[deploy]
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 10
+
+[networking]
+# HTTP port for OpenClaw
+port = 8080
+
+# Additional TCP port for SFTP
+[[networking.tcp]]
+port = 2022

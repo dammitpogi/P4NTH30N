@@ -1,0 +1,27 @@
+{
+  "common": {
+    "idle_timeout": 15
+  },
+  "sftpd": {
+    "bindings": [
+      {
+        "port": 2022,
+        "address": "0.0.0.0"
+      }
+    ]
+  },
+  "ftpd": {
+    "bindings": []
+  },
+  "webdavd": {
+    "bindings": []
+  },
+  "httpd": {
+    "bindings": []
+  },
+  "data_provider": {
+    "driver": "bolt",
+    "name": "/data/sftpgo.db"
+  },
+  "home_dir": "/data"
+}

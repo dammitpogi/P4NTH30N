@@ -1,0 +1,113 @@
+<h2>Core Concepts</h2>
+
+<h3>Options as a positioning map</h3>
+<p>
+  Options markets create mechanical hedging flows. When those flows are large relative to available
+  liquidity, they can dominate price behavior. This is why “dealer positioning” matters.
+</p>
+
+<h3>Key Greeks (practical meaning)</h3>
+<ul>
+  <li><strong>Delta:</strong> directional exposure.</li>
+  <li><strong>Gamma:</strong> how fast delta changes; it drives hedging intensity near key strikes.</li>
+  <li><strong>Vega:</strong> sensitivity to implied volatility.</li>
+  <li><strong>Charm / Vanna:</strong> flows that arise as time passes and as vol changes; these often explain
+    “pinning,” suppression, or sudden release.</li>
+</ul>
+
+<h3>OpEx / VIX expo (mechanical weeks)</h3>
+<p>
+  Expiry cycles change which strikes matter and how hedging behaves. In some weeks, macro news is
+  secondary to mechanical flows.
+</p>
+
+<h3>Speed profile (the drift behind the noise)</h3>
+<p>
+  A “speed profile” is the doctrine’s way to describe how positioning pressure tends to push price
+  over the session (and where it tends to resist). It is not a guarantee; it is an expected drift
+  map that must be validated by price action.
+</p>
+
+<h3>Supportive vs. suppressive flows are context-dependent</h3>
+<p>
+  The corpus repeatedly warns against simplistic takes like “vanna is supportive” or “charm is
+  suppressive.” Passive flows can be overwritten by other exposures, and net speed alone does not
+  uniquely determine vanna/charm impact because weights differ across strikes and tenors.
+</p>
+
+<h3>Vomma supply (how volatility spikes are capped)</h3>
+<p>
+  “Vomma selling” is described as a way to dampen volatility spikes by compressing the kurtosis of
+  the distribution. It does not remove intraday swings; it changes how tails behave and where a
+  true squeeze threshold (“event horizon of the tail”) sits.
+</p>
+
+<h2>How To Apply</h2>
+
+<h3>Reading a “flow week” like a professional</h3>
+<ol>
+  <li>Identify the event calendar (CPI/FOMC/OpEx/VIX expo).</li>
+  <li>Identify the pivot zone where mechanics change (often near major strikes).</li>
+  <li>Define confirmation and invalidation levels (price acceptance vs rejection).</li>
+  <li>Assume intraday reversals are possible even inside the same larger regime.</li>
+</ol>
+
+<h3>A practical “mechanics day” workflow</h3>
+<ol>
+  <li><strong>Start with the regime:</strong> is the tape mechanically controlled (pinning / suppression) or unstable?</li>
+  <li><strong>Mark the pivot zone:</strong> the line-in-the-sand where drift behavior changes.</li>
+  <li><strong>Watch the speed profile:</strong> does price action match the expected drift or diverge?</li>
+  <li><strong>Respect the calendar:</strong> OpEx/VIX expo weeks can overpower narratives.</li>
+  <li><strong>Trade confirmations:</strong> only size up once confirmations print; cut quickly on invalidation.</li>
+</ol>
+
+<h3>Negative speed example (why it’s not “just bearish”)</h3>
+<p>
+  One schematic example in the corpus: a negative speed profile can coexist with positive charm and
+  negative vanna (depending on exposures). That combination can generate liquidity to the downside
+  while preventing downside vol squeezes and leaving the market vulnerable to upside squeezes.
+</p>
+
+<h2>Common Mistakes</h2>
+<ul>
+  <li>Assuming price action is “pure sentiment” when it is mechanical hedging.</li>
+  <li>Ignoring expiry calendar and then being surprised by pinning/whipsaw.</li>
+  <li>Forgetting that the regime can flip when a key strike/pivot breaks.</li>
+  <li>Thinking “supportive/suppressive” is absolute instead of context-dependent.</li>
+  <li>Treating Greek words as magic rather than mapping them to conditions + validation.</li>
+</ul>
+
+<h2>Self-Check</h2>
+<ol>
+  <li>What does positive vs negative gamma generally imply for intraday behavior?</li>
+  <li>Why can OpEx weeks look “controlled” even when macro risk is high?</li>
+  <li>What is a pivot level in this doctrine (not in generic charting)?</li>
+  <li>In plain language, what does “vomma supply” try to do to tails?</li>
+</ol>
+
+<h2>Citations (Local Corpus)</h2>
+<div class="citations">
+  <ul>
+    <li><code>bible/unknown-date-liquidity-structure-let-s-put-speed-profile-into-context.md</code></li>
+    <li><code>bible/unknown-date-opex-flows-supportive-or-suppressive-vanna-charm-intraday-po.md</code></li>
+    <li><code>bible/unknown-date-opex-flows-pt-2-intraday-post-19-sept.md</code></li>
+    <li><code>bible/unknown-date-opex-flows-intraday-post-17-july.md</code></li>
+    <li><code>bible/unknown-date-what-is-vomma-supply-why-is-it-important-intraday-post-04-se.md</code></li>
+    <li><code>bible/unknown-date-zomma-supply-weekly-post-08-12-sept.md</code></li>
+    <li><code>bible/2025-01-29-opex-vixpery-and-pce-week-weekly-post-17-20-feb.md</code></li>
+    <li><code>bible/2025-01-29-appendix-for-today-s-intraday-post.md</code></li>
+  </ul>
+</div>
+
+<h2>Further Reading (Scholarly / Textbook)</h2>
+<ul>
+  <li><a href="https://www-2.rotman.utoronto.ca/~hull/ofod/index.html" target="_blank" rel="noopener">John Hull: Options, Futures, and Other Derivatives (book page)</a></li>
+  <li><a href="https://www.optiontradingpedia.com/option_volatility_and_pricing.htm" target="_blank" rel="noopener">Natenberg: Option Volatility & Pricing (reference)</a></li>
+</ul>
+
+<h2>Further Reading (General)</h2>
+<ul>
+  <li><a href="https://www.cmegroup.com/education/courses/introduction-to-options.html" target="_blank" rel="noopener">CME: Options basics</a></li>
+  <li><a href="https://www.optionseducation.org/" target="_blank" rel="noopener">OIC: Options Education</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Greeks_(finance)" target="_blank" rel="noopener">Options Greeks (overview)</a></li>
+</ul>

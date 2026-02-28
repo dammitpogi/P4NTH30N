@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>III. Market Mechanics - Doctrine Bible</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/alma-chat.css">
+</head>
+<body data-chapter="mechanics" data-lesson-id="mechanics-overview">
+
+  <header class="header">
+    <div class="header-brand">
+      <div class="header-logo">DB</div>
+      <div>
+        <div class="header-title">Doctrine Bible</div>
+        <div class="header-subtitle">Trading Curriculum</div>
+      </div>
+    </div>
+    <nav class="header-nav">
+      <div class="header-search">
+        <span class="header-search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Search topics... (Ctrl+K)">
+        <div class="search-results" id="search-results"></div>
+      </div>
+      <a href="../index.html" class="nav-btn">📚 Home</a>
+      <button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+    </nav>
+  </header>
+
+  <div class="app-container">
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-title">Course Progress</div>
+        <div class="sidebar-subtitle">7 Chapters</div>
+        <div class="sidebar-progress">
+          <div class="progress-label">
+            <span>Overall Progress</span>
+            <span id="progress-percent">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+      
+      <nav class="nav-tree">
+        <div class="nav-section " data-section="foundations">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">📖</span>
+            <span class="nav-section-title">I. Foundations</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-foundations.html" class="nav-lesson " data-lesson="foundations-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="principles">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">⚖️</span>
+            <span class="nav-section-title">II. Trading Principles</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-principles.html" class="nav-lesson " data-lesson="principles-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section expanded" data-section="mechanics">
+          <div class="nav-section-header active">
+            <span class="nav-section-icon">⚙️</span>
+            <span class="nav-section-title">III. Market Mechanics</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-mechanics.html" class="nav-lesson active" data-lesson="mechanics-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="macro">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">🌍</span>
+            <span class="nav-section-title">IV. Macro Analysis</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-macro.html" class="nav-lesson " data-lesson="macro-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="technical">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">📊</span>
+            <span class="nav-section-title">V. Technical Analysis</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-technical.html" class="nav-lesson " data-lesson="technical-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="assets">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">💎</span>
+            <span class="nav-section-title">VI. Asset Classes</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-assets.html" class="nav-lesson " data-lesson="assets-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="archive">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">📚</span>
+            <span class="nav-section-title">VII. Analysis Archive</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-archive.html" class="nav-lesson " data-lesson="archive-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="content-wrapper">
+        <div class="breadcrumbs">
+          <a href="../index.html">Home</a>
+          <span class="breadcrumbs-separator">→</span>
+          <span class="breadcrumbs-current">III. Market Mechanics</span>
+        </div>
+
+        <div class="page-header">
+          <div class="page-category">⚙️ Chapter Overview</div>
+          <h1 class="page-title">III. Market Mechanics</h1>
+          <p class="page-subtitle">Options Greeks, OpEx flows, VIX, and volatility surface</p>
+          <div class="page-meta">
+            <div class="page-meta-item">🏷️ Key Themes: 21</div>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <h2>Chapter Guide</h2>
+          <p>This chapter guide is written to teach the concepts from basics.</p>
+
+          <div class="chapter-guide">
+            <h2>Core Concepts</h2>
+
+<h3>Options as a positioning map</h3>
+<p>
+  Options markets create mechanical hedging flows. When those flows are large relative to available
+  liquidity, they can dominate price behavior. This is why “dealer positioning” matters.
+</p>
+
+<h3>Key Greeks (practical meaning)</h3>
+<ul>
+  <li><strong>Delta:</strong> directional exposure.</li>
+  <li><strong>Gamma:</strong> how fast delta changes; it drives hedging intensity near key strikes.</li>
+  <li><strong>Vega:</strong> sensitivity to implied volatility.</li>
+  <li><strong>Charm / Vanna:</strong> flows that arise as time passes and as vol changes; these often explain
+    “pinning,” suppression, or sudden release.</li>
+</ul>
+
+<h3>OpEx / VIX expo (mechanical weeks)</h3>
+<p>
+  Expiry cycles change which strikes matter and how hedging behaves. In some weeks, macro news is
+  secondary to mechanical flows.
+</p>
+
+<h3>Speed profile (the drift behind the noise)</h3>
+<p>
+  A “speed profile” is the doctrine’s way to describe how positioning pressure tends to push price
+  over the session (and where it tends to resist). It is not a guarantee; it is an expected drift
+  map that must be validated by price action.
+</p>
+
+<h3>Supportive vs. suppressive flows are context-dependent</h3>
+<p>
+  The corpus repeatedly warns against simplistic takes like “vanna is supportive” or “charm is
+  suppressive.” Passive flows can be overwritten by other exposures, and net speed alone does not
+  uniquely determine vanna/charm impact because weights differ across strikes and tenors.
+</p>
+
+<h3>Vomma supply (how volatility spikes are capped)</h3>
+<p>
+  “Vomma selling” is described as a way to dampen volatility spikes by compressing the kurtosis of
+  the distribution. It does not remove intraday swings; it changes how tails behave and where a
+  true squeeze threshold (“event horizon of the tail”) sits.
+</p>
+
+<h2>How To Apply</h2>
+
+<h3>Reading a “flow week” like a professional</h3>
+<ol>
+  <li>Identify the event calendar (CPI/FOMC/OpEx/VIX expo).</li>
+  <li>Identify the pivot zone where mechanics change (often near major strikes).</li>
+  <li>Define confirmation and invalidation levels (price acceptance vs rejection).</li>
+  <li>Assume intraday reversals are possible even inside the same larger regime.</li>
+</ol>
+
+<h3>A practical “mechanics day” workflow</h3>
+<ol>
+  <li><strong>Start with the regime:</strong> is the tape mechanically controlled (pinning / suppression) or unstable?</li>
+  <li><strong>Mark the pivot zone:</strong> the line-in-the-sand where drift behavior changes.</li>
+  <li><strong>Watch the speed profile:</strong> does price action match the expected drift or diverge?</li>
+  <li><strong>Respect the calendar:</strong> OpEx/VIX expo weeks can overpower narratives.</li>
+  <li><strong>Trade confirmations:</strong> only size up once confirmations print; cut quickly on invalidation.</li>
+</ol>
+
+<h3>Negative speed example (why it’s not “just bearish”)</h3>
+<p>
+  One schematic example in the corpus: a negative speed profile can coexist with positive charm and
+  negative vanna (depending on exposures). That combination can generate liquidity to the downside
+  while preventing downside vol squeezes and leaving the market vulnerable to upside squeezes.
+</p>
+
+<h2>Common Mistakes</h2>
+<ul>
+  <li>Assuming price action is “pure sentiment” when it is mechanical hedging.</li>
+  <li>Ignoring expiry calendar and then being surprised by pinning/whipsaw.</li>
+  <li>Forgetting that the regime can flip when a key strike/pivot breaks.</li>
+  <li>Thinking “supportive/suppressive” is absolute instead of context-dependent.</li>
+  <li>Treating Greek words as magic rather than mapping them to conditions + validation.</li>
+</ul>
+
+<h2>Self-Check</h2>
+<ol>
+  <li>What does positive vs negative gamma generally imply for intraday behavior?</li>
+  <li>Why can OpEx weeks look “controlled” even when macro risk is high?</li>
+  <li>What is a pivot level in this doctrine (not in generic charting)?</li>
+  <li>In plain language, what does “vomma supply” try to do to tails?</li>
+</ol>
+
+<h2>Citations (Local Corpus)</h2>
+<div class="citations">
+  <ul>
+    <li><code>bible/unknown-date-liquidity-structure-let-s-put-speed-profile-into-context.md</code></li>
+    <li><code>bible/unknown-date-opex-flows-supportive-or-suppressive-vanna-charm-intraday-po.md</code></li>
+    <li><code>bible/unknown-date-opex-flows-pt-2-intraday-post-19-sept.md</code></li>
+    <li><code>bible/unknown-date-opex-flows-intraday-post-17-july.md</code></li>
+    <li><code>bible/unknown-date-what-is-vomma-supply-why-is-it-important-intraday-post-04-se.md</code></li>
+    <li><code>bible/unknown-date-zomma-supply-weekly-post-08-12-sept.md</code></li>
+    <li><code>bible/2025-01-29-opex-vixpery-and-pce-week-weekly-post-17-20-feb.md</code></li>
+    <li><code>bible/2025-01-29-appendix-for-today-s-intraday-post.md</code></li>
+  </ul>
+</div>
+
+<h2>Further Reading (Scholarly / Textbook)</h2>
+<ul>
+  <li><a href="https://www-2.rotman.utoronto.ca/~hull/ofod/index.html" target="_blank" rel="noopener">John Hull: Options, Futures, and Other Derivatives (book page)</a></li>
+  <li><a href="https://www.optiontradingpedia.com/option_volatility_and_pricing.htm" target="_blank" rel="noopener">Natenberg: Option Volatility & Pricing (reference)</a></li>
+</ul>
+
+<h2>Further Reading (General)</h2>
+<ul>
+  <li><a href="https://www.cmegroup.com/education/courses/introduction-to-options.html" target="_blank" rel="noopener">CME: Options basics</a></li>
+  <li><a href="https://www.optionseducation.org/" target="_blank" rel="noopener">OIC: Options Education</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Greeks_(finance)" target="_blank" rel="noopener">Options Greeks (overview)</a></li>
+</ul>
+
+          </div>
+
+        </div>
+
+        <div class="chapter-nav">
+          <a href="./chapter-principles.html" class="chapter-nav-btn prev">
+            <div>
+              <div class="chapter-nav-label">← Previous</div>
+              <div class="chapter-nav-title">II. Trading Principles</div>
+            </div>
+          </a>
+          
+          <a href="./chapter-macro.html" class="chapter-nav-btn next">
+            <div>
+              <div class="chapter-nav-label">Next →</div>
+              <div class="chapter-nav-title">IV. Macro Analysis</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/app.js"></script>
+  <script src="../config/alma-config.js"></script>
+  <script src="../js/health-monitor.js"></script>
+  <script src="../js/alma-chat.js"></script>
+  <script src="../js/ask-alma-buttons.js"></script>
+</body>
+</html>

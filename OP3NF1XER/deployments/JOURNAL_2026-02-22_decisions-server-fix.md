@@ -12,7 +12,7 @@ MCP servers using `stdio` transport are designed to communicate via standard inp
 ## Solution Applied
 
 ### 1. Fixed Docker Compose Configuration
-**File**: `c:\P4NTH30N\T00L5ET\decisions-server-config\docker-compose.yml`
+**File**: `c:\P4NTHE0N\T00L5ET\decisions-server-config\docker-compose.yml`
 
 Added the following directives to keep stdin open:
 ```yaml
@@ -25,7 +25,7 @@ services:
     stdin_open: true
     tty: true
     environment:
-      - MONGODB_URI=mongodb://host.docker.internal:27017/P4NTH30N
+      - MONGODB_URI=mongodb://host.docker.internal:27017/P4NTHE0N
       - MCP_TRANSPORT=stdio
       - NODE_OPTIONS=--dns-result-order=ipv4first
     network_mode: host
@@ -64,7 +64,7 @@ a75d11134532   decisions-server:v1.2.0   Up 7 seconds (healthy)
 ## Commands for Management
 ```bash
 # Start container
-cd c:\P4NTH30N\T00L5ET\decisions-server-config
+cd c:\P4NTHE0N\T00L5ET\decisions-server-config
 docker-compose up -d
 
 # Check status

@@ -1,0 +1,1766 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<?xml-stylesheet href="icon.theme" type="text/css"?>
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="2173px" height="3643px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+  viewBox="0 0 4761 8982"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <!-- pixmaps -->
+  <g id="add" class="pixmap">
+    <rect class="frame-outer" x="2886" y="6907" width="418" height="418"/>
+    <circle class="frame-inner" cx="3095" cy="7116" r="209"/>
+    <line class="pen" x1="3095" y1="7214" x2="3095" y2="7017" />
+    <line class="pen" x1="2997" y1="7116" x2="3194" y2="7116" />
+  </g>
+  <g id="addBookmark" class="pixmap">
+    <rect class="frame-outer" x="2165" y="4144" width="418" height="418"/>
+    <circle class="frame-inner" cx="2374" cy="4353" r="209"/>
+    <path class="pen" d="M2303 4175l141 0c20,0 37,10 37,23l0 333 -107 -95 -107 95 0 -333c0,-13 16,-23 36,-23z"/>
+    <line class="pen" x1="2305" y1="4292" x2="2448" y2="4292" />
+    <line class="pen" x1="2377" y1="4363" x2="2377" y2="4221" />
+  </g>
+  <g id="addTab" class="tabbar">
+    <rect class="frame-outer" x="2886" y="6907" width="418" height="418"/>
+    <circle class="frame-inner" cx="3095" cy="7116" r="209"/>
+    <line class="pen" x1="3095" y1="7214" x2="3095" y2="7017" />
+    <line class="pen" x1="2997" y1="7116" x2="3194" y2="7116" />
+  </g>
+  <g id="afterConnection" class="pixmap">
+    <rect class="frame-outer" x="559" y="1063" width="418" height="418"/>
+    <line class="pen" x1="598" y1="1452" x2="937" y2= "1452" />
+    <line class="pen" x1="682" y1="1091" x2="853" y2= "1091" />
+    <circle class="pen" cx="768" cy="1272" r="80"/>
+  </g>
+  <g id="afterConnectionActive" class="pixmap">
+    <rect class="frame-outer" x="559" y="1063" width="418" height="418"/>
+    <line class="penActive" x1="598" y1="1452" x2="937" y2= "1452" />
+    <line class="penActive" x1="682" y1="1091" x2="853" y2= "1091" />
+    <circle class="penActive" cx="768" cy="1272" r="80"/>
+  </g>
+  <g id="afterDisconnection" class="pixmap">
+    <rect class="frame-outer" x="1116" y="1063" width="418" height="418"/>
+    <line class="pen" x1="1155" y1="1452" x2="1494" y2= "1452" />
+    <line class="pen" x1="1239" y1="1091" x2="1410" y2= "1091" />
+    <line class="pen" x1="1256" y1="1203" x2="1394" y2= "1340" />
+    <line class="pen" x1="1256" y1="1340" x2="1393" y2= "1203" />
+  </g>
+  <g id="afterDisconnectionActive" class="pixmap">
+    <rect class="frame-outer" x="1116" y="1063" width="418" height="418"/>
+    <line class="penActive" x1="1155" y1="1452" x2="1494" y2= "1452" />
+    <line class="penActive" x1="1239" y1="1091" x2="1410" y2= "1091" />
+    <line class="penActive" x1="1256" y1="1203" x2="1394" y2= "1340" />
+    <line class="penActive" x1="1256" y1="1340" x2="1393" y2= "1203" />
+  </g>
+  <g id="anythingPalette" class="pixmap">
+   <rect class="frame-outer" x="3229" width="418" height="418"/>
+   <circle class="pen" cx="3389" cy="171" r="144"/>
+   <line class="pen" x1="3505" y1="282" x2="3631" y2= "390" />
+  </g>
+  <g id="anythingPaletteSmall" class="pixmap">
+   <rect class="frame-outer" width="418" height="418"/>
+   <circle class="pen" cx="179" cy="186" r="88"/>
+   <line class="pen" x1="250" y1="254" x2="327" y2= "321" />
+  </g>
+  <g id="arrowDown" class="tabbar">
+    <rect class="frame-outer" x="2886" y="7563" width="418" height="418"/>
+    <circle class="frame-inner" cx="3095" cy="7772" r="209"/>
+    <path class="brush" d="M2997 7729l197 0 -99 98 -98 -98zm98 0m50 49m-99 0"/>
+  </g>
+  <g id="arrowLeft" class="tabbar">
+    <rect class="frame-outer" x="3608" y="7563" width="418" height="418"/>
+    <circle class="frame-inner" cx="3817" cy="7772" r="209"/>
+    <path class="brush" d="M3846 7659l0 198 -99 -99 99 -99zm0 99m-49 49m0 -98"/>
+  </g>
+  <g id="arrowRight" class="tabbar">
+    <rect class="frame-outer" x="4329" y="7563" width="418" height="418"/>
+    <circle class="frame-inner" cx="4538" cy="7772" r="209"/>
+    <path class="brush" d="M4509 7857l0 -198 99 99 -99 99zm0 -99m49 -49m0 98"/>
+  </g>
+  <g id="arrowUp" class="tabbar">
+    <rect class="frame-outer" x="2165" y="7563" width="418" height="418"/>
+    <circle class="frame-inner" cx="2374" cy="7772" r="209"/>
+    <path class="brush" d="M2275 7807l197 0 -98 -98 -99 98zm99 0m49 -49m-99 0"/>
+  </g>
+  <g id="autoSyncTerminalFolder" class="pixmap">
+    <rect class="frame-outer" x="1202" width="417" height="417"/>
+    <path class="pen" d="M1517 291l25 0c27,0 50,23 50,52l0 0c0,28 -23,52 -50,52l-74 0"/>
+    <path class="pen" d="M1304 291l-24 0c-28,0 -50,23 -50,52l0 0c0,28 22,52 50,52l73 0"/>
+    <path class="pen" d="M1411 79c-29,0 -53,24 -53,53 0,68 105,68 105,0 0,-29 -23,-53 -52,-53zm0 -57c-61,0 -110,49 -110,110 0,18 5,36 13,51l103 171 90 -170c9,-16 14,-34 14,-52 0,-61 -50,-110 -110,-110"/>
+  </g>
+  <g id="backward" class="breadcrumb">
+    <rect class="frame-outer" x="2886" y="5525" width="418" height="418"/>
+    <circle class="frame-inner" cx="3095" cy="5734" r="209"/>
+    <polyline class="pen" points="3194,5537 2997,5735 3194,5932 "/>
+  </g>
+  <g id="beforeConnection" class="pixmap">
+    <rect class="frame-outer" y="1063" width="418" height="418"/>
+    <line class="pen" x1="124" y1="1452" x2="294" y2= "1452" />
+    <line class="pen" x1="39" y1="1091" x2="379" y2= "1091" />
+    <circle class="pen" cx="209" cy="1272" r="80"/>
+  </g>
+  <g id="beforeConnectionActive" class="pixmap">
+    <rect class="frame-outer" y="1063" width="418" height="418"/>
+    <line class="penActive" x1="124" y1="1452" x2="294" y2= "1452" />
+    <line class="penActive" x1="39" y1="1091" x2="379" y2= "1091" />
+    <circle class="penActive" cx="209" cy="1272" r="80"/>
+  </g>
+  <g id="beforeDisconnection" class="pixmap">
+    <rect class="frame-outer" x="1676" y="1063" width="418" height="418"/>
+    <line class="pen" x1="1799" y1="1452" x2="1970" y2= "1452" />
+    <line class="pen" x1="1715" y1="1091" x2="2054" y2= "1091" />
+    <line class="pen" x1="1816" y1="1203" x2="1954" y2= "1340" />
+    <line class="pen" x1="1816" y1="1340" x2="1953" y2= "1203" />
+  </g>
+  <g id="beforeDisconnectionActive" class="pixmap">
+    <rect class="frame-outer" x="1676" y="1063" width="418" height="418"/>
+    <line class="penActive" x1="1799" y1="1452" x2="1970" y2= "1452" />
+    <line class="penActive" x1="1715" y1="1091" x2="2054" y2= "1091" />
+    <line class="penActive" x1="1816" y1="1203" x2="1954" y2= "1340" />
+    <line class="penActive" x1="1816" y1="1340" x2="1953" y2= "1203" />
+  </g>
+  <g id="bookmark" class="pixmap">
+    <rect class="frame-outer" x="1443" y="4144" width="418" height="418"/>
+    <circle class="frame-inner" cx="1652" cy="4353" r="209"/>
+    <path class="pen" d="M1582 4175l141 0c20,0 36,10 36,23l0 333 -107 -95 -107 95 0 -333c0,-13 17,-23 37,-23z"/>
+  </g>
+  <g id="cdup" class="pixmap">
+    <rect class="frame-outer" width="417" height="417"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <path class="pen" d="M50 22l101 0c1,0 37,11 37,46l0 17 182 0c19,0 34,19 34,42l0 227c0,23 -15,42 -34,42l-323 0c-19,0 -34,-19 -34,-42l0 -183 0 -44 0 -59c0,-25 17,-46 37,-46z"/>
+    <path class="pen" d="M120 270c15,-17 73,-83 88,-100l89 100"/>
+    <line class="pen" x1="207" y1="334" x2="207" y2= "181" />
+  </g>
+  <g id="checked" class="pixmap">
+    <rect class="frame-outer" x="4329" y="5525" width="418" height="418"/>
+    <circle class="frame-inner" cx="4538" cy="5734" r="209"/>
+    <polyline class="pen" points="4672,5652 4507,5817 4405,5714 "/>
+  </g>
+  <g id="clear" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <polygon class="pen" points="373,115 150,115 45,208 150,303 373,303 "/>
+    <path class="pen" d="M304 262l-106 -106m0 106l106 -106"/>
+  </g>
+  <g id="clearSender" class="pixmap">
+    <rect class="frame-outer" x="2165" y="6907" width="418" height="418"/>
+    <circle class="frame-inner" cx="2374" cy="7116" r="209"/>
+    <path class="pen" d="M2294 7196l160 -160m0 160l-160 -160"/>
+  </g>
+  <g id="close" class="tabbar">
+    <rect class="frame-outer" x="2165" y="6907" width="418" height="418"/>
+    <circle class="frame-inner" cx="2374" cy="7116" r="209"/>
+    <path class="pen" d="M2294 7196l160 -160m0 160l-160 -160"/>
+  </g>
+  <g id="colorDarkCyan" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <rect class="brush" x="108" y="108" width="202" height="202"/>
+  </g>
+  <g id="colorDeepPink" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <rect class="brush" x="108" y="108" width="202" height="202"/>
+  </g>
+  <g id="colorForestGreen" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <rect class="brush" x="108" y="108" width="202" height="202"/>
+  </g>
+  <g id="colorGoldenrod" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <rect class="brush" x="108" y="108" width="202" height="202"/>
+  </g>
+  <g id="colorIndianRed" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <rect class="brush" x="108" y="108" width="202" height="202"/>
+  </g>
+  <g id="colorMediumOrchid" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <rect class="brush" x="108" y="108" width="202" height="202"/>
+  </g>
+  <g id="colorMediumSlateBlue" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <rect class="brush" x="108" y="108" width="202" height="202"/>
+  </g>
+  <g id="colorOlive" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <rect class="brush" x="108" y="108" width="202" height="202"/>
+  </g>
+  <g id="colorRed" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <rect class="brush" x="108" y="108" width="202" height="202"/>
+  </g>
+  <g id="colorRoyalBlue" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <rect class="brush" x="108" y="108" width="202" height="202"/>
+  </g>
+  <g id="colorSteelBlue" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <rect class="brush" x="108" y="108" width="202" height="202"/>
+  </g>
+  <g id="colorTeal" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <rect class="brush" x="108" y="108" width="202" height="202"/>
+  </g>
+  <g id="colorTransparent" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <rect class="pen" x="108" y="108" width="202" height="202"/>
+    <line class="pen" x1="108" y1="310" x2="310" y2="108" />
+  </g>
+  <g id="columnEdit" class="pixmap">
+    <rect class="frame-outer" x="2165" y="2763" width="418" height="418"/>
+    <circle class="frame-inner" cx="2374" cy="2972" r="209"/>
+    <line class="pen" x1="2391" y1="2823" x2="2566" y2="2823" />
+    <line class="pen" x1="2391" y1="3021" x2="2566" y2="3021" />
+    <line class="pen" x1="2391" y1="3121" x2="2566" y2="3121" />
+    <line class="pen" x1="2391" y1="2922" x2="2566" y2="2922" />
+    <line class="pen" x1="2181" y1="2823" x2="2357" y2="2823" />
+    <line class="pen" x1="2181" y1="3021" x2="2357" y2="3021" />
+    <line class="pen" x1="2181" y1="3121" x2="2357" y2="3121" />
+    <line class="pen" x1="2181" y1="2922" x2="2357" y2="2922" />
+  </g>
+  <g id="comment" class="pixmap">
+    <rect class="frame-outer" y="2763" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="2972" r="209"/>
+    <polygon class="brush" points="203,2821 79,3123 48,3123 173,2821 "/>
+    <polygon class="brush" points="370,2821 246,3123 215,3123 339,2821 "/>
+  </g>
+  <g id="config" class="tabbar">
+    <rect class="frame-outer" x="722" y="6907" width="418" height="418"/>
+    <circle class="frame-inner" cx="931" cy="7116" r="209"/>
+    <line class="pen" x1="873" y1="7174" x2="838" y2="7209" />
+    <line class="pen" x1="1024" y1="7023" x2="989" y2="7058" />
+    <line class="pen" x1="849" y1="7116" x2="799" y2="7116" />
+    <line class="pen" x1="1062" y1="7116" x2="1013" y2="7116" />
+    <line class="pen" x1="873" y1="7058" x2="838" y2="7023" />
+    <line class="pen" x1="1024" y1="7209" x2="989" y2="7174" />
+    <line class="pen" x1="931" y1="7034" x2="931" y2="6984" />
+    <line class="pen" x1="931" y1="7247" x2="931" y2="7198" />
+    <path class="pen" d="M931 7040c41,0 75,34 75,76 0,42 -34,75 -75,75 -42,0 -76,-33 -76,-75 0,-42 34,-76 76,-76z"/>
+  </g>
+  <g id="copy" class="pixmap">
+    <rect class="frame-outer" x="722" y="691" width="418" height="418"/>
+    <circle class="frame-inner" cx="931" cy="900" r="209"/>
+    <rect class="pen" x="758" y="779" width="270" height="317" rx="33" ry="33"/>
+    <path class="pen" d="M866 704l204 0c18,0 33,14 33,32l0 252c0,18 -15,33 -33,33l-42 0 0 -210c0,-18 -15,-32 -33,-32l-162 0 0 -43c0,-18 15,-32 33,-32z"/>
+  </g>
+  <g id="copyDirectoryPathToTerminal" class="pixmap">
+    <rect class="frame-outer" width="417" height="417"/>
+    <path class="pen" d="M50 22l101 0c1,0 37,11 37,46l0 17 182 0c19,0 34,19 34,41l0 227c0,23 -15,42 -34,42l-323 0c-19,0 -34,-19 -34,-42l0 -182 0 -45 0 -58c0,-25 17,-46 37,-46z"/>
+    <path class="pen" d="M132 241l153 0m-93 91c16,-16 77,-75 93,-91l-93 -93"/>
+  </g>
+  <g id="critical" class="pixmap">
+    <rect class="frame-outer" y="5525" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="5734" r="209"/>
+    <circle fill="#E62129" cx="209" cy="5735" r="192"/>
+    <line stroke="white" stroke-width="25.8739" x1="120" y1="5824" x2="299" y2="5645" />
+    <line stroke="white" stroke-width="25.8739" x1="120" y1="5645" x2="299" y2="5824" />
+  </g>
+  <g id="customLink" class="pixmap">
+    <rect class="frame-outer" y="524" width="418" height="418"/>
+    <path class="pen" d="M224 564l155 0 0 154m-31 31l0 154 -309 0 0 -309 155 0m0 155l185 -185"/>
+  </g>
+  <g id="customLinkActive" class="pixmap">
+    <rect class="frame-outer" y="524" width="418" height="418"/>
+    <path class="penActive" d="M224 564l155 0 0 154m-31 31l0 154 -309 0 0 -309 155 0m0 155l185 -185"/>
+  </g>
+  <g id="customMenu" class="pixmap">
+    <rect class="frame-outer" x="547" y="536" width="418" height="418"/>
+    <line class="pen" x1="623" y1="644" x2="890" y2= "644" />
+    <line class="pen" x1="623" y1="745" x2="890" y2= "745" />
+    <line class="pen" x1="623" y1="845" x2="890" y2= "845" />
+    <rect class="pen" x="584" y="572" width="346" height="346"/>
+  </g>
+  <g id="customMenuActive" class="pixmap">
+    <rect class="frame-outer" x="547" y="536" width="418" height="418"/>
+    <line class="penActive" x1="623" y1="644" x2="890" y2= "644" />
+    <line class="penActive" x1="623" y1="745" x2="890" y2= "745" />
+    <line class="penActive" x1="623" y1="845" x2="890" y2= "845" />
+    <rect class="penActive" x="584" y="572" width="346" height="346"/>
+  </g>
+  <g id="cut" class="pixmap">
+    <rect class="frame-outer" y="691" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="900" r="209"/>
+    <line class="pen" x1="202" y1="994" x2="293" y2="704" />
+    <path class="pen" d="M164 912c31,11 41,61 23,111 -18,50 -58,82 -89,70 -31,-11 -41,-61 -23,-111 19,-50 58,-81 89,-70z"/>
+    <line class="pen" x1="217" y1="994" x2="125" y2="704" />
+    <path class="pen" d="M254 912c-31,11 -41,61 -23,111 19,50 58,82 89,70 31,-11 41,-61 23,-111 -18,-50 -58,-81 -89,-70z"/>
+  </g>
+  <g id="decreaseIndent" class="pixmap">
+    <rect class="frame-outer" y="2072" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="2281" r="209"/>
+    <line class="pen" x1="22" y1="2133" x2="396" y2="2133" />
+    <line class="pen" x1="182" y1="2331" x2="396" y2="2331" />
+    <line class="pen" x1="22" y1="2430" x2="396" y2="2430" />
+    <line class="pen" x1="182" y1="2232" x2="396" y2="2232" />
+    <polyline class="pen" points="104,2217 40,2281 104,2345 "/>
+  </g>
+  <g id="dockLeft" class="pixmap">
+    <rect class="frame-outer" y="3453" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="3662" r="209"/>
+    <path class="pen" d="M141 3486l7 0 225 0c18,0 32,15 32,33l0 288c0,17 -14,32 -32,32l-230 0 -2 0 0 -353z"/>
+    <path class="pen" d="M46 3486l95 0 0 353 -95 0c-18,0 -33,-15 -33,-32l0 -288c0,-18 15,-33 33,-33z"/>
+    <line class="pen" x1="344" y1="3663" x2="202" y2="3663" />
+    <polyline class="pen" points="274,3599 338,3663 274,3726 "/>
+  </g>
+  <g id="dockRight" class="pixmap">
+    <rect class="frame-outer" x="722" y="3453" width="418" height="418"/>
+    <circle class="frame-inner" cx="931" cy="3662" r="209"/>
+    <path class="pen" d="M999 3839l-7 0 -225 0c-18,0 -32,-15 -32,-32l0 -288c0,-18 14,-33 32,-33l230 0 2 0 0 353z"/>
+    <path class="pen" d="M1094 3839l-95 0 0 -353 95 0c18,0 33,15 33,33l0 288c0,17 -15,32 -33,32z"/>
+    <line class="pen" x1="796" y1="3663" x2="938" y2="3663" />
+    <polyline class="pen" points="866,3726 802,3663 866,3599 "/>
+  </g>
+  <g id="down" class="pixmap">
+    <rect class="frame-outer" x="663" y="1" width="418" height="418"/>
+    <circle class="frame-inner" cx="872" cy="210" r="209"/>
+    <path class="pen" d="M871 18l0 383m-114 -116c20,20 95,97 115,116l116 -116"/>
+  </g>
+  <g id="download" class="pixmap">
+    <rect class="frame-outer" x="1177" width="417" height="417"/>
+    <circle class="frame-inner" cx="1386" cy="209" r="209"/>
+    <path class="pen" d="M1475 179c-16,17 -73,82 -88,99l-90 -99"/>
+    <line class="pen" x1="1387" y1="38" x2="1387" y2= "278" />
+    <path class="pen" d="M1573 233l0 111c0,20 -16,36 -35,36l-304 0c-20,0 -36,-16 -36,-36l0 -111"/>
+  </g>
+  <g id="dropDown" class="breadcrumb">
+    <rect class="frame-outer" x="3608" y="6907" width="418" height="418"/>
+    <circle class="frame-inner" cx="3817" cy="7116" r="209"/>
+    <polyline class="pen" points="3916,7066 3817,7165 3718,7066"/>
+  </g>
+  <g id="dropUp" class="breadcrumb">
+    <rect class="frame-outer" x="4329" y="6907" width="418" height="418"/>
+    <circle class="frame-inner" cx="4538" cy="7116" r="209"/>
+    <polyline class="pen" points="4439,7165 4538,7066 4637,7165"/>
+  </g>
+  <g id="editor" class="pixmap">
+    <rect class="frame-outer" x="722" y="6265" width="418" height="418"/>
+    <circle class="frame-inner" cx="931" cy="6474" r="209"/>
+    <rect class="pen" x="730" y="6313" width="401" height="322" rx="27" ry="33"/>
+    <path class="brush" d="M849 6518l19 19 19 19c-23,11 -46,21 -69,32 10,-24 21,-47 31,-70z"/>
+    <rect class="brush" transform="matrix(2.46362 2.46363 -1.83689 1.8369 1007.18 6361.54)" width="14.8387" height="68.6254"/>
+  </g>
+  <g id="expand" class="tabbar">
+    <rect class="frame-outer" x="3608" y="6907" width="418" height="418"/>
+    <circle class="frame-inner" cx="3817" cy="7116" r="209"/>
+    <polyline class="pen" points="3916,7066 3817,7165 3718,7066"/>
+  </g>
+  <g id="explorerPane" class="pixmap">
+    <rect class="frame-outer" y="7563" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="7772" r="209"/>
+    <rect class="brush" x="138" y="7701" width="142" height="142"/>
+  </g>
+  <g id="filer" class="pixmap">
+    <rect class="frame-outer" y="4144" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="4353" r="209"/>
+    <path class="pen" d="M145 4474l-92 0c-17,0 -31,-14 -31,-31l0 -201c0,-17 14,-31 31,-31l312 0c17,0 31,14 31,31l0 201c0,17 -14,31 -31,31l-90 0"/>
+    <line class="pen" x1="209" y1="4550" x2="209" y2="4427" />
+  </g>
+  <g id="filerPane" class="pixmap">
+    <rect class="frame-outer" y="7563" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="7772" r="209"/>
+    <rect class="brush" x="138" y="7701" width="142" height="142"/>
+  </g>
+  <g id="filter" class="pixmap">
+    <rect class="frame-outer" y="4803" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="5012" r="209"/>
+    <circle class="pen" cx="196" cy="5006" r="183"/>
+    <line class="pen" x1="319" y1="5127" x2="405" y2="5201" />
+    <rect class="brush" x="90" y="4987" width="35.6587" height="37.8907"/>
+    <rect class="brush" x="184" y="4987" width="35.6587" height="37.8907"/>
+    <rect class="brush" x="279" y="4987" width="35.6587" height="37.8907"/>
+  </g>
+  <g id="filterSmall" class="pixmap">
+   <rect class="frame-outer" width="418" height="418"/>
+   <circle class="pen" cx="179" cy="186" r="88"/>
+   <line class="pen" x1="250" y1="254" x2="327" y2= "321" />
+  </g>
+  <g id="find" class="pixmap">
+    <rect class="frame-outer" x="1443" y="2072" width="418" height="418"/>
+    <circle class="frame-inner" cx="1652" cy="2281" r="209"/>
+    <circle class="pen" cx="1666" cy="2275" r="183"/>
+    <line class="pen" x1="1542" y1="2396" x2="1456" y2="2470" />
+    <path class="pen" d="M1764 2275c0,-54 -44,-98 -98,-98"/>
+  </g>
+  <g id="findInFiles" class="pixmap">
+    <rect class="frame-outer" x="2886" y="2072" width="418" height="418"/>
+    <circle class="frame-inner" cx="3095" cy="2281" r="209"/>
+    <path class="pen" d="M2936 2094l170 0c20,0 37,21 37,46l0 17 115 0c18,0 33,19 33,42l0 228c0,23 -15,41 -33,41l-325 0c-19,0 -34,-18 -34,-41l0 -184 0 -44 0 -59c0,-25 17,-46 37,-46z"/>
+    <circle class="pen" cx="3067" cy="2295" r="83"/>
+    <line class="pen" x1="3134" y1="2359" x2="3207" y2="2422" />
+  </g>
+  <g id="float" class="tabbar">
+    <rect class="frame-outer" y="6907" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="7116" r="209"/>
+    <path class="pen" d="M102 7074l162 0 0 140 -162 0 0 -140zm52 -57l163 0 0 141 -53 0 0 -84 -110 0 0 -57z"/>
+  </g>
+  <g id="focusMode" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <rect class="pen" x="127" y="127" width="164" height="164" rx="13" ry="15"/>
+    <path class="pen" d="M143 401l-91 0c-20,0 -36,-16 -36,-35l0 -91"/>
+    <path class="pen" d="M401 275l0 91c0,19 -16,35 -35,35l-91 0"/>
+    <path class="pen" d="M275 16l91 0c19,0 35,16 35,36l0 91"/>
+    <path class="pen" d="M16 143l0 -91c0,-20 16,-36 36,-36l91 0"/>
+  </g>
+  <g id="focusModeSmall" class="tabbar">
+    <rect class="frame-outer" x="2190" y="18" width="418" height="418"/>
+    <circle class="frame-inner" cx="2399" cy="227" r="209"/>
+    <rect class="pen" x="2352" y="180" width="95.0993" height="95.0995" rx="8" ry="9"/>
+    <path class="pen" d="M2361 339l-53 0c-11,0 -20,-10 -20,-21l0 -53"/>
+    <path class="pen" d="M2511 265l0 53c0,11 -10,21 -21,21l-53 0"/>
+    <path class="pen" d="M2437 116l53 0c11,0 21,9 21,20l0 53"/>
+    <path class="pen" d="M2288 189l0 -53c0,-11 9,-20 20,-20l53 0"/>
+  </g>
+  <g id="formatSelection" class="pixmap">
+    <rect class="frame-outer" x="3608" y="3453" width="418" height="418"/>
+    <circle class="frame-inner" cx="3817" cy="3662" r="209"/>
+    <rect class="pen" x="3650" y="3466" width="334" height="392" rx="40" ry="40"/>
+    <line class="pen" x1="3725" y1="3532" x2="3725" y2="3787" />
+    <line class="pen" x1="3774" y1="3655" x2="3935" y2="3655" />
+    <line class="pen" x1="3774" y1="3756" x2="3935" y2="3756" />
+    <line class="pen" x1="3774" y1="3556" x2="3935" y2="3554" />
+  </g>
+  <g id="forward" class="breadcrumb">
+    <rect class="frame-outer" x="3608" y="5525" width="418" height="418"/>
+    <circle class="frame-inner" cx="3817" cy="5734" r="209"/>
+    <polyline class="pen" points="3719,5538 3915,5735 3719,5931 "/>
+  </g>
+  <g id="fullScreen" class="pixmap">
+    <rect class="frame-outer" x="4329" y="1353" width="418" height="418"/>
+    <circle class="frame-inner" cx="4538" cy="1562" r="209"/>
+    <rect class="pen" x="4342" y="1386" width="392" height="353" rx="31" ry="33"/>
+    <path class="pen" d="M4508 1478c20,0 96,-1 116,-1l0 117"/>
+    <line class="pen" x1="4452" y1="1649" x2="4616" y2="1484" />
+  </g>
+  <g id="goto" class="breadcrumb">
+    <rect class="frame-outer" x="4329" y="6265" width="418" height="418"/>
+    <circle class="frame-inner" cx="4538" cy="6474" r="209"/>
+    <polyline class="pen" points="4449,6296 4627,6475 4449,6653 "/>
+  </g>
+  <g id="gotoEditor" class="breadcrumb">
+    <rect class="frame-outer" x="722" y="6265" width="418" height="418"/>
+    <circle class="frame-inner" cx="931" cy="6474" r="209"/>
+    <rect class="pen" x="730" y="6313" width="401" height="322" rx="27" ry="33"/>
+    <path class="brush" d="M849 6518l19 19 19 19c-23,11 -46,21 -69,32 10,-24 21,-47 31,-70z"/>
+    <rect class="brush" transform="matrix(2.46362 2.46363 -1.83689 1.8369 1007.18 6361.54)" width="14.8387" height="68.6254"/>
+  </g>
+  <g id="gotoFiler" class="breadcrumb">
+    <rect class="frame-outer" y="6265" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="6474" r="209"/>
+    <line class="pen" x1="49" y1="6645" x2="351" y2="6645" />
+    <path class="pen" d="M145 6568l-92 0c-17,0 -31,-14 -31,-31l0 -202c0,-17 14,-31 31,-31l313 0c17,0 30,14 30,31l0 202c0,17 -14,31 -30,31l-91 0"/>
+    <line class="pen" x1="209" y1="6645" x2="209" y2="6521" />
+  </g>
+  <g id="gotoNextBookmark" class="pixmap">
+    <rect class="frame-outer" x="4329" y="4144" width="418" height="418"/>
+    <circle class="frame-inner" cx="4538" cy="4353" r="209"/>
+    <path class="pen" d="M4468 4175l141 0c20,0 36,10 36,23l0 333 -107 -95 -107 95 0 -333c0,-13 17,-23 37,-23z"/>
+    <line class="pen" x1="4613" y1="4292" x2="4470" y2="4292" />
+    <polyline class="pen" points="4542,4228 4606,4292 4542,4356 "/>
+  </g>
+  <g id="gotoPreviousBookmark" class="pixmap">
+    <rect class="frame-outer" x="3608" y="4144" width="418" height="418"/>
+    <circle class="frame-inner" cx="3817" cy="4353" r="209"/>
+    <path class="pen" d="M3746 4175l141 0c20,0 37,10 37,23l0 333 -107 -95 -107 95 0 -333c0,-13 16,-23 36,-23z"/>
+    <line class="pen" x1="3748" y1="4292" x2="3891" y2="4292" />
+    <polyline class="pen" points="3819,4228 3755,4292 3819,4356 "/>
+  </g>
+  <g id="gotoTerminal" class="breadcrumb">
+    <rect class="frame-outer" x="1443" y="6265" width="418" height="418"/>
+    <circle class="frame-inner" cx="1652" cy="6474" r="209"/>
+    <rect class="pen" x="1452" y="6313" width="401" height="322" rx="27" ry="33"/>
+    <polygon class="brush" points="1652,6474 1514,6534 1514,6508 1623,6463 1514,6418 1514,6392 1652,6450 "/>
+    <line class="pen" x1="1656" y1="6534" x2="1800" y2="6534" />
+  </g>
+  <g id="help" class="pixmap">
+    <rect class="frame-outer" x="722" y="5525" width="418" height="418"/>
+    <circle class="frame-inner" cx="931" cy="5734" r="209"/>
+    <rect fill="#00A2E9" transform="matrix(1.76028 -1.76031 1.76028 1.76031 711.96 5734.53)" width="124" height="124" rx="29" ry="29"/>
+    <path fill="white" d="M888 5707c-5,0 -9,-1 -12,-4 -3,-3 -4,-9 -4,-18 0,-14 5,-26 17,-37 12,-12 26,-17 43,-17 17,0 31,5 42,15 10,10 16,23 16,39 0,9 -2,17 -5,24 -3,7 -10,14 -21,20 -11,7 -20,13 -25,17 -5,5 -7,11 -7,19l0 21 -9 0 0 -23c0,-8 1,-15 4,-20 2,-5 7,-10 14,-15 12,-7 19,-14 23,-21 3,-6 5,-14 5,-23 0,-15 -3,-25 -10,-32 -6,-7 -16,-11 -29,-11 -14,0 -25,4 -33,11 -8,8 -12,15 -12,22 0,2 1,4 2,5 1,1 3,2 6,4 3,2 5,3 6,6 1,2 2,5 2,8 0,4 -1,7 -4,8 -2,2 -5,2 -9,2zm57 115c0,5 -2,9 -5,12 -3,3 -7,4 -12,4 -4,0 -8,-1 -11,-4 -3,-3 -5,-7 -5,-12 0,-4 2,-8 5,-11 3,-3 7,-5 11,-5 5,0 9,2 12,5 3,3 5,7 5,11z"/>
+  </g>
+  <g id="highlightText" class="pixmap">
+    <rect class="frame-outer" x="1117" width="418" height="418"/>
+    <polygon class="pen" points="1326,42 1367,170 1501,170 1393,248 1434,375 1326,297 1218,375 1260,248 1151,170 1285,170 "/>
+  </g>
+  <g id="highlightTextActive" class="pixmap">
+    <rect class="frame-outer" x="1117" width="418" height="418"/>
+    <polygon class="penActive" points="1326,42 1367,170 1501,170 1393,248 1434,375 1326,297 1218,375 1260,248 1151,170 1285,170 "/>
+  </g>
+  <g id="home" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <polyline class="pen" points="13,151 213,28 405,151 "/>
+    <path class="pen" d="M342 202l0 153c0,19 -16,35 -36,35l-194 0c-19,0 -35,-16 -35,-35l0 -153"/>
+  </g>
+  <g id="increaseIndent" class="pixmap">
+    <rect class="frame-outer" x="722" y="2072" width="418" height="418"/>
+    <circle class="frame-inner" cx="931" cy="2281" r="209"/>
+    <line class="pen" x1="744" y1="2133" x2="1118" y2="2133" />
+    <line class="pen" x1="904" y1="2331" x2="1118" y2="2331" />
+    <line class="pen" x1="744" y1="2430" x2="1118" y2="2430" />
+    <line class="pen" x1="904" y1="2232" x2="1118" y2="2232" />
+    <polyline class="pen" points="761,2217 825,2281 761,2345 "/>
+  </g>
+  <g id="indentGuide" class="pixmap">
+    <rect class="frame-outer" x="4329" y="2072" width="418" height="418"/>
+    <circle class="frame-inner" cx="4538" cy="2281" r="209"/>
+    <line class="pen" x1="4351" y1="2133" x2="4725" y2="2133" />
+    <line class="pen" x1="4511" y1="2331" x2="4725" y2="2331" />
+    <line class="pen" x1="4351" y1="2430" x2="4725" y2="2430" />
+    <line class="pen" x1="4511" y1="2232" x2="4725" y2="2232" />
+    <line class="pen" x1="4412" y1="2187" x2="4412" y2="2232" />
+    <line class="pen" x1="4412" y1="2257" x2="4412" y2="2302" />
+    <line class="pen" x1="4412" y1="2337" x2="4412" y2="2377" />
+  </g>
+  <g id="information" class="pixmap">
+    <rect class="frame-outer" x="1443" y="5525" width="418" height="418"/>
+    <circle class="frame-inner" cx="1652" cy="5734" r="209"/>
+    <circle fill="#009B4C" cx="1652" cy="5735" r="183"/>
+    <path fill="white" d="M1652 5604c-16,0 -24,7 -24,21 0,4 2,14 5,31 3,17 5,29 6,35 5,30 7,55 7,77 0,8 0,14 -1,20 0,4 3,6 10,6 3,0 4,-1 4,-4 -1,-5 -1,-12 -1,-20 0,-23 2,-48 7,-77 0,-1 3,-15 8,-41 2,-14 3,-23 3,-27 0,-14 -8,-21 -24,-21zm0 215c-6,0 -12,3 -16,8 -4,4 -6,9 -6,15 0,7 2,12 7,17 5,4 10,6 15,6 7,0 13,-3 18,-8 3,-4 5,-9 5,-15 0,-7 -2,-12 -7,-17 -5,-4 -10,-6 -16,-6z"/>
+  </g>
+  <g id="invisible" class="pixmap">
+    <rect class="frame-outer" x="1661" width="418" height="418"/>
+    <circle class="frame-inner" cx="1870" cy="209" r="209"/>
+    <circle class="pen" cx="1869" cy="207" r="48"/>
+    <path class="pen" d="M1869 113c70,0 132,38 164,94 -32,57 -94,95 -164,95 -70,0 -131,-38 -164,-95 33,-56 94,-94 164,-94z"/>
+    <line class="pen" x1="1731" y1="345" x2="2004" y2= "72" />
+  </g>
+  <g id="layout" class="pixmap">
+    <rect class="frame-outer" x="1443" y="3453" width="418" height="418"/>
+    <circle class="frame-inner" cx="1652" cy="3662" r="209"/>
+    <rect class="pen" x="1456" y="3487" width="392" height="353" rx="31" ry="33"/>
+    <line class="pen" x1="1848" y1="3737" x2="1456" y2="3737" />
+    <path class="pen" d="M1570 3485l0 182m0 0l0 2m0 0l0 68 0 -68z"/>
+    <path class="pen" d="M1734 3485l0 179m0 0l0 5m0 0l0 68 0 -68z"/>
+  </g>
+  <g id="layoutSmall" class="tabbar">
+    <rect class="frame-outer" x="1613" y="18" width="418" height="418"/>
+    <circle class="frame-inner" cx="1822" cy="227" r="209"/>
+    <rect class="pen" x="1710" y="116" width="223" height="222" rx="18" ry="21"/>
+    <line class="pen" x1="1710" y1="180" x2="1933" y2= "180" />
+  </g>
+  <g id="left" class="pixmap">
+    <rect class="frame-outer" x="2165" y="691" width="418" height="418"/>
+    <circle class="frame-inner" cx="2374" cy="900" r="209"/>
+    <path class="pen" d="M2298 782c-21,20 -99,97 -119,117l119 118m270 -119l-389 0"/>
+  </g>
+  <g id="lineEnding" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <path class="pen" d="M189 214c-32,30 -77,75 -91,89l90 91"/>
+    <path class="pen" d="M321 25c0,16 0,37 0,49l-1 193c0,20 -17,37 -37,37l-171 0"/>
+  </g>
+  <g id="listTab" class="tabbar">
+    <rect class="frame-outer" x="1443" y="6907" width="418" height="418"/>
+    <circle class="frame-inner" cx="1652" cy="7116" r="209"/>
+    <line class="pen" x1="1567" y1="7052" x2="1738" y2="7052" />
+    <line class="pen" x1="1567" y1="7116" x2="1738" y2="7116" />
+    <line class="pen" x1="1567" y1="7180" x2="1738" y2="7180" />
+  </g>
+  <g id="lockScreen" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <path class="pen" d="M303 108l0 69m-188 0l0 -69 0 0 0 0m0 0c0,-52 42,-94 94,-94 52,0 94,42 94,94m-220 69l32 0 188 0 32 0c19,0 34,15 34,34l0 159c0,19 -15,34 -34,34l-252 0c-19,0 -34,-15 -34,-34l0 -159c0,-19 15,-34 34,-34z"/>
+  </g>
+  <g id="logo" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <polygon class="brush" points="14,14 404,14 404,404 14,404 334,346 334,73 "/>
+    <polygon class="brush" points="290,311 78,337 78,82 289,108 "/>
+  </g>
+  <g id="matchCase" class="pixmap">
+    <rect class="frame-outer" x="1443" y="4803" width="418" height="418"/>
+    <circle class="frame-inner" cx="1652" cy="5012" r="209"/>
+    <path class="brush" d="M1531 5045l65 0 -33 -162 -32 162zm-56 121l67 -310 44 0 67 310 -33 0 -18 -92 -78 0 -18 92 -31 0z"/>
+    <path class="brush" d="M1796 5046c-24,5 -43,14 -56,25 -13,12 -20,26 -20,41 0,9 3,16 9,22 5,5 12,8 21,8 7,0 14,-2 22,-6 8,-4 16,-10 24,-18l0 -72zm0 100c-7,7 -15,12 -24,16 -9,4 -18,6 -27,6 -17,0 -30,-5 -40,-15 -9,-10 -14,-24 -14,-41 0,-22 9,-41 27,-57 18,-16 44,-29 78,-37l0 -5 0 -9c0,-14 -3,-24 -8,-31 -5,-6 -14,-9 -25,-9 -11,0 -19,3 -24,10 -6,6 -10,17 -12,32l-29 -4c3,-21 10,-37 21,-47 11,-11 25,-16 43,-16 22,0 39,5 49,17 10,12 15,30 15,57l0 101c0,9 0,18 1,26 0,9 1,17 3,26l-31 0 -3 -20z"/>
+  </g>
+  <g id="matchRegex" class="pixmap">
+    <rect class="frame-outer" x="722" y="4803" width="418" height="418"/>
+    <circle class="frame-inner" cx="931" cy="5012" r="209"/>
+    <path class="brush" d="M835 5136c0,8 -3,16 -9,22 -5,7 -13,10 -23,10 -9,0 -16,-3 -20,-8 -5,-6 -7,-13 -7,-21 0,-8 3,-15 8,-22 6,-6 14,-9 25,-9 8,0 15,2 19,8 5,5 7,12 7,20z"/>
+    <path class="brush" d="M1086 4937c0,13 -13,19 -37,19 -13,0 -27,0 -40,-1l-1 4c31,26 47,43 47,52 0,6 -3,12 -9,17 -7,6 -13,9 -19,9 -12,0 -23,-23 -33,-69l-5 0c-16,42 -29,63 -40,63 -6,0 -12,-3 -19,-8 -7,-5 -10,-10 -10,-16 0,-11 19,-27 56,-49l-2 -5c-16,-2 -37,-5 -64,-9 -5,-2 -8,-8 -8,-16 0,-7 2,-14 5,-20 3,-6 8,-9 14,-9 8,0 28,13 60,38l4 -3c-8,-32 -12,-53 -12,-63 0,-5 3,-8 8,-11 5,-3 11,-4 17,-4 14,0 22,5 22,15 0,11 -7,33 -19,64l4 4c32,-21 52,-31 60,-31 6,0 11,4 15,10 4,7 6,13 6,19z"/>
+  </g>
+  <g id="matchWholeWord" class="pixmap">
+    <rect class="frame-outer" x="2165" y="4803" width="418" height="418"/>
+    <circle class="frame-inner" cx="2374" cy="5012" r="209"/>
+    <polygon class="brush" points="2294,5122 2218,4861 2247,4861 2302,5056 2304,5056 2361,4861 2387,4861 2444,5056 2445,5056 2501,4861 2530,4861 2454,5122 2435,5122 2374,4910 2313,5122 "/>
+    <line class="pen" x1="2218" y1="5163" x2="2530" y2="5163" />
+  </g>
+  <g id="monoLogo" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <polygon class="brush" points="14,14 404,14 404,404 14,404 334,346 334,73 "/>
+    <polygon class="brush" points="290,311 78,337 78,82 289,108 "/>
+  </g>
+  <g id="more" class="pixmap">
+    <rect class="frame-outer" x="4329" y="2763" width="418" height="418"/>
+    <circle class="frame-inner" cx="4538" cy="2972" r="209"/>
+    <circle class="brush" cx="4538" cy="2831" r="31"/>
+    <circle class="brush" cx="4538" cy="2972" r="31"/>
+    <circle class="brush" cx="4538" cy="3112" r="31"/>
+  </g>
+  <g id="moveTo" class="pixmap">
+    <rect class="frame-outer" x="609" y="10" width="418" height="418"/>
+    <circle class="frame-inner" cx="818" cy="219" r="209"/>
+    <path class="pen" d="M873 186c1,16 5,78 6,94l-95 -5"/>
+    <line class="pen" x1="758" y1="159" x2="879" y2= "280" />
+    <path class="pen" d="M920 233l64 0c12,0 21,10 21,21l0 132c0,11 -9,21 -21,21l-139 0c-11,0 -21,-10 -21,-21l0 -66"/>
+    <path class="pen" d="M805 118l0 -65c0,-11 -9,-21 -21,-21l-131 0c-12,0 -21,10 -21,21l0 140c0,11 9,21 21,21l66 0"/>
+  </g>
+  <g id="narrowLayout" class="pixmap">
+    <rect class="frame-outer" x="2165" y="3453" width="418" height="418"/>
+    <circle class="frame-inner" cx="2374" cy="3662" r="209"/>
+    <rect class="pen" x="2178" y="3486" width="392" height="353" rx="31" ry="33"/>
+    <line class="pen" x1="2287" y1="3484" x2="2287" y2="3841" />
+    <line class="pen" x1="2460" y1="3484" x2="2460" y2="3841" />
+    <line class="pen" x1="2456" y1="3736" x2="2292" y2="3736" />
+  </g>
+  <g id="network" class="pixmap">
+    <rect class="frame-outer" x="4329" y="3453" width="418" height="418"/>
+    <circle class="frame-inner" cx="4538" cy="3662" r="209"/>
+    <path class="pen" d="M4538 3613l-67 0c-8,0 -13,-6 -13,-14l0 -86c0,-7 5,-13 13,-13l134 0c7,0 13,6 13,13l0 86c0,8 -6,14 -13,14l-67 0z"/>
+    <path class="pen" d="M4668 3746l67 0c7,0 13,6 13,13l0 87c0,7 -5,13 -13,13l-134 0c-7,0 -13,-6 -13,-13l0 -87c0,-7 6,-13 13,-13l67 0z"/>
+    <path class="pen" d="M4408 3746l67 0c7,0 13,6 13,13l0 87c0,7 -6,13 -13,13l-134 0c-7,0 -13,-6 -13,-13l0 -87c0,-7 6,-13 13,-13l67 0z"/>
+    <line class="pen" x1="4538" y1="3675" x2="4538" y2="3613" />
+    <polyline class="pen" points="4667,3753 4667,3684 4409,3684 4409,3751 "/>
+  </g>
+  <g id="new" class="pixmap">
+    <rect class="frame-outer" x="722" width="418" height="418"/>
+    <circle class="frame-inner" cx="931" cy="209" r="209"/>
+    <line class="pen" x1="1106" y1="85" x2="953" y2="85" />
+    <line class="pen" x1="1030" y1="162" x2="1030" y2="9" />
+    <path class="pen" d="M1030 213l0 161c0,20 -18,36 -38,36l-199 0c-21,0 -38,-16 -38,-36l0 -253 38 -36 117 0"/>
+  </g>
+  <g id="disconnect" class="pixmap">
+    <rect class="frame-outer" x="722" width="418" height="418"/>
+    <line class="pen" x1="1085" y1="35" x2="980" y2="145" />
+    <line class="pen" x1="1085" y1="145" x2="980" y2="35" />
+    <path class="pen" d="M1030 213l0 161c0,20 -18,36 -38,36l-199 0c-21,0 -38,-16 -38,-36l0 -253 38 -36 117 0"/>
+  </g>
+  <g id="reconnect" class="pixmap">
+    <rect class="frame-outer" x="722" width="418" height="418"/>
+    <circle class="frame-inner" cx="931" cy="209" r="209"/>
+    <path class="pen" d="M1030 213l0 161c0,20 -18,36 -38,36l-199 0c-21,0 -38,-16 -38,-36l0 -253 38 -36 117 0"/>
+    <circle class="pen" cx="1040" cy="90" r="66"/>
+  </g>
+  <g id="onekey" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <line class="pen" x1="216" y1="362" x2="326" y2= "362" />
+    <line class="pen" x1="326" y1="314" x2="216" y2= "314" />
+    <line class="pen" x1="209" y1="242" x2="209" y2= "414" />
+    <path class="pen" d="M209 13c66,0 120,54 120,120 0,67 -54,121 -120,121 -67,0 -120,-54 -120,-121 0,-66 53,-120 120,-120z"/>
+  </g>
+  <g id="open" class="pixmap">
+    <rect class="frame-outer" x="1443" width="418" height="418"/>
+    <circle class="frame-inner" cx="1652" cy="209" r="209"/>
+    <path class="pen" d="M1560 257c0,-40 32,-72 71,-72 38,0 70,32 70,72 0,6 -1,12 -2,18"/>
+    <path class="pen" d="M1643 261c13,5 63,22 76,27l25 -78"/>
+    <path class="pen" d="M1493 22l101 0c2,0 38,11 38,46l0 17 183 0c18,0 33,19 33,42l0 228c0,23 -15,41 -33,41l-325 0c-19,0 -34,-18 -34,-41l0 -184 0 -44 0 -59c0,-25 17,-46 37,-46z"/>
+  </g>
+  <g id="outlinePane" class="pixmap">
+    <rect class="frame-outer" y="7563" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="7772" r="209"/>
+    <rect class="brush" x="138" y="7701" width="142" height="142"/>
+  </g>
+  <g id="outputPane" class="pixmap">
+    <rect class="frame-outer" x="1443" y="7563" width="418" height="418"/>
+    <circle class="frame-inner" cx="1652" cy="7772" r="209"/>
+    <rect class="brush" x="1581" y="7701" width="142" height="142"/>
+  </g>
+  <g id="paste" class="pixmap">
+    <rect class="frame-outer" x="1443" y="691" width="418" height="418"/>
+    <circle class="frame-inner" cx="1652" cy="900" r="209"/>
+    <rect class="pen" x="1666" y="905" width="181" height="174" rx="22" ry="18"/>
+    <path class="pen" d="M1494 722l230 0c20,0 36,16 36,36l0 147 -73 0c-12,0 -21,9 -21,21l0 131c0,12 9,21 21,21l-193 0c-20,0 -37,-16 -37,-37l0 -283c0,-20 17,-36 37,-36z"/>
+  </g>
+  <g id="pause" class="pixmap">
+    <rect class="frame-outer" width="417" height="417"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <line class="pen" x1="138" y1="30" x2="138" y2= "387" />
+    <line class="pen" x1="279" y1="30" x2="279" y2= "387" />
+  </g>
+  <g id="playSound" class="pixmap">
+    <rect class="frame-outer" x="1676" width="418" height="418"/>
+    <path class="pen" d="M1827 352c0,-92 0,-184 0,-276l226 -53 -4 292m-220 -133l222 -59m-293 191c30,-11 60,-3 68,19 8,21 -10,47 -40,57 -30,11 -60,3 -68,-18 -8,-21 10,-47 40,-58zm222 -22c30,-11 60,-2 68,19 8,21 -10,47 -40,58 -30,11 -60,2 -68,-19 -7,-21 10,-47 40,-58z"/>
+  </g>
+  <g id="playSoundActive" class="pixmap">
+    <rect class="frame-outer" x="1676" width="418" height="418"/>
+    <path class="penActive" d="M1827 352c0,-92 0,-184 0,-276l226 -53 -4 292m-220 -133l222 -59m-293 191c30,-11 60,-3 68,19 8,21 -10,47 -40,57 -30,11 -60,3 -68,-18 -8,-21 10,-47 40,-58zm222 -22c30,-11 60,-2 68,19 8,21 -10,47 -40,58 -30,11 -60,2 -68,-19 -7,-21 10,-47 40,-58z"/>
+  </g>
+  <g id="print" class="pixmap">
+    <rect class="frame-outer" x="2886" y="2763" width="418" height="418"/>
+    <circle class="frame-inner" cx="3095" cy="2972" r="209"/>
+    <polygon class="pen" points="2985,2796 3205,2796 3205,2878 2985,2878 "/>
+    <rect class="pen" x="2985" y="2999" width="219" height="148"/>
+    <path class="pen" d="M2927 2878l337 0c15,0 27,12 27,27l0 148c0,15 -12,27 -27,27l-59 0 0 -81 -220 0 0 81 -58 0c-16,0 -28,-12 -28,-27l0 -148c0,-15 12,-27 28,-27z"/>
+    <line class="pen" x1="3031" y1="3050" x2="3162" y2="3050" />
+    <line class="pen" x1="3030" y1="3100" x2="3160" y2="3100" />
+  </g>
+  <g id="projectPane" class="pixmap">
+    <rect class="frame-outer" x="722" y="7563" width="418" height="418"/>
+    <circle class="frame-inner" cx="931" cy="7772" r="209"/>
+    <rect class="brush" x="860" y="7701" width="142" height="142"/>
+  </g>
+  <g id="property" class="breadcrumb">
+    <rect class="frame-outer" x="2165" y="6265" width="418" height="418"/>
+    <circle class="frame-inner" cx="2374" cy="6474" r="209"/>
+    <circle class="pen" cx="2374" cy="6475" r="187"/>
+    <path class="brush" d="M2400 6373c0,-7 -2,-13 -7,-18 -5,-4 -11,-7 -19,-7 -8,0 -14,3 -19,7 -5,5 -8,11 -8,18 0,7 3,13 8,17 5,5 11,7 19,7 8,0 14,-2 19,-7 5,-4 7,-10 7,-17zm-3 228l0 -172 -46 0 0 172 46 0z"/>
+  </g>
+  <g id="redo" class="pixmap">
+    <rect class="frame-outer" x="4329" width="418" height="418"/>
+    <circle class="frame-inner" cx="4538" cy="209" r="209"/>
+    <path class="pen" d="M4588 22c21,20 99,96 119,116l-119 119m118 -118c-202,-36 -340,26 -336,258"/>
+  </g>
+  <g id="refresh" class="pixmap">
+    <rect class="frame-outer" x="1766" width="417" height="417"/>
+    <circle class="frame-inner" cx="1975" cy="209" r="209"/>
+    <path class="pen" d="M1869 314c-28,-28 -44,-65 -44,-105 0,-82 67,-149 149,-149"/>
+    <path class="pen" d="M1936 9c9,9 45,44 54,53l-54 54"/>
+    <path class="pen" d="M2013 409c-9,-9 -45,-44 -54,-53l54 -54"/>
+    <path class="pen" d="M2080 104c28,28 43,65 43,105 0,82 -66,149 -149,149"/>
+  </g>
+  <g id="reload" class="breadcrumb">
+    <rect class="frame-outer" x="2886" y="6265" width="418" height="418"/>
+    <circle class="frame-inner" cx="3095" cy="6474" r="209"/>
+    <path class="pen" d="M3253 6559c-30,53 -86,85 -146,85 -94,0 -170,-76 -170,-169 0,-94 76,-170 170,-170 60,0 116,32 146,85"/>
+    <polyline class="pen" points="3161,6385 3251,6385 3251,6295 "/>
+  </g>
+  <g id="remove" class="pixmap">
+    <rect class="frame-outer" x="2886" y="6907" width="418" height="418"/>
+    <circle class="frame-inner" cx="3095" cy="7116" r="209"/>
+    <line class="pen" x1="2997" y1="7116" x2="3194" y2="7116" />
+  </g>
+  <g id="removeBookmark" class="pixmap">
+    <rect class="frame-outer" x="2886" y="4144" width="418" height="418"/>
+    <circle class="frame-inner" cx="3095" cy="4353" r="209"/>
+    <path class="pen" d="M3025 4175l141 0c20,0 36,10 36,23l0 333 -107 -95 -107 95 0 -333c0,-13 17,-23 37,-23z"/>
+    <line class="pen" x1="3048" y1="4343" x2="3149" y2="4242" />
+    <line class="pen" x1="3149" y1="4343" x2="3048" y2="4242" />
+  </g>
+  <g id="rename" class="pixmap">
+    <rect class="frame-outer" x="2328" width="417" height="417"/>
+    <circle class="frame-inner" cx="2537" cy="209" r="209"/>
+    <rect class="pen" x="2357" y="106" width="360" height="205"/>
+    <line class="pen" x1="2622" y1="17" x2="2622" y2= "401" />
+    <line class="pen" x1="2562" y1="17" x2="2682" y2= "17" />
+    <line class="pen" x1="2562" y1="401" x2="2682" y2= "401" />
+  </g>
+  <g id="replace" class="pixmap">
+    <rect class="frame-outer" x="2165" y="2072" width="418" height="418"/>
+    <circle class="frame-inner" cx="2374" cy="2281" r="209"/>
+    <path class="pen" d="M2265 2194c32,-80 141,-80 172,-19"/>
+    <path class="pen" d="M2250 2124c1,14 7,66 8,79l81 -10"/>
+    <path class="brush" d="M2409 2434l0 -224 21 0 0 91c9,-11 18,-19 29,-25 11,-5 23,-7 36,-7 23,0 42,8 58,24 17,17 25,37 25,61 0,23 -8,43 -25,60 -16,16 -36,24 -59,24 -13,0 -25,-2 -36,-8 -10,-6 -20,-14 -28,-25l0 29 -21 0zm84 -16c11,0 22,-3 32,-8 10,-6 17,-14 23,-24 6,-10 9,-21 9,-33 0,-11 -3,-22 -9,-32 -6,-11 -14,-19 -24,-25 -9,-5 -20,-8 -31,-8 -11,0 -22,3 -33,8 -10,6 -18,14 -23,24 -6,9 -8,20 -8,33 0,18 6,34 18,46 12,13 28,19 46,19z"/>
+    <path class="brush" d="M2332 2278l0 157 -20 0 0 -27c-8,10 -17,18 -28,23 -10,5 -22,7 -34,7 -22,0 -41,-8 -57,-24 -16,-16 -23,-35 -23,-58 0,-22 8,-42 23,-58 16,-16 35,-24 57,-24 13,0 25,3 35,9 10,5 20,13 27,24l0 -29 20 0zm-80 16c-11,0 -22,3 -31,8 -10,6 -17,13 -23,23 -5,10 -8,21 -8,32 0,11 3,21 8,31 6,10 14,18 23,23 10,6 20,9 31,9 11,0 21,-3 31,-8 10,-6 17,-13 23,-23 5,-9 8,-20 8,-32 0,-18 -6,-33 -18,-45 -12,-12 -27,-18 -44,-18z"/>
+  </g>
+  <g id="replaceInFiles" class="pixmap">
+    <rect class="frame-outer" x="3608" y="2072" width="418" height="418"/>
+    <circle class="frame-inner" cx="3817" cy="2281" r="209"/>
+    <path class="pen" d="M3658 2094l169 0c21,0 38,21 38,46l0 17 114 0c19,0 34,19 34,42l0 228c0,23 -15,41 -34,41l-325 0c-18,0 -33,-18 -33,-41l0 -184 0 -44 0 -59c0,-25 16,-46 37,-46z"/>
+    <path class="pen" d="M3738 2285c32,-80 141,-80 172,-20"/>
+    <path class="pen" d="M3723 2215c1,13 7,65 8,79l81 -10"/>
+    <path class="pen" d="M3895 2341c-32,81 -141,80 -172,20"/>
+    <path class="pen" d="M3910 2412c-1,-14 -6,-66 -8,-80l-81 10"/>
+  </g>
+  <g id="right" class="pixmap">
+    <rect class="frame-outer" x="2886" y="691" width="418" height="418"/>
+    <circle class="frame-inner" cx="3095" cy="900" r="209"/>
+    <path class="pen" d="M2899 900l393 -2m-119 -116c20,20 98,97 119,117l-119 118"/>
+  </g>
+  <g id="runCommand" class="pixmap">
+    <rect class="frame-outer" x="2234" width="418" height="418"/>
+    <path class="pen" d="M2539 188l-32 0 0 42 32 0c41,0 74,33 74,74 0,41 -33,75 -74,75 -41,0 -74,-34 -74,-75l0 -31 -43 0 0 31c0,41 -33,75 -74,75 -41,0 -74,-34 -74,-75 0,-41 33,-74 74,-74l32 0 0 -42 -32 0c-41,0 -74,-33 -74,-74 0,-41 33,-75 74,-75 41,0 74,34 74,75l0 31 43 0 0 -31c0,-41 33,-75 74,-75 41,0 74,34 74,75 0,41 -33,74 -74,74l0 0zm-159 -74c0,-18 -14,-32 -32,-32 -18,0 -32,14 -32,32 0,17 14,31 32,31l32 0 0 -31zm0 180l0 -21 -32 0c-18,0 -32,14 -32,31 0,18 14,32 32,32 18,0 32,-14 32,-32l0 -10zm127 10c0,18 14,32 32,32 17,0 32,-14 32,-32 0,-17 -15,-31 -32,-31l-32 0 0 31zm-42 -116l-43 0 0 42 43 0 0 -42zm74 -106c-18,0 -32,14 -32,32l0 31 32 0c17,0 32,-14 32,-31 0,-18 -15,-32 -32,-32z"/>
+  </g>
+  <g id="runCommandActive" class="pixmap">
+    <rect class="frame-outer" x="2234" width="418" height="418"/>
+    <path class="penActive" d="M2539 188l-32 0 0 42 32 0c41,0 74,33 74,74 0,41 -33,75 -74,75 -41,0 -74,-34 -74,-75l0 -31 -43 0 0 31c0,41 -33,75 -74,75 -41,0 -74,-34 -74,-75 0,-41 33,-74 74,-74l32 0 0 -42 -32 0c-41,0 -74,-33 -74,-74 0,-41 33,-75 74,-75 41,0 74,34 74,75l0 31 43 0 0 -31c0,-41 33,-75 74,-75 41,0 74,34 74,75 0,41 -33,74 -74,74l0 0zm-159 -74c0,-18 -14,-32 -32,-32 -18,0 -32,14 -32,32 0,17 14,31 32,31l32 0 0 -31zm0 180l0 -21 -32 0c-18,0 -32,14 -32,31 0,18 14,32 32,32 18,0 32,-14 32,-32l0 -10zm127 10c0,18 14,32 32,32 17,0 32,-14 32,-32 0,-17 -15,-31 -32,-31l-32 0 0 31zm-42 -116l-43 0 0 42 43 0 0 -42zm74 -106c-18,0 -32,14 -32,32l0 31 32 0c17,0 32,-14 32,-31 0,-18 -15,-32 -32,-32z"/>
+  </g>
+  <g id="saveAll" class="pixmap">
+    <rect class="frame-outer" x="2886" width="418" height="418"/>
+    <circle class="frame-inner" cx="3095" cy="209" r="209"/>
+    <rect class="pen" x="2904" y="18" width="383" height="383" rx="36" ry="38"/>
+    <rect class="pen" x="3002" y="18" width="185" height="158" rx="18" ry="19"/>
+    <line class="pen" x1="2991" y1="305" x2="3199" y2="305" />
+  </g>
+  <g id="save" class="pixmap">
+    <rect class="frame-outer" x="2165" width="418" height="418"/>
+    <circle class="frame-inner" cx="2374" cy="209" r="209"/>
+    <rect class="pen" x="2182" y="18" width="383" height="383" rx="36" ry="38"/>
+    <rect class="pen" x="2281" y="18" width="184" height="158" rx="18" ry="19"/>
+  </g>
+  <g id="saveSmall" class="pixmap">
+    <rect class="frame-outer" x="2207" width="418" height="418"/>
+    <circle class="frame-inner" cx="2416" cy="209" r="209"/>
+    <rect class="pen" x="2304" y="97" width="223" height="223" rx="21" ry="22"/>
+    <rect class="pen" x="2362" y="97" width="107.403" height="92.0952" rx="11" ry="11"/>
+  </g>
+  <g id="searchIncremental" class="pixmap">
+    <rect class="frame-outer" x="2886" y="4803" width="418" height="418"/>
+    <circle class="frame-inner" cx="3095" cy="5012" r="209"/>
+    <polygon class="brush" points="3008,5164 3008,5134 3075,5134 3075,4890 3008,4890 3008,4860 3182,4860 3182,4890 3115,4890 3115,5134 3182,5134 3182,5164 "/>
+  </g>
+  <g id="searchSelection" class="pixmap">
+    <rect class="frame-outer" x="3608" y="4803" width="418" height="418"/>
+    <circle class="frame-inner" cx="3817" cy="5012" r="209"/>
+    <rect class="pen" x="3650" y="4858" width="334" height="308" rx="39" ry="46"/>
+    <line class="pen" x1="3650" y1="4967" x2="3927" y2="4967" />
+    <line class="pen" x1="3650" y1="5057" x2="3926" y2="5057" />
+  </g>
+  <g id="searchWrap" class="pixmap">
+    <rect class="frame-outer" x="4329" y="4803" width="418" height="418"/>
+    <circle class="frame-inner" cx="4538" cy="5012" r="209"/>
+    <path class="pen" d="M4595 5053c-24,24 -57,57 -69,68l68 68"/>
+    <path class="pen" d="M4601 4902l65 0c16,0 28,12 28,27l-1 164c0,16 -12,28 -27,28l-128 0"/>
+    <path class="pen" d="M4481 4970c24,-23 58,-56 69,-67l-68 -68"/>
+    <path class="pen" d="M4476 5122l-66 0c-15,0 -28,-12 -28,-28l1 -164c0,-15 13,-27 28,-27l128 0"/>
+  </g>
+  <g id="senderPane" class="pixmap">
+    <rect class="frame-outer" y="7563" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="7772" r="209"/>
+    <rect class="brush" x="138" y="7701" width="142" height="142"/>
+  </g>
+  <g id="sendText" class="pixmap">
+    <rect class="frame-outer" x="1117" y="524" width="418" height="418"/>
+    <polygon class="pen" points="1498,561 1426,733 1353,906 1311,755 1154,706 1326,634 "/>
+    <line class="pen" x1="1311" y1="755" x2="1398" y2= "665" />
+  </g>
+  <g id="sendTextActive" class="pixmap">
+    <rect class="frame-outer" x="1117" y="524" width="418" height="418"/>
+    <polygon class="penActive" points="1498,561 1426,733 1353,906 1311,755 1154,706 1326,634 "/>
+    <line class="penActive" x1="1311" y1="755" x2="1398" y2= "665" />
+  </g>
+  <g id="sessionPane" class="pixmap">
+    <rect class="frame-outer" x="2165" y="7563" width="418" height="418"/>
+    <circle class="frame-inner" cx="2374" cy="7772" r="209"/>
+    <rect class="brush" x="2303" y="7701" width="142" height="142"/>
+  </g>
+  <g id="shellPane" class="pixmap">
+    <rect class="frame-outer" x="2886" y="7563" width="418" height="418"/>
+    <circle class="frame-inner" cx="3095" cy="7772" r="209"/>
+    <rect class="brush" x="3024" y="7701" width="142" height="142"/>
+  </g>
+  <g id="showTooltip" class="pixmap">
+    <rect class="frame-outer" x="1676" y="524" width="418" height="418"/>
+    <path class="pen" d="M1937 800l0 0 -20 34 -32 56 -42 -73 -10 -17 -84 0c-19,0 -34,-15 -34,-34l0 -155c0,-19 15,-34 34,-34l271 0c19,0 34,15 34,34l0 155c0,19 -15,34 -34,34l-83 0z"/>
+    <line class="pen" x1="1795" y1="650" x2="1974" y2= "650" />
+    <line class="pen" x1="1796" y1="736" x2="1974" y2= "736" />
+  </g>
+  <g id="showTooltipActive" class="pixmap">
+    <rect class="frame-outer" x="1676" y="524" width="418" height="418"/>
+    <path class="penActive" d="M1937 800l0 0 -20 34 -32 56 -42 -73 -10 -17 -84 0c-19,0 -34,-15 -34,-34l0 -155c0,-19 15,-34 34,-34l271 0c19,0 34,15 34,34l0 155c0,19 -15,34 -34,34l-83 0z"/>
+    <line class="penActive" x1="1795" y1="650" x2="1974" y2= "650" />
+    <line class="penActive" x1="1796" y1="736" x2="1974" y2= "736" />
+  </g>
+  <g id="split" class="tabbar">
+    <rect class="frame-outer" x="2886" y="3453" width="418" height="418"/>
+    <circle class="frame-inner" cx="3095" cy="3662" r="209"/>
+    <path class="pen" d="M3095 3817l0 -123m0 -63l0 -123"/>
+    <path class="pen" d="M2940 3663l124 0m62 0l124 0"/>
+  </g>
+  <g id="splitHorizontally" class="pixmap">
+    <rect class="frame-outer" x="2886" y="1353" width="418" height="418"/>
+    <circle class="frame-inner" cx="3095" cy="1562" r="209"/>
+    <rect class="pen" x="2899" y="1386" width="392" height="353" rx="31" ry="33"/>
+    <line class="pen" x1="3095" y1="1384" x2="3095" y2="1742" />
+  </g>
+  <g id="splitVertically" class="pixmap">
+    <rect class="frame-outer" x="3608" y="1353" width="418" height="418"/>
+    <circle class="frame-inner" cx="3817" cy="1562" r="209"/>
+    <rect class="pen" x="3621" y="1386" width="392" height="353" rx="31" ry="33"/>
+    <line class="pen" x1="3625" y1="1563" x2="4008" y2="1563" />
+  </g>
+  <g id="start" class="pixmap">
+    <rect class="frame-outer" x="501" width="418" height="418"/>
+    <path class="brush" d="M632 351l0 -284 190 142 -190 142zm0 -142m95 -71m0 142"/>
+  </g>
+  <g id="stash" class="pixmap">
+    <rect class="frame-outer" x="3608" y="2763" width="418" height="418"/>
+    <circle class="frame-inner" cx="3817" cy="2972" r="209"/>
+    <polygon class="pen" points="3922,3014 3995,3056 3906,3108 3817,3159 3728,3108 3638,3056 3712,3014 3728,3023 3817,3075 3906,3023 "/>
+    <polygon class="pen" points="3922,2930 3995,2972 3906,3023 3817,3075 3728,3023 3638,2972 3712,2930 3728,2939 3817,2990 3906,2939 "/>
+    <polygon class="pen" points="3817,2785 3906,2836 3995,2887 3906,2939 3817,2990 3728,2939 3638,2887 3728,2836 "/>
+  </g>
+  <g id="stop" class="pixmap">
+    <rect class="frame-outer" y="7527" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="7736" r="209"/>
+    <rect class="brush" x="100" y="7646" width="218" height="218"/>
+  </g>
+  <g id="stopLoading" class="breadcrumb">
+    <rect class="frame-outer" x="3608" y="6265" width="418" height="418"/>
+    <circle class="frame-inner" cx="3817" cy="6474" r="209"/>
+    <line class="pen" x1="3675" y1="6616" x2="3959" y2="6333" />
+    <line class="pen" x1="3674" y1="6332" x2="3959" y2="6617" />
+  </g>
+  <g id="syncChannelA" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <rect class="brush" x="108" y="108" width="202" height="202"/>
+  </g>
+  <g id="syncChannelB" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <rect class="brush" x="108" y="108" width="202" height="202"/>
+  </g>
+  <g id="syncChannelC" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <rect class="brush" x="108" y="108" width="202" height="202"/>
+  </g>
+  <g id="syncChannelD" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <rect class="brush" x="108" y="108" width="202" height="202"/>
+  </g>
+  <g id="syncEdit" class="pixmap">
+    <rect class="frame-outer" x="1443" y="2763" width="418" height="418"/>
+    <circle class="frame-inner" cx="1652" cy="2972" r="209"/>
+    <line class="pen" x1="1654" y1="2772" x2="1654" y2="3171" />
+    <polygon class="brush" points="1462,2858 1591,2858 1591,2880 1484,2880 1484,2951 1590,2951 1590,2973 1484,2973 1484,3062 1590,3062 1590,3084 1462,3084 "/>
+    <polygon class="brush" points="1843,2858 1713,2858 1713,2880 1820,2880 1820,2951 1714,2951 1714,2973 1820,2973 1820,3062 1714,3062 1714,3084 1843,3084 "/>
+  </g>
+  <g id="syncInput" class="pixmap">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <path class="pen" d="M222 82l27 -26c30,-30 80,-29 111,2l0 0c31,31 32,81 3,111l-81 80c-29,30 -79,29 -110,-2l0 0c-12,-11 -19,-25 -22,-39"/>
+    <path class="pen" d="M201 330l-32 33c-30,29 -80,28 -111,-3l0 0c-31,-31 -32,-81 -2,-111l80 -80c29,-30 79,-29 111,3l0 0c11,11 18,24 21,38"/>
+  </g>
+  <g id="syncInputSmall" class="tabbar">
+    <rect class="frame-outer" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="209" r="209"/>
+    <path class="pen" d="M222 145l14 -14c16,-16 42,-15 58,1l0 0c17,16 17,43 2,58l-42 42c-16,16 -42,16 -59,-1l0 0c-6,-6 -9,-13 -11,-20"/>
+    <path class="pen" d="M199 270l-17 17c-16,16 -42,15 -59,-1l0 0c-16,-17 -17,-43 -1,-58l42 -43c16,-15 42,-15 59,2l0 0c5,6 9,13 11,20"/>
+  </g>
+  <g id="syncTerminalFolder" class="pixmap">
+    <rect class="frame-outer" x="593" width="417" height="417"/>
+    <path class="pen" d="M802 22c-69,0 -124,55 -124,123 0,21 5,41 15,58l115 192 102 -191c10,-18 15,-38 15,-59 0,-68 -55,-123 -123,-123m0 64c-33,0 -59,27 -59,59 0,78 117,78 117,0 0,-32 -26,-59 -58,-59z"/>
+  </g>
+  <g id="terminal" class="pixmap">
+    <rect class="frame-outer" x="722" y="4144" width="418" height="418"/>
+    <circle class="frame-inner" cx="931" cy="4353" r="209"/>
+    <rect class="pen" x="743" y="4203" width="375" height="301" rx="25" ry="31"/>
+    <polygon class="brush" points="931,4353 802,4409 802,4385 904,4342 802,4300 802,4276 931,4331 "/>
+    <line class="pen" x1="934" y1="4409" x2="1069" y2="4409" />
+  </g>
+  <g id="transferPane" class="pixmap">
+    <rect class="frame-outer" y="7563" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="7772" r="209"/>
+    <rect class="brush" x="138" y="7701" width="142" height="142"/>
+  </g>
+  <g id="trigger" class="pixmap">
+    <rect class="frame-outer" x="559" width="418" height="418"/>
+    <path class="pen" d="M711 55c18,-7 37,-10 57,-10 90,0 164,73 164,164 0,91 -74,164 -164,164 -91,0 -165,-73 -165,-164 0,-19 4,-38 10,-56"/>
+    <line class="pen" x1="663" y1="95" x2="765" y2= "209" />
+  </g>
+  <g id="tunnel" class="pixmap">
+   <rect class="frame-outer" x="4323" width="418" height="418"/>
+   <path class="pen" d="M4407 255c0,-31 32,-62 71,-62l139 0m-210 129l0 -210c0,-31 32,-56 70,-56l138 0"/>
+   <circle class="pen" cx="4656" cy="56" r="39"/>
+   <circle class="pen" cx="4656" cy="194" r="39"/>
+   <circle class="pen" cx="4408" cy="362" r="39"/>
+  </g>
+  <g id="tunnelDynamic" class="pixmap">
+   <rect class="frame-outer" x="3871" y="12" width="418" height="418"/>
+   <path class="pen" d="M3955 267c0,-31 32,-62 71,-62l139 0m-210 130l0 -211c0,-31 32,-57 70,-57l138 0"/>
+   <circle class="pen" cx="4204" cy="68" r="39"/>
+   <circle class="pen" cx="4204" cy="206" r="40"/>
+   <circle class="pen" cx="3956" cy="374" r="40"/>
+   <text x="4043" y="414"  class="symbolTunnel">D</text>
+  </g>
+  <g id="tunnelDynamicActive" class="pixmap">
+   <rect class="frame-outer" x="3871" y="12" width="418" height="418"/>
+   <path class="penActive" d="M3955 267c0,-31 32,-62 71,-62l139 0m-210 130l0 -211c0,-31 32,-57 70,-57l138 0"/>
+   <circle class="penActive" cx="4204" cy="68" r="39"/>
+   <circle class="penActive" cx="4204" cy="206" r="40"/>
+   <circle class="penActive" cx="3956" cy="374" r="40"/>
+   <text x="4043" y="414"  class="symbolTunnelActive">D</text>
+  </g>
+  <g id="tunnelDynamicError" class="pixmap">
+   <rect class="frame-outer" x="3871" y="12" width="418" height="418"/>
+   <path class="penError" d="M3955 267c0,-31 32,-62 71,-62l139 0m-210 130l0 -211c0,-31 32,-57 70,-57l138 0"/>
+   <circle class="penError" cx="4204" cy="68" r="39"/>
+   <circle class="penError" cx="4204" cy="206" r="40"/>
+   <circle class="penError" cx="3956" cy="374" r="40"/>
+   <text x="4043" y="414"  class="symbolTunnelError">D</text>
+  </g>
+  <g id="tunnelLocal" class="pixmap">
+   <rect class="frame-outer" x="4434" y="12" width="418" height="418"/>
+   <path class="pen" d="M4518 267c0,-31 32,-62 70,-62l140 0m-210 130l0 -211c0,-31 31,-57 70,-57l138 0"/>
+   <circle class="pen" cx="4767" cy="68" r="39"/>
+   <circle class="pen" cx="4767" cy="206" r="40"/>
+   <circle class="pen" cx="4519" cy="374" r="40"/>
+   <text x="4610" y="414"  class="symbolTunnel">L</text>
+  </g>
+  <g id="tunnelLocalActive" class="pixmap">
+   <rect class="frame-outer" x="4434" y="12" width="418" height="418"/>
+   <path class="penActive" d="M4518 267c0,-31 32,-62 70,-62l140 0m-210 130l0 -211c0,-31 31,-57 70,-57l138 0"/>
+   <circle class="penActive" cx="4767" cy="68" r="39"/>
+   <circle class="penActive" cx="4767" cy="206" r="40"/>
+   <circle class="penActive" cx="4519" cy="374" r="40"/>
+   <text x="4610" y="414"  class="symbolTunnelActive">L</text>
+  </g>
+  <g id="tunnelLocalError" class="pixmap">
+   <rect class="frame-outer" x="4434" y="12" width="418" height="418"/>
+   <path class="penError" d="M4518 267c0,-31 32,-62 70,-62l140 0m-210 130l0 -211c0,-31 31,-57 70,-57l138 0"/>
+   <circle class="penError" cx="4767" cy="68" r="39"/>
+   <circle class="penError" cx="4767" cy="206" r="40"/>
+   <circle class="penError" cx="4519" cy="374" r="40"/>
+   <text x="4610" y="414"  class="symbolTunnelError">L</text>
+  </g>
+  <g id="tunnelRemote" class="pixmap">
+   <rect class="frame-outer" x="3308" y="12" width="418" height="418"/>
+   <path class="pen" d="M3392 267c0,-31 32,-62 71,-62l139 0m-210 130l0 -211c0,-31 32,-57 70,-57l138 0"/>
+   <circle class="pen" cx="3642" cy="68" r="39"/>
+   <circle class="pen" cx="3641" cy="206" r="40"/>
+   <circle class="pen" cx="3393" cy="374" r="40"/>
+   <text x="3480" y="414"  class="symbolTunnel">R</text>
+  </g>
+  <g id="tunnelRemoteActive" class="pixmap">
+   <rect class="frame-outer" x="3308" y="12" width="418" height="418"/>
+   <path class="penActive" d="M3392 267c0,-31 32,-62 71,-62l139 0m-210 130l0 -211c0,-31 32,-57 70,-57l138 0"/>
+   <circle class="penActive" cx="3642" cy="68" r="39"/>
+   <circle class="penActive" cx="3641" cy="206" r="40"/>
+   <circle class="penActive" cx="3393" cy="374" r="40"/>
+   <text x="3480" y="414"  class="symbolTunnelActive">R</text>
+  </g>
+  <g id="tunnelRemoteError" class="pixmap">
+   <rect class="frame-outer" x="3308" y="12" width="418" height="418"/>
+   <path class="penError" d="M3392 267c0,-31 32,-62 71,-62l139 0m-210 130l0 -211c0,-31 32,-57 70,-57l138 0"/>
+   <circle class="penError" cx="3642" cy="68" r="39"/>
+   <circle class="penError" cx="3641" cy="206" r="40"/>
+   <circle class="penError" cx="3393" cy="374" r="40"/>
+   <text x="3480" y="414"  class="symbolTunnelError">R</text>
+  </g>
+  <g id="tunnelSmall" class="pixmap">
+   <rect class="frame-outer" x="1094" width="418" height="418"/>
+   <path class="pen" d="M1230 236c0,-18 19,-36 41,-36l81 0m-122 75l0 -123c0,-18 18,-32 41,-32l80 0"/>
+   <circle class="pen" cx="1375" cy="120" r="23"/>
+   <circle class="pen" cx="1375" cy="200" r="23"/>
+   <circle class="pen" cx="1231" cy="298" r="23"/>
+  </g>
+  <g id="tunnelSmallActive" class="pixmap">
+   <rect class="frame-outer" x="1094" width="418" height="418"/>
+   <path class="penActive" d="M1230 236c0,-18 19,-36 41,-36l81 0m-122 75l0 -123c0,-18 18,-32 41,-32l80 0"/>
+   <circle class="penActive" cx="1375" cy="120" r="23"/>
+   <circle class="penActive" cx="1375" cy="200" r="23"/>
+   <circle class="penActive" cx="1231" cy="298" r="23"/>
+  </g>
+  <g id="tunnelSmallError" class="pixmap">
+   <rect class="frame-outer" x="1094" width="418" height="418"/>
+   <path class="penError" d="M1230 236c0,-18 19,-36 41,-36l81 0m-122 75l0 -123c0,-18 18,-32 41,-32l80 0"/>
+   <circle class="penError" cx="1375" cy="120" r="23"/>
+   <circle class="penError" cx="1375" cy="200" r="23"/>
+   <circle class="penError" cx="1231" cy="298" r="23"/>
+  </g>
+  <g id="uncomment" class="pixmap">
+    <rect class="frame-outer" x="722" y="2763" width="418" height="418"/>
+    <circle class="frame-inner" cx="931" cy="2972" r="209"/>
+    <polygon class="brush" points="1004,3104 1049,3056 1001,3012 1020,2992 1068,3037 1112,2989 1132,3008 1088,3055 1135,3100 1116,3120 1069,3075 1024,3123 "/>
+    <polygon class="brush" points="881,2821 757,3123 726,3123 851,2821 "/>
+    <polygon class="brush" points="1048,2821 924,3123 893,3123 1017,2821 "/>
+  </g>
+  <g id="undo" class="pixmap">
+    <rect class="frame-outer" x="3608" width="418" height="418"/>
+    <circle class="frame-inner" cx="3817" cy="209" r="209"/>
+    <path class="pen" d="M3767 22c-21,20 -99,96 -119,116l119 119m-118 -118c202,-36 340,26 336,258"/>
+  </g>
+  <g id="up" class="pixmap">
+    <rect class="frame-outer" y="1" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="210" r="209"/>
+    <path class="pen" d="M211 401l0 -383m114 117c-20,-20 -95,-97 -115,-117l-117 117"/>
+  </g>
+  <g id="upload" class="pixmap">
+    <rect class="frame-outer" x="589" width="417" height="417"/>
+    <circle class="frame-inner" cx="798" cy="209" r="209"/>
+    <path class="pen" d="M708 138c16,-17 73,-83 88,-100l90 100"/>
+    <line class="pen" x1="796" y1="278" x2="796" y2= "38" />
+    <path class="pen" d="M985 233l0 111c0,20 -16,36 -36,36l-304 0c-19,0 -35,-16 -35,-36l0 -111"/>
+  </g>
+  <g id="virtualSpace" class="pixmap">
+    <rect class="frame-outer" x="722" y="1353" width="418" height="418"/>
+    <circle class="frame-inner" cx="931" cy="1562" r="209"/>
+    <path class="pen" d="M905 1501c-31,30 -77,75 -91,89l90 91"/>
+    <path class="pen" d="M827 1390l170 0c21,0 38,17 38,37l0 129c0,20 -17,37 -38,37l-170 0"/>
+    <path class="pen" d="M1119 1588l0 112c0,19 -16,35 -36,35l-305 0c-19,0 -35,-16 -35,-35l0 -112"/>
+  </g>
+  <g id="visible" class="pixmap">
+    <rect class="frame-outer" x="1107" width="418" height="418"/>
+    <circle class="frame-inner" cx="1316" cy="209" r="209"/>
+    <circle class="pen" cx="1316" cy="209" r="48"/>
+    <path class="pen" d="M1316 114c70,0 131,38 164,95 -33,56 -94,94 -164,94 -70,0 -131,-38 -164,-94 33,-57 94,-95 164,-95z"/>
+  </g>
+  <g id="warning" class="pixmap">
+    <rect class="frame-outer" x="2165" y="5525" width="418" height="418"/>
+    <circle class="frame-inner" cx="2374" cy="5734" r="209"/>
+    <path fill="#F08519" d="M2372 5565c6,0 17,2 20,7l87 150 89 155c6,9 -4,27 -15,27l-179 0 -180 0c-10,0 -20,-18 -15,-27l90 -155 86 -150c3,-5 10,-7 17,-7z"/>
+    <path fill="white" d="M2374 5643c13,0 20,6 20,18 0,3 -1,12 -4,25 -3,15 -4,25 -5,30 -4,25 -6,47 -6,65 0,6 0,12 1,17 0,3 -3,5 -9,5 -2,0 -3,-1 -3,-3 1,-5 1,-11 1,-18 0,-19 -2,-40 -6,-64 0,-1 -2,-12 -6,-34 -2,-12 -4,-20 -4,-23 0,-12 7,-18 21,-18zm-1 181c6,0 11,2 15,6 3,4 5,8 5,13 0,5 -2,10 -7,14 -4,4 -8,5 -13,5 -5,0 -10,-2 -14,-6 -3,-4 -5,-8 -5,-13 0,-6 2,-10 7,-14 3,-4 8,-5 12,-5z"/>
+  </g>
+  <g id="whiteSpace" class="pixmap">
+    <rect class="frame-outer" x="1443" y="1353" width="418" height="418"/>
+    <circle class="frame-inner" cx="1652" cy="1562" r="209"/>
+    <path class="pen" d="M1745 1392c17,15 83,73 100,88l-100 90"/>
+    <line class="pen" x1="1459" y1="1480" x2="1845" y2="1480" />
+    <path class="pen" d="M1845 1585l0 112c0,20 -16,36 -36,36l-305 0c-19,0 -35,-16 -35,-36l0 -112"/>
+  </g>
+  <g id="wordWrap" class="pixmap">
+    <rect class="frame-outer" y="1353" width="418" height="418"/>
+    <circle class="frame-inner" cx="209" cy="1562" r="209"/>
+    <path class="pen" d="M257 1575c-32,31 -77,75 -92,90l91 90"/>
+    <path class="pen" d="M31 1370l319 0c20,0 37,16 37,37l-1 224c0,20 -17,37 -37,37l-171 0"/>
+    <line class="pen" x1="31" y1="1446" x2="314" y2="1446" />
+    <line class="pen" x1="31" y1="1519" x2="314" y2="1515" />
+  </g>
+  <g id="wrapSymbol" class="pixmap">
+    <rect class="frame-outer" x="2165" y="1353" width="418" height="418"/>
+    <circle class="frame-inner" cx="2374" cy="1562" r="209"/>
+    <path class="pen" d="M2362 1561c-31,31 -77,75 -91,90l90 90"/>
+    <path class="pen" d="M2253 1384l117 0m0 0l87 0c20,0 37,17 37,37l-1 193c0,20 -17,37 -37,37l-171 0"/>
+  </g>
+  <g id="xServer" class="pixmap">
+   <rect class="frame-outer" x="3776" width="418" height="418"/>
+   <path class="brush" d="M4019 178l99 147c14,21 25,35 32,41 7,7 16,11 28,13l0 10 -176 0 0 -10c22,-2 33,-8 33,-18 0,-6 -6,-19 -20,-38l-52 -77 -55 66c-17,20 -25,34 -25,41 0,17 16,26 48,26l0 10 -138 0 0 -10c13,-2 26,-6 36,-12 10,-6 27,-23 51,-52l71 -86 -92 -135c-9,-13 -17,-25 -24,-36 -8,-10 -19,-17 -34,-19l0 -10 178 0 0 10 -9 0c-19,0 -29,6 -29,18 0,3 6,13 17,31l49 73 38 -46c19,-23 29,-40 29,-50 0,-17 -13,-26 -39,-26l0 -10 132 0 0 10c-15,0 -26,3 -35,9 -9,6 -24,22 -45,48l-68 82z"/>
+  </g>
+  <g id="xServerSmall" class="pixmap">
+   <rect class="frame-outer" x="547" width="418" height="418"/>
+   <path class="brush" d="M775 191l58 85c8,12 14,20 18,24 5,4 10,7 16,7l0 6 -101 0 0 -6c13,-1 19,-4 19,-10 0,-3 -4,-11 -12,-22l-30 -45 -32 39c-10,11 -14,19 -14,24 0,9 9,14 27,14l0 6 -80 0 0 -6c8,-1 15,-3 21,-7 6,-3 16,-13 30,-29l41 -51 -53 -78c-5,-7 -10,-14 -14,-20 -5,-7 -11,-10 -20,-12l0 -5 104 0 0 5 -6 0c-11,0 -17,4 -17,11 0,2 4,8 10,18l29 42 22 -26c11,-14 16,-24 16,-29 0,-10 -7,-16 -23,-16l0 -5 77 0 0 5c-8,1 -15,2 -20,6 -5,3 -14,12 -26,27l-40 48z"/>
+  </g>
+  <g id="xServerSmallActive" class="pixmap">
+   <rect class="frame-outer" x="547" width="418" height="418"/>
+   <path class="brushActive" d="M775 191l58 85c8,12 14,20 18,24 5,4 10,7 16,7l0 6 -101 0 0 -6c13,-1 19,-4 19,-10 0,-3 -4,-11 -12,-22l-30 -45 -32 39c-10,11 -14,19 -14,24 0,9 9,14 27,14l0 6 -80 0 0 -6c8,-1 15,-3 21,-7 6,-3 16,-13 30,-29l41 -51 -53 -78c-5,-7 -10,-14 -14,-20 -5,-7 -11,-10 -20,-12l0 -5 104 0 0 5 -6 0c-11,0 -17,4 -17,11 0,2 4,8 10,18l29 42 22 -26c11,-14 16,-24 16,-29 0,-10 -7,-16 -23,-16l0 -5 77 0 0 5c-8,1 -15,2 -20,6 -5,3 -14,12 -26,27l-40 48z"/>
+  </g>
+  <g id="xServerSmallError" class="pixmap">
+   <rect class="frame-outer" x="547" width="418" height="418"/>
+   <path class="brushError" d="M775 191l58 85c8,12 14,20 18,24 5,4 10,7 16,7l0 6 -101 0 0 -6c13,-1 19,-4 19,-10 0,-3 -4,-11 -12,-22l-30 -45 -32 39c-10,11 -14,19 -14,24 0,9 9,14 27,14l0 6 -80 0 0 -6c8,-1 15,-3 21,-7 6,-3 16,-13 30,-29l41 -51 -53 -78c-5,-7 -10,-14 -14,-20 -5,-7 -11,-10 -20,-12l0 -5 104 0 0 5 -6 0c-11,0 -17,4 -17,11 0,2 4,8 10,18l29 42 22 -26c11,-14 16,-24 16,-29 0,-10 -7,-16 -23,-16l0 -5 77 0 0 5c-8,1 -15,2 -20,6 -5,3 -14,12 -26,27l-40 48z"/>
+  </g>
+  <g id="zoomIn" class="pixmap">
+    <rect class="frame-outer" x="3608" y="691" width="418" height="418"/>
+    <circle class="frame-inner" cx="3817" cy="900" r="209"/>
+    <line class="pen" x1="3927" y1="1015" x2="4013" y2="1089" />
+    <line class="pen" x1="3882" y1="894" x2="3725" y2="894" />
+    <line class="pen" x1="3803" y1="972" x2="3803" y2="815" />
+    <circle class="pen" cx="3803" cy="894" r="183"/>
+  </g>
+  <g id="zoomOut" class="pixmap">
+    <rect class="frame-outer" x="4329" y="691" width="418" height="418"/>
+    <circle class="frame-inner" cx="4538" cy="900" r="209"/>
+    <circle class="pen" cx="4525" cy="894" r="183"/>
+    <line class="pen" x1="4648" y1="1015" x2="4734" y2="1089" />
+    <line class="pen" x1="4604" y1="894" x2="4446" y2="894" />
+  </g>
+  <!-- symbols -->
+  <g id="a" class="lower">
+    <rect class="frame-outer" width="417" height="417"/>
+    <circle class="frame-inner" cx="209" cy="209" r="185"/>
+    <text x="110" y="277" class="symbol">a</text>
+  </g>
+  <g id="b" class="lower">
+    <rect class="frame-outer" x="720" width="417" height="417"/>
+    <circle class="frame-inner" cx="928" cy="209" r="185"/>
+    <text x="830" y="308" class="symbol">b</text>
+  </g>
+  <g id="c" class="lower">
+    <rect class="frame-outer" x="1439" width="417" height="417"/>
+    <circle class="frame-inner" cx="1648" cy="209" r="185"/>
+    <text x="1549" y="278" class="symbol">c</text>
+  </g>
+  <g id="d" class="lower">
+    <rect class="frame-outer" x="2159" width="417" height="417"/>
+    <circle class="frame-inner" cx="2367" cy="209" r="185"/>
+    <text x="2269" y="307" class="symbol">d</text>
+  </g>
+  <g id="e" class="lower">
+    <rect class="frame-outer" x="2878" width="417" height="417"/>
+    <circle class="frame-inner" cx="3087" cy="209" r="185"/>
+    <text x="2988" y="278" class="symbol">e</text>
+  </g>
+  <g id="f" class="lower">
+    <rect class="frame-outer" x="3598" width="417" height="417"/>
+    <circle class="frame-inner" cx="3806" cy="209" r="185"/>
+    <text x="3708" y="311" class="symbol">f</text>
+  </g>
+  <g id="g" class="lower">
+    <rect class="frame-outer" x="4317" width="417" height="417"/>
+    <circle class="frame-inner" cx="4526" cy="209" r="185"/>
+    <text x="4427" y="250" class="symbol">g</text>
+  </g>
+  <g id="h" class="lower">
+    <rect class="frame-outer" y="670" width="417" height="417"/>
+    <circle class="frame-inner" cx="209" cy="879" r="185"/>
+    <text x="110" y="979" class="symbol">h</text>
+  </g>
+  <g id="i" class="lower">
+    <rect class="frame-outer" x="720" y="670" width="417" height="417"/>
+    <circle class="frame-inner" cx="928" cy="879" r="185"/>
+    <text x="830" y="981" class="symbol">i</text>
+  </g>
+  <g id="j" class="lower">
+    <rect class="frame-outer" x="1439" y="670" width="417" height="417"/>
+    <circle class="frame-inner" cx="1648" cy="879" r="185"/>
+    <text x="1549" y="952" class="symbol">j</text>
+  </g>
+  <g id="k" class="lower">
+    <rect class="frame-outer" x="2159" y="670" width="417" height="417"/>
+    <circle class="frame-inner" cx="2367" cy="879" r="185"/>
+    <text x="2269" y="979" class="symbol">k</text>
+  </g>
+  <g id="l" class="lower">
+    <rect class="frame-outer" x="2878" y="670" width="417" height="417"/>
+    <circle class="frame-inner" cx="3087" cy="879" r="185"/>
+    <text x="2988" y="979" class="symbol">l</text>
+  </g>
+  <g id="m" class="lower">
+    <rect class="frame-outer" x="3598" y="670" width="417" height="417"/>
+    <circle class="frame-inner" cx="3806" cy="879" r="185"/>
+    <text x="3708" y="950" class="symbol">m</text>
+  </g>
+  <g id="n" class="lower">
+    <rect class="frame-outer" x="4317" y="670" width="417" height="417"/>
+    <circle class="frame-inner" cx="4526" cy="879" r="185"/>
+    <text x="4427" y="950" class="symbol">n</text>
+  </g>
+  <g id="o" class="lower">
+    <rect class="frame-outer" y="1340" width="417" height="417"/>
+    <circle class="frame-inner" cx="209" cy="1548" r="185"/>
+    <text x="110" y="1618" class="symbol">o</text>
+  </g>
+  <g id="p" class="lower">
+    <rect class="frame-outer" x="720" y="1340" width="417" height="417"/>
+    <circle class="frame-inner" cx="928" cy="1548" r="185"/>
+    <text x="830" y="1593" class="symbol">p</text>
+  </g>
+  <g id="q" class="lower">
+    <rect class="frame-outer" x="1439" y="1340" width="417" height="417"/>
+    <circle class="frame-inner" cx="1648" cy="1548" r="185"/>
+    <text x="1549" y="1592" class="symbol">q</text>
+  </g>
+  <g id="r" class="lower">
+    <rect class="frame-outer" x="2159" y="1340" width="417" height="417"/>
+    <circle class="frame-inner" cx="2367" cy="1548" r="185"/>
+    <text x="2269" y="1620" class="symbol">r</text>
+  </g>
+  <g id="s" class="lower">
+    <rect class="frame-outer" x="2878" y="1340" width="417" height="417"/>
+    <circle class="frame-inner" cx="3087" cy="1548" r="185"/>
+    <text x="2988" y="1618" class="symbol">s</text>
+  </g>
+  <g id="t" class="lower">
+    <rect class="frame-outer" x="3598" y="1340" width="417" height="417"/>
+    <circle class="frame-inner" cx="3806" cy="1548" r="185"/>
+    <text x="3708" y="1638" class="symbol">t</text>
+  </g>
+  <g id="u" class="lower">
+    <rect class="frame-outer" x="4317" y="1340" width="417" height="417"/>
+    <circle class="frame-inner" cx="4526" cy="1548" r="185"/>
+    <text x="4427" y="1616" class="symbol">u</text>
+  </g>
+  <g id="v" class="lower">
+    <rect class="frame-outer" y="2036" width="417" height="417"/>
+    <circle class="frame-inner" cx="209" cy="2245" r="185"/>
+    <text x="110" y="2315" class="symbol">v</text>
+  </g>
+  <g id="w" class="lower">
+    <rect class="frame-outer" x="720" y="2036" width="417" height="417"/>
+    <circle class="frame-inner" cx="928" cy="2245" r="185"/>
+    <text x="830" y="2315" class="symbol">w</text>
+  </g>
+  <g id="x" class="lower">
+    <rect class="frame-outer" x="1439" y="2036" width="417" height="417"/>
+    <circle class="frame-inner" cx="1648" cy="2245" r="185"/>
+    <text x="1549" y="2315" class="symbol">x</text>
+  </g>
+  <g id="y" class="lower">
+    <rect class="frame-outer" x="2159" y="2036" width="417" height="417"/>
+    <circle class="frame-inner" cx="2367" cy="2245" r="185"/>
+    <text x="2269" y="2286" class="symbol">y</text>
+  </g>
+  <g id="z" class="lower">
+    <rect class="frame-outer" x="2878" y="2036" width="417" height="417"/>
+    <circle class="frame-inner" cx="3087" cy="2245" r="185"/>
+    <text x="3988" y="2315" class="symbol">z</text>
+  </g>
+  <g id="num0" class="number">
+    <rect class="frame-outer" x="3598" y="4690" width="417" height="417"/>
+    <circle class="frame-inner" cx="3806" cy="4898" r="185"/>
+    <text x="3708" y="4995" class="symbol">0</text>
+  </g>
+  <g id="num1" class="number">
+    <rect class="frame-outer" x="4317" y="4690" width="417" height="417"/>
+    <circle class="frame-inner" cx="4526" cy="4898" r="185"/>
+    <text x="4427" y="4995" class="symbol">1</text>
+  </g>
+  <g id="num2" class="number">
+    <rect class="frame-outer" y="5359" width="417" height="417"/>
+    <circle class="frame-inner" cx="209" cy="5568" r="185"/>
+    <text x="110" y="5668" class="symbol">2</text>
+  </g>
+  <g id="num3" class="number">
+    <rect class="frame-outer" x="720" y="5359" width="417" height="417"/>
+    <circle class="frame-inner" cx="928" cy="5568" r="185"/>
+    <text x="830" y="5665" class="symbol">3</text>
+  </g>
+  <g id="num4" class="number">
+    <rect class="frame-outer" x="1439" y="5359" width="417" height="417"/>
+    <circle class="frame-inner" cx="1648" cy="5568" r="185"/>
+    <text x="1549" y="5665" class="symbol">4</text>
+  </g>
+  <g id="num5" class="number">
+    <rect class="frame-outer" x="2159" y="5359" width="417" height="417"/>
+    <circle class="frame-inner" cx="2367" cy="5568" r="185"/>
+    <text x="2269" y="5662" class="symbol">5</text>
+  </g>
+  <g id="num6" class="number">
+    <rect class="frame-outer" x="2878" y="5359" width="417" height="417"/>
+    <circle class="frame-inner" cx="3087" cy="5568" r="185"/>
+    <text x="2988" y="5665" class="symbol">6</text>
+  </g>
+  <g id="num7" class="number">
+    <rect class="frame-outer" x="3598" y="5359" width="417" height="417"/>
+    <circle class="frame-inner" cx="3806" cy="5568" r="185"/>
+    <text x="3708" y="5665" class="symbol">7</text>
+  </g>
+  <g id="num8" class="number">
+    <rect class="frame-outer" x="4317" y="5359" width="417" height="417"/>
+    <circle class="frame-inner" cx="4526" cy="5568" r="185"/>
+    <text x="4427" y="5665" class="symbol">8</text>
+  </g>
+  <g id="num9" class="number">
+    <rect class="frame-outer" y="6029" width="417" height="417"/>
+    <circle class="frame-inner" cx="209" cy="6238" r="185"/>
+    <text x="110" y="6335" class="symbol">9</text>
+  </g>
+  <g id="and" class="punct">
+    <rect class="frame-outer" x="1439" y="6707" width="417" height="417"/>
+    <circle class="frame-inner" cx="1648" cy="6915" r="185"/>
+    <text x="1571" y="7012" class="symbol">&amp;</text>
+  </g>
+  <g id="angles" class="punct">
+    <rect class="frame-outer" x="2159" y="6029" width="417" height="417"/>
+    <circle class="frame-inner" cx="2367" cy="6238" r="185"/>
+    <text x="2208" y="6306" class="symbol">&lt;</text>
+    <text x="2373" y="6306" class="symbol">&gt;</text>
+  </g>
+  <g id="asterisk" class="punct">
+    <rect class="frame-outer" y="6707" width="417" height="417"/>
+    <circle class="frame-inner" cx="209" cy="6915" r="185"/>
+    <text x="132" y="7056" class="symbol">*</text>
+  </g>
+  <g id="at" class="punct">
+    <rect class="frame-outer" y="7369" width="417" height="417"/>
+    <circle class="frame-inner" cx="209" cy="7578" r="185"/>
+    <text x="132" y="7674" class="symbol">@</text>
+  </g>
+  <g id="braces" class="punct">
+    <rect class="frame-outer" x="3598" y="6029" width="417" height="417"/>
+    <circle class="frame-inner" cx="3806" cy="6238" r="185"/>
+    <text x="3638" y="6317" class="symbol">{</text>
+    <text x="3821" y="6317" class="symbol">}</text>
+  </g>
+  <g id="brackets" class="punct">
+    <rect class="frame-outer" x="2878" y="6029" width="417" height="417"/>
+    <circle class="frame-inner" cx="3087" cy="6238" r="185"/>
+    <text x="2918" y="6317" class="symbol">[</text>
+    <text x="3102" y="6317" class="symbol">]</text>
+  </g>
+  <g id="dollar" class="punct">
+    <rect class="frame-outer" x="4317" y="6029" width="417" height="417"/>
+    <circle class="frame-inner" cx="4526" cy="6238" r="185"/>
+    <text x="4446" y="6335" class="symbol">$</text>
+  </g>
+  <g id="dot" class="punct">
+    <rect class="frame-outer" x="2878" y="7369" width="417" height="417"/>
+    <circle class="frame-inner" cx="3087" cy="7578" r="185"/>
+    <text x="3010" y="7592" class="symbol">.</text>
+  </g>
+  <g id="equal" class="punct">
+    <rect class="frame-outer" x="4317" y="6707" width="417" height="417"/>
+    <circle class="frame-inner" cx="4526" cy="6915" r="185"/>
+    <text x="4449" y="6983" class="symbol">=</text>
+  </g>
+  <g id="exclamation" class="punct">
+    <rect class="frame-outer" x="1439" y="7369" width="417" height="417"/>
+    <circle class="frame-inner" cx="1648" cy="7578" r="185"/>
+    <text x="1571" y="7672" class="symbol">!</text>
+  </g>
+  <g id="label" class="punct">
+    <rect class="frame-outer" x="3598" y="2036" width="417" height="417"/>
+    <circle class="frame-inner" cx="3806" cy="2245" r="185"/>
+    <circle class="symbol" cx="3806" cy="2245" r="67"/>
+  </g>
+  <g id="minus" class="punct">
+    <rect class="frame-outer" x="3598" y="6707" width="417" height="417"/>
+    <circle class="frame-inner" cx="3806" cy="6915" r="185"/>
+    <text x="3729" y="6994" class="symbol">-</text>
+  </g>
+  <g id="oneKeySSH" class="pixmap">
+    <rect class="frame-outer" x="3598" y="2036" width="417" height="417"/>
+    <circle class="frame-inner" cx="3806" cy="2245" r="185"/>
+    <circle class="brush" cx="3806" cy="2245" r="67"/>
+  </g>
+  <g id="oneKeyAccount" class="pixmap">
+    <rect class="frame-outer" x="3598" y="2036" width="417" height="417"/>
+    <circle class="frame-inner" cx="3806" cy="2245" r="185"/>
+    <circle class="brush" cx="3806" cy="2245" r="67"/>
+  </g>
+  <g id="parenthesis" class="punct">
+    <rect class="frame-outer" x="720" y="6707" width="417" height="417"/>
+    <circle class="frame-inner" cx="928" cy="6915" r="185"/>
+    <text x="760" y="6995" class="symbol">(</text>
+    <text x="943" y="6995" class="symbol">)</text>
+  </g>
+  <g id="percent" class="punct">
+    <rect class="frame-outer" x="2159" y="6707" width="417" height="417"/>
+    <circle class="frame-inner" cx="2367" cy="6915" r="185"/>
+    <text x="2291" y="7012" class="symbol">%</text>
+  </g>
+  <g id="plus" class="punct">
+    <rect class="frame-outer" x="2878" y="6707" width="417" height="417"/>
+    <circle class="frame-inner" cx="3087" cy="6915" r="185"/>
+    <text x="3010" y="6983" class="symbol">+</text>
+  </g>
+  <g id="pound" class="punct">
+    <rect class="frame-outer" x="720" y="6029" width="417" height="417"/>
+    <circle class="frame-inner" cx="928" cy="6238" r="185"/>
+    <text x="852" y="6335" class="symbol">#</text>
+  </g>
+  <g id="power" class="punct">
+    <rect class="frame-outer" x="720" y="7369" width="417" height="417"/>
+    <circle class="frame-inner" cx="928" cy="7578" r="185"/>
+    <text x="852" y="7704" class="symbol">^</text>
+  </g>
+  <g id="question" class="punct">
+    <rect class="frame-outer" x="2159" y="7369" width="417" height="417"/>
+    <circle class="frame-inner" cx="2367" cy="7578" r="185"/>
+    <text x="2289" y="7674" class="symbol">?</text>
+  </g>
+  <g id="quotes" class="punct">
+    <rect class="frame-outer" x="4317" y="7369" width="417" height="417"/>
+    <circle class="frame-inner" cx="4526" cy="7578" r="185"/>
+    <text x="4357" y="7737" class="symbol">"</text>
+    <text x="4541" y="7737" class="symbol">"</text>
+  </g>
+  <g id="shrink" class="tabbar">
+    <rect class="frame-outer" x="4329" y="6907" width="418" height="418"/>
+    <circle class="frame-inner" cx="4538" cy="7116" r="209"/>
+    <polyline class="pen" points="4439,7165 4538,7066 4637,7165"/>
+  </g>
+  <g id="slash" class="punct">
+    <rect class="frame-outer" x="1439" y="6029" width="417" height="417"/>
+    <circle class="frame-inner" cx="1648" cy="6238" r="185"/>
+    <g transform="matrix(0.680381 0 0 1 -5839.06 2373.77)">
+      <text x="10835" y="3961" class="symbol">/</text>
+      <text x="11019" y="3961" class="symbol">/</text>
+    </g>
+  </g>
+  <g id="snippet" class="punct">
+    <rect class="frame-outer" x="3598" y="7369" width="417" height="417"/>
+    <circle class="frame-inner" cx="3806" cy="7578" r="185"/>
+    <g transform="matrix(-2.65564E-014 1 -1 -2.65564E-014 7670.3 -3333.55)">
+      <text x="10835" y="3961" class="symbol">T</text>
+    </g>
+  </g>
+  <g id="A" class="upper">
+    <rect class="frame-outer" y="2680" width="417" height="417"/>
+    <circle class="frame-inner" cx="209" cy="2888" r="185"/>
+    <text x="132" y="2985" class="symbol">A</text>
+  </g>
+  <g id="B" class="upper">
+    <rect class="frame-outer" x="720" y="2680" width="417" height="417"/>
+    <circle class="frame-inner" cx="928" cy="2888" r="185"/>
+    <text x="850" y="2985" class="symbol">B</text>
+  </g>
+  <g id="C" class="upper">
+    <rect class="frame-outer" x="1439" y="2680" width="417" height="417"/>
+    <circle class="frame-inner" cx="1648" cy="2888" r="185"/>
+    <text x="1572" y="2985" class="symbol">C</text>
+  </g>
+  <g id="D" class="upper">
+    <rect class="frame-outer" x="2159" y="2680" width="417" height="417"/>
+    <circle class="frame-inner" cx="2367" cy="2888" r="185"/>
+    <text x="2286" y="2985" class="symbol">D</text>
+  </g>
+  <g id="E" class="upper">
+    <rect class="frame-outer" x="2878" y="2680" width="417" height="417"/>
+    <circle class="frame-inner" cx="3087" cy="2888" r="185"/>
+    <text x="3009" y="2985" class="symbol">E</text>
+  </g>
+  <g id="F" class="upper">
+    <rect class="frame-outer" x="3598" y="2680" width="417" height="417"/>
+    <circle class="frame-inner" cx="3806" cy="2888" r="185"/>
+    <text x="3725" y="2985" class="symbol">F</text>
+  </g>
+  <g id="G" class="upper">
+    <rect class="frame-outer" x="4317" y="2680" width="417" height="417"/>
+    <circle class="frame-inner" cx="4526" cy="2888" r="185"/>
+    <text x="4451" y="2985" class="symbol">G</text>
+  </g>
+  <g id="H" class="upper">
+    <rect class="frame-outer" y="3350" width="417" height="417"/>
+    <circle class="frame-inner" cx="209" cy="3558" r="185"/>
+    <text x="132" y="3655" class="symbol">H</text>
+  </g>
+  <g id="I" class="upper">
+    <rect class="frame-outer" x="720" y="3350" width="417" height="417"/>
+    <circle class="frame-inner" cx="928" cy="3558" r="185"/>
+    <text x="851" y="3655" class="symbol">I</text>
+  </g>
+  <g id="J" class="upper">
+    <rect class="frame-outer" x="1439" y="3350" width="417" height="417"/>
+    <circle class="frame-inner" cx="1648" cy="3558" r="185"/>
+    <text x="1581" y="3652" class="symbol">J</text>
+  </g>
+  <g id="K" class="upper">
+    <rect class="frame-outer" x="2159" y="3350" width="417" height="417"/>
+    <circle class="frame-inner" cx="2367" cy="3558" r="185"/>
+    <text x="2281" y="3655" class="symbol">K</text>
+  </g>
+  <g id="L" class="upper">
+    <rect class="frame-outer" x="2878" y="3350" width="417" height="417"/>
+    <circle class="frame-inner" cx="3087" cy="3558" r="185"/>
+    <text x="3007" y="3655" class="symbol">L</text>
+  </g>
+  <g id="M" class="upper">
+    <rect class="frame-outer" x="3598" y="3350" width="417" height="417"/>
+    <circle class="frame-inner" cx="3806" cy="3558" r="185"/>
+    <text x="3730" y="3655" class="symbol">M</text>
+  </g>
+  <g id="N" class="upper">
+    <rect class="frame-outer" x="4317" y="3350" width="417" height="417"/>
+    <circle class="frame-inner" cx="4526" cy="3558" r="185"/>
+    <text x="4449" y="3655" class="symbol">N</text>
+  </g>
+  <g id="O" class="upper">
+    <rect class="frame-outer" y="4020" width="417" height="417"/>
+    <circle class="frame-inner" cx="209" cy="4228" r="185"/>
+    <text x="132" y="4325" class="symbol">O</text>
+  </g>
+  <g id="P" class="upper">
+    <rect class="frame-outer" x="720" y="4020" width="417" height="417"/>
+    <circle class="frame-inner" cx="928" cy="4228" r="185"/>
+    <text x="846" y="4325" class="symbol">P</text>
+  </g>
+  <g id="Q" class="upper">
+    <rect class="frame-outer" x="1439" y="4020" width="417" height="417"/>
+    <circle class="frame-inner" cx="1648" cy="4228" r="185"/>
+    <text x="1567" y="4301" class="symbol">Q</text>
+  </g>
+  <g id="R" class="upper">
+    <rect class="frame-outer" x="2159" y="4020" width="417" height="417"/>
+    <circle class="frame-inner" cx="2367" cy="4228" r="185"/>
+    <text x="2283" y="4325" class="symbol">R</text>
+  </g>
+  <g id="S" class="upper">
+    <rect class="frame-outer" x="2878" y="4020" width="417" height="417"/>
+    <circle class="frame-inner" cx="3087" cy="4228" r="185"/>
+    <text x="3008" y="4325" class="symbol">S</text>
+  </g>
+  <g id="T" class="upper">
+    <rect class="frame-outer" x="3598" y="4020" width="417" height="417"/>
+    <circle class="frame-inner" cx="3806" cy="4228" r="185"/>
+    <text x="3730" y="4325" class="symbol">T</text>
+  </g>
+  <g id="U" class="upper">
+    <rect class="frame-outer" x="4317" y="4020" width="417" height="417"/>
+    <circle class="frame-inner" cx="4526" cy="4228" r="185"/>
+    <text x="4449" y="4322" class="symbol">U</text>
+  </g>
+  <g id="V" class="upper">
+    <rect class="frame-outer" y="4690" width="417" height="417"/>
+    <circle class="frame-inner" cx="209" cy="4898" r="185"/>
+    <text x="132" y="4995" class="symbol">V</text>
+  </g>
+  <g id="W" class="upper">
+    <rect class="frame-outer" x="720" y="4690" width="417" height="417"/>
+    <circle class="frame-inner" cx="928" cy="4898" r="185"/>
+    <text x="852" y="4995" class="symbol">W</text>
+  </g>
+  <g id="X" class="upper">
+    <rect class="frame-outer" x="1439" y="4690" width="417" height="417"/>
+    <circle class="frame-inner" cx="1648" cy="4898" r="185"/>
+    <text x="1571" y="4995" class="symbol">X</text>
+  </g>
+  <g id="Y" class="upper">
+    <rect class="frame-outer" x="2159" y="4690" width="417" height="417"/>
+    <circle class="frame-inner" cx="2367" cy="4898" r="185"/>
+    <text x="2290" y="4995" class="symbol">Y</text>
+  </g>
+  <g id="Z" class="upper">
+    <rect class="frame-outer" x="2878" y="4690" width="417" height="417"/>
+    <circle class="frame-inner" cx="3087" cy="4898" r="185"/>
+    <text x="3010" y="4995" class="symbol">Z</text>
+  </g>
+  <g id="Num0" class="number">
+    <rect class="frame-outer" x="3598" y="4690" width="417" height="417"/>
+    <circle class="frame-inner" cx="3806" cy="4898" r="185"/>
+    <text x="3730" y="4995" class="symbol">0</text>
+  </g>
+  <g id="Num1" class="number">
+    <rect class="frame-outer" x="4317" y="4690" width="417" height="417"/>
+    <circle class="frame-inner" cx="4526" cy="4898" r="185"/>
+    <text x="4444" y="4995" class="symbol">1</text>
+  </g>
+  <g id="Num2" class="number">
+    <rect class="frame-outer" y="5359" width="417" height="417"/>
+    <circle class="frame-inner" cx="209" cy="5568" r="185"/>
+    <text x="132" y="5668" class="symbol">2</text>
+  </g>
+  <g id="Num3" class="number">
+    <rect class="frame-outer" x="720" y="5359" width="417" height="417"/>
+    <circle class="frame-inner" cx="928" cy="5568" r="185"/>
+    <text x="851" y="5665" class="symbol">3</text>
+  </g>
+  <g id="Num4" class="number">
+    <rect class="frame-outer" x="1439" y="5359" width="417" height="417"/>
+    <circle class="frame-inner" cx="1648" cy="5568" r="185"/>
+    <text x="1571" y="5665" class="symbol">4</text>
+  </g>
+  <g id="Num5" class="number">
+    <rect class="frame-outer" x="2159" y="5359" width="417" height="417"/>
+    <circle class="frame-inner" cx="2367" cy="5568" r="185"/>
+    <text x="2289" y="5662" class="symbol">5</text>
+  </g>
+  <g id="Num6" class="number">
+    <rect class="frame-outer" x="2878" y="5359" width="417" height="417"/>
+    <circle class="frame-inner" cx="3087" cy="5568" r="185"/>
+    <text x="3008" y="5665" class="symbol">6</text>
+  </g>
+  <g id="Num7" class="number">
+    <rect class="frame-outer" x="3598" y="5359" width="417" height="417"/>
+    <circle class="frame-inner" cx="3806" cy="5568" r="185"/>
+    <text x="3724" y="5665" class="symbol">7</text>
+  </g>
+  <g id="Num8" class="number">
+    <rect class="frame-outer" x="4317" y="5359" width="417" height="417"/>
+    <circle class="frame-inner" cx="4526" cy="5568" r="185"/>
+    <text x="4448" y="5665" class="symbol">8</text>
+  </g>
+  <g id="Num9" class="number">
+    <rect class="frame-outer" y="6029" width="417" height="417"/>
+    <circle class="frame-inner" cx="209" cy="6238" r="185"/>
+    <text x="134" y="6335" class="symbol">9</text>
+  </g>
+  <g id="And" class="punct">
+    <rect class="frame-outer" x="1439" y="6707" width="417" height="417"/>
+    <circle class="frame-inner" cx="1648" cy="6915" r="185"/>
+    <text x="1571" y="7012" class="symbol">&amp;</text>
+  </g>
+  <g id="Angles" class="punct">
+    <rect class="frame-outer" x="2159" y="6029" width="417" height="417"/>
+    <circle class="frame-inner" cx="2367" cy="6238" r="185"/>
+    <text x="2208" y="6306" class="symbol">&lt;</text>
+    <text x="2373" y="6306" class="symbol">&gt;</text>
+  </g>
+  <g id="Asterisk" class="punct">
+    <rect class="frame-outer" y="6707" width="417" height="417"/>
+    <circle class="frame-inner" cx="209" cy="6915" r="185"/>
+    <text x="132" y="7056" class="symbol">*</text>
+  </g>
+  <g id="At" class="punct">
+    <rect class="frame-outer" y="7369" width="417" height="417"/>
+    <circle class="frame-inner" cx="209" cy="7578" r="185"/>
+    <text x="132" y="7674" class="symbol">@</text>
+  </g>
+  <g id="Braces" class="punct">
+    <rect class="frame-outer" x="3598" y="6029" width="417" height="417"/>
+    <circle class="frame-inner" cx="3806" cy="6238" r="185"/>
+    <text x="3638" y="6317" class="symbol">{</text>
+    <text x="3821" y="6317" class="symbol">}</text>
+  </g>
+  <g id="Brackets" class="punct">
+    <rect class="frame-outer" x="2878" y="6029" width="417" height="417"/>
+    <circle class="frame-inner" cx="3087" cy="6238" r="185"/>
+    <text x="2918" y="6317" class="symbol">[</text>
+    <text x="3102" y="6317" class="symbol">]</text>
+  </g>
+  <g id="Dollar" class="punct">
+    <rect class="frame-outer" x="4317" y="6029" width="417" height="417"/>
+    <circle class="frame-inner" cx="4526" cy="6238" r="185"/>
+    <text x="4446" y="6335" class="symbol">$</text>
+  </g>
+  <g id="Dot" class="punct">
+    <rect class="frame-outer" x="2878" y="7369" width="417" height="417"/>
+    <circle class="frame-inner" cx="3087" cy="7578" r="185"/>
+    <text x="3010" y="7592" class="symbol">.</text>
+  </g>
+  <g id="Equal" class="punct">
+    <rect class="frame-outer" x="4317" y="6707" width="417" height="417"/>
+    <circle class="frame-inner" cx="4526" cy="6915" r="185"/>
+    <text x="4449" y="6983" class="symbol">=</text>
+  </g>
+  <g id="Exclamation" class="punct">
+    <rect class="frame-outer" x="1439" y="7369" width="417" height="417"/>
+    <circle class="frame-inner" cx="1648" cy="7578" r="185"/>
+    <text x="1571" y="7672" class="symbol">!</text>
+  </g>
+  <g id="Label" class="punct">
+    <rect class="frame-outer" x="3598" y="2036" width="417" height="417"/>
+    <circle class="frame-inner" cx="3806" cy="2245" r="185"/>
+    <circle class="symbol" cx="3806" cy="2245" r="67"/>
+  </g>
+  <g id="Minus" class="punct">
+    <rect class="frame-outer" x="3598" y="6707" width="417" height="417"/>
+    <circle class="frame-inner" cx="3806" cy="6915" r="185"/>
+    <text x="3729" y="6994" class="symbol">-</text>
+  </g>
+  <g id="Parenthesis" class="punct">
+    <rect class="frame-outer" x="720" y="6707" width="417" height="417"/>
+    <circle class="frame-inner" cx="928" cy="6915" r="185"/>
+    <text x="760" y="6995" class="symbol">(</text>
+    <text x="943" y="6995" class="symbol">)</text>
+  </g>
+  <g id="Percent" class="punct">
+    <rect class="frame-outer" x="2159" y="6707" width="417" height="417"/>
+    <circle class="frame-inner" cx="2367" cy="6915" r="185"/>
+    <text x="2291" y="7012" class="symbol">%</text>
+  </g>
+  <g id="Plus" class="punct">
+    <rect class="frame-outer" x="2878" y="6707" width="417" height="417"/>
+    <circle class="frame-inner" cx="3087" cy="6915" r="185"/>
+    <text x="3010" y="6983" class="symbol">+</text>
+  </g>
+  <g id="Pound" class="punct">
+    <rect class="frame-outer" x="720" y="6029" width="417" height="417"/>
+    <circle class="frame-inner" cx="928" cy="6238" r="185"/>
+    <text x="852" y="6335" class="symbol">#</text>
+  </g>
+  <g id="Power" class="punct">
+    <rect class="frame-outer" x="720" y="7369" width="417" height="417"/>
+    <circle class="frame-inner" cx="928" cy="7578" r="185"/>
+    <text x="852" y="7704" class="symbol">^</text>
+  </g>
+  <g id="Question" class="punct">
+    <rect class="frame-outer" x="2159" y="7369" width="417" height="417"/>
+    <circle class="frame-inner" cx="2367" cy="7578" r="185"/>
+    <text x="2289" y="7674" class="symbol">?</text>
+  </g>
+  <g id="Quotes" class="punct">
+    <rect class="frame-outer" x="4317" y="7369" width="417" height="417"/>
+    <circle class="frame-inner" cx="4526" cy="7578" r="185"/>
+    <text x="4357" y="7737" class="symbol">"</text>
+    <text x="4541" y="7737" class="symbol">"</text>
+  </g>
+  <g id="Slash" class="punct">
+    <rect class="frame-outer" x="1439" y="6029" width="417" height="417"/>
+    <circle class="frame-inner" cx="1648" cy="6238" r="185"/>
+    <g transform="matrix(0.680381 0 0 1 -5839.06 2373.77)">
+      <text x="10835" y="3961" class="symbol">/</text>
+      <text x="11019" y="3961" class="symbol">/</text>
+    </g>
+  </g>
+  <g id="Snippet" class="punct">
+    <rect class="frame-outer" x="3598" y="7369" width="417" height="417"/>
+    <circle class="frame-inner" cx="3806" cy="7578" r="185"/>
+    <g transform="matrix(-2.65564E-014 1 -1 -2.65564E-014 7670.3 -3333.55)">
+      <text x="10835" y="3961" class="symbol">T</text>
+    </g>
+  </g>
+</svg>

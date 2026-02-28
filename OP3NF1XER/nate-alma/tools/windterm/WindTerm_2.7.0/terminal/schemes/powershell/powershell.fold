@@ -1,0 +1,20 @@
+//WindTerm PowerShell Fold
+//Version: 1.0
+{
+	"type": "level",
+	"greedy": true,
+	"patterns": [
+		{
+			"name": "prompt",
+			"scope": "prompt.line.powershell",
+			"match": "(*UTF)[^\\n]++"
+		}
+	],
+	"regions": [
+		{
+			"name": "prompt",
+			"text": " ... ",
+			"sequence": ["prompt"]
+		}
+	]
+}

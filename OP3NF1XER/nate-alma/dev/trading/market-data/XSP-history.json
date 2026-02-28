@@ -1,0 +1,18 @@
+[
+  {
+    "symbol": "XSP",
+    "source": "yahoo",
+    "timestamp": "2026-02-23T19:38:28.005Z",
+    "price": {
+      "open": 690.1300048828125,
+      "high": 691.7000122070312,
+      "low": 681.97998046875,
+      "close": 683.39,
+      "volume": 0,
+      "change": null,
+      "changeAbs": 683.39
+    },
+    "indicators": {},
+    "signal": "n/a"
+  }
+]

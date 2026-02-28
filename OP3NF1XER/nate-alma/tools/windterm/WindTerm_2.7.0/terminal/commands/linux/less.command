@@ -1,0 +1,65 @@
+description:
+  opposite of more
+synopses:
+  - less -?
+  - less --help
+  - less -V
+  - less --version
+  - less [-aABcCdeEfFgGiIJKLmMnNqQrRsSuUVwWX~] [-b space] [-h lines] [-j line] [-k keyfile]
+    [-oO logfile] [-p pattern] [-P prompt] [-t tag] [-T tagsfile] 
+    [-x tab,...] [-y lines] [-z lines] [-# shift] [+cmd] [--] [filename]...
+options:
+  -?, --help: This option displays a summary of the commands accepted by less (the same as the h command).
+  -a, --search-skip-screen: Causes forward searches to instead start	at the bottom of the screen and backward searches to start at the top of the screen.
+  -A, --SEARCH-SKIP-SCREEN: Causes all forward searches (not just non-repeated searches) to start just after the target line, and all backward searches to start just before the target line.
+  -b, --buffers=n: Specifies the amount of buffer space less will use for each file, in units of kilobytes (1024 bytes).
+  -B, --auto-buffers: Disables the automatic allocation of buffers for pipes, so that only 64 K (or the amount of space specified by the -b option) is used for the pipe.
+  -c, --clear-screen: Causes full screen repaints to be painted from the top line down. 
+  -C, --CLEAR-SCREEN: Same as -c, for compatibility with older versions of less.
+  -d, --dumb: Suppresses the error message normally displayed if the terminal is dumb.
+  -D, --color=xcolor: Sets the color of the text displayed.
+  -e, --quit-at-eof: Causes less to automatically exit the second time it reaches end-of-file.
+  -E, --QUIT-AT-EOF: Causes less to automatically exit the first time it reaches end-of-file.
+  -f, --force: Forces non-regular files to be opened.
+  -F, --quit-if-one-screen: Causes less to automatically exit if the entire file can be displayed on the first screen.
+  -g, --hilite-search: Highlight only the particular string which was found by the last search command.
+  -G, --HILITE-SEARCH: Suppresses all highlighting of strings found by search commands.
+  -h, --max-back-scroll=n: Specifies a maximum number of lines to scroll backward.
+  -i, --ignore-case: Causes searchesto ignore case.
+  -I, --IGNORE-CASE: Like -i, but searches ignore case even if the pattern contains uppercase letters.
+  -j, --jump-target=n: Specifies a line on the screen where the "target" line is to be positioned.
+  -J, --status-column: Displays a status column at the left edge of the screen.
+  -k, --lesskey-file=filename: Causes less to	open and interpret the named file as a lesskey file.
+  -K, --quit-on-intr: Causes less to exit immediately (with status 2) when an interrupt character (usually ^C) is typed.
+  -L, --no-lessopen: Ignore the LESSOPEN environment variable.
+  -m, --long-prompt: Causes less to prompt verbosely (like more), with the percent into the file. By default, less prompts with a colon.
+  -M, --LONG-PROMPT: Causes less to prompt even more verbosely than more.
+  -n, --line-numbers: Suppresses line numbers.
+  -N, --LINE-NUMBERS: Causes a line number to be displayed at the beginning of each line in the display.
+  -o, --log-file=filename: Causes less to copy its input to the named file as it is being viewed.
+  -O, --LOG-FILE=filename: The -O option is like -o, but it will overwrite an existing file without asking for confirmation.
+  -p, --pattern=pattern: The -p option on the command line is equivalent to specifying +/pattern; that is, it tells less to start at the first occurrence of pattern in the file.
+  -P, --prompt=prompt: Provides a way to tailor the three prompt styles to your own preference.
+  -q, --quiet, --silent: Causes moderately "quiet" operation. If the terminal has a "visual bell", it is used instead.
+  -Q, --QUIET, --SILENT: Causes totally "quiet" operation, the terminal bell is never rung.
+  -r, --raw-control-chars: Causes "raw" control characters to be displayed.
+  -R, --RAW-CONTROL-CHARS: Like -r, but only ANSI "color" escape sequences are output in "raw" form.
+  -s, --squeeze-blank-lines: Causes consecutive blank lines to be squeezed into a single blank line.
+  -S, --chop-long-lines: Causes lines longer than the screen width to be chopped (truncated) rather than wrapped.
+  -t, --tag=tag: The -t option,	followed immediately by a TAG, will edit the file containing that tag.
+  -T, --tag-file=tagsfile: Specifies a tags file to be used instead of "tags".
+  -u, --underline-special: Causes backspaces and carriage returns to be treated as printable characters. that is, they are sent to the terminal when they appear in the input.
+  -U, --UNDERLINE-SPECIAL: Causes backspaces, tabs and carriage returns to be treated as control characters. that is, they are handled as specified by the -r option.
+  -V, --version: Displays the version number of less.
+  -w, --hilite-unread: Temporarily highlights the first "new" line after a forward movement of a full page.
+  -W, --HILITE-UNREAD: Like -w, but temporarily highlights the first new line after any forward movement command larger than one line.
+  -xn,..., --tabs=n,...: Sets tab stops. The default for n is 8.
+  -X, --no-init: Disables sending the termcap initialization and deinitialization strings to the terminal.
+  -y, --max-forw-scroll=n: Specifies a maximum number of lines to scroll forward.
+  -z, --window=n: Changes the default scrolling window size to n lines.
+  -", --quotes=cc: Changes the filename quoting character.
+  -~, --tilde: Causes lines after end of file to be displayed as blank lines.
+  -#, --shift: Specifies the default number of positions to scroll horizontally in the RIGHTARROW and LEFTARROW commands.
+  --follow-name: During an F command less will periodically attempt to reopen the file by name.
+  --no-keypad: Disables	sending the keypad initialization and deinitialization strings to the terminal.
+  --use-backslash: Changes the interpretations of options which follow this one.

@@ -1,0 +1,2353 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-02-24T16:58:53Z",
+  "canonicalRoot": "STR4TEG15T/memory",
+  "totalCandidates": 402,
+  "outsideCanonicalRoot": 292,
+  "byClassificationOutsideCanonical": {
+    "consultation": 44,
+    "decision_record": 171,
+    "deployment_journal": 42,
+    "handoff": 15,
+    "knowledge": 7,
+    "support_artifact": 13
+  },
+  "entries": [
+    {
+      "source": ".windsurf/workflows/decision-implementation.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/decision-implementation.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 1476,
+      "sha256": "dc48059b84e9006d919275a89e871f8357d6b784f6355afc8231d961aeae37df"
+    },
+    {
+      "source": "DE51GN3R/decisions/DECISION_P4NTHE0N_001.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_P4NTHE0N_001.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2177,
+      "sha256": "06b6d8851969e0a8ebadec4e2d7c8a83e6ff1955b802214957ac500b85e65879"
+    },
+    {
+      "source": "DE51GN3R/decisions/DECISION_P4NTHE0N_002.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_P4NTHE0N_002.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 1682,
+      "sha256": "946f9c0e37cf7248bde53b576ba375c2bd7c6dd789ad7b142d9a191177a0cb1d"
+    },
+    {
+      "source": "DECISION_001_VM_DEPLOYMENT_DESIGN.json",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_001_VM_DEPLOYMENT_DESIGN.json",
+      "inCanonicalRoot": false,
+      "sizeBytes": 25037,
+      "sha256": "acff731f21981b9086d38fdee83f78a1e4c58bcf0a055bf8bb98c74933dffa1b"
+    },
+    {
+      "source": "DECISION_093_ARCHITECTURE.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_093_ARCHITECTURE.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 1589,
+      "sha256": "940337e7db66e1bbb76887f412af0832117f290678bcfbcf20349fb836cfed34"
+    },
+    {
+      "source": "DECISION_093_BOOT_TIME_ARCHITECTURE.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_093_BOOT_TIME_ARCHITECTURE.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 93660,
+      "sha256": "e72188c24f5cf16b181ee35b9dca8a01424c7255337f8c4cb4c80a4a86bb70db"
+    },
+    {
+      "source": "OP3NF1XER/deployments/COMPLETION-REPORT_DECISION-051.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/COMPLETION-REPORT_DECISION-051.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 4549,
+      "sha256": "7088daf744ff6e0b16b474f1af23789f39bbb6438552f250d1bd90e076cd5eb6"
+    },
+    {
+      "source": "OP3NF1XER/deployments/DECISION_062_IMPLEMENTATION_PACKAGE.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/DECISION_062_IMPLEMENTATION_PACKAGE.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 18588,
+      "sha256": "4bd2e99cc6f7f6a52dd1724f5c7b57281ec53d54e71cf4985318128262b434d3"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-20_DECISIONS_AND_STRATEGY.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-20_DECISIONS_AND_STRATEGY.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 6565,
+      "sha256": "5d55bb121813e0e34593dfb5837458e76e438e0f6b91235c7e9f895fb9b5fed2"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-20_DECISION_047_BURN_IN.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-20_DECISION_047_BURN_IN.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 8716,
+      "sha256": "cfa2ff5a963bf1be9e2d71cdda0f3637997d9ab57bdbdf8845f8f41f89bb418e"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-20_DECISION_050.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-20_DECISION_050.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 6203,
+      "sha256": "ebb734c60561b892e1822d972c2d237583930d32ce5a81a7633f881e29d3645b"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-20_DECISION_062.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-20_DECISION_062.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3622,
+      "sha256": "9980653012875a7b95b52e5159436b5c8bc631b8e21b3e6f89cbd1f961c21cbd"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-20_DECISION_068_FOUR_EYES_VISION.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-20_DECISION_068_FOUR_EYES_VISION.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 4426,
+      "sha256": "a0b6e37a76875f720c96e9e16b5c2484e472ad2da1ecc38a1ac952e1699a7ff4"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-21_DECISION-051.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-21_DECISION-051.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 5247,
+      "sha256": "45c8896a9550b0c45c16aa6da2fb1acf35e0f65298869d470636078413af04f0"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-21_DECISION-055.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-21_DECISION-055.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 7303,
+      "sha256": "99f972c2249ffdaf9f796a5e424452188a5ff33fb9c25d5f4bf00d9fba8bf739"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-21_DECISION_080_RAG_RESTORATION.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-21_DECISION_080_RAG_RESTORATION.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 8432,
+      "sha256": "20ceeae04c452967852b14a9577ee3a9fac616b3c37ab680ab7577423de4f89b"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-21_DECISION_088_DPD_FIX.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-21_DECISION_088_DPD_FIX.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3286,
+      "sha256": "668c5c85eec872e4a07bc3f0141a41bf146bca68f6b1ccb5162390df337eab8d"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-22_DECISION-087-PHASE1.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-22_DECISION-087-PHASE1.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 7344,
+      "sha256": "7185585f2c032d246e7a718db370c6fbc5a890666ba93c3e3862ca92035ef9f0"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-22_DECISION_089_DASHBOARD_LOGGING.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-22_DECISION_089_DASHBOARD_LOGGING.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2651,
+      "sha256": "25932710336ad80b5f4e773095cec6d0f81386bc62480b2a1c485145b108773d"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-22_DECISION_090_DASHBOARD_UI.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-22_DECISION_090_DASHBOARD_UI.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2341,
+      "sha256": "57d52eb303276755dd3a06d43a19a50bdc73331172d9adbc3169d761e57ca1eb"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-22_DECISION_092_093_ENFORCEMENT.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-22_DECISION_092_093_ENFORCEMENT.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 1719,
+      "sha256": "3cfbaa0bae9a4ee0fd1280360c65de1b5285bf90000c306a11344220608657e5"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-22_DECISION_096_WEEK1_SECURITY_FOUNDATION.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-22_DECISION_096_WEEK1_SECURITY_FOUNDATION.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3128,
+      "sha256": "f2c1890c53047c08ce745a4bff5d4975a32c374d3e78b3ead1636aaa74e67197"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-22_DECISION_096_WEEK2_IMPLEMENTATION.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-22_DECISION_096_WEEK2_IMPLEMENTATION.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 6599,
+      "sha256": "e64c7bc97aa903076382b0c434409480f0a864bcd1b2b327abfee264816d0bea"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-22_DECISION_096_WEEK3_IMPLEMENTATION.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-22_DECISION_096_WEEK3_IMPLEMENTATION.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 6684,
+      "sha256": "843c705edecec3f66f3425b32fa33cc6124c10774e156311d99a93a331b2c639"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-22_DECISION_096_WEEK4_INTEGRATION_DEPLOYMENT.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-22_DECISION_096_WEEK4_INTEGRATION_DEPLOYMENT.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2270,
+      "sha256": "137c9b7c72e8598e7448fc7a0b29c23b74f35722001ed975ad79ce2eff231916"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-22_DECISION_105_SILENT_FAILURE_TOOLS.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-22_DECISION_105_SILENT_FAILURE_TOOLS.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 1009,
+      "sha256": "8473b2edc1a1d5cae133070b3332373c7d73bde74df90794d25d3f0da819f57f"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-22_decisions-server-fix.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-22_decisions-server-fix.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2733,
+      "sha256": "3d5f1e24c44b730133b58c563d3da88b2da5f0ac550e6e3b9cabcad56df062f8"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-23_DECISION_114_AUDIT_FOLLOWUP.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-23_DECISION_114_AUDIT_FOLLOWUP.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 1379,
+      "sha256": "5ccd16a4fc0d1b2160f5111688918d8e6b02ed28fa869e39ba6c7f8ee536c86c"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-23_DECISION_114_WORKFLOW_HARDENING.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-23_DECISION_114_WORKFLOW_HARDENING.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2198,
+      "sha256": "0b58d76f46eed315ae19706276bbda417b00a0fd07936948240a1ff431c93526"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-23_DECISION_115_AUDIT_FOLLOWUP.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-23_DECISION_115_AUDIT_FOLLOWUP.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 1848,
+      "sha256": "c9109f8c16e5ebf6bdb8876db4a96f2b72938c8bbc28c1d8cc4f1f267487ee8f"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-23_DECISION_116_AUTOMATION_FOUNDATION.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-23_DECISION_116_AUTOMATION_FOUNDATION.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 4178,
+      "sha256": "b79baa534fe2368fdef74ca2528cecb16edebe72bb129efbaa5b290cbe516127"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-23_DECISION_116_CLOSURE_VALIDATION.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-23_DECISION_116_CLOSURE_VALIDATION.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 1868,
+      "sha256": "ba3bdcfb634dcc791c1289551439f69a2c8f196cf2bfdd5fb41ba7c848e781d7"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_054_DISCOVERY_PATH_TEST.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-24_DECISION_054_DISCOVERY_PATH_TEST.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 325,
+      "sha256": "6b091bedc2a7b8b34ff573a224bcdb516e2a38e1820c603363e54e15194099a8"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_055_OPENCLAW_CONFIG_FIX.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-24_DECISION_055_OPENCLAW_CONFIG_FIX.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2540,
+      "sha256": "5f541962fbbeb62db289fdd7c3e4ea13ca3108705cc4bea95d179d085fe778ad"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_055_OPENCLAW_CONFIG_FIX_PASS2.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-24_DECISION_055_OPENCLAW_CONFIG_FIX_PASS2.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2500,
+      "sha256": "05835aa59834f6a1e9addf4475686ac69a81f4a943d9fb3ed767ba7acd3b0c2b"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_055_OPENCLAW_REMOVE_GEMINI_DEP.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-24_DECISION_055_OPENCLAW_REMOVE_GEMINI_DEP.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3450,
+      "sha256": "b9232222cde6c8f0d2e9c5dcc089df78e001efabf687fcde7373388356f684e9"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_055_OPENCLAW_REMOVE_OPENAI_DEP.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-24_DECISION_055_OPENCLAW_REMOVE_OPENAI_DEP.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3529,
+      "sha256": "ccdea03d2a26862bdd9ab668457107dc5eb7c3efd950d69b96291bf1f015d273"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_055_OPENCLAW_ROLLBACK.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-24_DECISION_055_OPENCLAW_ROLLBACK.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3122,
+      "sha256": "6eaf59f1336360289b3c6698823da00269f106e5b0576ce93cfa804097bc6c53"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_113_H4ND_ERROR_EVIDENCE.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-24_DECISION_113_H4ND_ERROR_EVIDENCE.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 10769,
+      "sha256": "d760a3648e6772fbd8d0a1659c8ddfa87995ddf980557d44d4b8aea96fb5a290"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_114_PERMISSION_GATE.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-24_DECISION_114_PERMISSION_GATE.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 1841,
+      "sha256": "53b86c42f6f0314039331aab561dbb8ab7e2533b754b8d88b42739384cc4f6b8"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_115_CLOSURE_VALIDATION.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-24_DECISION_115_CLOSURE_VALIDATION.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 1273,
+      "sha256": "6c10045b07c119fdb1f1e710979d2080e2d8886d87b60f8c5ca4b4a59c4ecffb"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_115_GOVERNANCE_LINT.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-24_DECISION_115_GOVERNANCE_LINT.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 1812,
+      "sha256": "ef943608b481ac68a43ed3f950a7314344b31d9a332e613f05c99874ac50aa0f"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_115_GOVERNANCE_LINT_FINAL.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-24_DECISION_115_GOVERNANCE_LINT_FINAL.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 1420,
+      "sha256": "f1e1f09507d6ce833934a210dc893f0b7cf97bdad7954d45523da4ad26730214"
+    },
+    {
+      "source": "OP3NF1XER/deployments/JOURNAL_2026-02-24_DECISION_115_GOVERNANCE_LINT_REMEDIATION.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/JOURNAL_2026-02-24_DECISION_115_GOVERNANCE_LINT_REMEDIATION.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 1420,
+      "sha256": "ec10620a05a0c1d35297c63d63852d0835c5101157e2445a40af2dc2c9c1ee80"
+    },
+    {
+      "source": "OP3NF1XER/knowledge/DECISION_OPS_005-008.md",
+      "classification": "knowledge",
+      "target": "STR4TEG15T/memory/knowledge/DECISION_OPS_005-008.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3573,
+      "sha256": "9ab0c32e6be0d8cf8db9665b0e4b6e2d6f387dc9342da6d8db7134a5dae36347"
+    },
+    {
+      "source": "OP3NF1XER/knowledge/DECISION_OPS_009-011.md",
+      "classification": "knowledge",
+      "target": "STR4TEG15T/memory/knowledge/DECISION_OPS_009-011.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 4247,
+      "sha256": "3871a06240eb10881c551de7cbdcd53d8ee333d17410b66cdb550341d3980bf0"
+    },
+    {
+      "source": "OP3NF1XER/knowledge/DECISION_OPS_012-016.md",
+      "classification": "knowledge",
+      "target": "STR4TEG15T/memory/knowledge/DECISION_OPS_012-016.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 6966,
+      "sha256": "740ff35e1ce135675edb16d3ec134ac61b014bc7613436c3b3165acde148c8a4"
+    },
+    {
+      "source": "OP3NF1XER/knowledge/DECISION_REPORTS_OPS_009-011.md",
+      "classification": "knowledge",
+      "target": "STR4TEG15T/memory/knowledge/DECISION_REPORTS_OPS_009-011.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 7303,
+      "sha256": "07e441df1ad83f1a3b16c54776a5b167e14e9663a78b2cf7903bfa1a1f183716"
+    },
+    {
+      "source": "OP3NF1XER/knowledge/DECISION_REPORTS_OPS_012-016.md",
+      "classification": "knowledge",
+      "target": "STR4TEG15T/memory/knowledge/DECISION_REPORTS_OPS_012-016.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 9372,
+      "sha256": "ed9e2b8263ee0c4b3c935da9b673ecec76c6b45c443863d5be2a693945001d35"
+    },
+    {
+      "source": "OP3NF1XER/knowledge/PROPOSED_DECISIONS_OPS_004-008.md",
+      "classification": "knowledge",
+      "target": "STR4TEG15T/memory/knowledge/PROPOSED_DECISIONS_OPS_004-008.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 6999,
+      "sha256": "d543f268f6f631c50f1580c2d90db7084dcc3e57c544f65793c51f1d92935fdb"
+    },
+    {
+      "source": "OP3NF1XER/knowledge/STRATEGIST_CONSOLIDATED_DECISIONS.md",
+      "classification": "knowledge",
+      "target": "STR4TEG15T/memory/knowledge/STRATEGIST_CONSOLIDATED_DECISIONS.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 13493,
+      "sha256": "9d660a15dd4fb6067a3923e0de18a477b88da651db5a2d2f6682d7a84a0994d2"
+    },
+    {
+      "source": "STR4TEG15T/.index/decisions.json",
+      "classification": "support_artifact",
+      "target": "STR4TEG15T/memory/reconsolidation/inbox/STR4TEG15T__.index__decisions.json",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3384,
+      "sha256": "14bca74fed2b7c471278c90527563a12e307fe01a63605a42840e7c75013db0f"
+    },
+    {
+      "source": "STR4TEG15T/DECISION_108_COMPLETION_SUMMARY.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_108_COMPLETION_SUMMARY.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 4123,
+      "sha256": "0d9535ca404155b9c5cc1688e3a75db1083dbc8bd412ba80180d095c2d58ffde"
+    },
+    {
+      "source": "STR4TEG15T/actions/pending/OPENFIXER_DECISION_080_PROMPT.md",
+      "classification": "support_artifact",
+      "target": "STR4TEG15T/memory/reconsolidation/inbox/STR4TEG15T__actions__pending__OPENFIXER_DECISION_080_PROMPT.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3851,
+      "sha256": "81fc1f5b12ca7870e4dd018cb9ff23bced2a9f0af9631786b811cb9e21dbb1b2"
+    },
+    {
+      "source": "STR4TEG15T/actions/pending/WINDFIXER_DECISION_081_PROMPT.md",
+      "classification": "support_artifact",
+      "target": "STR4TEG15T/memory/reconsolidation/inbox/STR4TEG15T__actions__pending__WINDFIXER_DECISION_081_PROMPT.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3913,
+      "sha256": "e97a5a9ac8e5decb052ec62dca0202eb21960a4bff622c809fc1d12ed6ec6063"
+    },
+    {
+      "source": "STR4TEG15T/auto/daily/2026-02-18-DECISION-AUDIT-REPORT.md",
+      "classification": "support_artifact",
+      "target": "STR4TEG15T/memory/reconsolidation/inbox/STR4TEG15T__auto__daily__2026-02-18-DECISION-AUDIT-REPORT.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3492,
+      "sha256": "a2c21b917a3a94e3069c19ea7f658afa9613f173912b6607d6e0c0c1399acc04"
+    },
+    {
+      "source": "STR4TEG15T/auto/daily/2026-02-18-DECISION-UPDATE-SUMMARY.md",
+      "classification": "support_artifact",
+      "target": "STR4TEG15T/memory/reconsolidation/inbox/STR4TEG15T__auto__daily__2026-02-18-DECISION-UPDATE-SUMMARY.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3050,
+      "sha256": "833f77b37b95cadeca504455839ace5309b9da4ad93be1bfd7d2ba6aa4f6c6b4"
+    },
+    {
+      "source": "STR4TEG15T/consultations/DESIGNER_DECISION_105_REVIEW.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/DESIGNER_DECISION_105_REVIEW.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 13360,
+      "sha256": "57b7e51484fbcb2c43fc342ef53c90d8df994db262cffeb90af364c1817d185a"
+    },
+    {
+      "source": "STR4TEG15T/consultations/designer/DECISION_031_designer.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/designer/DECISION_031_designer.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 12367,
+      "sha256": "503ba77ae3fefb19b9a8646a713d8f5c84f0aecc3a476b1707911f72b90de906"
+    },
+    {
+      "source": "STR4TEG15T/consultations/designer/DECISION_032_designer.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/designer/DECISION_032_designer.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 6757,
+      "sha256": "78d631aed41cf8342c828ae228832bc8c1aece3d05d2f6fceaef99bcefae2430"
+    },
+    {
+      "source": "STR4TEG15T/consultations/designer/DECISION_033_designer.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/designer/DECISION_033_designer.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 9316,
+      "sha256": "b91b243180b24b6ac31ccf9834cc84d61e6b5931f959b09677b215e22010bd80"
+    },
+    {
+      "source": "STR4TEG15T/consultations/designer/DECISION_034_designer.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/designer/DECISION_034_designer.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 14960,
+      "sha256": "7e5d3a32acf0e749127f27d689472988eb290996102d00ac30907c1de348ecf4"
+    },
+    {
+      "source": "STR4TEG15T/consultations/designer/DECISION_035_designer.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/designer/DECISION_035_designer.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 19335,
+      "sha256": "b4c31b17c6b777ac44bb892fce9f2bfc68e8660d693c07ca448f4cc616be07be"
+    },
+    {
+      "source": "STR4TEG15T/consultations/designer/DECISION_036_designer.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/designer/DECISION_036_designer.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 36550,
+      "sha256": "d6ae032a9974a0366bc9f6403c938380096d0c5db47c72f6970799de4d1f2d09"
+    },
+    {
+      "source": "STR4TEG15T/consultations/designer/DECISION_037_designer.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/designer/DECISION_037_designer.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 9864,
+      "sha256": "0ad86d1ace40ab460c6d5d5664c98c6c6b952c7df8085d87dbf40c61d1cd21d4"
+    },
+    {
+      "source": "STR4TEG15T/consultations/designer/DECISION_038_designer.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/designer/DECISION_038_designer.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 8941,
+      "sha256": "492cb6e8170244b8f91237fea3433bdb854b2dc68131e359975b928c5222f1cc"
+    },
+    {
+      "source": "STR4TEG15T/consultations/designer/DECISION_039_designer.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/designer/DECISION_039_designer.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 10213,
+      "sha256": "36b3a94457ba327ae07871370be3351c59fc108401ae05dcdee60b6dba72b62d"
+    },
+    {
+      "source": "STR4TEG15T/consultations/designer/DECISION_040_designer.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/designer/DECISION_040_designer.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2287,
+      "sha256": "c47104d7f3814aa3a8855b4093536d123444489aa5fd6442e9ba9a45641b0132"
+    },
+    {
+      "source": "STR4TEG15T/consultations/designer/DECISION_041_designer.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/designer/DECISION_041_designer.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2371,
+      "sha256": "c9f6cff1c33bedd9ee2f783644c5054a29eef6b79b8fb1c7e1a757019c283eb3"
+    },
+    {
+      "source": "STR4TEG15T/consultations/designer/DECISION_042_designer.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/designer/DECISION_042_designer.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2368,
+      "sha256": "f1d5e4e2f67b47187c6954ba2c440024368b3b2533cdfe030ea0888664d229bb"
+    },
+    {
+      "source": "STR4TEG15T/consultations/designer/DECISION_043_designer.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/designer/DECISION_043_designer.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2144,
+      "sha256": "1113ebd4b96805f0d575c8b70cea05b2eaf5df5f1bf7c3468d6300fe2785092b"
+    },
+    {
+      "source": "STR4TEG15T/consultations/designer/DECISION_044_designer.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/designer/DECISION_044_designer.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2228,
+      "sha256": "ddc05fe01a84cdc6e6d2c3dd3728a0598dee73fab4d163c36ff7e64214abfff3"
+    },
+    {
+      "source": "STR4TEG15T/consultations/designer/DECISION_051_designer.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/designer/DECISION_051_designer.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 10144,
+      "sha256": "fb78409f33dbef72af9c6e73c01663d4c573e0a1baa19bc4417dee40bab8f251"
+    },
+    {
+      "source": "STR4TEG15T/consultations/designer/DECISION_051_dynamic_error_objects.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/designer/DECISION_051_dynamic_error_objects.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 7575,
+      "sha256": "60de0096c7514fa9edea0f9120c93028747e96c859cdcfc2e835f05da25c1660"
+    },
+    {
+      "source": "STR4TEG15T/consultations/designer/DECISION_110_designer.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/designer/DECISION_110_designer.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 55572,
+      "sha256": "9ddd87a8bd6c15d98d1c95d4197a636e2e8d1fb20aa1b6c429b0da3b2b673bb8"
+    },
+    {
+      "source": "STR4TEG15T/consultations/designer/DECISION_114_designer.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/designer/DECISION_114_designer.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 1125,
+      "sha256": "47f49e1ce232a2d4fc70dd8cb6149c5b08c442ec3d7af73838356915395b73fd"
+    },
+    {
+      "source": "STR4TEG15T/consultations/oracle/DECISION_025_oracle.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/oracle/DECISION_025_oracle.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 4533,
+      "sha256": "3252452f7532eb0b1284c4a5901772ac284364d1005b12215b1ee4c0499ee37e"
+    },
+    {
+      "source": "STR4TEG15T/consultations/oracle/DECISION_026_oracle.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/oracle/DECISION_026_oracle.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 4337,
+      "sha256": "2f515acae70a0a4966f5be7a386be5b0da28387286a7502d2706dae99b9d56d1"
+    },
+    {
+      "source": "STR4TEG15T/consultations/oracle/DECISION_027_oracle.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/oracle/DECISION_027_oracle.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 5077,
+      "sha256": "c3ba2d73057729dbb7fbce70bd6f5b4f0081e8e42f2dfdb16468200839200402"
+    },
+    {
+      "source": "STR4TEG15T/consultations/oracle/DECISION_028_oracle.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/oracle/DECISION_028_oracle.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 4929,
+      "sha256": "5c601f305ac18bd090ccd8ae52e3fd7cd28c1a026176e06a695db41e641a83a0"
+    },
+    {
+      "source": "STR4TEG15T/consultations/oracle/DECISION_031_oracle.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/oracle/DECISION_031_oracle.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 4690,
+      "sha256": "0f1ea3fb4f23c290a6d929d19442875d7c601dc7730cc6daa6476f3360addb84"
+    },
+    {
+      "source": "STR4TEG15T/consultations/oracle/DECISION_032_oracle.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/oracle/DECISION_032_oracle.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 4145,
+      "sha256": "858898d368488a1cf69c099cdd7d41aa8f8fd8e76c3bedcfa6d68fe5a94b5293"
+    },
+    {
+      "source": "STR4TEG15T/consultations/oracle/DECISION_033_oracle.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/oracle/DECISION_033_oracle.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 4224,
+      "sha256": "9352617ae878491996eddcdaa9c1d287b0cd09ee557174ca6a48943a36007da3"
+    },
+    {
+      "source": "STR4TEG15T/consultations/oracle/DECISION_034_oracle.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/oracle/DECISION_034_oracle.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 4360,
+      "sha256": "883ac2f1bcbdaba6c7bc1047eb9418397061aa8fca01cd27a8fb29421a18d962"
+    },
+    {
+      "source": "STR4TEG15T/consultations/oracle/DECISION_035_oracle.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/oracle/DECISION_035_oracle.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3572,
+      "sha256": "a66f699f8b9999adc3d735851ac8455c4d13c50b65d6333e96c8a41f0fdfbfbc"
+    },
+    {
+      "source": "STR4TEG15T/consultations/oracle/DECISION_036_oracle.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/oracle/DECISION_036_oracle.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 4183,
+      "sha256": "3dffc50db52714a417287d40ccdfe182717f49b0f5b7f753a87f9a51a8b172e7"
+    },
+    {
+      "source": "STR4TEG15T/consultations/oracle/DECISION_037_oracle.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/oracle/DECISION_037_oracle.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 4879,
+      "sha256": "9905a2554630a21e68a6f5921098789aec406155f926be1597cdf4a422cc5369"
+    },
+    {
+      "source": "STR4TEG15T/consultations/oracle/DECISION_038_oracle.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/oracle/DECISION_038_oracle.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 5300,
+      "sha256": "31abdd23ffe4d79770e8bb7909b496781f1a713669032e858e90597c601c5c6b"
+    },
+    {
+      "source": "STR4TEG15T/consultations/oracle/DECISION_039_oracle.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/oracle/DECISION_039_oracle.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3735,
+      "sha256": "fe173df2bd885026cabc674965052eb200c39b5b4a0a20c7721d1225ec4c5a8b"
+    },
+    {
+      "source": "STR4TEG15T/consultations/oracle/DECISION_040_oracle.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/oracle/DECISION_040_oracle.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2438,
+      "sha256": "a70394367c47b05fa84d0e2d18fa59a9b2ee492795860e17f769941cefd60922"
+    },
+    {
+      "source": "STR4TEG15T/consultations/oracle/DECISION_041_oracle.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/oracle/DECISION_041_oracle.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2395,
+      "sha256": "94ed5aa12308f39e2ae30475c16b641a0d8bb76869b9bd8c10cf8f96a0d66777"
+    },
+    {
+      "source": "STR4TEG15T/consultations/oracle/DECISION_042_oracle.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/oracle/DECISION_042_oracle.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2370,
+      "sha256": "d28d42984d64873f199e9d59f0617aa77ffdde182e410246f32acadf63c481b7"
+    },
+    {
+      "source": "STR4TEG15T/consultations/oracle/DECISION_043_oracle.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/oracle/DECISION_043_oracle.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2492,
+      "sha256": "4cdbe3468e9b2506bc30dbe447bf1109dabbdcafcfa8b69d8935963a698be1b1"
+    },
+    {
+      "source": "STR4TEG15T/consultations/oracle/DECISION_044_oracle.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/oracle/DECISION_044_oracle.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2325,
+      "sha256": "3bc0925cc190dacce62c77a1a2aebaf5d51a32828fbae2221c46c41e48d5fd0b"
+    },
+    {
+      "source": "STR4TEG15T/consultations/oracle/DECISION_096_framework_regression_research.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/oracle/DECISION_096_framework_regression_research.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 12634,
+      "sha256": "5df38045b78654c518845cabe4f21d5ce1d1a39712a03076e589d585c49b50fb"
+    },
+    {
+      "source": "STR4TEG15T/consultations/oracle/DECISION_096_http_sse_scholar_research.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/oracle/DECISION_096_http_sse_scholar_research.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 11601,
+      "sha256": "7f6b8dfd5721f0160d4684a24c732c0dee42f43a57d03f3b53394bb9f6bab286"
+    },
+    {
+      "source": "STR4TEG15T/consultations/oracle/DECISION_096_http_sse_security_research.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/oracle/DECISION_096_http_sse_security_research.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 12291,
+      "sha256": "8b1289ab635e7ce6d09076d84e29f7d5573e1cf4aa03977689e8bc2a5c8177d4"
+    },
+    {
+      "source": "STR4TEG15T/consultations/oracle/DECISION_096_oracle.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/oracle/DECISION_096_oracle.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 6661,
+      "sha256": "25e03dc4e48c1fb8850a5061108cd9a85f7b561a2a9e38487c395f333ee33a1f"
+    },
+    {
+      "source": "STR4TEG15T/consultations/oracle/DECISION_114_oracle.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/oracle/DECISION_114_oracle.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 1359,
+      "sha256": "e8f3fd8fecafe85fa2367ef275f81abfe1413e542a5fe01ed27af0a9c227959b"
+    },
+    {
+      "source": "STR4TEG15T/decisions/CONSOLIDATED_OPS_005-018.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/CONSOLIDATED_OPS_005-018.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 15795,
+      "sha256": "7bb282e25effd5e1808be0c64ab8cc34a7116041a47d02716903e2a568769cc0"
+    },
+    {
+      "source": "STR4TEG15T/decisions/DECISION_050_LAZARUS_PROTOCOL.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_050_LAZARUS_PROTOCOL.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 14589,
+      "sha256": "b4d18579e8312688dfb43572f3e5a94f5a0f20624642d206940a214e78aecd3c"
+    },
+    {
+      "source": "STR4TEG15T/decisions/DECISION_051_H0UND_CHAOS_MAPPING.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_051_H0UND_CHAOS_MAPPING.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 18471,
+      "sha256": "d10a47fac3b12914b8046b8e077f30529ac6d32a28c78f81d071eab57c796134"
+    },
+    {
+      "source": "STR4TEG15T/decisions/DECISION_052_OPENCLAW_RAILWAY_RECOVERY.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_052_OPENCLAW_RAILWAY_RECOVERY.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 26593,
+      "sha256": "f7a088f91087de04e1869ce5c3d78674057af89f46313ffcb95350bdb1eebd7b"
+    },
+    {
+      "source": "STR4TEG15T/decisions/DECISION_053_OPENCLAW_RAILWAY_ACCESS_STRATEGY.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_053_OPENCLAW_RAILWAY_ACCESS_STRATEGY.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3681,
+      "sha256": "70dba9f1fccc154ad67b28dd3f9800af95cff78baf8698165658bbe2a686a517"
+    },
+    {
+      "source": "STR4TEG15T/decisions/DECISION_054_OPENCLAW_INCIDENT_DISCOVERY_PLAN.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_054_OPENCLAW_INCIDENT_DISCOVERY_PLAN.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 25872,
+      "sha256": "022933cbf9c7efa2cabbd99bd1d9a80ee9b5d2931eda307ec858010d5e540ebf"
+    },
+    {
+      "source": "STR4TEG15T/decisions/DECISION_055_OPENCLAW_CONFIG_REMEDIATION_AND_GATEWAY_RESET.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_055_OPENCLAW_CONFIG_REMEDIATION_AND_GATEWAY_RESET.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 14293,
+      "sha256": "aef670a8b2cf25a629a79c54eef4f3a9e18430d631c6c02b383421073b9e4332"
+    },
+    {
+      "source": "STR4TEG15T/decisions/OPS_018_COMPLETION_REPORT.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/OPS_018_COMPLETION_REPORT.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 5623,
+      "sha256": "0406e8f00cfce7d3ee035592e15ff487b0a207180e53b0ea1bd2ba506cc26a58"
+    },
+    {
+      "source": "STR4TEG15T/decisions/_templates/CLUSTER-TEMPLATE.json",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/CLUSTER-TEMPLATE.json",
+      "inCanonicalRoot": false,
+      "sizeBytes": 667,
+      "sha256": "4a557a1e4e03b088bd6e8cbc10123188b23195ea15d3f6c4fb9a5dd8b24b33be"
+    },
+    {
+      "source": "STR4TEG15T/decisions/_templates/DECISION-TEMPLATE.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION-TEMPLATE.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3406,
+      "sha256": "02a56d51b126b6bb4acb67b7f63e49664906b57e37416e93420f3393806330a7"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/ALL-DECISIONS-APPROVED-STATUS.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/ALL-DECISIONS-APPROVED-STATUS.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 4795,
+      "sha256": "9cf51f022d8e955780fe3a767aea13056ae4c213d403bd1fe2aa4cb000bba266"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/COMPLETE-DECISION-INVENTORY.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/COMPLETE-DECISION-INVENTORY.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 8629,
+      "sha256": "383fbb2e62f799ffe8421e77b62768d02bbb173b2984dccc23d3ad191bdc6ae5"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/CORE-092.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/CORE-092.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 7365,
+      "sha256": "cf571a91e757efcd5277ea883411271d591396efafb03a35aab309c4ef950454"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION-TOOLHIVE-001.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION-TOOLHIVE-001.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3311,
+      "sha256": "1a0783d662a178dc21526d0c9e55bf9bcce46de44ccc0205a071040bf278dc19"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_025.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_025.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3514,
+      "sha256": "4f2642eaa94f8a214b58e14b4e6de2c13c2b5e6564597cf9904faa8f2bfbe9a8"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_027.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_027.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3178,
+      "sha256": "0015cd919cdca0aa1a5f4c11a7afbeae1ff8a196b7a4ed83574ef45f1f521c88"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_028.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_028.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3035,
+      "sha256": "bfd440813afbf2ee71fd28a684da9dbac99cc0fbc4d26bee895194d8bbef6d16"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_031.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_031.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 7239,
+      "sha256": "f428750f100f5b242cb56632e47ebc6d43b6be25ee49b0e80f4f91b9d696afdf"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_035.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_035.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 12245,
+      "sha256": "8e2ca7002a311b9cc7e8ef1eba9143fca9035d85daf043514a218f17ba9edc27"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_036.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_036.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 15505,
+      "sha256": "8a3d33cb8dc412be53cb298cd8e4b8ac21abd0b6193f762ef721b4da3173b5e3"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_038.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_038.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 15087,
+      "sha256": "a609a8f545070e7f5d5435ebc982bfd7f4b577fdf380a5f6fdd3835303221df9"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_039.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_039.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 11875,
+      "sha256": "d1dab1d58826b2cf1e7b2bcf5a823b3b66568fbd31a6efaf0f284cdfa1cc5aa8"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_041.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_041.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 9714,
+      "sha256": "452b23a167148f20698d715e551eef3e29c9c1375ba488abf53a0dd6a56a3a32"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_042.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_042.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 10284,
+      "sha256": "61ec0cbb2d9aa7a6c53475dfd15aaf0fd840db76e6a6c5c57d0739fbe272124d"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_046.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_046.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 8722,
+      "sha256": "07248e54a4e76c86be1301052e8048efd282d1cddbb6bc9049232552870065ed"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_047.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_047.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 21936,
+      "sha256": "98b54b52c5698e5b703715a9c8b4df38aa259824432de308920b583cfd44587b"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_048.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_048.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 10446,
+      "sha256": "841112b3fe42bf605327f34edaea0cd36c0e2709c2fe021e08b271798f446667"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_049.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_049.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 9303,
+      "sha256": "1df8d9730e20de9462f43fca44200a641afb749d60e41510dafef0c3e6c92076"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_050.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_050.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 10456,
+      "sha256": "1c9a9e48f3a581fab7ad31c89a53d509ad37500201a08146e5d842d15737f6e5"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_051.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_051.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 7584,
+      "sha256": "394d3113de80b2c31c45a10bcc00c875572f40422e8733a3c3869333beb0ae6a"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_052.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_052.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 8977,
+      "sha256": "3cac3e60310b039436b1b0af0a2db8ba97100e5772628bf2a860568f19913fcf"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_053.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_053.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 10987,
+      "sha256": "ee47448b84f1e0f0e22db21cdb853aae9b233955669a5da9362241d3b88b067d"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_054.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_054.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 12044,
+      "sha256": "9e6947d3577fc6a350a3a33041d1ba1144bb06d8554fb0ce987a7e4151408070"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_055.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_055.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 35149,
+      "sha256": "d294436ecc679de38ef925a9400d5617b0deb898b8c607a806f0509bcf6933c0"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_056.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_056.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 17450,
+      "sha256": "a97ce47712517384188feed6992f15e56e1f16c6717b4fc9284a6ce254a3acac"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_057.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_057.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 8118,
+      "sha256": "3f5cd3bd97b0bca1cc2263bfbf378ae76227f38e57962172f019ab8ecc36cd16"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_058.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_058.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 6929,
+      "sha256": "cf9a25aa640ad78d8c200049cdb7935f044867b39d3a332484f9dc05c764400b"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_059.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_059.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 5633,
+      "sha256": "0c1b48971f5441c12911d2ce5a720a541a961c4c132bdd0825b8ba34ac0c52c1"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_060.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_060.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 4733,
+      "sha256": "5ce96148285f6cbc677d605e9bd404e75e5ceb1180aa5317bf9b9ef451fd04c0"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_061.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_061.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 8688,
+      "sha256": "38b2edce37d808a5a800355b98c5ed728db31e9bcb705e2e038af0ca6c896bad"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_062.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_062.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 13597,
+      "sha256": "81b5589aaf5f7c79765915c620c65a75e861b9607775a66ffef223abc516f944"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_063.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_063.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 6060,
+      "sha256": "f4ceb325549102f7997b821e8829bd7c0d994c94360d4f7cf2cb5f7d2fdfea56"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_064.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_064.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 10932,
+      "sha256": "02198f909e8921be8ac5028205169147d1cded8eb58ce39cd7cc4a9e81650595"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_065.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_065.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 11629,
+      "sha256": "7c5a9fa162ea4f7080bbbbe060e1657d6389bf2026a3a1a97650d58343120a74"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_066.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_066.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 13070,
+      "sha256": "3f35701e85e1400d2fcba3041ba9361c3b2984d89198dbbad523997306cc9aa3"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_067.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_067.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 14029,
+      "sha256": "7c0c492a5594b4b507ac619b1ab7b4c9f5988e01d4ba82e94dcfaa4e508ef784"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_068.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_068.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 8429,
+      "sha256": "d4806924bf347bd55ec2bf9594a920f8d2561c12350867311b80f41679fade04"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_069.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_069.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 10752,
+      "sha256": "5162dd2edbe41cde183f6eff4a2ffbec7e46fae625304f71372047b6288dcbcd"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_070.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_070.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 11439,
+      "sha256": "b054a302ec302f8f9e46338a07a2d1fe60aa743d17a4355db5e7e810135fbbfb"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_071.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_071.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 11158,
+      "sha256": "a96741b584602665578e2fb8fc1f8571fd7c2fc4a3149f2defc718f5be9476b2"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_072.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_072.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 15064,
+      "sha256": "799eddbdf3bebc62023462a35dd6b675ed3e07ed108879934d34badc527f3678"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_073.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_073.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 7978,
+      "sha256": "c2588dab095864da1899ed9f11f385efdb643e53410a92dfcc00847a625795b9"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_074.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_074.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 6287,
+      "sha256": "92190018c74a33c596af4e911068184437b44769a88ed50deef43f44ab1a58a1"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_075.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_075.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 5811,
+      "sha256": "dded0393b912d27889a2676ee425a794f74ccfc62a57545289fa40b0d6bb7373"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_076.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_076.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 4881,
+      "sha256": "0d4f90bc587027f470f8ee00b732a61e76a951c579a7014a3757c7177378815e"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_077.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_077.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 19266,
+      "sha256": "bf349503e24a5f9d71e3d6207e1fcaf99c24b41e84dad34bb60aa79c59618f9c"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_078.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_078.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 23784,
+      "sha256": "327563e21af9ed5cfb13962c0b1ae660cf64258bc21b7da74a0f637f70fa22c7"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_079.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_079.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 6024,
+      "sha256": "0bf10ee946b8664550ed555b5d78e4d05678a52d20b92f8f963b9e74644ebf3d"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_080.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_080.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 6079,
+      "sha256": "01b2f258fcc7e15f583b965ca712d23631f3b4cfe285913a766b2aa9604794da"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_081.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_081.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 11907,
+      "sha256": "aa6ee73be7b6a12262913bf5d0fbb9604eed2f6ba4b374c2222c87dfb3db9577"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_082.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_082.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 5334,
+      "sha256": "8b2d532ad069e30db289e52b313b1b415beb58e53b9416b01f11cf16784c4d48"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_083.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_083.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 13438,
+      "sha256": "e965bde88864451f1082eee9d50b51344f6a6fc62ad94d475105d89533eee937"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_084.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_084.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 9412,
+      "sha256": "0882f295eca484c3e4cb62c1fa8f5b2ee6f6b5d6cf87529ac4e68366fff34bba"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_085.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_085.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 13897,
+      "sha256": "c2b7e1aa592caf24a2e8b3ba8fddc3c91f799e3d24440e115c82f720e1ca76ab"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_086.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_086.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 22310,
+      "sha256": "ca1ff16bb27a6cfb5503f8bec9ed3b0a22e63b41a69cb658106b1ab8f75e5bbb"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_086_TEST.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_086_TEST.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2589,
+      "sha256": "247efa60e450cadeaa1ee27e398128f7a607bf324f3d87ff6441f7235fe9af32"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_087.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_087.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 45783,
+      "sha256": "8508fa6eaa3575d47067f98c2c715d34e8b5ec00d2a160db24495d7adfb4fa9d"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_088.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_088.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 5494,
+      "sha256": "6ee912592a64330bcb4419836cfed75b4939d9a887449078dc70812090380316"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_089.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_089.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 4061,
+      "sha256": "7d43b0fc113b72317a8a6ac9ad3db7933030836b6e0dd5d154239c7f48e47c70"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_090.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_090.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3783,
+      "sha256": "670de144617b6c0487df92719463c529863d7cd0746e59ebee6a0c62ae34e668"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_091.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_091.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 4694,
+      "sha256": "56c24d842ee0007ba79e060e54c0c7cf5ecb91298087dbc059ec5a57256c5404"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_092.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_092.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 22367,
+      "sha256": "7299676ac4f07faab93f27c8244d09698eb9782526d644a1d26758a9ae8c3007"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_093.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_093.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 17432,
+      "sha256": "3e3563f92b2910a63cd53dad48dd138da22730765beedab238ef0d4e8cc2c004"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_093_SYNTHESIS.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_093_SYNTHESIS.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 15581,
+      "sha256": "94684427c8e12b0113ae48f7650aab2960646f5db6f6e8c200a787257b2fc532"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_094_MCP_BOOT_INTEGRATION.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_094_MCP_BOOT_INTEGRATION.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 7508,
+      "sha256": "953dc2674add4e0c3297031a2e74b1a9e85a8142f6f9116aa6c97fcac2254f81"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_095.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_095.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 27840,
+      "sha256": "0a6c0a3cedf532df7eb6628a0ba1c2450a8a08d9561a1c7452290b0c88bfaa13"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_095_MONGODB_TOOLHIVE_HARDENING.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_095_MONGODB_TOOLHIVE_HARDENING.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 6897,
+      "sha256": "d63080f424c5a3ceaa12909f99785b9741a40ac613cc7baabef06db15f83c1bd"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_096.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_096.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 66917,
+      "sha256": "454b9a5add00597cb65b54ba58205f75aad9f48e7b54d13013673711bdd08554"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_097.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_097.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 15100,
+      "sha256": "58f304fa580a14e3e0ba321370342a3ba76ae3b237b883d75e154f1dec948b8d"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_098.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_098.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 13286,
+      "sha256": "68a2c85b57b62a1ca03dce03ff97da758555d60b50f243effde65167785a6573"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_099.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_099.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 279,
+      "sha256": "428fa6a103543a32eadaec3776e6462f056e8ab03e5f3b39a5ec845278e4b3cb"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_100.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_100.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 31511,
+      "sha256": "133a2d5fdd4db7d226c6442b26fdfbf1687044797e2d71d7ff43636f7e3715f2"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_101.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_101.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 15962,
+      "sha256": "0b0d9644e2b6b1b14486ee7ffc503be38524552b9a376a46f60b531073b067b2"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_102.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_102.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 11831,
+      "sha256": "0538caad18efe255c122fd416f3074b0abf87ef24bb80e87f1a42ab2b1ce53d3"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_103.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_103.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 17742,
+      "sha256": "0199d21d55cd86f915f2036d90ef6446f2c9b13b42cc8db9c38aacb631cab189"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_104.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_104.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 31997,
+      "sha256": "61bdbc34f7d4c0fba1688d1f115f3c17d4b45b32d8363c456aa32723ede73e02"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_105.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_105.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 9696,
+      "sha256": "0548420a4a60754bbdccb69d662e4cca76cd280da6a203b0a1c63c7b67d17f66"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_106.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_106.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 8793,
+      "sha256": "ae87c97b755a0bc940e283aee21ab19807ea15a2341938f7db43a22f978edad8"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_107.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_107.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 13414,
+      "sha256": "6b38e00ccff33ac2a33179bd5210e82c0c6467c6a29afd1af9c687311b34d722"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_108.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_108.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 11862,
+      "sha256": "1771bb10c349dd87f454b6c8614283b2508f493f20d6b4057b7ec531e147cd48"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_109.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_109.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 6938,
+      "sha256": "7608e0a4a80e265034b4d632844b92dcfe4660b984abd79cfa8d6325be43bebf"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_110.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_110.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 65834,
+      "sha256": "81e49cef71039b6c65d31e7d78de79dfb2aa29c56bb710ea31fd9cc43f2fe9cc"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_110_PHASE7_PHASE8.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_110_PHASE7_PHASE8.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 1801,
+      "sha256": "31d9c643ef9d9ef8f92286aab8fa5c96b7077ddabd35fc2e9e3195c46dfdcdfd"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_111.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_111.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 5345,
+      "sha256": "4f6769f0ec33d07e1c163d56083354e588894dc42a2e232ea66256401ef6486e"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_112.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_112.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2531,
+      "sha256": "e775d6c8772a7992ef486ac118d214f84beeb36860839a5893c10aaddb2159a2"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_113.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_113.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 36209,
+      "sha256": "19cff603fc71551f48331209f90e795af56ccb5ecf6b0f1d7dfcbb362d5e4946"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_114.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_114.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 27902,
+      "sha256": "485d6fed8c06f41d0954629e4341510c194eea45d0ccb640bbee14af4860da1d"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_114_CHANGE_CONTROL_v1.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_114_CHANGE_CONTROL_v1.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 873,
+      "sha256": "5a33fef4e24671c5674cb2891cfe0c6eb91432ca86f972e434989452a8d3e5ae"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_114_SYNTHESIS_POLICY_v1.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_114_SYNTHESIS_POLICY_v1.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 1046,
+      "sha256": "1dcad9cf5e833e3827c61cf888f5674717fc1b65a5c83cd64969c37ab10726ee"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_115.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_115.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 21436,
+      "sha256": "3090ab74ed6808c40dfa0ae4ac8f80c5c3e3c65506252491b42583fc934bd264"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_115_DEPLOYMENT_GOVERNANCE_v1.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_115_DEPLOYMENT_GOVERNANCE_v1.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 952,
+      "sha256": "c2d68e7263558e002015d125f7bb0e5e5bb6e23bc9c76c9dfaf27326771479f1"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_116.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_116.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 11973,
+      "sha256": "9eaf2c1401efa3124ca52e3cec3a9f9b680afadb80383f4f56c0107c56a716a0"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_116_AUTOMATION_v1.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_116_AUTOMATION_v1.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 922,
+      "sha256": "4e78825fe8617ff476847f6945d49992b50826147f1dc7bdbc3bfe0f8faf18da"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_116_MANIFEST_V2_ARCHITECTURE_v1.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_116_MANIFEST_V2_ARCHITECTURE_v1.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 1962,
+      "sha256": "1f8eea5e46f8b9f42ffcce44ed3db9aedf5b758ccb1758e59aa0c14b90215bbf"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_116_WINDOWS_MICROTOOLS_v1.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_116_WINDOWS_MICROTOOLS_v1.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2854,
+      "sha256": "35af343d3a8af17e63a61bf2fe53144b182282748f60148a28b8fd76a0116475"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DECISION_ASSIMILATION_REPORT.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_ASSIMILATION_REPORT.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 6813,
+      "sha256": "827d8af864a6448665f0bd5a4bf332cbd0eaa37bd65286889b8bd420acca23e3"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DEPLOYMENT-PACKAGE-2026-02-20.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DEPLOYMENT-PACKAGE-2026-02-20.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 11618,
+      "sha256": "6bbd7b9eb5f107a2bcec8d36bf78ea1b974c60b0b43b92f07ca2f4201a80efb0"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/DESIGNER_IMPLEMENTATION_INPUT.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DESIGNER_IMPLEMENTATION_INPUT.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 7777,
+      "sha256": "cdc8b118ce5fc1d613b8ab272004c00620a46cfffac8ec588769a8923b2e2eaa"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/FORGE-001-Directory-Architecture.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/FORGE-001-Directory-Architecture.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 34725,
+      "sha256": "bb475fc290187bf4184f3b6a211468149e418edcc57364cf4133d298c7bd58e8"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/FORGE-002-Decision-Making-Enhancement.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/FORGE-002-Decision-Making-Enhancement.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 40414,
+      "sha256": "df1cfd124f0d8aed45e086362388e3f110c321cb7fe6741bc95073dccfdb1b9f"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/FOUREYES_CODEBASE_REFERENCE.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/FOUREYES_CODEBASE_REFERENCE.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 19474,
+      "sha256": "67470dff8832c0e55c2ab4b287d10c5cfd68fa7fc7f786b05703d4f311d6189d"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/FOUREYES_DECISION_FRAMEWORK.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/FOUREYES_DECISION_FRAMEWORK.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 9414,
+      "sha256": "c9cb314258ff693be6623b40699448b8f4b5818c07f9a61422540cf3267089be"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/INFRA-068_MCP_Consolidation.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/INFRA-068_MCP_Consolidation.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 9790,
+      "sha256": "12bdf179311cf2f44d92adca0d93b59f77502062cf4261ecb95230f9ffa049a9"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/Idempotent Signal Generation System.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/Idempotent Signal Generation System.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 21867,
+      "sha256": "b333bf7d210309dcf9f1e1df02a112e387ca06525bd660033a8c78b165bb2f5b"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/QUICK_REF_064-067.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/QUICK_REF_064-067.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 5209,
+      "sha256": "a9c27ed8b527f431d34b78341c73e522a88b65cd0954919a5f40974549a9933e"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/STRATEGIST_REPORT_2026-02-21.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/STRATEGIST_REPORT_2026-02-21.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 5566,
+      "sha256": "9e4eaa2d18c30bd6e41d7c557dee47bf271dfe93d01fed047912b618cb15c68a"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/STRATEGY-ARCHITECTURE-v3.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/STRATEGY-ARCHITECTURE-v3.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 15404,
+      "sha256": "b93a4130ccdb171024c99f666f7c038de7138418b112ffcf5f74eddd4e0b936f"
+    },
+    {
+      "source": "STR4TEG15T/decisions/active/SUMMARY-Three-Decision-Package-2026-02-20.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/SUMMARY-Three-Decision-Package-2026-02-20.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 11873,
+      "sha256": "5fc4f43d18b273db616a5816855249df808663e35260ebba45d5dbfa9b4e82b4"
+    },
+    {
+      "source": "STR4TEG15T/decisions/clusters/CLUSTER-001-validation.json",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/CLUSTER-001-validation.json",
+      "inCanonicalRoot": false,
+      "sizeBytes": 479,
+      "sha256": "3b2595ff253708811b509f2a3294acd94b52f52058c51948c054a301d4d5d13a"
+    },
+    {
+      "source": "STR4TEG15T/decisions/clusters/CLUSTER-002-swe-foundation.json",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/CLUSTER-002-swe-foundation.json",
+      "inCanonicalRoot": false,
+      "sizeBytes": 769,
+      "sha256": "f4ce3dcab8f850b2c59bb586a19ebfd6768da78bc6e9f035ec7b567b3fa6b7c9"
+    },
+    {
+      "source": "STR4TEG15T/decisions/clusters/CLUSTER-003-production.json",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/CLUSTER-003-production.json",
+      "inCanonicalRoot": false,
+      "sizeBytes": 753,
+      "sha256": "3da3c2a9fd23e84485f71d241bac734b6df71dd27ecdee45afe2e7650c10a355"
+    },
+    {
+      "source": "STR4TEG15T/decisions/clusters/SESSION_PLAN.json",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/SESSION_PLAN.json",
+      "inCanonicalRoot": false,
+      "sizeBytes": 818,
+      "sha256": "50a431ab06b0b7a9dff1fada22759908fdf208352b8be290dff5f087c1ccf19b"
+    },
+    {
+      "source": "STR4TEG15T/decisions/completed/DECISION-AUD-001.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION-AUD-001.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 7027,
+      "sha256": "82d0d8de368c11a0f61ee739d5d6c6d87b964f81e94bb60708b89c2ead964137"
+    },
+    {
+      "source": "STR4TEG15T/decisions/completed/DECISION-FORGE-004.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION-FORGE-004.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 8012,
+      "sha256": "24b586596a56b8e3576b31d8f8a1fcc86f16db33845f9e8ec129521cfe45debe"
+    },
+    {
+      "source": "STR4TEG15T/decisions/completed/DECISION_026.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_026.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3595,
+      "sha256": "bbba9beb7dcc4c2deea4fc967369d8d7549ffa38ac86480ce33260b57c8319f3"
+    },
+    {
+      "source": "STR4TEG15T/decisions/completed/DECISION_032.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_032.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 4144,
+      "sha256": "c19e0682ae5befcf29262b3b413090dfa41dc26df1a6d38fe6ab1e8836745966"
+    },
+    {
+      "source": "STR4TEG15T/decisions/completed/DECISION_033.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_033.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 6167,
+      "sha256": "6e5fb7ec247773a44a956fdf807d5d63b9c87f7a2df27681029432d298ad0b37"
+    },
+    {
+      "source": "STR4TEG15T/decisions/completed/DECISION_034.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_034.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 5391,
+      "sha256": "937f1b91ac928ca1f74d2255f904b32cae3484223a3fdc77ea8cbae2ecd7fe5b"
+    },
+    {
+      "source": "STR4TEG15T/decisions/completed/DECISION_037.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_037.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 20643,
+      "sha256": "16a8e69465221b123b6b8658a3c383386361fe7eb8467a68ff04abd1aa8bde64"
+    },
+    {
+      "source": "STR4TEG15T/decisions/completed/DECISION_040.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_040.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 10887,
+      "sha256": "6376177aad3277d4c15575ad6ae6c1d9a4fa78b5eded62b6572f7501e29023f0"
+    },
+    {
+      "source": "STR4TEG15T/decisions/completed/DECISION_043.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_043.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 5170,
+      "sha256": "6bd04ce900dc503f769674cd4fdca9042ff62bc8231f2888dcff016643bcfeb0"
+    },
+    {
+      "source": "STR4TEG15T/decisions/completed/DECISION_044.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_044.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 8974,
+      "sha256": "4dc89f897ff0282a4d10763bbe3c6f5205fa9d9d4288ea1e8ab9035a43bfd0ef"
+    },
+    {
+      "source": "STR4TEG15T/decisions/completed/DECISION_045.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_045.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 9066,
+      "sha256": "4c3193f2adb6391b4212730cd402821580cc0bd57374af0cc3e47adcd8e102f3"
+    },
+    {
+      "source": "STR4TEG15T/decisions/completed/DECISION_083.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_083.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 13438,
+      "sha256": "e965bde88864451f1082eee9d50b51344f6a6fc62ad94d475105d89533eee937"
+    },
+    {
+      "source": "STR4TEG15T/decisions/completed/DECISION_084.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_084.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 9965,
+      "sha256": "3413b66bf64c3305973589c3407ee765ee57392e5c1587cfcb0f0cce9705206d"
+    },
+    {
+      "source": "STR4TEG15T/decisions/completed/DECISION_085.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_085.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 40439,
+      "sha256": "483e40795ee5285396e327e3ca3bc545bf5a8c6676e794ba96d67980b2266566"
+    },
+    {
+      "source": "STR4TEG15T/decisions/completed/DECISION_086.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_086.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 27208,
+      "sha256": "589e823b7430193f6a312bfb45a82fafc7a627cb11e97880b50ca2b3cc6e0aaf"
+    },
+    {
+      "source": "STR4TEG15T/decisions/completed/DECISION_097.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_097.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3630,
+      "sha256": "426728dc412b9b495e709ccaf497b261d8f738b09ea0c95f920904c59be38c98"
+    },
+    {
+      "source": "STR4TEG15T/decisions/completed/DECISION_099.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_099.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 14373,
+      "sha256": "d2b8b5de7c66273e4158d61ae534ca505bac00022620a15e371d9260554f7db2"
+    },
+    {
+      "source": "STR4TEG15T/handoffs/CHECKLIST_DECISION_055_OPENCLAW_PRE_ROLLBACK_v1.md",
+      "classification": "handoff",
+      "target": "STR4TEG15T/memory/handoffs/CHECKLIST_DECISION_055_OPENCLAW_PRE_ROLLBACK_v1.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2049,
+      "sha256": "4cd5797661436e1d3dc0ecc3d7c25bb888e1c7ede0e44a14c011f90b1ca1026c"
+    },
+    {
+      "source": "STR4TEG15T/handoffs/DECISION_095_PLANNING_PROMPT.md",
+      "classification": "handoff",
+      "target": "STR4TEG15T/memory/handoffs/DECISION_095_PLANNING_PROMPT.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2554,
+      "sha256": "7294bb594d67b1a9a90a7180a3175124afa8266a76b7c1443a2cfa04570de07c"
+    },
+    {
+      "source": "STR4TEG15T/handoffs/DECISION_096_WEEK2_SERVER_IMPLEMENTATIONS.md",
+      "classification": "handoff",
+      "target": "STR4TEG15T/memory/handoffs/DECISION_096_WEEK2_SERVER_IMPLEMENTATIONS.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 13347,
+      "sha256": "dabce05b9268a8dab6b7054351b81e6796129347a013b7134bcbc0aa4a335189"
+    },
+    {
+      "source": "STR4TEG15T/handoffs/DECISION_096_WEEK3_PROTOCOL_IMPLEMENTATION.md",
+      "classification": "handoff",
+      "target": "STR4TEG15T/memory/handoffs/DECISION_096_WEEK3_PROTOCOL_IMPLEMENTATION.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 25175,
+      "sha256": "f02736ab2052ebaef096be51aeb9073f0205d92e9628e9f977ea9f72f5dcc31b"
+    },
+    {
+      "source": "STR4TEG15T/handoffs/DECISION_096_WEEK4_INTEGRATION_DEPLOYMENT.md",
+      "classification": "handoff",
+      "target": "STR4TEG15T/memory/handoffs/DECISION_096_WEEK4_INTEGRATION_DEPLOYMENT.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 21388,
+      "sha256": "f2b53667f2177f61aebda40d635b748721f4f9e800dc3886ddf3cc4379eec2f8"
+    },
+    {
+      "source": "STR4TEG15T/handoffs/DECISION_098_IMPLEMENTATION_SPECIFICATIONS.md",
+      "classification": "handoff",
+      "target": "STR4TEG15T/memory/handoffs/DECISION_098_IMPLEMENTATION_SPECIFICATIONS.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 20688,
+      "sha256": "2c390c8a46bc188cd04fc826f952606986e40e6887c1492d116a7b1b67bd86d1"
+    },
+    {
+      "source": "STR4TEG15T/handoffs/DECISION_108_OPENFIXER_HANDOFF.md",
+      "classification": "handoff",
+      "target": "STR4TEG15T/memory/handoffs/DECISION_108_OPENFIXER_HANDOFF.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 12346,
+      "sha256": "a29beb0ad6ac73ffd39fe008f8647244239aebd4817fa5f1584a45122449081b"
+    },
+    {
+      "source": "STR4TEG15T/handoffs/DECISION_110_PHASE7_8_EXECUTION_PLAN.md",
+      "classification": "handoff",
+      "target": "STR4TEG15T/memory/handoffs/DECISION_110_PHASE7_8_EXECUTION_PLAN.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3942,
+      "sha256": "691e6ce6728be6c6de2bf0aace6a6050c7a5fc5b6e9a261e57ca4127666b84a0"
+    },
+    {
+      "source": "STR4TEG15T/handoffs/DECISION_113_CRITICAL_CHAOS_POINTS.md",
+      "classification": "handoff",
+      "target": "STR4TEG15T/memory/handoffs/DECISION_113_CRITICAL_CHAOS_POINTS.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 24690,
+      "sha256": "b27a965b44ea0968dc27af15dbf60dc7a251b89d15758a5e70de7f51ffde2245"
+    },
+    {
+      "source": "STR4TEG15T/handoffs/DECISION_113_IMPLEMENTATION_ROADMAP.md",
+      "classification": "handoff",
+      "target": "STR4TEG15T/memory/handoffs/DECISION_113_IMPLEMENTATION_ROADMAP.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 19988,
+      "sha256": "4ee31c4d09b131baef7a7f3fb6475dc612145cd92b5358011f921852c3b8957e"
+    },
+    {
+      "source": "STR4TEG15T/handoffs/DECISION_113_RACE_CONDITION_ANALYSIS.md",
+      "classification": "handoff",
+      "target": "STR4TEG15T/memory/handoffs/DECISION_113_RACE_CONDITION_ANALYSIS.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 25392,
+      "sha256": "283482abad604538e958569aa0b298cc155def61bb7de9575537f342705d4705"
+    },
+    {
+      "source": "STR4TEG15T/handoffs/DECISION_114_OPENFIXER_HANDOFF_v1.md",
+      "classification": "handoff",
+      "target": "STR4TEG15T/memory/handoffs/DECISION_114_OPENFIXER_HANDOFF_v1.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3586,
+      "sha256": "be0d1a80e7e41e43bd3f9a616a709b3767181d7e8dec1062b52eec8d7830b2a8"
+    },
+    {
+      "source": "STR4TEG15T/handoffs/ROOT_SOURCE_AND_PREVENTION_DECISION_055_v1.md",
+      "classification": "handoff",
+      "target": "STR4TEG15T/memory/handoffs/ROOT_SOURCE_AND_PREVENTION_DECISION_055_v1.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 1627,
+      "sha256": "654e4d11e265ff797af9a9fca1873bcf6df30db7c64ed9e0ce67f92cc4705afa"
+    },
+    {
+      "source": "STR4TEG15T/handoffs/WINDFIXER_DECISION_099_PROMPT.md",
+      "classification": "handoff",
+      "target": "STR4TEG15T/memory/handoffs/WINDFIXER_DECISION_099_PROMPT.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 7284,
+      "sha256": "59612601a926d7d71fe089326b1c54f6d5c5e5044b9739436c30028db1803831"
+    },
+    {
+      "source": "STR4TEG15T/handoffs/windfixer/DECISION_110_P4NTHE0N_REFACTOR_MASTER_HANDOFF.md",
+      "classification": "handoff",
+      "target": "STR4TEG15T/memory/handoffs/windfixer/DECISION_110_P4NTHE0N_REFACTOR_MASTER_HANDOFF.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 13048,
+      "sha256": "e74febd57ad14e22e17f5558f7f2b689fadfd01174492027de7e243811bd83e4"
+    },
+    {
+      "source": "STR4TEG15T/intel/DECISION_LANDSCAPE_SUMMARY.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_LANDSCAPE_SUMMARY.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 10796,
+      "sha256": "6efa9662343842a48b65ca72538ac1add372490443d06258d4558d38d9f2eb42"
+    },
+    {
+      "source": "STR4TEG15T/intel/DECISION_READINESS_REPORT.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_READINESS_REPORT.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 7615,
+      "sha256": "a6ff9cb64ffe3e44a9ff1e3bb21a92ec23a94f56eda82619721aca0674396e48"
+    },
+    {
+      "source": "STR4TEG15T/intel/DESIGNER-REVIEW-ALL-PENDING-DECISIONS.md",
+      "classification": "support_artifact",
+      "target": "STR4TEG15T/memory/reconsolidation/inbox/STR4TEG15T__intel__DESIGNER-REVIEW-ALL-PENDING-DECISIONS.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 9225,
+      "sha256": "d77f8c3089ef8b632b2a2beffee5b4a1821deb80dd42046fd824af552718d620"
+    },
+    {
+      "source": "STR4TEG15T/intel/PRODUCTION_READINESS_DECISIONS.md",
+      "classification": "support_artifact",
+      "target": "STR4TEG15T/memory/reconsolidation/inbox/STR4TEG15T__intel__PRODUCTION_READINESS_DECISIONS.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 6567,
+      "sha256": "d48dba285f946613770ca7679ea4d3e73b06043751f0958a2a7cbeb1ab0eed19"
+    },
+    {
+      "source": "STR4TEG15T/intel/RAG-001_FINAL_DECISION.md",
+      "classification": "support_artifact",
+      "target": "STR4TEG15T/memory/reconsolidation/inbox/STR4TEG15T__intel__RAG-001_FINAL_DECISION.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 8668,
+      "sha256": "5a73040a8260430c87bb0ce0efcb428fbeeb3302a06c8ee807a8fa4be51e6835"
+    },
+    {
+      "source": "STR4TEG15T/intel/gaps/decision-research-questions.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/decision-research-questions.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 17629,
+      "sha256": "cafa94758c6c9b050d2d056e9d81dd9a04b59fff9c0a1ab6e6a4ba92e99e5948"
+    },
+    {
+      "source": "STR4TEG15T/research/DECISION_110_arxiv_research.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_110_arxiv_research.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 9640,
+      "sha256": "799fcdab2ae3112ee07c291693c160854b13ed6b1ed4a3dde42d96fc0880f82d"
+    },
+    {
+      "source": "STR4TEG15T/system/validation/decision-rating-schema.json",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/decision-rating-schema.json",
+      "inCanonicalRoot": false,
+      "sizeBytes": 6005,
+      "sha256": "5ba479d8339193afa02a76641b25a23fc9232a5a701fad976d6deddd4a977950"
+    },
+    {
+      "source": "STR4TEG15T/tools/workspace/memory/decisions.md",
+      "classification": "support_artifact",
+      "target": "STR4TEG15T/memory/reconsolidation/inbox/STR4TEG15T__tools__workspace__memory__decisions.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 58,
+      "sha256": "815512d8272dd26b964e5b5d0734e96f49438da0af814ca997c59b8f7c9d34d9"
+    },
+    {
+      "source": "STR4TEG15T/tools/workspace/skills/senior-architect/references/tech_decision_guide.md",
+      "classification": "support_artifact",
+      "target": "STR4TEG15T/memory/reconsolidation/inbox/STR4TEG15T__tools__workspace__skills__senior-architect__references__tech_decision_guide.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 12405,
+      "sha256": "a6a322d7199aa534640d0ede61431fce0e8232a4bd19a3d9a93c30920b58d51f"
+    },
+    {
+      "source": "T4CT1CS/decisions/active/CORE-H4NDv2-001-Architecture.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/CORE-H4NDv2-001-Architecture.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 24568,
+      "sha256": "144518905e0449882b4964315ab4a4c2fe63232784264b08793f731eda66180d"
+    },
+    {
+      "source": "T4CT1CS/decisions/active/DECISION-REGISTRY-MASTER.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION-REGISTRY-MASTER.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 6141,
+      "sha256": "4a5dc86c8df661cbf60a747d790517e9124d7905ce2bd7269b65a1676a569e73"
+    },
+    {
+      "source": "T4CT1CS/decisions/active/FEAT-FB-001-Facebook-Casino-Discovery.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/FEAT-FB-001-Facebook-Casino-Discovery.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 23909,
+      "sha256": "b1f081404d29784d105f4d01aa4a590dbfeddb8335510968a8bd3b5472adc8e1"
+    },
+    {
+      "source": "T4CT1CS/decisions/active/INFRA-VM-001-HyperV-Infrastructure.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/INFRA-VM-001-HyperV-Infrastructure.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 34813,
+      "sha256": "36cd9c5626e3027a715a40c5f534112c0971b803ce90557d42233df3f6b14773"
+    },
+    {
+      "source": "T4CT1CS/decisions/active/OPS-JP-001-Jackpot-Monitoring.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/OPS-JP-001-Jackpot-Monitoring.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 4970,
+      "sha256": "83afa93469547904ae6a0237c4fd33ebe068b26c9e470f502114fb0d317dbdb8"
+    },
+    {
+      "source": "T4CT1CS/decisions/active/OPS-JP-002-End-to-End-Spin-Verification.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/OPS-JP-002-End-to-End-Spin-Verification.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2364,
+      "sha256": "b113f42676fd899d9f54a8b27d964480e94338ebb7e044db375859f8d317fefd"
+    },
+    {
+      "source": "T4CT1CS/decisions/active/OPS-JP-003-Failure-Recovery-Verification.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/OPS-JP-003-Failure-Recovery-Verification.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2488,
+      "sha256": "1d53067e34a61b1d7c427b2c15c8e145436ebbc43d9cd4974a9df35f14dc8597"
+    },
+    {
+      "source": "T4CT1CS/decisions/active/TECH-FE-015-FourEyes-H4ND-Integration.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/TECH-FE-015-FourEyes-H4ND-Integration.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 41267,
+      "sha256": "736314072e09139032a5921545f0d5eae972fda2806493e7c31bba3330bbfcd7"
+    },
+    {
+      "source": "T4CT1CS/decisions/active/TECH-H4ND-001-Multi-Credential-CDP.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/TECH-H4ND-001-Multi-Credential-CDP.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 36237,
+      "sha256": "d09ab714e58411aec2924a2310918888e3e6feb6e3fe6bfe120903ed31d1afaa"
+    },
+    {
+      "source": "T4CT1CS/decisions/active/TECH-H4ND-001-Single-Credential-CDP.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/TECH-H4ND-001-Single-Credential-CDP.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 26129,
+      "sha256": "59a9ffd7a30eeb01af63cb44027751f06169f5f2e00cc55683e108206f89212a"
+    },
+    {
+      "source": "T4CT1CS/decisions/active/TECH-JP-001-CDP-Connectivity-Validation.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/TECH-JP-001-CDP-Connectivity-Validation.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3669,
+      "sha256": "37f6d2075369ed7034bb289ccbda3a3bae97268a41c8038840d32b6070f3cf69"
+    },
+    {
+      "source": "T4CT1CS/decisions/active/TECH-JP-002-Jackpot-Signal-Pipeline.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/TECH-JP-002-Jackpot-Signal-Pipeline.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 8348,
+      "sha256": "14316754a267885fcfb9b392bc03db8b2ed967a00007e208804a2f9dc700e8c7"
+    },
+    {
+      "source": "T4CT1CS/decisions/consultations/TECH-JP-001-Consultation.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/TECH-JP-001-Consultation.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 3899,
+      "sha256": "ae1bde7b72ce683834b4f70f0057aa7becc1bc4f24c6d8171ccb36ecfa5533ec"
+    },
+    {
+      "source": "T4CT1CS/decisions/consultations/TECH-JP-002-Consultation.md",
+      "classification": "consultation",
+      "target": "STR4TEG15T/memory/consultations/TECH-JP-002-Consultation.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 4663,
+      "sha256": "6fd8e60e6beabd179bea555dbdc8eea72287c091ff2aab98963c22b1e6825485"
+    },
+    {
+      "source": "W1NDF1XER/NEXUS_HANDOFF_DECISION_078.md",
+      "classification": "support_artifact",
+      "target": "STR4TEG15T/memory/reconsolidation/inbox/W1NDF1XER__NEXUS_HANDOFF_DECISION_078.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 12152,
+      "sha256": "2430b92467def92a99765317e477b6890491597d431ae155511821e56fe6fe41"
+    },
+    {
+      "source": "W1NDF1XER/NEXUS_HANDOFF_DECISION_078_v2.1.md",
+      "classification": "support_artifact",
+      "target": "STR4TEG15T/memory/reconsolidation/inbox/W1NDF1XER__NEXUS_HANDOFF_DECISION_078_v2.1.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 4141,
+      "sha256": "4e06a49af12e9f7c4e8dc396399ec0f980eb06ea6f6ccef5c1fe75abf94e5a8a"
+    },
+    {
+      "source": "W1NDF1XER/deployments/DECISION_088_TUI_CONDITIONAL_LOGIC.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/DECISION_088_TUI_CONDITIONAL_LOGIC.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 13320,
+      "sha256": "84d144cecd5a7d9203250a2a557560816e05035c0cb9c84136712c712150ea4c"
+    },
+    {
+      "source": "W1NDF1XER/deployments/REPORT_2026-02-20_DECISION047_ShadowValidation.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/REPORT_2026-02-20_DECISION047_ShadowValidation.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 2783,
+      "sha256": "cf31c6337cb5d80f1a5aea5716ce072f20163d3a6c8672bf9020806312e82d4e"
+    },
+    {
+      "source": "W1NDF1XER/deployments/REPORT_2026-02-21_DECISION056_CdpLifecycle.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/REPORT_2026-02-21_DECISION056_CdpLifecycle.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 4339,
+      "sha256": "402888527eca6cdc9d687e77616d1a2d16103aa05e0ef43cc0bfa706b6723636"
+    },
+    {
+      "source": "W1NDF1XER/deployments/REPORT_2026-02-21_DECISIONS_057-060.md",
+      "classification": "deployment_journal",
+      "target": "STR4TEG15T/memory/deployments/REPORT_2026-02-21_DECISIONS_057-060.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 5361,
+      "sha256": "37437779114334d0e2e971e19c3c9607d1ca12692519a902d058d5c4ea43af3e"
+    },
+    {
+      "source": "docs/DECISION_CLUSTERS.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/DECISION_CLUSTERS.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 1790,
+      "sha256": "a20cf2c67ca4ea4b9a85abd7a3b1891b16371e7f5d6a3ca06ba0da2d0fce7d54"
+    },
+    {
+      "source": "docs/decision-schema-v2.json",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/decision-schema-v2.json",
+      "inCanonicalRoot": false,
+      "sizeBytes": 8639,
+      "sha256": "7a92b7e895f8b0937aa61fdc695cb330b80817a287dc25fb54a729870b247419"
+    },
+    {
+      "source": "docs/decisions/ARCH-004-strategist-agency.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/ARCH-004-strategist-agency.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 19108,
+      "sha256": "698c02616f9bc592dacad2e4be7ea28ad7e46529f10169d8072d7ae0a4f55861"
+    },
+    {
+      "source": "docs/decisions/RAG-001-rag-context-layer.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/RAG-001-rag-context-layer.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 27083,
+      "sha256": "19012c60c0f64518ede6cdc33eb510411b3ee31e9503d411aafa184d25831f4f"
+    },
+    {
+      "source": "docs/decisions/RAG-002-file-ingestion.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/RAG-002-file-ingestion.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 21550,
+      "sha256": "7649e302af32f579be152dd2bb165c24a670c8a8a82916bf4538949a2c85d714"
+    },
+    {
+      "source": "docs/decisions/RAG-003-windsurf-capture.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/RAG-003-windsurf-capture.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 27992,
+      "sha256": "e23b5afb0e0aa6865b9f7fb0b98d8e9defb533568a31353964f9d4b268d7ed9e"
+    },
+    {
+      "source": "docs/decisions/arxiv-research-decisions.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/arxiv-research-decisions.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 10335,
+      "sha256": "34168f5d185e2a9c7bf89fe12f93c67e52d20cdb9e020b9128ba42d290fca5a3"
+    },
+    {
+      "source": "docs/decisions/designer-strategies.md",
+      "classification": "decision_record",
+      "target": "STR4TEG15T/memory/decisions/designer-strategies.md",
+      "inCanonicalRoot": false,
+      "sizeBytes": 5793,
+      "sha256": "0a57a7f1c6014c527385e31c40e156b558d73f304ed75782a03420bc11ab8b46"
+    },
+    {
+      "source": "temp_insert_decisions.json",
+      "classification": "support_artifact",
+      "target": "STR4TEG15T/memory/reconsolidation/inbox/temp_insert_decisions.json",
+      "inCanonicalRoot": false,
+      "sizeBytes": 8982,
+      "sha256": "9fe12a14c5dc50524771f828df0fffcdd3b98ae9e78cbcae61fddcdddaba5da9"
+    }
+  ]
+}

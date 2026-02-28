@@ -1,0 +1,56 @@
+{
+    "trigger": "=",
+    "comment": "Calculator",
+    "filterable": false,
+    "events": "enterEvent, filterEvent",
+    "script": "(event, filter, selection) => {
+        let text = window.activeText;
+        let items = [];
+
+        if (event == 'enterEvent') {
+            items = [{ 'title': 'Please enter the formula' }];
+        } else if (event == 'filterEvent') {
+            const values = [
+                'E', 'LN10', 'LN2', 'LOG2E', 'LOG10E', 'PI', 'SQRT1_2', 'SQRT2'
+            ];
+            const methods = [
+                'abs', 'acos', 'acosh', 'asin', 'asinh', 'atan', 'atanh', 'atan2',
+                'cbrt', 'ceil', 'clz32', 'cos', 'cosh', 'exp', 'expm1', 'floor', 'fround',
+                'hypot', 'imul', 'log', 'log10', 'log1p', 'log2', 'max', 'min', 'pow',
+                'random', 'round', 'sign', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'trunc'
+            ];
+            let re = new RegExp(`(?:\\w+\\.)?((${values.join('|')})|(${methods.join('|')})(?=\\\\())`, 'g');
+            filter = filter.replace(re, 'Math.$1');
+
+            try {
+                if (filter.length == 0) {
+                    items = [{ 'title': 'Please enter the formula' }];
+                } else {
+                    items = [{ 'title': `${eval(filter)}` }];
+                }
+            } catch (err) {
+                items = [
+                    { 'title': `Invalid formula: ${err.message}`, 'icon': 'king::warning' },
+                    { 'title': 'List of available values and methods', 'icon': 'king::label' }
+                ];
+                let match = /[a-z_]+$/i.exec(filter);
+                let filtedValues = values.filter(value => value.startsWith(match ? match[0] : ''));
+                let filtedMethods = methods.filter(method => method.startsWith(match ? match[0] : ''));
+
+                if (filtedValues.length == 0 && filtedMethods.length == 0) {
+                    filtedValues = values;
+                    filtedMethods = methods;
+                }
+
+                for (let value of filtedValues) {
+                    items.push({ 'title': value, 'subtitle': 'value' });
+                }
+
+                for (let method of filtedMethods) {
+                    items.push({ 'title': method, 'subtitle': 'method' });
+                }
+            }
+        }
+        return items;
+    }"
+}

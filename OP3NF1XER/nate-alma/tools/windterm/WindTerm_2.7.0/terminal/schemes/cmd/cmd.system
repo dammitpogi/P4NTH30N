@@ -1,0 +1,11 @@
+//WindTerm Cmd System
+//Version: 1.0
+{
+	"System": "cmd",
+	"Catalog": "cmd",
+	"Abbreviation": "Cmd",
+	"Description": "Cmd",
+	"CaseSensitive": false,
+	"lexer": "source.cmd",
+	"supportsDetectShellCwd": true
+}

@@ -1,0 +1,16 @@
+# Geopolitics, tech, context for 2025
+
+> In this article, I will outline the key elements of the geopolitical chess game to provide context for current events and market movements.
+
+**Date:** unknown
+**Source:** https://stochvoltrader.substack.com/p/geopolitics-tech-context
+
+---
+
+Market analysisGeopolitics, tech, context for 2025Mar 02, 2025∙ Paid7197ShareIn this article, I will outline the key elements of the geopolitical chess game to provide context for current events and market movements. The past year in the markets was all about preparing for Trump’s victory, as I noted in February. Now we are going to examine what this year’s story is.The information comes from friends working in intelligence agencies and Middle Eastern insiders. Everything is going to change…Culture, religion The soul of every society and nation is its culture. This was true in ancient times, and it remains true in the modern era—whether that culture is based on religion, philosophy, sociological structures, or even a pseudo-culture.Yet, throughout history, the underlying interests have always remained the same: natural resources, arable land, water, and security. And that is exactly what it’s about today. Loyalty and alliances between nations and their leaders are formed on cultural and religious foundations. The more common ground they share, the stronger the bond. And the more value a nation can bring to the negotiating table—along with effective leverage (such as military power or economic influence)—the stronger its bargaining position becomes. These are fundamental aspects to understand. Continue reading this post for free, courtesy of Alma.Claim my free postOr purchase a paid subscription.PreviousNext
+
+---
+
+## Captured Comments (Raw)
+
+_No comments captured on this page load._

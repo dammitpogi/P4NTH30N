@@ -1,0 +1,53 @@
+description: Removes DNS suffixes previously configured as trusted networks from the
+  VPN profile
+synopses:
+- Remove-VpnConnectionTriggerTrustedNetwork [-ConnectionName] <String> [-DnsSuffix]
+  <String[]> [-PassThru] [-Force] [-CimSession <CimSession[]>] [-ThrottleLimit <Int32>]
+  [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+options:
+  -AsJob Switch: ~
+  -CimSession,-Session CimSession[]: ~
+  -Confirm,-cf Switch: ~
+  -ConnectionName,-Name String:
+    required: true
+  -DnsSuffix,-TrustedNetwork String[]:
+    required: true
+  -Force Switch: ~
+  -PassThru Switch: ~
+  -ThrottleLimit Int32: ~
+  -WhatIf,-wi Switch: ~
+  -Debug,-db Switch: ~
+  -ErrorAction,-ea ActionPreference:
+    values:
+    - Break
+    - Suspend
+    - Ignore
+    - Inquire
+    - Continue
+    - Stop
+    - SilentlyContinue
+  -ErrorVariable,-ev String: ~
+  -InformationAction,-ia ActionPreference:
+    values:
+    - Break
+    - Suspend
+    - Ignore
+    - Inquire
+    - Continue
+    - Stop
+    - SilentlyContinue
+  -InformationVariable,-iv String: ~
+  -OutVariable,-ov String: ~
+  -OutBuffer,-ob Int32: ~
+  -PipelineVariable,-pv String: ~
+  -Verbose,-vb Switch: ~
+  -WarningAction,-wa ActionPreference:
+    values:
+    - Break
+    - Suspend
+    - Ignore
+    - Inquire
+    - Continue
+    - Stop
+    - SilentlyContinue
+  -WarningVariable,-wv String: ~

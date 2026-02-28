@@ -1,0 +1,36 @@
+[
+  {
+    "name": "chromium-incognito",
+    "url": "https://substack.com/sign-in",
+    "hasThrottle": true,
+    "hasCheckEmail": false,
+    "otpVisible": false,
+    "ok": true
+  },
+  {
+    "name": "chromium-profile-A",
+    "url": "https://substack.com/sign-in",
+    "hasThrottle": true,
+    "hasCheckEmail": false,
+    "otpVisible": false,
+    "ok": true
+  },
+  {
+    "name": "chromium-profile-B",
+    "url": "https://substack.com/sign-in",
+    "hasThrottle": true,
+    "hasCheckEmail": false,
+    "otpVisible": false,
+    "ok": true
+  },
+  {
+    "name": "firefox-incognito",
+    "ok": false,
+    "error": "browserType.launch: Executable doesn't exist at C:\\Users\\paulc\\AppData\\Local\\ms-playwright\\firefox-1509\\firefox\\firefox.exe\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
+  },
+  {
+    "name": "webkit-incognito",
+    "ok": false,
+    "error": "browserType.launch: Executable doesn't exist at C:\\Users\\paulc\\AppData\\Local\\ms-playwright\\webkit-2248\\Playwright.exe\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
+  }
+]

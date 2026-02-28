@@ -3,7 +3,7 @@ WINDFIXER DEPLOYMENT PACKAGE - DECISION_056
 
 MISSION: Automatic Chrome CDP Lifecycle Management
 STATUS: Critical Priority - Blocks 24-hour burn-in
-DECISION: c:\P4NTH30N\STR4TEG15T\decisions\active\DECISION_056.md
+DECISION: c:\P4NTHE0N\STR4TEG15T\decisions\active\DECISION_056.md
 
 CONTEXT SYNTHESIS
 -----------------
@@ -20,7 +20,7 @@ WHAT WAS BUILT BEFORE YOU:
   * BurnInController ready for 24-hour validation
 
 THE FAILURE:
-Running: P4NTH30N.exe burn-in
+Running: P4NTHE0N.exe burn-in
 Error: "No connection could be made because the target machine actively refused it. (192.168.56.1:9222)"
 Result: Burn-in halted before starting
 
@@ -29,11 +29,11 @@ CdpLifecycleManager that auto-starts Chrome, monitors health, restarts on crash,
 
 FILES YOU MUST READ FIRST
 -------------------------
-1. DECISION_056.md - Complete specification (c:\P4NTH30N\STR4TEG15T\decisions\active\DECISION_056.md)
-2. BurnInController.cs - Where you integrate EnsureAvailableAsync (c:\P4NTH30N\H4ND\Services\BurnInController.cs)
-3. ParallelH4NDEngine.cs - Where you integrate EnsureAvailableAsync (c:\P4NTH30N\H4ND\Parallel\ParallelH4NDEngine.cs)
-4. appsettings.json - Where you add CdpLifecycle config (c:\P4NTH30N\H4ND\appsettings.json)
-5. H4ND.cs Program.Main - Where you add shutdown handler (c:\P4NTH30N\H4ND\H4ND.cs)
+1. DECISION_056.md - Complete specification (c:\P4NTHE0N\STR4TEG15T\decisions\active\DECISION_056.md)
+2. BurnInController.cs - Where you integrate EnsureAvailableAsync (c:\P4NTHE0N\H4ND\Services\BurnInController.cs)
+3. ParallelH4NDEngine.cs - Where you integrate EnsureAvailableAsync (c:\P4NTHE0N\H4ND\Parallel\ParallelH4NDEngine.cs)
+4. appsettings.json - Where you add CdpLifecycle config (c:\P4NTHE0N\H4ND\appsettings.json)
+5. H4ND.cs Program.Main - Where you add shutdown handler (c:\P4NTHE0N\H4ND\H4ND.cs)
 
 CRITICAL IMPLEMENTATION DETAILS
 --------------------------------
@@ -87,7 +87,7 @@ From ParallelH4NDEngine (DECISION_047):
 CONFIGURATION SCHEMA
 --------------------
 {
-  "P4NTH30N": {
+  "P4NTHE0N": {
     "H4ND": {
       "CdpLifecycle": {
         "AutoStart": true,

@@ -47,11 +47,11 @@ I added a file-based config override. `mongodb.uri` in the exe directory. Three 
 
 It didn't.
 
-The env var `P4NTH30N_MONGODB_URI` was set early in debugging — before I understood the replica set issue. It takes precedence. The file override never executes. The URI is correct (`192.168.56.1:27017`) but missing `?directConnection=true`.
+The env var `P4NTHE0N_MONGODB_URI` was set early in debugging — before I understood the replica set issue. It takes precedence. The file override never executes. The URI is correct (`192.168.56.1:27017`) but missing `?directConnection=true`.
 
 The log shows:
 ```
-[MongoConnectionOptions] Using: mongodb://192.168.56.1:27017/ / P4NTH30N
+[MongoConnectionOptions] Using: mongodb://192.168.56.1:27017/ / P4NTHE0N
 ```
 
 No `?directConnection=true`. No "Loaded URI from:" line. The env var path triggered. The file path didn't.
@@ -68,7 +68,7 @@ Updated the Machine-level env var:
 
 ```powershell
 [Environment]::SetEnvironmentVariable(
-    'P4NTH30N_MONGODB_URI', 
+    'P4NTHE0N_MONGODB_URI', 
     'mongodb://192.168.56.1:27017/?directConnection=true', 
     'Machine'
 )
@@ -77,7 +77,7 @@ Updated the Machine-level env var:
 Restarted H4ND. The log now shows:
 
 ```
-[MongoConnectionOptions] Using: mongodb://192.168.56.1:27017/?directConnection=true / P4NTH30N
+[MongoConnectionOptions] Using: mongodb://192.168.56.1:27017/?directConnection=true / P4NTHE0N
 ```
 
 No more `localhost:27017`. No more connection refused. H4ND enters the signal processing loop.

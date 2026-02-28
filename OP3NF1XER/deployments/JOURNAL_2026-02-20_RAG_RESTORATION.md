@@ -32,13 +32,13 @@ The RAG server was actually **already healthy**. The perceived "unhealthy" statu
 
 ### 1. Started Bridge Service (ACT-049-003) ✅
 ```bash
-python "C:/P4NTH30N/src/RAG/PythonBridge/embedding_bridge.py"
+python "C:/P4NTHE0N/src/RAG/PythonBridge/embedding_bridge.py"
 ```
 - **Result**: Bridge now running on http://127.0.0.1:5000
 - **Health**: `{"status":"healthy","model_loaded":true}`
 
 ### 2. Verified RAG.McpHost.exe (ACT-049-001) ✅
-- **Location**: `C:/ProgramData/P4NTH30N/bin/RAG.McpHost.exe`
+- **Location**: `C:/ProgramData/P4NTHE0N/bin/RAG.McpHost.exe`
 - **Size**: 121MB
 - **Status**: Already running (PID 18160)
 - **Port**: 5001 (confirmed bound)
@@ -46,10 +46,10 @@ python "C:/P4NTH30N/src/RAG/PythonBridge/embedding_bridge.py"
 ### 3. Verified Dependencies (ACT-049-002) ✅
 | Dependency | Path | Status |
 |------------|------|--------|
-| Model File | `C:/ProgramData/P4NTH30N/models/all-MiniLM-L6-v2.onnx` | ✅ 90MB |
-| Index Dir | `C:/ProgramData/P4NTH30N/rag-index` | ✅ Exists (empty) |
+| Model File | `C:/ProgramData/P4NTHE0N/models/all-MiniLM-L6-v2.onnx` | ✅ 90MB |
+| Index Dir | `C:/ProgramData/P4NTHE0N/rag-index` | ✅ Exists (empty) |
 | Bridge | http://127.0.0.1:5000 | ✅ Running |
-| MongoDB | mongodb://localhost:27017/P4NTH30N | ✅ Connected |
+| MongoDB | mongodb://localhost:27017/P4NTHE0N | ✅ Connected |
 
 ### 4. Verified MCP Protocol (ACT-049-005) ✅
 ```bash
@@ -142,8 +142,8 @@ None - this was a verification and service restart operation.
 
 ## Logs
 
-- Bridge logs: `C:/ProgramData/P4NTH30N/logs/bridge.log`
-- RAG logs: `C:/ProgramData/P4NTH30N/logs/rag.log`
+- Bridge logs: `C:/ProgramData/P4NTHE0N/logs/bridge.log`
+- RAG logs: `C:/ProgramData/P4NTHE0N/logs/rag.log`
 
 ---
 

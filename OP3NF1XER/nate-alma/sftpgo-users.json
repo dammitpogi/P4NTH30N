@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "username": "openclaw",
+      "password": "openclaw-transfer-2026",
+      "home_dir": "/srv/sftpgo/openclaw",
+      "permissions": ["*"],
+      "status": 1
+    }
+  ]
+}

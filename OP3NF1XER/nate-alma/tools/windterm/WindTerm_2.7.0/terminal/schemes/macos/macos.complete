@@ -1,0 +1,17 @@
+{
+	"regions":
+	[
+		{
+			"scope": "prompt.line.macos",
+			"icon": "king::k",
+			"pull": true,
+			"push": true,
+			"triggers": [
+				{
+					"scope": "prompt.line.macos",
+					"match": "\\b\\S++"
+				}
+			]
+		}
+	]
+}

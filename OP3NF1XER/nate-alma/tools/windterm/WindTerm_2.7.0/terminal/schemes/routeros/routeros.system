@@ -1,0 +1,10 @@
+//WindTerm RouterOS System
+//Version: 1.0
+{
+	"System": "routeros",
+	"Catalog": "routeros",
+	"Abbreviation": "RouterOS",
+	"Description": "RouterOS",
+	"CaseSensitive": true,
+	"lexer": "source.routeros"
+}

@@ -1,0 +1,21 @@
+// This document is private and proprietary, and is the property of WindTerm, all rights reserved.
+// Use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies is NOT allowed.
+{
+	//Telnet protocol setting
+	"protocol" : {
+		"refs" : {
+			"SE"  : "\\xF0",
+			"SB"  : "\\xFA",
+			"WILL": "\\xFB",
+			"WONT": "\\xFC",
+			"DO"  : "\\xFD",
+			"DONT": "\\xFE",
+			"IAC" : "\\xFF"
+		},
+		"match" : "(?x) (?&IAC) (
+			  (?<NegotiateOption>       (?<command> (?&DO)|(?&DONT)|(?&WILL)|(?&WONT)) (?<option> .))
+			| (?<NegotiateSubOption>    (?&SB) (?<option> .) (?<action> .) (?&IAC) (?&SE))
+			| (?<IgnoreWrongIAC>        (?<command> .))
+		)"
+	}
+}

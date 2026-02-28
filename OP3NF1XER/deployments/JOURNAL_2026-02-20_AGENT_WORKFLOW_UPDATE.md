@@ -18,7 +18,7 @@ The Pantheon agent system has two coexisting primary workflows:
 
 Both workflows use the same subagents. The previous agent prompts incorrectly stated that all agents "no longer report to Orchestrator" and "consult directly with Strategist." This was inaccurate — subagents are deployer-agnostic and work for whoever calls them.
 
-This session updated all 13 agent files across both the OpenCode config directory and the P4NTH30N repo to reflect the dual-workflow reality and codify proven patterns as canon.
+This session updated all 13 agent files across both the OpenCode config directory and the P4NTHE0N repo to reflect the dual-workflow reality and codify proven patterns as canon.
 
 ---
 
@@ -41,7 +41,7 @@ This session updated all 13 agent files across both the OpenCode config director
 | **four_eyes.md** | Added "Your Role in the Workflow" section with canon patterns |
 | **forgewright.md** | Added "Your Role in the Workflow" section with canon patterns |
 
-### P4NTH30N Repo Agent Prompts
+### P4NTHE0N Repo Agent Prompts
 
 | File | Changes |
 |------|---------|

@@ -1,0 +1,11 @@
+//WindTerm WSL System
+//Version: 1.0
+{
+	"System": "wsl",
+	"Catalog": "wsl",
+	"Abbreviation": "wsl",
+	"Description": "Windows Subsystem for Linux",
+	"CaseSensitive": true,
+	"lexer": "source.wsl",
+	"supportsDetectShellCwd": true
+}

@@ -1,0 +1,240 @@
+// This document is private and proprietary, and is the property of WindTerm, all rights reserved.
+// Use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies is NOT allowed.
+{
+	"input" : {
+		"refs": {
+			"ESC": "\\e"
+		},
+		"match": "(?x)
+			(?&ESC) (
+			  (?<MoveCursorUp>                      A)
+			| (?<MoveCursorDown>                    B)
+			| (?<MoveCursorForward>                 C)
+			| (?<MoveCursorBackward>                D)
+			| (?<Vt52EnterGraphicsMode>             F)
+			| (?<Vt52ExitGraphicsMode>              G)
+			| (?<MoveCursor>                        H)
+			| (?<ScrollCursorUp>                    I)
+			| (?<EraseScreen>                       J)
+			| (?<EraseLine>                         K)
+			| (?<PrintCursorLine>                   V) # Not Supported
+			| (?<EnterPrinterControllerMode>        W) # Not Supported
+			| (?<ExitPrinterControllerMode>         X) # Not Supported
+			| (?<Vt52MoveCursor>                    Y  (?<line> .) (?<column> .))
+			| (?<Vt52Identify>                      Z)
+			| (?<ExitAnsiMode>                      <)
+			| (?<EnterAltKeypadMode>                =)
+			| (?<ExitAltKeypadMode>                 >)
+			| (?<PrintScreen>                     \\]) # Not Supported
+			| (?<EnterAutoprintMode>              \\^) # Not Supported
+			| (?<ExitAutoprintMode>                 _) # Not Supported
+			)
+		"
+	},
+	"output" : {
+		"normal" : {
+			"<Backspace>"                : "\b",
+			"<Return>"                   : "\r",
+			"<Tab>"                      : "\t",
+			"<Space>"                    : "\u0020",
+			"<Up>"                       : "\u001bA",
+			"<Down>"                     : "\u001bB",
+			"<Right>"                    : "\u001bC",
+			"<Left>"                     : "\u001bD",
+			"<Home>"                     : "\u001b[1~",
+			"<Ins>"                      : "\u001b[2~",
+			"<Del>"                      : "\u001b[3~",
+			"<End>"                      : "\u001b[4~",
+			"<PgUp>"                     : "\u001b[5~",
+			"<PgDown>"                   : "\u001b[6~",
+			"<F1>"                       : "\u001bP",
+			"<F2>"                       : "\u001bQ",
+			"<F3>"                       : "\u001bR",
+			"<F4>"                       : "\u001bS",
+			"<Alt+Space>"                : "\u0020",
+			"<Alt+Up>"                   : "\u001b[1;3A",
+			"<Alt+Down>"                 : "\u001b[1;3B",
+			"<Alt+Right>"                : "\u001b[1;3C",
+			"<Alt+Left>"                 : "\u001b[1;3D",
+			"<Alt+End>"                  : "\u001b[1;3F",
+			"<Alt+Home>"                 : "\u001b[1;3H",
+			"<Alt+Ins>"                  : "\u001b[2;3~",
+			"<Alt+Del>"                  : "\u001b[3;3~",
+			"<Alt+PgUp>"                 : "\u001b[5;3~",
+			"<Alt+PgDown>"               : "\u001b[6;3~",
+			"<Alt+F1>"                   : "\u001b[1;3P",
+			"<Alt+F2>"                   : "\u001b[1;3Q",
+			"<Alt+F3>"                   : "\u001b[1;3R",
+			"<Alt+F4>"                   : "\u001b[1;3S",
+			"<Ctrl+Up>"                  : "\u001b[1;5A",
+			"<Ctrl+Down>"                : "\u001b[1;5B",
+			"<Ctrl+Right>"               : "\u001b[1;5C",
+			"<Ctrl+Left>"                : "\u001b[1;5D",
+			"<Ctrl+End>"                 : "\u001b[1;5F",
+			"<Ctrl+Home>"                : "\u001b[1;5H",
+			"<Ctrl+Ins>"                 : "\u001b[2;5~",
+			"<Ctrl+Del>"                 : "\u001b[3;5~",
+			"<Ctrl+PgUp>"                : "\u001b[5;5~",
+			"<Ctrl+PgDown>"              : "\u001b[6;5~",
+			"<Ctrl+F1>"                  : "\u001b[1;5P",
+			"<Ctrl+F2>"                  : "\u001b[1;5Q",
+			"<Ctrl+F3>"                  : "\u001b[1;5R",
+			"<Ctrl+F4>"                  : "\u001b[1;5S",
+			"<Shift+Space>"              : "\u0020",
+			"<Shift+Up>"                 : "\u001b[1;2A",
+			"<Shift+Down>"               : "\u001b[1;2B",
+			"<Shift+Right>"              : "\u001b[1;2C",
+			"<Shift+Left>"               : "\u001b[1;2D",
+			"<Shift+End>"                : "\u001b[1;2F",
+			"<Shift+Home>"               : "\u001b[1;2H",
+			"<Shift+Ins>"                : "\u001b[2;2~",
+			"<Shift+Del>"                : "\u001b[3;2~",
+			"<Shift+PgUp>"               : "\u001b[5;2~",
+			"<Shift+PgDown>"             : "\u001b[6;2~",
+			"<Shift+Tab>"                : "\u001b[Z",
+			"<Shift+F1>"                 : "\u001b[1;2P",
+			"<Shift+F2>"                 : "\u001b[1;2Q",
+			"<Shift+F3>"                 : "\u001b[1;2R",
+			"<Shift+F4>"                 : "\u001b[1;2S",
+			"<Alt+Ctrl+Up>"              : "\u001b[1;7A",
+			"<Alt+Ctrl+Down>"            : "\u001b[1;7B",
+			"<Alt+Ctrl+Right>"           : "\u001b[1;7C",
+			"<Alt+Ctrl+Left>"            : "\u001b[1;7D",
+			"<Alt+Ctrl+End>"             : "\u001b[1;7F",
+			"<Alt+Ctrl+Home>"            : "\u001b[1;7H",
+			"<Alt+Ctrl+Ins>"             : "\u001b[2;7~",
+			"<Alt+Ctrl+Del>"             : "\u001b[3;7~",
+			"<Alt+Ctrl+PgUp>"            : "\u001b[5;7~",
+			"<Alt+Ctrl+PgDown>"          : "\u001b[6;7~",
+			"<Alt+Ctrl+F1>"              : "\u001b[1;7P",
+			"<Alt+Ctrl+F2>"              : "\u001b[1;7Q",
+			"<Alt+Ctrl+F3>"              : "\u001b[1;7R",
+			"<Alt+Ctrl+F4>"              : "\u001b[1;7S",
+			"<Alt+Shift+Space>"          : "\u0020",
+			"<Alt+Shift+Up>"             : "\u001b[1;4A",
+			"<Alt+Shift+Down>"           : "\u001b[1;4B",
+			"<Alt+Shift+Right>"          : "\u001b[1;4C",
+			"<Alt+Shift+Left>"           : "\u001b[1;4D",
+			"<Alt+Shift+End>"            : "\u001b[1;4F",
+			"<Alt+Shift+Home>"           : "\u001b[1;4H",
+			"<Alt+Shift+Ins>"            : "\u001b[2;4~",
+			"<Alt+Shift+Del>"            : "\u001b[3;4~",
+			"<Alt+Shift+PgUp>"           : "\u001b[5;4~",
+			"<Alt+Shift+PgDown>"         : "\u001b[6;4~",
+			"<Alt+Shift+F1>"             : "\u001b[1;4P",
+			"<Alt+Shift+F2>"             : "\u001b[1;4Q",
+			"<Alt+Shift+F3>"             : "\u001b[1;4R",
+			"<Alt+Shift+F4>"             : "\u001b[1;4S",
+			"<Ctrl+Shift+Up>"            : "\u001b[1;6A",
+			"<Ctrl+Shift+Down>"          : "\u001b[1;6B",
+			"<Ctrl+Shift+Right>"         : "\u001b[1;6C",
+			"<Ctrl+Shift+Left>"          : "\u001b[1;6D",
+			"<Ctrl+Shift+End>"           : "\u001b[1;6F",
+			"<Ctrl+Shift+Home>"          : "\u001b[1;6H",
+			"<Ctrl+Shift+Ins>"           : "\u001b[2;6~",
+			"<Ctrl+Shift+Del>"           : "\u001b[3;6~",
+			"<Ctrl+Shift+PgUp>"          : "\u001b[5;6~",
+			"<Ctrl+Shift+PgDown>"        : "\u001b[6;6~",
+			"<Ctrl+Shift+F1>"            : "\u001b[1;6P",
+			"<Ctrl+Shift+F2>"            : "\u001b[1;6Q",
+			"<Ctrl+Shift+F3>"            : "\u001b[1;6R",
+			"<Ctrl+Shift+F4>"            : "\u001b[1;6S",
+			"<Alt+Ctrl+Shift+Up>"        : "\u001b[1;8A",
+			"<Alt+Ctrl+Shift+Down>"      : "\u001b[1;8B",
+			"<Alt+Ctrl+Shift+Right>"     : "\u001b[1;8C",
+			"<Alt+Ctrl+Shift+Left>"      : "\u001b[1;8D",
+			"<Alt+Ctrl+Shift+End>"       : "\u001b[1;8F",
+			"<Alt+Ctrl+Shift+Home>"      : "\u001b[1;8H",
+			"<Alt+Ctrl+Shift+Ins>"       : "\u001b[2;8~",
+			"<Alt+Ctrl+Shift+Del>"       : "\u001b[3;8~",
+			"<Alt+Ctrl+Shift+PgUp>"      : "\u001b[5;8~",
+			"<Alt+Ctrl+Shift+PgDown>"    : "\u001b[6;8~",
+			"<Alt+Ctrl+Shift+F1>"        : "\u001b[1;8P",
+			"<Alt+Ctrl+Shift+F2>"        : "\u001b[1;8Q",
+			"<Alt+Ctrl+Shift+F3>"        : "\u001b[1;8R",
+			"<Alt+Ctrl+Shift+F4>"        : "\u001b[1;8S",
+			"<Ctrl+`>"                   : "\u0000", //NUL   (Null)
+			"<Ctrl+Space>"               : "\u0000", //NUL   (Null)
+			"<Ctrl+Shift+@>"             : "\u0000", //NUL   (Null)
+			"<Ctrl+A>"                   : "\u0001", //SOH   (Start of Header)
+			"<Ctrl+B>"                   : "\u0002", //STX   (Start of Text)
+			"<Ctrl+C>"                   : "\u0003", //ETX   (End of Text)
+			"<Ctrl+D>"                   : "\u0004", //EOT   (End of Transmission)
+			"<Ctrl+E>"                   : "\u0005", //ENQ   (Enquiry)
+			"<Ctrl+F>"                   : "\u0006", //ACK   (Acknowledge)
+			"<Ctrl+G>"                   : "\u0007", //BEL   (Bell)
+			"<Ctrl+H>"                   : "\u0008", //BS    (BackSpace)
+			"<Ctrl+I>"                   : "\u0009", //HT    (Horizontal Tabulation)
+			"<Ctrl+J>"                   : "\u000a", //LF    (Line Feed)
+			"<Ctrl+K>"                   : "\u000b", //VT    (Vertical Tabulation)
+			"<Ctrl+L>"                   : "\u000c", //FF    (Form Feed)
+			"<Ctrl+M>"                   : "\u000d", //CR    (Carriage Return)
+			"<Ctrl+N>"                   : "\u000e", //SO    (Shift Out)
+			"<Ctrl+O>"                   : "\u000f", //SI    (Shift In)
+			"<Ctrl+P>"                   : "\u0010", //DLE   (Data Link Escape)
+			"<Ctrl+Q>"                   : "\u0011", //DC1   (Device Control 1 (XON))
+			"<Ctrl+R>"                   : "\u0012", //DC2   (Device Control 2)
+			"<Ctrl+S>"                   : "\u0013", //DC3   (Device Control 3 (XOFF))
+			"<Ctrl+T>"                   : "\u0014", //DC4   (Device Control 4)
+			"<Ctrl+U>"                   : "\u0015", //NAK   (Negative acknowledge)
+			"<Ctrl+V>"                   : "\u0016", //SYN   (Synchronous Idle)
+			"<Ctrl+W>"                   : "\u0017", //ETB   (End of Transmission Block)
+			"<Ctrl+X>"                   : "\u0018", //CAN   (Cancel)
+			"<Ctrl+Y>"                   : "\u0019", //EM    (End of Medium)
+			"<Ctrl+Z>"                   : "\u001a", //SUB   (Substitute)
+			"<Ctrl+[>"                   : "\u001b", //ESC   (Escape)
+			"<Ctrl+\\>"                  : "\u001c", //FS    (File Separator)
+			"<Ctrl+]>"                   : "\u001d", //GS    (Group Separator)
+			"<Ctrl+Shift+^>"             : "\u001e", //RS    (Record Separator)
+			"<Ctrl+Shift+~>"             : "\u001e", //RS    (Record Separator)
+			"<Ctrl+/>"                   : "\u001f", //US    (Unit Separator)
+			"<Ctrl+Shift+?>"             : "\u007f", //DEL   (Delete)
+			"<Ctrl+Tab>"                 : "\u0009", //HT    (Horizontal Tabulation)
+			"<Ctrl+Enter>"               : "\u000d", //CR    (Carriage Return)
+			"<Ctrl+Return>"              : "\u000a", //LF    (Line Feed)
+			"<Ctrl+Delete>"              : "\u0018", //CAN   (Cancel)
+			"<Num+Up>"                   : "\u001bA",
+			"<Num+Down>"                 : "\u001bB",
+			"<Num+Right>"                : "\u001bC",
+			"<Num+Left>"                 : "\u001bD",
+			"<Num+Home>"                 : "\u001b[1~",
+			"<Num+Ins>"                  : "\u001b[2~",
+			"<Num+Del>"                  : "\u001b[3~",
+			"<Num+End>"                  : "\u001b[4~",
+			"<Num+PgUp>"                 : "\u001b[5~",
+			"<Num+PgDown>"               : "\u001b[6~"
+		},
+		"application" : {
+			"<Up>"                       : "\u001bA",
+			"<Down>"                     : "\u001bB",
+			"<Right>"                    : "\u001bC",
+			"<Left>"                     : "\u001bD",
+			"<Home>"                     : "\u001b?H",
+			"<End>"                      : "\u001b?F",
+			"<Space>"                    : "\u001b? ",
+			"<Tab>"                      : "\u001b?I",
+			"<Num+Enter>"                : "\u001b?M",
+			"<F1>"                       : "\u001bP",
+			"<F2>"                       : "\u001bQ",
+			"<F3>"                       : "\u001bR",
+			"<F4>"                       : "\u001bS",
+			"<Num+*>"                    : "\u001b?j",
+			"<Num++>"                    : "\u001b?k",
+			"<Num+,>"                    : "\u001b?l",
+			"<Num+->"                    : "\u001b?m",
+			"<Num+Del>"                  : "\u001b?n",
+			"<Num+/>"                    : "\u001b?o",
+			"<Num+Ins>"                  : "\u001b?p",
+			"<Num+End>"                  : "\u001b?q",
+			"<Num+Down>"                 : "\u001b?r",
+			"<Num+PgDown>"               : "\u001b?s",
+			"<Num+Left>"                 : "\u001b?t",
+			"<Num+Clear>"                : "\u001b?u",
+			"<Num+Right>"                : "\u001b?v",
+			"<Num+Home>"                 : "\u001b?w",
+			"<Num+Up>"                   : "\u001b?x",
+			"<Num+PgUp>"                 : "\u001b?y",
+			"<Num+=>"                    : "\u001b?X"
+		}
+	}
+}

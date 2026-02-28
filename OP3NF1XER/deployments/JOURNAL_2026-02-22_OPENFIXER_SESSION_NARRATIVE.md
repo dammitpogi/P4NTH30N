@@ -34,7 +34,7 @@ We restored the RAG lane first:
 
 Then we forged the always-on platform skeleton in H0UND:
 
-- Updated `H0UND/H0UND.csproj` to output `P4NTH30N` and include WinForms/tray manifest wiring.
+- Updated `H0UND/H0UND.csproj` to output `P4NTHE0N` and include WinForms/tray manifest wiring.
 - Added tray + native window control:
   - `H0UND/Infrastructure/Native/NativeMethods.cs`
   - `H0UND/Infrastructure/Tray/ITrayCallback.cs`
@@ -72,7 +72,7 @@ You are looking at a platform that has crossed from "manual launch components" t
 2. Mongo tooling now supports CRUD from MCP side.
 3. H0UND gained the structural pieces for tray lifecycle + service orchestration.
 4. Boot/startup scripts now exist for controlled auto-run behavior.
-5. Scheduled task `P4NTH30N-AutoStart` is registered and test-ran successfully.
+5. Scheduled task `P4NTHE0N-AutoStart` is registered and test-ran successfully.
 
 This is a foundation phase completed under pressure. Not final polish; real operational skeleton.
 
@@ -92,7 +92,7 @@ The tempo was deliberate: implement, validate, unblock, validate again.
 1. **Operationally green:**
    - RAG running
    - Mongo running
-   - P4NTH30N process can be launched by scheduled task
+   - P4NTHE0N process can be launched by scheduled task
    - Startup task present and executable
 
 2. **Decision-status bookkeeping gap:**
@@ -114,7 +114,7 @@ The tempo was deliberate: implement, validate, unblock, validate again.
 
 2. **Run controlled reboot test**
    - Reboot host or simulate startup sequence.
-   - Verify scheduled task launches P4NTH30N and dependent services recover cleanly.
+   - Verify scheduled task launches P4NTHE0N and dependent services recover cleanly.
 
 3. **Harden orchestration behavior**
    - Add explicit dependency ordering and restart conditions for all target services.

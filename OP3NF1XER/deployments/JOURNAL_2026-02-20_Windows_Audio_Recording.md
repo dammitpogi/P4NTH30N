@@ -18,21 +18,21 @@ Successfully configured Windows system to expose audio output as a recording dev
 
 ### 1. Download VB-Cable Driver
 ```bash
-curl -L -o "c:\P4NTH30N\VBCABLE_Driver_Pack43.zip" "https://download.vb-audio.com/Download_CABLE/VBCABLE_Driver_Pack43.zip"
+curl -L -o "c:\P4NTHE0N\VBCABLE_Driver_Pack43.zip" "https://download.vb-audio.com/Download_CABLE/VBCABLE_Driver_Pack43.zip"
 ```
 - **Result**: ✅ Success
 - **Output**: Downloaded 1.1MB driver package
 
 ### 2. Extract Driver Package
 ```powershell
-Expand-Archive -Path 'c:\P4NTH30N\VBCABLE_Driver_Pack43.zip' -DestinationPath 'c:\P4NTH30N\VBCable' -Force
+Expand-Archive -Path 'c:\P4NTHE0N\VBCABLE_Driver_Pack43.zip' -DestinationPath 'c:\P4NTHE0N\VBCable' -Force
 ```
 - **Result**: ✅ Success
 - **Output**: Extracted VBCABLE_Setup_x64.exe and supporting files
 
 ### 3. Install Virtual Audio Driver
 ```powershell
-Start-Process -FilePath 'C:\P4NTH30N\VBCable\VBCABLE_Setup_x64.exe' -ArgumentList '-i','-h' -Wait -Verb RunAs
+Start-Process -FilePath 'C:\P4NTHE0N\VBCable\VBCABLE_Setup_x64.exe' -ArgumentList '-i','-h' -Wait -Verb RunAs
 ```
 - **Result**: ✅ Success
 - **Output**: Driver installed, CABLE devices created
@@ -64,14 +64,14 @@ SoundVolumeView.exe /SetPlaybackThroughDevice 'CABLE Output\Device\CABLE Output\
 
 | File | Purpose | Location |
 |------|---------|----------|
-| enable_monitoring.ps1 | PowerShell script to enable mic monitoring | c:\P4NTH30N\ |
-| check_devices.ps1 | Script to check audio devices | c:\P4NTH30N\ |
-| check_vbcable.ps1 | Script to verify VB-Cable installation | c:\P4NTH30N\ |
-| configure_audio.ps1 | Script to configure audio routing | c:\P4NTH30N\ |
-| verify_config.ps1 | Script to verify final configuration | c:\P4NTH30N\ |
-| audio_devices.csv | Exported audio device list (initial) | c:\P4NTH30N\ |
-| after_vbcable.csv | Audio devices after installation | c:\P4NTH30N\ |
-| final_check.csv | Final configuration verification | c:\P4NTH30N\ |
+| enable_monitoring.ps1 | PowerShell script to enable mic monitoring | c:\P4NTHE0N\ |
+| check_devices.ps1 | Script to check audio devices | c:\P4NTHE0N\ |
+| check_vbcable.ps1 | Script to verify VB-Cable installation | c:\P4NTHE0N\ |
+| configure_audio.ps1 | Script to configure audio routing | c:\P4NTHE0N\ |
+| verify_config.ps1 | Script to verify final configuration | c:\P4NTHE0N\ |
+| audio_devices.csv | Exported audio device list (initial) | c:\P4NTHE0N\ |
+| after_vbcable.csv | Audio devices after installation | c:\P4NTHE0N\ |
+| final_check.csv | Final configuration verification | c:\P4NTHE0N\ |
 
 ---
 

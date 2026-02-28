@@ -1,0 +1,276 @@
+{
+  "_schema": "oh-my-opencode-theseus-v1",
+  "_description": "P4NTHE0N Oracle Resilience Configuration - Extended Fallback Chains",
+  "_lastUpdated": "2026-02-22",
+  "_decision": "DECISION_100",
+  
+  "agents": {
+    "oracle": {
+      "currentModel": "openrouter/claude-3.5-sonnet",
+      "models": [
+        "openrouter/claude-3.5-sonnet",
+        "openrouter/claude-3-opus",
+        "openrouter/gpt-4",
+        "openrouter/gemini-pro",
+        "openrouter/mistral-large",
+        "openrouter/llama-3.3-70b",
+        "openrouter/qwen-2.5-72b",
+        "openrouter/deepseek-chat",
+        "openrouter/nous-hermes-2",
+        "free/openrouter/free",
+        "lmstudio-local/llama-3.2-1b",
+        "lmstudio-local/qwen-0.5b"
+      ],
+      "fallback": {
+        "enabled": true,
+        "timeoutMs": 15000,
+        "maxRetries": 3,
+        "circuitBreaker": {
+          "failureThreshold": 3,
+          "cooldownMs": 3600000,
+          "halfOpenSuccessThreshold": 1
+        },
+        "backoff": {
+          "baseDelayMs": 1000,
+          "maxDelayMs": 30000,
+          "jitterPercent": 20
+        },
+        "extendedChain": {
+          "enabled": true,
+          "tiers": [
+            {
+              "name": "premium",
+              "priority": 1,
+              "models": [
+                "openrouter/claude-3.5-sonnet",
+                "openrouter/claude-3-opus",
+                "openrouter/gpt-4"
+              ],
+              "description": "Highest benchmark scores for Oracle (gpqa, aime)"
+            },
+            {
+              "name": "standard",
+              "priority": 2,
+              "models": [
+                "openrouter/gemini-pro",
+                "openrouter/mistral-large",
+                "openrouter/llama-3.3-70b"
+              ],
+              "description": "Strong performance, diverse providers"
+            },
+            {
+              "name": "alternative",
+              "priority": 3,
+              "models": [
+                "openrouter/qwen-2.5-72b",
+                "openrouter/deepseek-chat",
+                "openrouter/nous-hermes-2"
+              ],
+              "description": "Geographic/provider diversity"
+            },
+            {
+              "name": "local",
+              "priority": 4,
+              "models": [
+                "free/openrouter/free",
+                "lmstudio-local/llama-3.2-1b",
+                "lmstudio-local/qwen-0.5b"
+              ],
+              "description": "Zero-cost, always-available fallback"
+            }
+          ]
+        }
+      },
+      "resilience": {
+        "errorClassification": {
+          "enabled": true,
+          "patterns": {
+            "contextLength": [
+              "context.length",
+              "token.limit",
+              "max.token",
+              "maximum context length"
+            ],
+            "rateLimit": [
+              "rate.limit",
+              "429",
+              "quota.exceeded",
+              "too many requests"
+            ],
+            "serviceUnavailable": [
+              "503",
+              "504",
+              "service unavailable",
+              "gateway timeout"
+            ],
+            "authError": [
+              "401",
+              "403",
+              "unauthorized",
+              "forbidden",
+              "api key"
+            ],
+            "providerError": [
+              "invalid model",
+              "model not found",
+              "model unavailable",
+              "provider error"
+            ],
+            "networkError": [
+              "network error",
+              "connection error",
+              "timeout",
+              "econnrefused",
+              "econnreset"
+            ]
+          }
+        },
+        "contextCompaction": {
+          "enabled": true,
+          "triggerOn": ["contextLength"],
+          "strategy": "summarize_oldest",
+          "preserveRecentMessages": 10
+        }
+      }
+    },
+    
+    "strategist": {
+      "currentModel": "kimi-for-coding/kimi-k2",
+      "models": [
+        "kimi-for-coding/kimi-k2",
+        "openrouter/claude-3.5-sonnet",
+        "openrouter/gpt-4",
+        "openrouter/gemini-pro"
+      ],
+      "fallback": {
+        "enabled": true,
+        "timeoutMs": 15000,
+        "circuitBreaker": {
+          "failureThreshold": 3,
+          "cooldownMs": 3600000
+        }
+      }
+    },
+    
+    "explorer": {
+      "currentModel": "openrouter/groq-llama-3.3-70b",
+      "models": [
+        "openrouter/groq-llama-3.3-70b",
+        "openrouter/gpt-4o-mini",
+        "openrouter/claude-3-haiku",
+        "lmstudio-local/llama-3.2-1b"
+      ],
+      "fallback": {
+        "enabled": true,
+        "timeoutMs": 10000,
+        "circuitBreaker": {
+          "failureThreshold": 5,
+          "cooldownMs": 1800000
+        }
+      }
+    },
+    
+    "designer": {
+      "currentModel": "openrouter/claude-3.5-sonnet",
+      "models": [
+        "openrouter/claude-3.5-sonnet",
+        "openrouter/gpt-4",
+        "openrouter/gemini-pro",
+        "openrouter/mistral-large"
+      ],
+      "fallback": {
+        "enabled": true,
+        "timeoutMs": 15000,
+        "circuitBreaker": {
+          "failureThreshold": 3,
+          "cooldownMs": 3600000
+        }
+      }
+    },
+    
+    "librarian": {
+      "currentModel": "openrouter/gemini-pro",
+      "models": [
+        "openrouter/gemini-pro",
+        "openrouter/gpt-4",
+        "openrouter/claude-3.5-sonnet",
+        "openrouter/mistral-large"
+      ],
+      "fallback": {
+        "enabled": true,
+        "timeoutMs": 20000,
+        "circuitBreaker": {
+          "failureThreshold": 3,
+          "cooldownMs": 3600000
+        }
+      }
+    },
+    
+    "fixer": {
+      "currentModel": "anthropic/claude-opus-4-6",
+      "models": [
+        "anthropic/claude-opus-4-6",
+        "openrouter/claude-3.5-sonnet",
+        "openrouter/gpt-4",
+        "openrouter/gemini-pro"
+      ],
+      "fallback": {
+        "enabled": true,
+        "timeoutMs": 30000,
+        "circuitBreaker": {
+          "failureThreshold": 2,
+          "cooldownMs": 7200000
+        }
+      }
+    }
+  },
+  
+  "triage": {
+    "enabled": true,
+    "persistence": {
+      "enabled": true,
+      "path": "~/.local/share/opencode/p4nth30n-triage.db",
+      "format": "sqlite"
+    },
+    "scorecard": {
+      "enabled": true,
+      "trackMetrics": [
+        "totalCalls",
+        "successes",
+        "failures",
+        "successRate",
+        "avgResponseTimeMs",
+        "circuitBreakerActivations",
+        "failureReasons",
+        "tierUsage"
+      ],
+      "export": {
+        "enabled": true,
+        "format": "json",
+        "path": "~/.local/share/opencode/oracle-triage-scorecard.json",
+        "interval": "end-of-session"
+      },
+      "reporting": {
+        "enabled": true,
+        "generateRankings": true,
+        "generateRecommendations": true
+      }
+    }
+  },
+  
+  "hangDetection": {
+    "enabled": true,
+    "inactivityTimeoutMs": 300000,
+    "providerErrorTimeoutMs": 15000,
+    "sessionCreationTimeoutMs": 30000
+  },
+  
+  "background": {
+    "maxConcurrentTasks": 5,
+    "taskTimeoutMs": 600000,
+    "retryPolicy": {
+      "maxRetries": 3,
+      "backoffMultiplier": 2
+    }
+  }
+}

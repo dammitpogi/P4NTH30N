@@ -33,7 +33,7 @@ This session accomplished three major objectives: conducting ArXiv research to g
 | DECISION_030 | RLVR Signal Optimization | 88% | Conditional | Proposed |
 
 ### MongoDB Operations
-- `insertMany` to P4NTH30N.decisions: 6 documents, acknowledged
+- `insertMany` to P4NTHE0N.decisions: 6 documents, acknowledged
 - `updateMany` for oracle_analysis: 6 matched, 6 modified
 - Individual `updateOne` for designer_analysis on 025-028
 
@@ -84,8 +84,8 @@ This session accomplished three major objectives: conducting ArXiv research to g
 - Existing windsurf-follower extension at C:\Users\paulc\.windsurf\extensions\
 
 ### RAG Infrastructure
-- Fully built at C:\P4NTH30N\src\RAG\
-- MCP host deployed at C:\ProgramData\P4NTH30N\bin\RAG.McpHost.exe
+- Fully built at C:\P4NTHE0N\src\RAG\
+- MCP host deployed at C:\ProgramData\P4NTHE0N\bin\RAG.McpHost.exe
 - FileWatcher exists but not configured with correct watch paths
 - rag-manifest.json files exist in all agent directories (empty)
 

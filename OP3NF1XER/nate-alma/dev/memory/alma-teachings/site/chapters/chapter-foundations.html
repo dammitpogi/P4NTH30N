@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I. Foundations - Doctrine Bible</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/alma-chat.css">
+</head>
+<body data-chapter="foundations" data-lesson-id="foundations-overview">
+
+  <header class="header">
+    <div class="header-brand">
+      <div class="header-logo">DB</div>
+      <div>
+        <div class="header-title">Doctrine Bible</div>
+        <div class="header-subtitle">Trading Curriculum</div>
+      </div>
+    </div>
+    <nav class="header-nav">
+      <div class="header-search">
+        <span class="header-search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Search topics... (Ctrl+K)">
+        <div class="search-results" id="search-results"></div>
+      </div>
+      <a href="../index.html" class="nav-btn">📚 Home</a>
+      <button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+    </nav>
+  </header>
+
+  <div class="app-container">
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-title">Course Progress</div>
+        <div class="sidebar-subtitle">7 Chapters</div>
+        <div class="sidebar-progress">
+          <div class="progress-label">
+            <span>Overall Progress</span>
+            <span id="progress-percent">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+      
+      <nav class="nav-tree">
+        <div class="nav-section expanded" data-section="foundations">
+          <div class="nav-section-header active">
+            <span class="nav-section-icon">📖</span>
+            <span class="nav-section-title">I. Foundations</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-foundations.html" class="nav-lesson active" data-lesson="foundations-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="principles">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">⚖️</span>
+            <span class="nav-section-title">II. Trading Principles</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-principles.html" class="nav-lesson " data-lesson="principles-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="mechanics">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">⚙️</span>
+            <span class="nav-section-title">III. Market Mechanics</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-mechanics.html" class="nav-lesson " data-lesson="mechanics-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="macro">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">🌍</span>
+            <span class="nav-section-title">IV. Macro Analysis</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-macro.html" class="nav-lesson " data-lesson="macro-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="technical">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">📊</span>
+            <span class="nav-section-title">V. Technical Analysis</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-technical.html" class="nav-lesson " data-lesson="technical-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="assets">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">💎</span>
+            <span class="nav-section-title">VI. Asset Classes</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-assets.html" class="nav-lesson " data-lesson="assets-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="archive">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">📚</span>
+            <span class="nav-section-title">VII. Analysis Archive</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-archive.html" class="nav-lesson " data-lesson="archive-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="content-wrapper">
+        <div class="breadcrumbs">
+          <a href="../index.html">Home</a>
+          <span class="breadcrumbs-separator">→</span>
+          <span class="breadcrumbs-current">I. Foundations</span>
+        </div>
+
+        <div class="page-header">
+          <div class="page-category">📖 Chapter Overview</div>
+          <h1 class="page-title">I. Foundations</h1>
+          <p class="page-subtitle">Core concepts in probability, market theory, and risk mathematics</p>
+          <div class="page-meta">
+            <div class="page-meta-item">🏷️ Key Themes: 19</div>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <h2>Chapter Guide</h2>
+          <p>This chapter guide is written to teach the concepts from basics.</p>
+
+          <div class="chapter-guide">
+            <h2>Core Concepts</h2>
+
+<h3>Determinism vs. probability (why trading is not chess)</h3>
+<p>
+  A deterministic system is one where the same inputs always produce the same outputs. Markets are
+  not deterministic because they are made of humans, incentives, feedback loops, and changing
+  constraints. The correct mental model is probabilistic: you manage distributions, not certainties.
+</p>
+
+<h3>Emergence (why “good enough” models can still work)</h3>
+<p>
+  The corpus frames determinism as a macro-level simplification: complex systems contain many
+  hidden variables, yet repeated patterns can emerge at the aggregate level. This is why traders
+  can use models as approximations while still respecting uncertainty and tail risk.
+</p>
+
+<h3>Probability is not a feeling</h3>
+<p>
+  When a trader says “high probability,” they should mean: “Given my model and the current regime,
+  this outcome occurs more often than alternatives, and the payoff is worth the risk.”
+  A strategy can be profitable while losing frequently if the wins are larger than the losses.
+</p>
+
+<h3>Volatility is a liquidity signal</h3>
+<p>
+  Volatility is commonly treated as “price moves a lot,” but the usable definition is tighter:
+  volatility is the annualized standard deviation of log returns. In practice, volatility behaves
+  like a proxy for how hard it is for buyers and sellers to meet at a price (liquidity).
+</p>
+
+<h3>Realized vs. implied volatility (how the market prices distributions)</h3>
+<p>
+  The corpus repeatedly treats volatility objects as a translation layer: implied volatility embeds
+  forward-looking risk premia and the market’s priced distribution, while realized volatility is
+  backward-looking. Learning to map between them is part of learning “probability” in practice.
+</p>
+
+<h3>Efficient markets vs. deviations (momentum and mean reversion)</h3>
+<p>
+  Efficient Market Hypothesis is introduced as a baseline, then contrasted with empirical
+  deviations like momentum and mean reversion. The point is not to pick a religion, but to know
+  which behavior tends to dominate in which regime.
+</p>
+
+<h3>Risk is measurable</h3>
+<p>
+  You will repeatedly see professional risk language: VaR, beta, Sharpe, Sortino. These are not
+  decorations. They are ways of translating “this feels risky” into “this can lose X under Y
+  assumptions.”
+</p>
+
+<h3>Reflexivity (why narratives can move fundamentals)</h3>
+<p>
+  Reflexivity is the idea that beliefs and prices can change behavior, and that behavior can change
+  the world the beliefs were trying to describe. It explains bubbles, crashes, and why “price is
+  information.”
+</p>
+
+<h2>How To Apply</h2>
+
+<h3>A beginner’s trading decision loop</h3>
+<ol>
+  <li>State your hypothesis as a distribution: what outcomes are plausible, and what would confirm them?</li>
+  <li>Define your invalidation first: where does your hypothesis become wrong?</li>
+  <li>Size the position so the invalidation loss is acceptable.</li>
+  <li>Only then choose entry mechanics (levels, timing, execution).</li>
+</ol>
+
+<h3>Two rules that prevent blowups</h3>
+<ul>
+  <li><strong>Never confuse “likely” with “certain.”</strong> Certainty is how you oversize.</li>
+  <li><strong>Never trade without an invalidation.</strong> No invalidation = no defined risk.</li>
+</ul>
+
+<h3>Foundations-to-trade checklist</h3>
+<ol>
+  <li><strong>State the distribution:</strong> what outcomes are plausible and what is the base rate?</li>
+  <li><strong>Name the regime:</strong> are you in momentum, mean reversion, or “fragile” volatility conditions?</li>
+  <li><strong>Define the tail:</strong> what would qualify as an “event” in this environment?</li>
+  <li><strong>Price the risk:</strong> are you being paid enough (expected value) to take it?</li>
+  <li><strong>Write invalidation:</strong> where is the hypothesis wrong, in observable terms?</li>
+</ol>
+
+<h2>Common Mistakes</h2>
+<ul>
+  <li>Reading a chart as if it predicts the future, instead of describing current constraints.</li>
+  <li>Using volatility as a mood indicator rather than a risk/liquidity metric.</li>
+  <li>Thinking “fundamentals” are separate from “price.” In reflexive regimes they are linked.</li>
+  <li>Ignoring base rates (how often this setup works) and focusing on a single example.</li>
+  <li>Treating EMH, momentum, or mean reversion as always-on instead of regime-dependent.</li>
+</ul>
+
+<h2>Self-Check</h2>
+<ol>
+  <li>Can you explain in one sentence why markets are probabilistic systems?</li>
+  <li>What is your difference between “edge” and “confidence”?</li>
+  <li>What does volatility measure mathematically (not poetically)?</li>
+  <li>What is reflexivity, and how would you recognize it in a bubble?</li>
+  <li>Can you explain realized vs implied volatility without using the word “prediction”?</li>
+</ol>
+
+<h2>Citations (Local Corpus)</h2>
+<div class="citations">
+  <ul>
+    <li><code>bible/unknown-date-game-of-probabilities.md</code></li>
+    <li><code>bible/unknown-date-efficient-market-momentum-mean-reversion.md</code></li>
+    <li><code>bible/2025-01-29-theory-of-reflexivity-by-george-soros.md</code></li>
+    <li><code>bible/unknown-date-what-is-volatility.md</code></li>
+    <li><code>bible/2025-01-29-educational-thread-chat.md</code></li>
+    <li><code>bible/unknown-date-the-concept-of-risk-var-beta-sharpe-sortino-etc.md</code></li>
+    <li><code>bible/all-posts.json</code></li>
+  </ul>
+</div>
+
+<h2>Further Reading (Scholarly)</h2>
+<ul>
+  <li><a href="https://www.jstor.org/stable/2325486" target="_blank" rel="noopener">Fama (1970): Efficient Capital Markets (Journal of Finance)</a></li>
+  <li><a href="https://doi.org/10.1111/j.1540-6261.1964.tb02865.x" target="_blank" rel="noopener">Sharpe (1964): Capital Asset Prices</a></li>
+  <li><a href="https://doi.org/10.1111/j.1540-6261.1994.tb00866.x" target="_blank" rel="noopener">Sortino & Price (1994): Downside Risk</a></li>
+</ul>
+
+<h2>Further Reading (General)</h2>
+<ul>
+  <li><a href="https://www.investopedia.com/terms/v/volatility.asp" target="_blank" rel="noopener">Investopedia: Volatility</a></li>
+  <li><a href="https://www.investopedia.com/terms/v/var.asp" target="_blank" rel="noopener">Investopedia: Value at Risk (VaR)</a></li>
+  <li><a href="https://www.britannica.com/topic/efficient-market-hypothesis" target="_blank" rel="noopener">Britannica: Efficient Market Hypothesis</a></li>
+</ul>
+
+          </div>
+
+        </div>
+
+        <div class="chapter-nav">
+          <a href="../index.html" class="chapter-nav-btn prev">
+            <div>
+              <div class="chapter-nav-label">← Previous</div>
+              <div class="chapter-nav-title">Home</div>
+            </div>
+          </a>
+          
+          <a href="./chapter-principles.html" class="chapter-nav-btn next">
+            <div>
+              <div class="chapter-nav-label">Next →</div>
+              <div class="chapter-nav-title">II. Trading Principles</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/app.js"></script>
+  <script src="../config/alma-config.js"></script>
+  <script src="../js/health-monitor.js"></script>
+  <script src="../js/alma-chat.js"></script>
+  <script src="../js/ask-alma-buttons.js"></script>
+</body>
+</html>

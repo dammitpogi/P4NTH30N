@@ -1,0 +1,10 @@
+description:
+  remove empty directories
+synopses:
+  - rmdir [OPTION]... DIRECTORY...
+options:
+  --ignore-fail-on-non-empty: ignore each failure that is solely because a directory is non-empty
+  -p, --parents: remove DIRECTORY and its ancestors
+  -v, --verbose: output a diagnostic for every directory processed
+  --help: display this help and exit
+  --version: output version information and exit

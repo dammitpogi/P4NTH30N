@@ -193,4 +193,4 @@ Executed with `--strict --explain` flags:
 ---
 
 **Signed:** OpenFixer  
-**Location:** `C:\P4NTH30N\OP3NF1XER\deployments\JOURNAL_2026-02-20_agent-model-update.md`
+**Location:** `C:\P4NTHE0N\OP3NF1XER\deployments\JOURNAL_2026-02-20_agent-model-update.md`

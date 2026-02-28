@@ -17,7 +17,7 @@ Move jackpot reading configuration to external configuration (appsettings.json o
 ```json
 // appsettings.json
 {
-  "P4NTH30N:H4ND:JackpotSelectors": {
+  "P4NTHE0N:H4ND:JackpotSelectors": {
     "FireKirin": {
       "Grand": ["window.jackpot?.grand", "document.querySelector('.grand-value')?.textContent"],
       "Major": ["window.jackpot?.major", "document.querySelector('.major-value')?.textContent"]

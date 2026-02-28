@@ -1,0 +1,39 @@
+//WindTerm Cmd Pair
+//Version: 1.0
+{
+	"masks": [
+		{
+			"name": "quote",
+			"scope": "string.quoted.double.cmd"
+		}
+	],
+	"barriers": [
+		{
+			"name": "prompt",
+			"scope": "sign.directive.prompt.cmd"
+		}
+	],
+	"blocks": [
+		{
+			"name": "brace",
+			"scope": "punctuation.definition.block.cmd",
+			"ignoreString": false,
+			"begin": "{",
+			"end": "}"
+		},
+		{
+			"name": "parentheses",
+			"scope": "punctuation.definition.block.cmd",
+			"ignoreString": false,
+			"begin": "\\(",
+			"end": "\\)"
+		},
+		{
+			"name": "bracket",
+			"scope": "punctuation.definition.block.cmd",
+			"ignoreString": false,
+			"begin": "\\[",
+			"end": "\\]"
+		}
+	]
+}

@@ -1,0 +1,28 @@
+{
+    "traceId":  "openfixer-ssh-test-002",
+    "tool":  "railway-ssh",
+    "phase":  "tested",
+    "status":  "success",
+    "details":  "SSH connectivity tests completed successfully",
+    "deploymentPath":  "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\deploy-new",
+    "target": {
+        "projectId": "8dbe6100-4ca7-4eae-ae9a-282cb438b09b",
+        "environmentId": "a40e6b07-5528-47c7-b59b-bf4e737a0438",
+        "serviceId": "0788bea9-cb97-4d04-b3d3-3180fe8e360f",
+        "serviceName": "OpenClaw-Alma-v1"
+    },
+    "sshKeyPath": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\ssh_key",
+    "sshKeyPubPath": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\ssh_key.pub",
+    "testResults": {
+        "basicConnectivity": "PASS",
+        "openclawVersion": "2026.2.24",
+        "configAccess": "PASS",
+        "filesystemState": "PASS",
+        "processCheck": "PASS",
+        "networkListeners": "CHECK",
+        "hostname": "36b85b320525",
+        "uptime": "95 days, 22:03"
+    },
+    "verifiedAt": "2026-02-25T13:09:00Z",
+    "updatedAtUtc":  "2026-02-25T13:09:00.000Z"
+}

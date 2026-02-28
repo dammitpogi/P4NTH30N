@@ -1,0 +1,112 @@
+{
+  "project": {
+    "title": "The Volatility Code",
+    "working_titles": [
+      "Inside the Tape",
+      "The Architecture of Volatility",
+      "Speed, Gamma, and the New Market Regime",
+      "The Weighing Machine"
+    ],
+    "description": "A structured exposition of Alma’s teachings on volatility, dealer positioning, geopolitics, liquidity, and probabilistic trading.",
+    "estimated_length_pages": "250-350",
+    "target_audience": [
+      "Advanced retail traders",
+      "Fund managers",
+      "Quantitative students",
+      "Macro thinkers",
+      "Serious volatility traders"
+    ],
+    "style_options": {
+      "A": "Academic / Analytical",
+      "B": "Narrative + Case Study",
+      "C": "Hybrid (recommended)"
+    }
+  },
+  "structure": {
+    "Part_I_Foundations": {
+      "description": "Philosophical and structural foundations of the volatility framework.",
+      "chapters": [
+        {
+          "title": "Why Fundamentals Mislead",
+          "sections": [
+            {
+              "section": "Voting machine vs Weighing machine",
+              "mission": "Clarify the distinction between short-term sentiment pricing and long-term structural repricing, and show how regime shifts activate the weighing machine.",
+              "tags": ["sentiment", "valuation", "regime shift", "short-term vs long-term", "pricing mechanics"]
+            },
+            {
+              "section": "Narratives as post-hoc explanations",
+              "mission": "Demonstrate how narratives follow volatility and price action rather than cause them, and why structure must be separated from story.",
+              "tags": ["narrative", "volatility", "post-hoc reasoning", "media bias", "causality fallacy"]
+            },
+            {
+              "section": "Markets as valuation mechanisms",
+              "mission": "Frame markets as adaptive systems that continuously reprice risk, growth, and liquidity under changing macro constraints.",
+              "tags": ["valuation", "risk premium", "discount rate", "repricing", "macro structure"]
+            },
+            {
+              "section": "Why volatility cycles require a story",
+              "mission": "Explain why volatility regimes need coherent narratives to become sustainable and psychologically anchored.",
+              "tags": ["volatility regime", "macro narrative", "cycle dynamics", "risk perception"]
+            }
+          ]
+        },
+        {
+          "title": "The Volatility Framework",
+          "sections": [
+            {
+              "section": "Volatility as primary driver",
+              "mission": "Establish volatility as the core structural force driving price behavior rather than price itself.",
+              "tags": ["volatility", "implied vol", "realized vol", "market structure"]
+            },
+            {
+              "section": "Micro vs Macro cycles",
+              "mission": "Differentiate between mechanical short-term cycles and structural macro regime shifts.",
+              "tags": ["microstructure", "macro regime", "cycle analysis", "time horizon"]
+            },
+            {
+              "section": "Mechanical vs Narrative flows",
+              "mission": "Contrast dealer-driven hedging flows with macro narrative shifts to clarify their different impacts.",
+              "tags": ["dealer flows", "gamma", "macro narrative", "mechanical hedging"]
+            },
+            {
+              "section": "When structural flows break",
+              "mission": "Identify the conditions under which mechanical flows fail due to macro regime or tail events.",
+              "tags": ["flow breakdown", "tail risk", "regime shift", "liquidity shock"]
+            }
+          ]
+        },
+        {
+          "title": "Liquidity Is Everything",
+          "sections": [
+            {
+              "section": "Spot decay mechanics",
+              "mission": "Explain how controlled downside drift suppresses volatility while gradually repricing assets.",
+              "tags": ["spot decay", "vol suppression", "controlled drift", "liquidity dynamics"]
+            },
+            {
+              "section": "Liquidity evaporation",
+              "mission": "Show how one-sided positioning removes liquidity and destabilizes market function.",
+              "tags": ["liquidity", "positioning", "market instability", "flow imbalance"]
+            },
+            {
+              "section": "Oscillation with negative drift",
+              "mission": "Describe range-bound behavior combined with structural downside bias.",
+              "tags": ["rangebound", "negative drift", "volatility regime", "mean reversion"]
+            },
+            {
+              "section": "Managed markets and crash prevention",
+              "mission": "Analyze how institutional intervention suppresses crash dynamics in modern markets.",
+              "tags": ["market intervention", "vol control", "systemic risk", "institutional liquidity"]
+            },
+            {
+              "section": "Kurtosis compression",
+              "mission": "Explain how suppression of tail risk reduces distribution curvature while embedding future instability.",
+              "tags": ["kurtosis", "tail risk", "distribution shape", "risk compression"]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

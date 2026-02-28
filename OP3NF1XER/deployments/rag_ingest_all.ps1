@@ -2,9 +2,9 @@
 # This script ingests speech logs, decisions, and codebase patterns into RAG
 
 $RAG_SERVER = "http://localhost:5001/mcp"
-$SPEECH_DIR = "c:/P4NTH30N/STR4TEG15T/speech"
-$DECISIONS_ACTIVE_DIR = "c:/P4NTH30N/STR4TEG15T/decisions/active"
-$DECISIONS_COMPLETED_DIR = "c:/P4NTH30N/STR4TEG15T/decisions/completed"
+$SPEECH_DIR = "c:/P4NTHE0N/STR4TEG15T/speech"
+$DECISIONS_ACTIVE_DIR = "c:/P4NTHE0N/STR4TEG15T/decisions/active"
+$DECISIONS_COMPLETED_DIR = "c:/P4NTHE0N/STR4TEG15T/decisions/completed"
 
 $ingestedCount = 0
 $failedFiles = @()

@@ -1,0 +1,10 @@
+{
+  "workspaceId": "thundercube's Projects",
+  "projectId": "8dbe6100-4ca7-4eae-ae9a-282cb438b09b",
+  "environmentId": "a40e6b07-5528-47c7-b59b-bf4e737a0438",
+  "serviceId": "0788bea9-cb97-4d04-b3d3-3180fe8e360f",
+  "serviceName": "OpenClaw-Alma-v1",
+  "domain": "https://openclaw-alma-v1-production.up.railway.app",
+  "stateDir": "/data/.openclaw",
+  "workspaceDir": "/data/workspace"
+}

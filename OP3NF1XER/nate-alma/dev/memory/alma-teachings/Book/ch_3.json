@@ -1,0 +1,89 @@
+{
+  "structure": {
+    "Part_III_Macro_and_Geopolitical_Engine": {
+      "description": "Macro forces shaping volatility regimes.",
+      "chapters": [
+        {
+          "title": "Geopolitics and Volatility Regimes",
+          "sections": [
+            {
+              "section": "Volatility requires narrative",
+              "mission": "Explain how macro narratives anchor volatility regimes and provide psychological legitimacy to price repricing.",
+              "tags": ["volatility regime", "macro narrative", "geopolitics", "risk perception", "structural repricing"]
+            },
+            {
+              "section": "Fragmentation and supply chain inflation",
+              "mission": "Describe how geopolitical fragmentation reshapes global supply chains and embeds structural inflation risk.",
+              "tags": ["fragmentation", "supply chain", "inflation risk", "geopolitics", "friend-shoring"]
+            },
+            {
+              "section": "De-dollarization mechanics",
+              "mission": "Analyze how currency realignment and reserve shifts impact capital flows and volatility structure.",
+              "tags": ["de-dollarization", "currency regime", "capital flows", "FX volatility", "global reserves"]
+            },
+            {
+              "section": "Regime transition dynamics",
+              "mission": "Identify how macro regime shifts alter liquidity, volatility cycles, and valuation frameworks.",
+              "tags": ["regime shift", "macro cycle", "liquidity transition", "structural change"]
+            }
+          ]
+        },
+        {
+          "title": "Financing the Bubble",
+          "sections": [
+            {
+              "section": "AI capex structure",
+              "mission": "Explain how capital expenditure cycles in AI and technology sectors drive valuation expansion and systemic leverage.",
+              "tags": ["AI bubble", "capex cycle", "tech valuation", "leverage", "growth narrative"]
+            },
+            {
+              "section": "Credit deregulation",
+              "mission": "Show how loosening financial constraints expands liquidity and artificially extends cycle longevity.",
+              "tags": ["credit cycle", "deregulation", "liquidity expansion", "bank lending", "systemic leverage"]
+            },
+            {
+              "section": "Synthetic QE",
+              "mission": "Define synthetic liquidity mechanisms that replicate QE effects without formal monetary expansion.",
+              "tags": ["synthetic QE", "liquidity injection", "financial engineering", "stimulus mechanics"]
+            },
+            {
+              "section": "Artificial cash-flow inflation",
+              "mission": "Explain how accounting, buybacks, and credit cycles distort perceived corporate strength.",
+              "tags": ["buybacks", "earnings distortion", "financial engineering", "valuation inflation"]
+            }
+          ]
+        },
+        {
+          "title": "The Hidden Left Tail",
+          "sections": [
+            {
+              "section": "Term premium mechanics",
+              "mission": "Explain how rising term premium alters discount rates and embeds systemic fragility.",
+              "tags": ["term premium", "yield curve", "rates volatility", "discount rate", "macro risk"]
+            },
+            {
+              "section": "Credit saturation",
+              "mission": "Identify how excessive leverage compresses upside while amplifying downside convexity.",
+              "tags": ["credit cycle", "leverage saturation", "systemic fragility", "convex risk"]
+            },
+            {
+              "section": "Gold vs Copper divergence",
+              "mission": "Use intermarket signals to illustrate growth versus safety divergence and macro tension.",
+              "tags": ["gold", "copper", "intermarket analysis", "stagflation", "growth divergence"]
+            },
+            {
+              "section": "Inflation vs Growth regime",
+              "mission": "Differentiate between inflation-dominant and growth-dominant volatility structures.",
+              "tags": ["inflation regime", "growth regime", "macro transition", "risk repricing"]
+            },
+            {
+              "section": "Kurtosis expansion risk",
+              "mission": "Explain how suppressed volatility regimes eventually reprice through tail expansion.",
+              "tags": ["kurtosis", "tail risk", "volatility expansion", "distribution shift"]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

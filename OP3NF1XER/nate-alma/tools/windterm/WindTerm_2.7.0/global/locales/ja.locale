@@ -1,0 +1,4225 @@
+{
+ "language": "Japanese - 日本語",
+ "layoutDirection": "LeftToRight",
+ "contributors": [],
+ "translations": [
+ {
+  "en": "${Scheme} Tools",
+  "tr": "${Scheme} ツール"
+ },{
+  "en": "%1 %2 is not supported by %3.",
+  "tr": "%1%2は%3ではサポートされていません。"
+ },{
+  "en": "%1 copied",
+  "tr": "%1コピー"
+ },{
+  "en": "%1 downloaded",
+  "tr": "%1ダウンロード"
+ },{
+  "en": "%1 File",
+  "tr": "%1ファイル"
+ },{
+  "en": "%1 item failed",
+  "tr": "%1アイテムが失敗しました"
+ },{
+  "en": "%1 items",
+  "tr": "%1アイテム"
+ },{
+  "en": "%1 items failed",
+  "tr": "%1アイテムが失敗しました"
+ },{
+  "en": "%1 items/s",
+  "tr": "%1アイテム/秒"
+ },{
+  "en": "%1 of %2",
+  "tr": "%2の%1"
+ },{
+  "en": "%1 removed",
+  "tr": "%1が削除されました"
+ },{
+  "en": "%1 this %2",
+  "tr": "%1この%2"
+ },{
+  "en": "%1 uploaded",
+  "tr": "%1アップロード"
+ },{
+  "en": "%1/%2 Speed: %3",
+  "tr": "%1 /%2速度：%3"
+ },{
+  "en": "%1: %2 failed password attempts.",
+  "tr": "%1：%2はパスワードの試行に失敗しました。"
+ },{
+  "en": "%1<br>Has <b>changed</b> and <b>reloaded</b>, undo is <b>NOT</b> allowed for large file.",
+  "tr": "%1 <b>変更</ b>および<b>再ロード</ b>されたため、大きなファイルに対して元に戻すことは<b>許可されていません</ b>。"
+ },{
+  "en": "%1<br>Has <b>changed</b> and <b>reloaded</b>, undo is allowed.",
+  "tr": "%1 <b>変更</ b>および<b>再読み込み</ b>されたため、元に戻すことができます。"
+ },{
+  "en": "%1<br>Has <b>changed</b>, Do you want to reload it?",
+  "tr": "%1 <br>変更されました</ b>、リロードしますか？"
+ },{
+  "en": "%1<br>Has been <b>moved or deleted</b>.",
+  "tr": "%1 <br>移動または削除されました</ b>。"
+ },{
+  "en": "(%1) was pressed. Waiting for more keys",
+  "tr": "（%1）が押されました。より多くのキーを待っています"
+ },{
+  "en": "1 Char",
+  "tr": "1文字"
+ },{
+  "en": "16 Columns",
+  "tr": "16列"
+ },{
+  "en": "2 Chars",
+  "tr": "2文字"
+ },{
+  "en": "24 Columns",
+  "tr": "24列"
+ },{
+  "en": "32 Columns",
+  "tr": "32列"
+ },{
+  "en": "4 Chars",
+  "tr": "4文字"
+ },{
+  "en": "8 Chars",
+  "tr": "8文字"
+ },{
+  "en": "8 Columns",
+  "tr": "8列"
+ },{
+  "en": "A Master Password is used to protect sensitive information like SSH passwords.",
+  "tr": "マスターパスワードは、SSHパスワードなどの機密情報を保護するために使用されます。"
+ },{
+  "en": "A remote file has been modified.\nDo you want to upload this file back to the server?",
+  "tr": "リモートファイルが変更されました。(このファイルをサーバーにアップロードし直しますか？"
+ },{
+  "en": "A specific session or set of sessions",
+  "tr": "特定のセッションまたは一連のセッション"
+ },{
+  "en": "Abbreviated month name",
+  "tr": "省略形の月名"
+ },{
+  "en": "Abbreviated weekday name",
+  "tr": "平日の略称"
+ },{
+  "en": "Accept local connections only",
+  "tr": "ローカル接続のみを受け入れる"
+ },{
+  "en": "Accessed",
+  "tr": "アクセス済み"
+ },{
+  "en": "Activate multiple carets",
+  "tr": "複数のキャレットをアクティブにする"
+ },{
+  "en": "Activate Next Selection",
+  "tr": "次の選択をアクティブにする"
+ },{
+  "en": "Activate Next View",
+  "tr": "次のビューをアクティブ化"
+ },{
+  "en": "Activate Previous Selection",
+  "tr": "前の選択をアクティブにする"
+ },{
+  "en": "Activate Previous View",
+  "tr": "前のビューをアクティブ化"
+ },{
+  "en": "Activate the left tab",
+  "tr": "左側のタブをアクティブにします"
+ },{
+  "en": "Activate the previously selected tab",
+  "tr": "以前に選択したタブをアクティブにします"
+ },{
+  "en": "Activate the right tab",
+  "tr": "右側のタブをアクティブにします"
+ },{
+  "en": "Activate the tab after closing",
+  "tr": "閉じた後にタブをアクティブにする"
+ },{
+  "en": "Activate the tab after hovering",
+  "tr": "ホバー後にタブをアクティブにします"
+ },{
+  "en": "Add Group",
+  "tr": "グループを追加"
+ },{
+  "en": "Add Sender",
+  "tr": "送信者を追加"
+ },{
+  "en": "Add Tab",
+  "tr": "タブを追加"
+ },{
+  "en": "Adjust the window rows and columns",
+  "tr": "ウィンドウの行と列を調整します"
+ },{
+  "en": "Advanced Sort",
+  "tr": "高度な並べ替え"
+ },{
+  "en": "Agent",
+  "tr": "エージェント"
+ },{
+  "en": "Agent authentication failed, please try another method",
+  "tr": "エージェント認証に失敗しました。別の方法を試してください"
+ },{
+  "en": "All",
+  "tr": "すべて"
+ },{
+  "en": "All %1 sessions will be deleted.\nDo you want to continue importing sessions?",
+  "tr": "すべての%1セッションが削除されます。(セッションのインポートを続行しますか？"
+ },{
+  "en": "All session output",
+  "tr": "すべてのセッション出力"
+ },{
+  "en": "All Sessions",
+  "tr": "すべてのセッション"
+ },{
+  "en": "All tabs",
+  "tr": "すべてのタブ"
+ },{
+  "en": "Alternate column background color",
+  "tr": "代替列の背景色"
+ },{
+  "en": "Alternate line background color",
+  "tr": "代替線の背景色"
+ },{
+  "en": "Always On Top",
+  "tr": "常にトップ"
+ },{
+  "en": "Always on top",
+  "tr": "常にトップに"
+ },{
+  "en": "An error occurred when attempting to read from the %1 process.",
+  "tr": "%1プロセスから読み取ろうとしたときにエラーが発生しました。"
+ },{
+  "en": "An error occurred when attempting to write to the %1 process.",
+  "tr": "%1プロセスに書き込もうとしたときにエラーが発生しました。"
+ },{
+  "en": "An unknown error occurred in %1 process.",
+  "tr": "%1プロセスで不明なエラーが発生しました。"
+ },{
+  "en": "ANSI to OEM",
+  "tr": "ANSIからOEM"
+ },{
+  "en": "Answer back",
+  "tr": "返信"
+ },{
+  "en": "Any",
+  "tr": "どれでも"
+ },{
+  "en": "Anything Palette",
+  "tr": "なんでもパレット"
+ },{
+  "en": "Anywhere",
+  "tr": "どこでも"
+ },{
+  "en": "Appearance",
+  "tr": "外観"
+ },{
+  "en": "Append",
+  "tr": "追加する"
+ },{
+  "en": "Append log file",
+  "tr": "ログファイルの追加"
+ },{
+  "en": "Application",
+  "tr": "応用"
+ },{
+  "en": "Are you sure you want to delete %1 selected items?",
+  "tr": "選択した%1個のアイテムを削除してもよろしいですか？"
+ },{
+  "en": "Are you sure you want to delete item <b>%1</b>?",
+  "tr": "アイテム<b>%1 </ b>を削除してもよろしいですか？"
+ },{
+  "en": "Are you sure you want to reload the current file and lose the changes made in WindEdit?",
+  "tr": "現在のファイルをリロードして、WindEditで行った変更を失ってもよろしいですか？"
+ },{
+  "en": "Are you sure you want to stop the current sender?",
+  "tr": "現在の送信者を停止してもよろしいですか？"
+ },{
+  "en": "Arguments",
+  "tr": "引数"
+ },{
+  "en": "At Caret",
+  "tr": "キャレットにて"
+ },{
+  "en": "At End",
+  "tr": "終了時"
+ },{
+  "en": "At Start",
+  "tr": "開始時"
+ },{
+  "en": "Attempt gssapi-with-mic authentication",
+  "tr": "gssapi-with-mic認証を試行します"
+ },{
+  "en": "Attempt keyboard-interactive authentication",
+  "tr": "キーボード対話型認証を試行します"
+ },{
+  "en": "Attempt pageant authentication",
+  "tr": "ページェント認証を試みます"
+ },{
+  "en": "Attempt password authentication",
+  "tr": "パスワード認証を試みます"
+ },{
+  "en": "Attempt public-key authentication",
+  "tr": "公開鍵認証を試みます"
+ },{
+  "en": "Attempt ssh-agent authentication",
+  "tr": "ssh-agent認証を試みます"
+ },{
+  "en": "Authenticated with partial success, please continue another method.",
+  "tr": "部分的な成功で認証されました。別の方法を試してください。"
+ },{
+  "en": "Authenticating by %1",
+  "tr": "%1による認証"
+ },{
+  "en": "Authenticating by %1 and %2",
+  "tr": "%1と%2による認証"
+ },{
+  "en": "Authentication",
+  "tr": "認証"
+ },{
+  "en": "Authentication denied, please try again.",
+  "tr": "認証が拒否されました。再試行してください。"
+ },{
+  "en": "Auto Close HTML/XML Tags",
+  "tr": "HTML / XMLタグの自動クローズ"
+ },{
+  "en": "Auto login",
+  "tr": "自動ログイン"
+ },{
+  "en": "Auto login failed, please try again.",
+  "tr": "自動ログインに失敗しました。もう一度やり直してください。"
+ },{
+  "en": "Auto login next time",
+  "tr": "次回の自動ログイン"
+ },{
+  "en": "Automatic",
+  "tr": "自動"
+ },{
+  "en": "Automatic authentication methods",
+  "tr": "自動認証方法"
+ },{
+  "en": "Automatically copy selection",
+  "tr": "選択範囲を自動的にコピー"
+ },{
+  "en": "Automatically detect indentation",
+  "tr": "インデントを自動的に検出"
+ },{
+  "en": "Automatically trim the padding",
+  "tr": "パディングを自動的にトリミング"
+ },{
+  "en": "Background marker",
+  "tr": "背景マーカー"
+ },{
+  "en": "Backspace",
+  "tr": "バックスペース"
+ },{
+  "en": "Backspace sends",
+  "tr": "バックスペース送信"
+ },{
+  "en": "Backward",
+  "tr": "後方"
+ },{
+  "en": "Bars",
+  "tr": "バー"
+ },{
+  "en": "Baud Rate",
+  "tr": "ボーレート"
+ },{
+  "en": "Beep When Finished",
+  "tr": "終了時にビープ音を鳴らす"
+ },{
+  "en": "Binary",
+  "tr": "バイナリ"
+ },{
+  "en": "Binary base",
+  "tr": "バイナリベース"
+ },{
+  "en": "Binary columns",
+  "tr": "バイナリ列"
+ },{
+  "en": "Binary devision columns",
+  "tr": "2進除算列"
+ },{
+  "en": "Binary grouped characters",
+  "tr": "バイナリグループ化文字"
+ },{
+  "en": "Black",
+  "tr": "黒"
+ },{
+  "en": "Blink",
+  "tr": "点滅"
+ },{
+  "en": "blinking block",
+  "tr": "点滅ブロック"
+ },{
+  "en": "blinking line",
+  "tr": "点滅する線"
+ },{
+  "en": "blinking rectangle",
+  "tr": "長方形の点滅"
+ },{
+  "en": "blinking underLine",
+  "tr": "下線が点滅"
+ },{
+  "en": "Block",
+  "tr": "ブロック"
+ },{
+  "en": "block",
+  "tr": "ブロック"
+ },{
+  "en": "Bold",
+  "tr": "大胆な"
+ },{
+  "en": "Bold type indicates fixed-width fonts",
+  "tr": "太字は固定幅フォントを示します"
+ },{
+  "en": "Bottom Docks",
+  "tr": "ボトムドック"
+ },{
+  "en": "Bottom Group",
+  "tr": "ボトムグループ"
+ },{
+  "en": "Browse",
+  "tr": "ブラウズ"
+ },{
+  "en": "Browse Directory",
+  "tr": "ディレクトリを参照"
+ },{
+  "en": "Browse File",
+  "tr": "ファイルを参照"
+ },{
+  "en": "Browser",
+  "tr": "ブラウザ"
+ },{
+  "en": "Build",
+  "tr": "ビルド"
+ },{
+  "en": "By",
+  "tr": "に"
+ },{
+  "en": "Calculating",
+  "tr": "計算"
+ },{
+  "en": "Cannot find suitable program to open file:\n%1\nTry use default editor to open it.",
+  "tr": "ファイルを開くのに適したプログラムが見つかりません：(%1 (デフォルトのエディタを使用して開いてみてください。"
+ },{
+  "en": "Cannot make directory %1.",
+  "tr": "ディレクトリ%1を作成できません。"
+ },{
+  "en": "Cannot make file %1.",
+  "tr": "ファイル%1を作成できません。"
+ },{
+  "en": "Cannot make link %1.",
+  "tr": "リンク%1を作成できません。"
+ },{
+  "en": "Cannot remove the directory %1.",
+  "tr": "ディレクトリ%1を削除できません。"
+ },{
+  "en": "Cancel",
+  "tr": "キャンセル"
+ },{
+  "en": "Cancel Build",
+  "tr": "ビルドのキャンセル"
+ },{
+  "en": "Cancel Selection",
+  "tr": "選択をキャンセル"
+ },{
+  "en": "Caret",
+  "tr": "キャレット"
+ },{
+  "en": "Caret Style",
+  "tr": "キャレットスタイル"
+ },{
+  "en": "Carriage Return",
+  "tr": "キャリッジリターン"
+ },{
+  "en": "Cdup",
+  "tr": "Cdup"
+ },{
+  "en": "Change Master Password",
+  "tr": "マスターパスワードの変更"
+ },{
+  "en": "Change master password",
+  "tr": "マスターパスワードを変更する"
+ },{
+  "en": "Change the master password failed.",
+  "tr": "マスターパスワードの変更に失敗しました。"
+ },{
+  "en": "Change the tab title",
+  "tr": "タブタイトルの変更"
+ },{
+  "en": "Changed",
+  "tr": "かわった"
+ },{
+  "en": "Channel",
+  "tr": "チャネル"
+ },{
+  "en": "Char",
+  "tr": "Char"
+ },{
+  "en": "Char Left",
+  "tr": "左文字"
+ },{
+  "en": "Char Right",
+  "tr": "Char Right"
+ },{
+  "en": "Character spacing",
+  "tr": "文字間隔"
+ },{
+  "en": "character width",
+  "tr": "文字幅"
+ },{
+  "en": "Charset",
+  "tr": "文字セット"
+ },{
+  "en": "Choose a default editor",
+  "tr": "デフォルトのエディタを選択してください"
+ },{
+  "en": "Ciphers",
+  "tr": "暗号"
+ },{
+  "en": "Ciphers order",
+  "tr": "暗号の注文"
+ },{
+  "en": "Clear",
+  "tr": "クリア"
+ },{
+  "en": "Clear All",
+  "tr": "すべてクリア"
+ },{
+  "en": "Clear Recent Urls",
+  "tr": "最近のURLをクリア"
+ },{
+  "en": "Clear Screen",
+  "tr": "クリアスクリーン"
+ },{
+  "en": "Clear Scrollback",
+  "tr": "スクロールバックをクリア"
+ },{
+  "en": "Clear Sender",
+  "tr": "クリアセンダー"
+ },{
+  "en": "Click event",
+  "tr": "クリックイベント"
+ },{
+  "en": "Close",
+  "tr": "選ぶ"
+ },{
+  "en": "Close All Views",
+  "tr": "すべてのビューを閉じる"
+ },{
+  "en": "Close All Views But Active",
+  "tr": "アクティブ以外のすべてのビューを閉じる"
+ },{
+  "en": "Close All Views To The Right",
+  "tr": "右側のすべてのビューを閉じる"
+ },{
+  "en": "Close And Exit",
+  "tr": "閉じて終了"
+ },{
+  "en": "Close Channel",
+  "tr": "チャネルを閉じる"
+ },{
+  "en": "Close Dock",
+  "tr": "ドックを閉じる"
+ },{
+  "en": "Close Group",
+  "tr": "グループを閉じる"
+ },{
+  "en": "Close Session",
+  "tr": "セッションを閉じる"
+ },{
+  "en": "Close Tab",
+  "tr": "タブを閉じる"
+ },{
+  "en": "Close tab",
+  "tr": "タブを閉じる"
+ },{
+  "en": "Close View",
+  "tr": "ビューを閉じる"
+ },{
+  "en": "Close Window",
+  "tr": "ウィンドウを閉じる"
+ },{
+  "en": "Color",
+  "tr": "色"
+ },{
+  "en": "Column Edit",
+  "tr": "列編集"
+ },{
+  "en": "Column Marker",
+  "tr": "列マーカー"
+ },{
+  "en": "Columns",
+  "tr": "列"
+ },{
+  "en": "columns",
+  "tr": "列"
+ },{
+  "en": "Command",
+  "tr": "コマンド"
+ },{
+  "en": "Command Palette",
+  "tr": "コマンドパレット"
+ },{
+  "en": "Comment",
+  "tr": "コメント"
+ },{
+  "en": "Comment Selection",
+  "tr": "コメント選択"
+ },{
+  "en": "Comment Selection (Block Mode)",
+  "tr": "コメント選択（ブロックモード）"
+ },{
+  "en": "Comment Selection (Line Mode)",
+  "tr": "コメント選択（行モード）"
+ },{
+  "en": "Complete Word",
+  "tr": "完全な単語"
+ },{
+  "en": "Config",
+  "tr": "構成"
+ },{
+  "en": "Confirm Password",
+  "tr": "パスワードを認証する"
+ },{
+  "en": "Confirm password",
+  "tr": "パスワードを認証する"
+ },{
+  "en": "Connect",
+  "tr": "接続"
+ },{
+  "en": "Connection",
+  "tr": "繋がり"
+ },{
+  "en": "Context",
+  "tr": "環境"
+ },{
+  "en": "Continue",
+  "tr": "継続する"
+ },{
+  "en": "Convert CRLF and LF to CR",
+  "tr": "CRLFとLFをCRに変換します"
+ },{
+  "en": "Convert tab to spaces",
+  "tr": "タブをスペースに変換"
+ },{
+  "en": "copied",
+  "tr": "コピー"
+ },{
+  "en": "Copy",
+  "tr": "コピー"
+ },{
+  "en": "copy",
+  "tr": "コピー"
+ },{
+  "en": "Copy File Name",
+  "tr": "ファイル名のコピー"
+ },{
+  "en": "Copy File Path",
+  "tr": "ファイルパスのコピー"
+ },{
+  "en": "Copy Output",
+  "tr": "出力のコピー"
+ },{
+  "en": "Copy Session Name",
+  "tr": "セッション名のコピー"
+ },{
+  "en": "Copy Session Url",
+  "tr": "セッションURLのコピー"
+ },{
+  "en": "Copy To Terminal",
+  "tr": "ターミナルにコピー"
+ },{
+  "en": "Count",
+  "tr": "カウント"
+ },{
+  "en": "Create Directory",
+  "tr": "ディレクトリを作成する"
+ },{
+  "en": "Create File",
+  "tr": "ファイルの作成"
+ },{
+  "en": "Create Link",
+  "tr": "リンクを作成する"
+ },{
+  "en": "Created",
+  "tr": "作成した"
+ },{
+  "en": "Critical",
+  "tr": "致命的"
+ },{
+  "en": "Current Session",
+  "tr": "現在のセッション"
+ },{
+  "en": "Custom",
+  "tr": "カスタム"
+ },{
+  "en": "Custom Opacity",
+  "tr": "カスタム不透明度"
+ },{
+  "en": "Customize",
+  "tr": "カスタマイズ"
+ },{
+  "en": "Cut",
+  "tr": "カット"
+ },{
+  "en": "Dark Cyan",
+  "tr": "ダークシアン"
+ },{
+  "en": "Data",
+  "tr": "データ"
+ },{
+  "en": "Data Bits",
+  "tr": "データビット"
+ },{
+  "en": "Datetime format",
+  "tr": "日時形式"
+ },{
+  "en": "Day of month",
+  "tr": "月の日01-31"
+ },{
+  "en": "Debug Mode",
+  "tr": "デバッグモード"
+ },{
+  "en": "Decrease Line Indent",
+  "tr": "行のインデントを減らす"
+ },{
+  "en": "Deep Pink",
+  "tr": "ディープピンク"
+ },{
+  "en": "default",
+  "tr": "ディフォルト"
+ },{
+  "en": "Default Font",
+  "tr": "デフォルトのフォント"
+ },{
+  "en": "Default line ending",
+  "tr": "デフォルトの行末"
+ },{
+  "en": "Delete",
+  "tr": "削除"
+ },{
+  "en": "Delete sends",
+  "tr": "送信を削除"
+ },{
+  "en": "DemiBold",
+  "tr": "デミボールド"
+ },{
+  "en": "Destination Host",
+  "tr": "宛先ホスト"
+ },{
+  "en": "Destination Port",
+  "tr": "宛先ポート"
+ },{
+  "en": "Dir",
+  "tr": "監督"
+ },{
+  "en": "dir",
+  "tr": "dir"
+ },{
+  "en": "Directory",
+  "tr": "ディレクトリ"
+ },{
+  "en": "Directory Link",
+  "tr": "ディレクトリリンク"
+ },{
+  "en": "Disable Nagle's algorithm (TCP_NODELAY option)",
+  "tr": "Nagleのアルゴリズムを無効にします（TCP_NODELAYオプション）"
+ },{
+  "en": "Disconnect Session",
+  "tr": "セッションの切断"
+ },{
+  "en": "Disk",
+  "tr": "ディスク"
+ },{
+  "en": "Do not echo characters",
+  "tr": "文字をエコーし​​ないでください"
+ },{
+  "en": "Do you want to close the current session?",
+  "tr": "現在のセッションを閉じますか？"
+ },{
+  "en": "Document",
+  "tr": "ドキュメント"
+ },{
+  "en": "Don't show this message again",
+  "tr": "このメッセージを二度と表示しないでください"
+ },{
+  "en": "Double click",
+  "tr": "ダブルクリック"
+ },{
+  "en": "Double click event",
+  "tr": "ダブルクリックイベント"
+ },{
+  "en": "Download",
+  "tr": "ダウンロード"
+ },{
+  "en": "download",
+  "tr": "ダウンロード"
+ },{
+  "en": "Download directory",
+  "tr": "ダウンロードディレクトリ"
+ },{
+  "en": "downloaded",
+  "tr": "ダウンロード"
+ },{
+  "en": "Drop Selection",
+  "tr": "ドロップセレクション"
+ },{
+  "en": "Duplicate",
+  "tr": "複製"
+ },{
+  "en": "Duplicate View",
+  "tr": "重複ビュー"
+ },{
+  "en": "Dynamic forwarding",
+  "tr": "動的転送"
+ },{
+  "en": "Echo every character entered",
+  "tr": "入力したすべての文字をエコーし​​ます"
+ },{
+  "en": "Echo every character when editing",
+  "tr": "編集時にすべてのキャラクターをエコーする"
+ },{
+  "en": "Echo random characters",
+  "tr": "ランダムな文字をエコーする"
+ },{
+  "en": "Edit",
+  "tr": "編集 "
+ },{
+  "en": "Editor",
+  "tr": "編集者"
+ },{
+  "en": "editor",
+  "tr": "編集者"
+ },{
+  "en": "Editor Settings",
+  "tr": "エディター設定"
+ },{
+  "en": "Elapsed",
+  "tr": "経過"
+ },{
+  "en": "Elide left",
+  "tr": "左にエリード"
+ },{
+  "en": "Elide middle",
+  "tr": "真ん中をエリード"
+ },{
+  "en": "Elide right",
+  "tr": "右にスライド"
+ },{
+  "en": "Empty",
+  "tr": "空の"
+ },{
+  "en": "Enable command mode",
+  "tr": "コマンドモードを有効にする"
+ },{
+  "en": "Enable local mode",
+  "tr": "ローカルモードを有効にする"
+ },{
+  "en": "Enable TCP keepalives (SO_KEEPALIVE option)",
+  "tr": "TCPキープアライブを有効にする（SO_KEEPALIVEオプション）"
+ },{
+  "en": "Enable virtual spaces",
+  "tr": "仮想空間を有効にする"
+ },{
+  "en": "End Of Document",
+  "tr": "ドキュメントの終わり"
+ },{
+  "en": "End Of Line",
+  "tr": "行末"
+ },{
+  "en": "End Of Pair",
+  "tr": "ペアの終わり"
+ },{
+  "en": "Engine",
+  "tr": "エンジン"
+ },{
+  "en": "Environment Variable",
+  "tr": "環境変数"
+ },{
+  "en": "Environment variables",
+  "tr": "環境変数"
+ },{
+  "en": "Error",
+  "tr": "エラー"
+ },{
+  "en": "Exchange Caret And Anchor",
+  "tr": "キャレットとアンカーの交換"
+ },{
+  "en": "Execute",
+  "tr": "実行"
+ },{
+  "en": "Execute command after authentication",
+  "tr": "認証後にコマンドを実行する"
+ },{
+  "en": "Execute command after start",
+  "tr": "開始後にコマンドを実行"
+ },{
+  "en": "Execute File",
+  "tr": "ファイルの実行"
+ },{
+  "en": "Exit",
+  "tr": "終了"
+ },{
+  "en": "Expand",
+  "tr": "拡大"
+ },{
+  "en": "Expand Snippet",
+  "tr": "スニペットを展開"
+ },{
+  "en": "Explorer",
+  "tr": "冒険者"
+ },{
+  "en": "External Tools",
+  "tr": "外部ツール"
+ },{
+  "en": "External X display",
+  "tr": "外部Xディスプレイ"
+ },{
+  "en": "ExtraBold",
+  "tr": "ExtraBold"
+ },{
+  "en": "ExtraLight",
+  "tr": "ExtraLight"
+ },{
+  "en": "Failed to create temporary file:\n%1",
+  "tr": "一時ファイルの作成に失敗しました：(%1"
+ },{
+  "en": "Failed to open directory: %1",
+  "tr": "ディレクトリを開けませんでした：%1"
+ },{
+  "en": "Failed to retrieve host fingerprint!",
+  "tr": "ホストフィンガープリントの取得に失敗しました！"
+ },{
+  "en": "Fast",
+  "tr": "速い"
+ },{
+  "en": "Favorites",
+  "tr": "お気に入り"
+ },{
+  "en": "Features",
+  "tr": "特徴"
+ },{
+  "en": "File",
+  "tr": "ファイル"
+ },{
+  "en": "file",
+  "tr": "ファイル"
+ },{
+  "en": "File Link",
+  "tr": "ファイルリンク"
+ },{
+  "en": "File Name",
+  "tr": "ファイル名"
+ },{
+  "en": "File name",
+  "tr": "ファイル名"
+ },{
+  "en": "File Path",
+  "tr": "ファイルパス"
+ },{
+  "en": "Filer",
+  "tr": "ファイラー"
+ },{
+  "en": "filer",
+  "tr": "ファイラー"
+ },{
+  "en": "Filter",
+  "tr": "フィルター"
+ },{
+  "en": "Find",
+  "tr": "検索"
+ },{
+  "en": "Find All",
+  "tr": "すべて検索"
+ },{
+  "en": "Find in Files",
+  "tr": "ファイルで検索"
+ },{
+  "en": "Find Next",
+  "tr": "次を検索"
+ },{
+  "en": "Find Next Selection",
+  "tr": "次の選択を見つける"
+ },{
+  "en": "Find Previous",
+  "tr": "前を検索"
+ },{
+  "en": "Find Previous Selection",
+  "tr": "以前の選択を検索"
+ },{
+  "en": "Fingerprint",
+  "tr": "指紋"
+ },{
+  "en": "First nine tabs",
+  "tr": "最初の9つのタブ"
+ },{
+  "en": "Float",
+  "tr": "フロート"
+ },{
+  "en": "Flow Control",
+  "tr": "フロー制御"
+ },{
+  "en": "Focus Mode",
+  "tr": "フォーカスモード"
+ },{
+  "en": "Focus Mode Settings",
+  "tr": "フォーカスモード設定"
+ },{
+  "en": "Fold",
+  "tr": "折りたたむ"
+ },{
+  "en": "Fold All",
+  "tr": "すべて折りたたむ"
+ },{
+  "en": "Fold Category",
+  "tr": "折りたたみカテゴリ"
+ },{
+  "en": "Fold Inside",
+  "tr": "内側に折りたたむ"
+ },{
+  "en": "Folds",
+  "tr": "折り目"
+ },{
+  "en": "Font",
+  "tr": "フォント"
+ },{
+  "en": "Font family",
+  "tr": "フォントファミリー"
+ },{
+  "en": "Font size",
+  "tr": "フォントサイズ"
+ },{
+  "en": "Font weight",
+  "tr": "フォントの太さ"
+ },{
+  "en": "Forest Green",
+  "tr": "フォレストグリーン"
+ },{
+  "en": "Format Selection",
+  "tr": "フォーマット選択"
+ },{
+  "en": "Found",
+  "tr": "見つかった"
+ },{
+  "en": "Full month name",
+  "tr": "完全な月の名前"
+ },{
+  "en": "Full Screen",
+  "tr": "フルスクリーン"
+ },{
+  "en": "Full screen",
+  "tr": "全画面表示"
+ },{
+  "en": "Full weekday name",
+  "tr": "完全な平日の名前"
+ },{
+  "en": "Go Backward",
+  "tr": "戻る"
+ },{
+  "en": "Go Forward",
+  "tr": "進む"
+ },{
+  "en": "Go to",
+  "tr": "に移動"
+ },{
+  "en": "Go to Symbol in Current View",
+  "tr": "現在のビューのシンボルに移動"
+ },{
+  "en": "Goldenrod",
+  "tr": "アキノキリンソウ"
+ },{
+  "en": "Goto",
+  "tr": "後藤"
+ },{
+  "en": "Goto Address Bar",
+  "tr": "後藤アドレスバー"
+ },{
+  "en": "Goto File",
+  "tr": "Gotoファイル"
+ },{
+  "en": "Goto Position",
+  "tr": "後藤ポジション"
+ },{
+  "en": "Goto Session",
+  "tr": "後藤セッション"
+ },{
+  "en": "Goto Symbol",
+  "tr": "後藤シンボル"
+ },{
+  "en": "Group",
+  "tr": "グループ"
+ },{
+  "en": "Group %1",
+  "tr": "グループ%1"
+ },{
+  "en": "Groups",
+  "tr": "グループ"
+ },{
+  "en": "Gssapi With Mic",
+  "tr": "マイク付きGssapi"
+ },{
+  "en": "Hard Reset",
+  "tr": "ハードリセット"
+ },{
+  "en": "Help",
+  "tr": "ヘルプ"
+ },{
+  "en": "Hex",
+  "tr": "16進数"
+ },{
+  "en": "Hex Base",
+  "tr": "六角ベース"
+ },{
+  "en": "Hex Columns",
+  "tr": "16進列"
+ },{
+  "en": "Hex Edit",
+  "tr": "16進編集"
+ },{
+  "en": "Hex Group Chars",
+  "tr": "六角グループ文字"
+ },{
+  "en": "Hidden",
+  "tr": "隠れた"
+ },{
+  "en": "Hide",
+  "tr": "隠れる"
+ },{
+  "en": "Hide All",
+  "tr": "すべて非表示"
+ },{
+  "en": "Hide cursor when typing",
+  "tr": "入力時にカーソルを非表示にする"
+ },{
+  "en": "Hide Text",
+  "tr": "テキストを非表示"
+ },{
+  "en": "Highlight",
+  "tr": "ハイライト"
+ },{
+  "en": "Highlight Caret Line",
+  "tr": "キャレットラインを強調表示"
+ },{
+  "en": "Highlight Matching Pair",
+  "tr": "マッチングペアを強調表示"
+ },{
+  "en": "Highlight the caret line",
+  "tr": "キャレットラインを強調表示"
+ },{
+  "en": "Highlight the caret word",
+  "tr": "キャレットワードを強調表示"
+ },{
+  "en": "Highlight the current fold",
+  "tr": "現在の折り畳みを強調表示"
+ },{
+  "en": "Highlight the current pair",
+  "tr": "現在のペアを強調表示"
+ },{
+  "en": "Highlight the incremental search",
+  "tr": "インクリメンタルサーチを強調表示"
+ },{
+  "en": "History",
+  "tr": "歴史"
+ },{
+  "en": "Home Of Line",
+  "tr": "ホームオブライン"
+ },{
+  "en": "Host",
+  "tr": "ホスト"
+ },{
+  "en": "Host address",
+  "tr": "ホストアドレス"
+ },{
+  "en": "Host Based",
+  "tr": "ホストベース"
+ },{
+  "en": "Hours in 12 format",
+  "tr": "12形式の時間"
+ },{
+  "en": "Hours in 24 format",
+  "tr": "24形式の時間00-23"
+ },{
+  "en": "Huge File",
+  "tr": "巨大なファイル"
+ },{
+  "en": "Icon",
+  "tr": "アイコン"
+ },{
+  "en": "Identity file",
+  "tr": "IDファイル"
+ },{
+  "en": "Identity file for authentication",
+  "tr": "認証用のIDファイル"
+ },{
+  "en": "If you create a Master Password you will be asked to enter it when WindTerm retrieves saved information protected by the Master Password.",
+  "tr": "マスターパスワードを作成すると、WindTermがマスターパスワードで保護されている保存済み情報を取得するときに、マスターパスワードを入力するように求められます。"
+ },{
+  "en": "If you forget your Master Password, you will be unable to access any of the information protected by it.",
+  "tr": "マスターパスワードを忘れると、マスターパスワードで保護されている情報にアクセスできなくなります。"
+ },{
+  "en": "Import",
+  "tr": "インポート"
+ },{
+  "en": "Import sessions",
+  "tr": "セッションのインポート"
+ },{
+  "en": "In Selection",
+  "tr": "選択中"
+ },{
+  "en": "Increase Line Indent",
+  "tr": "行のインデントを増やす"
+ },{
+  "en": "Incremental",
+  "tr": "増分"
+ },{
+  "en": "Indent",
+  "tr": "インデント"
+ },{
+  "en": "Indent guide style",
+  "tr": "インデントガイドスタイル"
+ },{
+  "en": "Indent Guides",
+  "tr": "インデントガイド"
+ },{
+  "en": "Indent size",
+  "tr": "インデントサイズ"
+ },{
+  "en": "Indentation",
+  "tr": "インデント"
+ },{
+  "en": "Indian Red",
+  "tr": "インディアンレッド"
+ },{
+  "en": "Information",
+  "tr": "情報"
+ },{
+  "en": "Insert",
+  "tr": "挿入"
+ },{
+  "en": "Insert File",
+  "tr": "ファイルを挿入"
+ },{
+  "en": "Insert Lines",
+  "tr": "行の挿入"
+ },{
+  "en": "Insert tab when pressing TAB key",
+  "tr": "Tabキーを押したときにTabキーを挿入する"
+ },{
+  "en": "Inserting and deleting whitespace follows tab stops",
+  "tr": "タブストップに続く空白の挿入と削除"
+ },{
+  "en": "Inserting file",
+  "tr": "ファイルを挿入しています"
+ },{
+  "en": "Internal X display",
+  "tr": "内部Xディスプレイ"
+ },{
+  "en": "Interval",
+  "tr": "間隔"
+ },{
+  "en": "Invert Selection",
+  "tr": "選択を反転"
+ },{
+  "en": "item failed",
+  "tr": "アイテムが失敗しました"
+ },{
+  "en": "items failed",
+  "tr": "アイテムが失敗しました"
+ },{
+  "en": "Join Channel A",
+  "tr": "チャネルAに参加する"
+ },{
+  "en": "Join Channel B",
+  "tr": "チャネルBに参加する"
+ },{
+  "en": "Join Channel C",
+  "tr": "チャネルCに参加する"
+ },{
+  "en": "Join Channel D",
+  "tr": "チャネルDに参加する"
+ },{
+  "en": "Join Lines",
+  "tr": "参加ライン"
+ },{
+  "en": "Joined",
+  "tr": "参加しました"
+ },{
+  "en": "Jump Server",
+  "tr": "ジャンプサーバー"
+ },{
+  "en": "Jump server",
+  "tr": "ジャンプサーバー"
+ },{
+  "en": "Key Exchange",
+  "tr": "鍵交換"
+ },{
+  "en": "Key exchange order",
+  "tr": "鍵交換注文"
+ },{
+  "en": "Key re-exchange",
+  "tr": "キーの再交換"
+ },{
+  "en": "Keyboard",
+  "tr": "キーボード"
+ },{
+  "en": "Keyboard Interactive",
+  "tr": "キーボードインタラクティブ"
+ },{
+  "en": "Kit Bar",
+  "tr": "キットバー"
+ },{
+  "en": "Known",
+  "tr": "既知"
+ },{
+  "en": "Label",
+  "tr": "ラベル"
+ },{
+  "en": "Language",
+  "tr": "言語"
+ },{
+  "en": "Last sessions",
+  "tr": "最後のセッション"
+ },{
+  "en": "Layout",
+  "tr": "レイアウト"
+ },{
+  "en": "Leading And Trailing Blanks",
+  "tr": "先頭と末尾の空白"
+ },{
+  "en": "Leading Blanks",
+  "tr": "リーディングブランク"
+ },{
+  "en": "Leading position",
+  "tr": "首位"
+ },{
+  "en": "Leave All Channels",
+  "tr": "すべてのチャネルを離れる"
+ },{
+  "en": "Leave all channels",
+  "tr": "すべてのチャネルを離れる"
+ },{
+  "en": "Leave Channel",
+  "tr": "チャネルを離れる"
+ },{
+  "en": "Left Docks",
+  "tr": "左ドック"
+ },{
+  "en": "Left Group",
+  "tr": "左グループ"
+ },{
+  "en": "Light",
+  "tr": "光"
+ },{
+  "en": "Line",
+  "tr": "ライン"
+ },{
+  "en": "line",
+  "tr": "ライン"
+ },{
+  "en": "line at a time",
+  "tr": "一度に1行"
+ },{
+  "en": "Line Down",
+  "tr": "ラインダウン"
+ },{
+  "en": "Line Ending",
+  "tr": "行末"
+ },{
+  "en": "Line Endings",
+  "tr": "行末"
+ },{
+  "en": "Line Feed",
+  "tr": "改行"
+ },{
+  "en": "line height",
+  "tr": "行の高さ"
+ },{
+  "en": "Line marker",
+  "tr": "ラインマーカー"
+ },{
+  "en": "Line spacing",
+  "tr": "行間隔"
+ },{
+  "en": "Line Up",
+  "tr": "ラインナップ"
+ },{
+  "en": "lines at a time",
+  "tr": "一度に行"
+ },{
+  "en": "Lines of scrollback",
+  "tr": "スクロールバックの行"
+ },{
+  "en": "Link",
+  "tr": "リンク"
+ },{
+  "en": "Link to",
+  "tr": "へのリンク"
+ },{
+  "en": "List Tab",
+  "tr": "[リスト]タブ"
+ },{
+  "en": "Listen Port",
+  "tr": "リッスンポート"
+ },{
+  "en": "Local forwarding",
+  "tr": "ローカル転送"
+ },{
+  "en": "Locate Message",
+  "tr": "メッセージの検索"
+ },{
+  "en": "Location",
+  "tr": "位置"
+ },{
+  "en": "Lock Screen",
+  "tr": "ロック画面"
+ },{
+  "en": "Lock screen timeout",
+  "tr": "ロック画面のタイムアウト"
+ },{
+  "en": "Lock Selection",
+  "tr": "ロック選択"
+ },{
+  "en": "Log",
+  "tr": "ログ"
+ },{
+  "en": "Log all session output",
+  "tr": "すべてのセッション出力をログに記録する"
+ },{
+  "en": "Log content pattern",
+  "tr": "ログコンテンツパターン"
+ },{
+  "en": "Log Dialog",
+  "tr": "ログダイアログ"
+ },{
+  "en": "Log file",
+  "tr": "ログファイル"
+ },{
+  "en": "Log file name",
+  "tr": "ログファイル名"
+ },{
+  "en": "Log maximum size",
+  "tr": "ログの最大サイズ"
+ },{
+  "en": "Log nothing",
+  "tr": "何も記録しない"
+ },{
+  "en": "Log option",
+  "tr": "ログオプション"
+ },{
+  "en": "Log options",
+  "tr": "ログオプション"
+ },{
+  "en": "Log pattern",
+  "tr": "ログパターン"
+ },{
+  "en": "Log printable output",
+  "tr": "印刷可能な出力をログに記録する"
+ },{
+  "en": "Log type",
+  "tr": "ログタイプ"
+ },{
+  "en": "Log types",
+  "tr": "ログタイプ"
+ },{
+  "en": "Logging",
+  "tr": "ロギング"
+ },{
+  "en": "Login",
+  "tr": "ログイン"
+ },{
+  "en": "Login Wizard",
+  "tr": "ログインウィザード"
+ },{
+  "en": "Long Time/Date",
+  "tr": "長い時間/日付"
+ },{
+  "en": "Look both guide",
+  "tr": "両方のガイドを見てください"
+ },{
+  "en": "Look forward guide",
+  "tr": "楽しみにガイド"
+ },{
+  "en": "MAC Hashes",
+  "tr": "MACハッシュ"
+ },{
+  "en": "MAC hashes order",
+  "tr": "MACハッシュ注文"
+ },{
+  "en": "Margin Blank",
+  "tr": "マージンブランク"
+ },{
+  "en": "Margin Fold",
+  "tr": "マージンフォールド"
+ },{
+  "en": "Margin Number",
+  "tr": "証拠金番号"
+ },{
+  "en": "Margin Symbol",
+  "tr": "マージン記号"
+ },{
+  "en": "Margin Text",
+  "tr": "マージンテキスト"
+ },{
+  "en": "Margin Timestamp",
+  "tr": "マージンタイムスタンプ"
+ },{
+  "en": "Margins",
+  "tr": "マージン"
+ },{
+  "en": "Marker style",
+  "tr": "マーカースタイル"
+ },{
+  "en": "Max data before rekey (MBytes)",
+  "tr": "キー再生成前の最大データ（MBytes）"
+ },{
+  "en": "Max time before rekey (Minutes)",
+  "tr": "キーの再生成までの最大時間（分）"
+ },{
+  "en": "Maximum connection timeout",
+  "tr": "最大接続タイムアウト"
+ },{
+  "en": "MB",
+  "tr": "MB"
+ },{
+  "en": "Medium",
+  "tr": "中くらい"
+ },{
+  "en": "Medium Orchid",
+  "tr": "ミディアムオーキッド"
+ },{
+  "en": "Medium Slate Blue",
+  "tr": "ミディアムスレートブルー"
+ },{
+  "en": "Menu Bar",
+  "tr": "メニューバー"
+ },{
+  "en": "Merge To Group",
+  "tr": "グループにマージ"
+ },{
+  "en": "Middle click",
+  "tr": "ミドルクリック"
+ },{
+  "en": "Middle click event",
+  "tr": "ミドルクリックイベント"
+ },{
+  "en": "Milliseconds",
+  "tr": "ミリ秒000-999"
+ },{
+  "en": "Minutes",
+  "tr": "分"
+ },{
+  "en": "minutes",
+  "tr": "分"
+ },{
+  "en": "Mismatched",
+  "tr": "ミスマッチ"
+ },{
+  "en": "Mode",
+  "tr": "モード"
+ },{
+  "en": "Modem waiting",
+  "tr": "モデム待機"
+ },{
+  "en": "Modes",
+  "tr": "モード"
+ },{
+  "en": "Modified",
+  "tr": "変更"
+ },{
+  "en": "Modify",
+  "tr": "変更"
+ },{
+  "en": "Modify Lines",
+  "tr": "線の変更"
+ },{
+  "en": "Month",
+  "tr": "01- 12月"
+ },{
+  "en": "More",
+  "tr": "詳細"
+ },{
+  "en": "Mouse Actions",
+  "tr": "マウスアクション"
+ },{
+  "en": "Mouse Tracking",
+  "tr": "マウスの追跡"
+ },{
+  "en": "Move event",
+  "tr": "移動イベント"
+ },{
+  "en": "Move to",
+  "tr": "へ引っ越す"
+ },{
+  "en": "Move To Group",
+  "tr": "グループに移動"
+ },{
+  "en": "Multiple Caret",
+  "tr": "マルチキャレット"
+ },{
+  "en": "Name",
+  "tr": "名前"
+ },{
+  "en": "nesting groups",
+  "tr": "ネスティンググループ"
+ },{
+  "en": "Never",
+  "tr": "一度もない"
+ },{
+  "en": "New File",
+  "tr": "新しいファイル"
+ },{
+  "en": "New Line",
+  "tr": "改行"
+ },{
+  "en": "New password",
+  "tr": "新しいパスワード"
+ },{
+  "en": "New Session",
+  "tr": "新しいセッション"
+ },{
+  "en": "New Window",
+  "tr": "新しいウィンドウ"
+ },{
+  "en": "Next Char",
+  "tr": "次の文字"
+ },{
+  "en": "Next Fold",
+  "tr": "次の折り目"
+ },{
+  "en": "Next Indentation",
+  "tr": "次のインデント"
+ },{
+  "en": "Next Line",
+  "tr": "次の行"
+ },{
+  "en": "Next Message",
+  "tr": "次のメッセージ"
+ },{
+  "en": "Next Page",
+  "tr": "次のページ"
+ },{
+  "en": "Next Pair",
+  "tr": "次のペア"
+ },{
+  "en": "Next Paragraph",
+  "tr": "次の段落"
+ },{
+  "en": "Next Scope",
+  "tr": "次のスコープ"
+ },{
+  "en": "Next Segment End",
+  "tr": "次のセグメント終了"
+ },{
+  "en": "Next Segment Start",
+  "tr": "次のセグメント開始"
+ },{
+  "en": "Next Stuttered Page",
+  "tr": "次の途切れたページ"
+ },{
+  "en": "Next Word",
+  "tr": "次の言葉"
+ },{
+  "en": "Next Word End",
+  "tr": "次の単語の終わり"
+ },{
+  "en": "Next Word Part",
+  "tr": "次の単語パート"
+ },{
+  "en": "No",
+  "tr": "番号"
+ },{
+  "en": "No action",
+  "tr": "何もしない"
+ },{
+  "en": "No Dirs",
+  "tr": "ダースなし"
+ },{
+  "en": "No elide",
+  "tr": "エリドなし"
+ },{
+  "en": "No file opened",
+  "tr": "ファイルが開かれていません"
+ },{
+  "en": "No filer available",
+  "tr": "利用可能なファイラーはありません"
+ },{
+  "en": "No Files",
+  "tr": "ファイルなし"
+ },{
+  "en": "No files selected to transfer.",
+  "tr": "転送するファイルが選択されていません。"
+ },{
+  "en": "No item opened",
+  "tr": "アイテムが開かれていません"
+ },{
+  "en": "No outline available",
+  "tr": "利用可能な概要はありません"
+ },{
+  "en": "No session",
+  "tr": "セッションなし"
+ },{
+  "en": "No session available",
+  "tr": "利用可能なセッションはありません"
+ },{
+  "en": "No session opened",
+  "tr": "セッションが開かれていません"
+ },{
+  "en": "No Sessions",
+  "tr": "セッションなし"
+ },{
+  "en": "No supported authentication methods available.",
+  "tr": "サポートされている認証方法はありません。"
+ },{
+  "en": "No transfer available",
+  "tr": "転送は利用できません"
+ },{
+  "en": "No wrap",
+  "tr": "ラップなし"
+ },{
+  "en": "No X display",
+  "tr": "Xディスプレイなし"
+ },{
+  "en": "None",
+  "tr": "なし"
+ },{
+  "en": "None tabs",
+  "tr": "なしタブ"
+ },{
+  "en": "Normal",
+  "tr": "普通"
+ },{
+  "en": "Now",
+  "tr": "今"
+ },{
+  "en": "Nowhere",
+  "tr": "どこにも"
+ },{
+  "en": "Octal",
+  "tr": "オクタル"
+ },{
+  "en": "OEM to ANSI",
+  "tr": "OEMからANSI"
+ },{
+  "en": "Off",
+  "tr": "オフ"
+ },{
+  "en": "off",
+  "tr": "オフ"
+ },{
+  "en": "Ok",
+  "tr": "Ok"
+ },{
+  "en": "Old",
+  "tr": "年"
+ },{
+  "en": "Old password",
+  "tr": "以前のパスワード"
+ },{
+  "en": "Olive",
+  "tr": "オリーブ"
+ },{
+  "en": "One or more sessions are opening, \nDo you want to close the current window?",
+  "tr": "1つ以上のセッションが開いています。(現在のウィンドウを閉じますか？"
+ },{
+  "en": "Only disk file can be reloaded!",
+  "tr": "リロードできるのはディスクファイルのみ！"
+ },{
+  "en": "Only indentation",
+  "tr": "インデントのみ"
+ },{
+  "en": "Opaque",
+  "tr": "不透明"
+ },{
+  "en": "Open",
+  "tr": "開く"
+ },{
+  "en": "open",
+  "tr": "開いた"
+ },{
+  "en": "Open directory after created",
+  "tr": "作成後にディレクトリを開く"
+ },{
+  "en": "Open directory after download",
+  "tr": "ダウンロード後にディレクトリを開く"
+ },{
+  "en": "Open File",
+  "tr": "ファイルを開く"
+ },{
+  "en": "Open file",
+  "tr": "ファイルを開く"
+ },{
+  "en": "Open file after created",
+  "tr": "作成後にファイルを開く"
+ },{
+  "en": "Open file failed!",
+  "tr": "ファイルを開くことができませんでした！"
+ },{
+  "en": "Open jump server failed!",
+  "tr": "ジャンプサーバーを開くことができませんでした！"
+ },{
+  "en": "Open Log File",
+  "tr": "ログファイルを開く"
+ },{
+  "en": "Open Log Folder",
+  "tr": "ログフォルダを開く"
+ },{
+  "en": "Open Recent",
+  "tr": "最近開く"
+ },{
+  "en": "Open Selection",
+  "tr": "オープンセレクション"
+ },{
+  "en": "Open Session",
+  "tr": "オープンセッション"
+ },{
+  "en": "Open session failed!",
+  "tr": "オープンセッションに失敗しました！"
+ },{
+  "en": "Open target directory",
+  "tr": "ターゲットディレクトリを開く"
+ },{
+  "en": "Opened",
+  "tr": "オープン"
+ },{
+  "en": "Openssh sessions",
+  "tr": "OpenSSHセッション"
+ },{
+  "en": "Others",
+  "tr": "その他"
+ },{
+  "en": "Outline",
+  "tr": "概要"
+ },{
+  "en": "Output",
+  "tr": "出力"
+ },{
+  "en": "Overtype",
+  "tr": "オーバータイプ"
+ },{
+  "en": "Overwrite",
+  "tr": "上書きする"
+ },{
+  "en": "Overwrite log file",
+  "tr": "ログファイルの上書き"
+ },{
+  "en": "Overwrite when source file newer",
+  "tr": "ソースファイルが新しいときに上書きする"
+ },{
+  "en": "Overwrite when source file newer or longer",
+  "tr": "ソースファイルが新しいか長い場合は上書きします"
+ },{
+  "en": "Owner",
+  "tr": "オーナー"
+ },{
+  "en": "Packet padding char",
+  "tr": "パケットパディング文字"
+ },{
+  "en": "Packet size",
+  "tr": "パケットサイズ"
+ },{
+  "en": "Page",
+  "tr": "ページ"
+ },{
+  "en": "page",
+  "tr": "ページ"
+ },{
+  "en": "Pair",
+  "tr": "ペア"
+ },{
+  "en": "Panes",
+  "tr": "ペイン"
+ },{
+  "en": "Paragraph",
+  "tr": "段落"
+ },{
+  "en": "Parity",
+  "tr": "パリティ"
+ },{
+  "en": "Passphrase",
+  "tr": "パスフレーズ"
+ },{
+  "en": "Password",
+  "tr": "パスワード"
+ },{
+  "en": "Password quality meter",
+  "tr": "パスワード品質メーター"
+ },{
+  "en": "Paste",
+  "tr": "ペースト"
+ },{
+  "en": "Paste Dialog",
+  "tr": "貼り付けダイアログ"
+ },{
+  "en": "Paste text",
+  "tr": "テキストを貼り付ける"
+ },{
+  "en": "Pause",
+  "tr": "一時停止"
+ },{
+  "en": "Paused",
+  "tr": "一時停止"
+ },{
+  "en": "Pausing",
+  "tr": "一時停止"
+ },{
+  "en": "Perform DNS lookup with proxy",
+  "tr": "プロキシを使用してDNSルックアップを実行する"
+ },{
+  "en": "Period",
+  "tr": "期間"
+ },{
+  "en": "Permissions",
+  "tr": "権限"
+ },{
+  "en": "pixels",
+  "tr": "ピクセル"
+ },{
+  "en": "Please input a new name for this view",
+  "tr": "このビューの新しい名前を入力してください"
+ },{
+  "en": "Please input master password, empty or cancel to disable",
+  "tr": "マスターパスワードを入力するか、空にするかキャンセルして無効にしてください"
+ },{
+  "en": "Please input new group",
+  "tr": "新しいグループを入力してください"
+ },{
+  "en": "Please make sure you remember the Master Password you have set.",
+  "tr": "設定したマスターパスワードを忘れないでください。"
+ },{
+  "en": "Port",
+  "tr": "港"
+ },{
+  "en": "Prefer theme fonts",
+  "tr": "テーマフォントを優先する"
+ },{
+  "en": "Preferences",
+  "tr": "設定"
+ },{
+  "en": "Preserve",
+  "tr": "保存"
+ },{
+  "en": "Preview All",
+  "tr": "すべてプレビュー"
+ },{
+  "en": "Preview Symbol",
+  "tr": "プレビュー記号"
+ },{
+  "en": "Previous Char",
+  "tr": "前の文字"
+ },{
+  "en": "Previous Fold",
+  "tr": "前の折り目"
+ },{
+  "en": "Previous Indentation",
+  "tr": "前のインデント"
+ },{
+  "en": "Previous Line",
+  "tr": "前の行"
+ },{
+  "en": "Previous Message",
+  "tr": "前のメッセージ"
+ },{
+  "en": "Previous Page",
+  "tr": "前のページ"
+ },{
+  "en": "Previous Pair",
+  "tr": "前のペア"
+ },{
+  "en": "Previous Paragraph",
+  "tr": "前の段落"
+ },{
+  "en": "Previous Scope",
+  "tr": "以前のスコープ"
+ },{
+  "en": "Previous Segment End",
+  "tr": "前のセグメント終了"
+ },{
+  "en": "Previous Segment Start",
+  "tr": "前のセグメント開始"
+ },{
+  "en": "Previous Stuttered Page",
+  "tr": "前の途切れたページ"
+ },{
+  "en": "Previous Word",
+  "tr": "前の言葉"
+ },{
+  "en": "Previous Word End",
+  "tr": "前の単語の終わり"
+ },{
+  "en": "Previous Word Part",
+  "tr": "前の単語パート"
+ },{
+  "en": "Printable output",
+  "tr": "印刷可能な出力"
+ },{
+  "en": "Process",
+  "tr": "プロセス"
+ },{
+  "en": "Process %1 crashed.",
+  "tr": "プロセス%1がクラッシュしました。"
+ },{
+  "en": "Process %1 failed to start.",
+  "tr": "プロセス%1を開始できませんでした。"
+ },{
+  "en": "Process %1 timeout.",
+  "tr": "%1タイムアウトを処理します。"
+ },{
+  "en": "Program [Arguments]",
+  "tr": "プログラム[引数]"
+ },{
+  "en": "Project",
+  "tr": "プロジェクト"
+ },{
+  "en": "Properties",
+  "tr": "プロパティ"
+ },{
+  "en": "Property",
+  "tr": "財産"
+ },{
+  "en": "Protocol",
+  "tr": "プロトコル"
+ },{
+  "en": "Proxy",
+  "tr": "プロキシー"
+ },{
+  "en": "Proxy Host",
+  "tr": "プロキシホスト"
+ },{
+  "en": "Proxy Port",
+  "tr": "プロキシポート"
+ },{
+  "en": "Proxy Settings",
+  "tr": "プロキシ設定"
+ },{
+  "en": "Proxy Type",
+  "tr": "プロキシタイプ"
+ },{
+  "en": "Public Key",
+  "tr": "公開鍵"
+ },{
+  "en": "Public Keys",
+  "tr": "公開鍵"
+ },{
+  "en": "Public keys order",
+  "tr": "公開鍵の注文"
+ },{
+  "en": "Putty sessions",
+  "tr": "パテセッション"
+ },{
+  "en": "Query URL",
+  "tr": "クエリURL"
+ },{
+  "en": "Question",
+  "tr": "質問"
+ },{
+  "en": "Quick",
+  "tr": "素早い"
+ },{
+  "en": "Quick Bar",
+  "tr": "クイックバー"
+ },{
+  "en": "Quick Commands",
+  "tr": "クイックコマンド"
+ },{
+  "en": "Read Only",
+  "tr": "読み取り専用"
+ },{
+  "en": "Ready",
+  "tr": "準備"
+ },{
+  "en": "Real guide",
+  "tr": "リアルガイド"
+ },{
+  "en": "Receive XModem",
+  "tr": "XModemを受信する"
+ },{
+  "en": "Receive YModem",
+  "tr": "YModemを受信する"
+ },{
+  "en": "Receive ZModem",
+  "tr": "ZModemを受信する"
+ },{
+  "en": "received",
+  "tr": "受け取った"
+ },{
+  "en": "Recent",
+  "tr": "最近"
+ },{
+  "en": "Recent Sessions",
+  "tr": "最近のセッション"
+ },{
+  "en": "Reconnect Session",
+  "tr": "セッションの再接続"
+ },{
+  "en": "Rectangle",
+  "tr": "矩形"
+ },{
+  "en": "rectangle",
+  "tr": "矩形"
+ },{
+  "en": "Red",
+  "tr": "赤"
+ },{
+  "en": "Redo",
+  "tr": "やり直し"
+ },{
+  "en": "Redo %1 Actions",
+  "tr": "%1アクションをやり直す"
+ },{
+  "en": "Refresh",
+  "tr": "更新"
+ },{
+  "en": "Reload",
+  "tr": "リロード"
+ },{
+  "en": "Reload File",
+  "tr": "ファイルをリロード"
+ },{
+  "en": "Reload With Encoding",
+  "tr": "エンコーディングを使用したリロード"
+ },{
+  "en": "Remote forwarding",
+  "tr": "リモート転送"
+ },{
+  "en": "Remote path",
+  "tr": "リモートパス"
+ },{
+  "en": "Remove",
+  "tr": "削除"
+ },{
+  "en": "remove",
+  "tr": "削除する"
+ },{
+  "en": "Remove Blank Lines",
+  "tr": "空白行を削除"
+ },{
+  "en": "Remove Duplicate Lines",
+  "tr": "重複する行を削除"
+ },{
+  "en": "Remove Group",
+  "tr": "グループを削除"
+ },{
+  "en": "Remove items",
+  "tr": "アイテムを削除する"
+ },{
+  "en": "Remove Sender",
+  "tr": "送信者を削除"
+ },{
+  "en": "Removing",
+  "tr": "削除"
+ },{
+  "en": "Rename",
+  "tr": "名前を変更"
+ },{
+  "en": "Rename Group",
+  "tr": "グループの名前を変更"
+ },{
+  "en": "Rename tab",
+  "tr": "タブの名前を変更"
+ },{
+  "en": "Rename View",
+  "tr": "ビューの名前を変更"
+ },{
+  "en": "Reopen Closed View",
+  "tr": "閉じたビューを再度開く"
+ },{
+  "en": "Repeat Last Command",
+  "tr": "最後のコマンドを繰り返す"
+ },{
+  "en": "Repeatedly Execute",
+  "tr": "繰り返し実行"
+ },{
+  "en": "Replace",
+  "tr": "置換"
+ },{
+  "en": "Replace All",
+  "tr": "すべて置換"
+ },{
+  "en": "Replace in Files",
+  "tr": "ファイル内で置換"
+ },{
+  "en": "Requires a restart to take affect",
+  "tr": "有効にするには再起動が必要です"
+ },{
+  "en": "Reset",
+  "tr": "リセット"
+ },{
+  "en": "Reset Character Set",
+  "tr": "文字セットのリセット"
+ },{
+  "en": "Reset Zoom",
+  "tr": "ズームのリセット"
+ },{
+  "en": "Resume",
+  "tr": "履歴書"
+ },{
+  "en": "Resuming",
+  "tr": "再開"
+ },{
+  "en": "Right click",
+  "tr": "右クリック"
+ },{
+  "en": "Right click event",
+  "tr": "右クリックイベント"
+ },{
+  "en": "Right Docks",
+  "tr": "右ドック"
+ },{
+  "en": "Right Group",
+  "tr": "右グループ"
+ },{
+  "en": "Roll the mouse wheel to scroll",
+  "tr": "マウスホイールを回してスクロールします"
+ },{
+  "en": "Rows",
+  "tr": "行"
+ },{
+  "en": "Royal Blue",
+  "tr": "ロイヤルブルー"
+ },{
+  "en": "Run Tool",
+  "tr": "ツールの実行"
+ },{
+  "en": "Save",
+  "tr": "保存する"
+ },{
+  "en": "Save All",
+  "tr": "すべて保存"
+ },{
+  "en": "Save As",
+  "tr": "名前を付けて保存"
+ },{
+  "en": "Save Copy As",
+  "tr": "コピーに名前を付けて保存"
+ },{
+  "en": "Save file failed!",
+  "tr": "ファイルの保存に失敗しました！"
+ },{
+  "en": "Save Selection As",
+  "tr": "選択に名前を付けて保存"
+ },{
+  "en": "Save Session",
+  "tr": "セッションの保存"
+ },{
+  "en": "Saved automatic authentication",
+  "tr": "保存された自動認証"
+ },{
+  "en": "Scheme Tools",
+  "tr": "スキームツール"
+ },{
+  "en": "Scope",
+  "tr": "スコープ"
+ },{
+  "en": "Screen Locked",
+  "tr": "画面がロックされています"
+ },{
+  "en": "Scroll Left",
+  "tr": "左にスクロール"
+ },{
+  "en": "Scroll Line Down",
+  "tr": "下にスクロール"
+ },{
+  "en": "Scroll Line Up",
+  "tr": "スクロールラインアップ"
+ },{
+  "en": "Scroll Right",
+  "tr": "右にスクロール"
+ },{
+  "en": "Search",
+  "tr": "検索"
+ },{
+  "en": "Search engine",
+  "tr": "サーチエンジン）"
+ },{
+  "en": "Search Engine",
+  "tr": "検索エンジン"
+ },{
+  "en": "Search Engines",
+  "tr": "検索エンジン"
+ },{
+  "en": "Search Online",
+  "tr": "オンライン検索"
+ },{
+  "en": "Search or enter address",
+  "tr": "住所を検索または入力する"
+ },{
+  "en": "Searching",
+  "tr": "検索中"
+ },{
+  "en": "Seconds",
+  "tr": "秒"
+ },{
+  "en": "seconds",
+  "tr": "秒"
+ },{
+  "en": "Security",
+  "tr": "安全"
+ },{
+  "en": "Segment",
+  "tr": "セグメント"
+ },{
+  "en": "Select",
+  "tr": "選択"
+ },{
+  "en": "Select All",
+  "tr": "すべて選択"
+ },{
+  "en": "Select Column To",
+  "tr": "列Toを選択します"
+ },{
+  "en": "Select directory to receive",
+  "tr": "受信するディレクトリを選択します"
+ },{
+  "en": "Select files to send",
+  "tr": "送信するファイルを選択します"
+ },{
+  "en": "Select Fold",
+  "tr": "Foldを選択します"
+ },{
+  "en": "Select Snippet Backward",
+  "tr": "Snippet Backwardを選択します"
+ },{
+  "en": "Select Snippet Forward",
+  "tr": "Snippet Forwardを選択します"
+ },{
+  "en": "Select To",
+  "tr": "Toを選択します"
+ },{
+  "en": "Selected position",
+  "tr": "選択した位置"
+ },{
+  "en": "Selected Sessions",
+  "tr": "選択したセッション"
+ },{
+  "en": "Selection",
+  "tr": "選択"
+ },{
+  "en": "Send",
+  "tr": "送信"
+ },{
+  "en": "Send Line By Line",
+  "tr": "行ごとに送信"
+ },{
+  "en": "Send Text",
+  "tr": "テキストを送信"
+ },{
+  "en": "Send XModem",
+  "tr": "XModemを送信する"
+ },{
+  "en": "Send YModem",
+  "tr": "YModemを送信します"
+ },{
+  "en": "Send ZModem",
+  "tr": "ZModemを送信する"
+ },{
+  "en": "Sender",
+  "tr": "送信者"
+ },{
+  "en": "Sending %1 failed: %2",
+  "tr": "%1の送信に失敗しました：%2"
+ },{
+  "en": "Sending: %1",
+  "tr": "送信：%1"
+ },{
+  "en": "Sends null packet to keep session alive",
+  "tr": "セッションを存続させるためにnullパケットを送信します"
+ },{
+  "en": "sent",
+  "tr": "送信済"
+ },{
+  "en": "Serial",
+  "tr": "シリアル"
+ },{
+  "en": "Server",
+  "tr": "サーバ"
+ },{
+  "en": "Session",
+  "tr": "セッション"
+ },{
+  "en": "session",
+  "tr": "セッション"
+ },{
+  "en": "Session Group",
+  "tr": "セッショングループ"
+ },{
+  "en": "Session Log",
+  "tr": "セッションログ"
+ },{
+  "en": "Session name",
+  "tr": "セッション名"
+ },{
+  "en": "Session Settings",
+  "tr": "セッション設定"
+ },{
+  "en": "Sessions In All Windows",
+  "tr": "すべてのWindowsでのセッション"
+ },{
+  "en": "Sessions In Current Group",
+  "tr": "現在のグループのセッション"
+ },{
+  "en": "Sessions In Current Window",
+  "tr": "現在のウィンドウのセッション"
+ },{
+  "en": "Sessions In Group %1",
+  "tr": "グループ%1のセッション"
+ },{
+  "en": "Set Tab Color",
+  "tr": "タブの色を設定"
+ },{
+  "en": "Settings",
+  "tr": "設定"
+ },{
+  "en": "SHA1",
+  "tr": "SHA1"
+ },{
+  "en": "Shape",
+  "tr": "形状"
+ },{
+  "en": "Shell",
+  "tr": "シェル"
+ },{
+  "en": "Shell sessions",
+  "tr": "シェルセッション"
+ },{
+  "en": "Shell Sessions",
+  "tr": "シェルセッション"
+ },{
+  "en": "Short Time/Date",
+  "tr": "短い時間/日付"
+ },{
+  "en": "Show",
+  "tr": "見せる"
+ },{
+  "en": "Show All",
+  "tr": "すべて表示"
+ },{
+  "en": "Show All Opened and Recent Editors",
+  "tr": "開いている編集者と最近の編集者をすべて表示する"
+ },{
+  "en": "Show All Opened and Recent Terminals",
+  "tr": "開いているターミナルと最近のターミナルをすべて表示する"
+ },{
+  "en": "Show and Run Actions",
+  "tr": "アクションの表示と実行"
+ },{
+  "en": "Show close tab confirmation dialog",
+  "tr": "タブを閉じる確認ダイアログを表示する"
+ },{
+  "en": "Show close window confirmation dialog",
+  "tr": "ウィンドウを閉じる確認ダイアログを表示する"
+ },{
+  "en": "Show column markers",
+  "tr": "列マーカーを表示する"
+ },{
+  "en": "Show commands in alphabetical order",
+  "tr": "コマンドをアルファベット順に表示"
+ },{
+  "en": "Show current %1 property",
+  "tr": "現在の%1プロパティを表示する"
+ },{
+  "en": "Show group commands in order",
+  "tr": "グループコマンドを順番に表示"
+ },{
+  "en": "Show group title",
+  "tr": "グループタイトルを表示"
+ },{
+  "en": "Show hidden items",
+  "tr": "非表示のアイテムを表示する"
+ },{
+  "en": "Show in %1",
+  "tr": "%1で表示"
+ },{
+  "en": "Show In Line End",
+  "tr": "改行で表示"
+ },{
+  "en": "Show In Line Start",
+  "tr": "インラインで表示開始"
+ },{
+  "en": "Show In Selection",
+  "tr": "選択範囲に表示"
+ },{
+  "en": "Show indent guide",
+  "tr": "インデントガイドを表示"
+ },{
+  "en": "Show line endings",
+  "tr": "行末を表示する"
+ },{
+  "en": "Show menu",
+  "tr": "メニューを表示"
+ },{
+  "en": "Show More Tools",
+  "tr": "その他のツールを表示"
+ },{
+  "en": "Show multiple groups",
+  "tr": "複数のグループを表示"
+ },{
+  "en": "Show paste dialog on the alternative screen",
+  "tr": "代替画面に貼り付けダイアログを表示"
+ },{
+  "en": "Show paste dialog on the main screen",
+  "tr": "メイン画面に貼り付けダイアログを表示"
+ },{
+  "en": "Show spaces and tabs",
+  "tr": "スペースとタブを表示する"
+ },{
+  "en": "Show Tabs",
+  "tr": "タブを表示"
+ },{
+  "en": "Show Text",
+  "tr": "テキストを表示"
+ },{
+  "en": "Show the tab number on tabs",
+  "tr": "タブにタブ番号を表示する"
+ },{
+  "en": "Show this dialog when focus mode starts",
+  "tr": "フォーカスモードの開始時にこのダイアログを表示する"
+ },{
+  "en": "Show wrap symbols",
+  "tr": "折り返し記号を表示する"
+ },{
+  "en": "Shrink",
+  "tr": "縮む"
+ },{
+  "en": "Size",
+  "tr": "サイズ"
+ },{
+  "en": "Skip",
+  "tr": "スキップ"
+ },{
+  "en": "Soft Reset",
+  "tr": "ソフトリセット"
+ },{
+  "en": "Sort",
+  "tr": "並べ替え"
+ },{
+  "en": "Sort Lines Case Insensitive",
+  "tr": "行の並べ替え大文字と小文字を区別しない"
+ },{
+  "en": "Sort Lines Case Sensitive",
+  "tr": "並べ替え行大文字と小文字を区別"
+ },{
+  "en": "Sort Lines In Random Order",
+  "tr": "行をランダムな順序で並べ替える"
+ },{
+  "en": "Sort Lines In Reverse Order",
+  "tr": "行を逆順で並べ替える"
+ },{
+  "en": "spaces",
+  "tr": "スペース"
+ },{
+  "en": "Spaces to Tabs",
+  "tr": "タブへのスペース"
+ },{
+  "en": "Spacing",
+  "tr": "間隔"
+ },{
+  "en": "Special",
+  "tr": "特別な"
+ },{
+  "en": "Specify the protocol when dragging and dropping files",
+  "tr": "ファイルをドラッグアンドドロップするときのプロトコルを指定します"
+ },{
+  "en": "Speed",
+  "tr": "スピード"
+ },{
+  "en": "Split",
+  "tr": "分割"
+ },{
+  "en": "Split Group Horizontally",
+  "tr": "グループを水平方向に分割"
+ },{
+  "en": "Split Group Vertically",
+  "tr": "グループを垂直に分割"
+ },{
+  "en": "Split Lines",
+  "tr": "分割線"
+ },{
+  "en": "Split Selection",
+  "tr": "スプリットセレクション"
+ },{
+  "en": "Split To Group",
+  "tr": "グループに分割"
+ },{
+  "en": "Split View Horizontally",
+  "tr": "ビューを水平方向に分割"
+ },{
+  "en": "Split View Vertically",
+  "tr": "ビューを垂直方向に分割"
+ },{
+  "en": "Start",
+  "tr": "開始"
+ },{
+  "en": "Start Of Document",
+  "tr": "ドキュメントの開始"
+ },{
+  "en": "Start Of Line",
+  "tr": "ラインの開始"
+ },{
+  "en": "Start Of Pair",
+  "tr": "ペアの開始"
+ },{
+  "en": "Startup",
+  "tr": "起動"
+ },{
+  "en": "Stash",
+  "tr": "スタッシュ"
+ },{
+  "en": "Status Bar",
+  "tr": "ステータスバー"
+ },{
+  "en": "Stdin",
+  "tr": "Stdin"
+ },{
+  "en": "Stdout",
+  "tr": "Stdout"
+ },{
+  "en": "Steel Blue",
+  "tr": "スチールブルー"
+ },{
+  "en": "Sticky",
+  "tr": "スティッキー"
+ },{
+  "en": "Stop",
+  "tr": "やめる"
+ },{
+  "en": "Stop Bits",
+  "tr": "ストップビット"
+ },{
+  "en": "Stop loading",
+  "tr": "読み込みを停止します"
+ },{
+  "en": "Stop sender",
+  "tr": "送信者を停止します"
+ },{
+  "en": "Stop Tools",
+  "tr": "停止ツール"
+ },{
+  "en": "Stop watching this file",
+  "tr": "このファイルの視聴をやめる"
+ },{
+  "en": "Switch Stream And Column",
+  "tr": "ストリームと列の切り替え"
+ },{
+  "en": "switch to tab",
+  "tr": "タブに切り替えます"
+ },{
+  "en": "Symbols",
+  "tr": "記号"
+ },{
+  "en": "Sync channel",
+  "tr": "同期チャネル"
+ },{
+  "en": "Sync Edit",
+  "tr": "同期編集"
+ },{
+  "en": "Sync Input",
+  "tr": "同期入力"
+ },{
+  "en": "Synchronizing input in channel %1",
+  "tr": "チャネル%1の入力を同期しています"
+ },{
+  "en": "Syntax Schemes",
+  "tr": "構文スキーム"
+ },{
+  "en": "System",
+  "tr": "システム"
+ },{
+  "en": "Tab",
+  "tr": "タブ"
+ },{
+  "en": "Tab Color",
+  "tr": "タブの色"
+ },{
+  "en": "Tab Features",
+  "tr": "タブ機能"
+ },{
+  "en": "Tab Group",
+  "tr": "タブグループ"
+ },{
+  "en": "Tab Index",
+  "tr": "タブインデックス"
+ },{
+  "en": "Tab size",
+  "tr": "タブサイズ"
+ },{
+  "en": "Tab text elide mode",
+  "tr": "タブテキスト消去モード"
+ },{
+  "en": "Tab thumbnail radio",
+  "tr": "タブサムネイルラジオ"
+ },{
+  "en": "Tab Title",
+  "tr": "タブタイトル"
+ },{
+  "en": "Tabify Selected Lines",
+  "tr": "選択した行を集計"
+ },{
+  "en": "Tabs",
+  "tr": "タブ"
+ },{
+  "en": "Tabs to Spaces",
+  "tr": "スペースへのタブ"
+ },{
+  "en": "Target",
+  "tr": "目標"
+ },{
+  "en": "Target folder",
+  "tr": "ターゲットフォルダ"
+ },{
+  "en": "Targets",
+  "tr": "ターゲット"
+ },{
+  "en": "TCP connection options",
+  "tr": "TCP接続オプション"
+ },{
+  "en": "Teal",
+  "tr": "ティール"
+ },{
+  "en": "Term",
+  "tr": "期間"
+ },{
+  "en": "Terminal",
+  "tr": "ターミナル"
+ },{
+  "en": "terminal",
+  "tr": "ターミナル"
+ },{
+  "en": "Terminal Settings",
+  "tr": "ターミナル設定"
+ },{
+  "en": "Text",
+  "tr": "文章"
+ },{
+  "en": "Text: %1 lines, %2 characters",
+  "tr": "テキスト：%1行、%2文字"
+ },{
+  "en": "The % sign",
+  "tr": "記号"
+ },{
+  "en": "The actual text to log",
+  "tr": "ログに記録する実際のテキスト"
+ },{
+  "en": "The destination folder is a subfolder of the source folder:\n%1",
+  "tr": "宛先フォルダーは、ソースフォルダーのサブフォルダーです：(%1"
+ },{
+  "en": "The document has been modified.\nDo you want to save your changes?",
+  "tr": "ドキュメントが変更されました。(変更を保存しますか？"
+ },{
+  "en": "The key combination (%1) is not a command.",
+  "tr": "キーの組み合わせ（%1）はコマンドではありません。"
+ },{
+  "en": "The lrzsz is not detected. Please install lrzsz first.",
+  "tr": "lrzszは検出されません。最初にlrzszをインストールしてください。"
+ },{
+  "en": "The master password has been changed.",
+  "tr": "マスターパスワードが変更されました。"
+ },{
+  "en": "The password confirmation does not match.",
+  "tr": "パスワードの確認が一致しません。"
+ },{
+  "en": "The server canceled the transmission.",
+  "tr": "サーバーは送信をキャンセルしました。"
+ },{
+  "en": "The session is <b>disconnected</b>, press <b>Enter</b> to reconnect.",
+  "tr": "セッションは<b>切断</ b>されています。<b> Enter </ b>を押して再接続します。"
+ },{
+  "en": "The transfer was canceled because a packet was not %1 within retry limit.",
+  "tr": "パケットが再試行制限内で%1にならなかったため、転送はキャンセルされました。"
+ },{
+  "en": "The transfer was canceled because the packet sequence number was wrong.",
+  "tr": "パケットシーケンス番号が間違っていたため、転送がキャンセルされました。"
+ },{
+  "en": "Theme",
+  "tr": "テーマ"
+ },{
+  "en": "Thin",
+  "tr": "薄い"
+ },{
+  "en": "Threshold for huge file",
+  "tr": "巨大なファイルのしきい値"
+ },{
+  "en": "Time format",
+  "tr": "時間形式"
+ },{
+  "en": "Time left",
+  "tr": "残り時間"
+ },{
+  "en": "Timestamp of lines",
+  "tr": "行のタイムスタンプ"
+ },{
+  "en": "To Inverse Case",
+  "tr": "逆の場合"
+ },{
+  "en": "To Line End",
+  "tr": "改行まで"
+ },{
+  "en": "To Line Start",
+  "tr": "ラインスタートへ"
+ },{
+  "en": "To Lower Case",
+  "tr": "小文字へ"
+ },{
+  "en": "To MacOS 9 CR",
+  "tr": "MacOS 9 CRへ"
+ },{
+  "en": "To Title Case",
+  "tr": "タイトルケースへ"
+ },{
+  "en": "To Unix LF",
+  "tr": "UnixへLF"
+ },{
+  "en": "To Upper Case",
+  "tr": "大文字へ"
+ },{
+  "en": "To Windows CRLF",
+  "tr": "WindowsへCRLF"
+ },{
+  "en": "To Word End",
+  "tr": "ワードエンドへ"
+ },{
+  "en": "To Word Start",
+  "tr": "ワードスタートへ"
+ },{
+  "en": "Toggle Fold",
+  "tr": "トグルフォールド"
+ },{
+  "en": "Tool",
+  "tr": "ツール"
+ },{
+  "en": "Toolbar",
+  "tr": "ツールバー"
+ },{
+  "en": "Top Group",
+  "tr": "トップグループ"
+ },{
+  "en": "Track Text Selection In Tree",
+  "tr": "ツリーでのテキスト選択の追跡"
+ },{
+  "en": "Track Tree Selection In Text",
+  "tr": "テキストでのツリー選択の追跡"
+ },{
+  "en": "Tracking Events",
+  "tr": "イベントの追跡"
+ },{
+  "en": "Trailing Blanks",
+  "tr": "トレーリングブランク"
+ },{
+  "en": "Trailing position",
+  "tr": "トレーリングポジション"
+ },{
+  "en": "Transfer",
+  "tr": "移行"
+ },{
+  "en": "Transfer Bar",
+  "tr": "トランスファーバー"
+ },{
+  "en": "Transfer Binary",
+  "tr": "バイナリ転送"
+ },{
+  "en": "Transfer complete",
+  "tr": "転送が完了しました"
+ },{
+  "en": "Transfer incomplete",
+  "tr": "転送が不完全"
+ },{
+  "en": "Translucent",
+  "tr": "半透明"
+ },{
+  "en": "Transparent",
+  "tr": "透明"
+ },{
+  "en": "Transpose",
+  "tr": "転置"
+ },{
+  "en": "Trim trailing whitespace on save",
+  "tr": "saveで末尾の空白を削除します"
+ },{
+  "en": "Trust this host",
+  "tr": "このホストを信頼する"
+ },{
+  "en": "Tunnels",
+  "tr": "トンネル"
+ },{
+  "en": "Type",
+  "tr": "タイプ"
+ },{
+  "en": "Type '?' to get help on the actions you can type here",
+  "tr": "タイプ '？'ここに入力できるアクションのヘルプを取得するには"
+ },{
+  "en": "Uncomment Selection",
+  "tr": "コメント解除の選択"
+ },{
+  "en": "Underline",
+  "tr": "下線を引く"
+ },{
+  "en": "underLine",
+  "tr": "アンダーライン"
+ },{
+  "en": "Undo",
+  "tr": "元に戻す"
+ },{
+  "en": "Undo %1 Actions",
+  "tr": "%1アクションを元に戻す"
+ },{
+  "en": "Unfold",
+  "tr": "展開"
+ },{
+  "en": "Unfold All",
+  "tr": "すべて展開"
+ },{
+  "en": "Unfold Category",
+  "tr": "展開カテゴリ"
+ },{
+  "en": "Unfold Inside",
+  "tr": "内側に展開"
+ },{
+  "en": "Unify line endings on save",
+  "tr": "保存時に行末を統一する"
+ },{
+  "en": "UnixPty",
+  "tr": "UnixPty"
+ },{
+  "en": "UnixPty: shell file path must be absolute",
+  "tr": "UnixPty：シェルファイルのパスは絶対でなければなりません"
+ },{
+  "en": "Unknown",
+  "tr": "わからない"
+ },{
+  "en": "unknown",
+  "tr": "わからない"
+ },{
+  "en": "Untabify Selected Lines",
+  "tr": "選択した行のタブを解除する"
+ },{
+  "en": "Untitled",
+  "tr": "無題"
+ },{
+  "en": "Untrust this host",
+  "tr": "このホストを信用しない"
+ },{
+  "en": "upload",
+  "tr": "アップロード"
+ },{
+  "en": "Upload command",
+  "tr": "アップロードコマンド"
+ },{
+  "en": "Upload directory",
+  "tr": "アップロードディレクトリ"
+ },{
+  "en": "uploaded",
+  "tr": "アップロード"
+ },{
+  "en": "URL with {q} in place of query",
+  "tr": "queryの代わりに{q}が付いたURL"
+ },{
+  "en": "Use background color to erase screen",
+  "tr": "背景色を使用して画面を消去します"
+ },{
+  "en": "Use system line ending",
+  "tr": "システムラインエンディングを使用する"
+ },{
+  "en": "Use this as the default and do not ask again",
+  "tr": "これをデフォルトとして使用し、再度質問しないでください"
+ },{
+  "en": "User",
+  "tr": "ユーザー"
+ },{
+  "en": "Username echo mode",
+  "tr": "ユーザー名エコーモード"
+ },{
+  "en": "Value",
+  "tr": "価値"
+ },{
+  "en": "Variable",
+  "tr": "変数"
+ },{
+  "en": "Verifying the server's fingerprint",
+  "tr": "サーバーのフィンガープリントの確認"
+ },{
+  "en": "View",
+  "tr": "表示"
+ },{
+  "en": "Virtual Space",
+  "tr": "仮想空間"
+ },{
+  "en": "Warning",
+  "tr": "警告"
+ },{
+  "en": "Wheel event",
+  "tr": "ホイールイベント"
+ },{
+  "en": "When destination file exists",
+  "tr": "宛先ファイルが存在する場合"
+ },{
+  "en": "When pasting multiple lines",
+  "tr": "複数行を貼り付ける場合"
+ },{
+  "en": "When remote title is changed",
+  "tr": "リモートタイトルが変更されたとき"
+ },{
+  "en": "When session is authenticating",
+  "tr": "セッションが認証中の場合"
+ },{
+  "en": "When window is resized",
+  "tr": "ウィンドウのサイズが変更されたとき"
+ },{
+  "en": "Where",
+  "tr": "どこ"
+ },{
+  "en": "White Spaces",
+  "tr": "ホワイトスペース"
+ },{
+  "en": "Whole Line",
+  "tr": "全線"
+ },{
+  "en": "Whole Word",
+  "tr": "単語全体"
+ },{
+  "en": "Widgets",
+  "tr": "ウィジェット"
+ },{
+  "en": "Width",
+  "tr": "幅"
+ },{
+  "en": "Window",
+  "tr": "窓"
+ },{
+  "en": "Window edge",
+  "tr": "ウィンドウエッジ"
+ },{
+  "en": "Window Opacity",
+  "tr": "ウィンドウの不透明度"
+ },{
+  "en": "Window opacity",
+  "tr": "ウィンドウの不透明度"
+ },{
+  "en": "Windows Manager",
+  "tr": "Windowsマネージャー"
+ },{
+  "en": "Winpty-agent.exe or winpty.dll not found!.",
+  "tr": "Winpty-agent.exeまたはwinpty.dllが見つかりません！。"
+ },{
+  "en": "Word",
+  "tr": "ワード"
+ },{
+  "en": "Word Separators",
+  "tr": "ワードセパレーター"
+ },{
+  "en": "Word Wrap",
+  "tr": "ワードラップ"
+ },{
+  "en": "Working directory",
+  "tr": "作業ディレクトリ"
+ },{
+  "en": "Wrap",
+  "tr": "包む"
+ },{
+  "en": "Wrap by character",
+  "tr": "文字でラップ"
+ },{
+  "en": "Wrap by word",
+  "tr": "単語でラップ"
+ },{
+  "en": "Wrap column",
+  "tr": "ラップカラム"
+ },{
+  "en": "Wrap mode",
+  "tr": "ラップモード"
+ },{
+  "en": "Wrap Symbols",
+  "tr": "ラップ記号"
+ },{
+  "en": "X/Y/Z Modem",
+  "tr": "X / Y / Zモデム"
+ },{
+  "en": "X/Y/Z modem cannot transmit folders or files larger than 4GB: %1.",
+  "tr": "X / Y / Zモデムは、4GBを超えるフォルダまたはファイルを送信できません：%1。"
+ },{
+  "en": "X11 authentication protocol",
+  "tr": "X11認証プロトコル"
+ },{
+  "en": "X11 display",
+  "tr": "X11ディスプレイ"
+ },{
+  "en": "Year in 2 digits",
+  "tr": "2桁の年"
+ },{
+  "en": "Year in 4 digits",
+  "tr": "4桁の年"
+ },{
+  "en": "Yes",
+  "tr": "はい"
+ },{
+  "en": "Zero",
+  "tr": "零"
+ },{
+  "en": "Zoom",
+  "tr": "ズーム"
+ },{
+  "en": "Zoom In",
+  "tr": "ズームイン"
+ },{
+  "en": "Zoom level",
+  "tr": "ズームレベル"
+ },{
+  "en": "Zoom Out",
+  "tr": "ズームアウト"
+ },{
+  "en": "[Crashed in %1s]",
+  "tr": "[%1sでクラッシュ]"
+ },{
+  "en": "[Empty]",
+  "tr": "[空の]"
+ },{
+  "en": "[Error: %1]",
+  "tr": "[エラー：%1]"
+ },{
+  "en": "[Finished in %1s, Exit code %2]",
+  "tr": "[%1sで終了、終了コード%2]"
+ },{
+  "en": "[Finished in %1s]",
+  "tr": "[%1秒で終了]"
+ },{
+  "en": "[Group list is empty]",
+  "tr": "[グループリストが空です]"
+ },{
+  "en": "[Navigation list is empty]",
+  "tr": "[ナビゲーションリストが空です]"
+ },{
+  "en": "[No search engine]",
+  "tr": "[検索エンジンなし]"
+ },{
+  "en": "[Recent urls is empty]",
+  "tr": "[最近のURLは空です]"
+ },{
+  "en": "[Redo list is empty]",
+  "tr": "[やり直しリストが空です]"
+ },{
+  "en": "[Scheme list is empty]",
+  "tr": "[スキームリストが空です]"
+ },{
+  "en": "[Theme list is empty]",
+  "tr": "[テーマリストが空です]"
+ },{
+  "en": "[Toolbar list is empty]",
+  "tr": "[ツールバーリストが空です]"
+ },{
+  "en": "[Undo list is empty]",
+  "tr": "[元に戻すリストが空です]"
+ },{
+  "en": "[User Canceled]",
+  "tr": "[ユーザーがキャンセルしました]"
+ },{
+  "en": "[user@]hostname",
+  "tr": "[user @] hostname"
+ },{
+  "en": "[Windows list is empty]",
+  "tr": "[Windowsリストが空です]"
+ },{
+  "en": "A label cannot contain any of the following characters: %1"
+ },{
+  "en": "A specific directory",
+  "tr": ""
+ },{
+  "en": "Abbreviated day name",
+  "tr": ""
+ },{
+  "en": "Allow",
+  "tr": ""
+ },{
+  "en": "Application Directory",
+  "tr": ""
+ },{
+  "en": "Ask",
+  "tr": ""
+ },{
+  "en": "Auto Wrap Mode (DECAWM)",
+  "tr": ""
+ },{
+  "en": "Automatically fix invalid path characters",
+  "tr": ""
+ },{
+  "en": "Automatically open at startup",
+  "tr": ""
+ },{
+  "en": "Average Speed"
+ },{
+  "en": "Bytes"
+ },{
+  "en": "Choose Profiles Directory",
+  "tr": ""
+ },{
+  "en": "Closed",
+  "tr": ""
+ },{
+  "en": "Command Mode"
+ },{
+  "en": "Convert"
+ },{
+  "en": "Ctrl+Click to follow link",
+  "tr": ""
+ },{
+  "en": "Current Item"
+ },{
+  "en": "Cursor Keys mode (DECCKM)",
+  "tr": ""
+ },{
+  "en": "Default file creation permissions",
+  "tr": ""
+ },{
+  "en": "Description",
+  "tr": ""
+ },{
+  "en": "Duplicate tab"
+ },{
+  "en": "Dynamic",
+  "tr": ""
+ },{
+  "en": "Dynamic port allocation",
+  "tr": ""
+ },{
+  "en": "Failed items"
+ },{
+  "en": "Fixterm format"
+ },{
+  "en": "Forbit",
+  "tr": ""
+ },{
+  "en": "Format"
+ },{
+  "en": "Full day name",
+  "tr": ""
+ },{
+  "en": "Hide Tabs"
+ },{
+  "en": "Home Directory",
+  "tr": ""
+ },{
+  "en": "Initial modes",
+  "tr": ""
+ },{
+  "en": "Items"
+ },{
+  "en": "Listening Port",
+  "tr": ""
+ },{
+  "en": "Ln %1 Ch %2"
+ },{
+  "en": "Local",
+  "tr": ""
+ },{
+  "en": "Local Mode"
+ },{
+  "en": "Modified other keys sends"
+ },{
+  "en": "New Line Mode (LNM)",
+  "tr": ""
+ },{
+  "en": "Normal Mode"
+ },{
+  "en": "Numeric keypad mode (DECNKM)",
+  "tr": ""
+ },{
+  "en": "Open link",
+  "tr": ""
+ },{
+  "en": "Please select your profile directory that will be used to store user preferences.",
+  "tr": ""
+ },{
+  "en": "Proxy Command",
+  "tr": ""
+ },{
+  "en": "Redo List",
+  "tr": ""
+ },{
+  "en": "Remote",
+  "tr": ""
+ },{
+  "en": "Remote Mode"
+ },{
+  "en": "Remove sessions",
+  "tr": ""
+ },{
+  "en": "Reverse Screen Mode (DECSCNM)",
+  "tr": ""
+ },{
+  "en": "Session Color",
+  "tr": ""
+ },{
+  "en": "Session Icon",
+  "tr": ""
+ },{
+  "en": "Spaces"
+ },{
+  "en": "Standard"
+ },{
+  "en": "Stash List",
+  "tr": ""
+ },{
+  "en": "Status",
+  "tr": ""
+ },{
+  "en": "Tab Size"
+ },{
+  "en": "Target directory"
+ },{
+  "en": "The login is canceled.",
+  "tr": ""
+ },{
+  "en": "The remote wants to overwrite the clipboard.<br/>This action may be unsafe. Do you want to continue?",
+  "tr": ""
+ },{
+  "en": "The remote wants to read the clipboard.<br/>This action may be unsafe. Do you want to continue?",
+  "tr": ""
+ },{
+  "en": "The selected directory does not exist.",
+  "tr": ""
+ },{
+  "en": "The session is <b>disconnected</b>, all related tunnels will be closed.",
+  "tr": ""
+ },{
+  "en": "This link type is not supported",
+  "tr": ""
+ },{
+  "en": "Time elapsed"
+ },{
+  "en": "Timezone",
+  "tr": ""
+ },{
+  "en": "Tool Bar",
+  "tr": ""
+ },{
+  "en": "Tunnel Settings",
+  "tr": ""
+ },{
+  "en": "Undo List",
+  "tr": ""
+ },{
+  "en": "Unit"
+ },{
+  "en": "UTC time zone",
+  "tr": ""
+ },{
+  "en": "Waiting to close",
+  "tr": ""
+ },{
+  "en": "Waiting to open",
+  "tr": ""
+ },{
+  "en": "When the remote wants to overwrite the clipboard",
+  "tr": ""
+ },{
+  "en": "When the remote wants to read the clipboard",
+  "tr": ""
+ },{
+  "en": "Window %1×%2"
+ },{
+  "en": "Windows 10 version below 19H1 (build 18309) is not supported.",
+  "tr": ""
+ },{
+  "en": "Word Separators For Alternate Screen",
+  "tr": ""
+ },{
+  "en": "Working Directory",
+  "tr": ""
+ },{
+  "en": "XTerm format"
+ },{
+  "en": "Additional parameters for VcXsrv",
+  "tr": ""
+ },{
+  "en": "Advanced",
+  "tr": ""
+ },{
+  "en": "Buffer Characters",
+  "tr": ""
+ },{
+  "en": "Buffer Lines",
+  "tr": ""
+ },{
+  "en": "Clipboard",
+  "tr": ""
+ },{
+  "en": "Connect Time",
+  "tr": ""
+ },{
+  "en": "Delay",
+  "tr": ""
+ },{
+  "en": "Display number",
+  "tr": ""
+ },{
+  "en": "Display",
+  "tr": ""
+ },{
+  "en": "Elapsed Time",
+  "tr": ""
+ },{
+  "en": "Enable the clipboard",
+  "tr": ""
+ },{
+  "en": "Extensions",
+  "tr": ""
+ },{
+  "en": "Grab special Windows keys like Alt-Tab",
+  "tr": ""
+ },{
+  "en": "Keyboard layout",
+  "tr": ""
+ },{
+  "en": "Keyboard model",
+  "tr": ""
+ },{
+  "en": "Not available",
+  "tr": ""
+ },{
+  "en": "Profiles Directory",
+  "tr": ""
+ },{
+  "en": "Server IP",
+  "tr": ""
+ },{
+  "en": "Show the tray icon",
+  "tr": ""
+ },{
+  "en": "SOCKS 5 address length is invalid.",
+  "tr": ""
+ },{
+  "en": "SOCKS 5 handshake request is invalid (requested length: %1).",
+  "tr": ""
+ },{
+  "en": "SOCKS 5 handshake request is invalid (requested version: %1).",
+  "tr": ""
+ },{
+  "en": "SOCKS 5 request is invalid (requested length: %1).",
+  "tr": ""
+ },{
+  "en": "SOCKS 5 request is invalid (requested version: %1).",
+  "tr": ""
+ },{
+  "en": "SOCKS 5 request is not supported (requested address type: %1).",
+  "tr": ""
+ },{
+  "en": "SOCKS 5 request is not supported (requested command: %1).",
+  "tr": ""
+ },{
+  "en": "Tunnels will be refreshed after closing the dialog",
+  "tr": ""
+ },{
+  "en": "Window mode",
+  "tr": ""
+ },{
+  "en": "X Server Settings",
+  "tr": ""
+ },{
+  "en": "X Server",
+  "tr": ""
+ },{
+  "en": "8-bit characters",
+  "tr": ""
+ },{
+  "en": "Add All",
+  "tr": ""
+ },{
+  "en": "Add",
+  "tr": ""
+ },{
+  "en": "Alt modifier key sends",
+  "tr": ""
+ },{
+  "en": "Are you sure you want to discard the pending changes?",
+  "tr": ""
+ },{
+  "en": "Authentication failed, please connect again.",
+  "tr": ""
+ },{
+  "en": "Automatic authentication",
+  "tr": ""
+ },{
+  "en": "Automatically complete commands with",
+  "tr": ""
+ },{
+  "en": "Beep using the PC speaker",
+  "tr": ""
+ },{
+  "en": "Bell styles",
+  "tr": ""
+ },{
+  "en": "Capacity",
+  "tr": ""
+ },{
+  "en": "Characters preceded by ESC",
+  "tr": ""
+ },{
+  "en": "characters",
+  "tr": ""
+ },{
+  "en": "Command History",
+  "tr": ""
+ },{
+  "en": "Command Name",
+  "tr": ""
+ },{
+  "en": "Command Option",
+  "tr": ""
+ },{
+  "en": "Command Parameter",
+  "tr": ""
+ },{
+  "en": "Complete History",
+  "tr": ""
+ },{
+  "en": "Completion list height",
+  "tr": ""
+ },{
+  "en": "Completion",
+  "tr": ""
+ },{
+  "en": "Connection failed, jump server \"%1\" does not exist.",
+  "tr": ""
+ },{
+  "en": "Connection failed, the session \"%1\" does not exist.",
+  "tr": ""
+ },{
+  "en": "Copy Command",
+  "tr": ""
+ },{
+  "en": "Create a new \".wind\" directory in the selected directory.",
+  "tr": ""
+ },{
+  "en": "Days to keep history",
+  "tr": ""
+ },{
+  "en": "Default Session Settings",
+  "tr": ""
+ },{
+  "en": "Duplicate Session",
+  "tr": ""
+ },{
+  "en": "Duplicate SSH Channel",
+  "tr": ""
+ },{
+  "en": "Edit Default Settings",
+  "tr": ""
+ },{
+  "en": "Enable auto completion",
+  "tr": ""
+ },{
+  "en": "Failed to remove command history, please try again later.",
+  "tr": ""
+ },{
+  "en": "Find %1 in \"%2\"",
+  "tr": ""
+ },{
+  "en": "Global proxy",
+  "tr": ""
+ },{
+  "en": "History Commands",
+  "tr": ""
+ },{
+  "en": "History size",
+  "tr": ""
+ },{
+  "en": "Http proxy",
+  "tr": ""
+ },{
+  "en": "Ignore bells received more than once within",
+  "tr": ""
+ },{
+  "en": "Ignore",
+  "tr": ""
+ },{
+  "en": "IntelliSense",
+  "tr": ""
+ },{
+  "en": "Jump server \"%1\" is missing or corrupt.",
+  "tr": ""
+ },{
+  "en": "Jump servers",
+  "tr": ""
+ },{
+  "en": "Locale environment variables",
+  "tr": ""
+ },{
+  "en": "Menu",
+  "tr": ""
+ },{
+  "en": "Meta modifier key sends",
+  "tr": ""
+ },{
+  "en": "Move Down",
+  "tr": ""
+ },{
+  "en": "Move Up",
+  "tr": ""
+ },{
+  "en": "Mute",
+  "tr": ""
+ },{
+  "en": "No proxy",
+  "tr": ""
+ },{
+  "en": "Play the custom sound",
+  "tr": ""
+ },{
+  "en": "Preselect the best match",
+  "tr": ""
+ },{
+  "en": "Preview of replace %1 with %3 in \"%2\"",
+  "tr": ""
+ },{
+  "en": "Proxy command",
+  "tr": ""
+ },{
+  "en": "Reconnect",
+  "tr": ""
+ },{
+  "en": "Remember this step",
+  "tr": ""
+ },{
+  "en": "Remove All",
+  "tr": ""
+ },{
+  "en": "Replace %1 with %3 in \"%2\"",
+  "tr": ""
+ },{
+  "en": "rows",
+  "tr": ""
+ },{
+  "en": "Save command history to disk",
+  "tr": ""
+ },{
+  "en": "Saved command history",
+  "tr": ""
+ },{
+  "en": "Session \"%1\" is missing or corrupt.",
+  "tr": ""
+ },{
+  "en": "Socks v5 proxy",
+  "tr": ""
+ },{
+  "en": "Start completion after entering",
+  "tr": ""
+ },{
+  "en": "Step",
+  "tr": ""
+ },{
+  "en": "Storage",
+  "tr": ""
+ },{
+  "en": "System proxy",
+  "tr": ""
+ },{
+  "en": "The authentication has been removed.",
+  "tr": ""
+ },{
+  "en": "The changes will be applied to NEW and all EXISTING sessions. Do you want to continue?",
+  "tr": ""
+ },{
+  "en": "The command history has been removed.",
+  "tr": ""
+ },{
+  "en": "The directory %1 does not exist or is not accessible. Please select another.",
+  "tr": ""
+ },{
+  "en": "Use the existed \".wind\" directory in the selected directory.",
+  "tr": ""
+ },{
+  "en": "A name should be less than 255 characters and cannot contain any of the following characters:\\n%1",
+  "tr": ""
+ },{
+  "en": "Account",
+  "tr": ""
+ },{
+  "en": "Action",
+  "tr": ""
+ },{
+  "en": "Actions",
+  "tr": ""
+ },{
+  "en": "Add Action",
+  "tr": ""
+ },{
+  "en": "Add mark",
+  "tr": ""
+ },{
+  "en": "Add Separator",
+  "tr": ""
+ },{
+  "en": "After connection",
+  "tr": ""
+ },{
+  "en": "After disconnection",
+  "tr": ""
+ },{
+  "en": "all systems",
+  "tr": ""
+ },{
+  "en": "Ansi Black",
+  "tr": ""
+ },{
+  "en": "Ansi Blue",
+  "tr": ""
+ },{
+  "en": "Ansi Bright Black",
+  "tr": ""
+ },{
+  "en": "Ansi Bright Blue",
+  "tr": ""
+ },{
+  "en": "Ansi Bright Cyan",
+  "tr": ""
+ },{
+  "en": "Ansi Bright Green",
+  "tr": ""
+ },{
+  "en": "Ansi Bright Magenta",
+  "tr": ""
+ },{
+  "en": "Ansi Bright Red",
+  "tr": ""
+ },{
+  "en": "Ansi Bright White",
+  "tr": ""
+ },{
+  "en": "Ansi Bright Yellow",
+  "tr": ""
+ },{
+  "en": "Ansi Cyan",
+  "tr": ""
+ },{
+  "en": "Ansi Green",
+  "tr": ""
+ },{
+  "en": "Ansi Magenta",
+  "tr": ""
+ },{
+  "en": "Ansi Red",
+  "tr": ""
+ },{
+  "en": "Ansi White",
+  "tr": ""
+ },{
+  "en": "Ansi Yellow",
+  "tr": ""
+ },{
+  "en": "Applet Bar",
+  "tr": ""
+ },{
+  "en": "Application is trying to decrypt proxy password.",
+  "tr": ""
+ },{
+  "en": "Application is trying to display the saved authentication.",
+  "tr": ""
+ },{
+  "en": "Application is trying to encrypt proxy password.",
+  "tr": ""
+ },{
+  "en": "Auto Sync Terminal Folder",
+  "tr": ""
+ },{
+  "en": "Automatically Sync Terminal Folder",
+  "tr": ""
+ },{
+  "en": "Background Color",
+  "tr": ""
+ },{
+  "en": "Before connection",
+  "tr": ""
+ },{
+  "en": "Before disconnection",
+  "tr": ""
+ },{
+  "en": "Bundle Link",
+  "tr": ""
+ },{
+  "en": "Bundle",
+  "tr": ""
+ },{
+  "en": "Cannot found",
+  "tr": ""
+ },{
+  "en": "Cannot list directory",
+  "tr": ""
+ },{
+  "en": "Cannot make directory",
+  "tr": ""
+ },{
+  "en": "Cannot remove the directory",
+  "tr": ""
+ },{
+  "en": "Cannot set permissions for the directory",
+  "tr": ""
+ },{
+  "en": "Challenge",
+  "tr": ""
+ },{
+  "en": "Click the key to prevent further changes.",
+  "tr": ""
+ },{
+  "en": "Click the lock to make changes.",
+  "tr": ""
+ },{
+  "en": "Command+Click to execute command",
+  "tr": ""
+ },{
+  "en": "Command+Click to follow link",
+  "tr": ""
+ },{
+  "en": "Command+Click to send text",
+  "tr": ""
+ },{
+  "en": "Copy Directory Name To Terminal",
+  "tr": ""
+ },{
+  "en": "Copy Directory Name",
+  "tr": ""
+ },{
+  "en": "Copy Directory Path To Terminal",
+  "tr": ""
+ },{
+  "en": "Copy Directory Path",
+  "tr": ""
+ },{
+  "en": "Copy From",
+  "tr": ""
+ },{
+  "en": "Copy Names To Terminal",
+  "tr": ""
+ },{
+  "en": "Copy Names",
+  "tr": ""
+ },{
+  "en": "Copy Paths To Terminal",
+  "tr": ""
+ },{
+  "en": "Copy Paths",
+  "tr": ""
+ },{
+  "en": "Copy text if selected, otherwise paste text",
+  "tr": ""
+ },{
+  "en": "Copy To",
+  "tr": ""
+ },{
+  "en": "Create",
+  "tr": ""
+ },{
+  "en": "Ctrl+Click to execute command",
+  "tr": ""
+ },{
+  "en": "Ctrl+Click to send text",
+  "tr": ""
+ },{
+  "en": "Custom Link",
+  "tr": ""
+ },{
+  "en": "Custom link",
+  "tr": ""
+ },{
+  "en": "Custom Menu",
+  "tr": ""
+ },{
+  "en": "Custom menu",
+  "tr": ""
+ },{
+  "en": "Cyan",
+  "tr": ""
+ },{
+  "en": "Date Modified",
+  "tr": ""
+ },{
+  "en": "Default Editor",
+  "tr": ""
+ },{
+  "en": "Default folder creation permissions",
+  "tr": ""
+ },{
+  "en": "Disabled",
+  "tr": ""
+ },{
+  "en": "Do you want to remove the selected %1 sessions and binding tunnels?",
+  "tr": ""
+ },{
+  "en": "Do you want to remove the selected %1 sessions?",
+  "tr": ""
+ },{
+  "en": "Do you want to remove the selected commands?",
+  "tr": ""
+ },{
+  "en": "Do you want to remove the selected onekeys?",
+  "tr": ""
+ },{
+  "en": "Do you want to remove the selected triggers?",
+  "tr": ""
+ },{
+  "en": "Do you want to remove the selected tunnels?",
+  "tr": ""
+ },{
+  "en": "Duplicate SSH channel",
+  "tr": ""
+ },{
+  "en": "E.g.",
+  "tr": ""
+ },{
+  "en": "Edit Color",
+  "tr": ""
+ },{
+  "en": "Enable Symbol Preview",
+  "tr": ""
+ },{
+  "en": "Enter a challenge and response.",
+  "tr": ""
+ },{
+  "en": "Enter a name for the new %1.",
+  "tr": ""
+ },{
+  "en": "Enter a new name for \"%1\".",
+  "tr": ""
+ },{
+  "en": "Enter a string to wait for and a text to be sent.",
+  "tr": ""
+ },{
+  "en": "Enter your master password to allow this",
+  "tr": ""
+ },{
+  "en": "Event: after connection",
+  "tr": ""
+ },{
+  "en": "Event: after disconnectionEvent: before connectionEvent: before disconnection",
+  "tr": ""
+ },{
+  "en": "Expect",
+  "tr": ""
+ },{
+  "en": "Failed to create folder.",
+  "tr": ""
+ },{
+  "en": "Failed to start \"%1\". Error code: %2.",
+  "tr": ""
+ },{
+  "en": "Goto Next Command",
+  "tr": ""
+ },{
+  "en": "Goto Previous Command",
+  "tr": ""
+ },{
+  "en": "Gray",
+  "tr": ""
+ },{
+  "en": "Green",
+  "tr": ""
+ },{
+  "en": "Hide console window",
+  "tr": ""
+ },{
+  "en": "Highlight Text",
+  "tr": ""
+ },{
+  "en": "Highlight text",
+  "tr": ""
+ },{
+  "en": "Identity File",
+  "tr": ""
+ },{
+  "en": "items found",
+  "tr": ""
+ },{
+  "en": "Keyboard interactive",
+  "tr": ""
+ },{
+  "en": "Line %1: %2",
+  "tr": ""
+ },{
+  "en": "Line Color",
+  "tr": ""
+ },{
+  "en": "Line Style",
+  "tr": ""
+ },{
+  "en": "Login Wizard is trying to decrypt the OneKey \"%1\".",
+  "tr": ""
+ },{
+  "en": "Login Wizard is trying to enable auto login.",
+  "tr": ""
+ },{
+  "en": "Manage Triggers",
+  "tr": ""
+ },{
+  "en": "Mark Color",
+  "tr": ""
+ },{
+  "en": "Mark Style",
+  "tr": ""
+ },{
+  "en": "Match Case",
+  "tr": ""
+ },{
+  "en": "Match Whole Word",
+  "tr": ""
+ },{
+  "en": "Match",
+  "tr": ""
+ },{
+  "en": "Move To",
+  "tr": ""
+ },{
+  "en": "New Directory",
+  "tr": ""
+ },{
+  "en": "New Link",
+  "tr": ""
+ },{
+  "en": "Next",
+  "tr": ""
+ },{
+  "en": "No action available",
+  "tr": ""
+ },{
+  "en": "No onekey available",
+  "tr": ""
+ },{
+  "en": "No saved authentication.",
+  "tr": ""
+ },{
+  "en": "No sound available",
+  "tr": ""
+ },{
+  "en": "No system available",
+  "tr": ""
+ },{
+  "en": "No text mark available",
+  "tr": ""
+ },{
+  "en": "No trigger available",
+  "tr": ""
+ },{
+  "en": "Not enough memory to read this file.",
+  "tr": ""
+ },{
+  "en": "OneKey Manager is trying to modify the onekey settings.",
+  "tr": ""
+ },{
+  "en": "OneKey Manager",
+  "tr": ""
+ },{
+  "en": "OneKey",
+  "tr": ""
+ },{
+  "en": "OneKeys",
+  "tr": ""
+ },{
+  "en": "Open hyperlink",
+  "tr": ""
+ },{
+  "en": "Open With Default Editor",
+  "tr": ""
+ },{
+  "en": "Optional",
+  "tr": ""
+ },{
+  "en": "Orange",
+  "tr": ""
+ },{
+  "en": "Paste Selected Text",
+  "tr": ""
+ },{
+  "en": "Pattern",
+  "tr": ""
+ },{
+  "en": "Play Sound",
+  "tr": ""
+ },{
+  "en": "Play sound",
+  "tr": ""
+ },{
+  "en": "Preserve original file modification time",
+  "tr": ""
+ },{
+  "en": "Preserve original folder modification time",
+  "tr": ""
+ },{
+  "en": "Purple",
+  "tr": ""
+ },{
+  "en": "Remove commands",
+  "tr": ""
+ },{
+  "en": "Remove mark",
+  "tr": ""
+ },{
+  "en": "Remove onekeys",
+  "tr": ""
+ },{
+  "en": "Remove triggers",
+  "tr": ""
+ },{
+  "en": "Remove tunnels",
+  "tr": ""
+ },{
+  "en": "Requires server support",
+  "tr": ""
+ },{
+  "en": "Response",
+  "tr": ""
+ },{
+  "en": "Royalblue",
+  "tr": ""
+ },{
+  "en": "Rules",
+  "tr": ""
+ },{
+  "en": "Run Command",
+  "tr": ""
+ },{
+  "en": "Run command",
+  "tr": ""
+ },{
+  "en": "Save In OneKeys",
+  "tr": ""
+ },{
+  "en": "Script",
+  "tr": ""
+ },{
+  "en": "Select an identity file for the %1 system.",
+  "tr": ""
+ },{
+  "en": "Select Command",
+  "tr": ""
+ },{
+  "en": "Select Copy Folder",
+  "tr": ""
+ },{
+  "en": "Select Copy Items",
+  "tr": ""
+ },{
+  "en": "Select Download Folder",
+  "tr": ""
+ },{
+  "en": "Select Upload Items",
+  "tr": ""
+ },{
+  "en": "Send after text match and next command prompt",
+  "tr": ""
+ },{
+  "en": "Send after text match and next line break",
+  "tr": ""
+ },{
+  "en": "Send after text match",
+  "tr": ""
+ },{
+  "en": "Send Condition",
+  "tr": ""
+ },{
+  "en": "Send Later",
+  "tr": ""
+ },{
+  "en": "Send text",
+  "tr": ""
+ },{
+  "en": "separator",
+  "tr": ""
+ },{
+  "en": "Session Triggers",
+  "tr": ""
+ },{
+  "en": "Sessions",
+  "tr": ""
+ },{
+  "en": "Set Default Editor",
+  "tr": ""
+ },{
+  "en": "Set OneKey",
+  "tr": ""
+ },{
+  "en": "Sftp",
+  "tr": ""
+ },{
+  "en": "Show Hidden Items",
+  "tr": ""
+ },{
+  "en": "Show Tooltip",
+  "tr": ""
+ },{
+  "en": "Show tooltip",
+  "tr": ""
+ },{
+  "en": "Sound Duration",
+  "tr": ""
+ },{
+  "en": "Sound Name",
+  "tr": ""
+ },{
+  "en": "Sound",
+  "tr": ""
+ },{
+  "en": "SSH",
+  "tr": ""
+ },{
+  "en": "Style",
+  "tr": ""
+ },{
+  "en": "Sync Terminal Folder",
+  "tr": ""
+ },{
+  "en": "Sysmon",
+  "tr": ""
+ },{
+  "en": "Target Sessions",
+  "tr": ""
+ },{
+  "en": "Target Systems",
+  "tr": ""
+ },{
+  "en": "Test",
+  "tr": ""
+ },{
+  "en": "Text Color",
+  "tr": ""
+ },{
+  "en": "Text Marks",
+  "tr": ""
+ },{
+  "en": "Text Mark",
+  "tr": ""
+ },{
+  "en": "The command \"%1\" of trigger \"%2\" cannot be performed.\\nPlease check the trigger configuration and try again.",
+  "tr": ""
+ },{
+  "en": "The session %1 is trying to decrypt data for auto login.",
+  "tr": ""
+ },{
+  "en": "Tooltip",
+  "tr": ""
+ },{
+  "en": "Triggers",
+  "tr": ""
+ },{
+  "en": "trigger",
+  "tr": ""
+ },{
+  "en": "Unauthorized to view authentication.",
+  "tr": ""
+ },{
+  "en": "Unknown error.",
+  "tr": ""
+ },{
+  "en": "Upload File",
+  "tr": ""
+ },{
+  "en": "Upload To Current Folder",
+  "tr": ""
+ },{
+  "en": "Use Regular Expression",
+  "tr": ""
+ },{
+  "en": "Username",
+  "tr": ""
+ },{
+  "en": "Yellow",
+  "tr": ""
+ }
+ ]
+}

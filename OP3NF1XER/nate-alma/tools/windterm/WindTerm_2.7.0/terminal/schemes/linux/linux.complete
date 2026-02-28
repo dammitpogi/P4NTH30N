@@ -1,0 +1,17 @@
+{
+	"regions":
+	[
+		{
+			"scope": "prompt.line.linux",
+			"icon": "king::k",
+			"pull": true,
+			"push": true,
+			"triggers": [
+				{
+					"scope": "prompt.line.linux",
+					"match": "\\b\\S++"
+				}
+			]
+		}
+	]
+}

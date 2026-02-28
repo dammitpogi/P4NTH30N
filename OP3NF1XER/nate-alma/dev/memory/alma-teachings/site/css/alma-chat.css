@@ -1,0 +1,303 @@
+/* ============================================
+   Alma Chat Widget Styles
+   OpenClaw Integration for Doctrine Bible
+   ============================================ */
+
+#alma-chat-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Floating Chat Button */
+.alma-chat-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: none;
+  position: relative;
+}
+
+.alma-chat-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.alma-chat-button span {
+  font-size: 28px;
+  line-height: 1;
+}
+
+/* Health status dot on chat button */
+.alma-chat-button .health-dot {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background: #6b7280;
+}
+
+.alma-chat-button .health-dot.healthy { background: #28a745; }
+.alma-chat-button .health-dot.degraded { background: #ffc107; }
+.alma-chat-button .health-dot.offline { background: #dc3545; }
+
+/* Chat Panel */
+.alma-chat-panel {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  width: 380px;
+  height: 500px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.alma-chat-panel.open {
+  display: flex;
+}
+
+/* Chat Header */
+.alma-chat-header {
+  padding: 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.alma-chat-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.alma-chat-header-left .status-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+
+.alma-chat-header button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.alma-chat-header button:hover {
+  opacity: 0.8;
+}
+
+/* Chat Messages */
+.alma-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  background: #f8f9fa;
+}
+
+.alma-message {
+  margin-bottom: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  max-width: 85%;
+  word-wrap: break-word;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.alma-message.user {
+  background: #667eea;
+  color: white;
+  margin-left: auto;
+  border-bottom-right-radius: 4px;
+}
+
+.alma-message.alma {
+  background: white;
+  color: #1f2937;
+  border: 1px solid #e0e0e0;
+  border-bottom-left-radius: 4px;
+}
+
+.alma-message.error {
+  background: #fee;
+  color: #c00;
+  border: 1px solid #fcc;
+  font-size: 13px;
+}
+
+.alma-message.system {
+  background: #e8f4fd;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+  font-size: 13px;
+  text-align: center;
+  max-width: 100%;
+}
+
+/* Chat Input */
+.alma-chat-input {
+  padding: 12px;
+  background: white;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.alma-chat-input input {
+  flex: 1;
+  padding: 10px 16px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  outline: none;
+  font-size: 14px;
+  color: #1f2937;
+  background: #f9fafb;
+}
+
+.alma-chat-input input:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+.alma-chat-input input::placeholder {
+  color: #9ca3af;
+}
+
+.alma-chat-input button {
+  padding: 10px 20px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.alma-chat-input button:hover {
+  background: #5568d3;
+}
+
+.alma-chat-input button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* "Ask Alma?" Buttons */
+.ask-alma-btn {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  background: rgba(102, 126, 234, 0.1);
+  border: 1px solid rgba(102, 126, 234, 0.3);
+  border-radius: 4px;
+  font-size: 12px;
+  color: #667eea;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.ask-alma-btn:hover {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+/* Status Indicator */
+.status-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.status-indicator.unknown { background: #6b7280; }
+.status-indicator.healthy { background: #28a745; }
+.status-indicator.degraded { background: #ffc107; }
+.status-indicator.offline { background: #dc3545; }
+
+/* Context Banner */
+.alma-context-banner {
+  padding: 8px 12px;
+  background: #eef2ff;
+  border-bottom: 1px solid #c7d2fe;
+  font-size: 12px;
+  color: #4338ca;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.alma-context-banner button {
+  background: none;
+  border: none;
+  color: #4338ca;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0 4px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+  #alma-chat-widget {
+    bottom: 12px;
+    right: 12px;
+  }
+
+  .alma-chat-panel {
+    width: calc(100vw - 24px);
+    height: calc(100vh - 100px);
+    position: fixed;
+    bottom: 80px;
+    right: 12px;
+    left: 12px;
+  }
+
+  .alma-chat-button {
+    width: 54px;
+    height: 54px;
+  }
+
+  .alma-chat-button span {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .alma-chat-panel {
+    width: calc(100vw - 40px);
+    height: calc(100vh - 120px);
+  }
+}

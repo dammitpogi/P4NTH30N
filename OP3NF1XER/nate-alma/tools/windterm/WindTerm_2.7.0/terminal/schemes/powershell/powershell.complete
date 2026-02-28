@@ -1,0 +1,17 @@
+{
+	"regions":
+	[
+		{
+			"scope": "prompt.line.powershell",
+			"icon": "king::k",
+			"pull": true,
+			"push": true,
+			"triggers": [
+				{
+					"scope": "prompt.line.powershell",
+					"match": "\\b\\w++"
+				}
+			]
+		}
+	]
+}

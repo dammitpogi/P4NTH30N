@@ -1,0 +1,20 @@
+//WindTerm Dumb Fold
+//Version: 1.0
+{
+	"type": "level",
+	"greedy": true,
+	"patterns": [
+		{
+			"name": "prompt",
+			"scope": "prompt.line.dumb",
+			"match": "(*UTF)[^\\n]++"
+		}
+	],
+	"regions": [
+		{
+			"name": "prompt",
+			"text": " ... ",
+			"sequence": ["prompt"]
+		}
+	]
+}

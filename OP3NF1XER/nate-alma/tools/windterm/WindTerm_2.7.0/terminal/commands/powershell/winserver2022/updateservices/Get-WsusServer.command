@@ -1,0 +1,45 @@
+description: Gets the WSUS update server object
+synopses:
+- powershell Get-WsusServer [<CommonParameters>]
+- powershell Get-WsusServer [-Name] <String> [-UseSsl] -PortNumber <Int32> [<CommonParameters>]
+options:
+  -Name String:
+    required: true
+  -PortNumber Int32:
+    required: true
+  -UseSsl Switch: ~
+  -Debug,-db Switch: ~
+  -ErrorAction,-ea ActionPreference:
+    values:
+    - Break
+    - Suspend
+    - Ignore
+    - Inquire
+    - Continue
+    - Stop
+    - SilentlyContinue
+  -ErrorVariable,-ev String: ~
+  -InformationAction,-ia ActionPreference:
+    values:
+    - Break
+    - Suspend
+    - Ignore
+    - Inquire
+    - Continue
+    - Stop
+    - SilentlyContinue
+  -InformationVariable,-iv String: ~
+  -OutVariable,-ov String: ~
+  -OutBuffer,-ob Int32: ~
+  -PipelineVariable,-pv String: ~
+  -Verbose,-vb Switch: ~
+  -WarningAction,-wa ActionPreference:
+    values:
+    - Break
+    - Suspend
+    - Ignore
+    - Inquire
+    - Continue
+    - Stop
+    - SilentlyContinue
+  -WarningVariable,-wv String: ~

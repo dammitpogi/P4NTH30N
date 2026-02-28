@@ -1,0 +1,10 @@
+//WindTerm PowerShell System
+//Version: 1.0
+{
+	"System": "powershell",
+	"Catalog": "powershell",
+	"Abbreviation": "PowerSehll",
+	"Description": "PowerSehll",
+	"CaseSensitive": false,
+	"lexer": "source.powershell"
+}

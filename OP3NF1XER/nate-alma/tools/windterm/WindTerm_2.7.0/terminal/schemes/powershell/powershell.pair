@@ -1,0 +1,39 @@
+//WindTerm PowerShell Pair
+//Version: 1.0
+{
+	"masks": [
+		{
+			"name": "quote",
+			"scope": "string.quoted.double.powershell"
+		}
+	],
+	"barriers": [
+		{
+			"name": "prompt",
+			"scope": "sign.directive.prompt.powershell"
+		}
+	],
+	"blocks": [
+		{
+			"name": "brace",
+			"scope": "punctuation.definition.block.powershell",
+			"ignoreString": false,
+			"begin": "{",
+			"end": "}"
+		},
+		{
+			"name": "parentheses",
+			"scope": "punctuation.definition.block.powershell",
+			"ignoreString": false,
+			"begin": "\\(",
+			"end": "\\)"
+		},
+		{
+			"name": "bracket",
+			"scope": "punctuation.definition.block.powershell",
+			"ignoreString": false,
+			"begin": "\\[",
+			"end": "\\]"
+		}
+	]
+}

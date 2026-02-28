@@ -116,10 +116,10 @@ Successfully implemented external configuration support for the ToolHive Gateway
 | context7-remote | 29249 | Documentation |
 | json-query-mcp | 30264 | JSON processing |
 | modelcontextprotocol-server-filesystem | 41711 | Filesystem |
-| mongodb-p4nth30n | 59767 | Database (P4NTH30N) |
-| rag-server | 16238 | RAG (P4NTH30N) |
+| mongodb-p4nth30n | 59767 | Database (P4NTHE0N) |
+| rag-server | 16238 | RAG (P4NTHE0N) |
 | toolhive-mcp-optimizer | 19206 | Tooling |
-| decisions-server | 46818 | Decisions (P4NTH30N) |
+| decisions-server | 46818 | Decisions (P4NTHE0N) |
 
 ---
 
@@ -186,7 +186,7 @@ npm run config:rollback
 ## Integration Points
 
 ### Gateway Startup Sequence
-1. Register built-in P4NTH30N servers (5 servers)
+1. Register built-in P4NTHE0N servers (5 servers)
 2. Load external ToolHive Desktop configuration (15 servers)
 3. Run legacy discovery scan
 4. Start health monitoring

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="191px" height="191px" version="1.1" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
+viewBox="0 0 368 368"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect fill="none" width="368" height="368"/>
+    <circle fill="#E62129" cx="184" cy="184" r="168"/>
+    <line fill="none" stroke="white" stroke-width="22.7424" x1="105" y1="263" x2="263" y2="105" />
+    <line fill="none" stroke="white" stroke-width="22.7424" x1="105" y1="105" x2="263" y2="263" />
+  </g>
+</svg>

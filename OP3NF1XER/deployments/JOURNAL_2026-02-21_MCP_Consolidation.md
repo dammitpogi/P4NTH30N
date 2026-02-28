@@ -58,8 +58,8 @@ ls -la "C:/Users/paulc/.vscode/extensions/undefined_publisher.windsurf-cartograp
 **Files Checked**:
 | MCP | Path | Status |
 |-----|------|--------|
-| foureyes-mcp | `C:/P4NTH30N/tools/mcp-foureyes/server.js` | ✅ 17KB, Feb 20 |
-| honeybelt-server | `C:/P4NTH30N/tools/mcp-development/servers/honeybelt-server/dist/index.js` | ✅ 6KB, Feb 20 |
+| foureyes-mcp | `C:/P4NTHE0N/tools/mcp-foureyes/server.js` | ✅ 17KB, Feb 20 |
+| honeybelt-server | `C:/P4NTHE0N/tools/mcp-development/servers/honeybelt-server/dist/index.js` | ✅ 6KB, Feb 20 |
 | json-query-mcp | `C:/Users/paulc/AppData/Local/json-query-mcp/dist/index.js` | ✅ 3KB, Feb 12 |
 
 **Result**: All 3 local MCPs verified healthy ✅
@@ -86,12 +86,12 @@ node -e "JSON.parse(require('fs').readFileSync('C:/Users/paulc/.config/opencode/
 {
   "foureyes-mcp": {
     "type": "local",
-    "command": ["node", "C:/P4NTH30N/tools/mcp-foureyes/server.js"],
+    "command": ["node", "C:/P4NTHE0N/tools/mcp-foureyes/server.js"],
     "enabled": true
   },
   "honeybelt-server": {
     "type": "local",
-    "command": ["node", "C:/P4NTH30N/tools/mcp-development/servers/honeybelt-server/dist/index.js"],
+    "command": ["node", "C:/P4NTHE0N/tools/mcp-development/servers/honeybelt-server/dist/index.js"],
     "enabled": true
   },
   "json-query-mcp": {
@@ -156,9 +156,9 @@ All 13 servers verified running:
 thv client register opencode
 
 # File verification
-ls -la "C:/P4NTH30N/tools/mcp-foureyes/server.js"
-ls -la "C:/P4NTH30N/tools/mcp-development/servers/honeybelt-server/dist/index.js"
-ls -la "C:/P4NTH30N/tools/mcp-p4nthon/dist/index.js"
+ls -la "C:/P4NTHE0N/tools/mcp-foureyes/server.js"
+ls -la "C:/P4NTHE0N/tools/mcp-development/servers/honeybelt-server/dist/index.js"
+ls -la "C:/P4NTHE0N/tools/mcp-p4nthon/dist/index.js"
 ls -la "C:/Users/paulc/AppData/Local/json-query-mcp/dist/index.js"
 ls -la "C:/Users/paulc/.vscode/extensions/undefined_publisher.windsurf-cartography-1.1.0/mcp/dist/index.js"
 
@@ -201,7 +201,7 @@ node -e "JSON.parse(require('fs').readFileSync('C:/Users/paulc/.config/opencode/
 
 ## References
 
-- **Decision**: `C:\P4NTH30N\STR4TEG15T\decisions\active\INFRA-068_MCP_Consolidation.md`
+- **Decision**: `C:\P4NTHE0N\STR4TEG15T\decisions\active\INFRA-068_MCP_Consolidation.md`
 - **Config File**: `C:\Users\paulc\.config\opencode\opencode.json`
 - **ToolHive CLI**: `C:\Users\paulc\AppData\Local\ToolHive\bin\thv.exe`
 - **Documentation**: `C:\OpenCode\Canon\References.Architecture\oh-my-opencode\docs\configurations.md`

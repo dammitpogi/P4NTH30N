@@ -1,0 +1,18 @@
+[
+  {
+    "symbol": "ES",
+    "source": "yahoo",
+    "timestamp": "2026-02-23T19:38:28.005Z",
+    "price": {
+      "open": 6918,
+      "high": 6930.25,
+      "low": 6832.75,
+      "close": 6845.75,
+      "volume": 1102979,
+      "change": -1.1194164590329685,
+      "changeAbs": -77.5
+    },
+    "indicators": {},
+    "signal": "n/a"
+  }
+]

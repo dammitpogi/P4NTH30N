@@ -1,0 +1,20 @@
+//WindTerm RouterOS Fold
+//Version: 1.0
+{
+	"type": "level",
+	"greedy": true,
+	"patterns": [
+		{
+			"name": "prompt",
+			"scope": "prompt.line.routeros",
+			"match": "(*UTF)[^\\n]++"
+		}
+	],
+	"regions": [
+		{
+			"name": "prompt",
+			"text": " ... ",
+			"sequence": ["prompt"]
+		}
+	]
+}

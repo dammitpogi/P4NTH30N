@@ -1,0 +1,11 @@
+//WindTerm Linux System
+//Version: 1.0
+{
+	"System": "linux",
+	"Catalog": "linux",
+	"Abbreviation": "Linux",
+	"Description": "Linux",
+	"CaseSensitive": true,
+	"lexer": "source.linux",
+	"supportsDetectShellCwd": true
+}

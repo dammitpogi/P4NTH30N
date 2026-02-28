@@ -5,27 +5,6 @@
     "updatedAt": "2026-02-25T02:10:30Z",
     "type": "bearer"
   },
-  "alma-agent-master-key": {
-    "backend": "win-dpapi",
-    "locator": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\.secrets\\auth-vault\\alma-agent-master-key.dpapi",
-    "updatedAt": "2026-02-25T06:46:08Z",
-    "type": "api-key",
-    "encrypted": true
-  },
-  "alma-agent-session-token": {
-    "backend": "win-dpapi",
-    "locator": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\.secrets\\auth-vault\\alma-agent-session-token.dpapi",
-    "updatedAt": "2026-02-25T06:46:13Z",
-    "type": "bearer",
-    "encrypted": true
-  },
-  "alma-webhook-secret": {
-    "backend": "win-dpapi",
-    "locator": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\.secrets\\auth-vault\\alma-webhook-secret.dpapi",
-    "updatedAt": "2026-02-25T06:46:27Z",
-    "type": "webhook",
-    "encrypted": true
-  },
   "nate-bible-site-login": {
     "backend": "win-dpapi",
     "locator": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\.secrets\\auth-vault\\nate-bible-site-login.dpapi",
@@ -37,6 +16,13 @@
     "backend": "win-dpapi",
     "locator": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\.secrets\\auth-vault\\alma-v1-production-setup.dpapi",
     "updatedAt": "2026-02-25T07:20:20Z",
+    "type": "password",
+    "encrypted": true
+  },
+  "alma-v2-setup": {
+    "backend": "win-dpapi",
+    "locator": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\.secrets\\auth-vault\\alma-v2-setup.dpapi",
+    "updatedAt": "2026-02-25T13:57:51Z",
     "type": "password",
     "encrypted": true
   }

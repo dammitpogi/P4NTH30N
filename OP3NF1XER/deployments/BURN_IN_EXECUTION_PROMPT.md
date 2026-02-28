@@ -32,13 +32,13 @@ Verify system readiness:
 curl -s http://192.168.56.1:9222/json/version | head -5
 
 # Check 2: MongoDB connected  
-mongo mongodb://192.168.56.1:27017/P4NTH30N --eval "db.runCommand({ping: 1})" --quiet
+mongo mongodb://192.168.56.1:27017/P4NTHE0N --eval "db.runCommand({ping: 1})" --quiet
 
 # Check 3: Dashboard server ready
 curl -s http://localhost:5002/health
 
 # Check 4: Signal count in SIGN4L
-mongo mongodb://192.168.56.1:27017/P4NTH30N --eval "db.SIGN4L.countDocuments()" --quiet
+mongo mongodb://192.168.56.1:27017/P4NTHE0N --eval "db.SIGN4L.countDocuments()" --quiet
 ```
 
 **If any check fails**: STOP and report immediately. Do not proceed.
@@ -46,7 +46,7 @@ mongo mongodb://192.168.56.1:27017/P4NTH30N --eval "db.SIGN4L.countDocuments()" 
 ### Step 2: Launch Burn-In
 
 ```bash
-cd C:\P4NTH30N\H4ND
+cd C:\P4NTHE0N\H4ND
 H4ND.exe BURN-IN
 ```
 
@@ -167,7 +167,7 @@ Recommendation: [CONTINUE 24HR / STOP AND FIX]
 
 **If MongoDB connection fails**:
 - Verify MongoDB service: `sc query MongoDB`
-- Check connection string: `mongodb://192.168.56.1:27017/P4NTH30N`
+- Check connection string: `mongodb://192.168.56.1:27017/P4NTHE0N`
 - Report failure - cannot proceed without database
 
 **If dashboard unavailable**:

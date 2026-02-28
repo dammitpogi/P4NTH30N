@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctrine Bible - A Comprehensive Trading Curriculum</title>
+  <meta name="description" content="A comprehensive textbook for traders covering market analysis, risk management, volatility trading, and macro insights from the Stochastic Volatility Trader doctrine.">
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="./css/alma-chat.css">
+</head>
+<body data-chapter="home" data-lesson-id="index">
+  <!-- Header -->
+  <header class="header">
+    <div class="header-brand">
+      <div class="header-logo">DB</div>
+      <div>
+        <div class="header-title">Doctrine Bible</div>
+        <div class="header-subtitle">Trading Curriculum</div>
+      </div>
+    </div>
+    <nav class="header-nav">
+      <div class="header-search">
+        <span class="header-search-icon">&#x1F50D;</span>
+        <input type="text" id="search-input" placeholder="Search topics... (Ctrl+K)">
+        <div class="search-results" id="search-results"></div>
+      </div>
+      <a href="./index.html" class="nav-btn">&#x1F4DA; Home</a>
+      <button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">&#x2630;</button>
+    </nav>
+  </header>
+
+  <!-- Main Container -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-title">Course Progress</div>
+        <div class="sidebar-subtitle">7 Chapters</div>
+        <div class="sidebar-progress">
+          <div class="progress-label">
+            <span>Overall Progress</span>
+            <span id="progress-percent">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+      
+      <nav class="nav-tree">
+        <!-- Chapter 1: Foundations -->
+        <div class="nav-section expanded" data-section="foundations">
+          <div class="nav-section-header active">
+            <span class="nav-section-icon">&#x1F4D6;</span>
+            <span class="nav-section-title">I. Foundations</span>
+            <span class="nav-section-toggle">&#x25B6;</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapters/chapter-foundations.html" class="nav-lesson active">Overview</a>
+          </div>
+        </div>
+        
+        <!-- Chapter 2: Trading Principles -->
+        <div class="nav-section" data-section="principles">
+          <div class="nav-section-header">
+            <span class="nav-section-icon">&#x2696;&#xFE0F;</span>
+            <span class="nav-section-title">II. Trading Principles</span>
+            <span class="nav-section-toggle">&#x25B6;</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapters/chapter-principles.html" class="nav-lesson">Overview</a>
+          </div>
+        </div>
+        
+        <!-- Chapter 3: Market Mechanics -->
+        <div class="nav-section" data-section="mechanics">
+          <div class="nav-section-header">
+            <span class="nav-section-icon">&#x2699;&#xFE0F;</span>
+            <span class="nav-section-title">III. Market Mechanics</span>
+            <span class="nav-section-toggle">&#x25B6;</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapters/chapter-mechanics.html" class="nav-lesson">Overview</a>
+          </div>
+        </div>
+        
+        <!-- Chapter 4: Macro Analysis -->
+        <div class="nav-section" data-section="macro">
+          <div class="nav-section-header">
+            <span class="nav-section-icon">&#x1F30D;</span>
+            <span class="nav-section-title">IV. Macro Analysis</span>
+            <span class="nav-section-toggle">&#x25B6;</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapters/chapter-macro.html" class="nav-lesson">Overview</a>
+          </div>
+        </div>
+        
+        <!-- Chapter 5: Technical Analysis -->
+        <div class="nav-section" data-section="technical">
+          <div class="nav-section-header">
+            <span class="nav-section-icon">&#x1F4CA;</span>
+            <span class="nav-section-title">V. Technical Analysis</span>
+            <span class="nav-section-toggle">&#x25B6;</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapters/chapter-technical.html" class="nav-lesson">Overview</a>
+          </div>
+        </div>
+        
+        <!-- Chapter 6: Asset Classes -->
+        <div class="nav-section" data-section="assets">
+          <div class="nav-section-header">
+            <span class="nav-section-icon">&#x1F48E;</span>
+            <span class="nav-section-title">VI. Asset Classes</span>
+            <span class="nav-section-toggle">&#x25B6;</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapters/chapter-assets.html" class="nav-lesson">Overview</a>
+          </div>
+        </div>
+        
+        <!-- Chapter 7: Analysis Archive -->
+        <div class="nav-section" data-section="archive">
+          <div class="nav-section-header">
+            <span class="nav-section-icon">&#x1F4DA;</span>
+            <span class="nav-section-title">VII. Analysis Archive</span>
+            <span class="nav-section-toggle">&#x25B6;</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapters/chapter-archive.html" class="nav-lesson">Overview</a>
+          </div>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="content-wrapper">
+        
+        <!-- Hero Section -->
+        <section class="hero">
+          <div class="hero-content">
+            <div class="hero-badge">&#x1F4D6; Comprehensive Trading Curriculum</div>
+            <h1 class="hero-title">
+              The <span class="hero-title-accent">Doctrine Bible</span>
+            </h1>
+            <p class="hero-subtitle">
+              A complete textbook for traders seeking mastery of market analysis, 
+              risk management, and quantitative trading principles. Compiled from 
+              years of daily market insights and educational content.
+            </p>
+            
+            <div class="hero-stats">
+              <div class="hero-stat">
+                <div class="hero-stat-value">7</div>
+                <div class="hero-stat-label">Chapters</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-value">340</div>
+                <div class="hero-stat-label">Source Posts (Offline)</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-value">&infin;</div>
+                <div class="hero-stat-label">Insights</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="info-box info-box-note">
+          <div class="info-box-title">How To Read This Site</div>
+          <p>
+            Each chapter begins with a <strong>Chapter Guide</strong> that teaches the concepts from basics.
+            Source-material pages are temporarily removed while we rebuild structure.
+          </p>
+        </div>
+
+        <!-- Curriculum Overview -->
+        <section class="curriculum-section">
+          <div class="section-header">
+            <h2 class="section-title">Curriculum Overview</h2>
+            <p class="section-description">
+              Progress through seven comprehensive chapters designed to take you from 
+              foundational concepts to advanced market analysis techniques.
+            </p>
+          </div>
+          
+          <div class="curriculum-grid">
+            <a href="./chapters/chapter-foundations.html" class="curriculum-card">
+              <div class="curriculum-card-icon">&#x1F4D6;</div>
+              <div class="curriculum-card-number">Chapter I</div>
+              <h3 class="curriculum-card-title">Foundations</h3>
+              <p class="curriculum-card-description">
+                Master the fundamental concepts: probability theory, market efficiency, 
+                reflexivity, volatility mathematics, and essential risk metrics.
+              </p>
+              <div class="curriculum-card-meta">
+                <span>&#x1F4D6; Chapter Guide</span>
+                <span>&#x23F1;&#xFE0F; Foundation</span>
+              </div>
+            </a>
+            
+            <a href="./chapters/chapter-principles.html" class="curriculum-card">
+              <div class="curriculum-card-icon">&#x2696;&#xFE0F;</div>
+              <div class="curriculum-card-number">Chapter II</div>
+              <h3 class="curriculum-card-title">Trading Principles</h3>
+              <p class="curriculum-card-description">
+                Learn core trading psychology, position sizing with Kelly Criterion, 
+                risk management frameworks, and mean reversion strategies.
+              </p>
+              <div class="curriculum-card-meta">
+                <span>&#x1F4D6; Chapter Guide</span>
+                <span>&#x23F1;&#xFE0F; Essential</span>
+              </div>
+            </a>
+            
+            <a href="./chapters/chapter-mechanics.html" class="curriculum-card">
+              <div class="curriculum-card-icon">&#x2699;&#xFE0F;</div>
+              <div class="curriculum-card-number">Chapter III</div>
+              <h3 class="curriculum-card-title">Market Mechanics</h3>
+              <p class="curriculum-card-description">
+                Deep dive into options Greeks, OpEx flows, VIX dynamics, 
+                gamma exposure, and volatility surface analysis.
+              </p>
+              <div class="curriculum-card-meta">
+                <span>&#x1F4D6; Chapter Guide</span>
+                <span>&#x23F1;&#xFE0F; Advanced</span>
+              </div>
+            </a>
+            
+            <a href="./chapters/chapter-macro.html" class="curriculum-card">
+              <div class="curriculum-card-icon">&#x1F30D;</div>
+              <div class="curriculum-card-number">Chapter IV</div>
+              <h3 class="curriculum-card-title">Macro Analysis</h3>
+              <p class="curriculum-card-description">
+                Understand Fed policy cycles, geopolitical risk assessment, 
+                inflation dynamics, and global currency flows.
+              </p>
+              <div class="curriculum-card-meta">
+                <span>&#x1F4D6; Chapter Guide</span>
+                <span>&#x23F1;&#xFE0F; Strategic</span>
+              </div>
+            </a>
+            
+            <a href="./chapters/chapter-technical.html" class="curriculum-card">
+              <div class="curriculum-card-icon">&#x1F4CA;</div>
+              <div class="curriculum-card-number">Chapter V</div>
+              <h3 class="curriculum-card-title">Technical Analysis</h3>
+              <p class="curriculum-card-description">
+                Master reading market posts, identifying key levels, sentiment 
+                analysis, and structural market patterns.
+              </p>
+              <div class="curriculum-card-meta">
+                <span>&#x1F4D6; Chapter Guide</span>
+                <span>&#x23F1;&#xFE0F; Tactical</span>
+              </div>
+            </a>
+            
+            <a href="./chapters/chapter-assets.html" class="curriculum-card">
+              <div class="curriculum-card-icon">&#x1F48E;</div>
+              <div class="curriculum-card-number">Chapter VI</div>
+              <h3 class="curriculum-card-title">Asset Classes</h3>
+              <p class="curriculum-card-description">
+                Specialized analysis for SPX, Gold, Bitcoin, and Bonds&mdash;each 
+                with unique characteristics and trading approaches.
+              </p>
+              <div class="curriculum-card-meta">
+                <span>&#x1F4D6; Chapter Guide</span>
+                <span>&#x23F1;&#xFE0F; Applied</span>
+              </div>
+            </a>
+            
+            <a href="./chapters/chapter-archive.html" class="curriculum-card">
+              <div class="curriculum-card-icon">&#x1F4DA;</div>
+              <div class="curriculum-card-number">Chapter VII</div>
+              <h3 class="curriculum-card-title">Analysis Archive</h3>
+              <p class="curriculum-card-description">
+                Complete collection of weekly and intraday posts, special reports, 
+                and historical market analysis for continued study.
+              </p>
+              <div class="curriculum-card-meta">
+                <span>&#x1F4D6; Chapter Guide</span>
+                <span>&#x23F1;&#xFE0F; Reference</span>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="curriculum-section">
+          <div class="section-header">
+            <h2 class="section-title">About This Textbook</h2>
+          </div>
+          
+          <div class="content-body">
+            <p>
+              The <strong>Doctrine Bible</strong> represents a comprehensive compilation of trading 
+              knowledge, market insights, and quantitative analysis methods developed over years 
+              of daily market observation and research. This curriculum is designed for serious 
+              traders who seek to understand not just <em>what</em> moves markets, but <em>why</em> 
+              they move.
+            </p>
+            
+            <blockquote>
+              "Market prices always distort the underlying fundamentals. The degree of distortion 
+              can range from negligible to significant. When the influence of the market price 
+              on the fundamentals is ignored, we have a misconception about how markets operate."
+              <cite>&mdash; George Soros, Theory of Reflexivity</cite>
+            </blockquote>
+            
+            <p>
+              The teachings contained herein draw from multiple disciplines: statistical 
+              analysis, behavioral finance, options theory, macroeconomics, and geopolitical 
+              strategy. Each lesson builds upon the previous, creating a coherent framework 
+              for understanding complex market dynamics.
+            </p>
+            
+            <div class="info-box info-box-note">
+              <div class="info-box-title">Note for Students</div>
+              <p>
+                This textbook is best studied sequentially, with each chapter building upon 
+                the foundations laid in previous sections. While the Analysis Archive can be 
+                referenced at any time, the core curriculum (Chapters I-VI) should be completed 
+                in order for maximum comprehension.
+              </p>
+            </div>
+            
+            <h3>How to Use This Textbook</h3>
+            
+            <ol>
+              <li>
+                <strong>Start with Foundations:</strong> Begin with Chapter I to establish 
+                the conceptual framework that underlies all subsequent analysis.
+              </li>
+              <li>
+                <strong>Practice Risk Management:</strong> Chapter II's principles should 
+                be internalized before attempting any live trading.
+              </li>
+              <li>
+                <strong>Study Market Mechanics:</strong> Chapter III provides the tools 
+                for understanding daily market movements.
+              </li>
+              <li>
+                <strong>Integrate Macro Context:</strong> Chapter IV connects micro 
+                movements to the broader economic picture.
+              </li>
+              <li>
+                <strong>Apply Technical Skills:</strong> Chapter V teaches practical 
+                application of the concepts.
+              </li>
+              <li>
+                <strong>Master Asset Classes:</strong> Chapter VI provides specialized 
+                knowledge for different markets.
+              </li>
+              <li>
+                <strong>Reference the Archive:</strong> Chapter VII serves as an ongoing 
+                resource for real-world examples.
+              </li>
+            </ol>
+            
+            <div class="key-takeaways">
+              <div class="key-takeaways-title">Key Principles</div>
+              <ul>
+                <li>Markets are probabilistic, not deterministic</li>
+                <li>Position sizing matters more than entry timing</li>
+                <li>Volatility is the only true constant</li>
+                <li>Reflexivity creates feedback loops</li>
+                <li>Macro context drives micro movements</li>
+                <li>Risk management preserves capital</li>
+                <li>Continuous learning is essential</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Start Learning CTA -->
+        <section class="curriculum-section" style="text-align: center; padding: var(--space-xxl) 0;">
+          <a href="./chapters/chapter-foundations.html" class="nav-btn" style="font-size: 1.1rem; padding: var(--space-md) var(--space-xl);">
+            Begin Chapter I: Foundations &rarr;
+          </a>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="./js/app.js"></script>
+  <script src="./config/alma-config.js"></script>
+  <script src="./js/health-monitor.js"></script>
+  <script src="./js/alma-chat.js"></script>
+  <script src="./js/ask-alma-buttons.js"></script>
+  <script>
+    // Load search index
+    fetch('./search-index.json')
+      .then(r => r.json())
+      .then(data => {
+        Search.index = data;
+      });
+  </script>
+</body>
+</html>

@@ -9,10 +9,10 @@ Without monitoring, we are flying blind. Without alerts, we will not know if the
 You are building the eyes and ears of the system. The dashboard that shows live metrics. The alerts that warn before failure. The automation that completes the workflow.
 
 Read these four decisions:
-- c:\P4NTH30N\STR4TEG15T\decisions\active\DECISION_057.md - Monitoring dashboard
-- c:\P4NTH30N\STR4TEG15T\decisions\active\DECISION_058.md - Alert thresholds  
-- c:\P4NTH30N\STR4TEG15T\decisions\active\DECISION_059.md - Post-burn-in automation
-- c:\P4NTH30N\STR4TEG30N\decisions\active\DECISION_060.md - Operational deployment
+- c:\P4NTHE0N\STR4TEG15T\decisions\active\DECISION_057.md - Monitoring dashboard
+- c:\P4NTHE0N\STR4TEG15T\decisions\active\DECISION_058.md - Alert thresholds  
+- c:\P4NTHE0N\STR4TEG15T\decisions\active\DECISION_059.md - Post-burn-in automation
+- c:\P4NTHE0N\STR4TEG30N\decisions\active\DECISION_060.md - Operational deployment
 
 Build them in order. Do not stop between phases. The burn-in cannot start until monitoring is ready.
 

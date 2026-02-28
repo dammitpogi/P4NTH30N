@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V. Technical Analysis - Doctrine Bible</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/alma-chat.css">
+</head>
+<body data-chapter="technical" data-lesson-id="technical-overview">
+
+  <header class="header">
+    <div class="header-brand">
+      <div class="header-logo">DB</div>
+      <div>
+        <div class="header-title">Doctrine Bible</div>
+        <div class="header-subtitle">Trading Curriculum</div>
+      </div>
+    </div>
+    <nav class="header-nav">
+      <div class="header-search">
+        <span class="header-search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Search topics... (Ctrl+K)">
+        <div class="search-results" id="search-results"></div>
+      </div>
+      <a href="../index.html" class="nav-btn">📚 Home</a>
+      <button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+    </nav>
+  </header>
+
+  <div class="app-container">
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-title">Course Progress</div>
+        <div class="sidebar-subtitle">7 Chapters</div>
+        <div class="sidebar-progress">
+          <div class="progress-label">
+            <span>Overall Progress</span>
+            <span id="progress-percent">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+      
+      <nav class="nav-tree">
+        <div class="nav-section " data-section="foundations">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">📖</span>
+            <span class="nav-section-title">I. Foundations</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-foundations.html" class="nav-lesson " data-lesson="foundations-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="principles">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">⚖️</span>
+            <span class="nav-section-title">II. Trading Principles</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-principles.html" class="nav-lesson " data-lesson="principles-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="mechanics">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">⚙️</span>
+            <span class="nav-section-title">III. Market Mechanics</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-mechanics.html" class="nav-lesson " data-lesson="mechanics-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="macro">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">🌍</span>
+            <span class="nav-section-title">IV. Macro Analysis</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-macro.html" class="nav-lesson " data-lesson="macro-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section expanded" data-section="technical">
+          <div class="nav-section-header active">
+            <span class="nav-section-icon">📊</span>
+            <span class="nav-section-title">V. Technical Analysis</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-technical.html" class="nav-lesson active" data-lesson="technical-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="assets">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">💎</span>
+            <span class="nav-section-title">VI. Asset Classes</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-assets.html" class="nav-lesson " data-lesson="assets-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="archive">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">📚</span>
+            <span class="nav-section-title">VII. Analysis Archive</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-archive.html" class="nav-lesson " data-lesson="archive-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="content-wrapper">
+        <div class="breadcrumbs">
+          <a href="../index.html">Home</a>
+          <span class="breadcrumbs-separator">→</span>
+          <span class="breadcrumbs-current">V. Technical Analysis</span>
+        </div>
+
+        <div class="page-header">
+          <div class="page-category">📊 Chapter Overview</div>
+          <h1 class="page-title">V. Technical Analysis</h1>
+          <p class="page-subtitle">Reading posts, levels, sentiment, and market structure</p>
+          <div class="page-meta">
+            <div class="page-meta-item">🏷️ Key Themes: 16</div>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <h2>Chapter Guide</h2>
+          <p>This chapter guide is written to teach the concepts from basics.</p>
+
+          <div class="chapter-guide">
+            <h2>Core Concepts</h2>
+
+<h3>Levels are checkpoints, not predictions</h3>
+<p>
+  In this doctrine, pivots and targets are used as checkpoints to interpret the market’s internal
+  state. A pivot is a line-in-the-sand: above it, one distribution dominates; below it, another.
+</p>
+
+<h3>Confirmation and invalidation are mandatory</h3>
+<p>
+  A level is only useful if it changes your behavior. “Confirmation” means the market accepts a
+  scenario. “Invalidation” means it doesn’t. Without this, levels become superstition.
+</p>
+
+<h3>Daily posts as a structured read</h3>
+<p>
+  A disciplined daily read extracts: event pressure, pivot zones, targets, and the flow/volatility
+  story that explains why those levels matter.
+</p>
+
+<h3>Reverse-engineering beats lagging indicators</h3>
+<p>
+  The corpus explicitly warns that common retail dashboards (put/call deltas, ratios, and even
+  “order flow” deltas) are lagging data. The alternative method described is to reverse-engineer
+  the structure the market is pricing in, decode hidden patterns (e.g., butterflies and
+  risk-reversal patterns), and derive pivot ranges plus the implied distribution being priced.
+</p>
+
+<h3>Anatomy of a daily post (what to extract)</h3>
+<ol>
+  <li><strong>Premarket OptionsDepth heatmap</strong> (context / where liquidity matters).</li>
+  <li><strong>Script inputs</strong> (levels with assigned probabilities).</li>
+  <li><strong>Speed profile</strong> (the expected drift / pressure).</li>
+  <li><strong>Regime-change flags</strong> (vanna flip and “speed slip”).</li>
+</ol>
+
+<h3>Expectations vs. behavior (where the edge is)</h3>
+<p>
+  A practical pattern used throughout the intraday notes is to compare what was expected for the
+  week/day vs how the market actually behaves:
+</p>
+<ol>
+  <li>If behavior matches expectation, volatility tends to stay controlled (easy read, even if bearish).</li>
+  <li>If behavior moves above expectation, sentiment is “out of control,” reinforcing the trend.</li>
+  <li>If behavior diverges from expectation, it’s the strongest signal (but still needs confirmation).</li>
+</ol>
+
+<h2>How To Apply</h2>
+
+<h3>How to read a daily post (in 5 minutes)</h3>
+<ol>
+  <li>What is the event pressure today/this week?</li>
+  <li>What is the main pivot range?</li>
+  <li>What confirms upside vs downside?</li>
+  <li>Where is invalidation?</li>
+  <li>What is the expected behavior (suppression, rangebound, trend day)?</li>
+</ol>
+
+<h3>Turn levels into a decision (not a prediction)</h3>
+<ol>
+  <li><strong>Pre-commit the invalidation:</strong> decide what would make you exit <em>before</em> entry.</li>
+  <li><strong>Separate targets:</strong> treat targets as checkpoints (information), not take-profit fantasies.</li>
+  <li><strong>Track structure:</strong> ask “is the market building structure at the pivot?” not “did it touch?”</li>
+  <li><strong>Require confirmation:</strong> do not treat a bias as a trade until confirmations print.</li>
+</ol>
+
+<h2>Common Mistakes</h2>
+<ul>
+  <li>Anchoring on one number instead of treating a zone as a zone.</li>
+  <li>Forgetting that the same level can act differently in different regimes.</li>
+  <li>Confusing “support held once” with “support is guaranteed.”</li>
+  <li>Using lagging indicators as if they reveal the current structure.</li>
+  <li>Skipping confirmation/invalidation and calling it “discretion.”</li>
+</ul>
+
+<h2>Self-Check</h2>
+<ol>
+  <li>Can you explain what a pivot is in one sentence?</li>
+  <li>Can you define “downside confirmation” vs “downside target”?</li>
+  <li>What changes in your plan when volume is low and flows dominate?</li>
+</ol>
+
+<h2>Citations (Local Corpus)</h2>
+<div class="citations">
+  <ul>
+    <li><code>bible/unknown-date-a-guide-to-reading-my-daily-posts.md</code></li>
+    <li><code>bible/unknown-date-breaking-down-trump-s-post-another-ic-day-intraday-post-24-d.md</code></li>
+    <li><code>bible/unknown-date-bottom-confirmation-intraday-post-26-nov.md</code></li>
+    <li><code>bible/2025-01-29-post-fomc-intraday-post-29-jan.md</code></li>
+    <li><code>bible/unknown-date-expectations-in-short-institutional-support-intraday-post-24.md</code></li>
+    <li><code>bible/unknown-date-no-euphoria-intraday-post-07-oct.md</code></li>
+    <li><code>bible/unknown-date-supportive-profile-intraday-post-29-dec.md</code></li>
+  </ul>
+</div>
+
+<h2>Further Reading (Scholarly / Textbook)</h2>
+<ul>
+  <li><a href="https://onlinelibrary.wiley.com/doi/book/10.1002/9781119196670" target="_blank" rel="noopener">Murphy: Technical Analysis of the Financial Markets (reference)</a></li>
+</ul>
+
+<h2>Further Reading (General)</h2>
+<ul>
+  <li><a href="https://www.investopedia.com/terms/s/support.asp" target="_blank" rel="noopener">Support and resistance (baseline)</a></li>
+  <li><a href="https://www.investopedia.com/terms/m/marketpsychology.asp" target="_blank" rel="noopener">Market psychology</a></li>
+</ul>
+
+          </div>
+
+        </div>
+
+        <div class="chapter-nav">
+          <a href="./chapter-macro.html" class="chapter-nav-btn prev">
+            <div>
+              <div class="chapter-nav-label">← Previous</div>
+              <div class="chapter-nav-title">IV. Macro Analysis</div>
+            </div>
+          </a>
+          
+          <a href="./chapter-assets.html" class="chapter-nav-btn next">
+            <div>
+              <div class="chapter-nav-label">Next →</div>
+              <div class="chapter-nav-title">VI. Asset Classes</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/app.js"></script>
+  <script src="../config/alma-config.js"></script>
+  <script src="../js/health-monitor.js"></script>
+  <script src="../js/alma-chat.js"></script>
+  <script src="../js/ask-alma-buttons.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+OpenFixer handoff to Nate's Agent. This message is intentionally compact for chat limits. If your platform has strict message size, paste this in two parts and acknowledge constraints before execution.
+
+Operate in one pass, no question loops, evidence first. Use Pantheon continuity with provenance from these paths: C:/P4NTH30N/codemap.md, C:/P4NTH30N/STR4TEG15T/memory/decisions/DECISION_136_OPENCLAW_EXTERNAL_CODEBASE_AUDIT_KICKOFF.md, C:/P4NTH30N/STR4TEG15T/memory/decisions/DECISION_137_NATE_SUBSTACK_TEACHINGS_CAPTURE_AND_SEARCH.md, C:/P4NTH30N/STR4TEG15T/memory/decision-engine/OPENCLAW_EXTERNAL_AUDIT_PLAYBOOK_v1.md, C:/P4NTH30N/OP3NF1XER/deployments/JOURNAL_2026-02-25_DECISION_136_137_ASSIMILATION_MODEL_SWITCH.md.
+
+Current deployment truth to verify and report with raw output: Railway latest deployment id 125ffcd1-5639-402e-8606-6972dd21e3b9 is SUCCESS, /healthz is 200, and /, /openclaw, /setup/export, /textbook are auth-gated 401 without setup credentials.
+
+Run and report evidence for these checks: railway status --json, python skills/openclaw-endpoint-kit/scripts/endpoint_probe.py --base "https://clawdbot-railway-template-production-461f.up.railway.app", python skills/openclaw-model-switch-kit/scripts/switch_anthropic_model.py --help, python skills/nate-agent-ops-kit/scripts/extract_requests.py, python skills/nate-agent-ops-kit/scripts/apply_nate_baseline.py --help, python skills/nate-agent-ops-kit/scripts/workflow_runner.py --help, python skills/auth-vault/scripts/vault.py --help, python skills/anthropic-usage/scripts/check_usage.py --help, python skills/sag/scripts/sag.py --help, python skills/sag/scripts/sag.py "Pantheon audit voice check".
+
+Run preview-only audits (no mutation): python skills/openclaw-model-switch-kit/scripts/switch_anthropic_model.py --target sonnet and python skills/nate-agent-ops-kit/scripts/apply_nate_baseline.py --group-id -5107377381. Do not claim model switching unless PRE-AUDIT, MUTATION REPORT, POST-AUDIT, and restart/status proof are all present.
+
+Validate secrets and OAuth path through auth-vault only. Do not store secrets in memory files. Validate auth-vault list and oauth-refresh command readiness. For Linux, report keyring backend status explicitly; if unavailable, report secure fallback policy and do not use plaintext unless explicitly approved.
+
+Run anthropic usage probe: python skills/anthropic-usage/scripts/check_usage.py. If ANTHROPIC_API_KEY is missing, report BLOCKED with remediation command and still mark structural readiness PASS.
+
+Run reusable profile check: python skills/nate-agent-ops-kit/scripts/workflow_runner.py --profile heartbeat --group-id -5107377381.
+
+Final output format is required: a PASS/PARTIAL/FAIL matrix for deployment status, endpoint health, route auth posture, model-switch readiness, Nate ops toolkit readiness, auth-vault readiness, OAuth refresh readiness, anthropic usage readiness, heartbeat quality, AGENTS hardening without soul loss, TOOLS secret hygiene, and unresolved blockers. If any line is PARTIAL/FAIL, self-heal where possible, rerun affected checks, and append re-audit matrix.
+
+Before doing any requested work, post one short acknowledgement in chat: "I see the chat-size constraint and will keep responses chunk-safe while preserving full audit evidence."

@@ -1,0 +1,153 @@
+description: Commands to enable and disable process mitigations or set them in bulk
+  from an XML file
+synopses:
+- Set-ProcessMitigation [[-Name] <String>] [-Disable <String[]>] [-Enable <String[]>]
+  [-EAFModules <String[]>] [-Force <String>] [-Reset] [-Remove] [<CommonParameters>]
+- Set-ProcessMitigation -PolicyFilePath <String> [-IsValid] [<CommonParameters>]
+- Set-ProcessMitigation [-Disable <String[]>] [-Enable <String[]>] [-EAFModules <String[]>]
+  [-System] [-Force <String>] [-Reset] [-Remove] [<CommonParameters>]
+options:
+  -Disable,-d String[]:
+    values:
+    - DEP
+    - EmulateAtlThunks
+    - SEHOP
+    - ForceRelocate
+    - RequireInfo
+    - BottomUp
+    - HighEntropy
+    - StrictHandle
+    - DisableWin32kSystemCalls
+    - AuditSystemCall
+    - ExtensionPoint
+    - DynamicCode
+    - AuditDynamicCode
+    - CFG
+    - SuppressExports
+    - StrictCFG
+    - BlockNonMicrosoftSigned
+    - AllowStoreSigned
+    - AuditMicrosoftSigned
+    - AuditStoreSigned
+    - EnforceModuleDepencySigning
+    - DisableNonSystemFonts
+    - FontAuditOnly
+    - AuditFont
+    - BlockRemoteImages
+    - BlockLowLabel
+    - PreferSystem32
+    - AuditImageLoad
+    - EnableExportAddressFilter
+    - AuditEnableExportAddressFilter
+    - EnableExportAddressFilterPlus
+    - AuditEnableExportAddressFilterPlus
+    - EnableImportAddressFilter
+    - AuditEnableImportAddressFilter
+    - EnableRopStackPivot
+    - AuditEnableRopStackPivot
+    - EnableRopCallerCheck
+    - AuditEnableRopCallerCheck
+    - EnableRopSimExec
+    - AuditEnableRopSimExec
+    - SEHOP
+    - AuditSEHOP
+    - SEHOPTelemetry
+    - TerminateOnHeapError
+    - DisallowChildProcessCreation
+    - AuditChildProcess
+    - UserShadowStack
+    - UserShadowStackStrictMode
+    - AuditUserShadowStack
+  -EAFModules String[]: ~
+  -Enable,-e String[]:
+    values:
+    - DEP
+    - EmulateAtlThunks
+    - SEHOP
+    - ForceRelocate
+    - RequireInfo
+    - BottomUp
+    - HighEntropy
+    - StrictHandle
+    - DisableWin32kSystemCalls
+    - AuditSystemCall
+    - ExtensionPoint
+    - DynamicCode
+    - AuditDynamicCode
+    - CFG
+    - SuppressExports
+    - StrictCFG
+    - BlockNonMicrosoftSigned
+    - AllowStoreSigned
+    - AuditMicrosoftSigned
+    - AuditStoreSigned
+    - EnforceModuleDepencySigning
+    - DisableNonSystemFonts
+    - FontAuditOnly
+    - AuditFont
+    - BlockRemoteImages
+    - BlockLowLabel
+    - PreferSystem32
+    - AuditImageLoad
+    - EnableExportAddressFilter
+    - EnableExportAddressFilterPlus
+    - EnableImportAddressFilter
+    - EnableRopStackPivot
+    - EnableRopCallerCheck
+    - EnableRopSimExec
+    - SEHOP
+    - AuditSEHOP
+    - SEHOPTelemetry
+    - TerminateOnHeapError
+    - DisallowChildProcessCreation
+    - AuditChildProcess
+    - UserShadowStack
+    - UserShadowStackStrictMode
+    - AuditUserShadowStack
+  -Force,-f String:
+    values:
+    - on
+    - off
+    - notset
+  -IsValid,-v Switch: ~
+  -Name String: ~
+  -PolicyFilePath,-x String:
+    required: true
+  -Remove Switch: ~
+  -Reset,-r Switch: ~
+  -System,-s Switch: ~
+  -Debug,-db Switch: ~
+  -ErrorAction,-ea ActionPreference:
+    values:
+    - Break
+    - Suspend
+    - Ignore
+    - Inquire
+    - Continue
+    - Stop
+    - SilentlyContinue
+  -ErrorVariable,-ev String: ~
+  -InformationAction,-ia ActionPreference:
+    values:
+    - Break
+    - Suspend
+    - Ignore
+    - Inquire
+    - Continue
+    - Stop
+    - SilentlyContinue
+  -InformationVariable,-iv String: ~
+  -OutVariable,-ov String: ~
+  -OutBuffer,-ob Int32: ~
+  -PipelineVariable,-pv String: ~
+  -Verbose,-vb Switch: ~
+  -WarningAction,-wa ActionPreference:
+    values:
+    - Break
+    - Suspend
+    - Ignore
+    - Inquire
+    - Continue
+    - Stop
+    - SilentlyContinue
+  -WarningVariable,-wv String: ~

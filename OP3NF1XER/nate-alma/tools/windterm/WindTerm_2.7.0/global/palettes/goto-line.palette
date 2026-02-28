@@ -1,0 +1,55 @@
+{
+    "trigger": ":",
+    "comment": "Go To Line",
+    "filterable": false,
+    "events": "enterEvent, leaveEvent, filterEvent, commitEvent",
+    "script": "(event, filter, selection) => {
+        let text = window.activeText;
+        const REGISTER_SCROLL = 'goto_line_palette';
+
+        const targetLine = (filter) => {
+            let line = Number(filter);
+
+            if (isNaN(line) == false && /\\+|-/.exec(filter)) {
+                line += text.lineFromPosition(text.selectionStartP());
+            }
+            return line;
+        }
+
+        if (event == 'enterEvent') {
+            text.setRegister(REGISTER_SCROLL, [text.scrollTop, text.scrollLeft]);
+
+            let items = [{
+                'title': `Type a line number between 1 and ${text.lineCount}`,
+                'subtitle': `[Current line: ${text.caretLine + 1}]`
+            }, {
+                'title': `Use +, - to jump to the relative line.`
+            }];
+            return items;
+        } else if (event == 'filterEvent') {
+            let line = targetLine(filter);
+
+            if (isNaN(line) == false) {
+                line = Math.max(1, line - Math.floor(text.screenLineCapacity / 2));
+
+                text.scrollLeft = 0;
+                text.scrollTop = line - 1;
+            }
+        } else if (event == 'leaveEvent') {
+            let scroll = text.getRegister(REGISTER_SCROLL);
+
+            if (scroll) {
+                text.scrollTop = scroll[0];
+                text.scrollLeft = scroll[1];
+            }
+            text.removeRegister(REGISTER_SCROLL);
+        } else if (event == 'commitEvent') {
+            let line = targetLine(filter);
+
+            if (isNaN(line) == false) {
+                text.gotoLine(line - 1);
+            }
+            text.removeRegister(REGISTER_SCROLL);
+        }
+    }"
+}

@@ -1,0 +1,607 @@
+// This document is private and proprietary, and is the property of WindTerm, all rights reserved.
+// Use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies is NOT allowed.
+{
+	"deviceAttributes" : [
+		"\u001b[?65;1;2;6;9;15;16;18;21;22;28;29c",
+		"\u001b[>65;330;0c",
+		"\u001bP!|0125\u001b\\"
+	],
+	"input" : {
+		"refs": {
+			"BEL": "\\a",
+			"CAN": "\\x18",
+			"ESC": "\\e",
+			"IND": "\\eD|\\x84",
+			"NEL": "\\eE|\\x85",
+			"HTS": "\\eH|\\x88",
+			"RI" : "\\eM|\\x8D",
+			"SS2": "\\eN|\\x8E",
+			"SS3": "\\eO|\\x8F",
+			"DCS": "\\eP|\\x90",
+			"SPA": "\\eV|\\x96",
+			"EPA": "\\eW|\\x97",
+			"SOS": "\\eX|\\x98",
+			"DECID": "\\eZ|\\x9A",
+			"CSI": "\\e\\[|\\x9B",
+			"ST" : "\\e\\\\|\\x9C",
+			"OSC": "\\e\\]|\\x9D",
+			"PM" : "\\e\\^|\\x9E",
+			"APC": "\\e_|\\x9F"
+		},
+		"match": "(?x)
+			(?&CSI) (
+			  (?<MoveCursorUp>                                (?<count>                        \\d+)?                       A) # CUU
+			| (?<ScrollRight>                                 (?<count>                        \\d+)?                  \\x20A) # SR
+			| (?<MoveCursorDown>                              (?<count>                        \\d+)?                       B) # CUD
+			| (?<MoveCursorForward>                           (?<count>                        \\d+)?                       C) # CUF
+			| (?<MoveCursorBackward>                          (?<count>                        \\d+)?                       D) # CUB
+			| (?<MoveCursorNextLine>                          (?<count>                        \\d+)?                       E) # CNL
+			| (?<MoveCursorPrecedingLine>                     (?<count>                        \\d+)?                       F) # CPL
+			| (?<MoveCursorColumn>                            (?<column>                       \\d+)?                    [G`]) # CHA, HPA
+			| (?<MoveCursor>                                  ((?<line> \\d*);     (?<column> \\d*))?                    [Hf]) # CUP, HVP
+			| (?<MoveCursorNextTabstop>                       (?<count>                        \\d+)?                       I) # CHT
+			| (?<EraseScreen>                                 ((?<type>                     \\d+);?)?                       J) # ED
+			| (?<EraseSelectiveScreen>                     \\?((?<type>                     \\d+);?)?                       J) # DECSED
+			| (?<EraseLine>                                   (?<type>                         \\d+)?                       K) # EL
+			| (?<EraseSelectiveLine>                       \\?(?<type>                         \\d+)?                       K) # DECSEL
+			| (?<InsertLine>                                  (?<count>                        \\d+)?                       L) # IL
+			| (?<DeleteLine>                                  (?<count>                        \\d+)?                       M) # DL
+			| (?<DeleteCharacter>                             (?<count>                        \\d+)?                       P) # DCH
+			| (?<ScrollUp>                                    (?<count>                        \\d+)?                       S) # SU
+			| (?<ScrollDown>                                  (?<count>                        \\d+)?                       T) # SD
+			| (?<HighlightTracking>                           (?<type> \\d);  (?<area> (?:\\d+;){4})                        T) # XTERM
+			| (?<EraseCharacter>                              (?<count>                        \\d+)?                       X) # ECH
+			| (?<MoveCursorPrecedingTabstop>                  (?<count>                        \\d+)?                       Z) # CBT
+			| (?<MoveCursorColumnRelative>                    (?<column>                       \\d+)?                       a) # HPR
+			| (?<RepeatCharacter>                             (?<count>                        \\d+)?                       b) # REP
+			| (?<ReportDeviceAttributesOne>                   (                                  0?)                        c) # DA1
+			| (?<ReportDeviceAttributesTwo>                  >(                                  0?)                        c) # DA2
+			| (?<ReportDeviceAttributesThree>                =(                                  0?)                        c) # DA3
+			| (?<SetCursorVisibility>                      \\?(?<visibility>                  [018])                        c) # Linux Private
+			| (?<MoveCursorLine>                              (?<line>                         \\d+)?                       d) # VPA
+			| (?<MoveCursorLineRelative>                      (?<line>                         \\d+)?                       e) # VPR
+			| (?<ClearTabstop>                                (?<type>                         \\d+)?                       g) # TBC
+			| (?<SetMode>                                     (?<modes>                 \\d+[\\d;]*)?                       h) # SM
+			| (?<SetDecMode>                               \\?(?<modes>                 \\d+[\\d;]*)?                       h) # SM, DEC Private
+			| (?<MediaCopy>                                   (?<action>                       \\d+)?                       i) # MC
+			| (?<MediaCopyDec>                             \\?(?<action>                       \\d+)                        i) # MC, DEC Private
+			| (?<MoveCursorColumnBackward>                    (?<column>                       \\d+)?                       j) # HPB
+			| (?<MoveCursorLineBackward>                      (?<line>                         \\d+)?                       k) # VPB
+			| (?<ResetMode>                                   (?<modes>                 \\d+[\\d;]*)                        l) # RM
+			| (?<ResetDecMode>                             \\?(?<modes>                 \\d+[\\d;]*)                        l) # RM, DEC Private
+			| (?<SelectGraphicRendition>                      (?<renditions>               [\\d:;]+)?                       m) # SGR
+			| (?<RequestKeyModifier>                       \\?(?<type> [0124])                                              m) # XTQMODKEYS, XTERM
+			| (?<ResetKeyModifier>                           >(?<type> [0124])?                                             m) # XTMODKEYS, XTERM
+			| (?<SetKeyModifier>                             >(?<type> [0124]);      (?<mode> -?\\d)?                       m) # XTMODKEYS, XTERM
+			| (?<ReportDeviceStatus>                          (?<types>                 \\d+[\\d;]*)                        n) # DSR
+			| (?<ReportDecDeviceStatus>                    \\?(?<types>                 \\d+[\\d;]*)                        n) # DSR, DEC Private
+			| (?<ResetSoft>                                                                                                !p) # DECSTR
+			| (?<SetConformanceLevel>                         (?<level> \\d+)       (;(?<mode> \\d))?                     \"p) # DECSCL
+			| (?<RequestMode>                                 (?<mode>                         \\d+)                     \\$p) # DECRQM
+			| (?<RequestDecMode>                           \\?(?<mode>                         \\d+)                     \\$p) # DECRQM, DEC Private
+			| (?<LoadLeds>                                    (?<types>                     [\\d;]+)?                       q) # DECLL
+			| (?<SetCursorStyle>                              (?<style>                        \\d+)?                  \\x20q) # DECSCUSR
+			| (?<SelectCharacterAttribute>                    (?<type>                         \\d+)?                     \"q) # DECSCA
+			| (?<SetTopBottomMargins>                         ((?<top> \\d*);      (?<bottom> \\d*))?                       r) # DECSTBM
+			| (?<RestoreDecMode>                           \\?(?<modes>                 \\d+[\\d;]*)?                       r) # XTERM
+			| (?<ChangeAttributesInRectangularArea>  (?<area> (?:\\d*;){4})  (?<attributes> [\\d;]*)                     \\$r) # DECCARA
+			| (?<SaveCursor>                                                                                                s) # SCOSC
+			| (?<SaveDecMode>                              \\?(?<modes>                 \\d+[\\d;]*)?                       s) # XTERM
+			| (?<SetLeftRightMargins>                         ((?<left> \\d*);      (?<right> \\d*))?                       s) # DECSLRM
+			| (?<SetWindowAttributes>                         (?<attributes>                [\\d;]*)                        t) # DECSLPP, XTerm window manipulation
+			| (?<SetWarningBellVolume>                        (?<volume>                        \\d)?                  \\x20t) # DECSWBV
+			| (?<ReverseAttributesInRectangularArea> (?<area> (?:\\d*;){4})  (?<attributes> [\\d;]*)                     \\$t) # DECRARA
+			| (?<RestoreCursor>                                                                                             u) # SCORC
+			| (?<SetMarginBellVolume>                         (?<volume>                        \\d)?                  \\x20u) # DECSMBV
+			| (?<CopyRectangularArea>                (?<area> (?:\\d*;){5}) (?<destination> [\\d;]*)                     \\$v) # DECCRA
+			| (?<RequestPresentationStateReport>              (?<type>                          \\d)                     \\$w) # DECRQPSR
+			| (?<EnableFilterRectangle>                       (?<area>                      [\\d;]*)                       'w) # DECEFR
+			| (?<ReportTerminalParameters>                    (?<type>                         \\d+)?                       x) # DECREQTPARM
+			| (?<FillRectangularArea>                         (?<character> \\d+); (?<area> [\\d;]*)                     \\$x) # DECFRA
+			| (?<SelectAttributeChangeExtent>                 (?<type>                         \\d+)?                    \\*x) # DECSACE
+			| (?<RequestChecksumOfRectangularArea>            (?<pid> \\d+);       (?<area> [\\d;]*)                     \\*y) # DECRQCRA
+			| (?<EraseRectangularArea>                        (?<area>                      [\\d;]*)                     \\$z) # DECERA
+			| (?<EnableLocatorReports>                        (?<mode> \\d);           (?<unit> \\d)?                      'z) # DECELR
+			| (?<InsertCharacter>                             (?<count>                        \\d+)?                       @) # ICH
+			| (?<ScrollLeft>                                  (?<count>                        \\d+)?                  \\x20@) # SL
+			| (?<SelectiveEraseRectangularArea>               (?<area>                      [\\d;]*)                   \\$\\{) # DECSERA
+			| (?<SelectLocatorEvents>                         (?<events>                       \\d+)                     '\\{) # DECSLE
+			| (?<SetColumnsPerPage>                           (?<count>                        \\d+)?                  \\$\\|) # DECSCPP
+			| (?<RequestLocatorPosition>                      (?<type>                         \\d+)?                    '\\|) # DECRQLP
+			| (?<SelectNumberOfLinesOnScreen>                 (?<count>                        \\d+)                   \\*\\|) # DECSNLS
+			| (?<InsertColumn>                                (?<count>                        \\d+)?                    '\\}) # DECIC
+			| (?<DeleteColumn>                                (?<count>                        \\d+)?                      '~) # DECDC
+			)
+		| (?&DCS) ((
+			  (?<SetUserDefinedKeys>       (?<clear> \\d+)? (;(?<lock> \\d+))? (;(?<modifier> \\d+))? \\| (?<definition> .+)?) # DECUDK, Not Supported
+			| (?<RequestSelectionOrSetting>                                                               \\$q  (?<type> .+?)) # DECRQSS
+			| (?<RestorePresentationState>                    (?<type> \\d)                               \\$t (?<state> .+?)) # DECRSPS
+			| (?<SetXtermTerminfoData>                                                                    \\+p  (?<name> .+?)) # XTERM, Not Supported
+			| (?<RequestXtermTerminfoData>                                                                \\+q (?<names> .+?)) # XTERM
+			) (?&ST)
+			| (?<EnterTmuxControlMode>                                                                                  1000p) # TMUX
+			)
+		| (?&OSC) (
+			  (?<SetWindowIconAndTitle>                      0;                                (?<name> [^\\x07\\x1b\\x9c]*?)) # XTERM
+			| (?<SetWindowIcon>                           [1L];                                (?<name> [^\\x07\\x1b\\x9c]*?)) # XTERM
+			| (?<SetWindowTitle>                          [2l];                                (?<name> [^\\x07\\x1b\\x9c]*?)) # XTERM
+			| (?<SetWindowXproperty>                         3;                                             (?<property> .*?)) # XTERM, Not Supported
+			| (?<SetWindowColor>      (?<type> [456]|106|1\\d);                                               (?<colors> .*?)) # XTERM
+			| (?<ResetWindowColor>            (?<type> 10[45]);                                              (?<index> \\d+)?) # XTERM
+			| (?<ResetWindowColor>             (?<type> 11[2])                                                               ) # XTERM
+			| (?<NotifyHyperlink>                            8;                                                  (?<url> .*?)) # VTE, ITERM2
+			| (?<NotifyRemoteDirectory>                      7;                                                  (?<url> .*?)) # gnome
+			| (?<NotifyMessage>                    (?<type> 9); (?!\\d)                                      (?<message> .*?)) # ITERM2
+			| (?<NotifyRemoteDirectory>                      9; 9;                                               (?<url> .*?)) # ConEmu
+			| (?<SetWindowLog>                              46;                                                 (?<name> .*?)) # XTERM, Not Supported
+			| (?<SetWindowFont>                             50;                                                 (?<name> .*?)) # XTERM, Not Supported
+			| (?<ReservedForEmacsShell>                     51;                                                           .*?) # XTERM, Not Supported
+			| (?<RequestWindowSelections>                   52;                               (?<selections> [cpqs0-7]*); \\?) # XTERM
+			| (?<SetWindowSelections>                       52;                     (?<selections> [cpqs0-7]*); (?<data> .*?)) # XTERM
+			| (?<NotifyCommand>                            133;                                   (?<type>[AB]|C;?|D(;\\d+)?)) # FinalTerm
+			| (?<NotifyFig>                                697;                                                 (?<data> .*?)) # Fig
+			| (?<NotifyMessage>                  (?<type> 777);                                              (?<message> .*?)) # urxvt
+			| (?<NotifyIterm2>                            1337;                                                 (?<data> .*?)) # ITERM2
+			) ((?&ST)|(?&BEL))
+		| (?&PM)                                                                                                (?:.*?) (?&ST) # XTERM, Ignored
+		| (?&APC)                                                                                               (?:.*?) (?&ST) # XTERM, Ignored
+		| (?&ESC) (
+			  (?<Select94CharacterSet>                        (?<graphic> [()*+])                       (?<charset> [\"%&]?.)) # SCS
+			| (?<Select96CharacterSet>                        (?<graphic> [-/\\.])                             (?<charset> .)) # SCS
+			| (?<BackIndex>                                  6) # DECBI
+			| (?<SaveCursor>                                 7) # DECSC
+			| (?<RestoreCursor>                              8) # DECRC
+			| (?<ForwardIndex>                               9) # DECFI
+			| (?<DoubleLineHeightTop>                     \\#3) # DECDHL
+			| (?<DoubleLineHeightBottom>                  \\#4) # DECDHL
+			| (?<SingleLineWidth>                         \\#5) # DECSWL
+			| (?<DoubleLineWidth>                         \\#6) # DECDWL
+			| (?<AdjustScreenAlignment>                   \\#8) # DECALN
+			| (?<Select7BitC1Control>                   \\x20F) # S7C1T
+			| (?<Select8BitC1Control>                   \\x20G) # S8C1T
+			| (?<SetAnsiConformanceLevelOne>            \\x20L) # dpANS
+			| (?<SetAnsiConformanceLevelTwo>            \\x20M) # dpANS
+			| (?<SetAnsiConformanceLevelThree>          \\x20N) # dpANS
+			| (?<ResetHard>                                  c) # RIS
+			| (?<ShiftLockingTwo>                            n) # LS2
+			| (?<ShiftLockingThree>                          o) # LS3
+			| (?<ExitAnsiMode>                               <) # DECANM Exit
+			| (?<EnterAltKeypadMode>                         =) # DECKPAM
+			| (?<ExitAltKeypadMode>                          >) # DECKPNM
+			| (?<ShiftLockingThreeRight>                   \\|) # LS3R
+			| (?<ShiftLockingTwoRight>                       }) # LS2R
+			| (?<ShiftLockingOneRight>                       ~) # LS1R
+			| (?<CheckControlCharacter>                       [\\x20-\\xff]{0,9}+                    [\\x00-\\x1a\\x1c-\\x1f]) # Control Characters Inside ESC Sequences
+			)
+		| (?&ESC) (?<SetWindowTitle>                         k                          (?<name> [^\\x07\\x1b\\x9c]*?)) (?&ST) # Screen, Ignored
+		| (?<ScrollCursorDown>                         (?&IND)) # IND
+		| (?<ScrollNextLine>                           (?&NEL)) # NEL
+		| (?<SetHorizontalTabstop>                     (?&HTS)) # HTS
+		| (?<ScrollCursorUp>                            (?&RI)) # RI
+		| (?<ShiftSingleTwo>                           (?&SS2)) # SS2
+		| (?<ShiftSingleThree>                         (?&SS3)) # SS3
+		| (?<StartGuardedArea>                         (?&SPA)) # SPA
+		| (?<EndGuardedArea>                           (?&EPA)) # EPA
+		| (?<StartOfString>                            (?&SOS)) # SOS, Ignored
+		| (?<ReportDeviceAttributesOne>              (?&DECID)) # DECID
+		| (?<AnswerBack>                                 \\x05) # ENQ
+		| (?<ShiftLockingOne>                            \\x0e) # SO
+		| (?<ShiftLockingZero>                           \\x0f) # SI
+		| (?&CAN) (
+			  (?<ZmodemSend>                       B010{6}.{6})
+			| (?<ZmodemReceive>                    B000{6}0{6})
+			)                    ((\\r\\x00?)?(\\n|\\x8a)\\x11)
+		| (?<ModemClose>                    \\x18{10}\\x08{10})
+		| (?<IgnoreControlCharacter>                                                 [\\x01-\\x04\\x06\\x10-\\x1a\\x1c-\\x1f]) # SOH, STX, ETX, EOT, ACK, DLE, DC1, DC2, DC3, DC4, NAK, SYN, ETB, CAN, EM, SUB, FS, GS, RS, US
+		"
+	},
+	"output" : {
+		"normal" : {
+			"<Backspace>"                : "\b",
+			"<Return>"                   : "\r",
+			"<Tab>"                      : "\t",
+			"<Space>"                    : "\u0020",
+			"<Up>"                       : "\u001b[A",
+			"<Down>"                     : "\u001b[B",
+			"<Right>"                    : "\u001b[C",
+			"<Left>"                     : "\u001b[D",
+			"<Home>"                     : "\u001b[H",
+			"<Ins>"                      : "\u001b[2~",
+			"<Del>"                      : "\u001b[3~",
+			"<End>"                      : "\u001b[F",
+			"<PgUp>"                     : "\u001b[5~",
+			"<PgDown>"                   : "\u001b[6~",
+			"<F1>"                       : "\u001bOP",
+			"<F2>"                       : "\u001bOQ",
+			"<F3>"                       : "\u001bOR",
+			"<F4>"                       : "\u001bOS",
+			"<F5>"                       : "\u001b[15~",
+			"<F6>"                       : "\u001b[17~",
+			"<F7>"                       : "\u001b[18~",
+			"<F8>"                       : "\u001b[19~",
+			"<F9>"                       : "\u001b[20~",
+			"<F10>"                      : "\u001b[21~",
+			"<F11>"                      : "\u001b[23~",
+			"<F12>"                      : "\u001b[24~",
+			"<F13>"                      : "\u001b[25~",
+			"<F14>"                      : "\u001b[26~",
+			"<F15>"                      : "\u001b[28~",
+			"<F16>"                      : "\u001b[29~",
+			"<F17>"                      : "\u001b[31~",
+			"<F18>"                      : "\u001b[32~",
+			"<F19>"                      : "\u001b[33~",
+			"<F20>"                      : "\u001b[34~",
+			"<Alt+Space>"                : "\u0020",
+			"<Alt+Up>"                   : "\u001b[1;3A",
+			"<Alt+Down>"                 : "\u001b[1;3B",
+			"<Alt+Right>"                : "\u001b[1;3C",
+			"<Alt+Left>"                 : "\u001b[1;3D",
+			"<Alt+End>"                  : "\u001b[1;3F",
+			"<Alt+Home>"                 : "\u001b[1;3H",
+			"<Alt+Ins>"                  : "\u001b[2;3~",
+			"<Alt+Del>"                  : "\u001b[3;3~",
+			"<Alt+PgUp>"                 : "\u001b[5;3~",
+			"<Alt+PgDown>"               : "\u001b[6;3~",
+			"<Alt+F1>"                   : "\u001b[1;3P",
+			"<Alt+F2>"                   : "\u001b[1;3Q",
+			"<Alt+F3>"                   : "\u001b[1;3R",
+			"<Alt+F4>"                   : "\u001b[1;3S",
+			"<Alt+F5>"                   : "\u001b[15;3~",
+			"<Alt+F6>"                   : "\u001b[17;3~",
+			"<Alt+F7>"                   : "\u001b[18;3~",
+			"<Alt+F8>"                   : "\u001b[19;3~",
+			"<Alt+F9>"                   : "\u001b[20;3~",
+			"<Alt+F10>"                  : "\u001b[21;3~",
+			"<Alt+F11>"                  : "\u001b[23;3~",
+			"<Alt+F12>"                  : "\u001b[24;3~",
+			"<Ctrl+Up>"                  : "\u001b[1;5A",
+			"<Ctrl+Down>"                : "\u001b[1;5B",
+			"<Ctrl+Right>"               : "\u001b[1;5C",
+			"<Ctrl+Left>"                : "\u001b[1;5D",
+			"<Ctrl+End>"                 : "\u001b[1;5F",
+			"<Ctrl+Home>"                : "\u001b[1;5H",
+			"<Ctrl+Ins>"                 : "\u001b[2;5~",
+			"<Ctrl+Del>"                 : "\u001b[3;5~",
+			"<Ctrl+PgUp>"                : "\u001b[5;5~",
+			"<Ctrl+PgDown>"              : "\u001b[6;5~",
+			"<Ctrl+F1>"                  : "\u001b[1;5P",
+			"<Ctrl+F2>"                  : "\u001b[1;5Q",
+			"<Ctrl+F3>"                  : "\u001b[1;5R",
+			"<Ctrl+F4>"                  : "\u001b[1;5S",
+			"<Ctrl+F5>"                  : "\u001b[15;5~",
+			"<Ctrl+F6>"                  : "\u001b[17;5~",
+			"<Ctrl+F7>"                  : "\u001b[18;5~",
+			"<Ctrl+F8>"                  : "\u001b[19;5~",
+			"<Ctrl+F9>"                  : "\u001b[20;5~",
+			"<Ctrl+F10>"                 : "\u001b[21;5~",
+			"<Ctrl+F11>"                 : "\u001b[23;5~",
+			"<Ctrl+F12>"                 : "\u001b[24;5~",
+			"<Shift+Space>"              : "\u0020",
+			"<Shift+Up>"                 : "\u001b[1;2A",
+			"<Shift+Down>"               : "\u001b[1;2B",
+			"<Shift+Right>"              : "\u001b[1;2C",
+			"<Shift+Left>"               : "\u001b[1;2D",
+			"<Shift+End>"                : "\u001b[1;2F",
+			"<Shift+Home>"               : "\u001b[1;2H",
+			"<Shift+Ins>"                : "\u001b[2;2~",
+			"<Shift+Del>"                : "\u001b[3;2~",
+			"<Shift+PgUp>"               : "\u001b[5;2~",
+			"<Shift+PgDown>"             : "\u001b[6;2~",
+			"<Shift+Tab>"                : "\u001b[Z",
+			"<Shift+F1>"                 : "\u001b[1;2P",
+			"<Shift+F2>"                 : "\u001b[1;2Q",
+			"<Shift+F3>"                 : "\u001b[1;2R",
+			"<Shift+F4>"                 : "\u001b[1;2S",
+			"<Shift+F5>"                 : "\u001b[15;2~",
+			"<Shift+F6>"                 : "\u001b[17;2~",
+			"<Shift+F7>"                 : "\u001b[18;2~",
+			"<Shift+F8>"                 : "\u001b[19;2~",
+			"<Shift+F9>"                 : "\u001b[20;2~",
+			"<Shift+F10>"                : "\u001b[21;2~",
+			"<Shift+F11>"                : "\u001b[23;2~",
+			"<Shift+F12>"                : "\u001b[24;2~",
+			"<Alt+Ctrl+Up>"              : "\u001b[1;7A",
+			"<Alt+Ctrl+Down>"            : "\u001b[1;7B",
+			"<Alt+Ctrl+Right>"           : "\u001b[1;7C",
+			"<Alt+Ctrl+Left>"            : "\u001b[1;7D",
+			"<Alt+Ctrl+End>"             : "\u001b[1;7F",
+			"<Alt+Ctrl+Home>"            : "\u001b[1;7H",
+			"<Alt+Ctrl+Ins>"             : "\u001b[2;7~",
+			"<Alt+Ctrl+Del>"             : "\u001b[3;7~",
+			"<Alt+Ctrl+PgUp>"            : "\u001b[5;7~",
+			"<Alt+Ctrl+PgDown>"          : "\u001b[6;7~",
+			"<Alt+Ctrl+F1>"              : "\u001b[1;7P",
+			"<Alt+Ctrl+F2>"              : "\u001b[1;7Q",
+			"<Alt+Ctrl+F3>"              : "\u001b[1;7R",
+			"<Alt+Ctrl+F4>"              : "\u001b[1;7S",
+			"<Alt+Ctrl+F5>"              : "\u001b[15;7~",
+			"<Alt+Ctrl+F6>"              : "\u001b[17;7~",
+			"<Alt+Ctrl+F7>"              : "\u001b[18;7~",
+			"<Alt+Ctrl+F8>"              : "\u001b[19;7~",
+			"<Alt+Ctrl+F9>"              : "\u001b[20;7~",
+			"<Alt+Ctrl+F10>"             : "\u001b[21;7~",
+			"<Alt+Ctrl+F11>"             : "\u001b[23;7~",
+			"<Alt+Ctrl+F12>"             : "\u001b[24;7~",
+			"<Alt+Shift+Space>"          : "\u0020",
+			"<Alt+Shift+Up>"             : "\u001b[1;4A",
+			"<Alt+Shift+Down>"           : "\u001b[1;4B",
+			"<Alt+Shift+Right>"          : "\u001b[1;4C",
+			"<Alt+Shift+Left>"           : "\u001b[1;4D",
+			"<Alt+Shift+End>"            : "\u001b[1;4F",
+			"<Alt+Shift+Home>"           : "\u001b[1;4H",
+			"<Alt+Shift+Ins>"            : "\u001b[2;4~",
+			"<Alt+Shift+Del>"            : "\u001b[3;4~",
+			"<Alt+Shift+PgUp>"           : "\u001b[5;4~",
+			"<Alt+Shift+PgDown>"         : "\u001b[6;4~",
+			"<Alt+Shift+F1>"             : "\u001b[1;4P",
+			"<Alt+Shift+F2>"             : "\u001b[1;4Q",
+			"<Alt+Shift+F3>"             : "\u001b[1;4R",
+			"<Alt+Shift+F4>"             : "\u001b[1;4S",
+			"<Alt+Shift+F5>"             : "\u001b[15;4~",
+			"<Alt+Shift+F6>"             : "\u001b[17;4~",
+			"<Alt+Shift+F7>"             : "\u001b[18;4~",
+			"<Alt+Shift+F8>"             : "\u001b[19;4~",
+			"<Alt+Shift+F9>"             : "\u001b[20;4~",
+			"<Alt+Shift+F10>"            : "\u001b[21;4~",
+			"<Alt+Shift+F11>"            : "\u001b[23;4~",
+			"<Alt+Shift+F12>"            : "\u001b[24;4~",
+			"<Ctrl+Shift+Up>"            : "\u001b[1;6A",
+			"<Ctrl+Shift+Down>"          : "\u001b[1;6B",
+			"<Ctrl+Shift+Right>"         : "\u001b[1;6C",
+			"<Ctrl+Shift+Left>"          : "\u001b[1;6D",
+			"<Ctrl+Shift+End>"           : "\u001b[1;6F",
+			"<Ctrl+Shift+Home>"          : "\u001b[1;6H",
+			"<Ctrl+Shift+Ins>"           : "\u001b[2;6~",
+			"<Ctrl+Shift+Del>"           : "\u001b[3;6~",
+			"<Ctrl+Shift+PgUp>"          : "\u001b[5;6~",
+			"<Ctrl+Shift+PgDown>"        : "\u001b[6;6~",
+			"<Ctrl+Shift+F1>"            : "\u001b[1;6P",
+			"<Ctrl+Shift+F2>"            : "\u001b[1;6Q",
+			"<Ctrl+Shift+F3>"            : "\u001b[1;6R",
+			"<Ctrl+Shift+F4>"            : "\u001b[1;6S",
+			"<Ctrl+Shift+F5>"            : "\u001b[15;6~",
+			"<Ctrl+Shift+F6>"            : "\u001b[17;6~",
+			"<Ctrl+Shift+F7>"            : "\u001b[18;6~",
+			"<Ctrl+Shift+F8>"            : "\u001b[19;6~",
+			"<Ctrl+Shift+F9>"            : "\u001b[20;6~",
+			"<Ctrl+Shift+F10>"           : "\u001b[21;6~",
+			"<Ctrl+Shift+F11>"           : "\u001b[23;6~",
+			"<Ctrl+Shift+F12>"           : "\u001b[24;6~",
+			"<Alt+Ctrl+Shift+Up>"        : "\u001b[1;8A",
+			"<Alt+Ctrl+Shift+Down>"      : "\u001b[1;8B",
+			"<Alt+Ctrl+Shift+Right>"     : "\u001b[1;8C",
+			"<Alt+Ctrl+Shift+Left>"      : "\u001b[1;8D",
+			"<Alt+Ctrl+Shift+End>"       : "\u001b[1;8F",
+			"<Alt+Ctrl+Shift+Home>"      : "\u001b[1;8H",
+			"<Alt+Ctrl+Shift+Ins>"       : "\u001b[2;8~",
+			"<Alt+Ctrl+Shift+Del>"       : "\u001b[3;8~",
+			"<Alt+Ctrl+Shift+PgUp>"      : "\u001b[5;8~",
+			"<Alt+Ctrl+Shift+PgDown>"    : "\u001b[6;8~",
+			"<Alt+Ctrl+Shift+F1>"        : "\u001b[1;8P",
+			"<Alt+Ctrl+Shift+F2>"        : "\u001b[1;8Q",
+			"<Alt+Ctrl+Shift+F3>"        : "\u001b[1;8R",
+			"<Alt+Ctrl+Shift+F4>"        : "\u001b[1;8S",
+			"<Alt+Ctrl+Shift+F5>"        : "\u001b[15;8~",
+			"<Alt+Ctrl+Shift+F6>"        : "\u001b[17;8~",
+			"<Alt+Ctrl+Shift+F7>"        : "\u001b[18;8~",
+			"<Alt+Ctrl+Shift+F8>"        : "\u001b[19;8~",
+			"<Alt+Ctrl+Shift+F9>"        : "\u001b[20;8~",
+			"<Alt+Ctrl+Shift+F10>"       : "\u001b[21;8~",
+			"<Alt+Ctrl+Shift+F11>"       : "\u001b[23;8~",
+			"<Alt+Ctrl+Shift+F12>"       : "\u001b[24;8~",
+			"<Ctrl+`>"                   : "\u0000", //NUL   (Null)
+			"<Ctrl+2>"                   : "\u0000", //NUL   (Null)
+			"<Ctrl+Space>"               : "\u0000", //NUL   (Null)
+			"<Ctrl+A>"                   : "\u0001", //SOH   (Start of Header)
+			"<Ctrl+B>"                   : "\u0002", //STX   (Start of Text)
+			"<Ctrl+C>"                   : "\u0003", //ETX   (End of Text)
+			"<Ctrl+D>"                   : "\u0004", //EOT   (End of Transmission)
+			"<Ctrl+E>"                   : "\u0005", //ENQ   (Enquiry)
+			"<Ctrl+F>"                   : "\u0006", //ACK   (Acknowledge)
+			"<Ctrl+G>"                   : "\u0007", //BEL   (Bell)
+			"<Ctrl+H>"                   : "\u0008", //BS    (BackSpace)
+			"<Ctrl+I>"                   : "\u0009", //HT    (Horizontal Tabulation)
+			"<Ctrl+J>"                   : "\u000a", //LF    (Line Feed)
+			"<Ctrl+K>"                   : "\u000b", //VT    (Vertical Tabulation)
+			"<Ctrl+L>"                   : "\u000c", //FF    (Form Feed)
+			"<Ctrl+M>"                   : "\u000d", //CR    (Carriage Return)
+			"<Ctrl+N>"                   : "\u000e", //SO    (Shift Out)
+			"<Ctrl+O>"                   : "\u000f", //SI    (Shift In)
+			"<Ctrl+P>"                   : "\u0010", //DLE   (Data Link Escape)
+			"<Ctrl+Q>"                   : "\u0011", //DC1   (Device Control 1 (XON))
+			"<Ctrl+R>"                   : "\u0012", //DC2   (Device Control 2)
+			"<Ctrl+S>"                   : "\u0013", //DC3   (Device Control 3 (XOFF))
+			"<Ctrl+T>"                   : "\u0014", //DC4   (Device Control 4)
+			"<Ctrl+U>"                   : "\u0015", //NAK   (Negative acknowledge)
+			"<Ctrl+V>"                   : "\u0016", //SYN   (Synchronous Idle)
+			"<Ctrl+W>"                   : "\u0017", //ETB   (End of Transmission Block)
+			"<Ctrl+X>"                   : "\u0018", //CAN   (Cancel)
+			"<Ctrl+Y>"                   : "\u0019", //EM    (End of Medium)
+			"<Ctrl+Z>"                   : "\u001a", //SUB   (Substitute)
+			"<Ctrl+3>"                   : "\u001b", //ESC   (Escape)
+			"<Ctrl+[>"                   : "\u001b", //ESC   (Escape)
+			"<Ctrl+4>"                   : "\u001c", //FS    (File Separator)
+			"<Ctrl+\\>"                  : "\u001c", //FS    (File Separator)
+			"<Ctrl+5>"                   : "\u001d", //GS    (Group Separator)
+			"<Ctrl+]>"                   : "\u001d", //GS    (Group Separator)
+			"<Ctrl+6>"                   : "\u001e", //RS    (Record Separator)
+			"<Ctrl+Shift+~>"             : "\u001e", //RS    (Record Separator)
+			"<Ctrl+7>"                   : "\u001f", //US    (Unit Separator)
+			"<Ctrl+/>"                   : "\u001f", //US    (Unit Separator)
+			"<Ctrl+Shift+?>"             : "\u007f", //DEL   (Delete)
+			"<Ctrl+8>"                   : "\u007f", //DEL   (Delete)
+			"<Ctrl+Tab>"                 : "\u0009", //HT    (Horizontal Tabulation)
+			"<Ctrl+Enter>"               : "\u000d", //CR    (Carriage Return)
+			"<Ctrl+Return>"              : "\u000a", //LF    (Line Feed)
+			"<Ctrl+Delete>"              : "\u0018", //CAN   (Cancel)
+			"<Num+Up>"                   : "\u001b[A",
+			"<Num+Down>"                 : "\u001b[B",
+			"<Num+Right>"                : "\u001b[C",
+			"<Num+Left>"                 : "\u001b[D",
+			"<Num+Clear>"                : "\u001b[E",
+			"<Num+Home>"                 : "\u001b[H",
+			"<Num+Ins>"                  : "\u001b[2~",
+			"<Num+Del>"                  : "\u001b[3~",
+			"<Num+End>"                  : "\u001b[F",
+			"<Num+PgUp>"                 : "\u001b[5~",
+			"<Num+PgDown>"               : "\u001b[6~"
+		},
+		"application" : {
+			"<Up>"                       : "\u001bOA",
+			"<Down>"                     : "\u001bOB",
+			"<Right>"                    : "\u001bOC",
+			"<Left>"                     : "\u001bOD",
+			"<Home>"                     : "\u001b[1~",
+			"<End>"                      : "\u001b[4~",
+			"<Space>"                    : "\u001bO ",
+			"<Tab>"                      : "\u001bOI",
+			"<F1>"                       : "\u001bOP",
+			"<F2>"                       : "\u001bOQ",
+			"<F3>"                       : "\u001bOR",
+			"<F4>"                       : "\u001bOS",
+			"<Num+*>"                    : "\u001bOj",
+			"<Num++>"                    : "\u001bOk",
+			"<Num+,>"                    : "\u001bOl",
+			"<Num+->"                    : "\u001bOm",
+			"<Num+/>"                    : "\u001bOo",
+			"<Num+Ins>"                  : "\u001b[2~",
+			"<Num+Del>"                  : "\u001b[3~",
+			"<Num+PgUp>"                 : "\u001b[5~",
+			"<Num+PgDown>"               : "\u001b[6~",
+			"<Num+Up>"                   : "\u001bOA",
+			"<Num+Down>"                 : "\u001bOB",
+			"<Num+Right>"                : "\u001bOC",
+			"<Num+Left>"                 : "\u001bOD",
+			"<Num+Clear>"                : "\u001bOE",
+			"<Num+End>"                  : "\u001bOF",
+			"<Num+Home>"                 : "\u001bOH",
+			"<Num+=>"                    : "\u001bOX",
+			"<Num+Alt+Enter>"            : "\u001bO3M",
+			"<Num+Alt+*>"                : "\u001bO3j",
+			"<Num+Alt++>"                : "\u001bO3k",
+			"<Num+Alt+,>"                : "\u001bO3l",
+			"<Num+Alt+->"                : "\u001bO3m",
+			"<Num+Alt+/>"                : "\u001bO3o",
+			"<Num+Alt+Ins>"              : "\u001b[2;3~",
+			"<Num+Alt+Del>"              : "\u001b[3;3~",
+			"<Num+Alt+PgUp>"             : "\u001b[5;3~",
+			"<Num+Alt+PgDown>"           : "\u001b[6;3~",
+			"<Num+Alt+Up>"               : "\u001b[1;3A",
+			"<Num+Alt+Down>"             : "\u001b[1;3B",
+			"<Num+Alt+Right>"            : "\u001b[1;3C",
+			"<Num+Alt+Left>"             : "\u001b[1;3D",
+			"<Num+Alt+Clear>"            : "\u001b[1;3E",
+			"<Num+Alt+End>"              : "\u001b[1;3F",
+			"<Num+Alt+Home>"             : "\u001b[1;3H",
+			"<Num+Alt+=>"                : "\u001bO3X",
+			"<Num+Ctrl+Enter>"           : "\u001bO5M",
+			"<Num+Ctrl+*>"               : "\u001bO5j",
+			"<Num+Ctrl++>"               : "\u001bO5k",
+			"<Num+Ctrl+,>"               : "\u001bO5l",
+			"<Num+Ctrl+->"               : "\u001bO5m",
+			"<Num+Ctrl+/>"               : "\u001bO5o",
+			"<Num+Ctrl+Ins>"             : "\u001b[2;5~",
+			"<Num+Ctrl+Del>"             : "\u001b[3;5~",
+			"<Num+Ctrl+PgUp>"            : "\u001b[5;5~",
+			"<Num+Ctrl+PgDown>"          : "\u001b[6;5~",
+			"<Num+Ctrl+Up>"              : "\u001b[1;5A",
+			"<Num+Ctrl+Down>"            : "\u001b[1;5B",
+			"<Num+Ctrl+Right>"           : "\u001b[1;5C",
+			"<Num+Ctrl+Left>"            : "\u001b[1;5D",
+			"<Num+Ctrl+Clear>"           : "\u001b[1;5E",
+			"<Num+Ctrl+End>"             : "\u001b[1;5F",
+			"<Num+Ctrl+Home>"            : "\u001b[1;5H",
+			"<Num+Ctrl+=>"               : "\u001bO5X",
+			"<Num+Shift+Enter>"          : "\u001bO2M",
+			"<Num+Shift+*>"              : "\u001bO2j",
+			"<Num+Shift++>"              : "\u001bO2k",
+			"<Num+Shift+,>"              : "\u001bO2l",
+			"<Num+Shift+->"              : "\u001bO2m",
+			"<Num+Shift+Del>"            : "\u001bO2n",
+			"<Num+Shift+/>"              : "\u001bO2o",
+			"<Num+Shift+Ins>"            : "\u001bO2p",
+			"<Num+Shift+End>"            : "\u001bO2q",
+			"<Num+Shift+Down>"           : "\u001bO2r",
+			"<Num+Shift+PgDown>"         : "\u001bO2s",
+			"<Num+Shift+Left>"           : "\u001bO2t",
+			"<Num+Shift+Clear>"          : "\u001bO2u",
+			"<Num+Shift+Right>"          : "\u001bO2v",
+			"<Num+Shift+Home>"           : "\u001bO2w",
+			"<Num+Shift+Up>"             : "\u001bO2x",
+			"<Num+Shift+PgUp>"           : "\u001bO2y",
+			"<Num+Shift+=>"              : "\u001bO2X",
+			"<Num+Alt+Ctrl+Enter>"       : "\u001bO7M",
+			"<Num+Alt+Ctrl+*>"           : "\u001bO7j",
+			"<Num+Alt+Ctrl++>"           : "\u001bO7k",
+			"<Num+Alt+Ctrl+,>"           : "\u001bO7l",
+			"<Num+Alt+Ctrl+->"           : "\u001bO7m",
+			"<Num+Alt+Ctrl+/>"           : "\u001bO7o",
+			"<Num+Alt+Ctrl+Ins>"         : "\u001b[2;7~",
+			"<Num+Alt+Ctrl+Del>"         : "\u001b[3;7~",
+			"<Num+Alt+Ctrl+PgUp>"        : "\u001b[5;7~",
+			"<Num+Alt+Ctrl+PgDown>"      : "\u001b[6;7~",
+			"<Num+Alt+Ctrl+Up>"          : "\u001b[1;7A",
+			"<Num+Alt+Ctrl+Down>"        : "\u001b[1;7B",
+			"<Num+Alt+Ctrl+Right>"       : "\u001b[1;7C",
+			"<Num+Alt+Ctrl+Left>"        : "\u001b[1;7D",
+			"<Num+Alt+Ctrl+Clear>"       : "\u001b[1;7E",
+			"<Num+Alt+Ctrl+End>"         : "\u001b[1;7F",
+			"<Num+Alt+Ctrl+Home>"        : "\u001b[1;7H",
+			"<Num+Alt+Ctrl+=>"           : "\u001bO7X",
+			"<Num+Alt+Shift+Enter>"      : "\u001bO4M",
+			"<Num+Alt+Shift+*>"          : "\u001bO4j",
+			"<Num+Alt+Shift++>"          : "\u001bO4k",
+			"<Num+Alt+Shift+,>"          : "\u001bO4l",
+			"<Num+Alt+Shift+->"          : "\u001bO4m",
+			"<Num+Alt+Shift+Del>"        : "\u001bO4n",
+			"<Num+Alt+Shift+/>"          : "\u001bO4o",
+			"<Num+Alt+Shift+Ins>"        : "\u001bO4p",
+			"<Num+Alt+Shift+End>"        : "\u001bO4q",
+			"<Num+Alt+Shift+Down>"       : "\u001bO4r",
+			"<Num+Alt+Shift+PgDown>"     : "\u001bO4s",
+			"<Num+Alt+Shift+Left>"       : "\u001bO4t",
+			"<Num+Alt+Shift+Clear>"      : "\u001bO4u",
+			"<Num+Alt+Shift+Right>"      : "\u001bO4v",
+			"<Num+Alt+Shift+Home>"       : "\u001bO4w",
+			"<Num+Alt+Shift+Up>"         : "\u001bO4x",
+			"<Num+Alt+Shift+PgUp>"       : "\u001bO4y",
+			"<Num+Alt+Shift+=>"          : "\u001bO4X",
+			"<Num+Ctrl+Shift+Enter>"     : "\u001bO6M",
+			"<Num+Ctrl+Shift+*>"         : "\u001bO6j",
+			"<Num+Ctrl+Shift++>"         : "\u001bO6k",
+			"<Num+Ctrl+Shift+,>"         : "\u001bO6l",
+			"<Num+Ctrl+Shift+->"         : "\u001bO6m",
+			"<Num+Ctrl+Shift+Del>"       : "\u001bO6n",
+			"<Num+Ctrl+Shift+/>"         : "\u001bO6o",
+			"<Num+Ctrl+Shift+Ins>"       : "\u001bO6p",
+			"<Num+Ctrl+Shift+End>"       : "\u001bO6q",
+			"<Num+Ctrl+Shift+Down>"      : "\u001bO6r",
+			"<Num+Ctrl+Shift+PgDown>"    : "\u001bO6s",
+			"<Num+Ctrl+Shift+Left>"      : "\u001bO6t",
+			"<Num+Ctrl+Shift+Clear>"     : "\u001bO6u",
+			"<Num+Ctrl+Shift+Right>"     : "\u001bO6v",
+			"<Num+Ctrl+Shift+Home>"      : "\u001bO6w",
+			"<Num+Ctrl+Shift+Up>"        : "\u001bO6x",
+			"<Num+Ctrl+Shift+PgUp>"      : "\u001bO6y",
+			"<Num+Ctrl+Shift+=>"         : "\u001bO6X",
+			"<Num+Alt+Ctrl+Shift+Enter>" : "\u001bO8M",
+			"<Num+Alt+Ctrl+Shift+*>"     : "\u001bO8j",
+			"<Num+Alt+Ctrl+Shift++>"     : "\u001bO8k",
+			"<Num+Alt+Ctrl+Shift+,>"     : "\u001bO8l",
+			"<Num+Alt+Ctrl+Shift+->"     : "\u001bO8m",
+			"<Num+Alt+Ctrl+Shift+Del>"   : "\u001bO8n",
+			"<Num+Alt+Ctrl+Shift+/>"     : "\u001bO8o",
+			"<Num+Alt+Ctrl+Shift+Ins>"   : "\u001bO8p",
+			"<Num+Alt+Ctrl+Shift+End>"   : "\u001bO8q",
+			"<Num+Alt+Ctrl+Shift+Down>"  : "\u001bO8r",
+			"<Num+Alt+Ctrl+Shift+PgDown>": "\u001bO8s",
+			"<Num+Alt+Ctrl+Shift+Left>"  : "\u001bO8t",
+			"<Num+Alt+Ctrl+Shift+Clear>" : "\u001bO8u",
+			"<Num+Alt+Ctrl+Shift+Right>" : "\u001bO8v",
+			"<Num+Alt+Ctrl+Shift+Home>"  : "\u001bO8w",
+			"<Num+Alt+Ctrl+Shift+Up>"    : "\u001bO8x",
+			"<Num+Alt+Ctrl+Shift+PgUp>"  : "\u001bO8y",
+			"<Num+Alt+Ctrl+Shift+=>"     : "\u001bO8X"
+		}
+	}
+}

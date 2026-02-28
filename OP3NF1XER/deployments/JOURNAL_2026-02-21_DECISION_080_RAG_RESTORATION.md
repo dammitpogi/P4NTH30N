@@ -50,7 +50,7 @@ Restored the RAG vector index from 16 vectors to **3,655 vectors** (exceeding th
 | Query: "Chrome profile isolation" | PASS | Returns DECISION_050, QUICK_REF_064-067 |
 | Query: "RAG001 deployment phases" | PASS | Returns DEPLOYMENT-PACKAGE, DECISION_052 |
 | Avg query latency | PASS | 12-39ms |
-| Watcher running | PASS | P4NTH30N-RAG-Watcher: Running |
+| Watcher running | PASS | P4NTHE0N-RAG-Watcher: Running |
 
 ---
 
@@ -60,7 +60,7 @@ Restored the RAG vector index from 16 vectors to **3,655 vectors** (exceeding th
 
 ```
 ┌────────────────────────────────────────────────────────┐
-│          P4NTH30N-RAG-Watcher (Scheduled Task)        │
+│          P4NTHE0N-RAG-Watcher (Scheduled Task)        │
 │          Boot trigger → Continuous watch mode          │
 │          Script: Watch-RagIngest.ps1 v2.0.0            │
 ├────────────────────────────────────────────────────────┤
@@ -86,8 +86,8 @@ Restored the RAG vector index from 16 vectors to **3,655 vectors** (exceeding th
 │  └─ ~/.config/opencode/AGENTS.md     → config          │
 │                                                        │
 ├────────────────────────────────────────────────────────┤
-│  State: C:\P4NTH30N\RAG-watcher-state.json             │
-│  Log:   C:\P4NTH30N\logs\rag-watcher.log               │
+│  State: C:\P4NTHE0N\RAG-watcher-state.json             │
+│  Log:   C:\P4NTHE0N\logs\rag-watcher.log               │
 │  Hash:  MD5 content hashing (skip unchanged)           │
 │  API:   rag_ingest_file (file-based, no truncation)    │
 │  Boot:  Waits up to 10 min for RAG service             │
@@ -99,7 +99,7 @@ Restored the RAG vector index from 16 vectors to **3,655 vectors** (exceeding th
 
 | Task | Trigger | Script | Purpose |
 |------|---------|--------|---------|
-| `P4NTH30N-RAG-Watcher` | Boot (continuous) | `Watch-RagIngest.ps1` | Real-time file monitoring |
+| `P4NTHE0N-RAG-Watcher` | Boot (continuous) | `Watch-RagIngest.ps1` | Real-time file monitoring |
 | `RAG-Incremental-Rebuild` | Every 4 hours | `rebuild-index.ps1` | Catch any missed files |
 | `RAG-Nightly-Rebuild` | Daily 3:00 AM | `rebuild-index.ps1 -Full` | Full state reset + re-ingest |
 
@@ -109,7 +109,7 @@ Restored the RAG vector index from 16 vectors to **3,655 vectors** (exceeding th
 3. **Boot health check** — waits up to 10 min for RAG to come online
 4. **MD5 hash tracking** — only re-ingests changed files
 5. **Recursive directory support** for Infrastructure and actions
-6. **Structured logging** to `C:\P4NTH30N\logs\rag-watcher.log`
+6. **Structured logging** to `C:\P4NTHE0N\logs\rag-watcher.log`
 7. **Periodic health checks** every ~50 min during continuous mode
 8. **.cs file support** added (was .md and .json only)
 
@@ -141,22 +141,22 @@ Restored the RAG vector index from 16 vectors to **3,655 vectors** (exceeding th
 
 | Folder | Extension | Type | Recurse | Notes |
 |--------|-----------|------|---------|-------|
-| `C:\P4NTH30N\STR4TEG15T\speech\` | .md | speech | No | Strategist speech synthesis logs |
-| `C:\P4NTH30N\STR4TEG15T\decisions\active\` | .md | decision | No | Active decision documents |
-| `C:\P4NTH30N\STR4TEG15T\decisions\completed\` | .md | decision | No | Completed decision documents |
-| `C:\P4NTH30N\STR4TEG15T\manifest\` | .md, .json | manifest | No | Narrative manifest files |
-| `C:\P4NTH30N\STR4TEG15T\actions\` | .md | action | Yes | Action prompts and results |
-| `C:\P4NTH30N\STR4TEG15T\submissions\` | .md | submission | Yes | Agent submission documents |
-| `C:\P4NTH30N\OP3NF1XER\deployments\` | .md | deployment | No | OpenFixer deployment journals |
-| `C:\P4NTH30N\C0MMON\RAG\` | .cs | pattern | No | RAG service source code |
-| `C:\P4NTH30N\C0MMON\Infrastructure\` | .cs | pattern | Yes | Core infrastructure code |
+| `C:\P4NTHE0N\STR4TEG15T\speech\` | .md | speech | No | Strategist speech synthesis logs |
+| `C:\P4NTHE0N\STR4TEG15T\decisions\active\` | .md | decision | No | Active decision documents |
+| `C:\P4NTHE0N\STR4TEG15T\decisions\completed\` | .md | decision | No | Completed decision documents |
+| `C:\P4NTHE0N\STR4TEG15T\manifest\` | .md, .json | manifest | No | Narrative manifest files |
+| `C:\P4NTHE0N\STR4TEG15T\actions\` | .md | action | Yes | Action prompts and results |
+| `C:\P4NTHE0N\STR4TEG15T\submissions\` | .md | submission | Yes | Agent submission documents |
+| `C:\P4NTHE0N\OP3NF1XER\deployments\` | .md | deployment | No | OpenFixer deployment journals |
+| `C:\P4NTHE0N\C0MMON\RAG\` | .cs | pattern | No | RAG service source code |
+| `C:\P4NTHE0N\C0MMON\Infrastructure\` | .cs | pattern | Yes | Core infrastructure code |
 | `~\.config\opencode\AGENTS.md` | AGENTS.md | config | No | OpenCode agent configuration |
 
 ### To Add a New Monitored Folder
-Edit `C:\P4NTH30N\STR4TEG15T\tools\rag-watcher\Watch-RagIngest.ps1`, add an entry to `$WatchConfigs`:
+Edit `C:\P4NTHE0N\STR4TEG15T\tools\rag-watcher\Watch-RagIngest.ps1`, add an entry to `$WatchConfigs`:
 ```powershell
 @{
-    Path = "C:\P4NTH30N\NEW_DIRECTORY"
+    Path = "C:\P4NTHE0N\NEW_DIRECTORY"
     Extensions = @("*.md", "*.cs")
     Recurse = $false
     DefaultType = "your-type"

@@ -1,0 +1,3062 @@
+[
+  {
+    "id": "foundations-0",
+    "title": "Educational thread (chat)",
+    "chapter": "I. Foundations",
+    "chapter_key": "foundations",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "By popular demand, a thread was dropped where quick explained realized and implied volatility and how they transfer into probability distribution, wha",
+    "filename": "2025-01-29-educational-thread-chat.md"
+  },
+  {
+    "id": "foundations-1",
+    "title": "Theory of Reflexivity by George Soros",
+    "chapter": "I. Foundations",
+    "chapter_key": "foundations",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "A very important lecture from 2009",
+    "filename": "2025-01-29-theory-of-reflexivity-by-george-soros.md"
+  },
+  {
+    "id": "foundations-2",
+    "title": "Challenges for 2026 | Weekly post (05 - 09/Jan)",
+    "chapter": "I. Foundations",
+    "chapter_key": "foundations",
+    "date": "unknown",
+    "excerpt": "Yearly outlook, challenges for teh western economy:",
+    "filename": "unknown-date-challenges-for-2026-weekly-post-05-09-jan.md"
+  },
+  {
+    "id": "foundations-3",
+    "title": "Efficient market, momentum, mean reversion...",
+    "chapter": "I. Foundations",
+    "chapter_key": "foundations",
+    "date": "unknown",
+    "excerpt": "No math. High priority knowledge!",
+    "filename": "unknown-date-efficient-market-momentum-mean-reversion.md"
+  },
+  {
+    "id": "foundations-4",
+    "title": "Game of probabilities",
+    "chapter": "I. Foundations",
+    "chapter_key": "foundations",
+    "date": "unknown",
+    "excerpt": "Moderate math warning!",
+    "filename": "unknown-date-game-of-probabilities.md"
+  },
+  {
+    "id": "foundations-5",
+    "title": "Intraday post (02/April), Bulltrap? Stagflation",
+    "chapter": "I. Foundations",
+    "chapter_key": "foundations",
+    "date": "unknown",
+    "excerpt": "Market is trading at 5600 during asia\u2026",
+    "filename": "unknown-date-intraday-post-02-april-bulltrap-stagflation.md"
+  },
+  {
+    "id": "foundations-6",
+    "title": "Intraday post (13/Oct)",
+    "chapter": "I. Foundations",
+    "chapter_key": "foundations",
+    "date": "unknown",
+    "excerpt": "Explaining my Window of Risk call:",
+    "filename": "unknown-date-intraday-post-13-oct.md"
+  },
+  {
+    "id": "foundations-7",
+    "title": "Intraday post (14/feb)",
+    "chapter": "I. Foundations",
+    "chapter_key": "foundations",
+    "date": "unknown",
+    "excerpt": "SPX currently trading at 6102 overnight\u2026",
+    "filename": "unknown-date-intraday-post-14-feb.md"
+  },
+  {
+    "id": "foundations-8",
+    "title": "Intraday post (20/feb)",
+    "chapter": "I. Foundations",
+    "chapter_key": "foundations",
+    "date": "unknown",
+    "excerpt": "Firstly, lets modify Heston model for continuous-time Monte Carlo simulations as it provides a closed-form for the variance process as a mean-revertin",
+    "filename": "unknown-date-intraday-post-20-feb.md"
+  },
+  {
+    "id": "foundations-9",
+    "title": "July outlook + Short weekly post (30/June)",
+    "chapter": "I. Foundations",
+    "chapter_key": "foundations",
+    "date": "unknown",
+    "excerpt": "Here in this post I described the bias into July, and the sentiment manipulation.",
+    "filename": "unknown-date-july-outlook-short-weekly-post-30-june.md"
+  },
+  {
+    "id": "foundations-10",
+    "title": "Mean reversion signal UPDATE!",
+    "chapter": "I. Foundations",
+    "chapter_key": "foundations",
+    "date": "unknown",
+    "excerpt": "[Updated]",
+    "filename": "unknown-date-mean-reversion-signal-update.md"
+  },
+  {
+    "id": "foundations-11",
+    "title": "Right-tail, right-tail and right-tail... - Intraday post (12/Sept)",
+    "chapter": "I. Foundations",
+    "chapter_key": "foundations",
+    "date": "unknown",
+    "excerpt": "On the weekly basis, the right-tail was realized by SPX being agressively pushed upwards on every stagflationary news:",
+    "filename": "unknown-date-right-tail-right-tail-and-right-tail-intraday-post-12-sept.md"
+  },
+  {
+    "id": "foundations-12",
+    "title": "The concept of risk, VaR, Beta, Sharpe, Sortino, etc.",
+    "chapter": "I. Foundations",
+    "chapter_key": "foundations",
+    "date": "unknown",
+    "excerpt": "Moderate, but necessary math warning!",
+    "filename": "unknown-date-the-concept-of-risk-var-beta-sharpe-sortino-etc.md"
+  },
+  {
+    "id": "foundations-13",
+    "title": "Vomma supply, Short vanna, Risk - Intraday post (29/Aug)",
+    "chapter": "I. Foundations",
+    "chapter_key": "foundations",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-vomma-supply-short-vanna-risk-intraday-post-29-aug.md"
+  },
+  {
+    "id": "foundations-14",
+    "title": "Weekly post (24-29/Aug)",
+    "chapter": "I. Foundations",
+    "chapter_key": "foundations",
+    "date": "unknown",
+    "excerpt": "Last week I said that any vol spike keeps being managed through vomma supply during this whole month, and any directional momentum must be confirmed, ",
+    "filename": "unknown-date-weekly-post-24-29-aug.md"
+  },
+  {
+    "id": "foundations-15",
+    "title": "What is volatility?",
+    "chapter": "I. Foundations",
+    "chapter_key": "foundations",
+    "date": "unknown",
+    "excerpt": "Math warning!",
+    "filename": "unknown-date-what-is-volatility.md"
+  },
+  {
+    "id": "principles-0",
+    "title": "Modern market strategies, mean reversion",
+    "chapter": "II. Trading Principles",
+    "chapter_key": "principles",
+    "date": "unknown",
+    "excerpt": "Moderate but necessary math warning!",
+    "filename": "unknown-date-modern-market-strategies-mean-reversion.md"
+  },
+  {
+    "id": "principles-1",
+    "title": "My basic trading principles Pt. 1 - Strategies, basic risk management",
+    "chapter": "II. Trading Principles",
+    "chapter_key": "principles",
+    "date": "unknown",
+    "excerpt": "In this post I will examine the psychological aspects of trading.",
+    "filename": "unknown-date-my-basic-trading-principles-pt-1-strategies-basic-risk-manag.md"
+  },
+  {
+    "id": "principles-2",
+    "title": "My trading principles Pt. 2 - The Wall Street Casino and My Story",
+    "chapter": "II. Trading Principles",
+    "chapter_key": "principles",
+    "date": "unknown",
+    "excerpt": "Turning negative edge into positive edge",
+    "filename": "unknown-date-my-trading-principles-pt-2-the-wall-street-casino-and-my-sto.md"
+  },
+  {
+    "id": "principles-3",
+    "title": "Odds, Fair Bet and Kelly Criterion (position sizing)",
+    "chapter": "II. Trading Principles",
+    "chapter_key": "principles",
+    "date": "unknown",
+    "excerpt": "Moderate but necessary-math warning!",
+    "filename": "unknown-date-odds-fair-bet-and-kelly-criterion-position-sizing.md"
+  },
+  {
+    "id": "principles-4",
+    "title": "Reversion scripts",
+    "chapter": "II. Trading Principles",
+    "chapter_key": "principles",
+    "date": "unknown",
+    "excerpt": "Here, I have attached three TradingView scripts that I coded for you.",
+    "filename": "unknown-date-reversion-scripts.md"
+  },
+  {
+    "id": "principles-5",
+    "title": "Statistical-arbitrage: Mean Reversion Trading",
+    "chapter": "II. Trading Principles",
+    "chapter_key": "principles",
+    "date": "unknown",
+    "excerpt": "Course: Cointegration, ADF, CADF, Johansen-test, Risk management",
+    "filename": "unknown-date-statistical-arbitrage-mean-reversion-trading.md"
+  },
+  {
+    "id": "principles-6",
+    "title": "'Window of Risk' has just opened - Weekly post (22-26/Sept)",
+    "chapter": "II. Trading Principles",
+    "chapter_key": "principles",
+    "date": "unknown",
+    "excerpt": "I dropped a free post on Thursday about the current window of risk, breaking down the structural flows, and the nature of the lurking risk:",
+    "filename": "unknown-date-window-of-risk-has-just-opened-weekly-post-22-26-sept.md"
+  },
+  {
+    "id": "mechanics-0",
+    "title": "Intraday post (28/feb)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "Coded gamma for today expo:",
+    "filename": "2025-01-29-intraday-post-28-feb.md"
+  },
+  {
+    "id": "mechanics-1",
+    "title": "January OpEx week quant breakdown | Weekly post (12-16/Jan) - FREE",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "Free OpEx positioning breakdown",
+    "filename": "2025-01-29-january-opex-week-quant-breakdown-weekly-post-12-16-jan-free.md"
+  },
+  {
+    "id": "mechanics-2",
+    "title": "OpEx, VIXpery and PCE week | Weekly post (17-20/Feb) ",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "Python quant course is already available on my Substack-site, by an ex-Wall Street quant.",
+    "filename": "2025-01-29-opex-vixpery-and-pce-week-weekly-post-17-20-feb.md"
+  },
+  {
+    "id": "mechanics-3",
+    "title": "Post-FOMC | Intraday post (29/Jan)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "Free post",
+    "filename": "2025-01-29-post-fomc-intraday-post-29-jan.md"
+  },
+  {
+    "id": "mechanics-4",
+    "title": "Window of Risk Pt. 2 - Flows update ",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "What on earth is going on in these markets?",
+    "filename": "2025-01-29-window-of-risk-pt-2-flows-update.md"
+  },
+  {
+    "id": "mechanics-5",
+    "title": "Cross-rate risk, FOMC Day | Intraday post (28/Jan) ",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Free post",
+    "filename": "unknown-date-cross-rate-risk-fomc-day-intraday-post-28-jan.md"
+  },
+  {
+    "id": "mechanics-6",
+    "title": "FOMC week, Greeks breakdown - Weekly post (27-31/Oct)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "PERSONAL ANNOUNCEMENT:",
+    "filename": "unknown-date-fomc-week-greeks-breakdown-weekly-post-27-31-oct.md"
+  },
+  {
+    "id": "mechanics-7",
+    "title": "FOMC Week, long zomma/short vomma | Weekly post (26-30/Jan)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "I dropped an entirely free post on macro and micro flows and earning season with the context of the current geopolitical environment.",
+    "filename": "unknown-date-fomc-week-long-zomma-short-vomma-weekly-post-26-30-jan.md"
+  },
+  {
+    "id": "mechanics-8",
+    "title": "Gold, Geo-risk, FOMC, PM-OpEx - Intraday post (17/Oct)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Explaining my Window of Risk call:",
+    "filename": "unknown-date-gold-geo-risk-fomc-pm-opex-intraday-post-17-oct.md"
+  },
+  {
+    "id": "mechanics-9",
+    "title": "Intraday post (02/June)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Still in hospital\u2026",
+    "filename": "unknown-date-intraday-post-02-june.md"
+  },
+  {
+    "id": "mechanics-10",
+    "title": "Intraday post (08/Sept)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Monthly post:",
+    "filename": "unknown-date-intraday-post-08-sept.md"
+  },
+  {
+    "id": "mechanics-11",
+    "title": "Intraday post (21/march) + OpEx",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "In this post you can read the overall bias from geo perspective. Crucial.",
+    "filename": "unknown-date-intraday-post-21-march-opex.md"
+  },
+  {
+    "id": "mechanics-12",
+    "title": "Intraday post (21/May)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Here you find the weekly post to learn about the accumulated risk.",
+    "filename": "unknown-date-intraday-post-21-may.md"
+  },
+  {
+    "id": "mechanics-13",
+    "title": "Intraday post (26/Jan)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-intraday-post-26-jan.md"
+  },
+  {
+    "id": "mechanics-14",
+    "title": "Intraday post (27/Jan)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-intraday-post-27-jan.md"
+  },
+  {
+    "id": "mechanics-15",
+    "title": "Intraday post (27/Oct)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Window of Risk:",
+    "filename": "unknown-date-intraday-post-27-oct.md"
+  },
+  {
+    "id": "mechanics-16",
+    "title": "Intraday Prognostications and Tidings (06/Aug)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Prologue",
+    "filename": "unknown-date-intraday-prognostications-and-tidings-06-aug.md"
+  },
+  {
+    "id": "mechanics-17",
+    "title": "Intraday trading (06/march)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Coding gamma for today session:",
+    "filename": "unknown-date-intraday-trading-06-march.md"
+  },
+  {
+    "id": "mechanics-18",
+    "title": "IV down/RV up, long zomma/short vanna - Intraday post (31/Oct)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Window of Risk updated:",
+    "filename": "unknown-date-iv-down-rv-up-long-zomma-short-vanna-intraday-post-31-oct.md"
+  },
+  {
+    "id": "mechanics-19",
+    "title": "Liquidity structure | Let's put speed profile into context",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Basic concepts, Liquidity, TPO chart, Speed profile",
+    "filename": "unknown-date-liquidity-structure-let-s-put-speed-profile-into-context.md"
+  },
+  {
+    "id": "mechanics-20",
+    "title": "OpEx flows + Intraday post (17/July)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Here you can find again the monthly post, breaking down the monthly volatility exposures, inflection points and targets. The flows are starting to mat",
+    "filename": "unknown-date-opex-flows-intraday-post-17-july.md"
+  },
+  {
+    "id": "mechanics-21",
+    "title": "OpEx Flows Pt.2 - Intraday post (19/Sept)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Yesterday evening I dropped a FREE post about the current window of risk call, investigating the story that the market is telling us, explaining the u",
+    "filename": "unknown-date-opex-flows-pt-2-intraday-post-19-sept.md"
+  },
+  {
+    "id": "mechanics-22",
+    "title": "OpEx Flows, supportive or suppressive vanna/charm? - Intraday post (18/Sept) ",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Supportive OpEx/suppressive OpEx?",
+    "filename": "unknown-date-opex-flows-supportive-or-suppressive-vanna-charm-intraday-po.md"
+  },
+  {
+    "id": "mechanics-23",
+    "title": "OpEx week, FOMC, Risk of Reversion - Weekly post (15-19/Sept)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Monthly post:",
+    "filename": "unknown-date-opex-week-fomc-risk-of-reversion-weekly-post-15-19-sept.md"
+  },
+  {
+    "id": "mechanics-24",
+    "title": "Post VIX expo - Intraday post (23/Oct)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Window of risk:",
+    "filename": "unknown-date-post-vix-expo-intraday-post-23-oct.md"
+  },
+  {
+    "id": "mechanics-25",
+    "title": "Review of One Year's Performance | A year has passed",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Review of the first year of my substack",
+    "filename": "unknown-date-review-of-one-year-s-performance-a-year-has-passed.md"
+  },
+  {
+    "id": "mechanics-26",
+    "title": "Selling daily realized vol of vol - Intraday post (28/Oct)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Window of Risk:",
+    "filename": "unknown-date-selling-daily-realized-vol-of-vol-intraday-post-28-oct.md"
+  },
+  {
+    "id": "mechanics-27",
+    "title": "Sentiment - Intraday post (17/Nov)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Window of Risk update:",
+    "filename": "unknown-date-sentiment-intraday-post-17-nov.md"
+  },
+  {
+    "id": "mechanics-28",
+    "title": "Short vanna, short veta, short fly - Weekly post (06-10/Oct)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Window of Risk:",
+    "filename": "unknown-date-short-vanna-short-veta-short-fly-weekly-post-06-10-oct.md"
+  },
+  {
+    "id": "mechanics-29",
+    "title": "Tail wags the dog, or...? July sentiment manipulation + Intraday post (27/June)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Weekly post",
+    "filename": "unknown-date-tail-wags-the-dog-or-july-sentiment-manipulation-intraday-po.md"
+  },
+  {
+    "id": "mechanics-30",
+    "title": "Thin left-tail - Intraday post (06/Oct)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Window of Risk:",
+    "filename": "unknown-date-thin-left-tail-intraday-post-06-oct.md"
+  },
+  {
+    "id": "mechanics-31",
+    "title": "Venezuela, Long vomma&zomma - Weekly post (03/Nov)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Updated analysis, FREE:",
+    "filename": "unknown-date-venezuela-long-vomma-zomma-weekly-post-03-nov.md"
+  },
+  {
+    "id": "mechanics-32",
+    "title": "VIX expo, CPI - Weekly post (20-24/Oct)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Window of risk:",
+    "filename": "unknown-date-vix-expo-cpi-weekly-post-20-24-oct.md"
+  },
+  {
+    "id": "mechanics-33",
+    "title": "Vol higher lows? Fed, skews, etc. - Intraday post (24/June) ",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "SKEW, FED, VOL OF VOL SUPPLY",
+    "filename": "unknown-date-vol-higher-lows-fed-skews-etc-intraday-post-24-june.md"
+  },
+  {
+    "id": "mechanics-34",
+    "title": "Vol higher lows - Weekly post (23-27/June) ",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "The volatility landscape didn\u2019t changed significantly since last Sunday.",
+    "filename": "unknown-date-vol-higher-lows-weekly-post-23-27-june.md"
+  },
+  {
+    "id": "mechanics-35",
+    "title": "Volatility | Intraday post (30/Jan)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-volatility-intraday-post-30-jan.md"
+  },
+  {
+    "id": "mechanics-36",
+    "title": "Weekly post (24-28/feb)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Setting the tone",
+    "filename": "unknown-date-weekly-post-24-28-feb.md"
+  },
+  {
+    "id": "mechanics-37",
+    "title": "Weekly post (24-28/march)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Bias into EOM, JPM collar",
+    "filename": "unknown-date-weekly-post-24-28-march.md"
+  },
+  {
+    "id": "mechanics-38",
+    "title": "What is vomma supply? Why is it important? - Intraday post (04/Sept)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "As everybody already knows that the coming Fed cut will be a hawkish cut due to the checkmate situation, volatility keeps being managed for this week ",
+    "filename": "unknown-date-what-is-vomma-supply-why-is-it-important-intraday-post-04-se.md"
+  },
+  {
+    "id": "mechanics-39",
+    "title": "Window of Risk updated - Intraday post (30/oct)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Window of Risk (update):",
+    "filename": "unknown-date-window-of-risk-updated-intraday-post-30-oct.md"
+  },
+  {
+    "id": "mechanics-40",
+    "title": "Zomma supply - Weekly post (08-12/Sept)",
+    "chapter": "III. Market Mechanics",
+    "chapter_key": "mechanics",
+    "date": "unknown",
+    "excerpt": "Vomma supply is playing out as expected and last week data releases changed nothing in the structure.",
+    "filename": "unknown-date-zomma-supply-weekly-post-08-12-sept.md"
+  },
+  {
+    "id": "macro-0",
+    "title": "Articles - Predictions, Education",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "AI Bubble, debt crisis, stagflation, momentum trading, georisk",
+    "filename": "2025-01-29-articles-predictions-education.md"
+  },
+  {
+    "id": "macro-1",
+    "title": "Board of Peace, Greenland, Hidden Left-tail and Kurtosis | Geopolitical Developments [FREE]",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "Everything I\u2019ve been saying since the winter of 2024\u20132025 about geopolitics and the global economy is playing out right in front of you.",
+    "filename": "2025-01-29-board-of-peace-greenland-hidden-left-tail-and-kurtosis-geopo.md"
+  },
+  {
+    "id": "macro-2",
+    "title": "Earning season, Micro and Macro flows, Carry trade & Geopolitic landscape | Quant Insights - January 2026",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "[FREE]",
+    "filename": "2025-01-29-earning-season-micro-and-macro-flows-carry-trade-geopolitic-.md"
+  },
+  {
+    "id": "macro-3",
+    "title": "GDP Release - Weekly post (22-26/Dec) [FREE post]",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "Sentiment breakdown, GDP, Positioning breakdown",
+    "filename": "2025-01-29-gdp-release-weekly-post-22-26-dec-free-post.md"
+  },
+  {
+    "id": "macro-4",
+    "title": "Intraday post 19/march (+Fed)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "...quick macro",
+    "filename": "2025-01-29-intraday-post-19-march-fed.md"
+  },
+  {
+    "id": "macro-5",
+    "title": "Iran-risk and oil prices",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "Timing is lost",
+    "filename": "2025-01-29-iran-risk-and-oil-prices.md"
+  },
+  {
+    "id": "macro-6",
+    "title": "OpEx, Intraday post (20/march) + Fed path and tech (with geos)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "Crucial post",
+    "filename": "2025-01-29-opex-intraday-post-20-march-fed-path-and-tech-with-geos.md"
+  },
+  {
+    "id": "macro-7",
+    "title": "Python course is launched | Weekly post (09-13/Feb)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "I\u2019m happy to announce that the Python course is now available on my website for all paid subscribers.",
+    "filename": "2025-01-29-python-course-is-launched-weekly-post-09-13-feb.md"
+  },
+  {
+    "id": "macro-8",
+    "title": "Warsh, Gold, Sentiment | Weekly post (02-06/Feb)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "Describing the bubble, the coming crisis, market, economy and geo context:",
+    "filename": "2025-01-29-warsh-gold-sentiment-weekly-post-02-06-feb.md"
+  },
+  {
+    "id": "macro-9",
+    "title": "After FOMC and US-UAE deal, Intraday post (08/May)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "FOMC is unfolded as we all expected, and also we got the pre-Fed pullback.",
+    "filename": "unknown-date-after-fomc-and-us-uae-deal-intraday-post-08-may.md"
+  },
+  {
+    "id": "macro-10",
+    "title": "After NFP, Fed, Weekly post (05-09/May)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Limit-order-hunting, short vol?",
+    "filename": "unknown-date-after-nfp-fed-weekly-post-05-09-may.md"
+  },
+  {
+    "id": "macro-11",
+    "title": "After the opEx + Intraday post (21/July)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Weekly post is out",
+    "filename": "unknown-date-after-the-opex-intraday-post-21-july.md"
+  },
+  {
+    "id": "macro-12",
+    "title": "Ahead of datas, Short-term positioning shift, Risk/reward shift + Intraday post (02/July) ",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Sentiment and risk/reward shift ahead?",
+    "filename": "unknown-date-ahead-of-datas-short-term-positioning-shift-risk-reward-shif.md"
+  },
+  {
+    "id": "macro-13",
+    "title": "Bad news is good news, but... - Intraday post (16/Dec)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-bad-news-is-good-news-but-intraday-post-16-dec.md"
+  },
+  {
+    "id": "macro-14",
+    "title": "Bonds, Currency market, Sentiment, Education and Study on Crises, Weekly post (21-25/April)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "And leaked infos at the end",
+    "filename": "unknown-date-bonds-currency-market-sentiment-education-and-study-on-crise.md"
+  },
+  {
+    "id": "macro-15",
+    "title": "Breaking down Trump's post | Another IC day - Intraday post (24/Dec)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Half-day today!",
+    "filename": "unknown-date-breaking-down-trump-s-post-another-ic-day-intraday-post-24-d.md"
+  },
+  {
+    "id": "macro-16",
+    "title": "Central Banks, Tariffs, Market (Weekly post 07-11/April)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Before we dive in\u2026",
+    "filename": "unknown-date-central-banks-tariffs-market-weekly-post-07-11-april.md"
+  },
+  {
+    "id": "macro-17",
+    "title": "CPI, credit spreads, Stagflation, QT + Intraday post (13/May)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "SPX/LTY correlation, Yields, Credit spreads, CPI, Stagflation, Intraday post",
+    "filename": "unknown-date-cpi-credit-spreads-stagflation-qt-intraday-post-13-may.md"
+  },
+  {
+    "id": "macro-18",
+    "title": "CPI day as pivot, The Risk of Debt Burden, Fed + Intraday post (15/July)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Very important post",
+    "filename": "unknown-date-cpi-day-as-pivot-the-risk-of-debt-burden-fed-intraday-post-1.md"
+  },
+  {
+    "id": "macro-19",
+    "title": "CPI day + Intraday post (11/June)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "This data is the last CPI before FOMC, and this is a pivotal data.",
+    "filename": "unknown-date-cpi-day-intraday-post-11-june.md"
+  },
+  {
+    "id": "macro-20",
+    "title": "CPI day - Intraday post (11/Sept)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Monthly post:",
+    "filename": "unknown-date-cpi-day-intraday-post-11-sept.md"
+  },
+  {
+    "id": "macro-21",
+    "title": "CPI day - Intraday post (24/Oct)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Window of risk:",
+    "filename": "unknown-date-cpi-day-intraday-post-24-oct.md"
+  },
+  {
+    "id": "macro-22",
+    "title": "CPI day, pre-QOpEx - Intraday post (18/Dec)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-cpi-day-pre-qopex-intraday-post-18-dec.md"
+  },
+  {
+    "id": "macro-23",
+    "title": "CPI forecast, Reversion + Intraday post (10/June)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "First lets look at the SPX/LTY beta:",
+    "filename": "unknown-date-cpi-forecast-reversion-intraday-post-10-june.md"
+  },
+  {
+    "id": "macro-24",
+    "title": "Davos WEF | Intraday post (21/Jan)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-davos-wef-intraday-post-21-jan.md"
+  },
+  {
+    "id": "macro-25",
+    "title": "ECB day, OpEx, Post-OpEx flows, Short Vol + Intraday post (17/April) ",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Stagflation in the EU, Taylor rule",
+    "filename": "unknown-date-ecb-day-opex-post-opex-flows-short-vol-intraday-post-17-apri.md"
+  },
+  {
+    "id": "macro-26",
+    "title": "Fed, Distribution, Revision of weekly post + Intraday post (25/June)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Free short education on distribution",
+    "filename": "unknown-date-fed-distribution-revision-of-weekly-post-intraday-post-25-ju.md"
+  },
+  {
+    "id": "macro-27",
+    "title": "Fed, QE, Bulltrap? + Intraday post (30/April) ",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Here is the big landscape and weekly post again\u2026",
+    "filename": "unknown-date-fed-qe-bulltrap-intraday-post-30-april.md"
+  },
+  {
+    "id": "macro-28",
+    "title": "FOMC Day, Bessent put (hidden QE) + Intraday post (18/June)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Weekly post",
+    "filename": "unknown-date-fomc-day-bessent-put-hidden-qe-intraday-post-18-june.md"
+  },
+  {
+    "id": "macro-29",
+    "title": "FOMC day, Intraday post (07/May)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Before you continue reading:",
+    "filename": "unknown-date-fomc-day-intraday-post-07-may.md"
+  },
+  {
+    "id": "macro-30",
+    "title": "FOMC day - Intraday post (10/Dec)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-fomc-day-intraday-post-10-dec.md"
+  },
+  {
+    "id": "macro-31",
+    "title": "Geo and policy uncertainity is here - Weekly post (10-14/Nov)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Updated window of risk:",
+    "filename": "unknown-date-geo-and-policy-uncertainity-is-here-weekly-post-10-14-nov.md"
+  },
+  {
+    "id": "macro-32",
+    "title": "GOLD rally, hedging curve-steepening risk - Intraday post (02/Oct)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Practical recommendations to consider",
+    "filename": "unknown-date-gold-rally-hedging-curve-steepening-risk-intraday-post-02-oc.md"
+  },
+  {
+    "id": "macro-33",
+    "title": "Gold selloff, China tariffs - Intraday post (22/Oct)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Window of risk:",
+    "filename": "unknown-date-gold-selloff-china-tariffs-intraday-post-22-oct.md"
+  },
+  {
+    "id": "macro-34",
+    "title": "Intraday post (02/May), NFP",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "NFP print today.",
+    "filename": "unknown-date-intraday-post-02-may-nfp.md"
+  },
+  {
+    "id": "macro-35",
+    "title": "Intraday post (02/Sept)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Monthly and weekly post is out",
+    "filename": "unknown-date-intraday-post-02-sept.md"
+  },
+  {
+    "id": "macro-36",
+    "title": "Intraday post (03/April), Tariffs, Fed",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Before you continue, make sure you are understand what I keep telling about geos and tariffs (all covered and linked in this post), to not believe wha",
+    "filename": "unknown-date-intraday-post-03-april-tariffs-fed.md"
+  },
+  {
+    "id": "macro-37",
+    "title": "Intraday post (07/Jan)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-intraday-post-07-jan.md"
+  },
+  {
+    "id": "macro-38",
+    "title": "Intraday post (12/feb), CPI day",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "SPX is trading at 6010 during asia after CPI came pretty hot.",
+    "filename": "unknown-date-intraday-post-12-feb-cpi-day.md"
+  },
+  {
+    "id": "macro-39",
+    "title": "Intraday post (19/Aug)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-intraday-post-19-aug.md"
+  },
+  {
+    "id": "macro-40",
+    "title": "Intraday post (20/May), Vix expo",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Bear market - bias",
+    "filename": "unknown-date-intraday-post-20-may-vix-expo.md"
+  },
+  {
+    "id": "macro-41",
+    "title": "Intraday post (21/Aug)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Risk window is in play",
+    "filename": "unknown-date-intraday-post-21-aug.md"
+  },
+  {
+    "id": "macro-42",
+    "title": "Intraday post (23/Jan)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-intraday-post-23-jan.md"
+  },
+  {
+    "id": "macro-43",
+    "title": "Intraday post (28/march) ",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "SPX / long-term yields correlation declined by 44.15% in the past 3 days, still positive but below its weekly avg.",
+    "filename": "unknown-date-intraday-post-28-march.md"
+  },
+  {
+    "id": "macro-44",
+    "title": "Intraday vol breakdown + Intraday post (14/May) ",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Speed profile with intraday vol breakdown",
+    "filename": "unknown-date-intraday-vol-breakdown-intraday-post-14-may.md"
+  },
+  {
+    "id": "macro-45",
+    "title": "ISM manufacturing PMI | Intraday post (06/Jan)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-ism-manufacturing-pmi-intraday-post-06-jan.md"
+  },
+  {
+    "id": "macro-46",
+    "title": "JPM Collar, Quick macro overview - Intraday post (30/Sept) ",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-jpm-collar-quick-macro-overview-intraday-post-30-sept.md"
+  },
+  {
+    "id": "macro-47",
+    "title": "Monthly update, Inflation + Weekly post (21-25/July)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "ANNOUNCEMENT",
+    "filename": "unknown-date-monthly-update-inflation-weekly-post-21-25-july.md"
+  },
+  {
+    "id": "macro-48",
+    "title": "Near-term outlook, Free-education about principles, Risk window - Intraday post (13/08)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Furu mentality vs Advanced mentality",
+    "filename": "unknown-date-near-term-outlook-free-education-about-principles-risk-windo.md"
+  },
+  {
+    "id": "macro-49",
+    "title": "NFP day - Intraday post (05/Sept)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Jobs backdrop is cooling.",
+    "filename": "unknown-date-nfp-day-intraday-post-05-sept.md"
+  },
+  {
+    "id": "macro-50",
+    "title": "NFP, Stagflation, Deflation, Intraday post (04/April)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "A very important shift in sentiment is on the way!",
+    "filename": "unknown-date-nfp-stagflation-deflation-intraday-post-04-april.md"
+  },
+  {
+    "id": "macro-51",
+    "title": "NFP, Trump-Musk feud, Scheme, Rangebound + Intraday post (06/June)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Fed minutes at their May meeting warned of \u201crisks that inflation could prove more persistent than expected and that unemployment could rise\u201d.",
+    "filename": "unknown-date-nfp-trump-musk-feud-scheme-rangebound-intraday-post-06-june.md"
+  },
+  {
+    "id": "macro-52",
+    "title": "\"No NFP\" day - Intraday post (03/Oct)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-no-nfp-day-intraday-post-03-oct.md"
+  },
+  {
+    "id": "macro-53",
+    "title": "OpEx day, everything is under control - Intraday post (19/Dec)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-opex-day-everything-is-under-control-intraday-post-19-dec.md"
+  },
+  {
+    "id": "macro-54",
+    "title": "OpEx + Intraday post (20/June)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Weekly post - Vol of vol supply",
+    "filename": "unknown-date-opex-intraday-post-20-june.md"
+  },
+  {
+    "id": "macro-55",
+    "title": "OpEx week, China risk - Weekly post (13 - 17/Oct)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Explaining my Window of Risk call:",
+    "filename": "unknown-date-opex-week-china-risk-weekly-post-13-17-oct.md"
+  },
+  {
+    "id": "macro-56",
+    "title": "PCE and BoJ | Intraday post (22/Jan)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-pce-and-boj-intraday-post-22-jan.md"
+  },
+  {
+    "id": "macro-57",
+    "title": "PCE, BoJ rate decision | Weekly post (20-23/Jan)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "In this post I cover the AI/tech boom, the restructuring of the geopolitical landscape and its effects on the economy, BoJ, geography and the coming c",
+    "filename": "unknown-date-pce-boj-rate-decision-weekly-post-20-23-jan.md"
+  },
+  {
+    "id": "macro-58",
+    "title": "PCE - Intraday post (25/Sept)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "In the weekly post, I marked the 6569.00 - 6599.61 area for SPX as the area that can be produced under the on-going vomma supply.",
+    "filename": "unknown-date-pce-intraday-post-25-sept.md"
+  },
+  {
+    "id": "macro-59",
+    "title": "post-FOMC hangover - Intraday post (11/Dec)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-post-fomc-hangover-intraday-post-11-dec.md"
+  },
+  {
+    "id": "macro-60",
+    "title": "Post-OpEx, BoJ, Denmark | Intraday post (20/Jan)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-post-opex-boj-denmark-intraday-post-20-jan.md"
+  },
+  {
+    "id": "macro-61",
+    "title": "Powell today - Intraday post (22/Aug)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Powell speaks 10:00 a.m.",
+    "filename": "unknown-date-powell-today-intraday-post-22-aug.md"
+  },
+  {
+    "id": "macro-62",
+    "title": "PPI, OpEx, Intraday post (15/May)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "PPI + SPX/LTY correlation",
+    "filename": "unknown-date-ppi-opex-intraday-post-15-may.md"
+  },
+  {
+    "id": "macro-63",
+    "title": "Recession, Stagflation, Risk + Intraday post (1/May)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "In my yesterday post you can read my insights on the coming datas and Fed. Very important.",
+    "filename": "unknown-date-recession-stagflation-risk-intraday-post-1-may.md"
+  },
+  {
+    "id": "macro-64",
+    "title": "Risk is unfolding, Bear market rally? + Intraday post (22/May) ",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "tl;dr After the May 21 bond auction sent 20\u2011year yields above 5%, markets are on edge ahead of a short Memorial Day week that brings both Q1 GDP revis",
+    "filename": "unknown-date-risk-is-unfolding-bear-market-rally-intraday-post-22-may.md"
+  },
+  {
+    "id": "macro-65",
+    "title": "Running out of time, US/China war (+intraday post 11/April)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Dear viewers and readers, it looks like we won\u2019t have to wander far for our daily dose of excitement today either!",
+    "filename": "unknown-date-running-out-of-time-us-china-war-intraday-post-11-april.md"
+  },
+  {
+    "id": "macro-66",
+    "title": "Sentiment check - Intraday post (26/Dec)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-sentiment-check-intraday-post-26-dec.md"
+  },
+  {
+    "id": "macro-67",
+    "title": "Short weekly post, The coming challenges",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Bearmarket rally?",
+    "filename": "unknown-date-short-weekly-post-the-coming-challenges.md"
+  },
+  {
+    "id": "macro-68",
+    "title": "Steep long iron fly spread | Weekly post (23-27/Feb) ",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Tariffs, Iran, post-OpEx",
+    "filename": "unknown-date-steep-long-iron-fly-spread-weekly-post-23-27-feb.md"
+  },
+  {
+    "id": "macro-69",
+    "title": "Tariff war, Bipolar World, Recession, Weekly post (31th march - 4th April)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Geos, Tariffs, Politics, Volatility, Underpriced left-tail",
+    "filename": "unknown-date-tariff-war-bipolar-world-recession-weekly-post-31th-march-4t.md"
+  },
+  {
+    "id": "macro-70",
+    "title": "The \"Bessent put\" - SPY/yields correlation; (Hidden QE)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "After calling the April selloff and the downside target in advance, I began writing more and more about a so-called \u2018hidden QE\u2019\u2014which, by May, I start",
+    "filename": "unknown-date-the-bessent-put-spy-yields-correlation-hidden-qe.md"
+  },
+  {
+    "id": "macro-71",
+    "title": "The challenges of 2026",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Venezuela, US-CN, AI bubble, Geography, Inflation, Stagflation, Crisis",
+    "filename": "unknown-date-the-challenges-of-2026.md"
+  },
+  {
+    "id": "macro-72",
+    "title": "The looming risk, Bitcoin - Intraday post (11/Nov)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "AI, SCOTUS, BTC, Trump, China, tariffs, Iran - Uncertainity after uncertainity",
+    "filename": "unknown-date-the-looming-risk-bitcoin-intraday-post-11-nov.md"
+  },
+  {
+    "id": "macro-73",
+    "title": "The problems, Momentum, Fed, Stagflation + Intraday post (11/July)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Here is my monthly and weekly post.",
+    "filename": "unknown-date-the-problems-momentum-fed-stagflation-intraday-post-11-july.md"
+  },
+  {
+    "id": "macro-74",
+    "title": "US vs China war, Fed, + Intraday post (09/April)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "This is not 2008/09",
+    "filename": "unknown-date-us-vs-china-war-fed-intraday-post-09-april.md"
+  },
+  {
+    "id": "macro-75",
+    "title": "VIX downside vomma 'risk', remember? + Intraday post (03/July)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Good morning to everyone who loves the whiff of that fresh-mattered morning NFP print.",
+    "filename": "unknown-date-vix-downside-vomma-risk-remember-intraday-post-03-july.md"
+  },
+  {
+    "id": "macro-76",
+    "title": "Volatility flows, Sentiment read and OpEx - Weekly post (16-20/June)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Last week, we had a sentiment shift towards growth concerns, inevitably suppressive vol selling feedback loop that ended up in a red 80%+ reversion si",
+    "filename": "unknown-date-volatility-flows-sentiment-read-and-opex-weekly-post-16-20-j.md"
+  },
+  {
+    "id": "macro-77",
+    "title": "We aren't out of the wood, Intraday post (07/April)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "My weekly post and last weekly post are crucial.",
+    "filename": "unknown-date-we-aren-t-out-of-the-wood-intraday-post-07-april.md"
+  },
+  {
+    "id": "macro-78",
+    "title": "Weekly post (10-14/march)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Putting it all together",
+    "filename": "unknown-date-weekly-post-10-14-march.md"
+  },
+  {
+    "id": "macro-79",
+    "title": "Weekly post (14-18/July)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "We have datas this week.",
+    "filename": "unknown-date-weekly-post-14-18-july.md"
+  },
+  {
+    "id": "macro-80",
+    "title": "Why Sept cut odds are still high? - Intraday post (15/Aug)",
+    "chapter": "IV. Macro Analysis",
+    "chapter_key": "macro",
+    "date": "unknown",
+    "excerpt": "Debt burden, Treasury issuance, Recession odds, OpEx",
+    "filename": "unknown-date-why-sept-cut-odds-are-still-high-intraday-post-15-aug.md"
+  },
+  {
+    "id": "technical-0",
+    "title": "3 latest weekly posts have been set free",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "On Feb 1 and Feb 8 and Feb 15 Sundays, my weekly posts precisely predicted the weekly momentums: the volatile Feb 3, the consolidation, levels, and th",
+    "filename": "2025-01-29-3-latest-weekly-posts-have-been-set-free.md"
+  },
+  {
+    "id": "technical-1",
+    "title": "April's performance review",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "For all Subscribers...",
+    "filename": "2025-01-29-april-s-performance-review.md"
+  },
+  {
+    "id": "technical-2",
+    "title": "Failed payments",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "For free subscribers (info)",
+    "filename": "2025-01-29-failed-payments.md"
+  },
+  {
+    "id": "technical-3",
+    "title": "[free] SPX, Gold, BTC - A quick overview of the recent momentum and sentiment",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "Here I explained my window of risk call that I updated as policy is erratic nowadays, while sentiment is overoptimistic and not pricing in any bad new",
+    "filename": "2025-01-29-free-spx-gold-btc-a-quick-overview-of-the-recent-momentum-an.md"
+  },
+  {
+    "id": "technical-4",
+    "title": "Intraday post (28/Aug)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "Special free post for all!",
+    "filename": "2025-01-29-intraday-post-28-aug.md"
+  },
+  {
+    "id": "technical-5",
+    "title": "A Guide to Reading My Daily Posts",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Every time you look at tools such as put/call deltas, ratios, or even monitor changes in order flow (e.g., the ratio between selling and buying volume",
+    "filename": "unknown-date-a-guide-to-reading-my-daily-posts.md"
+  },
+  {
+    "id": "technical-6",
+    "title": "Ahead of FOMC, Intraday post (05/May)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Elaborating on the bulltrap",
+    "filename": "unknown-date-ahead-of-fomc-intraday-post-05-may.md"
+  },
+  {
+    "id": "technical-7",
+    "title": "AM OpEx | Intraday post (15/Jan)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-am-opex-intraday-post-15-jan.md"
+  },
+  {
+    "id": "technical-8",
+    "title": "Bitcoin analysis for the next 5 years",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Investment, Cryptomarket cycle breakdown",
+    "filename": "unknown-date-bitcoin-analysis-for-the-next-5-years.md"
+  },
+  {
+    "id": "technical-9",
+    "title": "Bitcoin, Selloff, Anxiety - Intraday post (14/Nov)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Updated window of risk:",
+    "filename": "unknown-date-bitcoin-selloff-anxiety-intraday-post-14-nov.md"
+  },
+  {
+    "id": "technical-10",
+    "title": "Bullish momentum? + Intraday post (29/May) ",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "It seems like my bias for a grind up into June OpEx is materializing.",
+    "filename": "unknown-date-bullish-momentum-intraday-post-29-may.md"
+  },
+  {
+    "id": "technical-11",
+    "title": "Bulltrap? VIX, Trump, Structure breakdown + Intraday post (05/Aug)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Monthly-weekly post:",
+    "filename": "unknown-date-bulltrap-vix-trump-structure-breakdown-intraday-post-05-aug.md"
+  },
+  {
+    "id": "technical-12",
+    "title": "CPI and OpEx week - Weekly post (11/Aug - 15/Aug)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Complacency, Stagflation, Momentum, OpEx flows, Levels and Ranges",
+    "filename": "unknown-date-cpi-and-opex-week-weekly-post-11-aug-15-aug.md"
+  },
+  {
+    "id": "technical-13",
+    "title": "CPI day | Intraday post (13/Feb)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-cpi-day-intraday-post-13-feb.md"
+  },
+  {
+    "id": "technical-14",
+    "title": "CPI - Intraday post (13/Jan)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-cpi-intraday-post-13-jan.md"
+  },
+  {
+    "id": "technical-15",
+    "title": "Extended weekly breakdown (SPX, Gold, Bitcoin) + Intraday post (24/Nov)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Free, overview, breakdown of the current momentum:",
+    "filename": "unknown-date-extended-weekly-breakdown-spx-gold-bitcoin-intraday-post-24-.md"
+  },
+  {
+    "id": "technical-16",
+    "title": "Fed pivot is looming? Tariff risk, Sentiment + Intraday post (26/June)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Yesterday I revised my weekly post after the market broke out of the weekly range and unwound a lot of geo risk positions from Monday to Tuesday.",
+    "filename": "unknown-date-fed-pivot-is-looming-tariff-risk-sentiment-intraday-post-26-.md"
+  },
+  {
+    "id": "technical-17",
+    "title": "Geopolitics, tech, context for 2025",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "In this article, I will outline the key elements of the geopolitical chess game to provide context for current events and market movements.",
+    "filename": "unknown-date-geopolitics-tech-context-for-2025.md"
+  },
+  {
+    "id": "technical-18",
+    "title": "High volume | Intraday post (06/Feb)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-high-volume-intraday-post-06-feb.md"
+  },
+  {
+    "id": "technical-19",
+    "title": "Inflation expectations, Perspectives - Intraday post (12/08)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Here is the weekly post:",
+    "filename": "unknown-date-inflation-expectations-perspectives-intraday-post-12-08.md"
+  },
+  {
+    "id": "technical-20",
+    "title": "Intraday post (04/Aug)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "I dropped the weekly and monthly post here:",
+    "filename": "unknown-date-intraday-post-04-aug.md"
+  },
+  {
+    "id": "technical-21",
+    "title": " Intraday post (08/Jan)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-intraday-post-08-jan.md"
+  },
+  {
+    "id": "technical-22",
+    "title": "Intraday post (12/Jan)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-intraday-post-12-jan.md"
+  },
+  {
+    "id": "technical-23",
+    "title": "Intraday post (12/May)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "US- China",
+    "filename": "unknown-date-intraday-post-12-may.md"
+  },
+  {
+    "id": "technical-24",
+    "title": "Intraday post (13/march)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "+JPM Collar, stock/yields correlation, liquidity",
+    "filename": "unknown-date-intraday-post-13-march.md"
+  },
+  {
+    "id": "technical-25",
+    "title": "Intraday post (17/Feb)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-intraday-post-17-feb.md"
+  },
+  {
+    "id": "technical-26",
+    "title": "Intraday post (19/feb)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "First, lets look at CME FedWatch tool:",
+    "filename": "unknown-date-intraday-post-19-feb.md"
+  },
+  {
+    "id": "technical-27",
+    "title": "Intraday post (23/June)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Weekly post is out.",
+    "filename": "unknown-date-intraday-post-23-june.md"
+  },
+  {
+    "id": "technical-28",
+    "title": "Intraday post (28/April)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Here is the big summary post about all these events that most of you is lost in, and the expectations.",
+    "filename": "unknown-date-intraday-post-28-april.md"
+  },
+  {
+    "id": "technical-29",
+    "title": "Intraday post (30/May)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Big boys are tired of this shitshow (as one of my friend expresses often\u2026)",
+    "filename": "unknown-date-intraday-post-30-may.md"
+  },
+  {
+    "id": "technical-30",
+    "title": "Intraday post",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Today I might be let to go home\u2026",
+    "filename": "unknown-date-intraday-post.md"
+  },
+  {
+    "id": "technical-31",
+    "title": "Iron Condor day? - Intraday post (01/Dec)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-iron-condor-day-intraday-post-01-dec.md"
+  },
+  {
+    "id": "technical-32",
+    "title": "July Monthly Outlook, Vol of vol supply, Momentum - Equilibrium + Weekly post (07-11/July)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Momentum, Market Equilibrium, Bias, July positioning, Vol dynamics, Weekly expected dynamics, My trading strat",
+    "filename": "unknown-date-july-monthly-outlook-vol-of-vol-supply-momentum-equilibrium-.md"
+  },
+  {
+    "id": "technical-33",
+    "title": "London summit - geo post, Intraday post (23/April) ",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Investors still don\u2019t trust Trump, and momentum remains well inside the rangebound zone I marked. Yesterday, a flurry of TSLA calls boosted the tape a",
+    "filename": "unknown-date-london-summit-geo-post-intraday-post-23-april.md"
+  },
+  {
+    "id": "technical-34",
+    "title": "Low volume ranging ahead Thursday pivot - Intraday post (03/Dec)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-low-volume-ranging-ahead-thursday-pivot-intraday-post-03-dec.md"
+  },
+  {
+    "id": "technical-35",
+    "title": "Market analysis",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Overview of recent events, principles, and weekly post",
+    "filename": "unknown-date-market-analysis.md"
+  },
+  {
+    "id": "technical-36",
+    "title": "Momentum, Trading, Intraday post (05/June)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Momentum weakens at these zones of SPX",
+    "filename": "unknown-date-momentum-trading-intraday-post-05-june.md"
+  },
+  {
+    "id": "technical-37",
+    "title": "New educational post - Intraday post (12/Nov)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Updated window of risk:",
+    "filename": "unknown-date-new-educational-post-intraday-post-12-nov.md"
+  },
+  {
+    "id": "technical-38",
+    "title": "NFP day & SCOTUS | Intraday post (09/Jan)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-nfp-day-scotus-intraday-post-09-jan.md"
+  },
+  {
+    "id": "technical-39",
+    "title": "NFP | Intraday post (11/Feb)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-nfp-intraday-post-11-feb.md"
+  },
+  {
+    "id": "technical-40",
+    "title": "No autumn data release, tech sector sold - Intraday post (13/Nov)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Updated window of risk:",
+    "filename": "unknown-date-no-autumn-data-release-tech-sector-sold-intraday-post-13-nov.md"
+  },
+  {
+    "id": "technical-41",
+    "title": "No downside confirmation - Weekly post (29/Sept - 03/Oct)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Here you can find my free post about the window of risk, coded CTA trigger levels and description of the setup:",
+    "filename": "unknown-date-no-downside-confirmation-weekly-post-29-sept-03-oct.md"
+  },
+  {
+    "id": "technical-42",
+    "title": "OpEx day, Cut odds up, Sentiment warning - Intraday post (21/Nov)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Window of Risk update (free):",
+    "filename": "unknown-date-opex-day-cut-odds-up-sentiment-warning-intraday-post-21-nov.md"
+  },
+  {
+    "id": "technical-43",
+    "title": "OpEx, Gaps, Downside risk, Bulls? - Intraday post (20/Nov)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Window of Risk update (free):",
+    "filename": "unknown-date-opex-gaps-downside-risk-bulls-intraday-post-20-nov.md"
+  },
+  {
+    "id": "technical-44",
+    "title": "OpEx pt 2, momentum - Intraday post",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "...and what to watch",
+    "filename": "unknown-date-opex-pt-2-momentum-intraday-post.md"
+  },
+  {
+    "id": "technical-45",
+    "title": "PCE release - Intraday post (05/Dec)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-pce-release-intraday-post-05-dec.md"
+  },
+  {
+    "id": "technical-46",
+    "title": "Pivotal weeks ahead - Weekly post (1-5/Dec)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Literally at the bottom on Nov20, I was a cautious bull, and warned everybody to don\u2019t be bearish there (even shared my call buyings).",
+    "filename": "unknown-date-pivotal-weeks-ahead-weekly-post-1-5-dec.md"
+  },
+  {
+    "id": "technical-47",
+    "title": "Playing the AI-Bubble; Long-term outlook ",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Bitcoin, SPX, Tech, AI-Bubble opportunities",
+    "filename": "unknown-date-playing-the-ai-bubble-long-term-outlook.md"
+  },
+  {
+    "id": "technical-48",
+    "title": "PM OpEx | Intraday post (16/Jan)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-pm-opex-intraday-post-16-jan.md"
+  },
+  {
+    "id": "technical-49",
+    "title": "Post VIX-expo - Intraday post (17/Dec)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-post-vix-expo-intraday-post-17-dec.md"
+  },
+  {
+    "id": "technical-50",
+    "title": "Post VIX expo, NVDA ER, AI risk - Intraday post (19/Nov)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Window of Risk update (free):",
+    "filename": "unknown-date-post-vix-expo-nvda-er-ai-risk-intraday-post-19-nov.md"
+  },
+  {
+    "id": "technical-51",
+    "title": "PPI - Intraday post (14/Jan)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-ppi-intraday-post-14-jan.md"
+  },
+  {
+    "id": "technical-52",
+    "title": "Pre-FOMC Short Note",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "In short: Stagflation",
+    "filename": "unknown-date-pre-fomc-short-note.md"
+  },
+  {
+    "id": "technical-53",
+    "title": "Retail sales are stagnant | Intraday post (10/Feb)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-retail-sales-are-stagnant-intraday-post-10-feb.md"
+  },
+  {
+    "id": "technical-54",
+    "title": "Sentiment has shaken - Weekly post (17-21/Nov)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Updated Window of Risk:",
+    "filename": "unknown-date-sentiment-has-shaken-weekly-post-17-21-nov.md"
+  },
+  {
+    "id": "technical-55",
+    "title": "SEPTEMBER - Monthly & Weekly post (02-05/Sept)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "PMI, NFP, FOMC, OpEx, Monthly and weekly exposures",
+    "filename": "unknown-date-september-monthly-weekly-post-02-05-sept.md"
+  },
+  {
+    "id": "technical-56",
+    "title": "Short geo overview again, Intraday post (08/April)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "As I mentioned in the Friday premarket post and in the post-market thread, my call is to see some vol selling consolidation this week, and a potential",
+    "filename": "unknown-date-short-geo-overview-again-intraday-post-08-april.md"
+  },
+  {
+    "id": "technical-57",
+    "title": "Spiking uncertainity, USD/JPY - Intraday post (09/Oct)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Window of Risk:",
+    "filename": "unknown-date-spiking-uncertainity-usd-jpy-intraday-post-09-oct.md"
+  },
+  {
+    "id": "technical-58",
+    "title": "Sum, and bias... Intraday post (09/May), Bear market? Balance? ",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Now that we\u2019re beyond the 20-day window during which the market hit the level (last year April\u2019s lows) below which I had anticipated volatility sellin",
+    "filename": "unknown-date-sum-and-bias-intraday-post-09-may-bear-market-balance.md"
+  },
+  {
+    "id": "technical-59",
+    "title": "The risk of vanna regime shift, Trades, Tariffs deadline + Intraday post (01/July)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "+ Personal announcements",
+    "filename": "unknown-date-the-risk-of-vanna-regime-shift-trades-tariffs-deadline-intra.md"
+  },
+  {
+    "id": "technical-60",
+    "title": "Upside imbalance remains - Intraday post (02/Dec)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-upside-imbalance-remains-intraday-post-02-dec.md"
+  },
+  {
+    "id": "technical-61",
+    "title": "VIX expo - Intraday post (18/Nov)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Window of Risk update:",
+    "filename": "unknown-date-vix-expo-intraday-post-18-nov.md"
+  },
+  {
+    "id": "technical-62",
+    "title": "Vol selling, geo-risk premium + Intraday post (13/June)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "SPX is trading at 5987.3 when I\u2019m writing these lines\u2026",
+    "filename": "unknown-date-vol-selling-geo-risk-premium-intraday-post-13-june.md"
+  },
+  {
+    "id": "technical-63",
+    "title": "Vol selling + Intraday post (03/June)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "The admin won\u2019t let this market to crash for now.",
+    "filename": "unknown-date-vol-selling-intraday-post-03-june.md"
+  },
+  {
+    "id": "technical-64",
+    "title": "Volatility is back | Intraday post (05/Feb)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-volatility-is-back-intraday-post-05-feb.md"
+  },
+  {
+    "id": "technical-65",
+    "title": "Weekly pivotal window ahead of PCE and FOMC - Intraday post (04/Dec)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-weekly-pivotal-window-ahead-of-pce-and-fomc-intraday-post-04.md"
+  },
+  {
+    "id": "technical-66",
+    "title": "Weekly post (02-06/June)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "I\u2019ll be short this time, bcs I\u2019m in a hospital\u2026",
+    "filename": "unknown-date-weekly-post-02-06-june.md"
+  },
+  {
+    "id": "technical-67",
+    "title": "Weekly post (03/feb - 07/feb)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "Setting the tone...",
+    "filename": "unknown-date-weekly-post-03-feb-07-feb.md"
+  },
+  {
+    "id": "technical-68",
+    "title": "Weekly post (12-16/May)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "The pivotal week",
+    "filename": "unknown-date-weekly-post-12-16-may.md"
+  },
+  {
+    "id": "technical-69",
+    "title": "Weekly post (feb17-21), OpEx week",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "We have monthly OpEx this week.",
+    "filename": "unknown-date-weekly-post-feb17-21-opex-week.md"
+  },
+  {
+    "id": "technical-70",
+    "title": "Window of Risk, Disbalance - Investigating the story that the market tells",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "\"Market has become more fragile than it seems\" / Asymmetric drawdown risk",
+    "filename": "unknown-date-window-of-risk-disbalance-investigating-the-story-that-the-m.md"
+  },
+  {
+    "id": "technical-71",
+    "title": "Zomma & vomma risk as a response to macro, Weekly post (19-23/May)",
+    "chapter": "V. Technical Analysis",
+    "chapter_key": "technical",
+    "date": "unknown",
+    "excerpt": "We have a lot of Fed speakers and PMI (thursday) and VIX expo this coming week.",
+    "filename": "unknown-date-zomma-vomma-risk-as-a-response-to-macro-weekly-post-19-23-ma.md"
+  },
+  {
+    "id": "assets-0",
+    "title": "A year is over...",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "Well, eleven months have passed since I launched my Substack blog\u2014after, in 2024, you had been asking me for more than half a year to create a private",
+    "filename": "2025-01-29-a-year-is-over.md"
+  },
+  {
+    "id": "assets-1",
+    "title": "Python course\ud83d\udda5\ufe0f",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "Learn Python from a former hedge fund quant with 20+ experience",
+    "filename": "2025-01-29-python-course.md"
+  },
+  {
+    "id": "assets-2",
+    "title": "Weekly post (09/feb - 14/feb)",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "Including longer-term view",
+    "filename": "2025-01-29-weekly-post-09-feb-14-feb.md"
+  },
+  {
+    "id": "assets-3",
+    "title": "What\u2019s the Difference Between a \u201cFuru\u201d and an Analyst? (with book recommendations)",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "Let me explain... (free post, off-topic)",
+    "filename": "2025-01-29-what-s-the-difference-between-a-furu-and-an-analyst-with-boo.md"
+  },
+  {
+    "id": "assets-4",
+    "title": "Bottom confirmation? - Intraday post (26/Nov)",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "Free post:",
+    "filename": "unknown-date-bottom-confirmation-intraday-post-26-nov.md"
+  },
+  {
+    "id": "assets-5",
+    "title": "Complacency - Intraday post (07/Aug)",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "Here you can find my description of the \u2018bulltrap\u2019-ish setup for this week and the \u2018base-bias\u2018:",
+    "filename": "unknown-date-complacency-intraday-post-07-aug.md"
+  },
+  {
+    "id": "assets-6",
+    "title": "Eurozone yields-up, reshaping global trade (PoS-2) - Intraday post (03/Sept)",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "Monthly and weekly post is here:",
+    "filename": "unknown-date-eurozone-yields-up-reshaping-global-trade-pos-2-intraday-pos.md"
+  },
+  {
+    "id": "assets-7",
+    "title": "FOMC Day, Odds - Intraday post (17/Sept)",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "...some FREE content",
+    "filename": "unknown-date-fomc-day-odds-intraday-post-17-sept.md"
+  },
+  {
+    "id": "assets-8",
+    "title": "FOMC Minutes, Gold, BTC/ETH - Intraday post (08/Oct)",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "Window of Risk:",
+    "filename": "unknown-date-fomc-minutes-gold-btc-eth-intraday-post-08-oct.md"
+  },
+  {
+    "id": "assets-9",
+    "title": "FOMC-Week, Positioning breakdown - Weekly post (08-12/Dec) ",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "Here I dropped a post about Bitcoin outlook and strategy for the next 5 year window:",
+    "filename": "unknown-date-fomc-week-positioning-breakdown-weekly-post-08-12-dec.md"
+  },
+  {
+    "id": "assets-10",
+    "title": "Important trading advice + Intraday post (16/June)",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "SPX is trading at 6013 while I\u2019m writing these lines\u2026",
+    "filename": "unknown-date-important-trading-advice-intraday-post-16-june.md"
+  },
+  {
+    "id": "assets-11",
+    "title": "Intraday post (03/feb)",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "Coding SPX gamma for today session:",
+    "filename": "unknown-date-intraday-post-03-feb.md"
+  },
+  {
+    "id": "assets-12",
+    "title": "Intraday post (03/march)",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "Coding today\u2019s GEX:",
+    "filename": "unknown-date-intraday-post-03-march.md"
+  },
+  {
+    "id": "assets-13",
+    "title": "Intraday post (04/feb)",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "When I\u2019m writing these words, SPX is trading around 5995 in the overnight\u2026",
+    "filename": "unknown-date-intraday-post-04-feb.md"
+  },
+  {
+    "id": "assets-14",
+    "title": "Intraday post (05/feb)",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "SPX is currently trading at 6019 in the overnight.",
+    "filename": "unknown-date-intraday-post-05-feb.md"
+  },
+  {
+    "id": "assets-15",
+    "title": "Intraday post (07/feb)",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "Futures trading above the risk lvls overnight.",
+    "filename": "unknown-date-intraday-post-07-feb.md"
+  },
+  {
+    "id": "assets-16",
+    "title": "Intraday post (11/feb)",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "SPX is trading around 6044 overnight.",
+    "filename": "unknown-date-intraday-post-11-feb.md"
+  },
+  {
+    "id": "assets-17",
+    "title": " Intraday post (12/Feb)",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-intraday-post-12-feb.md"
+  },
+  {
+    "id": "assets-18",
+    "title": "Intraday post (18/feb)",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "SPX is trading at 6134 and ES at 6152 in the overnight.",
+    "filename": "unknown-date-intraday-post-18-feb.md"
+  },
+  {
+    "id": "assets-19",
+    "title": "Intraday post (21/Oct)",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "Window of risk:",
+    "filename": "unknown-date-intraday-post-21-oct.md"
+  },
+  {
+    "id": "assets-20",
+    "title": "Intraday post (23/July)",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "No posts between July 24 - Aug 1",
+    "filename": "unknown-date-intraday-post-23-july.md"
+  },
+  {
+    "id": "assets-21",
+    "title": "Intraday post (25/feb)",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "Here I coded intraday gamma:",
+    "filename": "unknown-date-intraday-post-25-feb.md"
+  },
+  {
+    "id": "assets-22",
+    "title": "Monthly outlook into Aug - Sept window + Weekly post (04/Aug - 08/Aug)",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "Aug/Sept window overview, Oil, Gold, Silver, BTC, SPX",
+    "filename": "unknown-date-monthly-outlook-into-aug-sept-window-weekly-post-04-aug-08-a.md"
+  },
+  {
+    "id": "assets-23",
+    "title": "OpEx, VIX expo, CPI and BoJ meeting - Weekly post (15-19/Dec)",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "I dropped a post about Bitcoin outlook and strategy for the next 5 year window:",
+    "filename": "unknown-date-opex-vix-expo-cpi-and-boj-meeting-weekly-post-15-19-dec.md"
+  },
+  {
+    "id": "assets-24",
+    "title": "Post-CPI, SPX to yields beta flip + Intraday post (12/June)",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "Yesterday, I signaled you that my reversion model gave the 80%+ signal for a reversion what I\u2019ve been waiting for to go short.",
+    "filename": "unknown-date-post-cpi-spx-to-yields-beta-flip-intraday-post-12-june.md"
+  },
+  {
+    "id": "assets-25",
+    "title": "Python Course",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "Let me announce that the Python course I consider the most reliable is now accessible through my Substack site.",
+    "filename": "unknown-date-python-course.md"
+  },
+  {
+    "id": "assets-26",
+    "title": "Quick Intraday Post (28/Nov)",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "Free post:",
+    "filename": "unknown-date-quick-intraday-post-28-nov.md"
+  },
+  {
+    "id": "assets-27",
+    "title": "The risk is in the bond market! + Intraday post (23/May) ",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "Further addition to yesterday's post",
+    "filename": "unknown-date-the-risk-is-in-the-bond-market-intraday-post-23-may.md"
+  },
+  {
+    "id": "assets-28",
+    "title": "Ukrain peace deal? Nope... - Intraday post (25/Nov)",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-ukrain-peace-deal-nope-intraday-post-25-nov.md"
+  },
+  {
+    "id": "assets-29",
+    "title": "Where does the money go? OpEx pt. 2, Inflation - Intraday post (18/July)",
+    "chapter": "VI. Asset Classes",
+    "chapter_key": "assets",
+    "date": "unknown",
+    "excerpt": "For long-term investors too... Distribution, GOLD, BTC, Yields, MMFs",
+    "filename": "unknown-date-where-does-the-money-go-opex-pt-2-inflation-intraday-post-18.md"
+  },
+  {
+    "id": "archive-0",
+    "title": "Appendix for today's intraday post",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "2025-01-29T22:11:46.429Z",
+    "excerpt": "Rangebounding, spot decay, liquidity, insider speculation",
+    "filename": "2025-01-29-appendix-for-today-s-intraday-post.md"
+  },
+  {
+    "id": "archive-1",
+    "title": "Above the line..., China vs US - Intraday post (25/April)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "As I mentioned in this morning\u2019s chat, Witkoff is currently in the Kremlin.",
+    "filename": "unknown-date-above-the-line-china-vs-us-intraday-post-25-april.md"
+  },
+  {
+    "id": "archive-2",
+    "title": "Accumulating risk - Intraday post (16/Oct)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Explaining my Window of Risk call:",
+    "filename": "unknown-date-accumulating-risk-intraday-post-16-oct.md"
+  },
+  {
+    "id": "archive-3",
+    "title": "Ahead of FOMC Pt. 2 : Heading into a liquidity crisis Intraday post (06/May)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Educative content",
+    "filename": "unknown-date-ahead-of-fomc-pt-2-heading-into-a-liquidity-crisis-intraday-.md"
+  },
+  {
+    "id": "archive-4",
+    "title": "Bottom? JPM collar, OpEx, systematics + intraday post (14/march)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Yesterday I dropped a very important free post about the current state. I want to elaborate further on it a bit first.",
+    "filename": "unknown-date-bottom-jpm-collar-opex-systematics-intraday-post-14-march.md"
+  },
+  {
+    "id": "archive-5",
+    "title": "End of year | Intraday post (31/Dec)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-end-of-year-intraday-post-31-dec.md"
+  },
+  {
+    "id": "archive-6",
+    "title": "Expectations in short, Institutional support, Intraday post (24/April)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Geo post, the most important one (free);",
+    "filename": "unknown-date-expectations-in-short-institutional-support-intraday-post-24.md"
+  },
+  {
+    "id": "archive-7",
+    "title": "FOMC day, Blindfolded market - Intraday post (29/Oct)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Window of Risk:",
+    "filename": "unknown-date-fomc-day-blindfolded-market-intraday-post-29-oct.md"
+  },
+  {
+    "id": "archive-8",
+    "title": "FOMC preview, Trading advises + Intraday post (17/June)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "FOMC, Hormuz, Retail Sales, Intraday post",
+    "filename": "unknown-date-fomc-preview-trading-advises-intraday-post-17-june.md"
+  },
+  {
+    "id": "archive-9",
+    "title": "GDP, Home Sales - Intraday post (25/Sept)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Window of Risk has officially opened - Pivotal data releases",
+    "filename": "unknown-date-gdp-home-sales-intraday-post-25-sept.md"
+  },
+  {
+    "id": "archive-10",
+    "title": "GDP & PCE day - Intraday post (23/Dec)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-gdp-pce-day-intraday-post-23-dec.md"
+  },
+  {
+    "id": "archive-11",
+    "title": "IC day - Intraday post (22/Dec)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-ic-day-intraday-post-22-dec.md"
+  },
+  {
+    "id": "archive-12",
+    "title": "Increased SPX/VIX beta ahead of VIX expo - Intraday post (16/Sept)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Monthly post:",
+    "filename": "unknown-date-increased-spx-vix-beta-ahead-of-vix-expo-intraday-post-16-se.md"
+  },
+  {
+    "id": "archive-13",
+    "title": "Intraday post (01/04)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Here is the weekly post, where I explain the hidden risks of the market in terms of mispricing, to put everything into context.",
+    "filename": "unknown-date-intraday-post-01-04.md"
+  },
+  {
+    "id": "archive-14",
+    "title": "Intraday post (01/Oct)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Window of Risk:",
+    "filename": "unknown-date-intraday-post-01-oct.md"
+  },
+  {
+    "id": "archive-15",
+    "title": " Intraday post (02/Feb)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-intraday-post-02-feb.md"
+  },
+  {
+    "id": "archive-16",
+    "title": "Intraday post (04/mar)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Coding positioning for today\u2019s session:",
+    "filename": "unknown-date-intraday-post-04-mar.md"
+  },
+  {
+    "id": "archive-17",
+    "title": " Intraday post (05/Jan)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-intraday-post-05-jan.md"
+  },
+  {
+    "id": "archive-18",
+    "title": "Intraday post (05/mar)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Coding gamma exposure for today\u2019s session:",
+    "filename": "unknown-date-intraday-post-05-mar.md"
+  },
+  {
+    "id": "archive-19",
+    "title": "Intraday post (06/feb)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Futures are green in overnight, ES holds the 6082.14 lvl firmly\u2026",
+    "filename": "unknown-date-intraday-post-06-feb.md"
+  },
+  {
+    "id": "archive-20",
+    "title": "Intraday post (07/July)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Monthly and weekly post is out with some contemplation over momentum\u2026",
+    "filename": "unknown-date-intraday-post-07-july.md"
+  },
+  {
+    "id": "archive-21",
+    "title": "Intraday post (07/mar)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Here I coded today\u2019s gamma:",
+    "filename": "unknown-date-intraday-post-07-mar.md"
+  },
+  {
+    "id": "archive-22",
+    "title": "Intraday post (08/Aug)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Market analysis | Trading strategies | Educational content | No financial advise",
+    "filename": "unknown-date-intraday-post-08-aug.md"
+  },
+  {
+    "id": "archive-23",
+    "title": "Intraday post (08/July)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Here is my monthly and weekly post.",
+    "filename": "unknown-date-intraday-post-08-july.md"
+  },
+  {
+    "id": "archive-24",
+    "title": "Intraday post (09/Feb)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-intraday-post-09-feb.md"
+  },
+  {
+    "id": "archive-25",
+    "title": "Intraday post (09/July) ",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Here is the weekly/monthly post",
+    "filename": "unknown-date-intraday-post-09-july.md"
+  },
+  {
+    "id": "archive-26",
+    "title": "Intraday post (09/June), Reversion trading setup",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "In the weekly post I already covered the main dynamics for the week.",
+    "filename": "unknown-date-intraday-post-09-june-reversion-trading-setup.md"
+  },
+  {
+    "id": "archive-27",
+    "title": "Intraday post (10/feb)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Futures quick rebound as expected in the weekly.",
+    "filename": "unknown-date-intraday-post-10-feb.md"
+  },
+  {
+    "id": "archive-28",
+    "title": "Intraday post (10/June)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Here is the weekly/monthly post",
+    "filename": "unknown-date-intraday-post-10-june.md"
+  },
+  {
+    "id": "archive-29",
+    "title": "Intraday post (10/march)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Coding intraday gamma:",
+    "filename": "unknown-date-intraday-post-10-march.md"
+  },
+  {
+    "id": "archive-30",
+    "title": "Intraday post (10/Nov)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Updated window of risk:",
+    "filename": "unknown-date-intraday-post-10-nov.md"
+  },
+  {
+    "id": "archive-31",
+    "title": "Intraday post (11/03)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Coding today\u2019s gamma:",
+    "filename": "unknown-date-intraday-post-11-03.md"
+  },
+  {
+    "id": "archive-32",
+    "title": "Intraday post (11/Aug)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Here you can find the weekly post:",
+    "filename": "unknown-date-intraday-post-11-aug.md"
+  },
+  {
+    "id": "archive-33",
+    "title": "Intraday post (12/march)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Coding intraday gamma:",
+    "filename": "unknown-date-intraday-post-12-march.md"
+  },
+  {
+    "id": "archive-34",
+    "title": "Intraday post (13/feb), + broader view",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Crucial to remember that market knew about Trump\u2019s victory last year February, I posted that months before furus started to post about \u201cTrump trade\u201d a",
+    "filename": "unknown-date-intraday-post-13-feb-broader-view.md"
+  },
+  {
+    "id": "archive-35",
+    "title": "Intraday post (14/April)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Weekly post here.",
+    "filename": "unknown-date-intraday-post-14-april.md"
+  },
+  {
+    "id": "archive-36",
+    "title": "Intraday post (14/Aug)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Here you can find some writing about the principles of thinking about trading, and how to handle biases.",
+    "filename": "unknown-date-intraday-post-14-aug.md"
+  },
+  {
+    "id": "archive-37",
+    "title": "Intraday post (14/July)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Weekly post is out.",
+    "filename": "unknown-date-intraday-post-14-july.md"
+  },
+  {
+    "id": "archive-38",
+    "title": "Intraday post (14/Oct)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Explaining my Window of Risk call:",
+    "filename": "unknown-date-intraday-post-14-oct.md"
+  },
+  {
+    "id": "archive-39",
+    "title": "Intraday post (15/April), \"Need\" for deflationary concerns",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Weekly post is here.",
+    "filename": "unknown-date-intraday-post-15-april-need-for-deflationary-concerns.md"
+  },
+  {
+    "id": "archive-40",
+    "title": "Intraday post (15/Dec)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-intraday-post-15-dec.md"
+  },
+  {
+    "id": "archive-41",
+    "title": "Intraday post (15/Oct)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Explaining my Window of Risk call:",
+    "filename": "unknown-date-intraday-post-15-oct.md"
+  },
+  {
+    "id": "archive-42",
+    "title": "Intraday post (15/Sept)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Monthly post:",
+    "filename": "unknown-date-intraday-post-15-sept.md"
+  },
+  {
+    "id": "archive-43",
+    "title": "Intraday post (16/April)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Weekly post",
+    "filename": "unknown-date-intraday-post-16-april.md"
+  },
+  {
+    "id": "archive-44",
+    "title": "Intraday post (16/July)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Yesterday I prepared you for how to read the datas now.",
+    "filename": "unknown-date-intraday-post-16-july.md"
+  },
+  {
+    "id": "archive-45",
+    "title": "Intraday post (17/mar)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "For context, read the weekly post.",
+    "filename": "unknown-date-intraday-post-17-mar.md"
+  },
+  {
+    "id": "archive-46",
+    "title": "Intraday post (18/march)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Attention!",
+    "filename": "unknown-date-intraday-post-18-march.md"
+  },
+  {
+    "id": "archive-47",
+    "title": "Intraday post 19/May",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Weekly post is here. I updated it. Please, re-read it, I added very important infos.",
+    "filename": "unknown-date-intraday-post-19-may.md"
+  },
+  {
+    "id": "archive-48",
+    "title": "Intraday post (20/Aug)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-intraday-post-20-aug.md"
+  },
+  {
+    "id": "archive-49",
+    "title": "Intraday post (20/Oct)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Window of risk:",
+    "filename": "unknown-date-intraday-post-20-oct.md"
+  },
+  {
+    "id": "archive-50",
+    "title": "Intraday post (21/April) ",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "I dropped two important posts during the weekend.",
+    "filename": "unknown-date-intraday-post-21-april.md"
+  },
+  {
+    "id": "archive-51",
+    "title": "Intraday post (21/feb)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "In today\u2019s chat, I covered most of the ideas about OpEx.",
+    "filename": "unknown-date-intraday-post-21-feb.md"
+  },
+  {
+    "id": "archive-52",
+    "title": "Intraday post (22/April)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Weekly post is here, very important\u2026 as always\u2026",
+    "filename": "unknown-date-intraday-post-22-april.md"
+  },
+  {
+    "id": "archive-53",
+    "title": "Intraday post (22/July)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Here is the monthly post (with free education on momentum),",
+    "filename": "unknown-date-intraday-post-22-july.md"
+  },
+  {
+    "id": "archive-54",
+    "title": "Intraday post (22/Sept)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "I dropped a free post on Thursday about the current window of risk, breaking down the structural flows, and the nature of the lurking risk:",
+    "filename": "unknown-date-intraday-post-22-sept.md"
+  },
+  {
+    "id": "archive-55",
+    "title": "Intraday post (23/Feb)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-intraday-post-23-feb.md"
+  },
+  {
+    "id": "archive-56",
+    "title": "Intraday post (23/Sept)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Market analysis | Trading strategies | Educational content | No financial advise",
+    "filename": "unknown-date-intraday-post-23-sept.md"
+  },
+  {
+    "id": "archive-57",
+    "title": "Intraday post (24/feb)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Here I coded intraday GEX profile:",
+    "filename": "unknown-date-intraday-post-24-feb.md"
+  },
+  {
+    "id": "archive-58",
+    "title": "Intraday post (24/march)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "For context, read my weekly post, where I derived the whole thinking process.",
+    "filename": "unknown-date-intraday-post-24-march.md"
+  },
+  {
+    "id": "archive-59",
+    "title": "Intraday post (24/Sept)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Market analysis | Trading strategies | Educational content | No financial advise",
+    "filename": "unknown-date-intraday-post-24-sept.md"
+  },
+  {
+    "id": "archive-60",
+    "title": "Intraday post (25/Aug)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Probability Distribution",
+    "filename": "unknown-date-intraday-post-25-aug.md"
+  },
+  {
+    "id": "archive-61",
+    "title": "Intraday post (25/march)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Here, read my weekly post for context.",
+    "filename": "unknown-date-intraday-post-25-march.md"
+  },
+  {
+    "id": "archive-62",
+    "title": "Intraday post (26/Aug)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "SUBSTACK UPDATE: Next month I will change the currency of payment from USD to EUR.",
+    "filename": "unknown-date-intraday-post-26-aug.md"
+  },
+  {
+    "id": "archive-63",
+    "title": "Intraday post (26/feb)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Coding today\u2019s gamma:",
+    "filename": "unknown-date-intraday-post-26-feb.md"
+  },
+  {
+    "id": "archive-64",
+    "title": "Intraday post (26/march), vol comparsion, long gamma trade",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "bear trap and bull trap into Rosh Chodesh Nisan?",
+    "filename": "unknown-date-intraday-post-26-march-vol-comparsion-long-gamma-trade.md"
+  },
+  {
+    "id": "archive-65",
+    "title": "Intraday post (27/feb)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Coding intraday gamma for today\u2019s session:",
+    "filename": "unknown-date-intraday-post-27-feb.md"
+  },
+  {
+    "id": "archive-66",
+    "title": "Intraday post (27/march)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Here is the weekly post for context,",
+    "filename": "unknown-date-intraday-post-27-march.md"
+  },
+  {
+    "id": "archive-67",
+    "title": "Intraday post (27/May)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Here you can find the weekly post.",
+    "filename": "unknown-date-intraday-post-27-may.md"
+  },
+  {
+    "id": "archive-68",
+    "title": "Intraday post (29/April)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Here is the big summary post about all these events that most of you is lost in, and the expectations.",
+    "filename": "unknown-date-intraday-post-29-april.md"
+  },
+  {
+    "id": "archive-69",
+    "title": "Intraday post (29/Sept)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-intraday-post-29-sept.md"
+  },
+  {
+    "id": "archive-70",
+    "title": "Intraday post (31/march)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Find the weekly post here, including JPM collar description and geo context for the economy and markets.",
+    "filename": "unknown-date-intraday-post-31-march.md"
+  },
+  {
+    "id": "archive-71",
+    "title": "Intraday vol of vol | Intraday post (30/Dec)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-intraday-vol-of-vol-intraday-post-30-dec.md"
+  },
+  {
+    "id": "archive-72",
+    "title": "Long Condor Day - Intraday post (08/Dec)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-long-condor-day-intraday-post-08-dec.md"
+  },
+  {
+    "id": "archive-73",
+    "title": "NFP Revision - Intraday post (09/Sept)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Monthly post:",
+    "filename": "unknown-date-nfp-revision-intraday-post-09-sept.md"
+  },
+  {
+    "id": "archive-74",
+    "title": "No euphoria - Intraday post (07/Oct)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Window of Risk:",
+    "filename": "unknown-date-no-euphoria-intraday-post-07-oct.md"
+  },
+  {
+    "id": "archive-75",
+    "title": "NVDA ER, GDP, PCE, Valuation - Intraday post (27/Aug)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Expectations",
+    "filename": "unknown-date-nvda-er-gdp-pce-valuation-intraday-post-27-aug.md"
+  },
+  {
+    "id": "archive-76",
+    "title": "Optimism - Intraday post (12/Dec)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-optimism-intraday-post-12-dec.md"
+  },
+  {
+    "id": "archive-77",
+    "title": "PPI and CPI expectations - Intraday post (10/Sept)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Monthly post:",
+    "filename": "unknown-date-ppi-and-cpi-expectations-intraday-post-10-sept.md"
+  },
+  {
+    "id": "archive-78",
+    "title": "Pre-FOMC day - Intraday post (09/Dec)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-pre-fomc-day-intraday-post-09-dec.md"
+  },
+  {
+    "id": "archive-79",
+    "title": "Quick education on reflexivity, Hidden QE plan + Intraday post (28/May)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "What does Bessent want...?",
+    "filename": "unknown-date-quick-education-on-reflexivity-hidden-qe-plan-intraday-post-.md"
+  },
+  {
+    "id": "archive-80",
+    "title": "Short vvol day | Intraday post (02/Jan)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Wish you all a happy and successful New Year!",
+    "filename": "unknown-date-short-vvol-day-intraday-post-02-jan.md"
+  },
+  {
+    "id": "archive-81",
+    "title": "Summary - Pre-weekly post (23/Nov)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Got some problem with taking the positioning datas, so the weekly breakdown will come likely on Monday.",
+    "filename": "unknown-date-summary-pre-weekly-post-23-nov.md"
+  },
+  {
+    "id": "archive-82",
+    "title": "Supportive profile | Intraday post (29/Dec)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Weekly post:",
+    "filename": "unknown-date-supportive-profile-intraday-post-29-dec.md"
+  },
+  {
+    "id": "archive-83",
+    "title": "Theta decay, 'when will vol come back?' + Intraday post (30/June) with reversion trading",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Check the weekly post. I added some complementary thoughts to it. Very important.",
+    "filename": "unknown-date-theta-decay-when-will-vol-come-back-intraday-post-30-june-wi.md"
+  },
+  {
+    "id": "archive-84",
+    "title": "\"This time is different\" | Weekly post (29/Dec - 02/Jan)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "I hope, everyone of you is well and had a really good and rich time with their beloved ones\u2026",
+    "filename": "unknown-date-this-time-is-different-weekly-post-29-dec-02-jan.md"
+  },
+  {
+    "id": "archive-85",
+    "title": "Uncertainity - Intraday post (10/Oct)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Window of Risk:",
+    "filename": "unknown-date-uncertainity-intraday-post-10-oct.md"
+  },
+  {
+    "id": "archive-86",
+    "title": "Valuation - Intraday post (18/08)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Here you can find the weekly post:",
+    "filename": "unknown-date-valuation-intraday-post-18-08.md"
+  },
+  {
+    "id": "archive-87",
+    "title": "Vega and vomma suppressing feedback loop, Weekly post (09-13/June)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Market analysis | Trading strategies | Educational content | No financial advise",
+    "filename": "unknown-date-vega-and-vomma-suppressing-feedback-loop-weekly-post-09-13-j.md"
+  },
+  {
+    "id": "archive-88",
+    "title": "Warsh is not a hawk | Intraday post (03/Feb)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "At market lunch-time, you will receive an email with announcements about the Substack, review of the performance of my analyses and a short reflection",
+    "filename": "unknown-date-warsh-is-not-a-hawk-intraday-post-03-feb.md"
+  },
+  {
+    "id": "archive-89",
+    "title": "Weekly post (13-17/April), Vol selling coming back",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "As said on last Tuesday I expect stabilization into April OpEx.",
+    "filename": "unknown-date-weekly-post-13-17-april-vol-selling-coming-back.md"
+  },
+  {
+    "id": "archive-90",
+    "title": "Weekly post (17-21/march) ",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "In this post I explained the geo context, that is crucial important bcs in these times where the world order is about to shift, the geopolitics, econo",
+    "filename": "unknown-date-weekly-post-17-21-march.md"
+  },
+  {
+    "id": "archive-91",
+    "title": "Weekly post (18-22/Aug)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Risk window, Momentum, Vanna profile",
+    "filename": "unknown-date-weekly-post-18-22-aug.md"
+  },
+  {
+    "id": "archive-92",
+    "title": "\"Who's bluffing?\" USA vs. China poker game + Intraday post (10/April)",
+    "chapter": "VII. Analysis Archive",
+    "chapter_key": "archive",
+    "date": "unknown",
+    "excerpt": "Digging into the April 9 events",
+    "filename": "unknown-date-who-s-bluffing-usa-vs-china-poker-game-intraday-post-10-apri.md"
+  }
+]

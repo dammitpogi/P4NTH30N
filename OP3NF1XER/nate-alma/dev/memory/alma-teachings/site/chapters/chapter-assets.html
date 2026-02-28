@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VI. Asset Classes - Doctrine Bible</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/alma-chat.css">
+</head>
+<body data-chapter="assets" data-lesson-id="assets-overview">
+
+  <header class="header">
+    <div class="header-brand">
+      <div class="header-logo">DB</div>
+      <div>
+        <div class="header-title">Doctrine Bible</div>
+        <div class="header-subtitle">Trading Curriculum</div>
+      </div>
+    </div>
+    <nav class="header-nav">
+      <div class="header-search">
+        <span class="header-search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Search topics... (Ctrl+K)">
+        <div class="search-results" id="search-results"></div>
+      </div>
+      <a href="../index.html" class="nav-btn">📚 Home</a>
+      <button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+    </nav>
+  </header>
+
+  <div class="app-container">
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-title">Course Progress</div>
+        <div class="sidebar-subtitle">7 Chapters</div>
+        <div class="sidebar-progress">
+          <div class="progress-label">
+            <span>Overall Progress</span>
+            <span id="progress-percent">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+      
+      <nav class="nav-tree">
+        <div class="nav-section " data-section="foundations">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">📖</span>
+            <span class="nav-section-title">I. Foundations</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-foundations.html" class="nav-lesson " data-lesson="foundations-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="principles">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">⚖️</span>
+            <span class="nav-section-title">II. Trading Principles</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-principles.html" class="nav-lesson " data-lesson="principles-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="mechanics">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">⚙️</span>
+            <span class="nav-section-title">III. Market Mechanics</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-mechanics.html" class="nav-lesson " data-lesson="mechanics-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="macro">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">🌍</span>
+            <span class="nav-section-title">IV. Macro Analysis</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-macro.html" class="nav-lesson " data-lesson="macro-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="technical">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">📊</span>
+            <span class="nav-section-title">V. Technical Analysis</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-technical.html" class="nav-lesson " data-lesson="technical-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section expanded" data-section="assets">
+          <div class="nav-section-header active">
+            <span class="nav-section-icon">💎</span>
+            <span class="nav-section-title">VI. Asset Classes</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-assets.html" class="nav-lesson active" data-lesson="assets-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="archive">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">📚</span>
+            <span class="nav-section-title">VII. Analysis Archive</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-archive.html" class="nav-lesson " data-lesson="archive-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="content-wrapper">
+        <div class="breadcrumbs">
+          <a href="../index.html">Home</a>
+          <span class="breadcrumbs-separator">→</span>
+          <span class="breadcrumbs-current">VI. Asset Classes</span>
+        </div>
+
+        <div class="page-header">
+          <div class="page-category">💎 Chapter Overview</div>
+          <h1 class="page-title">VI. Asset Classes</h1>
+          <p class="page-subtitle">SPX, Gold, Bitcoin, and Bonds analysis</p>
+          <div class="page-meta">
+            <div class="page-meta-item">🏷️ Key Themes: 17</div>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <h2>Chapter Guide</h2>
+          <p>This chapter guide is written to teach the concepts from basics.</p>
+
+          <div class="chapter-guide">
+            <h2>Core Concepts</h2>
+
+<h3>Each asset has its own “personality”</h3>
+<p>
+  Index futures (ES/SPX), gold, bitcoin, and bonds respond to different constraints. The same macro
+  shock can create opposite reactions depending on what the asset represents (growth, safety,
+  liquidity hedge, term premium).
+</p>
+
+<h3>“Structure” matters more than headlines</h3>
+<p>
+  A recurring theme across the corpus is to watch whether price can <em>build structure</em> around a
+  key pivot zone. If structure cannot be built above/below a pivot, the path is treated as fragile,
+  even when narratives sound strong.
+</p>
+
+<h3>Correlation is a regime variable (not a constant)</h3>
+<p>
+  Cross-asset behavior often changes when correlations change. A concrete example in the corpus is
+  when rates/equity correlation becomes “less hostile” as rates volatility slides back toward
+  calmer ranges; that alters how equity reacts to data and to yield moves.
+</p>
+
+<h3>Bitcoin: trade vs. investment (and why it consolidates)</h3>
+<p>
+  Bitcoin is repeatedly framed less as an intraday “setup engine” and more as an investment vehicle
+  in regimes where its fundamentals and market structure are still evolving. A specific observed
+  behavior: one large move toward a target, followed by multi-week range-bound consolidation.
+</p>
+
+<h3>Cross-asset correlation is the hidden risk</h3>
+<p>
+  Many losses come from correlation shifts, not from “being wrong” on direction. When correlations
+  flip, your hedges can fail.
+</p>
+
+<h2>How To Apply</h2>
+
+<h3>A simple cross-asset map</h3>
+<ul>
+  <li><strong>Equities:</strong> discount-rate + earnings expectations + positioning mechanics.</li>
+  <li><strong>Bonds/yields:</strong> inflation expectations + term premium + central bank reaction.</li>
+  <li><strong>Gold:</strong> real rates + risk premium + reserve/flow demand; can also be speculative.</li>
+  <li><strong>Bitcoin:</strong> liquidity conditions + risk appetite + narrative reflexivity; behaves in regimes.</li>
+</ul>
+
+<h3>A practical “asset checklist” (15 minutes)</h3>
+<ol>
+  <li><strong>Define the driver:</strong> today is mainly rates, growth, inflation, geopolitics, or positioning mechanics.</li>
+  <li><strong>Mark the pivots:</strong> identify the key pivot zone(s) that decide whether structure can be built.</li>
+  <li><strong>Ask what is underpriced:</strong> is the next event risk underpriced (data, earnings, OpEx/VIX expo)?</li>
+  <li><strong>Watch correlation:</strong> is rates/equity correlation behaving “hostile” or “supportive” in this regime?</li>
+  <li><strong>Adapt sizing:</strong> if the regime is fragile, treat any directional bet as tactical and smaller.</li>
+</ol>
+
+<h3>How to read cross-asset “risk hedging” signals</h3>
+<p>
+  A repeated tell is that hedging demand shows up where convexity is easiest to buy (or least
+  painful to hold). In the corpus, gold skew inversion is explicitly called out as a sign that
+  investors are hedging macro risk.
+</p>
+
+<h2>Common Mistakes</h2>
+<ul>
+  <li>Assuming bitcoin trades like equities in every regime.</li>
+  <li>Believing gold only responds to geopolitics (rates matter).</li>
+  <li>Ignoring FX effects when your base currency is not USD.</li>
+  <li>Trading narratives while ignoring whether the market is building structure at pivots.</li>
+  <li>Assuming hedges will work the same way after correlation flips.</li>
+</ul>
+
+<h2>Self-Check</h2>
+<ol>
+  <li>When yields rise, what are the two main channels for equity impact?</li>
+  <li>What is the difference between nominal yields and real yields for gold?</li>
+  <li>What regime would you expect bitcoin to underperform?</li>
+</ol>
+
+<h2>Citations (Local Corpus)</h2>
+<div class="citations">
+  <ul>
+    <li><code>bible/2025-01-29-free-spx-gold-btc-a-quick-overview-of-the-recent-momentum-an.md</code></li>
+    <li><code>bible/unknown-date-bitcoin-analysis-for-the-next-5-years.md</code></li>
+    <li><code>bible/unknown-date-bitcoin-selloff-anxiety-intraday-post-14-nov.md</code></li>
+    <li><code>bible/unknown-date-bonds-currency-market-sentiment-education-and-study-on-crise.md</code></li>
+    <li><code>bible/unknown-date-jpm-collar-quick-macro-overview-intraday-post-30-sept.md</code></li>
+  </ul>
+</div>
+
+<h2>Further Reading (Scholarly / Institutions)</h2>
+<ul>
+  <li><a href="https://www.bis.org/publ/work.htm" target="_blank" rel="noopener">BIS working papers (rates, FX, cross-asset)</a></li>
+  <li><a href="https://www.federalreserve.gov/econres.htm" target="_blank" rel="noopener">Federal Reserve: Economic research</a></li>
+</ul>
+
+<h2>Further Reading (General)</h2>
+<ul>
+  <li><a href="https://www.investopedia.com/terms/r/realinterestrate.asp" target="_blank" rel="noopener">Real interest rates</a></li>
+  <li><a href="https://www.investopedia.com/terms/t/term-premium.asp" target="_blank" rel="noopener">Term premium</a></li>
+  <li><a href="https://www.investopedia.com/terms/d/duration.asp" target="_blank" rel="noopener">Bond duration</a></li>
+</ul>
+
+          </div>
+
+        </div>
+
+        <div class="chapter-nav">
+          <a href="./chapter-technical.html" class="chapter-nav-btn prev">
+            <div>
+              <div class="chapter-nav-label">← Previous</div>
+              <div class="chapter-nav-title">V. Technical Analysis</div>
+            </div>
+          </a>
+          
+          <a href="./chapter-archive.html" class="chapter-nav-btn next">
+            <div>
+              <div class="chapter-nav-label">Next →</div>
+              <div class="chapter-nav-title">VII. Analysis Archive</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/app.js"></script>
+  <script src="../config/alma-config.js"></script>
+  <script src="../js/health-monitor.js"></script>
+  <script src="../js/alma-chat.js"></script>
+  <script src="../js/ask-alma-buttons.js"></script>
+</body>
+</html>

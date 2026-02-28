@@ -1,0 +1,18 @@
+[
+  {
+    "symbol": "VVIX",
+    "source": "yahoo",
+    "timestamp": "2026-02-23T19:38:28.005Z",
+    "price": {
+      "open": 110.58000183105469,
+      "high": 115.55000305175781,
+      "low": 109.66999816894531,
+      "close": 114.06,
+      "volume": 0,
+      "change": null,
+      "changeAbs": 114.06
+    },
+    "indicators": {},
+    "signal": "n/a"
+  }
+]

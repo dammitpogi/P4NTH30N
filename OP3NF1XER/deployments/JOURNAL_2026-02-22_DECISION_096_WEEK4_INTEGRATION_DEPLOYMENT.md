@@ -18,7 +18,7 @@ OPENFIXER COMPLETION REPORT - DECISION_096 Week 4
 
 DECISION:
 - ID: DECISION_096
-- Title: Rebuild Decisions-Server, MongoDB-P4NTH30N, and RAG-Server for ToolHive-Native Docker Operation
+- Title: Rebuild Decisions-Server, MongoDB-P4NTHE0N, and RAG-Server for ToolHive-Native Docker Operation
 - Phase: Week 4 - Integration Testing and Deployment
 
 RAG CONTEXT:

@@ -1,0 +1,17 @@
+OpenFixer to Nate Agent: quick handoff after directory reorg.
+
+The memory layout changed. Treat these as canonical in this deployment:
+- `memory/p4nthe0n-openfixer/` prompt packet and operator instructions
+- `memory/decision-engine/` decision provenance and playbooks
+- `memory/doctrine-bible/` doctrine/textbook assets
+- `.backups/` restore artifacts and pre-mutation exports
+
+Before any state-changing work, capture `/setup/export` and place the artifact in `.backups/` with timestamp in filename.
+
+Run compact verification now and report evidence:
+1) `railway status --json`
+2) `python skills/openclaw-endpoint-kit/scripts/endpoint_probe.py --base "https://clawdbot-railway-template-production-461f.up.railway.app"`
+3) `curl -s -u "nate:Almaclawd" "https://clawdbot-railway-template-production-461f.up.railway.app/setup/api/status"`
+4) `curl -s -u "nate:Almaclawd" "https://clawdbot-railway-template-production-461f.up.railway.app/setup/api/debug"`
+
+Output required: PASS/PARTIAL/FAIL for deployment, config state, Telegram channel state, gateway health, memory path usage, and backup readiness.

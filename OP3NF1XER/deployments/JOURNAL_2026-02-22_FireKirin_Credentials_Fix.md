@@ -77,7 +77,7 @@ public string MongoCredentialCollection { get; set; } = "CRED3N7IAL";
 ## Commands for Verification
 ```powershell
 # Check credential count
-mongosh "mongodb://192.168.56.1:27017/P4NTH30N?directConnection=true" --eval "db.CRED3N7IAL.find({Game: 'FireKirin', Enabled: true, Unlocked: true, Balance: {\$gt: 0}}).count()"
+mongosh "mongodb://192.168.56.1:27017/P4NTHE0N?directConnection=true" --eval "db.CRED3N7IAL.find({Game: 'FireKirin', Enabled: true, Unlocked: true, Balance: {\$gt: 0}}).count()"
 
 # Run smoke test
 dotnet run --project H4ND/SmokeTest/SmokeTest.csproj -- --platform firekirin

@@ -43,7 +43,7 @@ CDP's `/json/list` returns `ws://localhost:9222/...`. Modified `CdpClient.FetchD
 MongoDB with `replSetName: rs0` advertises as `localhost:27017`. Fixed by adding `?directConnection=true` to connection string.
 
 ### 5. Environment Variable Precedence
-`P4NTH30N_MONGODB_URI` env var was set early (without `directConnection`) and took precedence over `mongodb.uri` file. Fixed by updating Machine-level env var to include `?directConnection=true`.
+`P4NTHE0N_MONGODB_URI` env var was set early (without `directConnection`) and took precedence over `mongodb.uri` file. Fixed by updating Machine-level env var to include `?directConnection=true`.
 
 ### 6. PowerShell Escaping Hell
 43 temp scripts. Every `$` variable caused escaping issues through `Invoke-Command`. Eventually used batch files for simple env var setting.
@@ -58,14 +58,14 @@ MongoDB with `replSetName: rs0` advertises as `localhost:27017`. Fixed by adding
 | Startup Script | `C:\H4ND\start_h4nd.cmd` | Sets env var, launches H4ND |
 | Log File | `C:\H4ND\h4nd-output.log` | Console output |
 | Port Proxy | Host | `192.168.56.1:9222 → 127.0.0.1:9222` |
-| MongoDB Config | `C:\ProgramData\P4NTH30N\mongodb\mongod.cfg` | `bindIp: 0.0.0.0` |
+| MongoDB Config | `C:\ProgramData\P4NTHE0N\mongodb\mongod.cfg` | `bindIp: 0.0.0.0` |
 
 ---
 
 ## Log Evidence
 
 ```
-[MongoConnectionOptions] Using: mongodb://192.168.56.1:27017/?directConnection=true / P4NTH30N
+[MongoConnectionOptions] Using: mongodb://192.168.56.1:27017/?directConnection=true / P4NTHE0N
 [CdpHealthCheck] HTTP /json/version: OK
 [CDP] Connected to Chrome at 192.168.56.1:9222
 [CdpHealthCheck] WebSocket handshake: OK

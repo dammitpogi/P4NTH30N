@@ -1,0 +1,20 @@
+//WindTerm RouterOS Outline
+//Version: 1.0
+{
+	"type": "level",
+	"patterns": [
+		{
+			"name": "prompt",
+			"scope": "prompt.line.routeros",
+			"match": "(*UTF)(?m)^([^\\n>]*+>) [ \\t]*+(?<command>(\\S[^\\n]*+|(?!\\n)))$"
+		}
+	],
+	"regions": [
+		{
+			"name": "prompt",
+			"title": "${command}",
+			"icon": "king::Label",
+			"sequence": ["prompt"]
+		}
+	]
+}

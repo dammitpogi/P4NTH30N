@@ -11,7 +11,7 @@
 
 ## Executive Summary
 
-DECISION_055 is the climax of P4NTH30N infrastructure. Three critical subsystems — parallel signal processing (DECISION_047), config-driven selectors (DECISION_046), and session renewal self-healing (DECISION_041) — have been unified into a single executable with 7 subcommands. The SIGN4L collection now has a signal generator, the parallel engine has self-healing, and a 24-hour burn-in validation controller is ready.
+DECISION_055 is the climax of P4NTHE0N infrastructure. Three critical subsystems — parallel signal processing (DECISION_047), config-driven selectors (DECISION_046), and session renewal self-healing (DECISION_041) — have been unified into a single executable with 7 subcommands. The SIGN4L collection now has a signal generator, the parallel engine has self-healing, and a 24-hour burn-in validation controller is ready.
 
 ---
 
@@ -124,9 +124,9 @@ Pre-flight → Auto-generate signals → Start engine → Every 60s: collect met
 
 ## What's Next
 
-1. **Live validation**: `P4NTH30N.exe generate-signals 50` against production MongoDB
-2. **Health check**: `P4NTH30N.exe health` to verify all subsystems
-3. **Mini burn-in**: `P4NTH30N.exe burn-in` with BurnIn.DurationHours=0.17 (10 min)
+1. **Live validation**: `P4NTHE0N.exe generate-signals 50` against production MongoDB
+2. **Health check**: `P4NTHE0N.exe health` to verify all subsystems
+3. **Mini burn-in**: `P4NTHE0N.exe burn-in` with BurnIn.DurationHours=0.17 (10 min)
 4. **24-hour burn-in**: Full ARCH-047-006 validation
 
 ---

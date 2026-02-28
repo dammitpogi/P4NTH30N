@@ -44,8 +44,8 @@ Time Elapsed 00:00:01.56
 | H4ND.dll | Feb 22 18:17 (452,096 bytes) | Feb 22 18:18 (452,096 bytes) | ✅ Updated |
 
 **Output Locations:**
-- `C:\P4NTH30N\H4ND\bin\Release\net10.0-windows7.0\H4ND.exe`
-- `C:\P4NTH30N\H4ND\bin\release\net10.0-windows7.0\H4ND.exe`
+- `C:\P4NTHE0N\H4ND\bin\Release\net10.0-windows7.0\H4ND.exe`
+- `C:\P4NTHE0N\H4ND\bin\release\net10.0-windows7.0\H4ND.exe`
 
 ### Validation Checklist
 - [x] dotnet build command executed

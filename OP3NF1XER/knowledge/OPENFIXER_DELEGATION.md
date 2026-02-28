@@ -526,7 +526,7 @@ Create comprehensive DR runbook with failure scenarios, recovery procedures, bac
 
 2. Restore MongoDB from backup (if needed)
    ```powershell
-   mongorestore --host 192.168.56.1 --db P4NTH30N `
+   mongorestore --host 192.168.56.1 --db P4NTHE0N `
        .\backups\mongodb\latest\
    ```
 
@@ -548,7 +548,7 @@ Create comprehensive DR runbook with failure scenarios, recovery procedures, bac
 2. Drop corrupted database (if partial corruption)
 3. Restore from backup
    ```powershell
-   mongorestore --drop --db P4NTH30N `
+   mongorestore --drop --db P4NTHE0N `
        .\backups\mongodb\$(Get-Date -Format 'yyyyMMdd-HH')
    ```
 4. Start H4ND service
@@ -671,7 +671,7 @@ $timestamp = Get-Date -Format 'yyyyMMdd-HH'
 $backupDir = Join-Path $BackupPath $timestamp
 
 # Create backup
-mongodump --host $Host --db P4NTH30N --out $backupDir
+mongodump --host $Host --db P4NTHE0N --out $backupDir
 
 # Compress
 Compress-Archive -Path $backupDir -DestinationPath "$backupDir.zip"

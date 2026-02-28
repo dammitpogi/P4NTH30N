@@ -1,7 +1,7 @@
-# P4NTH30N Universal Configuration
+# P4NTHE0N Universal Configuration
 
-**Location**: `C:\P4NTH30N\.config`  
-**Purpose**: Source of truth for all P4NTH30N configurations  
+**Location**: `C:\P4NTHE0N\.config`  
+**Purpose**: Source of truth for all P4NTHE0N configurations  
 **Deploy Target**: `~/.config/opencode/`  
 **Decision**: DECISION_100
 
@@ -10,7 +10,7 @@
 ## Directory Structure
 
 ```
-P4NTH30N/.config/
+P4NTHE0N/.config/
 ├── manifest.json                          # This manifest
 ├── README.md                              # This file
 │
@@ -67,7 +67,7 @@ P4NTH30N/.config/
 
 ```powershell
 # Copy to OpenCode config directory
-Copy-Item -Path "C:\P4NTH30N\.config\opencode\oh-my-opencode-theseus.json" `
+Copy-Item -Path "C:\P4NTHE0N\.config\opencode\oh-my-opencode-theseus.json" `
           -Destination "$env:USERPROFILE\.config\opencode\oh-my-opencode-theseus.json" `
           -Force
 
@@ -111,10 +111,10 @@ $config.agents.oracle.fallback.extendedChain.enabled  # Should be true
 
 ## Source of Truth
 
-This directory (`C:\P4NTH30N\.config`) is the **source of truth** for all configurations.
+This directory (`C:\P4NTHE0N\.config`) is the **source of truth** for all configurations.
 
 **Workflow**:
-1. Edit configs in `C:\P4NTH30N\.config`
+1. Edit configs in `C:\P4NTHE0N\.config`
 2. Test locally
 3. Deploy to `~/.config/opencode/`
 4. Restart OpenCode to pick up changes

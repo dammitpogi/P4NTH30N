@@ -34,7 +34,7 @@ What changed:
 Validation run:
 - `dotnet build H0UND/H0UND.csproj -c Release` passed
 - Startup task run succeeded and status checks all green:
-  - P4NTH30N running
+  - P4NTHE0N running
   - RAG running and healthy
   - Mongo running
   - Auto-start task registered

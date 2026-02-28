@@ -1,0 +1,67 @@
+description:
+  compare files line by line
+synopses:
+  - diff [OPTION]... FILES
+options:
+  --normal: output a normal diff (the default)
+  -q, --brief: report only when files differ
+  -s, --report-identical-files: report when two files are the same
+  -c, -C NUM: output NUM (default 3) lines of copied context
+  --context[=NUM]: output NUM (default 3) lines of copied context
+  -u, -U NUM: output NUM (default 3) lines of unified context
+  --unified[=NUM]: output NUM (default 3) lines of unified context
+  -e, --ed: output an ed script
+  -n, --rcs: output an RCS format diff
+  -y, --side-by-side: output in two columns
+  -W, --width=NUM: output at most NUM (default 130) print columns
+  --left-column: output only the left column of common lines
+  --suppress-common-lines: do not output common lines
+  -p, --show-c-function: show which C function each change is in
+  -F, --show-function-line=RE: show the most recent line matching RE
+  --label LABEL: use LABEL instead of file name and timestamp (can be repeated)
+  -t, --expand-tabs: expand tabs to spaces in output
+  -T, --initial-tab: make tabs line up by prepending a tab
+  --tabsize=NUM: tab stops every NUM (default 8) print columns
+  --suppress-blank-empty: suppress space or tab before empty output lines
+  -l, --paginate: pass output through 'pr' to paginate it
+  -r, --recursive: recursively compare any subdirectories found
+  --no-dereference: don't follow symbolic links
+  -N, --new-file: treat absent files as empty
+  --unidirectional-new-file: treat absent first files as empty
+  --ignore-file-name-case: ignore case when comparing file names
+  --no-ignore-file-name-case: consider case when comparing file names
+  -x, --exclude=PATTERN: exclude files that match PATTERN
+  -X, --exclude-from=FILE: exclude files that match any pattern in FILE
+  -S, --starting-file=FILE: start with FILE when comparing directories
+  --from-file=FILE1: compare FILE1 to all operands; FILE1 can be a directory
+  --to-file=FILE2: compare all operands to FILE2; FILE2 can be a directory
+  -i, --ignore-case: ignore case differences in file contents
+  -E, --ignore-tab-expansion: ignore changes due to tab expansion
+  -Z, --ignore-trailing-space: ignore white space at line end
+  -b, --ignore-space-change: ignore changes in the amount of white space
+  -w, --ignore-all-space: ignore all white space
+  -B, --ignore-blank-lines: ignore changes where lines are all blank
+  -I, --ignore-matching-lines=RE: ignore changes where all lines match RE
+  -a, --text: treat all files as text
+  --strip-trailing-cr: strip trailing carriage return on input
+  -D, --ifdef=NAME: output merged file with '#ifdef NAME' diffs
+  --old-group-format=GFMT: format old input groups with GFMT
+  --new-group-format=GFMT: format new input groups with GFMT
+  --changed-group-format=GFMT: format changed input groups with GFMT
+  --unchanged-group-format=GFMT: format unchanged input groups with GFMT
+  --line-format=LFMT: format all input lines with LFMT
+  --old-line-format=LFMT: format old input lines with LFMT
+  --new-line-format=LFMT: format new input lines with LFMT
+  --unchanged-line-format=LFMT: format unchanged input lines with LFMT
+  -d, --minimal: try hard to find a smaller set of changes
+  --horizon-lines=NUM: keep NUM lines of the common prefix and suffix
+  --speed-large-files: assume large files and many scattered small changes
+  --color[=WHEN]:
+    description: colorize the output
+    values:
+      - never
+      - always
+      - auto
+  --palette=PALETTE: a colon-separated list of terminfo capabilities
+  --help: display this help and exit
+  -v, --version: output version information and exit

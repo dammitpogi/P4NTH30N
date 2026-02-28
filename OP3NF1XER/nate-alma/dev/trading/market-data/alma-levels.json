@@ -1,0 +1,25 @@
+{
+  "symbol": "SPY",
+  "updated": "2026-02-23T20:21:49Z",
+  "source": "TradingView chart settings",
+  "meanReversionLevels": {
+    "extreme_upper_99": 695.52,
+    "upper_95": 692.07,
+    "risk_upper": 688.63,
+    "inner_upper_68": 686.39,
+    "inner_upper_68_2": 685.18,
+    "inner_lower_68": 678.30,
+    "inner_lower_68_2": 677.11,
+    "risk_lower": 674.87,
+    "lower_95": 671.42
+  },
+  "almaCompanion": {
+    "center_1": 680.27,
+    "center_2": 680.50,
+    "lower_1": 674.41,
+    "lower_2": 671.62,
+    "upper": 690,
+    "extreme_lower": 661
+  },
+  "notes": "These levels are from Alma's indicators on your SPY chart. They appear to be standard deviation bands around a mean."
+}

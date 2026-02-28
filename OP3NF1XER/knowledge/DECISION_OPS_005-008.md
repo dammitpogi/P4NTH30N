@@ -73,7 +73,7 @@ Validate H4ND's failure recovery mechanisms in VM environment. Test scenarios: C
 **Proposed By**: Atlas (Strategist)
 
 ### Description
-Cleanup 43 temporary PowerShell scripts in c:\P4NTH30N\temp_*.ps1 created during VM deployment debugging. Archive relevant scripts for future reference.
+Cleanup 43 temporary PowerShell scripts in c:\P4NTHE0N\temp_*.ps1 created during VM deployment debugging. Archive relevant scripts for future reference.
 
 ### Tasks
 - Review all 43 temp scripts

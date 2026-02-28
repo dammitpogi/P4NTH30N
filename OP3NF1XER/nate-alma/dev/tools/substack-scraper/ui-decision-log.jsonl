@@ -1,0 +1,8 @@
+{"ts":"2026-02-24T22:30:27.778Z","event":"start","mode":"ui-decision","hasOtpArg":true}
+{"ts":"2026-02-24T22:30:30.514Z","event":"screenshot","name":"step-00-sign-in-loaded","file":"C:\\P4NTH30N\\STR4TEG15T\\tools\\workspace\\tools\\substack-scraper\\ui-step-00-sign-in-loaded.png"}
+{"ts":"2026-02-24T22:30:30.650Z","event":"email_entered"}
+{"ts":"2026-02-24T22:30:30.823Z","event":"email_submitted"}
+{"ts":"2026-02-24T22:30:33.440Z","event":"screenshot","name":"step-01-after-email-submit","file":"C:\\P4NTH30N\\STR4TEG15T\\tools\\workspace\\tools\\substack-scraper\\ui-step-01-after-email-submit.png"}
+{"ts":"2026-02-24T22:30:33.444Z","event":"stage1_detected","stage1":"otp-input-visible"}
+{"ts":"2026-02-24T22:30:33.537Z","event":"screenshot","name":"step-02-stage1-otp-input-visible","file":"C:\\P4NTH30N\\STR4TEG15T\\tools\\workspace\\tools\\substack-scraper\\ui-step-02-stage1-otp-input-visible.png"}
+{"ts":"2026-02-24T22:30:33.680Z","event":"otp_entered","digits":6}

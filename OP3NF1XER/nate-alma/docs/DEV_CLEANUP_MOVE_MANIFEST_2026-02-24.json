@@ -1,0 +1,85 @@
+{
+  "timestamp": "2026-02-25T06:35:22.868461Z",
+  "sourceRoot": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev",
+  "targetRoot": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\deploy\\_from-dev-cleanup-2026-02-24",
+  "movedCount": 19,
+  "moves": [
+    {
+      "from": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\.backups",
+      "to": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\deploy\\_from-dev-cleanup-2026-02-24\\.backups"
+    },
+    {
+      "from": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\.clawhub",
+      "to": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\deploy\\_from-dev-cleanup-2026-02-24\\.clawhub"
+    },
+    {
+      "from": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\.github",
+      "to": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\deploy\\_from-dev-cleanup-2026-02-24\\.github"
+    },
+    {
+      "from": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\.gitignore",
+      "to": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\deploy\\_from-dev-cleanup-2026-02-24\\.gitignore"
+    },
+    {
+      "from": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\.openclaw",
+      "to": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\deploy\\_from-dev-cleanup-2026-02-24\\.openclaw"
+    },
+    {
+      "from": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\_overlay_payload",
+      "to": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\deploy\\_from-dev-cleanup-2026-02-24\\_overlay_payload"
+    },
+    {
+      "from": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\assets",
+      "to": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\deploy\\_from-dev-cleanup-2026-02-24\\assets"
+    },
+    {
+      "from": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\CONTRIBUTING.md",
+      "to": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\deploy\\_from-dev-cleanup-2026-02-24\\CONTRIBUTING.md"
+    },
+    {
+      "from": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\cookie.txt",
+      "to": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\deploy\\_from-dev-cleanup-2026-02-24\\cookie.txt"
+    },
+    {
+      "from": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\Dockerfile",
+      "to": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\deploy\\_from-dev-cleanup-2026-02-24\\Dockerfile"
+    },
+    {
+      "from": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\LICENSE",
+      "to": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\deploy\\_from-dev-cleanup-2026-02-24\\LICENSE"
+    },
+    {
+      "from": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\package-lock.json",
+      "to": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\deploy\\_from-dev-cleanup-2026-02-24\\package-lock.json"
+    },
+    {
+      "from": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\package.json",
+      "to": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\deploy\\_from-dev-cleanup-2026-02-24\\package.json"
+    },
+    {
+      "from": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\railway.toml",
+      "to": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\deploy\\_from-dev-cleanup-2026-02-24\\railway.toml"
+    },
+    {
+      "from": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\README.md",
+      "to": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\deploy\\_from-dev-cleanup-2026-02-24\\README.md"
+    },
+    {
+      "from": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\scripts",
+      "to": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\deploy\\_from-dev-cleanup-2026-02-24\\scripts"
+    },
+    {
+      "from": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\src",
+      "to": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\deploy\\_from-dev-cleanup-2026-02-24\\src"
+    },
+    {
+      "from": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\test",
+      "to": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\deploy\\_from-dev-cleanup-2026-02-24\\test"
+    },
+    {
+      "from": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\dev\\workspace-merged",
+      "to": "C:\\P4NTH30N\\OP3NF1XER\\nate-alma\\deploy\\_from-dev-cleanup-2026-02-24\\workspace-merged"
+    }
+  ],
+  "skipped": []
+}

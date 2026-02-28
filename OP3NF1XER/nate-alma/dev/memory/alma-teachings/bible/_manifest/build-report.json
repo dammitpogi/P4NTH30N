@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "1.0.0",
+  "buildId": "index-v4-initial-20260226",
+  "generatedAt": "2026-02-26T19:30:00Z",
+  "decisionId": "DECISION_163",
+  "overall": {
+    "status": "success",
+    "totalShards": 3,
+    "totalRecords": 340,
+    "invalidLineCount": 0,
+    "ignoredTailLine": false
+  },
+  "perShard": [
+    {
+      "relativePath": "corpus/substack/docs.jsonl",
+      "recordCount": 340,
+      "byteSize": 154303,
+      "invalidLineCount": 0,
+      "ignoredTailLine": false,
+      "status": "success"
+    },
+    {
+      "relativePath": "corpus/bible/docs.jsonl",
+      "recordCount": 0,
+      "byteSize": 0,
+      "note": "No bible corpus files",
+      "status": "success"
+    },
+    {
+      "relativePath": "atoms/teachings/2026-02.jsonl",
+      "recordCount": 0,
+      "byteSize": 0,
+      "note": "Placeholder for ALMA append",
+      "status": "success"
+    }
+  ],
+  "migrationParity": {
+    "substackInputFiles": 340,
+    "bibleInputFiles": 0,
+    "totalDocsGenerated": 340,
+    "silentDropCount": 0,
+    "collisionCount": 0,
+    "collisionsResolved": true,
+    "legacyInputs": [
+      "legacy/index-artifacts/weights.json"
+    ]
+  }
+}

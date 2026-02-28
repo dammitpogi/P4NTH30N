@@ -75,7 +75,7 @@ Deploy H4ND agent into a Hyper-V VM (`H4NDv2-Production`) that connects back to 
 
 **Obstacle 4: MongoDB config file location mismatch**
 - Assumed config at `C:\Program Files\MongoDB\Server\8.0\mongod.cfg`
-- Actual service config: `C:\ProgramData\P4NTH30N\mongodb\mongod.cfg` (confirmed via service binary path)
+- Actual service config: `C:\ProgramData\P4NTHE0N\mongodb\mongod.cfg` (confirmed via service binary path)
 - Both files updated to `bindIp: 0.0.0.0` for good measure
 - **Resolution**: Updated correct config, restarted MongoDB service
 
@@ -93,7 +93,7 @@ Deploy H4ND agent into a Hyper-V VM (`H4NDv2-Production`) that connects back to 
 - **Resolution**: Switched to non-single-file publish (`PublishSingleFile=false`), files stay next to exe
 
 **Obstacle 7: Environment variables not inherited in PowerShell Direct**
-- Set `P4NTH30N_MONGODB_URI` via `[Environment]::SetEnvironmentVariable(..., "Machine")`
+- Set `P4NTHE0N_MONGODB_URI` via `[Environment]::SetEnvironmentVariable(..., "Machine")`
 - Value set to `mongodb://192.168.56.1:27017/` (WITHOUT `?directConnection=true`)
 - `MongoConnectionOptions.FromEnvironment()` reads env var FIRST, before file check
 - Env var wins, file override never executes
@@ -126,22 +126,22 @@ Deploy H4ND agent into a Hyper-V VM (`H4NDv2-Production`) that connects back to 
 
 | Artifact | Location | Purpose |
 |----------|----------|---------|
-| VM publish output | `c:\P4NTH30N\publish\h4nd-vm-full\` | Non-single-file self-contained build |
-| VM appsettings | `c:\P4NTH30N\appsettings.vm.json` | CDP HostIp=192.168.56.1 |
-| mongodb.uri (local) | `c:\P4NTH30N\publish\h4nd-vm-full\mongodb.uri` | `mongodb://192.168.56.1:27017/?directConnection=true` |
+| VM publish output | `c:\P4NTHE0N\publish\h4nd-vm-full\` | Non-single-file self-contained build |
+| VM appsettings | `c:\P4NTHE0N\appsettings.vm.json` | CDP HostIp=192.168.56.1 |
+| mongodb.uri (local) | `c:\P4NTHE0N\publish\h4nd-vm-full\mongodb.uri` | `mongodb://192.168.56.1:27017/?directConnection=true` |
 | mongodb.uri (VM) | `C:\H4ND\mongodb.uri` | Same — but overridden by env var |
 | Port proxy | `netsh interface portproxy` on host | `192.168.56.1:9222 → 127.0.0.1:9222` |
-| mongod.cfg | `C:\ProgramData\P4NTH30N\mongodb\mongod.cfg` | `bindIp: 0.0.0.0`, `replSetName: rs0` |
+| mongod.cfg | `C:\ProgramData\P4NTHE0N\mongodb\mongod.cfg` | `bindIp: 0.0.0.0`, `replSetName: rs0` |
 
 ## Temp Scripts (Pending Cleanup)
 
-43 temp scripts in `c:\P4NTH30N\temp_*.ps1` created during iterative debugging. To be cleaned up after verification complete.
+43 temp scripts in `c:\P4NTHE0N\temp_*.ps1` created during iterative debugging. To be cleaned up after verification complete.
 
 ---
 
 ## Next Steps (Pending Oracle Proposals)
 
-1. **DECISION_OPS_004**: Fix MongoDB env var — update Machine-level `P4NTH30N_MONGODB_URI` to include `?directConnection=true`, restart H4ND, verify connection
+1. **DECISION_OPS_004**: Fix MongoDB env var — update Machine-level `P4NTHE0N_MONGODB_URI` to include `?directConnection=true`, restart H4ND, verify connection
 2. **DECISION_OPS_005**: Execute OPS-JP-002 — End-to-End spin verification after MongoDB fix
 3. **DECISION_OPS_006**: Execute OPS-JP-003 — Failure recovery verification (Circuit Breaker + DLQ)
 4. **DECISION_OPS_007**: Cleanup — remove 43 temp scripts, consider reverting MongoConnectionOptions if env var approach is permanent

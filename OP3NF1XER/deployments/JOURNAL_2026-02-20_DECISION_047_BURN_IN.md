@@ -28,7 +28,7 @@ curl -s http://192.168.56.1:9222/json/version
 **Fix Applied**:
 ```bash
 # Updated appsettings.json
-P4NTH30N:H4ND:Cdp:HostIp = "127.0.0.1"
+P4NTHE0N:H4ND:Cdp:HostIp = "127.0.0.1"
 ```
 
 **After Fix**: ✅ PASSED
@@ -39,7 +39,7 @@ P4NTH30N:H4ND:Cdp:HostIp = "127.0.0.1"
 
 ### Step 2: MongoDB Connection
 ```bash
-mongosh mongodb://192.168.56.1:27017/P4NTH30N --eval "db.runCommand({ping: 1})"
+mongosh mongodb://192.168.56.1:27017/P4NTHE0N --eval "db.runCommand({ping: 1})"
 ```
 **Result**: ✅ PASSED
 - Connection: OK
@@ -53,7 +53,7 @@ curl -s http://localhost:5002/health
 
 ### Step 4: Signal Count
 ```bash
-mongosh mongodb://192.168.56.1:27017/P4NTH30N --eval "db.SIGN4L.countDocuments()"
+mongosh mongodb://192.168.56.1:27017/P4NTHE0N --eval "db.SIGN4L.countDocuments()"
 ```
 **Result**: 4 signals initially, 0 unacknowledged at burn-in start
 
@@ -63,7 +63,7 @@ mongosh mongodb://192.168.56.1:27017/P4NTH30N --eval "db.SIGN4L.countDocuments()
 
 ### Launch Command
 ```bash
-cd C:\P4NTH30N\H4ND\bin\Release\net10.0-windows7.0
+cd C:\P4NTHE0N\H4ND\bin\Release\net10.0-windows7.0
 H4ND.exe BURN-IN
 ```
 
@@ -213,13 +213,13 @@ web.orionstars.org → No such host is known
 
 3. **Verify Credential Configuration**:
    ```bash
-   mongosh mongodb://localhost:27017/P4NTH30N --eval "db.CR3D3N7IAL.find({}).limit(5)"
+   mongosh mongodb://localhost:27017/P4NTHE0N --eval "db.CR3D3N7IAL.find({}).limit(5)"
    ```
 
 4. **Populate Test Signals** (if platforms accessible):
    ```bash
    # Insert test signals into SIGN4L collection
-   mongosh mongodb://localhost:27017/P4NTH30N
+   mongosh mongodb://localhost:27017/P4NTHE0N
    ```
 
 ### Before Next Burn-In Attempt

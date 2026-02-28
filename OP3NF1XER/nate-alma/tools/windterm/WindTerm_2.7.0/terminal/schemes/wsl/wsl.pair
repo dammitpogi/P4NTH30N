@@ -1,0 +1,39 @@
+//WindTerm WSL Pair
+//Version: 1.0
+{
+	"masks": [
+		{
+			"name": "quote",
+			"scope": "string.quoted.double.wsl"
+		}
+	],
+	"barriers": [
+		{
+			"name": "prompt",
+			"scope": "sign.directive.prompt.wsl"
+		}
+	],
+	"blocks": [
+		{
+			"name": "brace",
+			"scope": "punctuation.definition.block.wsl",
+			"ignoreString": false,
+			"begin": "{",
+			"end": "}"
+		},
+		{
+			"name": "parentheses",
+			"scope": "punctuation.definition.block.wsl",
+			"ignoreString": false,
+			"begin": "\\(",
+			"end": "\\)"
+		},
+		{
+			"name": "bracket",
+			"scope": "punctuation.definition.block.wsl",
+			"ignoreString": false,
+			"begin": "\\[",
+			"end": "\\]"
+		}
+	]
+}

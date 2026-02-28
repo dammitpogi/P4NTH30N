@@ -1,0 +1,27 @@
+# SFTPGo with persistent storage at /work
+FROM drakkan/sftpgo:latest
+
+# Create work directory for persistent storage
+RUN mkdir -p /work/sftpgo/data /work/sftpgo/config /work/sftpgo/backups && \
+    chown -R sftpgo:sftpgo /work
+
+# Set environment variables to use /work for data
+ENV SFTPGO_DATA_PROVIDER__DRIVER=sqlite
+ENV SFTPGO_DATA_PROVIDER__NAME=/work/sftpgo/config/sftpgo.db
+ENV SFTPGO_HTTPD__BINDINGS__0__PORT=8080
+ENV SFTPGO_HTTPD__BINDINGS__0__ENABLE_WEB_ADMIN=true
+ENV SFTPGO_HTTPD__BINDINGS__0__ENABLE_WEB_CLIENT=true
+ENV SFTPGO_SFTPD__BINDINGS__0__PORT=2022
+ENV SFTPGO_DEFAULT_ADMIN_USERNAME=admin
+ENV SFTPGO_DEFAULT_ADMIN_PASSWORD=alma-admin-2026
+
+# Expose ports
+EXPOSE 8080 2022
+
+# Volume for persistent storage
+VOLUME ["/work"]
+
+# Run as sftpgo user
+USER sftpgo
+
+ENTRYPOINT ["/usr/local/bin/sftpgo"]

@@ -1,0 +1,2 @@
+import:
+  - sysmon/macos/sysmon.applet

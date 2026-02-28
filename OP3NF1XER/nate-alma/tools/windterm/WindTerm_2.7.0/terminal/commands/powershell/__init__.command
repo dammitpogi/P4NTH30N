@@ -1,0 +1,4 @@
+allowCompactedShortOptions:
+  false
+optionSpecifiers:
+  - '-'

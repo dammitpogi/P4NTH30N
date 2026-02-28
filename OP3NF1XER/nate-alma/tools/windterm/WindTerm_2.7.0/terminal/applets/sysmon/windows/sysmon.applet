@@ -1,0 +1,162 @@
+name: sysmon
+author: WindTerm
+version: 1.0
+uuid: ff1ca756-1d38-11ed-be48-f018981233ea
+type: button
+init: |-
+  (button) => {
+    let view;
+    let timerId = '';
+    let watching = true;
+    let uuid = 'ff1ca756-1d38-11ed-be48-f018981233ea';
+    let properties = application.properties(uuid);
+    let topCommand = properties.dirName + '/wintop.exe';
+
+    function percentColor(percent) {
+      if (percent >= 0.8) {
+        return "#FF0000";
+      } else if (percent >= 0.6) {
+        return "#CD7B00";
+      }
+      return "#009B00";
+    }
+
+    function cpuInfo(output) {
+      let pattern = /Cpu: (\d+.\d+)%/;
+      let matched = pattern.exec(output);
+      let text = '🅲 -';
+      let tooltip = '';
+
+      if (matched) {
+        let load = parseFloat(matched[1]);
+
+        function colorTd(value) {
+          let percent = value / 100;
+          return `<td colspan=3><font color=${percentColor(percent)}>${value}%</font></td>`;
+        }
+        text = `<font color=${percentColor(load / 100)}>🅲 ${load.toFixed(1)}%</font>`;
+        tooltip += `<tr><td>Cpu</td>${colorTd(load)}</tr>`;
+      }
+      return [text, tooltip];
+    }
+
+    function memoryInfo(physical, output) {
+      let pattern = physical ? /Physical Memory.*?(\d+) total,\s+(\d+) free,\s+(\d+) used/ : /Virtual Memory.*?(\d+) total,\s+(\d+) free,\s+(\d+) used/;
+      let matched = pattern.exec(output);
+      let text = `${physical ? '🅼' : '🆂'} -`;
+      let tooltip = '';
+
+      if (matched) {
+        let total = (matched[1] / 1024 / 1024 / 1024).toFixed(2);
+        let free = (matched[2] / 1024 / 1024 / 1024).toFixed(2);
+        let used = (matched[3] / 1024 / 1024 / 1024).toFixed(2);
+
+        function colorTd(bytes, reverseColor = false) {
+          let percent = bytes / total;
+          return `<td align=center><font color=${percentColor(reverseColor ? (1 - percent) : percent)}>${bytes} GiB (${(percent  * 100).toFixed(2)}%)</font></td>`;
+        }
+
+        function ratioTd(bytes) {
+          return `<td align=center>${bytes} GiB (${(bytes * 100 / total).toFixed(2)}%)</td>`;
+        }
+        text = `<font color=${percentColor(used / total)}>${physical ? '🅼' : '🆂'} ${used}/${total} GiB</font>`;
+        tooltip += `<tr><td rowspan=2 valign=middle>${physical ? 'Physical Memory' : 'Virtual Memory'}</td><td align=center>Total</td><td align=center>Free</td><td align=center>Used</td></tr>`;
+        tooltip += `<tr><td align=center>${total} GiB</td>${colorTd(free, true)}${colorTd(used)}</tr>`;
+      }
+      return [text, tooltip];
+    }
+
+    function uptimeInfo(output) {
+      let pattern = /Up: (.*)/;
+      let matched = pattern.exec(output);
+      let text = '-';
+      let tooltip = '';
+
+      if (matched) {
+        let date = new Date();
+        let hours = date.getHours().toString().padStart(2, '0');
+        let minutes = date.getMinutes().toString().padStart(2, '0');
+        let seconds = date.getSeconds().toString().padStart(2, '0');
+        let timeWithSeconds = `${hours}:${minutes}:${seconds}`;
+        let time = `${hours}:${minutes}`;
+        let uptime = matched[1];
+
+        text = time;
+        tooltip = `<tr><td>Time</td><td colspan=3>${timeWithSeconds}</td></tr>`
+                + `<tr><td>Uptime</td><td colspan=3>${uptime}</td></tr>`;
+      }
+      return [`🆃 ${text}`, tooltip];
+    }
+
+    function enableButton() {
+      button.enabled = true;
+      button.setChecked(watching);
+    }
+
+    function showButton(command, output) {
+      if (command == topCommand) {
+        let tableOpenTag = '<html><head><style>table, tr, td { border: 1px solid gray; border-collapse: collapse; white-space: nowrap; }</style></head><body><table style="white-space:pre" border="1" cellspacing="0" cellpadding="5">';
+        let tableCloseTag = '</table></body></html>';
+
+        const [cpuText, cpuTooltip] = cpuInfo(output);
+        const [physicalMemoryText, physicalMemoryTooltip] = memoryInfo(true, output);
+        const [virtualMemoryText, virtualMemoryTooltip] = memoryInfo(false, output);
+        const [uptimeText, uptimeTooltip] = uptimeInfo(output);
+        let tooltip = `${uptimeTooltip} ${cpuTooltip} ${physicalMemoryTooltip} ${virtualMemoryTooltip}`.trim()
+
+        if (tooltip == '') {
+          window.clearTimer(timerId);
+          tooltip = '<font color=red style=white-space:nowrap>' + qsTr('Sysmon is not available.') + '</font>';
+        } else {
+          tooltip = `${tableOpenTag}${tooltip}${tableCloseTag}`
+        }
+        button.text = `${uptimeText} ${cpuText} ${physicalMemoryText}`;
+        button.toolTip = tooltip;
+        button.visible = true;
+      }
+    }
+
+    function watch(checked) {
+      watching = checked;
+
+      if (checked) {
+        if (view && view.isConnected()) {
+          view.executeCommand(topCommand);
+
+          timerId = window.setInterval(button, () => {
+              if (view) view.executeCommand(topCommand);
+          }, 10000);
+        }
+      } else {
+        window.clearTimer(timerId);
+
+        if (window.isObjectValid(button)) {
+          button.text = 'Sysmon';
+          button.toolTip = qsTr('Click to start sysmon');
+        }
+      }
+    }
+
+    if (view = terminal.view()) {
+      view.commandOutput.connect(showButton);
+      view.ready.connect(enableButton);
+      view.disconnected.connect(() => {
+        if (window.isObjectValid(button)) {
+          button.setChecked(false);
+          button.enabled = false;
+          button.toggled.disconnect(watch);
+        } else {
+          watch(false);
+        }
+        view.commandOutput.disconnect(showButton);
+        view.ready.disconnect(enableButton);
+      });
+      button.toggled.connect(watch);
+      button.enabled = view.isConnected();
+      button.elideMode = King.ElideRight;
+      button.checkable = true;
+      button.checked = false;
+      button.text = 'Sysmon';
+      button.toolTip = qsTr('Click to start sysmon');
+    }
+  }

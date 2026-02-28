@@ -1,0 +1,2 @@
+import:
+  - sysmon/linux/sysmon.applet

@@ -1,0 +1,39 @@
+//WindTerm Dumb Pair
+//Version: 1.0
+{
+	"masks": [
+		{
+			"name": "quote",
+			"scope": "string.quoted.double.dumb"
+		}
+	],
+	"barriers": [
+		{
+			"name": "prompt",
+			"scope": "sign.directive.prompt.dumb"
+		}
+	],
+	"blocks": [
+		{
+			"name": "brace",
+			"scope": "punctuation.definition.block.dumb",
+			"ignoreString": false,
+			"begin": "{",
+			"end": "}"
+		},
+		{
+			"name": "parentheses",
+			"scope": "punctuation.definition.block.dumb",
+			"ignoreString": false,
+			"begin": "\\(",
+			"end": "\\)"
+		},
+		{
+			"name": "bracket",
+			"scope": "punctuation.definition.block.dumb",
+			"ignoreString": false,
+			"begin": "\\[",
+			"end": "\\]"
+		}
+	]
+}

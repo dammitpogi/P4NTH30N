@@ -152,7 +152,7 @@ Backup: servers-2026-02-21T00-21-54-578Z.json
 
 The gateway now loads external configuration on startup:
 
-1. Registers built-in P4NTH30N servers (5 servers)
+1. Registers built-in P4NTHE0N servers (5 servers)
 2. Loads external ToolHive Desktop configuration (15 servers)
 3. Runs legacy discovery scan
 4. Starts health monitoring

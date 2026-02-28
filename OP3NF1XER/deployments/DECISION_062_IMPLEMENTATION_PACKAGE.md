@@ -716,7 +716,7 @@ After updating each agent prompt:
 
 ## DECISION_061 Update
 
-**File**: `c:\P4NTH30N\STR4TEG15T\decisions\active\DECISION_061.md`
+**File**: `c:\P4NTHE0N\STR4TEG15T\decisions\active\DECISION_061.md`
 
 **Add to completion criteria** (around line 20):
 

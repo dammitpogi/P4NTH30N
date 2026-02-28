@@ -10,7 +10,7 @@ The `rag_rebuild_index` tool's `sources` parameter was defined as an array type 
 ## Fix Applied
 
 ### File Modified
-**Path**: `c:\P4NTH30N\src\RAG.McpHost\StdioMcpTransport.cs` (line 98)
+**Path**: `c:\P4NTHE0N\src\RAG.McpHost\StdioMcpTransport.cs` (line 98)
 
 **Before**:
 ```csharp
@@ -25,14 +25,14 @@ The `rag_rebuild_index` tool's `sources` parameter was defined as an array type 
 ### Build & Deploy
 1. **Built the project**:
    ```bash
-   cd /c/P4NTH30N/src/RAG.McpHost
+   cd /c/P4NTHE0N/src/RAG.McpHost
    dotnet build -c Release
    ```
 
 2. **Copied dependencies**: The RAG.McpHost.exe requires its DLL dependencies to run. Copied all DLLs from the build output to the ProgramData directory:
    ```bash
-   cp /c/P4NTH30N/src/RAG.McpHost/bin/Release/net10.0-windows7.0/win-x64/*.dll /c/ProgramData/P4NTH30N/bin/
-   cp /c/P4NTH30N/src/RAG.McpHost/bin/Release/net10.0-windows7.0/win-x64/RAG.McpHost.exe /c/ProgramData/P4NTH30N/bin/
+   cp /c/P4NTHE0N/src/RAG.McpHost/bin/Release/net10.0-windows7.0/win-x64/*.dll /c/ProgramData/P4NTHE0N/bin/
+   cp /c/P4NTHE0N/src/RAG.McpHost/bin/Release/net10.0-windows7.0/win-x64/RAG.McpHost.exe /c/ProgramData/P4NTHE0N/bin/
    ```
 
 3. **Verified the fix**: The RAG server now starts successfully and reports:

@@ -1,15 +1,15 @@
 {
-  "name": "P4NTH30N Universal Configuration",
+  "name": "P4NTHE0N Universal Configuration",
   "version": "1.0.0",
-  "description": "Source of truth for all P4NTH30N configurations",
+  "description": "Source of truth for all P4NTHE0N configurations",
   "lastUpdated": "2026-02-22",
   "environments": {
     "development": {
-      "configPath": "C:\\P4NTH30N\\.config",
+      "configPath": "C:\\P4NTHE0N\\.config",
       "deployTarget": "~/.config/opencode/"
     },
     "production": {
-      "configPath": "C:\\P4NTH30N\\.config",
+      "configPath": "C:\\P4NTHE0N\\.config",
       "deployTarget": "~/.config/opencode/"
     }
   },

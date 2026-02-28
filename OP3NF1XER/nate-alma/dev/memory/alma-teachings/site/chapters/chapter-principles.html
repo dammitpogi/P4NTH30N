@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>II. Trading Principles - Doctrine Bible</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/alma-chat.css">
+</head>
+<body data-chapter="principles" data-lesson-id="principles-overview">
+
+  <header class="header">
+    <div class="header-brand">
+      <div class="header-logo">DB</div>
+      <div>
+        <div class="header-title">Doctrine Bible</div>
+        <div class="header-subtitle">Trading Curriculum</div>
+      </div>
+    </div>
+    <nav class="header-nav">
+      <div class="header-search">
+        <span class="header-search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Search topics... (Ctrl+K)">
+        <div class="search-results" id="search-results"></div>
+      </div>
+      <a href="../index.html" class="nav-btn">📚 Home</a>
+      <button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+    </nav>
+  </header>
+
+  <div class="app-container">
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-title">Course Progress</div>
+        <div class="sidebar-subtitle">7 Chapters</div>
+        <div class="sidebar-progress">
+          <div class="progress-label">
+            <span>Overall Progress</span>
+            <span id="progress-percent">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+      
+      <nav class="nav-tree">
+        <div class="nav-section " data-section="foundations">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">📖</span>
+            <span class="nav-section-title">I. Foundations</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-foundations.html" class="nav-lesson " data-lesson="foundations-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section expanded" data-section="principles">
+          <div class="nav-section-header active">
+            <span class="nav-section-icon">⚖️</span>
+            <span class="nav-section-title">II. Trading Principles</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-principles.html" class="nav-lesson active" data-lesson="principles-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="mechanics">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">⚙️</span>
+            <span class="nav-section-title">III. Market Mechanics</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-mechanics.html" class="nav-lesson " data-lesson="mechanics-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="macro">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">🌍</span>
+            <span class="nav-section-title">IV. Macro Analysis</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-macro.html" class="nav-lesson " data-lesson="macro-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="technical">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">📊</span>
+            <span class="nav-section-title">V. Technical Analysis</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-technical.html" class="nav-lesson " data-lesson="technical-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="assets">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">💎</span>
+            <span class="nav-section-title">VI. Asset Classes</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-assets.html" class="nav-lesson " data-lesson="assets-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+        <div class="nav-section " data-section="archive">
+          <div class="nav-section-header ">
+            <span class="nav-section-icon">📚</span>
+            <span class="nav-section-title">VII. Analysis Archive</span>
+            <span class="nav-section-toggle">▶</span>
+          </div>
+          <div class="nav-section-content">
+            <a href="./chapter-archive.html" class="nav-lesson " data-lesson="archive-overview">
+              <span class="nav-lesson-number">Overview</span>
+              <span class="nav-lesson-title">Chapter Introduction</span>
+              <span class="nav-lesson-status"></span>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="content-wrapper">
+        <div class="breadcrumbs">
+          <a href="../index.html">Home</a>
+          <span class="breadcrumbs-separator">→</span>
+          <span class="breadcrumbs-current">II. Trading Principles</span>
+        </div>
+
+        <div class="page-header">
+          <div class="page-category">⚖️ Chapter Overview</div>
+          <h1 class="page-title">II. Trading Principles</h1>
+          <p class="page-subtitle">Risk management, position sizing, and trading psychology</p>
+          <div class="page-meta">
+            <div class="page-meta-item">🏷️ Key Themes: 12</div>
+          </div>
+        </div>
+
+        <div class="content-body">
+          <h2>Chapter Guide</h2>
+          <p>This chapter guide is written to teach the concepts from basics.</p>
+
+          <div class="chapter-guide">
+            <h2>Core Concepts</h2>
+
+<h3>Trading is decision-making under uncertainty</h3>
+<p>
+  Your goal is not to “be right.” Your goal is to repeatedly make decisions where the expected
+  outcome is positive after costs, and where the losing path is survivable.
+</p>
+
+<h3>Analysis method: positioning + price action</h3>
+<p>
+  A practical synthesis: positioning/volatility structure helps define the probability distribution
+  and key zones, while realized price action decides timing and whether the market is accepting or
+  rejecting those zones.
+</p>
+
+<h3>Technical analysis vs. positioning analysis (a false debate)</h3>
+<p>
+  The corpus treats this debate as unnecessary: technical analysis guesses liquidity zones and
+  probabilities from historical data, while positioning analysis increases confidence by explaining
+  the meaning behind levels and the current market environment. Micro-cycles are driven by the
+  volatility market; realized patterns still dictate timing.
+</p>
+
+<h3>Position sizing is the real strategy</h3>
+<p>
+  Two traders can take the same entry and have opposite outcomes depending on sizing and exits.
+  The Kelly criterion is a way to connect edge and payout to an “optimal” growth fraction.
+  Most humans should use a fraction of Kelly to reduce drawdown risk.
+</p>
+
+<h3>Expected value beats “being right”</h3>
+<p>
+  One explicit warning in the corpus: most traders fail not because their directional accuracy is
+  low, but because they lack a consistent strategy and discipline, and they size poorly. A good
+  decision can lose; a bad decision can win. The goal is positive expected value after costs.
+</p>
+
+<h3>Fair bet (why “neutral” doesn’t mean “safe”)</h3>
+<p>
+  The “fair bet” idea is introduced as: when expected value over many bets is exactly zero, neither
+  side has an edge. In trading, you still pay costs and you still face variance. So “fair” is not a
+  comfort blanket; it’s the baseline you must beat.
+</p>
+
+<h3>Furus vs. analysts (how people get trapped)</h3>
+<p>
+  A practical teaching in the corpus: novices prefer gurus because they give simple, actionable
+  statements. Analysts often explain dynamics without a single “do this now” call. The trap is
+  outsourcing thinking (copy-trading) instead of owning a process and validating claims.
+</p>
+
+<h2>How To Apply</h2>
+
+<h3>A risk-first template for any trade</h3>
+<ol>
+  <li><strong>Hypothesis:</strong> What must be true for this trade to work?</li>
+  <li><strong>Invalidation:</strong> Where is it clearly wrong?</li>
+  <li><strong>Risk:</strong> How much do you lose if invalidated?</li>
+  <li><strong>Reward:</strong> What is a realistic target (not the dream target)?</li>
+  <li><strong>Size:</strong> Choose size so loss is acceptable and repeatable.</li>
+</ol>
+
+<h3>Two “anti-ruin” rules</h3>
+<ul>
+  <li><strong>Never add risk to repair ego.</strong> If you want to “win it back,” your size is already too large.</li>
+  <li><strong>Stop trading when the process breaks.</strong> A losing streak is information; enforce a stop rule.</li>
+</ul>
+
+<h3>Why “working people” need a different approach</h3>
+<p>
+  If you have limited screen time, you can’t fight professionals on speed. You win by selecting
+  fewer, higher-quality decisions, sizing safely, and avoiding emotional overtrading.
+</p>
+
+<h2>Common Mistakes</h2>
+<ul>
+  <li>Changing your rules after a loss (reinforcing bad behavior).</li>
+  <li>Overtrading to “win it back.”</li>
+  <li>Confusing a good outcome with a good decision.</li>
+  <li>Taking small wins and large losses (negative expectancy disguised as activity).</li>
+  <li>Optimizing for accuracy instead of expectancy (risk/reward + base rates).</li>
+  <li>Copy-trading “furus” without understanding the model, costs, and risk constraints.</li>
+</ul>
+
+<h2>Self-Check</h2>
+<ol>
+  <li>Do you know your maximum loss per trade (in dollars) before you enter?</li>
+  <li>Can you describe Kelly sizing in plain language?</li>
+  <li>Can you explain the difference between technical analysis and positioning analysis?</li>
+  <li>What is your rule for stopping after a losing streak?</li>
+  <li>Can you explain what a “fair bet” is, and why costs make it negative for you?</li>
+</ol>
+
+<h2>Citations (Local Corpus)</h2>
+<div class="citations">
+  <ul>
+    <li><code>bible/unknown-date-my-basic-trading-principles-pt-1-strategies-basic-risk-manag.md</code></li>
+    <li><code>bible/unknown-date-my-trading-principles-pt-2-the-wall-street-casino-and-my-sto.md</code></li>
+    <li><code>bible/unknown-date-odds-fair-bet-and-kelly-criterion-position-sizing.md</code></li>
+    <li><code>bible/2025-01-29-what-s-the-difference-between-a-furu-and-an-analyst-with-boo.md</code></li>
+    <li><code>bible/unknown-date-statistical-arbitrage-mean-reversion-trading.md</code></li>
+    <li><code>bible/unknown-date-modern-market-strategies-mean-reversion.md</code></li>
+  </ul>
+</div>
+
+<h2>Further Reading (Scholarly)</h2>
+<ul>
+  <li><a href="https://doi.org/10.1002/nav.3800030404" target="_blank" rel="noopener">Kelly (1956): A New Interpretation of Information Rate</a></li>
+  <li><a href="https://doi.org/10.1111/j.1540-6261.1992.tb04681.x" target="_blank" rel="noopener">Thorp (1992): The Kelly Criterion in Blackjack, Sports Betting, and the Stock Market</a></li>
+</ul>
+
+<h2>Further Reading (General)</h2>
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Kelly_criterion" target="_blank" rel="noopener">Kelly criterion (overview)</a></li>
+  <li><a href="https://www.investopedia.com/terms/e/expectedvalue.asp" target="_blank" rel="noopener">Expected value (trading expectancy)</a></li>
+  <li><a href="https://www.investopedia.com/terms/r/riskmanagement.asp" target="_blank" rel="noopener">Risk management basics</a></li>
+</ul>
+
+          </div>
+
+        </div>
+
+        <div class="chapter-nav">
+          <a href="./chapter-foundations.html" class="chapter-nav-btn prev">
+            <div>
+              <div class="chapter-nav-label">← Previous</div>
+              <div class="chapter-nav-title">I. Foundations</div>
+            </div>
+          </a>
+          
+          <a href="./chapter-mechanics.html" class="chapter-nav-btn next">
+            <div>
+              <div class="chapter-nav-label">Next →</div>
+              <div class="chapter-nav-title">III. Market Mechanics</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/app.js"></script>
+  <script src="../config/alma-config.js"></script>
+  <script src="../js/health-monitor.js"></script>
+  <script src="../js/alma-chat.js"></script>
+  <script src="../js/ask-alma-buttons.js"></script>
+</body>
+</html>

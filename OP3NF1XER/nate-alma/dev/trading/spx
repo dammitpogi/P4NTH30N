@@ -1,0 +1,57 @@
+#!/usr/bin/env python3
+"""Quick SPX↔SPY converter - tell Alma prices to update ratio"""
+import sys, json, os
+
+CACHE = "/data/workspace/trading/.prices"
+
+def load():
+    if os.path.exists(CACHE):
+        with open(CACHE) as f:
+            return json.load(f)
+    return {'spx': 6860, 'spy': 686, 'updated': 'never'}
+
+def save(data):
+    with open(CACHE, 'w') as f:
+        json.dump(data, f)
+
+def show_ratio(data):
+    ratio = data['spx'] / data['spy']
+    print(f"SPX {data['spx']} / SPY {data['spy']} = {ratio:.6f}")
+    print(f"(updated: {data['updated']})")
+    return ratio
+
+if len(sys.argv) < 2:
+    data = load()
+    ratio = show_ratio(data)
+    print(f"\nUsage:")
+    print(f"  spx 6870           → SPY equiv")
+    print(f"  spx 687 spy        → SPX equiv")  
+    print(f"  spx update 6865.50 686.48  → set new prices")
+    sys.exit(0)
+
+data = load()
+
+if sys.argv[1] == "update":
+    if len(sys.argv) < 4:
+        print("Usage: spx update <SPX_price> <SPY_price>")
+        sys.exit(1)
+    data['spx'] = float(sys.argv[2])
+    data['spy'] = float(sys.argv[3])
+    from datetime import datetime
+    data['updated'] = datetime.now().strftime('%Y-%m-%d %H:%M')
+    save(data)
+    print("✓ Updated:")
+    show_ratio(data)
+    sys.exit(0)
+
+ratio = data['spx'] / data['spy']
+price = float(sys.argv[1])
+
+if len(sys.argv) > 2 and sys.argv[2].lower() == "spy":
+    # SPY → SPX
+    result = price * ratio
+    print(f"SPY {price:.2f} → SPX {result:.2f}")
+else:
+    # SPX → SPY
+    result = price / ratio
+    print(f"SPX {price:.2f} → SPY {result:.2f}")

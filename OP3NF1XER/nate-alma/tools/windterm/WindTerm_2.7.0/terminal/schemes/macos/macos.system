@@ -1,0 +1,11 @@
+//WindTerm macOS System
+//Version: 1.0
+{
+	"System": "macos",
+	"Catalog": "macos",
+	"Abbreviation": "macOS",
+	"Description": "macOS",
+	"CaseSensitive": true,
+	"lexer": "source.macos",
+	"supportsDetectShellCwd": true
+}

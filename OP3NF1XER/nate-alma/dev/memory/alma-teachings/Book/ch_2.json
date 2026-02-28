@@ -1,0 +1,114 @@
+{
+  "structure": {
+    "Part_II_Microstructure_and_Dealer_Flows": {
+      "description": "Technical backbone of the framework.",
+      "chapters": [
+        {
+          "title": "Gamma: The Market’s Gravity",
+          "sections": [
+            {
+              "section": "Positive vs Negative gamma",
+              "mission": "Explain how dealer gamma positioning determines whether markets stabilize or amplify price movement.",
+              "tags": ["gamma", "dealer positioning", "positive gamma", "negative gamma", "volatility amplification"]
+            },
+            {
+              "section": "Gamma flip zones",
+              "mission": "Identify structural transition levels where dealer hedging behavior changes sign.",
+              "tags": ["gamma flip", "key levels", "hedging regime", "transition zone", "structural pivot"]
+            },
+            {
+              "section": "Dealer range-bound behavior",
+              "mission": "Demonstrate how positive gamma environments suppress volatility and create mean-reverting price action.",
+              "tags": ["rangebound", "mean reversion", "positive gamma", "vol suppression", "dealer hedging"]
+            },
+            {
+              "section": "Pinning misconceptions",
+              "mission": "Clarify common misunderstandings about option pinning and mechanical support levels.",
+              "tags": ["pinning", "options expiration", "misconception", "mechanical flow", "strike dynamics"]
+            }
+          ]
+        },
+        {
+          "title": "Vanna and Speed Profiles",
+          "sections": [
+            {
+              "section": "Understanding speed",
+              "mission": "Define speed as the second-order sensitivity of gamma and explain its role in convex flow transitions.",
+              "tags": ["speed", "second derivative", "convexity", "gamma dynamics", "flow sensitivity"]
+            },
+            {
+              "section": "JPM collar case study",
+              "mission": "Use the JPM collar structure to illustrate real-world vanna and gamma flow mechanics.",
+              "tags": ["JPM collar", "structured products", "dealer flow", "vanna", "gamma exposure"]
+            },
+            {
+              "section": "Vanna reversal dynamics",
+              "mission": "Explain how volatility shifts alter dealer delta exposure through vanna effects.",
+              "tags": ["vanna", "delta exposure", "volatility shift", "vega dynamics", "hedging flow"]
+            },
+            {
+              "section": "Volatility impact on delta exposure",
+              "mission": "Show how rising or falling implied volatility changes directional hedging pressure.",
+              "tags": ["implied volatility", "delta hedging", "vega", "flow pressure", "convexity"]
+            }
+          ]
+        },
+        {
+          "title": "Charm, Color and Dealer Hedging",
+          "sections": [
+            {
+              "section": "Time decay as flow",
+              "mission": "Explain how theta decay mechanically alters dealer hedging over time.",
+              "tags": ["theta", "time decay", "dealer hedging", "options mechanics", "flow evolution"]
+            },
+            {
+              "section": "End-of-day flow effects",
+              "mission": "Analyze how daily hedging adjustments create predictable closing pressure.",
+              "tags": ["closing flow", "hedging adjustment", "intraday mechanics", "dealer rebalancing"]
+            },
+            {
+              "section": "Intraday mechanical shifts",
+              "mission": "Describe how convex exposure changes intraday and affects price stability.",
+              "tags": ["intraday", "gamma shift", "convexity", "flow instability", "market microstructure"]
+            },
+            {
+              "section": "Charm dominance regimes",
+              "mission": "Identify environments where time decay overrides directional narratives.",
+              "tags": ["charm", "time decay dominance", "mechanical flow", "volatility suppression"]
+            }
+          ]
+        },
+        {
+          "title": "The Intraday Playbook",
+          "sections": [
+            {
+              "section": "Reading daily positioning",
+              "mission": "Teach how to interpret positioning data to forecast short-term structural bias.",
+              "tags": ["positioning", "dealer data", "intraday bias", "flow reading"]
+            },
+            {
+              "section": "Coding pivots",
+              "mission": "Explain how structural pivot levels are derived and used for tactical execution.",
+              "tags": ["pivot levels", "gamma levels", "execution framework", "structural support"]
+            },
+            {
+              "section": "Momentum confirmation",
+              "mission": "Clarify when volatility expansion confirms directional breakout.",
+              "tags": ["momentum", "vol expansion", "breakout", "trend confirmation"]
+            },
+            {
+              "section": "Mean reversion traps",
+              "mission": "Identify conditions where apparent reversals are mechanically unsustainable.",
+              "tags": ["mean reversion", "trap", "false reversal", "flow mismatch"]
+            },
+            {
+              "section": "Do not marry a side",
+              "mission": "Instill probabilistic discipline and flexibility in directional bias.",
+              "tags": ["probability", "discipline", "bias control", "risk management"]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
