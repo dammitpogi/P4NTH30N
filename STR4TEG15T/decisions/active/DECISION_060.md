@@ -11,7 +11,7 @@
 
 ## Executive Summary
 
-Upon successful 24-hour burn-in completion, P4NTH30N transitions from infrastructure/validation phase to operational phase. This decision defines the production deployment checklist, operational procedures, and ongoing monitoring requirements for live jackpot automation.
+Upon successful 24-hour burn-in completion, P4NTHE0N transitions from infrastructure/validation phase to operational phase. This decision defines the production deployment checklist, operational procedures, and ongoing monitoring requirements for live jackpot automation.
 
 **Current State:**
 - Infrastructure complete (DECISION_047, 055, 056)
@@ -65,7 +65,7 @@ Upon successful 24-hour burn-in completion, P4NTH30N transitions from infrastruc
 
 ### Mode 1: Continuous Processing (Default)
 ```bash
-P4NTH30N.exe parallel --continuous
+P4NTHE0N.exe parallel --continuous
 ```
 - Runs indefinitely until manually stopped
 - Auto-generates signals when SIGN4L < 10
@@ -74,7 +74,7 @@ P4NTH30N.exe parallel --continuous
 
 ### Mode 2: Scheduled Batch
 ```bash
-P4NTH30N.exe parallel --schedule "0 */6 * * *"
+P4NTHE0N.exe parallel --schedule "0 */6 * * *"
 ```
 - Runs for 1 hour every 6 hours
 - Processes accumulated signals
@@ -82,7 +82,7 @@ P4NTH30N.exe parallel --schedule "0 */6 * * *"
 
 ### Mode 3: Event-Driven
 ```bash
-P4NTH30N.exe parallel --trigger-jackpot-threshold 1000
+P4NTHE0N.exe parallel --trigger-jackpot-threshold 1000
 ```
 - Monitors jackpot values continuously
 - Only spins when jackpot > threshold

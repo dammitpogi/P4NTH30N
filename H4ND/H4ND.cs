@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Configuration;
-using P4NTH30N.H4ND.Composition;
+using P4NTHE0N.H4ND.Composition;
 
-namespace P4NTH30N;
+namespace P4NTHE0N;
 
 internal static class Program
 {

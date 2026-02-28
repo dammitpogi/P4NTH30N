@@ -1,4 +1,4 @@
-# P4NTH30N Operational Runbook
+# P4NTHE0N Operational Runbook
 
 **Decision**: OPS-060  
 **Last Updated**: 2026-02-21  
@@ -81,7 +81,7 @@ H4ND.exe parallel --trigger-jackpot-threshold 1000
 
 1. Review alert logs in `logs/burnin-alerts-*.log`
 2. Check worker stats in dashboard JSON
-3. Adjust worker count in `appsettings.json` → `P4NTH30N:H4ND:Parallel:WorkerCount`
+3. Adjust worker count in `appsettings.json` → `P4NTHE0N:H4ND:Parallel:WorkerCount`
 4. Restart: `H4ND.exe BURN-IN` or `H4ND.exe PARALLEL`
 
 ---
@@ -124,9 +124,9 @@ H4ND.exe parallel --trigger-jackpot-threshold 1000
 # Stop all H4ND processes
 Get-Process H4ND -ErrorAction SilentlyContinue | Stop-Process -Force
 # Unlock all credentials
-mongosh P4NTH30N --eval "db.CRED3N7IAL.updateMany({Unlocked: false}, {\$set: {Unlocked: true}})"
+mongosh P4NTHE0N --eval "db.CRED3N7IAL.updateMany({Unlocked: false}, {\$set: {Unlocked: true}})"
 # Release all signal claims
-mongosh P4NTH30N --eval "db.SIGN4L.updateMany({ClaimedBy: {\$ne: null}, Acknowledged: false}, {\$set: {ClaimedBy: null, ClaimedAt: null}})"
+mongosh P4NTHE0N --eval "db.SIGN4L.updateMany({ClaimedBy: {\$ne: null}, Acknowledged: false}, {\$set: {ClaimedBy: null, ClaimedAt: null}})"
 ```
 
 ### Chrome Recovery

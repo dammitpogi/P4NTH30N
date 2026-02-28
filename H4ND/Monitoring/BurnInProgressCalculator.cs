@@ -1,6 +1,6 @@
-using P4NTH30N.H4ND.Parallel;
+using P4NTHE0N.H4ND.Parallel;
 
-namespace P4NTH30N.H4ND.Monitoring;
+namespace P4NTHE0N.H4ND.Monitoring;
 
 /// <summary>
 /// MON-057-006: Calculates burn-in progress percentage, ETA, and throughput.

@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace P4NTH30N.H4ND.Monitoring;
+namespace P4NTHE0N.H4ND.Monitoring;
 
 /// <summary>
 /// AUTO-059: Updates decision file statuses and moves them between directories.

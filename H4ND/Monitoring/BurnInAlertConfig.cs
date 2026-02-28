@@ -1,8 +1,8 @@
-namespace P4NTH30N.H4ND.Monitoring;
+namespace P4NTHE0N.H4ND.Monitoring;
 
 /// <summary>
 /// MON-058: Configurable alert thresholds for burn-in monitoring.
-/// Bound from appsettings.json P4NTH30N:H4ND:BurnInAlerts section.
+/// Bound from appsettings.json P4NTHE0N:H4ND:BurnInAlerts section.
 /// </summary>
 public sealed class BurnInAlertConfig
 {

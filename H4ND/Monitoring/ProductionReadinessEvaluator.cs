@@ -1,6 +1,6 @@
-using P4NTH30N.H4ND.Parallel;
+using P4NTHE0N.H4ND.Parallel;
 
-namespace P4NTH30N.H4ND.Monitoring;
+namespace P4NTHE0N.H4ND.Monitoring;
 
 /// <summary>
 /// Phase 8: Evaluates burn-in/performance readiness and emits go/no-go verdict.

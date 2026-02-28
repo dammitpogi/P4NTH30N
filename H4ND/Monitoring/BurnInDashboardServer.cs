@@ -1,7 +1,7 @@
 using System.Net;
 using System.Text;
 
-namespace P4NTH30N.H4ND.Monitoring;
+namespace P4NTHE0N.H4ND.Monitoring;
 
 /// <summary>
 /// MON-057-002: Lightweight HTTP server for burn-in dashboard.

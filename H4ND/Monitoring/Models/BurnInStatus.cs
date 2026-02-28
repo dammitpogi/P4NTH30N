@@ -1,4 +1,4 @@
-namespace P4NTH30N.H4ND.Monitoring.Models;
+namespace P4NTHE0N.H4ND.Monitoring.Models;
 
 /// <summary>
 /// MON-057: Real-time burn-in status model served via HTTP dashboard.

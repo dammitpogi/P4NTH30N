@@ -1,8 +1,8 @@
 using System.Text.Json;
-using P4NTH30N.H4ND.Parallel;
-using P4NTH30N.H4ND.Services;
+using P4NTHE0N.H4ND.Parallel;
+using P4NTHE0N.H4ND.Services;
 
-namespace P4NTH30N.H4ND.Monitoring;
+namespace P4NTHE0N.H4ND.Monitoring;
 
 /// <summary>
 /// AUTO-059: Analyzes burn-in results against success criteria.

@@ -1,16 +1,17 @@
 using System.Text.Json;
 using Microsoft.Extensions.Configuration;
-using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Infrastructure.Cdp;
-using P4NTH30N.C0MMON.Infrastructure.Persistence;
-using P4NTH30N.H4ND.Infrastructure;
-using P4NTH30N.H4ND.Parallel;
-using P4NTH30N.H4ND.Services;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.C0MMON.Infrastructure.Cdp;
+using P4NTHE0N.C0MMON.Infrastructure.Persistence;
+using P4NTHE0N.H4ND.Composition;
+using P4NTHE0N.H4ND.Infrastructure;
+using P4NTHE0N.H4ND.Parallel;
+using P4NTHE0N.H4ND.Services;
 
-namespace P4NTH30N.H4ND.EntryPoint;
+namespace P4NTHE0N.H4ND.EntryPoint;
 
 /// <summary>
-/// ARCH-055: Unified entry point routing to all P4NTH30N execution modes.
+/// ARCH-055: Unified entry point routing to all P4NTHE0N execution modes.
 /// Single executable routes to sequential/parallel/h0und/firstspin/generate-signals/health/burn-in modes.
 /// </summary>
 public static class UnifiedEntryPoint
@@ -39,7 +40,7 @@ public static class UnifiedEntryPoint
 
 	/// <summary>
 	/// ARCH-055-002: Executes signal generation from CLI arguments.
-	/// Usage: P4NTH30N.exe generate-signals [count] [--game X] [--house Y] [--priority N]
+	/// Usage: P4NTHE0N.exe generate-signals [count] [--game X] [--house Y] [--priority N]
 	/// </summary>
 	public static void RunGenerateSignals(IUnitOfWork uow, string[] args)
 	{
@@ -77,7 +78,7 @@ public static class UnifiedEntryPoint
 			(filterHouse != null ? $" house={filterHouse}" : "") +
 			(fixedPriority.HasValue ? $" priority={fixedPriority}" : " (auto distribution)"));
 
-		SignalGenerator generator = new(uow);
+		SignalGenerator generator = new(uow, ServiceCollectionExtensions.CurrentErrorEvidence);
 		SignalGenerationResult result = generator.Generate(count, filterGame, filterHouse, fixedPriority);
 
 		Console.WriteLine($"\n{result}");
@@ -98,9 +99,9 @@ public static class UnifiedEntryPoint
 		Console.WriteLine("[UnifiedEntryPoint] HEALTH mode — collecting system status...\n");
 
 		SessionRenewalConfig renewalConfig = new();
-		config.GetSection("P4NTH30N:H4ND:SessionRenewal").Bind(renewalConfig);
+		config.GetSection("P4NTHE0N:H4ND:SessionRenewal").Bind(renewalConfig);
 
-		SessionRenewalService renewalService = new(uow, renewalConfig);
+		SessionRenewalService renewalService = new(uow, renewalConfig, ServiceCollectionExtensions.CurrentErrorEvidence);
 
 		SystemHealthReport healthReport = new(uow, cdpConfig, renewalService);
 		var report = healthReport.CollectAsync().GetAwaiter().GetResult();
@@ -117,22 +118,22 @@ public static class UnifiedEntryPoint
 		Console.WriteLine("[UnifiedEntryPoint] BURN-IN mode — starting automated validation...\n");
 
 		BurnInConfig burnInConfig = new();
-		config.GetSection("P4NTH30N:H4ND:BurnIn").Bind(burnInConfig);
+		config.GetSection("P4NTHE0N:H4ND:BurnIn").Bind(burnInConfig);
 
 		ParallelConfig parallelConfig = new();
-		config.GetSection("P4NTH30N:H4ND:Parallel").Bind(parallelConfig);
+		config.GetSection("P4NTHE0N:H4ND:Parallel").Bind(parallelConfig);
 
 		SessionRenewalConfig renewalConfig = new();
-		config.GetSection("P4NTH30N:H4ND:SessionRenewal").Bind(renewalConfig);
+		config.GetSection("P4NTHE0N:H4ND:SessionRenewal").Bind(renewalConfig);
 
-		SessionRenewalService renewalService = new(uow, renewalConfig);
+		SessionRenewalService renewalService = new(uow, renewalConfig, ServiceCollectionExtensions.CurrentErrorEvidence);
 
 		GameSelectorConfig selectorConfig = new();
-		config.GetSection("P4NTH30N:H4ND:GameSelectors").Bind(selectorConfig);
+		config.GetSection("P4NTHE0N:H4ND:GameSelectors").Bind(selectorConfig);
 
 		// AUTO-056: Chrome CDP lifecycle management — auto-start + graceful shutdown
 		CdpLifecycleConfig lifecycleConfig = new();
-		config.GetSection("P4NTH30N:H4ND:CdpLifecycle").Bind(lifecycleConfig);
+		config.GetSection("P4NTHE0N:H4ND:CdpLifecycle").Bind(lifecycleConfig);
 		using var cdpLifecycle = new CdpLifecycleManager(lifecycleConfig);
 
 		using var cts = new CancellationTokenSource();
@@ -153,7 +154,7 @@ public static class UnifiedEntryPoint
 
 		// MON-058: Alert thresholds configuration
 		Monitoring.BurnInAlertConfig alertConfig = new();
-		config.GetSection("P4NTH30N:H4ND:BurnInAlerts").Bind(alertConfig);
+		config.GetSection("P4NTHE0N:H4ND:BurnInAlerts").Bind(alertConfig);
 
 		BurnInController controller = new(uow, cdpConfig, parallelConfig, burnInConfig, renewalService, selectorConfig, cdpLifecycle, alertConfig);
 
@@ -180,7 +181,7 @@ public static class UnifiedEntryPoint
 		Console.WriteLine("[UnifiedEntryPoint] MONITOR mode — attaching to running burn-in...\n");
 
 		BurnInConfig burnInConfig = new();
-		config.GetSection("P4NTH30N:H4ND:BurnIn").Bind(burnInConfig);
+		config.GetSection("P4NTHE0N:H4ND:BurnIn").Bind(burnInConfig);
 
 		var monitor = new Monitoring.BurnInMonitor(uow, burnInConfig);
 
@@ -214,19 +215,19 @@ public static class UnifiedEntryPoint
 	public static void RunParallel(IUnitOfWork uow, CdpConfig cdpConfig, IConfigurationRoot config)
 	{
 		ParallelConfig parallelConfig = new();
-		config.GetSection("P4NTH30N:H4ND:Parallel").Bind(parallelConfig);
+		config.GetSection("P4NTHE0N:H4ND:Parallel").Bind(parallelConfig);
 
 		SessionRenewalConfig renewalConfig = new();
-		config.GetSection("P4NTH30N:H4ND:SessionRenewal").Bind(renewalConfig);
+		config.GetSection("P4NTHE0N:H4ND:SessionRenewal").Bind(renewalConfig);
 
-		SessionRenewalService renewalService = new(uow, renewalConfig);
+		SessionRenewalService renewalService = new(uow, renewalConfig, ServiceCollectionExtensions.CurrentErrorEvidence);
 
 		GameSelectorConfig selectorConfig = new();
-		config.GetSection("P4NTH30N:H4ND:GameSelectors").Bind(selectorConfig);
+		config.GetSection("P4NTHE0N:H4ND:GameSelectors").Bind(selectorConfig);
 
 		// AUTO-056: Chrome CDP lifecycle management — auto-start + graceful shutdown
 		CdpLifecycleConfig lifecycleConfig = new();
-		config.GetSection("P4NTH30N:H4ND:CdpLifecycle").Bind(lifecycleConfig);
+		config.GetSection("P4NTHE0N:H4ND:CdpLifecycle").Bind(lifecycleConfig);
 		using var cdpLifecycle = new CdpLifecycleManager(lifecycleConfig);
 
 		Console.WriteLine($"[UnifiedEntryPoint] PARALLEL mode — {parallelConfig.WorkerCount} workers, capacity {parallelConfig.ChannelCapacity}");

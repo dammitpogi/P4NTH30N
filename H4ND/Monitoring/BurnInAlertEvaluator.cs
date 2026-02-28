@@ -1,8 +1,8 @@
-using P4NTH30N.C0MMON;
-using P4NTH30N.H4ND.Parallel;
-using P4NTH30N.H4ND.Services;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.H4ND.Parallel;
+using P4NTHE0N.H4ND.Services;
 
-namespace P4NTH30N.H4ND.Monitoring;
+namespace P4NTHE0N.H4ND.Monitoring;
 
 /// <summary>
 /// MON-058: Evaluates burn-in metrics against configurable thresholds.

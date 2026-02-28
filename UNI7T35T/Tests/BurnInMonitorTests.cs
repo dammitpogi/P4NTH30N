@@ -1,10 +1,10 @@
-using P4NTH30N.H4ND.Monitoring;
-using P4NTH30N.H4ND.Monitoring.Models;
-using P4NTH30N.H4ND.Parallel;
-using P4NTH30N.H4ND.Services;
+using P4NTHE0N.H4ND.Monitoring;
+using P4NTHE0N.H4ND.Monitoring.Models;
+using P4NTHE0N.H4ND.Parallel;
+using P4NTHE0N.H4ND.Services;
 using UNI7T35T.Mocks;
 
-namespace P4NTH30N.UNI7T35T.Tests;
+namespace P4NTHE0N.UNI7T35T.Tests;
 
 /// <summary>
 /// Tests for DECISION_057 (Monitoring), DECISION_058 (Alerts),

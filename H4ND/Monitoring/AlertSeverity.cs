@@ -1,4 +1,4 @@
-namespace P4NTH30N.H4ND.Monitoring;
+namespace P4NTHE0N.H4ND.Monitoring;
 
 /// <summary>
 /// MON-058: Three-tier alert severity for burn-in monitoring.

@@ -1,12 +1,12 @@
 using System.Diagnostics;
 using System.Text.Json;
-using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Infrastructure.Cdp;
-using P4NTH30N.H4ND.Infrastructure;
-using P4NTH30N.H4ND.Monitoring;
-using P4NTH30N.H4ND.Parallel;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.C0MMON.Infrastructure.Cdp;
+using P4NTHE0N.H4ND.Infrastructure;
+using P4NTHE0N.H4ND.Monitoring;
+using P4NTHE0N.H4ND.Parallel;
 
-namespace P4NTH30N.H4ND.Services;
+namespace P4NTHE0N.H4ND.Services;
 
 /// <summary>
 /// ARCH-055-006: 24-hour automated burn-in validation orchestrator.

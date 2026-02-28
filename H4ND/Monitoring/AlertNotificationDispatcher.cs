@@ -1,6 +1,6 @@
 using System.Text.Json;
 
-namespace P4NTH30N.H4ND.Monitoring;
+namespace P4NTHE0N.H4ND.Monitoring;
 
 /// <summary>
 /// MON-058: Dispatches burn-in alerts through configured notification channels.
