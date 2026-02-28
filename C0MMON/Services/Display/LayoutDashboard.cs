@@ -4,7 +4,7 @@ using Spectre.Console.Rendering;
 using Color = Spectre.Console.Color;
 using Panel = Spectre.Console.Panel;
 
-namespace P4NTH30N.C0MMON.Services.Display;
+namespace P4NTHE0N.C0MMON.Services.Display;
 
 /// <summary>
 /// Two-column operational dashboard answering key questions:
@@ -156,7 +156,20 @@ public sealed class LayoutDashboard
 
 	public bool HandleInput()
 	{
-		if (!Console.KeyAvailable)
+		if (Console.IsInputRedirected)
+			return false;
+
+		bool keyAvailable;
+		try
+		{
+			keyAvailable = Console.KeyAvailable;
+		}
+		catch (InvalidOperationException)
+		{
+			return false;
+		}
+
+		if (!keyAvailable)
 			return false;
 
 		ConsoleKeyInfo key = Console.ReadKey(true);
@@ -487,7 +500,7 @@ public sealed class LayoutDashboard
 		else
 		{
 			// Calculate dynamic width based on console size
-			int consoleWidth = Console.WindowWidth > 0 ? Console.WindowWidth : 80;
+			int consoleWidth = GetConsoleWidthOrDefault();
 			// Account for: timestamp (8) + 2 spaces + panel border/padding (~10)
 			int maxMessageWidth = Math.Max(20, consoleWidth - 20);
 
@@ -530,7 +543,7 @@ public sealed class LayoutDashboard
 			else
 			{
 				// Calculate dynamic width: Time(9) + Lvl(4) + Src(18) + 2 spaces + borders
-				int consoleWidth = Console.WindowWidth > 0 ? Console.WindowWidth : 80;
+				int consoleWidth = GetConsoleWidthOrDefault();
 				int maxMessageWidth = Math.Max(20, consoleWidth - 35);
 
 				foreach (DisplayEvent evt in recentDebug)
@@ -664,5 +677,21 @@ public sealed class LayoutDashboard
 			return message;
 
 		return message[..(maxWidth - 3)] + "...";
+	}
+
+	private static int GetConsoleWidthOrDefault()
+	{
+		try
+		{
+			return Console.WindowWidth > 0 ? Console.WindowWidth : 80;
+		}
+		catch (IOException)
+		{
+			return 80;
+		}
+		catch (InvalidOperationException)
+		{
+			return 80;
+		}
 	}
 }

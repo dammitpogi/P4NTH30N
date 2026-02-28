@@ -1,6 +1,6 @@
 using System.Collections.Concurrent;
 
-namespace P4NTH30N.C0MMON.Services.Display;
+namespace P4NTHE0N.C0MMON.Services.Display;
 
 /// <summary>
 /// Thread-safe display event bus with level-filtered subscriptions and ring buffers.

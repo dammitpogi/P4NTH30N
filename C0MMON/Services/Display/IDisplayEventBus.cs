@@ -1,4 +1,4 @@
-namespace P4NTH30N.C0MMON.Services.Display;
+namespace P4NTHE0N.C0MMON.Services.Display;
 
 /// <summary>
 /// Pub/sub interface for the display event pipeline.

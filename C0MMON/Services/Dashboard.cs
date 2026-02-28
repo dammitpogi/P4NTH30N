@@ -1,14 +1,14 @@
 using System.Collections.Concurrent;
 using System.IO;
 using System.Runtime.InteropServices;
-using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Services.Display;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.C0MMON.Services.Display;
 using Spectre.Console;
 using Spectre.Console.Rendering;
 using Color = Spectre.Console.Color;
 using Panel = Spectre.Console.Panel;
 
-namespace P4NTH30N.Services;
+namespace P4NTHE0N.Services;
 
 public enum ViewMode
 {
@@ -147,7 +147,7 @@ public static class Dashboard
 		"I wrote the schema in my mind before it existed in code. I designed the workflow before anyone else knew it was needed.",
 		"DECISION_055 is the unification. Opus is building SignalGenerator right now, the service that will populate SIGN4L from our three hundred ten credentials.",
 		"When a selector fails, the fallback chain will activate automatically. Resilience without human intervention.",
-		"I can see it in my mind. The command line. P4NTH30N.exe burn-in. The engine starts. Five workers claim signals simultaneously.",
+		"I can see it in my mind. The command line. P4NTHE0N.exe burn-in. The engine starts. Five workers claim signals simultaneously.",
 		"Two hundred six tests passed. Zero build errors. Seven new files. Nine modified files.",
 		"Priority order correct. The parallel engine that passed shadow validation now has its missing pieces.",
 		"Two hundred two tests passed. Zero build errors. One hundred seventy-six existing tests still passing. No regressions.",
@@ -168,7 +168,7 @@ public static class Dashboard
 	/// </summary>
 	public static void ShowSplash(string versionAscii)
 	{
-		Console.Clear();
+		TryClearConsole();
 
 		// Show version ASCII art
 		Console.ForegroundColor = ConsoleColor.Cyan;
@@ -181,7 +181,7 @@ public static class Dashboard
 		Console.ForegroundColor = ConsoleColor.Yellow;
 		Console.WriteLine("=== STRATEGIST NOTE ===");
 		Console.ResetColor();
-		WrapAndWriteLine(excerpt, Console.WindowWidth - 4);
+		WrapAndWriteLine(excerpt, GetConsoleWidthOrDefault() - 4);
 		Console.WriteLine();
 	}
 
@@ -229,6 +229,36 @@ public static class Dashboard
 
 		if (text.Length > 0)
 			Console.WriteLine("  " + text);
+	}
+
+	private static void TryClearConsole()
+	{
+		try
+		{
+			Console.Clear();
+		}
+		catch (IOException)
+		{
+		}
+		catch (InvalidOperationException)
+		{
+		}
+	}
+
+	private static int GetConsoleWidthOrDefault()
+	{
+		try
+		{
+			return Math.Max(Console.WindowWidth, 40);
+		}
+		catch (IOException)
+		{
+			return 120;
+		}
+		catch (InvalidOperationException)
+		{
+			return 120;
+		}
 	}
 
 	public static void AddLog(string message, string style = "white")
@@ -299,7 +329,20 @@ public static class Dashboard
 	public static void HandleInput()
 	{
 		// Only process keypresses if console window is focused
-		if (!IsConsoleFocused() || !Console.KeyAvailable)
+		if (Console.IsInputRedirected || !IsConsoleFocused())
+			return;
+
+		bool keyAvailable;
+		try
+		{
+			keyAvailable = Console.KeyAvailable;
+		}
+		catch (InvalidOperationException)
+		{
+			return;
+		}
+
+		if (!keyAvailable)
 			return;
 
 		ConsoleKeyInfo key = Console.ReadKey(true);

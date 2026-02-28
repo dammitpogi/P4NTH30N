@@ -1,7 +1,7 @@
 using System.Collections.Concurrent;
-using P4NTH30N.C0MMON.Services.Display;
+using P4NTHE0N.C0MMON.Services.Display;
 
-namespace P4NTH30N.UNI7T35T.C0MMON;
+namespace P4NTHE0N.UNI7T35T.C0MMON;
 
 /// <summary>
 /// DECISION_085: Display Event Pipeline Tests

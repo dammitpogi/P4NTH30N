@@ -1,33 +1,38 @@
 using System.Diagnostics;
 using System.Drawing;
+using System.Security.Cryptography;
 using System.Text.Json;
 using Figgle;
-using P4NTH30N;
-using P4NTH30N.C0MMON;
-using P4NTH30N.C0MMON.Infrastructure.Persistence;
-using P4NTH30N.C0MMON.Infrastructure.Resilience;
-using P4NTH30N.C0MMON.Monitoring;
-using P4NTH30N.C0MMON.Versioning;
-using P4NTH30N.H0UND.Application.Analytics;
-using P4NTH30N.H0UND.Application.Polling;
-using P4NTH30N.H0UND.Domain.Signals;
+using P4NTHE0N;
+using P4NTHE0N.C0MMON;
+using P4NTHE0N.C0MMON.Infrastructure.Persistence;
+using P4NTHE0N.C0MMON.Infrastructure.Resilience;
+using P4NTHE0N.C0MMON.Monitoring;
+using P4NTHE0N.C0MMON.Versioning;
+using P4NTHE0N.H4ND.Infrastructure.Logging.ErrorEvidence;
+using P4NTHE0N.H0UND.Application.Analytics;
+using P4NTHE0N.H0UND.Application.Polling;
+using P4NTHE0N.H0UND.Domain.Signals;
 using H0UND.Infrastructure.Tray;
 using H0UND.Infrastructure.BootTime;
 using H0UND.Services.Orchestration;
-using P4NTH30N.H0UND.Infrastructure.Polling;
-using P4NTH30N.C0MMON.Services.Display;
-using P4NTH30N.H0UND.Services;
-using P4NTH30N.Services;
+using P4NTHE0N.H0UND.Infrastructure.Polling;
+using P4NTHE0N.C0MMON.Services.Display;
+using P4NTHE0N.H0UND.Services;
+using P4NTHE0N.Services;
 using System.Windows.Forms;
+using CommonErrorSeverity = P4NTHE0N.C0MMON.ErrorSeverity;
 
-namespace P4NTH30N;
+namespace P4NTHE0N;
 
 [GenerateFiggleText(sourceText: "v    0 . 8 . 6 . 3", memberName: "Version", fontName: "colossal")]
 internal static partial class Header { }
 
-internal class Program
+public class Program
 {
 	private static readonly MongoUnitOfWork s_uow = new();
+	private static readonly IErrorEvidence s_errors = CreateErrorEvidence();
+    private static int s_credentialLockDepth;
 
 	// Control flag: true = use priority calculation, false = full sweep (oldest first)
 	private static readonly bool UsePriorityCalculation = false;
@@ -42,6 +47,8 @@ internal class Program
 	// DECISION_085: Schedule refresh timing
 	private static DateTime s_lastScheduleRefreshUtc = DateTime.MinValue;
 	private const int ScheduleRefreshIntervalSeconds = 30;
+	private static DateTime s_lastNoCredentialsNoticeUtc = DateTime.MinValue;
+	private const int NoCredentialsNoticeIntervalSeconds = 60;
 
 	// Resilience infrastructure
 	private static readonly CircuitBreaker s_apiCircuit = new(
@@ -61,6 +68,7 @@ internal class Program
 	private static ServiceOrchestrator? s_serviceOrchestrator;
 	private static TrayHost? s_trayHost;
 	private static volatile bool s_exitRequested;
+	private static volatile bool s_noUiMode;
 
 	// DECISION_025: Anomaly detection for jackpot patterns
 	private static readonly AnomalyDetector s_anomalyDetector = new(
@@ -69,6 +77,16 @@ internal class Program
 		zScoreThreshold: 3.0,
 		onAnomaly: anomaly =>
 		{
+			using ErrorScope anomalyScope = s_errors.BeginScope(
+				"H0UND.Program",
+				"AnomalyCallback",
+				new Dictionary<string, object>
+				{
+					["house"] = anomaly.House,
+					["game"] = anomaly.Game,
+					["tier"] = anomaly.Tier,
+				});
+
 			Dashboard.AddLog(
 				$"ANOMALY: {anomaly.House}/{anomaly.Game}/{anomaly.Tier} = {anomaly.AnomalousValue:F2} " +
 				$"(ratio={anomaly.AtypicalityRatio:F2}, z={anomaly.ZScore:F2}, method={anomaly.DetectionMethod})",
@@ -76,54 +94,96 @@ internal class Program
 			);
 			try
 			{
-				s_uow.Errors.Insert(ErrorLog.Create(
-					ErrorType.DataCorruption,
-					"AnomalyDetector",
-					$"Anomalous jackpot: {anomaly.House}/{anomaly.Game}/{anomaly.Tier} = {anomaly.AnomalousValue:F2} " +
-					$"(ratio={anomaly.AtypicalityRatio:F2}, z={anomaly.ZScore:F2}, method={anomaly.DetectionMethod}, " +
-					$"mean={anomaly.WindowMean:F2}, stddev={anomaly.WindowStdDev:F2}, window={anomaly.WindowSize})",
-					ErrorSeverity.High
-				));
+					s_uow.Errors.Insert(ErrorLog.Create(
+						ErrorType.DataCorruption,
+						"AnomalyDetector",
+						$"Anomalous jackpot: {anomaly.House}/{anomaly.Game}/{anomaly.Tier} = {anomaly.AnomalousValue:F2} " +
+						$"(ratio={anomaly.AtypicalityRatio:F2}, z={anomaly.ZScore:F2}, method={anomaly.DetectionMethod}, " +
+						$"mean={anomaly.WindowMean:F2}, stddev={anomaly.WindowStdDev:F2}, window={anomaly.WindowSize})",
+						CommonErrorSeverity.High
+					));
 			}
-			catch { /* don't let anomaly logging break the main loop */ }
+			catch (Exception ex) when (ex.Message.Contains("No enabled, non-banned credentials found", StringComparison.OrdinalIgnoreCase))
+			{
+				Dashboard.CurrentTask = "Idle - No Enabled Credentials";
+
+				if ((DateTime.UtcNow - s_lastNoCredentialsNoticeUtc).TotalSeconds >= NoCredentialsNoticeIntervalSeconds)
+				{
+					s_lastNoCredentialsNoticeUtc = DateTime.UtcNow;
+					Dashboard.AddLog("No enabled credentials available. Waiting for credentials to be enabled.", "yellow");
+					RenderDashboard();
+				}
+
+				Thread.Sleep(10000);
+			}
+			catch (Exception ex)
+			{
+				s_errors.Capture(
+					ex,
+					"H0UND-ANOM-LOG-ERR-001",
+					"Anomaly callback persistence failed",
+					context: new Dictionary<string, object>
+					{
+						["house"] = anomaly.House,
+						["game"] = anomaly.Game,
+						["tier"] = anomaly.Tier,
+					},
+					evidence: new
+					{
+						anomaly.AnomalousValue,
+						anomaly.AtypicalityRatio,
+						anomaly.ZScore,
+						anomaly.DetectionMethod,
+					});
+			}
 		}
 	);
 
 	static void Main(string[] args)
 	{
 		bool backgroundMode = args.Any(a => a.Equals("--background", StringComparison.OrdinalIgnoreCase));
-		s_consoleWindowManager = new ConsoleWindowManager();
-		StartTrayHost();
+		s_noUiMode = args.Any(a => a.Equals("--no-ui", StringComparison.OrdinalIgnoreCase));
+
+		if (!s_noUiMode)
+		{
+			s_consoleWindowManager = new ConsoleWindowManager();
+			StartTrayHost();
+		}
+
 		InitializeServiceOrchestrator();
 
-		if (backgroundMode)
+		if (backgroundMode && s_consoleWindowManager != null)
 		{
 			s_consoleWindowManager.Hide();
 		}
 
 		MongoUnitOfWork uow = s_uow;
 
-		// Show splash screen with version and random Strategist excerpt
-		Dashboard.ShowSplash(Header.Version);
+		DisplayEventBus? displayBus = null;
+		if (!s_noUiMode)
+		{
+			// Show splash screen with version and random Strategist excerpt
+			Dashboard.ShowSplash(Header.Version);
 
-		// DECISION_085: Initialize display pipeline after splash
-		DisplayEventBus displayBus = Dashboard.InitializeDisplayPipeline();
+			// DECISION_085: Initialize display pipeline after splash
+			displayBus = Dashboard.InitializeDisplayPipeline();
+		}
 
 		// Initialize idempotent signal generation infrastructure
 		AnalyticsWorker analyticsWorker;
 		if (UseIdempotentSignals)
 		{
 			// DECISION_085: Route infrastructure loggers through display bus with proper levels
-			Action<string> lockLogger = displayBus.CreateLogger("DistributedLock", DisplayLogLevel.Silent);
-			Action<string> signalLogger = displayBus.CreateSmartLogger("IdempotentSignal", DisplayLogLevel.Debug);
-			Action<string> metricsLogger = displayBus.CreateLogger("SignalMetrics", DisplayLogLevel.Detail, "cyan");
+			Action<string> lockLogger = displayBus?.CreateLogger("DistributedLock", DisplayLogLevel.Silent) ?? (_ => { });
+			Action<string> signalLogger = displayBus?.CreateSmartLogger("IdempotentSignal", DisplayLogLevel.Debug) ?? (_ => { });
+			Action<string> metricsLogger = displayBus?.CreateLogger("SignalMetrics", DisplayLogLevel.Detail, "cyan") ?? (_ => { });
 
 			DistributedLockService lockService = new(uow.DatabaseProvider, lockLogger);
 			SignalDeduplicationCache dedupCache = new();
 			InMemoryDeadLetterQueue deadLetterQueue = new();
 			RetryPolicy retryPolicy = new(maxRetries: 3, baseDelay: TimeSpan.FromMilliseconds(100),
-				logger: displayBus.CreateSmartLogger("RetryPolicy", DisplayLogLevel.Debug));
-			P4NTH30N.C0MMON.Infrastructure.Monitoring.SignalMetrics signalMetrics = new(
+				logger: displayBus?.CreateSmartLogger("RetryPolicy", DisplayLogLevel.Debug) ?? (_ => { }));
+			P4NTHE0N.C0MMON.Infrastructure.Monitoring.SignalMetrics signalMetrics = new(
 				logger: metricsLogger,
 				reportInterval: TimeSpan.FromSeconds(60)
 			);
@@ -139,31 +199,37 @@ internal class Program
 			Dashboard.AddLog("Idempotent signal generation DISABLED (legacy mode)", "yellow");
 		}
 
-		BalanceProviderFactory balanceProviderFactory = new BalanceProviderFactory();
-		PollingWorker pollingWorker = new PollingWorker(balanceProviderFactory);
+		BalanceProviderFactory balanceProviderFactory = new BalanceProviderFactory(s_errors);
+		PollingWorker pollingWorker = new PollingWorker(balanceProviderFactory, s_errors);
 		s_healthService = new C0MMON.Monitoring.HealthCheckService(uow.DatabaseProvider, s_apiCircuit, s_mongoCircuit, uow);
 
 		// Show loading status on splash
-		Dashboard.ShowSplashStatus("Initializing signal generation...");
+		if (!s_noUiMode)
+			Dashboard.ShowSplashStatus("Initializing signal generation...");
 
 		// Load credentials and show status on splash
-		Dashboard.ShowSplashStatus("Loading credentials...");
+		if (!s_noUiMode)
+			Dashboard.ShowSplashStatus("Loading credentials...");
 		try
 		{
 			var allCreds = uow.Credentials.GetAll();
 			Dashboard.TotalCredentials = allCreds.Count();
 			Dashboard.TotalEnabledBalance = allCreds.Where(c => c.Enabled && !c.Banned).Sum(c => c.Balance);
-			Dashboard.ShowSplashStatus($"Loaded {Dashboard.TotalCredentials} credentials");
+			if (!s_noUiMode)
+				Dashboard.ShowSplashStatus($"Loaded {Dashboard.TotalCredentials} credentials");
 		}
 		catch (Exception ex)
 		{
-			Dashboard.ShowSplashStatus($"Warning: Could not load credentials: {ex.Message}");
+			if (!s_noUiMode)
+				Dashboard.ShowSplashStatus($"Warning: Could not load credentials: {ex.Message}");
 		}
 
 		// Load schedule, withdraw accounts, and deposit data before showing UI
-		Dashboard.ShowSplashStatus("Loading jackpot schedule...");
+		if (!s_noUiMode)
+			Dashboard.ShowSplashStatus("Loading jackpot schedule...");
 		RefreshDashboardSchedule(uow);
-		Dashboard.ShowSplashStatus("Schedule loaded");
+		if (!s_noUiMode)
+			Dashboard.ShowSplashStatus("Schedule loaded");
 
 		// Initialize dashboard with startup info
 		Dashboard.AddLog("H0UND Started", "blue");
@@ -173,7 +239,8 @@ internal class Program
 		Dashboard.AddLog($"Loaded {Dashboard.TotalCredentials} credentials", "green");
 
 		// Wait a moment for user to read splash, then clear for UI
-		Thread.Sleep(1500);
+		if (!s_noUiMode)
+			Thread.Sleep(1500);
 
 		while (!s_exitRequested)
 		{
@@ -181,6 +248,7 @@ internal class Program
 
 			try
 			{
+				using ErrorScope runtimeScope = s_errors.BeginScope("H0UND.Program", "MainLoop");
 				double lastRetrievedGrand = 0;
 				Credential? lastCredential = null;
 
@@ -189,7 +257,7 @@ internal class Program
 					// Handle pause state
 					if (Dashboard.IsPaused)
 					{
-						Dashboard.Render();
+						RenderDashboard();
 						Thread.Sleep(100);
 						continue;
 					}
@@ -198,8 +266,22 @@ internal class Program
 					if ((DateTime.UtcNow - s_lastAnalyticsRunUtc).TotalSeconds >= AnalyticsIntervalSeconds)
 					{
 						Dashboard.CurrentTask = "Running Analytics";
-						Dashboard.Render();
-						analyticsWorker.RunAnalytics(uow);
+						RenderDashboard();
+						try
+						{
+							analyticsWorker.RunAnalytics(uow);
+						}
+						catch (Exception ex)
+						{
+							s_errors.Capture(
+								ex,
+								"H0UND-ANALYTICS-ERR-001",
+								"Analytics phase failed",
+								context: new Dictionary<string, object>
+								{
+									["intervalSeconds"] = AnalyticsIntervalSeconds,
+								});
+						}
 						s_lastAnalyticsRunUtc = DateTime.UtcNow;
 					}
 
@@ -211,7 +293,7 @@ internal class Program
 					}
 
 					Dashboard.CurrentTask = "Polling Queue";
-					Dashboard.Render();
+					RenderDashboard();
 
 					Credential credential = uow.Credentials.GetNext(UsePriorityCalculation);
 
@@ -219,9 +301,9 @@ internal class Program
 					Dashboard.CurrentUser = credential.Username ?? "None";
 					Dashboard.CurrentHouse = credential.House ?? "Unknown";
 					Dashboard.CurrentTask = "Retrieving Balances";
-					Dashboard.Render();
+					RenderDashboard();
 
-					uow.Credentials.Lock(credential);
+					AcquireCredentialLock(uow, credential, "MainLoopPolling");
 
 					try
 					{
@@ -262,15 +344,15 @@ internal class Program
 									ErrorType.ValidationError,
 									"H0UND",
 									$"Invalid raw values for {credential.Username}@{credential.Game}: Grand={balances.Grand}, Major={balances.Major}, Minor={balances.Minor}, Mini={balances.Mini}, Balance={balances.Balance}",
-									ErrorSeverity.Critical
+									CommonErrorSeverity.Critical
 								)
 							);
-							P4NTH30N.C0MMON.ProcessEvent alert = P4NTH30N.C0MMON.ProcessEvent.Log(
+							P4NTHE0N.C0MMON.ProcessEvent alert = P4NTHE0N.C0MMON.ProcessEvent.Log(
 								"H0UND",
 								$"Validation failure for {credential.Game}: invalid raw values"
 							);
 							s_uow.ProcessEvents.Insert(alert.Record(credential));
-							uow.Credentials.Unlock(credential);
+							ReleaseCredentialLock(uow, credential, "RawValueValidationFailure");
 							credential.LastUpdated = DateTime.UtcNow;
 							uow.Credentials.Upsert(credential);
 							continue;
@@ -431,7 +513,7 @@ internal class Program
 						if (credential.Settings.Gold777 == null)
 							credential.Settings.Gold777 = new Gold777_Settings();
 						credential.Updated = true;
-						uow.Credentials.Unlock(credential);
+						ReleaseCredentialLock(uow, credential, "PrePersistUnlock");
 
 						credential.LastUpdated = DateTime.UtcNow;
 						credential.Balance = currentBalance;
@@ -463,7 +545,7 @@ internal class Program
 							lastHealthCheck = DateTime.Now;
 						}
 
-						Dashboard.Render();
+						RenderDashboard();
 
 						// Degradation-aware throttling
 						int delay = s_degradation.CurrentLevel switch
@@ -477,10 +559,20 @@ internal class Program
 					}
 					catch (CircuitBreakerOpenException)
 					{
+						s_errors.CaptureWarning(
+							"H0UND-CIRCUIT-OPEN-001",
+							"API circuit open; poll iteration skipped",
+							context: new Dictionary<string, object>
+							{
+								["game"] = credential.Game,
+								["house"] = credential.House ?? "Unknown",
+								["credentialId"] = credential._id.ToString(),
+							});
+
 						Dashboard.AddLog($"API circuit open - skipping {credential.Username}@{credential.Game}", "yellow");
 						Dashboard.IncrementPoll(false);
-						Dashboard.Render();
-						uow.Credentials.Unlock(credential);
+						RenderDashboard();
+						ReleaseCredentialLock(uow, credential, "MainLoopCircuitOpen");
 						Thread.Sleep(5000);
 					}
 					catch (InvalidOperationException ex) when (ex.Message.Contains("Your account has been suspended"))
@@ -488,23 +580,46 @@ internal class Program
 						Dashboard.AddLog($"Account suspended for {credential.Username} on {credential.Game}", "red");
 						Dashboard.TrackError("AccountSuspended");
 						Dashboard.IncrementPoll(false);
-						Dashboard.Render();
-						uow.Credentials.Unlock(credential);
+						RenderDashboard();
+						ReleaseCredentialLock(uow, credential, "MainLoopSuspended");
 					}
 					finally
 					{
-						// DECISION_070: Safety net — credential must never stay permanently locked
-						try { uow.Credentials.Unlock(credential); } catch { }
+						ReleaseCredentialLock(uow, credential, "MainLoopFinally");
 					}
 				}
 			}
 			catch (Exception ex)
 			{
+				if (ex.Message.Contains("No enabled, non-banned credentials found", StringComparison.OrdinalIgnoreCase))
+				{
+					Dashboard.CurrentTask = "Idle - No Enabled Credentials";
+					if ((DateTime.UtcNow - s_lastNoCredentialsNoticeUtc).TotalSeconds >= NoCredentialsNoticeIntervalSeconds)
+					{
+						s_lastNoCredentialsNoticeUtc = DateTime.UtcNow;
+						Dashboard.AddLog("MongoDB connected. No enabled credentials available; starting credential-state investigation path.", "yellow");
+						ReportCredentialStateInvestigation(uow);
+						RenderDashboard();
+					}
+
+					Thread.Sleep(10000);
+					continue;
+				}
+
+				s_errors.Capture(
+					ex,
+					"H0UND-MAIN-LOOP-ERR-001",
+					"Unhandled exception in H0UND main loop",
+					context: new Dictionary<string, object>
+					{
+						["task"] = Dashboard.CurrentTask ?? string.Empty,
+					});
+
 				Dashboard.CurrentTask = "Error - Recovery";
 				Dashboard.AddLog($"Error processing credential: {ex.Message}", "red");
 				Dashboard.TrackError("GeneralException");
 				Dashboard.IncrementPoll(false);
-				Dashboard.Render();
+				RenderDashboard();
 
 				// Reduce recovery time and be more intelligent about extension failures
 				if (ex.Message.Contains("Extension failure"))
@@ -523,6 +638,127 @@ internal class Program
 		s_serviceOrchestrator?.Dispose();
 		s_trayHost?.Dispose();
 		s_consoleWindowManager?.Dispose();
+	}
+
+	private static void RenderDashboard()
+	{
+		if (!s_noUiMode)
+		{
+			Dashboard.Render();
+		}
+	}
+
+	private static void ReportCredentialStateInvestigation(IUnitOfWork uow)
+	{
+		List<Credential> credentials = uow.Credentials.GetAll();
+		int enabled = credentials.Count(c => c.Enabled);
+		int banned = credentials.Count(c => c.Banned);
+		int enabledAndBanned = credentials.Count(c => c.Enabled && c.Banned);
+		int enabledAndNotBanned = credentials.Count(c => c.Enabled && !c.Banned);
+
+		Dashboard.AddLog(
+			$"Credential state snapshot: total={credentials.Count}, enabled={enabled}, banned={banned}, enabled+banned={enabledAndBanned}, actionable={enabledAndNotBanned}",
+			"grey");
+		Dashboard.AddLog("Investigation path: review CR3D3N7IAL Enabled/Banned flags and unlock at least one actionable credential.", "grey");
+	}
+
+	private static IErrorEvidence CreateErrorEvidence()
+	{
+		try
+		{
+			MongoConnectionOptions mongoOptions = MongoConnectionOptions.FromEnvironment();
+			MongoDatabaseProvider provider = new(mongoOptions);
+			ErrorEvidenceOptions options = new();
+			IErrorEvidenceRepository repository = new MongoDebugEvidenceRepository(provider, options);
+			IErrorEvidenceFactory factory = new ErrorEvidenceFactory(options);
+			return new ErrorEvidenceService(repository, factory, options, msg => Dashboard.AddLog(msg, "grey"));
+		}
+		catch
+		{
+			return NoopErrorEvidence.Instance;
+		}
+	}
+
+	private static void AcquireCredentialLock(IUnitOfWork uow, Credential credential, string operation)
+	{
+		uow.Credentials.Lock(credential);
+		int depth = Interlocked.Increment(ref s_credentialLockDepth);
+		if (depth <= 0)
+		{
+			s_errors.CaptureInvariantFailure(
+				"H0UND-LOCK-INV-001",
+				"Credential lock depth must remain positive after acquire",
+				expected: true,
+				actual: depth > 0,
+				context: new Dictionary<string, object>
+				{
+					["operation"] = operation,
+					["depth"] = depth,
+					["credentialId"] = credential._id.ToString(),
+				});
+		}
+	}
+
+	private static void ReleaseCredentialLock(IUnitOfWork uow, Credential credential, string operation)
+	{
+		try
+		{
+			uow.Credentials.Unlock(credential);
+		}
+		catch (Exception ex)
+		{
+			s_errors.Capture(
+				ex,
+				"H0UND-LOCK-REL-ERR-001",
+				"Credential unlock failed",
+				context: new Dictionary<string, object>
+				{
+					["operation"] = operation,
+					["credentialId"] = credential._id.ToString(),
+				});
+			return;
+		}
+
+		int depth = Interlocked.Decrement(ref s_credentialLockDepth);
+		if (depth < 0)
+		{
+			s_errors.CaptureInvariantFailure(
+				"H0UND-LOCK-INV-002",
+				"Credential lock depth must not be negative",
+				expected: true,
+				actual: depth >= 0,
+				context: new Dictionary<string, object>
+				{
+					["operation"] = operation,
+					["depth"] = depth,
+					["credentialId"] = credential._id.ToString(),
+				});
+		}
+	}
+
+	public static void RecordCircuitOpenSkip(IErrorEvidence errors, Credential credential)
+	{
+		errors.CaptureWarning(
+			"H0UND-CIRCUIT-OPEN-001",
+			"API circuit open; poll iteration skipped",
+			context: new Dictionary<string, object>
+			{
+				["game"] = credential.Game,
+				["house"] = credential.House ?? "Unknown",
+				["credentialId"] = credential._id.ToString(),
+			});
+	}
+
+	public static void RecordMainLoopError(IErrorEvidence errors, Exception ex, string task)
+	{
+		errors.Capture(
+			ex,
+			"H0UND-MAIN-LOOP-ERR-001",
+			"Unhandled exception in H0UND main loop",
+			context: new Dictionary<string, object>
+			{
+				["task"] = task,
+			});
 	}
 
 	private static void StartTrayHost()
@@ -625,7 +861,7 @@ internal class Program
 
 	private static string ResolveAutostartConfigPath()
 	{
-		var envPath = Environment.GetEnvironmentVariable("P4NTH30N_AUTOSTART_CONFIG");
+		var envPath = Environment.GetEnvironmentVariable("P4NTHE0N_AUTOSTART_CONFIG");
 		if (!string.IsNullOrWhiteSpace(envPath) && File.Exists(envPath))
 		{
 			return envPath;
@@ -633,7 +869,7 @@ internal class Program
 
 		var candidates = new[]
 		{
-			@"C:\P4NTH30N\config\autostart.json",
+			@"C:\P4NTHE0N\config\autostart.json",
 			Path.Combine(AppContext.BaseDirectory, "config", "autostart.json"),
 			Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "config", "autostart.json")),
 		};
@@ -778,5 +1014,33 @@ internal class Program
 			// Don't let jackpot update failures break the polling loop
 			Dashboard.AddLog($"Jackpot update error for {house}/{game}: {ex.Message}", "yellow");
 		}
+	}
+}
+
+public static class H0UNDEvidenceHooks
+{
+	public static void RecordCircuitOpenSkip(IErrorEvidence errors, Credential credential)
+	{
+		errors.CaptureWarning(
+			"H0UND-CIRCUIT-OPEN-001",
+			"API circuit open; poll iteration skipped",
+			context: new Dictionary<string, object>
+			{
+				["game"] = credential.Game,
+				["house"] = credential.House ?? "Unknown",
+				["credentialId"] = credential._id.ToString(),
+			});
+	}
+
+	public static void RecordMainLoopError(IErrorEvidence errors, Exception ex, string task)
+	{
+		errors.Capture(
+			ex,
+			"H0UND-MAIN-LOOP-ERR-001",
+			"Unhandled exception in H0UND main loop",
+			context: new Dictionary<string, object>
+			{
+				["task"] = task,
+			});
 	}
 }

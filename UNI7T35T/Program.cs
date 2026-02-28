@@ -1,15 +1,17 @@
-using P4NTH30N.UNI7T35T.Tests;
-using P4NTH30N.UNI7T35T.Stability;
-using P4NTH30N.UNI7T35T.Sampling;
-using P4NTH30N.UNI7T35T.PostProcessing;
-using P4NTH30N.UNI7T35T.Quality;
-using P4NTH30N.UNI7T35T.Integration;
-using P4NTH30N.UNI7T35T.Navigation;
-using P4NTH30N.UNI7T35T.H4ND.Decision110;
+using P4NTHE0N.UNI7T35T.Tests;
+using P4NTHE0N.UNI7T35T.Stability;
+using P4NTHE0N.UNI7T35T.Sampling;
+using P4NTHE0N.UNI7T35T.PostProcessing;
+using P4NTHE0N.UNI7T35T.Quality;
+using P4NTHE0N.UNI7T35T.Integration;
+using P4NTHE0N.UNI7T35T.Navigation;
+using P4NTHE0N.UNI7T35T.H4ND.Decision110;
+using P4NTHE0N.UNI7T35T.H4ND.Decision113;
+using P4NTHE0N.UNI7T35T.H0UND.Decision113;
 using UNI7T35T.Mocks;
 using UNI7T35T.Tests;
 using P4NTH35T.Tests;
-using EndToEndTests = P4NTH30N.UNI7T35T.Tests.EndToEndTests;
+using EndToEndTests = P4NTHE0N.UNI7T35T.Tests.EndToEndTests;
 
 namespace UNI7T35T;
 
@@ -18,12 +20,54 @@ class Program
 	static async Task<int> Main(string[] args)
 	{
 		Console.WriteLine("╔════════════════════════════════════════════════════════════════════╗");
-		Console.WriteLine("║          UNI7T35T - P4NTH30N Test Platform                        ║");
+		Console.WriteLine("║          UNI7T35T - P4NTHE0N Test Platform                        ║");
 		Console.WriteLine("║          H0UND Analytics + Security + Pipeline Test Suite          ║");
 		Console.WriteLine("╚════════════════════════════════════════════════════════════════════╝\n");
 
 		int totalTests = 0;
 		int passedTests = 0;
+
+		if (args.Any(a => string.Equals(a, "--decision113-only", StringComparison.OrdinalIgnoreCase)))
+		{
+			Console.WriteLine("Running Hotspot Fault Harness only (DECISION_113)...\n");
+			(int d113PassedOnly, int d113FailedOnly) = HotspotFaultHarnessTests.RunAll();
+			totalTests = d113PassedOnly + d113FailedOnly;
+			passedTests = d113PassedOnly;
+
+			Console.WriteLine("\n╔════════════════════════════════════════════════════════════════════╗");
+			Console.WriteLine($"║  TEST SUMMARY: {passedTests}/{totalTests} tests passed                                   ║");
+			Console.WriteLine("╚════════════════════════════════════════════════════════════════════╝\n");
+
+			return d113FailedOnly == 0 ? 0 : 1;
+		}
+
+		if (args.Any(a => string.Equals(a, "--decision113-outage-only", StringComparison.OrdinalIgnoreCase)))
+		{
+			Console.WriteLine("Running Mongo Outage Degradation only (DECISION_113)...\n");
+			(int d113OutagePassedOnly, int d113OutageFailedOnly) = MongoOutageDegradationTests.RunAll();
+			totalTests = d113OutagePassedOnly + d113OutageFailedOnly;
+			passedTests = d113OutagePassedOnly;
+
+			Console.WriteLine("\n╔════════════════════════════════════════════════════════════════════╗");
+			Console.WriteLine($"║  TEST SUMMARY: {passedTests}/{totalTests} tests passed                                   ║");
+			Console.WriteLine("╚════════════════════════════════════════════════════════════════════╝\n");
+
+			return d113OutageFailedOnly == 0 ? 0 : 1;
+		}
+
+		if (args.Any(a => string.Equals(a, "--decision113-h0und-only", StringComparison.OrdinalIgnoreCase)))
+		{
+			Console.WriteLine("Running H0UND Error Evidence Rollout only (DECISION_113)...\n");
+			(int d113H0undPassedOnly, int d113H0undFailedOnly) = H0UNDErrorEvidenceRolloutTests.RunAll();
+			totalTests = d113H0undPassedOnly + d113H0undFailedOnly;
+			passedTests = d113H0undPassedOnly;
+
+			Console.WriteLine("\n╔════════════════════════════════════════════════════════════════════╗");
+			Console.WriteLine($"║  TEST SUMMARY: {passedTests}/{totalTests} tests passed                                   ║");
+			Console.WriteLine("╚════════════════════════════════════════════════════════════════════╝\n");
+
+			return d113H0undFailedOnly == 0 ? 0 : 1;
+		}
 
 		// ── ForecastingService Tests ──────────────────────────────────────
 		Console.WriteLine("Running ForecastingService Tests...\n");
@@ -394,7 +438,7 @@ class Program
 
 		// ── DECISION_085: Display Pipeline Tests ───────────────────────────
 		Console.WriteLine("\nRunning Display Pipeline Tests (DECISION_085)...\n");
-		(int dpPassed, int dpFailed) = P4NTH30N.UNI7T35T.C0MMON.DisplayPipelineTests.RunAll();
+		(int dpPassed, int dpFailed) = P4NTHE0N.UNI7T35T.C0MMON.DisplayPipelineTests.RunAll();
 		totalTests += dpPassed + dpFailed;
 		passedTests += dpPassed;
 
@@ -439,6 +483,24 @@ class Program
 		(int persistencePassed, int persistenceFailed) = PersistenceRepositoryTests.RunAll();
 		totalTests += persistencePassed + persistenceFailed;
 		passedTests += persistencePassed;
+
+		// ── DECISION_113: Hotspot Runtime Fault Harness ────────────────
+		Console.WriteLine("\nRunning Hotspot Fault Harness (DECISION_113)...\n");
+		(int hotspotPassed, int hotspotFailed) = HotspotFaultHarnessTests.RunAll();
+		totalTests += hotspotPassed + hotspotFailed;
+		passedTests += hotspotPassed;
+
+		// ── DECISION_113: Mongo Outage Degradation Validation ──────────
+		Console.WriteLine("\nRunning Mongo Outage Degradation (DECISION_113)...\n");
+		(int outagePassed, int outageFailed) = MongoOutageDegradationTests.RunAll();
+		totalTests += outagePassed + outageFailed;
+		passedTests += outagePassed;
+
+		// ── DECISION_113: H0UND Rollout Validation ─────────────────────
+		Console.WriteLine("\nRunning H0UND Error Evidence Rollout (DECISION_113)...\n");
+		(int h0undRolloutPassed, int h0undRolloutFailed) = H0UNDErrorEvidenceRolloutTests.RunAll();
+		totalTests += h0undRolloutPassed + h0undRolloutFailed;
+		passedTests += h0undRolloutPassed;
 
 		// ── Summary ──────────────────────────────────────────────────────
 		Console.WriteLine("\n╔════════════════════════════════════════════════════════════════════╗");
