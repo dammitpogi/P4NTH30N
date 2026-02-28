@@ -1,9 +1,0 @@
-Buildpacks
-Nixpacks
-dynos
-Healthchecks
-Procfiles
-vCPU
-Changelog
-zsh
-pullrequest
