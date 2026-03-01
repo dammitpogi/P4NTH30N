@@ -3,9 +3,10 @@ type: decision
 id: DECISION_168
 version: 1.0.0
 category: INFRA
-status: Draft
-created_at: '2026-02-26T20:30:00Z'
-last_reviewed: '2026-02-26T20:30:00Z'
+status: superseded
+created_at: '2026-02-27T03:00:00Z'
+last_reviewed: '2026-02-28T14:00:00Z'
+superseded_by: DECISION_172
 priority: Critical
 keywords:
   - alma
@@ -13,22 +14,53 @@ keywords:
   - openclaw
   - railway
   - qmd
-  - mongodb
   - sftpgo
+  - mongodb
   - deployment
+  - environment
 roles:
   - strategist
   - oracle
   - designer
   - openfixer
+  - windfixer
 summary: >-
-  ALMA Railway deployment with QMD backend for advanced retrieval
-  (BM25 + vectors + reranking). Includes SFTPGo for file transfer, MongoDB
-  for persistence, and encrypted secrets vault. Solves all documented Railway
-  deployment pains from prior attempts.
+  [SUPERSEDED by DECISION_172] ALMA Railway deployment with QMD backend for
+  advanced retrieval (BM25 + vectors + reranking), SFTPGo for file transfer,
+  MongoDB for persistence, and encrypted secrets vault. Solves all documented
+  Railway deployment pains from prior attempts.
+  
+  Historical value: Captured QMD integration approach and Railway deployment
+  patterns. Superseded by Book-First MVP architecture with Next.js frontend.
 ---
 
-# DECISION_168: QMD Railway Deployment - Complete Environment (v1.0.0)
+# DECISION_168: QMD Railway Deployment - Complete Environment (v1.0.0) - SUPERSEDED
+
+**Decision ID**: DECISION_168  
+**Version**: 1.0.0  
+**Category**: INFRA  
+**Status**: **SUPERSEDED** by DECISION_172  
+**Priority**: Critical (Historical)  
+**Date**: 2026-02-26  
+**Superseded**: 2026-02-28
+
+## Supersession Notice
+
+**This decision has been superseded by DECISION_172: Book-First MVP Architecture.**
+
+The QMD-focused deployment approach in this decision has been integrated into a broader 3-service architecture where:
+- Next.js is the public entry point (not OpenClaw)
+- QMD runs in the Core container as internal service
+- MongoDB is internal only
+- OpenClaw is optional (client choice)
+
+**Historical Value**: This decision captured QMD integration patterns, Railway deployment hardening, and solutions to prior deployment failures (config remediation, rollback procedures, health validation).
+
+**Reason for Supersession**: Product pivot to Book-First MVP requires Next.js as primary interface, not OpenClaw. QMD remains the retrieval engine but is accessed via internal API, not as public service.
+
+---
+
+## Original Content (Historical)
 
 **Decision ID**: DECISION_168  
 **Version**: 1.0.0  

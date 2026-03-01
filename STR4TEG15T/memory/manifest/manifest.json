@@ -1,11 +1,9 @@
 {
 	"version": "1.0.0",
 	"description": "Narrative manifest tracking all decision changes for speech synthesis",
-	"lastUpdated": "2026-02-26T20:08:36Z",
-	"lastReconciled": "2026-02-26T20:08:36Z",
+	"lastUpdated": "2026-02-28T14:00:00Z",
+	"lastReconciled": "2026-02-28T14:00:00Z",
 	"lastSynthesized": "2026-02-26T20:08:36Z",
-	"lastUpdated": "2026-02-27T00:00:00Z",
-	"lastReconciled": "2026-02-27T00:00:00Z",
 "workflowFlags": {
 		"reconsolidation": {
 			"requiredBeforeSynthesis": true,
@@ -2887,6 +2885,112 @@
 				"theme": "What was broken is now whole. The shortcut that failed now heals itself, elevates itself, and opens the browser automatically.",
 				"keyMoment": "When OpenFixer reported 12/12 validation tests passed - the remediation was not just complete, but proven.",
 				"emotion": "The satisfaction of a fix that works. From 'It isn't doing anything' to 'Double-click and it just works.'"
+			},
+			"synthesized": false
+		},
+		{
+			"roundId": "R051",
+			"timestamp": "2026-02-28T14:00:00Z",
+			"sessionContext": "DECISION_172 - Full architectural pivot from OpenClaw-first to Book-First MVP with Next.js frontend and QMD backend",
+			"agent": "Pyxis (Strategist)",
+			"summary": "Created DECISION_172 marking full pivot to Book-First MVP architecture. Nexus provided comprehensive spec suite (10 files) defining new approach: Next.js as public entry point, QMD for retrieval, MongoDB for persistence, OpenClaw as optional internal service. Superseded DECISION_146, DECISION_165, DECISION_168. DECISION_164 workspace rename was already completed by OpenFixer. New architecture: 3-service Railway deployment (web/core/mongo) with clear public/private boundaries.",
+			"decisions": {
+				"created": [
+					{
+						"id": "DECISION_172",
+						"title": "Book-First MVP Architecture - Full Pivot to QMD",
+						"category": "ARCH",
+						"priority": "Critical",
+						"status": "Drafted",
+						"supersedes": ["DECISION_146", "DECISION_165", "DECISION_168"],
+						"specs": [
+							"00-DECISION_UI_FOUNDATION.md",
+							"01-SPEC_RAILWAY_ARCHITECTURE.md",
+							"02-SPEC_NETWORKING_SECURITY.md",
+							"03-SPEC_MONGO_SCHEMA.md",
+							"04-TECHP_DESIGN_SYSTEM.md",
+							"05-TECHP_STYLE_GUIDE.md",
+							"06-SPEC_UI_LAYOUTS.md",
+							"09-SPEC_ENDPOINT_CONTRACT.md"
+						]
+					}
+				],
+				"superseded": [
+					{
+						"id": "DECISION_146",
+						"title": "ALMA Railway Merged Environment",
+						"reason": "Single merged container replaced by 3-service topology"
+					},
+					{
+						"id": "DECISION_165",
+						"title": "ALMA Deployment Success + Admin Secrets Vault",
+						"reason": "OpenClaw-first success criteria obsolete; Next.js is now public entry"
+					},
+					{
+						"id": "DECISION_168",
+						"title": "QMD Railway Deployment - Complete Environment",
+						"reason": "QMD approach integrated into broader Book-First MVP architecture"
+					}
+				],
+				"completed": [
+					{
+						"id": "DECISION_164",
+						"title": "Rename and Standardize nate-alma Workspace",
+						"status": "Completed",
+						"validation": "Workspace rename completed by OpenFixer on 2026-02-26. 341 files moved, 0 collisions, all references updated."
+					}
+				]
+			},
+			"metrics": {
+				"decisionsCreated": 1,
+				"decisionsSuperseded": 3,
+				"specFilesCanonical": 10,
+				"architectureChange": "OpenClaw-first → Book-First MVP",
+				"services": 3,
+				"collections": 10,
+				"mvpPages": 6,
+				"agentSkills": 6
+			},
+			"narrative": {
+				"tone": "pivotal",
+				"theme": "The agent that was to be the product becomes a service the product may use. The book that was to be indexed becomes the product itself.",
+				"keyMoment": "When Nexus said 'Full Pivot' and the 10 spec files revealed a complete architecture already designed, waiting to be governed.",
+				"emotion": "The clarity of a hard pivot. What was complex (merged containers, Ollama, agent orchestration) becomes simple (Next.js, QMD, MongoDB) because the product definition changed."
+			},
+			"synthesized": false
+		},
+		{
+			"roundId": "R052",
+			"timestamp": "2026-03-01T09:20:00Z",
+			"sessionContext": "DECISION_173 - MiniMax MCP API Key handoff to OpenFixer for cascade of Sparks",
+			"agent": "Pyxis (Strategist)",
+			"summary": "Created DECISION_173 to hand off MCP server API keys to MiniMax for OpenFixer integration. Keys extracted from Docker containers: fc02dbcffaec5d51204e415b8ff9103eba39d79bff014f9d6869a33276233af1. Three v2 servers (mongodb-p4nth30n-v2:3001, rag-server-v2:3002, decisions-server-v2:3000) authorized for OpenFixer connectivity. MiniMax will guide OpenFixer through configuration and validation.",
+			"decisions": {
+				"created": [
+					{
+						"id": "DECISION_173",
+						"title": "MiniMax MCP API Key Handoff to OpenFixer",
+						"category": "INFRA",
+						"priority": "Critical",
+						"status": "Drafted",
+						"parentDecision": "DECISION_172",
+						"keys": ["MCP_AUTH_TOKEN"],
+						"servers": ["mongodb-p4nth30n-v2", "rag-server-v2", "decisions-server-v2"]
+					}
+				]
+			},
+			"metrics": {
+				"decisionsCreated": 1,
+				"keysHandedOff": 1,
+				"serversAuthorized": 3,
+				"targetAgent": "@openfixer",
+				"guideAgent": "MiniMax"
+			},
+			"narrative": {
+				"tone": "authorization",
+				"theme": "The keys to the kingdom, passed from Strategist to MiniMax to OpenFixer. The cascade begins.",
+				"keyMoment": "When the Docker containers revealed their secrets and the token emerged: fc02dbcffaec5d51204e415b8ff9103eba39d79bff014f9d6869a33276233af1",
+				"emotion": "The satisfaction of a clean handoff. No ambiguity. Just the keys, the servers, and the mission."
 			},
 			"synthesized": false
 		}

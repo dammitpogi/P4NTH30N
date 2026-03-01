@@ -16,7 +16,6 @@ DE51GN3R/references/
 # MongoDB data files
 WiredTiger*
 *.wt
-journal/
 storage.bson
 mongod.lock
 diagnostic.data/

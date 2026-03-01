@@ -3,9 +3,10 @@ type: decision
 id: DECISION_146
 version: 2.0.0
 category: INFRA
-status: handoffready
+status: superseded
 created_at: '2026-02-27T00:15:15Z'
-last_reviewed: '2026-02-27T02:00:00Z'
+last_reviewed: '2026-02-28T14:00:00Z'
+superseded_by: DECISION_172
 priority: Critical
 keywords:
   - alma
@@ -27,21 +28,38 @@ roles:
   - openfixer
   - windfixer
 summary: >-
-  ALMA Railway deployment architecture. Single merged container running
-  OpenClaw + SFTPGo with Railway Volume at /data. Ollama provides free local
-  LLM inference. OpenClaw's built-in memory/retrieval (memory_search,
-  memory_get, vector + BM25 hybrid) satisfies RAG requirements. MongoDB
-  Railway template for persistence. All OpenClaw features enabled.
+  [SUPERSEDED by DECISION_172] ALMA Railway deployment architecture. Single 
+  merged container running OpenClaw + SFTPGo with Railway Volume at /data. 
+  Ollama provides free local LLM inference. OpenClaw's built-in memory/retrieval
+  (memory_search, memory_get, vector + BM25 hybrid) satisfies RAG requirements.
+  MongoDB Railway template for persistence. All OpenClaw features enabled.
+  
+  Historical value: Captured single-container deployment pattern and Railway
+  volume management lessons. Superseded by 3-service Book-First MVP architecture.
 ---
 
-# DECISION_146: ALMA Railway Merged Environment (v2.0.0)
+# DECISION_146: ALMA Railway Merged Environment (v2.0.0) - SUPERSEDED
 
 **Decision ID**: DECISION_146  
 **Version**: 2.0.0 (Corrected)  
 **Category**: INFRA  
-**Status**: HandoffReady  
-**Priority**: Critical  
-**Date**: 2026-02-27
+**Status**: **SUPERSEDED** by DECISION_172  
+**Priority**: Critical (Historical)  
+**Date**: 2026-02-27  
+**Superseded**: 2026-02-28
+
+## Supersession Notice
+
+**This decision has been superseded by DECISION_172: Book-First MVP Architecture.**
+
+The single merged container approach (OpenClaw + SFTPGo + Ollama in one service) has been replaced by a 3-service architecture:
+- Service A: Next.js (public)
+- Service B: Core (OpenClaw + QMD + SFTPGo, internal)
+- Service C: MongoDB (internal)
+
+**Historical Value**: This decision captured the single-container deployment pattern, Railway volume management, and Ollama integration approach. These patterns remain useful for reference but are not the current implementation path.
+
+**Reason for Supersession**: Product pivot from "OpenClaw-first agent" to "Book-First MVP with Next.js frontend" requires different service topology and public/private boundaries.
 
 ## Correction Notice
 

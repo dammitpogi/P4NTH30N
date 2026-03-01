@@ -3,9 +3,10 @@ type: decision
 id: DECISION_165
 version: 2.0.0
 category: INFRA
-status: approved
+status: superseded
 created_at: '2026-02-27T01:18:00Z'
-last_reviewed: '2026-02-27T02:00:00Z'
+last_reviewed: '2026-02-28T14:00:00Z'
+superseded_by: DECISION_172
 priority: Critical
 keywords:
   - alma
@@ -23,23 +24,43 @@ roles:
   - designer
   - openfixer
 summary: >-
-  Deployment success criteria and admin secrets vault for ALMA Railway
-  environment. All services must be online and reachable. Ollama provides
-  free local LLM. OpenClaw's built-in memory/retrieval is the RAG
-  implementation. Secrets stored encrypted at
-  OP3NF1XER/nate-alma/secrets.
+  [SUPERSEDED by DECISION_172] Deployment success criteria and admin secrets
+  vault for ALMA Railway environment. All services must be online and reachable.
+  Ollama provides free local LLM. OpenClaw's built-in memory/retrieval is the RAG
+  implementation. Secrets stored encrypted at OP3NF1XER/nate-alma/secrets.
+  
+  Historical value: Defined success criteria for OpenClaw-first deployment.
+  Superseded by Book-First MVP architecture with Next.js as public entry point.
 ---
 
-# DECISION_165: ALMA Deployment Success + Admin Secrets Vault (v2.0.0)
+# DECISION_165: ALMA Deployment Success + Admin Secrets Vault (v2.0.0) - SUPERSEDED
 
 **Decision ID**: DECISION_165  
 **Version**: 2.0.0 (Corrected)  
 **Category**: INFRA  
-**Status**: Approved  
-**Priority**: Critical  
-**Date**: 2026-02-27
+**Status**: **SUPERSEDED** by DECISION_172  
+**Priority**: Critical (Historical)  
+**Date**: 2026-02-27  
+**Superseded**: 2026-02-28
 
-## Correction Notice
+## Supersession Notice
+
+**This decision has been superseded by DECISION_172: Book-First MVP Architecture.**
+
+The success criteria defined here (OpenClaw public health checks, Ollama integration) were designed for an OpenClaw-first deployment. The new architecture has:
+- Next.js as the public entry point (not OpenClaw)
+- QMD as the retrieval engine (not OpenClaw memory)
+- OpenClaw as optional internal service (client choice)
+
+**Historical Value**: This decision established the admin secrets vault pattern and deployment validation criteria. The secrets vault location (`OP3NF1XER/nate-alma/secrets`) remains valid for the new architecture.
+
+**Reason for Supersession**: Product pivot to Book-First MVP changes the definition of "deployment success" - now centered on Next.js + QMD + MongoDB, not OpenClaw + Ollama.
+
+---
+
+## Original Content (Historical)
+
+### Correction Notice
 
 This v2.0.0 corrects v1.0.0 errors:
 - **Removed**: External RAG services (LightRAG, AnythingLLM)
